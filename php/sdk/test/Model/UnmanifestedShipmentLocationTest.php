@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\v2\UnmanifestedShipmentLocation;
+use SpApi\Model\shipping\v2\UnmanifestedShipmentLocation;
 
 /**
  * UnmanifestedShipmentLocationTest Class Doc Comment
  *
  * @category    Class
  * @description UnmanifestedShipmentLocation info
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class UnmanifestedShipmentLocationTest extends TestCase
 {
@@ -57,7 +57,7 @@ class UnmanifestedShipmentLocationTest extends TestCase
     public function testPropertyAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\v2\Address();
+        $testValue = new \SpApi\Model\shipping\v2\Address();
         
         $this->model->setAddress($testValue);
         $this->assertEquals($testValue, $this->model->getAddress());

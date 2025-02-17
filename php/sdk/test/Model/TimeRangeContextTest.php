@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\finances\v2024_06_19\TimeRangeContext;
+use SpApi\Model\finances\v2024_06_19\TimeRangeContext;
 
 /**
  * TimeRangeContextTest Class Doc Comment
  *
  * @category    Class
  * @description Additional information that is related to the time range of the transaction.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class TimeRangeContextTest extends TestCase
 {

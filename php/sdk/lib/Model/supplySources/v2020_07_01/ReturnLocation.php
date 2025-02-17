@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\supplySources\v2020_07_01;
+namespace SpApi\Model\supplySources\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ReturnLocation Class Doc Comment
  *
  * @category Class
  * @description The address or reference to another &#x60;supplySourceId&#x60; to act as a return location.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class ReturnLocation implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPITypes = [
              'supply_source_id' => 'string',
-             'address_with_contact' => '\OpenAPI\Client\Model\supplySources\v2020_07_01\AddressWithContact'    ];
+             'address_with_contact' => '\SpApi\Model\supplySources\v2020_07_01\AddressWithContact'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -335,9 +335,9 @@ class ReturnLocation implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets address_with_contact
      *
-     * @return \OpenAPI\Client\Model\supplySources\v2020_07_01\AddressWithContact|null
+     * @return \SpApi\Model\supplySources\v2020_07_01\AddressWithContact|null
      */
-    public function getAddressWithContact(): ?\OpenAPI\Client\Model\supplySources\v2020_07_01\AddressWithContact
+    public function getAddressWithContact(): ?\SpApi\Model\supplySources\v2020_07_01\AddressWithContact
     {
         return $this->container['address_with_contact'];
     }
@@ -345,11 +345,11 @@ class ReturnLocation implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets address_with_contact
      *
-     * @param \OpenAPI\Client\Model\supplySources\v2020_07_01\AddressWithContact|null $address_with_contact address_with_contact
+     * @param \SpApi\Model\supplySources\v2020_07_01\AddressWithContact|null $address_with_contact address_with_contact
      *
      * @return self
      */
-    public function setAddressWithContact(?\OpenAPI\Client\Model\supplySources\v2020_07_01\AddressWithContact $address_with_contact): self
+    public function setAddressWithContact(?\SpApi\Model\supplySources\v2020_07_01\AddressWithContact $address_with_contact): self
     {
         if (is_null($address_with_contact)) {
             array_push($this->openAPINullablesSetToNull, 'address_with_contact');

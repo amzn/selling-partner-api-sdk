@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,19 +27,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\shipping\v2;
+namespace SpApi\Model\shipping\v2;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * RateItem Class Doc Comment
  *
  * @category Class
  * @description Rate Item for shipping (base cost, transaction fee, confirmation, insurance, etc.) Data source definition:
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,9 +61,9 @@ class RateItem implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'rate_item_id' => '\OpenAPI\Client\Model\shipping\v2\RateItemID',
-             'rate_item_type' => '\OpenAPI\Client\Model\shipping\v2\RateItemType',
-             'rate_item_charge' => '\OpenAPI\Client\Model\shipping\v2\Currency',
+             'rate_item_id' => '\SpApi\Model\shipping\v2\RateItemID',
+             'rate_item_type' => '\SpApi\Model\shipping\v2\RateItemType',
+             'rate_item_charge' => '\SpApi\Model\shipping\v2\Currency',
              'rate_item_name_localization' => 'string'    ];
 
     /**
@@ -384,9 +384,9 @@ class RateItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets rate_item_charge
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\Currency|null
+     * @return \SpApi\Model\shipping\v2\Currency|null
      */
-    public function getRateItemCharge(): ?\OpenAPI\Client\Model\shipping\v2\Currency
+    public function getRateItemCharge(): ?\SpApi\Model\shipping\v2\Currency
     {
         return $this->container['rate_item_charge'];
     }
@@ -394,11 +394,11 @@ class RateItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets rate_item_charge
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\Currency|null $rate_item_charge rate_item_charge
+     * @param \SpApi\Model\shipping\v2\Currency|null $rate_item_charge rate_item_charge
      *
      * @return self
      */
-    public function setRateItemCharge(?\OpenAPI\Client\Model\shipping\v2\Currency $rate_item_charge): self
+    public function setRateItemCharge(?\SpApi\Model\shipping\v2\Currency $rate_item_charge): self
     {
         if (is_null($rate_item_charge)) {
             array_push($this->openAPINullablesSetToNull, 'rate_item_charge');

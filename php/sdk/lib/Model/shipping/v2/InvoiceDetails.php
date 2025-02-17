@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,19 +27,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\shipping\v2;
+namespace SpApi\Model\shipping\v2;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * InvoiceDetails Class Doc Comment
  *
  * @category Class
  * @description The invoice details for charges associated with the goods in the package. Only applies to certain regions.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>

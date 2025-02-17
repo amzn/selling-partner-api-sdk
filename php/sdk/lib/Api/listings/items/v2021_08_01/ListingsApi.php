@@ -4,7 +4,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api\listings\items\v2021_08_01;
+namespace SpApi\Api\listings\items\v2021_08_01;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -39,16 +39,16 @@ use SpApi\AuthAndAuth\RateLimitConfiguration;
 use Symfony\Component\RateLimiter\LimiterInterface;
 use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\ObjectSerializer;
+use SpApi\ApiException;
+use SpApi\Configuration;
+use SpApi\HeaderSelector;
+use SpApi\ObjectSerializer;
 
 /**
  * ListingsApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -161,16 +161,16 @@ class ListingsApi
      * @param  string|null $issue_locale
      *  A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse
+     * @return \SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse
      */
     public function deleteListingsItem(
         string $seller_id,
         string $sku,
         array $marketplace_ids,
         ?string $issue_locale = null
-    ): \OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse {
+    ): \SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse {
         list($response) = $this->deleteListingsItemWithHttpInfo($seller_id, $sku, $marketplace_ids, $issue_locale);
         return $response;
     }
@@ -187,9 +187,9 @@ class ListingsApi
      * @param  string|null $issue_locale
      *  A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteListingsItemWithHttpInfo(
         string $seller_id,
@@ -238,128 +238,128 @@ class ListingsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse' !== 'string') {
+                        if ('\SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse';
+            $returnType = '\SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -380,7 +380,7 @@ class ListingsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse',
+                        '\SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -388,7 +388,7 @@ class ListingsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList',
+                        '\SpApi\Model\listings\items\v2021_08_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -396,7 +396,7 @@ class ListingsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList',
+                        '\SpApi\Model\listings\items\v2021_08_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -404,7 +404,7 @@ class ListingsApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList',
+                        '\SpApi\Model\listings\items\v2021_08_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -412,7 +412,7 @@ class ListingsApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList',
+                        '\SpApi\Model\listings\items\v2021_08_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -420,7 +420,7 @@ class ListingsApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList',
+                        '\SpApi\Model\listings\items\v2021_08_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -428,7 +428,7 @@ class ListingsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList',
+                        '\SpApi\Model\listings\items\v2021_08_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -436,7 +436,7 @@ class ListingsApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList',
+                        '\SpApi\Model\listings\items\v2021_08_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -496,7 +496,7 @@ class ListingsApi
         array $marketplace_ids,
         ?string $issue_locale = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse';
+        $returnType = '\SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse';
         $request = $this->deleteListingsItemRequest($seller_id, $sku, $marketplace_ids, $issue_locale);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -699,9 +699,9 @@ class ListingsApi
      * @param  string[]|null $included_data
      *  A comma-delimited list of data sets to include in the response. Default: &#x60;summaries&#x60;. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\listings\items\v2021_08_01\Item
+     * @return \SpApi\Model\listings\items\v2021_08_01\Item
      */
     public function getListingsItem(
         string $seller_id,
@@ -709,7 +709,7 @@ class ListingsApi
         array $marketplace_ids,
         ?string $issue_locale = null,
         ?array $included_data = null
-    ): \OpenAPI\Client\Model\listings\items\v2021_08_01\Item {
+    ): \SpApi\Model\listings\items\v2021_08_01\Item {
         list($response) = $this->getListingsItemWithHttpInfo($seller_id, $sku, $marketplace_ids, $issue_locale, $included_data);
         return $response;
     }
@@ -728,9 +728,9 @@ class ListingsApi
      * @param  string[]|null $included_data
      *  A comma-delimited list of data sets to include in the response. Default: &#x60;summaries&#x60;. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\listings\items\v2021_08_01\Item, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\listings\items\v2021_08_01\Item, HTTP status code, HTTP response headers (array of strings)
      */
     public function getListingsItemWithHttpInfo(
         string $seller_id,
@@ -780,143 +780,143 @@ class ListingsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\Item' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\items\v2021_08_01\Item' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\Item' !== 'string') {
+                        if ('\SpApi\Model\listings\items\v2021_08_01\Item' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\items\v2021_08_01\Item', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\Item', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\listings\items\v2021_08_01\Item';
+            $returnType = '\SpApi\Model\listings\items\v2021_08_01\Item';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -937,7 +937,7 @@ class ListingsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\items\v2021_08_01\Item',
+                        '\SpApi\Model\listings\items\v2021_08_01\Item',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -945,7 +945,7 @@ class ListingsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList',
+                        '\SpApi\Model\listings\items\v2021_08_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -953,7 +953,7 @@ class ListingsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList',
+                        '\SpApi\Model\listings\items\v2021_08_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -961,7 +961,7 @@ class ListingsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList',
+                        '\SpApi\Model\listings\items\v2021_08_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -969,7 +969,7 @@ class ListingsApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList',
+                        '\SpApi\Model\listings\items\v2021_08_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -977,7 +977,7 @@ class ListingsApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList',
+                        '\SpApi\Model\listings\items\v2021_08_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -985,7 +985,7 @@ class ListingsApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList',
+                        '\SpApi\Model\listings\items\v2021_08_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -993,7 +993,7 @@ class ListingsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList',
+                        '\SpApi\Model\listings\items\v2021_08_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1001,7 +1001,7 @@ class ListingsApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList',
+                        '\SpApi\Model\listings\items\v2021_08_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1067,7 +1067,7 @@ class ListingsApi
         ?string $issue_locale = null,
         ?array $included_data = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\listings\items\v2021_08_01\Item';
+        $returnType = '\SpApi\Model\listings\items\v2021_08_01\Item';
         $request = $this->getListingsItemRequest($seller_id, $sku, $marketplace_ids, $issue_locale, $included_data);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -1277,7 +1277,7 @@ class ListingsApi
      *  A selling partner provided identifier for an Amazon listing. (required)
      * @param  string[] $marketplace_ids
      *  A comma-delimited list of Amazon marketplace identifiers for the request. (required)
-     * @param  \OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemPatchRequest $body
+     * @param  \SpApi\Model\listings\items\v2021_08_01\ListingsItemPatchRequest $body
      *  The request body schema for the &#x60;patchListingsItem&#x60; operation. (required)
      * @param  string[]|null $included_data
      *  A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;. (optional)
@@ -1286,19 +1286,19 @@ class ListingsApi
      * @param  string|null $issue_locale
      *  A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse
+     * @return \SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse
      */
     public function patchListingsItem(
         string $seller_id,
         string $sku,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemPatchRequest $body,
+        \SpApi\Model\listings\items\v2021_08_01\ListingsItemPatchRequest $body,
         ?array $included_data = null,
         ?string $mode = null,
         ?string $issue_locale = null
-    ): \OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse {
+    ): \SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse {
         list($response) = $this->patchListingsItemWithHttpInfo($seller_id, $sku, $marketplace_ids, $body, $included_data, $mode, $issue_locale);
         return $response;
     }
@@ -1312,7 +1312,7 @@ class ListingsApi
      *  A selling partner provided identifier for an Amazon listing. (required)
      * @param  string[] $marketplace_ids
      *  A comma-delimited list of Amazon marketplace identifiers for the request. (required)
-     * @param  \OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemPatchRequest $body
+     * @param  \SpApi\Model\listings\items\v2021_08_01\ListingsItemPatchRequest $body
      *  The request body schema for the &#x60;patchListingsItem&#x60; operation. (required)
      * @param  string[]|null $included_data
      *  A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;. (optional)
@@ -1321,15 +1321,15 @@ class ListingsApi
      * @param  string|null $issue_locale
      *  A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function patchListingsItemWithHttpInfo(
         string $seller_id,
         string $sku,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemPatchRequest $body,
+        \SpApi\Model\listings\items\v2021_08_01\ListingsItemPatchRequest $body,
         ?array $included_data = null,
         ?string $mode = null,
         ?string $issue_locale = null
@@ -1375,128 +1375,128 @@ class ListingsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse' !== 'string') {
+                        if ('\SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse';
+            $returnType = '\SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1517,7 +1517,7 @@ class ListingsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse',
+                        '\SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1525,7 +1525,7 @@ class ListingsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList',
+                        '\SpApi\Model\listings\items\v2021_08_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1533,7 +1533,7 @@ class ListingsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList',
+                        '\SpApi\Model\listings\items\v2021_08_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1541,7 +1541,7 @@ class ListingsApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList',
+                        '\SpApi\Model\listings\items\v2021_08_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1549,7 +1549,7 @@ class ListingsApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList',
+                        '\SpApi\Model\listings\items\v2021_08_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1557,7 +1557,7 @@ class ListingsApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList',
+                        '\SpApi\Model\listings\items\v2021_08_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1565,7 +1565,7 @@ class ListingsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList',
+                        '\SpApi\Model\listings\items\v2021_08_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1573,7 +1573,7 @@ class ListingsApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList',
+                        '\SpApi\Model\listings\items\v2021_08_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1592,7 +1592,7 @@ class ListingsApi
      *  A selling partner provided identifier for an Amazon listing. (required)
      * @param  string[] $marketplace_ids
      *  A comma-delimited list of Amazon marketplace identifiers for the request. (required)
-     * @param  \OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemPatchRequest $body
+     * @param  \SpApi\Model\listings\items\v2021_08_01\ListingsItemPatchRequest $body
      *  The request body schema for the &#x60;patchListingsItem&#x60; operation. (required)
      * @param  string[]|null $included_data
      *  A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;. (optional)
@@ -1608,7 +1608,7 @@ class ListingsApi
         string $seller_id,
         string $sku,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemPatchRequest $body,
+        \SpApi\Model\listings\items\v2021_08_01\ListingsItemPatchRequest $body,
         ?array $included_data = null,
         ?string $mode = null,
         ?string $issue_locale = null
@@ -1630,7 +1630,7 @@ class ListingsApi
      *  A selling partner provided identifier for an Amazon listing. (required)
      * @param  string[] $marketplace_ids
      *  A comma-delimited list of Amazon marketplace identifiers for the request. (required)
-     * @param  \OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemPatchRequest $body
+     * @param  \SpApi\Model\listings\items\v2021_08_01\ListingsItemPatchRequest $body
      *  The request body schema for the &#x60;patchListingsItem&#x60; operation. (required)
      * @param  string[]|null $included_data
      *  A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;. (optional)
@@ -1646,12 +1646,12 @@ class ListingsApi
         string $seller_id,
         string $sku,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemPatchRequest $body,
+        \SpApi\Model\listings\items\v2021_08_01\ListingsItemPatchRequest $body,
         ?array $included_data = null,
         ?string $mode = null,
         ?string $issue_locale = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse';
+        $returnType = '\SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse';
         $request = $this->patchListingsItemRequest($seller_id, $sku, $marketplace_ids, $body, $included_data, $mode, $issue_locale);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -1701,7 +1701,7 @@ class ListingsApi
      *  A selling partner provided identifier for an Amazon listing. (required)
      * @param  string[] $marketplace_ids
      *  A comma-delimited list of Amazon marketplace identifiers for the request. (required)
-     * @param  \OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemPatchRequest $body
+     * @param  \SpApi\Model\listings\items\v2021_08_01\ListingsItemPatchRequest $body
      *  The request body schema for the &#x60;patchListingsItem&#x60; operation. (required)
      * @param  string[]|null $included_data
      *  A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;. (optional)
@@ -1717,7 +1717,7 @@ class ListingsApi
         string $seller_id,
         string $sku,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemPatchRequest $body,
+        \SpApi\Model\listings\items\v2021_08_01\ListingsItemPatchRequest $body,
         ?array $included_data = null,
         ?string $mode = null,
         ?string $issue_locale = null
@@ -1888,7 +1888,7 @@ class ListingsApi
      *  A selling partner provided identifier for an Amazon listing. (required)
      * @param  string[] $marketplace_ids
      *  A comma-delimited list of Amazon marketplace identifiers for the request. (required)
-     * @param  \OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemPutRequest $body
+     * @param  \SpApi\Model\listings\items\v2021_08_01\ListingsItemPutRequest $body
      *  The request body schema for the &#x60;putListingsItem&#x60; operation. (required)
      * @param  string[]|null $included_data
      *  A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;. (optional)
@@ -1897,19 +1897,19 @@ class ListingsApi
      * @param  string|null $issue_locale
      *  A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse
+     * @return \SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse
      */
     public function putListingsItem(
         string $seller_id,
         string $sku,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemPutRequest $body,
+        \SpApi\Model\listings\items\v2021_08_01\ListingsItemPutRequest $body,
         ?array $included_data = null,
         ?string $mode = null,
         ?string $issue_locale = null
-    ): \OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse {
+    ): \SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse {
         list($response) = $this->putListingsItemWithHttpInfo($seller_id, $sku, $marketplace_ids, $body, $included_data, $mode, $issue_locale);
         return $response;
     }
@@ -1923,7 +1923,7 @@ class ListingsApi
      *  A selling partner provided identifier for an Amazon listing. (required)
      * @param  string[] $marketplace_ids
      *  A comma-delimited list of Amazon marketplace identifiers for the request. (required)
-     * @param  \OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemPutRequest $body
+     * @param  \SpApi\Model\listings\items\v2021_08_01\ListingsItemPutRequest $body
      *  The request body schema for the &#x60;putListingsItem&#x60; operation. (required)
      * @param  string[]|null $included_data
      *  A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;. (optional)
@@ -1932,15 +1932,15 @@ class ListingsApi
      * @param  string|null $issue_locale
      *  A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function putListingsItemWithHttpInfo(
         string $seller_id,
         string $sku,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemPutRequest $body,
+        \SpApi\Model\listings\items\v2021_08_01\ListingsItemPutRequest $body,
         ?array $included_data = null,
         ?string $mode = null,
         ?string $issue_locale = null
@@ -1986,128 +1986,128 @@ class ListingsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse' !== 'string') {
+                        if ('\SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse';
+            $returnType = '\SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2128,7 +2128,7 @@ class ListingsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse',
+                        '\SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2136,7 +2136,7 @@ class ListingsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList',
+                        '\SpApi\Model\listings\items\v2021_08_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2144,7 +2144,7 @@ class ListingsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList',
+                        '\SpApi\Model\listings\items\v2021_08_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2152,7 +2152,7 @@ class ListingsApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList',
+                        '\SpApi\Model\listings\items\v2021_08_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2160,7 +2160,7 @@ class ListingsApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList',
+                        '\SpApi\Model\listings\items\v2021_08_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2168,7 +2168,7 @@ class ListingsApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList',
+                        '\SpApi\Model\listings\items\v2021_08_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2176,7 +2176,7 @@ class ListingsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList',
+                        '\SpApi\Model\listings\items\v2021_08_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2184,7 +2184,7 @@ class ListingsApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList',
+                        '\SpApi\Model\listings\items\v2021_08_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2203,7 +2203,7 @@ class ListingsApi
      *  A selling partner provided identifier for an Amazon listing. (required)
      * @param  string[] $marketplace_ids
      *  A comma-delimited list of Amazon marketplace identifiers for the request. (required)
-     * @param  \OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemPutRequest $body
+     * @param  \SpApi\Model\listings\items\v2021_08_01\ListingsItemPutRequest $body
      *  The request body schema for the &#x60;putListingsItem&#x60; operation. (required)
      * @param  string[]|null $included_data
      *  A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;. (optional)
@@ -2219,7 +2219,7 @@ class ListingsApi
         string $seller_id,
         string $sku,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemPutRequest $body,
+        \SpApi\Model\listings\items\v2021_08_01\ListingsItemPutRequest $body,
         ?array $included_data = null,
         ?string $mode = null,
         ?string $issue_locale = null
@@ -2241,7 +2241,7 @@ class ListingsApi
      *  A selling partner provided identifier for an Amazon listing. (required)
      * @param  string[] $marketplace_ids
      *  A comma-delimited list of Amazon marketplace identifiers for the request. (required)
-     * @param  \OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemPutRequest $body
+     * @param  \SpApi\Model\listings\items\v2021_08_01\ListingsItemPutRequest $body
      *  The request body schema for the &#x60;putListingsItem&#x60; operation. (required)
      * @param  string[]|null $included_data
      *  A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;. (optional)
@@ -2257,12 +2257,12 @@ class ListingsApi
         string $seller_id,
         string $sku,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemPutRequest $body,
+        \SpApi\Model\listings\items\v2021_08_01\ListingsItemPutRequest $body,
         ?array $included_data = null,
         ?string $mode = null,
         ?string $issue_locale = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse';
+        $returnType = '\SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse';
         $request = $this->putListingsItemRequest($seller_id, $sku, $marketplace_ids, $body, $included_data, $mode, $issue_locale);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -2312,7 +2312,7 @@ class ListingsApi
      *  A selling partner provided identifier for an Amazon listing. (required)
      * @param  string[] $marketplace_ids
      *  A comma-delimited list of Amazon marketplace identifiers for the request. (required)
-     * @param  \OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemPutRequest $body
+     * @param  \SpApi\Model\listings\items\v2021_08_01\ListingsItemPutRequest $body
      *  The request body schema for the &#x60;putListingsItem&#x60; operation. (required)
      * @param  string[]|null $included_data
      *  A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;. (optional)
@@ -2328,7 +2328,7 @@ class ListingsApi
         string $seller_id,
         string $sku,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemPutRequest $body,
+        \SpApi\Model\listings\items\v2021_08_01\ListingsItemPutRequest $body,
         ?array $included_data = null,
         ?string $mode = null,
         ?string $issue_locale = null
@@ -2532,9 +2532,9 @@ class ListingsApi
      * @param  string|null $page_token
      *  A token that you can use to fetch a specific page when there are multiple pages of results. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\listings\items\v2021_08_01\ItemSearchResults
+     * @return \SpApi\Model\listings\items\v2021_08_01\ItemSearchResults
      */
     public function searchListingsItems(
         string $seller_id,
@@ -2556,7 +2556,7 @@ class ListingsApi
         ?string $sort_order = 'DESC',
         ?int $page_size = 10,
         ?string $page_token = null
-    ): \OpenAPI\Client\Model\listings\items\v2021_08_01\ItemSearchResults {
+    ): \SpApi\Model\listings\items\v2021_08_01\ItemSearchResults {
         list($response) = $this->searchListingsItemsWithHttpInfo($seller_id, $marketplace_ids, $issue_locale, $included_data, $identifiers, $identifiers_type, $variation_parent_sku, $package_hierarchy_sku, $created_after, $created_before, $last_updated_after, $last_updated_before, $with_issue_severity, $with_status, $without_status, $sort_by, $sort_order, $page_size, $page_token);
         return $response;
     }
@@ -2603,9 +2603,9 @@ class ListingsApi
      * @param  string|null $page_token
      *  A token that you can use to fetch a specific page when there are multiple pages of results. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\listings\items\v2021_08_01\ItemSearchResults, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\listings\items\v2021_08_01\ItemSearchResults, HTTP status code, HTTP response headers (array of strings)
      */
     public function searchListingsItemsWithHttpInfo(
         string $seller_id,
@@ -2669,143 +2669,143 @@ class ListingsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ItemSearchResults' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\items\v2021_08_01\ItemSearchResults' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ItemSearchResults' !== 'string') {
+                        if ('\SpApi\Model\listings\items\v2021_08_01\ItemSearchResults' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\items\v2021_08_01\ItemSearchResults', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ItemSearchResults', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\listings\items\v2021_08_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\items\v2021_08_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\listings\items\v2021_08_01\ItemSearchResults';
+            $returnType = '\SpApi\Model\listings\items\v2021_08_01\ItemSearchResults';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2826,7 +2826,7 @@ class ListingsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\items\v2021_08_01\ItemSearchResults',
+                        '\SpApi\Model\listings\items\v2021_08_01\ItemSearchResults',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2834,7 +2834,7 @@ class ListingsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList',
+                        '\SpApi\Model\listings\items\v2021_08_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2842,7 +2842,7 @@ class ListingsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList',
+                        '\SpApi\Model\listings\items\v2021_08_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2850,7 +2850,7 @@ class ListingsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList',
+                        '\SpApi\Model\listings\items\v2021_08_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2858,7 +2858,7 @@ class ListingsApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList',
+                        '\SpApi\Model\listings\items\v2021_08_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2866,7 +2866,7 @@ class ListingsApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList',
+                        '\SpApi\Model\listings\items\v2021_08_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2874,7 +2874,7 @@ class ListingsApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList',
+                        '\SpApi\Model\listings\items\v2021_08_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2882,7 +2882,7 @@ class ListingsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList',
+                        '\SpApi\Model\listings\items\v2021_08_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2890,7 +2890,7 @@ class ListingsApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\items\v2021_08_01\ErrorList',
+                        '\SpApi\Model\listings\items\v2021_08_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3040,7 +3040,7 @@ class ListingsApi
         ?int $page_size = 10,
         ?string $page_token = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\listings\items\v2021_08_01\ItemSearchResults';
+        $returnType = '\SpApi\Model\listings\items\v2021_08_01\ItemSearchResults';
         $request = $this->searchListingsItemsRequest($seller_id, $marketplace_ids, $issue_locale, $included_data, $identifiers, $identifiers_type, $variation_parent_sku, $package_hierarchy_sku, $created_after, $created_before, $last_updated_after, $last_updated_before, $with_issue_severity, $with_status, $without_status, $sort_by, $sort_order, $page_size, $page_token);
         $request = $this->config->sign($request);
         $this->rateLimitWait();

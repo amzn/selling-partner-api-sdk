@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantFulfillment\v0\Benefits;
+use SpApi\Model\merchantFulfillment\v0\Benefits;
 
 /**
  * BenefitsTest Class Doc Comment
  *
  * @category    Class
  * @description Benefits that are included and excluded for each shipping offer. Benefits represents services provided by Amazon (for example, &#x60;CLAIMS_PROTECTED&#x60;) when sellers purchase shipping through Amazon. Benefit details are made available for any shipment placed on or after January 1st 2024 00:00 UTC.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class BenefitsTest extends TestCase
 {

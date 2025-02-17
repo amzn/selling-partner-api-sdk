@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,19 +27,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\shipping\v2;
+namespace SpApi\Model\shipping\v2;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * TaxDetail Class Doc Comment
  *
  * @category Class
  * @description Indicates the tax specifications associated with the shipment for customs compliance purposes in certain regions.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class TaxDetail implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'tax_type' => '\OpenAPI\Client\Model\shipping\v2\TaxType',
+             'tax_type' => '\SpApi\Model\shipping\v2\TaxType',
              'tax_registration_number' => 'string'    ];
 
     /**

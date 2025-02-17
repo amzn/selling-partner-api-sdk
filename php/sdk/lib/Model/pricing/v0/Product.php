@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\pricing\v0;
+namespace SpApi\Model\pricing\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Product Class Doc Comment
  *
  * @category Class
  * @description An item.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,12 +60,12 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'identifiers' => '\OpenAPI\Client\Model\pricing\v0\IdentifierType',
+             'identifiers' => '\SpApi\Model\pricing\v0\IdentifierType',
              'attribute_sets' => 'object[]',
              'relationships' => 'object[]',
-             'competitive_pricing' => '\OpenAPI\Client\Model\pricing\v0\CompetitivePricingType',
-             'sales_rankings' => '\OpenAPI\Client\Model\pricing\v0\SalesRankType[]',
-             'offers' => '\OpenAPI\Client\Model\pricing\v0\OfferType[]'    ];
+             'competitive_pricing' => '\SpApi\Model\pricing\v0\CompetitivePricingType',
+             'sales_rankings' => '\SpApi\Model\pricing\v0\SalesRankType[]',
+             'offers' => '\SpApi\Model\pricing\v0\OfferType[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -332,9 +332,9 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets identifiers
      *
-     * @return \OpenAPI\Client\Model\pricing\v0\IdentifierType
+     * @return \SpApi\Model\pricing\v0\IdentifierType
      */
-    public function getIdentifiers(): \OpenAPI\Client\Model\pricing\v0\IdentifierType
+    public function getIdentifiers(): \SpApi\Model\pricing\v0\IdentifierType
     {
         return $this->container['identifiers'];
     }
@@ -342,11 +342,11 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets identifiers
      *
-     * @param \OpenAPI\Client\Model\pricing\v0\IdentifierType $identifiers identifiers
+     * @param \SpApi\Model\pricing\v0\IdentifierType $identifiers identifiers
      *
      * @return self
      */
-    public function setIdentifiers(\OpenAPI\Client\Model\pricing\v0\IdentifierType $identifiers): self
+    public function setIdentifiers(\SpApi\Model\pricing\v0\IdentifierType $identifiers): self
     {
         if (is_null($identifiers)) {
             throw new \InvalidArgumentException('non-nullable identifiers cannot be null');
@@ -427,9 +427,9 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets competitive_pricing
      *
-     * @return \OpenAPI\Client\Model\pricing\v0\CompetitivePricingType|null
+     * @return \SpApi\Model\pricing\v0\CompetitivePricingType|null
      */
-    public function getCompetitivePricing(): ?\OpenAPI\Client\Model\pricing\v0\CompetitivePricingType
+    public function getCompetitivePricing(): ?\SpApi\Model\pricing\v0\CompetitivePricingType
     {
         return $this->container['competitive_pricing'];
     }
@@ -437,11 +437,11 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets competitive_pricing
      *
-     * @param \OpenAPI\Client\Model\pricing\v0\CompetitivePricingType|null $competitive_pricing competitive_pricing
+     * @param \SpApi\Model\pricing\v0\CompetitivePricingType|null $competitive_pricing competitive_pricing
      *
      * @return self
      */
-    public function setCompetitivePricing(?\OpenAPI\Client\Model\pricing\v0\CompetitivePricingType $competitive_pricing): self
+    public function setCompetitivePricing(?\SpApi\Model\pricing\v0\CompetitivePricingType $competitive_pricing): self
     {
         if (is_null($competitive_pricing)) {
             array_push($this->openAPINullablesSetToNull, 'competitive_pricing');

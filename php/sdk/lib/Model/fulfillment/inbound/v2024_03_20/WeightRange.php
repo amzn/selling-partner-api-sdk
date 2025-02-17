@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20;
+namespace SpApi\Model\fulfillment\inbound\v2024_03_20;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * WeightRange Class Doc Comment
  *
  * @category Class
  * @description The range of weights that are allowed for a package.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +62,7 @@ class WeightRange implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPITypes = [
              'maximum' => 'float',
              'minimum' => 'float',
-             'unit' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\UnitOfWeight'    ];
+             'unit' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\UnitOfWeight'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

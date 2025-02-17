@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\v0\RegulatedInformation;
+use SpApi\Model\orders\v0\RegulatedInformation;
 
 /**
  * RegulatedInformationTest Class Doc Comment
  *
  * @category    Class
  * @description The regulated information collected during purchase and used to verify the order.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class RegulatedInformationTest extends TestCase
 {

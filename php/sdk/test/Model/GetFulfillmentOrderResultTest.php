@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentOrderResult;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentOrderResult;
 
 /**
  * GetFulfillmentOrderResultTest Class Doc Comment
  *
  * @category    Class
  * @description The request for the getFulfillmentOrder operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetFulfillmentOrderResultTest extends TestCase
 {
@@ -57,7 +57,7 @@ class GetFulfillmentOrderResultTest extends TestCase
     public function testPropertyFulfillmentOrder()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\FulfillmentOrder();
+        $testValue = new \SpApi\Model\fulfillment\outbound\v2020_07_01\FulfillmentOrder();
         
         $this->model->setFulfillmentOrder($testValue);
         $this->assertEquals($testValue, $this->model->getFulfillmentOrder());

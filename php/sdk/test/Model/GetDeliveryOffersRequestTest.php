@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersRequest;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersRequest;
 
 /**
  * GetDeliveryOffersRequestTest Class Doc Comment
  *
  * @category    Class
  * @description The request body schema for the getDeliveryOffers operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetDeliveryOffersRequestTest extends TestCase
 {
@@ -57,7 +57,7 @@ class GetDeliveryOffersRequestTest extends TestCase
     public function testPropertyProduct()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersProduct();
+        $testValue = new \SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersProduct();
         
         $this->model->setProduct($testValue);
         $this->assertEquals($testValue, $this->model->getProduct());
@@ -69,7 +69,7 @@ class GetDeliveryOffersRequestTest extends TestCase
     public function testPropertyTerms()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersTerms();
+        $testValue = new \SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersTerms();
         
         $this->model->setTerms($testValue);
         $this->assertEquals($testValue, $this->model->getTerms());

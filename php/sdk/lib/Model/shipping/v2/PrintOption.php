@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,19 +27,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\shipping\v2;
+namespace SpApi\Model\shipping\v2;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * PrintOption Class Doc Comment
  *
  * @category Class
  * @description The format options available for a label.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -64,7 +64,7 @@ class PrintOption implements ModelInterface, ArrayAccess, \JsonSerializable
              'supported_dpis' => 'int[]',
              'supported_page_layouts' => 'string[]',
              'supported_file_joining_options' => 'bool[]',
-             'supported_document_details' => '\OpenAPI\Client\Model\shipping\v2\SupportedDocumentDetail[]'    ];
+             'supported_document_details' => '\SpApi\Model\shipping\v2\SupportedDocumentDetail[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

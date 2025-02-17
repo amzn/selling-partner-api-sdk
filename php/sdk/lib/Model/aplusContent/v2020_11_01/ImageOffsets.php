@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\aplusContent\v2020_11_01;
+namespace SpApi\Model\aplusContent\v2020_11_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ImageOffsets Class Doc Comment
  *
  * @category Class
  * @description The top left corner of the cropped image, specified in the original image&#39;s coordinate space.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class ImageOffsets implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'x' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\IntegerWithUnits',
-             'y' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\IntegerWithUnits'    ];
+             'x' => '\SpApi\Model\aplusContent\v2020_11_01\IntegerWithUnits',
+             'y' => '\SpApi\Model\aplusContent\v2020_11_01\IntegerWithUnits'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -307,9 +307,9 @@ class ImageOffsets implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets x
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\IntegerWithUnits
+     * @return \SpApi\Model\aplusContent\v2020_11_01\IntegerWithUnits
      */
-    public function getX(): \OpenAPI\Client\Model\aplusContent\v2020_11_01\IntegerWithUnits
+    public function getX(): \SpApi\Model\aplusContent\v2020_11_01\IntegerWithUnits
     {
         return $this->container['x'];
     }
@@ -317,11 +317,11 @@ class ImageOffsets implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets x
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\IntegerWithUnits $x x
+     * @param \SpApi\Model\aplusContent\v2020_11_01\IntegerWithUnits $x x
      *
      * @return self
      */
-    public function setX(\OpenAPI\Client\Model\aplusContent\v2020_11_01\IntegerWithUnits $x): self
+    public function setX(\SpApi\Model\aplusContent\v2020_11_01\IntegerWithUnits $x): self
     {
         if (is_null($x)) {
             throw new \InvalidArgumentException('non-nullable x cannot be null');
@@ -334,9 +334,9 @@ class ImageOffsets implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets y
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\IntegerWithUnits
+     * @return \SpApi\Model\aplusContent\v2020_11_01\IntegerWithUnits
      */
-    public function getY(): \OpenAPI\Client\Model\aplusContent\v2020_11_01\IntegerWithUnits
+    public function getY(): \SpApi\Model\aplusContent\v2020_11_01\IntegerWithUnits
     {
         return $this->container['y'];
     }
@@ -344,11 +344,11 @@ class ImageOffsets implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets y
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\IntegerWithUnits $y y
+     * @param \SpApi\Model\aplusContent\v2020_11_01\IntegerWithUnits $y y
      *
      * @return self
      */
-    public function setY(\OpenAPI\Client\Model\aplusContent\v2020_11_01\IntegerWithUnits $y): self
+    public function setY(\SpApi\Model\aplusContent\v2020_11_01\IntegerWithUnits $y): self
     {
         if (is_null($y)) {
             throw new \InvalidArgumentException('non-nullable y cannot be null');

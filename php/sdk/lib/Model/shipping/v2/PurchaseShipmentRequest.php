@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,19 +27,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\shipping\v2;
+namespace SpApi\Model\shipping\v2;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * PurchaseShipmentRequest Class Doc Comment
  *
  * @category Class
  * @description The request schema for the purchaseShipment operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,8 +63,8 @@ class PurchaseShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeria
     protected static array $openAPITypes = [
              'request_token' => 'string',
              'rate_id' => 'string',
-             'requested_document_specification' => '\OpenAPI\Client\Model\shipping\v2\RequestedDocumentSpecification',
-             'requested_value_added_services' => '\OpenAPI\Client\Model\shipping\v2\RequestedValueAddedService[]',
+             'requested_document_specification' => '\SpApi\Model\shipping\v2\RequestedDocumentSpecification',
+             'requested_value_added_services' => '\SpApi\Model\shipping\v2\RequestedValueAddedService[]',
              'additional_inputs' => 'array<string,object>'    ];
 
     /**
@@ -386,9 +386,9 @@ class PurchaseShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets requested_document_specification
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\RequestedDocumentSpecification
+     * @return \SpApi\Model\shipping\v2\RequestedDocumentSpecification
      */
-    public function getRequestedDocumentSpecification(): \OpenAPI\Client\Model\shipping\v2\RequestedDocumentSpecification
+    public function getRequestedDocumentSpecification(): \SpApi\Model\shipping\v2\RequestedDocumentSpecification
     {
         return $this->container['requested_document_specification'];
     }
@@ -396,11 +396,11 @@ class PurchaseShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets requested_document_specification
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\RequestedDocumentSpecification $requested_document_specification requested_document_specification
+     * @param \SpApi\Model\shipping\v2\RequestedDocumentSpecification $requested_document_specification requested_document_specification
      *
      * @return self
      */
-    public function setRequestedDocumentSpecification(\OpenAPI\Client\Model\shipping\v2\RequestedDocumentSpecification $requested_document_specification): self
+    public function setRequestedDocumentSpecification(\SpApi\Model\shipping\v2\RequestedDocumentSpecification $requested_document_specification): self
     {
         if (is_null($requested_document_specification)) {
             throw new \InvalidArgumentException('non-nullable requested_document_specification cannot be null');

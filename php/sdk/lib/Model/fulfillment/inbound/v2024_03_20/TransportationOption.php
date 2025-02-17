@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20;
+namespace SpApi\Model\fulfillment\inbound\v2024_03_20;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * TransportationOption Class Doc Comment
  *
  * @category Class
  * @description Contains information pertaining to a transportation option and the related carrier.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,10 +60,10 @@ class TransportationOption implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'carrier' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Carrier',
-             'carrier_appointment' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\CarrierAppointment',
+             'carrier' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\Carrier',
+             'carrier_appointment' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\CarrierAppointment',
              'preconditions' => 'string[]',
-             'quote' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Quote',
+             'quote' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\Quote',
              'shipment_id' => 'string',
              'shipping_mode' => 'string',
              'shipping_solution' => 'string',
@@ -401,9 +401,9 @@ class TransportationOption implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets carrier
      *
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Carrier
+     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\Carrier
      */
-    public function getCarrier(): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Carrier
+    public function getCarrier(): \SpApi\Model\fulfillment\inbound\v2024_03_20\Carrier
     {
         return $this->container['carrier'];
     }
@@ -411,11 +411,11 @@ class TransportationOption implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets carrier
      *
-     * @param \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Carrier $carrier carrier
+     * @param \SpApi\Model\fulfillment\inbound\v2024_03_20\Carrier $carrier carrier
      *
      * @return self
      */
-    public function setCarrier(\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Carrier $carrier): self
+    public function setCarrier(\SpApi\Model\fulfillment\inbound\v2024_03_20\Carrier $carrier): self
     {
         if (is_null($carrier)) {
             throw new \InvalidArgumentException('non-nullable carrier cannot be null');
@@ -428,9 +428,9 @@ class TransportationOption implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets carrier_appointment
      *
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\CarrierAppointment|null
+     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\CarrierAppointment|null
      */
-    public function getCarrierAppointment(): ?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\CarrierAppointment
+    public function getCarrierAppointment(): ?\SpApi\Model\fulfillment\inbound\v2024_03_20\CarrierAppointment
     {
         return $this->container['carrier_appointment'];
     }
@@ -438,11 +438,11 @@ class TransportationOption implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets carrier_appointment
      *
-     * @param \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\CarrierAppointment|null $carrier_appointment carrier_appointment
+     * @param \SpApi\Model\fulfillment\inbound\v2024_03_20\CarrierAppointment|null $carrier_appointment carrier_appointment
      *
      * @return self
      */
-    public function setCarrierAppointment(?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\CarrierAppointment $carrier_appointment): self
+    public function setCarrierAppointment(?\SpApi\Model\fulfillment\inbound\v2024_03_20\CarrierAppointment $carrier_appointment): self
     {
         if (is_null($carrier_appointment)) {
             array_push($this->openAPINullablesSetToNull, 'carrier_appointment');
@@ -489,9 +489,9 @@ class TransportationOption implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets quote
      *
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Quote|null
+     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\Quote|null
      */
-    public function getQuote(): ?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Quote
+    public function getQuote(): ?\SpApi\Model\fulfillment\inbound\v2024_03_20\Quote
     {
         return $this->container['quote'];
     }
@@ -499,11 +499,11 @@ class TransportationOption implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets quote
      *
-     * @param \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Quote|null $quote quote
+     * @param \SpApi\Model\fulfillment\inbound\v2024_03_20\Quote|null $quote quote
      *
      * @return self
      */
-    public function setQuote(?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Quote $quote): self
+    public function setQuote(?\SpApi\Model\fulfillment\inbound\v2024_03_20\Quote $quote): self
     {
         if (is_null($quote)) {
             array_push($this->openAPINullablesSetToNull, 'quote');

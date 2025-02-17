@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\notifications\v1\CreateDestinationRequest;
+use SpApi\Model\notifications\v1\CreateDestinationRequest;
 
 /**
  * CreateDestinationRequestTest Class Doc Comment
  *
  * @category    Class
  * @description The request schema for the &#x60;createDestination&#x60; operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class CreateDestinationRequestTest extends TestCase
 {
@@ -57,7 +57,7 @@ class CreateDestinationRequestTest extends TestCase
     public function testPropertyResourceSpecification()
     {
         
-        $testValue = new \OpenAPI\Client\Model\notifications\v1\DestinationResourceSpecification();
+        $testValue = new \SpApi\Model\notifications\v1\DestinationResourceSpecification();
         
         $this->model->setResourceSpecification($testValue);
         $this->assertEquals($testValue, $this->model->getResourceSpecification());

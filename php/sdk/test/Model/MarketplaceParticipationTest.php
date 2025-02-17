@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\sellers\v1\MarketplaceParticipation;
+use SpApi\Model\sellers\v1\MarketplaceParticipation;
 
 /**
  * MarketplaceParticipationTest Class Doc Comment
  *
  * @category    Class
  * @description MarketplaceParticipation
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class MarketplaceParticipationTest extends TestCase
 {
@@ -57,7 +57,7 @@ class MarketplaceParticipationTest extends TestCase
     public function testPropertyMarketplace()
     {
         
-        $testValue = new \OpenAPI\Client\Model\sellers\v1\Marketplace();
+        $testValue = new \SpApi\Model\sellers\v1\Marketplace();
         
         $this->model->setMarketplace($testValue);
         $this->assertEquals($testValue, $this->model->getMarketplace());
@@ -69,7 +69,7 @@ class MarketplaceParticipationTest extends TestCase
     public function testPropertyParticipation()
     {
         
-        $testValue = new \OpenAPI\Client\Model\sellers\v1\Participation();
+        $testValue = new \SpApi\Model\sellers\v1\Participation();
         
         $this->model->setParticipation($testValue);
         $this->assertEquals($testValue, $this->model->getParticipation());

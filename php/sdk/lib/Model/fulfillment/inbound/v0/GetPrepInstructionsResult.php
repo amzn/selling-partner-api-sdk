@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\inbound\v0;
+namespace SpApi\Model\fulfillment\inbound\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetPrepInstructionsResult Class Doc Comment
  *
  * @category Class
  * @description Result for the get prep instructions operation
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,10 +60,10 @@ class GetPrepInstructionsResult implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'sku_prep_instructions_list' => '\OpenAPI\Client\Model\fulfillment\inbound\v0\SKUPrepInstructions[]',
-             'invalid_sku_list' => '\OpenAPI\Client\Model\fulfillment\inbound\v0\InvalidSKU[]',
-             'asin_prep_instructions_list' => '\OpenAPI\Client\Model\fulfillment\inbound\v0\ASINPrepInstructions[]',
-             'invalid_asin_list' => '\OpenAPI\Client\Model\fulfillment\inbound\v0\InvalidASIN[]'    ];
+             'sku_prep_instructions_list' => '\SpApi\Model\fulfillment\inbound\v0\SKUPrepInstructions[]',
+             'invalid_sku_list' => '\SpApi\Model\fulfillment\inbound\v0\InvalidSKU[]',
+             'asin_prep_instructions_list' => '\SpApi\Model\fulfillment\inbound\v0\ASINPrepInstructions[]',
+             'invalid_asin_list' => '\SpApi\Model\fulfillment\inbound\v0\InvalidASIN[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

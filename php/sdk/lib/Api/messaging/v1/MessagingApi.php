@@ -4,7 +4,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api\messaging\v1;
+namespace SpApi\Api\messaging\v1;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -39,16 +39,16 @@ use SpApi\AuthAndAuth\RateLimitConfiguration;
 use Symfony\Component\RateLimiter\LimiterInterface;
 use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\ObjectSerializer;
+use SpApi\ApiException;
+use SpApi\Configuration;
+use SpApi\HeaderSelector;
+use SpApi\ObjectSerializer;
 
 /**
  * MessagingApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -156,18 +156,18 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsRequest $body
+     * @param  \SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsRequest $body
      *  This contains the message body for a message. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse
+     * @return \SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse
      */
     public function confirmCustomizationDetails(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsRequest $body
-    ): \OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse {
+        \SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsRequest $body
+    ): \SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse {
         list($response) = $this->confirmCustomizationDetailsWithHttpInfo($amazon_order_id, $marketplace_ids, $body);
         return $response;
     }
@@ -179,17 +179,17 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsRequest $body
+     * @param  \SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsRequest $body
      *  This contains the message body for a message. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function confirmCustomizationDetailsWithHttpInfo(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsRequest $body
+        \SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsRequest $body
     ): array {
         $request = $this->confirmCustomizationDetailsRequest($amazon_order_id, $marketplace_ids, $body);
         $request = $this->config->sign($request);
@@ -232,143 +232,143 @@ class MessagingApi
 
             switch($statusCode) {
                 case 201:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse';
+            $returnType = '\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -389,7 +389,7 @@ class MessagingApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse',
+                        '\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -397,7 +397,7 @@ class MessagingApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse',
+                        '\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -405,7 +405,7 @@ class MessagingApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse',
+                        '\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -413,7 +413,7 @@ class MessagingApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse',
+                        '\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -421,7 +421,7 @@ class MessagingApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse',
+                        '\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -429,7 +429,7 @@ class MessagingApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse',
+                        '\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -437,7 +437,7 @@ class MessagingApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse',
+                        '\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -445,7 +445,7 @@ class MessagingApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse',
+                        '\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -453,7 +453,7 @@ class MessagingApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse',
+                        '\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -470,7 +470,7 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsRequest $body
+     * @param  \SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsRequest $body
      *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
@@ -479,7 +479,7 @@ class MessagingApi
     public function confirmCustomizationDetailsAsync(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsRequest $body
+        \SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsRequest $body
     ): PromiseInterface {
         return $this->confirmCustomizationDetailsAsyncWithHttpInfo($amazon_order_id, $marketplace_ids, $body)
             ->then(
@@ -496,7 +496,7 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsRequest $body
+     * @param  \SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsRequest $body
      *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
@@ -505,9 +505,9 @@ class MessagingApi
     public function confirmCustomizationDetailsAsyncWithHttpInfo(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsRequest $body
+        \SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsRequest $body
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse';
+        $returnType = '\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse';
         $request = $this->confirmCustomizationDetailsRequest($amazon_order_id, $marketplace_ids, $body);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -555,7 +555,7 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsRequest $body
+     * @param  \SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsRequest $body
      *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
@@ -564,7 +564,7 @@ class MessagingApi
     public function confirmCustomizationDetailsRequest(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\CreateConfirmCustomizationDetailsRequest $body
+        \SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsRequest $body
     ): Request {
         // verify the required parameter 'amazon_order_id' is set
         if ($amazon_order_id === null || (is_array($amazon_order_id) && count($amazon_order_id) === 0)) {
@@ -689,18 +689,18 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsRequest $body
+     * @param  \SpApi\Model\messaging\v1\CreateAmazonMotorsRequest $body
      *  This contains the message body for a message. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsResponse
+     * @return \SpApi\Model\messaging\v1\CreateAmazonMotorsResponse
      */
     public function createAmazonMotors(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsRequest $body
-    ): \OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsResponse {
+        \SpApi\Model\messaging\v1\CreateAmazonMotorsRequest $body
+    ): \SpApi\Model\messaging\v1\CreateAmazonMotorsResponse {
         list($response) = $this->createAmazonMotorsWithHttpInfo($amazon_order_id, $marketplace_ids, $body);
         return $response;
     }
@@ -712,17 +712,17 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsRequest $body
+     * @param  \SpApi\Model\messaging\v1\CreateAmazonMotorsRequest $body
      *  This contains the message body for a message. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\messaging\v1\CreateAmazonMotorsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createAmazonMotorsWithHttpInfo(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsRequest $body
+        \SpApi\Model\messaging\v1\CreateAmazonMotorsRequest $body
     ): array {
         $request = $this->createAmazonMotorsRequest($amazon_order_id, $marketplace_ids, $body);
         $request = $this->config->sign($request);
@@ -765,143 +765,143 @@ class MessagingApi
 
             switch($statusCode) {
                 case 201:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsResponse';
+            $returnType = '\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -922,7 +922,7 @@ class MessagingApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsResponse',
+                        '\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -930,7 +930,7 @@ class MessagingApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsResponse',
+                        '\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -938,7 +938,7 @@ class MessagingApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsResponse',
+                        '\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -946,7 +946,7 @@ class MessagingApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsResponse',
+                        '\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -954,7 +954,7 @@ class MessagingApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsResponse',
+                        '\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -962,7 +962,7 @@ class MessagingApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsResponse',
+                        '\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -970,7 +970,7 @@ class MessagingApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsResponse',
+                        '\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -978,7 +978,7 @@ class MessagingApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsResponse',
+                        '\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -986,7 +986,7 @@ class MessagingApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsResponse',
+                        '\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1003,7 +1003,7 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsRequest $body
+     * @param  \SpApi\Model\messaging\v1\CreateAmazonMotorsRequest $body
      *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
@@ -1012,7 +1012,7 @@ class MessagingApi
     public function createAmazonMotorsAsync(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsRequest $body
+        \SpApi\Model\messaging\v1\CreateAmazonMotorsRequest $body
     ): PromiseInterface {
         return $this->createAmazonMotorsAsyncWithHttpInfo($amazon_order_id, $marketplace_ids, $body)
             ->then(
@@ -1029,7 +1029,7 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsRequest $body
+     * @param  \SpApi\Model\messaging\v1\CreateAmazonMotorsRequest $body
      *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
@@ -1038,9 +1038,9 @@ class MessagingApi
     public function createAmazonMotorsAsyncWithHttpInfo(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsRequest $body
+        \SpApi\Model\messaging\v1\CreateAmazonMotorsRequest $body
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsResponse';
+        $returnType = '\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse';
         $request = $this->createAmazonMotorsRequest($amazon_order_id, $marketplace_ids, $body);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -1088,7 +1088,7 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsRequest $body
+     * @param  \SpApi\Model\messaging\v1\CreateAmazonMotorsRequest $body
      *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
@@ -1097,7 +1097,7 @@ class MessagingApi
     public function createAmazonMotorsRequest(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\CreateAmazonMotorsRequest $body
+        \SpApi\Model\messaging\v1\CreateAmazonMotorsRequest $body
     ): Request {
         // verify the required parameter 'amazon_order_id' is set
         if ($amazon_order_id === null || (is_array($amazon_order_id) && count($amazon_order_id) === 0)) {
@@ -1222,18 +1222,18 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsRequest $body
+     * @param  \SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsRequest $body
      *  This contains the message body for a message. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse
+     * @return \SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse
      */
     public function createConfirmDeliveryDetails(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsRequest $body
-    ): \OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse {
+        \SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsRequest $body
+    ): \SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse {
         list($response) = $this->createConfirmDeliveryDetailsWithHttpInfo($amazon_order_id, $marketplace_ids, $body);
         return $response;
     }
@@ -1245,17 +1245,17 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsRequest $body
+     * @param  \SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsRequest $body
      *  This contains the message body for a message. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createConfirmDeliveryDetailsWithHttpInfo(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsRequest $body
+        \SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsRequest $body
     ): array {
         $request = $this->createConfirmDeliveryDetailsRequest($amazon_order_id, $marketplace_ids, $body);
         $request = $this->config->sign($request);
@@ -1298,143 +1298,143 @@ class MessagingApi
 
             switch($statusCode) {
                 case 201:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse';
+            $returnType = '\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1455,7 +1455,7 @@ class MessagingApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse',
+                        '\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1463,7 +1463,7 @@ class MessagingApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse',
+                        '\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1471,7 +1471,7 @@ class MessagingApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse',
+                        '\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1479,7 +1479,7 @@ class MessagingApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse',
+                        '\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1487,7 +1487,7 @@ class MessagingApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse',
+                        '\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1495,7 +1495,7 @@ class MessagingApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse',
+                        '\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1503,7 +1503,7 @@ class MessagingApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse',
+                        '\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1511,7 +1511,7 @@ class MessagingApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse',
+                        '\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1519,7 +1519,7 @@ class MessagingApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse',
+                        '\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1536,7 +1536,7 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsRequest $body
+     * @param  \SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsRequest $body
      *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
@@ -1545,7 +1545,7 @@ class MessagingApi
     public function createConfirmDeliveryDetailsAsync(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsRequest $body
+        \SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsRequest $body
     ): PromiseInterface {
         return $this->createConfirmDeliveryDetailsAsyncWithHttpInfo($amazon_order_id, $marketplace_ids, $body)
             ->then(
@@ -1562,7 +1562,7 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsRequest $body
+     * @param  \SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsRequest $body
      *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
@@ -1571,9 +1571,9 @@ class MessagingApi
     public function createConfirmDeliveryDetailsAsyncWithHttpInfo(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsRequest $body
+        \SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsRequest $body
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse';
+        $returnType = '\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse';
         $request = $this->createConfirmDeliveryDetailsRequest($amazon_order_id, $marketplace_ids, $body);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -1621,7 +1621,7 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsRequest $body
+     * @param  \SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsRequest $body
      *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
@@ -1630,7 +1630,7 @@ class MessagingApi
     public function createConfirmDeliveryDetailsRequest(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\CreateConfirmDeliveryDetailsRequest $body
+        \SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsRequest $body
     ): Request {
         // verify the required parameter 'amazon_order_id' is set
         if ($amazon_order_id === null || (is_array($amazon_order_id) && count($amazon_order_id) === 0)) {
@@ -1755,18 +1755,18 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsRequest $body
+     * @param  \SpApi\Model\messaging\v1\CreateConfirmOrderDetailsRequest $body
      *  This contains the message body for a message. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsResponse
+     * @return \SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse
      */
     public function createConfirmOrderDetails(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsRequest $body
-    ): \OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsResponse {
+        \SpApi\Model\messaging\v1\CreateConfirmOrderDetailsRequest $body
+    ): \SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse {
         list($response) = $this->createConfirmOrderDetailsWithHttpInfo($amazon_order_id, $marketplace_ids, $body);
         return $response;
     }
@@ -1778,17 +1778,17 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsRequest $body
+     * @param  \SpApi\Model\messaging\v1\CreateConfirmOrderDetailsRequest $body
      *  This contains the message body for a message. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createConfirmOrderDetailsWithHttpInfo(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsRequest $body
+        \SpApi\Model\messaging\v1\CreateConfirmOrderDetailsRequest $body
     ): array {
         $request = $this->createConfirmOrderDetailsRequest($amazon_order_id, $marketplace_ids, $body);
         $request = $this->config->sign($request);
@@ -1831,143 +1831,143 @@ class MessagingApi
 
             switch($statusCode) {
                 case 201:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsResponse';
+            $returnType = '\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1988,7 +1988,7 @@ class MessagingApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsResponse',
+                        '\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1996,7 +1996,7 @@ class MessagingApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsResponse',
+                        '\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2004,7 +2004,7 @@ class MessagingApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsResponse',
+                        '\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2012,7 +2012,7 @@ class MessagingApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsResponse',
+                        '\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2020,7 +2020,7 @@ class MessagingApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsResponse',
+                        '\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2028,7 +2028,7 @@ class MessagingApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsResponse',
+                        '\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2036,7 +2036,7 @@ class MessagingApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsResponse',
+                        '\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2044,7 +2044,7 @@ class MessagingApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsResponse',
+                        '\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2052,7 +2052,7 @@ class MessagingApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsResponse',
+                        '\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2069,7 +2069,7 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsRequest $body
+     * @param  \SpApi\Model\messaging\v1\CreateConfirmOrderDetailsRequest $body
      *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
@@ -2078,7 +2078,7 @@ class MessagingApi
     public function createConfirmOrderDetailsAsync(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsRequest $body
+        \SpApi\Model\messaging\v1\CreateConfirmOrderDetailsRequest $body
     ): PromiseInterface {
         return $this->createConfirmOrderDetailsAsyncWithHttpInfo($amazon_order_id, $marketplace_ids, $body)
             ->then(
@@ -2095,7 +2095,7 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsRequest $body
+     * @param  \SpApi\Model\messaging\v1\CreateConfirmOrderDetailsRequest $body
      *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
@@ -2104,9 +2104,9 @@ class MessagingApi
     public function createConfirmOrderDetailsAsyncWithHttpInfo(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsRequest $body
+        \SpApi\Model\messaging\v1\CreateConfirmOrderDetailsRequest $body
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsResponse';
+        $returnType = '\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse';
         $request = $this->createConfirmOrderDetailsRequest($amazon_order_id, $marketplace_ids, $body);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -2154,7 +2154,7 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsRequest $body
+     * @param  \SpApi\Model\messaging\v1\CreateConfirmOrderDetailsRequest $body
      *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
@@ -2163,7 +2163,7 @@ class MessagingApi
     public function createConfirmOrderDetailsRequest(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\CreateConfirmOrderDetailsRequest $body
+        \SpApi\Model\messaging\v1\CreateConfirmOrderDetailsRequest $body
     ): Request {
         // verify the required parameter 'amazon_order_id' is set
         if ($amazon_order_id === null || (is_array($amazon_order_id) && count($amazon_order_id) === 0)) {
@@ -2288,18 +2288,18 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsRequest $body
+     * @param  \SpApi\Model\messaging\v1\CreateConfirmServiceDetailsRequest $body
      *  This contains the message body for a message. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsResponse
+     * @return \SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse
      */
     public function createConfirmServiceDetails(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsRequest $body
-    ): \OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsResponse {
+        \SpApi\Model\messaging\v1\CreateConfirmServiceDetailsRequest $body
+    ): \SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse {
         list($response) = $this->createConfirmServiceDetailsWithHttpInfo($amazon_order_id, $marketplace_ids, $body);
         return $response;
     }
@@ -2311,17 +2311,17 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsRequest $body
+     * @param  \SpApi\Model\messaging\v1\CreateConfirmServiceDetailsRequest $body
      *  This contains the message body for a message. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createConfirmServiceDetailsWithHttpInfo(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsRequest $body
+        \SpApi\Model\messaging\v1\CreateConfirmServiceDetailsRequest $body
     ): array {
         $request = $this->createConfirmServiceDetailsRequest($amazon_order_id, $marketplace_ids, $body);
         $request = $this->config->sign($request);
@@ -2364,143 +2364,143 @@ class MessagingApi
 
             switch($statusCode) {
                 case 201:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsResponse';
+            $returnType = '\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2521,7 +2521,7 @@ class MessagingApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsResponse',
+                        '\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2529,7 +2529,7 @@ class MessagingApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsResponse',
+                        '\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2537,7 +2537,7 @@ class MessagingApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsResponse',
+                        '\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2545,7 +2545,7 @@ class MessagingApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsResponse',
+                        '\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2553,7 +2553,7 @@ class MessagingApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsResponse',
+                        '\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2561,7 +2561,7 @@ class MessagingApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsResponse',
+                        '\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2569,7 +2569,7 @@ class MessagingApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsResponse',
+                        '\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2577,7 +2577,7 @@ class MessagingApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsResponse',
+                        '\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2585,7 +2585,7 @@ class MessagingApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsResponse',
+                        '\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2602,7 +2602,7 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsRequest $body
+     * @param  \SpApi\Model\messaging\v1\CreateConfirmServiceDetailsRequest $body
      *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
@@ -2611,7 +2611,7 @@ class MessagingApi
     public function createConfirmServiceDetailsAsync(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsRequest $body
+        \SpApi\Model\messaging\v1\CreateConfirmServiceDetailsRequest $body
     ): PromiseInterface {
         return $this->createConfirmServiceDetailsAsyncWithHttpInfo($amazon_order_id, $marketplace_ids, $body)
             ->then(
@@ -2628,7 +2628,7 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsRequest $body
+     * @param  \SpApi\Model\messaging\v1\CreateConfirmServiceDetailsRequest $body
      *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
@@ -2637,9 +2637,9 @@ class MessagingApi
     public function createConfirmServiceDetailsAsyncWithHttpInfo(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsRequest $body
+        \SpApi\Model\messaging\v1\CreateConfirmServiceDetailsRequest $body
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsResponse';
+        $returnType = '\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse';
         $request = $this->createConfirmServiceDetailsRequest($amazon_order_id, $marketplace_ids, $body);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -2687,7 +2687,7 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsRequest $body
+     * @param  \SpApi\Model\messaging\v1\CreateConfirmServiceDetailsRequest $body
      *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
@@ -2696,7 +2696,7 @@ class MessagingApi
     public function createConfirmServiceDetailsRequest(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\CreateConfirmServiceDetailsRequest $body
+        \SpApi\Model\messaging\v1\CreateConfirmServiceDetailsRequest $body
     ): Request {
         // verify the required parameter 'amazon_order_id' is set
         if ($amazon_order_id === null || (is_array($amazon_order_id) && count($amazon_order_id) === 0)) {
@@ -2821,18 +2821,18 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyRequest $body
+     * @param  \SpApi\Model\messaging\v1\CreateDigitalAccessKeyRequest $body
      *  This contains the message body for a message. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyResponse
+     * @return \SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse
      */
     public function createDigitalAccessKey(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyRequest $body
-    ): \OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyResponse {
+        \SpApi\Model\messaging\v1\CreateDigitalAccessKeyRequest $body
+    ): \SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse {
         list($response) = $this->createDigitalAccessKeyWithHttpInfo($amazon_order_id, $marketplace_ids, $body);
         return $response;
     }
@@ -2844,17 +2844,17 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyRequest $body
+     * @param  \SpApi\Model\messaging\v1\CreateDigitalAccessKeyRequest $body
      *  This contains the message body for a message. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createDigitalAccessKeyWithHttpInfo(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyRequest $body
+        \SpApi\Model\messaging\v1\CreateDigitalAccessKeyRequest $body
     ): array {
         $request = $this->createDigitalAccessKeyRequest($amazon_order_id, $marketplace_ids, $body);
         $request = $this->config->sign($request);
@@ -2897,143 +2897,143 @@ class MessagingApi
 
             switch($statusCode) {
                 case 201:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyResponse';
+            $returnType = '\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -3054,7 +3054,7 @@ class MessagingApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyResponse',
+                        '\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3062,7 +3062,7 @@ class MessagingApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyResponse',
+                        '\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3070,7 +3070,7 @@ class MessagingApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyResponse',
+                        '\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3078,7 +3078,7 @@ class MessagingApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyResponse',
+                        '\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3086,7 +3086,7 @@ class MessagingApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyResponse',
+                        '\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3094,7 +3094,7 @@ class MessagingApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyResponse',
+                        '\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3102,7 +3102,7 @@ class MessagingApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyResponse',
+                        '\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3110,7 +3110,7 @@ class MessagingApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyResponse',
+                        '\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3118,7 +3118,7 @@ class MessagingApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyResponse',
+                        '\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3135,7 +3135,7 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyRequest $body
+     * @param  \SpApi\Model\messaging\v1\CreateDigitalAccessKeyRequest $body
      *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
@@ -3144,7 +3144,7 @@ class MessagingApi
     public function createDigitalAccessKeyAsync(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyRequest $body
+        \SpApi\Model\messaging\v1\CreateDigitalAccessKeyRequest $body
     ): PromiseInterface {
         return $this->createDigitalAccessKeyAsyncWithHttpInfo($amazon_order_id, $marketplace_ids, $body)
             ->then(
@@ -3161,7 +3161,7 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyRequest $body
+     * @param  \SpApi\Model\messaging\v1\CreateDigitalAccessKeyRequest $body
      *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
@@ -3170,9 +3170,9 @@ class MessagingApi
     public function createDigitalAccessKeyAsyncWithHttpInfo(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyRequest $body
+        \SpApi\Model\messaging\v1\CreateDigitalAccessKeyRequest $body
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyResponse';
+        $returnType = '\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse';
         $request = $this->createDigitalAccessKeyRequest($amazon_order_id, $marketplace_ids, $body);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -3220,7 +3220,7 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyRequest $body
+     * @param  \SpApi\Model\messaging\v1\CreateDigitalAccessKeyRequest $body
      *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
@@ -3229,7 +3229,7 @@ class MessagingApi
     public function createDigitalAccessKeyRequest(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\CreateDigitalAccessKeyRequest $body
+        \SpApi\Model\messaging\v1\CreateDigitalAccessKeyRequest $body
     ): Request {
         // verify the required parameter 'amazon_order_id' is set
         if ($amazon_order_id === null || (is_array($amazon_order_id) && count($amazon_order_id) === 0)) {
@@ -3354,18 +3354,18 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureRequest $body
+     * @param  \SpApi\Model\messaging\v1\CreateLegalDisclosureRequest $body
      *  This contains the message body for a message. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureResponse
+     * @return \SpApi\Model\messaging\v1\CreateLegalDisclosureResponse
      */
     public function createLegalDisclosure(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureRequest $body
-    ): \OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureResponse {
+        \SpApi\Model\messaging\v1\CreateLegalDisclosureRequest $body
+    ): \SpApi\Model\messaging\v1\CreateLegalDisclosureResponse {
         list($response) = $this->createLegalDisclosureWithHttpInfo($amazon_order_id, $marketplace_ids, $body);
         return $response;
     }
@@ -3377,17 +3377,17 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureRequest $body
+     * @param  \SpApi\Model\messaging\v1\CreateLegalDisclosureRequest $body
      *  This contains the message body for a message. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\messaging\v1\CreateLegalDisclosureResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createLegalDisclosureWithHttpInfo(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureRequest $body
+        \SpApi\Model\messaging\v1\CreateLegalDisclosureRequest $body
     ): array {
         $request = $this->createLegalDisclosureRequest($amazon_order_id, $marketplace_ids, $body);
         $request = $this->config->sign($request);
@@ -3430,143 +3430,143 @@ class MessagingApi
 
             switch($statusCode) {
                 case 201:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureResponse';
+            $returnType = '\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -3587,7 +3587,7 @@ class MessagingApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureResponse',
+                        '\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3595,7 +3595,7 @@ class MessagingApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureResponse',
+                        '\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3603,7 +3603,7 @@ class MessagingApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureResponse',
+                        '\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3611,7 +3611,7 @@ class MessagingApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureResponse',
+                        '\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3619,7 +3619,7 @@ class MessagingApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureResponse',
+                        '\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3627,7 +3627,7 @@ class MessagingApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureResponse',
+                        '\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3635,7 +3635,7 @@ class MessagingApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureResponse',
+                        '\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3643,7 +3643,7 @@ class MessagingApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureResponse',
+                        '\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3651,7 +3651,7 @@ class MessagingApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureResponse',
+                        '\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3668,7 +3668,7 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureRequest $body
+     * @param  \SpApi\Model\messaging\v1\CreateLegalDisclosureRequest $body
      *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
@@ -3677,7 +3677,7 @@ class MessagingApi
     public function createLegalDisclosureAsync(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureRequest $body
+        \SpApi\Model\messaging\v1\CreateLegalDisclosureRequest $body
     ): PromiseInterface {
         return $this->createLegalDisclosureAsyncWithHttpInfo($amazon_order_id, $marketplace_ids, $body)
             ->then(
@@ -3694,7 +3694,7 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureRequest $body
+     * @param  \SpApi\Model\messaging\v1\CreateLegalDisclosureRequest $body
      *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
@@ -3703,9 +3703,9 @@ class MessagingApi
     public function createLegalDisclosureAsyncWithHttpInfo(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureRequest $body
+        \SpApi\Model\messaging\v1\CreateLegalDisclosureRequest $body
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureResponse';
+        $returnType = '\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse';
         $request = $this->createLegalDisclosureRequest($amazon_order_id, $marketplace_ids, $body);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -3753,7 +3753,7 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureRequest $body
+     * @param  \SpApi\Model\messaging\v1\CreateLegalDisclosureRequest $body
      *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
@@ -3762,7 +3762,7 @@ class MessagingApi
     public function createLegalDisclosureRequest(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\CreateLegalDisclosureRequest $body
+        \SpApi\Model\messaging\v1\CreateLegalDisclosureRequest $body
     ): Request {
         // verify the required parameter 'amazon_order_id' is set
         if ($amazon_order_id === null || (is_array($amazon_order_id) && count($amazon_order_id) === 0)) {
@@ -3888,14 +3888,14 @@ class MessagingApi
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse
+     * @return \SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse
      */
     public function createNegativeFeedbackRemoval(
         string $amazon_order_id,
         array $marketplace_ids
-    ): \OpenAPI\Client\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse {
+    ): \SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse {
         list($response) = $this->createNegativeFeedbackRemovalWithHttpInfo($amazon_order_id, $marketplace_ids);
         return $response;
     }
@@ -3908,9 +3908,9 @@ class MessagingApi
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createNegativeFeedbackRemovalWithHttpInfo(
         string $amazon_order_id,
@@ -3957,143 +3957,143 @@ class MessagingApi
 
             switch($statusCode) {
                 case 201:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse';
+            $returnType = '\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -4114,7 +4114,7 @@ class MessagingApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse',
+                        '\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4122,7 +4122,7 @@ class MessagingApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse',
+                        '\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4130,7 +4130,7 @@ class MessagingApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse',
+                        '\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4138,7 +4138,7 @@ class MessagingApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse',
+                        '\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4146,7 +4146,7 @@ class MessagingApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse',
+                        '\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4154,7 +4154,7 @@ class MessagingApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse',
+                        '\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4162,7 +4162,7 @@ class MessagingApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse',
+                        '\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4170,7 +4170,7 @@ class MessagingApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse',
+                        '\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4178,7 +4178,7 @@ class MessagingApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse',
+                        '\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4226,7 +4226,7 @@ class MessagingApi
         string $amazon_order_id,
         array $marketplace_ids
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse';
+        $returnType = '\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse';
         $request = $this->createNegativeFeedbackRemovalRequest($amazon_order_id, $marketplace_ids);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -4393,18 +4393,18 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemRequest $body
+     * @param  \SpApi\Model\messaging\v1\CreateUnexpectedProblemRequest $body
      *  This contains the message body for a message. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemResponse
+     * @return \SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse
      */
     public function createUnexpectedProblem(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemRequest $body
-    ): \OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemResponse {
+        \SpApi\Model\messaging\v1\CreateUnexpectedProblemRequest $body
+    ): \SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse {
         list($response) = $this->createUnexpectedProblemWithHttpInfo($amazon_order_id, $marketplace_ids, $body);
         return $response;
     }
@@ -4416,17 +4416,17 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemRequest $body
+     * @param  \SpApi\Model\messaging\v1\CreateUnexpectedProblemRequest $body
      *  This contains the message body for a message. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createUnexpectedProblemWithHttpInfo(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemRequest $body
+        \SpApi\Model\messaging\v1\CreateUnexpectedProblemRequest $body
     ): array {
         $request = $this->createUnexpectedProblemRequest($amazon_order_id, $marketplace_ids, $body);
         $request = $this->config->sign($request);
@@ -4469,143 +4469,143 @@ class MessagingApi
 
             switch($statusCode) {
                 case 201:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemResponse';
+            $returnType = '\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -4626,7 +4626,7 @@ class MessagingApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemResponse',
+                        '\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4634,7 +4634,7 @@ class MessagingApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemResponse',
+                        '\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4642,7 +4642,7 @@ class MessagingApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemResponse',
+                        '\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4650,7 +4650,7 @@ class MessagingApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemResponse',
+                        '\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4658,7 +4658,7 @@ class MessagingApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemResponse',
+                        '\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4666,7 +4666,7 @@ class MessagingApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemResponse',
+                        '\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4674,7 +4674,7 @@ class MessagingApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemResponse',
+                        '\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4682,7 +4682,7 @@ class MessagingApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemResponse',
+                        '\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4690,7 +4690,7 @@ class MessagingApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemResponse',
+                        '\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4707,7 +4707,7 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemRequest $body
+     * @param  \SpApi\Model\messaging\v1\CreateUnexpectedProblemRequest $body
      *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
@@ -4716,7 +4716,7 @@ class MessagingApi
     public function createUnexpectedProblemAsync(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemRequest $body
+        \SpApi\Model\messaging\v1\CreateUnexpectedProblemRequest $body
     ): PromiseInterface {
         return $this->createUnexpectedProblemAsyncWithHttpInfo($amazon_order_id, $marketplace_ids, $body)
             ->then(
@@ -4733,7 +4733,7 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemRequest $body
+     * @param  \SpApi\Model\messaging\v1\CreateUnexpectedProblemRequest $body
      *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
@@ -4742,9 +4742,9 @@ class MessagingApi
     public function createUnexpectedProblemAsyncWithHttpInfo(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemRequest $body
+        \SpApi\Model\messaging\v1\CreateUnexpectedProblemRequest $body
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemResponse';
+        $returnType = '\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse';
         $request = $this->createUnexpectedProblemRequest($amazon_order_id, $marketplace_ids, $body);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -4792,7 +4792,7 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemRequest $body
+     * @param  \SpApi\Model\messaging\v1\CreateUnexpectedProblemRequest $body
      *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
@@ -4801,7 +4801,7 @@ class MessagingApi
     public function createUnexpectedProblemRequest(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\CreateUnexpectedProblemRequest $body
+        \SpApi\Model\messaging\v1\CreateUnexpectedProblemRequest $body
     ): Request {
         // verify the required parameter 'amazon_order_id' is set
         if ($amazon_order_id === null || (is_array($amazon_order_id) && count($amazon_order_id) === 0)) {
@@ -4926,18 +4926,18 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\CreateWarrantyRequest $body
+     * @param  \SpApi\Model\messaging\v1\CreateWarrantyRequest $body
      *  This contains the message body for a message. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\messaging\v1\CreateWarrantyResponse
+     * @return \SpApi\Model\messaging\v1\CreateWarrantyResponse
      */
     public function createWarranty(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\CreateWarrantyRequest $body
-    ): \OpenAPI\Client\Model\messaging\v1\CreateWarrantyResponse {
+        \SpApi\Model\messaging\v1\CreateWarrantyRequest $body
+    ): \SpApi\Model\messaging\v1\CreateWarrantyResponse {
         list($response) = $this->createWarrantyWithHttpInfo($amazon_order_id, $marketplace_ids, $body);
         return $response;
     }
@@ -4949,17 +4949,17 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\CreateWarrantyRequest $body
+     * @param  \SpApi\Model\messaging\v1\CreateWarrantyRequest $body
      *  This contains the message body for a message. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\messaging\v1\CreateWarrantyResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\messaging\v1\CreateWarrantyResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createWarrantyWithHttpInfo(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\CreateWarrantyRequest $body
+        \SpApi\Model\messaging\v1\CreateWarrantyRequest $body
     ): array {
         $request = $this->createWarrantyRequest($amazon_order_id, $marketplace_ids, $body);
         $request = $this->config->sign($request);
@@ -5002,143 +5002,143 @@ class MessagingApi
 
             switch($statusCode) {
                 case 201:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateWarrantyResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateWarrantyResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateWarrantyResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateWarrantyResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateWarrantyResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateWarrantyResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateWarrantyResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateWarrantyResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateWarrantyResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateWarrantyResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateWarrantyResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateWarrantyResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateWarrantyResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateWarrantyResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateWarrantyResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateWarrantyResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateWarrantyResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateWarrantyResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateWarrantyResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateWarrantyResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateWarrantyResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateWarrantyResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateWarrantyResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateWarrantyResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateWarrantyResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateWarrantyResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateWarrantyResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateWarrantyResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateWarrantyResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateWarrantyResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateWarrantyResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateWarrantyResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateWarrantyResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateWarrantyResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateWarrantyResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateWarrantyResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateWarrantyResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateWarrantyResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateWarrantyResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateWarrantyResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateWarrantyResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateWarrantyResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateWarrantyResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateWarrantyResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateWarrantyResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateWarrantyResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateWarrantyResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateWarrantyResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\messaging\v1\CreateWarrantyResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\CreateWarrantyResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\CreateWarrantyResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\CreateWarrantyResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\CreateWarrantyResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateWarrantyResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\messaging\v1\CreateWarrantyResponse';
+            $returnType = '\SpApi\Model\messaging\v1\CreateWarrantyResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -5159,7 +5159,7 @@ class MessagingApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateWarrantyResponse',
+                        '\SpApi\Model\messaging\v1\CreateWarrantyResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5167,7 +5167,7 @@ class MessagingApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateWarrantyResponse',
+                        '\SpApi\Model\messaging\v1\CreateWarrantyResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5175,7 +5175,7 @@ class MessagingApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateWarrantyResponse',
+                        '\SpApi\Model\messaging\v1\CreateWarrantyResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5183,7 +5183,7 @@ class MessagingApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateWarrantyResponse',
+                        '\SpApi\Model\messaging\v1\CreateWarrantyResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5191,7 +5191,7 @@ class MessagingApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateWarrantyResponse',
+                        '\SpApi\Model\messaging\v1\CreateWarrantyResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5199,7 +5199,7 @@ class MessagingApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateWarrantyResponse',
+                        '\SpApi\Model\messaging\v1\CreateWarrantyResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5207,7 +5207,7 @@ class MessagingApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateWarrantyResponse',
+                        '\SpApi\Model\messaging\v1\CreateWarrantyResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5215,7 +5215,7 @@ class MessagingApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateWarrantyResponse',
+                        '\SpApi\Model\messaging\v1\CreateWarrantyResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5223,7 +5223,7 @@ class MessagingApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\CreateWarrantyResponse',
+                        '\SpApi\Model\messaging\v1\CreateWarrantyResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5240,7 +5240,7 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\CreateWarrantyRequest $body
+     * @param  \SpApi\Model\messaging\v1\CreateWarrantyRequest $body
      *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
@@ -5249,7 +5249,7 @@ class MessagingApi
     public function createWarrantyAsync(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\CreateWarrantyRequest $body
+        \SpApi\Model\messaging\v1\CreateWarrantyRequest $body
     ): PromiseInterface {
         return $this->createWarrantyAsyncWithHttpInfo($amazon_order_id, $marketplace_ids, $body)
             ->then(
@@ -5266,7 +5266,7 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\CreateWarrantyRequest $body
+     * @param  \SpApi\Model\messaging\v1\CreateWarrantyRequest $body
      *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
@@ -5275,9 +5275,9 @@ class MessagingApi
     public function createWarrantyAsyncWithHttpInfo(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\CreateWarrantyRequest $body
+        \SpApi\Model\messaging\v1\CreateWarrantyRequest $body
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\messaging\v1\CreateWarrantyResponse';
+        $returnType = '\SpApi\Model\messaging\v1\CreateWarrantyResponse';
         $request = $this->createWarrantyRequest($amazon_order_id, $marketplace_ids, $body);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -5325,7 +5325,7 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\CreateWarrantyRequest $body
+     * @param  \SpApi\Model\messaging\v1\CreateWarrantyRequest $body
      *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
@@ -5334,7 +5334,7 @@ class MessagingApi
     public function createWarrantyRequest(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\CreateWarrantyRequest $body
+        \SpApi\Model\messaging\v1\CreateWarrantyRequest $body
     ): Request {
         // verify the required parameter 'amazon_order_id' is set
         if ($amazon_order_id === null || (is_array($amazon_order_id) && count($amazon_order_id) === 0)) {
@@ -5460,14 +5460,14 @@ class MessagingApi
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\messaging\v1\GetAttributesResponse
+     * @return \SpApi\Model\messaging\v1\GetAttributesResponse
      */
     public function getAttributes(
         string $amazon_order_id,
         array $marketplace_ids
-    ): \OpenAPI\Client\Model\messaging\v1\GetAttributesResponse {
+    ): \SpApi\Model\messaging\v1\GetAttributesResponse {
         list($response) = $this->getAttributesWithHttpInfo($amazon_order_id, $marketplace_ids);
         return $response;
     }
@@ -5480,9 +5480,9 @@ class MessagingApi
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\messaging\v1\GetAttributesResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\messaging\v1\GetAttributesResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAttributesWithHttpInfo(
         string $amazon_order_id,
@@ -5529,143 +5529,143 @@ class MessagingApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\messaging\v1\GetAttributesResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\GetAttributesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\GetAttributesResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\GetAttributesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\GetAttributesResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\GetAttributesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\messaging\v1\GetAttributesResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\GetAttributesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\GetAttributesResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\GetAttributesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\GetAttributesResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\GetAttributesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\messaging\v1\GetAttributesResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\GetAttributesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\GetAttributesResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\GetAttributesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\GetAttributesResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\GetAttributesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\messaging\v1\GetAttributesResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\GetAttributesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\GetAttributesResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\GetAttributesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\GetAttributesResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\GetAttributesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\messaging\v1\GetAttributesResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\GetAttributesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\GetAttributesResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\GetAttributesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\GetAttributesResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\GetAttributesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\messaging\v1\GetAttributesResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\GetAttributesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\GetAttributesResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\GetAttributesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\GetAttributesResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\GetAttributesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\messaging\v1\GetAttributesResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\GetAttributesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\GetAttributesResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\GetAttributesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\GetAttributesResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\GetAttributesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\messaging\v1\GetAttributesResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\GetAttributesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\GetAttributesResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\GetAttributesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\GetAttributesResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\GetAttributesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\messaging\v1\GetAttributesResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\GetAttributesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\GetAttributesResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\GetAttributesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\GetAttributesResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\GetAttributesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\messaging\v1\GetAttributesResponse';
+            $returnType = '\SpApi\Model\messaging\v1\GetAttributesResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -5686,7 +5686,7 @@ class MessagingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\GetAttributesResponse',
+                        '\SpApi\Model\messaging\v1\GetAttributesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5694,7 +5694,7 @@ class MessagingApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\GetAttributesResponse',
+                        '\SpApi\Model\messaging\v1\GetAttributesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5702,7 +5702,7 @@ class MessagingApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\GetAttributesResponse',
+                        '\SpApi\Model\messaging\v1\GetAttributesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5710,7 +5710,7 @@ class MessagingApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\GetAttributesResponse',
+                        '\SpApi\Model\messaging\v1\GetAttributesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5718,7 +5718,7 @@ class MessagingApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\GetAttributesResponse',
+                        '\SpApi\Model\messaging\v1\GetAttributesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5726,7 +5726,7 @@ class MessagingApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\GetAttributesResponse',
+                        '\SpApi\Model\messaging\v1\GetAttributesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5734,7 +5734,7 @@ class MessagingApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\GetAttributesResponse',
+                        '\SpApi\Model\messaging\v1\GetAttributesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5742,7 +5742,7 @@ class MessagingApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\GetAttributesResponse',
+                        '\SpApi\Model\messaging\v1\GetAttributesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5750,7 +5750,7 @@ class MessagingApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\GetAttributesResponse',
+                        '\SpApi\Model\messaging\v1\GetAttributesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5798,7 +5798,7 @@ class MessagingApi
         string $amazon_order_id,
         array $marketplace_ids
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\messaging\v1\GetAttributesResponse';
+        $returnType = '\SpApi\Model\messaging\v1\GetAttributesResponse';
         $request = $this->getAttributesRequest($amazon_order_id, $marketplace_ids);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -5966,14 +5966,14 @@ class MessagingApi
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponse
+     * @return \SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse
      */
     public function getMessagingActionsForOrder(
         string $amazon_order_id,
         array $marketplace_ids
-    ): \OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponse {
+    ): \SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse {
         list($response) = $this->getMessagingActionsForOrderWithHttpInfo($amazon_order_id, $marketplace_ids);
         return $response;
     }
@@ -5986,9 +5986,9 @@ class MessagingApi
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getMessagingActionsForOrderWithHttpInfo(
         string $amazon_order_id,
@@ -6035,143 +6035,143 @@ class MessagingApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponse';
+            $returnType = '\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -6192,7 +6192,7 @@ class MessagingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponse',
+                        '\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6200,7 +6200,7 @@ class MessagingApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponse',
+                        '\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6208,7 +6208,7 @@ class MessagingApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponse',
+                        '\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6216,7 +6216,7 @@ class MessagingApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponse',
+                        '\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6224,7 +6224,7 @@ class MessagingApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponse',
+                        '\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6232,7 +6232,7 @@ class MessagingApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponse',
+                        '\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6240,7 +6240,7 @@ class MessagingApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponse',
+                        '\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6248,7 +6248,7 @@ class MessagingApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponse',
+                        '\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6256,7 +6256,7 @@ class MessagingApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponse',
+                        '\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6304,7 +6304,7 @@ class MessagingApi
         string $amazon_order_id,
         array $marketplace_ids
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponse';
+        $returnType = '\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse';
         $request = $this->getMessagingActionsForOrderRequest($amazon_order_id, $marketplace_ids);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -6471,18 +6471,18 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\InvoiceRequest $body
+     * @param  \SpApi\Model\messaging\v1\InvoiceRequest $body
      *  This contains the message body for a message. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\messaging\v1\InvoiceResponse
+     * @return \SpApi\Model\messaging\v1\InvoiceResponse
      */
     public function sendInvoice(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\InvoiceRequest $body
-    ): \OpenAPI\Client\Model\messaging\v1\InvoiceResponse {
+        \SpApi\Model\messaging\v1\InvoiceRequest $body
+    ): \SpApi\Model\messaging\v1\InvoiceResponse {
         list($response) = $this->sendInvoiceWithHttpInfo($amazon_order_id, $marketplace_ids, $body);
         return $response;
     }
@@ -6494,17 +6494,17 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\InvoiceRequest $body
+     * @param  \SpApi\Model\messaging\v1\InvoiceRequest $body
      *  This contains the message body for a message. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\messaging\v1\InvoiceResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\messaging\v1\InvoiceResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function sendInvoiceWithHttpInfo(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\InvoiceRequest $body
+        \SpApi\Model\messaging\v1\InvoiceRequest $body
     ): array {
         $request = $this->sendInvoiceRequest($amazon_order_id, $marketplace_ids, $body);
         $request = $this->config->sign($request);
@@ -6547,143 +6547,143 @@ class MessagingApi
 
             switch($statusCode) {
                 case 201:
-                    if ('\OpenAPI\Client\Model\messaging\v1\InvoiceResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\InvoiceResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\InvoiceResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\InvoiceResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\InvoiceResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\InvoiceResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\messaging\v1\InvoiceResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\InvoiceResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\InvoiceResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\InvoiceResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\InvoiceResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\InvoiceResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\messaging\v1\InvoiceResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\InvoiceResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\InvoiceResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\InvoiceResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\InvoiceResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\InvoiceResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\messaging\v1\InvoiceResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\InvoiceResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\InvoiceResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\InvoiceResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\InvoiceResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\InvoiceResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\messaging\v1\InvoiceResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\InvoiceResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\InvoiceResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\InvoiceResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\InvoiceResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\InvoiceResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\messaging\v1\InvoiceResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\InvoiceResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\InvoiceResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\InvoiceResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\InvoiceResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\InvoiceResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\messaging\v1\InvoiceResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\InvoiceResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\InvoiceResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\InvoiceResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\InvoiceResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\InvoiceResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\messaging\v1\InvoiceResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\InvoiceResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\InvoiceResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\InvoiceResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\InvoiceResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\InvoiceResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\messaging\v1\InvoiceResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\messaging\v1\InvoiceResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\messaging\v1\InvoiceResponse' !== 'string') {
+                        if ('\SpApi\Model\messaging\v1\InvoiceResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\messaging\v1\InvoiceResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\InvoiceResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\messaging\v1\InvoiceResponse';
+            $returnType = '\SpApi\Model\messaging\v1\InvoiceResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -6704,7 +6704,7 @@ class MessagingApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\InvoiceResponse',
+                        '\SpApi\Model\messaging\v1\InvoiceResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6712,7 +6712,7 @@ class MessagingApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\InvoiceResponse',
+                        '\SpApi\Model\messaging\v1\InvoiceResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6720,7 +6720,7 @@ class MessagingApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\InvoiceResponse',
+                        '\SpApi\Model\messaging\v1\InvoiceResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6728,7 +6728,7 @@ class MessagingApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\InvoiceResponse',
+                        '\SpApi\Model\messaging\v1\InvoiceResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6736,7 +6736,7 @@ class MessagingApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\InvoiceResponse',
+                        '\SpApi\Model\messaging\v1\InvoiceResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6744,7 +6744,7 @@ class MessagingApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\InvoiceResponse',
+                        '\SpApi\Model\messaging\v1\InvoiceResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6752,7 +6752,7 @@ class MessagingApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\InvoiceResponse',
+                        '\SpApi\Model\messaging\v1\InvoiceResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6760,7 +6760,7 @@ class MessagingApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\InvoiceResponse',
+                        '\SpApi\Model\messaging\v1\InvoiceResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6768,7 +6768,7 @@ class MessagingApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\messaging\v1\InvoiceResponse',
+                        '\SpApi\Model\messaging\v1\InvoiceResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6785,7 +6785,7 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\InvoiceRequest $body
+     * @param  \SpApi\Model\messaging\v1\InvoiceRequest $body
      *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
@@ -6794,7 +6794,7 @@ class MessagingApi
     public function sendInvoiceAsync(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\InvoiceRequest $body
+        \SpApi\Model\messaging\v1\InvoiceRequest $body
     ): PromiseInterface {
         return $this->sendInvoiceAsyncWithHttpInfo($amazon_order_id, $marketplace_ids, $body)
             ->then(
@@ -6811,7 +6811,7 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\InvoiceRequest $body
+     * @param  \SpApi\Model\messaging\v1\InvoiceRequest $body
      *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
@@ -6820,9 +6820,9 @@ class MessagingApi
     public function sendInvoiceAsyncWithHttpInfo(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\InvoiceRequest $body
+        \SpApi\Model\messaging\v1\InvoiceRequest $body
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\messaging\v1\InvoiceResponse';
+        $returnType = '\SpApi\Model\messaging\v1\InvoiceResponse';
         $request = $this->sendInvoiceRequest($amazon_order_id, $marketplace_ids, $body);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -6870,7 +6870,7 @@ class MessagingApi
      *  An Amazon order identifier. This identifies the order for which a message is sent. (required)
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace. (required)
-     * @param  \OpenAPI\Client\Model\messaging\v1\InvoiceRequest $body
+     * @param  \SpApi\Model\messaging\v1\InvoiceRequest $body
      *  This contains the message body for a message. (required)
      *
      * @throws \InvalidArgumentException
@@ -6879,7 +6879,7 @@ class MessagingApi
     public function sendInvoiceRequest(
         string $amazon_order_id,
         array $marketplace_ids,
-        \OpenAPI\Client\Model\messaging\v1\InvoiceRequest $body
+        \SpApi\Model\messaging\v1\InvoiceRequest $body
     ): Request {
         // verify the required parameter 'amazon_order_id' is set
         if ($amazon_order_id === null || (is_array($amazon_order_id) && count($amazon_order_id) === 0)) {

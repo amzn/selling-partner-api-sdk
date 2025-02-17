@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\finances\v0\SellerDealPaymentEvent;
+use SpApi\Model\finances\v0\SellerDealPaymentEvent;
 
 /**
  * SellerDealPaymentEventTest Class Doc Comment
  *
  * @category    Class
  * @description An event linked to the payment of a fee related to the specified deal.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class SellerDealPaymentEventTest extends TestCase
 {
@@ -113,7 +113,7 @@ class SellerDealPaymentEventTest extends TestCase
     public function testPropertyFeeAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v0\Currency();
+        $testValue = new \SpApi\Model\finances\v0\Currency();
         
         $this->model->setFeeAmount($testValue);
         $this->assertEquals($testValue, $this->model->getFeeAmount());
@@ -125,7 +125,7 @@ class SellerDealPaymentEventTest extends TestCase
     public function testPropertyTaxAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v0\Currency();
+        $testValue = new \SpApi\Model\finances\v0\Currency();
         
         $this->model->setTaxAmount($testValue);
         $this->assertEquals($testValue, $this->model->getTaxAmount());
@@ -137,7 +137,7 @@ class SellerDealPaymentEventTest extends TestCase
     public function testPropertyTotalAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v0\Currency();
+        $testValue = new \SpApi\Model\finances\v0\Currency();
         
         $this->model->setTotalAmount($testValue);
         $this->assertEquals($testValue, $this->model->getTotalAmount());

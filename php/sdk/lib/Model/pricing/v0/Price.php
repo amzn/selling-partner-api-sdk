@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,18 +26,18 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\pricing\v0;
+namespace SpApi\Model\pricing\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Price Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +62,7 @@ class Price implements ModelInterface, ArrayAccess, \JsonSerializable
              'status' => 'string',
              'seller_sku' => 'string',
              'asin' => 'string',
-             'product' => '\OpenAPI\Client\Model\pricing\v0\Product'    ];
+             'product' => '\SpApi\Model\pricing\v0\Product'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -412,9 +412,9 @@ class Price implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets product
      *
-     * @return \OpenAPI\Client\Model\pricing\v0\Product|null
+     * @return \SpApi\Model\pricing\v0\Product|null
      */
-    public function getProduct(): ?\OpenAPI\Client\Model\pricing\v0\Product
+    public function getProduct(): ?\SpApi\Model\pricing\v0\Product
     {
         return $this->container['product'];
     }
@@ -422,11 +422,11 @@ class Price implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets product
      *
-     * @param \OpenAPI\Client\Model\pricing\v0\Product|null $product product
+     * @param \SpApi\Model\pricing\v0\Product|null $product product
      *
      * @return self
      */
-    public function setProduct(?\OpenAPI\Client\Model\pricing\v0\Product $product): self
+    public function setProduct(?\SpApi\Model\pricing\v0\Product $product): self
     {
         if (is_null($product)) {
             array_push($this->openAPINullablesSetToNull, 'product');

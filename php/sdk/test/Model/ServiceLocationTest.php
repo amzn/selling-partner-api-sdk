@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\v1\ServiceLocation;
+use SpApi\Model\services\v1\ServiceLocation;
 
 /**
  * ServiceLocationTest Class Doc Comment
  *
  * @category    Class
  * @description Information about the location of the service job.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ServiceLocationTest extends TestCase
 {
@@ -69,7 +69,7 @@ class ServiceLocationTest extends TestCase
     public function testPropertyAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\services\v1\Address();
+        $testValue = new \SpApi\Model\services\v1\Address();
         
         $this->model->setAddress($testValue);
         $this->assertEquals($testValue, $this->model->getAddress());

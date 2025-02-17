@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v2022_05_01\LowestPricedOffersInput;
+use SpApi\Model\pricing\v2022_05_01\LowestPricedOffersInput;
 
 /**
  * LowestPricedOffersInputTest Class Doc Comment
  *
  * @category    Class
  * @description The input required for building &#x60;LowestPricedOffers&#x60; data in the response.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class LowestPricedOffersInputTest extends TestCase
 {
@@ -56,7 +56,7 @@ class LowestPricedOffersInputTest extends TestCase
      */
     public function testPropertyItemCondition()
     {
-        $enumInstance = new \OpenAPI\Client\Model\pricing\v2022_05_01\Condition();
+        $enumInstance = new \SpApi\Model\pricing\v2022_05_01\Condition();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

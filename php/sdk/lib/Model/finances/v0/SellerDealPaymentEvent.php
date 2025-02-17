@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\finances\v0;
+namespace SpApi\Model\finances\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * SellerDealPaymentEvent Class Doc Comment
  *
  * @category Class
  * @description An event linked to the payment of a fee related to the specified deal.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -65,9 +65,9 @@ class SellerDealPaymentEvent implements ModelInterface, ArrayAccess, \JsonSerial
              'deal_description' => 'string',
              'event_type' => 'string',
              'fee_type' => 'string',
-             'fee_amount' => '\OpenAPI\Client\Model\finances\v0\Currency',
-             'tax_amount' => '\OpenAPI\Client\Model\finances\v0\Currency',
-             'total_amount' => '\OpenAPI\Client\Model\finances\v0\Currency'    ];
+             'fee_amount' => '\SpApi\Model\finances\v0\Currency',
+             'tax_amount' => '\SpApi\Model\finances\v0\Currency',
+             'total_amount' => '\SpApi\Model\finances\v0\Currency'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -513,9 +513,9 @@ class SellerDealPaymentEvent implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets fee_amount
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency|null
+     * @return \SpApi\Model\finances\v0\Currency|null
      */
-    public function getFeeAmount(): ?\OpenAPI\Client\Model\finances\v0\Currency
+    public function getFeeAmount(): ?\SpApi\Model\finances\v0\Currency
     {
         return $this->container['fee_amount'];
     }
@@ -523,11 +523,11 @@ class SellerDealPaymentEvent implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets fee_amount
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency|null $fee_amount fee_amount
+     * @param \SpApi\Model\finances\v0\Currency|null $fee_amount fee_amount
      *
      * @return self
      */
-    public function setFeeAmount(?\OpenAPI\Client\Model\finances\v0\Currency $fee_amount): self
+    public function setFeeAmount(?\SpApi\Model\finances\v0\Currency $fee_amount): self
     {
         if (is_null($fee_amount)) {
             array_push($this->openAPINullablesSetToNull, 'fee_amount');
@@ -547,9 +547,9 @@ class SellerDealPaymentEvent implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets tax_amount
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency|null
+     * @return \SpApi\Model\finances\v0\Currency|null
      */
-    public function getTaxAmount(): ?\OpenAPI\Client\Model\finances\v0\Currency
+    public function getTaxAmount(): ?\SpApi\Model\finances\v0\Currency
     {
         return $this->container['tax_amount'];
     }
@@ -557,11 +557,11 @@ class SellerDealPaymentEvent implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets tax_amount
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency|null $tax_amount tax_amount
+     * @param \SpApi\Model\finances\v0\Currency|null $tax_amount tax_amount
      *
      * @return self
      */
-    public function setTaxAmount(?\OpenAPI\Client\Model\finances\v0\Currency $tax_amount): self
+    public function setTaxAmount(?\SpApi\Model\finances\v0\Currency $tax_amount): self
     {
         if (is_null($tax_amount)) {
             array_push($this->openAPINullablesSetToNull, 'tax_amount');
@@ -581,9 +581,9 @@ class SellerDealPaymentEvent implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets total_amount
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency|null
+     * @return \SpApi\Model\finances\v0\Currency|null
      */
-    public function getTotalAmount(): ?\OpenAPI\Client\Model\finances\v0\Currency
+    public function getTotalAmount(): ?\SpApi\Model\finances\v0\Currency
     {
         return $this->container['total_amount'];
     }
@@ -591,11 +591,11 @@ class SellerDealPaymentEvent implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets total_amount
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency|null $total_amount total_amount
+     * @param \SpApi\Model\finances\v0\Currency|null $total_amount total_amount
      *
      * @return self
      */
-    public function setTotalAmount(?\OpenAPI\Client\Model\finances\v0\Currency $total_amount): self
+    public function setTotalAmount(?\SpApi\Model\finances\v0\Currency $total_amount): self
     {
         if (is_null($total_amount)) {
             array_push($this->openAPINullablesSetToNull, 'total_amount');

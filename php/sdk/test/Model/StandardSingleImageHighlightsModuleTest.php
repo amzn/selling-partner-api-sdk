@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardSingleImageHighlightsModule;
+use SpApi\Model\aplusContent\v2020_11_01\StandardSingleImageHighlightsModule;
 
 /**
  * StandardSingleImageHighlightsModuleTest Class Doc Comment
  *
  * @category    Class
  * @description A standard image with several paragraphs and a bulleted list.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class StandardSingleImageHighlightsModuleTest extends TestCase
 {
@@ -57,7 +57,7 @@ class StandardSingleImageHighlightsModuleTest extends TestCase
     public function testPropertyImage()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageComponent();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\ImageComponent();
         
         $this->model->setImage($testValue);
         $this->assertEquals($testValue, $this->model->getImage());
@@ -69,7 +69,7 @@ class StandardSingleImageHighlightsModuleTest extends TestCase
     public function testPropertyHeadline()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\TextComponent();
         
         $this->model->setHeadline($testValue);
         $this->assertEquals($testValue, $this->model->getHeadline());
@@ -81,7 +81,7 @@ class StandardSingleImageHighlightsModuleTest extends TestCase
     public function testPropertyTextBlock1()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextBlock();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\StandardTextBlock();
         
         $this->model->setTextBlock1($testValue);
         $this->assertEquals($testValue, $this->model->getTextBlock1());
@@ -93,7 +93,7 @@ class StandardSingleImageHighlightsModuleTest extends TestCase
     public function testPropertyTextBlock2()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextBlock();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\StandardTextBlock();
         
         $this->model->setTextBlock2($testValue);
         $this->assertEquals($testValue, $this->model->getTextBlock2());
@@ -105,7 +105,7 @@ class StandardSingleImageHighlightsModuleTest extends TestCase
     public function testPropertyTextBlock3()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextBlock();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\StandardTextBlock();
         
         $this->model->setTextBlock3($testValue);
         $this->assertEquals($testValue, $this->model->getTextBlock3());
@@ -117,7 +117,7 @@ class StandardSingleImageHighlightsModuleTest extends TestCase
     public function testPropertyBulletedListBlock()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardHeaderTextListBlock();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\StandardHeaderTextListBlock();
         
         $this->model->setBulletedListBlock($testValue);
         $this->assertEquals($testValue, $this->model->getBulletedListBlock());

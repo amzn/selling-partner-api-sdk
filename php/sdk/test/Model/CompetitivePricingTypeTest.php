@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v0\CompetitivePricingType;
+use SpApi\Model\pricing\v0\CompetitivePricingType;
 
 /**
  * CompetitivePricingTypeTest Class Doc Comment
  *
  * @category    Class
  * @description Competitive pricing information for the item.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class CompetitivePricingTypeTest extends TestCase
 {
@@ -79,7 +79,7 @@ class CompetitivePricingTypeTest extends TestCase
     public function testPropertyTradeInValue()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v0\MoneyType();
+        $testValue = new \SpApi\Model\pricing\v0\MoneyType();
         
         $this->model->setTradeInValue($testValue);
         $this->assertEquals($testValue, $this->model->getTradeInValue());

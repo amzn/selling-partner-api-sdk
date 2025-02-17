@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantFulfillment\v0\AvailableCarrierWillPickUpOption;
+use SpApi\Model\merchantFulfillment\v0\AvailableCarrierWillPickUpOption;
 
 /**
  * AvailableCarrierWillPickUpOptionTest Class Doc Comment
  *
  * @category    Class
  * @description Indicates whether the carrier will pick up the package, and what fee is charged, if any.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class AvailableCarrierWillPickUpOptionTest extends TestCase
 {
@@ -56,7 +56,7 @@ class AvailableCarrierWillPickUpOptionTest extends TestCase
      */
     public function testPropertyCarrierWillPickUpOption()
     {
-        $enumInstance = new \OpenAPI\Client\Model\merchantFulfillment\v0\CarrierWillPickUpOption();
+        $enumInstance = new \SpApi\Model\merchantFulfillment\v0\CarrierWillPickUpOption();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -70,7 +70,7 @@ class AvailableCarrierWillPickUpOptionTest extends TestCase
     public function testPropertyCharge()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\v0\CurrencyAmount();
+        $testValue = new \SpApi\Model\merchantFulfillment\v0\CurrencyAmount();
         
         $this->model->setCharge($testValue);
         $this->assertEquals($testValue, $this->model->getCharge());

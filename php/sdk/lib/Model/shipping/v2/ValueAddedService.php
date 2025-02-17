@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,19 +27,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\shipping\v2;
+namespace SpApi\Model\shipping\v2;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ValueAddedService Class Doc Comment
  *
  * @category Class
  * @description A value-added service available for purchase with a shipment service offering.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,7 +63,7 @@ class ValueAddedService implements ModelInterface, ArrayAccess, \JsonSerializabl
     protected static array $openAPITypes = [
              'id' => 'string',
              'name' => 'string',
-             'cost' => '\OpenAPI\Client\Model\shipping\v2\Currency'    ];
+             'cost' => '\SpApi\Model\shipping\v2\Currency'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -372,9 +372,9 @@ class ValueAddedService implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets cost
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\Currency
+     * @return \SpApi\Model\shipping\v2\Currency
      */
-    public function getCost(): \OpenAPI\Client\Model\shipping\v2\Currency
+    public function getCost(): \SpApi\Model\shipping\v2\Currency
     {
         return $this->container['cost'];
     }
@@ -382,11 +382,11 @@ class ValueAddedService implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets cost
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\Currency $cost cost
+     * @param \SpApi\Model\shipping\v2\Currency $cost cost
      *
      * @return self
      */
-    public function setCost(\OpenAPI\Client\Model\shipping\v2\Currency $cost): self
+    public function setCost(\SpApi\Model\shipping\v2\Currency $cost): self
     {
         if (is_null($cost)) {
             throw new \InvalidArgumentException('non-nullable cost cannot be null');

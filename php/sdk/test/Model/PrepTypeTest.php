@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\PrepType;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\PrepType;
 
 /**
  * PrepTypeTest Class Doc Comment
  *
  * @category    Class
  * @description Preparation instructions for shipping an item to Amazon&#39;s fulfillment network. For more information about preparing items for shipment to Amazon&#39;s fulfillment network, refer to [Seller Central Help for your marketplace](https://developer-docs.amazon.com/sp-api/docs/seller-central-urls).
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class PrepTypeTest extends TestCase
 {

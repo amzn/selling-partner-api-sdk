@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\v2\ExceptionOperatingHours;
+use SpApi\Model\shipping\v2\ExceptionOperatingHours;
 
 /**
  * ExceptionOperatingHoursTest Class Doc Comment
  *
  * @category    Class
  * @description Defines exceptions to standard operating hours for certain date ranges.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ExceptionOperatingHoursTest extends TestCase
 {
@@ -57,7 +57,7 @@ class ExceptionOperatingHoursTest extends TestCase
     public function testPropertyDateRange()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\v2\DateRange();
+        $testValue = new \SpApi\Model\shipping\v2\DateRange();
         
         $this->model->setDateRange($testValue);
         $this->assertEquals($testValue, $this->model->getDateRange());
@@ -69,7 +69,7 @@ class ExceptionOperatingHoursTest extends TestCase
     public function testPropertyOperatingHours()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\v2\OperatingHours();
+        $testValue = new \SpApi\Model\shipping\v2\OperatingHours();
         
         $this->model->setOperatingHours($testValue);
         $this->assertEquals($testValue, $this->model->getOperatingHours());

@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\inbound\v0;
+namespace SpApi\Model\fulfillment\inbound\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * PrepDetails Class Doc Comment
  *
  * @category Class
  * @description Preparation instructions and who is responsible for the preparation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class PrepDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'prep_instruction' => '\OpenAPI\Client\Model\fulfillment\inbound\v0\PrepInstruction',
-             'prep_owner' => '\OpenAPI\Client\Model\fulfillment\inbound\v0\PrepOwner'    ];
+             'prep_instruction' => '\SpApi\Model\fulfillment\inbound\v0\PrepInstruction',
+             'prep_owner' => '\SpApi\Model\fulfillment\inbound\v0\PrepOwner'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

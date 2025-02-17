@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\easyship\v2022_03_23\PackageDetails;
+use SpApi\Model\easyship\v2022_03_23\PackageDetails;
 
 /**
  * PackageDetailsTest Class Doc Comment
  *
  * @category    Class
  * @description Package details. Includes &#x60;packageItems&#x60;, &#x60;packageTimeSlot&#x60;, and &#x60;packageIdentifier&#x60;.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class PackageDetailsTest extends TestCase
 {
@@ -68,7 +68,7 @@ class PackageDetailsTest extends TestCase
     public function testPropertyPackageTimeSlot()
     {
         
-        $testValue = new \OpenAPI\Client\Model\easyship\v2022_03_23\TimeSlot();
+        $testValue = new \SpApi\Model\easyship\v2022_03_23\TimeSlot();
         
         $this->model->setPackageTimeSlot($testValue);
         $this->assertEquals($testValue, $this->model->getPackageTimeSlot());

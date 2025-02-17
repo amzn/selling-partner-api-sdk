@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\supplySources\v2020_07_01;
+namespace SpApi\Model\supplySources\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * OperationalConfiguration Class Doc Comment
  *
  * @category Class
  * @description The operational configuration of &#x60;supplySources&#x60;.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,10 +60,10 @@ class OperationalConfiguration implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'contact_details' => '\OpenAPI\Client\Model\supplySources\v2020_07_01\ContactDetails',
-             'throughput_config' => '\OpenAPI\Client\Model\supplySources\v2020_07_01\ThroughputConfig',
-             'operating_hours_by_day' => '\OpenAPI\Client\Model\supplySources\v2020_07_01\OperatingHoursByDay',
-             'handling_time' => '\OpenAPI\Client\Model\supplySources\v2020_07_01\Duration'    ];
+             'contact_details' => '\SpApi\Model\supplySources\v2020_07_01\ContactDetails',
+             'throughput_config' => '\SpApi\Model\supplySources\v2020_07_01\ThroughputConfig',
+             'operating_hours_by_day' => '\SpApi\Model\supplySources\v2020_07_01\OperatingHoursByDay',
+             'handling_time' => '\SpApi\Model\supplySources\v2020_07_01\Duration'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -315,9 +315,9 @@ class OperationalConfiguration implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets contact_details
      *
-     * @return \OpenAPI\Client\Model\supplySources\v2020_07_01\ContactDetails|null
+     * @return \SpApi\Model\supplySources\v2020_07_01\ContactDetails|null
      */
-    public function getContactDetails(): ?\OpenAPI\Client\Model\supplySources\v2020_07_01\ContactDetails
+    public function getContactDetails(): ?\SpApi\Model\supplySources\v2020_07_01\ContactDetails
     {
         return $this->container['contact_details'];
     }
@@ -325,11 +325,11 @@ class OperationalConfiguration implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets contact_details
      *
-     * @param \OpenAPI\Client\Model\supplySources\v2020_07_01\ContactDetails|null $contact_details contact_details
+     * @param \SpApi\Model\supplySources\v2020_07_01\ContactDetails|null $contact_details contact_details
      *
      * @return self
      */
-    public function setContactDetails(?\OpenAPI\Client\Model\supplySources\v2020_07_01\ContactDetails $contact_details): self
+    public function setContactDetails(?\SpApi\Model\supplySources\v2020_07_01\ContactDetails $contact_details): self
     {
         if (is_null($contact_details)) {
             array_push($this->openAPINullablesSetToNull, 'contact_details');
@@ -349,9 +349,9 @@ class OperationalConfiguration implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets throughput_config
      *
-     * @return \OpenAPI\Client\Model\supplySources\v2020_07_01\ThroughputConfig|null
+     * @return \SpApi\Model\supplySources\v2020_07_01\ThroughputConfig|null
      */
-    public function getThroughputConfig(): ?\OpenAPI\Client\Model\supplySources\v2020_07_01\ThroughputConfig
+    public function getThroughputConfig(): ?\SpApi\Model\supplySources\v2020_07_01\ThroughputConfig
     {
         return $this->container['throughput_config'];
     }
@@ -359,11 +359,11 @@ class OperationalConfiguration implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets throughput_config
      *
-     * @param \OpenAPI\Client\Model\supplySources\v2020_07_01\ThroughputConfig|null $throughput_config throughput_config
+     * @param \SpApi\Model\supplySources\v2020_07_01\ThroughputConfig|null $throughput_config throughput_config
      *
      * @return self
      */
-    public function setThroughputConfig(?\OpenAPI\Client\Model\supplySources\v2020_07_01\ThroughputConfig $throughput_config): self
+    public function setThroughputConfig(?\SpApi\Model\supplySources\v2020_07_01\ThroughputConfig $throughput_config): self
     {
         if (is_null($throughput_config)) {
             array_push($this->openAPINullablesSetToNull, 'throughput_config');
@@ -383,9 +383,9 @@ class OperationalConfiguration implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets operating_hours_by_day
      *
-     * @return \OpenAPI\Client\Model\supplySources\v2020_07_01\OperatingHoursByDay|null
+     * @return \SpApi\Model\supplySources\v2020_07_01\OperatingHoursByDay|null
      */
-    public function getOperatingHoursByDay(): ?\OpenAPI\Client\Model\supplySources\v2020_07_01\OperatingHoursByDay
+    public function getOperatingHoursByDay(): ?\SpApi\Model\supplySources\v2020_07_01\OperatingHoursByDay
     {
         return $this->container['operating_hours_by_day'];
     }
@@ -393,11 +393,11 @@ class OperationalConfiguration implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets operating_hours_by_day
      *
-     * @param \OpenAPI\Client\Model\supplySources\v2020_07_01\OperatingHoursByDay|null $operating_hours_by_day operating_hours_by_day
+     * @param \SpApi\Model\supplySources\v2020_07_01\OperatingHoursByDay|null $operating_hours_by_day operating_hours_by_day
      *
      * @return self
      */
-    public function setOperatingHoursByDay(?\OpenAPI\Client\Model\supplySources\v2020_07_01\OperatingHoursByDay $operating_hours_by_day): self
+    public function setOperatingHoursByDay(?\SpApi\Model\supplySources\v2020_07_01\OperatingHoursByDay $operating_hours_by_day): self
     {
         if (is_null($operating_hours_by_day)) {
             array_push($this->openAPINullablesSetToNull, 'operating_hours_by_day');
@@ -417,9 +417,9 @@ class OperationalConfiguration implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets handling_time
      *
-     * @return \OpenAPI\Client\Model\supplySources\v2020_07_01\Duration|null
+     * @return \SpApi\Model\supplySources\v2020_07_01\Duration|null
      */
-    public function getHandlingTime(): ?\OpenAPI\Client\Model\supplySources\v2020_07_01\Duration
+    public function getHandlingTime(): ?\SpApi\Model\supplySources\v2020_07_01\Duration
     {
         return $this->container['handling_time'];
     }
@@ -427,11 +427,11 @@ class OperationalConfiguration implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets handling_time
      *
-     * @param \OpenAPI\Client\Model\supplySources\v2020_07_01\Duration|null $handling_time handling_time
+     * @param \SpApi\Model\supplySources\v2020_07_01\Duration|null $handling_time handling_time
      *
      * @return self
      */
-    public function setHandlingTime(?\OpenAPI\Client\Model\supplySources\v2020_07_01\Duration $handling_time): self
+    public function setHandlingTime(?\SpApi\Model\supplySources\v2020_07_01\Duration $handling_time): self
     {
         if (is_null($handling_time)) {
             array_push($this->openAPINullablesSetToNull, 'handling_time');

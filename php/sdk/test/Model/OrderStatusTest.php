@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\orders\v1\OrderStatus;
+use SpApi\Model\vendor\orders\v1\OrderStatus;
 
 /**
  * OrderStatusTest Class Doc Comment
  *
  * @category    Class
  * @description Current status of a purchase order.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class OrderStatusTest extends TestCase
 {
@@ -104,7 +104,7 @@ class OrderStatusTest extends TestCase
     public function testPropertySellingParty()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\orders\v1\PartyIdentification();
+        $testValue = new \SpApi\Model\vendor\orders\v1\PartyIdentification();
         
         $this->model->setSellingParty($testValue);
         $this->assertEquals($testValue, $this->model->getSellingParty());
@@ -116,7 +116,7 @@ class OrderStatusTest extends TestCase
     public function testPropertyShipToParty()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\orders\v1\PartyIdentification();
+        $testValue = new \SpApi\Model\vendor\orders\v1\PartyIdentification();
         
         $this->model->setShipToParty($testValue);
         $this->assertEquals($testValue, $this->model->getShipToParty());

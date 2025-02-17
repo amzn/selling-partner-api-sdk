@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\WeightRange;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\WeightRange;
 
 /**
  * WeightRangeTest Class Doc Comment
  *
  * @category    Class
  * @description The range of weights that are allowed for a package.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class WeightRangeTest extends TestCase
 {
@@ -78,7 +78,7 @@ class WeightRangeTest extends TestCase
      */
     public function testPropertyUnit()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\UnitOfWeight();
+        $enumInstance = new \SpApi\Model\fulfillment\inbound\v2024_03_20\UnitOfWeight();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

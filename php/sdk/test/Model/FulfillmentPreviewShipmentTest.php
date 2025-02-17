@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\FulfillmentPreviewShipment;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\FulfillmentPreviewShipment;
 
 /**
  * FulfillmentPreviewShipmentTest Class Doc Comment
  *
  * @category    Class
  * @description Delivery and item information for a shipment in a fulfillment order preview.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class FulfillmentPreviewShipmentTest extends TestCase
 {

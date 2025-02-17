@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20;
+namespace SpApi\Model\fulfillment\inbound\v2024_03_20;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ContentUpdatePreview Class Doc Comment
  *
  * @category Class
  * @description Preview of the changes that will be applied to the shipment.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,8 +62,8 @@ class ContentUpdatePreview implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static array $openAPITypes = [
              'content_update_preview_id' => 'string',
              'expiration' => '\DateTime',
-             'requested_updates' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\RequestedUpdates',
-             'transportation_option' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\TransportationOption'    ];
+             'requested_updates' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\RequestedUpdates',
+             'transportation_option' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\TransportationOption'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -403,9 +403,9 @@ class ContentUpdatePreview implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets requested_updates
      *
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\RequestedUpdates
+     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\RequestedUpdates
      */
-    public function getRequestedUpdates(): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\RequestedUpdates
+    public function getRequestedUpdates(): \SpApi\Model\fulfillment\inbound\v2024_03_20\RequestedUpdates
     {
         return $this->container['requested_updates'];
     }
@@ -413,11 +413,11 @@ class ContentUpdatePreview implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets requested_updates
      *
-     * @param \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\RequestedUpdates $requested_updates requested_updates
+     * @param \SpApi\Model\fulfillment\inbound\v2024_03_20\RequestedUpdates $requested_updates requested_updates
      *
      * @return self
      */
-    public function setRequestedUpdates(\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\RequestedUpdates $requested_updates): self
+    public function setRequestedUpdates(\SpApi\Model\fulfillment\inbound\v2024_03_20\RequestedUpdates $requested_updates): self
     {
         if (is_null($requested_updates)) {
             throw new \InvalidArgumentException('non-nullable requested_updates cannot be null');
@@ -430,9 +430,9 @@ class ContentUpdatePreview implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets transportation_option
      *
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\TransportationOption
+     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\TransportationOption
      */
-    public function getTransportationOption(): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\TransportationOption
+    public function getTransportationOption(): \SpApi\Model\fulfillment\inbound\v2024_03_20\TransportationOption
     {
         return $this->container['transportation_option'];
     }
@@ -440,11 +440,11 @@ class ContentUpdatePreview implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets transportation_option
      *
-     * @param \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\TransportationOption $transportation_option transportation_option
+     * @param \SpApi\Model\fulfillment\inbound\v2024_03_20\TransportationOption $transportation_option transportation_option
      *
      * @return self
      */
-    public function setTransportationOption(\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\TransportationOption $transportation_option): self
+    public function setTransportationOption(\SpApi\Model\fulfillment\inbound\v2024_03_20\TransportationOption $transportation_option): self
     {
         if (is_null($transportation_option)) {
             throw new \InvalidArgumentException('non-nullable transportation_option cannot be null');

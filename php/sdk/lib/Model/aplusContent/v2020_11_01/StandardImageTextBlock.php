@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\aplusContent\v2020_11_01;
+namespace SpApi\Model\aplusContent\v2020_11_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * StandardImageTextBlock Class Doc Comment
  *
  * @category Class
  * @description The A+ Content standard image and text box block.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,9 +60,9 @@ class StandardImageTextBlock implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'image' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageComponent',
-             'headline' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent',
-             'body' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ParagraphComponent'    ];
+             'image' => '\SpApi\Model\aplusContent\v2020_11_01\ImageComponent',
+             'headline' => '\SpApi\Model\aplusContent\v2020_11_01\TextComponent',
+             'body' => '\SpApi\Model\aplusContent\v2020_11_01\ParagraphComponent'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -308,9 +308,9 @@ class StandardImageTextBlock implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets image
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageComponent|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\ImageComponent|null
      */
-    public function getImage(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageComponent
+    public function getImage(): ?\SpApi\Model\aplusContent\v2020_11_01\ImageComponent
     {
         return $this->container['image'];
     }
@@ -318,11 +318,11 @@ class StandardImageTextBlock implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets image
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageComponent|null $image image
+     * @param \SpApi\Model\aplusContent\v2020_11_01\ImageComponent|null $image image
      *
      * @return self
      */
-    public function setImage(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageComponent $image): self
+    public function setImage(?\SpApi\Model\aplusContent\v2020_11_01\ImageComponent $image): self
     {
         if (is_null($image)) {
             array_push($this->openAPINullablesSetToNull, 'image');
@@ -342,9 +342,9 @@ class StandardImageTextBlock implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets headline
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\TextComponent|null
      */
-    public function getHeadline(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent
+    public function getHeadline(): ?\SpApi\Model\aplusContent\v2020_11_01\TextComponent
     {
         return $this->container['headline'];
     }
@@ -352,11 +352,11 @@ class StandardImageTextBlock implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets headline
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent|null $headline headline
+     * @param \SpApi\Model\aplusContent\v2020_11_01\TextComponent|null $headline headline
      *
      * @return self
      */
-    public function setHeadline(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent $headline): self
+    public function setHeadline(?\SpApi\Model\aplusContent\v2020_11_01\TextComponent $headline): self
     {
         if (is_null($headline)) {
             array_push($this->openAPINullablesSetToNull, 'headline');
@@ -376,9 +376,9 @@ class StandardImageTextBlock implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets body
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\ParagraphComponent|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\ParagraphComponent|null
      */
-    public function getBody(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\ParagraphComponent
+    public function getBody(): ?\SpApi\Model\aplusContent\v2020_11_01\ParagraphComponent
     {
         return $this->container['body'];
     }
@@ -386,11 +386,11 @@ class StandardImageTextBlock implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets body
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\ParagraphComponent|null $body body
+     * @param \SpApi\Model\aplusContent\v2020_11_01\ParagraphComponent|null $body body
      *
      * @return self
      */
-    public function setBody(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\ParagraphComponent $body): self
+    public function setBody(?\SpApi\Model\aplusContent\v2020_11_01\ParagraphComponent $body): self
     {
         if (is_null($body)) {
             array_push($this->openAPINullablesSetToNull, 'body');

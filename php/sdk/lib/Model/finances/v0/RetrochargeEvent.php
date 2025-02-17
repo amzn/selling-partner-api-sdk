@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\finances\v0;
+namespace SpApi\Model\finances\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * RetrochargeEvent Class Doc Comment
  *
  * @category Class
  * @description A retrocharge or retrocharge reversal.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,10 +63,10 @@ class RetrochargeEvent implements ModelInterface, ArrayAccess, \JsonSerializable
              'retrocharge_event_type' => 'string',
              'amazon_order_id' => 'string',
              'posted_date' => '\DateTime',
-             'base_tax' => '\OpenAPI\Client\Model\finances\v0\Currency',
-             'shipping_tax' => '\OpenAPI\Client\Model\finances\v0\Currency',
+             'base_tax' => '\SpApi\Model\finances\v0\Currency',
+             'shipping_tax' => '\SpApi\Model\finances\v0\Currency',
              'marketplace_name' => 'string',
-             'retrocharge_tax_withheld_list' => '\OpenAPI\Client\Model\finances\v0\TaxWithheldComponent[]'    ];
+             'retrocharge_tax_withheld_list' => '\SpApi\Model\finances\v0\TaxWithheldComponent[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -438,9 +438,9 @@ class RetrochargeEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets base_tax
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency|null
+     * @return \SpApi\Model\finances\v0\Currency|null
      */
-    public function getBaseTax(): ?\OpenAPI\Client\Model\finances\v0\Currency
+    public function getBaseTax(): ?\SpApi\Model\finances\v0\Currency
     {
         return $this->container['base_tax'];
     }
@@ -448,11 +448,11 @@ class RetrochargeEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets base_tax
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency|null $base_tax base_tax
+     * @param \SpApi\Model\finances\v0\Currency|null $base_tax base_tax
      *
      * @return self
      */
-    public function setBaseTax(?\OpenAPI\Client\Model\finances\v0\Currency $base_tax): self
+    public function setBaseTax(?\SpApi\Model\finances\v0\Currency $base_tax): self
     {
         if (is_null($base_tax)) {
             array_push($this->openAPINullablesSetToNull, 'base_tax');
@@ -472,9 +472,9 @@ class RetrochargeEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets shipping_tax
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency|null
+     * @return \SpApi\Model\finances\v0\Currency|null
      */
-    public function getShippingTax(): ?\OpenAPI\Client\Model\finances\v0\Currency
+    public function getShippingTax(): ?\SpApi\Model\finances\v0\Currency
     {
         return $this->container['shipping_tax'];
     }
@@ -482,11 +482,11 @@ class RetrochargeEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets shipping_tax
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency|null $shipping_tax shipping_tax
+     * @param \SpApi\Model\finances\v0\Currency|null $shipping_tax shipping_tax
      *
      * @return self
      */
-    public function setShippingTax(?\OpenAPI\Client\Model\finances\v0\Currency $shipping_tax): self
+    public function setShippingTax(?\SpApi\Model\finances\v0\Currency $shipping_tax): self
     {
         if (is_null($shipping_tax)) {
             array_push($this->openAPINullablesSetToNull, 'shipping_tax');

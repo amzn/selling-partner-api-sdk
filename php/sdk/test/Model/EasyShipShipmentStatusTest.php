@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\v0\EasyShipShipmentStatus;
+use SpApi\Model\orders\v0\EasyShipShipmentStatus;
 
 /**
  * EasyShipShipmentStatusTest Class Doc Comment
  *
  * @category    Class
  * @description The status of the Amazon Easy Ship order. This property is only included for Amazon Easy Ship orders.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class EasyShipShipmentStatusTest extends TestCase
 {

@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\finances\v0;
+namespace SpApi\Model\finances\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ListFinancialEventGroupsPayload Class Doc Comment
  *
  * @category Class
  * @description The payload for the listFinancialEventGroups operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class ListFinancialEventGroupsPayload implements ModelInterface, ArrayAccess, \J
       */
     protected static array $openAPITypes = [
              'next_token' => 'string',
-             'financial_event_group_list' => '\OpenAPI\Client\Model\finances\v0\FinancialEventGroup[]'    ];
+             'financial_event_group_list' => '\SpApi\Model\finances\v0\FinancialEventGroup[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

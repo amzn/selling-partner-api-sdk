@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanPalletsResponse;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\ListInboundPlanPalletsResponse;
 
 /**
  * ListInboundPlanPalletsResponseTest Class Doc Comment
  *
  * @category    Class
  * @description The &#x60;listInboundPlanPallets&#x60; response.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ListInboundPlanPalletsResponseTest extends TestCase
 {
@@ -57,7 +57,7 @@ class ListInboundPlanPalletsResponseTest extends TestCase
     public function testPropertyPagination()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Pagination();
+        $testValue = new \SpApi\Model\fulfillment\inbound\v2024_03_20\Pagination();
         
         $this->model->setPagination($testValue);
         $this->assertEquals($testValue, $this->model->getPagination());

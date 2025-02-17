@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\solicitations\v1;
+namespace SpApi\Model\solicitations\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetSolicitationActionsForOrderResponse Class Doc Comment
  *
  * @category Class
  * @description The response schema for the getSolicitationActionsForOrder operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,9 +60,9 @@ class GetSolicitationActionsForOrderResponse implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static array $openAPITypes = [
-             '_links' => '\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponseLinks',
-             '_embedded' => '\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponseEmbedded',
-             'errors' => '\OpenAPI\Client\Model\solicitations\v1\Error[]'    ];
+             '_links' => '\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponseLinks',
+             '_embedded' => '\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponseEmbedded',
+             'errors' => '\SpApi\Model\solicitations\v1\Error[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -308,9 +308,9 @@ class GetSolicitationActionsForOrderResponse implements ModelInterface, ArrayAcc
     /**
      * Gets _links
      *
-     * @return \OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponseLinks|null
+     * @return \SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponseLinks|null
      */
-    public function getLinks(): ?\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponseLinks
+    public function getLinks(): ?\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponseLinks
     {
         return $this->container['_links'];
     }
@@ -318,11 +318,11 @@ class GetSolicitationActionsForOrderResponse implements ModelInterface, ArrayAcc
     /**
      * Sets _links
      *
-     * @param \OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponseLinks|null $_links _links
+     * @param \SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponseLinks|null $_links _links
      *
      * @return self
      */
-    public function setLinks(?\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponseLinks $_links): self
+    public function setLinks(?\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponseLinks $_links): self
     {
         if (is_null($_links)) {
             array_push($this->openAPINullablesSetToNull, '_links');
@@ -342,9 +342,9 @@ class GetSolicitationActionsForOrderResponse implements ModelInterface, ArrayAcc
     /**
      * Gets _embedded
      *
-     * @return \OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponseEmbedded|null
+     * @return \SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponseEmbedded|null
      */
-    public function getEmbedded(): ?\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponseEmbedded
+    public function getEmbedded(): ?\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponseEmbedded
     {
         return $this->container['_embedded'];
     }
@@ -352,11 +352,11 @@ class GetSolicitationActionsForOrderResponse implements ModelInterface, ArrayAcc
     /**
      * Sets _embedded
      *
-     * @param \OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponseEmbedded|null $_embedded _embedded
+     * @param \SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponseEmbedded|null $_embedded _embedded
      *
      * @return self
      */
-    public function setEmbedded(?\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponseEmbedded $_embedded): self
+    public function setEmbedded(?\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponseEmbedded $_embedded): self
     {
         if (is_null($_embedded)) {
             array_push($this->openAPINullablesSetToNull, '_embedded');

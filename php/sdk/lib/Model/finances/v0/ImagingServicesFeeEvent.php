@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\finances\v0;
+namespace SpApi\Model\finances\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ImagingServicesFeeEvent Class Doc Comment
  *
  * @category Class
  * @description A fee event related to Amazon Imaging services.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,7 +63,7 @@ class ImagingServicesFeeEvent implements ModelInterface, ArrayAccess, \JsonSeria
              'imaging_request_billing_item_id' => 'string',
              'asin' => 'string',
              'posted_date' => '\DateTime',
-             'fee_list' => '\OpenAPI\Client\Model\finances\v0\FeeComponent[]'    ];
+             'fee_list' => '\SpApi\Model\finances\v0\FeeComponent[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

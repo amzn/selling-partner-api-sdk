@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v2022_05_01\SegmentDetails;
+use SpApi\Model\pricing\v2022_05_01\SegmentDetails;
 
 /**
  * SegmentDetailsTest Class Doc Comment
  *
  * @category    Class
  * @description The details about the segment. The FeaturedOfferExpectedPrice API uses only the sampleLocation portion as input.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class SegmentDetailsTest extends TestCase
 {
@@ -68,7 +68,7 @@ class SegmentDetailsTest extends TestCase
     public function testPropertySampleLocation()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v2022_05_01\SampleLocation();
+        $testValue = new \SpApi\Model\pricing\v2022_05_01\SampleLocation();
         
         $this->model->setSampleLocation($testValue);
         $this->assertEquals($testValue, $this->model->getSampleLocation());

@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\supplySources\v2020_07_01;
+namespace SpApi\Model\supplySources\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ParkingConfiguration Class Doc Comment
  *
  * @category Class
  * @description The parking configuration.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class ParkingConfiguration implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'parking_cost_type' => '\OpenAPI\Client\Model\supplySources\v2020_07_01\ParkingCostType',
-             'parking_spot_identification_type' => '\OpenAPI\Client\Model\supplySources\v2020_07_01\ParkingSpotIdentificationType',
+             'parking_cost_type' => '\SpApi\Model\supplySources\v2020_07_01\ParkingCostType',
+             'parking_spot_identification_type' => '\SpApi\Model\supplySources\v2020_07_01\ParkingSpotIdentificationType',
              'number_of_parking_spots' => 'int'    ];
 
     /**

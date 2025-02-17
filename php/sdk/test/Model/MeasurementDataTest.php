@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\awd\v2024_05_09\MeasurementData;
+use SpApi\Model\awd\v2024_05_09\MeasurementData;
 
 /**
  * MeasurementDataTest Class Doc Comment
  *
  * @category    Class
  * @description Package weight and dimension.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class MeasurementDataTest extends TestCase
 {
@@ -57,7 +57,7 @@ class MeasurementDataTest extends TestCase
     public function testPropertyDimensions()
     {
         
-        $testValue = new \OpenAPI\Client\Model\awd\v2024_05_09\PackageDimensions();
+        $testValue = new \SpApi\Model\awd\v2024_05_09\PackageDimensions();
         
         $this->model->setDimensions($testValue);
         $this->assertEquals($testValue, $this->model->getDimensions());
@@ -69,7 +69,7 @@ class MeasurementDataTest extends TestCase
     public function testPropertyVolume()
     {
         
-        $testValue = new \OpenAPI\Client\Model\awd\v2024_05_09\PackageVolume();
+        $testValue = new \SpApi\Model\awd\v2024_05_09\PackageVolume();
         
         $this->model->setVolume($testValue);
         $this->assertEquals($testValue, $this->model->getVolume());
@@ -81,7 +81,7 @@ class MeasurementDataTest extends TestCase
     public function testPropertyWeight()
     {
         
-        $testValue = new \OpenAPI\Client\Model\awd\v2024_05_09\PackageWeight();
+        $testValue = new \SpApi\Model\awd\v2024_05_09\PackageWeight();
         
         $this->model->setWeight($testValue);
         $this->assertEquals($testValue, $this->model->getWeight());

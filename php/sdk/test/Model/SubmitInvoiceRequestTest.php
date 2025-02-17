@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\invoicing\v0\SubmitInvoiceRequest;
+use SpApi\Model\invoicing\v0\SubmitInvoiceRequest;
 
 /**
  * SubmitInvoiceRequestTest Class Doc Comment
  *
  * @category    Class
  * @description The request schema for the submitInvoice operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class SubmitInvoiceRequestTest extends TestCase
 {

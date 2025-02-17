@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01;
+namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * CreateFulfillmentReturnResult Class Doc Comment
  *
  * @category Class
  * @description The result for the createFulfillmentReturn operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,9 +60,9 @@ class CreateFulfillmentReturnResult implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'return_items' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\ReturnItem[]',
-             'invalid_return_items' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\InvalidReturnItem[]',
-             'return_authorizations' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\ReturnAuthorization[]'    ];
+             'return_items' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\ReturnItem[]',
+             'invalid_return_items' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\InvalidReturnItem[]',
+             'return_authorizations' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\ReturnAuthorization[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

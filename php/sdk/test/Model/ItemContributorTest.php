@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemContributor;
+use SpApi\Model\catalogItems\v2022_04_01\ItemContributor;
 
 /**
  * ItemContributorTest Class Doc Comment
  *
  * @category    Class
  * @description Individual contributor to the creation of an item, such as an author or actor.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ItemContributorTest extends TestCase
 {
@@ -57,7 +57,7 @@ class ItemContributorTest extends TestCase
     public function testPropertyRole()
     {
         
-        $testValue = new \OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemContributorRole();
+        $testValue = new \SpApi\Model\catalogItems\v2022_04_01\ItemContributorRole();
         
         $this->model->setRole($testValue);
         $this->assertEquals($testValue, $this->model->getRole());

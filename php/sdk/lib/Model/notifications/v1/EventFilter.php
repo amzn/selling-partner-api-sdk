@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\notifications\v1;
+namespace SpApi\Model\notifications\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * EventFilter Class Doc Comment
  *
  * @category Class
  * @description A &#x60;notificationType&#x60; specific filter. This object contains all of the currently available filters and properties that you can use to define a &#x60;notificationType&#x60; specific filter.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,9 +60,9 @@ class EventFilter implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'aggregation_settings' => '\OpenAPI\Client\Model\notifications\v1\AggregationSettings',
+             'aggregation_settings' => '\SpApi\Model\notifications\v1\AggregationSettings',
              'marketplace_ids' => 'string[]',
-             'order_change_types' => '\OpenAPI\Client\Model\notifications\v1\OrderChangeTypeEnum[]',
+             'order_change_types' => '\SpApi\Model\notifications\v1\OrderChangeTypeEnum[]',
              'event_filter_type' => 'string'    ];
 
     /**
@@ -342,9 +342,9 @@ class EventFilter implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets aggregation_settings
      *
-     * @return \OpenAPI\Client\Model\notifications\v1\AggregationSettings|null
+     * @return \SpApi\Model\notifications\v1\AggregationSettings|null
      */
-    public function getAggregationSettings(): ?\OpenAPI\Client\Model\notifications\v1\AggregationSettings
+    public function getAggregationSettings(): ?\SpApi\Model\notifications\v1\AggregationSettings
     {
         return $this->container['aggregation_settings'];
     }
@@ -352,11 +352,11 @@ class EventFilter implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets aggregation_settings
      *
-     * @param \OpenAPI\Client\Model\notifications\v1\AggregationSettings|null $aggregation_settings aggregation_settings
+     * @param \SpApi\Model\notifications\v1\AggregationSettings|null $aggregation_settings aggregation_settings
      *
      * @return self
      */
-    public function setAggregationSettings(?\OpenAPI\Client\Model\notifications\v1\AggregationSettings $aggregation_settings): self
+    public function setAggregationSettings(?\SpApi\Model\notifications\v1\AggregationSettings $aggregation_settings): self
     {
         if (is_null($aggregation_settings)) {
             array_push($this->openAPINullablesSetToNull, 'aggregation_settings');

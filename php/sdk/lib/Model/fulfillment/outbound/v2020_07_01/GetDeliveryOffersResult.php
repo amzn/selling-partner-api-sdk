@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01;
+namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetDeliveryOffersResult Class Doc Comment
  *
  * @category Class
  * @description A list of delivery offers, including offer expiration, earliest and latest date and time range, and the delivery offer policy.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class GetDeliveryOffersResult implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'delivery_offers' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DeliveryOffer[]'    ];
+             'delivery_offers' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\DeliveryOffer[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\v0\AutomatedShippingSettings;
+use SpApi\Model\orders\v0\AutomatedShippingSettings;
 
 /**
  * AutomatedShippingSettingsTest Class Doc Comment
  *
  * @category    Class
  * @description Contains information regarding the Shipping Settings Automation program, such as whether the order&#39;s shipping settings were generated automatically, and what those settings are.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class AutomatedShippingSettingsTest extends TestCase
 {

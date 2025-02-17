@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20;
+namespace SpApi\Model\fulfillment\inbound\v2024_03_20;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ScheduleSelfShipAppointmentResponse Class Doc Comment
  *
  * @category Class
  * @description The &#x60;scheduleSelfShipAppointment&#x60; response.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class ScheduleSelfShipAppointmentResponse implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'self_ship_appointment_details' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\SelfShipAppointmentDetails'    ];
+             'self_ship_appointment_details' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\SelfShipAppointmentDetails'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -297,9 +297,9 @@ class ScheduleSelfShipAppointmentResponse implements ModelInterface, ArrayAccess
     /**
      * Gets self_ship_appointment_details
      *
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\SelfShipAppointmentDetails
+     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\SelfShipAppointmentDetails
      */
-    public function getSelfShipAppointmentDetails(): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\SelfShipAppointmentDetails
+    public function getSelfShipAppointmentDetails(): \SpApi\Model\fulfillment\inbound\v2024_03_20\SelfShipAppointmentDetails
     {
         return $this->container['self_ship_appointment_details'];
     }
@@ -307,11 +307,11 @@ class ScheduleSelfShipAppointmentResponse implements ModelInterface, ArrayAccess
     /**
      * Sets self_ship_appointment_details
      *
-     * @param \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\SelfShipAppointmentDetails $self_ship_appointment_details self_ship_appointment_details
+     * @param \SpApi\Model\fulfillment\inbound\v2024_03_20\SelfShipAppointmentDetails $self_ship_appointment_details self_ship_appointment_details
      *
      * @return self
      */
-    public function setSelfShipAppointmentDetails(\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\SelfShipAppointmentDetails $self_ship_appointment_details): self
+    public function setSelfShipAppointmentDetails(\SpApi\Model\fulfillment\inbound\v2024_03_20\SelfShipAppointmentDetails $self_ship_appointment_details): self
     {
         if (is_null($self_ship_appointment_details)) {
             throw new \InvalidArgumentException('non-nullable self_ship_appointment_details cannot be null');

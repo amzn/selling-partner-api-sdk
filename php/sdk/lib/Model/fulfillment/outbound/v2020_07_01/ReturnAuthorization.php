@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01;
+namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ReturnAuthorization Class Doc Comment
  *
  * @category Class
  * @description Return authorization information for items accepted for return.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +62,7 @@ class ReturnAuthorization implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static array $openAPITypes = [
              'return_authorization_id' => 'string',
              'fulfillment_center_id' => 'string',
-             'return_to_address' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Address',
+             'return_to_address' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\Address',
              'amazon_rma_id' => 'string',
              'rma_page_url' => 'string'    ];
 
@@ -391,9 +391,9 @@ class ReturnAuthorization implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets return_to_address
      *
-     * @return \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Address
+     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\Address
      */
-    public function getReturnToAddress(): \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Address
+    public function getReturnToAddress(): \SpApi\Model\fulfillment\outbound\v2020_07_01\Address
     {
         return $this->container['return_to_address'];
     }
@@ -401,11 +401,11 @@ class ReturnAuthorization implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets return_to_address
      *
-     * @param \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Address $return_to_address return_to_address
+     * @param \SpApi\Model\fulfillment\outbound\v2020_07_01\Address $return_to_address return_to_address
      *
      * @return self
      */
-    public function setReturnToAddress(\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Address $return_to_address): self
+    public function setReturnToAddress(\SpApi\Model\fulfillment\outbound\v2020_07_01\Address $return_to_address): self
     {
         if (is_null($return_to_address)) {
             throw new \InvalidArgumentException('non-nullable return_to_address cannot be null');

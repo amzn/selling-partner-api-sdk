@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\v1\ScopeOfWork;
+use SpApi\Model\services\v1\ScopeOfWork;
 
 /**
  * ScopeOfWorkTest Class Doc Comment
  *
  * @category    Class
  * @description The scope of work for the order.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ScopeOfWorkTest extends TestCase
 {

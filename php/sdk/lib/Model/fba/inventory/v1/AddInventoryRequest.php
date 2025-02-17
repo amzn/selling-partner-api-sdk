@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fba\inventory\v1;
+namespace SpApi\Model\fba\inventory\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * AddInventoryRequest Class Doc Comment
  *
  * @category Class
  * @description The object with the list of Inventory to be added
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class AddInventoryRequest implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'inventory_items' => '\OpenAPI\Client\Model\fba\inventory\v1\InventoryItem[]'    ];
+             'inventory_items' => '\SpApi\Model\fba\inventory\v1\InventoryItem[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,19 +27,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\shipping\v2;
+namespace SpApi\Model\shipping\v2;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetCarrierAccountFormInputsResponse Class Doc Comment
  *
  * @category Class
  * @description The Response  for the GetCarrierAccountFormInputsResponse operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class GetCarrierAccountFormInputsResponse implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'linkable_carriers_list' => '\OpenAPI\Client\Model\shipping\v2\LinkableCarrier[]'    ];
+             'linkable_carriers_list' => '\SpApi\Model\shipping\v2\LinkableCarrier[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,19 +27,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\shipping\v2;
+namespace SpApi\Model\shipping\v2;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ExceptionOperatingHours Class Doc Comment
  *
  * @category Class
  * @description Defines exceptions to standard operating hours for certain date ranges.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,8 +61,8 @@ class ExceptionOperatingHours implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'date_range' => '\OpenAPI\Client\Model\shipping\v2\DateRange',
-             'operating_hours' => '\OpenAPI\Client\Model\shipping\v2\OperatingHours'    ];
+             'date_range' => '\SpApi\Model\shipping\v2\DateRange',
+             'operating_hours' => '\SpApi\Model\shipping\v2\OperatingHours'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -302,9 +302,9 @@ class ExceptionOperatingHours implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets date_range
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\DateRange|null
+     * @return \SpApi\Model\shipping\v2\DateRange|null
      */
-    public function getDateRange(): ?\OpenAPI\Client\Model\shipping\v2\DateRange
+    public function getDateRange(): ?\SpApi\Model\shipping\v2\DateRange
     {
         return $this->container['date_range'];
     }
@@ -312,11 +312,11 @@ class ExceptionOperatingHours implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets date_range
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\DateRange|null $date_range date_range
+     * @param \SpApi\Model\shipping\v2\DateRange|null $date_range date_range
      *
      * @return self
      */
-    public function setDateRange(?\OpenAPI\Client\Model\shipping\v2\DateRange $date_range): self
+    public function setDateRange(?\SpApi\Model\shipping\v2\DateRange $date_range): self
     {
         if (is_null($date_range)) {
             array_push($this->openAPINullablesSetToNull, 'date_range');
@@ -336,9 +336,9 @@ class ExceptionOperatingHours implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets operating_hours
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\OperatingHours|null
+     * @return \SpApi\Model\shipping\v2\OperatingHours|null
      */
-    public function getOperatingHours(): ?\OpenAPI\Client\Model\shipping\v2\OperatingHours
+    public function getOperatingHours(): ?\SpApi\Model\shipping\v2\OperatingHours
     {
         return $this->container['operating_hours'];
     }
@@ -346,11 +346,11 @@ class ExceptionOperatingHours implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets operating_hours
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\OperatingHours|null $operating_hours operating_hours
+     * @param \SpApi\Model\shipping\v2\OperatingHours|null $operating_hours operating_hours
      *
      * @return self
      */
-    public function setOperatingHours(?\OpenAPI\Client\Model\shipping\v2\OperatingHours $operating_hours): self
+    public function setOperatingHours(?\SpApi\Model\shipping\v2\OperatingHours $operating_hours): self
     {
         if (is_null($operating_hours)) {
             array_push($this->openAPINullablesSetToNull, 'operating_hours');

@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\finances\v0;
+namespace SpApi\Model\finances\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * FinancialEvents Class Doc Comment
  *
  * @category Class
  * @description Contains all information related to a financial event.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,39 +60,39 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'shipment_event_list' => '\OpenAPI\Client\Model\finances\v0\ShipmentEvent[]',
-             'shipment_settle_event_list' => '\OpenAPI\Client\Model\finances\v0\ShipmentEvent[]',
-             'refund_event_list' => '\OpenAPI\Client\Model\finances\v0\ShipmentEvent[]',
-             'guarantee_claim_event_list' => '\OpenAPI\Client\Model\finances\v0\ShipmentEvent[]',
-             'chargeback_event_list' => '\OpenAPI\Client\Model\finances\v0\ShipmentEvent[]',
-             'pay_with_amazon_event_list' => '\OpenAPI\Client\Model\finances\v0\PayWithAmazonEvent[]',
-             'service_provider_credit_event_list' => '\OpenAPI\Client\Model\finances\v0\SolutionProviderCreditEvent[]',
-             'retrocharge_event_list' => '\OpenAPI\Client\Model\finances\v0\RetrochargeEvent[]',
-             'rental_transaction_event_list' => '\OpenAPI\Client\Model\finances\v0\RentalTransactionEvent[]',
-             'product_ads_payment_event_list' => '\OpenAPI\Client\Model\finances\v0\ProductAdsPaymentEvent[]',
-             'service_fee_event_list' => '\OpenAPI\Client\Model\finances\v0\ServiceFeeEvent[]',
-             'seller_deal_payment_event_list' => '\OpenAPI\Client\Model\finances\v0\SellerDealPaymentEvent[]',
-             'debt_recovery_event_list' => '\OpenAPI\Client\Model\finances\v0\DebtRecoveryEvent[]',
-             'loan_servicing_event_list' => '\OpenAPI\Client\Model\finances\v0\LoanServicingEvent[]',
-             'adjustment_event_list' => '\OpenAPI\Client\Model\finances\v0\AdjustmentEvent[]',
-             'safet_reimbursement_event_list' => '\OpenAPI\Client\Model\finances\v0\SAFETReimbursementEvent[]',
-             'seller_review_enrollment_payment_event_list' => '\OpenAPI\Client\Model\finances\v0\SellerReviewEnrollmentPaymentEvent[]',
-             'fba_liquidation_event_list' => '\OpenAPI\Client\Model\finances\v0\FBALiquidationEvent[]',
-             'coupon_payment_event_list' => '\OpenAPI\Client\Model\finances\v0\CouponPaymentEvent[]',
-             'imaging_services_fee_event_list' => '\OpenAPI\Client\Model\finances\v0\ImagingServicesFeeEvent[]',
-             'network_commingling_transaction_event_list' => '\OpenAPI\Client\Model\finances\v0\NetworkComminglingTransactionEvent[]',
-             'affordability_expense_event_list' => '\OpenAPI\Client\Model\finances\v0\AffordabilityExpenseEvent[]',
-             'affordability_expense_reversal_event_list' => '\OpenAPI\Client\Model\finances\v0\AffordabilityExpenseEvent[]',
-             'removal_shipment_event_list' => '\OpenAPI\Client\Model\finances\v0\RemovalShipmentEvent[]',
-             'removal_shipment_adjustment_event_list' => '\OpenAPI\Client\Model\finances\v0\RemovalShipmentAdjustmentEvent[]',
-             'trial_shipment_event_list' => '\OpenAPI\Client\Model\finances\v0\TrialShipmentEvent[]',
-             'tds_reimbursement_event_list' => '\OpenAPI\Client\Model\finances\v0\TDSReimbursementEvent[]',
-             'adhoc_disbursement_event_list' => '\OpenAPI\Client\Model\finances\v0\AdhocDisbursementEvent[]',
-             'tax_withholding_event_list' => '\OpenAPI\Client\Model\finances\v0\TaxWithholdingEvent[]',
-             'charge_refund_event_list' => '\OpenAPI\Client\Model\finances\v0\ChargeRefundEvent[]',
-             'failed_adhoc_disbursement_event_list' => '\OpenAPI\Client\Model\finances\v0\FailedAdhocDisbursementEvent[]',
-             'value_added_service_charge_event_list' => '\OpenAPI\Client\Model\finances\v0\ValueAddedServiceChargeEvent[]',
-             'capacity_reservation_billing_event_list' => '\OpenAPI\Client\Model\finances\v0\CapacityReservationBillingEvent[]'    ];
+             'shipment_event_list' => '\SpApi\Model\finances\v0\ShipmentEvent[]',
+             'shipment_settle_event_list' => '\SpApi\Model\finances\v0\ShipmentEvent[]',
+             'refund_event_list' => '\SpApi\Model\finances\v0\ShipmentEvent[]',
+             'guarantee_claim_event_list' => '\SpApi\Model\finances\v0\ShipmentEvent[]',
+             'chargeback_event_list' => '\SpApi\Model\finances\v0\ShipmentEvent[]',
+             'pay_with_amazon_event_list' => '\SpApi\Model\finances\v0\PayWithAmazonEvent[]',
+             'service_provider_credit_event_list' => '\SpApi\Model\finances\v0\SolutionProviderCreditEvent[]',
+             'retrocharge_event_list' => '\SpApi\Model\finances\v0\RetrochargeEvent[]',
+             'rental_transaction_event_list' => '\SpApi\Model\finances\v0\RentalTransactionEvent[]',
+             'product_ads_payment_event_list' => '\SpApi\Model\finances\v0\ProductAdsPaymentEvent[]',
+             'service_fee_event_list' => '\SpApi\Model\finances\v0\ServiceFeeEvent[]',
+             'seller_deal_payment_event_list' => '\SpApi\Model\finances\v0\SellerDealPaymentEvent[]',
+             'debt_recovery_event_list' => '\SpApi\Model\finances\v0\DebtRecoveryEvent[]',
+             'loan_servicing_event_list' => '\SpApi\Model\finances\v0\LoanServicingEvent[]',
+             'adjustment_event_list' => '\SpApi\Model\finances\v0\AdjustmentEvent[]',
+             'safet_reimbursement_event_list' => '\SpApi\Model\finances\v0\SAFETReimbursementEvent[]',
+             'seller_review_enrollment_payment_event_list' => '\SpApi\Model\finances\v0\SellerReviewEnrollmentPaymentEvent[]',
+             'fba_liquidation_event_list' => '\SpApi\Model\finances\v0\FBALiquidationEvent[]',
+             'coupon_payment_event_list' => '\SpApi\Model\finances\v0\CouponPaymentEvent[]',
+             'imaging_services_fee_event_list' => '\SpApi\Model\finances\v0\ImagingServicesFeeEvent[]',
+             'network_commingling_transaction_event_list' => '\SpApi\Model\finances\v0\NetworkComminglingTransactionEvent[]',
+             'affordability_expense_event_list' => '\SpApi\Model\finances\v0\AffordabilityExpenseEvent[]',
+             'affordability_expense_reversal_event_list' => '\SpApi\Model\finances\v0\AffordabilityExpenseEvent[]',
+             'removal_shipment_event_list' => '\SpApi\Model\finances\v0\RemovalShipmentEvent[]',
+             'removal_shipment_adjustment_event_list' => '\SpApi\Model\finances\v0\RemovalShipmentAdjustmentEvent[]',
+             'trial_shipment_event_list' => '\SpApi\Model\finances\v0\TrialShipmentEvent[]',
+             'tds_reimbursement_event_list' => '\SpApi\Model\finances\v0\TDSReimbursementEvent[]',
+             'adhoc_disbursement_event_list' => '\SpApi\Model\finances\v0\AdhocDisbursementEvent[]',
+             'tax_withholding_event_list' => '\SpApi\Model\finances\v0\TaxWithholdingEvent[]',
+             'charge_refund_event_list' => '\SpApi\Model\finances\v0\ChargeRefundEvent[]',
+             'failed_adhoc_disbursement_event_list' => '\SpApi\Model\finances\v0\FailedAdhocDisbursementEvent[]',
+             'value_added_service_charge_event_list' => '\SpApi\Model\finances\v0\ValueAddedServiceChargeEvent[]',
+             'capacity_reservation_billing_event_list' => '\SpApi\Model\finances\v0\CapacityReservationBillingEvent[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

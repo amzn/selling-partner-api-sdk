@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\finances\v0;
+namespace SpApi\Model\finances\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ListFinancialEventsPayload Class Doc Comment
  *
  * @category Class
  * @description The payload for the listFinancialEvents operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class ListFinancialEventsPayload implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static array $openAPITypes = [
              'next_token' => 'string',
-             'financial_events' => '\OpenAPI\Client\Model\finances\v0\FinancialEvents'    ];
+             'financial_events' => '\SpApi\Model\finances\v0\FinancialEvents'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -335,9 +335,9 @@ class ListFinancialEventsPayload implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets financial_events
      *
-     * @return \OpenAPI\Client\Model\finances\v0\FinancialEvents|null
+     * @return \SpApi\Model\finances\v0\FinancialEvents|null
      */
-    public function getFinancialEvents(): ?\OpenAPI\Client\Model\finances\v0\FinancialEvents
+    public function getFinancialEvents(): ?\SpApi\Model\finances\v0\FinancialEvents
     {
         return $this->container['financial_events'];
     }
@@ -345,11 +345,11 @@ class ListFinancialEventsPayload implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets financial_events
      *
-     * @param \OpenAPI\Client\Model\finances\v0\FinancialEvents|null $financial_events financial_events
+     * @param \SpApi\Model\finances\v0\FinancialEvents|null $financial_events financial_events
      *
      * @return self
      */
-    public function setFinancialEvents(?\OpenAPI\Client\Model\finances\v0\FinancialEvents $financial_events): self
+    public function setFinancialEvents(?\SpApi\Model\finances\v0\FinancialEvents $financial_events): self
     {
         if (is_null($financial_events)) {
             array_push($this->openAPINullablesSetToNull, 'financial_events');

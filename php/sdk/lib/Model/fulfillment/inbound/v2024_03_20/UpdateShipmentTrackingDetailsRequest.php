@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20;
+namespace SpApi\Model\fulfillment\inbound\v2024_03_20;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * UpdateShipmentTrackingDetailsRequest Class Doc Comment
  *
  * @category Class
  * @description The &#x60;updateShipmentTrackingDetails&#x60; request.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class UpdateShipmentTrackingDetailsRequest implements ModelInterface, ArrayAcces
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'tracking_details' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\TrackingDetailsInput'    ];
+             'tracking_details' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\TrackingDetailsInput'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -297,9 +297,9 @@ class UpdateShipmentTrackingDetailsRequest implements ModelInterface, ArrayAcces
     /**
      * Gets tracking_details
      *
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\TrackingDetailsInput
+     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\TrackingDetailsInput
      */
-    public function getTrackingDetails(): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\TrackingDetailsInput
+    public function getTrackingDetails(): \SpApi\Model\fulfillment\inbound\v2024_03_20\TrackingDetailsInput
     {
         return $this->container['tracking_details'];
     }
@@ -307,11 +307,11 @@ class UpdateShipmentTrackingDetailsRequest implements ModelInterface, ArrayAcces
     /**
      * Sets tracking_details
      *
-     * @param \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\TrackingDetailsInput $tracking_details tracking_details
+     * @param \SpApi\Model\fulfillment\inbound\v2024_03_20\TrackingDetailsInput $tracking_details tracking_details
      *
      * @return self
      */
-    public function setTrackingDetails(\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\TrackingDetailsInput $tracking_details): self
+    public function setTrackingDetails(\SpApi\Model\fulfillment\inbound\v2024_03_20\TrackingDetailsInput $tracking_details): self
     {
         if (is_null($tracking_details)) {
             throw new \InvalidArgumentException('non-nullable tracking_details cannot be null');

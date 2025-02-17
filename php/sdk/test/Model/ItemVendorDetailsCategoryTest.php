@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemVendorDetailsCategory;
+use SpApi\Model\catalogItems\v2022_04_01\ItemVendorDetailsCategory;
 
 /**
  * ItemVendorDetailsCategoryTest Class Doc Comment
  *
  * @category    Class
  * @description Product category or subcategory associated with an Amazon catalog item.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ItemVendorDetailsCategoryTest extends TestCase
 {

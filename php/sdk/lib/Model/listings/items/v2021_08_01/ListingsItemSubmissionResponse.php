@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\listings\items\v2021_08_01;
+namespace SpApi\Model\listings\items\v2021_08_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ListingsItemSubmissionResponse Class Doc Comment
  *
  * @category Class
  * @description Response containing the results of a submission to the Selling Partner API for Listings Items.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,8 +63,8 @@ class ListingsItemSubmissionResponse implements ModelInterface, ArrayAccess, \Js
              'sku' => 'string',
              'status' => 'string',
              'submission_id' => 'string',
-             'issues' => '\OpenAPI\Client\Model\listings\items\v2021_08_01\Issue[]',
-             'identifiers' => '\OpenAPI\Client\Model\listings\items\v2021_08_01\ItemIdentifiersByMarketplace[]'    ];
+             'issues' => '\SpApi\Model\listings\items\v2021_08_01\Issue[]',
+             'identifiers' => '\SpApi\Model\listings\items\v2021_08_01\ItemIdentifiersByMarketplace[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

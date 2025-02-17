@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\finances\v0\RemovalShipmentEvent;
+use SpApi\Model\finances\v0\RemovalShipmentEvent;
 
 /**
  * RemovalShipmentEventTest Class Doc Comment
  *
  * @category    Class
  * @description A removal shipment event for a removal order.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class RemovalShipmentEventTest extends TestCase
 {

@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\orders\v0;
+namespace SpApi\Model\orders\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * OrderItemBuyerInfo Class Doc Comment
  *
  * @category Class
  * @description A single order item&#39;s buyer information.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,9 +61,9 @@ class OrderItemBuyerInfo implements ModelInterface, ArrayAccess, \JsonSerializab
       */
     protected static array $openAPITypes = [
              'order_item_id' => 'string',
-             'buyer_customized_info' => '\OpenAPI\Client\Model\orders\v0\BuyerCustomizedInfoDetail',
-             'gift_wrap_price' => '\OpenAPI\Client\Model\orders\v0\Money',
-             'gift_wrap_tax' => '\OpenAPI\Client\Model\orders\v0\Money',
+             'buyer_customized_info' => '\SpApi\Model\orders\v0\BuyerCustomizedInfoDetail',
+             'gift_wrap_price' => '\SpApi\Model\orders\v0\Money',
+             'gift_wrap_tax' => '\SpApi\Model\orders\v0\Money',
              'gift_message_text' => 'string',
              'gift_wrap_level' => 'string'    ];
 
@@ -359,9 +359,9 @@ class OrderItemBuyerInfo implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets buyer_customized_info
      *
-     * @return \OpenAPI\Client\Model\orders\v0\BuyerCustomizedInfoDetail|null
+     * @return \SpApi\Model\orders\v0\BuyerCustomizedInfoDetail|null
      */
-    public function getBuyerCustomizedInfo(): ?\OpenAPI\Client\Model\orders\v0\BuyerCustomizedInfoDetail
+    public function getBuyerCustomizedInfo(): ?\SpApi\Model\orders\v0\BuyerCustomizedInfoDetail
     {
         return $this->container['buyer_customized_info'];
     }
@@ -369,11 +369,11 @@ class OrderItemBuyerInfo implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets buyer_customized_info
      *
-     * @param \OpenAPI\Client\Model\orders\v0\BuyerCustomizedInfoDetail|null $buyer_customized_info buyer_customized_info
+     * @param \SpApi\Model\orders\v0\BuyerCustomizedInfoDetail|null $buyer_customized_info buyer_customized_info
      *
      * @return self
      */
-    public function setBuyerCustomizedInfo(?\OpenAPI\Client\Model\orders\v0\BuyerCustomizedInfoDetail $buyer_customized_info): self
+    public function setBuyerCustomizedInfo(?\SpApi\Model\orders\v0\BuyerCustomizedInfoDetail $buyer_customized_info): self
     {
         if (is_null($buyer_customized_info)) {
             array_push($this->openAPINullablesSetToNull, 'buyer_customized_info');
@@ -393,9 +393,9 @@ class OrderItemBuyerInfo implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets gift_wrap_price
      *
-     * @return \OpenAPI\Client\Model\orders\v0\Money|null
+     * @return \SpApi\Model\orders\v0\Money|null
      */
-    public function getGiftWrapPrice(): ?\OpenAPI\Client\Model\orders\v0\Money
+    public function getGiftWrapPrice(): ?\SpApi\Model\orders\v0\Money
     {
         return $this->container['gift_wrap_price'];
     }
@@ -403,11 +403,11 @@ class OrderItemBuyerInfo implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets gift_wrap_price
      *
-     * @param \OpenAPI\Client\Model\orders\v0\Money|null $gift_wrap_price gift_wrap_price
+     * @param \SpApi\Model\orders\v0\Money|null $gift_wrap_price gift_wrap_price
      *
      * @return self
      */
-    public function setGiftWrapPrice(?\OpenAPI\Client\Model\orders\v0\Money $gift_wrap_price): self
+    public function setGiftWrapPrice(?\SpApi\Model\orders\v0\Money $gift_wrap_price): self
     {
         if (is_null($gift_wrap_price)) {
             array_push($this->openAPINullablesSetToNull, 'gift_wrap_price');
@@ -427,9 +427,9 @@ class OrderItemBuyerInfo implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets gift_wrap_tax
      *
-     * @return \OpenAPI\Client\Model\orders\v0\Money|null
+     * @return \SpApi\Model\orders\v0\Money|null
      */
-    public function getGiftWrapTax(): ?\OpenAPI\Client\Model\orders\v0\Money
+    public function getGiftWrapTax(): ?\SpApi\Model\orders\v0\Money
     {
         return $this->container['gift_wrap_tax'];
     }
@@ -437,11 +437,11 @@ class OrderItemBuyerInfo implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets gift_wrap_tax
      *
-     * @param \OpenAPI\Client\Model\orders\v0\Money|null $gift_wrap_tax gift_wrap_tax
+     * @param \SpApi\Model\orders\v0\Money|null $gift_wrap_tax gift_wrap_tax
      *
      * @return self
      */
-    public function setGiftWrapTax(?\OpenAPI\Client\Model\orders\v0\Money $gift_wrap_tax): self
+    public function setGiftWrapTax(?\SpApi\Model\orders\v0\Money $gift_wrap_tax): self
     {
         if (is_null($gift_wrap_tax)) {
             array_push($this->openAPINullablesSetToNull, 'gift_wrap_tax');

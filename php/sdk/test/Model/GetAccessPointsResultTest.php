@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\v2\GetAccessPointsResult;
+use SpApi\Model\shipping\v2\GetAccessPointsResult;
 
 /**
  * GetAccessPointsResultTest Class Doc Comment
  *
  * @category    Class
  * @description The payload for the GetAccessPoints API.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetAccessPointsResultTest extends TestCase
 {

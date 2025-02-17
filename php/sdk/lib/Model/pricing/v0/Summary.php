@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\pricing\v0;
+namespace SpApi\Model\pricing\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Summary Class Doc Comment
  *
  * @category Class
  * @description Contains price information about the product, including the LowestPrices and BuyBoxPrices, the ListPrice, the SuggestedLowerPricePlusShipping, and NumberOfOffers and NumberOfBuyBoxEligibleOffers.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,14 +61,14 @@ class Summary implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPITypes = [
              'total_offer_count' => 'int',
-             'number_of_offers' => '\OpenAPI\Client\Model\pricing\v0\OfferCountType[]',
-             'lowest_prices' => '\OpenAPI\Client\Model\pricing\v0\LowestPriceType[]',
-             'buy_box_prices' => '\OpenAPI\Client\Model\pricing\v0\BuyBoxPriceType[]',
-             'list_price' => '\OpenAPI\Client\Model\pricing\v0\MoneyType',
-             'competitive_price_threshold' => '\OpenAPI\Client\Model\pricing\v0\MoneyType',
-             'suggested_lower_price_plus_shipping' => '\OpenAPI\Client\Model\pricing\v0\MoneyType',
-             'sales_rankings' => '\OpenAPI\Client\Model\pricing\v0\SalesRankType[]',
-             'buy_box_eligible_offers' => '\OpenAPI\Client\Model\pricing\v0\OfferCountType[]',
+             'number_of_offers' => '\SpApi\Model\pricing\v0\OfferCountType[]',
+             'lowest_prices' => '\SpApi\Model\pricing\v0\LowestPriceType[]',
+             'buy_box_prices' => '\SpApi\Model\pricing\v0\BuyBoxPriceType[]',
+             'list_price' => '\SpApi\Model\pricing\v0\MoneyType',
+             'competitive_price_threshold' => '\SpApi\Model\pricing\v0\MoneyType',
+             'suggested_lower_price_plus_shipping' => '\SpApi\Model\pricing\v0\MoneyType',
+             'sales_rankings' => '\SpApi\Model\pricing\v0\SalesRankType[]',
+             'buy_box_eligible_offers' => '\SpApi\Model\pricing\v0\OfferCountType[]',
              'offers_available_time' => '\DateTime'    ];
 
     /**
@@ -489,9 +489,9 @@ class Summary implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets list_price
      *
-     * @return \OpenAPI\Client\Model\pricing\v0\MoneyType|null
+     * @return \SpApi\Model\pricing\v0\MoneyType|null
      */
-    public function getListPrice(): ?\OpenAPI\Client\Model\pricing\v0\MoneyType
+    public function getListPrice(): ?\SpApi\Model\pricing\v0\MoneyType
     {
         return $this->container['list_price'];
     }
@@ -499,11 +499,11 @@ class Summary implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets list_price
      *
-     * @param \OpenAPI\Client\Model\pricing\v0\MoneyType|null $list_price list_price
+     * @param \SpApi\Model\pricing\v0\MoneyType|null $list_price list_price
      *
      * @return self
      */
-    public function setListPrice(?\OpenAPI\Client\Model\pricing\v0\MoneyType $list_price): self
+    public function setListPrice(?\SpApi\Model\pricing\v0\MoneyType $list_price): self
     {
         if (is_null($list_price)) {
             array_push($this->openAPINullablesSetToNull, 'list_price');
@@ -523,9 +523,9 @@ class Summary implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets competitive_price_threshold
      *
-     * @return \OpenAPI\Client\Model\pricing\v0\MoneyType|null
+     * @return \SpApi\Model\pricing\v0\MoneyType|null
      */
-    public function getCompetitivePriceThreshold(): ?\OpenAPI\Client\Model\pricing\v0\MoneyType
+    public function getCompetitivePriceThreshold(): ?\SpApi\Model\pricing\v0\MoneyType
     {
         return $this->container['competitive_price_threshold'];
     }
@@ -533,11 +533,11 @@ class Summary implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets competitive_price_threshold
      *
-     * @param \OpenAPI\Client\Model\pricing\v0\MoneyType|null $competitive_price_threshold competitive_price_threshold
+     * @param \SpApi\Model\pricing\v0\MoneyType|null $competitive_price_threshold competitive_price_threshold
      *
      * @return self
      */
-    public function setCompetitivePriceThreshold(?\OpenAPI\Client\Model\pricing\v0\MoneyType $competitive_price_threshold): self
+    public function setCompetitivePriceThreshold(?\SpApi\Model\pricing\v0\MoneyType $competitive_price_threshold): self
     {
         if (is_null($competitive_price_threshold)) {
             array_push($this->openAPINullablesSetToNull, 'competitive_price_threshold');
@@ -557,9 +557,9 @@ class Summary implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets suggested_lower_price_plus_shipping
      *
-     * @return \OpenAPI\Client\Model\pricing\v0\MoneyType|null
+     * @return \SpApi\Model\pricing\v0\MoneyType|null
      */
-    public function getSuggestedLowerPricePlusShipping(): ?\OpenAPI\Client\Model\pricing\v0\MoneyType
+    public function getSuggestedLowerPricePlusShipping(): ?\SpApi\Model\pricing\v0\MoneyType
     {
         return $this->container['suggested_lower_price_plus_shipping'];
     }
@@ -567,11 +567,11 @@ class Summary implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets suggested_lower_price_plus_shipping
      *
-     * @param \OpenAPI\Client\Model\pricing\v0\MoneyType|null $suggested_lower_price_plus_shipping suggested_lower_price_plus_shipping
+     * @param \SpApi\Model\pricing\v0\MoneyType|null $suggested_lower_price_plus_shipping suggested_lower_price_plus_shipping
      *
      * @return self
      */
-    public function setSuggestedLowerPricePlusShipping(?\OpenAPI\Client\Model\pricing\v0\MoneyType $suggested_lower_price_plus_shipping): self
+    public function setSuggestedLowerPricePlusShipping(?\SpApi\Model\pricing\v0\MoneyType $suggested_lower_price_plus_shipping): self
     {
         if (is_null($suggested_lower_price_plus_shipping)) {
             array_push($this->openAPINullablesSetToNull, 'suggested_lower_price_plus_shipping');

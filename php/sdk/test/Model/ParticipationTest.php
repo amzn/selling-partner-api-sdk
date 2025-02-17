@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\sellers\v1\Participation;
+use SpApi\Model\sellers\v1\Participation;
 
 /**
  * ParticipationTest Class Doc Comment
  *
  * @category    Class
  * @description Detailed information that is specific to a seller in a marketplace.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ParticipationTest extends TestCase
 {

@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20;
+namespace SpApi\Model\fulfillment\inbound\v2024_03_20;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GeneratePlacementOptionsRequest Class Doc Comment
  *
  * @category Class
  * @description The &#x60;generatePlacementOptions&#x60; request.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class GeneratePlacementOptionsRequest implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'custom_placement' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\CustomPlacementInput[]'    ];
+             'custom_placement' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\CustomPlacementInput[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

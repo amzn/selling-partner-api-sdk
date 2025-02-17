@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\awd\v2024_05_09\SkuQuantity;
+use SpApi\Model\awd\v2024_05_09\SkuQuantity;
 
 /**
  * SkuQuantityTest Class Doc Comment
  *
  * @category    Class
  * @description Quantity details for a SKU as part of a shipment
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class SkuQuantityTest extends TestCase
 {
@@ -57,7 +57,7 @@ class SkuQuantityTest extends TestCase
     public function testPropertyExpectedQuantity()
     {
         
-        $testValue = new \OpenAPI\Client\Model\awd\v2024_05_09\InventoryQuantity();
+        $testValue = new \SpApi\Model\awd\v2024_05_09\InventoryQuantity();
         
         $this->model->setExpectedQuantity($testValue);
         $this->assertEquals($testValue, $this->model->getExpectedQuantity());
@@ -69,7 +69,7 @@ class SkuQuantityTest extends TestCase
     public function testPropertyReceivedQuantity()
     {
         
-        $testValue = new \OpenAPI\Client\Model\awd\v2024_05_09\InventoryQuantity();
+        $testValue = new \SpApi\Model\awd\v2024_05_09\InventoryQuantity();
         
         $this->model->setReceivedQuantity($testValue);
         $this->assertEquals($testValue, $this->model->getReceivedQuantity());

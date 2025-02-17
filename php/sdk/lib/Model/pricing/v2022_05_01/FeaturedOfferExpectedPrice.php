@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\pricing\v2022_05_01;
+namespace SpApi\Model\pricing\v2022_05_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * FeaturedOfferExpectedPrice Class Doc Comment
  *
  * @category Class
  * @description The item price at or below which the target offer may be featured.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class FeaturedOfferExpectedPrice implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'listing_price' => '\OpenAPI\Client\Model\pricing\v2022_05_01\MoneyType',
-             'points' => '\OpenAPI\Client\Model\pricing\v2022_05_01\Points'    ];
+             'listing_price' => '\SpApi\Model\pricing\v2022_05_01\MoneyType',
+             'points' => '\SpApi\Model\pricing\v2022_05_01\Points'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -304,9 +304,9 @@ class FeaturedOfferExpectedPrice implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets listing_price
      *
-     * @return \OpenAPI\Client\Model\pricing\v2022_05_01\MoneyType
+     * @return \SpApi\Model\pricing\v2022_05_01\MoneyType
      */
-    public function getListingPrice(): \OpenAPI\Client\Model\pricing\v2022_05_01\MoneyType
+    public function getListingPrice(): \SpApi\Model\pricing\v2022_05_01\MoneyType
     {
         return $this->container['listing_price'];
     }
@@ -314,11 +314,11 @@ class FeaturedOfferExpectedPrice implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets listing_price
      *
-     * @param \OpenAPI\Client\Model\pricing\v2022_05_01\MoneyType $listing_price listing_price
+     * @param \SpApi\Model\pricing\v2022_05_01\MoneyType $listing_price listing_price
      *
      * @return self
      */
-    public function setListingPrice(\OpenAPI\Client\Model\pricing\v2022_05_01\MoneyType $listing_price): self
+    public function setListingPrice(\SpApi\Model\pricing\v2022_05_01\MoneyType $listing_price): self
     {
         if (is_null($listing_price)) {
             throw new \InvalidArgumentException('non-nullable listing_price cannot be null');
@@ -331,9 +331,9 @@ class FeaturedOfferExpectedPrice implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets points
      *
-     * @return \OpenAPI\Client\Model\pricing\v2022_05_01\Points|null
+     * @return \SpApi\Model\pricing\v2022_05_01\Points|null
      */
-    public function getPoints(): ?\OpenAPI\Client\Model\pricing\v2022_05_01\Points
+    public function getPoints(): ?\SpApi\Model\pricing\v2022_05_01\Points
     {
         return $this->container['points'];
     }
@@ -341,11 +341,11 @@ class FeaturedOfferExpectedPrice implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets points
      *
-     * @param \OpenAPI\Client\Model\pricing\v2022_05_01\Points|null $points points
+     * @param \SpApi\Model\pricing\v2022_05_01\Points|null $points points
      *
      * @return self
      */
-    public function setPoints(?\OpenAPI\Client\Model\pricing\v2022_05_01\Points $points): self
+    public function setPoints(?\SpApi\Model\pricing\v2022_05_01\Points $points): self
     {
         if (is_null($points)) {
             array_push($this->openAPINullablesSetToNull, 'points');

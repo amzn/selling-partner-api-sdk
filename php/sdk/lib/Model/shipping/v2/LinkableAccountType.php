@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,19 +27,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\shipping\v2;
+namespace SpApi\Model\shipping\v2;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * LinkableAccountType Class Doc Comment
  *
  * @category Class
  * @description Info About Linkable Account Type
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,8 +61,8 @@ class LinkableAccountType implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'account_type' => '\OpenAPI\Client\Model\shipping\v2\AccountType',
-             'carrier_account_inputs' => '\OpenAPI\Client\Model\shipping\v2\CarrierAccountInput[]'    ];
+             'account_type' => '\SpApi\Model\shipping\v2\AccountType',
+             'carrier_account_inputs' => '\SpApi\Model\shipping\v2\CarrierAccountInput[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

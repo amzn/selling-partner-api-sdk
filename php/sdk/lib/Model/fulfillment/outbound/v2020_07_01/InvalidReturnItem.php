@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01;
+namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * InvalidReturnItem Class Doc Comment
  *
  * @category Class
  * @description An item that is invalid for return.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +62,7 @@ class InvalidReturnItem implements ModelInterface, ArrayAccess, \JsonSerializabl
     protected static array $openAPITypes = [
              'seller_return_item_id' => 'string',
              'seller_fulfillment_order_item_id' => 'string',
-             'invalid_item_reason' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\InvalidItemReason'    ];
+             'invalid_item_reason' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\InvalidItemReason'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -371,9 +371,9 @@ class InvalidReturnItem implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets invalid_item_reason
      *
-     * @return \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\InvalidItemReason
+     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\InvalidItemReason
      */
-    public function getInvalidItemReason(): \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\InvalidItemReason
+    public function getInvalidItemReason(): \SpApi\Model\fulfillment\outbound\v2020_07_01\InvalidItemReason
     {
         return $this->container['invalid_item_reason'];
     }
@@ -381,11 +381,11 @@ class InvalidReturnItem implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets invalid_item_reason
      *
-     * @param \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\InvalidItemReason $invalid_item_reason invalid_item_reason
+     * @param \SpApi\Model\fulfillment\outbound\v2020_07_01\InvalidItemReason $invalid_item_reason invalid_item_reason
      *
      * @return self
      */
-    public function setInvalidItemReason(\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\InvalidItemReason $invalid_item_reason): self
+    public function setInvalidItemReason(\SpApi\Model\fulfillment\outbound\v2020_07_01\InvalidItemReason $invalid_item_reason): self
     {
         if (is_null($invalid_item_reason)) {
             throw new \InvalidArgumentException('non-nullable invalid_item_reason cannot be null');

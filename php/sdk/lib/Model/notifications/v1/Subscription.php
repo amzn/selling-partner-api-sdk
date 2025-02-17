@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\notifications\v1;
+namespace SpApi\Model\notifications\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Subscription Class Doc Comment
  *
  * @category Class
  * @description Information about the subscription.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,7 +63,7 @@ class Subscription implements ModelInterface, ArrayAccess, \JsonSerializable
              'subscription_id' => 'string',
              'payload_version' => 'string',
              'destination_id' => 'string',
-             'processing_directive' => '\OpenAPI\Client\Model\notifications\v1\ProcessingDirective'    ];
+             'processing_directive' => '\SpApi\Model\notifications\v1\ProcessingDirective'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -405,9 +405,9 @@ class Subscription implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets processing_directive
      *
-     * @return \OpenAPI\Client\Model\notifications\v1\ProcessingDirective|null
+     * @return \SpApi\Model\notifications\v1\ProcessingDirective|null
      */
-    public function getProcessingDirective(): ?\OpenAPI\Client\Model\notifications\v1\ProcessingDirective
+    public function getProcessingDirective(): ?\SpApi\Model\notifications\v1\ProcessingDirective
     {
         return $this->container['processing_directive'];
     }
@@ -415,11 +415,11 @@ class Subscription implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets processing_directive
      *
-     * @param \OpenAPI\Client\Model\notifications\v1\ProcessingDirective|null $processing_directive processing_directive
+     * @param \SpApi\Model\notifications\v1\ProcessingDirective|null $processing_directive processing_directive
      *
      * @return self
      */
-    public function setProcessingDirective(?\OpenAPI\Client\Model\notifications\v1\ProcessingDirective $processing_directive): self
+    public function setProcessingDirective(?\SpApi\Model\notifications\v1\ProcessingDirective $processing_directive): self
     {
         if (is_null($processing_directive)) {
             array_push($this->openAPINullablesSetToNull, 'processing_directive');

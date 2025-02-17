@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\productTypeDefinitions\v2020_09_01\ProductType;
+use SpApi\Model\productTypeDefinitions\v2020_09_01\ProductType;
 
 /**
  * ProductTypeTest Class Doc Comment
  *
  * @category    Class
  * @description An Amazon product type with a definition available.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ProductTypeTest extends TestCase
 {

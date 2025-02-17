@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ScheduleSelfShipAppointmentResponse;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\ScheduleSelfShipAppointmentResponse;
 
 /**
  * ScheduleSelfShipAppointmentResponseTest Class Doc Comment
  *
  * @category    Class
  * @description The &#x60;scheduleSelfShipAppointment&#x60; response.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ScheduleSelfShipAppointmentResponseTest extends TestCase
 {
@@ -57,7 +57,7 @@ class ScheduleSelfShipAppointmentResponseTest extends TestCase
     public function testPropertySelfShipAppointmentDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\SelfShipAppointmentDetails();
+        $testValue = new \SpApi\Model\fulfillment\inbound\v2024_03_20\SelfShipAppointmentDetails();
         
         $this->model->setSelfShipAppointmentDetails($testValue);
         $this->assertEquals($testValue, $this->model->getSelfShipAppointmentDetails());

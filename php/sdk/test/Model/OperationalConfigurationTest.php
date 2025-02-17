@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\supplySources\v2020_07_01\OperationalConfiguration;
+use SpApi\Model\supplySources\v2020_07_01\OperationalConfiguration;
 
 /**
  * OperationalConfigurationTest Class Doc Comment
  *
  * @category    Class
  * @description The operational configuration of &#x60;supplySources&#x60;.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class OperationalConfigurationTest extends TestCase
 {
@@ -57,7 +57,7 @@ class OperationalConfigurationTest extends TestCase
     public function testPropertyContactDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplySources\v2020_07_01\ContactDetails();
+        $testValue = new \SpApi\Model\supplySources\v2020_07_01\ContactDetails();
         
         $this->model->setContactDetails($testValue);
         $this->assertEquals($testValue, $this->model->getContactDetails());
@@ -69,7 +69,7 @@ class OperationalConfigurationTest extends TestCase
     public function testPropertyThroughputConfig()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplySources\v2020_07_01\ThroughputConfig();
+        $testValue = new \SpApi\Model\supplySources\v2020_07_01\ThroughputConfig();
         
         $this->model->setThroughputConfig($testValue);
         $this->assertEquals($testValue, $this->model->getThroughputConfig());
@@ -81,7 +81,7 @@ class OperationalConfigurationTest extends TestCase
     public function testPropertyOperatingHoursByDay()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplySources\v2020_07_01\OperatingHoursByDay();
+        $testValue = new \SpApi\Model\supplySources\v2020_07_01\OperatingHoursByDay();
         
         $this->model->setOperatingHoursByDay($testValue);
         $this->assertEquals($testValue, $this->model->getOperatingHoursByDay());
@@ -93,7 +93,7 @@ class OperationalConfigurationTest extends TestCase
     public function testPropertyHandlingTime()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplySources\v2020_07_01\Duration();
+        $testValue = new \SpApi\Model\supplySources\v2020_07_01\Duration();
         
         $this->model->setHandlingTime($testValue);
         $this->assertEquals($testValue, $this->model->getHandlingTime());

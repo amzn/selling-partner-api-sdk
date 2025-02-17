@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\df\inventory\v1\ItemDetails;
+use SpApi\Model\vendor\df\inventory\v1\ItemDetails;
 
 /**
  * ItemDetailsTest Class Doc Comment
  *
  * @category    Class
  * @description Updated inventory details for an item.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ItemDetailsTest extends TestCase
 {
@@ -79,7 +79,7 @@ class ItemDetailsTest extends TestCase
     public function testPropertyAvailableQuantity()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\df\inventory\v1\ItemQuantity();
+        $testValue = new \SpApi\Model\vendor\df\inventory\v1\ItemQuantity();
         
         $this->model->setAvailableQuantity($testValue);
         $this->assertEquals($testValue, $this->model->getAvailableQuantity());

@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\services\v1;
+namespace SpApi\Model\services\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ServiceLocation Class Doc Comment
  *
  * @category Class
  * @description Information about the location of the service job.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class ServiceLocation implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPITypes = [
              'service_location_type' => 'string',
-             'address' => '\OpenAPI\Client\Model\services\v1\Address'    ];
+             'address' => '\SpApi\Model\services\v1\Address'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -371,9 +371,9 @@ class ServiceLocation implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets address
      *
-     * @return \OpenAPI\Client\Model\services\v1\Address|null
+     * @return \SpApi\Model\services\v1\Address|null
      */
-    public function getAddress(): ?\OpenAPI\Client\Model\services\v1\Address
+    public function getAddress(): ?\SpApi\Model\services\v1\Address
     {
         return $this->container['address'];
     }
@@ -381,11 +381,11 @@ class ServiceLocation implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets address
      *
-     * @param \OpenAPI\Client\Model\services\v1\Address|null $address address
+     * @param \SpApi\Model\services\v1\Address|null $address address
      *
      * @return self
      */
-    public function setAddress(?\OpenAPI\Client\Model\services\v1\Address $address): self
+    public function setAddress(?\SpApi\Model\services\v1\Address $address): self
     {
         if (is_null($address)) {
             array_push($this->openAPINullablesSetToNull, 'address');

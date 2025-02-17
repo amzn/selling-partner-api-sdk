@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\orders\v0;
+namespace SpApi\Model\orders\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Address Class Doc Comment
  *
  * @category Class
  * @description The shipping address for the order.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -73,7 +73,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
              'postal_code' => 'string',
              'country_code' => 'string',
              'phone' => 'string',
-             'extended_fields' => '\OpenAPI\Client\Model\orders\v0\AddressExtendedFields',
+             'extended_fields' => '\SpApi\Model\orders\v0\AddressExtendedFields',
              'address_type' => 'string'    ];
 
     /**
@@ -854,9 +854,9 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets extended_fields
      *
-     * @return \OpenAPI\Client\Model\orders\v0\AddressExtendedFields|null
+     * @return \SpApi\Model\orders\v0\AddressExtendedFields|null
      */
-    public function getExtendedFields(): ?\OpenAPI\Client\Model\orders\v0\AddressExtendedFields
+    public function getExtendedFields(): ?\SpApi\Model\orders\v0\AddressExtendedFields
     {
         return $this->container['extended_fields'];
     }
@@ -864,11 +864,11 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets extended_fields
      *
-     * @param \OpenAPI\Client\Model\orders\v0\AddressExtendedFields|null $extended_fields extended_fields
+     * @param \SpApi\Model\orders\v0\AddressExtendedFields|null $extended_fields extended_fields
      *
      * @return self
      */
-    public function setExtendedFields(?\OpenAPI\Client\Model\orders\v0\AddressExtendedFields $extended_fields): self
+    public function setExtendedFields(?\SpApi\Model\orders\v0\AddressExtendedFields $extended_fields): self
     {
         if (is_null($extended_fields)) {
             array_push($this->openAPINullablesSetToNull, 'extended_fields');

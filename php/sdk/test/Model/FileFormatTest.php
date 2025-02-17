@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\invoices\v2024_06_19\FileFormat;
+use SpApi\Model\invoices\v2024_06_19\FileFormat;
 
 /**
  * FileFormatTest Class Doc Comment
  *
  * @category    Class
  * @description Supported invoice file extensions.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class FileFormatTest extends TestCase
 {

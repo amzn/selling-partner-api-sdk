@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardProductDescriptionModule;
+use SpApi\Model\aplusContent\v2020_11_01\StandardProductDescriptionModule;
 
 /**
  * StandardProductDescriptionModuleTest Class Doc Comment
  *
  * @category    Class
  * @description Standard product description text.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class StandardProductDescriptionModuleTest extends TestCase
 {
@@ -57,7 +57,7 @@ class StandardProductDescriptionModuleTest extends TestCase
     public function testPropertyBody()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\ParagraphComponent();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\ParagraphComponent();
         
         $this->model->setBody($testValue);
         $this->assertEquals($testValue, $this->model->getBody());

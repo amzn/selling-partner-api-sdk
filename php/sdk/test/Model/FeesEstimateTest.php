@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\productFees\v0\FeesEstimate;
+use SpApi\Model\productFees\v0\FeesEstimate;
 
 /**
  * FeesEstimateTest Class Doc Comment
  *
  * @category    Class
  * @description The total estimated fees for an item and a list of details.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class FeesEstimateTest extends TestCase
 {
@@ -69,7 +69,7 @@ class FeesEstimateTest extends TestCase
     public function testPropertyTotalFeesEstimate()
     {
         
-        $testValue = new \OpenAPI\Client\Model\productFees\v0\MoneyType();
+        $testValue = new \SpApi\Model\productFees\v0\MoneyType();
         
         $this->model->setTotalFeesEstimate($testValue);
         $this->assertEquals($testValue, $this->model->getTotalFeesEstimate());

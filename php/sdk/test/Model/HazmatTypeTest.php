@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantFulfillment\v0\HazmatType;
+use SpApi\Model\merchantFulfillment\v0\HazmatType;
 
 /**
  * HazmatTypeTest Class Doc Comment
  *
  * @category    Class
  * @description Hazardous materials options for a package. Consult the terms and conditions for each carrier for more information on hazardous materials.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class HazmatTypeTest extends TestCase
 {

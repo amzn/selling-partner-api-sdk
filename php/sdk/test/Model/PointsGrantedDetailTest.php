@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\v0\PointsGrantedDetail;
+use SpApi\Model\orders\v0\PointsGrantedDetail;
 
 /**
  * PointsGrantedDetailTest Class Doc Comment
  *
  * @category    Class
  * @description The number of Amazon Points offered with the purchase of an item, and their monetary value.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class PointsGrantedDetailTest extends TestCase
 {
@@ -68,7 +68,7 @@ class PointsGrantedDetailTest extends TestCase
     public function testPropertyPointsMonetaryValue()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\v0\Money();
+        $testValue = new \SpApi\Model\orders\v0\Money();
         
         $this->model->setPointsMonetaryValue($testValue);
         $this->assertEquals($testValue, $this->model->getPointsMonetaryValue());

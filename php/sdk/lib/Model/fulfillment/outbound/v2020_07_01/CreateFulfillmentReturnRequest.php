@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01;
+namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * CreateFulfillmentReturnRequest Class Doc Comment
  *
  * @category Class
  * @description The &#x60;createFulfillmentReturn&#x60; operation creates a fulfillment return for items that were fulfilled using the &#x60;createFulfillmentOrder&#x60; operation. For calls to &#x60;createFulfillmentReturn&#x60;, you must include &#x60;ReturnReasonCode&#x60; values returned by a previous call to the &#x60;listReturnReasonCodes&#x60; operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class CreateFulfillmentReturnRequest implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'items' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\CreateReturnItem[]'    ];
+             'items' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\CreateReturnItem[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

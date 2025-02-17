@@ -4,7 +4,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,17 +25,17 @@
  * Please update the test case below to test the endpoint.
  */
 
-namespace OpenAPI\Client\Test\Api;
+namespace SpApi\Test\Api;
 
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Api\supplySources\v2020_07_01\SupplySourcesApi;
-use OpenAPI\Client\ObjectSerializer;
+use SpApi\ApiException;
+use SpApi\Api\supplySources\v2020_07_01\SupplySourcesApi;
+use SpApi\ObjectSerializer;
 
 /**
  * SupplySourcesApiTest Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */

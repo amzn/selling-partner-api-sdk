@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\orders\v1;
+namespace SpApi\Model\vendor\orders\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * OrderStatus Class Doc Comment
  *
  * @category Class
  * @description Current status of a purchase order.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -64,9 +64,9 @@ class OrderStatus implements ModelInterface, ArrayAccess, \JsonSerializable
              'purchase_order_status' => 'string',
              'purchase_order_date' => '\DateTime',
              'last_updated_date' => '\DateTime',
-             'selling_party' => '\OpenAPI\Client\Model\vendor\orders\v1\PartyIdentification',
-             'ship_to_party' => '\OpenAPI\Client\Model\vendor\orders\v1\PartyIdentification',
-             'item_status' => '\OpenAPI\Client\Model\vendor\orders\v1\OrderItemStatus[]'    ];
+             'selling_party' => '\SpApi\Model\vendor\orders\v1\PartyIdentification',
+             'ship_to_party' => '\SpApi\Model\vendor\orders\v1\PartyIdentification',
+             'item_status' => '\SpApi\Model\vendor\orders\v1\OrderItemStatus[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -503,9 +503,9 @@ class OrderStatus implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets selling_party
      *
-     * @return \OpenAPI\Client\Model\vendor\orders\v1\PartyIdentification
+     * @return \SpApi\Model\vendor\orders\v1\PartyIdentification
      */
-    public function getSellingParty(): \OpenAPI\Client\Model\vendor\orders\v1\PartyIdentification
+    public function getSellingParty(): \SpApi\Model\vendor\orders\v1\PartyIdentification
     {
         return $this->container['selling_party'];
     }
@@ -513,11 +513,11 @@ class OrderStatus implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets selling_party
      *
-     * @param \OpenAPI\Client\Model\vendor\orders\v1\PartyIdentification $selling_party selling_party
+     * @param \SpApi\Model\vendor\orders\v1\PartyIdentification $selling_party selling_party
      *
      * @return self
      */
-    public function setSellingParty(\OpenAPI\Client\Model\vendor\orders\v1\PartyIdentification $selling_party): self
+    public function setSellingParty(\SpApi\Model\vendor\orders\v1\PartyIdentification $selling_party): self
     {
         if (is_null($selling_party)) {
             throw new \InvalidArgumentException('non-nullable selling_party cannot be null');
@@ -530,9 +530,9 @@ class OrderStatus implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets ship_to_party
      *
-     * @return \OpenAPI\Client\Model\vendor\orders\v1\PartyIdentification
+     * @return \SpApi\Model\vendor\orders\v1\PartyIdentification
      */
-    public function getShipToParty(): \OpenAPI\Client\Model\vendor\orders\v1\PartyIdentification
+    public function getShipToParty(): \SpApi\Model\vendor\orders\v1\PartyIdentification
     {
         return $this->container['ship_to_party'];
     }
@@ -540,11 +540,11 @@ class OrderStatus implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ship_to_party
      *
-     * @param \OpenAPI\Client\Model\vendor\orders\v1\PartyIdentification $ship_to_party ship_to_party
+     * @param \SpApi\Model\vendor\orders\v1\PartyIdentification $ship_to_party ship_to_party
      *
      * @return self
      */
-    public function setShipToParty(\OpenAPI\Client\Model\vendor\orders\v1\PartyIdentification $ship_to_party): self
+    public function setShipToParty(\SpApi\Model\vendor\orders\v1\PartyIdentification $ship_to_party): self
     {
         if (is_null($ship_to_party)) {
             throw new \InvalidArgumentException('non-nullable ship_to_party cannot be null');

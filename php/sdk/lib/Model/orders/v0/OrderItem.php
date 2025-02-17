@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\orders\v0;
+namespace SpApi\Model\orders\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * OrderItem Class Doc Comment
  *
  * @category Class
  * @description A single order item.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,23 +63,23 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
              'asin' => 'string',
              'seller_sku' => 'string',
              'order_item_id' => 'string',
-             'associated_items' => '\OpenAPI\Client\Model\orders\v0\AssociatedItem[]',
+             'associated_items' => '\SpApi\Model\orders\v0\AssociatedItem[]',
              'title' => 'string',
              'quantity_ordered' => 'int',
              'quantity_shipped' => 'int',
-             'product_info' => '\OpenAPI\Client\Model\orders\v0\ProductInfoDetail',
-             'points_granted' => '\OpenAPI\Client\Model\orders\v0\PointsGrantedDetail',
-             'item_price' => '\OpenAPI\Client\Model\orders\v0\Money',
-             'shipping_price' => '\OpenAPI\Client\Model\orders\v0\Money',
-             'item_tax' => '\OpenAPI\Client\Model\orders\v0\Money',
-             'shipping_tax' => '\OpenAPI\Client\Model\orders\v0\Money',
-             'shipping_discount' => '\OpenAPI\Client\Model\orders\v0\Money',
-             'shipping_discount_tax' => '\OpenAPI\Client\Model\orders\v0\Money',
-             'promotion_discount' => '\OpenAPI\Client\Model\orders\v0\Money',
-             'promotion_discount_tax' => '\OpenAPI\Client\Model\orders\v0\Money',
+             'product_info' => '\SpApi\Model\orders\v0\ProductInfoDetail',
+             'points_granted' => '\SpApi\Model\orders\v0\PointsGrantedDetail',
+             'item_price' => '\SpApi\Model\orders\v0\Money',
+             'shipping_price' => '\SpApi\Model\orders\v0\Money',
+             'item_tax' => '\SpApi\Model\orders\v0\Money',
+             'shipping_tax' => '\SpApi\Model\orders\v0\Money',
+             'shipping_discount' => '\SpApi\Model\orders\v0\Money',
+             'shipping_discount_tax' => '\SpApi\Model\orders\v0\Money',
+             'promotion_discount' => '\SpApi\Model\orders\v0\Money',
+             'promotion_discount_tax' => '\SpApi\Model\orders\v0\Money',
              'promotion_ids' => 'string[]',
-             'cod_fee' => '\OpenAPI\Client\Model\orders\v0\Money',
-             'cod_fee_discount' => '\OpenAPI\Client\Model\orders\v0\Money',
+             'cod_fee' => '\SpApi\Model\orders\v0\Money',
+             'cod_fee_discount' => '\SpApi\Model\orders\v0\Money',
              'is_gift' => 'string',
              'condition_note' => 'string',
              'condition_id' => 'string',
@@ -87,19 +87,19 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
              'scheduled_delivery_start_date' => 'string',
              'scheduled_delivery_end_date' => 'string',
              'price_designation' => 'string',
-             'tax_collection' => '\OpenAPI\Client\Model\orders\v0\TaxCollection',
+             'tax_collection' => '\SpApi\Model\orders\v0\TaxCollection',
              'serial_number_required' => 'bool',
              'is_transparency' => 'bool',
              'ioss_number' => 'string',
              'store_chain_store_id' => 'string',
              'deemed_reseller_category' => 'string',
-             'buyer_info' => '\OpenAPI\Client\Model\orders\v0\ItemBuyerInfo',
-             'buyer_requested_cancel' => '\OpenAPI\Client\Model\orders\v0\BuyerRequestedCancel',
+             'buyer_info' => '\SpApi\Model\orders\v0\ItemBuyerInfo',
+             'buyer_requested_cancel' => '\SpApi\Model\orders\v0\BuyerRequestedCancel',
              'serial_numbers' => 'string[]',
-             'substitution_preferences' => '\OpenAPI\Client\Model\orders\v0\SubstitutionPreferences',
-             'measurement' => '\OpenAPI\Client\Model\orders\v0\Measurement',
-             'shipping_constraints' => '\OpenAPI\Client\Model\orders\v0\ShippingConstraints',
-             'amazon_programs' => '\OpenAPI\Client\Model\orders\v0\AmazonPrograms'    ];
+             'substitution_preferences' => '\SpApi\Model\orders\v0\SubstitutionPreferences',
+             'measurement' => '\SpApi\Model\orders\v0\Measurement',
+             'shipping_constraints' => '\SpApi\Model\orders\v0\ShippingConstraints',
+             'amazon_programs' => '\SpApi\Model\orders\v0\AmazonPrograms'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -817,9 +817,9 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets product_info
      *
-     * @return \OpenAPI\Client\Model\orders\v0\ProductInfoDetail|null
+     * @return \SpApi\Model\orders\v0\ProductInfoDetail|null
      */
-    public function getProductInfo(): ?\OpenAPI\Client\Model\orders\v0\ProductInfoDetail
+    public function getProductInfo(): ?\SpApi\Model\orders\v0\ProductInfoDetail
     {
         return $this->container['product_info'];
     }
@@ -827,11 +827,11 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets product_info
      *
-     * @param \OpenAPI\Client\Model\orders\v0\ProductInfoDetail|null $product_info product_info
+     * @param \SpApi\Model\orders\v0\ProductInfoDetail|null $product_info product_info
      *
      * @return self
      */
-    public function setProductInfo(?\OpenAPI\Client\Model\orders\v0\ProductInfoDetail $product_info): self
+    public function setProductInfo(?\SpApi\Model\orders\v0\ProductInfoDetail $product_info): self
     {
         if (is_null($product_info)) {
             array_push($this->openAPINullablesSetToNull, 'product_info');
@@ -851,9 +851,9 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets points_granted
      *
-     * @return \OpenAPI\Client\Model\orders\v0\PointsGrantedDetail|null
+     * @return \SpApi\Model\orders\v0\PointsGrantedDetail|null
      */
-    public function getPointsGranted(): ?\OpenAPI\Client\Model\orders\v0\PointsGrantedDetail
+    public function getPointsGranted(): ?\SpApi\Model\orders\v0\PointsGrantedDetail
     {
         return $this->container['points_granted'];
     }
@@ -861,11 +861,11 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets points_granted
      *
-     * @param \OpenAPI\Client\Model\orders\v0\PointsGrantedDetail|null $points_granted points_granted
+     * @param \SpApi\Model\orders\v0\PointsGrantedDetail|null $points_granted points_granted
      *
      * @return self
      */
-    public function setPointsGranted(?\OpenAPI\Client\Model\orders\v0\PointsGrantedDetail $points_granted): self
+    public function setPointsGranted(?\SpApi\Model\orders\v0\PointsGrantedDetail $points_granted): self
     {
         if (is_null($points_granted)) {
             array_push($this->openAPINullablesSetToNull, 'points_granted');
@@ -885,9 +885,9 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets item_price
      *
-     * @return \OpenAPI\Client\Model\orders\v0\Money|null
+     * @return \SpApi\Model\orders\v0\Money|null
      */
-    public function getItemPrice(): ?\OpenAPI\Client\Model\orders\v0\Money
+    public function getItemPrice(): ?\SpApi\Model\orders\v0\Money
     {
         return $this->container['item_price'];
     }
@@ -895,11 +895,11 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets item_price
      *
-     * @param \OpenAPI\Client\Model\orders\v0\Money|null $item_price item_price
+     * @param \SpApi\Model\orders\v0\Money|null $item_price item_price
      *
      * @return self
      */
-    public function setItemPrice(?\OpenAPI\Client\Model\orders\v0\Money $item_price): self
+    public function setItemPrice(?\SpApi\Model\orders\v0\Money $item_price): self
     {
         if (is_null($item_price)) {
             array_push($this->openAPINullablesSetToNull, 'item_price');
@@ -919,9 +919,9 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets shipping_price
      *
-     * @return \OpenAPI\Client\Model\orders\v0\Money|null
+     * @return \SpApi\Model\orders\v0\Money|null
      */
-    public function getShippingPrice(): ?\OpenAPI\Client\Model\orders\v0\Money
+    public function getShippingPrice(): ?\SpApi\Model\orders\v0\Money
     {
         return $this->container['shipping_price'];
     }
@@ -929,11 +929,11 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets shipping_price
      *
-     * @param \OpenAPI\Client\Model\orders\v0\Money|null $shipping_price shipping_price
+     * @param \SpApi\Model\orders\v0\Money|null $shipping_price shipping_price
      *
      * @return self
      */
-    public function setShippingPrice(?\OpenAPI\Client\Model\orders\v0\Money $shipping_price): self
+    public function setShippingPrice(?\SpApi\Model\orders\v0\Money $shipping_price): self
     {
         if (is_null($shipping_price)) {
             array_push($this->openAPINullablesSetToNull, 'shipping_price');
@@ -953,9 +953,9 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets item_tax
      *
-     * @return \OpenAPI\Client\Model\orders\v0\Money|null
+     * @return \SpApi\Model\orders\v0\Money|null
      */
-    public function getItemTax(): ?\OpenAPI\Client\Model\orders\v0\Money
+    public function getItemTax(): ?\SpApi\Model\orders\v0\Money
     {
         return $this->container['item_tax'];
     }
@@ -963,11 +963,11 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets item_tax
      *
-     * @param \OpenAPI\Client\Model\orders\v0\Money|null $item_tax item_tax
+     * @param \SpApi\Model\orders\v0\Money|null $item_tax item_tax
      *
      * @return self
      */
-    public function setItemTax(?\OpenAPI\Client\Model\orders\v0\Money $item_tax): self
+    public function setItemTax(?\SpApi\Model\orders\v0\Money $item_tax): self
     {
         if (is_null($item_tax)) {
             array_push($this->openAPINullablesSetToNull, 'item_tax');
@@ -987,9 +987,9 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets shipping_tax
      *
-     * @return \OpenAPI\Client\Model\orders\v0\Money|null
+     * @return \SpApi\Model\orders\v0\Money|null
      */
-    public function getShippingTax(): ?\OpenAPI\Client\Model\orders\v0\Money
+    public function getShippingTax(): ?\SpApi\Model\orders\v0\Money
     {
         return $this->container['shipping_tax'];
     }
@@ -997,11 +997,11 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets shipping_tax
      *
-     * @param \OpenAPI\Client\Model\orders\v0\Money|null $shipping_tax shipping_tax
+     * @param \SpApi\Model\orders\v0\Money|null $shipping_tax shipping_tax
      *
      * @return self
      */
-    public function setShippingTax(?\OpenAPI\Client\Model\orders\v0\Money $shipping_tax): self
+    public function setShippingTax(?\SpApi\Model\orders\v0\Money $shipping_tax): self
     {
         if (is_null($shipping_tax)) {
             array_push($this->openAPINullablesSetToNull, 'shipping_tax');
@@ -1021,9 +1021,9 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets shipping_discount
      *
-     * @return \OpenAPI\Client\Model\orders\v0\Money|null
+     * @return \SpApi\Model\orders\v0\Money|null
      */
-    public function getShippingDiscount(): ?\OpenAPI\Client\Model\orders\v0\Money
+    public function getShippingDiscount(): ?\SpApi\Model\orders\v0\Money
     {
         return $this->container['shipping_discount'];
     }
@@ -1031,11 +1031,11 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets shipping_discount
      *
-     * @param \OpenAPI\Client\Model\orders\v0\Money|null $shipping_discount shipping_discount
+     * @param \SpApi\Model\orders\v0\Money|null $shipping_discount shipping_discount
      *
      * @return self
      */
-    public function setShippingDiscount(?\OpenAPI\Client\Model\orders\v0\Money $shipping_discount): self
+    public function setShippingDiscount(?\SpApi\Model\orders\v0\Money $shipping_discount): self
     {
         if (is_null($shipping_discount)) {
             array_push($this->openAPINullablesSetToNull, 'shipping_discount');
@@ -1055,9 +1055,9 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets shipping_discount_tax
      *
-     * @return \OpenAPI\Client\Model\orders\v0\Money|null
+     * @return \SpApi\Model\orders\v0\Money|null
      */
-    public function getShippingDiscountTax(): ?\OpenAPI\Client\Model\orders\v0\Money
+    public function getShippingDiscountTax(): ?\SpApi\Model\orders\v0\Money
     {
         return $this->container['shipping_discount_tax'];
     }
@@ -1065,11 +1065,11 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets shipping_discount_tax
      *
-     * @param \OpenAPI\Client\Model\orders\v0\Money|null $shipping_discount_tax shipping_discount_tax
+     * @param \SpApi\Model\orders\v0\Money|null $shipping_discount_tax shipping_discount_tax
      *
      * @return self
      */
-    public function setShippingDiscountTax(?\OpenAPI\Client\Model\orders\v0\Money $shipping_discount_tax): self
+    public function setShippingDiscountTax(?\SpApi\Model\orders\v0\Money $shipping_discount_tax): self
     {
         if (is_null($shipping_discount_tax)) {
             array_push($this->openAPINullablesSetToNull, 'shipping_discount_tax');
@@ -1089,9 +1089,9 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets promotion_discount
      *
-     * @return \OpenAPI\Client\Model\orders\v0\Money|null
+     * @return \SpApi\Model\orders\v0\Money|null
      */
-    public function getPromotionDiscount(): ?\OpenAPI\Client\Model\orders\v0\Money
+    public function getPromotionDiscount(): ?\SpApi\Model\orders\v0\Money
     {
         return $this->container['promotion_discount'];
     }
@@ -1099,11 +1099,11 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets promotion_discount
      *
-     * @param \OpenAPI\Client\Model\orders\v0\Money|null $promotion_discount promotion_discount
+     * @param \SpApi\Model\orders\v0\Money|null $promotion_discount promotion_discount
      *
      * @return self
      */
-    public function setPromotionDiscount(?\OpenAPI\Client\Model\orders\v0\Money $promotion_discount): self
+    public function setPromotionDiscount(?\SpApi\Model\orders\v0\Money $promotion_discount): self
     {
         if (is_null($promotion_discount)) {
             array_push($this->openAPINullablesSetToNull, 'promotion_discount');
@@ -1123,9 +1123,9 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets promotion_discount_tax
      *
-     * @return \OpenAPI\Client\Model\orders\v0\Money|null
+     * @return \SpApi\Model\orders\v0\Money|null
      */
-    public function getPromotionDiscountTax(): ?\OpenAPI\Client\Model\orders\v0\Money
+    public function getPromotionDiscountTax(): ?\SpApi\Model\orders\v0\Money
     {
         return $this->container['promotion_discount_tax'];
     }
@@ -1133,11 +1133,11 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets promotion_discount_tax
      *
-     * @param \OpenAPI\Client\Model\orders\v0\Money|null $promotion_discount_tax promotion_discount_tax
+     * @param \SpApi\Model\orders\v0\Money|null $promotion_discount_tax promotion_discount_tax
      *
      * @return self
      */
-    public function setPromotionDiscountTax(?\OpenAPI\Client\Model\orders\v0\Money $promotion_discount_tax): self
+    public function setPromotionDiscountTax(?\SpApi\Model\orders\v0\Money $promotion_discount_tax): self
     {
         if (is_null($promotion_discount_tax)) {
             array_push($this->openAPINullablesSetToNull, 'promotion_discount_tax');
@@ -1191,9 +1191,9 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets cod_fee
      *
-     * @return \OpenAPI\Client\Model\orders\v0\Money|null
+     * @return \SpApi\Model\orders\v0\Money|null
      */
-    public function getCodFee(): ?\OpenAPI\Client\Model\orders\v0\Money
+    public function getCodFee(): ?\SpApi\Model\orders\v0\Money
     {
         return $this->container['cod_fee'];
     }
@@ -1201,11 +1201,11 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cod_fee
      *
-     * @param \OpenAPI\Client\Model\orders\v0\Money|null $cod_fee cod_fee
+     * @param \SpApi\Model\orders\v0\Money|null $cod_fee cod_fee
      *
      * @return self
      */
-    public function setCodFee(?\OpenAPI\Client\Model\orders\v0\Money $cod_fee): self
+    public function setCodFee(?\SpApi\Model\orders\v0\Money $cod_fee): self
     {
         if (is_null($cod_fee)) {
             array_push($this->openAPINullablesSetToNull, 'cod_fee');
@@ -1225,9 +1225,9 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets cod_fee_discount
      *
-     * @return \OpenAPI\Client\Model\orders\v0\Money|null
+     * @return \SpApi\Model\orders\v0\Money|null
      */
-    public function getCodFeeDiscount(): ?\OpenAPI\Client\Model\orders\v0\Money
+    public function getCodFeeDiscount(): ?\SpApi\Model\orders\v0\Money
     {
         return $this->container['cod_fee_discount'];
     }
@@ -1235,11 +1235,11 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cod_fee_discount
      *
-     * @param \OpenAPI\Client\Model\orders\v0\Money|null $cod_fee_discount cod_fee_discount
+     * @param \SpApi\Model\orders\v0\Money|null $cod_fee_discount cod_fee_discount
      *
      * @return self
      */
-    public function setCodFeeDiscount(?\OpenAPI\Client\Model\orders\v0\Money $cod_fee_discount): self
+    public function setCodFeeDiscount(?\SpApi\Model\orders\v0\Money $cod_fee_discount): self
     {
         if (is_null($cod_fee_discount)) {
             array_push($this->openAPINullablesSetToNull, 'cod_fee_discount');
@@ -1497,9 +1497,9 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets tax_collection
      *
-     * @return \OpenAPI\Client\Model\orders\v0\TaxCollection|null
+     * @return \SpApi\Model\orders\v0\TaxCollection|null
      */
-    public function getTaxCollection(): ?\OpenAPI\Client\Model\orders\v0\TaxCollection
+    public function getTaxCollection(): ?\SpApi\Model\orders\v0\TaxCollection
     {
         return $this->container['tax_collection'];
     }
@@ -1507,11 +1507,11 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tax_collection
      *
-     * @param \OpenAPI\Client\Model\orders\v0\TaxCollection|null $tax_collection tax_collection
+     * @param \SpApi\Model\orders\v0\TaxCollection|null $tax_collection tax_collection
      *
      * @return self
      */
-    public function setTaxCollection(?\OpenAPI\Client\Model\orders\v0\TaxCollection $tax_collection): self
+    public function setTaxCollection(?\SpApi\Model\orders\v0\TaxCollection $tax_collection): self
     {
         if (is_null($tax_collection)) {
             array_push($this->openAPINullablesSetToNull, 'tax_collection');
@@ -1711,9 +1711,9 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets buyer_info
      *
-     * @return \OpenAPI\Client\Model\orders\v0\ItemBuyerInfo|null
+     * @return \SpApi\Model\orders\v0\ItemBuyerInfo|null
      */
-    public function getBuyerInfo(): ?\OpenAPI\Client\Model\orders\v0\ItemBuyerInfo
+    public function getBuyerInfo(): ?\SpApi\Model\orders\v0\ItemBuyerInfo
     {
         return $this->container['buyer_info'];
     }
@@ -1721,11 +1721,11 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets buyer_info
      *
-     * @param \OpenAPI\Client\Model\orders\v0\ItemBuyerInfo|null $buyer_info buyer_info
+     * @param \SpApi\Model\orders\v0\ItemBuyerInfo|null $buyer_info buyer_info
      *
      * @return self
      */
-    public function setBuyerInfo(?\OpenAPI\Client\Model\orders\v0\ItemBuyerInfo $buyer_info): self
+    public function setBuyerInfo(?\SpApi\Model\orders\v0\ItemBuyerInfo $buyer_info): self
     {
         if (is_null($buyer_info)) {
             array_push($this->openAPINullablesSetToNull, 'buyer_info');
@@ -1745,9 +1745,9 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets buyer_requested_cancel
      *
-     * @return \OpenAPI\Client\Model\orders\v0\BuyerRequestedCancel|null
+     * @return \SpApi\Model\orders\v0\BuyerRequestedCancel|null
      */
-    public function getBuyerRequestedCancel(): ?\OpenAPI\Client\Model\orders\v0\BuyerRequestedCancel
+    public function getBuyerRequestedCancel(): ?\SpApi\Model\orders\v0\BuyerRequestedCancel
     {
         return $this->container['buyer_requested_cancel'];
     }
@@ -1755,11 +1755,11 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets buyer_requested_cancel
      *
-     * @param \OpenAPI\Client\Model\orders\v0\BuyerRequestedCancel|null $buyer_requested_cancel buyer_requested_cancel
+     * @param \SpApi\Model\orders\v0\BuyerRequestedCancel|null $buyer_requested_cancel buyer_requested_cancel
      *
      * @return self
      */
-    public function setBuyerRequestedCancel(?\OpenAPI\Client\Model\orders\v0\BuyerRequestedCancel $buyer_requested_cancel): self
+    public function setBuyerRequestedCancel(?\SpApi\Model\orders\v0\BuyerRequestedCancel $buyer_requested_cancel): self
     {
         if (is_null($buyer_requested_cancel)) {
             array_push($this->openAPINullablesSetToNull, 'buyer_requested_cancel');
@@ -1813,9 +1813,9 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets substitution_preferences
      *
-     * @return \OpenAPI\Client\Model\orders\v0\SubstitutionPreferences|null
+     * @return \SpApi\Model\orders\v0\SubstitutionPreferences|null
      */
-    public function getSubstitutionPreferences(): ?\OpenAPI\Client\Model\orders\v0\SubstitutionPreferences
+    public function getSubstitutionPreferences(): ?\SpApi\Model\orders\v0\SubstitutionPreferences
     {
         return $this->container['substitution_preferences'];
     }
@@ -1823,11 +1823,11 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets substitution_preferences
      *
-     * @param \OpenAPI\Client\Model\orders\v0\SubstitutionPreferences|null $substitution_preferences substitution_preferences
+     * @param \SpApi\Model\orders\v0\SubstitutionPreferences|null $substitution_preferences substitution_preferences
      *
      * @return self
      */
-    public function setSubstitutionPreferences(?\OpenAPI\Client\Model\orders\v0\SubstitutionPreferences $substitution_preferences): self
+    public function setSubstitutionPreferences(?\SpApi\Model\orders\v0\SubstitutionPreferences $substitution_preferences): self
     {
         if (is_null($substitution_preferences)) {
             array_push($this->openAPINullablesSetToNull, 'substitution_preferences');
@@ -1847,9 +1847,9 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets measurement
      *
-     * @return \OpenAPI\Client\Model\orders\v0\Measurement|null
+     * @return \SpApi\Model\orders\v0\Measurement|null
      */
-    public function getMeasurement(): ?\OpenAPI\Client\Model\orders\v0\Measurement
+    public function getMeasurement(): ?\SpApi\Model\orders\v0\Measurement
     {
         return $this->container['measurement'];
     }
@@ -1857,11 +1857,11 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets measurement
      *
-     * @param \OpenAPI\Client\Model\orders\v0\Measurement|null $measurement measurement
+     * @param \SpApi\Model\orders\v0\Measurement|null $measurement measurement
      *
      * @return self
      */
-    public function setMeasurement(?\OpenAPI\Client\Model\orders\v0\Measurement $measurement): self
+    public function setMeasurement(?\SpApi\Model\orders\v0\Measurement $measurement): self
     {
         if (is_null($measurement)) {
             array_push($this->openAPINullablesSetToNull, 'measurement');
@@ -1881,9 +1881,9 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets shipping_constraints
      *
-     * @return \OpenAPI\Client\Model\orders\v0\ShippingConstraints|null
+     * @return \SpApi\Model\orders\v0\ShippingConstraints|null
      */
-    public function getShippingConstraints(): ?\OpenAPI\Client\Model\orders\v0\ShippingConstraints
+    public function getShippingConstraints(): ?\SpApi\Model\orders\v0\ShippingConstraints
     {
         return $this->container['shipping_constraints'];
     }
@@ -1891,11 +1891,11 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets shipping_constraints
      *
-     * @param \OpenAPI\Client\Model\orders\v0\ShippingConstraints|null $shipping_constraints shipping_constraints
+     * @param \SpApi\Model\orders\v0\ShippingConstraints|null $shipping_constraints shipping_constraints
      *
      * @return self
      */
-    public function setShippingConstraints(?\OpenAPI\Client\Model\orders\v0\ShippingConstraints $shipping_constraints): self
+    public function setShippingConstraints(?\SpApi\Model\orders\v0\ShippingConstraints $shipping_constraints): self
     {
         if (is_null($shipping_constraints)) {
             array_push($this->openAPINullablesSetToNull, 'shipping_constraints');
@@ -1915,9 +1915,9 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets amazon_programs
      *
-     * @return \OpenAPI\Client\Model\orders\v0\AmazonPrograms|null
+     * @return \SpApi\Model\orders\v0\AmazonPrograms|null
      */
-    public function getAmazonPrograms(): ?\OpenAPI\Client\Model\orders\v0\AmazonPrograms
+    public function getAmazonPrograms(): ?\SpApi\Model\orders\v0\AmazonPrograms
     {
         return $this->container['amazon_programs'];
     }
@@ -1925,11 +1925,11 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets amazon_programs
      *
-     * @param \OpenAPI\Client\Model\orders\v0\AmazonPrograms|null $amazon_programs amazon_programs
+     * @param \SpApi\Model\orders\v0\AmazonPrograms|null $amazon_programs amazon_programs
      *
      * @return self
      */
-    public function setAmazonPrograms(?\OpenAPI\Client\Model\orders\v0\AmazonPrograms $amazon_programs): self
+    public function setAmazonPrograms(?\SpApi\Model\orders\v0\AmazonPrograms $amazon_programs): self
     {
         if (is_null($amazon_programs)) {
             array_push($this->openAPINullablesSetToNull, 'amazon_programs');

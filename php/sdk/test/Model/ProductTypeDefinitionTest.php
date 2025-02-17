@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\productTypeDefinitions\v2020_09_01\ProductTypeDefinition;
+use SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeDefinition;
 
 /**
  * ProductTypeDefinitionTest Class Doc Comment
  *
  * @category    Class
  * @description A product type definition represents the attributes and data requirements for a product type in the Amazon catalog. Product type definitions are used interchangeably between the Selling Partner API for Listings Items, Selling Partner API for Catalog Items, and JSON-based listings feeds in the Selling Partner API for Feeds.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ProductTypeDefinitionTest extends TestCase
 {
@@ -57,7 +57,7 @@ class ProductTypeDefinitionTest extends TestCase
     public function testPropertyMetaSchema()
     {
         
-        $testValue = new \OpenAPI\Client\Model\productTypeDefinitions\v2020_09_01\SchemaLink();
+        $testValue = new \SpApi\Model\productTypeDefinitions\v2020_09_01\SchemaLink();
         
         $this->model->setMetaSchema($testValue);
         $this->assertEquals($testValue, $this->model->getMetaSchema());
@@ -69,7 +69,7 @@ class ProductTypeDefinitionTest extends TestCase
     public function testPropertySchema()
     {
         
-        $testValue = new \OpenAPI\Client\Model\productTypeDefinitions\v2020_09_01\SchemaLink();
+        $testValue = new \SpApi\Model\productTypeDefinitions\v2020_09_01\SchemaLink();
         
         $this->model->setSchema($testValue);
         $this->assertEquals($testValue, $this->model->getSchema());
@@ -160,7 +160,7 @@ class ProductTypeDefinitionTest extends TestCase
     public function testPropertyProductTypeVersion()
     {
         
-        $testValue = new \OpenAPI\Client\Model\productTypeDefinitions\v2020_09_01\ProductTypeVersion();
+        $testValue = new \SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeVersion();
         
         $this->model->setProductTypeVersion($testValue);
         $this->assertEquals($testValue, $this->model->getProductTypeVersion());

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ComplianceDetail;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\ComplianceDetail;
 
 /**
  * ComplianceDetailTest Class Doc Comment
  *
  * @category    Class
  * @description Contains item identifiers and related tax information.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ComplianceDetailTest extends TestCase
 {
@@ -90,7 +90,7 @@ class ComplianceDetailTest extends TestCase
     public function testPropertyTaxDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\TaxDetails();
+        $testValue = new \SpApi\Model\fulfillment\inbound\v2024_03_20\TaxDetails();
         
         $this->model->setTaxDetails($testValue);
         $this->assertEquals($testValue, $this->model->getTaxDetails());

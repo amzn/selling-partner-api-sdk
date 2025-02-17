@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\merchantFulfillment\v0;
+namespace SpApi\Model\merchantFulfillment\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ShippingService Class Doc Comment
  *
  * @category Class
  * @description A shipping service offer made by a carrier.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -67,13 +67,13 @@ class ShippingService implements ModelInterface, ArrayAccess, \JsonSerializable
              'ship_date' => '\DateTime',
              'earliest_estimated_delivery_date' => '\DateTime',
              'latest_estimated_delivery_date' => '\DateTime',
-             'rate' => '\OpenAPI\Client\Model\merchantFulfillment\v0\CurrencyAmount',
-             'shipping_service_options' => '\OpenAPI\Client\Model\merchantFulfillment\v0\ShippingServiceOptions',
-             'available_shipping_service_options' => '\OpenAPI\Client\Model\merchantFulfillment\v0\AvailableShippingServiceOptions',
-             'available_label_formats' => '\OpenAPI\Client\Model\merchantFulfillment\v0\LabelFormat[]',
-             'available_format_options_for_label' => '\OpenAPI\Client\Model\merchantFulfillment\v0\LabelFormatOption[]',
+             'rate' => '\SpApi\Model\merchantFulfillment\v0\CurrencyAmount',
+             'shipping_service_options' => '\SpApi\Model\merchantFulfillment\v0\ShippingServiceOptions',
+             'available_shipping_service_options' => '\SpApi\Model\merchantFulfillment\v0\AvailableShippingServiceOptions',
+             'available_label_formats' => '\SpApi\Model\merchantFulfillment\v0\LabelFormat[]',
+             'available_format_options_for_label' => '\SpApi\Model\merchantFulfillment\v0\LabelFormatOption[]',
              'requires_additional_seller_inputs' => 'bool',
-             'benefits' => '\OpenAPI\Client\Model\merchantFulfillment\v0\Benefits'    ];
+             'benefits' => '\SpApi\Model\merchantFulfillment\v0\Benefits'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -612,9 +612,9 @@ class ShippingService implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets rate
      *
-     * @return \OpenAPI\Client\Model\merchantFulfillment\v0\CurrencyAmount
+     * @return \SpApi\Model\merchantFulfillment\v0\CurrencyAmount
      */
-    public function getRate(): \OpenAPI\Client\Model\merchantFulfillment\v0\CurrencyAmount
+    public function getRate(): \SpApi\Model\merchantFulfillment\v0\CurrencyAmount
     {
         return $this->container['rate'];
     }
@@ -622,11 +622,11 @@ class ShippingService implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets rate
      *
-     * @param \OpenAPI\Client\Model\merchantFulfillment\v0\CurrencyAmount $rate rate
+     * @param \SpApi\Model\merchantFulfillment\v0\CurrencyAmount $rate rate
      *
      * @return self
      */
-    public function setRate(\OpenAPI\Client\Model\merchantFulfillment\v0\CurrencyAmount $rate): self
+    public function setRate(\SpApi\Model\merchantFulfillment\v0\CurrencyAmount $rate): self
     {
         if (is_null($rate)) {
             throw new \InvalidArgumentException('non-nullable rate cannot be null');
@@ -639,9 +639,9 @@ class ShippingService implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets shipping_service_options
      *
-     * @return \OpenAPI\Client\Model\merchantFulfillment\v0\ShippingServiceOptions
+     * @return \SpApi\Model\merchantFulfillment\v0\ShippingServiceOptions
      */
-    public function getShippingServiceOptions(): \OpenAPI\Client\Model\merchantFulfillment\v0\ShippingServiceOptions
+    public function getShippingServiceOptions(): \SpApi\Model\merchantFulfillment\v0\ShippingServiceOptions
     {
         return $this->container['shipping_service_options'];
     }
@@ -649,11 +649,11 @@ class ShippingService implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets shipping_service_options
      *
-     * @param \OpenAPI\Client\Model\merchantFulfillment\v0\ShippingServiceOptions $shipping_service_options shipping_service_options
+     * @param \SpApi\Model\merchantFulfillment\v0\ShippingServiceOptions $shipping_service_options shipping_service_options
      *
      * @return self
      */
-    public function setShippingServiceOptions(\OpenAPI\Client\Model\merchantFulfillment\v0\ShippingServiceOptions $shipping_service_options): self
+    public function setShippingServiceOptions(\SpApi\Model\merchantFulfillment\v0\ShippingServiceOptions $shipping_service_options): self
     {
         if (is_null($shipping_service_options)) {
             throw new \InvalidArgumentException('non-nullable shipping_service_options cannot be null');
@@ -666,9 +666,9 @@ class ShippingService implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets available_shipping_service_options
      *
-     * @return \OpenAPI\Client\Model\merchantFulfillment\v0\AvailableShippingServiceOptions|null
+     * @return \SpApi\Model\merchantFulfillment\v0\AvailableShippingServiceOptions|null
      */
-    public function getAvailableShippingServiceOptions(): ?\OpenAPI\Client\Model\merchantFulfillment\v0\AvailableShippingServiceOptions
+    public function getAvailableShippingServiceOptions(): ?\SpApi\Model\merchantFulfillment\v0\AvailableShippingServiceOptions
     {
         return $this->container['available_shipping_service_options'];
     }
@@ -676,11 +676,11 @@ class ShippingService implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets available_shipping_service_options
      *
-     * @param \OpenAPI\Client\Model\merchantFulfillment\v0\AvailableShippingServiceOptions|null $available_shipping_service_options available_shipping_service_options
+     * @param \SpApi\Model\merchantFulfillment\v0\AvailableShippingServiceOptions|null $available_shipping_service_options available_shipping_service_options
      *
      * @return self
      */
-    public function setAvailableShippingServiceOptions(?\OpenAPI\Client\Model\merchantFulfillment\v0\AvailableShippingServiceOptions $available_shipping_service_options): self
+    public function setAvailableShippingServiceOptions(?\SpApi\Model\merchantFulfillment\v0\AvailableShippingServiceOptions $available_shipping_service_options): self
     {
         if (is_null($available_shipping_service_options)) {
             array_push($this->openAPINullablesSetToNull, 'available_shipping_service_options');
@@ -795,9 +795,9 @@ class ShippingService implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets benefits
      *
-     * @return \OpenAPI\Client\Model\merchantFulfillment\v0\Benefits|null
+     * @return \SpApi\Model\merchantFulfillment\v0\Benefits|null
      */
-    public function getBenefits(): ?\OpenAPI\Client\Model\merchantFulfillment\v0\Benefits
+    public function getBenefits(): ?\SpApi\Model\merchantFulfillment\v0\Benefits
     {
         return $this->container['benefits'];
     }
@@ -805,11 +805,11 @@ class ShippingService implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets benefits
      *
-     * @param \OpenAPI\Client\Model\merchantFulfillment\v0\Benefits|null $benefits benefits
+     * @param \SpApi\Model\merchantFulfillment\v0\Benefits|null $benefits benefits
      *
      * @return self
      */
-    public function setBenefits(?\OpenAPI\Client\Model\merchantFulfillment\v0\Benefits $benefits): self
+    public function setBenefits(?\SpApi\Model\merchantFulfillment\v0\Benefits $benefits): self
     {
         if (is_null($benefits)) {
             array_push($this->openAPINullablesSetToNull, 'benefits');

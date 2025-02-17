@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\transactionStatus\v1;
+namespace SpApi\Model\vendor\transactionStatus\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Transaction Class Doc Comment
  *
  * @category Class
  * @description The transaction status.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +62,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPITypes = [
              'transaction_id' => 'string',
              'status' => 'string',
-             'errors' => '\OpenAPI\Client\Model\vendor\transactionStatus\v1\Error[]'    ];
+             'errors' => '\SpApi\Model\vendor\transactionStatus\v1\Error[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

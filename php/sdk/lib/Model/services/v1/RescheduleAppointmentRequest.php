@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\services\v1;
+namespace SpApi\Model\services\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * RescheduleAppointmentRequest Class Doc Comment
  *
  * @category Class
  * @description Input for rescheduled appointment operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class RescheduleAppointmentRequest implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'appointment_time' => '\OpenAPI\Client\Model\services\v1\AppointmentTimeInput',
+             'appointment_time' => '\SpApi\Model\services\v1\AppointmentTimeInput',
              'reschedule_reason_code' => 'string'    ];
 
     /**
@@ -307,9 +307,9 @@ class RescheduleAppointmentRequest implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets appointment_time
      *
-     * @return \OpenAPI\Client\Model\services\v1\AppointmentTimeInput
+     * @return \SpApi\Model\services\v1\AppointmentTimeInput
      */
-    public function getAppointmentTime(): \OpenAPI\Client\Model\services\v1\AppointmentTimeInput
+    public function getAppointmentTime(): \SpApi\Model\services\v1\AppointmentTimeInput
     {
         return $this->container['appointment_time'];
     }
@@ -317,11 +317,11 @@ class RescheduleAppointmentRequest implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets appointment_time
      *
-     * @param \OpenAPI\Client\Model\services\v1\AppointmentTimeInput $appointment_time appointment_time
+     * @param \SpApi\Model\services\v1\AppointmentTimeInput $appointment_time appointment_time
      *
      * @return self
      */
-    public function setAppointmentTime(\OpenAPI\Client\Model\services\v1\AppointmentTimeInput $appointment_time): self
+    public function setAppointmentTime(\SpApi\Model\services\v1\AppointmentTimeInput $appointment_time): self
     {
         if (is_null($appointment_time)) {
             throw new \InvalidArgumentException('non-nullable appointment_time cannot be null');

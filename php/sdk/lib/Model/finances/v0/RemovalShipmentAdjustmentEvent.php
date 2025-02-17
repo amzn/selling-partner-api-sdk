@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\finances\v0;
+namespace SpApi\Model\finances\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * RemovalShipmentAdjustmentEvent Class Doc Comment
  *
  * @category Class
  * @description A financial adjustment event for FBA liquidated inventory. A positive value indicates money owed to Amazon by the buyer (for example, when the charge was incorrectly calculated as less than it should be). A negative value indicates a full or partial refund owed to the buyer (for example, when the buyer receives damaged items or fewer items than ordered).
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -65,7 +65,7 @@ class RemovalShipmentAdjustmentEvent implements ModelInterface, ArrayAccess, \Js
              'merchant_order_id' => 'string',
              'order_id' => 'string',
              'transaction_type' => 'string',
-             'removal_shipment_item_adjustment_list' => '\OpenAPI\Client\Model\finances\v0\RemovalShipmentItemAdjustment[]'    ];
+             'removal_shipment_item_adjustment_list' => '\SpApi\Model\finances\v0\RemovalShipmentItemAdjustment[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

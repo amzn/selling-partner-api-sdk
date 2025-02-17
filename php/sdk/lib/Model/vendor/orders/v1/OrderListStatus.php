@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\orders\v1;
+namespace SpApi\Model\vendor\orders\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * OrderListStatus Class Doc Comment
  *
  * @category Class
  * @description A list of order statuses.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class OrderListStatus implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'pagination' => '\OpenAPI\Client\Model\vendor\orders\v1\Pagination',
-             'orders_status' => '\OpenAPI\Client\Model\vendor\orders\v1\OrderStatus[]'    ];
+             'pagination' => '\SpApi\Model\vendor\orders\v1\Pagination',
+             'orders_status' => '\SpApi\Model\vendor\orders\v1\OrderStatus[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -301,9 +301,9 @@ class OrderListStatus implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets pagination
      *
-     * @return \OpenAPI\Client\Model\vendor\orders\v1\Pagination|null
+     * @return \SpApi\Model\vendor\orders\v1\Pagination|null
      */
-    public function getPagination(): ?\OpenAPI\Client\Model\vendor\orders\v1\Pagination
+    public function getPagination(): ?\SpApi\Model\vendor\orders\v1\Pagination
     {
         return $this->container['pagination'];
     }
@@ -311,11 +311,11 @@ class OrderListStatus implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets pagination
      *
-     * @param \OpenAPI\Client\Model\vendor\orders\v1\Pagination|null $pagination pagination
+     * @param \SpApi\Model\vendor\orders\v1\Pagination|null $pagination pagination
      *
      * @return self
      */
-    public function setPagination(?\OpenAPI\Client\Model\vendor\orders\v1\Pagination $pagination): self
+    public function setPagination(?\SpApi\Model\vendor\orders\v1\Pagination $pagination): self
     {
         if (is_null($pagination)) {
             array_push($this->openAPINullablesSetToNull, 'pagination');

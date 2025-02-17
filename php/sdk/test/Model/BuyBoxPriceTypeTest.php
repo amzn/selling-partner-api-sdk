@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v0\BuyBoxPriceType;
+use SpApi\Model\pricing\v0\BuyBoxPriceType;
 
 /**
  * BuyBoxPriceTypeTest Class Doc Comment
  *
  * @category    Class
  * @description BuyBoxPriceType
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class BuyBoxPriceTypeTest extends TestCase
 {
@@ -67,7 +67,7 @@ class BuyBoxPriceTypeTest extends TestCase
      */
     public function testPropertyOfferType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\pricing\v0\OfferCustomerType();
+        $enumInstance = new \SpApi\Model\pricing\v0\OfferCustomerType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -91,7 +91,7 @@ class BuyBoxPriceTypeTest extends TestCase
      */
     public function testPropertyQuantityDiscountType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\pricing\v0\QuantityDiscountType();
+        $enumInstance = new \SpApi\Model\pricing\v0\QuantityDiscountType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -105,7 +105,7 @@ class BuyBoxPriceTypeTest extends TestCase
     public function testPropertyLandedPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v0\MoneyType();
+        $testValue = new \SpApi\Model\pricing\v0\MoneyType();
         
         $this->model->setLandedPrice($testValue);
         $this->assertEquals($testValue, $this->model->getLandedPrice());
@@ -117,7 +117,7 @@ class BuyBoxPriceTypeTest extends TestCase
     public function testPropertyListingPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v0\MoneyType();
+        $testValue = new \SpApi\Model\pricing\v0\MoneyType();
         
         $this->model->setListingPrice($testValue);
         $this->assertEquals($testValue, $this->model->getListingPrice());
@@ -129,7 +129,7 @@ class BuyBoxPriceTypeTest extends TestCase
     public function testPropertyShipping()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v0\MoneyType();
+        $testValue = new \SpApi\Model\pricing\v0\MoneyType();
         
         $this->model->setShipping($testValue);
         $this->assertEquals($testValue, $this->model->getShipping());
@@ -141,7 +141,7 @@ class BuyBoxPriceTypeTest extends TestCase
     public function testPropertyPoints()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v0\Points();
+        $testValue = new \SpApi\Model\pricing\v0\Points();
         
         $this->model->setPoints($testValue);
         $this->assertEquals($testValue, $this->model->getPoints());

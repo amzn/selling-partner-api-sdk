@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\aplusContent\v2020_11_01\Decorator;
+use SpApi\Model\aplusContent\v2020_11_01\Decorator;
 
 /**
  * DecoratorTest Class Doc Comment
  *
  * @category    Class
  * @description A decorator applied to a content string value in order to create rich text.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class DecoratorTest extends TestCase
 {
@@ -56,7 +56,7 @@ class DecoratorTest extends TestCase
      */
     public function testPropertyType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\DecoratorType();
+        $enumInstance = new \SpApi\Model\aplusContent\v2020_11_01\DecoratorType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\v2\SupportedDocumentDetail;
+use SpApi\Model\shipping\v2\SupportedDocumentDetail;
 
 /**
  * SupportedDocumentDetailTest Class Doc Comment
  *
  * @category    Class
  * @description The supported document types for a service offering.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class SupportedDocumentDetailTest extends TestCase
 {
@@ -56,7 +56,7 @@ class SupportedDocumentDetailTest extends TestCase
      */
     public function testPropertyName()
     {
-        $enumInstance = new \OpenAPI\Client\Model\shipping\v2\DocumentType();
+        $enumInstance = new \SpApi\Model\shipping\v2\DocumentType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

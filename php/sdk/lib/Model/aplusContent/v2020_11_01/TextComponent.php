@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\aplusContent\v2020_11_01;
+namespace SpApi\Model\aplusContent\v2020_11_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * TextComponent Class Doc Comment
  *
  * @category Class
  * @description Rich text content.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class TextComponent implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPITypes = [
              'value' => 'string',
-             'decorator_set' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\Decorator[]'    ];
+             'decorator_set' => '\SpApi\Model\aplusContent\v2020_11_01\Decorator[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\services\v1;
+namespace SpApi\Model\services\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * AvailabilityRecord Class Doc Comment
  *
  * @category Class
  * @description &#x60;AvailabilityRecord&#x60; to represent the capacity of a resource over a time range.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +62,7 @@ class AvailabilityRecord implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static array $openAPITypes = [
              'start_time' => '\DateTime',
              'end_time' => '\DateTime',
-             'recurrence' => '\OpenAPI\Client\Model\services\v1\Recurrence',
+             'recurrence' => '\SpApi\Model\services\v1\Recurrence',
              'capacity' => 'int'    ];
 
     /**
@@ -379,9 +379,9 @@ class AvailabilityRecord implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets recurrence
      *
-     * @return \OpenAPI\Client\Model\services\v1\Recurrence|null
+     * @return \SpApi\Model\services\v1\Recurrence|null
      */
-    public function getRecurrence(): ?\OpenAPI\Client\Model\services\v1\Recurrence
+    public function getRecurrence(): ?\SpApi\Model\services\v1\Recurrence
     {
         return $this->container['recurrence'];
     }
@@ -389,11 +389,11 @@ class AvailabilityRecord implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets recurrence
      *
-     * @param \OpenAPI\Client\Model\services\v1\Recurrence|null $recurrence recurrence
+     * @param \SpApi\Model\services\v1\Recurrence|null $recurrence recurrence
      *
      * @return self
      */
-    public function setRecurrence(?\OpenAPI\Client\Model\services\v1\Recurrence $recurrence): self
+    public function setRecurrence(?\SpApi\Model\services\v1\Recurrence $recurrence): self
     {
         if (is_null($recurrence)) {
             array_push($this->openAPINullablesSetToNull, 'recurrence');

@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01;
+namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ReturnItem Class Doc Comment
  *
  * @category Class
  * @description An item that Amazon accepted for return.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -66,10 +66,10 @@ class ReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
              'seller_return_reason_code' => 'string',
              'return_comment' => 'string',
              'amazon_return_reason_code' => 'string',
-             'status' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\FulfillmentReturnItemStatus',
+             'status' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\FulfillmentReturnItemStatus',
              'status_changed_date' => '\DateTime',
              'return_authorization_id' => 'string',
-             'return_received_condition' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\ReturnItemDisposition',
+             'return_received_condition' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\ReturnItemDisposition',
              'fulfillment_center_id' => 'string'    ];
 
     /**

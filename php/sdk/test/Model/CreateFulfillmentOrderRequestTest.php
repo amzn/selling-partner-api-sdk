@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentOrderRequest;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentOrderRequest;
 
 /**
  * CreateFulfillmentOrderRequestTest Class Doc Comment
  *
  * @category    Class
  * @description The request body schema for the &#x60;createFulfillmentOrder&#x60; operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class CreateFulfillmentOrderRequestTest extends TestCase
 {
@@ -112,7 +112,7 @@ class CreateFulfillmentOrderRequestTest extends TestCase
      */
     public function testPropertyShippingSpeedCategory()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\ShippingSpeedCategory();
+        $enumInstance = new \SpApi\Model\fulfillment\outbound\v2020_07_01\ShippingSpeedCategory();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -126,7 +126,7 @@ class CreateFulfillmentOrderRequestTest extends TestCase
     public function testPropertyDeliveryWindow()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DeliveryWindow();
+        $testValue = new \SpApi\Model\fulfillment\outbound\v2020_07_01\DeliveryWindow();
         
         $this->model->setDeliveryWindow($testValue);
         $this->assertEquals($testValue, $this->model->getDeliveryWindow());
@@ -138,7 +138,7 @@ class CreateFulfillmentOrderRequestTest extends TestCase
     public function testPropertyDestinationAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Address();
+        $testValue = new \SpApi\Model\fulfillment\outbound\v2020_07_01\Address();
         
         $this->model->setDestinationAddress($testValue);
         $this->assertEquals($testValue, $this->model->getDestinationAddress());
@@ -150,7 +150,7 @@ class CreateFulfillmentOrderRequestTest extends TestCase
     public function testPropertyDeliveryPreferences()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DeliveryPreferences();
+        $testValue = new \SpApi\Model\fulfillment\outbound\v2020_07_01\DeliveryPreferences();
         
         $this->model->setDeliveryPreferences($testValue);
         $this->assertEquals($testValue, $this->model->getDeliveryPreferences());
@@ -161,7 +161,7 @@ class CreateFulfillmentOrderRequestTest extends TestCase
      */
     public function testPropertyFulfillmentAction()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\FulfillmentAction();
+        $enumInstance = new \SpApi\Model\fulfillment\outbound\v2020_07_01\FulfillmentAction();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -174,7 +174,7 @@ class CreateFulfillmentOrderRequestTest extends TestCase
      */
     public function testPropertyFulfillmentPolicy()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\FulfillmentPolicy();
+        $enumInstance = new \SpApi\Model\fulfillment\outbound\v2020_07_01\FulfillmentPolicy();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -188,7 +188,7 @@ class CreateFulfillmentOrderRequestTest extends TestCase
     public function testPropertyCodSettings()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\CODSettings();
+        $testValue = new \SpApi\Model\fulfillment\outbound\v2020_07_01\CODSettings();
         
         $this->model->setCodSettings($testValue);
         $this->assertEquals($testValue, $this->model->getCodSettings());

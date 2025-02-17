@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v0\InvalidSKU;
+use SpApi\Model\fulfillment\inbound\v0\InvalidSKU;
 
 /**
  * InvalidSKUTest Class Doc Comment
  *
  * @category    Class
  * @description Contains detail about an invalid SKU
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class InvalidSKUTest extends TestCase
 {
@@ -67,7 +67,7 @@ class InvalidSKUTest extends TestCase
      */
     public function testPropertyErrorReason()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\inbound\v0\ErrorReason();
+        $enumInstance = new \SpApi\Model\fulfillment\inbound\v0\ErrorReason();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

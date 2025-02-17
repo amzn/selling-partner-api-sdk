@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\services\v1;
+namespace SpApi\Model\services\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * UpdateScheduleRecord Class Doc Comment
  *
  * @category Class
  * @description &#x60;UpdateScheduleRecord&#x60; entity contains the &#x60;AvailabilityRecord&#x60; if there is an error/warning while performing the requested operation on it.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,9 +60,9 @@ class UpdateScheduleRecord implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'availability' => '\OpenAPI\Client\Model\services\v1\AvailabilityRecord',
-             'warnings' => '\OpenAPI\Client\Model\services\v1\Warning[]',
-             'errors' => '\OpenAPI\Client\Model\services\v1\Error[]'    ];
+             'availability' => '\SpApi\Model\services\v1\AvailabilityRecord',
+             'warnings' => '\SpApi\Model\services\v1\Warning[]',
+             'errors' => '\SpApi\Model\services\v1\Error[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -308,9 +308,9 @@ class UpdateScheduleRecord implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets availability
      *
-     * @return \OpenAPI\Client\Model\services\v1\AvailabilityRecord|null
+     * @return \SpApi\Model\services\v1\AvailabilityRecord|null
      */
-    public function getAvailability(): ?\OpenAPI\Client\Model\services\v1\AvailabilityRecord
+    public function getAvailability(): ?\SpApi\Model\services\v1\AvailabilityRecord
     {
         return $this->container['availability'];
     }
@@ -318,11 +318,11 @@ class UpdateScheduleRecord implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets availability
      *
-     * @param \OpenAPI\Client\Model\services\v1\AvailabilityRecord|null $availability availability
+     * @param \SpApi\Model\services\v1\AvailabilityRecord|null $availability availability
      *
      * @return self
      */
-    public function setAvailability(?\OpenAPI\Client\Model\services\v1\AvailabilityRecord $availability): self
+    public function setAvailability(?\SpApi\Model\services\v1\AvailabilityRecord $availability): self
     {
         if (is_null($availability)) {
             array_push($this->openAPINullablesSetToNull, 'availability');

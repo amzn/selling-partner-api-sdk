@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,19 +27,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\shipping\v2;
+namespace SpApi\Model\shipping\v2;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GenerateCollectionFormResponse Class Doc Comment
  *
  * @category Class
  * @description The Response  for the GenerateCollectionFormResponse operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class GenerateCollectionFormResponse implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'collections_form_document' => '\OpenAPI\Client\Model\shipping\v2\CollectionsFormDocument'    ];
+             'collections_form_document' => '\SpApi\Model\shipping\v2\CollectionsFormDocument'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -295,9 +295,9 @@ class GenerateCollectionFormResponse implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets collections_form_document
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\CollectionsFormDocument|null
+     * @return \SpApi\Model\shipping\v2\CollectionsFormDocument|null
      */
-    public function getCollectionsFormDocument(): ?\OpenAPI\Client\Model\shipping\v2\CollectionsFormDocument
+    public function getCollectionsFormDocument(): ?\SpApi\Model\shipping\v2\CollectionsFormDocument
     {
         return $this->container['collections_form_document'];
     }
@@ -305,11 +305,11 @@ class GenerateCollectionFormResponse implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets collections_form_document
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\CollectionsFormDocument|null $collections_form_document collections_form_document
+     * @param \SpApi\Model\shipping\v2\CollectionsFormDocument|null $collections_form_document collections_form_document
      *
      * @return self
      */
-    public function setCollectionsFormDocument(?\OpenAPI\Client\Model\shipping\v2\CollectionsFormDocument $collections_form_document): self
+    public function setCollectionsFormDocument(?\SpApi\Model\shipping\v2\CollectionsFormDocument $collections_form_document): self
     {
         if (is_null($collections_form_document)) {
             array_push($this->openAPINullablesSetToNull, 'collections_form_document');

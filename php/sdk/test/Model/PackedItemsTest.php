@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\shipments\v1\PackedItems;
+use SpApi\Model\vendor\shipments\v1\PackedItems;
 
 /**
  * PackedItemsTest Class Doc Comment
  *
  * @category    Class
  * @description Details of the item being shipped.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class PackedItemsTest extends TestCase
 {
@@ -90,7 +90,7 @@ class PackedItemsTest extends TestCase
     public function testPropertyPackedQuantity()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\shipments\v1\ItemQuantity();
+        $testValue = new \SpApi\Model\vendor\shipments\v1\ItemQuantity();
         
         $this->model->setPackedQuantity($testValue);
         $this->assertEquals($testValue, $this->model->getPackedQuantity());
@@ -102,7 +102,7 @@ class PackedItemsTest extends TestCase
     public function testPropertyItemDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\shipments\v1\PackageItemDetails();
+        $testValue = new \SpApi\Model\vendor\shipments\v1\PackageItemDetails();
         
         $this->model->setItemDetails($testValue);
         $this->assertEquals($testValue, $this->model->getItemDetails());

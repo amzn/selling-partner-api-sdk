@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextPairBlock;
+use SpApi\Model\aplusContent\v2020_11_01\StandardTextPairBlock;
 
 /**
  * StandardTextPairBlockTest Class Doc Comment
  *
  * @category    Class
  * @description The A+ Content standard label and description block, comprised of a pair of text components.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class StandardTextPairBlockTest extends TestCase
 {
@@ -57,7 +57,7 @@ class StandardTextPairBlockTest extends TestCase
     public function testPropertyLabel()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\TextComponent();
         
         $this->model->setLabel($testValue);
         $this->assertEquals($testValue, $this->model->getLabel());
@@ -69,7 +69,7 @@ class StandardTextPairBlockTest extends TestCase
     public function testPropertyDescription()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\TextComponent();
         
         $this->model->setDescription($testValue);
         $this->assertEquals($testValue, $this->model->getDescription());

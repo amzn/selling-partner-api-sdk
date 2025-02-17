@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\pricing\v2022_05_01;
+namespace SpApi\Model\pricing\v2022_05_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * CompetitiveSummaryResponse Class Doc Comment
  *
  * @category Class
  * @description The response for the individual &#x60;competitiveSummary&#x60; request in the batch operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class CompetitiveSummaryResponse implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'status' => '\OpenAPI\Client\Model\pricing\v2022_05_01\HttpStatusLine',
-             'body' => '\OpenAPI\Client\Model\pricing\v2022_05_01\CompetitiveSummaryResponseBody'    ];
+             'status' => '\SpApi\Model\pricing\v2022_05_01\HttpStatusLine',
+             'body' => '\SpApi\Model\pricing\v2022_05_01\CompetitiveSummaryResponseBody'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -307,9 +307,9 @@ class CompetitiveSummaryResponse implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets status
      *
-     * @return \OpenAPI\Client\Model\pricing\v2022_05_01\HttpStatusLine
+     * @return \SpApi\Model\pricing\v2022_05_01\HttpStatusLine
      */
-    public function getStatus(): \OpenAPI\Client\Model\pricing\v2022_05_01\HttpStatusLine
+    public function getStatus(): \SpApi\Model\pricing\v2022_05_01\HttpStatusLine
     {
         return $this->container['status'];
     }
@@ -317,11 +317,11 @@ class CompetitiveSummaryResponse implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets status
      *
-     * @param \OpenAPI\Client\Model\pricing\v2022_05_01\HttpStatusLine $status status
+     * @param \SpApi\Model\pricing\v2022_05_01\HttpStatusLine $status status
      *
      * @return self
      */
-    public function setStatus(\OpenAPI\Client\Model\pricing\v2022_05_01\HttpStatusLine $status): self
+    public function setStatus(\SpApi\Model\pricing\v2022_05_01\HttpStatusLine $status): self
     {
         if (is_null($status)) {
             throw new \InvalidArgumentException('non-nullable status cannot be null');
@@ -334,9 +334,9 @@ class CompetitiveSummaryResponse implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets body
      *
-     * @return \OpenAPI\Client\Model\pricing\v2022_05_01\CompetitiveSummaryResponseBody
+     * @return \SpApi\Model\pricing\v2022_05_01\CompetitiveSummaryResponseBody
      */
-    public function getBody(): \OpenAPI\Client\Model\pricing\v2022_05_01\CompetitiveSummaryResponseBody
+    public function getBody(): \SpApi\Model\pricing\v2022_05_01\CompetitiveSummaryResponseBody
     {
         return $this->container['body'];
     }
@@ -344,11 +344,11 @@ class CompetitiveSummaryResponse implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets body
      *
-     * @param \OpenAPI\Client\Model\pricing\v2022_05_01\CompetitiveSummaryResponseBody $body body
+     * @param \SpApi\Model\pricing\v2022_05_01\CompetitiveSummaryResponseBody $body body
      *
      * @return self
      */
-    public function setBody(\OpenAPI\Client\Model\pricing\v2022_05_01\CompetitiveSummaryResponseBody $body): self
+    public function setBody(\SpApi\Model\pricing\v2022_05_01\CompetitiveSummaryResponseBody $body): self
     {
         if (is_null($body)) {
             throw new \InvalidArgumentException('non-nullable body cannot be null');

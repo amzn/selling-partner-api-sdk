@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageComponent;
+use SpApi\Model\aplusContent\v2020_11_01\ImageComponent;
 
 /**
  * ImageComponentTest Class Doc Comment
  *
  * @category    Class
  * @description A reference to an image, hosted in the A+ Content media library.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ImageComponentTest extends TestCase
 {
@@ -68,7 +68,7 @@ class ImageComponentTest extends TestCase
     public function testPropertyImageCropSpecification()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageCropSpecification();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\ImageCropSpecification();
         
         $this->model->setImageCropSpecification($testValue);
         $this->assertEquals($testValue, $this->model->getImageCropSpecification());

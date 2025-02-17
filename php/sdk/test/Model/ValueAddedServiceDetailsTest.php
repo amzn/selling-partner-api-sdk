@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\v2\ValueAddedServiceDetails;
+use SpApi\Model\shipping\v2\ValueAddedServiceDetails;
 
 /**
  * ValueAddedServiceDetailsTest Class Doc Comment
  *
  * @category    Class
  * @description A collection of supported value-added services.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ValueAddedServiceDetailsTest extends TestCase
 {
@@ -57,7 +57,7 @@ class ValueAddedServiceDetailsTest extends TestCase
     public function testPropertyCollectOnDelivery()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\v2\CollectOnDelivery();
+        $testValue = new \SpApi\Model\shipping\v2\CollectOnDelivery();
         
         $this->model->setCollectOnDelivery($testValue);
         $this->assertEquals($testValue, $this->model->getCollectOnDelivery());

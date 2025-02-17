@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\listings\items\v2021_08_01\ItemOfferByMarketplace;
+use SpApi\Model\listings\items\v2021_08_01\ItemOfferByMarketplace;
 
 /**
  * ItemOfferByMarketplaceTest Class Doc Comment
  *
  * @category    Class
  * @description Offer details of a listings item for an Amazon marketplace.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ItemOfferByMarketplaceTest extends TestCase
 {
@@ -80,7 +80,7 @@ class ItemOfferByMarketplaceTest extends TestCase
     public function testPropertyPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\listings\items\v2021_08_01\Money();
+        $testValue = new \SpApi\Model\listings\items\v2021_08_01\Money();
         
         $this->model->setPrice($testValue);
         $this->assertEquals($testValue, $this->model->getPrice());
@@ -92,7 +92,7 @@ class ItemOfferByMarketplaceTest extends TestCase
     public function testPropertyPoints()
     {
         
-        $testValue = new \OpenAPI\Client\Model\listings\items\v2021_08_01\Points();
+        $testValue = new \SpApi\Model\listings\items\v2021_08_01\Points();
         
         $this->model->setPoints($testValue);
         $this->assertEquals($testValue, $this->model->getPoints());
@@ -104,7 +104,7 @@ class ItemOfferByMarketplaceTest extends TestCase
     public function testPropertyAudience()
     {
         
-        $testValue = new \OpenAPI\Client\Model\listings\items\v2021_08_01\Audience();
+        $testValue = new \SpApi\Model\listings\items\v2021_08_01\Audience();
         
         $this->model->setAudience($testValue);
         $this->assertEquals($testValue, $this->model->getAudience());

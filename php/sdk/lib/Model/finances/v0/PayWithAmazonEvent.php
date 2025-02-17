@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\finances\v0;
+namespace SpApi\Model\finances\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * PayWithAmazonEvent Class Doc Comment
  *
  * @category Class
  * @description An event related to the seller&#39;s Pay with Amazon account.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -64,8 +64,8 @@ class PayWithAmazonEvent implements ModelInterface, ArrayAccess, \JsonSerializab
              'transaction_posted_date' => '\DateTime',
              'business_object_type' => 'string',
              'sales_channel' => 'string',
-             'charge' => '\OpenAPI\Client\Model\finances\v0\ChargeComponent',
-             'fee_list' => '\OpenAPI\Client\Model\finances\v0\FeeComponent[]',
+             'charge' => '\SpApi\Model\finances\v0\ChargeComponent',
+             'fee_list' => '\SpApi\Model\finances\v0\FeeComponent[]',
              'payment_amount_type' => 'string',
              'amount_description' => 'string',
              'fulfillment_channel' => 'string',
@@ -493,9 +493,9 @@ class PayWithAmazonEvent implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets charge
      *
-     * @return \OpenAPI\Client\Model\finances\v0\ChargeComponent|null
+     * @return \SpApi\Model\finances\v0\ChargeComponent|null
      */
-    public function getCharge(): ?\OpenAPI\Client\Model\finances\v0\ChargeComponent
+    public function getCharge(): ?\SpApi\Model\finances\v0\ChargeComponent
     {
         return $this->container['charge'];
     }
@@ -503,11 +503,11 @@ class PayWithAmazonEvent implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets charge
      *
-     * @param \OpenAPI\Client\Model\finances\v0\ChargeComponent|null $charge charge
+     * @param \SpApi\Model\finances\v0\ChargeComponent|null $charge charge
      *
      * @return self
      */
-    public function setCharge(?\OpenAPI\Client\Model\finances\v0\ChargeComponent $charge): self
+    public function setCharge(?\SpApi\Model\finances\v0\ChargeComponent $charge): self
     {
         if (is_null($charge)) {
             array_push($this->openAPINullablesSetToNull, 'charge');

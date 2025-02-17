@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\df\payments\v1\AdditionalDetails;
+use SpApi\Model\vendor\df\payments\v1\AdditionalDetails;
 
 /**
  * AdditionalDetailsTest Class Doc Comment
  *
  * @category    Class
  * @description A field where the selling party can provide additional information for tax-related or any other purposes.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class AdditionalDetailsTest extends TestCase
 {

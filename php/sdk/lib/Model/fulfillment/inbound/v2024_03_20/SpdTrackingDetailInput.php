@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20;
+namespace SpApi\Model\fulfillment\inbound\v2024_03_20;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * SpdTrackingDetailInput Class Doc Comment
  *
  * @category Class
  * @description Contains input information to update Small Parcel Delivery (SPD) tracking information.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class SpdTrackingDetailInput implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'spd_tracking_items' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\SpdTrackingItemInput[]'    ];
+             'spd_tracking_items' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\SpdTrackingItemInput[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\easyship\v2022_03_23;
+namespace SpApi\Model\easyship\v2022_03_23;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * TimeSlot Class Doc Comment
  *
  * @category Class
  * @description A time window to hand over an Easy Ship package to Amazon Logistics.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,7 +63,7 @@ class TimeSlot implements ModelInterface, ArrayAccess, \JsonSerializable
              'slot_id' => 'string',
              'start_time' => '\DateTime',
              'end_time' => '\DateTime',
-             'handover_method' => '\OpenAPI\Client\Model\easyship\v2022_03_23\HandoverMethod'    ];
+             'handover_method' => '\SpApi\Model\easyship\v2022_03_23\HandoverMethod'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

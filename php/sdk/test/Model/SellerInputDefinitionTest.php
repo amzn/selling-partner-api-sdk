@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantFulfillment\v0\SellerInputDefinition;
+use SpApi\Model\merchantFulfillment\v0\SellerInputDefinition;
 
 /**
  * SellerInputDefinitionTest Class Doc Comment
  *
  * @category    Class
  * @description Specifies characteristics that apply to a seller input.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class SellerInputDefinitionTest extends TestCase
 {
@@ -100,7 +100,7 @@ class SellerInputDefinitionTest extends TestCase
      */
     public function testPropertyInputTarget()
     {
-        $enumInstance = new \OpenAPI\Client\Model\merchantFulfillment\v0\InputTargetType();
+        $enumInstance = new \SpApi\Model\merchantFulfillment\v0\InputTargetType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -114,7 +114,7 @@ class SellerInputDefinitionTest extends TestCase
     public function testPropertyStoredValue()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\v0\AdditionalSellerInput();
+        $testValue = new \SpApi\Model\merchantFulfillment\v0\AdditionalSellerInput();
         
         $this->model->setStoredValue($testValue);
         $this->assertEquals($testValue, $this->model->getStoredValue());

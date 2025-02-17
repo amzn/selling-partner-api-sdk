@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\v2\OneClickShipmentResult;
+use SpApi\Model\shipping\v2\OneClickShipmentResult;
 
 /**
  * OneClickShipmentResultTest Class Doc Comment
  *
  * @category    Class
  * @description The payload for the OneClickShipment API.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class OneClickShipmentResultTest extends TestCase
 {
@@ -79,7 +79,7 @@ class OneClickShipmentResultTest extends TestCase
     public function testPropertyPromise()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\v2\Promise();
+        $testValue = new \SpApi\Model\shipping\v2\Promise();
         
         $this->model->setPromise($testValue);
         $this->assertEquals($testValue, $this->model->getPromise());
@@ -91,7 +91,7 @@ class OneClickShipmentResultTest extends TestCase
     public function testPropertyCarrier()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\v2\Carrier();
+        $testValue = new \SpApi\Model\shipping\v2\Carrier();
         
         $this->model->setCarrier($testValue);
         $this->assertEquals($testValue, $this->model->getCarrier());
@@ -103,7 +103,7 @@ class OneClickShipmentResultTest extends TestCase
     public function testPropertyService()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\v2\Service();
+        $testValue = new \SpApi\Model\shipping\v2\Service();
         
         $this->model->setService($testValue);
         $this->assertEquals($testValue, $this->model->getService());
@@ -115,7 +115,7 @@ class OneClickShipmentResultTest extends TestCase
     public function testPropertyTotalCharge()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\v2\Currency();
+        $testValue = new \SpApi\Model\shipping\v2\Currency();
         
         $this->model->setTotalCharge($testValue);
         $this->assertEquals($testValue, $this->model->getTotalCharge());

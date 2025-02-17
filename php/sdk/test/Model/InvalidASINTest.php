@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v0\InvalidASIN;
+use SpApi\Model\fulfillment\inbound\v0\InvalidASIN;
 
 /**
  * InvalidASINTest Class Doc Comment
  *
  * @category    Class
  * @description Contains details about an invalid ASIN
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class InvalidASINTest extends TestCase
 {
@@ -67,7 +67,7 @@ class InvalidASINTest extends TestCase
      */
     public function testPropertyErrorReason()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\inbound\v0\ErrorReason();
+        $enumInstance = new \SpApi\Model\fulfillment\inbound\v0\ErrorReason();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

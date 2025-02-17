@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentPreviewResult;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentPreviewResult;
 
 /**
  * GetFulfillmentPreviewResultTest Class Doc Comment
  *
  * @category    Class
  * @description A list of fulfillment order previews, including estimated shipping weights, estimated shipping fees, and estimated ship dates and arrival dates.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetFulfillmentPreviewResultTest extends TestCase
 {

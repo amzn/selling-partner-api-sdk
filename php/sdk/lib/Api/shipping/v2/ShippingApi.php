@@ -4,7 +4,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api\shipping\v2;
+namespace SpApi\Api\shipping\v2;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -40,16 +40,16 @@ use SpApi\AuthAndAuth\RateLimitConfiguration;
 use Symfony\Component\RateLimiter\LimiterInterface;
 use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\ObjectSerializer;
+use SpApi\ApiException;
+use SpApi\Configuration;
+use SpApi\HeaderSelector;
+use SpApi\ObjectSerializer;
 
 /**
  * ShippingApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -158,14 +158,14 @@ class ShippingApi
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\shipping\v2\CancelShipmentResponse
+     * @return \SpApi\Model\shipping\v2\CancelShipmentResponse
      */
     public function cancelShipment(
         string $shipment_id,
         ?string $x_amzn_shipping_business_id = null
-    ): \OpenAPI\Client\Model\shipping\v2\CancelShipmentResponse {
+    ): \SpApi\Model\shipping\v2\CancelShipmentResponse {
         list($response) = $this->cancelShipmentWithHttpInfo($shipment_id, $x_amzn_shipping_business_id);
         return $response;
     }
@@ -178,9 +178,9 @@ class ShippingApi
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\shipping\v2\CancelShipmentResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\shipping\v2\CancelShipmentResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function cancelShipmentWithHttpInfo(
         string $shipment_id,
@@ -227,158 +227,158 @@ class ShippingApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\shipping\v2\CancelShipmentResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\CancelShipmentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\CancelShipmentResponse' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\CancelShipmentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\CancelShipmentResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\CancelShipmentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\shipping\v2\CancelShipmentResponse';
+            $returnType = '\SpApi\Model\shipping\v2\CancelShipmentResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -399,7 +399,7 @@ class ShippingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\CancelShipmentResponse',
+                        '\SpApi\Model\shipping\v2\CancelShipmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -407,7 +407,7 @@ class ShippingApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -415,7 +415,7 @@ class ShippingApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -423,7 +423,7 @@ class ShippingApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -431,7 +431,7 @@ class ShippingApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -439,7 +439,7 @@ class ShippingApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -447,7 +447,7 @@ class ShippingApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -455,7 +455,7 @@ class ShippingApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -463,7 +463,7 @@ class ShippingApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -471,7 +471,7 @@ class ShippingApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -519,7 +519,7 @@ class ShippingApi
         string $shipment_id,
         ?string $x_amzn_shipping_business_id = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\shipping\v2\CancelShipmentResponse';
+        $returnType = '\SpApi\Model\shipping\v2\CancelShipmentResponse';
         $request = $this->cancelShipmentRequest($shipment_id, $x_amzn_shipping_business_id);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -667,7 +667,7 @@ class ShippingApi
     /**
      * Operation directPurchaseShipment
      *
-     * @param  \OpenAPI\Client\Model\shipping\v2\DirectPurchaseRequest $body
+     * @param  \SpApi\Model\shipping\v2\DirectPurchaseRequest $body
      *  body (required)
      * @param  string|null $x_amzn_idempotency_key
      *  A unique value which the server uses to recognize subsequent retries of the same request. (optional)
@@ -676,16 +676,16 @@ class ShippingApi
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\shipping\v2\DirectPurchaseResponse
+     * @return \SpApi\Model\shipping\v2\DirectPurchaseResponse
      */
     public function directPurchaseShipment(
-        \OpenAPI\Client\Model\shipping\v2\DirectPurchaseRequest $body,
+        \SpApi\Model\shipping\v2\DirectPurchaseRequest $body,
         ?string $x_amzn_idempotency_key = null,
         ?string $locale = null,
         ?string $x_amzn_shipping_business_id = null
-    ): \OpenAPI\Client\Model\shipping\v2\DirectPurchaseResponse {
+    ): \SpApi\Model\shipping\v2\DirectPurchaseResponse {
         list($response) = $this->directPurchaseShipmentWithHttpInfo($body, $x_amzn_idempotency_key, $locale, $x_amzn_shipping_business_id);
         return $response;
     }
@@ -693,7 +693,7 @@ class ShippingApi
     /**
      * Operation directPurchaseShipmentWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\shipping\v2\DirectPurchaseRequest $body
+     * @param  \SpApi\Model\shipping\v2\DirectPurchaseRequest $body
      *  (required)
      * @param  string|null $x_amzn_idempotency_key
      *  A unique value which the server uses to recognize subsequent retries of the same request. (optional)
@@ -702,12 +702,12 @@ class ShippingApi
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\shipping\v2\DirectPurchaseResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\shipping\v2\DirectPurchaseResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function directPurchaseShipmentWithHttpInfo(
-        \OpenAPI\Client\Model\shipping\v2\DirectPurchaseRequest $body,
+        \SpApi\Model\shipping\v2\DirectPurchaseRequest $body,
         ?string $x_amzn_idempotency_key = null,
         ?string $locale = null,
         ?string $x_amzn_shipping_business_id = null
@@ -753,158 +753,158 @@ class ShippingApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\shipping\v2\DirectPurchaseResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\DirectPurchaseResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\DirectPurchaseResponse' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\DirectPurchaseResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\DirectPurchaseResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\DirectPurchaseResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\shipping\v2\DirectPurchaseResponse';
+            $returnType = '\SpApi\Model\shipping\v2\DirectPurchaseResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -925,7 +925,7 @@ class ShippingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\DirectPurchaseResponse',
+                        '\SpApi\Model\shipping\v2\DirectPurchaseResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -933,7 +933,7 @@ class ShippingApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -941,7 +941,7 @@ class ShippingApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -949,7 +949,7 @@ class ShippingApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -957,7 +957,7 @@ class ShippingApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -965,7 +965,7 @@ class ShippingApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -973,7 +973,7 @@ class ShippingApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -981,7 +981,7 @@ class ShippingApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -989,7 +989,7 @@ class ShippingApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -997,7 +997,7 @@ class ShippingApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1010,7 +1010,7 @@ class ShippingApi
     /**
      * Operation directPurchaseShipmentAsync
      *
-     * @param  \OpenAPI\Client\Model\shipping\v2\DirectPurchaseRequest $body
+     * @param  \SpApi\Model\shipping\v2\DirectPurchaseRequest $body
      *  (required)
      * @param  string|null $x_amzn_idempotency_key
      *  A unique value which the server uses to recognize subsequent retries of the same request. (optional)
@@ -1023,7 +1023,7 @@ class ShippingApi
      * @return PromiseInterface
      */
     public function directPurchaseShipmentAsync(
-        \OpenAPI\Client\Model\shipping\v2\DirectPurchaseRequest $body,
+        \SpApi\Model\shipping\v2\DirectPurchaseRequest $body,
         ?string $x_amzn_idempotency_key = null,
         ?string $locale = null,
         ?string $x_amzn_shipping_business_id = null
@@ -1039,7 +1039,7 @@ class ShippingApi
     /**
      * Operation directPurchaseShipmentAsyncWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\shipping\v2\DirectPurchaseRequest $body
+     * @param  \SpApi\Model\shipping\v2\DirectPurchaseRequest $body
      *  (required)
      * @param  string|null $x_amzn_idempotency_key
      *  A unique value which the server uses to recognize subsequent retries of the same request. (optional)
@@ -1052,12 +1052,12 @@ class ShippingApi
      * @return PromiseInterface
      */
     public function directPurchaseShipmentAsyncWithHttpInfo(
-        \OpenAPI\Client\Model\shipping\v2\DirectPurchaseRequest $body,
+        \SpApi\Model\shipping\v2\DirectPurchaseRequest $body,
         ?string $x_amzn_idempotency_key = null,
         ?string $locale = null,
         ?string $x_amzn_shipping_business_id = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\shipping\v2\DirectPurchaseResponse';
+        $returnType = '\SpApi\Model\shipping\v2\DirectPurchaseResponse';
         $request = $this->directPurchaseShipmentRequest($body, $x_amzn_idempotency_key, $locale, $x_amzn_shipping_business_id);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -1101,7 +1101,7 @@ class ShippingApi
     /**
      * Create request for operation 'directPurchaseShipment'
      *
-     * @param  \OpenAPI\Client\Model\shipping\v2\DirectPurchaseRequest $body
+     * @param  \SpApi\Model\shipping\v2\DirectPurchaseRequest $body
      *  (required)
      * @param  string|null $x_amzn_idempotency_key
      *  A unique value which the server uses to recognize subsequent retries of the same request. (optional)
@@ -1114,7 +1114,7 @@ class ShippingApi
      * @return Request
      */
     public function directPurchaseShipmentRequest(
-        \OpenAPI\Client\Model\shipping\v2\DirectPurchaseRequest $body,
+        \SpApi\Model\shipping\v2\DirectPurchaseRequest $body,
         ?string $x_amzn_idempotency_key = null,
         ?string $locale = null,
         ?string $x_amzn_shipping_business_id = null
@@ -1217,22 +1217,22 @@ class ShippingApi
     /**
      * Operation generateCollectionForm
      *
-     * @param  \OpenAPI\Client\Model\shipping\v2\GenerateCollectionFormRequest $body
+     * @param  \SpApi\Model\shipping\v2\GenerateCollectionFormRequest $body
      *  body (required)
      * @param  string|null $x_amzn_idempotency_key
      *  A unique value which the server uses to recognize subsequent retries of the same request. (optional)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\shipping\v2\GenerateCollectionFormResponse
+     * @return \SpApi\Model\shipping\v2\GenerateCollectionFormResponse
      */
     public function generateCollectionForm(
-        \OpenAPI\Client\Model\shipping\v2\GenerateCollectionFormRequest $body,
+        \SpApi\Model\shipping\v2\GenerateCollectionFormRequest $body,
         ?string $x_amzn_idempotency_key = null,
         ?string $x_amzn_shipping_business_id = null
-    ): \OpenAPI\Client\Model\shipping\v2\GenerateCollectionFormResponse {
+    ): \SpApi\Model\shipping\v2\GenerateCollectionFormResponse {
         list($response) = $this->generateCollectionFormWithHttpInfo($body, $x_amzn_idempotency_key, $x_amzn_shipping_business_id);
         return $response;
     }
@@ -1240,19 +1240,19 @@ class ShippingApi
     /**
      * Operation generateCollectionFormWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\shipping\v2\GenerateCollectionFormRequest $body
+     * @param  \SpApi\Model\shipping\v2\GenerateCollectionFormRequest $body
      *  (required)
      * @param  string|null $x_amzn_idempotency_key
      *  A unique value which the server uses to recognize subsequent retries of the same request. (optional)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\shipping\v2\GenerateCollectionFormResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\shipping\v2\GenerateCollectionFormResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function generateCollectionFormWithHttpInfo(
-        \OpenAPI\Client\Model\shipping\v2\GenerateCollectionFormRequest $body,
+        \SpApi\Model\shipping\v2\GenerateCollectionFormRequest $body,
         ?string $x_amzn_idempotency_key = null,
         ?string $x_amzn_shipping_business_id = null
     ): array {
@@ -1297,158 +1297,158 @@ class ShippingApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\shipping\v2\GenerateCollectionFormResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\GenerateCollectionFormResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\GenerateCollectionFormResponse' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\GenerateCollectionFormResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\GenerateCollectionFormResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\GenerateCollectionFormResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\shipping\v2\GenerateCollectionFormResponse';
+            $returnType = '\SpApi\Model\shipping\v2\GenerateCollectionFormResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1469,7 +1469,7 @@ class ShippingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\GenerateCollectionFormResponse',
+                        '\SpApi\Model\shipping\v2\GenerateCollectionFormResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1477,7 +1477,7 @@ class ShippingApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1485,7 +1485,7 @@ class ShippingApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1493,7 +1493,7 @@ class ShippingApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1501,7 +1501,7 @@ class ShippingApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1509,7 +1509,7 @@ class ShippingApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1517,7 +1517,7 @@ class ShippingApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1525,7 +1525,7 @@ class ShippingApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1533,7 +1533,7 @@ class ShippingApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1541,7 +1541,7 @@ class ShippingApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1554,7 +1554,7 @@ class ShippingApi
     /**
      * Operation generateCollectionFormAsync
      *
-     * @param  \OpenAPI\Client\Model\shipping\v2\GenerateCollectionFormRequest $body
+     * @param  \SpApi\Model\shipping\v2\GenerateCollectionFormRequest $body
      *  (required)
      * @param  string|null $x_amzn_idempotency_key
      *  A unique value which the server uses to recognize subsequent retries of the same request. (optional)
@@ -1565,7 +1565,7 @@ class ShippingApi
      * @return PromiseInterface
      */
     public function generateCollectionFormAsync(
-        \OpenAPI\Client\Model\shipping\v2\GenerateCollectionFormRequest $body,
+        \SpApi\Model\shipping\v2\GenerateCollectionFormRequest $body,
         ?string $x_amzn_idempotency_key = null,
         ?string $x_amzn_shipping_business_id = null
     ): PromiseInterface {
@@ -1580,7 +1580,7 @@ class ShippingApi
     /**
      * Operation generateCollectionFormAsyncWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\shipping\v2\GenerateCollectionFormRequest $body
+     * @param  \SpApi\Model\shipping\v2\GenerateCollectionFormRequest $body
      *  (required)
      * @param  string|null $x_amzn_idempotency_key
      *  A unique value which the server uses to recognize subsequent retries of the same request. (optional)
@@ -1591,11 +1591,11 @@ class ShippingApi
      * @return PromiseInterface
      */
     public function generateCollectionFormAsyncWithHttpInfo(
-        \OpenAPI\Client\Model\shipping\v2\GenerateCollectionFormRequest $body,
+        \SpApi\Model\shipping\v2\GenerateCollectionFormRequest $body,
         ?string $x_amzn_idempotency_key = null,
         ?string $x_amzn_shipping_business_id = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\shipping\v2\GenerateCollectionFormResponse';
+        $returnType = '\SpApi\Model\shipping\v2\GenerateCollectionFormResponse';
         $request = $this->generateCollectionFormRequest($body, $x_amzn_idempotency_key, $x_amzn_shipping_business_id);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -1639,7 +1639,7 @@ class ShippingApi
     /**
      * Create request for operation 'generateCollectionForm'
      *
-     * @param  \OpenAPI\Client\Model\shipping\v2\GenerateCollectionFormRequest $body
+     * @param  \SpApi\Model\shipping\v2\GenerateCollectionFormRequest $body
      *  (required)
      * @param  string|null $x_amzn_idempotency_key
      *  A unique value which the server uses to recognize subsequent retries of the same request. (optional)
@@ -1650,7 +1650,7 @@ class ShippingApi
      * @return Request
      */
     public function generateCollectionFormRequest(
-        \OpenAPI\Client\Model\shipping\v2\GenerateCollectionFormRequest $body,
+        \SpApi\Model\shipping\v2\GenerateCollectionFormRequest $body,
         ?string $x_amzn_idempotency_key = null,
         ?string $x_amzn_shipping_business_id = null
     ): Request {
@@ -1757,16 +1757,16 @@ class ShippingApi
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\shipping\v2\GetAccessPointsResponse
+     * @return \SpApi\Model\shipping\v2\GetAccessPointsResponse
      */
     public function getAccessPoints(
         array $access_point_types,
         string $country_code,
         string $postal_code,
         ?string $x_amzn_shipping_business_id = null
-    ): \OpenAPI\Client\Model\shipping\v2\GetAccessPointsResponse {
+    ): \SpApi\Model\shipping\v2\GetAccessPointsResponse {
         list($response) = $this->getAccessPointsWithHttpInfo($access_point_types, $country_code, $postal_code, $x_amzn_shipping_business_id);
         return $response;
     }
@@ -1783,9 +1783,9 @@ class ShippingApi
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\shipping\v2\GetAccessPointsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\shipping\v2\GetAccessPointsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAccessPointsWithHttpInfo(
         array $access_point_types,
@@ -1834,158 +1834,158 @@ class ShippingApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\shipping\v2\GetAccessPointsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\GetAccessPointsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\GetAccessPointsResponse' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\GetAccessPointsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\GetAccessPointsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\GetAccessPointsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\shipping\v2\GetAccessPointsResponse';
+            $returnType = '\SpApi\Model\shipping\v2\GetAccessPointsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2006,7 +2006,7 @@ class ShippingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\GetAccessPointsResponse',
+                        '\SpApi\Model\shipping\v2\GetAccessPointsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2014,7 +2014,7 @@ class ShippingApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2022,7 +2022,7 @@ class ShippingApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2030,7 +2030,7 @@ class ShippingApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2038,7 +2038,7 @@ class ShippingApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2046,7 +2046,7 @@ class ShippingApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2054,7 +2054,7 @@ class ShippingApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2062,7 +2062,7 @@ class ShippingApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2070,7 +2070,7 @@ class ShippingApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2078,7 +2078,7 @@ class ShippingApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2138,7 +2138,7 @@ class ShippingApi
         string $postal_code,
         ?string $x_amzn_shipping_business_id = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\shipping\v2\GetAccessPointsResponse';
+        $returnType = '\SpApi\Model\shipping\v2\GetAccessPointsResponse';
         $request = $this->getAccessPointsRequest($access_point_types, $country_code, $postal_code, $x_amzn_shipping_business_id);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -2330,15 +2330,15 @@ class ShippingApi
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\shipping\v2\GetAdditionalInputsResponse
+     * @return \SpApi\Model\shipping\v2\GetAdditionalInputsResponse
      */
     public function getAdditionalInputs(
         string $request_token,
         string $rate_id,
         ?string $x_amzn_shipping_business_id = null
-    ): \OpenAPI\Client\Model\shipping\v2\GetAdditionalInputsResponse {
+    ): \SpApi\Model\shipping\v2\GetAdditionalInputsResponse {
         list($response) = $this->getAdditionalInputsWithHttpInfo($request_token, $rate_id, $x_amzn_shipping_business_id);
         return $response;
     }
@@ -2353,9 +2353,9 @@ class ShippingApi
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\shipping\v2\GetAdditionalInputsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\shipping\v2\GetAdditionalInputsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAdditionalInputsWithHttpInfo(
         string $request_token,
@@ -2403,158 +2403,158 @@ class ShippingApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\shipping\v2\GetAdditionalInputsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\GetAdditionalInputsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\GetAdditionalInputsResponse' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\GetAdditionalInputsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\GetAdditionalInputsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\GetAdditionalInputsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\shipping\v2\GetAdditionalInputsResponse';
+            $returnType = '\SpApi\Model\shipping\v2\GetAdditionalInputsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2575,7 +2575,7 @@ class ShippingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\GetAdditionalInputsResponse',
+                        '\SpApi\Model\shipping\v2\GetAdditionalInputsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2583,7 +2583,7 @@ class ShippingApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2591,7 +2591,7 @@ class ShippingApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2599,7 +2599,7 @@ class ShippingApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2607,7 +2607,7 @@ class ShippingApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2615,7 +2615,7 @@ class ShippingApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2623,7 +2623,7 @@ class ShippingApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2631,7 +2631,7 @@ class ShippingApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2639,7 +2639,7 @@ class ShippingApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2647,7 +2647,7 @@ class ShippingApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2701,7 +2701,7 @@ class ShippingApi
         string $rate_id,
         ?string $x_amzn_shipping_business_id = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\shipping\v2\GetAdditionalInputsResponse';
+        $returnType = '\SpApi\Model\shipping\v2\GetAdditionalInputsResponse';
         $request = $this->getAdditionalInputsRequest($request_token, $rate_id, $x_amzn_shipping_business_id);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -2871,13 +2871,13 @@ class ShippingApi
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\shipping\v2\GetCarrierAccountFormInputsResponse
+     * @return \SpApi\Model\shipping\v2\GetCarrierAccountFormInputsResponse
      */
     public function getCarrierAccountFormInputs(
         ?string $x_amzn_shipping_business_id = null
-    ): \OpenAPI\Client\Model\shipping\v2\GetCarrierAccountFormInputsResponse {
+    ): \SpApi\Model\shipping\v2\GetCarrierAccountFormInputsResponse {
         list($response) = $this->getCarrierAccountFormInputsWithHttpInfo($x_amzn_shipping_business_id);
         return $response;
     }
@@ -2888,9 +2888,9 @@ class ShippingApi
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\shipping\v2\GetCarrierAccountFormInputsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\shipping\v2\GetCarrierAccountFormInputsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCarrierAccountFormInputsWithHttpInfo(
         ?string $x_amzn_shipping_business_id = null
@@ -2936,158 +2936,158 @@ class ShippingApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\shipping\v2\GetCarrierAccountFormInputsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\GetCarrierAccountFormInputsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\GetCarrierAccountFormInputsResponse' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\GetCarrierAccountFormInputsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\GetCarrierAccountFormInputsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\GetCarrierAccountFormInputsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\shipping\v2\GetCarrierAccountFormInputsResponse';
+            $returnType = '\SpApi\Model\shipping\v2\GetCarrierAccountFormInputsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -3108,7 +3108,7 @@ class ShippingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\GetCarrierAccountFormInputsResponse',
+                        '\SpApi\Model\shipping\v2\GetCarrierAccountFormInputsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3116,7 +3116,7 @@ class ShippingApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3124,7 +3124,7 @@ class ShippingApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3132,7 +3132,7 @@ class ShippingApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3140,7 +3140,7 @@ class ShippingApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3148,7 +3148,7 @@ class ShippingApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3156,7 +3156,7 @@ class ShippingApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3164,7 +3164,7 @@ class ShippingApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3172,7 +3172,7 @@ class ShippingApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3180,7 +3180,7 @@ class ShippingApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3222,7 +3222,7 @@ class ShippingApi
     public function getCarrierAccountFormInputsAsyncWithHttpInfo(
         ?string $x_amzn_shipping_business_id = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\shipping\v2\GetCarrierAccountFormInputsResponse';
+        $returnType = '\SpApi\Model\shipping\v2\GetCarrierAccountFormInputsResponse';
         $request = $this->getCarrierAccountFormInputsRequest($x_amzn_shipping_business_id);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -3353,19 +3353,19 @@ class ShippingApi
     /**
      * Operation getCarrierAccounts
      *
-     * @param  \OpenAPI\Client\Model\shipping\v2\GetCarrierAccountsRequest $body
+     * @param  \SpApi\Model\shipping\v2\GetCarrierAccountsRequest $body
      *  body (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\shipping\v2\GetCarrierAccountsResponse
+     * @return \SpApi\Model\shipping\v2\GetCarrierAccountsResponse
      */
     public function getCarrierAccounts(
-        \OpenAPI\Client\Model\shipping\v2\GetCarrierAccountsRequest $body,
+        \SpApi\Model\shipping\v2\GetCarrierAccountsRequest $body,
         ?string $x_amzn_shipping_business_id = null
-    ): \OpenAPI\Client\Model\shipping\v2\GetCarrierAccountsResponse {
+    ): \SpApi\Model\shipping\v2\GetCarrierAccountsResponse {
         list($response) = $this->getCarrierAccountsWithHttpInfo($body, $x_amzn_shipping_business_id);
         return $response;
     }
@@ -3373,17 +3373,17 @@ class ShippingApi
     /**
      * Operation getCarrierAccountsWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\shipping\v2\GetCarrierAccountsRequest $body
+     * @param  \SpApi\Model\shipping\v2\GetCarrierAccountsRequest $body
      *  (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\shipping\v2\GetCarrierAccountsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\shipping\v2\GetCarrierAccountsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCarrierAccountsWithHttpInfo(
-        \OpenAPI\Client\Model\shipping\v2\GetCarrierAccountsRequest $body,
+        \SpApi\Model\shipping\v2\GetCarrierAccountsRequest $body,
         ?string $x_amzn_shipping_business_id = null
     ): array {
         $request = $this->getCarrierAccountsRequest($body, $x_amzn_shipping_business_id);
@@ -3427,158 +3427,158 @@ class ShippingApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\shipping\v2\GetCarrierAccountsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\GetCarrierAccountsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\GetCarrierAccountsResponse' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\GetCarrierAccountsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\GetCarrierAccountsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\GetCarrierAccountsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\shipping\v2\GetCarrierAccountsResponse';
+            $returnType = '\SpApi\Model\shipping\v2\GetCarrierAccountsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -3599,7 +3599,7 @@ class ShippingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\GetCarrierAccountsResponse',
+                        '\SpApi\Model\shipping\v2\GetCarrierAccountsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3607,7 +3607,7 @@ class ShippingApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3615,7 +3615,7 @@ class ShippingApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3623,7 +3623,7 @@ class ShippingApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3631,7 +3631,7 @@ class ShippingApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3639,7 +3639,7 @@ class ShippingApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3647,7 +3647,7 @@ class ShippingApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3655,7 +3655,7 @@ class ShippingApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3663,7 +3663,7 @@ class ShippingApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3671,7 +3671,7 @@ class ShippingApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3684,7 +3684,7 @@ class ShippingApi
     /**
      * Operation getCarrierAccountsAsync
      *
-     * @param  \OpenAPI\Client\Model\shipping\v2\GetCarrierAccountsRequest $body
+     * @param  \SpApi\Model\shipping\v2\GetCarrierAccountsRequest $body
      *  (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
@@ -3693,7 +3693,7 @@ class ShippingApi
      * @return PromiseInterface
      */
     public function getCarrierAccountsAsync(
-        \OpenAPI\Client\Model\shipping\v2\GetCarrierAccountsRequest $body,
+        \SpApi\Model\shipping\v2\GetCarrierAccountsRequest $body,
         ?string $x_amzn_shipping_business_id = null
     ): PromiseInterface {
         return $this->getCarrierAccountsAsyncWithHttpInfo($body, $x_amzn_shipping_business_id)
@@ -3707,7 +3707,7 @@ class ShippingApi
     /**
      * Operation getCarrierAccountsAsyncWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\shipping\v2\GetCarrierAccountsRequest $body
+     * @param  \SpApi\Model\shipping\v2\GetCarrierAccountsRequest $body
      *  (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
@@ -3716,10 +3716,10 @@ class ShippingApi
      * @return PromiseInterface
      */
     public function getCarrierAccountsAsyncWithHttpInfo(
-        \OpenAPI\Client\Model\shipping\v2\GetCarrierAccountsRequest $body,
+        \SpApi\Model\shipping\v2\GetCarrierAccountsRequest $body,
         ?string $x_amzn_shipping_business_id = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\shipping\v2\GetCarrierAccountsResponse';
+        $returnType = '\SpApi\Model\shipping\v2\GetCarrierAccountsResponse';
         $request = $this->getCarrierAccountsRequest($body, $x_amzn_shipping_business_id);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -3763,7 +3763,7 @@ class ShippingApi
     /**
      * Create request for operation 'getCarrierAccounts'
      *
-     * @param  \OpenAPI\Client\Model\shipping\v2\GetCarrierAccountsRequest $body
+     * @param  \SpApi\Model\shipping\v2\GetCarrierAccountsRequest $body
      *  (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
@@ -3772,7 +3772,7 @@ class ShippingApi
      * @return Request
      */
     public function getCarrierAccountsRequest(
-        \OpenAPI\Client\Model\shipping\v2\GetCarrierAccountsRequest $body,
+        \SpApi\Model\shipping\v2\GetCarrierAccountsRequest $body,
         ?string $x_amzn_shipping_business_id = null
     ): Request {
         // verify the required parameter 'body' is set
@@ -3870,14 +3870,14 @@ class ShippingApi
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\shipping\v2\GetCollectionFormResponse
+     * @return \SpApi\Model\shipping\v2\GetCollectionFormResponse
      */
     public function getCollectionForm(
         string $collection_form_id,
         ?string $x_amzn_shipping_business_id = null
-    ): \OpenAPI\Client\Model\shipping\v2\GetCollectionFormResponse {
+    ): \SpApi\Model\shipping\v2\GetCollectionFormResponse {
         list($response) = $this->getCollectionFormWithHttpInfo($collection_form_id, $x_amzn_shipping_business_id);
         return $response;
     }
@@ -3890,9 +3890,9 @@ class ShippingApi
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\shipping\v2\GetCollectionFormResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\shipping\v2\GetCollectionFormResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCollectionFormWithHttpInfo(
         string $collection_form_id,
@@ -3939,158 +3939,158 @@ class ShippingApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\shipping\v2\GetCollectionFormResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\GetCollectionFormResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\GetCollectionFormResponse' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\GetCollectionFormResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\GetCollectionFormResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\GetCollectionFormResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\shipping\v2\GetCollectionFormResponse';
+            $returnType = '\SpApi\Model\shipping\v2\GetCollectionFormResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -4111,7 +4111,7 @@ class ShippingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\GetCollectionFormResponse',
+                        '\SpApi\Model\shipping\v2\GetCollectionFormResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4119,7 +4119,7 @@ class ShippingApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4127,7 +4127,7 @@ class ShippingApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4135,7 +4135,7 @@ class ShippingApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4143,7 +4143,7 @@ class ShippingApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4151,7 +4151,7 @@ class ShippingApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4159,7 +4159,7 @@ class ShippingApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4167,7 +4167,7 @@ class ShippingApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4175,7 +4175,7 @@ class ShippingApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4183,7 +4183,7 @@ class ShippingApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4231,7 +4231,7 @@ class ShippingApi
         string $collection_form_id,
         ?string $x_amzn_shipping_business_id = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\shipping\v2\GetCollectionFormResponse';
+        $returnType = '\SpApi\Model\shipping\v2\GetCollectionFormResponse';
         $request = $this->getCollectionFormRequest($collection_form_id, $x_amzn_shipping_business_id);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -4379,19 +4379,19 @@ class ShippingApi
     /**
      * Operation getCollectionFormHistory
      *
-     * @param  \OpenAPI\Client\Model\shipping\v2\GetCollectionFormHistoryRequest $body
+     * @param  \SpApi\Model\shipping\v2\GetCollectionFormHistoryRequest $body
      *  body (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\shipping\v2\GetCollectionFormHistoryResponse
+     * @return \SpApi\Model\shipping\v2\GetCollectionFormHistoryResponse
      */
     public function getCollectionFormHistory(
-        \OpenAPI\Client\Model\shipping\v2\GetCollectionFormHistoryRequest $body,
+        \SpApi\Model\shipping\v2\GetCollectionFormHistoryRequest $body,
         ?string $x_amzn_shipping_business_id = null
-    ): \OpenAPI\Client\Model\shipping\v2\GetCollectionFormHistoryResponse {
+    ): \SpApi\Model\shipping\v2\GetCollectionFormHistoryResponse {
         list($response) = $this->getCollectionFormHistoryWithHttpInfo($body, $x_amzn_shipping_business_id);
         return $response;
     }
@@ -4399,17 +4399,17 @@ class ShippingApi
     /**
      * Operation getCollectionFormHistoryWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\shipping\v2\GetCollectionFormHistoryRequest $body
+     * @param  \SpApi\Model\shipping\v2\GetCollectionFormHistoryRequest $body
      *  (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\shipping\v2\GetCollectionFormHistoryResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\shipping\v2\GetCollectionFormHistoryResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCollectionFormHistoryWithHttpInfo(
-        \OpenAPI\Client\Model\shipping\v2\GetCollectionFormHistoryRequest $body,
+        \SpApi\Model\shipping\v2\GetCollectionFormHistoryRequest $body,
         ?string $x_amzn_shipping_business_id = null
     ): array {
         $request = $this->getCollectionFormHistoryRequest($body, $x_amzn_shipping_business_id);
@@ -4453,158 +4453,158 @@ class ShippingApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\shipping\v2\GetCollectionFormHistoryResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\GetCollectionFormHistoryResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\GetCollectionFormHistoryResponse' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\GetCollectionFormHistoryResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\GetCollectionFormHistoryResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\GetCollectionFormHistoryResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\shipping\v2\GetCollectionFormHistoryResponse';
+            $returnType = '\SpApi\Model\shipping\v2\GetCollectionFormHistoryResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -4625,7 +4625,7 @@ class ShippingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\GetCollectionFormHistoryResponse',
+                        '\SpApi\Model\shipping\v2\GetCollectionFormHistoryResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4633,7 +4633,7 @@ class ShippingApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4641,7 +4641,7 @@ class ShippingApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4649,7 +4649,7 @@ class ShippingApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4657,7 +4657,7 @@ class ShippingApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4665,7 +4665,7 @@ class ShippingApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4673,7 +4673,7 @@ class ShippingApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4681,7 +4681,7 @@ class ShippingApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4689,7 +4689,7 @@ class ShippingApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4697,7 +4697,7 @@ class ShippingApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4710,7 +4710,7 @@ class ShippingApi
     /**
      * Operation getCollectionFormHistoryAsync
      *
-     * @param  \OpenAPI\Client\Model\shipping\v2\GetCollectionFormHistoryRequest $body
+     * @param  \SpApi\Model\shipping\v2\GetCollectionFormHistoryRequest $body
      *  (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
@@ -4719,7 +4719,7 @@ class ShippingApi
      * @return PromiseInterface
      */
     public function getCollectionFormHistoryAsync(
-        \OpenAPI\Client\Model\shipping\v2\GetCollectionFormHistoryRequest $body,
+        \SpApi\Model\shipping\v2\GetCollectionFormHistoryRequest $body,
         ?string $x_amzn_shipping_business_id = null
     ): PromiseInterface {
         return $this->getCollectionFormHistoryAsyncWithHttpInfo($body, $x_amzn_shipping_business_id)
@@ -4733,7 +4733,7 @@ class ShippingApi
     /**
      * Operation getCollectionFormHistoryAsyncWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\shipping\v2\GetCollectionFormHistoryRequest $body
+     * @param  \SpApi\Model\shipping\v2\GetCollectionFormHistoryRequest $body
      *  (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
@@ -4742,10 +4742,10 @@ class ShippingApi
      * @return PromiseInterface
      */
     public function getCollectionFormHistoryAsyncWithHttpInfo(
-        \OpenAPI\Client\Model\shipping\v2\GetCollectionFormHistoryRequest $body,
+        \SpApi\Model\shipping\v2\GetCollectionFormHistoryRequest $body,
         ?string $x_amzn_shipping_business_id = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\shipping\v2\GetCollectionFormHistoryResponse';
+        $returnType = '\SpApi\Model\shipping\v2\GetCollectionFormHistoryResponse';
         $request = $this->getCollectionFormHistoryRequest($body, $x_amzn_shipping_business_id);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -4789,7 +4789,7 @@ class ShippingApi
     /**
      * Create request for operation 'getCollectionFormHistory'
      *
-     * @param  \OpenAPI\Client\Model\shipping\v2\GetCollectionFormHistoryRequest $body
+     * @param  \SpApi\Model\shipping\v2\GetCollectionFormHistoryRequest $body
      *  (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
@@ -4798,7 +4798,7 @@ class ShippingApi
      * @return Request
      */
     public function getCollectionFormHistoryRequest(
-        \OpenAPI\Client\Model\shipping\v2\GetCollectionFormHistoryRequest $body,
+        \SpApi\Model\shipping\v2\GetCollectionFormHistoryRequest $body,
         ?string $x_amzn_shipping_business_id = null
     ): Request {
         // verify the required parameter 'body' is set
@@ -4891,19 +4891,19 @@ class ShippingApi
     /**
      * Operation getRates
      *
-     * @param  \OpenAPI\Client\Model\shipping\v2\GetRatesRequest $body
+     * @param  \SpApi\Model\shipping\v2\GetRatesRequest $body
      *  body (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\shipping\v2\GetRatesResponse
+     * @return \SpApi\Model\shipping\v2\GetRatesResponse
      */
     public function getRates(
-        \OpenAPI\Client\Model\shipping\v2\GetRatesRequest $body,
+        \SpApi\Model\shipping\v2\GetRatesRequest $body,
         ?string $x_amzn_shipping_business_id = null
-    ): \OpenAPI\Client\Model\shipping\v2\GetRatesResponse {
+    ): \SpApi\Model\shipping\v2\GetRatesResponse {
         list($response) = $this->getRatesWithHttpInfo($body, $x_amzn_shipping_business_id);
         return $response;
     }
@@ -4911,17 +4911,17 @@ class ShippingApi
     /**
      * Operation getRatesWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\shipping\v2\GetRatesRequest $body
+     * @param  \SpApi\Model\shipping\v2\GetRatesRequest $body
      *  (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\shipping\v2\GetRatesResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\shipping\v2\GetRatesResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getRatesWithHttpInfo(
-        \OpenAPI\Client\Model\shipping\v2\GetRatesRequest $body,
+        \SpApi\Model\shipping\v2\GetRatesRequest $body,
         ?string $x_amzn_shipping_business_id = null
     ): array {
         $request = $this->getRatesRequest($body, $x_amzn_shipping_business_id);
@@ -4965,158 +4965,158 @@ class ShippingApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\shipping\v2\GetRatesResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\GetRatesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\GetRatesResponse' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\GetRatesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\GetRatesResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\GetRatesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\shipping\v2\GetRatesResponse';
+            $returnType = '\SpApi\Model\shipping\v2\GetRatesResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -5137,7 +5137,7 @@ class ShippingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\GetRatesResponse',
+                        '\SpApi\Model\shipping\v2\GetRatesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5145,7 +5145,7 @@ class ShippingApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5153,7 +5153,7 @@ class ShippingApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5161,7 +5161,7 @@ class ShippingApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5169,7 +5169,7 @@ class ShippingApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5177,7 +5177,7 @@ class ShippingApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5185,7 +5185,7 @@ class ShippingApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5193,7 +5193,7 @@ class ShippingApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5201,7 +5201,7 @@ class ShippingApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5209,7 +5209,7 @@ class ShippingApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5222,7 +5222,7 @@ class ShippingApi
     /**
      * Operation getRatesAsync
      *
-     * @param  \OpenAPI\Client\Model\shipping\v2\GetRatesRequest $body
+     * @param  \SpApi\Model\shipping\v2\GetRatesRequest $body
      *  (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
@@ -5231,7 +5231,7 @@ class ShippingApi
      * @return PromiseInterface
      */
     public function getRatesAsync(
-        \OpenAPI\Client\Model\shipping\v2\GetRatesRequest $body,
+        \SpApi\Model\shipping\v2\GetRatesRequest $body,
         ?string $x_amzn_shipping_business_id = null
     ): PromiseInterface {
         return $this->getRatesAsyncWithHttpInfo($body, $x_amzn_shipping_business_id)
@@ -5245,7 +5245,7 @@ class ShippingApi
     /**
      * Operation getRatesAsyncWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\shipping\v2\GetRatesRequest $body
+     * @param  \SpApi\Model\shipping\v2\GetRatesRequest $body
      *  (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
@@ -5254,10 +5254,10 @@ class ShippingApi
      * @return PromiseInterface
      */
     public function getRatesAsyncWithHttpInfo(
-        \OpenAPI\Client\Model\shipping\v2\GetRatesRequest $body,
+        \SpApi\Model\shipping\v2\GetRatesRequest $body,
         ?string $x_amzn_shipping_business_id = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\shipping\v2\GetRatesResponse';
+        $returnType = '\SpApi\Model\shipping\v2\GetRatesResponse';
         $request = $this->getRatesRequest($body, $x_amzn_shipping_business_id);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -5301,7 +5301,7 @@ class ShippingApi
     /**
      * Create request for operation 'getRates'
      *
-     * @param  \OpenAPI\Client\Model\shipping\v2\GetRatesRequest $body
+     * @param  \SpApi\Model\shipping\v2\GetRatesRequest $body
      *  (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
@@ -5310,7 +5310,7 @@ class ShippingApi
      * @return Request
      */
     public function getRatesRequest(
-        \OpenAPI\Client\Model\shipping\v2\GetRatesRequest $body,
+        \SpApi\Model\shipping\v2\GetRatesRequest $body,
         ?string $x_amzn_shipping_business_id = null
     ): Request {
         // verify the required parameter 'body' is set
@@ -5414,9 +5414,9 @@ class ShippingApi
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\shipping\v2\GetShipmentDocumentsResponse
+     * @return \SpApi\Model\shipping\v2\GetShipmentDocumentsResponse
      */
     public function getShipmentDocuments(
         string $shipment_id,
@@ -5424,7 +5424,7 @@ class ShippingApi
         ?string $format = null,
         ?float $dpi = null,
         ?string $x_amzn_shipping_business_id = null
-    ): \OpenAPI\Client\Model\shipping\v2\GetShipmentDocumentsResponse {
+    ): \SpApi\Model\shipping\v2\GetShipmentDocumentsResponse {
         list($response) = $this->getShipmentDocumentsWithHttpInfo($shipment_id, $package_client_reference_id, $format, $dpi, $x_amzn_shipping_business_id);
         return $response;
     }
@@ -5443,9 +5443,9 @@ class ShippingApi
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\shipping\v2\GetShipmentDocumentsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\shipping\v2\GetShipmentDocumentsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getShipmentDocumentsWithHttpInfo(
         string $shipment_id,
@@ -5495,158 +5495,158 @@ class ShippingApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\shipping\v2\GetShipmentDocumentsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\GetShipmentDocumentsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\GetShipmentDocumentsResponse' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\GetShipmentDocumentsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\GetShipmentDocumentsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\GetShipmentDocumentsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\shipping\v2\GetShipmentDocumentsResponse';
+            $returnType = '\SpApi\Model\shipping\v2\GetShipmentDocumentsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -5667,7 +5667,7 @@ class ShippingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\GetShipmentDocumentsResponse',
+                        '\SpApi\Model\shipping\v2\GetShipmentDocumentsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5675,7 +5675,7 @@ class ShippingApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5683,7 +5683,7 @@ class ShippingApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5691,7 +5691,7 @@ class ShippingApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5699,7 +5699,7 @@ class ShippingApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5707,7 +5707,7 @@ class ShippingApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5715,7 +5715,7 @@ class ShippingApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5723,7 +5723,7 @@ class ShippingApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5731,7 +5731,7 @@ class ShippingApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5739,7 +5739,7 @@ class ShippingApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5805,7 +5805,7 @@ class ShippingApi
         ?float $dpi = null,
         ?string $x_amzn_shipping_business_id = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\shipping\v2\GetShipmentDocumentsResponse';
+        $returnType = '\SpApi\Model\shipping\v2\GetShipmentDocumentsResponse';
         $request = $this->getShipmentDocumentsRequest($shipment_id, $package_client_reference_id, $format, $dpi, $x_amzn_shipping_business_id);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -6002,15 +6002,15 @@ class ShippingApi
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\shipping\v2\GetTrackingResponse
+     * @return \SpApi\Model\shipping\v2\GetTrackingResponse
      */
     public function getTracking(
         string $tracking_id,
         string $carrier_id,
         ?string $x_amzn_shipping_business_id = null
-    ): \OpenAPI\Client\Model\shipping\v2\GetTrackingResponse {
+    ): \SpApi\Model\shipping\v2\GetTrackingResponse {
         list($response) = $this->getTrackingWithHttpInfo($tracking_id, $carrier_id, $x_amzn_shipping_business_id);
         return $response;
     }
@@ -6025,9 +6025,9 @@ class ShippingApi
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\shipping\v2\GetTrackingResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\shipping\v2\GetTrackingResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTrackingWithHttpInfo(
         string $tracking_id,
@@ -6075,158 +6075,158 @@ class ShippingApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\shipping\v2\GetTrackingResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\GetTrackingResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\GetTrackingResponse' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\GetTrackingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\GetTrackingResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\GetTrackingResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\shipping\v2\GetTrackingResponse';
+            $returnType = '\SpApi\Model\shipping\v2\GetTrackingResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -6247,7 +6247,7 @@ class ShippingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\GetTrackingResponse',
+                        '\SpApi\Model\shipping\v2\GetTrackingResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6255,7 +6255,7 @@ class ShippingApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6263,7 +6263,7 @@ class ShippingApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6271,7 +6271,7 @@ class ShippingApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6279,7 +6279,7 @@ class ShippingApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6287,7 +6287,7 @@ class ShippingApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6295,7 +6295,7 @@ class ShippingApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6303,7 +6303,7 @@ class ShippingApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6311,7 +6311,7 @@ class ShippingApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6319,7 +6319,7 @@ class ShippingApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6373,7 +6373,7 @@ class ShippingApi
         string $carrier_id,
         ?string $x_amzn_shipping_business_id = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\shipping\v2\GetTrackingResponse';
+        $returnType = '\SpApi\Model\shipping\v2\GetTrackingResponse';
         $request = $this->getTrackingRequest($tracking_id, $carrier_id, $x_amzn_shipping_business_id);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -6540,19 +6540,19 @@ class ShippingApi
     /**
      * Operation getUnmanifestedShipments
      *
-     * @param  \OpenAPI\Client\Model\shipping\v2\GetUnmanifestedShipmentsRequest $body
+     * @param  \SpApi\Model\shipping\v2\GetUnmanifestedShipmentsRequest $body
      *  body (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\shipping\v2\GetUnmanifestedShipmentsResponse
+     * @return \SpApi\Model\shipping\v2\GetUnmanifestedShipmentsResponse
      */
     public function getUnmanifestedShipments(
-        \OpenAPI\Client\Model\shipping\v2\GetUnmanifestedShipmentsRequest $body,
+        \SpApi\Model\shipping\v2\GetUnmanifestedShipmentsRequest $body,
         ?string $x_amzn_shipping_business_id = null
-    ): \OpenAPI\Client\Model\shipping\v2\GetUnmanifestedShipmentsResponse {
+    ): \SpApi\Model\shipping\v2\GetUnmanifestedShipmentsResponse {
         list($response) = $this->getUnmanifestedShipmentsWithHttpInfo($body, $x_amzn_shipping_business_id);
         return $response;
     }
@@ -6560,17 +6560,17 @@ class ShippingApi
     /**
      * Operation getUnmanifestedShipmentsWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\shipping\v2\GetUnmanifestedShipmentsRequest $body
+     * @param  \SpApi\Model\shipping\v2\GetUnmanifestedShipmentsRequest $body
      *  (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\shipping\v2\GetUnmanifestedShipmentsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\shipping\v2\GetUnmanifestedShipmentsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getUnmanifestedShipmentsWithHttpInfo(
-        \OpenAPI\Client\Model\shipping\v2\GetUnmanifestedShipmentsRequest $body,
+        \SpApi\Model\shipping\v2\GetUnmanifestedShipmentsRequest $body,
         ?string $x_amzn_shipping_business_id = null
     ): array {
         $request = $this->getUnmanifestedShipmentsRequest($body, $x_amzn_shipping_business_id);
@@ -6614,158 +6614,158 @@ class ShippingApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\shipping\v2\GetUnmanifestedShipmentsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\GetUnmanifestedShipmentsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\GetUnmanifestedShipmentsResponse' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\GetUnmanifestedShipmentsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\GetUnmanifestedShipmentsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\GetUnmanifestedShipmentsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\shipping\v2\GetUnmanifestedShipmentsResponse';
+            $returnType = '\SpApi\Model\shipping\v2\GetUnmanifestedShipmentsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -6786,7 +6786,7 @@ class ShippingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\GetUnmanifestedShipmentsResponse',
+                        '\SpApi\Model\shipping\v2\GetUnmanifestedShipmentsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6794,7 +6794,7 @@ class ShippingApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6802,7 +6802,7 @@ class ShippingApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6810,7 +6810,7 @@ class ShippingApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6818,7 +6818,7 @@ class ShippingApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6826,7 +6826,7 @@ class ShippingApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6834,7 +6834,7 @@ class ShippingApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6842,7 +6842,7 @@ class ShippingApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6850,7 +6850,7 @@ class ShippingApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6858,7 +6858,7 @@ class ShippingApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6871,7 +6871,7 @@ class ShippingApi
     /**
      * Operation getUnmanifestedShipmentsAsync
      *
-     * @param  \OpenAPI\Client\Model\shipping\v2\GetUnmanifestedShipmentsRequest $body
+     * @param  \SpApi\Model\shipping\v2\GetUnmanifestedShipmentsRequest $body
      *  (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
@@ -6880,7 +6880,7 @@ class ShippingApi
      * @return PromiseInterface
      */
     public function getUnmanifestedShipmentsAsync(
-        \OpenAPI\Client\Model\shipping\v2\GetUnmanifestedShipmentsRequest $body,
+        \SpApi\Model\shipping\v2\GetUnmanifestedShipmentsRequest $body,
         ?string $x_amzn_shipping_business_id = null
     ): PromiseInterface {
         return $this->getUnmanifestedShipmentsAsyncWithHttpInfo($body, $x_amzn_shipping_business_id)
@@ -6894,7 +6894,7 @@ class ShippingApi
     /**
      * Operation getUnmanifestedShipmentsAsyncWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\shipping\v2\GetUnmanifestedShipmentsRequest $body
+     * @param  \SpApi\Model\shipping\v2\GetUnmanifestedShipmentsRequest $body
      *  (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
@@ -6903,10 +6903,10 @@ class ShippingApi
      * @return PromiseInterface
      */
     public function getUnmanifestedShipmentsAsyncWithHttpInfo(
-        \OpenAPI\Client\Model\shipping\v2\GetUnmanifestedShipmentsRequest $body,
+        \SpApi\Model\shipping\v2\GetUnmanifestedShipmentsRequest $body,
         ?string $x_amzn_shipping_business_id = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\shipping\v2\GetUnmanifestedShipmentsResponse';
+        $returnType = '\SpApi\Model\shipping\v2\GetUnmanifestedShipmentsResponse';
         $request = $this->getUnmanifestedShipmentsRequest($body, $x_amzn_shipping_business_id);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -6950,7 +6950,7 @@ class ShippingApi
     /**
      * Create request for operation 'getUnmanifestedShipments'
      *
-     * @param  \OpenAPI\Client\Model\shipping\v2\GetUnmanifestedShipmentsRequest $body
+     * @param  \SpApi\Model\shipping\v2\GetUnmanifestedShipmentsRequest $body
      *  (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
@@ -6959,7 +6959,7 @@ class ShippingApi
      * @return Request
      */
     public function getUnmanifestedShipmentsRequest(
-        \OpenAPI\Client\Model\shipping\v2\GetUnmanifestedShipmentsRequest $body,
+        \SpApi\Model\shipping\v2\GetUnmanifestedShipmentsRequest $body,
         ?string $x_amzn_shipping_business_id = null
     ): Request {
         // verify the required parameter 'body' is set
@@ -7054,20 +7054,20 @@ class ShippingApi
      *
      * @param  string $carrier_id
      *  The unique identifier associated with the carrier account. (required)
-     * @param  \OpenAPI\Client\Model\shipping\v2\LinkCarrierAccountRequest $body
+     * @param  \SpApi\Model\shipping\v2\LinkCarrierAccountRequest $body
      *  body (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\shipping\v2\LinkCarrierAccountResponse
+     * @return \SpApi\Model\shipping\v2\LinkCarrierAccountResponse
      */
     public function linkCarrierAccount(
         string $carrier_id,
-        \OpenAPI\Client\Model\shipping\v2\LinkCarrierAccountRequest $body,
+        \SpApi\Model\shipping\v2\LinkCarrierAccountRequest $body,
         ?string $x_amzn_shipping_business_id = null
-    ): \OpenAPI\Client\Model\shipping\v2\LinkCarrierAccountResponse {
+    ): \SpApi\Model\shipping\v2\LinkCarrierAccountResponse {
         list($response) = $this->linkCarrierAccountWithHttpInfo($carrier_id, $body, $x_amzn_shipping_business_id);
         return $response;
     }
@@ -7077,18 +7077,18 @@ class ShippingApi
      *
      * @param  string $carrier_id
      *  The unique identifier associated with the carrier account. (required)
-     * @param  \OpenAPI\Client\Model\shipping\v2\LinkCarrierAccountRequest $body
+     * @param  \SpApi\Model\shipping\v2\LinkCarrierAccountRequest $body
      *  (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\shipping\v2\LinkCarrierAccountResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\shipping\v2\LinkCarrierAccountResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function linkCarrierAccountWithHttpInfo(
         string $carrier_id,
-        \OpenAPI\Client\Model\shipping\v2\LinkCarrierAccountRequest $body,
+        \SpApi\Model\shipping\v2\LinkCarrierAccountRequest $body,
         ?string $x_amzn_shipping_business_id = null
     ): array {
         $request = $this->linkCarrierAccountRequest($carrier_id, $body, $x_amzn_shipping_business_id);
@@ -7132,158 +7132,158 @@ class ShippingApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\shipping\v2\LinkCarrierAccountResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\LinkCarrierAccountResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\LinkCarrierAccountResponse' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\LinkCarrierAccountResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\LinkCarrierAccountResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\LinkCarrierAccountResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\shipping\v2\LinkCarrierAccountResponse';
+            $returnType = '\SpApi\Model\shipping\v2\LinkCarrierAccountResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -7304,7 +7304,7 @@ class ShippingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\LinkCarrierAccountResponse',
+                        '\SpApi\Model\shipping\v2\LinkCarrierAccountResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7312,7 +7312,7 @@ class ShippingApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7320,7 +7320,7 @@ class ShippingApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7328,7 +7328,7 @@ class ShippingApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7336,7 +7336,7 @@ class ShippingApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7344,7 +7344,7 @@ class ShippingApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7352,7 +7352,7 @@ class ShippingApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7360,7 +7360,7 @@ class ShippingApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7368,7 +7368,7 @@ class ShippingApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7376,7 +7376,7 @@ class ShippingApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7391,7 +7391,7 @@ class ShippingApi
      *
      * @param  string $carrier_id
      *  The unique identifier associated with the carrier account. (required)
-     * @param  \OpenAPI\Client\Model\shipping\v2\LinkCarrierAccountRequest $body
+     * @param  \SpApi\Model\shipping\v2\LinkCarrierAccountRequest $body
      *  (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
@@ -7401,7 +7401,7 @@ class ShippingApi
      */
     public function linkCarrierAccountAsync(
         string $carrier_id,
-        \OpenAPI\Client\Model\shipping\v2\LinkCarrierAccountRequest $body,
+        \SpApi\Model\shipping\v2\LinkCarrierAccountRequest $body,
         ?string $x_amzn_shipping_business_id = null
     ): PromiseInterface {
         return $this->linkCarrierAccountAsyncWithHttpInfo($carrier_id, $body, $x_amzn_shipping_business_id)
@@ -7417,7 +7417,7 @@ class ShippingApi
      *
      * @param  string $carrier_id
      *  The unique identifier associated with the carrier account. (required)
-     * @param  \OpenAPI\Client\Model\shipping\v2\LinkCarrierAccountRequest $body
+     * @param  \SpApi\Model\shipping\v2\LinkCarrierAccountRequest $body
      *  (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
@@ -7427,10 +7427,10 @@ class ShippingApi
      */
     public function linkCarrierAccountAsyncWithHttpInfo(
         string $carrier_id,
-        \OpenAPI\Client\Model\shipping\v2\LinkCarrierAccountRequest $body,
+        \SpApi\Model\shipping\v2\LinkCarrierAccountRequest $body,
         ?string $x_amzn_shipping_business_id = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\shipping\v2\LinkCarrierAccountResponse';
+        $returnType = '\SpApi\Model\shipping\v2\LinkCarrierAccountResponse';
         $request = $this->linkCarrierAccountRequest($carrier_id, $body, $x_amzn_shipping_business_id);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -7476,7 +7476,7 @@ class ShippingApi
      *
      * @param  string $carrier_id
      *  The unique identifier associated with the carrier account. (required)
-     * @param  \OpenAPI\Client\Model\shipping\v2\LinkCarrierAccountRequest $body
+     * @param  \SpApi\Model\shipping\v2\LinkCarrierAccountRequest $body
      *  (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
@@ -7486,7 +7486,7 @@ class ShippingApi
      */
     public function linkCarrierAccountRequest(
         string $carrier_id,
-        \OpenAPI\Client\Model\shipping\v2\LinkCarrierAccountRequest $body,
+        \SpApi\Model\shipping\v2\LinkCarrierAccountRequest $body,
         ?string $x_amzn_shipping_business_id = null
     ): Request {
         // verify the required parameter 'carrier_id' is set
@@ -7593,19 +7593,19 @@ class ShippingApi
     /**
      * Operation oneClickShipment
      *
-     * @param  \OpenAPI\Client\Model\shipping\v2\OneClickShipmentRequest $body
+     * @param  \SpApi\Model\shipping\v2\OneClickShipmentRequest $body
      *  body (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\shipping\v2\OneClickShipmentResponse
+     * @return \SpApi\Model\shipping\v2\OneClickShipmentResponse
      */
     public function oneClickShipment(
-        \OpenAPI\Client\Model\shipping\v2\OneClickShipmentRequest $body,
+        \SpApi\Model\shipping\v2\OneClickShipmentRequest $body,
         ?string $x_amzn_shipping_business_id = null
-    ): \OpenAPI\Client\Model\shipping\v2\OneClickShipmentResponse {
+    ): \SpApi\Model\shipping\v2\OneClickShipmentResponse {
         list($response) = $this->oneClickShipmentWithHttpInfo($body, $x_amzn_shipping_business_id);
         return $response;
     }
@@ -7613,17 +7613,17 @@ class ShippingApi
     /**
      * Operation oneClickShipmentWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\shipping\v2\OneClickShipmentRequest $body
+     * @param  \SpApi\Model\shipping\v2\OneClickShipmentRequest $body
      *  (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\shipping\v2\OneClickShipmentResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\shipping\v2\OneClickShipmentResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function oneClickShipmentWithHttpInfo(
-        \OpenAPI\Client\Model\shipping\v2\OneClickShipmentRequest $body,
+        \SpApi\Model\shipping\v2\OneClickShipmentRequest $body,
         ?string $x_amzn_shipping_business_id = null
     ): array {
         $request = $this->oneClickShipmentRequest($body, $x_amzn_shipping_business_id);
@@ -7667,158 +7667,158 @@ class ShippingApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\shipping\v2\OneClickShipmentResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\OneClickShipmentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\OneClickShipmentResponse' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\OneClickShipmentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\OneClickShipmentResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\OneClickShipmentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\shipping\v2\OneClickShipmentResponse';
+            $returnType = '\SpApi\Model\shipping\v2\OneClickShipmentResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -7839,7 +7839,7 @@ class ShippingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\OneClickShipmentResponse',
+                        '\SpApi\Model\shipping\v2\OneClickShipmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7847,7 +7847,7 @@ class ShippingApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7855,7 +7855,7 @@ class ShippingApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7863,7 +7863,7 @@ class ShippingApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7871,7 +7871,7 @@ class ShippingApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7879,7 +7879,7 @@ class ShippingApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7887,7 +7887,7 @@ class ShippingApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7895,7 +7895,7 @@ class ShippingApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7903,7 +7903,7 @@ class ShippingApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7911,7 +7911,7 @@ class ShippingApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7924,7 +7924,7 @@ class ShippingApi
     /**
      * Operation oneClickShipmentAsync
      *
-     * @param  \OpenAPI\Client\Model\shipping\v2\OneClickShipmentRequest $body
+     * @param  \SpApi\Model\shipping\v2\OneClickShipmentRequest $body
      *  (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
@@ -7933,7 +7933,7 @@ class ShippingApi
      * @return PromiseInterface
      */
     public function oneClickShipmentAsync(
-        \OpenAPI\Client\Model\shipping\v2\OneClickShipmentRequest $body,
+        \SpApi\Model\shipping\v2\OneClickShipmentRequest $body,
         ?string $x_amzn_shipping_business_id = null
     ): PromiseInterface {
         return $this->oneClickShipmentAsyncWithHttpInfo($body, $x_amzn_shipping_business_id)
@@ -7947,7 +7947,7 @@ class ShippingApi
     /**
      * Operation oneClickShipmentAsyncWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\shipping\v2\OneClickShipmentRequest $body
+     * @param  \SpApi\Model\shipping\v2\OneClickShipmentRequest $body
      *  (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
@@ -7956,10 +7956,10 @@ class ShippingApi
      * @return PromiseInterface
      */
     public function oneClickShipmentAsyncWithHttpInfo(
-        \OpenAPI\Client\Model\shipping\v2\OneClickShipmentRequest $body,
+        \SpApi\Model\shipping\v2\OneClickShipmentRequest $body,
         ?string $x_amzn_shipping_business_id = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\shipping\v2\OneClickShipmentResponse';
+        $returnType = '\SpApi\Model\shipping\v2\OneClickShipmentResponse';
         $request = $this->oneClickShipmentRequest($body, $x_amzn_shipping_business_id);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -8003,7 +8003,7 @@ class ShippingApi
     /**
      * Create request for operation 'oneClickShipment'
      *
-     * @param  \OpenAPI\Client\Model\shipping\v2\OneClickShipmentRequest $body
+     * @param  \SpApi\Model\shipping\v2\OneClickShipmentRequest $body
      *  (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
@@ -8012,7 +8012,7 @@ class ShippingApi
      * @return Request
      */
     public function oneClickShipmentRequest(
-        \OpenAPI\Client\Model\shipping\v2\OneClickShipmentRequest $body,
+        \SpApi\Model\shipping\v2\OneClickShipmentRequest $body,
         ?string $x_amzn_shipping_business_id = null
     ): Request {
         // verify the required parameter 'body' is set
@@ -8105,22 +8105,22 @@ class ShippingApi
     /**
      * Operation purchaseShipment
      *
-     * @param  \OpenAPI\Client\Model\shipping\v2\PurchaseShipmentRequest $body
+     * @param  \SpApi\Model\shipping\v2\PurchaseShipmentRequest $body
      *  body (required)
      * @param  string|null $x_amzn_idempotency_key
      *  A unique value which the server uses to recognize subsequent retries of the same request. (optional)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\shipping\v2\PurchaseShipmentResponse
+     * @return \SpApi\Model\shipping\v2\PurchaseShipmentResponse
      */
     public function purchaseShipment(
-        \OpenAPI\Client\Model\shipping\v2\PurchaseShipmentRequest $body,
+        \SpApi\Model\shipping\v2\PurchaseShipmentRequest $body,
         ?string $x_amzn_idempotency_key = null,
         ?string $x_amzn_shipping_business_id = null
-    ): \OpenAPI\Client\Model\shipping\v2\PurchaseShipmentResponse {
+    ): \SpApi\Model\shipping\v2\PurchaseShipmentResponse {
         list($response) = $this->purchaseShipmentWithHttpInfo($body, $x_amzn_idempotency_key, $x_amzn_shipping_business_id);
         return $response;
     }
@@ -8128,19 +8128,19 @@ class ShippingApi
     /**
      * Operation purchaseShipmentWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\shipping\v2\PurchaseShipmentRequest $body
+     * @param  \SpApi\Model\shipping\v2\PurchaseShipmentRequest $body
      *  (required)
      * @param  string|null $x_amzn_idempotency_key
      *  A unique value which the server uses to recognize subsequent retries of the same request. (optional)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\shipping\v2\PurchaseShipmentResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\shipping\v2\PurchaseShipmentResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function purchaseShipmentWithHttpInfo(
-        \OpenAPI\Client\Model\shipping\v2\PurchaseShipmentRequest $body,
+        \SpApi\Model\shipping\v2\PurchaseShipmentRequest $body,
         ?string $x_amzn_idempotency_key = null,
         ?string $x_amzn_shipping_business_id = null
     ): array {
@@ -8185,158 +8185,158 @@ class ShippingApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\shipping\v2\PurchaseShipmentResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\PurchaseShipmentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\PurchaseShipmentResponse' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\PurchaseShipmentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\PurchaseShipmentResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\PurchaseShipmentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\shipping\v2\PurchaseShipmentResponse';
+            $returnType = '\SpApi\Model\shipping\v2\PurchaseShipmentResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -8357,7 +8357,7 @@ class ShippingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\PurchaseShipmentResponse',
+                        '\SpApi\Model\shipping\v2\PurchaseShipmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8365,7 +8365,7 @@ class ShippingApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8373,7 +8373,7 @@ class ShippingApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8381,7 +8381,7 @@ class ShippingApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8389,7 +8389,7 @@ class ShippingApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8397,7 +8397,7 @@ class ShippingApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8405,7 +8405,7 @@ class ShippingApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8413,7 +8413,7 @@ class ShippingApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8421,7 +8421,7 @@ class ShippingApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8429,7 +8429,7 @@ class ShippingApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8442,7 +8442,7 @@ class ShippingApi
     /**
      * Operation purchaseShipmentAsync
      *
-     * @param  \OpenAPI\Client\Model\shipping\v2\PurchaseShipmentRequest $body
+     * @param  \SpApi\Model\shipping\v2\PurchaseShipmentRequest $body
      *  (required)
      * @param  string|null $x_amzn_idempotency_key
      *  A unique value which the server uses to recognize subsequent retries of the same request. (optional)
@@ -8453,7 +8453,7 @@ class ShippingApi
      * @return PromiseInterface
      */
     public function purchaseShipmentAsync(
-        \OpenAPI\Client\Model\shipping\v2\PurchaseShipmentRequest $body,
+        \SpApi\Model\shipping\v2\PurchaseShipmentRequest $body,
         ?string $x_amzn_idempotency_key = null,
         ?string $x_amzn_shipping_business_id = null
     ): PromiseInterface {
@@ -8468,7 +8468,7 @@ class ShippingApi
     /**
      * Operation purchaseShipmentAsyncWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\shipping\v2\PurchaseShipmentRequest $body
+     * @param  \SpApi\Model\shipping\v2\PurchaseShipmentRequest $body
      *  (required)
      * @param  string|null $x_amzn_idempotency_key
      *  A unique value which the server uses to recognize subsequent retries of the same request. (optional)
@@ -8479,11 +8479,11 @@ class ShippingApi
      * @return PromiseInterface
      */
     public function purchaseShipmentAsyncWithHttpInfo(
-        \OpenAPI\Client\Model\shipping\v2\PurchaseShipmentRequest $body,
+        \SpApi\Model\shipping\v2\PurchaseShipmentRequest $body,
         ?string $x_amzn_idempotency_key = null,
         ?string $x_amzn_shipping_business_id = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\shipping\v2\PurchaseShipmentResponse';
+        $returnType = '\SpApi\Model\shipping\v2\PurchaseShipmentResponse';
         $request = $this->purchaseShipmentRequest($body, $x_amzn_idempotency_key, $x_amzn_shipping_business_id);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -8527,7 +8527,7 @@ class ShippingApi
     /**
      * Create request for operation 'purchaseShipment'
      *
-     * @param  \OpenAPI\Client\Model\shipping\v2\PurchaseShipmentRequest $body
+     * @param  \SpApi\Model\shipping\v2\PurchaseShipmentRequest $body
      *  (required)
      * @param  string|null $x_amzn_idempotency_key
      *  A unique value which the server uses to recognize subsequent retries of the same request. (optional)
@@ -8538,7 +8538,7 @@ class ShippingApi
      * @return Request
      */
     public function purchaseShipmentRequest(
-        \OpenAPI\Client\Model\shipping\v2\PurchaseShipmentRequest $body,
+        \SpApi\Model\shipping\v2\PurchaseShipmentRequest $body,
         ?string $x_amzn_idempotency_key = null,
         ?string $x_amzn_shipping_business_id = null
     ): Request {
@@ -8638,20 +8638,20 @@ class ShippingApi
      *
      * @param  string $carrier_id
      *  carrier Id to unlink with merchant. (required)
-     * @param  \OpenAPI\Client\Model\shipping\v2\UnlinkCarrierAccountRequest $body
+     * @param  \SpApi\Model\shipping\v2\UnlinkCarrierAccountRequest $body
      *  body (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\shipping\v2\UnlinkCarrierAccountResponse
+     * @return \SpApi\Model\shipping\v2\UnlinkCarrierAccountResponse
      */
     public function unlinkCarrierAccount(
         string $carrier_id,
-        \OpenAPI\Client\Model\shipping\v2\UnlinkCarrierAccountRequest $body,
+        \SpApi\Model\shipping\v2\UnlinkCarrierAccountRequest $body,
         ?string $x_amzn_shipping_business_id = null
-    ): \OpenAPI\Client\Model\shipping\v2\UnlinkCarrierAccountResponse {
+    ): \SpApi\Model\shipping\v2\UnlinkCarrierAccountResponse {
         list($response) = $this->unlinkCarrierAccountWithHttpInfo($carrier_id, $body, $x_amzn_shipping_business_id);
         return $response;
     }
@@ -8661,18 +8661,18 @@ class ShippingApi
      *
      * @param  string $carrier_id
      *  carrier Id to unlink with merchant. (required)
-     * @param  \OpenAPI\Client\Model\shipping\v2\UnlinkCarrierAccountRequest $body
+     * @param  \SpApi\Model\shipping\v2\UnlinkCarrierAccountRequest $body
      *  (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\shipping\v2\UnlinkCarrierAccountResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\shipping\v2\UnlinkCarrierAccountResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function unlinkCarrierAccountWithHttpInfo(
         string $carrier_id,
-        \OpenAPI\Client\Model\shipping\v2\UnlinkCarrierAccountRequest $body,
+        \SpApi\Model\shipping\v2\UnlinkCarrierAccountRequest $body,
         ?string $x_amzn_shipping_business_id = null
     ): array {
         $request = $this->unlinkCarrierAccountRequest($carrier_id, $body, $x_amzn_shipping_business_id);
@@ -8716,158 +8716,158 @@ class ShippingApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\shipping\v2\UnlinkCarrierAccountResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\UnlinkCarrierAccountResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\UnlinkCarrierAccountResponse' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\UnlinkCarrierAccountResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\UnlinkCarrierAccountResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\UnlinkCarrierAccountResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\shipping\v2\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\shipping\v2\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\shipping\v2\UnlinkCarrierAccountResponse';
+            $returnType = '\SpApi\Model\shipping\v2\UnlinkCarrierAccountResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -8888,7 +8888,7 @@ class ShippingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\UnlinkCarrierAccountResponse',
+                        '\SpApi\Model\shipping\v2\UnlinkCarrierAccountResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8896,7 +8896,7 @@ class ShippingApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8904,7 +8904,7 @@ class ShippingApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8912,7 +8912,7 @@ class ShippingApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8920,7 +8920,7 @@ class ShippingApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8928,7 +8928,7 @@ class ShippingApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8936,7 +8936,7 @@ class ShippingApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8944,7 +8944,7 @@ class ShippingApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8952,7 +8952,7 @@ class ShippingApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8960,7 +8960,7 @@ class ShippingApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\shipping\v2\ErrorList',
+                        '\SpApi\Model\shipping\v2\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8975,7 +8975,7 @@ class ShippingApi
      *
      * @param  string $carrier_id
      *  carrier Id to unlink with merchant. (required)
-     * @param  \OpenAPI\Client\Model\shipping\v2\UnlinkCarrierAccountRequest $body
+     * @param  \SpApi\Model\shipping\v2\UnlinkCarrierAccountRequest $body
      *  (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
@@ -8985,7 +8985,7 @@ class ShippingApi
      */
     public function unlinkCarrierAccountAsync(
         string $carrier_id,
-        \OpenAPI\Client\Model\shipping\v2\UnlinkCarrierAccountRequest $body,
+        \SpApi\Model\shipping\v2\UnlinkCarrierAccountRequest $body,
         ?string $x_amzn_shipping_business_id = null
     ): PromiseInterface {
         return $this->unlinkCarrierAccountAsyncWithHttpInfo($carrier_id, $body, $x_amzn_shipping_business_id)
@@ -9001,7 +9001,7 @@ class ShippingApi
      *
      * @param  string $carrier_id
      *  carrier Id to unlink with merchant. (required)
-     * @param  \OpenAPI\Client\Model\shipping\v2\UnlinkCarrierAccountRequest $body
+     * @param  \SpApi\Model\shipping\v2\UnlinkCarrierAccountRequest $body
      *  (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
@@ -9011,10 +9011,10 @@ class ShippingApi
      */
     public function unlinkCarrierAccountAsyncWithHttpInfo(
         string $carrier_id,
-        \OpenAPI\Client\Model\shipping\v2\UnlinkCarrierAccountRequest $body,
+        \SpApi\Model\shipping\v2\UnlinkCarrierAccountRequest $body,
         ?string $x_amzn_shipping_business_id = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\shipping\v2\UnlinkCarrierAccountResponse';
+        $returnType = '\SpApi\Model\shipping\v2\UnlinkCarrierAccountResponse';
         $request = $this->unlinkCarrierAccountRequest($carrier_id, $body, $x_amzn_shipping_business_id);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -9060,7 +9060,7 @@ class ShippingApi
      *
      * @param  string $carrier_id
      *  carrier Id to unlink with merchant. (required)
-     * @param  \OpenAPI\Client\Model\shipping\v2\UnlinkCarrierAccountRequest $body
+     * @param  \SpApi\Model\shipping\v2\UnlinkCarrierAccountRequest $body
      *  (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
@@ -9070,7 +9070,7 @@ class ShippingApi
      */
     public function unlinkCarrierAccountRequest(
         string $carrier_id,
-        \OpenAPI\Client\Model\shipping\v2\UnlinkCarrierAccountRequest $body,
+        \SpApi\Model\shipping\v2\UnlinkCarrierAccountRequest $body,
         ?string $x_amzn_shipping_business_id = null
     ): Request {
         // verify the required parameter 'carrier_id' is set

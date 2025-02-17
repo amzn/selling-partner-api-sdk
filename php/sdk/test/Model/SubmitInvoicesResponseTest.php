@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesResponse;
+use SpApi\Model\vendor\invoices\v1\SubmitInvoicesResponse;
 
 /**
  * SubmitInvoicesResponseTest Class Doc Comment
  *
  * @category    Class
  * @description The response schema for the submitInvoices operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class SubmitInvoicesResponseTest extends TestCase
 {
@@ -57,7 +57,7 @@ class SubmitInvoicesResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\invoices\v1\TransactionId();
+        $testValue = new \SpApi\Model\vendor\invoices\v1\TransactionId();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

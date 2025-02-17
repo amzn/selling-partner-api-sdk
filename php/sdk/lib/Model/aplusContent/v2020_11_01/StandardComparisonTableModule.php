@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\aplusContent\v2020_11_01;
+namespace SpApi\Model\aplusContent\v2020_11_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * StandardComparisonTableModule Class Doc Comment
  *
  * @category Class
  * @description The standard product comparison table.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class StandardComparisonTableModule implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'product_columns' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardComparisonProductBlock[]',
-             'metric_row_labels' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\PlainTextItem[]'    ];
+             'product_columns' => '\SpApi\Model\aplusContent\v2020_11_01\StandardComparisonProductBlock[]',
+             'metric_row_labels' => '\SpApi\Model\aplusContent\v2020_11_01\PlainTextItem[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

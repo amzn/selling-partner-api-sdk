@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\merchantFulfillment\v0;
+namespace SpApi\Model\merchantFulfillment\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Label Class Doc Comment
  *
  * @category Class
  * @description Data for creating a shipping label and dimensions for printing the label.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,10 +61,10 @@ class Label implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPITypes = [
              'custom_text_for_label' => 'string',
-             'dimensions' => '\OpenAPI\Client\Model\merchantFulfillment\v0\LabelDimensions',
-             'file_contents' => '\OpenAPI\Client\Model\merchantFulfillment\v0\FileContents',
-             'label_format' => '\OpenAPI\Client\Model\merchantFulfillment\v0\LabelFormat',
-             'standard_id_for_label' => '\OpenAPI\Client\Model\merchantFulfillment\v0\StandardIdForLabel'    ];
+             'dimensions' => '\SpApi\Model\merchantFulfillment\v0\LabelDimensions',
+             'file_contents' => '\SpApi\Model\merchantFulfillment\v0\FileContents',
+             'label_format' => '\SpApi\Model\merchantFulfillment\v0\LabelFormat',
+             'standard_id_for_label' => '\SpApi\Model\merchantFulfillment\v0\StandardIdForLabel'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -370,9 +370,9 @@ class Label implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets dimensions
      *
-     * @return \OpenAPI\Client\Model\merchantFulfillment\v0\LabelDimensions
+     * @return \SpApi\Model\merchantFulfillment\v0\LabelDimensions
      */
-    public function getDimensions(): \OpenAPI\Client\Model\merchantFulfillment\v0\LabelDimensions
+    public function getDimensions(): \SpApi\Model\merchantFulfillment\v0\LabelDimensions
     {
         return $this->container['dimensions'];
     }
@@ -380,11 +380,11 @@ class Label implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets dimensions
      *
-     * @param \OpenAPI\Client\Model\merchantFulfillment\v0\LabelDimensions $dimensions dimensions
+     * @param \SpApi\Model\merchantFulfillment\v0\LabelDimensions $dimensions dimensions
      *
      * @return self
      */
-    public function setDimensions(\OpenAPI\Client\Model\merchantFulfillment\v0\LabelDimensions $dimensions): self
+    public function setDimensions(\SpApi\Model\merchantFulfillment\v0\LabelDimensions $dimensions): self
     {
         if (is_null($dimensions)) {
             throw new \InvalidArgumentException('non-nullable dimensions cannot be null');
@@ -397,9 +397,9 @@ class Label implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets file_contents
      *
-     * @return \OpenAPI\Client\Model\merchantFulfillment\v0\FileContents
+     * @return \SpApi\Model\merchantFulfillment\v0\FileContents
      */
-    public function getFileContents(): \OpenAPI\Client\Model\merchantFulfillment\v0\FileContents
+    public function getFileContents(): \SpApi\Model\merchantFulfillment\v0\FileContents
     {
         return $this->container['file_contents'];
     }
@@ -407,11 +407,11 @@ class Label implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets file_contents
      *
-     * @param \OpenAPI\Client\Model\merchantFulfillment\v0\FileContents $file_contents file_contents
+     * @param \SpApi\Model\merchantFulfillment\v0\FileContents $file_contents file_contents
      *
      * @return self
      */
-    public function setFileContents(\OpenAPI\Client\Model\merchantFulfillment\v0\FileContents $file_contents): self
+    public function setFileContents(\SpApi\Model\merchantFulfillment\v0\FileContents $file_contents): self
     {
         if (is_null($file_contents)) {
             throw new \InvalidArgumentException('non-nullable file_contents cannot be null');

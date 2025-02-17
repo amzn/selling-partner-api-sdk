@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\finances\v0;
+namespace SpApi\Model\finances\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * AdjustmentEvent Class Doc Comment
  *
  * @category Class
  * @description An adjustment to the seller&#39;s account.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,8 +63,8 @@ class AdjustmentEvent implements ModelInterface, ArrayAccess, \JsonSerializable
              'adjustment_type' => 'string',
              'posted_date' => '\DateTime',
              'store_name' => 'string',
-             'adjustment_amount' => '\OpenAPI\Client\Model\finances\v0\Currency',
-             'adjustment_item_list' => '\OpenAPI\Client\Model\finances\v0\AdjustmentItem[]'    ];
+             'adjustment_amount' => '\SpApi\Model\finances\v0\Currency',
+             'adjustment_item_list' => '\SpApi\Model\finances\v0\AdjustmentItem[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -424,9 +424,9 @@ class AdjustmentEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets adjustment_amount
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency|null
+     * @return \SpApi\Model\finances\v0\Currency|null
      */
-    public function getAdjustmentAmount(): ?\OpenAPI\Client\Model\finances\v0\Currency
+    public function getAdjustmentAmount(): ?\SpApi\Model\finances\v0\Currency
     {
         return $this->container['adjustment_amount'];
     }
@@ -434,11 +434,11 @@ class AdjustmentEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets adjustment_amount
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency|null $adjustment_amount adjustment_amount
+     * @param \SpApi\Model\finances\v0\Currency|null $adjustment_amount adjustment_amount
      *
      * @return self
      */
-    public function setAdjustmentAmount(?\OpenAPI\Client\Model\finances\v0\Currency $adjustment_amount): self
+    public function setAdjustmentAmount(?\SpApi\Model\finances\v0\Currency $adjustment_amount): self
     {
         if (is_null($adjustment_amount)) {
             array_push($this->openAPINullablesSetToNull, 'adjustment_amount');

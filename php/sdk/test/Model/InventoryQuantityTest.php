@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\awd\v2024_05_09\InventoryQuantity;
+use SpApi\Model\awd\v2024_05_09\InventoryQuantity;
 
 /**
  * InventoryQuantityTest Class Doc Comment
  *
  * @category    Class
  * @description Quantity of inventory with an associated measurement unit context.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class InventoryQuantityTest extends TestCase
 {
@@ -67,7 +67,7 @@ class InventoryQuantityTest extends TestCase
      */
     public function testPropertyUnitOfMeasurement()
     {
-        $enumInstance = new \OpenAPI\Client\Model\awd\v2024_05_09\InventoryUnitOfMeasurement();
+        $enumInstance = new \SpApi\Model\awd\v2024_05_09\InventoryUnitOfMeasurement();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

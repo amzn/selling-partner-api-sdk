@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\messaging\v1\GetMessagingActionResponseEmbedded;
+use SpApi\Model\messaging\v1\GetMessagingActionResponseEmbedded;
 
 /**
  * GetMessagingActionResponseEmbeddedTest Class Doc Comment
  *
  * @category    Class
  * @description The embedded response associated with the messaging action.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetMessagingActionResponseEmbeddedTest extends TestCase
 {
@@ -57,7 +57,7 @@ class GetMessagingActionResponseEmbeddedTest extends TestCase
     public function testPropertySchema()
     {
         
-        $testValue = new \OpenAPI\Client\Model\messaging\v1\GetSchemaResponse();
+        $testValue = new \SpApi\Model\messaging\v1\GetSchemaResponse();
         
         $this->model->setSchema($testValue);
         $this->assertEquals($testValue, $this->model->getSchema());

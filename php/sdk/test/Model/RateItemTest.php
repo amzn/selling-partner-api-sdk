@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\v2\RateItem;
+use SpApi\Model\shipping\v2\RateItem;
 
 /**
  * RateItemTest Class Doc Comment
  *
  * @category    Class
  * @description Rate Item for shipping (base cost, transaction fee, confirmation, insurance, etc.) Data source definition:
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class RateItemTest extends TestCase
 {
@@ -56,7 +56,7 @@ class RateItemTest extends TestCase
      */
     public function testPropertyRateItemId()
     {
-        $enumInstance = new \OpenAPI\Client\Model\shipping\v2\RateItemID();
+        $enumInstance = new \SpApi\Model\shipping\v2\RateItemID();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -69,7 +69,7 @@ class RateItemTest extends TestCase
      */
     public function testPropertyRateItemType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\shipping\v2\RateItemType();
+        $enumInstance = new \SpApi\Model\shipping\v2\RateItemType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -83,7 +83,7 @@ class RateItemTest extends TestCase
     public function testPropertyRateItemCharge()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\v2\Currency();
+        $testValue = new \SpApi\Model\shipping\v2\Currency();
         
         $this->model->setRateItemCharge($testValue);
         $this->assertEquals($testValue, $this->model->getRateItemCharge());

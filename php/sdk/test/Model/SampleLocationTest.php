@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v2022_05_01\SampleLocation;
+use SpApi\Model\pricing\v2022_05_01\SampleLocation;
 
 /**
  * SampleLocationTest Class Doc Comment
  *
  * @category    Class
  * @description Information about a location. It uses a postal code to identify the location.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class SampleLocationTest extends TestCase
 {
@@ -57,7 +57,7 @@ class SampleLocationTest extends TestCase
     public function testPropertyPostalCode()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v2022_05_01\PostalCode();
+        $testValue = new \SpApi\Model\pricing\v2022_05_01\PostalCode();
         
         $this->model->setPostalCode($testValue);
         $this->assertEquals($testValue, $this->model->getPostalCode());

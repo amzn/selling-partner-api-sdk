@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v2022_05_01\FeaturedOfferExpectedPriceRequest;
+use SpApi\Model\pricing\v2022_05_01\FeaturedOfferExpectedPriceRequest;
 
 /**
  * FeaturedOfferExpectedPriceRequestTest Class Doc Comment
  *
  * @category    Class
  * @description An individual FOEP request for a particular SKU.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class FeaturedOfferExpectedPriceRequestTest extends TestCase
 {
@@ -67,7 +67,7 @@ class FeaturedOfferExpectedPriceRequestTest extends TestCase
      */
     public function testPropertyMethod()
     {
-        $enumInstance = new \OpenAPI\Client\Model\pricing\v2022_05_01\HttpMethod();
+        $enumInstance = new \SpApi\Model\pricing\v2022_05_01\HttpMethod();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -125,7 +125,7 @@ class FeaturedOfferExpectedPriceRequestTest extends TestCase
     public function testPropertySegment()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v2022_05_01\Segment();
+        $testValue = new \SpApi\Model\pricing\v2022_05_01\Segment();
         
         $this->model->setSegment($testValue);
         $this->assertEquals($testValue, $this->model->getSegment());

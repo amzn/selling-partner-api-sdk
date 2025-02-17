@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\v2\GenerateCollectionFormRequest;
+use SpApi\Model\shipping\v2\GenerateCollectionFormRequest;
 
 /**
  * GenerateCollectionFormRequestTest Class Doc Comment
  *
  * @category    Class
  * @description The request schema Call to generate the collection form.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GenerateCollectionFormRequestTest extends TestCase
 {
@@ -79,7 +79,7 @@ class GenerateCollectionFormRequestTest extends TestCase
     public function testPropertyShipFromAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\v2\Address();
+        $testValue = new \SpApi\Model\shipping\v2\Address();
         
         $this->model->setShipFromAddress($testValue);
         $this->assertEquals($testValue, $this->model->getShipFromAddress());

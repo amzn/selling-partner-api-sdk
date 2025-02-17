@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20;
+namespace SpApi\Model\fulfillment\inbound\v2024_03_20;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GenerateShipmentContentUpdatePreviewsRequest Class Doc Comment
  *
  * @category Class
  * @description The &#x60;GenerateShipmentContentUpdatePreviews&#x60; request.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class GenerateShipmentContentUpdatePreviewsRequest implements ModelInterface, Ar
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'boxes' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\BoxUpdateInput[]',
-             'items' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ItemInput[]'    ];
+             'boxes' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\BoxUpdateInput[]',
+             'items' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\ItemInput[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

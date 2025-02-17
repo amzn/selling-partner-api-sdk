@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\finances\v0\SolutionProviderCreditEvent;
+use SpApi\Model\finances\v0\SolutionProviderCreditEvent;
 
 /**
  * SolutionProviderCreditEventTest Class Doc Comment
  *
  * @category    Class
  * @description A credit given to a solution provider.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class SolutionProviderCreditEventTest extends TestCase
 {
@@ -145,7 +145,7 @@ class SolutionProviderCreditEventTest extends TestCase
     public function testPropertyTransactionAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v0\Currency();
+        $testValue = new \SpApi\Model\finances\v0\Currency();
         
         $this->model->setTransactionAmount($testValue);
         $this->assertEquals($testValue, $this->model->getTransactionAmount());

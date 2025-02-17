@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\finances\v0;
+namespace SpApi\Model\finances\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * FeeComponent Class Doc Comment
  *
  * @category Class
  * @description A fee associated with the event.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class FeeComponent implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPITypes = [
              'fee_type' => 'string',
-             'fee_amount' => '\OpenAPI\Client\Model\finances\v0\Currency'    ];
+             'fee_amount' => '\SpApi\Model\finances\v0\Currency'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -335,9 +335,9 @@ class FeeComponent implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets fee_amount
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency|null
+     * @return \SpApi\Model\finances\v0\Currency|null
      */
-    public function getFeeAmount(): ?\OpenAPI\Client\Model\finances\v0\Currency
+    public function getFeeAmount(): ?\SpApi\Model\finances\v0\Currency
     {
         return $this->container['fee_amount'];
     }
@@ -345,11 +345,11 @@ class FeeComponent implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets fee_amount
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency|null $fee_amount fee_amount
+     * @param \SpApi\Model\finances\v0\Currency|null $fee_amount fee_amount
      *
      * @return self
      */
-    public function setFeeAmount(?\OpenAPI\Client\Model\finances\v0\Currency $fee_amount): self
+    public function setFeeAmount(?\SpApi\Model\finances\v0\Currency $fee_amount): self
     {
         if (is_null($fee_amount)) {
             array_push($this->openAPINullablesSetToNull, 'fee_amount');

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\v0\ElectronicInvoiceStatus;
+use SpApi\Model\orders\v0\ElectronicInvoiceStatus;
 
 /**
  * ElectronicInvoiceStatusTest Class Doc Comment
  *
  * @category    Class
  * @description The status of the electronic invoice. Only available for Easy Ship orders and orders in the BR marketplace.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ElectronicInvoiceStatusTest extends TestCase
 {

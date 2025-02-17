@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20;
+namespace SpApi\Model\fulfillment\inbound\v2024_03_20;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * FreightInformation Class Doc Comment
  *
  * @category Class
  * @description Freight information describes the skus being transported. Freight carrier options and quotes will only be returned if the freight information is provided.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class FreightInformation implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'declared_value' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Currency',
+             'declared_value' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\Currency',
              'freight_class' => 'string'    ];
 
     /**
@@ -309,9 +309,9 @@ class FreightInformation implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets declared_value
      *
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Currency|null
+     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\Currency|null
      */
-    public function getDeclaredValue(): ?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Currency
+    public function getDeclaredValue(): ?\SpApi\Model\fulfillment\inbound\v2024_03_20\Currency
     {
         return $this->container['declared_value'];
     }
@@ -319,11 +319,11 @@ class FreightInformation implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets declared_value
      *
-     * @param \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Currency|null $declared_value declared_value
+     * @param \SpApi\Model\fulfillment\inbound\v2024_03_20\Currency|null $declared_value declared_value
      *
      * @return self
      */
-    public function setDeclaredValue(?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Currency $declared_value): self
+    public function setDeclaredValue(?\SpApi\Model\fulfillment\inbound\v2024_03_20\Currency $declared_value): self
     {
         if (is_null($declared_value)) {
             array_push($this->openAPINullablesSetToNull, 'declared_value');

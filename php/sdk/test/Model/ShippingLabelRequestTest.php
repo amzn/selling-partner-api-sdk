@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\ShippingLabelRequest;
+use SpApi\Model\vendor\df\shipping\v2021_12_28\ShippingLabelRequest;
 
 /**
  * ShippingLabelRequestTest Class Doc Comment
  *
  * @category    Class
  * @description Represents the request payload for creating a shipping label, containing the purchase order number, selling party, ship from party, and a list of containers or packages in the shipment.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ShippingLabelRequestTest extends TestCase
 {
@@ -68,7 +68,7 @@ class ShippingLabelRequestTest extends TestCase
     public function testPropertySellingParty()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\PartyIdentification();
+        $testValue = new \SpApi\Model\vendor\df\shipping\v2021_12_28\PartyIdentification();
         
         $this->model->setSellingParty($testValue);
         $this->assertEquals($testValue, $this->model->getSellingParty());
@@ -80,7 +80,7 @@ class ShippingLabelRequestTest extends TestCase
     public function testPropertyShipFromParty()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\PartyIdentification();
+        $testValue = new \SpApi\Model\vendor\df\shipping\v2021_12_28\PartyIdentification();
         
         $this->model->setShipFromParty($testValue);
         $this->assertEquals($testValue, $this->model->getShipFromParty());

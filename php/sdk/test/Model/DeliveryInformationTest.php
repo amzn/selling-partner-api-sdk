@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DeliveryInformation;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\DeliveryInformation;
 
 /**
  * DeliveryInformationTest Class Doc Comment
  *
  * @category    Class
  * @description The delivery information for the package. This information is available after the package is delivered.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class DeliveryInformationTest extends TestCase
 {
@@ -68,7 +68,7 @@ class DeliveryInformationTest extends TestCase
     public function testPropertyDropOffLocation()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DropOffLocation();
+        $testValue = new \SpApi\Model\fulfillment\outbound\v2020_07_01\DropOffLocation();
         
         $this->model->setDropOffLocation($testValue);
         $this->assertEquals($testValue, $this->model->getDropOffLocation());

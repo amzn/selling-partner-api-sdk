@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\orders\v0;
+namespace SpApi\Model\orders\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * MarketplaceTaxInfo Class Doc Comment
  *
  * @category Class
  * @description Tax information about the marketplace.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class MarketplaceTaxInfo implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'tax_classifications' => '\OpenAPI\Client\Model\orders\v0\TaxClassification[]'    ];
+             'tax_classifications' => '\SpApi\Model\orders\v0\TaxClassification[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

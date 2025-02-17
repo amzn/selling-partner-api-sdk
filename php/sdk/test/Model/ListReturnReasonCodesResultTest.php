@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\ListReturnReasonCodesResult;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\ListReturnReasonCodesResult;
 
 /**
  * ListReturnReasonCodesResultTest Class Doc Comment
  *
  * @category    Class
  * @description The request for the listReturnReasonCodes operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ListReturnReasonCodesResultTest extends TestCase
 {

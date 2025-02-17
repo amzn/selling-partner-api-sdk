@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\finances\v0\ServiceFeeEvent;
+use SpApi\Model\finances\v0\ServiceFeeEvent;
 
 /**
  * ServiceFeeEventTest Class Doc Comment
  *
  * @category    Class
  * @description A service fee on the seller&#39;s account.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ServiceFeeEventTest extends TestCase
 {

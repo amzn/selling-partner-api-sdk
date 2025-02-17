@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\services\v1;
+namespace SpApi\Model\services\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetAppointmentSlotsResponse Class Doc Comment
  *
  * @category Class
  * @description The response of fetching appointment slots based on service context.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class GetAppointmentSlotsResponse implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'payload' => '\OpenAPI\Client\Model\services\v1\AppointmentSlotReport',
-             'errors' => '\OpenAPI\Client\Model\services\v1\Error[]'    ];
+             'payload' => '\SpApi\Model\services\v1\AppointmentSlotReport',
+             'errors' => '\SpApi\Model\services\v1\Error[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -301,9 +301,9 @@ class GetAppointmentSlotsResponse implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets payload
      *
-     * @return \OpenAPI\Client\Model\services\v1\AppointmentSlotReport|null
+     * @return \SpApi\Model\services\v1\AppointmentSlotReport|null
      */
-    public function getPayload(): ?\OpenAPI\Client\Model\services\v1\AppointmentSlotReport
+    public function getPayload(): ?\SpApi\Model\services\v1\AppointmentSlotReport
     {
         return $this->container['payload'];
     }
@@ -311,11 +311,11 @@ class GetAppointmentSlotsResponse implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets payload
      *
-     * @param \OpenAPI\Client\Model\services\v1\AppointmentSlotReport|null $payload payload
+     * @param \SpApi\Model\services\v1\AppointmentSlotReport|null $payload payload
      *
      * @return self
      */
-    public function setPayload(?\OpenAPI\Client\Model\services\v1\AppointmentSlotReport $payload): self
+    public function setPayload(?\SpApi\Model\services\v1\AppointmentSlotReport $payload): self
     {
         if (is_null($payload)) {
             array_push($this->openAPINullablesSetToNull, 'payload');

@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,19 +27,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\shipping\v2;
+namespace SpApi\Model\shipping\v2;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * OneClickShipmentRequest Class Doc Comment
  *
  * @category Class
  * @description The request schema for the OneClickShipment operation. When the channelType is not Amazon, shipTo is required and when channelType is Amazon shipTo is ignored.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,18 +61,18 @@ class OneClickShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'ship_to' => '\OpenAPI\Client\Model\shipping\v2\Address',
-             'ship_from' => '\OpenAPI\Client\Model\shipping\v2\Address',
-             'return_to' => '\OpenAPI\Client\Model\shipping\v2\Address',
+             'ship_to' => '\SpApi\Model\shipping\v2\Address',
+             'ship_from' => '\SpApi\Model\shipping\v2\Address',
+             'return_to' => '\SpApi\Model\shipping\v2\Address',
              'ship_date' => '\DateTime',
-             'packages' => '\OpenAPI\Client\Model\shipping\v2\Package[]',
-             'value_added_services_details' => '\OpenAPI\Client\Model\shipping\v2\OneClickShipmentValueAddedService[]',
-             'tax_details' => '\OpenAPI\Client\Model\shipping\v2\TaxDetail[]',
-             'channel_details' => '\OpenAPI\Client\Model\shipping\v2\ChannelDetails',
-             'label_specifications' => '\OpenAPI\Client\Model\shipping\v2\RequestedDocumentSpecification',
-             'service_selection' => '\OpenAPI\Client\Model\shipping\v2\ServiceSelection',
-             'shipper_instruction' => '\OpenAPI\Client\Model\shipping\v2\ShipperInstruction',
-             'destination_access_point_details' => '\OpenAPI\Client\Model\shipping\v2\AccessPointDetails'    ];
+             'packages' => '\SpApi\Model\shipping\v2\Package[]',
+             'value_added_services_details' => '\SpApi\Model\shipping\v2\OneClickShipmentValueAddedService[]',
+             'tax_details' => '\SpApi\Model\shipping\v2\TaxDetail[]',
+             'channel_details' => '\SpApi\Model\shipping\v2\ChannelDetails',
+             'label_specifications' => '\SpApi\Model\shipping\v2\RequestedDocumentSpecification',
+             'service_selection' => '\SpApi\Model\shipping\v2\ServiceSelection',
+             'shipper_instruction' => '\SpApi\Model\shipping\v2\ShipperInstruction',
+             'destination_access_point_details' => '\SpApi\Model\shipping\v2\AccessPointDetails'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -387,9 +387,9 @@ class OneClickShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets ship_to
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\Address|null
+     * @return \SpApi\Model\shipping\v2\Address|null
      */
-    public function getShipTo(): ?\OpenAPI\Client\Model\shipping\v2\Address
+    public function getShipTo(): ?\SpApi\Model\shipping\v2\Address
     {
         return $this->container['ship_to'];
     }
@@ -397,11 +397,11 @@ class OneClickShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets ship_to
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\Address|null $ship_to ship_to
+     * @param \SpApi\Model\shipping\v2\Address|null $ship_to ship_to
      *
      * @return self
      */
-    public function setShipTo(?\OpenAPI\Client\Model\shipping\v2\Address $ship_to): self
+    public function setShipTo(?\SpApi\Model\shipping\v2\Address $ship_to): self
     {
         if (is_null($ship_to)) {
             array_push($this->openAPINullablesSetToNull, 'ship_to');
@@ -421,9 +421,9 @@ class OneClickShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets ship_from
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\Address
+     * @return \SpApi\Model\shipping\v2\Address
      */
-    public function getShipFrom(): \OpenAPI\Client\Model\shipping\v2\Address
+    public function getShipFrom(): \SpApi\Model\shipping\v2\Address
     {
         return $this->container['ship_from'];
     }
@@ -431,11 +431,11 @@ class OneClickShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets ship_from
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\Address $ship_from ship_from
+     * @param \SpApi\Model\shipping\v2\Address $ship_from ship_from
      *
      * @return self
      */
-    public function setShipFrom(\OpenAPI\Client\Model\shipping\v2\Address $ship_from): self
+    public function setShipFrom(\SpApi\Model\shipping\v2\Address $ship_from): self
     {
         if (is_null($ship_from)) {
             throw new \InvalidArgumentException('non-nullable ship_from cannot be null');
@@ -448,9 +448,9 @@ class OneClickShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets return_to
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\Address|null
+     * @return \SpApi\Model\shipping\v2\Address|null
      */
-    public function getReturnTo(): ?\OpenAPI\Client\Model\shipping\v2\Address
+    public function getReturnTo(): ?\SpApi\Model\shipping\v2\Address
     {
         return $this->container['return_to'];
     }
@@ -458,11 +458,11 @@ class OneClickShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets return_to
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\Address|null $return_to return_to
+     * @param \SpApi\Model\shipping\v2\Address|null $return_to return_to
      *
      * @return self
      */
-    public function setReturnTo(?\OpenAPI\Client\Model\shipping\v2\Address $return_to): self
+    public function setReturnTo(?\SpApi\Model\shipping\v2\Address $return_to): self
     {
         if (is_null($return_to)) {
             array_push($this->openAPINullablesSetToNull, 'return_to');
@@ -611,9 +611,9 @@ class OneClickShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets channel_details
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\ChannelDetails
+     * @return \SpApi\Model\shipping\v2\ChannelDetails
      */
-    public function getChannelDetails(): \OpenAPI\Client\Model\shipping\v2\ChannelDetails
+    public function getChannelDetails(): \SpApi\Model\shipping\v2\ChannelDetails
     {
         return $this->container['channel_details'];
     }
@@ -621,11 +621,11 @@ class OneClickShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets channel_details
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\ChannelDetails $channel_details channel_details
+     * @param \SpApi\Model\shipping\v2\ChannelDetails $channel_details channel_details
      *
      * @return self
      */
-    public function setChannelDetails(\OpenAPI\Client\Model\shipping\v2\ChannelDetails $channel_details): self
+    public function setChannelDetails(\SpApi\Model\shipping\v2\ChannelDetails $channel_details): self
     {
         if (is_null($channel_details)) {
             throw new \InvalidArgumentException('non-nullable channel_details cannot be null');
@@ -638,9 +638,9 @@ class OneClickShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets label_specifications
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\RequestedDocumentSpecification
+     * @return \SpApi\Model\shipping\v2\RequestedDocumentSpecification
      */
-    public function getLabelSpecifications(): \OpenAPI\Client\Model\shipping\v2\RequestedDocumentSpecification
+    public function getLabelSpecifications(): \SpApi\Model\shipping\v2\RequestedDocumentSpecification
     {
         return $this->container['label_specifications'];
     }
@@ -648,11 +648,11 @@ class OneClickShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets label_specifications
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\RequestedDocumentSpecification $label_specifications label_specifications
+     * @param \SpApi\Model\shipping\v2\RequestedDocumentSpecification $label_specifications label_specifications
      *
      * @return self
      */
-    public function setLabelSpecifications(\OpenAPI\Client\Model\shipping\v2\RequestedDocumentSpecification $label_specifications): self
+    public function setLabelSpecifications(\SpApi\Model\shipping\v2\RequestedDocumentSpecification $label_specifications): self
     {
         if (is_null($label_specifications)) {
             throw new \InvalidArgumentException('non-nullable label_specifications cannot be null');
@@ -665,9 +665,9 @@ class OneClickShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets service_selection
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\ServiceSelection
+     * @return \SpApi\Model\shipping\v2\ServiceSelection
      */
-    public function getServiceSelection(): \OpenAPI\Client\Model\shipping\v2\ServiceSelection
+    public function getServiceSelection(): \SpApi\Model\shipping\v2\ServiceSelection
     {
         return $this->container['service_selection'];
     }
@@ -675,11 +675,11 @@ class OneClickShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets service_selection
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\ServiceSelection $service_selection service_selection
+     * @param \SpApi\Model\shipping\v2\ServiceSelection $service_selection service_selection
      *
      * @return self
      */
-    public function setServiceSelection(\OpenAPI\Client\Model\shipping\v2\ServiceSelection $service_selection): self
+    public function setServiceSelection(\SpApi\Model\shipping\v2\ServiceSelection $service_selection): self
     {
         if (is_null($service_selection)) {
             throw new \InvalidArgumentException('non-nullable service_selection cannot be null');
@@ -692,9 +692,9 @@ class OneClickShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets shipper_instruction
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\ShipperInstruction|null
+     * @return \SpApi\Model\shipping\v2\ShipperInstruction|null
      */
-    public function getShipperInstruction(): ?\OpenAPI\Client\Model\shipping\v2\ShipperInstruction
+    public function getShipperInstruction(): ?\SpApi\Model\shipping\v2\ShipperInstruction
     {
         return $this->container['shipper_instruction'];
     }
@@ -702,11 +702,11 @@ class OneClickShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets shipper_instruction
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\ShipperInstruction|null $shipper_instruction shipper_instruction
+     * @param \SpApi\Model\shipping\v2\ShipperInstruction|null $shipper_instruction shipper_instruction
      *
      * @return self
      */
-    public function setShipperInstruction(?\OpenAPI\Client\Model\shipping\v2\ShipperInstruction $shipper_instruction): self
+    public function setShipperInstruction(?\SpApi\Model\shipping\v2\ShipperInstruction $shipper_instruction): self
     {
         if (is_null($shipper_instruction)) {
             array_push($this->openAPINullablesSetToNull, 'shipper_instruction');
@@ -726,9 +726,9 @@ class OneClickShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets destination_access_point_details
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\AccessPointDetails|null
+     * @return \SpApi\Model\shipping\v2\AccessPointDetails|null
      */
-    public function getDestinationAccessPointDetails(): ?\OpenAPI\Client\Model\shipping\v2\AccessPointDetails
+    public function getDestinationAccessPointDetails(): ?\SpApi\Model\shipping\v2\AccessPointDetails
     {
         return $this->container['destination_access_point_details'];
     }
@@ -736,11 +736,11 @@ class OneClickShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets destination_access_point_details
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\AccessPointDetails|null $destination_access_point_details destination_access_point_details
+     * @param \SpApi\Model\shipping\v2\AccessPointDetails|null $destination_access_point_details destination_access_point_details
      *
      * @return self
      */
-    public function setDestinationAccessPointDetails(?\OpenAPI\Client\Model\shipping\v2\AccessPointDetails $destination_access_point_details): self
+    public function setDestinationAccessPointDetails(?\SpApi\Model\shipping\v2\AccessPointDetails $destination_access_point_details): self
     {
         if (is_null($destination_access_point_details)) {
             array_push($this->openAPINullablesSetToNull, 'destination_access_point_details');

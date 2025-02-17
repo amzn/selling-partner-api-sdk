@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\awd\v2024_05_09\InboundShipmentSummary;
+use SpApi\Model\awd\v2024_05_09\InboundShipmentSummary;
 
 /**
  * InboundShipmentSummaryTest Class Doc Comment
  *
  * @category    Class
  * @description Summary for an AWD inbound shipment containing the shipment ID, which can be used to retrieve the actual shipment.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class InboundShipmentSummaryTest extends TestCase
 {
@@ -101,7 +101,7 @@ class InboundShipmentSummaryTest extends TestCase
      */
     public function testPropertyShipmentStatus()
     {
-        $enumInstance = new \OpenAPI\Client\Model\awd\v2024_05_09\InboundShipmentStatus();
+        $enumInstance = new \SpApi\Model\awd\v2024_05_09\InboundShipmentStatus();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

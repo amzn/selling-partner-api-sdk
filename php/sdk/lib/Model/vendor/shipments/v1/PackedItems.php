@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\shipments\v1;
+namespace SpApi\Model\vendor\shipments\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * PackedItems Class Doc Comment
  *
  * @category Class
  * @description Details of the item being shipped.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,8 +63,8 @@ class PackedItems implements ModelInterface, ArrayAccess, \JsonSerializable
              'item_sequence_number' => 'string',
              'buyer_product_identifier' => 'string',
              'vendor_product_identifier' => 'string',
-             'packed_quantity' => '\OpenAPI\Client\Model\vendor\shipments\v1\ItemQuantity',
-             'item_details' => '\OpenAPI\Client\Model\vendor\shipments\v1\PackageItemDetails'    ];
+             'packed_quantity' => '\SpApi\Model\vendor\shipments\v1\ItemQuantity',
+             'item_details' => '\SpApi\Model\vendor\shipments\v1\PackageItemDetails'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -424,9 +424,9 @@ class PackedItems implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets packed_quantity
      *
-     * @return \OpenAPI\Client\Model\vendor\shipments\v1\ItemQuantity|null
+     * @return \SpApi\Model\vendor\shipments\v1\ItemQuantity|null
      */
-    public function getPackedQuantity(): ?\OpenAPI\Client\Model\vendor\shipments\v1\ItemQuantity
+    public function getPackedQuantity(): ?\SpApi\Model\vendor\shipments\v1\ItemQuantity
     {
         return $this->container['packed_quantity'];
     }
@@ -434,11 +434,11 @@ class PackedItems implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets packed_quantity
      *
-     * @param \OpenAPI\Client\Model\vendor\shipments\v1\ItemQuantity|null $packed_quantity packed_quantity
+     * @param \SpApi\Model\vendor\shipments\v1\ItemQuantity|null $packed_quantity packed_quantity
      *
      * @return self
      */
-    public function setPackedQuantity(?\OpenAPI\Client\Model\vendor\shipments\v1\ItemQuantity $packed_quantity): self
+    public function setPackedQuantity(?\SpApi\Model\vendor\shipments\v1\ItemQuantity $packed_quantity): self
     {
         if (is_null($packed_quantity)) {
             array_push($this->openAPINullablesSetToNull, 'packed_quantity');
@@ -458,9 +458,9 @@ class PackedItems implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets item_details
      *
-     * @return \OpenAPI\Client\Model\vendor\shipments\v1\PackageItemDetails|null
+     * @return \SpApi\Model\vendor\shipments\v1\PackageItemDetails|null
      */
-    public function getItemDetails(): ?\OpenAPI\Client\Model\vendor\shipments\v1\PackageItemDetails
+    public function getItemDetails(): ?\SpApi\Model\vendor\shipments\v1\PackageItemDetails
     {
         return $this->container['item_details'];
     }
@@ -468,11 +468,11 @@ class PackedItems implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets item_details
      *
-     * @param \OpenAPI\Client\Model\vendor\shipments\v1\PackageItemDetails|null $item_details item_details
+     * @param \SpApi\Model\vendor\shipments\v1\PackageItemDetails|null $item_details item_details
      *
      * @return self
      */
-    public function setItemDetails(?\OpenAPI\Client\Model\vendor\shipments\v1\PackageItemDetails $item_details): self
+    public function setItemDetails(?\SpApi\Model\vendor\shipments\v1\PackageItemDetails $item_details): self
     {
         if (is_null($item_details)) {
             array_push($this->openAPINullablesSetToNull, 'item_details');

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\replenishment\v2022_11_07\GetSellingPartnerMetricsResponseMetric;
+use SpApi\Model\replenishment\v2022_11_07\GetSellingPartnerMetricsResponseMetric;
 
 /**
  * GetSellingPartnerMetricsResponseMetricTest Class Doc Comment
  *
  * @category    Class
  * @description An object which contains metric data for a selling partner.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetSellingPartnerMetricsResponseMetricTest extends TestCase
 {
@@ -295,7 +295,7 @@ class GetSellingPartnerMetricsResponseMetricTest extends TestCase
     public function testPropertyTimeInterval()
     {
         
-        $testValue = new \OpenAPI\Client\Model\replenishment\v2022_11_07\TimeInterval();
+        $testValue = new \SpApi\Model\replenishment\v2022_11_07\TimeInterval();
         
         $this->model->setTimeInterval($testValue);
         $this->assertEquals($testValue, $this->model->getTimeInterval());

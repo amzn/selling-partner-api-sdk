@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\orders\v0;
+namespace SpApi\Model\orders\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * VerificationDetails Class Doc Comment
  *
  * @category Class
  * @description Additional information related to the verification of a regulated order.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class VerificationDetails implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'prescription_detail' => '\OpenAPI\Client\Model\orders\v0\PrescriptionDetail'    ];
+             'prescription_detail' => '\SpApi\Model\orders\v0\PrescriptionDetail'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -294,9 +294,9 @@ class VerificationDetails implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets prescription_detail
      *
-     * @return \OpenAPI\Client\Model\orders\v0\PrescriptionDetail|null
+     * @return \SpApi\Model\orders\v0\PrescriptionDetail|null
      */
-    public function getPrescriptionDetail(): ?\OpenAPI\Client\Model\orders\v0\PrescriptionDetail
+    public function getPrescriptionDetail(): ?\SpApi\Model\orders\v0\PrescriptionDetail
     {
         return $this->container['prescription_detail'];
     }
@@ -304,11 +304,11 @@ class VerificationDetails implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets prescription_detail
      *
-     * @param \OpenAPI\Client\Model\orders\v0\PrescriptionDetail|null $prescription_detail prescription_detail
+     * @param \SpApi\Model\orders\v0\PrescriptionDetail|null $prescription_detail prescription_detail
      *
      * @return self
      */
-    public function setPrescriptionDetail(?\OpenAPI\Client\Model\orders\v0\PrescriptionDetail $prescription_detail): self
+    public function setPrescriptionDetail(?\SpApi\Model\orders\v0\PrescriptionDetail $prescription_detail): self
     {
         if (is_null($prescription_detail)) {
             array_push($this->openAPINullablesSetToNull, 'prescription_detail');

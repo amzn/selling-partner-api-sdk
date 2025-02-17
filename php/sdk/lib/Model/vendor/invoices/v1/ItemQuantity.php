@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\invoices\v1;
+namespace SpApi\Model\vendor\invoices\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ItemQuantity Class Doc Comment
  *
  * @category Class
  * @description Details of quantity.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,7 +63,7 @@ class ItemQuantity implements ModelInterface, ArrayAccess, \JsonSerializable
              'amount' => 'int',
              'unit_of_measure' => 'string',
              'unit_size' => 'int',
-             'total_weight' => '\OpenAPI\Client\Model\vendor\invoices\v1\TotalWeight'    ];
+             'total_weight' => '\SpApi\Model\vendor\invoices\v1\TotalWeight'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -443,9 +443,9 @@ class ItemQuantity implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets total_weight
      *
-     * @return \OpenAPI\Client\Model\vendor\invoices\v1\TotalWeight|null
+     * @return \SpApi\Model\vendor\invoices\v1\TotalWeight|null
      */
-    public function getTotalWeight(): ?\OpenAPI\Client\Model\vendor\invoices\v1\TotalWeight
+    public function getTotalWeight(): ?\SpApi\Model\vendor\invoices\v1\TotalWeight
     {
         return $this->container['total_weight'];
     }
@@ -453,11 +453,11 @@ class ItemQuantity implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets total_weight
      *
-     * @param \OpenAPI\Client\Model\vendor\invoices\v1\TotalWeight|null $total_weight total_weight
+     * @param \SpApi\Model\vendor\invoices\v1\TotalWeight|null $total_weight total_weight
      *
      * @return self
      */
-    public function setTotalWeight(?\OpenAPI\Client\Model\vendor\invoices\v1\TotalWeight $total_weight): self
+    public function setTotalWeight(?\SpApi\Model\vendor\invoices\v1\TotalWeight $total_weight): self
     {
         if (is_null($total_weight)) {
             array_push($this->openAPINullablesSetToNull, 'total_weight');

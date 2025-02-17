@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\v2\RequestedValueAddedService;
+use SpApi\Model\shipping\v2\RequestedValueAddedService;
 
 /**
  * RequestedValueAddedServiceTest Class Doc Comment
  *
  * @category    Class
  * @description A value-added service to be applied to a shipping service purchase.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class RequestedValueAddedServiceTest extends TestCase
 {

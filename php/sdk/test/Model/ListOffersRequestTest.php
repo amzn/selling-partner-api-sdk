@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersRequest;
+use SpApi\Model\replenishment\v2022_11_07\ListOffersRequest;
 
 /**
  * ListOffersRequestTest Class Doc Comment
  *
  * @category    Class
  * @description The request body for the &#x60;listOffers&#x60; operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ListOffersRequestTest extends TestCase
 {
@@ -57,7 +57,7 @@ class ListOffersRequestTest extends TestCase
     public function testPropertyPagination()
     {
         
-        $testValue = new \OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersRequestPagination();
+        $testValue = new \SpApi\Model\replenishment\v2022_11_07\ListOffersRequestPagination();
         
         $this->model->setPagination($testValue);
         $this->assertEquals($testValue, $this->model->getPagination());
@@ -69,7 +69,7 @@ class ListOffersRequestTest extends TestCase
     public function testPropertyFilters()
     {
         
-        $testValue = new \OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersRequestFilters();
+        $testValue = new \SpApi\Model\replenishment\v2022_11_07\ListOffersRequestFilters();
         
         $this->model->setFilters($testValue);
         $this->assertEquals($testValue, $this->model->getFilters());
@@ -81,7 +81,7 @@ class ListOffersRequestTest extends TestCase
     public function testPropertySort()
     {
         
-        $testValue = new \OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersRequestSort();
+        $testValue = new \SpApi\Model\replenishment\v2022_11_07\ListOffersRequestSort();
         
         $this->model->setSort($testValue);
         $this->assertEquals($testValue, $this->model->getSort());

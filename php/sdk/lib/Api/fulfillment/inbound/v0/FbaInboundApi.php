@@ -4,7 +4,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api\fulfillment\inbound\v0;
+namespace SpApi\Api\fulfillment\inbound\v0;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -39,16 +39,16 @@ use SpApi\AuthAndAuth\RateLimitConfiguration;
 use Symfony\Component\RateLimiter\LimiterInterface;
 use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\ObjectSerializer;
+use SpApi\ApiException;
+use SpApi\Configuration;
+use SpApi\HeaderSelector;
+use SpApi\ObjectSerializer;
 
 /**
  * FbaInboundApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -155,13 +155,13 @@ class FbaInboundApi
      * @param  string $shipment_id
      *  A shipment identifier originally returned by the createInboundShipmentPlan operation. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v0\GetBillOfLadingResponse
+     * @return \SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse
      */
     public function getBillOfLading(
         string $shipment_id
-    ): \OpenAPI\Client\Model\fulfillment\inbound\v0\GetBillOfLadingResponse {
+    ): \SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse {
         list($response) = $this->getBillOfLadingWithHttpInfo($shipment_id);
         return $response;
     }
@@ -172,9 +172,9 @@ class FbaInboundApi
      * @param  string $shipment_id
      *  A shipment identifier originally returned by the createInboundShipmentPlan operation. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\fulfillment\inbound\v0\GetBillOfLadingResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getBillOfLadingWithHttpInfo(
         string $shipment_id
@@ -220,128 +220,128 @@ class FbaInboundApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetBillOfLadingResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetBillOfLadingResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetBillOfLadingResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetBillOfLadingResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetBillOfLadingResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetBillOfLadingResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetBillOfLadingResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetBillOfLadingResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetBillOfLadingResponse';
+            $returnType = '\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -362,7 +362,7 @@ class FbaInboundApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetBillOfLadingResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -370,7 +370,7 @@ class FbaInboundApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetBillOfLadingResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -378,7 +378,7 @@ class FbaInboundApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetBillOfLadingResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -386,7 +386,7 @@ class FbaInboundApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetBillOfLadingResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -394,7 +394,7 @@ class FbaInboundApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetBillOfLadingResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -402,7 +402,7 @@ class FbaInboundApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetBillOfLadingResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -410,7 +410,7 @@ class FbaInboundApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetBillOfLadingResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -418,7 +418,7 @@ class FbaInboundApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetBillOfLadingResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -460,7 +460,7 @@ class FbaInboundApi
     public function getBillOfLadingAsyncWithHttpInfo(
         string $shipment_id
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetBillOfLadingResponse';
+        $returnType = '\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse';
         $request = $this->getBillOfLadingRequest($shipment_id);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -618,9 +618,9 @@ class FbaInboundApi
      * @param  int|null $page_start_index
      *  The page start index for paginating through the total packages&#39; labels. This is a required parameter for Non-Partnered LTL Shipments. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v0\GetLabelsResponse
+     * @return \SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse
      */
     public function getLabels(
         string $shipment_id,
@@ -631,7 +631,7 @@ class FbaInboundApi
         ?int $number_of_pallets = null,
         ?int $page_size = null,
         ?int $page_start_index = null
-    ): \OpenAPI\Client\Model\fulfillment\inbound\v0\GetLabelsResponse {
+    ): \SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse {
         list($response) = $this->getLabelsWithHttpInfo($shipment_id, $page_type, $label_type, $number_of_packages, $package_labels_to_print, $number_of_pallets, $page_size, $page_start_index);
         return $response;
     }
@@ -656,9 +656,9 @@ class FbaInboundApi
      * @param  int|null $page_start_index
      *  The page start index for paginating through the total packages&#39; labels. This is a required parameter for Non-Partnered LTL Shipments. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\fulfillment\inbound\v0\GetLabelsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getLabelsWithHttpInfo(
         string $shipment_id,
@@ -711,128 +711,128 @@ class FbaInboundApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetLabelsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetLabelsResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetLabelsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetLabelsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetLabelsResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetLabelsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetLabelsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetLabelsResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetLabelsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetLabelsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetLabelsResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetLabelsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetLabelsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetLabelsResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetLabelsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetLabelsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetLabelsResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetLabelsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetLabelsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetLabelsResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetLabelsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetLabelsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetLabelsResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetLabelsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetLabelsResponse';
+            $returnType = '\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -853,7 +853,7 @@ class FbaInboundApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetLabelsResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -861,7 +861,7 @@ class FbaInboundApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetLabelsResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -869,7 +869,7 @@ class FbaInboundApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetLabelsResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -877,7 +877,7 @@ class FbaInboundApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetLabelsResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -885,7 +885,7 @@ class FbaInboundApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetLabelsResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -893,7 +893,7 @@ class FbaInboundApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetLabelsResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -901,7 +901,7 @@ class FbaInboundApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetLabelsResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -909,7 +909,7 @@ class FbaInboundApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetLabelsResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -993,7 +993,7 @@ class FbaInboundApi
         ?int $page_size = null,
         ?int $page_start_index = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetLabelsResponse';
+        $returnType = '\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse';
         $request = $this->getLabelsRequest($shipment_id, $page_type, $label_type, $number_of_packages, $package_labels_to_print, $number_of_pallets, $page_size, $page_start_index);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -1237,15 +1237,15 @@ class FbaInboundApi
      * @param  string[]|null $asin_list
      *  A list of ASIN values. Used to identify items for which you want item preparation instructions to help with item sourcing decisions.  Note: ASINs must be included in the product catalog for at least one of the marketplaces that the seller  participates in. Any ASIN that is not included in the product catalog for at least one of the marketplaces that the seller participates in is returned in the InvalidASINList property in the response. You can find out which marketplaces a seller participates in by calling the getMarketplaceParticipations operation in the Selling Partner API for Sellers. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse
+     * @return \SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse
      */
     public function getPrepInstructions(
         string $ship_to_country_code,
         ?array $seller_sku_list = null,
         ?array $asin_list = null
-    ): \OpenAPI\Client\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse {
+    ): \SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse {
         list($response) = $this->getPrepInstructionsWithHttpInfo($ship_to_country_code, $seller_sku_list, $asin_list);
         return $response;
     }
@@ -1260,9 +1260,9 @@ class FbaInboundApi
      * @param  string[]|null $asin_list
      *  A list of ASIN values. Used to identify items for which you want item preparation instructions to help with item sourcing decisions.  Note: ASINs must be included in the product catalog for at least one of the marketplaces that the seller  participates in. Any ASIN that is not included in the product catalog for at least one of the marketplaces that the seller participates in is returned in the InvalidASINList property in the response. You can find out which marketplaces a seller participates in by calling the getMarketplaceParticipations operation in the Selling Partner API for Sellers. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getPrepInstructionsWithHttpInfo(
         string $ship_to_country_code,
@@ -1310,128 +1310,128 @@ class FbaInboundApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse';
+            $returnType = '\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1452,7 +1452,7 @@ class FbaInboundApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1460,7 +1460,7 @@ class FbaInboundApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1468,7 +1468,7 @@ class FbaInboundApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1476,7 +1476,7 @@ class FbaInboundApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1484,7 +1484,7 @@ class FbaInboundApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1492,7 +1492,7 @@ class FbaInboundApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1500,7 +1500,7 @@ class FbaInboundApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1508,7 +1508,7 @@ class FbaInboundApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1562,7 +1562,7 @@ class FbaInboundApi
         ?array $seller_sku_list = null,
         ?array $asin_list = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse';
+        $returnType = '\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse';
         $request = $this->getPrepInstructionsRequest($ship_to_country_code, $seller_sku_list, $asin_list);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -1747,9 +1747,9 @@ class FbaInboundApi
      * @param  string|null $next_token
      *  A string token returned in the response to your previous request. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse
+     * @return \SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse
      */
     public function getShipmentItems(
         string $query_type,
@@ -1757,7 +1757,7 @@ class FbaInboundApi
         ?\DateTime $last_updated_after = null,
         ?\DateTime $last_updated_before = null,
         ?string $next_token = null
-    ): \OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse {
+    ): \SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse {
         list($response) = $this->getShipmentItemsWithHttpInfo($query_type, $marketplace_id, $last_updated_after, $last_updated_before, $next_token);
         return $response;
     }
@@ -1776,9 +1776,9 @@ class FbaInboundApi
      * @param  string|null $next_token
      *  A string token returned in the response to your previous request. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getShipmentItemsWithHttpInfo(
         string $query_type,
@@ -1828,128 +1828,128 @@ class FbaInboundApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse';
+            $returnType = '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1970,7 +1970,7 @@ class FbaInboundApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1978,7 +1978,7 @@ class FbaInboundApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1986,7 +1986,7 @@ class FbaInboundApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1994,7 +1994,7 @@ class FbaInboundApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2002,7 +2002,7 @@ class FbaInboundApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2010,7 +2010,7 @@ class FbaInboundApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2018,7 +2018,7 @@ class FbaInboundApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2026,7 +2026,7 @@ class FbaInboundApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2092,7 +2092,7 @@ class FbaInboundApi
         ?\DateTime $last_updated_before = null,
         ?string $next_token = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse';
+        $returnType = '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse';
         $request = $this->getShipmentItemsRequest($query_type, $marketplace_id, $last_updated_after, $last_updated_before, $next_token);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -2293,14 +2293,14 @@ class FbaInboundApi
      * @param  string|null $marketplace_id
      *  Deprecated. Do not use. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse
+     * @return \SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse
      */
     public function getShipmentItemsByShipmentId(
         string $shipment_id,
         ?string $marketplace_id = null
-    ): \OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse {
+    ): \SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse {
         list($response) = $this->getShipmentItemsByShipmentIdWithHttpInfo($shipment_id, $marketplace_id);
         return $response;
     }
@@ -2313,9 +2313,9 @@ class FbaInboundApi
      * @param  string|null $marketplace_id
      *  Deprecated. Do not use. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getShipmentItemsByShipmentIdWithHttpInfo(
         string $shipment_id,
@@ -2362,128 +2362,128 @@ class FbaInboundApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse';
+            $returnType = '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2504,7 +2504,7 @@ class FbaInboundApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2512,7 +2512,7 @@ class FbaInboundApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2520,7 +2520,7 @@ class FbaInboundApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2528,7 +2528,7 @@ class FbaInboundApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2536,7 +2536,7 @@ class FbaInboundApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2544,7 +2544,7 @@ class FbaInboundApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2552,7 +2552,7 @@ class FbaInboundApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2560,7 +2560,7 @@ class FbaInboundApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2608,7 +2608,7 @@ class FbaInboundApi
         string $shipment_id,
         ?string $marketplace_id = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResponse';
+        $returnType = '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse';
         $request = $this->getShipmentItemsByShipmentIdRequest($shipment_id, $marketplace_id);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -2776,9 +2776,9 @@ class FbaInboundApi
      * @param  string|null $next_token
      *  A string token returned in the response to your previous request. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentsResponse
+     * @return \SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse
      */
     public function getShipments(
         string $query_type,
@@ -2788,7 +2788,7 @@ class FbaInboundApi
         ?\DateTime $last_updated_after = null,
         ?\DateTime $last_updated_before = null,
         ?string $next_token = null
-    ): \OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentsResponse {
+    ): \SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse {
         list($response) = $this->getShipmentsWithHttpInfo($query_type, $marketplace_id, $shipment_status_list, $shipment_id_list, $last_updated_after, $last_updated_before, $next_token);
         return $response;
     }
@@ -2811,9 +2811,9 @@ class FbaInboundApi
      * @param  string|null $next_token
      *  A string token returned in the response to your previous request. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getShipmentsWithHttpInfo(
         string $query_type,
@@ -2865,128 +2865,128 @@ class FbaInboundApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentsResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentsResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentsResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentsResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentsResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentsResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentsResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentsResponse' !== 'string') {
+                        if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentsResponse';
+            $returnType = '\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -3007,7 +3007,7 @@ class FbaInboundApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentsResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3015,7 +3015,7 @@ class FbaInboundApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentsResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3023,7 +3023,7 @@ class FbaInboundApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentsResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3031,7 +3031,7 @@ class FbaInboundApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentsResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3039,7 +3039,7 @@ class FbaInboundApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentsResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3047,7 +3047,7 @@ class FbaInboundApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentsResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3055,7 +3055,7 @@ class FbaInboundApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentsResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3063,7 +3063,7 @@ class FbaInboundApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentsResponse',
+                        '\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3141,7 +3141,7 @@ class FbaInboundApi
         ?\DateTime $last_updated_before = null,
         ?string $next_token = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentsResponse';
+        $returnType = '\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse';
         $request = $this->getShipmentsRequest($query_type, $marketplace_id, $shipment_status_list, $shipment_id_list, $last_updated_after, $last_updated_before, $next_token);
         $request = $this->config->sign($request);
         $this->rateLimitWait();

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\sellers\v1\PrimaryContact;
+use SpApi\Model\sellers\v1\PrimaryContact;
 
 /**
  * PrimaryContactTest Class Doc Comment
  *
  * @category    Class
  * @description Information about the seller&#39;s primary contact.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class PrimaryContactTest extends TestCase
 {
@@ -68,7 +68,7 @@ class PrimaryContactTest extends TestCase
     public function testPropertyAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\sellers\v1\Address();
+        $testValue = new \SpApi\Model\sellers\v1\Address();
         
         $this->model->setAddress($testValue);
         $this->assertEquals($testValue, $this->model->getAddress());

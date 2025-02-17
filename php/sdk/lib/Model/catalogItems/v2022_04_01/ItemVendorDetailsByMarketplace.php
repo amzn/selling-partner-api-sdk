@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\catalogItems\v2022_04_01;
+namespace SpApi\Model\catalogItems\v2022_04_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ItemVendorDetailsByMarketplace Class Doc Comment
  *
  * @category Class
  * @description Vendor details associated with an Amazon catalog item for the indicated Amazon marketplace.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -64,9 +64,9 @@ class ItemVendorDetailsByMarketplace implements ModelInterface, ArrayAccess, \Js
              'brand_code' => 'string',
              'manufacturer_code' => 'string',
              'manufacturer_code_parent' => 'string',
-             'product_category' => '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemVendorDetailsCategory',
+             'product_category' => '\SpApi\Model\catalogItems\v2022_04_01\ItemVendorDetailsCategory',
              'product_group' => 'string',
-             'product_subcategory' => '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemVendorDetailsCategory',
+             'product_subcategory' => '\SpApi\Model\catalogItems\v2022_04_01\ItemVendorDetailsCategory',
              'replenishment_category' => 'string'    ];
 
     /**
@@ -515,9 +515,9 @@ class ItemVendorDetailsByMarketplace implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets product_category
      *
-     * @return \OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemVendorDetailsCategory|null
+     * @return \SpApi\Model\catalogItems\v2022_04_01\ItemVendorDetailsCategory|null
      */
-    public function getProductCategory(): ?\OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemVendorDetailsCategory
+    public function getProductCategory(): ?\SpApi\Model\catalogItems\v2022_04_01\ItemVendorDetailsCategory
     {
         return $this->container['product_category'];
     }
@@ -525,11 +525,11 @@ class ItemVendorDetailsByMarketplace implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets product_category
      *
-     * @param \OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemVendorDetailsCategory|null $product_category product_category
+     * @param \SpApi\Model\catalogItems\v2022_04_01\ItemVendorDetailsCategory|null $product_category product_category
      *
      * @return self
      */
-    public function setProductCategory(?\OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemVendorDetailsCategory $product_category): self
+    public function setProductCategory(?\SpApi\Model\catalogItems\v2022_04_01\ItemVendorDetailsCategory $product_category): self
     {
         if (is_null($product_category)) {
             array_push($this->openAPINullablesSetToNull, 'product_category');
@@ -583,9 +583,9 @@ class ItemVendorDetailsByMarketplace implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets product_subcategory
      *
-     * @return \OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemVendorDetailsCategory|null
+     * @return \SpApi\Model\catalogItems\v2022_04_01\ItemVendorDetailsCategory|null
      */
-    public function getProductSubcategory(): ?\OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemVendorDetailsCategory
+    public function getProductSubcategory(): ?\SpApi\Model\catalogItems\v2022_04_01\ItemVendorDetailsCategory
     {
         return $this->container['product_subcategory'];
     }
@@ -593,11 +593,11 @@ class ItemVendorDetailsByMarketplace implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets product_subcategory
      *
-     * @param \OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemVendorDetailsCategory|null $product_subcategory product_subcategory
+     * @param \SpApi\Model\catalogItems\v2022_04_01\ItemVendorDetailsCategory|null $product_subcategory product_subcategory
      *
      * @return self
      */
-    public function setProductSubcategory(?\OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemVendorDetailsCategory $product_subcategory): self
+    public function setProductSubcategory(?\SpApi\Model\catalogItems\v2022_04_01\ItemVendorDetailsCategory $product_subcategory): self
     {
         if (is_null($product_subcategory)) {
             array_push($this->openAPINullablesSetToNull, 'product_subcategory');

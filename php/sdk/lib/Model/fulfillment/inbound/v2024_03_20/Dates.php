@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20;
+namespace SpApi\Model\fulfillment\inbound\v2024_03_20;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Dates Class Doc Comment
  *
  * @category Class
  * @description Specifies the date that the seller expects their shipment will be shipped.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class Dates implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'ready_to_ship_window' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Window'    ];
+             'ready_to_ship_window' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\Window'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -294,9 +294,9 @@ class Dates implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets ready_to_ship_window
      *
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Window|null
+     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\Window|null
      */
-    public function getReadyToShipWindow(): ?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Window
+    public function getReadyToShipWindow(): ?\SpApi\Model\fulfillment\inbound\v2024_03_20\Window
     {
         return $this->container['ready_to_ship_window'];
     }
@@ -304,11 +304,11 @@ class Dates implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ready_to_ship_window
      *
-     * @param \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Window|null $ready_to_ship_window ready_to_ship_window
+     * @param \SpApi\Model\fulfillment\inbound\v2024_03_20\Window|null $ready_to_ship_window ready_to_ship_window
      *
      * @return self
      */
-    public function setReadyToShipWindow(?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Window $ready_to_ship_window): self
+    public function setReadyToShipWindow(?\SpApi\Model\fulfillment\inbound\v2024_03_20\Window $ready_to_ship_window): self
     {
         if (is_null($ready_to_ship_window)) {
             array_push($this->openAPINullablesSetToNull, 'ready_to_ship_window');

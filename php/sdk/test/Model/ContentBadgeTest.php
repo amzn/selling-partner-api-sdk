@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentBadge;
+use SpApi\Model\aplusContent\v2020_11_01\ContentBadge;
 
 /**
  * ContentBadgeTest Class Doc Comment
  *
  * @category    Class
  * @description A flag that provides additional information about an A+ Content document.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ContentBadgeTest extends TestCase
 {

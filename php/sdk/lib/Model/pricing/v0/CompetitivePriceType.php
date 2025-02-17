@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,18 +26,18 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\pricing\v0;
+namespace SpApi\Model\pricing\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * CompetitivePriceType Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,12 +60,12 @@ class CompetitivePriceType implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static array $openAPITypes = [
              'competitive_price_id' => 'string',
-             'price' => '\OpenAPI\Client\Model\pricing\v0\PriceType',
+             'price' => '\SpApi\Model\pricing\v0\PriceType',
              'condition' => 'string',
              'subcondition' => 'string',
-             'offer_type' => '\OpenAPI\Client\Model\pricing\v0\OfferCustomerType',
+             'offer_type' => '\SpApi\Model\pricing\v0\OfferCustomerType',
              'quantity_tier' => 'int',
-             'quantity_discount_type' => '\OpenAPI\Client\Model\pricing\v0\QuantityDiscountType',
+             'quantity_discount_type' => '\SpApi\Model\pricing\v0\QuantityDiscountType',
              'seller_id' => 'string',
              'belongs_to_requester' => 'bool'    ];
 
@@ -382,9 +382,9 @@ class CompetitivePriceType implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets price
      *
-     * @return \OpenAPI\Client\Model\pricing\v0\PriceType
+     * @return \SpApi\Model\pricing\v0\PriceType
      */
-    public function getPrice(): \OpenAPI\Client\Model\pricing\v0\PriceType
+    public function getPrice(): \SpApi\Model\pricing\v0\PriceType
     {
         return $this->container['price'];
     }
@@ -392,11 +392,11 @@ class CompetitivePriceType implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets price
      *
-     * @param \OpenAPI\Client\Model\pricing\v0\PriceType $price price
+     * @param \SpApi\Model\pricing\v0\PriceType $price price
      *
      * @return self
      */
-    public function setPrice(\OpenAPI\Client\Model\pricing\v0\PriceType $price): self
+    public function setPrice(\SpApi\Model\pricing\v0\PriceType $price): self
     {
         if (is_null($price)) {
             throw new \InvalidArgumentException('non-nullable price cannot be null');

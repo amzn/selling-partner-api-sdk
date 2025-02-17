@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v2022_05_01\BatchResponse;
+use SpApi\Model\pricing\v2022_05_01\BatchResponse;
 
 /**
  * BatchResponseTest Class Doc Comment
  *
  * @category    Class
  * @description The common properties for responses to individual requests within a batch.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class BatchResponseTest extends TestCase
 {
@@ -68,7 +68,7 @@ class BatchResponseTest extends TestCase
     public function testPropertyStatus()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v2022_05_01\HttpStatusLine();
+        $testValue = new \SpApi\Model\pricing\v2022_05_01\HttpStatusLine();
         
         $this->model->setStatus($testValue);
         $this->assertEquals($testValue, $this->model->getStatus());

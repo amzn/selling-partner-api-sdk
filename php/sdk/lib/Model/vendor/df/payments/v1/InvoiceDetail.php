@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\df\payments\v1;
+namespace SpApi\Model\vendor\df\payments\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * InvoiceDetail Class Doc Comment
  *
  * @category Class
  * @description Represents the details of an invoice, including invoice number, date, parties involved, payment terms, totals, taxes, charges, and line items.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,16 +63,16 @@ class InvoiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
              'invoice_number' => 'string',
              'invoice_date' => '\DateTime',
              'reference_number' => 'string',
-             'remit_to_party' => '\OpenAPI\Client\Model\vendor\df\payments\v1\PartyIdentification',
-             'ship_from_party' => '\OpenAPI\Client\Model\vendor\df\payments\v1\PartyIdentification',
-             'bill_to_party' => '\OpenAPI\Client\Model\vendor\df\payments\v1\PartyIdentification',
+             'remit_to_party' => '\SpApi\Model\vendor\df\payments\v1\PartyIdentification',
+             'ship_from_party' => '\SpApi\Model\vendor\df\payments\v1\PartyIdentification',
+             'bill_to_party' => '\SpApi\Model\vendor\df\payments\v1\PartyIdentification',
              'ship_to_country_code' => 'string',
              'payment_terms_code' => 'string',
-             'invoice_total' => '\OpenAPI\Client\Model\vendor\df\payments\v1\Money',
-             'tax_totals' => '\OpenAPI\Client\Model\vendor\df\payments\v1\TaxDetail[]',
-             'additional_details' => '\OpenAPI\Client\Model\vendor\df\payments\v1\AdditionalDetails[]',
-             'charge_details' => '\OpenAPI\Client\Model\vendor\df\payments\v1\ChargeDetails[]',
-             'items' => '\OpenAPI\Client\Model\vendor\df\payments\v1\InvoiceItem[]'    ];
+             'invoice_total' => '\SpApi\Model\vendor\df\payments\v1\Money',
+             'tax_totals' => '\SpApi\Model\vendor\df\payments\v1\TaxDetail[]',
+             'additional_details' => '\SpApi\Model\vendor\df\payments\v1\AdditionalDetails[]',
+             'charge_details' => '\SpApi\Model\vendor\df\payments\v1\ChargeDetails[]',
+             'items' => '\SpApi\Model\vendor\df\payments\v1\InvoiceItem[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -484,9 +484,9 @@ class InvoiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets remit_to_party
      *
-     * @return \OpenAPI\Client\Model\vendor\df\payments\v1\PartyIdentification
+     * @return \SpApi\Model\vendor\df\payments\v1\PartyIdentification
      */
-    public function getRemitToParty(): \OpenAPI\Client\Model\vendor\df\payments\v1\PartyIdentification
+    public function getRemitToParty(): \SpApi\Model\vendor\df\payments\v1\PartyIdentification
     {
         return $this->container['remit_to_party'];
     }
@@ -494,11 +494,11 @@ class InvoiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets remit_to_party
      *
-     * @param \OpenAPI\Client\Model\vendor\df\payments\v1\PartyIdentification $remit_to_party remit_to_party
+     * @param \SpApi\Model\vendor\df\payments\v1\PartyIdentification $remit_to_party remit_to_party
      *
      * @return self
      */
-    public function setRemitToParty(\OpenAPI\Client\Model\vendor\df\payments\v1\PartyIdentification $remit_to_party): self
+    public function setRemitToParty(\SpApi\Model\vendor\df\payments\v1\PartyIdentification $remit_to_party): self
     {
         if (is_null($remit_to_party)) {
             throw new \InvalidArgumentException('non-nullable remit_to_party cannot be null');
@@ -511,9 +511,9 @@ class InvoiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets ship_from_party
      *
-     * @return \OpenAPI\Client\Model\vendor\df\payments\v1\PartyIdentification
+     * @return \SpApi\Model\vendor\df\payments\v1\PartyIdentification
      */
-    public function getShipFromParty(): \OpenAPI\Client\Model\vendor\df\payments\v1\PartyIdentification
+    public function getShipFromParty(): \SpApi\Model\vendor\df\payments\v1\PartyIdentification
     {
         return $this->container['ship_from_party'];
     }
@@ -521,11 +521,11 @@ class InvoiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ship_from_party
      *
-     * @param \OpenAPI\Client\Model\vendor\df\payments\v1\PartyIdentification $ship_from_party ship_from_party
+     * @param \SpApi\Model\vendor\df\payments\v1\PartyIdentification $ship_from_party ship_from_party
      *
      * @return self
      */
-    public function setShipFromParty(\OpenAPI\Client\Model\vendor\df\payments\v1\PartyIdentification $ship_from_party): self
+    public function setShipFromParty(\SpApi\Model\vendor\df\payments\v1\PartyIdentification $ship_from_party): self
     {
         if (is_null($ship_from_party)) {
             throw new \InvalidArgumentException('non-nullable ship_from_party cannot be null');
@@ -538,9 +538,9 @@ class InvoiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets bill_to_party
      *
-     * @return \OpenAPI\Client\Model\vendor\df\payments\v1\PartyIdentification|null
+     * @return \SpApi\Model\vendor\df\payments\v1\PartyIdentification|null
      */
-    public function getBillToParty(): ?\OpenAPI\Client\Model\vendor\df\payments\v1\PartyIdentification
+    public function getBillToParty(): ?\SpApi\Model\vendor\df\payments\v1\PartyIdentification
     {
         return $this->container['bill_to_party'];
     }
@@ -548,11 +548,11 @@ class InvoiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets bill_to_party
      *
-     * @param \OpenAPI\Client\Model\vendor\df\payments\v1\PartyIdentification|null $bill_to_party bill_to_party
+     * @param \SpApi\Model\vendor\df\payments\v1\PartyIdentification|null $bill_to_party bill_to_party
      *
      * @return self
      */
-    public function setBillToParty(?\OpenAPI\Client\Model\vendor\df\payments\v1\PartyIdentification $bill_to_party): self
+    public function setBillToParty(?\SpApi\Model\vendor\df\payments\v1\PartyIdentification $bill_to_party): self
     {
         if (is_null($bill_to_party)) {
             array_push($this->openAPINullablesSetToNull, 'bill_to_party');
@@ -640,9 +640,9 @@ class InvoiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets invoice_total
      *
-     * @return \OpenAPI\Client\Model\vendor\df\payments\v1\Money
+     * @return \SpApi\Model\vendor\df\payments\v1\Money
      */
-    public function getInvoiceTotal(): \OpenAPI\Client\Model\vendor\df\payments\v1\Money
+    public function getInvoiceTotal(): \SpApi\Model\vendor\df\payments\v1\Money
     {
         return $this->container['invoice_total'];
     }
@@ -650,11 +650,11 @@ class InvoiceDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets invoice_total
      *
-     * @param \OpenAPI\Client\Model\vendor\df\payments\v1\Money $invoice_total invoice_total
+     * @param \SpApi\Model\vendor\df\payments\v1\Money $invoice_total invoice_total
      *
      * @return self
      */
-    public function setInvoiceTotal(\OpenAPI\Client\Model\vendor\df\payments\v1\Money $invoice_total): self
+    public function setInvoiceTotal(\SpApi\Model\vendor\df\payments\v1\Money $invoice_total): self
     {
         if (is_null($invoice_total)) {
             throw new \InvalidArgumentException('non-nullable invoice_total cannot be null');

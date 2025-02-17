@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\v1\Seller;
+use SpApi\Model\services\v1\Seller;
 
 /**
  * SellerTest Class Doc Comment
  *
  * @category    Class
  * @description Information about the seller of the service job.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class SellerTest extends TestCase
 {

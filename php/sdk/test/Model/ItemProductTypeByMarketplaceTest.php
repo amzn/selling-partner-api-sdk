@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemProductTypeByMarketplace;
+use SpApi\Model\catalogItems\v2022_04_01\ItemProductTypeByMarketplace;
 
 /**
  * ItemProductTypeByMarketplaceTest Class Doc Comment
  *
  * @category    Class
  * @description Product type associated with the Amazon catalog item for the indicated Amazon marketplace.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ItemProductTypeByMarketplaceTest extends TestCase
 {

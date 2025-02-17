@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fba\inventory\v1;
+namespace SpApi\Model\fba\inventory\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * InventoryDetails Class Doc Comment
  *
  * @category Class
  * @description Summarized inventory details. This object will not appear if the details parameter in the request is false.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -64,9 +64,9 @@ class InventoryDetails implements ModelInterface, ArrayAccess, \JsonSerializable
              'inbound_working_quantity' => 'int',
              'inbound_shipped_quantity' => 'int',
              'inbound_receiving_quantity' => 'int',
-             'reserved_quantity' => '\OpenAPI\Client\Model\fba\inventory\v1\ReservedQuantity',
-             'researching_quantity' => '\OpenAPI\Client\Model\fba\inventory\v1\ResearchingQuantity',
-             'unfulfillable_quantity' => '\OpenAPI\Client\Model\fba\inventory\v1\UnfulfillableQuantity'    ];
+             'reserved_quantity' => '\SpApi\Model\fba\inventory\v1\ReservedQuantity',
+             'researching_quantity' => '\SpApi\Model\fba\inventory\v1\ResearchingQuantity',
+             'unfulfillable_quantity' => '\SpApi\Model\fba\inventory\v1\UnfulfillableQuantity'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -472,9 +472,9 @@ class InventoryDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets reserved_quantity
      *
-     * @return \OpenAPI\Client\Model\fba\inventory\v1\ReservedQuantity|null
+     * @return \SpApi\Model\fba\inventory\v1\ReservedQuantity|null
      */
-    public function getReservedQuantity(): ?\OpenAPI\Client\Model\fba\inventory\v1\ReservedQuantity
+    public function getReservedQuantity(): ?\SpApi\Model\fba\inventory\v1\ReservedQuantity
     {
         return $this->container['reserved_quantity'];
     }
@@ -482,11 +482,11 @@ class InventoryDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets reserved_quantity
      *
-     * @param \OpenAPI\Client\Model\fba\inventory\v1\ReservedQuantity|null $reserved_quantity reserved_quantity
+     * @param \SpApi\Model\fba\inventory\v1\ReservedQuantity|null $reserved_quantity reserved_quantity
      *
      * @return self
      */
-    public function setReservedQuantity(?\OpenAPI\Client\Model\fba\inventory\v1\ReservedQuantity $reserved_quantity): self
+    public function setReservedQuantity(?\SpApi\Model\fba\inventory\v1\ReservedQuantity $reserved_quantity): self
     {
         if (is_null($reserved_quantity)) {
             array_push($this->openAPINullablesSetToNull, 'reserved_quantity');
@@ -506,9 +506,9 @@ class InventoryDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets researching_quantity
      *
-     * @return \OpenAPI\Client\Model\fba\inventory\v1\ResearchingQuantity|null
+     * @return \SpApi\Model\fba\inventory\v1\ResearchingQuantity|null
      */
-    public function getResearchingQuantity(): ?\OpenAPI\Client\Model\fba\inventory\v1\ResearchingQuantity
+    public function getResearchingQuantity(): ?\SpApi\Model\fba\inventory\v1\ResearchingQuantity
     {
         return $this->container['researching_quantity'];
     }
@@ -516,11 +516,11 @@ class InventoryDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets researching_quantity
      *
-     * @param \OpenAPI\Client\Model\fba\inventory\v1\ResearchingQuantity|null $researching_quantity researching_quantity
+     * @param \SpApi\Model\fba\inventory\v1\ResearchingQuantity|null $researching_quantity researching_quantity
      *
      * @return self
      */
-    public function setResearchingQuantity(?\OpenAPI\Client\Model\fba\inventory\v1\ResearchingQuantity $researching_quantity): self
+    public function setResearchingQuantity(?\SpApi\Model\fba\inventory\v1\ResearchingQuantity $researching_quantity): self
     {
         if (is_null($researching_quantity)) {
             array_push($this->openAPINullablesSetToNull, 'researching_quantity');
@@ -540,9 +540,9 @@ class InventoryDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets unfulfillable_quantity
      *
-     * @return \OpenAPI\Client\Model\fba\inventory\v1\UnfulfillableQuantity|null
+     * @return \SpApi\Model\fba\inventory\v1\UnfulfillableQuantity|null
      */
-    public function getUnfulfillableQuantity(): ?\OpenAPI\Client\Model\fba\inventory\v1\UnfulfillableQuantity
+    public function getUnfulfillableQuantity(): ?\SpApi\Model\fba\inventory\v1\UnfulfillableQuantity
     {
         return $this->container['unfulfillable_quantity'];
     }
@@ -550,11 +550,11 @@ class InventoryDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets unfulfillable_quantity
      *
-     * @param \OpenAPI\Client\Model\fba\inventory\v1\UnfulfillableQuantity|null $unfulfillable_quantity unfulfillable_quantity
+     * @param \SpApi\Model\fba\inventory\v1\UnfulfillableQuantity|null $unfulfillable_quantity unfulfillable_quantity
      *
      * @return self
      */
-    public function setUnfulfillableQuantity(?\OpenAPI\Client\Model\fba\inventory\v1\UnfulfillableQuantity $unfulfillable_quantity): self
+    public function setUnfulfillableQuantity(?\SpApi\Model\fba\inventory\v1\UnfulfillableQuantity $unfulfillable_quantity): self
     {
         if (is_null($unfulfillable_quantity)) {
             array_push($this->openAPINullablesSetToNull, 'unfulfillable_quantity');

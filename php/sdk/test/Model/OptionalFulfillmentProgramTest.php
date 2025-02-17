@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\productFees\v0\OptionalFulfillmentProgram;
+use SpApi\Model\productFees\v0\OptionalFulfillmentProgram;
 
 /**
  * OptionalFulfillmentProgramTest Class Doc Comment
  *
  * @category    Class
  * @description An optional enrollment program to return the estimated fees when the offer is fulfilled by Amazon (IsAmazonFulfilled is set to true).
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class OptionalFulfillmentProgramTest extends TestCase
 {

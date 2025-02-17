@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v0\Summary;
+use SpApi\Model\pricing\v0\Summary;
 
 /**
  * SummaryTest Class Doc Comment
  *
  * @category    Class
  * @description Contains price information about the product, including the LowestPrices and BuyBoxPrices, the ListPrice, the SuggestedLowerPricePlusShipping, and NumberOfOffers and NumberOfBuyBoxEligibleOffers.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class SummaryTest extends TestCase
 {
@@ -101,7 +101,7 @@ class SummaryTest extends TestCase
     public function testPropertyListPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v0\MoneyType();
+        $testValue = new \SpApi\Model\pricing\v0\MoneyType();
         
         $this->model->setListPrice($testValue);
         $this->assertEquals($testValue, $this->model->getListPrice());
@@ -113,7 +113,7 @@ class SummaryTest extends TestCase
     public function testPropertyCompetitivePriceThreshold()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v0\MoneyType();
+        $testValue = new \SpApi\Model\pricing\v0\MoneyType();
         
         $this->model->setCompetitivePriceThreshold($testValue);
         $this->assertEquals($testValue, $this->model->getCompetitivePriceThreshold());
@@ -125,7 +125,7 @@ class SummaryTest extends TestCase
     public function testPropertySuggestedLowerPricePlusShipping()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v0\MoneyType();
+        $testValue = new \SpApi\Model\pricing\v0\MoneyType();
         
         $this->model->setSuggestedLowerPricePlusShipping($testValue);
         $this->assertEquals($testValue, $this->model->getSuggestedLowerPricePlusShipping());

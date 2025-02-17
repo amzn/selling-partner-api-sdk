@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\supplySources\v2020_07_01;
+namespace SpApi\Model\supplySources\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * OperatingHoursByDay Class Doc Comment
  *
  * @category Class
  * @description The operating hours per day
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,13 +60,13 @@ class OperatingHoursByDay implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'monday' => '\OpenAPI\Client\Model\supplySources\v2020_07_01\OperatingHour[]',
-             'tuesday' => '\OpenAPI\Client\Model\supplySources\v2020_07_01\OperatingHour[]',
-             'wednesday' => '\OpenAPI\Client\Model\supplySources\v2020_07_01\OperatingHour[]',
-             'thursday' => '\OpenAPI\Client\Model\supplySources\v2020_07_01\OperatingHour[]',
-             'friday' => '\OpenAPI\Client\Model\supplySources\v2020_07_01\OperatingHour[]',
-             'saturday' => '\OpenAPI\Client\Model\supplySources\v2020_07_01\OperatingHour[]',
-             'sunday' => '\OpenAPI\Client\Model\supplySources\v2020_07_01\OperatingHour[]'    ];
+             'monday' => '\SpApi\Model\supplySources\v2020_07_01\OperatingHour[]',
+             'tuesday' => '\SpApi\Model\supplySources\v2020_07_01\OperatingHour[]',
+             'wednesday' => '\SpApi\Model\supplySources\v2020_07_01\OperatingHour[]',
+             'thursday' => '\SpApi\Model\supplySources\v2020_07_01\OperatingHour[]',
+             'friday' => '\SpApi\Model\supplySources\v2020_07_01\OperatingHour[]',
+             'saturday' => '\SpApi\Model\supplySources\v2020_07_01\OperatingHour[]',
+             'sunday' => '\SpApi\Model\supplySources\v2020_07_01\OperatingHour[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

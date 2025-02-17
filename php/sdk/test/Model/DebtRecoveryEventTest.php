@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\finances\v0\DebtRecoveryEvent;
+use SpApi\Model\finances\v0\DebtRecoveryEvent;
 
 /**
  * DebtRecoveryEventTest Class Doc Comment
  *
  * @category    Class
  * @description A debt payment or debt adjustment.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class DebtRecoveryEventTest extends TestCase
 {
@@ -68,7 +68,7 @@ class DebtRecoveryEventTest extends TestCase
     public function testPropertyRecoveryAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v0\Currency();
+        $testValue = new \SpApi\Model\finances\v0\Currency();
         
         $this->model->setRecoveryAmount($testValue);
         $this->assertEquals($testValue, $this->model->getRecoveryAmount());
@@ -80,7 +80,7 @@ class DebtRecoveryEventTest extends TestCase
     public function testPropertyOverPaymentCredit()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v0\Currency();
+        $testValue = new \SpApi\Model\finances\v0\Currency();
         
         $this->model->setOverPaymentCredit($testValue);
         $this->assertEquals($testValue, $this->model->getOverPaymentCredit());

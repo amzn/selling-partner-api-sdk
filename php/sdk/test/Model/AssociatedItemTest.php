@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\v0\AssociatedItem;
+use SpApi\Model\orders\v0\AssociatedItem;
 
 /**
  * AssociatedItemTest Class Doc Comment
  *
  * @category    Class
  * @description An item that is associated with an order item. For example, a tire installation service that is purchased with tires.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class AssociatedItemTest extends TestCase
 {
@@ -78,7 +78,7 @@ class AssociatedItemTest extends TestCase
      */
     public function testPropertyAssociationType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\orders\v0\AssociationType();
+        $enumInstance = new \SpApi\Model\orders\v0\AssociationType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

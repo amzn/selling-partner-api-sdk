@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\orders\v1\OrderItemStatusOrderedQuantity;
+use SpApi\Model\vendor\orders\v1\OrderItemStatusOrderedQuantity;
 
 /**
  * OrderItemStatusOrderedQuantityTest Class Doc Comment
  *
  * @category    Class
  * @description Ordered quantity information.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class OrderItemStatusOrderedQuantityTest extends TestCase
 {
@@ -57,7 +57,7 @@ class OrderItemStatusOrderedQuantityTest extends TestCase
     public function testPropertyOrderedQuantity()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity();
+        $testValue = new \SpApi\Model\vendor\orders\v1\ItemQuantity();
         
         $this->model->setOrderedQuantity($testValue);
         $this->assertEquals($testValue, $this->model->getOrderedQuantity());

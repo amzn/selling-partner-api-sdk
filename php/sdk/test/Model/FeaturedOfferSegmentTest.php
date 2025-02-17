@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v2022_05_01\FeaturedOfferSegment;
+use SpApi\Model\pricing\v2022_05_01\FeaturedOfferSegment;
 
 /**
  * FeaturedOfferSegmentTest Class Doc Comment
  *
  * @category    Class
  * @description Describes the segment in which the offer is featured.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class FeaturedOfferSegmentTest extends TestCase
 {
@@ -69,7 +69,7 @@ class FeaturedOfferSegmentTest extends TestCase
     public function testPropertySegmentDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v2022_05_01\SegmentDetails();
+        $testValue = new \SpApi\Model\pricing\v2022_05_01\SegmentDetails();
         
         $this->model->setSegmentDetails($testValue);
         $this->assertEquals($testValue, $this->model->getSegmentDetails());

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\catalogItems\v2022_04_01\Item;
+use SpApi\Model\catalogItems\v2022_04_01\Item;
 
 /**
  * ItemTest Class Doc Comment
  *
  * @category    Class
  * @description An item in the Amazon catalog.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ItemTest extends TestCase
 {

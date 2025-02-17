@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\easyship\v2022_03_23;
+namespace SpApi\Model\easyship\v2022_03_23;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * UpdateScheduledPackagesRequest Class Doc Comment
  *
  * @category Class
  * @description The request schema for the &#x60;updateScheduledPackages&#x60; operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class UpdateScheduledPackagesRequest implements ModelInterface, ArrayAccess, \Js
       */
     protected static array $openAPITypes = [
              'marketplace_id' => 'string',
-             'update_package_details_list' => '\OpenAPI\Client\Model\easyship\v2022_03_23\UpdatePackageDetails[]'    ];
+             'update_package_details_list' => '\SpApi\Model\easyship\v2022_03_23\UpdatePackageDetails[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

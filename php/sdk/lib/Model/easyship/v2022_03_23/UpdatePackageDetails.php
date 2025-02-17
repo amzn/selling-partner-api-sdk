@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\easyship\v2022_03_23;
+namespace SpApi\Model\easyship\v2022_03_23;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * UpdatePackageDetails Class Doc Comment
  *
  * @category Class
  * @description Request to update the time slot of a package.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class UpdatePackageDetails implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'scheduled_package_id' => '\OpenAPI\Client\Model\easyship\v2022_03_23\ScheduledPackageId',
-             'package_time_slot' => '\OpenAPI\Client\Model\easyship\v2022_03_23\TimeSlot'    ];
+             'scheduled_package_id' => '\SpApi\Model\easyship\v2022_03_23\ScheduledPackageId',
+             'package_time_slot' => '\SpApi\Model\easyship\v2022_03_23\TimeSlot'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -307,9 +307,9 @@ class UpdatePackageDetails implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets scheduled_package_id
      *
-     * @return \OpenAPI\Client\Model\easyship\v2022_03_23\ScheduledPackageId
+     * @return \SpApi\Model\easyship\v2022_03_23\ScheduledPackageId
      */
-    public function getScheduledPackageId(): \OpenAPI\Client\Model\easyship\v2022_03_23\ScheduledPackageId
+    public function getScheduledPackageId(): \SpApi\Model\easyship\v2022_03_23\ScheduledPackageId
     {
         return $this->container['scheduled_package_id'];
     }
@@ -317,11 +317,11 @@ class UpdatePackageDetails implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets scheduled_package_id
      *
-     * @param \OpenAPI\Client\Model\easyship\v2022_03_23\ScheduledPackageId $scheduled_package_id scheduled_package_id
+     * @param \SpApi\Model\easyship\v2022_03_23\ScheduledPackageId $scheduled_package_id scheduled_package_id
      *
      * @return self
      */
-    public function setScheduledPackageId(\OpenAPI\Client\Model\easyship\v2022_03_23\ScheduledPackageId $scheduled_package_id): self
+    public function setScheduledPackageId(\SpApi\Model\easyship\v2022_03_23\ScheduledPackageId $scheduled_package_id): self
     {
         if (is_null($scheduled_package_id)) {
             throw new \InvalidArgumentException('non-nullable scheduled_package_id cannot be null');
@@ -334,9 +334,9 @@ class UpdatePackageDetails implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets package_time_slot
      *
-     * @return \OpenAPI\Client\Model\easyship\v2022_03_23\TimeSlot
+     * @return \SpApi\Model\easyship\v2022_03_23\TimeSlot
      */
-    public function getPackageTimeSlot(): \OpenAPI\Client\Model\easyship\v2022_03_23\TimeSlot
+    public function getPackageTimeSlot(): \SpApi\Model\easyship\v2022_03_23\TimeSlot
     {
         return $this->container['package_time_slot'];
     }
@@ -344,11 +344,11 @@ class UpdatePackageDetails implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets package_time_slot
      *
-     * @param \OpenAPI\Client\Model\easyship\v2022_03_23\TimeSlot $package_time_slot package_time_slot
+     * @param \SpApi\Model\easyship\v2022_03_23\TimeSlot $package_time_slot package_time_slot
      *
      * @return self
      */
-    public function setPackageTimeSlot(\OpenAPI\Client\Model\easyship\v2022_03_23\TimeSlot $package_time_slot): self
+    public function setPackageTimeSlot(\SpApi\Model\easyship\v2022_03_23\TimeSlot $package_time_slot): self
     {
         if (is_null($package_time_slot)) {
             throw new \InvalidArgumentException('non-nullable package_time_slot cannot be null');

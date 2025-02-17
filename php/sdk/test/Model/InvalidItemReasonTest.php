@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\InvalidItemReason;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\InvalidItemReason;
 
 /**
  * InvalidItemReasonTest Class Doc Comment
  *
  * @category    Class
  * @description The reason that the item is invalid for return.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class InvalidItemReasonTest extends TestCase
 {
@@ -56,7 +56,7 @@ class InvalidItemReasonTest extends TestCase
      */
     public function testPropertyInvalidItemReasonCode()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\InvalidItemReasonCode();
+        $enumInstance = new \SpApi\Model\fulfillment\outbound\v2020_07_01\InvalidItemReasonCode();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

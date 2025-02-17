@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28;
+namespace SpApi\Model\vendor\df\shipping\v2021_12_28;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * TaxRegistrationDetails Class Doc Comment
  *
  * @category Class
  * @description Tax registration details of the entity.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +62,7 @@ class TaxRegistrationDetails implements ModelInterface, ArrayAccess, \JsonSerial
     protected static array $openAPITypes = [
              'tax_registration_type' => 'string',
              'tax_registration_number' => 'string',
-             'tax_registration_address' => '\OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\Address',
+             'tax_registration_address' => '\SpApi\Model\vendor\df\shipping\v2021_12_28\Address',
              'tax_registration_messages' => 'string'    ];
 
     /**
@@ -413,9 +413,9 @@ class TaxRegistrationDetails implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets tax_registration_address
      *
-     * @return \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\Address|null
+     * @return \SpApi\Model\vendor\df\shipping\v2021_12_28\Address|null
      */
-    public function getTaxRegistrationAddress(): ?\OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\Address
+    public function getTaxRegistrationAddress(): ?\SpApi\Model\vendor\df\shipping\v2021_12_28\Address
     {
         return $this->container['tax_registration_address'];
     }
@@ -423,11 +423,11 @@ class TaxRegistrationDetails implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets tax_registration_address
      *
-     * @param \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\Address|null $tax_registration_address tax_registration_address
+     * @param \SpApi\Model\vendor\df\shipping\v2021_12_28\Address|null $tax_registration_address tax_registration_address
      *
      * @return self
      */
-    public function setTaxRegistrationAddress(?\OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\Address $tax_registration_address): self
+    public function setTaxRegistrationAddress(?\SpApi\Model\vendor\df\shipping\v2021_12_28\Address $tax_registration_address): self
     {
         if (is_null($tax_registration_address)) {
             array_push($this->openAPINullablesSetToNull, 'tax_registration_address');

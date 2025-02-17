@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\merchantFulfillment\v0;
+namespace SpApi\Model\merchantFulfillment\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Shipment Class Doc Comment
  *
  * @category Class
  * @description The details of a shipment. Includes the shipment status.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,15 +63,15 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable
              'shipment_id' => 'string',
              'amazon_order_id' => 'string',
              'seller_order_id' => 'string',
-             'item_list' => '\OpenAPI\Client\Model\merchantFulfillment\v0\Item[]',
-             'ship_from_address' => '\OpenAPI\Client\Model\merchantFulfillment\v0\Address',
-             'ship_to_address' => '\OpenAPI\Client\Model\merchantFulfillment\v0\Address',
-             'package_dimensions' => '\OpenAPI\Client\Model\merchantFulfillment\v0\PackageDimensions',
-             'weight' => '\OpenAPI\Client\Model\merchantFulfillment\v0\Weight',
-             'insurance' => '\OpenAPI\Client\Model\merchantFulfillment\v0\CurrencyAmount',
-             'shipping_service' => '\OpenAPI\Client\Model\merchantFulfillment\v0\ShippingService',
-             'label' => '\OpenAPI\Client\Model\merchantFulfillment\v0\Label',
-             'status' => '\OpenAPI\Client\Model\merchantFulfillment\v0\ShipmentStatus',
+             'item_list' => '\SpApi\Model\merchantFulfillment\v0\Item[]',
+             'ship_from_address' => '\SpApi\Model\merchantFulfillment\v0\Address',
+             'ship_to_address' => '\SpApi\Model\merchantFulfillment\v0\Address',
+             'package_dimensions' => '\SpApi\Model\merchantFulfillment\v0\PackageDimensions',
+             'weight' => '\SpApi\Model\merchantFulfillment\v0\Weight',
+             'insurance' => '\SpApi\Model\merchantFulfillment\v0\CurrencyAmount',
+             'shipping_service' => '\SpApi\Model\merchantFulfillment\v0\ShippingService',
+             'label' => '\SpApi\Model\merchantFulfillment\v0\Label',
+             'status' => '\SpApi\Model\merchantFulfillment\v0\ShipmentStatus',
              'tracking_id' => 'string',
              'created_date' => '\DateTime',
              'last_updated_date' => '\DateTime'    ];
@@ -551,9 +551,9 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets ship_from_address
      *
-     * @return \OpenAPI\Client\Model\merchantFulfillment\v0\Address
+     * @return \SpApi\Model\merchantFulfillment\v0\Address
      */
-    public function getShipFromAddress(): \OpenAPI\Client\Model\merchantFulfillment\v0\Address
+    public function getShipFromAddress(): \SpApi\Model\merchantFulfillment\v0\Address
     {
         return $this->container['ship_from_address'];
     }
@@ -561,11 +561,11 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ship_from_address
      *
-     * @param \OpenAPI\Client\Model\merchantFulfillment\v0\Address $ship_from_address ship_from_address
+     * @param \SpApi\Model\merchantFulfillment\v0\Address $ship_from_address ship_from_address
      *
      * @return self
      */
-    public function setShipFromAddress(\OpenAPI\Client\Model\merchantFulfillment\v0\Address $ship_from_address): self
+    public function setShipFromAddress(\SpApi\Model\merchantFulfillment\v0\Address $ship_from_address): self
     {
         if (is_null($ship_from_address)) {
             throw new \InvalidArgumentException('non-nullable ship_from_address cannot be null');
@@ -578,9 +578,9 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets ship_to_address
      *
-     * @return \OpenAPI\Client\Model\merchantFulfillment\v0\Address
+     * @return \SpApi\Model\merchantFulfillment\v0\Address
      */
-    public function getShipToAddress(): \OpenAPI\Client\Model\merchantFulfillment\v0\Address
+    public function getShipToAddress(): \SpApi\Model\merchantFulfillment\v0\Address
     {
         return $this->container['ship_to_address'];
     }
@@ -588,11 +588,11 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ship_to_address
      *
-     * @param \OpenAPI\Client\Model\merchantFulfillment\v0\Address $ship_to_address ship_to_address
+     * @param \SpApi\Model\merchantFulfillment\v0\Address $ship_to_address ship_to_address
      *
      * @return self
      */
-    public function setShipToAddress(\OpenAPI\Client\Model\merchantFulfillment\v0\Address $ship_to_address): self
+    public function setShipToAddress(\SpApi\Model\merchantFulfillment\v0\Address $ship_to_address): self
     {
         if (is_null($ship_to_address)) {
             throw new \InvalidArgumentException('non-nullable ship_to_address cannot be null');
@@ -605,9 +605,9 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets package_dimensions
      *
-     * @return \OpenAPI\Client\Model\merchantFulfillment\v0\PackageDimensions
+     * @return \SpApi\Model\merchantFulfillment\v0\PackageDimensions
      */
-    public function getPackageDimensions(): \OpenAPI\Client\Model\merchantFulfillment\v0\PackageDimensions
+    public function getPackageDimensions(): \SpApi\Model\merchantFulfillment\v0\PackageDimensions
     {
         return $this->container['package_dimensions'];
     }
@@ -615,11 +615,11 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets package_dimensions
      *
-     * @param \OpenAPI\Client\Model\merchantFulfillment\v0\PackageDimensions $package_dimensions package_dimensions
+     * @param \SpApi\Model\merchantFulfillment\v0\PackageDimensions $package_dimensions package_dimensions
      *
      * @return self
      */
-    public function setPackageDimensions(\OpenAPI\Client\Model\merchantFulfillment\v0\PackageDimensions $package_dimensions): self
+    public function setPackageDimensions(\SpApi\Model\merchantFulfillment\v0\PackageDimensions $package_dimensions): self
     {
         if (is_null($package_dimensions)) {
             throw new \InvalidArgumentException('non-nullable package_dimensions cannot be null');
@@ -632,9 +632,9 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets weight
      *
-     * @return \OpenAPI\Client\Model\merchantFulfillment\v0\Weight
+     * @return \SpApi\Model\merchantFulfillment\v0\Weight
      */
-    public function getWeight(): \OpenAPI\Client\Model\merchantFulfillment\v0\Weight
+    public function getWeight(): \SpApi\Model\merchantFulfillment\v0\Weight
     {
         return $this->container['weight'];
     }
@@ -642,11 +642,11 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets weight
      *
-     * @param \OpenAPI\Client\Model\merchantFulfillment\v0\Weight $weight weight
+     * @param \SpApi\Model\merchantFulfillment\v0\Weight $weight weight
      *
      * @return self
      */
-    public function setWeight(\OpenAPI\Client\Model\merchantFulfillment\v0\Weight $weight): self
+    public function setWeight(\SpApi\Model\merchantFulfillment\v0\Weight $weight): self
     {
         if (is_null($weight)) {
             throw new \InvalidArgumentException('non-nullable weight cannot be null');
@@ -659,9 +659,9 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets insurance
      *
-     * @return \OpenAPI\Client\Model\merchantFulfillment\v0\CurrencyAmount
+     * @return \SpApi\Model\merchantFulfillment\v0\CurrencyAmount
      */
-    public function getInsurance(): \OpenAPI\Client\Model\merchantFulfillment\v0\CurrencyAmount
+    public function getInsurance(): \SpApi\Model\merchantFulfillment\v0\CurrencyAmount
     {
         return $this->container['insurance'];
     }
@@ -669,11 +669,11 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets insurance
      *
-     * @param \OpenAPI\Client\Model\merchantFulfillment\v0\CurrencyAmount $insurance insurance
+     * @param \SpApi\Model\merchantFulfillment\v0\CurrencyAmount $insurance insurance
      *
      * @return self
      */
-    public function setInsurance(\OpenAPI\Client\Model\merchantFulfillment\v0\CurrencyAmount $insurance): self
+    public function setInsurance(\SpApi\Model\merchantFulfillment\v0\CurrencyAmount $insurance): self
     {
         if (is_null($insurance)) {
             throw new \InvalidArgumentException('non-nullable insurance cannot be null');
@@ -686,9 +686,9 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets shipping_service
      *
-     * @return \OpenAPI\Client\Model\merchantFulfillment\v0\ShippingService
+     * @return \SpApi\Model\merchantFulfillment\v0\ShippingService
      */
-    public function getShippingService(): \OpenAPI\Client\Model\merchantFulfillment\v0\ShippingService
+    public function getShippingService(): \SpApi\Model\merchantFulfillment\v0\ShippingService
     {
         return $this->container['shipping_service'];
     }
@@ -696,11 +696,11 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets shipping_service
      *
-     * @param \OpenAPI\Client\Model\merchantFulfillment\v0\ShippingService $shipping_service shipping_service
+     * @param \SpApi\Model\merchantFulfillment\v0\ShippingService $shipping_service shipping_service
      *
      * @return self
      */
-    public function setShippingService(\OpenAPI\Client\Model\merchantFulfillment\v0\ShippingService $shipping_service): self
+    public function setShippingService(\SpApi\Model\merchantFulfillment\v0\ShippingService $shipping_service): self
     {
         if (is_null($shipping_service)) {
             throw new \InvalidArgumentException('non-nullable shipping_service cannot be null');
@@ -713,9 +713,9 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets label
      *
-     * @return \OpenAPI\Client\Model\merchantFulfillment\v0\Label
+     * @return \SpApi\Model\merchantFulfillment\v0\Label
      */
-    public function getLabel(): \OpenAPI\Client\Model\merchantFulfillment\v0\Label
+    public function getLabel(): \SpApi\Model\merchantFulfillment\v0\Label
     {
         return $this->container['label'];
     }
@@ -723,11 +723,11 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets label
      *
-     * @param \OpenAPI\Client\Model\merchantFulfillment\v0\Label $label label
+     * @param \SpApi\Model\merchantFulfillment\v0\Label $label label
      *
      * @return self
      */
-    public function setLabel(\OpenAPI\Client\Model\merchantFulfillment\v0\Label $label): self
+    public function setLabel(\SpApi\Model\merchantFulfillment\v0\Label $label): self
     {
         if (is_null($label)) {
             throw new \InvalidArgumentException('non-nullable label cannot be null');

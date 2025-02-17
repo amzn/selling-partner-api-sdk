@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\awd\v2024_05_09;
+namespace SpApi\Model\awd\v2024_05_09;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ProductQuantity Class Doc Comment
  *
  * @category Class
  * @description Represents a product with the SKU details and the corresponding quantity.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,11 +60,11 @@ class ProductQuantity implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'attributes' => '\OpenAPI\Client\Model\awd\v2024_05_09\ProductAttribute[]',
+             'attributes' => '\SpApi\Model\awd\v2024_05_09\ProductAttribute[]',
              'quantity' => 'int',
              'sku' => 'string',
              'expiration' => '\DateTime',
-             'prep_details' => '\OpenAPI\Client\Model\awd\v2024_05_09\PrepDetails'    ];
+             'prep_details' => '\SpApi\Model\awd\v2024_05_09\PrepDetails'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -450,9 +450,9 @@ class ProductQuantity implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets prep_details
      *
-     * @return \OpenAPI\Client\Model\awd\v2024_05_09\PrepDetails|null
+     * @return \SpApi\Model\awd\v2024_05_09\PrepDetails|null
      */
-    public function getPrepDetails(): ?\OpenAPI\Client\Model\awd\v2024_05_09\PrepDetails
+    public function getPrepDetails(): ?\SpApi\Model\awd\v2024_05_09\PrepDetails
     {
         return $this->container['prep_details'];
     }
@@ -460,11 +460,11 @@ class ProductQuantity implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets prep_details
      *
-     * @param \OpenAPI\Client\Model\awd\v2024_05_09\PrepDetails|null $prep_details prep_details
+     * @param \SpApi\Model\awd\v2024_05_09\PrepDetails|null $prep_details prep_details
      *
      * @return self
      */
-    public function setPrepDetails(?\OpenAPI\Client\Model\awd\v2024_05_09\PrepDetails $prep_details): self
+    public function setPrepDetails(?\SpApi\Model\awd\v2024_05_09\PrepDetails $prep_details): self
     {
         if (is_null($prep_details)) {
             array_push($this->openAPINullablesSetToNull, 'prep_details');

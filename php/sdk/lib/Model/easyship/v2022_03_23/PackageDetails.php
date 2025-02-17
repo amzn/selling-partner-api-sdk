@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\easyship\v2022_03_23;
+namespace SpApi\Model\easyship\v2022_03_23;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * PackageDetails Class Doc Comment
  *
  * @category Class
  * @description Package details. Includes &#x60;packageItems&#x60;, &#x60;packageTimeSlot&#x60;, and &#x60;packageIdentifier&#x60;.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class PackageDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'package_items' => '\OpenAPI\Client\Model\easyship\v2022_03_23\Item[]',
-             'package_time_slot' => '\OpenAPI\Client\Model\easyship\v2022_03_23\TimeSlot',
+             'package_items' => '\SpApi\Model\easyship\v2022_03_23\Item[]',
+             'package_time_slot' => '\SpApi\Model\easyship\v2022_03_23\TimeSlot',
              'package_identifier' => 'string'    ];
 
     /**
@@ -353,9 +353,9 @@ class PackageDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets package_time_slot
      *
-     * @return \OpenAPI\Client\Model\easyship\v2022_03_23\TimeSlot
+     * @return \SpApi\Model\easyship\v2022_03_23\TimeSlot
      */
-    public function getPackageTimeSlot(): \OpenAPI\Client\Model\easyship\v2022_03_23\TimeSlot
+    public function getPackageTimeSlot(): \SpApi\Model\easyship\v2022_03_23\TimeSlot
     {
         return $this->container['package_time_slot'];
     }
@@ -363,11 +363,11 @@ class PackageDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets package_time_slot
      *
-     * @param \OpenAPI\Client\Model\easyship\v2022_03_23\TimeSlot $package_time_slot package_time_slot
+     * @param \SpApi\Model\easyship\v2022_03_23\TimeSlot $package_time_slot package_time_slot
      *
      * @return self
      */
-    public function setPackageTimeSlot(\OpenAPI\Client\Model\easyship\v2022_03_23\TimeSlot $package_time_slot): self
+    public function setPackageTimeSlot(\SpApi\Model\easyship\v2022_03_23\TimeSlot $package_time_slot): self
     {
         if (is_null($package_time_slot)) {
             throw new \InvalidArgumentException('non-nullable package_time_slot cannot be null');

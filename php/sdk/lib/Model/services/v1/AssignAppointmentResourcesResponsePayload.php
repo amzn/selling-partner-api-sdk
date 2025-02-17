@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\services\v1;
+namespace SpApi\Model\services\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * AssignAppointmentResourcesResponsePayload Class Doc Comment
  *
  * @category Class
  * @description The payload for the &#x60;assignAppointmentResource&#x60; operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class AssignAppointmentResourcesResponsePayload implements ModelInterface, Array
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'warnings' => '\OpenAPI\Client\Model\services\v1\Warning[]'    ];
+             'warnings' => '\SpApi\Model\services\v1\Warning[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

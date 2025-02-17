@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\FulfillmentShipmentPackage;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\FulfillmentShipmentPackage;
 
 /**
  * FulfillmentShipmentPackageTest Class Doc Comment
  *
  * @category    Class
  * @description Package information for a shipment in a fulfillment order.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class FulfillmentShipmentPackageTest extends TestCase
 {
@@ -102,7 +102,7 @@ class FulfillmentShipmentPackageTest extends TestCase
     public function testPropertyLockerDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\LockerDetails();
+        $testValue = new \SpApi\Model\fulfillment\outbound\v2020_07_01\LockerDetails();
         
         $this->model->setLockerDetails($testValue);
         $this->assertEquals($testValue, $this->model->getLockerDetails());
@@ -114,7 +114,7 @@ class FulfillmentShipmentPackageTest extends TestCase
     public function testPropertyDeliveryInformation()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DeliveryInformation();
+        $testValue = new \SpApi\Model\fulfillment\outbound\v2020_07_01\DeliveryInformation();
         
         $this->model->setDeliveryInformation($testValue);
         $this->assertEquals($testValue, $this->model->getDeliveryInformation());

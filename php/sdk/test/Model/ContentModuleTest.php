@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentModule;
+use SpApi\Model\aplusContent\v2020_11_01\ContentModule;
 
 /**
  * ContentModuleTest Class Doc Comment
  *
  * @category    Class
  * @description An A+ Content module. An A+ Content document is composed of content modules. The contentModuleType property selects which content module types to use.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ContentModuleTest extends TestCase
 {
@@ -56,7 +56,7 @@ class ContentModuleTest extends TestCase
      */
     public function testPropertyContentModuleType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentModuleType();
+        $enumInstance = new \SpApi\Model\aplusContent\v2020_11_01\ContentModuleType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -70,7 +70,7 @@ class ContentModuleTest extends TestCase
     public function testPropertyStandardCompanyLogo()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardCompanyLogoModule();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\StandardCompanyLogoModule();
         
         $this->model->setStandardCompanyLogo($testValue);
         $this->assertEquals($testValue, $this->model->getStandardCompanyLogo());
@@ -82,7 +82,7 @@ class ContentModuleTest extends TestCase
     public function testPropertyStandardComparisonTable()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardComparisonTableModule();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\StandardComparisonTableModule();
         
         $this->model->setStandardComparisonTable($testValue);
         $this->assertEquals($testValue, $this->model->getStandardComparisonTable());
@@ -94,7 +94,7 @@ class ContentModuleTest extends TestCase
     public function testPropertyStandardFourImageText()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardFourImageTextModule();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\StandardFourImageTextModule();
         
         $this->model->setStandardFourImageText($testValue);
         $this->assertEquals($testValue, $this->model->getStandardFourImageText());
@@ -106,7 +106,7 @@ class ContentModuleTest extends TestCase
     public function testPropertyStandardFourImageTextQuadrant()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardFourImageTextQuadrantModule();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\StandardFourImageTextQuadrantModule();
         
         $this->model->setStandardFourImageTextQuadrant($testValue);
         $this->assertEquals($testValue, $this->model->getStandardFourImageTextQuadrant());
@@ -118,7 +118,7 @@ class ContentModuleTest extends TestCase
     public function testPropertyStandardHeaderImageText()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardHeaderImageTextModule();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\StandardHeaderImageTextModule();
         
         $this->model->setStandardHeaderImageText($testValue);
         $this->assertEquals($testValue, $this->model->getStandardHeaderImageText());
@@ -130,7 +130,7 @@ class ContentModuleTest extends TestCase
     public function testPropertyStandardImageSidebar()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageSidebarModule();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\StandardImageSidebarModule();
         
         $this->model->setStandardImageSidebar($testValue);
         $this->assertEquals($testValue, $this->model->getStandardImageSidebar());
@@ -142,7 +142,7 @@ class ContentModuleTest extends TestCase
     public function testPropertyStandardImageTextOverlay()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextOverlayModule();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\StandardImageTextOverlayModule();
         
         $this->model->setStandardImageTextOverlay($testValue);
         $this->assertEquals($testValue, $this->model->getStandardImageTextOverlay());
@@ -154,7 +154,7 @@ class ContentModuleTest extends TestCase
     public function testPropertyStandardMultipleImageText()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardMultipleImageTextModule();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\StandardMultipleImageTextModule();
         
         $this->model->setStandardMultipleImageText($testValue);
         $this->assertEquals($testValue, $this->model->getStandardMultipleImageText());
@@ -166,7 +166,7 @@ class ContentModuleTest extends TestCase
     public function testPropertyStandardProductDescription()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardProductDescriptionModule();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\StandardProductDescriptionModule();
         
         $this->model->setStandardProductDescription($testValue);
         $this->assertEquals($testValue, $this->model->getStandardProductDescription());
@@ -178,7 +178,7 @@ class ContentModuleTest extends TestCase
     public function testPropertyStandardSingleImageHighlights()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardSingleImageHighlightsModule();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\StandardSingleImageHighlightsModule();
         
         $this->model->setStandardSingleImageHighlights($testValue);
         $this->assertEquals($testValue, $this->model->getStandardSingleImageHighlights());
@@ -190,7 +190,7 @@ class ContentModuleTest extends TestCase
     public function testPropertyStandardSingleImageSpecsDetail()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardSingleImageSpecsDetailModule();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\StandardSingleImageSpecsDetailModule();
         
         $this->model->setStandardSingleImageSpecsDetail($testValue);
         $this->assertEquals($testValue, $this->model->getStandardSingleImageSpecsDetail());
@@ -202,7 +202,7 @@ class ContentModuleTest extends TestCase
     public function testPropertyStandardSingleSideImage()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardSingleSideImageModule();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\StandardSingleSideImageModule();
         
         $this->model->setStandardSingleSideImage($testValue);
         $this->assertEquals($testValue, $this->model->getStandardSingleSideImage());
@@ -214,7 +214,7 @@ class ContentModuleTest extends TestCase
     public function testPropertyStandardTechSpecs()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTechSpecsModule();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\StandardTechSpecsModule();
         
         $this->model->setStandardTechSpecs($testValue);
         $this->assertEquals($testValue, $this->model->getStandardTechSpecs());
@@ -226,7 +226,7 @@ class ContentModuleTest extends TestCase
     public function testPropertyStandardText()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextModule();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\StandardTextModule();
         
         $this->model->setStandardText($testValue);
         $this->assertEquals($testValue, $this->model->getStandardText());
@@ -238,7 +238,7 @@ class ContentModuleTest extends TestCase
     public function testPropertyStandardThreeImageText()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardThreeImageTextModule();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\StandardThreeImageTextModule();
         
         $this->model->setStandardThreeImageText($testValue);
         $this->assertEquals($testValue, $this->model->getStandardThreeImageText());

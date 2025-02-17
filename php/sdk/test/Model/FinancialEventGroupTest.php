@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\finances\v0\FinancialEventGroup;
+use SpApi\Model\finances\v0\FinancialEventGroup;
 
 /**
  * FinancialEventGroupTest Class Doc Comment
  *
  * @category    Class
  * @description Information related to a financial event group.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class FinancialEventGroupTest extends TestCase
 {
@@ -90,7 +90,7 @@ class FinancialEventGroupTest extends TestCase
     public function testPropertyOriginalTotal()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v0\Currency();
+        $testValue = new \SpApi\Model\finances\v0\Currency();
         
         $this->model->setOriginalTotal($testValue);
         $this->assertEquals($testValue, $this->model->getOriginalTotal());
@@ -102,7 +102,7 @@ class FinancialEventGroupTest extends TestCase
     public function testPropertyConvertedTotal()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v0\Currency();
+        $testValue = new \SpApi\Model\finances\v0\Currency();
         
         $this->model->setConvertedTotal($testValue);
         $this->assertEquals($testValue, $this->model->getConvertedTotal());
@@ -148,7 +148,7 @@ class FinancialEventGroupTest extends TestCase
     public function testPropertyBeginningBalance()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v0\Currency();
+        $testValue = new \SpApi\Model\finances\v0\Currency();
         
         $this->model->setBeginningBalance($testValue);
         $this->assertEquals($testValue, $this->model->getBeginningBalance());

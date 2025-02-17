@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v2022_05_01\ReferencePrice;
+use SpApi\Model\pricing\v2022_05_01\ReferencePrice;
 
 /**
  * ReferencePriceTest Class Doc Comment
  *
  * @category    Class
  * @description The reference price for the specified ASIN &#x60;marketplaceId&#x60; combination.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ReferencePriceTest extends TestCase
 {
@@ -68,7 +68,7 @@ class ReferencePriceTest extends TestCase
     public function testPropertyPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v2022_05_01\MoneyType();
+        $testValue = new \SpApi\Model\pricing\v2022_05_01\MoneyType();
         
         $this->model->setPrice($testValue);
         $this->assertEquals($testValue, $this->model->getPrice());

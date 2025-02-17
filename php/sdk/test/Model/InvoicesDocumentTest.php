@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\invoices\v2024_06_19\InvoicesDocument;
+use SpApi\Model\invoices\v2024_06_19\InvoicesDocument;
 
 /**
  * InvoicesDocumentTest Class Doc Comment
  *
  * @category    Class
  * @description An object that contains the &#x60;documentId&#x60; and an S3 pre-signed URL that you can use to download the specified file.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class InvoicesDocumentTest extends TestCase
 {

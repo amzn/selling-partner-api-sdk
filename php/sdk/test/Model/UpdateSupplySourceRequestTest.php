@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\supplySources\v2020_07_01\UpdateSupplySourceRequest;
+use SpApi\Model\supplySources\v2020_07_01\UpdateSupplySourceRequest;
 
 /**
  * UpdateSupplySourceRequestTest Class Doc Comment
  *
  * @category    Class
  * @description A request to update the configuration and capabilities of a supply source.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class UpdateSupplySourceRequestTest extends TestCase
 {
@@ -68,7 +68,7 @@ class UpdateSupplySourceRequestTest extends TestCase
     public function testPropertyConfiguration()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplySources\v2020_07_01\SupplySourceConfiguration();
+        $testValue = new \SpApi\Model\supplySources\v2020_07_01\SupplySourceConfiguration();
         
         $this->model->setConfiguration($testValue);
         $this->assertEquals($testValue, $this->model->getConfiguration());
@@ -80,7 +80,7 @@ class UpdateSupplySourceRequestTest extends TestCase
     public function testPropertyCapabilities()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplySources\v2020_07_01\SupplySourceCapabilities();
+        $testValue = new \SpApi\Model\supplySources\v2020_07_01\SupplySourceCapabilities();
         
         $this->model->setCapabilities($testValue);
         $this->assertEquals($testValue, $this->model->getCapabilities());

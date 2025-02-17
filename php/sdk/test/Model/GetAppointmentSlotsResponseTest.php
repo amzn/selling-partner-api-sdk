@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\v1\GetAppointmentSlotsResponse;
+use SpApi\Model\services\v1\GetAppointmentSlotsResponse;
 
 /**
  * GetAppointmentSlotsResponseTest Class Doc Comment
  *
  * @category    Class
  * @description The response of fetching appointment slots based on service context.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetAppointmentSlotsResponseTest extends TestCase
 {
@@ -57,7 +57,7 @@ class GetAppointmentSlotsResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\services\v1\AppointmentSlotReport();
+        $testValue = new \SpApi\Model\services\v1\AppointmentSlotReport();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

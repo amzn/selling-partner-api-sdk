@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\orders\v0;
+namespace SpApi\Model\orders\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * OrderItemsBuyerInfoList Class Doc Comment
  *
  * @category Class
  * @description A single order item&#39;s buyer information list with the order ID.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class OrderItemsBuyerInfoList implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'order_items' => '\OpenAPI\Client\Model\orders\v0\OrderItemBuyerInfo[]',
+             'order_items' => '\SpApi\Model\orders\v0\OrderItemBuyerInfo[]',
              'next_token' => 'string',
              'amazon_order_id' => 'string'    ];
 

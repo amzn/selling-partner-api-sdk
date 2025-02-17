@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\finances\v0;
+namespace SpApi\Model\finances\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ServiceFeeEvent Class Doc Comment
  *
  * @category Class
  * @description A service fee on the seller&#39;s account.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +62,7 @@ class ServiceFeeEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPITypes = [
              'amazon_order_id' => 'string',
              'fee_reason' => 'string',
-             'fee_list' => '\OpenAPI\Client\Model\finances\v0\FeeComponent[]',
+             'fee_list' => '\SpApi\Model\finances\v0\FeeComponent[]',
              'seller_sku' => 'string',
              'fn_sku' => 'string',
              'fee_description' => 'string',

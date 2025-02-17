@@ -4,7 +4,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api\pricing\v0;
+namespace SpApi\Api\pricing\v0;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -39,16 +39,16 @@ use SpApi\AuthAndAuth\RateLimitConfiguration;
 use Symfony\Component\RateLimiter\LimiterInterface;
 use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\ObjectSerializer;
+use SpApi\ApiException;
+use SpApi\Configuration;
+use SpApi\HeaderSelector;
+use SpApi\ObjectSerializer;
 
 /**
  * ProductPricingApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -163,9 +163,9 @@ class ProductPricingApi
      * @param  string|null $customer_type
      *  Indicates whether to request pricing information from the point of view of Consumer or Business buyers. Default is Consumer. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\pricing\v0\GetPricingResponse
+     * @return \SpApi\Model\pricing\v0\GetPricingResponse
      */
     public function getCompetitivePricing(
         string $marketplace_id,
@@ -173,7 +173,7 @@ class ProductPricingApi
         ?array $asins = null,
         ?array $skus = null,
         ?string $customer_type = null
-    ): \OpenAPI\Client\Model\pricing\v0\GetPricingResponse {
+    ): \SpApi\Model\pricing\v0\GetPricingResponse {
         list($response) = $this->getCompetitivePricingWithHttpInfo($marketplace_id, $item_type, $asins, $skus, $customer_type);
         return $response;
     }
@@ -192,9 +192,9 @@ class ProductPricingApi
      * @param  string|null $customer_type
      *  Indicates whether to request pricing information from the point of view of Consumer or Business buyers. Default is Consumer. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\pricing\v0\GetPricingResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\pricing\v0\GetPricingResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCompetitivePricingWithHttpInfo(
         string $marketplace_id,
@@ -244,128 +244,128 @@ class ProductPricingApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\pricing\v0\GetPricingResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\GetPricingResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\GetPricingResponse' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\GetPricingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\GetPricingResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetPricingResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\pricing\v0\GetPricingResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\GetPricingResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\GetPricingResponse' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\GetPricingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\GetPricingResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetPricingResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\pricing\v0\GetPricingResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\GetPricingResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\GetPricingResponse' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\GetPricingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\GetPricingResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetPricingResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\pricing\v0\GetPricingResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\GetPricingResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\GetPricingResponse' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\GetPricingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\GetPricingResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetPricingResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\pricing\v0\GetPricingResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\GetPricingResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\GetPricingResponse' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\GetPricingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\GetPricingResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetPricingResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\pricing\v0\GetPricingResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\GetPricingResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\GetPricingResponse' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\GetPricingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\GetPricingResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetPricingResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\pricing\v0\GetPricingResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\GetPricingResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\GetPricingResponse' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\GetPricingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\GetPricingResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetPricingResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\pricing\v0\GetPricingResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\GetPricingResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\GetPricingResponse' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\GetPricingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\GetPricingResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetPricingResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\pricing\v0\GetPricingResponse';
+            $returnType = '\SpApi\Model\pricing\v0\GetPricingResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -386,7 +386,7 @@ class ProductPricingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\GetPricingResponse',
+                        '\SpApi\Model\pricing\v0\GetPricingResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -394,7 +394,7 @@ class ProductPricingApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\GetPricingResponse',
+                        '\SpApi\Model\pricing\v0\GetPricingResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -402,7 +402,7 @@ class ProductPricingApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\GetPricingResponse',
+                        '\SpApi\Model\pricing\v0\GetPricingResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -410,7 +410,7 @@ class ProductPricingApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\GetPricingResponse',
+                        '\SpApi\Model\pricing\v0\GetPricingResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -418,7 +418,7 @@ class ProductPricingApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\GetPricingResponse',
+                        '\SpApi\Model\pricing\v0\GetPricingResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -426,7 +426,7 @@ class ProductPricingApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\GetPricingResponse',
+                        '\SpApi\Model\pricing\v0\GetPricingResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -434,7 +434,7 @@ class ProductPricingApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\GetPricingResponse',
+                        '\SpApi\Model\pricing\v0\GetPricingResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -442,7 +442,7 @@ class ProductPricingApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\GetPricingResponse',
+                        '\SpApi\Model\pricing\v0\GetPricingResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -508,7 +508,7 @@ class ProductPricingApi
         ?array $skus = null,
         ?string $customer_type = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\pricing\v0\GetPricingResponse';
+        $returnType = '\SpApi\Model\pricing\v0\GetPricingResponse';
         $request = $this->getCompetitivePricingRequest($marketplace_id, $item_type, $asins, $skus, $customer_type);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -721,16 +721,16 @@ class ProductPricingApi
      * @param  string|null $customer_type
      *  Indicates whether to request Consumer or Business offers. Default is Consumer. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\pricing\v0\GetOffersResponse
+     * @return \SpApi\Model\pricing\v0\GetOffersResponse
      */
     public function getItemOffers(
         string $marketplace_id,
         string $item_condition,
         string $asin,
         ?string $customer_type = null
-    ): \OpenAPI\Client\Model\pricing\v0\GetOffersResponse {
+    ): \SpApi\Model\pricing\v0\GetOffersResponse {
         list($response) = $this->getItemOffersWithHttpInfo($marketplace_id, $item_condition, $asin, $customer_type);
         return $response;
     }
@@ -747,9 +747,9 @@ class ProductPricingApi
      * @param  string|null $customer_type
      *  Indicates whether to request Consumer or Business offers. Default is Consumer. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\pricing\v0\GetOffersResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\pricing\v0\GetOffersResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getItemOffersWithHttpInfo(
         string $marketplace_id,
@@ -798,128 +798,128 @@ class ProductPricingApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\pricing\v0\GetOffersResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\GetOffersResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\GetOffersResponse' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\GetOffersResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\GetOffersResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetOffersResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\pricing\v0\GetOffersResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\GetOffersResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\GetOffersResponse' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\GetOffersResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\GetOffersResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetOffersResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\pricing\v0\GetOffersResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\GetOffersResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\GetOffersResponse' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\GetOffersResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\GetOffersResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetOffersResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\pricing\v0\GetOffersResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\GetOffersResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\GetOffersResponse' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\GetOffersResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\GetOffersResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetOffersResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\pricing\v0\GetOffersResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\GetOffersResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\GetOffersResponse' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\GetOffersResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\GetOffersResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetOffersResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\pricing\v0\GetOffersResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\GetOffersResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\GetOffersResponse' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\GetOffersResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\GetOffersResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetOffersResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\pricing\v0\GetOffersResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\GetOffersResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\GetOffersResponse' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\GetOffersResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\GetOffersResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetOffersResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\pricing\v0\GetOffersResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\GetOffersResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\GetOffersResponse' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\GetOffersResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\GetOffersResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetOffersResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\pricing\v0\GetOffersResponse';
+            $returnType = '\SpApi\Model\pricing\v0\GetOffersResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -940,7 +940,7 @@ class ProductPricingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\GetOffersResponse',
+                        '\SpApi\Model\pricing\v0\GetOffersResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -948,7 +948,7 @@ class ProductPricingApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\GetOffersResponse',
+                        '\SpApi\Model\pricing\v0\GetOffersResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -956,7 +956,7 @@ class ProductPricingApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\GetOffersResponse',
+                        '\SpApi\Model\pricing\v0\GetOffersResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -964,7 +964,7 @@ class ProductPricingApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\GetOffersResponse',
+                        '\SpApi\Model\pricing\v0\GetOffersResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -972,7 +972,7 @@ class ProductPricingApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\GetOffersResponse',
+                        '\SpApi\Model\pricing\v0\GetOffersResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -980,7 +980,7 @@ class ProductPricingApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\GetOffersResponse',
+                        '\SpApi\Model\pricing\v0\GetOffersResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -988,7 +988,7 @@ class ProductPricingApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\GetOffersResponse',
+                        '\SpApi\Model\pricing\v0\GetOffersResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -996,7 +996,7 @@ class ProductPricingApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\GetOffersResponse',
+                        '\SpApi\Model\pricing\v0\GetOffersResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1056,7 +1056,7 @@ class ProductPricingApi
         string $asin,
         ?string $customer_type = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\pricing\v0\GetOffersResponse';
+        $returnType = '\SpApi\Model\pricing\v0\GetOffersResponse';
         $request = $this->getItemOffersRequest($marketplace_id, $item_condition, $asin, $customer_type);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -1245,16 +1245,16 @@ class ProductPricingApi
     /**
      * Operation getItemOffersBatch
      *
-     * @param  \OpenAPI\Client\Model\pricing\v0\GetItemOffersBatchRequest $get_item_offers_batch_request_body
+     * @param  \SpApi\Model\pricing\v0\GetItemOffersBatchRequest $get_item_offers_batch_request_body
      *  get_item_offers_batch_request_body (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\pricing\v0\GetItemOffersBatchResponse
+     * @return \SpApi\Model\pricing\v0\GetItemOffersBatchResponse
      */
     public function getItemOffersBatch(
-        \OpenAPI\Client\Model\pricing\v0\GetItemOffersBatchRequest $get_item_offers_batch_request_body
-    ): \OpenAPI\Client\Model\pricing\v0\GetItemOffersBatchResponse {
+        \SpApi\Model\pricing\v0\GetItemOffersBatchRequest $get_item_offers_batch_request_body
+    ): \SpApi\Model\pricing\v0\GetItemOffersBatchResponse {
         list($response) = $this->getItemOffersBatchWithHttpInfo($get_item_offers_batch_request_body);
         return $response;
     }
@@ -1262,15 +1262,15 @@ class ProductPricingApi
     /**
      * Operation getItemOffersBatchWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\pricing\v0\GetItemOffersBatchRequest $get_item_offers_batch_request_body
+     * @param  \SpApi\Model\pricing\v0\GetItemOffersBatchRequest $get_item_offers_batch_request_body
      *  (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\pricing\v0\GetItemOffersBatchResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\pricing\v0\GetItemOffersBatchResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getItemOffersBatchWithHttpInfo(
-        \OpenAPI\Client\Model\pricing\v0\GetItemOffersBatchRequest $get_item_offers_batch_request_body
+        \SpApi\Model\pricing\v0\GetItemOffersBatchRequest $get_item_offers_batch_request_body
     ): array {
         $request = $this->getItemOffersBatchRequest($get_item_offers_batch_request_body);
         $request = $this->config->sign($request);
@@ -1313,128 +1313,128 @@ class ProductPricingApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\pricing\v0\GetItemOffersBatchResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\GetItemOffersBatchResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\GetItemOffersBatchResponse' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\GetItemOffersBatchResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\GetItemOffersBatchResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetItemOffersBatchResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\pricing\v0\Errors' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\Errors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\Errors' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\Errors' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\Errors', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\Errors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\pricing\v0\Errors' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\Errors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\Errors' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\Errors' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\Errors', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\Errors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\pricing\v0\Errors' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\Errors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\Errors' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\Errors' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\Errors', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\Errors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\pricing\v0\Errors' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\Errors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\Errors' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\Errors' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\Errors', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\Errors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\pricing\v0\Errors' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\Errors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\Errors' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\Errors' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\Errors', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\Errors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\pricing\v0\Errors' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\Errors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\Errors' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\Errors' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\Errors', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\Errors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\pricing\v0\Errors' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\Errors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\Errors' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\Errors' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\Errors', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\Errors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\pricing\v0\GetItemOffersBatchResponse';
+            $returnType = '\SpApi\Model\pricing\v0\GetItemOffersBatchResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1455,7 +1455,7 @@ class ProductPricingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\GetItemOffersBatchResponse',
+                        '\SpApi\Model\pricing\v0\GetItemOffersBatchResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1463,7 +1463,7 @@ class ProductPricingApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\Errors',
+                        '\SpApi\Model\pricing\v0\Errors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1471,7 +1471,7 @@ class ProductPricingApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\Errors',
+                        '\SpApi\Model\pricing\v0\Errors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1479,7 +1479,7 @@ class ProductPricingApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\Errors',
+                        '\SpApi\Model\pricing\v0\Errors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1487,7 +1487,7 @@ class ProductPricingApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\Errors',
+                        '\SpApi\Model\pricing\v0\Errors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1495,7 +1495,7 @@ class ProductPricingApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\Errors',
+                        '\SpApi\Model\pricing\v0\Errors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1503,7 +1503,7 @@ class ProductPricingApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\Errors',
+                        '\SpApi\Model\pricing\v0\Errors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1511,7 +1511,7 @@ class ProductPricingApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\Errors',
+                        '\SpApi\Model\pricing\v0\Errors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1524,14 +1524,14 @@ class ProductPricingApi
     /**
      * Operation getItemOffersBatchAsync
      *
-     * @param  \OpenAPI\Client\Model\pricing\v0\GetItemOffersBatchRequest $get_item_offers_batch_request_body
+     * @param  \SpApi\Model\pricing\v0\GetItemOffersBatchRequest $get_item_offers_batch_request_body
      *  (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function getItemOffersBatchAsync(
-        \OpenAPI\Client\Model\pricing\v0\GetItemOffersBatchRequest $get_item_offers_batch_request_body
+        \SpApi\Model\pricing\v0\GetItemOffersBatchRequest $get_item_offers_batch_request_body
     ): PromiseInterface {
         return $this->getItemOffersBatchAsyncWithHttpInfo($get_item_offers_batch_request_body)
             ->then(
@@ -1544,16 +1544,16 @@ class ProductPricingApi
     /**
      * Operation getItemOffersBatchAsyncWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\pricing\v0\GetItemOffersBatchRequest $get_item_offers_batch_request_body
+     * @param  \SpApi\Model\pricing\v0\GetItemOffersBatchRequest $get_item_offers_batch_request_body
      *  (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function getItemOffersBatchAsyncWithHttpInfo(
-        \OpenAPI\Client\Model\pricing\v0\GetItemOffersBatchRequest $get_item_offers_batch_request_body
+        \SpApi\Model\pricing\v0\GetItemOffersBatchRequest $get_item_offers_batch_request_body
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\pricing\v0\GetItemOffersBatchResponse';
+        $returnType = '\SpApi\Model\pricing\v0\GetItemOffersBatchResponse';
         $request = $this->getItemOffersBatchRequest($get_item_offers_batch_request_body);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -1597,14 +1597,14 @@ class ProductPricingApi
     /**
      * Create request for operation 'getItemOffersBatch'
      *
-     * @param  \OpenAPI\Client\Model\pricing\v0\GetItemOffersBatchRequest $get_item_offers_batch_request_body
+     * @param  \SpApi\Model\pricing\v0\GetItemOffersBatchRequest $get_item_offers_batch_request_body
      *  (required)
      *
      * @throws \InvalidArgumentException
      * @return Request
      */
     public function getItemOffersBatchRequest(
-        \OpenAPI\Client\Model\pricing\v0\GetItemOffersBatchRequest $get_item_offers_batch_request_body
+        \SpApi\Model\pricing\v0\GetItemOffersBatchRequest $get_item_offers_batch_request_body
     ): Request {
         // verify the required parameter 'get_item_offers_batch_request_body' is set
         if ($get_item_offers_batch_request_body === null || (is_array($get_item_offers_batch_request_body) && count($get_item_offers_batch_request_body) === 0)) {
@@ -1701,16 +1701,16 @@ class ProductPricingApi
      * @param  string|null $customer_type
      *  Indicates whether to request Consumer or Business offers. Default is Consumer. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\pricing\v0\GetOffersResponse
+     * @return \SpApi\Model\pricing\v0\GetOffersResponse
      */
     public function getListingOffers(
         string $marketplace_id,
         string $item_condition,
         string $seller_sku,
         ?string $customer_type = null
-    ): \OpenAPI\Client\Model\pricing\v0\GetOffersResponse {
+    ): \SpApi\Model\pricing\v0\GetOffersResponse {
         list($response) = $this->getListingOffersWithHttpInfo($marketplace_id, $item_condition, $seller_sku, $customer_type);
         return $response;
     }
@@ -1727,9 +1727,9 @@ class ProductPricingApi
      * @param  string|null $customer_type
      *  Indicates whether to request Consumer or Business offers. Default is Consumer. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\pricing\v0\GetOffersResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\pricing\v0\GetOffersResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getListingOffersWithHttpInfo(
         string $marketplace_id,
@@ -1778,128 +1778,128 @@ class ProductPricingApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\pricing\v0\GetOffersResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\GetOffersResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\GetOffersResponse' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\GetOffersResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\GetOffersResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetOffersResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\pricing\v0\GetOffersResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\GetOffersResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\GetOffersResponse' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\GetOffersResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\GetOffersResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetOffersResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\pricing\v0\GetOffersResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\GetOffersResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\GetOffersResponse' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\GetOffersResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\GetOffersResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetOffersResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\pricing\v0\GetOffersResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\GetOffersResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\GetOffersResponse' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\GetOffersResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\GetOffersResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetOffersResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\pricing\v0\GetOffersResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\GetOffersResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\GetOffersResponse' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\GetOffersResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\GetOffersResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetOffersResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\pricing\v0\GetOffersResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\GetOffersResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\GetOffersResponse' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\GetOffersResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\GetOffersResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetOffersResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\pricing\v0\GetOffersResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\GetOffersResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\GetOffersResponse' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\GetOffersResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\GetOffersResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetOffersResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\pricing\v0\GetOffersResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\GetOffersResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\GetOffersResponse' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\GetOffersResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\GetOffersResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetOffersResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\pricing\v0\GetOffersResponse';
+            $returnType = '\SpApi\Model\pricing\v0\GetOffersResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1920,7 +1920,7 @@ class ProductPricingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\GetOffersResponse',
+                        '\SpApi\Model\pricing\v0\GetOffersResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1928,7 +1928,7 @@ class ProductPricingApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\GetOffersResponse',
+                        '\SpApi\Model\pricing\v0\GetOffersResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1936,7 +1936,7 @@ class ProductPricingApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\GetOffersResponse',
+                        '\SpApi\Model\pricing\v0\GetOffersResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1944,7 +1944,7 @@ class ProductPricingApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\GetOffersResponse',
+                        '\SpApi\Model\pricing\v0\GetOffersResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1952,7 +1952,7 @@ class ProductPricingApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\GetOffersResponse',
+                        '\SpApi\Model\pricing\v0\GetOffersResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1960,7 +1960,7 @@ class ProductPricingApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\GetOffersResponse',
+                        '\SpApi\Model\pricing\v0\GetOffersResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1968,7 +1968,7 @@ class ProductPricingApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\GetOffersResponse',
+                        '\SpApi\Model\pricing\v0\GetOffersResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1976,7 +1976,7 @@ class ProductPricingApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\GetOffersResponse',
+                        '\SpApi\Model\pricing\v0\GetOffersResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2036,7 +2036,7 @@ class ProductPricingApi
         string $seller_sku,
         ?string $customer_type = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\pricing\v0\GetOffersResponse';
+        $returnType = '\SpApi\Model\pricing\v0\GetOffersResponse';
         $request = $this->getListingOffersRequest($marketplace_id, $item_condition, $seller_sku, $customer_type);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -2225,16 +2225,16 @@ class ProductPricingApi
     /**
      * Operation getListingOffersBatch
      *
-     * @param  \OpenAPI\Client\Model\pricing\v0\GetListingOffersBatchRequest $get_listing_offers_batch_request_body
+     * @param  \SpApi\Model\pricing\v0\GetListingOffersBatchRequest $get_listing_offers_batch_request_body
      *  get_listing_offers_batch_request_body (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\pricing\v0\GetListingOffersBatchResponse
+     * @return \SpApi\Model\pricing\v0\GetListingOffersBatchResponse
      */
     public function getListingOffersBatch(
-        \OpenAPI\Client\Model\pricing\v0\GetListingOffersBatchRequest $get_listing_offers_batch_request_body
-    ): \OpenAPI\Client\Model\pricing\v0\GetListingOffersBatchResponse {
+        \SpApi\Model\pricing\v0\GetListingOffersBatchRequest $get_listing_offers_batch_request_body
+    ): \SpApi\Model\pricing\v0\GetListingOffersBatchResponse {
         list($response) = $this->getListingOffersBatchWithHttpInfo($get_listing_offers_batch_request_body);
         return $response;
     }
@@ -2242,15 +2242,15 @@ class ProductPricingApi
     /**
      * Operation getListingOffersBatchWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\pricing\v0\GetListingOffersBatchRequest $get_listing_offers_batch_request_body
+     * @param  \SpApi\Model\pricing\v0\GetListingOffersBatchRequest $get_listing_offers_batch_request_body
      *  (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\pricing\v0\GetListingOffersBatchResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\pricing\v0\GetListingOffersBatchResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getListingOffersBatchWithHttpInfo(
-        \OpenAPI\Client\Model\pricing\v0\GetListingOffersBatchRequest $get_listing_offers_batch_request_body
+        \SpApi\Model\pricing\v0\GetListingOffersBatchRequest $get_listing_offers_batch_request_body
     ): array {
         $request = $this->getListingOffersBatchRequest($get_listing_offers_batch_request_body);
         $request = $this->config->sign($request);
@@ -2293,128 +2293,128 @@ class ProductPricingApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\pricing\v0\GetListingOffersBatchResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\GetListingOffersBatchResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\GetListingOffersBatchResponse' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\GetListingOffersBatchResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\GetListingOffersBatchResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetListingOffersBatchResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\pricing\v0\Errors' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\Errors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\Errors' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\Errors' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\Errors', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\Errors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\pricing\v0\Errors' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\Errors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\Errors' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\Errors' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\Errors', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\Errors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\pricing\v0\Errors' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\Errors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\Errors' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\Errors' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\Errors', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\Errors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\pricing\v0\Errors' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\Errors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\Errors' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\Errors' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\Errors', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\Errors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\pricing\v0\Errors' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\Errors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\Errors' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\Errors' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\Errors', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\Errors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\pricing\v0\Errors' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\Errors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\Errors' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\Errors' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\Errors', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\Errors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\pricing\v0\Errors' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\Errors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\Errors' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\Errors' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\Errors', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\Errors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\pricing\v0\GetListingOffersBatchResponse';
+            $returnType = '\SpApi\Model\pricing\v0\GetListingOffersBatchResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2435,7 +2435,7 @@ class ProductPricingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\GetListingOffersBatchResponse',
+                        '\SpApi\Model\pricing\v0\GetListingOffersBatchResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2443,7 +2443,7 @@ class ProductPricingApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\Errors',
+                        '\SpApi\Model\pricing\v0\Errors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2451,7 +2451,7 @@ class ProductPricingApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\Errors',
+                        '\SpApi\Model\pricing\v0\Errors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2459,7 +2459,7 @@ class ProductPricingApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\Errors',
+                        '\SpApi\Model\pricing\v0\Errors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2467,7 +2467,7 @@ class ProductPricingApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\Errors',
+                        '\SpApi\Model\pricing\v0\Errors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2475,7 +2475,7 @@ class ProductPricingApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\Errors',
+                        '\SpApi\Model\pricing\v0\Errors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2483,7 +2483,7 @@ class ProductPricingApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\Errors',
+                        '\SpApi\Model\pricing\v0\Errors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2491,7 +2491,7 @@ class ProductPricingApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\Errors',
+                        '\SpApi\Model\pricing\v0\Errors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2504,14 +2504,14 @@ class ProductPricingApi
     /**
      * Operation getListingOffersBatchAsync
      *
-     * @param  \OpenAPI\Client\Model\pricing\v0\GetListingOffersBatchRequest $get_listing_offers_batch_request_body
+     * @param  \SpApi\Model\pricing\v0\GetListingOffersBatchRequest $get_listing_offers_batch_request_body
      *  (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function getListingOffersBatchAsync(
-        \OpenAPI\Client\Model\pricing\v0\GetListingOffersBatchRequest $get_listing_offers_batch_request_body
+        \SpApi\Model\pricing\v0\GetListingOffersBatchRequest $get_listing_offers_batch_request_body
     ): PromiseInterface {
         return $this->getListingOffersBatchAsyncWithHttpInfo($get_listing_offers_batch_request_body)
             ->then(
@@ -2524,16 +2524,16 @@ class ProductPricingApi
     /**
      * Operation getListingOffersBatchAsyncWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\pricing\v0\GetListingOffersBatchRequest $get_listing_offers_batch_request_body
+     * @param  \SpApi\Model\pricing\v0\GetListingOffersBatchRequest $get_listing_offers_batch_request_body
      *  (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function getListingOffersBatchAsyncWithHttpInfo(
-        \OpenAPI\Client\Model\pricing\v0\GetListingOffersBatchRequest $get_listing_offers_batch_request_body
+        \SpApi\Model\pricing\v0\GetListingOffersBatchRequest $get_listing_offers_batch_request_body
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\pricing\v0\GetListingOffersBatchResponse';
+        $returnType = '\SpApi\Model\pricing\v0\GetListingOffersBatchResponse';
         $request = $this->getListingOffersBatchRequest($get_listing_offers_batch_request_body);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -2577,14 +2577,14 @@ class ProductPricingApi
     /**
      * Create request for operation 'getListingOffersBatch'
      *
-     * @param  \OpenAPI\Client\Model\pricing\v0\GetListingOffersBatchRequest $get_listing_offers_batch_request_body
+     * @param  \SpApi\Model\pricing\v0\GetListingOffersBatchRequest $get_listing_offers_batch_request_body
      *  (required)
      *
      * @throws \InvalidArgumentException
      * @return Request
      */
     public function getListingOffersBatchRequest(
-        \OpenAPI\Client\Model\pricing\v0\GetListingOffersBatchRequest $get_listing_offers_batch_request_body
+        \SpApi\Model\pricing\v0\GetListingOffersBatchRequest $get_listing_offers_batch_request_body
     ): Request {
         // verify the required parameter 'get_listing_offers_batch_request_body' is set
         if ($get_listing_offers_batch_request_body === null || (is_array($get_listing_offers_batch_request_body) && count($get_listing_offers_batch_request_body) === 0)) {
@@ -2685,9 +2685,9 @@ class ProductPricingApi
      * @param  string|null $offer_type
      *  Indicates whether to request pricing information for the seller&#39;s B2C or B2B offers. Default is B2C. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\pricing\v0\GetPricingResponse
+     * @return \SpApi\Model\pricing\v0\GetPricingResponse
      */
     public function getPricing(
         string $marketplace_id,
@@ -2696,7 +2696,7 @@ class ProductPricingApi
         ?array $skus = null,
         ?string $item_condition = null,
         ?string $offer_type = null
-    ): \OpenAPI\Client\Model\pricing\v0\GetPricingResponse {
+    ): \SpApi\Model\pricing\v0\GetPricingResponse {
         list($response) = $this->getPricingWithHttpInfo($marketplace_id, $item_type, $asins, $skus, $item_condition, $offer_type);
         return $response;
     }
@@ -2717,9 +2717,9 @@ class ProductPricingApi
      * @param  string|null $offer_type
      *  Indicates whether to request pricing information for the seller&#39;s B2C or B2B offers. Default is B2C. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\pricing\v0\GetPricingResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\pricing\v0\GetPricingResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getPricingWithHttpInfo(
         string $marketplace_id,
@@ -2770,128 +2770,128 @@ class ProductPricingApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\pricing\v0\GetPricingResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\GetPricingResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\GetPricingResponse' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\GetPricingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\GetPricingResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetPricingResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\pricing\v0\GetPricingResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\GetPricingResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\GetPricingResponse' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\GetPricingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\GetPricingResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetPricingResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\pricing\v0\GetPricingResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\GetPricingResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\GetPricingResponse' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\GetPricingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\GetPricingResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetPricingResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\pricing\v0\GetPricingResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\GetPricingResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\GetPricingResponse' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\GetPricingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\GetPricingResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetPricingResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\pricing\v0\GetPricingResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\GetPricingResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\GetPricingResponse' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\GetPricingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\GetPricingResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetPricingResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\pricing\v0\GetPricingResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\GetPricingResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\GetPricingResponse' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\GetPricingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\GetPricingResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetPricingResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\pricing\v0\GetPricingResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\GetPricingResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\GetPricingResponse' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\GetPricingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\GetPricingResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetPricingResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\pricing\v0\GetPricingResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\pricing\v0\GetPricingResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\pricing\v0\GetPricingResponse' !== 'string') {
+                        if ('\SpApi\Model\pricing\v0\GetPricingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\pricing\v0\GetPricingResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetPricingResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\pricing\v0\GetPricingResponse';
+            $returnType = '\SpApi\Model\pricing\v0\GetPricingResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2912,7 +2912,7 @@ class ProductPricingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\GetPricingResponse',
+                        '\SpApi\Model\pricing\v0\GetPricingResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2920,7 +2920,7 @@ class ProductPricingApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\GetPricingResponse',
+                        '\SpApi\Model\pricing\v0\GetPricingResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2928,7 +2928,7 @@ class ProductPricingApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\GetPricingResponse',
+                        '\SpApi\Model\pricing\v0\GetPricingResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2936,7 +2936,7 @@ class ProductPricingApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\GetPricingResponse',
+                        '\SpApi\Model\pricing\v0\GetPricingResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2944,7 +2944,7 @@ class ProductPricingApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\GetPricingResponse',
+                        '\SpApi\Model\pricing\v0\GetPricingResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2952,7 +2952,7 @@ class ProductPricingApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\GetPricingResponse',
+                        '\SpApi\Model\pricing\v0\GetPricingResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2960,7 +2960,7 @@ class ProductPricingApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\GetPricingResponse',
+                        '\SpApi\Model\pricing\v0\GetPricingResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2968,7 +2968,7 @@ class ProductPricingApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\pricing\v0\GetPricingResponse',
+                        '\SpApi\Model\pricing\v0\GetPricingResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3040,7 +3040,7 @@ class ProductPricingApi
         ?string $item_condition = null,
         ?string $offer_type = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\pricing\v0\GetPricingResponse';
+        $returnType = '\SpApi\Model\pricing\v0\GetPricingResponse';
         $request = $this->getPricingRequest($marketplace_id, $item_type, $asins, $skus, $item_condition, $offer_type);
         $request = $this->config->sign($request);
         $this->rateLimitWait();

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Shipment;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\Shipment;
 
 /**
  * ShipmentTest Class Doc Comment
  *
  * @category    Class
  * @description Contains information pertaining to a shipment in an inbound plan.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ShipmentTest extends TestCase
 {
@@ -68,7 +68,7 @@ class ShipmentTest extends TestCase
     public function testPropertyContactInformation()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ContactInformation();
+        $testValue = new \SpApi\Model\fulfillment\inbound\v2024_03_20\ContactInformation();
         
         $this->model->setContactInformation($testValue);
         $this->assertEquals($testValue, $this->model->getContactInformation());
@@ -80,7 +80,7 @@ class ShipmentTest extends TestCase
     public function testPropertyDates()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Dates();
+        $testValue = new \SpApi\Model\fulfillment\inbound\v2024_03_20\Dates();
         
         $this->model->setDates($testValue);
         $this->assertEquals($testValue, $this->model->getDates());
@@ -92,7 +92,7 @@ class ShipmentTest extends TestCase
     public function testPropertyDestination()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ShipmentDestination();
+        $testValue = new \SpApi\Model\fulfillment\inbound\v2024_03_20\ShipmentDestination();
         
         $this->model->setDestination($testValue);
         $this->assertEquals($testValue, $this->model->getDestination());
@@ -104,7 +104,7 @@ class ShipmentTest extends TestCase
     public function testPropertyFreightInformation()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\FreightInformation();
+        $testValue = new \SpApi\Model\fulfillment\inbound\v2024_03_20\FreightInformation();
         
         $this->model->setFreightInformation($testValue);
         $this->assertEquals($testValue, $this->model->getFreightInformation());
@@ -138,7 +138,7 @@ class ShipmentTest extends TestCase
     public function testPropertySelectedDeliveryWindow()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\SelectedDeliveryWindow();
+        $testValue = new \SpApi\Model\fulfillment\inbound\v2024_03_20\SelectedDeliveryWindow();
         
         $this->model->setSelectedDeliveryWindow($testValue);
         $this->assertEquals($testValue, $this->model->getSelectedDeliveryWindow());
@@ -194,7 +194,7 @@ class ShipmentTest extends TestCase
     public function testPropertySource()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ShipmentSource();
+        $testValue = new \SpApi\Model\fulfillment\inbound\v2024_03_20\ShipmentSource();
         
         $this->model->setSource($testValue);
         $this->assertEquals($testValue, $this->model->getSource());
@@ -217,7 +217,7 @@ class ShipmentTest extends TestCase
     public function testPropertyTrackingDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\TrackingDetails();
+        $testValue = new \SpApi\Model\fulfillment\inbound\v2024_03_20\TrackingDetails();
         
         $this->model->setTrackingDetails($testValue);
         $this->assertEquals($testValue, $this->model->getTrackingDetails());

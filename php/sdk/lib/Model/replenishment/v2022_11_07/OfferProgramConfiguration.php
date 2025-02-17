@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\replenishment\v2022_11_07;
+namespace SpApi\Model\replenishment\v2022_11_07;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * OfferProgramConfiguration Class Doc Comment
  *
  * @category Class
  * @description The offer program configuration contains a set of program properties for an offer.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,9 +60,9 @@ class OfferProgramConfiguration implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'preferences' => '\OpenAPI\Client\Model\replenishment\v2022_11_07\OfferProgramConfigurationPreferences',
-             'promotions' => '\OpenAPI\Client\Model\replenishment\v2022_11_07\OfferProgramConfigurationPromotions',
-             'enrollment_method' => '\OpenAPI\Client\Model\replenishment\v2022_11_07\EnrollmentMethod'    ];
+             'preferences' => '\SpApi\Model\replenishment\v2022_11_07\OfferProgramConfigurationPreferences',
+             'promotions' => '\SpApi\Model\replenishment\v2022_11_07\OfferProgramConfigurationPromotions',
+             'enrollment_method' => '\SpApi\Model\replenishment\v2022_11_07\EnrollmentMethod'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -308,9 +308,9 @@ class OfferProgramConfiguration implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets preferences
      *
-     * @return \OpenAPI\Client\Model\replenishment\v2022_11_07\OfferProgramConfigurationPreferences|null
+     * @return \SpApi\Model\replenishment\v2022_11_07\OfferProgramConfigurationPreferences|null
      */
-    public function getPreferences(): ?\OpenAPI\Client\Model\replenishment\v2022_11_07\OfferProgramConfigurationPreferences
+    public function getPreferences(): ?\SpApi\Model\replenishment\v2022_11_07\OfferProgramConfigurationPreferences
     {
         return $this->container['preferences'];
     }
@@ -318,11 +318,11 @@ class OfferProgramConfiguration implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets preferences
      *
-     * @param \OpenAPI\Client\Model\replenishment\v2022_11_07\OfferProgramConfigurationPreferences|null $preferences preferences
+     * @param \SpApi\Model\replenishment\v2022_11_07\OfferProgramConfigurationPreferences|null $preferences preferences
      *
      * @return self
      */
-    public function setPreferences(?\OpenAPI\Client\Model\replenishment\v2022_11_07\OfferProgramConfigurationPreferences $preferences): self
+    public function setPreferences(?\SpApi\Model\replenishment\v2022_11_07\OfferProgramConfigurationPreferences $preferences): self
     {
         if (is_null($preferences)) {
             array_push($this->openAPINullablesSetToNull, 'preferences');
@@ -342,9 +342,9 @@ class OfferProgramConfiguration implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets promotions
      *
-     * @return \OpenAPI\Client\Model\replenishment\v2022_11_07\OfferProgramConfigurationPromotions|null
+     * @return \SpApi\Model\replenishment\v2022_11_07\OfferProgramConfigurationPromotions|null
      */
-    public function getPromotions(): ?\OpenAPI\Client\Model\replenishment\v2022_11_07\OfferProgramConfigurationPromotions
+    public function getPromotions(): ?\SpApi\Model\replenishment\v2022_11_07\OfferProgramConfigurationPromotions
     {
         return $this->container['promotions'];
     }
@@ -352,11 +352,11 @@ class OfferProgramConfiguration implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets promotions
      *
-     * @param \OpenAPI\Client\Model\replenishment\v2022_11_07\OfferProgramConfigurationPromotions|null $promotions promotions
+     * @param \SpApi\Model\replenishment\v2022_11_07\OfferProgramConfigurationPromotions|null $promotions promotions
      *
      * @return self
      */
-    public function setPromotions(?\OpenAPI\Client\Model\replenishment\v2022_11_07\OfferProgramConfigurationPromotions $promotions): self
+    public function setPromotions(?\SpApi\Model\replenishment\v2022_11_07\OfferProgramConfigurationPromotions $promotions): self
     {
         if (is_null($promotions)) {
             array_push($this->openAPINullablesSetToNull, 'promotions');

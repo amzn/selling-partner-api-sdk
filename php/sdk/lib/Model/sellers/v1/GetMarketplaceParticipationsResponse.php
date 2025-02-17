@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\sellers\v1;
+namespace SpApi\Model\sellers\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetMarketplaceParticipationsResponse Class Doc Comment
  *
  * @category Class
  * @description The response schema for the &#x60;getMarketplaceParticipations&#x60; operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class GetMarketplaceParticipationsResponse implements ModelInterface, ArrayAcces
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'payload' => '\OpenAPI\Client\Model\sellers\v1\MarketplaceParticipation[]',
-             'errors' => '\OpenAPI\Client\Model\sellers\v1\Error[]'    ];
+             'payload' => '\SpApi\Model\sellers\v1\MarketplaceParticipation[]',
+             'errors' => '\SpApi\Model\sellers\v1\Error[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01;
+namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * DeliveryOffer Class Doc Comment
  *
  * @category Class
  * @description An available offer for delivery of a product.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,8 +61,8 @@ class DeliveryOffer implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPITypes = [
              'expires_at' => '\DateTime',
-             'date_range' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DateRange',
-             'policy' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DeliveryPolicy'    ];
+             'date_range' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\DateRange',
+             'policy' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\DeliveryPolicy'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -342,9 +342,9 @@ class DeliveryOffer implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets date_range
      *
-     * @return \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DateRange|null
+     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\DateRange|null
      */
-    public function getDateRange(): ?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DateRange
+    public function getDateRange(): ?\SpApi\Model\fulfillment\outbound\v2020_07_01\DateRange
     {
         return $this->container['date_range'];
     }
@@ -352,11 +352,11 @@ class DeliveryOffer implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets date_range
      *
-     * @param \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DateRange|null $date_range date_range
+     * @param \SpApi\Model\fulfillment\outbound\v2020_07_01\DateRange|null $date_range date_range
      *
      * @return self
      */
-    public function setDateRange(?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DateRange $date_range): self
+    public function setDateRange(?\SpApi\Model\fulfillment\outbound\v2020_07_01\DateRange $date_range): self
     {
         if (is_null($date_range)) {
             array_push($this->openAPINullablesSetToNull, 'date_range');
@@ -376,9 +376,9 @@ class DeliveryOffer implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets policy
      *
-     * @return \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DeliveryPolicy|null
+     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\DeliveryPolicy|null
      */
-    public function getPolicy(): ?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DeliveryPolicy
+    public function getPolicy(): ?\SpApi\Model\fulfillment\outbound\v2020_07_01\DeliveryPolicy
     {
         return $this->container['policy'];
     }
@@ -386,11 +386,11 @@ class DeliveryOffer implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets policy
      *
-     * @param \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DeliveryPolicy|null $policy policy
+     * @param \SpApi\Model\fulfillment\outbound\v2020_07_01\DeliveryPolicy|null $policy policy
      *
      * @return self
      */
-    public function setPolicy(?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DeliveryPolicy $policy): self
+    public function setPolicy(?\SpApi\Model\fulfillment\outbound\v2020_07_01\DeliveryPolicy $policy): self
     {
         if (is_null($policy)) {
             array_push($this->openAPINullablesSetToNull, 'policy');

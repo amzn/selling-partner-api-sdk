@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextModule;
+use SpApi\Model\aplusContent\v2020_11_01\StandardTextModule;
 
 /**
  * StandardTextModuleTest Class Doc Comment
  *
  * @category    Class
  * @description A standard headline and body text.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class StandardTextModuleTest extends TestCase
 {
@@ -57,7 +57,7 @@ class StandardTextModuleTest extends TestCase
     public function testPropertyHeadline()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\TextComponent();
         
         $this->model->setHeadline($testValue);
         $this->assertEquals($testValue, $this->model->getHeadline());
@@ -69,7 +69,7 @@ class StandardTextModuleTest extends TestCase
     public function testPropertyBody()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\ParagraphComponent();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\ParagraphComponent();
         
         $this->model->setBody($testValue);
         $this->assertEquals($testValue, $this->model->getBody());

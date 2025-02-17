@@ -4,7 +4,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api\tokens\v2021_03_01;
+namespace SpApi\Api\tokens\v2021_03_01;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -39,16 +39,16 @@ use SpApi\AuthAndAuth\RateLimitConfiguration;
 use Symfony\Component\RateLimiter\LimiterInterface;
 use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\ObjectSerializer;
+use SpApi\ApiException;
+use SpApi\Configuration;
+use SpApi\HeaderSelector;
+use SpApi\ObjectSerializer;
 
 /**
  * TokensApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -152,16 +152,16 @@ class TokensApi
     /**
      * Operation createRestrictedDataToken
      *
-     * @param  \OpenAPI\Client\Model\tokens\v2021_03_01\CreateRestrictedDataTokenRequest $body
+     * @param  \SpApi\Model\tokens\v2021_03_01\CreateRestrictedDataTokenRequest $body
      *  The restricted data token request details. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\tokens\v2021_03_01\CreateRestrictedDataTokenResponse
+     * @return \SpApi\Model\tokens\v2021_03_01\CreateRestrictedDataTokenResponse
      */
     public function createRestrictedDataToken(
-        \OpenAPI\Client\Model\tokens\v2021_03_01\CreateRestrictedDataTokenRequest $body
-    ): \OpenAPI\Client\Model\tokens\v2021_03_01\CreateRestrictedDataTokenResponse {
+        \SpApi\Model\tokens\v2021_03_01\CreateRestrictedDataTokenRequest $body
+    ): \SpApi\Model\tokens\v2021_03_01\CreateRestrictedDataTokenResponse {
         list($response) = $this->createRestrictedDataTokenWithHttpInfo($body);
         return $response;
     }
@@ -169,15 +169,15 @@ class TokensApi
     /**
      * Operation createRestrictedDataTokenWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\tokens\v2021_03_01\CreateRestrictedDataTokenRequest $body
+     * @param  \SpApi\Model\tokens\v2021_03_01\CreateRestrictedDataTokenRequest $body
      *  The restricted data token request details. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\tokens\v2021_03_01\CreateRestrictedDataTokenResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\tokens\v2021_03_01\CreateRestrictedDataTokenResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createRestrictedDataTokenWithHttpInfo(
-        \OpenAPI\Client\Model\tokens\v2021_03_01\CreateRestrictedDataTokenRequest $body
+        \SpApi\Model\tokens\v2021_03_01\CreateRestrictedDataTokenRequest $body
     ): array {
         $request = $this->createRestrictedDataTokenRequest($body);
         $request = $this->config->sign($request);
@@ -220,143 +220,143 @@ class TokensApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\tokens\v2021_03_01\CreateRestrictedDataTokenResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\tokens\v2021_03_01\CreateRestrictedDataTokenResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\tokens\v2021_03_01\CreateRestrictedDataTokenResponse' !== 'string') {
+                        if ('\SpApi\Model\tokens\v2021_03_01\CreateRestrictedDataTokenResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\tokens\v2021_03_01\CreateRestrictedDataTokenResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\tokens\v2021_03_01\CreateRestrictedDataTokenResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\tokens\v2021_03_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\tokens\v2021_03_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\tokens\v2021_03_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\tokens\v2021_03_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\tokens\v2021_03_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\tokens\v2021_03_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\tokens\v2021_03_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\tokens\v2021_03_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\tokens\v2021_03_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\tokens\v2021_03_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\tokens\v2021_03_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\tokens\v2021_03_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\tokens\v2021_03_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\tokens\v2021_03_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\tokens\v2021_03_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\tokens\v2021_03_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\tokens\v2021_03_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\tokens\v2021_03_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\tokens\v2021_03_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\tokens\v2021_03_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\tokens\v2021_03_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\tokens\v2021_03_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\tokens\v2021_03_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\tokens\v2021_03_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\tokens\v2021_03_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\tokens\v2021_03_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\tokens\v2021_03_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\tokens\v2021_03_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\tokens\v2021_03_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\tokens\v2021_03_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\tokens\v2021_03_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\tokens\v2021_03_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\tokens\v2021_03_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\tokens\v2021_03_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\tokens\v2021_03_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\tokens\v2021_03_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\tokens\v2021_03_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\tokens\v2021_03_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\tokens\v2021_03_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\tokens\v2021_03_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\tokens\v2021_03_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\tokens\v2021_03_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\tokens\v2021_03_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\tokens\v2021_03_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\tokens\v2021_03_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\tokens\v2021_03_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\tokens\v2021_03_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\tokens\v2021_03_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\tokens\v2021_03_01\CreateRestrictedDataTokenResponse';
+            $returnType = '\SpApi\Model\tokens\v2021_03_01\CreateRestrictedDataTokenResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -377,7 +377,7 @@ class TokensApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\tokens\v2021_03_01\CreateRestrictedDataTokenResponse',
+                        '\SpApi\Model\tokens\v2021_03_01\CreateRestrictedDataTokenResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -385,7 +385,7 @@ class TokensApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\tokens\v2021_03_01\ErrorList',
+                        '\SpApi\Model\tokens\v2021_03_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -393,7 +393,7 @@ class TokensApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\tokens\v2021_03_01\ErrorList',
+                        '\SpApi\Model\tokens\v2021_03_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -401,7 +401,7 @@ class TokensApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\tokens\v2021_03_01\ErrorList',
+                        '\SpApi\Model\tokens\v2021_03_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -409,7 +409,7 @@ class TokensApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\tokens\v2021_03_01\ErrorList',
+                        '\SpApi\Model\tokens\v2021_03_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -417,7 +417,7 @@ class TokensApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\tokens\v2021_03_01\ErrorList',
+                        '\SpApi\Model\tokens\v2021_03_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -425,7 +425,7 @@ class TokensApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\tokens\v2021_03_01\ErrorList',
+                        '\SpApi\Model\tokens\v2021_03_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -433,7 +433,7 @@ class TokensApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\tokens\v2021_03_01\ErrorList',
+                        '\SpApi\Model\tokens\v2021_03_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -441,7 +441,7 @@ class TokensApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\tokens\v2021_03_01\ErrorList',
+                        '\SpApi\Model\tokens\v2021_03_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -454,14 +454,14 @@ class TokensApi
     /**
      * Operation createRestrictedDataTokenAsync
      *
-     * @param  \OpenAPI\Client\Model\tokens\v2021_03_01\CreateRestrictedDataTokenRequest $body
+     * @param  \SpApi\Model\tokens\v2021_03_01\CreateRestrictedDataTokenRequest $body
      *  The restricted data token request details. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function createRestrictedDataTokenAsync(
-        \OpenAPI\Client\Model\tokens\v2021_03_01\CreateRestrictedDataTokenRequest $body
+        \SpApi\Model\tokens\v2021_03_01\CreateRestrictedDataTokenRequest $body
     ): PromiseInterface {
         return $this->createRestrictedDataTokenAsyncWithHttpInfo($body)
             ->then(
@@ -474,16 +474,16 @@ class TokensApi
     /**
      * Operation createRestrictedDataTokenAsyncWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\tokens\v2021_03_01\CreateRestrictedDataTokenRequest $body
+     * @param  \SpApi\Model\tokens\v2021_03_01\CreateRestrictedDataTokenRequest $body
      *  The restricted data token request details. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function createRestrictedDataTokenAsyncWithHttpInfo(
-        \OpenAPI\Client\Model\tokens\v2021_03_01\CreateRestrictedDataTokenRequest $body
+        \SpApi\Model\tokens\v2021_03_01\CreateRestrictedDataTokenRequest $body
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\tokens\v2021_03_01\CreateRestrictedDataTokenResponse';
+        $returnType = '\SpApi\Model\tokens\v2021_03_01\CreateRestrictedDataTokenResponse';
         $request = $this->createRestrictedDataTokenRequest($body);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -527,14 +527,14 @@ class TokensApi
     /**
      * Create request for operation 'createRestrictedDataToken'
      *
-     * @param  \OpenAPI\Client\Model\tokens\v2021_03_01\CreateRestrictedDataTokenRequest $body
+     * @param  \SpApi\Model\tokens\v2021_03_01\CreateRestrictedDataTokenRequest $body
      *  The restricted data token request details. (required)
      *
      * @throws \InvalidArgumentException
      * @return Request
      */
     public function createRestrictedDataTokenRequest(
-        \OpenAPI\Client\Model\tokens\v2021_03_01\CreateRestrictedDataTokenRequest $body
+        \SpApi\Model\tokens\v2021_03_01\CreateRestrictedDataTokenRequest $body
     ): Request {
         // verify the required parameter 'body' is set
         if ($body === null || (is_array($body) && count($body) === 0)) {

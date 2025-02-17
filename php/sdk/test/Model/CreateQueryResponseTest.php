@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\datakiosk\v2023_11_15\CreateQueryResponse;
+use SpApi\Model\datakiosk\v2023_11_15\CreateQueryResponse;
 
 /**
  * CreateQueryResponseTest Class Doc Comment
  *
  * @category    Class
  * @description The response for the &#x60;createQuery&#x60; operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class CreateQueryResponseTest extends TestCase
 {

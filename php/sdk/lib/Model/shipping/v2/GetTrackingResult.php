@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,19 +27,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\shipping\v2;
+namespace SpApi\Model\shipping\v2;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetTrackingResult Class Doc Comment
  *
  * @category Class
  * @description The payload for the getTracking operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,9 +63,9 @@ class GetTrackingResult implements ModelInterface, ArrayAccess, \JsonSerializabl
     protected static array $openAPITypes = [
              'tracking_id' => 'string',
              'alternate_leg_tracking_id' => 'string',
-             'event_history' => '\OpenAPI\Client\Model\shipping\v2\Event[]',
+             'event_history' => '\SpApi\Model\shipping\v2\Event[]',
              'promised_delivery_date' => '\DateTime',
-             'summary' => '\OpenAPI\Client\Model\shipping\v2\TrackingSummary'    ];
+             'summary' => '\SpApi\Model\shipping\v2\TrackingSummary'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -446,9 +446,9 @@ class GetTrackingResult implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets summary
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\TrackingSummary
+     * @return \SpApi\Model\shipping\v2\TrackingSummary
      */
-    public function getSummary(): \OpenAPI\Client\Model\shipping\v2\TrackingSummary
+    public function getSummary(): \SpApi\Model\shipping\v2\TrackingSummary
     {
         return $this->container['summary'];
     }
@@ -456,11 +456,11 @@ class GetTrackingResult implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets summary
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\TrackingSummary $summary summary
+     * @param \SpApi\Model\shipping\v2\TrackingSummary $summary summary
      *
      * @return self
      */
-    public function setSummary(\OpenAPI\Client\Model\shipping\v2\TrackingSummary $summary): self
+    public function setSummary(\SpApi\Model\shipping\v2\TrackingSummary $summary): self
     {
         if (is_null($summary)) {
             throw new \InvalidArgumentException('non-nullable summary cannot be null');

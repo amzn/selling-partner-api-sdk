@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20;
+namespace SpApi\Model\fulfillment\inbound\v2024_03_20;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * CreateInboundPlanRequest Class Doc Comment
  *
  * @category Class
  * @description The &#x60;createInboundPlan&#x60; request.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,9 +61,9 @@ class CreateInboundPlanRequest implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static array $openAPITypes = [
              'destination_marketplaces' => 'string[]',
-             'items' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ItemInput[]',
+             'items' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\ItemInput[]',
              'name' => 'string',
-             'source_address' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\AddressInput'    ];
+             'source_address' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\AddressInput'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -457,9 +457,9 @@ class CreateInboundPlanRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets source_address
      *
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\AddressInput
+     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\AddressInput
      */
-    public function getSourceAddress(): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\AddressInput
+    public function getSourceAddress(): \SpApi\Model\fulfillment\inbound\v2024_03_20\AddressInput
     {
         return $this->container['source_address'];
     }
@@ -467,11 +467,11 @@ class CreateInboundPlanRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets source_address
      *
-     * @param \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\AddressInput $source_address source_address
+     * @param \SpApi\Model\fulfillment\inbound\v2024_03_20\AddressInput $source_address source_address
      *
      * @return self
      */
-    public function setSourceAddress(\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\AddressInput $source_address): self
+    public function setSourceAddress(\SpApi\Model\fulfillment\inbound\v2024_03_20\AddressInput $source_address): self
     {
         if (is_null($source_address)) {
             throw new \InvalidArgumentException('non-nullable source_address cannot be null');

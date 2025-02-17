@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fba\inventory\v1;
+namespace SpApi\Model\fba\inventory\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetInventorySummariesResult Class Doc Comment
  *
  * @category Class
  * @description The payload schema for the getInventorySummaries operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class GetInventorySummariesResult implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'granularity' => '\OpenAPI\Client\Model\fba\inventory\v1\Granularity',
-             'inventory_summaries' => '\OpenAPI\Client\Model\fba\inventory\v1\InventorySummary[]'    ];
+             'granularity' => '\SpApi\Model\fba\inventory\v1\Granularity',
+             'inventory_summaries' => '\SpApi\Model\fba\inventory\v1\InventorySummary[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -307,9 +307,9 @@ class GetInventorySummariesResult implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets granularity
      *
-     * @return \OpenAPI\Client\Model\fba\inventory\v1\Granularity
+     * @return \SpApi\Model\fba\inventory\v1\Granularity
      */
-    public function getGranularity(): \OpenAPI\Client\Model\fba\inventory\v1\Granularity
+    public function getGranularity(): \SpApi\Model\fba\inventory\v1\Granularity
     {
         return $this->container['granularity'];
     }
@@ -317,11 +317,11 @@ class GetInventorySummariesResult implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets granularity
      *
-     * @param \OpenAPI\Client\Model\fba\inventory\v1\Granularity $granularity granularity
+     * @param \SpApi\Model\fba\inventory\v1\Granularity $granularity granularity
      *
      * @return self
      */
-    public function setGranularity(\OpenAPI\Client\Model\fba\inventory\v1\Granularity $granularity): self
+    public function setGranularity(\SpApi\Model\fba\inventory\v1\Granularity $granularity): self
     {
         if (is_null($granularity)) {
             throw new \InvalidArgumentException('non-nullable granularity cannot be null');

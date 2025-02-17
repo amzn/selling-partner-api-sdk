@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\v1\ItemDelivery;
+use SpApi\Model\services\v1\ItemDelivery;
 
 /**
  * ItemDeliveryTest Class Doc Comment
  *
  * @category    Class
  * @description Delivery information for the item.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ItemDeliveryTest extends TestCase
 {
@@ -69,7 +69,7 @@ class ItemDeliveryTest extends TestCase
     public function testPropertyItemDeliveryPromise()
     {
         
-        $testValue = new \OpenAPI\Client\Model\services\v1\ItemDeliveryPromise();
+        $testValue = new \SpApi\Model\services\v1\ItemDeliveryPromise();
         
         $this->model->setItemDeliveryPromise($testValue);
         $this->assertEquals($testValue, $this->model->getItemDeliveryPromise());

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v2022_05_01\FeaturedOffer;
+use SpApi\Model\pricing\v2022_05_01\FeaturedOffer;
 
 /**
  * FeaturedOfferTest Class Doc Comment
  *
  * @category    Class
  * @description Schema for &#x60;currentFeaturedOffer&#x60; or &#x60;competingFeaturedOffer&#x60;.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class FeaturedOfferTest extends TestCase
 {
@@ -57,7 +57,7 @@ class FeaturedOfferTest extends TestCase
     public function testPropertyOfferIdentifier()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v2022_05_01\OfferIdentifier();
+        $testValue = new \SpApi\Model\pricing\v2022_05_01\OfferIdentifier();
         
         $this->model->setOfferIdentifier($testValue);
         $this->assertEquals($testValue, $this->model->getOfferIdentifier());
@@ -68,7 +68,7 @@ class FeaturedOfferTest extends TestCase
      */
     public function testPropertyCondition()
     {
-        $enumInstance = new \OpenAPI\Client\Model\pricing\v2022_05_01\Condition();
+        $enumInstance = new \SpApi\Model\pricing\v2022_05_01\Condition();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -82,7 +82,7 @@ class FeaturedOfferTest extends TestCase
     public function testPropertyPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v2022_05_01\Price();
+        $testValue = new \SpApi\Model\pricing\v2022_05_01\Price();
         
         $this->model->setPrice($testValue);
         $this->assertEquals($testValue, $this->model->getPrice());

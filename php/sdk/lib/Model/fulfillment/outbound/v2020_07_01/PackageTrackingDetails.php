@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01;
+namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * PackageTrackingDetails Class Doc Comment
  *
  * @category Class
  * @description Tracking details of package
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -68,12 +68,12 @@ class PackageTrackingDetails implements ModelInterface, ArrayAccess, \JsonSerial
              'carrier_url' => 'string',
              'ship_date' => '\DateTime',
              'estimated_arrival_date' => '\DateTime',
-             'ship_to_address' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\TrackingAddress',
-             'current_status' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\CurrentStatus',
+             'ship_to_address' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\TrackingAddress',
+             'current_status' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\CurrentStatus',
              'current_status_description' => 'string',
              'signed_for_by' => 'string',
-             'additional_location_info' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\AdditionalLocationInfo',
-             'tracking_events' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\TrackingEvent[]'    ];
+             'additional_location_info' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\AdditionalLocationInfo',
+             'tracking_events' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\TrackingEvent[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -653,9 +653,9 @@ class PackageTrackingDetails implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets ship_to_address
      *
-     * @return \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\TrackingAddress|null
+     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\TrackingAddress|null
      */
-    public function getShipToAddress(): ?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\TrackingAddress
+    public function getShipToAddress(): ?\SpApi\Model\fulfillment\outbound\v2020_07_01\TrackingAddress
     {
         return $this->container['ship_to_address'];
     }
@@ -663,11 +663,11 @@ class PackageTrackingDetails implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets ship_to_address
      *
-     * @param \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\TrackingAddress|null $ship_to_address ship_to_address
+     * @param \SpApi\Model\fulfillment\outbound\v2020_07_01\TrackingAddress|null $ship_to_address ship_to_address
      *
      * @return self
      */
-    public function setShipToAddress(?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\TrackingAddress $ship_to_address): self
+    public function setShipToAddress(?\SpApi\Model\fulfillment\outbound\v2020_07_01\TrackingAddress $ship_to_address): self
     {
         if (is_null($ship_to_address)) {
             array_push($this->openAPINullablesSetToNull, 'ship_to_address');

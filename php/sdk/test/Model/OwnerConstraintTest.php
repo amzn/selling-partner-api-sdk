@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\OwnerConstraint;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\OwnerConstraint;
 
 /**
  * OwnerConstraintTest Class Doc Comment
  *
  * @category    Class
  * @description A constraint that can apply to an individual owner. If no constraint is specified, both &#x60;AMAZON&#x60; and &#x60;SELLER&#x60; are acceptable.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class OwnerConstraintTest extends TestCase
 {

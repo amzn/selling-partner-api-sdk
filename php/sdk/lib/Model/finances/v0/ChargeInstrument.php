@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\finances\v0;
+namespace SpApi\Model\finances\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ChargeInstrument Class Doc Comment
  *
  * @category Class
  * @description A payment instrument.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +62,7 @@ class ChargeInstrument implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPITypes = [
              'description' => 'string',
              'tail' => 'string',
-             'amount' => '\OpenAPI\Client\Model\finances\v0\Currency'    ];
+             'amount' => '\SpApi\Model\finances\v0\Currency'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -376,9 +376,9 @@ class ChargeInstrument implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets amount
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency|null
+     * @return \SpApi\Model\finances\v0\Currency|null
      */
-    public function getAmount(): ?\OpenAPI\Client\Model\finances\v0\Currency
+    public function getAmount(): ?\SpApi\Model\finances\v0\Currency
     {
         return $this->container['amount'];
     }
@@ -386,11 +386,11 @@ class ChargeInstrument implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets amount
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency|null $amount amount
+     * @param \SpApi\Model\finances\v0\Currency|null $amount amount
      *
      * @return self
      */
-    public function setAmount(?\OpenAPI\Client\Model\finances\v0\Currency $amount): self
+    public function setAmount(?\SpApi\Model\finances\v0\Currency $amount): self
     {
         if (is_null($amount)) {
             array_push($this->openAPINullablesSetToNull, 'amount');

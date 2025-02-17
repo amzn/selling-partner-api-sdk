@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v0\BarcodeInstruction;
+use SpApi\Model\fulfillment\inbound\v0\BarcodeInstruction;
 
 /**
  * BarcodeInstructionTest Class Doc Comment
  *
  * @category    Class
  * @description Labeling requirements for the item. For more information about FBA labeling requirements, see the Seller Central Help for your marketplace.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class BarcodeInstructionTest extends TestCase
 {

@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\shipments\v1;
+namespace SpApi\Model\vendor\shipments\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * SubmitShipments Class Doc Comment
  *
  * @category Class
  * @description The request schema for the SubmitShipments operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class SubmitShipments implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'shipments' => '\OpenAPI\Client\Model\vendor\shipments\v1\Shipment[]'    ];
+             'shipments' => '\SpApi\Model\vendor\shipments\v1\Shipment[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

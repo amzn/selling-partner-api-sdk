@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\messaging\v1;
+namespace SpApi\Model\messaging\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetAttributesResponse Class Doc Comment
  *
  * @category Class
  * @description The response schema for the GetAttributes operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class GetAttributesResponse implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'buyer' => '\OpenAPI\Client\Model\messaging\v1\GetAttributesResponseBuyer',
-             'errors' => '\OpenAPI\Client\Model\messaging\v1\Error[]'    ];
+             'buyer' => '\SpApi\Model\messaging\v1\GetAttributesResponseBuyer',
+             'errors' => '\SpApi\Model\messaging\v1\Error[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -301,9 +301,9 @@ class GetAttributesResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets buyer
      *
-     * @return \OpenAPI\Client\Model\messaging\v1\GetAttributesResponseBuyer|null
+     * @return \SpApi\Model\messaging\v1\GetAttributesResponseBuyer|null
      */
-    public function getBuyer(): ?\OpenAPI\Client\Model\messaging\v1\GetAttributesResponseBuyer
+    public function getBuyer(): ?\SpApi\Model\messaging\v1\GetAttributesResponseBuyer
     {
         return $this->container['buyer'];
     }
@@ -311,11 +311,11 @@ class GetAttributesResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets buyer
      *
-     * @param \OpenAPI\Client\Model\messaging\v1\GetAttributesResponseBuyer|null $buyer buyer
+     * @param \SpApi\Model\messaging\v1\GetAttributesResponseBuyer|null $buyer buyer
      *
      * @return self
      */
-    public function setBuyer(?\OpenAPI\Client\Model\messaging\v1\GetAttributesResponseBuyer $buyer): self
+    public function setBuyer(?\SpApi\Model\messaging\v1\GetAttributesResponseBuyer $buyer): self
     {
         if (is_null($buyer)) {
             array_push($this->openAPINullablesSetToNull, 'buyer');

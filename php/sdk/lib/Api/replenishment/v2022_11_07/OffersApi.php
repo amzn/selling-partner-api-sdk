@@ -4,7 +4,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api\replenishment\v2022_11_07;
+namespace SpApi\Api\replenishment\v2022_11_07;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -39,16 +39,16 @@ use SpApi\AuthAndAuth\RateLimitConfiguration;
 use Symfony\Component\RateLimiter\LimiterInterface;
 use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\ObjectSerializer;
+use SpApi\ApiException;
+use SpApi\Configuration;
+use SpApi\HeaderSelector;
+use SpApi\ObjectSerializer;
 
 /**
  * OffersApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -152,16 +152,16 @@ class OffersApi
     /**
      * Operation listOfferMetrics
      *
-     * @param  \OpenAPI\Client\Model\replenishment\v2022_11_07\ListOfferMetricsRequest|null $body
+     * @param  \SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsRequest|null $body
      *  The request body for the &#x60;listOfferMetrics&#x60; operation. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\replenishment\v2022_11_07\ListOfferMetricsResponse
+     * @return \SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsResponse
      */
     public function listOfferMetrics(
-        ?\OpenAPI\Client\Model\replenishment\v2022_11_07\ListOfferMetricsRequest $body = null
-    ): \OpenAPI\Client\Model\replenishment\v2022_11_07\ListOfferMetricsResponse {
+        ?\SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsRequest $body = null
+    ): \SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsResponse {
         list($response) = $this->listOfferMetricsWithHttpInfo($body);
         return $response;
     }
@@ -169,15 +169,15 @@ class OffersApi
     /**
      * Operation listOfferMetricsWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\replenishment\v2022_11_07\ListOfferMetricsRequest|null $body
+     * @param  \SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsRequest|null $body
      *  The request body for the &#x60;listOfferMetrics&#x60; operation. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\replenishment\v2022_11_07\ListOfferMetricsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listOfferMetricsWithHttpInfo(
-        ?\OpenAPI\Client\Model\replenishment\v2022_11_07\ListOfferMetricsRequest $body = null
+        ?\SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsRequest $body = null
     ): array {
         $request = $this->listOfferMetricsRequest($body);
         $request = $this->config->sign($request);
@@ -220,158 +220,158 @@ class OffersApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\replenishment\v2022_11_07\ListOfferMetricsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\replenishment\v2022_11_07\ListOfferMetricsResponse' !== 'string') {
+                        if ('\SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\replenishment\v2022_11_07\ListOfferMetricsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\replenishment\v2022_11_07\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\replenishment\v2022_11_07\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\replenishment\v2022_11_07\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\replenishment\v2022_11_07\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\replenishment\v2022_11_07\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\replenishment\v2022_11_07\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\replenishment\v2022_11_07\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\replenishment\v2022_11_07\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\replenishment\v2022_11_07\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\replenishment\v2022_11_07\ListOfferMetricsResponse';
+            $returnType = '\SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -392,7 +392,7 @@ class OffersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\replenishment\v2022_11_07\ListOfferMetricsResponse',
+                        '\SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -400,7 +400,7 @@ class OffersApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList',
+                        '\SpApi\Model\replenishment\v2022_11_07\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -408,7 +408,7 @@ class OffersApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList',
+                        '\SpApi\Model\replenishment\v2022_11_07\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -416,7 +416,7 @@ class OffersApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList',
+                        '\SpApi\Model\replenishment\v2022_11_07\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -424,7 +424,7 @@ class OffersApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList',
+                        '\SpApi\Model\replenishment\v2022_11_07\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -432,7 +432,7 @@ class OffersApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList',
+                        '\SpApi\Model\replenishment\v2022_11_07\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -440,7 +440,7 @@ class OffersApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList',
+                        '\SpApi\Model\replenishment\v2022_11_07\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -448,7 +448,7 @@ class OffersApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList',
+                        '\SpApi\Model\replenishment\v2022_11_07\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -456,7 +456,7 @@ class OffersApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList',
+                        '\SpApi\Model\replenishment\v2022_11_07\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -464,7 +464,7 @@ class OffersApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList',
+                        '\SpApi\Model\replenishment\v2022_11_07\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -477,14 +477,14 @@ class OffersApi
     /**
      * Operation listOfferMetricsAsync
      *
-     * @param  \OpenAPI\Client\Model\replenishment\v2022_11_07\ListOfferMetricsRequest|null $body
+     * @param  \SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsRequest|null $body
      *  The request body for the &#x60;listOfferMetrics&#x60; operation. (optional)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function listOfferMetricsAsync(
-        ?\OpenAPI\Client\Model\replenishment\v2022_11_07\ListOfferMetricsRequest $body = null
+        ?\SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsRequest $body = null
     ): PromiseInterface {
         return $this->listOfferMetricsAsyncWithHttpInfo($body)
             ->then(
@@ -497,16 +497,16 @@ class OffersApi
     /**
      * Operation listOfferMetricsAsyncWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\replenishment\v2022_11_07\ListOfferMetricsRequest|null $body
+     * @param  \SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsRequest|null $body
      *  The request body for the &#x60;listOfferMetrics&#x60; operation. (optional)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function listOfferMetricsAsyncWithHttpInfo(
-        ?\OpenAPI\Client\Model\replenishment\v2022_11_07\ListOfferMetricsRequest $body = null
+        ?\SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsRequest $body = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\replenishment\v2022_11_07\ListOfferMetricsResponse';
+        $returnType = '\SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsResponse';
         $request = $this->listOfferMetricsRequest($body);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -550,14 +550,14 @@ class OffersApi
     /**
      * Create request for operation 'listOfferMetrics'
      *
-     * @param  \OpenAPI\Client\Model\replenishment\v2022_11_07\ListOfferMetricsRequest|null $body
+     * @param  \SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsRequest|null $body
      *  The request body for the &#x60;listOfferMetrics&#x60; operation. (optional)
      *
      * @throws \InvalidArgumentException
      * @return Request
      */
     public function listOfferMetricsRequest(
-        ?\OpenAPI\Client\Model\replenishment\v2022_11_07\ListOfferMetricsRequest $body = null
+        ?\SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsRequest $body = null
     ): Request {
 
         $resourcePath = '/replenishment/2022-11-07/offers/metrics/search';
@@ -639,16 +639,16 @@ class OffersApi
     /**
      * Operation listOffers
      *
-     * @param  \OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersRequest|null $body
+     * @param  \SpApi\Model\replenishment\v2022_11_07\ListOffersRequest|null $body
      *  The request body for the &#x60;listOffers&#x60; operation. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersResponse
+     * @return \SpApi\Model\replenishment\v2022_11_07\ListOffersResponse
      */
     public function listOffers(
-        ?\OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersRequest $body = null
-    ): \OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersResponse {
+        ?\SpApi\Model\replenishment\v2022_11_07\ListOffersRequest $body = null
+    ): \SpApi\Model\replenishment\v2022_11_07\ListOffersResponse {
         list($response) = $this->listOffersWithHttpInfo($body);
         return $response;
     }
@@ -656,15 +656,15 @@ class OffersApi
     /**
      * Operation listOffersWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersRequest|null $body
+     * @param  \SpApi\Model\replenishment\v2022_11_07\ListOffersRequest|null $body
      *  The request body for the &#x60;listOffers&#x60; operation. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\replenishment\v2022_11_07\ListOffersResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listOffersWithHttpInfo(
-        ?\OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersRequest $body = null
+        ?\SpApi\Model\replenishment\v2022_11_07\ListOffersRequest $body = null
     ): array {
         $request = $this->listOffersRequest($body);
         $request = $this->config->sign($request);
@@ -707,158 +707,158 @@ class OffersApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\replenishment\v2022_11_07\ListOffersResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersResponse' !== 'string') {
+                        if ('\SpApi\Model\replenishment\v2022_11_07\ListOffersResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\replenishment\v2022_11_07\ListOffersResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\replenishment\v2022_11_07\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\replenishment\v2022_11_07\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\replenishment\v2022_11_07\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\replenishment\v2022_11_07\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\replenishment\v2022_11_07\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\replenishment\v2022_11_07\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\replenishment\v2022_11_07\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\replenishment\v2022_11_07\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\replenishment\v2022_11_07\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersResponse';
+            $returnType = '\SpApi\Model\replenishment\v2022_11_07\ListOffersResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -879,7 +879,7 @@ class OffersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersResponse',
+                        '\SpApi\Model\replenishment\v2022_11_07\ListOffersResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -887,7 +887,7 @@ class OffersApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList',
+                        '\SpApi\Model\replenishment\v2022_11_07\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -895,7 +895,7 @@ class OffersApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList',
+                        '\SpApi\Model\replenishment\v2022_11_07\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -903,7 +903,7 @@ class OffersApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList',
+                        '\SpApi\Model\replenishment\v2022_11_07\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -911,7 +911,7 @@ class OffersApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList',
+                        '\SpApi\Model\replenishment\v2022_11_07\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -919,7 +919,7 @@ class OffersApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList',
+                        '\SpApi\Model\replenishment\v2022_11_07\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -927,7 +927,7 @@ class OffersApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList',
+                        '\SpApi\Model\replenishment\v2022_11_07\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -935,7 +935,7 @@ class OffersApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList',
+                        '\SpApi\Model\replenishment\v2022_11_07\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -943,7 +943,7 @@ class OffersApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList',
+                        '\SpApi\Model\replenishment\v2022_11_07\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -951,7 +951,7 @@ class OffersApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\replenishment\v2022_11_07\ErrorList',
+                        '\SpApi\Model\replenishment\v2022_11_07\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -964,14 +964,14 @@ class OffersApi
     /**
      * Operation listOffersAsync
      *
-     * @param  \OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersRequest|null $body
+     * @param  \SpApi\Model\replenishment\v2022_11_07\ListOffersRequest|null $body
      *  The request body for the &#x60;listOffers&#x60; operation. (optional)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function listOffersAsync(
-        ?\OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersRequest $body = null
+        ?\SpApi\Model\replenishment\v2022_11_07\ListOffersRequest $body = null
     ): PromiseInterface {
         return $this->listOffersAsyncWithHttpInfo($body)
             ->then(
@@ -984,16 +984,16 @@ class OffersApi
     /**
      * Operation listOffersAsyncWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersRequest|null $body
+     * @param  \SpApi\Model\replenishment\v2022_11_07\ListOffersRequest|null $body
      *  The request body for the &#x60;listOffers&#x60; operation. (optional)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function listOffersAsyncWithHttpInfo(
-        ?\OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersRequest $body = null
+        ?\SpApi\Model\replenishment\v2022_11_07\ListOffersRequest $body = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersResponse';
+        $returnType = '\SpApi\Model\replenishment\v2022_11_07\ListOffersResponse';
         $request = $this->listOffersRequest($body);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -1037,14 +1037,14 @@ class OffersApi
     /**
      * Create request for operation 'listOffers'
      *
-     * @param  \OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersRequest|null $body
+     * @param  \SpApi\Model\replenishment\v2022_11_07\ListOffersRequest|null $body
      *  The request body for the &#x60;listOffers&#x60; operation. (optional)
      *
      * @throws \InvalidArgumentException
      * @return Request
      */
     public function listOffersRequest(
-        ?\OpenAPI\Client\Model\replenishment\v2022_11_07\ListOffersRequest $body = null
+        ?\SpApi\Model\replenishment\v2022_11_07\ListOffersRequest $body = null
     ): Request {
 
         $resourcePath = '/replenishment/2022-11-07/offers/search';

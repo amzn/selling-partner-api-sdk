@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,18 +26,18 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\pricing\v0;
+namespace SpApi\Model\pricing\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ListingOffersResponse Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,10 +59,10 @@ class ListingOffersResponse implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'headers' => '\OpenAPI\Client\Model\pricing\v0\HttpResponseHeaders',
-             'status' => '\OpenAPI\Client\Model\pricing\v0\GetOffersHttpStatusLine',
-             'body' => '\OpenAPI\Client\Model\pricing\v0\GetOffersResponse',
-             'request' => '\OpenAPI\Client\Model\pricing\v0\ListingOffersRequestParams'    ];
+             'headers' => '\SpApi\Model\pricing\v0\HttpResponseHeaders',
+             'status' => '\SpApi\Model\pricing\v0\GetOffersHttpStatusLine',
+             'body' => '\SpApi\Model\pricing\v0\GetOffersResponse',
+             'request' => '\SpApi\Model\pricing\v0\ListingOffersRequestParams'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -317,9 +317,9 @@ class ListingOffersResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets headers
      *
-     * @return \OpenAPI\Client\Model\pricing\v0\HttpResponseHeaders|null
+     * @return \SpApi\Model\pricing\v0\HttpResponseHeaders|null
      */
-    public function getHeaders(): ?\OpenAPI\Client\Model\pricing\v0\HttpResponseHeaders
+    public function getHeaders(): ?\SpApi\Model\pricing\v0\HttpResponseHeaders
     {
         return $this->container['headers'];
     }
@@ -327,11 +327,11 @@ class ListingOffersResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets headers
      *
-     * @param \OpenAPI\Client\Model\pricing\v0\HttpResponseHeaders|null $headers headers
+     * @param \SpApi\Model\pricing\v0\HttpResponseHeaders|null $headers headers
      *
      * @return self
      */
-    public function setHeaders(?\OpenAPI\Client\Model\pricing\v0\HttpResponseHeaders $headers): self
+    public function setHeaders(?\SpApi\Model\pricing\v0\HttpResponseHeaders $headers): self
     {
         if (is_null($headers)) {
             array_push($this->openAPINullablesSetToNull, 'headers');
@@ -351,9 +351,9 @@ class ListingOffersResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets status
      *
-     * @return \OpenAPI\Client\Model\pricing\v0\GetOffersHttpStatusLine|null
+     * @return \SpApi\Model\pricing\v0\GetOffersHttpStatusLine|null
      */
-    public function getStatus(): ?\OpenAPI\Client\Model\pricing\v0\GetOffersHttpStatusLine
+    public function getStatus(): ?\SpApi\Model\pricing\v0\GetOffersHttpStatusLine
     {
         return $this->container['status'];
     }
@@ -361,11 +361,11 @@ class ListingOffersResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets status
      *
-     * @param \OpenAPI\Client\Model\pricing\v0\GetOffersHttpStatusLine|null $status status
+     * @param \SpApi\Model\pricing\v0\GetOffersHttpStatusLine|null $status status
      *
      * @return self
      */
-    public function setStatus(?\OpenAPI\Client\Model\pricing\v0\GetOffersHttpStatusLine $status): self
+    public function setStatus(?\SpApi\Model\pricing\v0\GetOffersHttpStatusLine $status): self
     {
         if (is_null($status)) {
             array_push($this->openAPINullablesSetToNull, 'status');
@@ -385,9 +385,9 @@ class ListingOffersResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets body
      *
-     * @return \OpenAPI\Client\Model\pricing\v0\GetOffersResponse
+     * @return \SpApi\Model\pricing\v0\GetOffersResponse
      */
-    public function getBody(): \OpenAPI\Client\Model\pricing\v0\GetOffersResponse
+    public function getBody(): \SpApi\Model\pricing\v0\GetOffersResponse
     {
         return $this->container['body'];
     }
@@ -395,11 +395,11 @@ class ListingOffersResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets body
      *
-     * @param \OpenAPI\Client\Model\pricing\v0\GetOffersResponse $body body
+     * @param \SpApi\Model\pricing\v0\GetOffersResponse $body body
      *
      * @return self
      */
-    public function setBody(\OpenAPI\Client\Model\pricing\v0\GetOffersResponse $body): self
+    public function setBody(\SpApi\Model\pricing\v0\GetOffersResponse $body): self
     {
         if (is_null($body)) {
             throw new \InvalidArgumentException('non-nullable body cannot be null');
@@ -412,9 +412,9 @@ class ListingOffersResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets request
      *
-     * @return \OpenAPI\Client\Model\pricing\v0\ListingOffersRequestParams|null
+     * @return \SpApi\Model\pricing\v0\ListingOffersRequestParams|null
      */
-    public function getRequest(): ?\OpenAPI\Client\Model\pricing\v0\ListingOffersRequestParams
+    public function getRequest(): ?\SpApi\Model\pricing\v0\ListingOffersRequestParams
     {
         return $this->container['request'];
     }
@@ -422,11 +422,11 @@ class ListingOffersResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets request
      *
-     * @param \OpenAPI\Client\Model\pricing\v0\ListingOffersRequestParams|null $request request
+     * @param \SpApi\Model\pricing\v0\ListingOffersRequestParams|null $request request
      *
      * @return self
      */
-    public function setRequest(?\OpenAPI\Client\Model\pricing\v0\ListingOffersRequestParams $request): self
+    public function setRequest(?\SpApi\Model\pricing\v0\ListingOffersRequestParams $request): self
     {
         if (is_null($request)) {
             array_push($this->openAPINullablesSetToNull, 'request');

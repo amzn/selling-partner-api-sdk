@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\aplusContent\v2020_11_01;
+namespace SpApi\Model\aplusContent\v2020_11_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * StandardTechSpecsModule Class Doc Comment
  *
  * @category Class
  * @description The standard table of technical feature names and definitions.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class StandardTechSpecsModule implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'headline' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent',
-             'specification_list' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextPairBlock[]',
+             'headline' => '\SpApi\Model\aplusContent\v2020_11_01\TextComponent',
+             'specification_list' => '\SpApi\Model\aplusContent\v2020_11_01\StandardTextPairBlock[]',
              'table_count' => 'int'    ];
 
     /**
@@ -327,9 +327,9 @@ class StandardTechSpecsModule implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets headline
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\TextComponent|null
      */
-    public function getHeadline(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent
+    public function getHeadline(): ?\SpApi\Model\aplusContent\v2020_11_01\TextComponent
     {
         return $this->container['headline'];
     }
@@ -337,11 +337,11 @@ class StandardTechSpecsModule implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets headline
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent|null $headline headline
+     * @param \SpApi\Model\aplusContent\v2020_11_01\TextComponent|null $headline headline
      *
      * @return self
      */
-    public function setHeadline(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent $headline): self
+    public function setHeadline(?\SpApi\Model\aplusContent\v2020_11_01\TextComponent $headline): self
     {
         if (is_null($headline)) {
             array_push($this->openAPINullablesSetToNull, 'headline');

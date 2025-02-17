@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantFulfillment\v0\GetAdditionalSellerInputsRequest;
+use SpApi\Model\merchantFulfillment\v0\GetAdditionalSellerInputsRequest;
 
 /**
  * GetAdditionalSellerInputsRequestTest Class Doc Comment
  *
  * @category    Class
  * @description Request schema.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetAdditionalSellerInputsRequestTest extends TestCase
 {
@@ -68,7 +68,7 @@ class GetAdditionalSellerInputsRequestTest extends TestCase
     public function testPropertyShipFromAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\v0\Address();
+        $testValue = new \SpApi\Model\merchantFulfillment\v0\Address();
         
         $this->model->setShipFromAddress($testValue);
         $this->assertEquals($testValue, $this->model->getShipFromAddress());

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantFulfillment\v0\AdditionalSellerInputs;
+use SpApi\Model\merchantFulfillment\v0\AdditionalSellerInputs;
 
 /**
  * AdditionalSellerInputsTest Class Doc Comment
  *
  * @category    Class
  * @description An additional set of seller inputs required to purchase shipping.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class AdditionalSellerInputsTest extends TestCase
 {
@@ -68,7 +68,7 @@ class AdditionalSellerInputsTest extends TestCase
     public function testPropertyAdditionalSellerInput()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\v0\AdditionalSellerInput();
+        $testValue = new \SpApi\Model\merchantFulfillment\v0\AdditionalSellerInput();
         
         $this->model->setAdditionalSellerInput($testValue);
         $this->assertEquals($testValue, $this->model->getAdditionalSellerInput());

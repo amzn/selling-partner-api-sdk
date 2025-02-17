@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\v0\OrderRegulatedInfo;
+use SpApi\Model\orders\v0\OrderRegulatedInfo;
 
 /**
  * OrderRegulatedInfoTest Class Doc Comment
  *
  * @category    Class
  * @description The order&#39;s regulated information along with its verification status.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class OrderRegulatedInfoTest extends TestCase
 {
@@ -68,7 +68,7 @@ class OrderRegulatedInfoTest extends TestCase
     public function testPropertyRegulatedInformation()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\v0\RegulatedInformation();
+        $testValue = new \SpApi\Model\orders\v0\RegulatedInformation();
         
         $this->model->setRegulatedInformation($testValue);
         $this->assertEquals($testValue, $this->model->getRegulatedInformation());
@@ -91,7 +91,7 @@ class OrderRegulatedInfoTest extends TestCase
     public function testPropertyRegulatedOrderVerificationStatus()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\v0\RegulatedOrderVerificationStatus();
+        $testValue = new \SpApi\Model\orders\v0\RegulatedOrderVerificationStatus();
         
         $this->model->setRegulatedOrderVerificationStatus($testValue);
         $this->assertEquals($testValue, $this->model->getRegulatedOrderVerificationStatus());

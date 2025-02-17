@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\v0\FulfillmentInstruction;
+use SpApi\Model\orders\v0\FulfillmentInstruction;
 
 /**
  * FulfillmentInstructionTest Class Doc Comment
  *
  * @category    Class
  * @description Contains the instructions about the fulfillment, such as the location from where you want the order filled.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class FulfillmentInstructionTest extends TestCase
 {

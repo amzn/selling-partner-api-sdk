@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\easyship\v2022_03_23;
+namespace SpApi\Model\easyship\v2022_03_23;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ListHandoverSlotsRequest Class Doc Comment
  *
  * @category Class
  * @description The request schema for the &#x60;listHandoverSlots&#x60; operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,8 +62,8 @@ class ListHandoverSlotsRequest implements ModelInterface, ArrayAccess, \JsonSeri
     protected static array $openAPITypes = [
              'marketplace_id' => 'string',
              'amazon_order_id' => 'string',
-             'package_dimensions' => '\OpenAPI\Client\Model\easyship\v2022_03_23\Dimensions',
-             'package_weight' => '\OpenAPI\Client\Model\easyship\v2022_03_23\Weight'    ];
+             'package_dimensions' => '\SpApi\Model\easyship\v2022_03_23\Dimensions',
+             'package_weight' => '\SpApi\Model\easyship\v2022_03_23\Weight'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -396,9 +396,9 @@ class ListHandoverSlotsRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets package_dimensions
      *
-     * @return \OpenAPI\Client\Model\easyship\v2022_03_23\Dimensions
+     * @return \SpApi\Model\easyship\v2022_03_23\Dimensions
      */
-    public function getPackageDimensions(): \OpenAPI\Client\Model\easyship\v2022_03_23\Dimensions
+    public function getPackageDimensions(): \SpApi\Model\easyship\v2022_03_23\Dimensions
     {
         return $this->container['package_dimensions'];
     }
@@ -406,11 +406,11 @@ class ListHandoverSlotsRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets package_dimensions
      *
-     * @param \OpenAPI\Client\Model\easyship\v2022_03_23\Dimensions $package_dimensions package_dimensions
+     * @param \SpApi\Model\easyship\v2022_03_23\Dimensions $package_dimensions package_dimensions
      *
      * @return self
      */
-    public function setPackageDimensions(\OpenAPI\Client\Model\easyship\v2022_03_23\Dimensions $package_dimensions): self
+    public function setPackageDimensions(\SpApi\Model\easyship\v2022_03_23\Dimensions $package_dimensions): self
     {
         if (is_null($package_dimensions)) {
             throw new \InvalidArgumentException('non-nullable package_dimensions cannot be null');
@@ -423,9 +423,9 @@ class ListHandoverSlotsRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets package_weight
      *
-     * @return \OpenAPI\Client\Model\easyship\v2022_03_23\Weight
+     * @return \SpApi\Model\easyship\v2022_03_23\Weight
      */
-    public function getPackageWeight(): \OpenAPI\Client\Model\easyship\v2022_03_23\Weight
+    public function getPackageWeight(): \SpApi\Model\easyship\v2022_03_23\Weight
     {
         return $this->container['package_weight'];
     }
@@ -433,11 +433,11 @@ class ListHandoverSlotsRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets package_weight
      *
-     * @param \OpenAPI\Client\Model\easyship\v2022_03_23\Weight $package_weight package_weight
+     * @param \SpApi\Model\easyship\v2022_03_23\Weight $package_weight package_weight
      *
      * @return self
      */
-    public function setPackageWeight(\OpenAPI\Client\Model\easyship\v2022_03_23\Weight $package_weight): self
+    public function setPackageWeight(\SpApi\Model\easyship\v2022_03_23\Weight $package_weight): self
     {
         if (is_null($package_weight)) {
             throw new \InvalidArgumentException('non-nullable package_weight cannot be null');

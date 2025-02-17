@@ -4,7 +4,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api\uploads\v2020_11_01;
+namespace SpApi\Api\uploads\v2020_11_01;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -39,16 +39,16 @@ use SpApi\AuthAndAuth\RateLimitConfiguration;
 use Symfony\Component\RateLimiter\LimiterInterface;
 use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\ObjectSerializer;
+use SpApi\ApiException;
+use SpApi\Configuration;
+use SpApi\HeaderSelector;
+use SpApi\ObjectSerializer;
 
 /**
  * UploadsApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -161,16 +161,16 @@ class UploadsApi
      * @param  string|null $content_type
      *  The content type of the file to be uploaded. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\uploads\v2020_11_01\CreateUploadDestinationResponse
+     * @return \SpApi\Model\uploads\v2020_11_01\CreateUploadDestinationResponse
      */
     public function createUploadDestinationForResource(
         array $marketplace_ids,
         string $content_md5,
         string $resource,
         ?string $content_type = null
-    ): \OpenAPI\Client\Model\uploads\v2020_11_01\CreateUploadDestinationResponse {
+    ): \SpApi\Model\uploads\v2020_11_01\CreateUploadDestinationResponse {
         list($response) = $this->createUploadDestinationForResourceWithHttpInfo($marketplace_ids, $content_md5, $resource, $content_type);
         return $response;
     }
@@ -187,9 +187,9 @@ class UploadsApi
      * @param  string|null $content_type
      *  The content type of the file to be uploaded. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\uploads\v2020_11_01\CreateUploadDestinationResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\uploads\v2020_11_01\CreateUploadDestinationResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createUploadDestinationForResourceWithHttpInfo(
         array $marketplace_ids,
@@ -238,143 +238,143 @@ class UploadsApi
 
             switch($statusCode) {
                 case 201:
-                    if ('\OpenAPI\Client\Model\uploads\v2020_11_01\CreateUploadDestinationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\uploads\v2020_11_01\CreateUploadDestinationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\uploads\v2020_11_01\CreateUploadDestinationResponse' !== 'string') {
+                        if ('\SpApi\Model\uploads\v2020_11_01\CreateUploadDestinationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\uploads\v2020_11_01\CreateUploadDestinationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\uploads\v2020_11_01\CreateUploadDestinationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\uploads\v2020_11_01\CreateUploadDestinationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\uploads\v2020_11_01\CreateUploadDestinationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\uploads\v2020_11_01\CreateUploadDestinationResponse' !== 'string') {
+                        if ('\SpApi\Model\uploads\v2020_11_01\CreateUploadDestinationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\uploads\v2020_11_01\CreateUploadDestinationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\uploads\v2020_11_01\CreateUploadDestinationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\uploads\v2020_11_01\CreateUploadDestinationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\uploads\v2020_11_01\CreateUploadDestinationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\uploads\v2020_11_01\CreateUploadDestinationResponse' !== 'string') {
+                        if ('\SpApi\Model\uploads\v2020_11_01\CreateUploadDestinationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\uploads\v2020_11_01\CreateUploadDestinationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\uploads\v2020_11_01\CreateUploadDestinationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\uploads\v2020_11_01\CreateUploadDestinationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\uploads\v2020_11_01\CreateUploadDestinationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\uploads\v2020_11_01\CreateUploadDestinationResponse' !== 'string') {
+                        if ('\SpApi\Model\uploads\v2020_11_01\CreateUploadDestinationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\uploads\v2020_11_01\CreateUploadDestinationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\uploads\v2020_11_01\CreateUploadDestinationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\uploads\v2020_11_01\CreateUploadDestinationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\uploads\v2020_11_01\CreateUploadDestinationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\uploads\v2020_11_01\CreateUploadDestinationResponse' !== 'string') {
+                        if ('\SpApi\Model\uploads\v2020_11_01\CreateUploadDestinationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\uploads\v2020_11_01\CreateUploadDestinationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\uploads\v2020_11_01\CreateUploadDestinationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\uploads\v2020_11_01\CreateUploadDestinationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\uploads\v2020_11_01\CreateUploadDestinationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\uploads\v2020_11_01\CreateUploadDestinationResponse' !== 'string') {
+                        if ('\SpApi\Model\uploads\v2020_11_01\CreateUploadDestinationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\uploads\v2020_11_01\CreateUploadDestinationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\uploads\v2020_11_01\CreateUploadDestinationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\uploads\v2020_11_01\CreateUploadDestinationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\uploads\v2020_11_01\CreateUploadDestinationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\uploads\v2020_11_01\CreateUploadDestinationResponse' !== 'string') {
+                        if ('\SpApi\Model\uploads\v2020_11_01\CreateUploadDestinationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\uploads\v2020_11_01\CreateUploadDestinationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\uploads\v2020_11_01\CreateUploadDestinationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\uploads\v2020_11_01\CreateUploadDestinationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\uploads\v2020_11_01\CreateUploadDestinationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\uploads\v2020_11_01\CreateUploadDestinationResponse' !== 'string') {
+                        if ('\SpApi\Model\uploads\v2020_11_01\CreateUploadDestinationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\uploads\v2020_11_01\CreateUploadDestinationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\uploads\v2020_11_01\CreateUploadDestinationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\uploads\v2020_11_01\CreateUploadDestinationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\uploads\v2020_11_01\CreateUploadDestinationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\uploads\v2020_11_01\CreateUploadDestinationResponse' !== 'string') {
+                        if ('\SpApi\Model\uploads\v2020_11_01\CreateUploadDestinationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\uploads\v2020_11_01\CreateUploadDestinationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\uploads\v2020_11_01\CreateUploadDestinationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\uploads\v2020_11_01\CreateUploadDestinationResponse';
+            $returnType = '\SpApi\Model\uploads\v2020_11_01\CreateUploadDestinationResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -395,7 +395,7 @@ class UploadsApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\uploads\v2020_11_01\CreateUploadDestinationResponse',
+                        '\SpApi\Model\uploads\v2020_11_01\CreateUploadDestinationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -403,7 +403,7 @@ class UploadsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\uploads\v2020_11_01\CreateUploadDestinationResponse',
+                        '\SpApi\Model\uploads\v2020_11_01\CreateUploadDestinationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -411,7 +411,7 @@ class UploadsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\uploads\v2020_11_01\CreateUploadDestinationResponse',
+                        '\SpApi\Model\uploads\v2020_11_01\CreateUploadDestinationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -419,7 +419,7 @@ class UploadsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\uploads\v2020_11_01\CreateUploadDestinationResponse',
+                        '\SpApi\Model\uploads\v2020_11_01\CreateUploadDestinationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -427,7 +427,7 @@ class UploadsApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\uploads\v2020_11_01\CreateUploadDestinationResponse',
+                        '\SpApi\Model\uploads\v2020_11_01\CreateUploadDestinationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -435,7 +435,7 @@ class UploadsApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\uploads\v2020_11_01\CreateUploadDestinationResponse',
+                        '\SpApi\Model\uploads\v2020_11_01\CreateUploadDestinationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -443,7 +443,7 @@ class UploadsApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\uploads\v2020_11_01\CreateUploadDestinationResponse',
+                        '\SpApi\Model\uploads\v2020_11_01\CreateUploadDestinationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -451,7 +451,7 @@ class UploadsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\uploads\v2020_11_01\CreateUploadDestinationResponse',
+                        '\SpApi\Model\uploads\v2020_11_01\CreateUploadDestinationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -459,7 +459,7 @@ class UploadsApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\uploads\v2020_11_01\CreateUploadDestinationResponse',
+                        '\SpApi\Model\uploads\v2020_11_01\CreateUploadDestinationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -519,7 +519,7 @@ class UploadsApi
         string $resource,
         ?string $content_type = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\uploads\v2020_11_01\CreateUploadDestinationResponse';
+        $returnType = '\SpApi\Model\uploads\v2020_11_01\CreateUploadDestinationResponse';
         $request = $this->createUploadDestinationForResourceRequest($marketplace_ids, $content_md5, $resource, $content_type);
         $request = $this->config->sign($request);
         $this->rateLimitWait();

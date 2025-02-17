@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\productTypeDefinitions\v2020_09_01\PropertyGroup;
+use SpApi\Model\productTypeDefinitions\v2020_09_01\PropertyGroup;
 
 /**
  * PropertyGroupTest Class Doc Comment
  *
  * @category    Class
  * @description A property group represents a logical grouping of schema properties that can be used for display or informational purposes.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class PropertyGroupTest extends TestCase
 {

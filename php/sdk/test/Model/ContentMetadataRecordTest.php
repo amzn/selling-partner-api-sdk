@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentMetadataRecord;
+use SpApi\Model\aplusContent\v2020_11_01\ContentMetadataRecord;
 
 /**
  * ContentMetadataRecordTest Class Doc Comment
  *
  * @category    Class
  * @description The metadata for an A+ Content document, with additional information for content management.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ContentMetadataRecordTest extends TestCase
 {
@@ -68,7 +68,7 @@ class ContentMetadataRecordTest extends TestCase
     public function testPropertyContentMetadata()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentMetadata();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\ContentMetadata();
         
         $this->model->setContentMetadata($testValue);
         $this->assertEquals($testValue, $this->model->getContentMetadata());

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\SelfShipAppointmentDetails;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\SelfShipAppointmentDetails;
 
 /**
  * SelfShipAppointmentDetailsTest Class Doc Comment
  *
  * @category    Class
  * @description Appointment details for carrier pickup or fulfillment center appointments.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class SelfShipAppointmentDetailsTest extends TestCase
 {
@@ -68,7 +68,7 @@ class SelfShipAppointmentDetailsTest extends TestCase
     public function testPropertyAppointmentSlotTime()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\AppointmentSlotTime();
+        $testValue = new \SpApi\Model\fulfillment\inbound\v2024_03_20\AppointmentSlotTime();
         
         $this->model->setAppointmentSlotTime($testValue);
         $this->assertEquals($testValue, $this->model->getAppointmentSlotTime());

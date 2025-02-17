@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\awd\v2024_05_09\Error;
+use SpApi\Model\awd\v2024_05_09\Error;
 
 /**
  * ErrorTest Class Doc Comment
  *
  * @category    Class
  * @description Error response returned when the request is unsuccessful.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ErrorTest extends TestCase
 {

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\finances\v0\RemovalShipmentAdjustmentEvent;
+use SpApi\Model\finances\v0\RemovalShipmentAdjustmentEvent;
 
 /**
  * RemovalShipmentAdjustmentEventTest Class Doc Comment
  *
  * @category    Class
  * @description A financial adjustment event for FBA liquidated inventory. A positive value indicates money owed to Amazon by the buyer (for example, when the charge was incorrectly calculated as less than it should be). A negative value indicates a full or partial refund owed to the buyer (for example, when the buyer receives damaged items or fewer items than ordered).
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class RemovalShipmentAdjustmentEventTest extends TestCase
 {

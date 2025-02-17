@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\listings\restrictions\v2021_08_01\Restriction;
+use SpApi\Model\listings\restrictions\v2021_08_01\Restriction;
 
 /**
  * RestrictionTest Class Doc Comment
  *
  * @category    Class
  * @description A listing restriction, optionally qualified by a condition, with a list of reasons for the restriction.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class RestrictionTest extends TestCase
 {

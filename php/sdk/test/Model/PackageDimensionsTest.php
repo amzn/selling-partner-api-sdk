@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\awd\v2024_05_09\PackageDimensions;
+use SpApi\Model\awd\v2024_05_09\PackageDimensions;
 
 /**
  * PackageDimensionsTest Class Doc Comment
  *
  * @category    Class
  * @description Dimensions of the package.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class PackageDimensionsTest extends TestCase
 {
@@ -80,7 +80,7 @@ class PackageDimensionsTest extends TestCase
      */
     public function testPropertyUnitOfMeasurement()
     {
-        $enumInstance = new \OpenAPI\Client\Model\awd\v2024_05_09\DimensionUnitOfMeasurement();
+        $enumInstance = new \SpApi\Model\awd\v2024_05_09\DimensionUnitOfMeasurement();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

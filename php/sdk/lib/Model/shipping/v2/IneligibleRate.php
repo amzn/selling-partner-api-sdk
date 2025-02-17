@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,19 +27,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\shipping\v2;
+namespace SpApi\Model\shipping\v2;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * IneligibleRate Class Doc Comment
  *
  * @category Class
  * @description Detailed information for an ineligible shipping service offering.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -65,7 +65,7 @@ class IneligibleRate implements ModelInterface, ArrayAccess, \JsonSerializable
              'service_name' => 'string',
              'carrier_name' => 'string',
              'carrier_id' => 'string',
-             'ineligibility_reasons' => '\OpenAPI\Client\Model\shipping\v2\IneligibilityReason[]'    ];
+             'ineligibility_reasons' => '\SpApi\Model\shipping\v2\IneligibilityReason[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

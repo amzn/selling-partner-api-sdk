@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,19 +27,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\shipping\v2;
+namespace SpApi\Model\shipping\v2;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * AccessPoint Class Doc Comment
  *
  * @category Class
  * @description Access point details
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -64,13 +64,13 @@ class AccessPoint implements ModelInterface, ArrayAccess, \JsonSerializable
              'access_point_id' => 'string',
              'name' => 'string',
              'timezone' => 'string',
-             'type' => '\OpenAPI\Client\Model\shipping\v2\AccessPointType',
-             'accessibility_attributes' => '\OpenAPI\Client\Model\shipping\v2\AccessibilityAttributes',
-             'address' => '\OpenAPI\Client\Model\shipping\v2\Address',
-             'exception_operating_hours' => '\OpenAPI\Client\Model\shipping\v2\ExceptionOperatingHours[]',
+             'type' => '\SpApi\Model\shipping\v2\AccessPointType',
+             'accessibility_attributes' => '\SpApi\Model\shipping\v2\AccessibilityAttributes',
+             'address' => '\SpApi\Model\shipping\v2\Address',
+             'exception_operating_hours' => '\SpApi\Model\shipping\v2\ExceptionOperatingHours[]',
              'assistance_type' => 'string',
              'score' => 'string',
-             'standard_operating_hours' => 'array<string,\OpenAPI\Client\Model\shipping\v2\OperatingHours>'    ];
+             'standard_operating_hours' => 'array<string,\SpApi\Model\shipping\v2\OperatingHours>'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -518,9 +518,9 @@ class AccessPoint implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets accessibility_attributes
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\AccessibilityAttributes|null
+     * @return \SpApi\Model\shipping\v2\AccessibilityAttributes|null
      */
-    public function getAccessibilityAttributes(): ?\OpenAPI\Client\Model\shipping\v2\AccessibilityAttributes
+    public function getAccessibilityAttributes(): ?\SpApi\Model\shipping\v2\AccessibilityAttributes
     {
         return $this->container['accessibility_attributes'];
     }
@@ -528,11 +528,11 @@ class AccessPoint implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets accessibility_attributes
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\AccessibilityAttributes|null $accessibility_attributes accessibility_attributes
+     * @param \SpApi\Model\shipping\v2\AccessibilityAttributes|null $accessibility_attributes accessibility_attributes
      *
      * @return self
      */
-    public function setAccessibilityAttributes(?\OpenAPI\Client\Model\shipping\v2\AccessibilityAttributes $accessibility_attributes): self
+    public function setAccessibilityAttributes(?\SpApi\Model\shipping\v2\AccessibilityAttributes $accessibility_attributes): self
     {
         if (is_null($accessibility_attributes)) {
             array_push($this->openAPINullablesSetToNull, 'accessibility_attributes');
@@ -552,9 +552,9 @@ class AccessPoint implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets address
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\Address|null
+     * @return \SpApi\Model\shipping\v2\Address|null
      */
-    public function getAddress(): ?\OpenAPI\Client\Model\shipping\v2\Address
+    public function getAddress(): ?\SpApi\Model\shipping\v2\Address
     {
         return $this->container['address'];
     }
@@ -562,11 +562,11 @@ class AccessPoint implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets address
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\Address|null $address address
+     * @param \SpApi\Model\shipping\v2\Address|null $address address
      *
      * @return self
      */
-    public function setAddress(?\OpenAPI\Client\Model\shipping\v2\Address $address): self
+    public function setAddress(?\SpApi\Model\shipping\v2\Address $address): self
     {
         if (is_null($address)) {
             array_push($this->openAPINullablesSetToNull, 'address');
@@ -698,7 +698,7 @@ class AccessPoint implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets standard_operating_hours
      *
-     * @return array<string,\OpenAPI\Client\Model\shipping\v2\OperatingHours>|null
+     * @return array<string,\SpApi\Model\shipping\v2\OperatingHours>|null
      */
     public function getStandardOperatingHours(): ?array
     {
@@ -708,7 +708,7 @@ class AccessPoint implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets standard_operating_hours
      *
-     * @param array<string,\OpenAPI\Client\Model\shipping\v2\OperatingHours>|null $standard_operating_hours Map of day of the week to operating hours of that day
+     * @param array<string,\SpApi\Model\shipping\v2\OperatingHours>|null $standard_operating_hours Map of day of the week to operating hours of that day
      *
      * @return self
      */

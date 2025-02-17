@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\inbound\v0;
+namespace SpApi\Model\fulfillment\inbound\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * SKUPrepInstructions Class Doc Comment
  *
  * @category Class
  * @description Labeling requirements and item preparation instructions to help you prepare items for shipment to Amazon&#39;s fulfillment network.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,10 +62,10 @@ class SKUPrepInstructions implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static array $openAPITypes = [
              'seller_sku' => 'string',
              'asin' => 'string',
-             'barcode_instruction' => '\OpenAPI\Client\Model\fulfillment\inbound\v0\BarcodeInstruction',
-             'prep_guidance' => '\OpenAPI\Client\Model\fulfillment\inbound\v0\PrepGuidance',
-             'prep_instruction_list' => '\OpenAPI\Client\Model\fulfillment\inbound\v0\PrepInstruction[]',
-             'amazon_prep_fees_details_list' => '\OpenAPI\Client\Model\fulfillment\inbound\v0\AmazonPrepFeesDetails[]'    ];
+             'barcode_instruction' => '\SpApi\Model\fulfillment\inbound\v0\BarcodeInstruction',
+             'prep_guidance' => '\SpApi\Model\fulfillment\inbound\v0\PrepGuidance',
+             'prep_instruction_list' => '\SpApi\Model\fulfillment\inbound\v0\PrepInstruction[]',
+             'amazon_prep_fees_details_list' => '\SpApi\Model\fulfillment\inbound\v0\AmazonPrepFeesDetails[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

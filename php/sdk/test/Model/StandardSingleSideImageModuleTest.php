@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardSingleSideImageModule;
+use SpApi\Model\aplusContent\v2020_11_01\StandardSingleSideImageModule;
 
 /**
  * StandardSingleSideImageModuleTest Class Doc Comment
  *
  * @category    Class
  * @description A standard headline and body text with an image on the side.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class StandardSingleSideImageModuleTest extends TestCase
 {
@@ -56,7 +56,7 @@ class StandardSingleSideImageModuleTest extends TestCase
      */
     public function testPropertyImagePositionType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\PositionType();
+        $enumInstance = new \SpApi\Model\aplusContent\v2020_11_01\PositionType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -70,7 +70,7 @@ class StandardSingleSideImageModuleTest extends TestCase
     public function testPropertyBlock()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock();
         
         $this->model->setBlock($testValue);
         $this->assertEquals($testValue, $this->model->getBlock());

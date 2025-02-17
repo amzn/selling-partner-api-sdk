@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\shipments\v1;
+namespace SpApi\Model\vendor\shipments\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Containers Class Doc Comment
  *
  * @category Class
  * @description A list of the items in this transportation and their associated inner container details. If any of the item detail fields are common at a carton or a pallet level, provide them at the corresponding carton or pallet level.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,14 +62,14 @@ class Containers implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPITypes = [
              'container_type' => 'string',
              'container_sequence_number' => 'string',
-             'container_identifiers' => '\OpenAPI\Client\Model\vendor\shipments\v1\ContainerIdentification[]',
+             'container_identifiers' => '\SpApi\Model\vendor\shipments\v1\ContainerIdentification[]',
              'tracking_number' => 'string',
-             'dimensions' => '\OpenAPI\Client\Model\vendor\shipments\v1\Dimensions',
-             'weight' => '\OpenAPI\Client\Model\vendor\shipments\v1\Weight',
+             'dimensions' => '\SpApi\Model\vendor\shipments\v1\Dimensions',
+             'weight' => '\SpApi\Model\vendor\shipments\v1\Weight',
              'tier' => 'int',
              'block' => 'int',
-             'inner_containers_details' => '\OpenAPI\Client\Model\vendor\shipments\v1\InnerContainersDetails',
-             'packed_items' => '\OpenAPI\Client\Model\vendor\shipments\v1\PackedItems[]'    ];
+             'inner_containers_details' => '\SpApi\Model\vendor\shipments\v1\InnerContainersDetails',
+             'packed_items' => '\SpApi\Model\vendor\shipments\v1\PackedItems[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -519,9 +519,9 @@ class Containers implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets dimensions
      *
-     * @return \OpenAPI\Client\Model\vendor\shipments\v1\Dimensions|null
+     * @return \SpApi\Model\vendor\shipments\v1\Dimensions|null
      */
-    public function getDimensions(): ?\OpenAPI\Client\Model\vendor\shipments\v1\Dimensions
+    public function getDimensions(): ?\SpApi\Model\vendor\shipments\v1\Dimensions
     {
         return $this->container['dimensions'];
     }
@@ -529,11 +529,11 @@ class Containers implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets dimensions
      *
-     * @param \OpenAPI\Client\Model\vendor\shipments\v1\Dimensions|null $dimensions dimensions
+     * @param \SpApi\Model\vendor\shipments\v1\Dimensions|null $dimensions dimensions
      *
      * @return self
      */
-    public function setDimensions(?\OpenAPI\Client\Model\vendor\shipments\v1\Dimensions $dimensions): self
+    public function setDimensions(?\SpApi\Model\vendor\shipments\v1\Dimensions $dimensions): self
     {
         if (is_null($dimensions)) {
             array_push($this->openAPINullablesSetToNull, 'dimensions');
@@ -553,9 +553,9 @@ class Containers implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets weight
      *
-     * @return \OpenAPI\Client\Model\vendor\shipments\v1\Weight|null
+     * @return \SpApi\Model\vendor\shipments\v1\Weight|null
      */
-    public function getWeight(): ?\OpenAPI\Client\Model\vendor\shipments\v1\Weight
+    public function getWeight(): ?\SpApi\Model\vendor\shipments\v1\Weight
     {
         return $this->container['weight'];
     }
@@ -563,11 +563,11 @@ class Containers implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets weight
      *
-     * @param \OpenAPI\Client\Model\vendor\shipments\v1\Weight|null $weight weight
+     * @param \SpApi\Model\vendor\shipments\v1\Weight|null $weight weight
      *
      * @return self
      */
-    public function setWeight(?\OpenAPI\Client\Model\vendor\shipments\v1\Weight $weight): self
+    public function setWeight(?\SpApi\Model\vendor\shipments\v1\Weight $weight): self
     {
         if (is_null($weight)) {
             array_push($this->openAPINullablesSetToNull, 'weight');
@@ -655,9 +655,9 @@ class Containers implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets inner_containers_details
      *
-     * @return \OpenAPI\Client\Model\vendor\shipments\v1\InnerContainersDetails|null
+     * @return \SpApi\Model\vendor\shipments\v1\InnerContainersDetails|null
      */
-    public function getInnerContainersDetails(): ?\OpenAPI\Client\Model\vendor\shipments\v1\InnerContainersDetails
+    public function getInnerContainersDetails(): ?\SpApi\Model\vendor\shipments\v1\InnerContainersDetails
     {
         return $this->container['inner_containers_details'];
     }
@@ -665,11 +665,11 @@ class Containers implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets inner_containers_details
      *
-     * @param \OpenAPI\Client\Model\vendor\shipments\v1\InnerContainersDetails|null $inner_containers_details inner_containers_details
+     * @param \SpApi\Model\vendor\shipments\v1\InnerContainersDetails|null $inner_containers_details inner_containers_details
      *
      * @return self
      */
-    public function setInnerContainersDetails(?\OpenAPI\Client\Model\vendor\shipments\v1\InnerContainersDetails $inner_containers_details): self
+    public function setInnerContainersDetails(?\SpApi\Model\vendor\shipments\v1\InnerContainersDetails $inner_containers_details): self
     {
         if (is_null($inner_containers_details)) {
             array_push($this->openAPINullablesSetToNull, 'inner_containers_details');

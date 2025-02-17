@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\finances\v0\ListFinancialEventsPayload;
+use SpApi\Model\finances\v0\ListFinancialEventsPayload;
 
 /**
  * ListFinancialEventsPayloadTest Class Doc Comment
  *
  * @category    Class
  * @description The payload for the listFinancialEvents operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ListFinancialEventsPayloadTest extends TestCase
 {
@@ -68,7 +68,7 @@ class ListFinancialEventsPayloadTest extends TestCase
     public function testPropertyFinancialEvents()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v0\FinancialEvents();
+        $testValue = new \SpApi\Model\finances\v0\FinancialEvents();
         
         $this->model->setFinancialEvents($testValue);
         $this->assertEquals($testValue, $this->model->getFinancialEvents());

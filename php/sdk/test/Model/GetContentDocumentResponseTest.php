@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\aplusContent\v2020_11_01\GetContentDocumentResponse;
+use SpApi\Model\aplusContent\v2020_11_01\GetContentDocumentResponse;
 
 /**
  * GetContentDocumentResponseTest Class Doc Comment
  *
  * @category    Class
  * @description GetContentDocumentResponse
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetContentDocumentResponseTest extends TestCase
 {
@@ -68,7 +68,7 @@ class GetContentDocumentResponseTest extends TestCase
     public function testPropertyContentRecord()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentRecord();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\ContentRecord();
         
         $this->model->setContentRecord($testValue);
         $this->assertEquals($testValue, $this->model->getContentRecord());

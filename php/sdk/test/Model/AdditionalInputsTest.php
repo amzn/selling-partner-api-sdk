@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantFulfillment\v0\AdditionalInputs;
+use SpApi\Model\merchantFulfillment\v0\AdditionalInputs;
 
 /**
  * AdditionalInputsTest Class Doc Comment
  *
  * @category    Class
  * @description Maps the additional seller input to the definition. The key to the map is the field name.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class AdditionalInputsTest extends TestCase
 {
@@ -68,7 +68,7 @@ class AdditionalInputsTest extends TestCase
     public function testPropertySellerInputDefinition()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\v0\SellerInputDefinition();
+        $testValue = new \SpApi\Model\merchantFulfillment\v0\SellerInputDefinition();
         
         $this->model->setSellerInputDefinition($testValue);
         $this->assertEquals($testValue, $this->model->getSellerInputDefinition());

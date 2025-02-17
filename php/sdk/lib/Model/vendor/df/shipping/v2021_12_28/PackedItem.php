@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28;
+namespace SpApi\Model\vendor\df\shipping\v2021_12_28;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * PackedItem Class Doc Comment
  *
  * @category Class
  * @description An item that has been packed into a container for shipping.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -64,7 +64,7 @@ class PackedItem implements ModelInterface, ArrayAccess, \JsonSerializable
              'buyer_product_identifier' => 'string',
              'piece_number' => 'int',
              'vendor_product_identifier' => 'string',
-             'packed_quantity' => '\OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\ItemQuantity'    ];
+             'packed_quantity' => '\SpApi\Model\vendor\df\shipping\v2021_12_28\ItemQuantity'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -457,9 +457,9 @@ class PackedItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets packed_quantity
      *
-     * @return \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\ItemQuantity
+     * @return \SpApi\Model\vendor\df\shipping\v2021_12_28\ItemQuantity
      */
-    public function getPackedQuantity(): \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\ItemQuantity
+    public function getPackedQuantity(): \SpApi\Model\vendor\df\shipping\v2021_12_28\ItemQuantity
     {
         return $this->container['packed_quantity'];
     }
@@ -467,11 +467,11 @@ class PackedItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets packed_quantity
      *
-     * @param \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\ItemQuantity $packed_quantity packed_quantity
+     * @param \SpApi\Model\vendor\df\shipping\v2021_12_28\ItemQuantity $packed_quantity packed_quantity
      *
      * @return self
      */
-    public function setPackedQuantity(\OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\ItemQuantity $packed_quantity): self
+    public function setPackedQuantity(\SpApi\Model\vendor\df\shipping\v2021_12_28\ItemQuantity $packed_quantity): self
     {
         if (is_null($packed_quantity)) {
             throw new \InvalidArgumentException('non-nullable packed_quantity cannot be null');

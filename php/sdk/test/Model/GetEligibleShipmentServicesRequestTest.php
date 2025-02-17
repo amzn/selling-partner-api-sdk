@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantFulfillment\v0\GetEligibleShipmentServicesRequest;
+use SpApi\Model\merchantFulfillment\v0\GetEligibleShipmentServicesRequest;
 
 /**
  * GetEligibleShipmentServicesRequestTest Class Doc Comment
  *
  * @category    Class
  * @description Request schema.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetEligibleShipmentServicesRequestTest extends TestCase
 {
@@ -57,7 +57,7 @@ class GetEligibleShipmentServicesRequestTest extends TestCase
     public function testPropertyShipmentRequestDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\v0\ShipmentRequestDetails();
+        $testValue = new \SpApi\Model\merchantFulfillment\v0\ShipmentRequestDetails();
         
         $this->model->setShipmentRequestDetails($testValue);
         $this->assertEquals($testValue, $this->model->getShipmentRequestDetails());
@@ -69,7 +69,7 @@ class GetEligibleShipmentServicesRequestTest extends TestCase
     public function testPropertyShippingOfferingFilter()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\v0\ShippingOfferingFilter();
+        $testValue = new \SpApi\Model\merchantFulfillment\v0\ShippingOfferingFilter();
         
         $this->model->setShippingOfferingFilter($testValue);
         $this->assertEquals($testValue, $this->model->getShippingOfferingFilter());

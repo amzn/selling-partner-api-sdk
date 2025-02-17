@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\v2\CarrierAccountInput;
+use SpApi\Model\shipping\v2\CarrierAccountInput;
 
 /**
  * CarrierAccountInputTest Class Doc Comment
  *
  * @category    Class
  * @description Info About CarrierAccountInput
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class CarrierAccountInputTest extends TestCase
 {
@@ -89,7 +89,7 @@ class CarrierAccountInputTest extends TestCase
      */
     public function testPropertyInputType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\shipping\v2\InputType();
+        $enumInstance = new \SpApi\Model\shipping\v2\InputType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

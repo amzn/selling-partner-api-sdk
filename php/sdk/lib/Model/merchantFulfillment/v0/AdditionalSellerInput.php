@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\merchantFulfillment\v0;
+namespace SpApi\Model\merchantFulfillment\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * AdditionalSellerInput Class Doc Comment
  *
  * @category Class
  * @description Additional information required to purchase shipping.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -65,10 +65,10 @@ class AdditionalSellerInput implements ModelInterface, ArrayAccess, \JsonSeriali
              'value_as_boolean' => 'bool',
              'value_as_integer' => 'int',
              'value_as_timestamp' => '\DateTime',
-             'value_as_address' => '\OpenAPI\Client\Model\merchantFulfillment\v0\Address',
-             'value_as_weight' => '\OpenAPI\Client\Model\merchantFulfillment\v0\Weight',
-             'value_as_dimension' => '\OpenAPI\Client\Model\merchantFulfillment\v0\Length',
-             'value_as_currency' => '\OpenAPI\Client\Model\merchantFulfillment\v0\CurrencyAmount'    ];
+             'value_as_address' => '\SpApi\Model\merchantFulfillment\v0\Address',
+             'value_as_weight' => '\SpApi\Model\merchantFulfillment\v0\Weight',
+             'value_as_dimension' => '\SpApi\Model\merchantFulfillment\v0\Length',
+             'value_as_currency' => '\SpApi\Model\merchantFulfillment\v0\CurrencyAmount'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -520,9 +520,9 @@ class AdditionalSellerInput implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets value_as_address
      *
-     * @return \OpenAPI\Client\Model\merchantFulfillment\v0\Address|null
+     * @return \SpApi\Model\merchantFulfillment\v0\Address|null
      */
-    public function getValueAsAddress(): ?\OpenAPI\Client\Model\merchantFulfillment\v0\Address
+    public function getValueAsAddress(): ?\SpApi\Model\merchantFulfillment\v0\Address
     {
         return $this->container['value_as_address'];
     }
@@ -530,11 +530,11 @@ class AdditionalSellerInput implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets value_as_address
      *
-     * @param \OpenAPI\Client\Model\merchantFulfillment\v0\Address|null $value_as_address value_as_address
+     * @param \SpApi\Model\merchantFulfillment\v0\Address|null $value_as_address value_as_address
      *
      * @return self
      */
-    public function setValueAsAddress(?\OpenAPI\Client\Model\merchantFulfillment\v0\Address $value_as_address): self
+    public function setValueAsAddress(?\SpApi\Model\merchantFulfillment\v0\Address $value_as_address): self
     {
         if (is_null($value_as_address)) {
             array_push($this->openAPINullablesSetToNull, 'value_as_address');
@@ -554,9 +554,9 @@ class AdditionalSellerInput implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets value_as_weight
      *
-     * @return \OpenAPI\Client\Model\merchantFulfillment\v0\Weight|null
+     * @return \SpApi\Model\merchantFulfillment\v0\Weight|null
      */
-    public function getValueAsWeight(): ?\OpenAPI\Client\Model\merchantFulfillment\v0\Weight
+    public function getValueAsWeight(): ?\SpApi\Model\merchantFulfillment\v0\Weight
     {
         return $this->container['value_as_weight'];
     }
@@ -564,11 +564,11 @@ class AdditionalSellerInput implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets value_as_weight
      *
-     * @param \OpenAPI\Client\Model\merchantFulfillment\v0\Weight|null $value_as_weight value_as_weight
+     * @param \SpApi\Model\merchantFulfillment\v0\Weight|null $value_as_weight value_as_weight
      *
      * @return self
      */
-    public function setValueAsWeight(?\OpenAPI\Client\Model\merchantFulfillment\v0\Weight $value_as_weight): self
+    public function setValueAsWeight(?\SpApi\Model\merchantFulfillment\v0\Weight $value_as_weight): self
     {
         if (is_null($value_as_weight)) {
             array_push($this->openAPINullablesSetToNull, 'value_as_weight');
@@ -588,9 +588,9 @@ class AdditionalSellerInput implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets value_as_dimension
      *
-     * @return \OpenAPI\Client\Model\merchantFulfillment\v0\Length|null
+     * @return \SpApi\Model\merchantFulfillment\v0\Length|null
      */
-    public function getValueAsDimension(): ?\OpenAPI\Client\Model\merchantFulfillment\v0\Length
+    public function getValueAsDimension(): ?\SpApi\Model\merchantFulfillment\v0\Length
     {
         return $this->container['value_as_dimension'];
     }
@@ -598,11 +598,11 @@ class AdditionalSellerInput implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets value_as_dimension
      *
-     * @param \OpenAPI\Client\Model\merchantFulfillment\v0\Length|null $value_as_dimension value_as_dimension
+     * @param \SpApi\Model\merchantFulfillment\v0\Length|null $value_as_dimension value_as_dimension
      *
      * @return self
      */
-    public function setValueAsDimension(?\OpenAPI\Client\Model\merchantFulfillment\v0\Length $value_as_dimension): self
+    public function setValueAsDimension(?\SpApi\Model\merchantFulfillment\v0\Length $value_as_dimension): self
     {
         if (is_null($value_as_dimension)) {
             array_push($this->openAPINullablesSetToNull, 'value_as_dimension');
@@ -622,9 +622,9 @@ class AdditionalSellerInput implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets value_as_currency
      *
-     * @return \OpenAPI\Client\Model\merchantFulfillment\v0\CurrencyAmount|null
+     * @return \SpApi\Model\merchantFulfillment\v0\CurrencyAmount|null
      */
-    public function getValueAsCurrency(): ?\OpenAPI\Client\Model\merchantFulfillment\v0\CurrencyAmount
+    public function getValueAsCurrency(): ?\SpApi\Model\merchantFulfillment\v0\CurrencyAmount
     {
         return $this->container['value_as_currency'];
     }
@@ -632,11 +632,11 @@ class AdditionalSellerInput implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets value_as_currency
      *
-     * @param \OpenAPI\Client\Model\merchantFulfillment\v0\CurrencyAmount|null $value_as_currency value_as_currency
+     * @param \SpApi\Model\merchantFulfillment\v0\CurrencyAmount|null $value_as_currency value_as_currency
      *
      * @return self
      */
-    public function setValueAsCurrency(?\OpenAPI\Client\Model\merchantFulfillment\v0\CurrencyAmount $value_as_currency): self
+    public function setValueAsCurrency(?\SpApi\Model\merchantFulfillment\v0\CurrencyAmount $value_as_currency): self
     {
         if (is_null($value_as_currency)) {
             array_push($this->openAPINullablesSetToNull, 'value_as_currency');

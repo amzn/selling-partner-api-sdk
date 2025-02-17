@@ -4,7 +4,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api\vendor\df\inventory\v1;
+namespace SpApi\Api\vendor\df\inventory\v1;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -39,16 +39,16 @@ use SpApi\AuthAndAuth\RateLimitConfiguration;
 use Symfony\Component\RateLimiter\LimiterInterface;
 use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\ObjectSerializer;
+use SpApi\ApiException;
+use SpApi\Configuration;
+use SpApi\HeaderSelector;
+use SpApi\ObjectSerializer;
 
 /**
  * UpdateInventoryApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -154,17 +154,17 @@ class UpdateInventoryApi
      *
      * @param  string $warehouse_id
      *  Identifier for the warehouse for which to update inventory. (required)
-     * @param  \OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateRequest $body
+     * @param  \SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateRequest $body
      *  The request body containing the inventory update data to submit. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse
+     * @return \SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse
      */
     public function submitInventoryUpdate(
         string $warehouse_id,
-        \OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateRequest $body
-    ): \OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse {
+        \SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateRequest $body
+    ): \SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse {
         list($response) = $this->submitInventoryUpdateWithHttpInfo($warehouse_id, $body);
         return $response;
     }
@@ -174,16 +174,16 @@ class UpdateInventoryApi
      *
      * @param  string $warehouse_id
      *  Identifier for the warehouse for which to update inventory. (required)
-     * @param  \OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateRequest $body
+     * @param  \SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateRequest $body
      *  The request body containing the inventory update data to submit. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function submitInventoryUpdateWithHttpInfo(
         string $warehouse_id,
-        \OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateRequest $body
+        \SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateRequest $body
     ): array {
         $request = $this->submitInventoryUpdateRequest($warehouse_id, $body);
         $request = $this->config->sign($request);
@@ -226,143 +226,143 @@ class UpdateInventoryApi
 
             switch($statusCode) {
                 case 202:
-                    if ('\OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse' !== 'string') {
+                        if ('\SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse' !== 'string') {
+                        if ('\SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse' !== 'string') {
+                        if ('\SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse' !== 'string') {
+                        if ('\SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse' !== 'string') {
+                        if ('\SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse' !== 'string') {
+                        if ('\SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse' !== 'string') {
+                        if ('\SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse' !== 'string') {
+                        if ('\SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse' !== 'string') {
+                        if ('\SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse';
+            $returnType = '\SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -383,7 +383,7 @@ class UpdateInventoryApi
                 case 202:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse',
+                        '\SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -391,7 +391,7 @@ class UpdateInventoryApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse',
+                        '\SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -399,7 +399,7 @@ class UpdateInventoryApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse',
+                        '\SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -407,7 +407,7 @@ class UpdateInventoryApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse',
+                        '\SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -415,7 +415,7 @@ class UpdateInventoryApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse',
+                        '\SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -423,7 +423,7 @@ class UpdateInventoryApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse',
+                        '\SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -431,7 +431,7 @@ class UpdateInventoryApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse',
+                        '\SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -439,7 +439,7 @@ class UpdateInventoryApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse',
+                        '\SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -447,7 +447,7 @@ class UpdateInventoryApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse',
+                        '\SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -462,7 +462,7 @@ class UpdateInventoryApi
      *
      * @param  string $warehouse_id
      *  Identifier for the warehouse for which to update inventory. (required)
-     * @param  \OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateRequest $body
+     * @param  \SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateRequest $body
      *  The request body containing the inventory update data to submit. (required)
      *
      * @throws \InvalidArgumentException
@@ -470,7 +470,7 @@ class UpdateInventoryApi
      */
     public function submitInventoryUpdateAsync(
         string $warehouse_id,
-        \OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateRequest $body
+        \SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateRequest $body
     ): PromiseInterface {
         return $this->submitInventoryUpdateAsyncWithHttpInfo($warehouse_id, $body)
             ->then(
@@ -485,7 +485,7 @@ class UpdateInventoryApi
      *
      * @param  string $warehouse_id
      *  Identifier for the warehouse for which to update inventory. (required)
-     * @param  \OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateRequest $body
+     * @param  \SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateRequest $body
      *  The request body containing the inventory update data to submit. (required)
      *
      * @throws \InvalidArgumentException
@@ -493,9 +493,9 @@ class UpdateInventoryApi
      */
     public function submitInventoryUpdateAsyncWithHttpInfo(
         string $warehouse_id,
-        \OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateRequest $body
+        \SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateRequest $body
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse';
+        $returnType = '\SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateResponse';
         $request = $this->submitInventoryUpdateRequest($warehouse_id, $body);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -541,7 +541,7 @@ class UpdateInventoryApi
      *
      * @param  string $warehouse_id
      *  Identifier for the warehouse for which to update inventory. (required)
-     * @param  \OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateRequest $body
+     * @param  \SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateRequest $body
      *  The request body containing the inventory update data to submit. (required)
      *
      * @throws \InvalidArgumentException
@@ -549,7 +549,7 @@ class UpdateInventoryApi
      */
     public function submitInventoryUpdateRequest(
         string $warehouse_id,
-        \OpenAPI\Client\Model\vendor\df\inventory\v1\SubmitInventoryUpdateRequest $body
+        \SpApi\Model\vendor\df\inventory\v1\SubmitInventoryUpdateRequest $body
     ): Request {
         // verify the required parameter 'warehouse_id' is set
         if ($warehouse_id === null || (is_array($warehouse_id) && count($warehouse_id) === 0)) {

@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\aplusContent\v2020_11_01;
+namespace SpApi\Model\aplusContent\v2020_11_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * StandardHeaderTextListBlock Class Doc Comment
  *
  * @category Class
  * @description The A+ standard fixed-length list of text, with a related headline.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class StandardHeaderTextListBlock implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'headline' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent',
-             'block' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextListBlock'    ];
+             'headline' => '\SpApi\Model\aplusContent\v2020_11_01\TextComponent',
+             'block' => '\SpApi\Model\aplusContent\v2020_11_01\StandardTextListBlock'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -301,9 +301,9 @@ class StandardHeaderTextListBlock implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets headline
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\TextComponent|null
      */
-    public function getHeadline(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent
+    public function getHeadline(): ?\SpApi\Model\aplusContent\v2020_11_01\TextComponent
     {
         return $this->container['headline'];
     }
@@ -311,11 +311,11 @@ class StandardHeaderTextListBlock implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets headline
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent|null $headline headline
+     * @param \SpApi\Model\aplusContent\v2020_11_01\TextComponent|null $headline headline
      *
      * @return self
      */
-    public function setHeadline(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent $headline): self
+    public function setHeadline(?\SpApi\Model\aplusContent\v2020_11_01\TextComponent $headline): self
     {
         if (is_null($headline)) {
             array_push($this->openAPINullablesSetToNull, 'headline');
@@ -335,9 +335,9 @@ class StandardHeaderTextListBlock implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets block
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextListBlock|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\StandardTextListBlock|null
      */
-    public function getBlock(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextListBlock
+    public function getBlock(): ?\SpApi\Model\aplusContent\v2020_11_01\StandardTextListBlock
     {
         return $this->container['block'];
     }
@@ -345,11 +345,11 @@ class StandardHeaderTextListBlock implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets block
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextListBlock|null $block block
+     * @param \SpApi\Model\aplusContent\v2020_11_01\StandardTextListBlock|null $block block
      *
      * @return self
      */
-    public function setBlock(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextListBlock $block): self
+    public function setBlock(?\SpApi\Model\aplusContent\v2020_11_01\StandardTextListBlock $block): self
     {
         if (is_null($block)) {
             array_push($this->openAPINullablesSetToNull, 'block');

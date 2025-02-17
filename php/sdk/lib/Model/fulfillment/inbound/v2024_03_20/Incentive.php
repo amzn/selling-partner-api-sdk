@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20;
+namespace SpApi\Model\fulfillment\inbound\v2024_03_20;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Incentive Class Doc Comment
  *
  * @category Class
  * @description Contains details about cost related modifications to the placement cost.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,7 +63,7 @@ class Incentive implements ModelInterface, ArrayAccess, \JsonSerializable
              'description' => 'string',
              'target' => 'string',
              'type' => 'string',
-             'value' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Currency'    ];
+             'value' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\Currency'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -453,9 +453,9 @@ class Incentive implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets value
      *
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Currency
+     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\Currency
      */
-    public function getValue(): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Currency
+    public function getValue(): \SpApi\Model\fulfillment\inbound\v2024_03_20\Currency
     {
         return $this->container['value'];
     }
@@ -463,11 +463,11 @@ class Incentive implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets value
      *
-     * @param \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Currency $value value
+     * @param \SpApi\Model\fulfillment\inbound\v2024_03_20\Currency $value value
      *
      * @return self
      */
-    public function setValue(\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Currency $value): self
+    public function setValue(\SpApi\Model\fulfillment\inbound\v2024_03_20\Currency $value): self
     {
         if (is_null($value)) {
             throw new \InvalidArgumentException('non-nullable value cannot be null');

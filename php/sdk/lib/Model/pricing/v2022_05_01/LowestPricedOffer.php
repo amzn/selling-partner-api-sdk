@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\pricing\v2022_05_01;
+namespace SpApi\Model\pricing\v2022_05_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * LowestPricedOffer Class Doc Comment
  *
  * @category Class
  * @description Describes the lowest priced offers for the specified item condition and offer type.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class LowestPricedOffer implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'lowest_priced_offers_input' => '\OpenAPI\Client\Model\pricing\v2022_05_01\LowestPricedOffersInput',
-             'offers' => '\OpenAPI\Client\Model\pricing\v2022_05_01\Offer[]'    ];
+             'lowest_priced_offers_input' => '\SpApi\Model\pricing\v2022_05_01\LowestPricedOffersInput',
+             'offers' => '\SpApi\Model\pricing\v2022_05_01\Offer[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -315,9 +315,9 @@ class LowestPricedOffer implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets lowest_priced_offers_input
      *
-     * @return \OpenAPI\Client\Model\pricing\v2022_05_01\LowestPricedOffersInput
+     * @return \SpApi\Model\pricing\v2022_05_01\LowestPricedOffersInput
      */
-    public function getLowestPricedOffersInput(): \OpenAPI\Client\Model\pricing\v2022_05_01\LowestPricedOffersInput
+    public function getLowestPricedOffersInput(): \SpApi\Model\pricing\v2022_05_01\LowestPricedOffersInput
     {
         return $this->container['lowest_priced_offers_input'];
     }
@@ -325,11 +325,11 @@ class LowestPricedOffer implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets lowest_priced_offers_input
      *
-     * @param \OpenAPI\Client\Model\pricing\v2022_05_01\LowestPricedOffersInput $lowest_priced_offers_input lowest_priced_offers_input
+     * @param \SpApi\Model\pricing\v2022_05_01\LowestPricedOffersInput $lowest_priced_offers_input lowest_priced_offers_input
      *
      * @return self
      */
-    public function setLowestPricedOffersInput(\OpenAPI\Client\Model\pricing\v2022_05_01\LowestPricedOffersInput $lowest_priced_offers_input): self
+    public function setLowestPricedOffersInput(\SpApi\Model\pricing\v2022_05_01\LowestPricedOffersInput $lowest_priced_offers_input): self
     {
         if (is_null($lowest_priced_offers_input)) {
             throw new \InvalidArgumentException('non-nullable lowest_priced_offers_input cannot be null');

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\messaging\v1\GetSchemaResponse;
+use SpApi\Model\messaging\v1\GetSchemaResponse;
 
 /**
  * GetSchemaResponseTest Class Doc Comment
  *
  * @category    Class
  * @description The &#x60;GET&#x60; request schema response.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetSchemaResponseTest extends TestCase
 {
@@ -57,7 +57,7 @@ class GetSchemaResponseTest extends TestCase
     public function testPropertyLinks()
     {
         
-        $testValue = new \OpenAPI\Client\Model\messaging\v1\GetSchemaResponseLinks();
+        $testValue = new \SpApi\Model\messaging\v1\GetSchemaResponseLinks();
         
         $this->model->setLinks($testValue);
         $this->assertEquals($testValue, $this->model->getLinks());

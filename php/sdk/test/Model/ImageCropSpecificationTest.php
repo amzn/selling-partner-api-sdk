@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageCropSpecification;
+use SpApi\Model\aplusContent\v2020_11_01\ImageCropSpecification;
 
 /**
  * ImageCropSpecificationTest Class Doc Comment
  *
  * @category    Class
  * @description The instructions for optionally cropping an image. If no cropping is desired, set the dimensions to the original image size. If the image is cropped and no offset values are provided, then the coordinates of the top left corner of the cropped image, relative to the original image, are defaulted to (0,0).
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ImageCropSpecificationTest extends TestCase
 {
@@ -57,7 +57,7 @@ class ImageCropSpecificationTest extends TestCase
     public function testPropertySize()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageDimensions();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\ImageDimensions();
         
         $this->model->setSize($testValue);
         $this->assertEquals($testValue, $this->model->getSize());
@@ -69,7 +69,7 @@ class ImageCropSpecificationTest extends TestCase
     public function testPropertyOffset()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageOffsets();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\ImageOffsets();
         
         $this->model->setOffset($testValue);
         $this->assertEquals($testValue, $this->model->getOffset());

@@ -4,7 +4,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api\datakiosk\v2023_11_15;
+namespace SpApi\Api\datakiosk\v2023_11_15;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -39,16 +39,16 @@ use SpApi\AuthAndAuth\RateLimitConfiguration;
 use Symfony\Component\RateLimiter\LimiterInterface;
 use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\ObjectSerializer;
+use SpApi\ApiException;
+use SpApi\Configuration;
+use SpApi\HeaderSelector;
+use SpApi\ObjectSerializer;
 
 /**
  * QueriesApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -155,7 +155,7 @@ class QueriesApi
      * @param  string $query_id
      *  The identifier for the query. This identifier is unique only in combination with a selling partner account ID. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return 
      */
@@ -171,7 +171,7 @@ class QueriesApi
      * @param  string $query_id
      *  The identifier for the query. This identifier is unique only in combination with a selling partner account ID. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of , HTTP status code, HTTP response headers (array of strings)
      */
@@ -224,7 +224,7 @@ class QueriesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList',
+                        '\SpApi\Model\datakiosk\v2023_11_15\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -232,7 +232,7 @@ class QueriesApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList',
+                        '\SpApi\Model\datakiosk\v2023_11_15\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -240,7 +240,7 @@ class QueriesApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList',
+                        '\SpApi\Model\datakiosk\v2023_11_15\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -248,7 +248,7 @@ class QueriesApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList',
+                        '\SpApi\Model\datakiosk\v2023_11_15\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -256,7 +256,7 @@ class QueriesApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList',
+                        '\SpApi\Model\datakiosk\v2023_11_15\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -264,7 +264,7 @@ class QueriesApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList',
+                        '\SpApi\Model\datakiosk\v2023_11_15\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -272,7 +272,7 @@ class QueriesApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList',
+                        '\SpApi\Model\datakiosk\v2023_11_15\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -280,7 +280,7 @@ class QueriesApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList',
+                        '\SpApi\Model\datakiosk\v2023_11_15\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -450,16 +450,16 @@ class QueriesApi
     /**
      * Operation createQuery
      *
-     * @param  \OpenAPI\Client\Model\datakiosk\v2023_11_15\CreateQuerySpecification $body
+     * @param  \SpApi\Model\datakiosk\v2023_11_15\CreateQuerySpecification $body
      *  The body of the request. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\datakiosk\v2023_11_15\CreateQueryResponse
+     * @return \SpApi\Model\datakiosk\v2023_11_15\CreateQueryResponse
      */
     public function createQuery(
-        \OpenAPI\Client\Model\datakiosk\v2023_11_15\CreateQuerySpecification $body
-    ): \OpenAPI\Client\Model\datakiosk\v2023_11_15\CreateQueryResponse {
+        \SpApi\Model\datakiosk\v2023_11_15\CreateQuerySpecification $body
+    ): \SpApi\Model\datakiosk\v2023_11_15\CreateQueryResponse {
         list($response) = $this->createQueryWithHttpInfo($body);
         return $response;
     }
@@ -467,15 +467,15 @@ class QueriesApi
     /**
      * Operation createQueryWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\datakiosk\v2023_11_15\CreateQuerySpecification $body
+     * @param  \SpApi\Model\datakiosk\v2023_11_15\CreateQuerySpecification $body
      *  The body of the request. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\datakiosk\v2023_11_15\CreateQueryResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\datakiosk\v2023_11_15\CreateQueryResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createQueryWithHttpInfo(
-        \OpenAPI\Client\Model\datakiosk\v2023_11_15\CreateQuerySpecification $body
+        \SpApi\Model\datakiosk\v2023_11_15\CreateQuerySpecification $body
     ): array {
         $request = $this->createQueryRequest($body);
         $request = $this->config->sign($request);
@@ -518,143 +518,143 @@ class QueriesApi
 
             switch($statusCode) {
                 case 202:
-                    if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\CreateQueryResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\datakiosk\v2023_11_15\CreateQueryResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\CreateQueryResponse' !== 'string') {
+                        if ('\SpApi\Model\datakiosk\v2023_11_15\CreateQueryResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\datakiosk\v2023_11_15\CreateQueryResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\datakiosk\v2023_11_15\CreateQueryResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\datakiosk\v2023_11_15\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\datakiosk\v2023_11_15\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\datakiosk\v2023_11_15\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\datakiosk\v2023_11_15\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\datakiosk\v2023_11_15\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\datakiosk\v2023_11_15\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\datakiosk\v2023_11_15\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\datakiosk\v2023_11_15\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\datakiosk\v2023_11_15\CreateQueryResponse';
+            $returnType = '\SpApi\Model\datakiosk\v2023_11_15\CreateQueryResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -675,7 +675,7 @@ class QueriesApi
                 case 202:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\datakiosk\v2023_11_15\CreateQueryResponse',
+                        '\SpApi\Model\datakiosk\v2023_11_15\CreateQueryResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -683,7 +683,7 @@ class QueriesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList',
+                        '\SpApi\Model\datakiosk\v2023_11_15\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -691,7 +691,7 @@ class QueriesApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList',
+                        '\SpApi\Model\datakiosk\v2023_11_15\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -699,7 +699,7 @@ class QueriesApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList',
+                        '\SpApi\Model\datakiosk\v2023_11_15\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -707,7 +707,7 @@ class QueriesApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList',
+                        '\SpApi\Model\datakiosk\v2023_11_15\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -715,7 +715,7 @@ class QueriesApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList',
+                        '\SpApi\Model\datakiosk\v2023_11_15\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -723,7 +723,7 @@ class QueriesApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList',
+                        '\SpApi\Model\datakiosk\v2023_11_15\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -731,7 +731,7 @@ class QueriesApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList',
+                        '\SpApi\Model\datakiosk\v2023_11_15\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -739,7 +739,7 @@ class QueriesApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList',
+                        '\SpApi\Model\datakiosk\v2023_11_15\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -752,14 +752,14 @@ class QueriesApi
     /**
      * Operation createQueryAsync
      *
-     * @param  \OpenAPI\Client\Model\datakiosk\v2023_11_15\CreateQuerySpecification $body
+     * @param  \SpApi\Model\datakiosk\v2023_11_15\CreateQuerySpecification $body
      *  The body of the request. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function createQueryAsync(
-        \OpenAPI\Client\Model\datakiosk\v2023_11_15\CreateQuerySpecification $body
+        \SpApi\Model\datakiosk\v2023_11_15\CreateQuerySpecification $body
     ): PromiseInterface {
         return $this->createQueryAsyncWithHttpInfo($body)
             ->then(
@@ -772,16 +772,16 @@ class QueriesApi
     /**
      * Operation createQueryAsyncWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\datakiosk\v2023_11_15\CreateQuerySpecification $body
+     * @param  \SpApi\Model\datakiosk\v2023_11_15\CreateQuerySpecification $body
      *  The body of the request. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function createQueryAsyncWithHttpInfo(
-        \OpenAPI\Client\Model\datakiosk\v2023_11_15\CreateQuerySpecification $body
+        \SpApi\Model\datakiosk\v2023_11_15\CreateQuerySpecification $body
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\datakiosk\v2023_11_15\CreateQueryResponse';
+        $returnType = '\SpApi\Model\datakiosk\v2023_11_15\CreateQueryResponse';
         $request = $this->createQueryRequest($body);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -825,14 +825,14 @@ class QueriesApi
     /**
      * Create request for operation 'createQuery'
      *
-     * @param  \OpenAPI\Client\Model\datakiosk\v2023_11_15\CreateQuerySpecification $body
+     * @param  \SpApi\Model\datakiosk\v2023_11_15\CreateQuerySpecification $body
      *  The body of the request. (required)
      *
      * @throws \InvalidArgumentException
      * @return Request
      */
     public function createQueryRequest(
-        \OpenAPI\Client\Model\datakiosk\v2023_11_15\CreateQuerySpecification $body
+        \SpApi\Model\datakiosk\v2023_11_15\CreateQuerySpecification $body
     ): Request {
         // verify the required parameter 'body' is set
         if ($body === null || (is_array($body) && count($body) === 0)) {
@@ -923,13 +923,13 @@ class QueriesApi
      * @param  string $document_id
      *  The identifier for the Data Kiosk document. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\datakiosk\v2023_11_15\GetDocumentResponse
+     * @return \SpApi\Model\datakiosk\v2023_11_15\GetDocumentResponse
      */
     public function getDocument(
         string $document_id
-    ): \OpenAPI\Client\Model\datakiosk\v2023_11_15\GetDocumentResponse {
+    ): \SpApi\Model\datakiosk\v2023_11_15\GetDocumentResponse {
         list($response) = $this->getDocumentWithHttpInfo($document_id);
         return $response;
     }
@@ -940,9 +940,9 @@ class QueriesApi
      * @param  string $document_id
      *  The identifier for the Data Kiosk document. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\datakiosk\v2023_11_15\GetDocumentResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\datakiosk\v2023_11_15\GetDocumentResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getDocumentWithHttpInfo(
         string $document_id
@@ -988,143 +988,143 @@ class QueriesApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\GetDocumentResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\datakiosk\v2023_11_15\GetDocumentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\GetDocumentResponse' !== 'string') {
+                        if ('\SpApi\Model\datakiosk\v2023_11_15\GetDocumentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\datakiosk\v2023_11_15\GetDocumentResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\datakiosk\v2023_11_15\GetDocumentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\datakiosk\v2023_11_15\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\datakiosk\v2023_11_15\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\datakiosk\v2023_11_15\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\datakiosk\v2023_11_15\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\datakiosk\v2023_11_15\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\datakiosk\v2023_11_15\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\datakiosk\v2023_11_15\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\datakiosk\v2023_11_15\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\datakiosk\v2023_11_15\GetDocumentResponse';
+            $returnType = '\SpApi\Model\datakiosk\v2023_11_15\GetDocumentResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1145,7 +1145,7 @@ class QueriesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\datakiosk\v2023_11_15\GetDocumentResponse',
+                        '\SpApi\Model\datakiosk\v2023_11_15\GetDocumentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1153,7 +1153,7 @@ class QueriesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList',
+                        '\SpApi\Model\datakiosk\v2023_11_15\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1161,7 +1161,7 @@ class QueriesApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList',
+                        '\SpApi\Model\datakiosk\v2023_11_15\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1169,7 +1169,7 @@ class QueriesApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList',
+                        '\SpApi\Model\datakiosk\v2023_11_15\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1177,7 +1177,7 @@ class QueriesApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList',
+                        '\SpApi\Model\datakiosk\v2023_11_15\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1185,7 +1185,7 @@ class QueriesApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList',
+                        '\SpApi\Model\datakiosk\v2023_11_15\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1193,7 +1193,7 @@ class QueriesApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList',
+                        '\SpApi\Model\datakiosk\v2023_11_15\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1201,7 +1201,7 @@ class QueriesApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList',
+                        '\SpApi\Model\datakiosk\v2023_11_15\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1209,7 +1209,7 @@ class QueriesApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList',
+                        '\SpApi\Model\datakiosk\v2023_11_15\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1251,7 +1251,7 @@ class QueriesApi
     public function getDocumentAsyncWithHttpInfo(
         string $document_id
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\datakiosk\v2023_11_15\GetDocumentResponse';
+        $returnType = '\SpApi\Model\datakiosk\v2023_11_15\GetDocumentResponse';
         $request = $this->getDocumentRequest($document_id);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -1403,9 +1403,9 @@ class QueriesApi
      * @param  string|null $pagination_token
      *  A token to fetch a certain page of results when there are multiple pages of results available. The value of this token is fetched from the &#x60;pagination.nextToken&#x60; field returned in the &#x60;GetQueriesResponse&#x60; object. All other parameters must be provided with the same values that were provided with the request that generated this token, with the exception of &#x60;pageSize&#x60; which can be modified between calls to &#x60;getQueries&#x60;. In the absence of this token value, &#x60;getQueries&#x60; returns the first page of results. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\datakiosk\v2023_11_15\GetQueriesResponse
+     * @return \SpApi\Model\datakiosk\v2023_11_15\GetQueriesResponse
      */
     public function getQueries(
         ?array $processing_statuses = null,
@@ -1413,7 +1413,7 @@ class QueriesApi
         ?\DateTime $created_since = null,
         ?\DateTime $created_until = null,
         ?string $pagination_token = null
-    ): \OpenAPI\Client\Model\datakiosk\v2023_11_15\GetQueriesResponse {
+    ): \SpApi\Model\datakiosk\v2023_11_15\GetQueriesResponse {
         list($response) = $this->getQueriesWithHttpInfo($processing_statuses, $page_size, $created_since, $created_until, $pagination_token);
         return $response;
     }
@@ -1432,9 +1432,9 @@ class QueriesApi
      * @param  string|null $pagination_token
      *  A token to fetch a certain page of results when there are multiple pages of results available. The value of this token is fetched from the &#x60;pagination.nextToken&#x60; field returned in the &#x60;GetQueriesResponse&#x60; object. All other parameters must be provided with the same values that were provided with the request that generated this token, with the exception of &#x60;pageSize&#x60; which can be modified between calls to &#x60;getQueries&#x60;. In the absence of this token value, &#x60;getQueries&#x60; returns the first page of results. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\datakiosk\v2023_11_15\GetQueriesResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\datakiosk\v2023_11_15\GetQueriesResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getQueriesWithHttpInfo(
         ?array $processing_statuses = null,
@@ -1484,143 +1484,143 @@ class QueriesApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\GetQueriesResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\datakiosk\v2023_11_15\GetQueriesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\GetQueriesResponse' !== 'string') {
+                        if ('\SpApi\Model\datakiosk\v2023_11_15\GetQueriesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\datakiosk\v2023_11_15\GetQueriesResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\datakiosk\v2023_11_15\GetQueriesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\datakiosk\v2023_11_15\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\datakiosk\v2023_11_15\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\datakiosk\v2023_11_15\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\datakiosk\v2023_11_15\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\datakiosk\v2023_11_15\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\datakiosk\v2023_11_15\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\datakiosk\v2023_11_15\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\datakiosk\v2023_11_15\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\datakiosk\v2023_11_15\GetQueriesResponse';
+            $returnType = '\SpApi\Model\datakiosk\v2023_11_15\GetQueriesResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1641,7 +1641,7 @@ class QueriesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\datakiosk\v2023_11_15\GetQueriesResponse',
+                        '\SpApi\Model\datakiosk\v2023_11_15\GetQueriesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1649,7 +1649,7 @@ class QueriesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList',
+                        '\SpApi\Model\datakiosk\v2023_11_15\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1657,7 +1657,7 @@ class QueriesApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList',
+                        '\SpApi\Model\datakiosk\v2023_11_15\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1665,7 +1665,7 @@ class QueriesApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList',
+                        '\SpApi\Model\datakiosk\v2023_11_15\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1673,7 +1673,7 @@ class QueriesApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList',
+                        '\SpApi\Model\datakiosk\v2023_11_15\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1681,7 +1681,7 @@ class QueriesApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList',
+                        '\SpApi\Model\datakiosk\v2023_11_15\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1689,7 +1689,7 @@ class QueriesApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList',
+                        '\SpApi\Model\datakiosk\v2023_11_15\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1697,7 +1697,7 @@ class QueriesApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList',
+                        '\SpApi\Model\datakiosk\v2023_11_15\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1705,7 +1705,7 @@ class QueriesApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList',
+                        '\SpApi\Model\datakiosk\v2023_11_15\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1771,7 +1771,7 @@ class QueriesApi
         ?\DateTime $created_until = null,
         ?string $pagination_token = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\datakiosk\v2023_11_15\GetQueriesResponse';
+        $returnType = '\SpApi\Model\datakiosk\v2023_11_15\GetQueriesResponse';
         $request = $this->getQueriesRequest($processing_statuses, $page_size, $created_since, $created_until, $pagination_token);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -1969,13 +1969,13 @@ class QueriesApi
      * @param  string $query_id
      *  The query identifier. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\datakiosk\v2023_11_15\Query
+     * @return \SpApi\Model\datakiosk\v2023_11_15\Query
      */
     public function getQuery(
         string $query_id
-    ): \OpenAPI\Client\Model\datakiosk\v2023_11_15\Query {
+    ): \SpApi\Model\datakiosk\v2023_11_15\Query {
         list($response) = $this->getQueryWithHttpInfo($query_id);
         return $response;
     }
@@ -1986,9 +1986,9 @@ class QueriesApi
      * @param  string $query_id
      *  The query identifier. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\datakiosk\v2023_11_15\Query, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\datakiosk\v2023_11_15\Query, HTTP status code, HTTP response headers (array of strings)
      */
     public function getQueryWithHttpInfo(
         string $query_id
@@ -2034,143 +2034,143 @@ class QueriesApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\Query' === '\SplFileObject') {
+                    if ('\SpApi\Model\datakiosk\v2023_11_15\Query' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\Query' !== 'string') {
+                        if ('\SpApi\Model\datakiosk\v2023_11_15\Query' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\datakiosk\v2023_11_15\Query', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\datakiosk\v2023_11_15\Query', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\datakiosk\v2023_11_15\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\datakiosk\v2023_11_15\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\datakiosk\v2023_11_15\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\datakiosk\v2023_11_15\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\datakiosk\v2023_11_15\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\datakiosk\v2023_11_15\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\datakiosk\v2023_11_15\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\datakiosk\v2023_11_15\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\datakiosk\v2023_11_15\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\datakiosk\v2023_11_15\Query';
+            $returnType = '\SpApi\Model\datakiosk\v2023_11_15\Query';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2191,7 +2191,7 @@ class QueriesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\datakiosk\v2023_11_15\Query',
+                        '\SpApi\Model\datakiosk\v2023_11_15\Query',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2199,7 +2199,7 @@ class QueriesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList',
+                        '\SpApi\Model\datakiosk\v2023_11_15\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2207,7 +2207,7 @@ class QueriesApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList',
+                        '\SpApi\Model\datakiosk\v2023_11_15\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2215,7 +2215,7 @@ class QueriesApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList',
+                        '\SpApi\Model\datakiosk\v2023_11_15\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2223,7 +2223,7 @@ class QueriesApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList',
+                        '\SpApi\Model\datakiosk\v2023_11_15\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2231,7 +2231,7 @@ class QueriesApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList',
+                        '\SpApi\Model\datakiosk\v2023_11_15\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2239,7 +2239,7 @@ class QueriesApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList',
+                        '\SpApi\Model\datakiosk\v2023_11_15\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2247,7 +2247,7 @@ class QueriesApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList',
+                        '\SpApi\Model\datakiosk\v2023_11_15\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2255,7 +2255,7 @@ class QueriesApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\datakiosk\v2023_11_15\ErrorList',
+                        '\SpApi\Model\datakiosk\v2023_11_15\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2297,7 +2297,7 @@ class QueriesApi
     public function getQueryAsyncWithHttpInfo(
         string $query_id
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\datakiosk\v2023_11_15\Query';
+        $returnType = '\SpApi\Model\datakiosk\v2023_11_15\Query';
         $request = $this->getQueryRequest($query_id);
         $request = $this->config->sign($request);
         $this->rateLimitWait();

@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28;
+namespace SpApi\Model\vendor\df\shipping\v2021_12_28;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * CreateContainerLabelRequest Class Doc Comment
  *
  * @category Class
  * @description The request body schema for the &#x60;createContainerLabel&#x60; operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,11 +60,11 @@ class CreateContainerLabelRequest implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'selling_party' => '\OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\PartyIdentification',
-             'ship_from_party' => '\OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\PartyIdentification',
-             'carrier_id' => '\OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\CarrierId',
+             'selling_party' => '\SpApi\Model\vendor\df\shipping\v2021_12_28\PartyIdentification',
+             'ship_from_party' => '\SpApi\Model\vendor\df\shipping\v2021_12_28\PartyIdentification',
+             'carrier_id' => '\SpApi\Model\vendor\df\shipping\v2021_12_28\CarrierId',
              'vendor_container_id' => 'string',
-             'packages' => '\OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\Package[]'    ];
+             'packages' => '\SpApi\Model\vendor\df\shipping\v2021_12_28\Package[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -337,9 +337,9 @@ class CreateContainerLabelRequest implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets selling_party
      *
-     * @return \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\PartyIdentification
+     * @return \SpApi\Model\vendor\df\shipping\v2021_12_28\PartyIdentification
      */
-    public function getSellingParty(): \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\PartyIdentification
+    public function getSellingParty(): \SpApi\Model\vendor\df\shipping\v2021_12_28\PartyIdentification
     {
         return $this->container['selling_party'];
     }
@@ -347,11 +347,11 @@ class CreateContainerLabelRequest implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets selling_party
      *
-     * @param \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\PartyIdentification $selling_party selling_party
+     * @param \SpApi\Model\vendor\df\shipping\v2021_12_28\PartyIdentification $selling_party selling_party
      *
      * @return self
      */
-    public function setSellingParty(\OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\PartyIdentification $selling_party): self
+    public function setSellingParty(\SpApi\Model\vendor\df\shipping\v2021_12_28\PartyIdentification $selling_party): self
     {
         if (is_null($selling_party)) {
             throw new \InvalidArgumentException('non-nullable selling_party cannot be null');
@@ -364,9 +364,9 @@ class CreateContainerLabelRequest implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets ship_from_party
      *
-     * @return \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\PartyIdentification
+     * @return \SpApi\Model\vendor\df\shipping\v2021_12_28\PartyIdentification
      */
-    public function getShipFromParty(): \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\PartyIdentification
+    public function getShipFromParty(): \SpApi\Model\vendor\df\shipping\v2021_12_28\PartyIdentification
     {
         return $this->container['ship_from_party'];
     }
@@ -374,11 +374,11 @@ class CreateContainerLabelRequest implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets ship_from_party
      *
-     * @param \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\PartyIdentification $ship_from_party ship_from_party
+     * @param \SpApi\Model\vendor\df\shipping\v2021_12_28\PartyIdentification $ship_from_party ship_from_party
      *
      * @return self
      */
-    public function setShipFromParty(\OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\PartyIdentification $ship_from_party): self
+    public function setShipFromParty(\SpApi\Model\vendor\df\shipping\v2021_12_28\PartyIdentification $ship_from_party): self
     {
         if (is_null($ship_from_party)) {
             throw new \InvalidArgumentException('non-nullable ship_from_party cannot be null');

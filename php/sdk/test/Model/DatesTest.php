@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Dates;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\Dates;
 
 /**
  * DatesTest Class Doc Comment
  *
  * @category    Class
  * @description Specifies the date that the seller expects their shipment will be shipped.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class DatesTest extends TestCase
 {
@@ -57,7 +57,7 @@ class DatesTest extends TestCase
     public function testPropertyReadyToShipWindow()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Window();
+        $testValue = new \SpApi\Model\fulfillment\inbound\v2024_03_20\Window();
         
         $this->model->setReadyToShipWindow($testValue);
         $this->assertEquals($testValue, $this->model->getReadyToShipWindow());

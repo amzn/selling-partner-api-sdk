@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\df\inventory\v1\InventoryUpdate;
+use SpApi\Model\vendor\df\inventory\v1\InventoryUpdate;
 
 /**
  * InventoryUpdateTest Class Doc Comment
  *
  * @category    Class
  * @description Inventory details required to update some or all items for the requested warehouse.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class InventoryUpdateTest extends TestCase
 {
@@ -57,7 +57,7 @@ class InventoryUpdateTest extends TestCase
     public function testPropertySellingParty()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\df\inventory\v1\PartyIdentification();
+        $testValue = new \SpApi\Model\vendor\df\inventory\v1\PartyIdentification();
         
         $this->model->setSellingParty($testValue);
         $this->assertEquals($testValue, $this->model->getSellingParty());

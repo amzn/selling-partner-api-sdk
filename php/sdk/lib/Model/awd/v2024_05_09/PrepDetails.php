@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\awd\v2024_05_09;
+namespace SpApi\Model\awd\v2024_05_09;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * PrepDetails Class Doc Comment
  *
  * @category Class
  * @description The preparation details for a product. This contains the prep category, prep owner, and label owner. Prep instructions are generated based on the specified category.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,10 +60,10 @@ class PrepDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'label_owner' => '\OpenAPI\Client\Model\awd\v2024_05_09\LabelOwner',
+             'label_owner' => '\SpApi\Model\awd\v2024_05_09\LabelOwner',
              'prep_category' => 'string',
-             'prep_instructions' => '\OpenAPI\Client\Model\awd\v2024_05_09\PrepInstruction[]',
-             'prep_owner' => '\OpenAPI\Client\Model\awd\v2024_05_09\PrepOwner'    ];
+             'prep_instructions' => '\SpApi\Model\awd\v2024_05_09\PrepInstruction[]',
+             'prep_owner' => '\SpApi\Model\awd\v2024_05_09\PrepOwner'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

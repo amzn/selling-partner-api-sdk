@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\listings\restrictions\v2021_08_01;
+namespace SpApi\Model\listings\restrictions\v2021_08_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Restriction Class Doc Comment
  *
  * @category Class
  * @description A listing restriction, optionally qualified by a condition, with a list of reasons for the restriction.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +62,7 @@ class Restriction implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPITypes = [
              'marketplace_id' => 'string',
              'condition_type' => 'string',
-             'reasons' => '\OpenAPI\Client\Model\listings\restrictions\v2021_08_01\Reason[]'    ];
+             'reasons' => '\SpApi\Model\listings\restrictions\v2021_08_01\Reason[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

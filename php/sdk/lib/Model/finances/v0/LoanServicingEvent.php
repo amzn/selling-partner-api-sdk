@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\finances\v0;
+namespace SpApi\Model\finances\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * LoanServicingEvent Class Doc Comment
  *
  * @category Class
  * @description A loan advance, loan payment, or loan refund.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class LoanServicingEvent implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'loan_amount' => '\OpenAPI\Client\Model\finances\v0\Currency',
+             'loan_amount' => '\SpApi\Model\finances\v0\Currency',
              'source_business_event_type' => 'string'    ];
 
     /**
@@ -301,9 +301,9 @@ class LoanServicingEvent implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets loan_amount
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency|null
+     * @return \SpApi\Model\finances\v0\Currency|null
      */
-    public function getLoanAmount(): ?\OpenAPI\Client\Model\finances\v0\Currency
+    public function getLoanAmount(): ?\SpApi\Model\finances\v0\Currency
     {
         return $this->container['loan_amount'];
     }
@@ -311,11 +311,11 @@ class LoanServicingEvent implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets loan_amount
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency|null $loan_amount loan_amount
+     * @param \SpApi\Model\finances\v0\Currency|null $loan_amount loan_amount
      *
      * @return self
      */
-    public function setLoanAmount(?\OpenAPI\Client\Model\finances\v0\Currency $loan_amount): self
+    public function setLoanAmount(?\SpApi\Model\finances\v0\Currency $loan_amount): self
     {
         if (is_null($loan_amount)) {
             array_push($this->openAPINullablesSetToNull, 'loan_amount');

@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\shipments\v1;
+namespace SpApi\Model\vendor\shipments\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ContainerItem Class Doc Comment
  *
  * @category Class
  * @description Carton/Pallet level details for the item.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,8 +61,8 @@ class ContainerItem implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPITypes = [
              'item_reference' => 'string',
-             'shipped_quantity' => '\OpenAPI\Client\Model\vendor\shipments\v1\ItemQuantity',
-             'item_details' => '\OpenAPI\Client\Model\vendor\shipments\v1\ItemDetails'    ];
+             'shipped_quantity' => '\SpApi\Model\vendor\shipments\v1\ItemQuantity',
+             'item_details' => '\SpApi\Model\vendor\shipments\v1\ItemDetails'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -341,9 +341,9 @@ class ContainerItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets shipped_quantity
      *
-     * @return \OpenAPI\Client\Model\vendor\shipments\v1\ItemQuantity
+     * @return \SpApi\Model\vendor\shipments\v1\ItemQuantity
      */
-    public function getShippedQuantity(): \OpenAPI\Client\Model\vendor\shipments\v1\ItemQuantity
+    public function getShippedQuantity(): \SpApi\Model\vendor\shipments\v1\ItemQuantity
     {
         return $this->container['shipped_quantity'];
     }
@@ -351,11 +351,11 @@ class ContainerItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets shipped_quantity
      *
-     * @param \OpenAPI\Client\Model\vendor\shipments\v1\ItemQuantity $shipped_quantity shipped_quantity
+     * @param \SpApi\Model\vendor\shipments\v1\ItemQuantity $shipped_quantity shipped_quantity
      *
      * @return self
      */
-    public function setShippedQuantity(\OpenAPI\Client\Model\vendor\shipments\v1\ItemQuantity $shipped_quantity): self
+    public function setShippedQuantity(\SpApi\Model\vendor\shipments\v1\ItemQuantity $shipped_quantity): self
     {
         if (is_null($shipped_quantity)) {
             throw new \InvalidArgumentException('non-nullable shipped_quantity cannot be null');
@@ -368,9 +368,9 @@ class ContainerItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets item_details
      *
-     * @return \OpenAPI\Client\Model\vendor\shipments\v1\ItemDetails|null
+     * @return \SpApi\Model\vendor\shipments\v1\ItemDetails|null
      */
-    public function getItemDetails(): ?\OpenAPI\Client\Model\vendor\shipments\v1\ItemDetails
+    public function getItemDetails(): ?\SpApi\Model\vendor\shipments\v1\ItemDetails
     {
         return $this->container['item_details'];
     }
@@ -378,11 +378,11 @@ class ContainerItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets item_details
      *
-     * @param \OpenAPI\Client\Model\vendor\shipments\v1\ItemDetails|null $item_details item_details
+     * @param \SpApi\Model\vendor\shipments\v1\ItemDetails|null $item_details item_details
      *
      * @return self
      */
-    public function setItemDetails(?\OpenAPI\Client\Model\vendor\shipments\v1\ItemDetails $item_details): self
+    public function setItemDetails(?\SpApi\Model\vendor\shipments\v1\ItemDetails $item_details): self
     {
         if (is_null($item_details)) {
             array_push($this->openAPINullablesSetToNull, 'item_details');

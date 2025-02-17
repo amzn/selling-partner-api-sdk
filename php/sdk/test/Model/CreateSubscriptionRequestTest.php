@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\notifications\v1\CreateSubscriptionRequest;
+use SpApi\Model\notifications\v1\CreateSubscriptionRequest;
 
 /**
  * CreateSubscriptionRequestTest Class Doc Comment
  *
  * @category    Class
  * @description The request schema for the &#x60;createSubscription&#x60; operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class CreateSubscriptionRequestTest extends TestCase
 {
@@ -79,7 +79,7 @@ class CreateSubscriptionRequestTest extends TestCase
     public function testPropertyProcessingDirective()
     {
         
-        $testValue = new \OpenAPI\Client\Model\notifications\v1\ProcessingDirective();
+        $testValue = new \SpApi\Model\notifications\v1\ProcessingDirective();
         
         $this->model->setProcessingDirective($testValue);
         $this->assertEquals($testValue, $this->model->getProcessingDirective());

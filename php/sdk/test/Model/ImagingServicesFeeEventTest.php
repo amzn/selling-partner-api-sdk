@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\finances\v0\ImagingServicesFeeEvent;
+use SpApi\Model\finances\v0\ImagingServicesFeeEvent;
 
 /**
  * ImagingServicesFeeEventTest Class Doc Comment
  *
  * @category    Class
  * @description A fee event related to Amazon Imaging services.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ImagingServicesFeeEventTest extends TestCase
 {

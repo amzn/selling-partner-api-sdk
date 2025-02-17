@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fba\inventory\v1;
+namespace SpApi\Model\fba\inventory\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * DeleteInventoryItemResponse Class Doc Comment
  *
  * @category Class
  * @description The response schema for the DeleteInventoryItem operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class DeleteInventoryItemResponse implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'errors' => '\OpenAPI\Client\Model\fba\inventory\v1\Error[]'    ];
+             'errors' => '\SpApi\Model\fba\inventory\v1\Error[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

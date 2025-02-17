@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01;
+namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * UpdateFulfillmentOrderRequest Class Doc Comment
  *
  * @category Class
  * @description The request body schema for the &#x60;updateFulfillmentOrder&#x60; operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -64,14 +64,14 @@ class UpdateFulfillmentOrderRequest implements ModelInterface, ArrayAccess, \Jso
              'displayable_order_id' => 'string',
              'displayable_order_date' => '\DateTime',
              'displayable_order_comment' => 'string',
-             'shipping_speed_category' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\ShippingSpeedCategory',
-             'destination_address' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Address',
-             'fulfillment_action' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\FulfillmentAction',
-             'fulfillment_policy' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\FulfillmentPolicy',
+             'shipping_speed_category' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\ShippingSpeedCategory',
+             'destination_address' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\Address',
+             'fulfillment_action' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\FulfillmentAction',
+             'fulfillment_policy' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\FulfillmentPolicy',
              'ship_from_country_code' => 'string',
              'notification_emails' => 'string[]',
-             'feature_constraints' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\FeatureSettings[]',
-             'items' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\UpdateFulfillmentOrderItem[]'    ];
+             'feature_constraints' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\FeatureSettings[]',
+             'items' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\UpdateFulfillmentOrderItem[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -557,9 +557,9 @@ class UpdateFulfillmentOrderRequest implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets destination_address
      *
-     * @return \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Address|null
+     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\Address|null
      */
-    public function getDestinationAddress(): ?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Address
+    public function getDestinationAddress(): ?\SpApi\Model\fulfillment\outbound\v2020_07_01\Address
     {
         return $this->container['destination_address'];
     }
@@ -567,11 +567,11 @@ class UpdateFulfillmentOrderRequest implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets destination_address
      *
-     * @param \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Address|null $destination_address destination_address
+     * @param \SpApi\Model\fulfillment\outbound\v2020_07_01\Address|null $destination_address destination_address
      *
      * @return self
      */
-    public function setDestinationAddress(?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Address $destination_address): self
+    public function setDestinationAddress(?\SpApi\Model\fulfillment\outbound\v2020_07_01\Address $destination_address): self
     {
         if (is_null($destination_address)) {
             array_push($this->openAPINullablesSetToNull, 'destination_address');

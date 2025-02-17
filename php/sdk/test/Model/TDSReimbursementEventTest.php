@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\finances\v0\TDSReimbursementEvent;
+use SpApi\Model\finances\v0\TDSReimbursementEvent;
 
 /**
  * TDSReimbursementEventTest Class Doc Comment
  *
  * @category    Class
  * @description An event related to a Tax-Deducted-at-Source (TDS) reimbursement.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class TDSReimbursementEventTest extends TestCase
 {
@@ -80,7 +80,7 @@ class TDSReimbursementEventTest extends TestCase
     public function testPropertyReimbursedAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v0\Currency();
+        $testValue = new \SpApi\Model\finances\v0\Currency();
         
         $this->model->setReimbursedAmount($testValue);
         $this->assertEquals($testValue, $this->model->getReimbursedAmount());

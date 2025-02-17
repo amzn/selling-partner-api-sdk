@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\replenishment\v2022_11_07;
+namespace SpApi\Model\replenishment\v2022_11_07;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ListOfferMetricsRequestFilters Class Doc Comment
  *
  * @category Class
  * @description Use these parameters to filter results. Any result must match all provided parameters. For any parameter that is an array, the result must match at least one element in the provided array.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,11 +60,11 @@ class ListOfferMetricsRequestFilters implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'aggregation_frequency' => '\OpenAPI\Client\Model\replenishment\v2022_11_07\AggregationFrequency',
-             'time_interval' => '\OpenAPI\Client\Model\replenishment\v2022_11_07\TimeInterval',
-             'time_period_type' => '\OpenAPI\Client\Model\replenishment\v2022_11_07\TimePeriodType',
+             'aggregation_frequency' => '\SpApi\Model\replenishment\v2022_11_07\AggregationFrequency',
+             'time_interval' => '\SpApi\Model\replenishment\v2022_11_07\TimeInterval',
+             'time_period_type' => '\SpApi\Model\replenishment\v2022_11_07\TimePeriodType',
              'marketplace_id' => 'string',
-             'program_types' => '\OpenAPI\Client\Model\replenishment\v2022_11_07\ProgramType[]',
+             'program_types' => '\SpApi\Model\replenishment\v2022_11_07\ProgramType[]',
              'asins' => 'string[]'    ];
 
     /**
@@ -387,9 +387,9 @@ class ListOfferMetricsRequestFilters implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets time_interval
      *
-     * @return \OpenAPI\Client\Model\replenishment\v2022_11_07\TimeInterval
+     * @return \SpApi\Model\replenishment\v2022_11_07\TimeInterval
      */
-    public function getTimeInterval(): \OpenAPI\Client\Model\replenishment\v2022_11_07\TimeInterval
+    public function getTimeInterval(): \SpApi\Model\replenishment\v2022_11_07\TimeInterval
     {
         return $this->container['time_interval'];
     }
@@ -397,11 +397,11 @@ class ListOfferMetricsRequestFilters implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets time_interval
      *
-     * @param \OpenAPI\Client\Model\replenishment\v2022_11_07\TimeInterval $time_interval time_interval
+     * @param \SpApi\Model\replenishment\v2022_11_07\TimeInterval $time_interval time_interval
      *
      * @return self
      */
-    public function setTimeInterval(\OpenAPI\Client\Model\replenishment\v2022_11_07\TimeInterval $time_interval): self
+    public function setTimeInterval(\SpApi\Model\replenishment\v2022_11_07\TimeInterval $time_interval): self
     {
         if (is_null($time_interval)) {
             throw new \InvalidArgumentException('non-nullable time_interval cannot be null');

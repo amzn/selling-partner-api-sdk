@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\transfers\v2024_06_01;
+namespace SpApi\Model\transfers\v2024_06_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetPaymentMethodsResponse Class Doc Comment
  *
  * @category Class
  * @description The response schema for the &#x60;getPaymentMethods&#x60; operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class GetPaymentMethodsResponse implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'payment_methods' => '\OpenAPI\Client\Model\transfers\v2024_06_01\PaymentMethodDetails[]'    ];
+             'payment_methods' => '\SpApi\Model\transfers\v2024_06_01\PaymentMethodDetails[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

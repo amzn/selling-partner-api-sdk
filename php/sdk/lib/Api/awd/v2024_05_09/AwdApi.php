@@ -4,7 +4,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api\awd\v2024_05_09;
+namespace SpApi\Api\awd\v2024_05_09;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -39,16 +39,16 @@ use SpApi\AuthAndAuth\RateLimitConfiguration;
 use Symfony\Component\RateLimiter\LimiterInterface;
 use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\ObjectSerializer;
+use SpApi\ApiException;
+use SpApi\Configuration;
+use SpApi\HeaderSelector;
+use SpApi\ObjectSerializer;
 
 /**
  * AwdApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -157,14 +157,14 @@ class AwdApi
      * @param  string|null $sku_quantities
      *  If equal to &#x60;SHOW&#x60;, the response includes the shipment SKU quantity details.  Defaults to &#x60;HIDE&#x60;, in which case the response does not contain SKU quantities (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\awd\v2024_05_09\InboundShipment
+     * @return \SpApi\Model\awd\v2024_05_09\InboundShipment
      */
     public function getInboundShipment(
         string $shipment_id,
         ?string $sku_quantities = null
-    ): \OpenAPI\Client\Model\awd\v2024_05_09\InboundShipment {
+    ): \SpApi\Model\awd\v2024_05_09\InboundShipment {
         list($response) = $this->getInboundShipmentWithHttpInfo($shipment_id, $sku_quantities);
         return $response;
     }
@@ -177,9 +177,9 @@ class AwdApi
      * @param  string|null $sku_quantities
      *  If equal to &#x60;SHOW&#x60;, the response includes the shipment SKU quantity details.  Defaults to &#x60;HIDE&#x60;, in which case the response does not contain SKU quantities (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\awd\v2024_05_09\InboundShipment, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\awd\v2024_05_09\InboundShipment, HTTP status code, HTTP response headers (array of strings)
      */
     public function getInboundShipmentWithHttpInfo(
         string $shipment_id,
@@ -226,143 +226,143 @@ class AwdApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\awd\v2024_05_09\InboundShipment' === '\SplFileObject') {
+                    if ('\SpApi\Model\awd\v2024_05_09\InboundShipment' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\awd\v2024_05_09\InboundShipment' !== 'string') {
+                        if ('\SpApi\Model\awd\v2024_05_09\InboundShipment' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\awd\v2024_05_09\InboundShipment', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\InboundShipment', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\awd\v2024_05_09\InboundShipment';
+            $returnType = '\SpApi\Model\awd\v2024_05_09\InboundShipment';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -383,7 +383,7 @@ class AwdApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\awd\v2024_05_09\InboundShipment',
+                        '\SpApi\Model\awd\v2024_05_09\InboundShipment',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -391,7 +391,7 @@ class AwdApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList',
+                        '\SpApi\Model\awd\v2024_05_09\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -399,7 +399,7 @@ class AwdApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList',
+                        '\SpApi\Model\awd\v2024_05_09\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -407,7 +407,7 @@ class AwdApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList',
+                        '\SpApi\Model\awd\v2024_05_09\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -415,7 +415,7 @@ class AwdApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList',
+                        '\SpApi\Model\awd\v2024_05_09\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -423,7 +423,7 @@ class AwdApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList',
+                        '\SpApi\Model\awd\v2024_05_09\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -431,7 +431,7 @@ class AwdApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList',
+                        '\SpApi\Model\awd\v2024_05_09\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -439,7 +439,7 @@ class AwdApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList',
+                        '\SpApi\Model\awd\v2024_05_09\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -447,7 +447,7 @@ class AwdApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList',
+                        '\SpApi\Model\awd\v2024_05_09\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -495,7 +495,7 @@ class AwdApi
         string $shipment_id,
         ?string $sku_quantities = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\awd\v2024_05_09\InboundShipment';
+        $returnType = '\SpApi\Model\awd\v2024_05_09\InboundShipment';
         $request = $this->getInboundShipmentRequest($shipment_id, $sku_quantities);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -667,9 +667,9 @@ class AwdApi
      * @param  string|null $next_token
      *  A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\awd\v2024_05_09\ShipmentListing
+     * @return \SpApi\Model\awd\v2024_05_09\ShipmentListing
      */
     public function listInboundShipments(
         ?string $sort_by = null,
@@ -679,7 +679,7 @@ class AwdApi
         ?\DateTime $updated_before = null,
         ?int $max_results = 25,
         ?string $next_token = null
-    ): \OpenAPI\Client\Model\awd\v2024_05_09\ShipmentListing {
+    ): \SpApi\Model\awd\v2024_05_09\ShipmentListing {
         list($response) = $this->listInboundShipmentsWithHttpInfo($sort_by, $sort_order, $shipment_status, $updated_after, $updated_before, $max_results, $next_token);
         return $response;
     }
@@ -702,9 +702,9 @@ class AwdApi
      * @param  string|null $next_token
      *  A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\awd\v2024_05_09\ShipmentListing, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\awd\v2024_05_09\ShipmentListing, HTTP status code, HTTP response headers (array of strings)
      */
     public function listInboundShipmentsWithHttpInfo(
         ?string $sort_by = null,
@@ -756,143 +756,143 @@ class AwdApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\awd\v2024_05_09\ShipmentListing' === '\SplFileObject') {
+                    if ('\SpApi\Model\awd\v2024_05_09\ShipmentListing' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\awd\v2024_05_09\ShipmentListing' !== 'string') {
+                        if ('\SpApi\Model\awd\v2024_05_09\ShipmentListing' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\awd\v2024_05_09\ShipmentListing', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ShipmentListing', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\awd\v2024_05_09\ShipmentListing';
+            $returnType = '\SpApi\Model\awd\v2024_05_09\ShipmentListing';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -913,7 +913,7 @@ class AwdApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\awd\v2024_05_09\ShipmentListing',
+                        '\SpApi\Model\awd\v2024_05_09\ShipmentListing',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -921,7 +921,7 @@ class AwdApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList',
+                        '\SpApi\Model\awd\v2024_05_09\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -929,7 +929,7 @@ class AwdApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList',
+                        '\SpApi\Model\awd\v2024_05_09\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -937,7 +937,7 @@ class AwdApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList',
+                        '\SpApi\Model\awd\v2024_05_09\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -945,7 +945,7 @@ class AwdApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList',
+                        '\SpApi\Model\awd\v2024_05_09\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -953,7 +953,7 @@ class AwdApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList',
+                        '\SpApi\Model\awd\v2024_05_09\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -961,7 +961,7 @@ class AwdApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList',
+                        '\SpApi\Model\awd\v2024_05_09\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -969,7 +969,7 @@ class AwdApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList',
+                        '\SpApi\Model\awd\v2024_05_09\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -977,7 +977,7 @@ class AwdApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList',
+                        '\SpApi\Model\awd\v2024_05_09\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1055,7 +1055,7 @@ class AwdApi
         ?int $max_results = 25,
         ?string $next_token = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\awd\v2024_05_09\ShipmentListing';
+        $returnType = '\SpApi\Model\awd\v2024_05_09\ShipmentListing';
         $request = $this->listInboundShipmentsRequest($sort_by, $sort_order, $shipment_status, $updated_after, $updated_before, $max_results, $next_token);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -1281,9 +1281,9 @@ class AwdApi
      * @param  int|null $max_results
      *  Maximum number of results to return. (optional, default to 25)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\awd\v2024_05_09\InventoryListing
+     * @return \SpApi\Model\awd\v2024_05_09\InventoryListing
      */
     public function listInventory(
         ?string $sku = null,
@@ -1291,7 +1291,7 @@ class AwdApi
         ?string $details = null,
         ?string $next_token = null,
         ?int $max_results = 25
-    ): \OpenAPI\Client\Model\awd\v2024_05_09\InventoryListing {
+    ): \SpApi\Model\awd\v2024_05_09\InventoryListing {
         list($response) = $this->listInventoryWithHttpInfo($sku, $sort_order, $details, $next_token, $max_results);
         return $response;
     }
@@ -1310,9 +1310,9 @@ class AwdApi
      * @param  int|null $max_results
      *  Maximum number of results to return. (optional, default to 25)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\awd\v2024_05_09\InventoryListing, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\awd\v2024_05_09\InventoryListing, HTTP status code, HTTP response headers (array of strings)
      */
     public function listInventoryWithHttpInfo(
         ?string $sku = null,
@@ -1362,143 +1362,143 @@ class AwdApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\awd\v2024_05_09\InventoryListing' === '\SplFileObject') {
+                    if ('\SpApi\Model\awd\v2024_05_09\InventoryListing' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\awd\v2024_05_09\InventoryListing' !== 'string') {
+                        if ('\SpApi\Model\awd\v2024_05_09\InventoryListing' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\awd\v2024_05_09\InventoryListing', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\InventoryListing', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\awd\v2024_05_09\InventoryListing';
+            $returnType = '\SpApi\Model\awd\v2024_05_09\InventoryListing';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1519,7 +1519,7 @@ class AwdApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\awd\v2024_05_09\InventoryListing',
+                        '\SpApi\Model\awd\v2024_05_09\InventoryListing',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1527,7 +1527,7 @@ class AwdApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList',
+                        '\SpApi\Model\awd\v2024_05_09\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1535,7 +1535,7 @@ class AwdApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList',
+                        '\SpApi\Model\awd\v2024_05_09\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1543,7 +1543,7 @@ class AwdApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList',
+                        '\SpApi\Model\awd\v2024_05_09\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1551,7 +1551,7 @@ class AwdApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList',
+                        '\SpApi\Model\awd\v2024_05_09\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1559,7 +1559,7 @@ class AwdApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList',
+                        '\SpApi\Model\awd\v2024_05_09\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1567,7 +1567,7 @@ class AwdApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList',
+                        '\SpApi\Model\awd\v2024_05_09\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1575,7 +1575,7 @@ class AwdApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList',
+                        '\SpApi\Model\awd\v2024_05_09\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1583,7 +1583,7 @@ class AwdApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\awd\v2024_05_09\ErrorList',
+                        '\SpApi\Model\awd\v2024_05_09\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1649,7 +1649,7 @@ class AwdApi
         ?string $next_token = null,
         ?int $max_results = 25
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\awd\v2024_05_09\InventoryListing';
+        $returnType = '\SpApi\Model\awd\v2024_05_09\InventoryListing';
         $request = $this->listInventoryRequest($sku, $sort_order, $details, $next_token, $max_results);
         $request = $this->config->sign($request);
         $this->rateLimitWait();

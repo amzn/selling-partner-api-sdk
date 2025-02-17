@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\messaging\v1;
+namespace SpApi\Model\messaging\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetMessagingActionResponseLinks Class Doc Comment
  *
  * @category Class
  * @description The links response that is associated with the messaging action.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class GetMessagingActionResponseLinks implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'self' => '\OpenAPI\Client\Model\messaging\v1\LinkObject',
-             'schema' => '\OpenAPI\Client\Model\messaging\v1\LinkObject'    ];
+             'self' => '\SpApi\Model\messaging\v1\LinkObject',
+             'schema' => '\SpApi\Model\messaging\v1\LinkObject'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -307,9 +307,9 @@ class GetMessagingActionResponseLinks implements ModelInterface, ArrayAccess, \J
     /**
      * Gets self
      *
-     * @return \OpenAPI\Client\Model\messaging\v1\LinkObject
+     * @return \SpApi\Model\messaging\v1\LinkObject
      */
-    public function getSelf(): \OpenAPI\Client\Model\messaging\v1\LinkObject
+    public function getSelf(): \SpApi\Model\messaging\v1\LinkObject
     {
         return $this->container['self'];
     }
@@ -317,11 +317,11 @@ class GetMessagingActionResponseLinks implements ModelInterface, ArrayAccess, \J
     /**
      * Sets self
      *
-     * @param \OpenAPI\Client\Model\messaging\v1\LinkObject $self self
+     * @param \SpApi\Model\messaging\v1\LinkObject $self self
      *
      * @return self
      */
-    public function setSelf(\OpenAPI\Client\Model\messaging\v1\LinkObject $self): self
+    public function setSelf(\SpApi\Model\messaging\v1\LinkObject $self): self
     {
         if (is_null($self)) {
             throw new \InvalidArgumentException('non-nullable self cannot be null');
@@ -334,9 +334,9 @@ class GetMessagingActionResponseLinks implements ModelInterface, ArrayAccess, \J
     /**
      * Gets schema
      *
-     * @return \OpenAPI\Client\Model\messaging\v1\LinkObject
+     * @return \SpApi\Model\messaging\v1\LinkObject
      */
-    public function getSchema(): \OpenAPI\Client\Model\messaging\v1\LinkObject
+    public function getSchema(): \SpApi\Model\messaging\v1\LinkObject
     {
         return $this->container['schema'];
     }
@@ -344,11 +344,11 @@ class GetMessagingActionResponseLinks implements ModelInterface, ArrayAccess, \J
     /**
      * Sets schema
      *
-     * @param \OpenAPI\Client\Model\messaging\v1\LinkObject $schema schema
+     * @param \SpApi\Model\messaging\v1\LinkObject $schema schema
      *
      * @return self
      */
-    public function setSchema(\OpenAPI\Client\Model\messaging\v1\LinkObject $schema): self
+    public function setSchema(\SpApi\Model\messaging\v1\LinkObject $schema): self
     {
         if (is_null($schema)) {
             throw new \InvalidArgumentException('non-nullable schema cannot be null');

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\finances\v0\ProductAdsPaymentEvent;
+use SpApi\Model\finances\v0\ProductAdsPaymentEvent;
 
 /**
  * ProductAdsPaymentEventTest Class Doc Comment
  *
  * @category    Class
  * @description A Sponsored Products payment event.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ProductAdsPaymentEventTest extends TestCase
 {
@@ -91,7 +91,7 @@ class ProductAdsPaymentEventTest extends TestCase
     public function testPropertyBaseValue()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v0\Currency();
+        $testValue = new \SpApi\Model\finances\v0\Currency();
         
         $this->model->setBaseValue($testValue);
         $this->assertEquals($testValue, $this->model->getBaseValue());
@@ -103,7 +103,7 @@ class ProductAdsPaymentEventTest extends TestCase
     public function testPropertyTaxValue()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v0\Currency();
+        $testValue = new \SpApi\Model\finances\v0\Currency();
         
         $this->model->setTaxValue($testValue);
         $this->assertEquals($testValue, $this->model->getTaxValue());
@@ -115,7 +115,7 @@ class ProductAdsPaymentEventTest extends TestCase
     public function testPropertyTransactionValue()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v0\Currency();
+        $testValue = new \SpApi\Model\finances\v0\Currency();
         
         $this->model->setTransactionValue($testValue);
         $this->assertEquals($testValue, $this->model->getTransactionValue());

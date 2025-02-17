@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\aplusContent\v2020_11_01;
+namespace SpApi\Model\aplusContent\v2020_11_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ContentRecord Class Doc Comment
  *
  * @category Class
  * @description A content document with additional information for content management.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,8 +61,8 @@ class ContentRecord implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPITypes = [
              'content_reference_key' => 'string',
-             'content_metadata' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentMetadata',
-             'content_document' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentDocument'    ];
+             'content_metadata' => '\SpApi\Model\aplusContent\v2020_11_01\ContentMetadata',
+             'content_document' => '\SpApi\Model\aplusContent\v2020_11_01\ContentDocument'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -347,9 +347,9 @@ class ContentRecord implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets content_metadata
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentMetadata|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\ContentMetadata|null
      */
-    public function getContentMetadata(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentMetadata
+    public function getContentMetadata(): ?\SpApi\Model\aplusContent\v2020_11_01\ContentMetadata
     {
         return $this->container['content_metadata'];
     }
@@ -357,11 +357,11 @@ class ContentRecord implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets content_metadata
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentMetadata|null $content_metadata content_metadata
+     * @param \SpApi\Model\aplusContent\v2020_11_01\ContentMetadata|null $content_metadata content_metadata
      *
      * @return self
      */
-    public function setContentMetadata(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentMetadata $content_metadata): self
+    public function setContentMetadata(?\SpApi\Model\aplusContent\v2020_11_01\ContentMetadata $content_metadata): self
     {
         if (is_null($content_metadata)) {
             array_push($this->openAPINullablesSetToNull, 'content_metadata');
@@ -381,9 +381,9 @@ class ContentRecord implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets content_document
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentDocument|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\ContentDocument|null
      */
-    public function getContentDocument(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentDocument
+    public function getContentDocument(): ?\SpApi\Model\aplusContent\v2020_11_01\ContentDocument
     {
         return $this->container['content_document'];
     }
@@ -391,11 +391,11 @@ class ContentRecord implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets content_document
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentDocument|null $content_document content_document
+     * @param \SpApi\Model\aplusContent\v2020_11_01\ContentDocument|null $content_document content_document
      *
      * @return self
      */
-    public function setContentDocument(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentDocument $content_document): self
+    public function setContentDocument(?\SpApi\Model\aplusContent\v2020_11_01\ContentDocument $content_document): self
     {
         if (is_null($content_document)) {
             array_push($this->openAPINullablesSetToNull, 'content_document');

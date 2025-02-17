@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\productFees\v0;
+namespace SpApi\Model\productFees\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * FeesEstimate Class Doc Comment
  *
  * @category Class
  * @description The total estimated fees for an item and a list of details.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,8 +61,8 @@ class FeesEstimate implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPITypes = [
              'time_of_fees_estimation' => '\DateTime',
-             'total_fees_estimate' => '\OpenAPI\Client\Model\productFees\v0\MoneyType',
-             'fee_detail_list' => '\OpenAPI\Client\Model\productFees\v0\FeeDetail[]'    ];
+             'total_fees_estimate' => '\SpApi\Model\productFees\v0\MoneyType',
+             'fee_detail_list' => '\SpApi\Model\productFees\v0\FeeDetail[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -338,9 +338,9 @@ class FeesEstimate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets total_fees_estimate
      *
-     * @return \OpenAPI\Client\Model\productFees\v0\MoneyType|null
+     * @return \SpApi\Model\productFees\v0\MoneyType|null
      */
-    public function getTotalFeesEstimate(): ?\OpenAPI\Client\Model\productFees\v0\MoneyType
+    public function getTotalFeesEstimate(): ?\SpApi\Model\productFees\v0\MoneyType
     {
         return $this->container['total_fees_estimate'];
     }
@@ -348,11 +348,11 @@ class FeesEstimate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets total_fees_estimate
      *
-     * @param \OpenAPI\Client\Model\productFees\v0\MoneyType|null $total_fees_estimate total_fees_estimate
+     * @param \SpApi\Model\productFees\v0\MoneyType|null $total_fees_estimate total_fees_estimate
      *
      * @return self
      */
-    public function setTotalFeesEstimate(?\OpenAPI\Client\Model\productFees\v0\MoneyType $total_fees_estimate): self
+    public function setTotalFeesEstimate(?\SpApi\Model\productFees\v0\MoneyType $total_fees_estimate): self
     {
         if (is_null($total_fees_estimate)) {
             array_push($this->openAPINullablesSetToNull, 'total_fees_estimate');

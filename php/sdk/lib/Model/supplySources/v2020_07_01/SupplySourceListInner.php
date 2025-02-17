@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,18 +26,18 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\supplySources\v2020_07_01;
+namespace SpApi\Model\supplySources\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * SupplySourceListInner Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +62,7 @@ class SupplySourceListInner implements ModelInterface, ArrayAccess, \JsonSeriali
              'alias' => 'string',
              'supply_source_id' => 'string',
              'supply_source_code' => 'string',
-             'address' => '\OpenAPI\Client\Model\supplySources\v2020_07_01\Address'    ];
+             'address' => '\SpApi\Model\supplySources\v2020_07_01\Address'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -416,9 +416,9 @@ class SupplySourceListInner implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets address
      *
-     * @return \OpenAPI\Client\Model\supplySources\v2020_07_01\Address|null
+     * @return \SpApi\Model\supplySources\v2020_07_01\Address|null
      */
-    public function getAddress(): ?\OpenAPI\Client\Model\supplySources\v2020_07_01\Address
+    public function getAddress(): ?\SpApi\Model\supplySources\v2020_07_01\Address
     {
         return $this->container['address'];
     }
@@ -426,11 +426,11 @@ class SupplySourceListInner implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets address
      *
-     * @param \OpenAPI\Client\Model\supplySources\v2020_07_01\Address|null $address address
+     * @param \SpApi\Model\supplySources\v2020_07_01\Address|null $address address
      *
      * @return self
      */
-    public function setAddress(?\OpenAPI\Client\Model\supplySources\v2020_07_01\Address $address): self
+    public function setAddress(?\SpApi\Model\supplySources\v2020_07_01\Address $address): self
     {
         if (is_null($address)) {
             array_push($this->openAPINullablesSetToNull, 'address');

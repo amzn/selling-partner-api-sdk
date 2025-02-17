@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\productFees\v0;
+namespace SpApi\Model\productFees\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetMyFeesEstimateRequest Class Doc Comment
  *
  * @category Class
  * @description Request schema.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class GetMyFeesEstimateRequest implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'fees_estimate_request' => '\OpenAPI\Client\Model\productFees\v0\FeesEstimateRequest'    ];
+             'fees_estimate_request' => '\SpApi\Model\productFees\v0\FeesEstimateRequest'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -294,9 +294,9 @@ class GetMyFeesEstimateRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets fees_estimate_request
      *
-     * @return \OpenAPI\Client\Model\productFees\v0\FeesEstimateRequest|null
+     * @return \SpApi\Model\productFees\v0\FeesEstimateRequest|null
      */
-    public function getFeesEstimateRequest(): ?\OpenAPI\Client\Model\productFees\v0\FeesEstimateRequest
+    public function getFeesEstimateRequest(): ?\SpApi\Model\productFees\v0\FeesEstimateRequest
     {
         return $this->container['fees_estimate_request'];
     }
@@ -304,11 +304,11 @@ class GetMyFeesEstimateRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets fees_estimate_request
      *
-     * @param \OpenAPI\Client\Model\productFees\v0\FeesEstimateRequest|null $fees_estimate_request fees_estimate_request
+     * @param \SpApi\Model\productFees\v0\FeesEstimateRequest|null $fees_estimate_request fees_estimate_request
      *
      * @return self
      */
-    public function setFeesEstimateRequest(?\OpenAPI\Client\Model\productFees\v0\FeesEstimateRequest $fees_estimate_request): self
+    public function setFeesEstimateRequest(?\SpApi\Model\productFees\v0\FeesEstimateRequest $fees_estimate_request): self
     {
         if (is_null($fees_estimate_request)) {
             array_push($this->openAPINullablesSetToNull, 'fees_estimate_request');

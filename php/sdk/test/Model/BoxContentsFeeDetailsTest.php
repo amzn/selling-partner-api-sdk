@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v0\BoxContentsFeeDetails;
+use SpApi\Model\fulfillment\inbound\v0\BoxContentsFeeDetails;
 
 /**
  * BoxContentsFeeDetailsTest Class Doc Comment
  *
  * @category    Class
  * @description The manual processing fee per unit and total fee for a shipment.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class BoxContentsFeeDetailsTest extends TestCase
 {
@@ -68,7 +68,7 @@ class BoxContentsFeeDetailsTest extends TestCase
     public function testPropertyFeePerUnit()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\inbound\v0\Amount();
+        $testValue = new \SpApi\Model\fulfillment\inbound\v0\Amount();
         
         $this->model->setFeePerUnit($testValue);
         $this->assertEquals($testValue, $this->model->getFeePerUnit());
@@ -80,7 +80,7 @@ class BoxContentsFeeDetailsTest extends TestCase
     public function testPropertyTotalFee()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\inbound\v0\Amount();
+        $testValue = new \SpApi\Model\fulfillment\inbound\v0\Amount();
         
         $this->model->setTotalFee($testValue);
         $this->assertEquals($testValue, $this->model->getTotalFee());

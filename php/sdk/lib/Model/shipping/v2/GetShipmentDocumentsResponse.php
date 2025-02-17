@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,19 +27,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\shipping\v2;
+namespace SpApi\Model\shipping\v2;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetShipmentDocumentsResponse Class Doc Comment
  *
  * @category Class
  * @description The response schema for the the getShipmentDocuments operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class GetShipmentDocumentsResponse implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'payload' => '\OpenAPI\Client\Model\shipping\v2\GetShipmentDocumentsResult'    ];
+             'payload' => '\SpApi\Model\shipping\v2\GetShipmentDocumentsResult'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -295,9 +295,9 @@ class GetShipmentDocumentsResponse implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets payload
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\GetShipmentDocumentsResult|null
+     * @return \SpApi\Model\shipping\v2\GetShipmentDocumentsResult|null
      */
-    public function getPayload(): ?\OpenAPI\Client\Model\shipping\v2\GetShipmentDocumentsResult
+    public function getPayload(): ?\SpApi\Model\shipping\v2\GetShipmentDocumentsResult
     {
         return $this->container['payload'];
     }
@@ -305,11 +305,11 @@ class GetShipmentDocumentsResponse implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets payload
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\GetShipmentDocumentsResult|null $payload payload
+     * @param \SpApi\Model\shipping\v2\GetShipmentDocumentsResult|null $payload payload
      *
      * @return self
      */
-    public function setPayload(?\OpenAPI\Client\Model\shipping\v2\GetShipmentDocumentsResult $payload): self
+    public function setPayload(?\SpApi\Model\shipping\v2\GetShipmentDocumentsResult $payload): self
     {
         if (is_null($payload)) {
             array_push($this->openAPINullablesSetToNull, 'payload');

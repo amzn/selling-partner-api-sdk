@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\services\v1;
+namespace SpApi\Model\services\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * UpdateReservationRecord Class Doc Comment
  *
  * @category Class
  * @description &#x60;UpdateReservationRecord&#x60; entity contains the &#x60;Reservation&#x60; if there is an error/warning while performing the requested operation on it, otherwise it will contain the new &#x60;reservationId&#x60;.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,9 +60,9 @@ class UpdateReservationRecord implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'reservation' => '\OpenAPI\Client\Model\services\v1\Reservation',
-             'warnings' => '\OpenAPI\Client\Model\services\v1\Warning[]',
-             'errors' => '\OpenAPI\Client\Model\services\v1\Error[]'    ];
+             'reservation' => '\SpApi\Model\services\v1\Reservation',
+             'warnings' => '\SpApi\Model\services\v1\Warning[]',
+             'errors' => '\SpApi\Model\services\v1\Error[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -308,9 +308,9 @@ class UpdateReservationRecord implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets reservation
      *
-     * @return \OpenAPI\Client\Model\services\v1\Reservation|null
+     * @return \SpApi\Model\services\v1\Reservation|null
      */
-    public function getReservation(): ?\OpenAPI\Client\Model\services\v1\Reservation
+    public function getReservation(): ?\SpApi\Model\services\v1\Reservation
     {
         return $this->container['reservation'];
     }
@@ -318,11 +318,11 @@ class UpdateReservationRecord implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets reservation
      *
-     * @param \OpenAPI\Client\Model\services\v1\Reservation|null $reservation reservation
+     * @param \SpApi\Model\services\v1\Reservation|null $reservation reservation
      *
      * @return self
      */
-    public function setReservation(?\OpenAPI\Client\Model\services\v1\Reservation $reservation): self
+    public function setReservation(?\SpApi\Model\services\v1\Reservation $reservation): self
     {
         if (is_null($reservation)) {
             array_push($this->openAPINullablesSetToNull, 'reservation');

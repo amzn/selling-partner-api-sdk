@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\merchantFulfillment\v0;
+namespace SpApi\Model\merchantFulfillment\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * SellerInputDefinition Class Doc Comment
  *
  * @category Class
  * @description Specifies characteristics that apply to a seller input.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,10 +62,10 @@ class SellerInputDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static array $openAPITypes = [
              'is_required' => 'bool',
              'data_type' => 'string',
-             'constraints' => '\OpenAPI\Client\Model\merchantFulfillment\v0\Constraint[]',
+             'constraints' => '\SpApi\Model\merchantFulfillment\v0\Constraint[]',
              'input_display_text' => 'string',
-             'input_target' => '\OpenAPI\Client\Model\merchantFulfillment\v0\InputTargetType',
-             'stored_value' => '\OpenAPI\Client\Model\merchantFulfillment\v0\AdditionalSellerInput',
+             'input_target' => '\SpApi\Model\merchantFulfillment\v0\InputTargetType',
+             'stored_value' => '\SpApi\Model\merchantFulfillment\v0\AdditionalSellerInput',
              'restricted_set_values' => 'string[]'    ];
 
     /**
@@ -493,9 +493,9 @@ class SellerInputDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets stored_value
      *
-     * @return \OpenAPI\Client\Model\merchantFulfillment\v0\AdditionalSellerInput
+     * @return \SpApi\Model\merchantFulfillment\v0\AdditionalSellerInput
      */
-    public function getStoredValue(): \OpenAPI\Client\Model\merchantFulfillment\v0\AdditionalSellerInput
+    public function getStoredValue(): \SpApi\Model\merchantFulfillment\v0\AdditionalSellerInput
     {
         return $this->container['stored_value'];
     }
@@ -503,11 +503,11 @@ class SellerInputDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets stored_value
      *
-     * @param \OpenAPI\Client\Model\merchantFulfillment\v0\AdditionalSellerInput $stored_value stored_value
+     * @param \SpApi\Model\merchantFulfillment\v0\AdditionalSellerInput $stored_value stored_value
      *
      * @return self
      */
-    public function setStoredValue(\OpenAPI\Client\Model\merchantFulfillment\v0\AdditionalSellerInput $stored_value): self
+    public function setStoredValue(\SpApi\Model\merchantFulfillment\v0\AdditionalSellerInput $stored_value): self
     {
         if (is_null($stored_value)) {
             throw new \InvalidArgumentException('non-nullable stored_value cannot be null');

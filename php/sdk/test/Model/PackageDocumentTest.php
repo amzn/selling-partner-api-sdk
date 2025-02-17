@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\v2\PackageDocument;
+use SpApi\Model\shipping\v2\PackageDocument;
 
 /**
  * PackageDocumentTest Class Doc Comment
  *
  * @category    Class
  * @description A document related to a package.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class PackageDocumentTest extends TestCase
 {
@@ -56,7 +56,7 @@ class PackageDocumentTest extends TestCase
      */
     public function testPropertyType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\shipping\v2\DocumentType();
+        $enumInstance = new \SpApi\Model\shipping\v2\DocumentType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -69,7 +69,7 @@ class PackageDocumentTest extends TestCase
      */
     public function testPropertyFormat()
     {
-        $enumInstance = new \OpenAPI\Client\Model\shipping\v2\DocumentFormat();
+        $enumInstance = new \SpApi\Model\shipping\v2\DocumentFormat();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

@@ -4,7 +4,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api\catalogItems\v2022_04_01;
+namespace SpApi\Api\catalogItems\v2022_04_01;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -39,16 +39,16 @@ use SpApi\AuthAndAuth\RateLimitConfiguration;
 use Symfony\Component\RateLimiter\LimiterInterface;
 use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\ObjectSerializer;
+use SpApi\ApiException;
+use SpApi\Configuration;
+use SpApi\HeaderSelector;
+use SpApi\ObjectSerializer;
 
 /**
  * CatalogItemsApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -163,16 +163,16 @@ class CatalogItemsApi
      * @param  string|null $locale
      *  Locale for retrieving localized summaries. Defaults to the primary locale of the marketplace. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\catalogItems\v2022_04_01\Item
+     * @return \SpApi\Model\catalogItems\v2022_04_01\Item
      */
     public function getCatalogItem(
         string $asin,
         array $marketplace_ids,
         ?array $included_data = null,
         ?string $locale = null
-    ): \OpenAPI\Client\Model\catalogItems\v2022_04_01\Item {
+    ): \SpApi\Model\catalogItems\v2022_04_01\Item {
         list($response) = $this->getCatalogItemWithHttpInfo($asin, $marketplace_ids, $included_data, $locale);
         return $response;
     }
@@ -191,9 +191,9 @@ class CatalogItemsApi
      * @param  string|null $locale
      *  Locale for retrieving localized summaries. Defaults to the primary locale of the marketplace. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\catalogItems\v2022_04_01\Item, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\catalogItems\v2022_04_01\Item, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCatalogItemWithHttpInfo(
         string $asin,
@@ -242,143 +242,143 @@ class CatalogItemsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\catalogItems\v2022_04_01\Item' === '\SplFileObject') {
+                    if ('\SpApi\Model\catalogItems\v2022_04_01\Item' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\catalogItems\v2022_04_01\Item' !== 'string') {
+                        if ('\SpApi\Model\catalogItems\v2022_04_01\Item' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogItems\v2022_04_01\Item', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\catalogItems\v2022_04_01\Item', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\catalogItems\v2022_04_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\catalogItems\v2022_04_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\catalogItems\v2022_04_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\catalogItems\v2022_04_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\catalogItems\v2022_04_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\catalogItems\v2022_04_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\catalogItems\v2022_04_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\catalogItems\v2022_04_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\catalogItems\v2022_04_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\catalogItems\v2022_04_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\catalogItems\v2022_04_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\catalogItems\v2022_04_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\catalogItems\v2022_04_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\catalogItems\v2022_04_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\catalogItems\v2022_04_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\catalogItems\v2022_04_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\catalogItems\v2022_04_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\catalogItems\v2022_04_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\catalogItems\v2022_04_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\catalogItems\v2022_04_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\catalogItems\v2022_04_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\catalogItems\v2022_04_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\catalogItems\v2022_04_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\catalogItems\v2022_04_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\catalogItems\v2022_04_01\Item';
+            $returnType = '\SpApi\Model\catalogItems\v2022_04_01\Item';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -399,7 +399,7 @@ class CatalogItemsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\catalogItems\v2022_04_01\Item',
+                        '\SpApi\Model\catalogItems\v2022_04_01\Item',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -407,7 +407,7 @@ class CatalogItemsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList',
+                        '\SpApi\Model\catalogItems\v2022_04_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -415,7 +415,7 @@ class CatalogItemsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList',
+                        '\SpApi\Model\catalogItems\v2022_04_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -423,7 +423,7 @@ class CatalogItemsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList',
+                        '\SpApi\Model\catalogItems\v2022_04_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -431,7 +431,7 @@ class CatalogItemsApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList',
+                        '\SpApi\Model\catalogItems\v2022_04_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -439,7 +439,7 @@ class CatalogItemsApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList',
+                        '\SpApi\Model\catalogItems\v2022_04_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -447,7 +447,7 @@ class CatalogItemsApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList',
+                        '\SpApi\Model\catalogItems\v2022_04_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -455,7 +455,7 @@ class CatalogItemsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList',
+                        '\SpApi\Model\catalogItems\v2022_04_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -463,7 +463,7 @@ class CatalogItemsApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList',
+                        '\SpApi\Model\catalogItems\v2022_04_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -527,7 +527,7 @@ class CatalogItemsApi
         ?array $included_data = null,
         ?string $locale = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\catalogItems\v2022_04_01\Item';
+        $returnType = '\SpApi\Model\catalogItems\v2022_04_01\Item';
         $request = $this->getCatalogItemRequest($asin, $marketplace_ids, $included_data, $locale);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -737,9 +737,9 @@ class CatalogItemsApi
      * @param  string|null $keywords_locale
      *  The language of the keywords provided for &#x60;keywords&#x60;-based queries. Defaults to the primary locale of the marketplace. **Note:** Cannot be used with &#x60;identifiers&#x60;. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemSearchResults
+     * @return \SpApi\Model\catalogItems\v2022_04_01\ItemSearchResults
      */
     public function searchCatalogItems(
         array $marketplace_ids,
@@ -754,7 +754,7 @@ class CatalogItemsApi
         ?int $page_size = 10,
         ?string $page_token = null,
         ?string $keywords_locale = null
-    ): \OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemSearchResults {
+    ): \SpApi\Model\catalogItems\v2022_04_01\ItemSearchResults {
         list($response) = $this->searchCatalogItemsWithHttpInfo($marketplace_ids, $identifiers, $identifiers_type, $included_data, $locale, $seller_id, $keywords, $brand_names, $classification_ids, $page_size, $page_token, $keywords_locale);
         return $response;
     }
@@ -789,9 +789,9 @@ class CatalogItemsApi
      * @param  string|null $keywords_locale
      *  The language of the keywords provided for &#x60;keywords&#x60;-based queries. Defaults to the primary locale of the marketplace. **Note:** Cannot be used with &#x60;identifiers&#x60;. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemSearchResults, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\catalogItems\v2022_04_01\ItemSearchResults, HTTP status code, HTTP response headers (array of strings)
      */
     public function searchCatalogItemsWithHttpInfo(
         array $marketplace_ids,
@@ -848,143 +848,143 @@ class CatalogItemsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemSearchResults' === '\SplFileObject') {
+                    if ('\SpApi\Model\catalogItems\v2022_04_01\ItemSearchResults' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemSearchResults' !== 'string') {
+                        if ('\SpApi\Model\catalogItems\v2022_04_01\ItemSearchResults' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemSearchResults', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\catalogItems\v2022_04_01\ItemSearchResults', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\catalogItems\v2022_04_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\catalogItems\v2022_04_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\catalogItems\v2022_04_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\catalogItems\v2022_04_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\catalogItems\v2022_04_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\catalogItems\v2022_04_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\catalogItems\v2022_04_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\catalogItems\v2022_04_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\catalogItems\v2022_04_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\catalogItems\v2022_04_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\catalogItems\v2022_04_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\catalogItems\v2022_04_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\catalogItems\v2022_04_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\catalogItems\v2022_04_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\catalogItems\v2022_04_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\catalogItems\v2022_04_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\catalogItems\v2022_04_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\catalogItems\v2022_04_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\catalogItems\v2022_04_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\catalogItems\v2022_04_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\catalogItems\v2022_04_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\catalogItems\v2022_04_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\catalogItems\v2022_04_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\catalogItems\v2022_04_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemSearchResults';
+            $returnType = '\SpApi\Model\catalogItems\v2022_04_01\ItemSearchResults';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1005,7 +1005,7 @@ class CatalogItemsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemSearchResults',
+                        '\SpApi\Model\catalogItems\v2022_04_01\ItemSearchResults',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1013,7 +1013,7 @@ class CatalogItemsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList',
+                        '\SpApi\Model\catalogItems\v2022_04_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1021,7 +1021,7 @@ class CatalogItemsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList',
+                        '\SpApi\Model\catalogItems\v2022_04_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1029,7 +1029,7 @@ class CatalogItemsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList',
+                        '\SpApi\Model\catalogItems\v2022_04_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1037,7 +1037,7 @@ class CatalogItemsApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList',
+                        '\SpApi\Model\catalogItems\v2022_04_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1045,7 +1045,7 @@ class CatalogItemsApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList',
+                        '\SpApi\Model\catalogItems\v2022_04_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1053,7 +1053,7 @@ class CatalogItemsApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList',
+                        '\SpApi\Model\catalogItems\v2022_04_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1061,7 +1061,7 @@ class CatalogItemsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList',
+                        '\SpApi\Model\catalogItems\v2022_04_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1069,7 +1069,7 @@ class CatalogItemsApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ErrorList',
+                        '\SpApi\Model\catalogItems\v2022_04_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1181,7 +1181,7 @@ class CatalogItemsApi
         ?string $page_token = null,
         ?string $keywords_locale = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemSearchResults';
+        $returnType = '\SpApi\Model\catalogItems\v2022_04_01\ItemSearchResults';
         $request = $this->searchCatalogItemsRequest($marketplace_ids, $identifiers, $identifiers_type, $included_data, $locale, $seller_id, $keywords, $brand_names, $classification_ids, $page_size, $page_token, $keywords_locale);
         $request = $this->config->sign($request);
         $this->rateLimitWait();

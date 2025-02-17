@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\invoices\v2024_06_19;
+namespace SpApi\Model\invoices\v2024_06_19;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ExportInvoicesRequest Class Doc Comment
  *
  * @category Class
  * @description The information required to create the export request.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,12 +63,12 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
              'date_end' => '\DateTime',
              'date_start' => '\DateTime',
              'external_invoice_id' => 'string',
-             'file_format' => '\OpenAPI\Client\Model\invoices\v2024_06_19\FileFormat',
+             'file_format' => '\SpApi\Model\invoices\v2024_06_19\FileFormat',
              'invoice_type' => 'string',
              'marketplace_id' => 'string',
              'series' => 'string',
              'statuses' => 'string[]',
-             'transaction_identifier' => '\OpenAPI\Client\Model\invoices\v2024_06_19\TransactionIdentifier',
+             'transaction_identifier' => '\SpApi\Model\invoices\v2024_06_19\TransactionIdentifier',
              'transaction_type' => 'string'    ];
 
     /**
@@ -634,9 +634,9 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets transaction_identifier
      *
-     * @return \OpenAPI\Client\Model\invoices\v2024_06_19\TransactionIdentifier|null
+     * @return \SpApi\Model\invoices\v2024_06_19\TransactionIdentifier|null
      */
-    public function getTransactionIdentifier(): ?\OpenAPI\Client\Model\invoices\v2024_06_19\TransactionIdentifier
+    public function getTransactionIdentifier(): ?\SpApi\Model\invoices\v2024_06_19\TransactionIdentifier
     {
         return $this->container['transaction_identifier'];
     }
@@ -644,11 +644,11 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets transaction_identifier
      *
-     * @param \OpenAPI\Client\Model\invoices\v2024_06_19\TransactionIdentifier|null $transaction_identifier transaction_identifier
+     * @param \SpApi\Model\invoices\v2024_06_19\TransactionIdentifier|null $transaction_identifier transaction_identifier
      *
      * @return self
      */
-    public function setTransactionIdentifier(?\OpenAPI\Client\Model\invoices\v2024_06_19\TransactionIdentifier $transaction_identifier): self
+    public function setTransactionIdentifier(?\SpApi\Model\invoices\v2024_06_19\TransactionIdentifier $transaction_identifier): self
     {
         if (is_null($transaction_identifier)) {
             array_push($this->openAPINullablesSetToNull, 'transaction_identifier');

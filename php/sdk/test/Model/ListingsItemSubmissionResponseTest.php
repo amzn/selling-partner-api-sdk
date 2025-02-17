@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse;
+use SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse;
 
 /**
  * ListingsItemSubmissionResponseTest Class Doc Comment
  *
  * @category    Class
  * @description Response containing the results of a submission to the Selling Partner API for Listings Items.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ListingsItemSubmissionResponseTest extends TestCase
 {

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\finances\v0\FinancialEvents;
+use SpApi\Model\finances\v0\FinancialEvents;
 
 /**
  * FinancialEventsTest Class Doc Comment
  *
  * @category    Class
  * @description Contains all information related to a financial event.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class FinancialEventsTest extends TestCase
 {

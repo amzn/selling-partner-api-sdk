@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\pricing\v2022_05_01;
+namespace SpApi\Model\pricing\v2022_05_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * CompetitiveSummaryBatchResponse Class Doc Comment
  *
  * @category Class
  * @description The response schema for the &#x60;competitiveSummaryBatch&#x60; operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class CompetitiveSummaryBatchResponse implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'responses' => '\OpenAPI\Client\Model\pricing\v2022_05_01\CompetitiveSummaryResponse[]'    ];
+             'responses' => '\SpApi\Model\pricing\v2022_05_01\CompetitiveSummaryResponse[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

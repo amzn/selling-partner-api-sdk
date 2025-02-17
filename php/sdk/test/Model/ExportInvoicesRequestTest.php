@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\invoices\v2024_06_19\ExportInvoicesRequest;
+use SpApi\Model\invoices\v2024_06_19\ExportInvoicesRequest;
 
 /**
  * ExportInvoicesRequestTest Class Doc Comment
  *
  * @category    Class
  * @description The information required to create the export request.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ExportInvoicesRequestTest extends TestCase
 {
@@ -91,7 +91,7 @@ class ExportInvoicesRequestTest extends TestCase
      */
     public function testPropertyFileFormat()
     {
-        $enumInstance = new \OpenAPI\Client\Model\invoices\v2024_06_19\FileFormat();
+        $enumInstance = new \SpApi\Model\invoices\v2024_06_19\FileFormat();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -149,7 +149,7 @@ class ExportInvoicesRequestTest extends TestCase
     public function testPropertyTransactionIdentifier()
     {
         
-        $testValue = new \OpenAPI\Client\Model\invoices\v2024_06_19\TransactionIdentifier();
+        $testValue = new \SpApi\Model\invoices\v2024_06_19\TransactionIdentifier();
         
         $this->model->setTransactionIdentifier($testValue);
         $this->assertEquals($testValue, $this->model->getTransactionIdentifier());

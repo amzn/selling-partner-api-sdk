@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\aplusContent\v2020_11_01\AsinBadge;
+use SpApi\Model\aplusContent\v2020_11_01\AsinBadge;
 
 /**
  * AsinBadgeTest Class Doc Comment
  *
  * @category    Class
  * @description A flag that provides additional information about an ASIN. This is contextual and may change depending on the request that generated it.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class AsinBadgeTest extends TestCase
 {

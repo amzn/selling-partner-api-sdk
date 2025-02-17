@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\shipments\v1\TransportLabel;
+use SpApi\Model\vendor\shipments\v1\TransportLabel;
 
 /**
  * TransportLabelTest Class Doc Comment
  *
  * @category    Class
  * @description A list of one or more ShipmentLabels.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class TransportLabelTest extends TestCase
 {
@@ -69,7 +69,7 @@ class TransportLabelTest extends TestCase
     public function testPropertyShipmentInformation()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\shipments\v1\ShipmentInformation();
+        $testValue = new \SpApi\Model\vendor\shipments\v1\ShipmentInformation();
         
         $this->model->setShipmentInformation($testValue);
         $this->assertEquals($testValue, $this->model->getShipmentInformation());

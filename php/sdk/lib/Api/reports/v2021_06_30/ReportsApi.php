@@ -4,7 +4,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api\reports\v2021_06_30;
+namespace SpApi\Api\reports\v2021_06_30;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -39,16 +39,16 @@ use SpApi\AuthAndAuth\RateLimitConfiguration;
 use Symfony\Component\RateLimiter\LimiterInterface;
 use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\ObjectSerializer;
+use SpApi\ApiException;
+use SpApi\Configuration;
+use SpApi\HeaderSelector;
+use SpApi\ObjectSerializer;
 
 /**
  * ReportsApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -157,7 +157,7 @@ class ReportsApi
      * @param  string $report_id
      *  The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return 
      */
@@ -175,7 +175,7 @@ class ReportsApi
      * @param  string $report_id
      *  The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of , HTTP status code, HTTP response headers (array of strings)
      */
@@ -228,7 +228,7 @@ class ReportsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -236,7 +236,7 @@ class ReportsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -244,7 +244,7 @@ class ReportsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -252,7 +252,7 @@ class ReportsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -260,7 +260,7 @@ class ReportsApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -268,7 +268,7 @@ class ReportsApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -276,7 +276,7 @@ class ReportsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -284,7 +284,7 @@ class ReportsApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -463,7 +463,7 @@ class ReportsApi
      * @param  string $report_schedule_id
      *  The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return 
      */
@@ -481,7 +481,7 @@ class ReportsApi
      * @param  string $report_schedule_id
      *  The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of , HTTP status code, HTTP response headers (array of strings)
      */
@@ -534,7 +534,7 @@ class ReportsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -542,7 +542,7 @@ class ReportsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -550,7 +550,7 @@ class ReportsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -558,7 +558,7 @@ class ReportsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -566,7 +566,7 @@ class ReportsApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -574,7 +574,7 @@ class ReportsApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -582,7 +582,7 @@ class ReportsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -590,7 +590,7 @@ class ReportsApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -766,16 +766,16 @@ class ReportsApi
      *
      * createReport
      *
-     * @param  \OpenAPI\Client\Model\reports\v2021_06_30\CreateReportSpecification $body
+     * @param  \SpApi\Model\reports\v2021_06_30\CreateReportSpecification $body
      *  Information required to create the report. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\reports\v2021_06_30\CreateReportResponse
+     * @return \SpApi\Model\reports\v2021_06_30\CreateReportResponse
      */
     public function createReport(
-        \OpenAPI\Client\Model\reports\v2021_06_30\CreateReportSpecification $body
-    ): \OpenAPI\Client\Model\reports\v2021_06_30\CreateReportResponse {
+        \SpApi\Model\reports\v2021_06_30\CreateReportSpecification $body
+    ): \SpApi\Model\reports\v2021_06_30\CreateReportResponse {
         list($response) = $this->createReportWithHttpInfo($body);
         return $response;
     }
@@ -785,15 +785,15 @@ class ReportsApi
      *
      * createReport
      *
-     * @param  \OpenAPI\Client\Model\reports\v2021_06_30\CreateReportSpecification $body
+     * @param  \SpApi\Model\reports\v2021_06_30\CreateReportSpecification $body
      *  Information required to create the report. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\reports\v2021_06_30\CreateReportResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\reports\v2021_06_30\CreateReportResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createReportWithHttpInfo(
-        \OpenAPI\Client\Model\reports\v2021_06_30\CreateReportSpecification $body
+        \SpApi\Model\reports\v2021_06_30\CreateReportSpecification $body
     ): array {
         $request = $this->createReportRequest($body);
         $request = $this->config->sign($request);
@@ -836,143 +836,143 @@ class ReportsApi
 
             switch($statusCode) {
                 case 202:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\CreateReportResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\CreateReportResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\CreateReportResponse' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\CreateReportResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\CreateReportResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\CreateReportResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\reports\v2021_06_30\CreateReportResponse';
+            $returnType = '\SpApi\Model\reports\v2021_06_30\CreateReportResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -993,7 +993,7 @@ class ReportsApi
                 case 202:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\CreateReportResponse',
+                        '\SpApi\Model\reports\v2021_06_30\CreateReportResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1001,7 +1001,7 @@ class ReportsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1009,7 +1009,7 @@ class ReportsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1017,7 +1017,7 @@ class ReportsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1025,7 +1025,7 @@ class ReportsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1033,7 +1033,7 @@ class ReportsApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1041,7 +1041,7 @@ class ReportsApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1049,7 +1049,7 @@ class ReportsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1057,7 +1057,7 @@ class ReportsApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1072,14 +1072,14 @@ class ReportsApi
      *
      * createReport
      *
-     * @param  \OpenAPI\Client\Model\reports\v2021_06_30\CreateReportSpecification $body
+     * @param  \SpApi\Model\reports\v2021_06_30\CreateReportSpecification $body
      *  Information required to create the report. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function createReportAsync(
-        \OpenAPI\Client\Model\reports\v2021_06_30\CreateReportSpecification $body
+        \SpApi\Model\reports\v2021_06_30\CreateReportSpecification $body
     ): PromiseInterface {
         return $this->createReportAsyncWithHttpInfo($body)
             ->then(
@@ -1094,16 +1094,16 @@ class ReportsApi
      *
      * createReport
      *
-     * @param  \OpenAPI\Client\Model\reports\v2021_06_30\CreateReportSpecification $body
+     * @param  \SpApi\Model\reports\v2021_06_30\CreateReportSpecification $body
      *  Information required to create the report. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function createReportAsyncWithHttpInfo(
-        \OpenAPI\Client\Model\reports\v2021_06_30\CreateReportSpecification $body
+        \SpApi\Model\reports\v2021_06_30\CreateReportSpecification $body
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\reports\v2021_06_30\CreateReportResponse';
+        $returnType = '\SpApi\Model\reports\v2021_06_30\CreateReportResponse';
         $request = $this->createReportRequest($body);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -1147,14 +1147,14 @@ class ReportsApi
     /**
      * Create request for operation 'createReport'
      *
-     * @param  \OpenAPI\Client\Model\reports\v2021_06_30\CreateReportSpecification $body
+     * @param  \SpApi\Model\reports\v2021_06_30\CreateReportSpecification $body
      *  Information required to create the report. (required)
      *
      * @throws \InvalidArgumentException
      * @return Request
      */
     public function createReportRequest(
-        \OpenAPI\Client\Model\reports\v2021_06_30\CreateReportSpecification $body
+        \SpApi\Model\reports\v2021_06_30\CreateReportSpecification $body
     ): Request {
         // verify the required parameter 'body' is set
         if ($body === null || (is_array($body) && count($body) === 0)) {
@@ -1244,16 +1244,16 @@ class ReportsApi
      *
      * createReportSchedule
      *
-     * @param  \OpenAPI\Client\Model\reports\v2021_06_30\CreateReportScheduleSpecification $body
+     * @param  \SpApi\Model\reports\v2021_06_30\CreateReportScheduleSpecification $body
      *  Information required to create the report schedule. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\reports\v2021_06_30\CreateReportScheduleResponse
+     * @return \SpApi\Model\reports\v2021_06_30\CreateReportScheduleResponse
      */
     public function createReportSchedule(
-        \OpenAPI\Client\Model\reports\v2021_06_30\CreateReportScheduleSpecification $body
-    ): \OpenAPI\Client\Model\reports\v2021_06_30\CreateReportScheduleResponse {
+        \SpApi\Model\reports\v2021_06_30\CreateReportScheduleSpecification $body
+    ): \SpApi\Model\reports\v2021_06_30\CreateReportScheduleResponse {
         list($response) = $this->createReportScheduleWithHttpInfo($body);
         return $response;
     }
@@ -1263,15 +1263,15 @@ class ReportsApi
      *
      * createReportSchedule
      *
-     * @param  \OpenAPI\Client\Model\reports\v2021_06_30\CreateReportScheduleSpecification $body
+     * @param  \SpApi\Model\reports\v2021_06_30\CreateReportScheduleSpecification $body
      *  Information required to create the report schedule. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\reports\v2021_06_30\CreateReportScheduleResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\reports\v2021_06_30\CreateReportScheduleResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createReportScheduleWithHttpInfo(
-        \OpenAPI\Client\Model\reports\v2021_06_30\CreateReportScheduleSpecification $body
+        \SpApi\Model\reports\v2021_06_30\CreateReportScheduleSpecification $body
     ): array {
         $request = $this->createReportScheduleRequest($body);
         $request = $this->config->sign($request);
@@ -1314,143 +1314,143 @@ class ReportsApi
 
             switch($statusCode) {
                 case 201:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\CreateReportScheduleResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\CreateReportScheduleResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\CreateReportScheduleResponse' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\CreateReportScheduleResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\CreateReportScheduleResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\CreateReportScheduleResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\reports\v2021_06_30\CreateReportScheduleResponse';
+            $returnType = '\SpApi\Model\reports\v2021_06_30\CreateReportScheduleResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1471,7 +1471,7 @@ class ReportsApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\CreateReportScheduleResponse',
+                        '\SpApi\Model\reports\v2021_06_30\CreateReportScheduleResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1479,7 +1479,7 @@ class ReportsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1487,7 +1487,7 @@ class ReportsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1495,7 +1495,7 @@ class ReportsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1503,7 +1503,7 @@ class ReportsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1511,7 +1511,7 @@ class ReportsApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1519,7 +1519,7 @@ class ReportsApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1527,7 +1527,7 @@ class ReportsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1535,7 +1535,7 @@ class ReportsApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1550,14 +1550,14 @@ class ReportsApi
      *
      * createReportSchedule
      *
-     * @param  \OpenAPI\Client\Model\reports\v2021_06_30\CreateReportScheduleSpecification $body
+     * @param  \SpApi\Model\reports\v2021_06_30\CreateReportScheduleSpecification $body
      *  Information required to create the report schedule. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function createReportScheduleAsync(
-        \OpenAPI\Client\Model\reports\v2021_06_30\CreateReportScheduleSpecification $body
+        \SpApi\Model\reports\v2021_06_30\CreateReportScheduleSpecification $body
     ): PromiseInterface {
         return $this->createReportScheduleAsyncWithHttpInfo($body)
             ->then(
@@ -1572,16 +1572,16 @@ class ReportsApi
      *
      * createReportSchedule
      *
-     * @param  \OpenAPI\Client\Model\reports\v2021_06_30\CreateReportScheduleSpecification $body
+     * @param  \SpApi\Model\reports\v2021_06_30\CreateReportScheduleSpecification $body
      *  Information required to create the report schedule. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function createReportScheduleAsyncWithHttpInfo(
-        \OpenAPI\Client\Model\reports\v2021_06_30\CreateReportScheduleSpecification $body
+        \SpApi\Model\reports\v2021_06_30\CreateReportScheduleSpecification $body
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\reports\v2021_06_30\CreateReportScheduleResponse';
+        $returnType = '\SpApi\Model\reports\v2021_06_30\CreateReportScheduleResponse';
         $request = $this->createReportScheduleRequest($body);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -1625,14 +1625,14 @@ class ReportsApi
     /**
      * Create request for operation 'createReportSchedule'
      *
-     * @param  \OpenAPI\Client\Model\reports\v2021_06_30\CreateReportScheduleSpecification $body
+     * @param  \SpApi\Model\reports\v2021_06_30\CreateReportScheduleSpecification $body
      *  Information required to create the report schedule. (required)
      *
      * @throws \InvalidArgumentException
      * @return Request
      */
     public function createReportScheduleRequest(
-        \OpenAPI\Client\Model\reports\v2021_06_30\CreateReportScheduleSpecification $body
+        \SpApi\Model\reports\v2021_06_30\CreateReportScheduleSpecification $body
     ): Request {
         // verify the required parameter 'body' is set
         if ($body === null || (is_array($body) && count($body) === 0)) {
@@ -1725,13 +1725,13 @@ class ReportsApi
      * @param  string $report_id
      *  The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\reports\v2021_06_30\Report
+     * @return \SpApi\Model\reports\v2021_06_30\Report
      */
     public function getReport(
         string $report_id
-    ): \OpenAPI\Client\Model\reports\v2021_06_30\Report {
+    ): \SpApi\Model\reports\v2021_06_30\Report {
         list($response) = $this->getReportWithHttpInfo($report_id);
         return $response;
     }
@@ -1744,9 +1744,9 @@ class ReportsApi
      * @param  string $report_id
      *  The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\reports\v2021_06_30\Report, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\reports\v2021_06_30\Report, HTTP status code, HTTP response headers (array of strings)
      */
     public function getReportWithHttpInfo(
         string $report_id
@@ -1792,143 +1792,143 @@ class ReportsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\Report' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\Report' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\Report' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\Report' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\Report', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\Report', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\reports\v2021_06_30\Report';
+            $returnType = '\SpApi\Model\reports\v2021_06_30\Report';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1949,7 +1949,7 @@ class ReportsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\Report',
+                        '\SpApi\Model\reports\v2021_06_30\Report',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1957,7 +1957,7 @@ class ReportsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1965,7 +1965,7 @@ class ReportsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1973,7 +1973,7 @@ class ReportsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1981,7 +1981,7 @@ class ReportsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1989,7 +1989,7 @@ class ReportsApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1997,7 +1997,7 @@ class ReportsApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2005,7 +2005,7 @@ class ReportsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2013,7 +2013,7 @@ class ReportsApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2059,7 +2059,7 @@ class ReportsApi
     public function getReportAsyncWithHttpInfo(
         string $report_id
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\reports\v2021_06_30\Report';
+        $returnType = '\SpApi\Model\reports\v2021_06_30\Report';
         $request = $this->getReportRequest($report_id);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -2205,13 +2205,13 @@ class ReportsApi
      * @param  string $report_document_id
      *  The identifier for the report document. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\reports\v2021_06_30\ReportDocument
+     * @return \SpApi\Model\reports\v2021_06_30\ReportDocument
      */
     public function getReportDocument(
         string $report_document_id
-    ): \OpenAPI\Client\Model\reports\v2021_06_30\ReportDocument {
+    ): \SpApi\Model\reports\v2021_06_30\ReportDocument {
         list($response) = $this->getReportDocumentWithHttpInfo($report_document_id);
         return $response;
     }
@@ -2224,9 +2224,9 @@ class ReportsApi
      * @param  string $report_document_id
      *  The identifier for the report document. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\reports\v2021_06_30\ReportDocument, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\reports\v2021_06_30\ReportDocument, HTTP status code, HTTP response headers (array of strings)
      */
     public function getReportDocumentWithHttpInfo(
         string $report_document_id
@@ -2272,143 +2272,143 @@ class ReportsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ReportDocument' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ReportDocument' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ReportDocument' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ReportDocument' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ReportDocument', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ReportDocument', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\reports\v2021_06_30\ReportDocument';
+            $returnType = '\SpApi\Model\reports\v2021_06_30\ReportDocument';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2429,7 +2429,7 @@ class ReportsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ReportDocument',
+                        '\SpApi\Model\reports\v2021_06_30\ReportDocument',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2437,7 +2437,7 @@ class ReportsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2445,7 +2445,7 @@ class ReportsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2453,7 +2453,7 @@ class ReportsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2461,7 +2461,7 @@ class ReportsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2469,7 +2469,7 @@ class ReportsApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2477,7 +2477,7 @@ class ReportsApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2485,7 +2485,7 @@ class ReportsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2493,7 +2493,7 @@ class ReportsApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2539,7 +2539,7 @@ class ReportsApi
     public function getReportDocumentAsyncWithHttpInfo(
         string $report_document_id
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\reports\v2021_06_30\ReportDocument';
+        $returnType = '\SpApi\Model\reports\v2021_06_30\ReportDocument';
         $request = $this->getReportDocumentRequest($report_document_id);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -2685,13 +2685,13 @@ class ReportsApi
      * @param  string $report_schedule_id
      *  The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\reports\v2021_06_30\ReportSchedule
+     * @return \SpApi\Model\reports\v2021_06_30\ReportSchedule
      */
     public function getReportSchedule(
         string $report_schedule_id
-    ): \OpenAPI\Client\Model\reports\v2021_06_30\ReportSchedule {
+    ): \SpApi\Model\reports\v2021_06_30\ReportSchedule {
         list($response) = $this->getReportScheduleWithHttpInfo($report_schedule_id);
         return $response;
     }
@@ -2704,9 +2704,9 @@ class ReportsApi
      * @param  string $report_schedule_id
      *  The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\reports\v2021_06_30\ReportSchedule, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\reports\v2021_06_30\ReportSchedule, HTTP status code, HTTP response headers (array of strings)
      */
     public function getReportScheduleWithHttpInfo(
         string $report_schedule_id
@@ -2752,143 +2752,143 @@ class ReportsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ReportSchedule' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ReportSchedule' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ReportSchedule' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ReportSchedule' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ReportSchedule', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ReportSchedule', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\reports\v2021_06_30\ReportSchedule';
+            $returnType = '\SpApi\Model\reports\v2021_06_30\ReportSchedule';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2909,7 +2909,7 @@ class ReportsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ReportSchedule',
+                        '\SpApi\Model\reports\v2021_06_30\ReportSchedule',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2917,7 +2917,7 @@ class ReportsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2925,7 +2925,7 @@ class ReportsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2933,7 +2933,7 @@ class ReportsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2941,7 +2941,7 @@ class ReportsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2949,7 +2949,7 @@ class ReportsApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2957,7 +2957,7 @@ class ReportsApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2965,7 +2965,7 @@ class ReportsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2973,7 +2973,7 @@ class ReportsApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3019,7 +3019,7 @@ class ReportsApi
     public function getReportScheduleAsyncWithHttpInfo(
         string $report_schedule_id
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\reports\v2021_06_30\ReportSchedule';
+        $returnType = '\SpApi\Model\reports\v2021_06_30\ReportSchedule';
         $request = $this->getReportScheduleRequest($report_schedule_id);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -3165,13 +3165,13 @@ class ReportsApi
      * @param  string[] $report_types
      *  A list of report types used to filter report schedules. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\reports\v2021_06_30\ReportScheduleList
+     * @return \SpApi\Model\reports\v2021_06_30\ReportScheduleList
      */
     public function getReportSchedules(
         array $report_types
-    ): \OpenAPI\Client\Model\reports\v2021_06_30\ReportScheduleList {
+    ): \SpApi\Model\reports\v2021_06_30\ReportScheduleList {
         list($response) = $this->getReportSchedulesWithHttpInfo($report_types);
         return $response;
     }
@@ -3184,9 +3184,9 @@ class ReportsApi
      * @param  string[] $report_types
      *  A list of report types used to filter report schedules. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\reports\v2021_06_30\ReportScheduleList, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\reports\v2021_06_30\ReportScheduleList, HTTP status code, HTTP response headers (array of strings)
      */
     public function getReportSchedulesWithHttpInfo(
         array $report_types
@@ -3232,143 +3232,143 @@ class ReportsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ReportScheduleList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ReportScheduleList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ReportScheduleList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ReportScheduleList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ReportScheduleList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ReportScheduleList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\reports\v2021_06_30\ReportScheduleList';
+            $returnType = '\SpApi\Model\reports\v2021_06_30\ReportScheduleList';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -3389,7 +3389,7 @@ class ReportsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ReportScheduleList',
+                        '\SpApi\Model\reports\v2021_06_30\ReportScheduleList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3397,7 +3397,7 @@ class ReportsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3405,7 +3405,7 @@ class ReportsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3413,7 +3413,7 @@ class ReportsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3421,7 +3421,7 @@ class ReportsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3429,7 +3429,7 @@ class ReportsApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3437,7 +3437,7 @@ class ReportsApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3445,7 +3445,7 @@ class ReportsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3453,7 +3453,7 @@ class ReportsApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3499,7 +3499,7 @@ class ReportsApi
     public function getReportSchedulesAsyncWithHttpInfo(
         array $report_types
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\reports\v2021_06_30\ReportScheduleList';
+        $returnType = '\SpApi\Model\reports\v2021_06_30\ReportScheduleList';
         $request = $this->getReportSchedulesRequest($report_types);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -3665,9 +3665,9 @@ class ReportsApi
      * @param  string|null $next_token
      *  A string token returned in the response to your previous request. &#x60;nextToken&#x60; is returned when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the &#x60;getReports&#x60; operation and include this token as the only parameter. Specifying &#x60;nextToken&#x60; with any other parameters will cause the request to fail. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\reports\v2021_06_30\GetReportsResponse
+     * @return \SpApi\Model\reports\v2021_06_30\GetReportsResponse
      */
     public function getReports(
         ?array $report_types = null,
@@ -3677,7 +3677,7 @@ class ReportsApi
         ?\DateTime $created_since = null,
         ?\DateTime $created_until = null,
         ?string $next_token = null
-    ): \OpenAPI\Client\Model\reports\v2021_06_30\GetReportsResponse {
+    ): \SpApi\Model\reports\v2021_06_30\GetReportsResponse {
         list($response) = $this->getReportsWithHttpInfo($report_types, $processing_statuses, $marketplace_ids, $page_size, $created_since, $created_until, $next_token);
         return $response;
     }
@@ -3702,9 +3702,9 @@ class ReportsApi
      * @param  string|null $next_token
      *  A string token returned in the response to your previous request. &#x60;nextToken&#x60; is returned when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the &#x60;getReports&#x60; operation and include this token as the only parameter. Specifying &#x60;nextToken&#x60; with any other parameters will cause the request to fail. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\reports\v2021_06_30\GetReportsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\reports\v2021_06_30\GetReportsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getReportsWithHttpInfo(
         ?array $report_types = null,
@@ -3756,143 +3756,143 @@ class ReportsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\GetReportsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\GetReportsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\GetReportsResponse' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\GetReportsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\GetReportsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\GetReportsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\reports\v2021_06_30\GetReportsResponse';
+            $returnType = '\SpApi\Model\reports\v2021_06_30\GetReportsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -3913,7 +3913,7 @@ class ReportsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\GetReportsResponse',
+                        '\SpApi\Model\reports\v2021_06_30\GetReportsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3921,7 +3921,7 @@ class ReportsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3929,7 +3929,7 @@ class ReportsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3937,7 +3937,7 @@ class ReportsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3945,7 +3945,7 @@ class ReportsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3953,7 +3953,7 @@ class ReportsApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3961,7 +3961,7 @@ class ReportsApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3969,7 +3969,7 @@ class ReportsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3977,7 +3977,7 @@ class ReportsApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\reports\v2021_06_30\ErrorList',
+                        '\SpApi\Model\reports\v2021_06_30\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4059,7 +4059,7 @@ class ReportsApi
         ?\DateTime $created_until = null,
         ?string $next_token = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\reports\v2021_06_30\GetReportsResponse';
+        $returnType = '\SpApi\Model\reports\v2021_06_30\GetReportsResponse';
         $request = $this->getReportsRequest($report_types, $processing_statuses, $marketplace_ids, $page_size, $created_since, $created_until, $next_token);
         $request = $this->config->sign($request);
         $this->rateLimitWait();

@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01;
+namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetFeatureInventoryResult Class Doc Comment
  *
  * @category Class
  * @description The payload for the &#x60;getEligibileInventory&#x60; operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,7 +63,7 @@ class GetFeatureInventoryResult implements ModelInterface, ArrayAccess, \JsonSer
              'marketplace_id' => 'string',
              'feature_name' => 'string',
              'next_token' => 'string',
-             'feature_skus' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\FeatureSku[]'    ];
+             'feature_skus' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\FeatureSku[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

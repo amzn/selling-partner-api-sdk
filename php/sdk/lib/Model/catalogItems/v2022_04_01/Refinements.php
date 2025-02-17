@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\catalogItems\v2022_04_01;
+namespace SpApi\Model\catalogItems\v2022_04_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Refinements Class Doc Comment
  *
  * @category Class
  * @description Search refinements.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class Refinements implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'brands' => '\OpenAPI\Client\Model\catalogItems\v2022_04_01\BrandRefinement[]',
-             'classifications' => '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ClassificationRefinement[]'    ];
+             'brands' => '\SpApi\Model\catalogItems\v2022_04_01\BrandRefinement[]',
+             'classifications' => '\SpApi\Model\catalogItems\v2022_04_01\ClassificationRefinement[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\replenishment\v2022_11_07\ListOfferMetricsRequestFilters;
+use SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsRequestFilters;
 
 /**
  * ListOfferMetricsRequestFiltersTest Class Doc Comment
  *
  * @category    Class
  * @description Use these parameters to filter results. Any result must match all provided parameters. For any parameter that is an array, the result must match at least one element in the provided array.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ListOfferMetricsRequestFiltersTest extends TestCase
 {
@@ -56,7 +56,7 @@ class ListOfferMetricsRequestFiltersTest extends TestCase
      */
     public function testPropertyAggregationFrequency()
     {
-        $enumInstance = new \OpenAPI\Client\Model\replenishment\v2022_11_07\AggregationFrequency();
+        $enumInstance = new \SpApi\Model\replenishment\v2022_11_07\AggregationFrequency();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -70,7 +70,7 @@ class ListOfferMetricsRequestFiltersTest extends TestCase
     public function testPropertyTimeInterval()
     {
         
-        $testValue = new \OpenAPI\Client\Model\replenishment\v2022_11_07\TimeInterval();
+        $testValue = new \SpApi\Model\replenishment\v2022_11_07\TimeInterval();
         
         $this->model->setTimeInterval($testValue);
         $this->assertEquals($testValue, $this->model->getTimeInterval());
@@ -81,7 +81,7 @@ class ListOfferMetricsRequestFiltersTest extends TestCase
      */
     public function testPropertyTimePeriodType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\replenishment\v2022_11_07\TimePeriodType();
+        $enumInstance = new \SpApi\Model\replenishment\v2022_11_07\TimePeriodType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

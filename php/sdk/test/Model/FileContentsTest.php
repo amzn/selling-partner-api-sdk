@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantFulfillment\v0\FileContents;
+use SpApi\Model\merchantFulfillment\v0\FileContents;
 
 /**
  * FileContentsTest Class Doc Comment
  *
  * @category    Class
  * @description The document data and checksum.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class FileContentsTest extends TestCase
 {
@@ -67,7 +67,7 @@ class FileContentsTest extends TestCase
      */
     public function testPropertyFileType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\merchantFulfillment\v0\FileType();
+        $enumInstance = new \SpApi\Model\merchantFulfillment\v0\FileType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

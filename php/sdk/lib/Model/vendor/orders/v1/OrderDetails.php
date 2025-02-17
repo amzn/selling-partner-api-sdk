@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\orders\v1;
+namespace SpApi\Model\vendor\orders\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * OrderDetails Class Doc Comment
  *
  * @category Class
  * @description Details of an order.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -64,16 +64,16 @@ class OrderDetails implements ModelInterface, ArrayAccess, \JsonSerializable
              'purchase_order_changed_date' => '\DateTime',
              'purchase_order_state_changed_date' => '\DateTime',
              'purchase_order_type' => 'string',
-             'import_details' => '\OpenAPI\Client\Model\vendor\orders\v1\ImportDetails',
+             'import_details' => '\SpApi\Model\vendor\orders\v1\ImportDetails',
              'deal_code' => 'string',
              'payment_method' => 'string',
-             'buying_party' => '\OpenAPI\Client\Model\vendor\orders\v1\PartyIdentification',
-             'selling_party' => '\OpenAPI\Client\Model\vendor\orders\v1\PartyIdentification',
-             'ship_to_party' => '\OpenAPI\Client\Model\vendor\orders\v1\PartyIdentification',
-             'bill_to_party' => '\OpenAPI\Client\Model\vendor\orders\v1\PartyIdentification',
+             'buying_party' => '\SpApi\Model\vendor\orders\v1\PartyIdentification',
+             'selling_party' => '\SpApi\Model\vendor\orders\v1\PartyIdentification',
+             'ship_to_party' => '\SpApi\Model\vendor\orders\v1\PartyIdentification',
+             'bill_to_party' => '\SpApi\Model\vendor\orders\v1\PartyIdentification',
              'ship_window' => 'string',
              'delivery_window' => 'string',
-             'items' => '\OpenAPI\Client\Model\vendor\orders\v1\OrderItem[]'    ];
+             'items' => '\SpApi\Model\vendor\orders\v1\OrderItem[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -582,9 +582,9 @@ class OrderDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets import_details
      *
-     * @return \OpenAPI\Client\Model\vendor\orders\v1\ImportDetails|null
+     * @return \SpApi\Model\vendor\orders\v1\ImportDetails|null
      */
-    public function getImportDetails(): ?\OpenAPI\Client\Model\vendor\orders\v1\ImportDetails
+    public function getImportDetails(): ?\SpApi\Model\vendor\orders\v1\ImportDetails
     {
         return $this->container['import_details'];
     }
@@ -592,11 +592,11 @@ class OrderDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets import_details
      *
-     * @param \OpenAPI\Client\Model\vendor\orders\v1\ImportDetails|null $import_details import_details
+     * @param \SpApi\Model\vendor\orders\v1\ImportDetails|null $import_details import_details
      *
      * @return self
      */
-    public function setImportDetails(?\OpenAPI\Client\Model\vendor\orders\v1\ImportDetails $import_details): self
+    public function setImportDetails(?\SpApi\Model\vendor\orders\v1\ImportDetails $import_details): self
     {
         if (is_null($import_details)) {
             array_push($this->openAPINullablesSetToNull, 'import_details');
@@ -694,9 +694,9 @@ class OrderDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets buying_party
      *
-     * @return \OpenAPI\Client\Model\vendor\orders\v1\PartyIdentification|null
+     * @return \SpApi\Model\vendor\orders\v1\PartyIdentification|null
      */
-    public function getBuyingParty(): ?\OpenAPI\Client\Model\vendor\orders\v1\PartyIdentification
+    public function getBuyingParty(): ?\SpApi\Model\vendor\orders\v1\PartyIdentification
     {
         return $this->container['buying_party'];
     }
@@ -704,11 +704,11 @@ class OrderDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets buying_party
      *
-     * @param \OpenAPI\Client\Model\vendor\orders\v1\PartyIdentification|null $buying_party buying_party
+     * @param \SpApi\Model\vendor\orders\v1\PartyIdentification|null $buying_party buying_party
      *
      * @return self
      */
-    public function setBuyingParty(?\OpenAPI\Client\Model\vendor\orders\v1\PartyIdentification $buying_party): self
+    public function setBuyingParty(?\SpApi\Model\vendor\orders\v1\PartyIdentification $buying_party): self
     {
         if (is_null($buying_party)) {
             array_push($this->openAPINullablesSetToNull, 'buying_party');
@@ -728,9 +728,9 @@ class OrderDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets selling_party
      *
-     * @return \OpenAPI\Client\Model\vendor\orders\v1\PartyIdentification|null
+     * @return \SpApi\Model\vendor\orders\v1\PartyIdentification|null
      */
-    public function getSellingParty(): ?\OpenAPI\Client\Model\vendor\orders\v1\PartyIdentification
+    public function getSellingParty(): ?\SpApi\Model\vendor\orders\v1\PartyIdentification
     {
         return $this->container['selling_party'];
     }
@@ -738,11 +738,11 @@ class OrderDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets selling_party
      *
-     * @param \OpenAPI\Client\Model\vendor\orders\v1\PartyIdentification|null $selling_party selling_party
+     * @param \SpApi\Model\vendor\orders\v1\PartyIdentification|null $selling_party selling_party
      *
      * @return self
      */
-    public function setSellingParty(?\OpenAPI\Client\Model\vendor\orders\v1\PartyIdentification $selling_party): self
+    public function setSellingParty(?\SpApi\Model\vendor\orders\v1\PartyIdentification $selling_party): self
     {
         if (is_null($selling_party)) {
             array_push($this->openAPINullablesSetToNull, 'selling_party');
@@ -762,9 +762,9 @@ class OrderDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets ship_to_party
      *
-     * @return \OpenAPI\Client\Model\vendor\orders\v1\PartyIdentification|null
+     * @return \SpApi\Model\vendor\orders\v1\PartyIdentification|null
      */
-    public function getShipToParty(): ?\OpenAPI\Client\Model\vendor\orders\v1\PartyIdentification
+    public function getShipToParty(): ?\SpApi\Model\vendor\orders\v1\PartyIdentification
     {
         return $this->container['ship_to_party'];
     }
@@ -772,11 +772,11 @@ class OrderDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ship_to_party
      *
-     * @param \OpenAPI\Client\Model\vendor\orders\v1\PartyIdentification|null $ship_to_party ship_to_party
+     * @param \SpApi\Model\vendor\orders\v1\PartyIdentification|null $ship_to_party ship_to_party
      *
      * @return self
      */
-    public function setShipToParty(?\OpenAPI\Client\Model\vendor\orders\v1\PartyIdentification $ship_to_party): self
+    public function setShipToParty(?\SpApi\Model\vendor\orders\v1\PartyIdentification $ship_to_party): self
     {
         if (is_null($ship_to_party)) {
             array_push($this->openAPINullablesSetToNull, 'ship_to_party');
@@ -796,9 +796,9 @@ class OrderDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets bill_to_party
      *
-     * @return \OpenAPI\Client\Model\vendor\orders\v1\PartyIdentification|null
+     * @return \SpApi\Model\vendor\orders\v1\PartyIdentification|null
      */
-    public function getBillToParty(): ?\OpenAPI\Client\Model\vendor\orders\v1\PartyIdentification
+    public function getBillToParty(): ?\SpApi\Model\vendor\orders\v1\PartyIdentification
     {
         return $this->container['bill_to_party'];
     }
@@ -806,11 +806,11 @@ class OrderDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets bill_to_party
      *
-     * @param \OpenAPI\Client\Model\vendor\orders\v1\PartyIdentification|null $bill_to_party bill_to_party
+     * @param \SpApi\Model\vendor\orders\v1\PartyIdentification|null $bill_to_party bill_to_party
      *
      * @return self
      */
-    public function setBillToParty(?\OpenAPI\Client\Model\vendor\orders\v1\PartyIdentification $bill_to_party): self
+    public function setBillToParty(?\SpApi\Model\vendor\orders\v1\PartyIdentification $bill_to_party): self
     {
         if (is_null($bill_to_party)) {
             array_push($this->openAPINullablesSetToNull, 'bill_to_party');

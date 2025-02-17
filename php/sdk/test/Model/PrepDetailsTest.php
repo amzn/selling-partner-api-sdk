@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\awd\v2024_05_09\PrepDetails;
+use SpApi\Model\awd\v2024_05_09\PrepDetails;
 
 /**
  * PrepDetailsTest Class Doc Comment
  *
  * @category    Class
  * @description The preparation details for a product. This contains the prep category, prep owner, and label owner. Prep instructions are generated based on the specified category.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class PrepDetailsTest extends TestCase
 {
@@ -56,7 +56,7 @@ class PrepDetailsTest extends TestCase
      */
     public function testPropertyLabelOwner()
     {
-        $enumInstance = new \OpenAPI\Client\Model\awd\v2024_05_09\LabelOwner();
+        $enumInstance = new \SpApi\Model\awd\v2024_05_09\LabelOwner();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -91,7 +91,7 @@ class PrepDetailsTest extends TestCase
      */
     public function testPropertyPrepOwner()
     {
-        $enumInstance = new \OpenAPI\Client\Model\awd\v2024_05_09\PrepOwner();
+        $enumInstance = new \SpApi\Model\awd\v2024_05_09\PrepOwner();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

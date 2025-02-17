@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\catalogItems\v2022_04_01\BrandRefinement;
+use SpApi\Model\catalogItems\v2022_04_01\BrandRefinement;
 
 /**
  * BrandRefinementTest Class Doc Comment
  *
  * @category    Class
  * @description Description of a brand that can be used to get more fine-grained search results.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class BrandRefinementTest extends TestCase
 {

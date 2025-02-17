@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\supplySources\v2020_07_01\ThroughputCap;
+use SpApi\Model\supplySources\v2020_07_01\ThroughputCap;
 
 /**
  * ThroughputCapTest Class Doc Comment
  *
  * @category    Class
  * @description The throughput capacity
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ThroughputCapTest extends TestCase
 {
@@ -67,7 +67,7 @@ class ThroughputCapTest extends TestCase
      */
     public function testPropertyTimeUnit()
     {
-        $enumInstance = new \OpenAPI\Client\Model\supplySources\v2020_07_01\TimeUnit();
+        $enumInstance = new \SpApi\Model\supplySources\v2020_07_01\TimeUnit();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

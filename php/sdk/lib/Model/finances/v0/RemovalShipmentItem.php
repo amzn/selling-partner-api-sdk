@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\finances\v0;
+namespace SpApi\Model\finances\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * RemovalShipmentItem Class Doc Comment
  *
  * @category Class
  * @description Item-level information for a removal shipment.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -64,10 +64,10 @@ class RemovalShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializa
              'tax_collection_model' => 'string',
              'fulfillment_network_sku' => 'string',
              'quantity' => 'int',
-             'revenue' => '\OpenAPI\Client\Model\finances\v0\Currency',
-             'fee_amount' => '\OpenAPI\Client\Model\finances\v0\Currency',
-             'tax_amount' => '\OpenAPI\Client\Model\finances\v0\Currency',
-             'tax_withheld' => '\OpenAPI\Client\Model\finances\v0\Currency'    ];
+             'revenue' => '\SpApi\Model\finances\v0\Currency',
+             'fee_amount' => '\SpApi\Model\finances\v0\Currency',
+             'tax_amount' => '\SpApi\Model\finances\v0\Currency',
+             'tax_withheld' => '\SpApi\Model\finances\v0\Currency'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -479,9 +479,9 @@ class RemovalShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets revenue
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency|null
+     * @return \SpApi\Model\finances\v0\Currency|null
      */
-    public function getRevenue(): ?\OpenAPI\Client\Model\finances\v0\Currency
+    public function getRevenue(): ?\SpApi\Model\finances\v0\Currency
     {
         return $this->container['revenue'];
     }
@@ -489,11 +489,11 @@ class RemovalShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets revenue
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency|null $revenue revenue
+     * @param \SpApi\Model\finances\v0\Currency|null $revenue revenue
      *
      * @return self
      */
-    public function setRevenue(?\OpenAPI\Client\Model\finances\v0\Currency $revenue): self
+    public function setRevenue(?\SpApi\Model\finances\v0\Currency $revenue): self
     {
         if (is_null($revenue)) {
             array_push($this->openAPINullablesSetToNull, 'revenue');
@@ -513,9 +513,9 @@ class RemovalShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets fee_amount
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency|null
+     * @return \SpApi\Model\finances\v0\Currency|null
      */
-    public function getFeeAmount(): ?\OpenAPI\Client\Model\finances\v0\Currency
+    public function getFeeAmount(): ?\SpApi\Model\finances\v0\Currency
     {
         return $this->container['fee_amount'];
     }
@@ -523,11 +523,11 @@ class RemovalShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets fee_amount
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency|null $fee_amount fee_amount
+     * @param \SpApi\Model\finances\v0\Currency|null $fee_amount fee_amount
      *
      * @return self
      */
-    public function setFeeAmount(?\OpenAPI\Client\Model\finances\v0\Currency $fee_amount): self
+    public function setFeeAmount(?\SpApi\Model\finances\v0\Currency $fee_amount): self
     {
         if (is_null($fee_amount)) {
             array_push($this->openAPINullablesSetToNull, 'fee_amount');
@@ -547,9 +547,9 @@ class RemovalShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets tax_amount
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency|null
+     * @return \SpApi\Model\finances\v0\Currency|null
      */
-    public function getTaxAmount(): ?\OpenAPI\Client\Model\finances\v0\Currency
+    public function getTaxAmount(): ?\SpApi\Model\finances\v0\Currency
     {
         return $this->container['tax_amount'];
     }
@@ -557,11 +557,11 @@ class RemovalShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets tax_amount
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency|null $tax_amount tax_amount
+     * @param \SpApi\Model\finances\v0\Currency|null $tax_amount tax_amount
      *
      * @return self
      */
-    public function setTaxAmount(?\OpenAPI\Client\Model\finances\v0\Currency $tax_amount): self
+    public function setTaxAmount(?\SpApi\Model\finances\v0\Currency $tax_amount): self
     {
         if (is_null($tax_amount)) {
             array_push($this->openAPINullablesSetToNull, 'tax_amount');
@@ -581,9 +581,9 @@ class RemovalShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets tax_withheld
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency|null
+     * @return \SpApi\Model\finances\v0\Currency|null
      */
-    public function getTaxWithheld(): ?\OpenAPI\Client\Model\finances\v0\Currency
+    public function getTaxWithheld(): ?\SpApi\Model\finances\v0\Currency
     {
         return $this->container['tax_withheld'];
     }
@@ -591,11 +591,11 @@ class RemovalShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets tax_withheld
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency|null $tax_withheld tax_withheld
+     * @param \SpApi\Model\finances\v0\Currency|null $tax_withheld tax_withheld
      *
      * @return self
      */
-    public function setTaxWithheld(?\OpenAPI\Client\Model\finances\v0\Currency $tax_withheld): self
+    public function setTaxWithheld(?\SpApi\Model\finances\v0\Currency $tax_withheld): self
     {
         if (is_null($tax_withheld)) {
             array_push($this->openAPINullablesSetToNull, 'tax_withheld');

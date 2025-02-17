@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\awd\v2024_05_09\InboundShipment;
+use SpApi\Model\awd\v2024_05_09\InboundShipment;
 
 /**
  * InboundShipmentTest Class Doc Comment
  *
  * @category    Class
  * @description Represents an AWD inbound shipment.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class InboundShipmentTest extends TestCase
 {
@@ -57,7 +57,7 @@ class InboundShipmentTest extends TestCase
     public function testPropertyCarrierCode()
     {
         
-        $testValue = new \OpenAPI\Client\Model\awd\v2024_05_09\CarrierCode();
+        $testValue = new \SpApi\Model\awd\v2024_05_09\CarrierCode();
         
         $this->model->setCarrierCode($testValue);
         $this->assertEquals($testValue, $this->model->getCarrierCode());
@@ -81,7 +81,7 @@ class InboundShipmentTest extends TestCase
     public function testPropertyDestinationAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\awd\v2024_05_09\Address();
+        $testValue = new \SpApi\Model\awd\v2024_05_09\Address();
         
         $this->model->setDestinationAddress($testValue);
         $this->assertEquals($testValue, $this->model->getDestinationAddress());
@@ -115,7 +115,7 @@ class InboundShipmentTest extends TestCase
     public function testPropertyOriginAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\awd\v2024_05_09\Address();
+        $testValue = new \SpApi\Model\awd\v2024_05_09\Address();
         
         $this->model->setOriginAddress($testValue);
         $this->assertEquals($testValue, $this->model->getOriginAddress());
@@ -193,7 +193,7 @@ class InboundShipmentTest extends TestCase
      */
     public function testPropertyShipmentStatus()
     {
-        $enumInstance = new \OpenAPI\Client\Model\awd\v2024_05_09\InboundShipmentStatus();
+        $enumInstance = new \SpApi\Model\awd\v2024_05_09\InboundShipmentStatus();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\easyship\v2022_03_23;
+namespace SpApi\Model\easyship\v2022_03_23;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * OrderScheduleDetails Class Doc Comment
  *
  * @category Class
  * @description This object allows users to specify an order to be scheduled. Only the amazonOrderId is required.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class OrderScheduleDetails implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static array $openAPITypes = [
              'amazon_order_id' => 'string',
-             'package_details' => '\OpenAPI\Client\Model\easyship\v2022_03_23\PackageDetails'    ];
+             'package_details' => '\SpApi\Model\easyship\v2022_03_23\PackageDetails'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -331,9 +331,9 @@ class OrderScheduleDetails implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets package_details
      *
-     * @return \OpenAPI\Client\Model\easyship\v2022_03_23\PackageDetails|null
+     * @return \SpApi\Model\easyship\v2022_03_23\PackageDetails|null
      */
-    public function getPackageDetails(): ?\OpenAPI\Client\Model\easyship\v2022_03_23\PackageDetails
+    public function getPackageDetails(): ?\SpApi\Model\easyship\v2022_03_23\PackageDetails
     {
         return $this->container['package_details'];
     }
@@ -341,11 +341,11 @@ class OrderScheduleDetails implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets package_details
      *
-     * @param \OpenAPI\Client\Model\easyship\v2022_03_23\PackageDetails|null $package_details package_details
+     * @param \SpApi\Model\easyship\v2022_03_23\PackageDetails|null $package_details package_details
      *
      * @return self
      */
-    public function setPackageDetails(?\OpenAPI\Client\Model\easyship\v2022_03_23\PackageDetails $package_details): self
+    public function setPackageDetails(?\SpApi\Model\easyship\v2022_03_23\PackageDetails $package_details): self
     {
         if (is_null($package_details)) {
             array_push($this->openAPINullablesSetToNull, 'package_details');

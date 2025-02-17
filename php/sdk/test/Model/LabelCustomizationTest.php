@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantFulfillment\v0\LabelCustomization;
+use SpApi\Model\merchantFulfillment\v0\LabelCustomization;
 
 /**
  * LabelCustomizationTest Class Doc Comment
  *
  * @category    Class
  * @description Custom text for shipping labels.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class LabelCustomizationTest extends TestCase
 {
@@ -67,7 +67,7 @@ class LabelCustomizationTest extends TestCase
      */
     public function testPropertyStandardIdForLabel()
     {
-        $enumInstance = new \OpenAPI\Client\Model\merchantFulfillment\v0\StandardIdForLabel();
+        $enumInstance = new \SpApi\Model\merchantFulfillment\v0\StandardIdForLabel();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

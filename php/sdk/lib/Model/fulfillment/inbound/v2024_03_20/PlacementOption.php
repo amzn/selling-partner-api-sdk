@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20;
+namespace SpApi\Model\fulfillment\inbound\v2024_03_20;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * PlacementOption Class Doc Comment
  *
  * @category Class
  * @description Contains information pertaining to the placement of the contents of an inbound plan and the related costs.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,9 +60,9 @@ class PlacementOption implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'discounts' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Incentive[]',
+             'discounts' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\Incentive[]',
              'expiration' => '\DateTime',
-             'fees' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Incentive[]',
+             'fees' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\Incentive[]',
              'placement_option_id' => 'string',
              'shipment_ids' => 'string[]',
              'status' => 'string'    ];

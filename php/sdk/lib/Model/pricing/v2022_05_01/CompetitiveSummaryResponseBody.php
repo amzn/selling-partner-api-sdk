@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\pricing\v2022_05_01;
+namespace SpApi\Model\pricing\v2022_05_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * CompetitiveSummaryResponseBody Class Doc Comment
  *
  * @category Class
  * @description The &#x60;competitiveSummaryResponse&#x60; body for a requested ASIN and &#x60;marketplaceId&#x60;.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,10 +62,10 @@ class CompetitiveSummaryResponseBody implements ModelInterface, ArrayAccess, \Js
     protected static array $openAPITypes = [
              'asin' => 'string',
              'marketplace_id' => 'string',
-             'featured_buying_options' => '\OpenAPI\Client\Model\pricing\v2022_05_01\FeaturedBuyingOption[]',
-             'lowest_priced_offers' => '\OpenAPI\Client\Model\pricing\v2022_05_01\LowestPricedOffer[]',
-             'reference_prices' => '\OpenAPI\Client\Model\pricing\v2022_05_01\ReferencePrice[]',
-             'errors' => '\OpenAPI\Client\Model\pricing\v2022_05_01\Error[]'    ];
+             'featured_buying_options' => '\SpApi\Model\pricing\v2022_05_01\FeaturedBuyingOption[]',
+             'lowest_priced_offers' => '\SpApi\Model\pricing\v2022_05_01\LowestPricedOffer[]',
+             'reference_prices' => '\SpApi\Model\pricing\v2022_05_01\ReferencePrice[]',
+             'errors' => '\SpApi\Model\pricing\v2022_05_01\Error[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

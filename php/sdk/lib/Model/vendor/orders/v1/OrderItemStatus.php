@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\orders\v1;
+namespace SpApi\Model\vendor\orders\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * OrderItemStatus Class Doc Comment
  *
  * @category Class
  * @description Represents the current status of an order item, including acknowledgement and receiving details.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,11 +63,11 @@ class OrderItemStatus implements ModelInterface, ArrayAccess, \JsonSerializable
              'item_sequence_number' => 'string',
              'buyer_product_identifier' => 'string',
              'vendor_product_identifier' => 'string',
-             'net_cost' => '\OpenAPI\Client\Model\vendor\orders\v1\Money',
-             'list_price' => '\OpenAPI\Client\Model\vendor\orders\v1\Money',
-             'ordered_quantity' => '\OpenAPI\Client\Model\vendor\orders\v1\OrderItemStatusOrderedQuantity',
-             'acknowledgement_status' => '\OpenAPI\Client\Model\vendor\orders\v1\OrderItemStatusAcknowledgementStatus',
-             'receiving_status' => '\OpenAPI\Client\Model\vendor\orders\v1\OrderItemStatusReceivingStatus'    ];
+             'net_cost' => '\SpApi\Model\vendor\orders\v1\Money',
+             'list_price' => '\SpApi\Model\vendor\orders\v1\Money',
+             'ordered_quantity' => '\SpApi\Model\vendor\orders\v1\OrderItemStatusOrderedQuantity',
+             'acknowledgement_status' => '\SpApi\Model\vendor\orders\v1\OrderItemStatusAcknowledgementStatus',
+             'receiving_status' => '\SpApi\Model\vendor\orders\v1\OrderItemStatusReceivingStatus'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -441,9 +441,9 @@ class OrderItemStatus implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets net_cost
      *
-     * @return \OpenAPI\Client\Model\vendor\orders\v1\Money|null
+     * @return \SpApi\Model\vendor\orders\v1\Money|null
      */
-    public function getNetCost(): ?\OpenAPI\Client\Model\vendor\orders\v1\Money
+    public function getNetCost(): ?\SpApi\Model\vendor\orders\v1\Money
     {
         return $this->container['net_cost'];
     }
@@ -451,11 +451,11 @@ class OrderItemStatus implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets net_cost
      *
-     * @param \OpenAPI\Client\Model\vendor\orders\v1\Money|null $net_cost net_cost
+     * @param \SpApi\Model\vendor\orders\v1\Money|null $net_cost net_cost
      *
      * @return self
      */
-    public function setNetCost(?\OpenAPI\Client\Model\vendor\orders\v1\Money $net_cost): self
+    public function setNetCost(?\SpApi\Model\vendor\orders\v1\Money $net_cost): self
     {
         if (is_null($net_cost)) {
             array_push($this->openAPINullablesSetToNull, 'net_cost');
@@ -475,9 +475,9 @@ class OrderItemStatus implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets list_price
      *
-     * @return \OpenAPI\Client\Model\vendor\orders\v1\Money|null
+     * @return \SpApi\Model\vendor\orders\v1\Money|null
      */
-    public function getListPrice(): ?\OpenAPI\Client\Model\vendor\orders\v1\Money
+    public function getListPrice(): ?\SpApi\Model\vendor\orders\v1\Money
     {
         return $this->container['list_price'];
     }
@@ -485,11 +485,11 @@ class OrderItemStatus implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets list_price
      *
-     * @param \OpenAPI\Client\Model\vendor\orders\v1\Money|null $list_price list_price
+     * @param \SpApi\Model\vendor\orders\v1\Money|null $list_price list_price
      *
      * @return self
      */
-    public function setListPrice(?\OpenAPI\Client\Model\vendor\orders\v1\Money $list_price): self
+    public function setListPrice(?\SpApi\Model\vendor\orders\v1\Money $list_price): self
     {
         if (is_null($list_price)) {
             array_push($this->openAPINullablesSetToNull, 'list_price');
@@ -509,9 +509,9 @@ class OrderItemStatus implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets ordered_quantity
      *
-     * @return \OpenAPI\Client\Model\vendor\orders\v1\OrderItemStatusOrderedQuantity|null
+     * @return \SpApi\Model\vendor\orders\v1\OrderItemStatusOrderedQuantity|null
      */
-    public function getOrderedQuantity(): ?\OpenAPI\Client\Model\vendor\orders\v1\OrderItemStatusOrderedQuantity
+    public function getOrderedQuantity(): ?\SpApi\Model\vendor\orders\v1\OrderItemStatusOrderedQuantity
     {
         return $this->container['ordered_quantity'];
     }
@@ -519,11 +519,11 @@ class OrderItemStatus implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ordered_quantity
      *
-     * @param \OpenAPI\Client\Model\vendor\orders\v1\OrderItemStatusOrderedQuantity|null $ordered_quantity ordered_quantity
+     * @param \SpApi\Model\vendor\orders\v1\OrderItemStatusOrderedQuantity|null $ordered_quantity ordered_quantity
      *
      * @return self
      */
-    public function setOrderedQuantity(?\OpenAPI\Client\Model\vendor\orders\v1\OrderItemStatusOrderedQuantity $ordered_quantity): self
+    public function setOrderedQuantity(?\SpApi\Model\vendor\orders\v1\OrderItemStatusOrderedQuantity $ordered_quantity): self
     {
         if (is_null($ordered_quantity)) {
             array_push($this->openAPINullablesSetToNull, 'ordered_quantity');
@@ -543,9 +543,9 @@ class OrderItemStatus implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets acknowledgement_status
      *
-     * @return \OpenAPI\Client\Model\vendor\orders\v1\OrderItemStatusAcknowledgementStatus|null
+     * @return \SpApi\Model\vendor\orders\v1\OrderItemStatusAcknowledgementStatus|null
      */
-    public function getAcknowledgementStatus(): ?\OpenAPI\Client\Model\vendor\orders\v1\OrderItemStatusAcknowledgementStatus
+    public function getAcknowledgementStatus(): ?\SpApi\Model\vendor\orders\v1\OrderItemStatusAcknowledgementStatus
     {
         return $this->container['acknowledgement_status'];
     }
@@ -553,11 +553,11 @@ class OrderItemStatus implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets acknowledgement_status
      *
-     * @param \OpenAPI\Client\Model\vendor\orders\v1\OrderItemStatusAcknowledgementStatus|null $acknowledgement_status acknowledgement_status
+     * @param \SpApi\Model\vendor\orders\v1\OrderItemStatusAcknowledgementStatus|null $acknowledgement_status acknowledgement_status
      *
      * @return self
      */
-    public function setAcknowledgementStatus(?\OpenAPI\Client\Model\vendor\orders\v1\OrderItemStatusAcknowledgementStatus $acknowledgement_status): self
+    public function setAcknowledgementStatus(?\SpApi\Model\vendor\orders\v1\OrderItemStatusAcknowledgementStatus $acknowledgement_status): self
     {
         if (is_null($acknowledgement_status)) {
             array_push($this->openAPINullablesSetToNull, 'acknowledgement_status');
@@ -577,9 +577,9 @@ class OrderItemStatus implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets receiving_status
      *
-     * @return \OpenAPI\Client\Model\vendor\orders\v1\OrderItemStatusReceivingStatus|null
+     * @return \SpApi\Model\vendor\orders\v1\OrderItemStatusReceivingStatus|null
      */
-    public function getReceivingStatus(): ?\OpenAPI\Client\Model\vendor\orders\v1\OrderItemStatusReceivingStatus
+    public function getReceivingStatus(): ?\SpApi\Model\vendor\orders\v1\OrderItemStatusReceivingStatus
     {
         return $this->container['receiving_status'];
     }
@@ -587,11 +587,11 @@ class OrderItemStatus implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets receiving_status
      *
-     * @param \OpenAPI\Client\Model\vendor\orders\v1\OrderItemStatusReceivingStatus|null $receiving_status receiving_status
+     * @param \SpApi\Model\vendor\orders\v1\OrderItemStatusReceivingStatus|null $receiving_status receiving_status
      *
      * @return self
      */
-    public function setReceivingStatus(?\OpenAPI\Client\Model\vendor\orders\v1\OrderItemStatusReceivingStatus $receiving_status): self
+    public function setReceivingStatus(?\SpApi\Model\vendor\orders\v1\OrderItemStatusReceivingStatus $receiving_status): self
     {
         if (is_null($receiving_status)) {
             array_push($this->openAPINullablesSetToNull, 'receiving_status');

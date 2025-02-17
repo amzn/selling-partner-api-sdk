@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\v2\RateItemID;
+use SpApi\Model\shipping\v2\RateItemID;
 
 /**
  * RateItemIDTest Class Doc Comment
  *
  * @category    Class
  * @description Unique ID for the rateItem.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class RateItemIDTest extends TestCase
 {

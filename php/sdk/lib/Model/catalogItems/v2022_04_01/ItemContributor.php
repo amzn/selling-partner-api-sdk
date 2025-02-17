@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\catalogItems\v2022_04_01;
+namespace SpApi\Model\catalogItems\v2022_04_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ItemContributor Class Doc Comment
  *
  * @category Class
  * @description Individual contributor to the creation of an item, such as an author or actor.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class ItemContributor implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'role' => '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemContributorRole',
+             'role' => '\SpApi\Model\catalogItems\v2022_04_01\ItemContributorRole',
              'value' => 'string'    ];
 
     /**
@@ -307,9 +307,9 @@ class ItemContributor implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets role
      *
-     * @return \OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemContributorRole
+     * @return \SpApi\Model\catalogItems\v2022_04_01\ItemContributorRole
      */
-    public function getRole(): \OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemContributorRole
+    public function getRole(): \SpApi\Model\catalogItems\v2022_04_01\ItemContributorRole
     {
         return $this->container['role'];
     }
@@ -317,11 +317,11 @@ class ItemContributor implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets role
      *
-     * @param \OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemContributorRole $role role
+     * @param \SpApi\Model\catalogItems\v2022_04_01\ItemContributorRole $role role
      *
      * @return self
      */
-    public function setRole(\OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemContributorRole $role): self
+    public function setRole(\SpApi\Model\catalogItems\v2022_04_01\ItemContributorRole $role): self
     {
         if (is_null($role)) {
             throw new \InvalidArgumentException('non-nullable role cannot be null');

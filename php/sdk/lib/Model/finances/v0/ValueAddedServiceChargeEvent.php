@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\finances\v0;
+namespace SpApi\Model\finances\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ValueAddedServiceChargeEvent Class Doc Comment
  *
  * @category Class
  * @description An event related to a value added service charge.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,7 +63,7 @@ class ValueAddedServiceChargeEvent implements ModelInterface, ArrayAccess, \Json
              'transaction_type' => 'string',
              'posted_date' => '\DateTime',
              'description' => 'string',
-             'transaction_amount' => '\OpenAPI\Client\Model\finances\v0\Currency'    ];
+             'transaction_amount' => '\SpApi\Model\finances\v0\Currency'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -417,9 +417,9 @@ class ValueAddedServiceChargeEvent implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets transaction_amount
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency|null
+     * @return \SpApi\Model\finances\v0\Currency|null
      */
-    public function getTransactionAmount(): ?\OpenAPI\Client\Model\finances\v0\Currency
+    public function getTransactionAmount(): ?\SpApi\Model\finances\v0\Currency
     {
         return $this->container['transaction_amount'];
     }
@@ -427,11 +427,11 @@ class ValueAddedServiceChargeEvent implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets transaction_amount
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency|null $transaction_amount transaction_amount
+     * @param \SpApi\Model\finances\v0\Currency|null $transaction_amount transaction_amount
      *
      * @return self
      */
-    public function setTransactionAmount(?\OpenAPI\Client\Model\finances\v0\Currency $transaction_amount): self
+    public function setTransactionAmount(?\SpApi\Model\finances\v0\Currency $transaction_amount): self
     {
         if (is_null($transaction_amount)) {
             array_push($this->openAPINullablesSetToNull, 'transaction_amount');

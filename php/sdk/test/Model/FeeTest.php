@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Fee;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\Fee;
 
 /**
  * FeeTest Class Doc Comment
  *
  * @category    Class
  * @description Fee type and cost.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class FeeTest extends TestCase
 {
@@ -69,7 +69,7 @@ class FeeTest extends TestCase
     public function testPropertyAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money();
+        $testValue = new \SpApi\Model\fulfillment\outbound\v2020_07_01\Money();
         
         $this->model->setAmount($testValue);
         $this->assertEquals($testValue, $this->model->getAmount());

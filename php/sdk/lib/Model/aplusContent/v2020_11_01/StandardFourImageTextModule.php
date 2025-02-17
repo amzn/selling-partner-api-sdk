@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\aplusContent\v2020_11_01;
+namespace SpApi\Model\aplusContent\v2020_11_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * StandardFourImageTextModule Class Doc Comment
  *
  * @category Class
  * @description Four standard images with text, presented across a single row.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,11 +60,11 @@ class StandardFourImageTextModule implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'headline' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent',
-             'block1' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock',
-             'block2' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock',
-             'block3' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock',
-             'block4' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock'    ];
+             'headline' => '\SpApi\Model\aplusContent\v2020_11_01\TextComponent',
+             'block1' => '\SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock',
+             'block2' => '\SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock',
+             'block3' => '\SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock',
+             'block4' => '\SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -322,9 +322,9 @@ class StandardFourImageTextModule implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets headline
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\TextComponent|null
      */
-    public function getHeadline(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent
+    public function getHeadline(): ?\SpApi\Model\aplusContent\v2020_11_01\TextComponent
     {
         return $this->container['headline'];
     }
@@ -332,11 +332,11 @@ class StandardFourImageTextModule implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets headline
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent|null $headline headline
+     * @param \SpApi\Model\aplusContent\v2020_11_01\TextComponent|null $headline headline
      *
      * @return self
      */
-    public function setHeadline(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent $headline): self
+    public function setHeadline(?\SpApi\Model\aplusContent\v2020_11_01\TextComponent $headline): self
     {
         if (is_null($headline)) {
             array_push($this->openAPINullablesSetToNull, 'headline');
@@ -356,9 +356,9 @@ class StandardFourImageTextModule implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets block1
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock|null
      */
-    public function getBlock1(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock
+    public function getBlock1(): ?\SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock
     {
         return $this->container['block1'];
     }
@@ -366,11 +366,11 @@ class StandardFourImageTextModule implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets block1
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock|null $block1 block1
+     * @param \SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock|null $block1 block1
      *
      * @return self
      */
-    public function setBlock1(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock $block1): self
+    public function setBlock1(?\SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock $block1): self
     {
         if (is_null($block1)) {
             array_push($this->openAPINullablesSetToNull, 'block1');
@@ -390,9 +390,9 @@ class StandardFourImageTextModule implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets block2
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock|null
      */
-    public function getBlock2(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock
+    public function getBlock2(): ?\SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock
     {
         return $this->container['block2'];
     }
@@ -400,11 +400,11 @@ class StandardFourImageTextModule implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets block2
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock|null $block2 block2
+     * @param \SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock|null $block2 block2
      *
      * @return self
      */
-    public function setBlock2(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock $block2): self
+    public function setBlock2(?\SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock $block2): self
     {
         if (is_null($block2)) {
             array_push($this->openAPINullablesSetToNull, 'block2');
@@ -424,9 +424,9 @@ class StandardFourImageTextModule implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets block3
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock|null
      */
-    public function getBlock3(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock
+    public function getBlock3(): ?\SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock
     {
         return $this->container['block3'];
     }
@@ -434,11 +434,11 @@ class StandardFourImageTextModule implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets block3
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock|null $block3 block3
+     * @param \SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock|null $block3 block3
      *
      * @return self
      */
-    public function setBlock3(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock $block3): self
+    public function setBlock3(?\SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock $block3): self
     {
         if (is_null($block3)) {
             array_push($this->openAPINullablesSetToNull, 'block3');
@@ -458,9 +458,9 @@ class StandardFourImageTextModule implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets block4
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock|null
      */
-    public function getBlock4(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock
+    public function getBlock4(): ?\SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock
     {
         return $this->container['block4'];
     }
@@ -468,11 +468,11 @@ class StandardFourImageTextModule implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets block4
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock|null $block4 block4
+     * @param \SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock|null $block4 block4
      *
      * @return self
      */
-    public function setBlock4(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock $block4): self
+    public function setBlock4(?\SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock $block4): self
     {
         if (is_null($block4)) {
             array_push($this->openAPINullablesSetToNull, 'block4');

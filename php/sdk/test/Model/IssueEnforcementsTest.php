@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\listings\items\v2021_08_01\IssueEnforcements;
+use SpApi\Model\listings\items\v2021_08_01\IssueEnforcements;
 
 /**
  * IssueEnforcementsTest Class Doc Comment
  *
  * @category    Class
  * @description This field provides information about the enforcement actions taken by Amazon that affect the publishing or status of a listing. It also includes details about any associated exemptions.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class IssueEnforcementsTest extends TestCase
 {
@@ -68,7 +68,7 @@ class IssueEnforcementsTest extends TestCase
     public function testPropertyExemption()
     {
         
-        $testValue = new \OpenAPI\Client\Model\listings\items\v2021_08_01\IssueExemption();
+        $testValue = new \SpApi\Model\listings\items\v2021_08_01\IssueExemption();
         
         $this->model->setExemption($testValue);
         $this->assertEquals($testValue, $this->model->getExemption());

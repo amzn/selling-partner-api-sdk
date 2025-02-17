@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\v2\GetAdditionalInputsResponse;
+use SpApi\Model\shipping\v2\GetAdditionalInputsResponse;
 
 /**
  * GetAdditionalInputsResponseTest Class Doc Comment
  *
  * @category    Class
  * @description The response schema for the getAdditionalInputs operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetAdditionalInputsResponseTest extends TestCase
 {

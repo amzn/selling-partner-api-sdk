@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\listings\items\v2021_08_01;
+namespace SpApi\Model\listings\items\v2021_08_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Item Class Doc Comment
  *
  * @category Class
  * @description A listings item.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,14 +61,14 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPITypes = [
              'sku' => 'string',
-             'summaries' => '\OpenAPI\Client\Model\listings\items\v2021_08_01\ItemSummaryByMarketplace[]',
+             'summaries' => '\SpApi\Model\listings\items\v2021_08_01\ItemSummaryByMarketplace[]',
              'attributes' => 'array<string,mixed>',
-             'issues' => '\OpenAPI\Client\Model\listings\items\v2021_08_01\Issue[]',
-             'offers' => '\OpenAPI\Client\Model\listings\items\v2021_08_01\ItemOfferByMarketplace[]',
-             'fulfillment_availability' => '\OpenAPI\Client\Model\listings\items\v2021_08_01\FulfillmentAvailability[]',
-             'procurement' => '\OpenAPI\Client\Model\listings\items\v2021_08_01\ItemProcurement[]',
-             'relationships' => '\OpenAPI\Client\Model\listings\items\v2021_08_01\ItemRelationshipsByMarketplace[]',
-             'product_types' => '\OpenAPI\Client\Model\listings\items\v2021_08_01\ItemProductTypeByMarketplace[]'    ];
+             'issues' => '\SpApi\Model\listings\items\v2021_08_01\Issue[]',
+             'offers' => '\SpApi\Model\listings\items\v2021_08_01\ItemOfferByMarketplace[]',
+             'fulfillment_availability' => '\SpApi\Model\listings\items\v2021_08_01\FulfillmentAvailability[]',
+             'procurement' => '\SpApi\Model\listings\items\v2021_08_01\ItemProcurement[]',
+             'relationships' => '\SpApi\Model\listings\items\v2021_08_01\ItemRelationshipsByMarketplace[]',
+             'product_types' => '\SpApi\Model\listings\items\v2021_08_01\ItemProductTypeByMarketplace[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

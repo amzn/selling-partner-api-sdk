@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\awd\v2024_05_09\InboundShipmentStatus;
+use SpApi\Model\awd\v2024_05_09\InboundShipmentStatus;
 
 /**
  * InboundShipmentStatusTest Class Doc Comment
  *
  * @category    Class
  * @description Possible shipment statuses used by shipments.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class InboundShipmentStatusTest extends TestCase
 {

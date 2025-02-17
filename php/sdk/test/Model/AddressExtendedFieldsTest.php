@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\v0\AddressExtendedFields;
+use SpApi\Model\orders\v0\AddressExtendedFields;
 
 /**
  * AddressExtendedFieldsTest Class Doc Comment
  *
  * @category    Class
  * @description The container for address extended fields (such as &#x60;street name&#x60; and &#x60;street number&#x60;). Currently only available with Brazil shipping addresses.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class AddressExtendedFieldsTest extends TestCase
 {

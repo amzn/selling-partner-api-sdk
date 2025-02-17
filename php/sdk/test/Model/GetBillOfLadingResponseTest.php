@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v0\GetBillOfLadingResponse;
+use SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse;
 
 /**
  * GetBillOfLadingResponseTest Class Doc Comment
  *
  * @category    Class
  * @description The response schema for the getBillOfLading operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetBillOfLadingResponseTest extends TestCase
 {
@@ -57,7 +57,7 @@ class GetBillOfLadingResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\inbound\v0\BillOfLadingDownloadURL();
+        $testValue = new \SpApi\Model\fulfillment\inbound\v0\BillOfLadingDownloadURL();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

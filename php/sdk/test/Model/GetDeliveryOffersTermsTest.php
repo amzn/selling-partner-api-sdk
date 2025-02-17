@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersTerms;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersTerms;
 
 /**
  * GetDeliveryOffersTermsTest Class Doc Comment
  *
  * @category    Class
  * @description The delivery terms for the delivery offer.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetDeliveryOffersTermsTest extends TestCase
 {
@@ -57,7 +57,7 @@ class GetDeliveryOffersTermsTest extends TestCase
     public function testPropertyOrigin()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Origin();
+        $testValue = new \SpApi\Model\fulfillment\outbound\v2020_07_01\Origin();
         
         $this->model->setOrigin($testValue);
         $this->assertEquals($testValue, $this->model->getOrigin());
@@ -69,7 +69,7 @@ class GetDeliveryOffersTermsTest extends TestCase
     public function testPropertyDestination()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Destination();
+        $testValue = new \SpApi\Model\fulfillment\outbound\v2020_07_01\Destination();
         
         $this->model->setDestination($testValue);
         $this->assertEquals($testValue, $this->model->getDestination());

@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\supplySources\v2020_07_01;
+namespace SpApi\Model\supplySources\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * UpdateSupplySourceRequest Class Doc Comment
  *
  * @category Class
  * @description A request to update the configuration and capabilities of a supply source.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,8 +61,8 @@ class UpdateSupplySourceRequest implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static array $openAPITypes = [
              'alias' => 'string',
-             'configuration' => '\OpenAPI\Client\Model\supplySources\v2020_07_01\SupplySourceConfiguration',
-             'capabilities' => '\OpenAPI\Client\Model\supplySources\v2020_07_01\SupplySourceCapabilities'    ];
+             'configuration' => '\SpApi\Model\supplySources\v2020_07_01\SupplySourceConfiguration',
+             'capabilities' => '\SpApi\Model\supplySources\v2020_07_01\SupplySourceCapabilities'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -342,9 +342,9 @@ class UpdateSupplySourceRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets configuration
      *
-     * @return \OpenAPI\Client\Model\supplySources\v2020_07_01\SupplySourceConfiguration|null
+     * @return \SpApi\Model\supplySources\v2020_07_01\SupplySourceConfiguration|null
      */
-    public function getConfiguration(): ?\OpenAPI\Client\Model\supplySources\v2020_07_01\SupplySourceConfiguration
+    public function getConfiguration(): ?\SpApi\Model\supplySources\v2020_07_01\SupplySourceConfiguration
     {
         return $this->container['configuration'];
     }
@@ -352,11 +352,11 @@ class UpdateSupplySourceRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets configuration
      *
-     * @param \OpenAPI\Client\Model\supplySources\v2020_07_01\SupplySourceConfiguration|null $configuration configuration
+     * @param \SpApi\Model\supplySources\v2020_07_01\SupplySourceConfiguration|null $configuration configuration
      *
      * @return self
      */
-    public function setConfiguration(?\OpenAPI\Client\Model\supplySources\v2020_07_01\SupplySourceConfiguration $configuration): self
+    public function setConfiguration(?\SpApi\Model\supplySources\v2020_07_01\SupplySourceConfiguration $configuration): self
     {
         if (is_null($configuration)) {
             array_push($this->openAPINullablesSetToNull, 'configuration');
@@ -376,9 +376,9 @@ class UpdateSupplySourceRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets capabilities
      *
-     * @return \OpenAPI\Client\Model\supplySources\v2020_07_01\SupplySourceCapabilities|null
+     * @return \SpApi\Model\supplySources\v2020_07_01\SupplySourceCapabilities|null
      */
-    public function getCapabilities(): ?\OpenAPI\Client\Model\supplySources\v2020_07_01\SupplySourceCapabilities
+    public function getCapabilities(): ?\SpApi\Model\supplySources\v2020_07_01\SupplySourceCapabilities
     {
         return $this->container['capabilities'];
     }
@@ -386,11 +386,11 @@ class UpdateSupplySourceRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets capabilities
      *
-     * @param \OpenAPI\Client\Model\supplySources\v2020_07_01\SupplySourceCapabilities|null $capabilities capabilities
+     * @param \SpApi\Model\supplySources\v2020_07_01\SupplySourceCapabilities|null $capabilities capabilities
      *
      * @return self
      */
-    public function setCapabilities(?\OpenAPI\Client\Model\supplySources\v2020_07_01\SupplySourceCapabilities $capabilities): self
+    public function setCapabilities(?\SpApi\Model\supplySources\v2020_07_01\SupplySourceCapabilities $capabilities): self
     {
         if (is_null($capabilities)) {
             array_push($this->openAPINullablesSetToNull, 'capabilities');

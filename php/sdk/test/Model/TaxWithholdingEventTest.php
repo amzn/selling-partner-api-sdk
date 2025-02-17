@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\finances\v0\TaxWithholdingEvent;
+use SpApi\Model\finances\v0\TaxWithholdingEvent;
 
 /**
  * TaxWithholdingEventTest Class Doc Comment
  *
  * @category    Class
  * @description A TaxWithholding event on seller&#39;s account.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class TaxWithholdingEventTest extends TestCase
 {
@@ -69,7 +69,7 @@ class TaxWithholdingEventTest extends TestCase
     public function testPropertyBaseAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v0\Currency();
+        $testValue = new \SpApi\Model\finances\v0\Currency();
         
         $this->model->setBaseAmount($testValue);
         $this->assertEquals($testValue, $this->model->getBaseAmount());
@@ -81,7 +81,7 @@ class TaxWithholdingEventTest extends TestCase
     public function testPropertyWithheldAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v0\Currency();
+        $testValue = new \SpApi\Model\finances\v0\Currency();
         
         $this->model->setWithheldAmount($testValue);
         $this->assertEquals($testValue, $this->model->getWithheldAmount());
@@ -93,7 +93,7 @@ class TaxWithholdingEventTest extends TestCase
     public function testPropertyTaxWithholdingPeriod()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v0\TaxWithholdingPeriod();
+        $testValue = new \SpApi\Model\finances\v0\TaxWithholdingPeriod();
         
         $this->model->setTaxWithholdingPeriod($testValue);
         $this->assertEquals($testValue, $this->model->getTaxWithholdingPeriod());

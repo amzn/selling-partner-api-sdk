@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\finances\v0;
+namespace SpApi\Model\finances\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ChargeRefundEvent Class Doc Comment
  *
  * @category Class
  * @description An event related to charge refund.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,7 +63,7 @@ class ChargeRefundEvent implements ModelInterface, ArrayAccess, \JsonSerializabl
              'posted_date' => '\DateTime',
              'reason_code' => 'string',
              'reason_code_description' => 'string',
-             'charge_refund_transactions' => '\OpenAPI\Client\Model\finances\v0\ChargeRefundTransaction[]'    ];
+             'charge_refund_transactions' => '\SpApi\Model\finances\v0\ChargeRefundTransaction[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

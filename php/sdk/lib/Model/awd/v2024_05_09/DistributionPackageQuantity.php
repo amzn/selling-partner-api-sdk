@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\awd\v2024_05_09;
+namespace SpApi\Model\awd\v2024_05_09;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * DistributionPackageQuantity Class Doc Comment
  *
  * @category Class
  * @description Represents a distribution package with its respective quantity.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class DistributionPackageQuantity implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static array $openAPITypes = [
              'count' => 'int',
-             'distribution_package' => '\OpenAPI\Client\Model\awd\v2024_05_09\DistributionPackage'    ];
+             'distribution_package' => '\SpApi\Model\awd\v2024_05_09\DistributionPackage'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -334,9 +334,9 @@ class DistributionPackageQuantity implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets distribution_package
      *
-     * @return \OpenAPI\Client\Model\awd\v2024_05_09\DistributionPackage
+     * @return \SpApi\Model\awd\v2024_05_09\DistributionPackage
      */
-    public function getDistributionPackage(): \OpenAPI\Client\Model\awd\v2024_05_09\DistributionPackage
+    public function getDistributionPackage(): \SpApi\Model\awd\v2024_05_09\DistributionPackage
     {
         return $this->container['distribution_package'];
     }
@@ -344,11 +344,11 @@ class DistributionPackageQuantity implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets distribution_package
      *
-     * @param \OpenAPI\Client\Model\awd\v2024_05_09\DistributionPackage $distribution_package distribution_package
+     * @param \SpApi\Model\awd\v2024_05_09\DistributionPackage $distribution_package distribution_package
      *
      * @return self
      */
-    public function setDistributionPackage(\OpenAPI\Client\Model\awd\v2024_05_09\DistributionPackage $distribution_package): self
+    public function setDistributionPackage(\SpApi\Model\awd\v2024_05_09\DistributionPackage $distribution_package): self
     {
         if (is_null($distribution_package)) {
             throw new \InvalidArgumentException('non-nullable distribution_package cannot be null');

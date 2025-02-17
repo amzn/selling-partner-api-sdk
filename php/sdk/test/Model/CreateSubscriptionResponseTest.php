@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\notifications\v1\CreateSubscriptionResponse;
+use SpApi\Model\notifications\v1\CreateSubscriptionResponse;
 
 /**
  * CreateSubscriptionResponseTest Class Doc Comment
  *
  * @category    Class
  * @description The response schema for the &#x60;createSubscription&#x60; operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class CreateSubscriptionResponseTest extends TestCase
 {
@@ -57,7 +57,7 @@ class CreateSubscriptionResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\notifications\v1\Subscription();
+        $testValue = new \SpApi\Model\notifications\v1\Subscription();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

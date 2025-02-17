@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v0\QuantityDiscountPriceType;
+use SpApi\Model\pricing\v0\QuantityDiscountPriceType;
 
 /**
  * QuantityDiscountPriceTypeTest Class Doc Comment
  *
  * @category    Class
  * @description Contains pricing information that includes special pricing when buying in bulk.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class QuantityDiscountPriceTypeTest extends TestCase
 {
@@ -67,7 +67,7 @@ class QuantityDiscountPriceTypeTest extends TestCase
      */
     public function testPropertyQuantityDiscountType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\pricing\v0\QuantityDiscountType();
+        $enumInstance = new \SpApi\Model\pricing\v0\QuantityDiscountType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -81,7 +81,7 @@ class QuantityDiscountPriceTypeTest extends TestCase
     public function testPropertyListingPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v0\MoneyType();
+        $testValue = new \SpApi\Model\pricing\v0\MoneyType();
         
         $this->model->setListingPrice($testValue);
         $this->assertEquals($testValue, $this->model->getListingPrice());

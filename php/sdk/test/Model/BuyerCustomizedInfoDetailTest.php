@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\v0\BuyerCustomizedInfoDetail;
+use SpApi\Model\orders\v0\BuyerCustomizedInfoDetail;
 
 /**
  * BuyerCustomizedInfoDetailTest Class Doc Comment
  *
  * @category    Class
  * @description Buyer information for custom orders from the Amazon Custom program.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class BuyerCustomizedInfoDetailTest extends TestCase
 {

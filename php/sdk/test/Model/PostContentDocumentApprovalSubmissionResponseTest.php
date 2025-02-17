@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentApprovalSubmissionResponse;
+use SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentApprovalSubmissionResponse;
 
 /**
  * PostContentDocumentApprovalSubmissionResponseTest Class Doc Comment
  *
  * @category    Class
  * @description PostContentDocumentApprovalSubmissionResponse
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class PostContentDocumentApprovalSubmissionResponseTest extends TestCase
 {

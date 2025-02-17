@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28;
+namespace SpApi\Model\vendor\df\shipping\v2021_12_28;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * CreateContainerLabelResponse Class Doc Comment
  *
  * @category Class
  * @description The response schema for the &#x60;createContainerLabel&#x60; operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class CreateContainerLabelResponse implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'container_label' => '\OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\ContainerLabel'    ];
+             'container_label' => '\SpApi\Model\vendor\df\shipping\v2021_12_28\ContainerLabel'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -297,9 +297,9 @@ class CreateContainerLabelResponse implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets container_label
      *
-     * @return \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\ContainerLabel
+     * @return \SpApi\Model\vendor\df\shipping\v2021_12_28\ContainerLabel
      */
-    public function getContainerLabel(): \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\ContainerLabel
+    public function getContainerLabel(): \SpApi\Model\vendor\df\shipping\v2021_12_28\ContainerLabel
     {
         return $this->container['container_label'];
     }
@@ -307,11 +307,11 @@ class CreateContainerLabelResponse implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets container_label
      *
-     * @param \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\ContainerLabel $container_label container_label
+     * @param \SpApi\Model\vendor\df\shipping\v2021_12_28\ContainerLabel $container_label container_label
      *
      * @return self
      */
-    public function setContainerLabel(\OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\ContainerLabel $container_label): self
+    public function setContainerLabel(\SpApi\Model\vendor\df\shipping\v2021_12_28\ContainerLabel $container_label): self
     {
         if (is_null($container_label)) {
             throw new \InvalidArgumentException('non-nullable container_label cannot be null');

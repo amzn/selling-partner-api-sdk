@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\pricing\v0;
+namespace SpApi\Model\pricing\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetOffersResponse Class Doc Comment
  *
  * @category Class
  * @description The response schema for the &#x60;getListingOffers&#x60; and &#x60;getItemOffers&#x60; operations.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class GetOffersResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'payload' => '\OpenAPI\Client\Model\pricing\v0\GetOffersResult',
-             'errors' => '\OpenAPI\Client\Model\pricing\v0\Error[]'    ];
+             'payload' => '\SpApi\Model\pricing\v0\GetOffersResult',
+             'errors' => '\SpApi\Model\pricing\v0\Error[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -301,9 +301,9 @@ class GetOffersResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets payload
      *
-     * @return \OpenAPI\Client\Model\pricing\v0\GetOffersResult|null
+     * @return \SpApi\Model\pricing\v0\GetOffersResult|null
      */
-    public function getPayload(): ?\OpenAPI\Client\Model\pricing\v0\GetOffersResult
+    public function getPayload(): ?\SpApi\Model\pricing\v0\GetOffersResult
     {
         return $this->container['payload'];
     }
@@ -311,11 +311,11 @@ class GetOffersResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets payload
      *
-     * @param \OpenAPI\Client\Model\pricing\v0\GetOffersResult|null $payload payload
+     * @param \SpApi\Model\pricing\v0\GetOffersResult|null $payload payload
      *
      * @return self
      */
-    public function setPayload(?\OpenAPI\Client\Model\pricing\v0\GetOffersResult $payload): self
+    public function setPayload(?\SpApi\Model\pricing\v0\GetOffersResult $payload): self
     {
         if (is_null($payload)) {
             array_push($this->openAPINullablesSetToNull, 'payload');

@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\invoices\v2024_06_19;
+namespace SpApi\Model\invoices\v2024_06_19;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Export Class Doc Comment
  *
  * @category Class
  * @description Detailed information about the export.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -65,7 +65,7 @@ class Export implements ModelInterface, ArrayAccess, \JsonSerializable
              'generate_export_finished_at' => '\DateTime',
              'generate_export_started_at' => '\DateTime',
              'invoices_document_ids' => 'string[]',
-             'status' => '\OpenAPI\Client\Model\invoices\v2024_06_19\ExportStatus'    ];
+             'status' => '\SpApi\Model\invoices\v2024_06_19\ExportStatus'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

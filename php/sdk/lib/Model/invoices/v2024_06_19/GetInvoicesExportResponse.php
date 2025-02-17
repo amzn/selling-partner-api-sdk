@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\invoices\v2024_06_19;
+namespace SpApi\Model\invoices\v2024_06_19;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetInvoicesExportResponse Class Doc Comment
  *
  * @category Class
  * @description Success.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class GetInvoicesExportResponse implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'export' => '\OpenAPI\Client\Model\invoices\v2024_06_19\Export'    ];
+             'export' => '\SpApi\Model\invoices\v2024_06_19\Export'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -294,9 +294,9 @@ class GetInvoicesExportResponse implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets export
      *
-     * @return \OpenAPI\Client\Model\invoices\v2024_06_19\Export|null
+     * @return \SpApi\Model\invoices\v2024_06_19\Export|null
      */
-    public function getExport(): ?\OpenAPI\Client\Model\invoices\v2024_06_19\Export
+    public function getExport(): ?\SpApi\Model\invoices\v2024_06_19\Export
     {
         return $this->container['export'];
     }
@@ -304,11 +304,11 @@ class GetInvoicesExportResponse implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets export
      *
-     * @param \OpenAPI\Client\Model\invoices\v2024_06_19\Export|null $export export
+     * @param \SpApi\Model\invoices\v2024_06_19\Export|null $export export
      *
      * @return self
      */
-    public function setExport(?\OpenAPI\Client\Model\invoices\v2024_06_19\Export $export): self
+    public function setExport(?\SpApi\Model\invoices\v2024_06_19\Export $export): self
     {
         if (is_null($export)) {
             array_push($this->openAPINullablesSetToNull, 'export');

@@ -4,7 +4,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api\finances\v2024_06_19;
+namespace SpApi\Api\finances\v2024_06_19;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -39,16 +39,16 @@ use SpApi\AuthAndAuth\RateLimitConfiguration;
 use Symfony\Component\RateLimiter\LimiterInterface;
 use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\ObjectSerializer;
+use SpApi\ApiException;
+use SpApi\Configuration;
+use SpApi\HeaderSelector;
+use SpApi\ObjectSerializer;
 
 /**
  * DefaultApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -161,16 +161,16 @@ class DefaultApi
      * @param  string|null $next_token
      *  The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\finances\v2024_06_19\ListTransactionsResponse
+     * @return \SpApi\Model\finances\v2024_06_19\ListTransactionsResponse
      */
     public function listTransactions(
         \DateTime $posted_after,
         ?\DateTime $posted_before = null,
         ?string $marketplace_id = null,
         ?string $next_token = null
-    ): \OpenAPI\Client\Model\finances\v2024_06_19\ListTransactionsResponse {
+    ): \SpApi\Model\finances\v2024_06_19\ListTransactionsResponse {
         list($response) = $this->listTransactionsWithHttpInfo($posted_after, $posted_before, $marketplace_id, $next_token);
         return $response;
     }
@@ -187,9 +187,9 @@ class DefaultApi
      * @param  string|null $next_token
      *  The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\finances\v2024_06_19\ListTransactionsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\finances\v2024_06_19\ListTransactionsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listTransactionsWithHttpInfo(
         \DateTime $posted_after,
@@ -238,143 +238,143 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\finances\v2024_06_19\ListTransactionsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\finances\v2024_06_19\ListTransactionsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\finances\v2024_06_19\ListTransactionsResponse' !== 'string') {
+                        if ('\SpApi\Model\finances\v2024_06_19\ListTransactionsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\finances\v2024_06_19\ListTransactionsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\finances\v2024_06_19\ListTransactionsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\finances\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\finances\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\finances\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\finances\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\finances\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\finances\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\finances\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\finances\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\finances\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\finances\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\finances\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\finances\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\finances\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\finances\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\finances\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\finances\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\finances\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\finances\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\finances\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\finances\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\finances\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\finances\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\finances\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\finances\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\finances\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\finances\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\finances\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\finances\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\finances\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\finances\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\finances\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\finances\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\finances\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\finances\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\finances\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\finances\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\finances\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\finances\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\finances\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\finances\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\finances\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\finances\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\finances\v2024_06_19\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\finances\v2024_06_19\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\finances\v2024_06_19\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\finances\v2024_06_19\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\finances\v2024_06_19\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\finances\v2024_06_19\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\finances\v2024_06_19\ListTransactionsResponse';
+            $returnType = '\SpApi\Model\finances\v2024_06_19\ListTransactionsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -395,7 +395,7 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\finances\v2024_06_19\ListTransactionsResponse',
+                        '\SpApi\Model\finances\v2024_06_19\ListTransactionsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -403,7 +403,7 @@ class DefaultApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\finances\v2024_06_19\ErrorList',
+                        '\SpApi\Model\finances\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -411,7 +411,7 @@ class DefaultApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\finances\v2024_06_19\ErrorList',
+                        '\SpApi\Model\finances\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -419,7 +419,7 @@ class DefaultApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\finances\v2024_06_19\ErrorList',
+                        '\SpApi\Model\finances\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -427,7 +427,7 @@ class DefaultApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\finances\v2024_06_19\ErrorList',
+                        '\SpApi\Model\finances\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -435,7 +435,7 @@ class DefaultApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\finances\v2024_06_19\ErrorList',
+                        '\SpApi\Model\finances\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -443,7 +443,7 @@ class DefaultApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\finances\v2024_06_19\ErrorList',
+                        '\SpApi\Model\finances\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -451,7 +451,7 @@ class DefaultApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\finances\v2024_06_19\ErrorList',
+                        '\SpApi\Model\finances\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -459,7 +459,7 @@ class DefaultApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\finances\v2024_06_19\ErrorList',
+                        '\SpApi\Model\finances\v2024_06_19\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -519,7 +519,7 @@ class DefaultApi
         ?string $marketplace_id = null,
         ?string $next_token = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\finances\v2024_06_19\ListTransactionsResponse';
+        $returnType = '\SpApi\Model\finances\v2024_06_19\ListTransactionsResponse';
         $request = $this->listTransactionsRequest($posted_after, $posted_before, $marketplace_id, $next_token);
         $request = $this->config->sign($request);
         $this->rateLimitWait();

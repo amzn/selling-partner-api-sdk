@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\awd\v2024_05_09;
+namespace SpApi\Model\awd\v2024_05_09;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * SkuQuantity Class Doc Comment
  *
  * @category Class
  * @description Quantity details for a SKU as part of a shipment
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class SkuQuantity implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'expected_quantity' => '\OpenAPI\Client\Model\awd\v2024_05_09\InventoryQuantity',
-             'received_quantity' => '\OpenAPI\Client\Model\awd\v2024_05_09\InventoryQuantity',
+             'expected_quantity' => '\SpApi\Model\awd\v2024_05_09\InventoryQuantity',
+             'received_quantity' => '\SpApi\Model\awd\v2024_05_09\InventoryQuantity',
              'sku' => 'string'    ];
 
     /**
@@ -314,9 +314,9 @@ class SkuQuantity implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets expected_quantity
      *
-     * @return \OpenAPI\Client\Model\awd\v2024_05_09\InventoryQuantity
+     * @return \SpApi\Model\awd\v2024_05_09\InventoryQuantity
      */
-    public function getExpectedQuantity(): \OpenAPI\Client\Model\awd\v2024_05_09\InventoryQuantity
+    public function getExpectedQuantity(): \SpApi\Model\awd\v2024_05_09\InventoryQuantity
     {
         return $this->container['expected_quantity'];
     }
@@ -324,11 +324,11 @@ class SkuQuantity implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets expected_quantity
      *
-     * @param \OpenAPI\Client\Model\awd\v2024_05_09\InventoryQuantity $expected_quantity expected_quantity
+     * @param \SpApi\Model\awd\v2024_05_09\InventoryQuantity $expected_quantity expected_quantity
      *
      * @return self
      */
-    public function setExpectedQuantity(\OpenAPI\Client\Model\awd\v2024_05_09\InventoryQuantity $expected_quantity): self
+    public function setExpectedQuantity(\SpApi\Model\awd\v2024_05_09\InventoryQuantity $expected_quantity): self
     {
         if (is_null($expected_quantity)) {
             throw new \InvalidArgumentException('non-nullable expected_quantity cannot be null');
@@ -341,9 +341,9 @@ class SkuQuantity implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets received_quantity
      *
-     * @return \OpenAPI\Client\Model\awd\v2024_05_09\InventoryQuantity|null
+     * @return \SpApi\Model\awd\v2024_05_09\InventoryQuantity|null
      */
-    public function getReceivedQuantity(): ?\OpenAPI\Client\Model\awd\v2024_05_09\InventoryQuantity
+    public function getReceivedQuantity(): ?\SpApi\Model\awd\v2024_05_09\InventoryQuantity
     {
         return $this->container['received_quantity'];
     }
@@ -351,11 +351,11 @@ class SkuQuantity implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets received_quantity
      *
-     * @param \OpenAPI\Client\Model\awd\v2024_05_09\InventoryQuantity|null $received_quantity received_quantity
+     * @param \SpApi\Model\awd\v2024_05_09\InventoryQuantity|null $received_quantity received_quantity
      *
      * @return self
      */
-    public function setReceivedQuantity(?\OpenAPI\Client\Model\awd\v2024_05_09\InventoryQuantity $received_quantity): self
+    public function setReceivedQuantity(?\SpApi\Model\awd\v2024_05_09\InventoryQuantity $received_quantity): self
     {
         if (is_null($received_quantity)) {
             array_push($this->openAPINullablesSetToNull, 'received_quantity');

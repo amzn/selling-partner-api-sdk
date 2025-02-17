@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\orders\v1\OrderedQuantityDetails;
+use SpApi\Model\vendor\orders\v1\OrderedQuantityDetails;
 
 /**
  * OrderedQuantityDetailsTest Class Doc Comment
  *
  * @category    Class
  * @description Details of item quantity ordered.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class OrderedQuantityDetailsTest extends TestCase
 {
@@ -69,7 +69,7 @@ class OrderedQuantityDetailsTest extends TestCase
     public function testPropertyOrderedQuantity()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity();
+        $testValue = new \SpApi\Model\vendor\orders\v1\ItemQuantity();
         
         $this->model->setOrderedQuantity($testValue);
         $this->assertEquals($testValue, $this->model->getOrderedQuantity());
@@ -81,7 +81,7 @@ class OrderedQuantityDetailsTest extends TestCase
     public function testPropertyCancelledQuantity()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity();
+        $testValue = new \SpApi\Model\vendor\orders\v1\ItemQuantity();
         
         $this->model->setCancelledQuantity($testValue);
         $this->assertEquals($testValue, $this->model->getCancelledQuantity());

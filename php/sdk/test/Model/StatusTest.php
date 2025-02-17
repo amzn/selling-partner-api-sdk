@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\v2\Status;
+use SpApi\Model\shipping\v2\Status;
 
 /**
  * StatusTest Class Doc Comment
  *
  * @category    Class
  * @description The status of the package being shipped.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class StatusTest extends TestCase
 {

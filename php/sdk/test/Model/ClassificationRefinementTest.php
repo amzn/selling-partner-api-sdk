@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\catalogItems\v2022_04_01\ClassificationRefinement;
+use SpApi\Model\catalogItems\v2022_04_01\ClassificationRefinement;
 
 /**
  * ClassificationRefinementTest Class Doc Comment
  *
  * @category    Class
  * @description Description of a classification that can be used to get more fine-grained search results.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ClassificationRefinementTest extends TestCase
 {

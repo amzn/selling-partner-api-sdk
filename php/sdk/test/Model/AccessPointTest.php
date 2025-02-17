@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\v2\AccessPoint;
+use SpApi\Model\shipping\v2\AccessPoint;
 
 /**
  * AccessPointTest Class Doc Comment
  *
  * @category    Class
  * @description Access point details
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class AccessPointTest extends TestCase
 {
@@ -89,7 +89,7 @@ class AccessPointTest extends TestCase
      */
     public function testPropertyType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\shipping\v2\AccessPointType();
+        $enumInstance = new \SpApi\Model\shipping\v2\AccessPointType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -103,7 +103,7 @@ class AccessPointTest extends TestCase
     public function testPropertyAccessibilityAttributes()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\v2\AccessibilityAttributes();
+        $testValue = new \SpApi\Model\shipping\v2\AccessibilityAttributes();
         
         $this->model->setAccessibilityAttributes($testValue);
         $this->assertEquals($testValue, $this->model->getAccessibilityAttributes());
@@ -115,7 +115,7 @@ class AccessPointTest extends TestCase
     public function testPropertyAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\v2\Address();
+        $testValue = new \SpApi\Model\shipping\v2\Address();
         
         $this->model->setAddress($testValue);
         $this->assertEquals($testValue, $this->model->getAddress());

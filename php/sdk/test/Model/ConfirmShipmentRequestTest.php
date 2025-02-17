@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\v0\ConfirmShipmentRequest;
+use SpApi\Model\orders\v0\ConfirmShipmentRequest;
 
 /**
  * ConfirmShipmentRequestTest Class Doc Comment
  *
  * @category    Class
  * @description The request schema for an shipment confirmation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ConfirmShipmentRequestTest extends TestCase
 {
@@ -57,7 +57,7 @@ class ConfirmShipmentRequestTest extends TestCase
     public function testPropertyPackageDetail()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\v0\PackageDetail();
+        $testValue = new \SpApi\Model\orders\v0\PackageDetail();
         
         $this->model->setPackageDetail($testValue);
         $this->assertEquals($testValue, $this->model->getPackageDetail());

@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\notifications\v1;
+namespace SpApi\Model\notifications\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * AggregationFilter Class Doc Comment
  *
  * @category Class
  * @description A filter used to select the aggregation time period at which to send notifications (for example: limit to one notification every five minutes for high frequency notifications).
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class AggregationFilter implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'aggregation_settings' => '\OpenAPI\Client\Model\notifications\v1\AggregationSettings'    ];
+             'aggregation_settings' => '\SpApi\Model\notifications\v1\AggregationSettings'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -294,9 +294,9 @@ class AggregationFilter implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets aggregation_settings
      *
-     * @return \OpenAPI\Client\Model\notifications\v1\AggregationSettings|null
+     * @return \SpApi\Model\notifications\v1\AggregationSettings|null
      */
-    public function getAggregationSettings(): ?\OpenAPI\Client\Model\notifications\v1\AggregationSettings
+    public function getAggregationSettings(): ?\SpApi\Model\notifications\v1\AggregationSettings
     {
         return $this->container['aggregation_settings'];
     }
@@ -304,11 +304,11 @@ class AggregationFilter implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets aggregation_settings
      *
-     * @param \OpenAPI\Client\Model\notifications\v1\AggregationSettings|null $aggregation_settings aggregation_settings
+     * @param \SpApi\Model\notifications\v1\AggregationSettings|null $aggregation_settings aggregation_settings
      *
      * @return self
      */
-    public function setAggregationSettings(?\OpenAPI\Client\Model\notifications\v1\AggregationSettings $aggregation_settings): self
+    public function setAggregationSettings(?\SpApi\Model\notifications\v1\AggregationSettings $aggregation_settings): self
     {
         if (is_null($aggregation_settings)) {
             array_push($this->openAPINullablesSetToNull, 'aggregation_settings');

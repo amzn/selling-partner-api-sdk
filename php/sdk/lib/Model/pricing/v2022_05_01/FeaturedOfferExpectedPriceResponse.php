@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\pricing\v2022_05_01;
+namespace SpApi\Model\pricing\v2022_05_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * FeaturedOfferExpectedPriceResponse Class Doc Comment
  *
  * @category Class
  * @description Schema for an individual FOEP response.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,9 +61,9 @@ class FeaturedOfferExpectedPriceResponse implements ModelInterface, ArrayAccess,
       */
     protected static array $openAPITypes = [
              'headers' => 'array<string,string>',
-             'status' => '\OpenAPI\Client\Model\pricing\v2022_05_01\HttpStatusLine',
-             'request' => '\OpenAPI\Client\Model\pricing\v2022_05_01\FeaturedOfferExpectedPriceRequestParams',
-             'body' => '\OpenAPI\Client\Model\pricing\v2022_05_01\FeaturedOfferExpectedPriceResponseBody'    ];
+             'status' => '\SpApi\Model\pricing\v2022_05_01\HttpStatusLine',
+             'request' => '\SpApi\Model\pricing\v2022_05_01\FeaturedOfferExpectedPriceRequestParams',
+             'body' => '\SpApi\Model\pricing\v2022_05_01\FeaturedOfferExpectedPriceResponseBody'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -351,9 +351,9 @@ class FeaturedOfferExpectedPriceResponse implements ModelInterface, ArrayAccess,
     /**
      * Gets status
      *
-     * @return \OpenAPI\Client\Model\pricing\v2022_05_01\HttpStatusLine
+     * @return \SpApi\Model\pricing\v2022_05_01\HttpStatusLine
      */
-    public function getStatus(): \OpenAPI\Client\Model\pricing\v2022_05_01\HttpStatusLine
+    public function getStatus(): \SpApi\Model\pricing\v2022_05_01\HttpStatusLine
     {
         return $this->container['status'];
     }
@@ -361,11 +361,11 @@ class FeaturedOfferExpectedPriceResponse implements ModelInterface, ArrayAccess,
     /**
      * Sets status
      *
-     * @param \OpenAPI\Client\Model\pricing\v2022_05_01\HttpStatusLine $status status
+     * @param \SpApi\Model\pricing\v2022_05_01\HttpStatusLine $status status
      *
      * @return self
      */
-    public function setStatus(\OpenAPI\Client\Model\pricing\v2022_05_01\HttpStatusLine $status): self
+    public function setStatus(\SpApi\Model\pricing\v2022_05_01\HttpStatusLine $status): self
     {
         if (is_null($status)) {
             throw new \InvalidArgumentException('non-nullable status cannot be null');
@@ -378,9 +378,9 @@ class FeaturedOfferExpectedPriceResponse implements ModelInterface, ArrayAccess,
     /**
      * Gets request
      *
-     * @return \OpenAPI\Client\Model\pricing\v2022_05_01\FeaturedOfferExpectedPriceRequestParams
+     * @return \SpApi\Model\pricing\v2022_05_01\FeaturedOfferExpectedPriceRequestParams
      */
-    public function getRequest(): \OpenAPI\Client\Model\pricing\v2022_05_01\FeaturedOfferExpectedPriceRequestParams
+    public function getRequest(): \SpApi\Model\pricing\v2022_05_01\FeaturedOfferExpectedPriceRequestParams
     {
         return $this->container['request'];
     }
@@ -388,11 +388,11 @@ class FeaturedOfferExpectedPriceResponse implements ModelInterface, ArrayAccess,
     /**
      * Sets request
      *
-     * @param \OpenAPI\Client\Model\pricing\v2022_05_01\FeaturedOfferExpectedPriceRequestParams $request request
+     * @param \SpApi\Model\pricing\v2022_05_01\FeaturedOfferExpectedPriceRequestParams $request request
      *
      * @return self
      */
-    public function setRequest(\OpenAPI\Client\Model\pricing\v2022_05_01\FeaturedOfferExpectedPriceRequestParams $request): self
+    public function setRequest(\SpApi\Model\pricing\v2022_05_01\FeaturedOfferExpectedPriceRequestParams $request): self
     {
         if (is_null($request)) {
             throw new \InvalidArgumentException('non-nullable request cannot be null');
@@ -405,9 +405,9 @@ class FeaturedOfferExpectedPriceResponse implements ModelInterface, ArrayAccess,
     /**
      * Gets body
      *
-     * @return \OpenAPI\Client\Model\pricing\v2022_05_01\FeaturedOfferExpectedPriceResponseBody|null
+     * @return \SpApi\Model\pricing\v2022_05_01\FeaturedOfferExpectedPriceResponseBody|null
      */
-    public function getBody(): ?\OpenAPI\Client\Model\pricing\v2022_05_01\FeaturedOfferExpectedPriceResponseBody
+    public function getBody(): ?\SpApi\Model\pricing\v2022_05_01\FeaturedOfferExpectedPriceResponseBody
     {
         return $this->container['body'];
     }
@@ -415,11 +415,11 @@ class FeaturedOfferExpectedPriceResponse implements ModelInterface, ArrayAccess,
     /**
      * Sets body
      *
-     * @param \OpenAPI\Client\Model\pricing\v2022_05_01\FeaturedOfferExpectedPriceResponseBody|null $body body
+     * @param \SpApi\Model\pricing\v2022_05_01\FeaturedOfferExpectedPriceResponseBody|null $body body
      *
      * @return self
      */
-    public function setBody(?\OpenAPI\Client\Model\pricing\v2022_05_01\FeaturedOfferExpectedPriceResponseBody $body): self
+    public function setBody(?\SpApi\Model\pricing\v2022_05_01\FeaturedOfferExpectedPriceResponseBody $body): self
     {
         if (is_null($body)) {
             array_push($this->openAPINullablesSetToNull, 'body');

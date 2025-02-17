@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\StatusUpdateDetails;
+use SpApi\Model\vendor\df\shipping\v2021_12_28\StatusUpdateDetails;
 
 /**
  * StatusUpdateDetailsTest Class Doc Comment
  *
  * @category    Class
  * @description Details for the shipment status update given by the vendor for the specific package.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class StatusUpdateDetailsTest extends TestCase
 {
@@ -102,7 +102,7 @@ class StatusUpdateDetailsTest extends TestCase
     public function testPropertyStatusLocationAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\Address();
+        $testValue = new \SpApi\Model\vendor\df\shipping\v2021_12_28\Address();
         
         $this->model->setStatusLocationAddress($testValue);
         $this->assertEquals($testValue, $this->model->getStatusLocationAddress());
@@ -114,7 +114,7 @@ class StatusUpdateDetailsTest extends TestCase
     public function testPropertyShipmentSchedule()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\ShipmentSchedule();
+        $testValue = new \SpApi\Model\vendor\df\shipping\v2021_12_28\ShipmentSchedule();
         
         $this->model->setShipmentSchedule($testValue);
         $this->assertEquals($testValue, $this->model->getShipmentSchedule());

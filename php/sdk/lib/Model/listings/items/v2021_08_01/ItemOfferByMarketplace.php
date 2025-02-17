@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\listings\items\v2021_08_01;
+namespace SpApi\Model\listings\items\v2021_08_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ItemOfferByMarketplace Class Doc Comment
  *
  * @category Class
  * @description Offer details of a listings item for an Amazon marketplace.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,9 +62,9 @@ class ItemOfferByMarketplace implements ModelInterface, ArrayAccess, \JsonSerial
     protected static array $openAPITypes = [
              'marketplace_id' => 'string',
              'offer_type' => 'string',
-             'price' => '\OpenAPI\Client\Model\listings\items\v2021_08_01\Money',
-             'points' => '\OpenAPI\Client\Model\listings\items\v2021_08_01\Points',
-             'audience' => '\OpenAPI\Client\Model\listings\items\v2021_08_01\Audience'    ];
+             'price' => '\SpApi\Model\listings\items\v2021_08_01\Money',
+             'points' => '\SpApi\Model\listings\items\v2021_08_01\Points',
+             'audience' => '\SpApi\Model\listings\items\v2021_08_01\Audience'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -419,9 +419,9 @@ class ItemOfferByMarketplace implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets price
      *
-     * @return \OpenAPI\Client\Model\listings\items\v2021_08_01\Money
+     * @return \SpApi\Model\listings\items\v2021_08_01\Money
      */
-    public function getPrice(): \OpenAPI\Client\Model\listings\items\v2021_08_01\Money
+    public function getPrice(): \SpApi\Model\listings\items\v2021_08_01\Money
     {
         return $this->container['price'];
     }
@@ -429,11 +429,11 @@ class ItemOfferByMarketplace implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets price
      *
-     * @param \OpenAPI\Client\Model\listings\items\v2021_08_01\Money $price price
+     * @param \SpApi\Model\listings\items\v2021_08_01\Money $price price
      *
      * @return self
      */
-    public function setPrice(\OpenAPI\Client\Model\listings\items\v2021_08_01\Money $price): self
+    public function setPrice(\SpApi\Model\listings\items\v2021_08_01\Money $price): self
     {
         if (is_null($price)) {
             throw new \InvalidArgumentException('non-nullable price cannot be null');
@@ -446,9 +446,9 @@ class ItemOfferByMarketplace implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets points
      *
-     * @return \OpenAPI\Client\Model\listings\items\v2021_08_01\Points|null
+     * @return \SpApi\Model\listings\items\v2021_08_01\Points|null
      */
-    public function getPoints(): ?\OpenAPI\Client\Model\listings\items\v2021_08_01\Points
+    public function getPoints(): ?\SpApi\Model\listings\items\v2021_08_01\Points
     {
         return $this->container['points'];
     }
@@ -456,11 +456,11 @@ class ItemOfferByMarketplace implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets points
      *
-     * @param \OpenAPI\Client\Model\listings\items\v2021_08_01\Points|null $points points
+     * @param \SpApi\Model\listings\items\v2021_08_01\Points|null $points points
      *
      * @return self
      */
-    public function setPoints(?\OpenAPI\Client\Model\listings\items\v2021_08_01\Points $points): self
+    public function setPoints(?\SpApi\Model\listings\items\v2021_08_01\Points $points): self
     {
         if (is_null($points)) {
             array_push($this->openAPINullablesSetToNull, 'points');
@@ -480,9 +480,9 @@ class ItemOfferByMarketplace implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets audience
      *
-     * @return \OpenAPI\Client\Model\listings\items\v2021_08_01\Audience|null
+     * @return \SpApi\Model\listings\items\v2021_08_01\Audience|null
      */
-    public function getAudience(): ?\OpenAPI\Client\Model\listings\items\v2021_08_01\Audience
+    public function getAudience(): ?\SpApi\Model\listings\items\v2021_08_01\Audience
     {
         return $this->container['audience'];
     }
@@ -490,11 +490,11 @@ class ItemOfferByMarketplace implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets audience
      *
-     * @param \OpenAPI\Client\Model\listings\items\v2021_08_01\Audience|null $audience audience
+     * @param \SpApi\Model\listings\items\v2021_08_01\Audience|null $audience audience
      *
      * @return self
      */
-    public function setAudience(?\OpenAPI\Client\Model\listings\items\v2021_08_01\Audience $audience): self
+    public function setAudience(?\SpApi\Model\listings\items\v2021_08_01\Audience $audience): self
     {
         if (is_null($audience)) {
             array_push($this->openAPINullablesSetToNull, 'audience');

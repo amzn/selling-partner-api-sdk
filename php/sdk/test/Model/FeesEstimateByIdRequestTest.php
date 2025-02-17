@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\productFees\v0\FeesEstimateByIdRequest;
+use SpApi\Model\productFees\v0\FeesEstimateByIdRequest;
 
 /**
  * FeesEstimateByIdRequestTest Class Doc Comment
  *
  * @category    Class
  * @description A product, marketplace, and proposed price used to request estimated fees.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class FeesEstimateByIdRequestTest extends TestCase
 {
@@ -57,7 +57,7 @@ class FeesEstimateByIdRequestTest extends TestCase
     public function testPropertyFeesEstimateRequest()
     {
         
-        $testValue = new \OpenAPI\Client\Model\productFees\v0\FeesEstimateRequest();
+        $testValue = new \SpApi\Model\productFees\v0\FeesEstimateRequest();
         
         $this->model->setFeesEstimateRequest($testValue);
         $this->assertEquals($testValue, $this->model->getFeesEstimateRequest());
@@ -68,7 +68,7 @@ class FeesEstimateByIdRequestTest extends TestCase
      */
     public function testPropertyIdType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\productFees\v0\IdType();
+        $enumInstance = new \SpApi\Model\productFees\v0\IdType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

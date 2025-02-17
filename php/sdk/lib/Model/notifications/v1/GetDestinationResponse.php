@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\notifications\v1;
+namespace SpApi\Model\notifications\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetDestinationResponse Class Doc Comment
  *
  * @category Class
  * @description The response schema for the &#x60;getDestination&#x60; operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class GetDestinationResponse implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'payload' => '\OpenAPI\Client\Model\notifications\v1\Destination',
-             'errors' => '\OpenAPI\Client\Model\notifications\v1\Error[]'    ];
+             'payload' => '\SpApi\Model\notifications\v1\Destination',
+             'errors' => '\SpApi\Model\notifications\v1\Error[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -301,9 +301,9 @@ class GetDestinationResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets payload
      *
-     * @return \OpenAPI\Client\Model\notifications\v1\Destination|null
+     * @return \SpApi\Model\notifications\v1\Destination|null
      */
-    public function getPayload(): ?\OpenAPI\Client\Model\notifications\v1\Destination
+    public function getPayload(): ?\SpApi\Model\notifications\v1\Destination
     {
         return $this->container['payload'];
     }
@@ -311,11 +311,11 @@ class GetDestinationResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets payload
      *
-     * @param \OpenAPI\Client\Model\notifications\v1\Destination|null $payload payload
+     * @param \SpApi\Model\notifications\v1\Destination|null $payload payload
      *
      * @return self
      */
-    public function setPayload(?\OpenAPI\Client\Model\notifications\v1\Destination $payload): self
+    public function setPayload(?\SpApi\Model\notifications\v1\Destination $payload): self
     {
         if (is_null($payload)) {
             array_push($this->openAPINullablesSetToNull, 'payload');

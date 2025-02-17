@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\v2\GetCarrierAccountsResponse;
+use SpApi\Model\shipping\v2\GetCarrierAccountsResponse;
 
 /**
  * GetCarrierAccountsResponseTest Class Doc Comment
  *
  * @category    Class
  * @description The Response  for the GetCarrierAccountsResponse operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetCarrierAccountsResponseTest extends TestCase
 {

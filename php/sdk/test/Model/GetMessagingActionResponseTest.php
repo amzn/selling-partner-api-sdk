@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\messaging\v1\GetMessagingActionResponse;
+use SpApi\Model\messaging\v1\GetMessagingActionResponse;
 
 /**
  * GetMessagingActionResponseTest Class Doc Comment
  *
  * @category    Class
  * @description Describes a messaging action that can be taken for an order. Provides a JSON Hypertext Application Language (HAL) link to the JSON schema document that describes the expected input.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetMessagingActionResponseTest extends TestCase
 {
@@ -57,7 +57,7 @@ class GetMessagingActionResponseTest extends TestCase
     public function testPropertyLinks()
     {
         
-        $testValue = new \OpenAPI\Client\Model\messaging\v1\GetMessagingActionResponseLinks();
+        $testValue = new \SpApi\Model\messaging\v1\GetMessagingActionResponseLinks();
         
         $this->model->setLinks($testValue);
         $this->assertEquals($testValue, $this->model->getLinks());
@@ -69,7 +69,7 @@ class GetMessagingActionResponseTest extends TestCase
     public function testPropertyEmbedded()
     {
         
-        $testValue = new \OpenAPI\Client\Model\messaging\v1\GetMessagingActionResponseEmbedded();
+        $testValue = new \SpApi\Model\messaging\v1\GetMessagingActionResponseEmbedded();
         
         $this->model->setEmbedded($testValue);
         $this->assertEquals($testValue, $this->model->getEmbedded());
@@ -81,7 +81,7 @@ class GetMessagingActionResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\messaging\v1\MessagingAction();
+        $testValue = new \SpApi\Model\messaging\v1\MessagingAction();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

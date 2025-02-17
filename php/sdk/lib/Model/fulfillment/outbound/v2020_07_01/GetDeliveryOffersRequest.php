@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01;
+namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetDeliveryOffersRequest Class Doc Comment
  *
  * @category Class
  * @description The request body schema for the getDeliveryOffers operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class GetDeliveryOffersRequest implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'product' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersProduct',
-             'terms' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersTerms'    ];
+             'product' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersProduct',
+             'terms' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersTerms'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -307,9 +307,9 @@ class GetDeliveryOffersRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets product
      *
-     * @return \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersProduct
+     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersProduct
      */
-    public function getProduct(): \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersProduct
+    public function getProduct(): \SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersProduct
     {
         return $this->container['product'];
     }
@@ -317,11 +317,11 @@ class GetDeliveryOffersRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets product
      *
-     * @param \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersProduct $product product
+     * @param \SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersProduct $product product
      *
      * @return self
      */
-    public function setProduct(\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersProduct $product): self
+    public function setProduct(\SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersProduct $product): self
     {
         if (is_null($product)) {
             throw new \InvalidArgumentException('non-nullable product cannot be null');
@@ -334,9 +334,9 @@ class GetDeliveryOffersRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets terms
      *
-     * @return \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersTerms
+     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersTerms
      */
-    public function getTerms(): \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersTerms
+    public function getTerms(): \SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersTerms
     {
         return $this->container['terms'];
     }
@@ -344,11 +344,11 @@ class GetDeliveryOffersRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets terms
      *
-     * @param \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersTerms $terms terms
+     * @param \SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersTerms $terms terms
      *
      * @return self
      */
-    public function setTerms(\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersTerms $terms): self
+    public function setTerms(\SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersTerms $terms): self
     {
         if (is_null($terms)) {
             throw new \InvalidArgumentException('non-nullable terms cannot be null');

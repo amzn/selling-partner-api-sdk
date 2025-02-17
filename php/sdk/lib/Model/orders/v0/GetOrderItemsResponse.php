@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\orders\v0;
+namespace SpApi\Model\orders\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetOrderItemsResponse Class Doc Comment
  *
  * @category Class
  * @description The response schema for the &#x60;getOrderItems&#x60; operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class GetOrderItemsResponse implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'payload' => '\OpenAPI\Client\Model\orders\v0\OrderItemsList',
-             'errors' => '\OpenAPI\Client\Model\orders\v0\Error[]'    ];
+             'payload' => '\SpApi\Model\orders\v0\OrderItemsList',
+             'errors' => '\SpApi\Model\orders\v0\Error[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -301,9 +301,9 @@ class GetOrderItemsResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets payload
      *
-     * @return \OpenAPI\Client\Model\orders\v0\OrderItemsList|null
+     * @return \SpApi\Model\orders\v0\OrderItemsList|null
      */
-    public function getPayload(): ?\OpenAPI\Client\Model\orders\v0\OrderItemsList
+    public function getPayload(): ?\SpApi\Model\orders\v0\OrderItemsList
     {
         return $this->container['payload'];
     }
@@ -311,11 +311,11 @@ class GetOrderItemsResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets payload
      *
-     * @param \OpenAPI\Client\Model\orders\v0\OrderItemsList|null $payload payload
+     * @param \SpApi\Model\orders\v0\OrderItemsList|null $payload payload
      *
      * @return self
      */
-    public function setPayload(?\OpenAPI\Client\Model\orders\v0\OrderItemsList $payload): self
+    public function setPayload(?\SpApi\Model\orders\v0\OrderItemsList $payload): self
     {
         if (is_null($payload)) {
             array_push($this->openAPINullablesSetToNull, 'payload');

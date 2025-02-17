@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\v1\RangeSlotCapacityQuery;
+use SpApi\Model\services\v1\RangeSlotCapacityQuery;
 
 /**
  * RangeSlotCapacityQueryTest Class Doc Comment
  *
  * @category    Class
  * @description Request schema for the &#x60;getRangeSlotCapacity&#x60; operation. This schema is used to define the time range and capacity types that are being queried.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class RangeSlotCapacityQueryTest extends TestCase
 {

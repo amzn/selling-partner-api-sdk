@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\merchantFulfillment\v0;
+namespace SpApi\Model\merchantFulfillment\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetAdditionalSellerInputsRequest Class Doc Comment
  *
  * @category Class
  * @description Request schema.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class GetAdditionalSellerInputsRequest implements ModelInterface, ArrayAccess, \
       */
     protected static array $openAPITypes = [
              'shipping_service_id' => 'string',
-             'ship_from_address' => '\OpenAPI\Client\Model\merchantFulfillment\v0\Address',
+             'ship_from_address' => '\SpApi\Model\merchantFulfillment\v0\Address',
              'order_id' => 'string'    ];
 
     /**
@@ -344,9 +344,9 @@ class GetAdditionalSellerInputsRequest implements ModelInterface, ArrayAccess, \
     /**
      * Gets ship_from_address
      *
-     * @return \OpenAPI\Client\Model\merchantFulfillment\v0\Address
+     * @return \SpApi\Model\merchantFulfillment\v0\Address
      */
-    public function getShipFromAddress(): \OpenAPI\Client\Model\merchantFulfillment\v0\Address
+    public function getShipFromAddress(): \SpApi\Model\merchantFulfillment\v0\Address
     {
         return $this->container['ship_from_address'];
     }
@@ -354,11 +354,11 @@ class GetAdditionalSellerInputsRequest implements ModelInterface, ArrayAccess, \
     /**
      * Sets ship_from_address
      *
-     * @param \OpenAPI\Client\Model\merchantFulfillment\v0\Address $ship_from_address ship_from_address
+     * @param \SpApi\Model\merchantFulfillment\v0\Address $ship_from_address ship_from_address
      *
      * @return self
      */
-    public function setShipFromAddress(\OpenAPI\Client\Model\merchantFulfillment\v0\Address $ship_from_address): self
+    public function setShipFromAddress(\SpApi\Model\merchantFulfillment\v0\Address $ship_from_address): self
     {
         if (is_null($ship_from_address)) {
             throw new \InvalidArgumentException('non-nullable ship_from_address cannot be null');

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\shipments\v1\PackageItemDetails;
+use SpApi\Model\vendor\shipments\v1\PackageItemDetails;
 
 /**
  * PackageItemDetailsTest Class Doc Comment
  *
  * @category    Class
  * @description Item details for be provided for every item in shipment at either the item or carton or pallet level, whichever is appropriate.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class PackageItemDetailsTest extends TestCase
 {
@@ -79,7 +79,7 @@ class PackageItemDetailsTest extends TestCase
     public function testPropertyExpiry()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\shipments\v1\Expiry();
+        $testValue = new \SpApi\Model\vendor\shipments\v1\Expiry();
         
         $this->model->setExpiry($testValue);
         $this->assertEquals($testValue, $this->model->getExpiry());

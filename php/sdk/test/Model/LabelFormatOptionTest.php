@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantFulfillment\v0\LabelFormatOption;
+use SpApi\Model\merchantFulfillment\v0\LabelFormatOption;
 
 /**
  * LabelFormatOptionTest Class Doc Comment
  *
  * @category    Class
  * @description The label format details and whether to include a packing slip.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class LabelFormatOptionTest extends TestCase
 {
@@ -67,7 +67,7 @@ class LabelFormatOptionTest extends TestCase
      */
     public function testPropertyLabelFormat()
     {
-        $enumInstance = new \OpenAPI\Client\Model\merchantFulfillment\v0\LabelFormat();
+        $enumInstance = new \SpApi\Model\merchantFulfillment\v0\LabelFormat();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

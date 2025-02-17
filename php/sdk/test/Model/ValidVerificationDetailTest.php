@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\v0\ValidVerificationDetail;
+use SpApi\Model\orders\v0\ValidVerificationDetail;
 
 /**
  * ValidVerificationDetailTest Class Doc Comment
  *
  * @category    Class
  * @description The types of verification details that may be provided for the order and the criteria required for when the type of verification detail can be provided. The types of verification details allowed depend on the type of regulated product and will not change order to order.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ValidVerificationDetailTest extends TestCase
 {

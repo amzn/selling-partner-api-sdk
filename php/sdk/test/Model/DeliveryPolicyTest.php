@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DeliveryPolicy;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\DeliveryPolicy;
 
 /**
  * DeliveryPolicyTest Class Doc Comment
  *
  * @category    Class
  * @description The policy for a delivery offering.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class DeliveryPolicyTest extends TestCase
 {
@@ -57,7 +57,7 @@ class DeliveryPolicyTest extends TestCase
     public function testPropertyMessage()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DeliveryMessage();
+        $testValue = new \SpApi\Model\fulfillment\outbound\v2020_07_01\DeliveryMessage();
         
         $this->model->setMessage($testValue);
         $this->assertEquals($testValue, $this->model->getMessage());

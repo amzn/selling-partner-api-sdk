@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\df\transactions\v2021_12_28;
+namespace SpApi\Model\vendor\df\transactions\v2021_12_28;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * TransactionStatus Class Doc Comment
  *
  * @category Class
  * @description The payload for the getTransactionStatus operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class TransactionStatus implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'transaction_status' => '\OpenAPI\Client\Model\vendor\df\transactions\v2021_12_28\Transaction'    ];
+             'transaction_status' => '\SpApi\Model\vendor\df\transactions\v2021_12_28\Transaction'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -294,9 +294,9 @@ class TransactionStatus implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets transaction_status
      *
-     * @return \OpenAPI\Client\Model\vendor\df\transactions\v2021_12_28\Transaction|null
+     * @return \SpApi\Model\vendor\df\transactions\v2021_12_28\Transaction|null
      */
-    public function getTransactionStatus(): ?\OpenAPI\Client\Model\vendor\df\transactions\v2021_12_28\Transaction
+    public function getTransactionStatus(): ?\SpApi\Model\vendor\df\transactions\v2021_12_28\Transaction
     {
         return $this->container['transaction_status'];
     }
@@ -304,11 +304,11 @@ class TransactionStatus implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets transaction_status
      *
-     * @param \OpenAPI\Client\Model\vendor\df\transactions\v2021_12_28\Transaction|null $transaction_status transaction_status
+     * @param \SpApi\Model\vendor\df\transactions\v2021_12_28\Transaction|null $transaction_status transaction_status
      *
      * @return self
      */
-    public function setTransactionStatus(?\OpenAPI\Client\Model\vendor\df\transactions\v2021_12_28\Transaction $transaction_status): self
+    public function setTransactionStatus(?\SpApi\Model\vendor\df\transactions\v2021_12_28\Transaction $transaction_status): self
     {
         if (is_null($transaction_status)) {
             array_push($this->openAPINullablesSetToNull, 'transaction_status');

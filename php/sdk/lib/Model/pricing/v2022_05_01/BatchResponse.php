@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\pricing\v2022_05_01;
+namespace SpApi\Model\pricing\v2022_05_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * BatchResponse Class Doc Comment
  *
  * @category Class
  * @description The common properties for responses to individual requests within a batch.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class BatchResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPITypes = [
              'headers' => 'array<string,string>',
-             'status' => '\OpenAPI\Client\Model\pricing\v2022_05_01\HttpStatusLine'    ];
+             'status' => '\SpApi\Model\pricing\v2022_05_01\HttpStatusLine'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -334,9 +334,9 @@ class BatchResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets status
      *
-     * @return \OpenAPI\Client\Model\pricing\v2022_05_01\HttpStatusLine
+     * @return \SpApi\Model\pricing\v2022_05_01\HttpStatusLine
      */
-    public function getStatus(): \OpenAPI\Client\Model\pricing\v2022_05_01\HttpStatusLine
+    public function getStatus(): \SpApi\Model\pricing\v2022_05_01\HttpStatusLine
     {
         return $this->container['status'];
     }
@@ -344,11 +344,11 @@ class BatchResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param \OpenAPI\Client\Model\pricing\v2022_05_01\HttpStatusLine $status status
+     * @param \SpApi\Model\pricing\v2022_05_01\HttpStatusLine $status status
      *
      * @return self
      */
-    public function setStatus(\OpenAPI\Client\Model\pricing\v2022_05_01\HttpStatusLine $status): self
+    public function setStatus(\SpApi\Model\pricing\v2022_05_01\HttpStatusLine $status): self
     {
         if (is_null($status)) {
             throw new \InvalidArgumentException('non-nullable status cannot be null');

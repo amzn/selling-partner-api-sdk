@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\aplusContent\v2020_11_01\TextItem;
+use SpApi\Model\aplusContent\v2020_11_01\TextItem;
 
 /**
  * TextItemTest Class Doc Comment
  *
  * @category    Class
  * @description Rich positional text, usually presented as a collection of bullet points.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class TextItemTest extends TestCase
 {
@@ -68,7 +68,7 @@ class TextItemTest extends TestCase
     public function testPropertyText()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\TextComponent();
         
         $this->model->setText($testValue);
         $this->assertEquals($testValue, $this->model->getText());

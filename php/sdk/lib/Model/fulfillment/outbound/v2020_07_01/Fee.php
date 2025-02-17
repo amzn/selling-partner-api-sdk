@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01;
+namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Fee Class Doc Comment
  *
  * @category Class
  * @description Fee type and cost.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class Fee implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPITypes = [
              'name' => 'string',
-             'amount' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money'    ];
+             'amount' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\Money'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -372,9 +372,9 @@ class Fee implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets amount
      *
-     * @return \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money
+     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\Money
      */
-    public function getAmount(): \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money
+    public function getAmount(): \SpApi\Model\fulfillment\outbound\v2020_07_01\Money
     {
         return $this->container['amount'];
     }
@@ -382,11 +382,11 @@ class Fee implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets amount
      *
-     * @param \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money $amount amount
+     * @param \SpApi\Model\fulfillment\outbound\v2020_07_01\Money $amount amount
      *
      * @return self
      */
-    public function setAmount(\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money $amount): self
+    public function setAmount(\SpApi\Model\fulfillment\outbound\v2020_07_01\Money $amount): self
     {
         if (is_null($amount)) {
             throw new \InvalidArgumentException('non-nullable amount cannot be null');

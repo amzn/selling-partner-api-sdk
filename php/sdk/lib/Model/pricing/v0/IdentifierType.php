@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\pricing\v0;
+namespace SpApi\Model\pricing\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * IdentifierType Class Doc Comment
  *
  * @category Class
  * @description Specifies the identifiers used to uniquely identify an item.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class IdentifierType implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'marketplace_asin' => '\OpenAPI\Client\Model\pricing\v0\ASINIdentifier',
-             'sku_identifier' => '\OpenAPI\Client\Model\pricing\v0\SellerSKUIdentifier'    ];
+             'marketplace_asin' => '\SpApi\Model\pricing\v0\ASINIdentifier',
+             'sku_identifier' => '\SpApi\Model\pricing\v0\SellerSKUIdentifier'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -304,9 +304,9 @@ class IdentifierType implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets marketplace_asin
      *
-     * @return \OpenAPI\Client\Model\pricing\v0\ASINIdentifier
+     * @return \SpApi\Model\pricing\v0\ASINIdentifier
      */
-    public function getMarketplaceAsin(): \OpenAPI\Client\Model\pricing\v0\ASINIdentifier
+    public function getMarketplaceAsin(): \SpApi\Model\pricing\v0\ASINIdentifier
     {
         return $this->container['marketplace_asin'];
     }
@@ -314,11 +314,11 @@ class IdentifierType implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets marketplace_asin
      *
-     * @param \OpenAPI\Client\Model\pricing\v0\ASINIdentifier $marketplace_asin marketplace_asin
+     * @param \SpApi\Model\pricing\v0\ASINIdentifier $marketplace_asin marketplace_asin
      *
      * @return self
      */
-    public function setMarketplaceAsin(\OpenAPI\Client\Model\pricing\v0\ASINIdentifier $marketplace_asin): self
+    public function setMarketplaceAsin(\SpApi\Model\pricing\v0\ASINIdentifier $marketplace_asin): self
     {
         if (is_null($marketplace_asin)) {
             throw new \InvalidArgumentException('non-nullable marketplace_asin cannot be null');
@@ -331,9 +331,9 @@ class IdentifierType implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets sku_identifier
      *
-     * @return \OpenAPI\Client\Model\pricing\v0\SellerSKUIdentifier|null
+     * @return \SpApi\Model\pricing\v0\SellerSKUIdentifier|null
      */
-    public function getSkuIdentifier(): ?\OpenAPI\Client\Model\pricing\v0\SellerSKUIdentifier
+    public function getSkuIdentifier(): ?\SpApi\Model\pricing\v0\SellerSKUIdentifier
     {
         return $this->container['sku_identifier'];
     }
@@ -341,11 +341,11 @@ class IdentifierType implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets sku_identifier
      *
-     * @param \OpenAPI\Client\Model\pricing\v0\SellerSKUIdentifier|null $sku_identifier sku_identifier
+     * @param \SpApi\Model\pricing\v0\SellerSKUIdentifier|null $sku_identifier sku_identifier
      *
      * @return self
      */
-    public function setSkuIdentifier(?\OpenAPI\Client\Model\pricing\v0\SellerSKUIdentifier $sku_identifier): self
+    public function setSkuIdentifier(?\SpApi\Model\pricing\v0\SellerSKUIdentifier $sku_identifier): self
     {
         if (is_null($sku_identifier)) {
             array_push($this->openAPINullablesSetToNull, 'sku_identifier');

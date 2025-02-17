@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\MskuPrepDetail;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\MskuPrepDetail;
 
 /**
  * MskuPrepDetailTest Class Doc Comment
  *
  * @category    Class
  * @description An MSKU and its related prep details.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class MskuPrepDetailTest extends TestCase
 {
@@ -56,7 +56,7 @@ class MskuPrepDetailTest extends TestCase
      */
     public function testPropertyAllOwnersConstraint()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\AllOwnersConstraint();
+        $enumInstance = new \SpApi\Model\fulfillment\inbound\v2024_03_20\AllOwnersConstraint();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -69,7 +69,7 @@ class MskuPrepDetailTest extends TestCase
      */
     public function testPropertyLabelOwnerConstraint()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\OwnerConstraint();
+        $enumInstance = new \SpApi\Model\fulfillment\inbound\v2024_03_20\OwnerConstraint();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -93,7 +93,7 @@ class MskuPrepDetailTest extends TestCase
      */
     public function testPropertyPrepCategory()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\PrepCategory();
+        $enumInstance = new \SpApi\Model\fulfillment\inbound\v2024_03_20\PrepCategory();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -106,7 +106,7 @@ class MskuPrepDetailTest extends TestCase
      */
     public function testPropertyPrepOwnerConstraint()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\OwnerConstraint();
+        $enumInstance = new \SpApi\Model\fulfillment\inbound\v2024_03_20\OwnerConstraint();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

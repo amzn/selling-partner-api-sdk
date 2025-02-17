@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\pricing\v2022_05_01;
+namespace SpApi\Model\pricing\v2022_05_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * SegmentDetails Class Doc Comment
  *
  * @category Class
  * @description The details about the segment. The FeaturedOfferExpectedPrice API uses only the sampleLocation portion as input.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class SegmentDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPITypes = [
              'glance_view_weight_percentage' => 'float',
-             'sample_location' => '\OpenAPI\Client\Model\pricing\v2022_05_01\SampleLocation'    ];
+             'sample_location' => '\SpApi\Model\pricing\v2022_05_01\SampleLocation'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -335,9 +335,9 @@ class SegmentDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets sample_location
      *
-     * @return \OpenAPI\Client\Model\pricing\v2022_05_01\SampleLocation|null
+     * @return \SpApi\Model\pricing\v2022_05_01\SampleLocation|null
      */
-    public function getSampleLocation(): ?\OpenAPI\Client\Model\pricing\v2022_05_01\SampleLocation
+    public function getSampleLocation(): ?\SpApi\Model\pricing\v2022_05_01\SampleLocation
     {
         return $this->container['sample_location'];
     }
@@ -345,11 +345,11 @@ class SegmentDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets sample_location
      *
-     * @param \OpenAPI\Client\Model\pricing\v2022_05_01\SampleLocation|null $sample_location sample_location
+     * @param \SpApi\Model\pricing\v2022_05_01\SampleLocation|null $sample_location sample_location
      *
      * @return self
      */
-    public function setSampleLocation(?\OpenAPI\Client\Model\pricing\v2022_05_01\SampleLocation $sample_location): self
+    public function setSampleLocation(?\SpApi\Model\pricing\v2022_05_01\SampleLocation $sample_location): self
     {
         if (is_null($sample_location)) {
             array_push($this->openAPINullablesSetToNull, 'sample_location');

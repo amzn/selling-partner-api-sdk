@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\feeds\v2021_06_30;
+namespace SpApi\Model\feeds\v2021_06_30;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ErrorList Class Doc Comment
  *
  * @category Class
  * @description A list of error responses returned when a request is unsuccessful.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'errors' => '\OpenAPI\Client\Model\feeds\v2021_06_30\Error[]'    ];
+             'errors' => '\SpApi\Model\feeds\v2021_06_30\Error[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

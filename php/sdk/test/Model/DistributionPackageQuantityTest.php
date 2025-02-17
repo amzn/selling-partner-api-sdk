@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\awd\v2024_05_09\DistributionPackageQuantity;
+use SpApi\Model\awd\v2024_05_09\DistributionPackageQuantity;
 
 /**
  * DistributionPackageQuantityTest Class Doc Comment
  *
  * @category    Class
  * @description Represents a distribution package with its respective quantity.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class DistributionPackageQuantityTest extends TestCase
 {
@@ -68,7 +68,7 @@ class DistributionPackageQuantityTest extends TestCase
     public function testPropertyDistributionPackage()
     {
         
-        $testValue = new \OpenAPI\Client\Model\awd\v2024_05_09\DistributionPackage();
+        $testValue = new \SpApi\Model\awd\v2024_05_09\DistributionPackage();
         
         $this->model->setDistributionPackage($testValue);
         $this->assertEquals($testValue, $this->model->getDistributionPackage());

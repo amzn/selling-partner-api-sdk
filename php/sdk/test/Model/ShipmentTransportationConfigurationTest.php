@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ShipmentTransportationConfiguration;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\ShipmentTransportationConfiguration;
 
 /**
  * ShipmentTransportationConfigurationTest Class Doc Comment
  *
  * @category    Class
  * @description Details needed to generate the transportation options.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ShipmentTransportationConfigurationTest extends TestCase
 {
@@ -57,7 +57,7 @@ class ShipmentTransportationConfigurationTest extends TestCase
     public function testPropertyContactInformation()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ContactInformation();
+        $testValue = new \SpApi\Model\fulfillment\inbound\v2024_03_20\ContactInformation();
         
         $this->model->setContactInformation($testValue);
         $this->assertEquals($testValue, $this->model->getContactInformation());
@@ -69,7 +69,7 @@ class ShipmentTransportationConfigurationTest extends TestCase
     public function testPropertyFreightInformation()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\FreightInformation();
+        $testValue = new \SpApi\Model\fulfillment\inbound\v2024_03_20\FreightInformation();
         
         $this->model->setFreightInformation($testValue);
         $this->assertEquals($testValue, $this->model->getFreightInformation());
@@ -92,7 +92,7 @@ class ShipmentTransportationConfigurationTest extends TestCase
     public function testPropertyReadyToShipWindow()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\WindowInput();
+        $testValue = new \SpApi\Model\fulfillment\inbound\v2024_03_20\WindowInput();
         
         $this->model->setReadyToShipWindow($testValue);
         $this->assertEquals($testValue, $this->model->getReadyToShipWindow());

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\finances\v0\SellerReviewEnrollmentPaymentEvent;
+use SpApi\Model\finances\v0\SellerReviewEnrollmentPaymentEvent;
 
 /**
  * SellerReviewEnrollmentPaymentEventTest Class Doc Comment
  *
  * @category    Class
  * @description A fee payment event for the Early Reviewer Program.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class SellerReviewEnrollmentPaymentEventTest extends TestCase
 {
@@ -91,7 +91,7 @@ class SellerReviewEnrollmentPaymentEventTest extends TestCase
     public function testPropertyFeeComponent()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v0\FeeComponent();
+        $testValue = new \SpApi\Model\finances\v0\FeeComponent();
         
         $this->model->setFeeComponent($testValue);
         $this->assertEquals($testValue, $this->model->getFeeComponent());
@@ -103,7 +103,7 @@ class SellerReviewEnrollmentPaymentEventTest extends TestCase
     public function testPropertyChargeComponent()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v0\ChargeComponent();
+        $testValue = new \SpApi\Model\finances\v0\ChargeComponent();
         
         $this->model->setChargeComponent($testValue);
         $this->assertEquals($testValue, $this->model->getChargeComponent());
@@ -115,7 +115,7 @@ class SellerReviewEnrollmentPaymentEventTest extends TestCase
     public function testPropertyTotalAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v0\Currency();
+        $testValue = new \SpApi\Model\finances\v0\Currency();
         
         $this->model->setTotalAmount($testValue);
         $this->assertEquals($testValue, $this->model->getTotalAmount());

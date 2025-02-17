@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\aplusContent\v2020_11_01;
+namespace SpApi\Model\aplusContent\v2020_11_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ContentModule Class Doc Comment
  *
  * @category Class
  * @description An A+ Content module. An A+ Content document is composed of content modules. The contentModuleType property selects which content module types to use.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,22 +60,22 @@ class ContentModule implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'content_module_type' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentModuleType',
-             'standard_company_logo' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardCompanyLogoModule',
-             'standard_comparison_table' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardComparisonTableModule',
-             'standard_four_image_text' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardFourImageTextModule',
-             'standard_four_image_text_quadrant' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardFourImageTextQuadrantModule',
-             'standard_header_image_text' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardHeaderImageTextModule',
-             'standard_image_sidebar' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageSidebarModule',
-             'standard_image_text_overlay' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextOverlayModule',
-             'standard_multiple_image_text' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardMultipleImageTextModule',
-             'standard_product_description' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardProductDescriptionModule',
-             'standard_single_image_highlights' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardSingleImageHighlightsModule',
-             'standard_single_image_specs_detail' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardSingleImageSpecsDetailModule',
-             'standard_single_side_image' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardSingleSideImageModule',
-             'standard_tech_specs' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTechSpecsModule',
-             'standard_text' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextModule',
-             'standard_three_image_text' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardThreeImageTextModule'    ];
+             'content_module_type' => '\SpApi\Model\aplusContent\v2020_11_01\ContentModuleType',
+             'standard_company_logo' => '\SpApi\Model\aplusContent\v2020_11_01\StandardCompanyLogoModule',
+             'standard_comparison_table' => '\SpApi\Model\aplusContent\v2020_11_01\StandardComparisonTableModule',
+             'standard_four_image_text' => '\SpApi\Model\aplusContent\v2020_11_01\StandardFourImageTextModule',
+             'standard_four_image_text_quadrant' => '\SpApi\Model\aplusContent\v2020_11_01\StandardFourImageTextQuadrantModule',
+             'standard_header_image_text' => '\SpApi\Model\aplusContent\v2020_11_01\StandardHeaderImageTextModule',
+             'standard_image_sidebar' => '\SpApi\Model\aplusContent\v2020_11_01\StandardImageSidebarModule',
+             'standard_image_text_overlay' => '\SpApi\Model\aplusContent\v2020_11_01\StandardImageTextOverlayModule',
+             'standard_multiple_image_text' => '\SpApi\Model\aplusContent\v2020_11_01\StandardMultipleImageTextModule',
+             'standard_product_description' => '\SpApi\Model\aplusContent\v2020_11_01\StandardProductDescriptionModule',
+             'standard_single_image_highlights' => '\SpApi\Model\aplusContent\v2020_11_01\StandardSingleImageHighlightsModule',
+             'standard_single_image_specs_detail' => '\SpApi\Model\aplusContent\v2020_11_01\StandardSingleImageSpecsDetailModule',
+             'standard_single_side_image' => '\SpApi\Model\aplusContent\v2020_11_01\StandardSingleSideImageModule',
+             'standard_tech_specs' => '\SpApi\Model\aplusContent\v2020_11_01\StandardTechSpecsModule',
+             'standard_text' => '\SpApi\Model\aplusContent\v2020_11_01\StandardTextModule',
+             'standard_three_image_text' => '\SpApi\Model\aplusContent\v2020_11_01\StandardThreeImageTextModule'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -429,9 +429,9 @@ class ContentModule implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets standard_company_logo
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardCompanyLogoModule|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\StandardCompanyLogoModule|null
      */
-    public function getStandardCompanyLogo(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardCompanyLogoModule
+    public function getStandardCompanyLogo(): ?\SpApi\Model\aplusContent\v2020_11_01\StandardCompanyLogoModule
     {
         return $this->container['standard_company_logo'];
     }
@@ -439,11 +439,11 @@ class ContentModule implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets standard_company_logo
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardCompanyLogoModule|null $standard_company_logo standard_company_logo
+     * @param \SpApi\Model\aplusContent\v2020_11_01\StandardCompanyLogoModule|null $standard_company_logo standard_company_logo
      *
      * @return self
      */
-    public function setStandardCompanyLogo(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardCompanyLogoModule $standard_company_logo): self
+    public function setStandardCompanyLogo(?\SpApi\Model\aplusContent\v2020_11_01\StandardCompanyLogoModule $standard_company_logo): self
     {
         if (is_null($standard_company_logo)) {
             array_push($this->openAPINullablesSetToNull, 'standard_company_logo');
@@ -463,9 +463,9 @@ class ContentModule implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets standard_comparison_table
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardComparisonTableModule|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\StandardComparisonTableModule|null
      */
-    public function getStandardComparisonTable(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardComparisonTableModule
+    public function getStandardComparisonTable(): ?\SpApi\Model\aplusContent\v2020_11_01\StandardComparisonTableModule
     {
         return $this->container['standard_comparison_table'];
     }
@@ -473,11 +473,11 @@ class ContentModule implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets standard_comparison_table
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardComparisonTableModule|null $standard_comparison_table standard_comparison_table
+     * @param \SpApi\Model\aplusContent\v2020_11_01\StandardComparisonTableModule|null $standard_comparison_table standard_comparison_table
      *
      * @return self
      */
-    public function setStandardComparisonTable(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardComparisonTableModule $standard_comparison_table): self
+    public function setStandardComparisonTable(?\SpApi\Model\aplusContent\v2020_11_01\StandardComparisonTableModule $standard_comparison_table): self
     {
         if (is_null($standard_comparison_table)) {
             array_push($this->openAPINullablesSetToNull, 'standard_comparison_table');
@@ -497,9 +497,9 @@ class ContentModule implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets standard_four_image_text
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardFourImageTextModule|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\StandardFourImageTextModule|null
      */
-    public function getStandardFourImageText(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardFourImageTextModule
+    public function getStandardFourImageText(): ?\SpApi\Model\aplusContent\v2020_11_01\StandardFourImageTextModule
     {
         return $this->container['standard_four_image_text'];
     }
@@ -507,11 +507,11 @@ class ContentModule implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets standard_four_image_text
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardFourImageTextModule|null $standard_four_image_text standard_four_image_text
+     * @param \SpApi\Model\aplusContent\v2020_11_01\StandardFourImageTextModule|null $standard_four_image_text standard_four_image_text
      *
      * @return self
      */
-    public function setStandardFourImageText(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardFourImageTextModule $standard_four_image_text): self
+    public function setStandardFourImageText(?\SpApi\Model\aplusContent\v2020_11_01\StandardFourImageTextModule $standard_four_image_text): self
     {
         if (is_null($standard_four_image_text)) {
             array_push($this->openAPINullablesSetToNull, 'standard_four_image_text');
@@ -531,9 +531,9 @@ class ContentModule implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets standard_four_image_text_quadrant
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardFourImageTextQuadrantModule|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\StandardFourImageTextQuadrantModule|null
      */
-    public function getStandardFourImageTextQuadrant(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardFourImageTextQuadrantModule
+    public function getStandardFourImageTextQuadrant(): ?\SpApi\Model\aplusContent\v2020_11_01\StandardFourImageTextQuadrantModule
     {
         return $this->container['standard_four_image_text_quadrant'];
     }
@@ -541,11 +541,11 @@ class ContentModule implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets standard_four_image_text_quadrant
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardFourImageTextQuadrantModule|null $standard_four_image_text_quadrant standard_four_image_text_quadrant
+     * @param \SpApi\Model\aplusContent\v2020_11_01\StandardFourImageTextQuadrantModule|null $standard_four_image_text_quadrant standard_four_image_text_quadrant
      *
      * @return self
      */
-    public function setStandardFourImageTextQuadrant(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardFourImageTextQuadrantModule $standard_four_image_text_quadrant): self
+    public function setStandardFourImageTextQuadrant(?\SpApi\Model\aplusContent\v2020_11_01\StandardFourImageTextQuadrantModule $standard_four_image_text_quadrant): self
     {
         if (is_null($standard_four_image_text_quadrant)) {
             array_push($this->openAPINullablesSetToNull, 'standard_four_image_text_quadrant');
@@ -565,9 +565,9 @@ class ContentModule implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets standard_header_image_text
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardHeaderImageTextModule|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\StandardHeaderImageTextModule|null
      */
-    public function getStandardHeaderImageText(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardHeaderImageTextModule
+    public function getStandardHeaderImageText(): ?\SpApi\Model\aplusContent\v2020_11_01\StandardHeaderImageTextModule
     {
         return $this->container['standard_header_image_text'];
     }
@@ -575,11 +575,11 @@ class ContentModule implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets standard_header_image_text
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardHeaderImageTextModule|null $standard_header_image_text standard_header_image_text
+     * @param \SpApi\Model\aplusContent\v2020_11_01\StandardHeaderImageTextModule|null $standard_header_image_text standard_header_image_text
      *
      * @return self
      */
-    public function setStandardHeaderImageText(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardHeaderImageTextModule $standard_header_image_text): self
+    public function setStandardHeaderImageText(?\SpApi\Model\aplusContent\v2020_11_01\StandardHeaderImageTextModule $standard_header_image_text): self
     {
         if (is_null($standard_header_image_text)) {
             array_push($this->openAPINullablesSetToNull, 'standard_header_image_text');
@@ -599,9 +599,9 @@ class ContentModule implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets standard_image_sidebar
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageSidebarModule|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\StandardImageSidebarModule|null
      */
-    public function getStandardImageSidebar(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageSidebarModule
+    public function getStandardImageSidebar(): ?\SpApi\Model\aplusContent\v2020_11_01\StandardImageSidebarModule
     {
         return $this->container['standard_image_sidebar'];
     }
@@ -609,11 +609,11 @@ class ContentModule implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets standard_image_sidebar
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageSidebarModule|null $standard_image_sidebar standard_image_sidebar
+     * @param \SpApi\Model\aplusContent\v2020_11_01\StandardImageSidebarModule|null $standard_image_sidebar standard_image_sidebar
      *
      * @return self
      */
-    public function setStandardImageSidebar(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageSidebarModule $standard_image_sidebar): self
+    public function setStandardImageSidebar(?\SpApi\Model\aplusContent\v2020_11_01\StandardImageSidebarModule $standard_image_sidebar): self
     {
         if (is_null($standard_image_sidebar)) {
             array_push($this->openAPINullablesSetToNull, 'standard_image_sidebar');
@@ -633,9 +633,9 @@ class ContentModule implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets standard_image_text_overlay
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextOverlayModule|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\StandardImageTextOverlayModule|null
      */
-    public function getStandardImageTextOverlay(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextOverlayModule
+    public function getStandardImageTextOverlay(): ?\SpApi\Model\aplusContent\v2020_11_01\StandardImageTextOverlayModule
     {
         return $this->container['standard_image_text_overlay'];
     }
@@ -643,11 +643,11 @@ class ContentModule implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets standard_image_text_overlay
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextOverlayModule|null $standard_image_text_overlay standard_image_text_overlay
+     * @param \SpApi\Model\aplusContent\v2020_11_01\StandardImageTextOverlayModule|null $standard_image_text_overlay standard_image_text_overlay
      *
      * @return self
      */
-    public function setStandardImageTextOverlay(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextOverlayModule $standard_image_text_overlay): self
+    public function setStandardImageTextOverlay(?\SpApi\Model\aplusContent\v2020_11_01\StandardImageTextOverlayModule $standard_image_text_overlay): self
     {
         if (is_null($standard_image_text_overlay)) {
             array_push($this->openAPINullablesSetToNull, 'standard_image_text_overlay');
@@ -667,9 +667,9 @@ class ContentModule implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets standard_multiple_image_text
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardMultipleImageTextModule|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\StandardMultipleImageTextModule|null
      */
-    public function getStandardMultipleImageText(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardMultipleImageTextModule
+    public function getStandardMultipleImageText(): ?\SpApi\Model\aplusContent\v2020_11_01\StandardMultipleImageTextModule
     {
         return $this->container['standard_multiple_image_text'];
     }
@@ -677,11 +677,11 @@ class ContentModule implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets standard_multiple_image_text
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardMultipleImageTextModule|null $standard_multiple_image_text standard_multiple_image_text
+     * @param \SpApi\Model\aplusContent\v2020_11_01\StandardMultipleImageTextModule|null $standard_multiple_image_text standard_multiple_image_text
      *
      * @return self
      */
-    public function setStandardMultipleImageText(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardMultipleImageTextModule $standard_multiple_image_text): self
+    public function setStandardMultipleImageText(?\SpApi\Model\aplusContent\v2020_11_01\StandardMultipleImageTextModule $standard_multiple_image_text): self
     {
         if (is_null($standard_multiple_image_text)) {
             array_push($this->openAPINullablesSetToNull, 'standard_multiple_image_text');
@@ -701,9 +701,9 @@ class ContentModule implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets standard_product_description
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardProductDescriptionModule|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\StandardProductDescriptionModule|null
      */
-    public function getStandardProductDescription(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardProductDescriptionModule
+    public function getStandardProductDescription(): ?\SpApi\Model\aplusContent\v2020_11_01\StandardProductDescriptionModule
     {
         return $this->container['standard_product_description'];
     }
@@ -711,11 +711,11 @@ class ContentModule implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets standard_product_description
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardProductDescriptionModule|null $standard_product_description standard_product_description
+     * @param \SpApi\Model\aplusContent\v2020_11_01\StandardProductDescriptionModule|null $standard_product_description standard_product_description
      *
      * @return self
      */
-    public function setStandardProductDescription(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardProductDescriptionModule $standard_product_description): self
+    public function setStandardProductDescription(?\SpApi\Model\aplusContent\v2020_11_01\StandardProductDescriptionModule $standard_product_description): self
     {
         if (is_null($standard_product_description)) {
             array_push($this->openAPINullablesSetToNull, 'standard_product_description');
@@ -735,9 +735,9 @@ class ContentModule implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets standard_single_image_highlights
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardSingleImageHighlightsModule|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\StandardSingleImageHighlightsModule|null
      */
-    public function getStandardSingleImageHighlights(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardSingleImageHighlightsModule
+    public function getStandardSingleImageHighlights(): ?\SpApi\Model\aplusContent\v2020_11_01\StandardSingleImageHighlightsModule
     {
         return $this->container['standard_single_image_highlights'];
     }
@@ -745,11 +745,11 @@ class ContentModule implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets standard_single_image_highlights
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardSingleImageHighlightsModule|null $standard_single_image_highlights standard_single_image_highlights
+     * @param \SpApi\Model\aplusContent\v2020_11_01\StandardSingleImageHighlightsModule|null $standard_single_image_highlights standard_single_image_highlights
      *
      * @return self
      */
-    public function setStandardSingleImageHighlights(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardSingleImageHighlightsModule $standard_single_image_highlights): self
+    public function setStandardSingleImageHighlights(?\SpApi\Model\aplusContent\v2020_11_01\StandardSingleImageHighlightsModule $standard_single_image_highlights): self
     {
         if (is_null($standard_single_image_highlights)) {
             array_push($this->openAPINullablesSetToNull, 'standard_single_image_highlights');
@@ -769,9 +769,9 @@ class ContentModule implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets standard_single_image_specs_detail
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardSingleImageSpecsDetailModule|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\StandardSingleImageSpecsDetailModule|null
      */
-    public function getStandardSingleImageSpecsDetail(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardSingleImageSpecsDetailModule
+    public function getStandardSingleImageSpecsDetail(): ?\SpApi\Model\aplusContent\v2020_11_01\StandardSingleImageSpecsDetailModule
     {
         return $this->container['standard_single_image_specs_detail'];
     }
@@ -779,11 +779,11 @@ class ContentModule implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets standard_single_image_specs_detail
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardSingleImageSpecsDetailModule|null $standard_single_image_specs_detail standard_single_image_specs_detail
+     * @param \SpApi\Model\aplusContent\v2020_11_01\StandardSingleImageSpecsDetailModule|null $standard_single_image_specs_detail standard_single_image_specs_detail
      *
      * @return self
      */
-    public function setStandardSingleImageSpecsDetail(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardSingleImageSpecsDetailModule $standard_single_image_specs_detail): self
+    public function setStandardSingleImageSpecsDetail(?\SpApi\Model\aplusContent\v2020_11_01\StandardSingleImageSpecsDetailModule $standard_single_image_specs_detail): self
     {
         if (is_null($standard_single_image_specs_detail)) {
             array_push($this->openAPINullablesSetToNull, 'standard_single_image_specs_detail');
@@ -803,9 +803,9 @@ class ContentModule implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets standard_single_side_image
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardSingleSideImageModule|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\StandardSingleSideImageModule|null
      */
-    public function getStandardSingleSideImage(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardSingleSideImageModule
+    public function getStandardSingleSideImage(): ?\SpApi\Model\aplusContent\v2020_11_01\StandardSingleSideImageModule
     {
         return $this->container['standard_single_side_image'];
     }
@@ -813,11 +813,11 @@ class ContentModule implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets standard_single_side_image
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardSingleSideImageModule|null $standard_single_side_image standard_single_side_image
+     * @param \SpApi\Model\aplusContent\v2020_11_01\StandardSingleSideImageModule|null $standard_single_side_image standard_single_side_image
      *
      * @return self
      */
-    public function setStandardSingleSideImage(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardSingleSideImageModule $standard_single_side_image): self
+    public function setStandardSingleSideImage(?\SpApi\Model\aplusContent\v2020_11_01\StandardSingleSideImageModule $standard_single_side_image): self
     {
         if (is_null($standard_single_side_image)) {
             array_push($this->openAPINullablesSetToNull, 'standard_single_side_image');
@@ -837,9 +837,9 @@ class ContentModule implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets standard_tech_specs
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTechSpecsModule|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\StandardTechSpecsModule|null
      */
-    public function getStandardTechSpecs(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTechSpecsModule
+    public function getStandardTechSpecs(): ?\SpApi\Model\aplusContent\v2020_11_01\StandardTechSpecsModule
     {
         return $this->container['standard_tech_specs'];
     }
@@ -847,11 +847,11 @@ class ContentModule implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets standard_tech_specs
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTechSpecsModule|null $standard_tech_specs standard_tech_specs
+     * @param \SpApi\Model\aplusContent\v2020_11_01\StandardTechSpecsModule|null $standard_tech_specs standard_tech_specs
      *
      * @return self
      */
-    public function setStandardTechSpecs(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTechSpecsModule $standard_tech_specs): self
+    public function setStandardTechSpecs(?\SpApi\Model\aplusContent\v2020_11_01\StandardTechSpecsModule $standard_tech_specs): self
     {
         if (is_null($standard_tech_specs)) {
             array_push($this->openAPINullablesSetToNull, 'standard_tech_specs');
@@ -871,9 +871,9 @@ class ContentModule implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets standard_text
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextModule|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\StandardTextModule|null
      */
-    public function getStandardText(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextModule
+    public function getStandardText(): ?\SpApi\Model\aplusContent\v2020_11_01\StandardTextModule
     {
         return $this->container['standard_text'];
     }
@@ -881,11 +881,11 @@ class ContentModule implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets standard_text
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextModule|null $standard_text standard_text
+     * @param \SpApi\Model\aplusContent\v2020_11_01\StandardTextModule|null $standard_text standard_text
      *
      * @return self
      */
-    public function setStandardText(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextModule $standard_text): self
+    public function setStandardText(?\SpApi\Model\aplusContent\v2020_11_01\StandardTextModule $standard_text): self
     {
         if (is_null($standard_text)) {
             array_push($this->openAPINullablesSetToNull, 'standard_text');
@@ -905,9 +905,9 @@ class ContentModule implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets standard_three_image_text
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardThreeImageTextModule|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\StandardThreeImageTextModule|null
      */
-    public function getStandardThreeImageText(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardThreeImageTextModule
+    public function getStandardThreeImageText(): ?\SpApi\Model\aplusContent\v2020_11_01\StandardThreeImageTextModule
     {
         return $this->container['standard_three_image_text'];
     }
@@ -915,11 +915,11 @@ class ContentModule implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets standard_three_image_text
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardThreeImageTextModule|null $standard_three_image_text standard_three_image_text
+     * @param \SpApi\Model\aplusContent\v2020_11_01\StandardThreeImageTextModule|null $standard_three_image_text standard_three_image_text
      *
      * @return self
      */
-    public function setStandardThreeImageText(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardThreeImageTextModule $standard_three_image_text): self
+    public function setStandardThreeImageText(?\SpApi\Model\aplusContent\v2020_11_01\StandardThreeImageTextModule $standard_three_image_text): self
     {
         if (is_null($standard_three_image_text)) {
             array_push($this->openAPINullablesSetToNull, 'standard_three_image_text');

@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,19 +27,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\shipping\v2;
+namespace SpApi\Model\shipping\v2;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetRatesRequest Class Doc Comment
  *
  * @category Class
  * @description The request schema for the getRates operation. When the channelType is Amazon, the shipTo address is not required and will be ignored.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,18 +61,18 @@ class GetRatesRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'ship_to' => '\OpenAPI\Client\Model\shipping\v2\Address',
-             'ship_from' => '\OpenAPI\Client\Model\shipping\v2\Address',
-             'return_to' => '\OpenAPI\Client\Model\shipping\v2\Address',
+             'ship_to' => '\SpApi\Model\shipping\v2\Address',
+             'ship_from' => '\SpApi\Model\shipping\v2\Address',
+             'return_to' => '\SpApi\Model\shipping\v2\Address',
              'ship_date' => '\DateTime',
-             'shipper_instruction' => '\OpenAPI\Client\Model\shipping\v2\ShipperInstruction',
-             'packages' => '\OpenAPI\Client\Model\shipping\v2\Package[]',
-             'value_added_services' => '\OpenAPI\Client\Model\shipping\v2\ValueAddedServiceDetails',
-             'tax_details' => '\OpenAPI\Client\Model\shipping\v2\TaxDetail[]',
-             'channel_details' => '\OpenAPI\Client\Model\shipping\v2\ChannelDetails',
-             'client_reference_details' => '\OpenAPI\Client\Model\shipping\v2\ClientReferenceDetail[]',
-             'shipment_type' => '\OpenAPI\Client\Model\shipping\v2\ShipmentType',
-             'destination_access_point_details' => '\OpenAPI\Client\Model\shipping\v2\AccessPointDetails'    ];
+             'shipper_instruction' => '\SpApi\Model\shipping\v2\ShipperInstruction',
+             'packages' => '\SpApi\Model\shipping\v2\Package[]',
+             'value_added_services' => '\SpApi\Model\shipping\v2\ValueAddedServiceDetails',
+             'tax_details' => '\SpApi\Model\shipping\v2\TaxDetail[]',
+             'channel_details' => '\SpApi\Model\shipping\v2\ChannelDetails',
+             'client_reference_details' => '\SpApi\Model\shipping\v2\ClientReferenceDetail[]',
+             'shipment_type' => '\SpApi\Model\shipping\v2\ShipmentType',
+             'destination_access_point_details' => '\SpApi\Model\shipping\v2\AccessPointDetails'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -381,9 +381,9 @@ class GetRatesRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets ship_to
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\Address|null
+     * @return \SpApi\Model\shipping\v2\Address|null
      */
-    public function getShipTo(): ?\OpenAPI\Client\Model\shipping\v2\Address
+    public function getShipTo(): ?\SpApi\Model\shipping\v2\Address
     {
         return $this->container['ship_to'];
     }
@@ -391,11 +391,11 @@ class GetRatesRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ship_to
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\Address|null $ship_to ship_to
+     * @param \SpApi\Model\shipping\v2\Address|null $ship_to ship_to
      *
      * @return self
      */
-    public function setShipTo(?\OpenAPI\Client\Model\shipping\v2\Address $ship_to): self
+    public function setShipTo(?\SpApi\Model\shipping\v2\Address $ship_to): self
     {
         if (is_null($ship_to)) {
             array_push($this->openAPINullablesSetToNull, 'ship_to');
@@ -415,9 +415,9 @@ class GetRatesRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets ship_from
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\Address
+     * @return \SpApi\Model\shipping\v2\Address
      */
-    public function getShipFrom(): \OpenAPI\Client\Model\shipping\v2\Address
+    public function getShipFrom(): \SpApi\Model\shipping\v2\Address
     {
         return $this->container['ship_from'];
     }
@@ -425,11 +425,11 @@ class GetRatesRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ship_from
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\Address $ship_from ship_from
+     * @param \SpApi\Model\shipping\v2\Address $ship_from ship_from
      *
      * @return self
      */
-    public function setShipFrom(\OpenAPI\Client\Model\shipping\v2\Address $ship_from): self
+    public function setShipFrom(\SpApi\Model\shipping\v2\Address $ship_from): self
     {
         if (is_null($ship_from)) {
             throw new \InvalidArgumentException('non-nullable ship_from cannot be null');
@@ -442,9 +442,9 @@ class GetRatesRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets return_to
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\Address|null
+     * @return \SpApi\Model\shipping\v2\Address|null
      */
-    public function getReturnTo(): ?\OpenAPI\Client\Model\shipping\v2\Address
+    public function getReturnTo(): ?\SpApi\Model\shipping\v2\Address
     {
         return $this->container['return_to'];
     }
@@ -452,11 +452,11 @@ class GetRatesRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets return_to
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\Address|null $return_to return_to
+     * @param \SpApi\Model\shipping\v2\Address|null $return_to return_to
      *
      * @return self
      */
-    public function setReturnTo(?\OpenAPI\Client\Model\shipping\v2\Address $return_to): self
+    public function setReturnTo(?\SpApi\Model\shipping\v2\Address $return_to): self
     {
         if (is_null($return_to)) {
             array_push($this->openAPINullablesSetToNull, 'return_to');
@@ -510,9 +510,9 @@ class GetRatesRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets shipper_instruction
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\ShipperInstruction|null
+     * @return \SpApi\Model\shipping\v2\ShipperInstruction|null
      */
-    public function getShipperInstruction(): ?\OpenAPI\Client\Model\shipping\v2\ShipperInstruction
+    public function getShipperInstruction(): ?\SpApi\Model\shipping\v2\ShipperInstruction
     {
         return $this->container['shipper_instruction'];
     }
@@ -520,11 +520,11 @@ class GetRatesRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets shipper_instruction
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\ShipperInstruction|null $shipper_instruction shipper_instruction
+     * @param \SpApi\Model\shipping\v2\ShipperInstruction|null $shipper_instruction shipper_instruction
      *
      * @return self
      */
-    public function setShipperInstruction(?\OpenAPI\Client\Model\shipping\v2\ShipperInstruction $shipper_instruction): self
+    public function setShipperInstruction(?\SpApi\Model\shipping\v2\ShipperInstruction $shipper_instruction): self
     {
         if (is_null($shipper_instruction)) {
             array_push($this->openAPINullablesSetToNull, 'shipper_instruction');
@@ -571,9 +571,9 @@ class GetRatesRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets value_added_services
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\ValueAddedServiceDetails|null
+     * @return \SpApi\Model\shipping\v2\ValueAddedServiceDetails|null
      */
-    public function getValueAddedServices(): ?\OpenAPI\Client\Model\shipping\v2\ValueAddedServiceDetails
+    public function getValueAddedServices(): ?\SpApi\Model\shipping\v2\ValueAddedServiceDetails
     {
         return $this->container['value_added_services'];
     }
@@ -581,11 +581,11 @@ class GetRatesRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets value_added_services
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\ValueAddedServiceDetails|null $value_added_services value_added_services
+     * @param \SpApi\Model\shipping\v2\ValueAddedServiceDetails|null $value_added_services value_added_services
      *
      * @return self
      */
-    public function setValueAddedServices(?\OpenAPI\Client\Model\shipping\v2\ValueAddedServiceDetails $value_added_services): self
+    public function setValueAddedServices(?\SpApi\Model\shipping\v2\ValueAddedServiceDetails $value_added_services): self
     {
         if (is_null($value_added_services)) {
             array_push($this->openAPINullablesSetToNull, 'value_added_services');
@@ -639,9 +639,9 @@ class GetRatesRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets channel_details
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\ChannelDetails
+     * @return \SpApi\Model\shipping\v2\ChannelDetails
      */
-    public function getChannelDetails(): \OpenAPI\Client\Model\shipping\v2\ChannelDetails
+    public function getChannelDetails(): \SpApi\Model\shipping\v2\ChannelDetails
     {
         return $this->container['channel_details'];
     }
@@ -649,11 +649,11 @@ class GetRatesRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets channel_details
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\ChannelDetails $channel_details channel_details
+     * @param \SpApi\Model\shipping\v2\ChannelDetails $channel_details channel_details
      *
      * @return self
      */
-    public function setChannelDetails(\OpenAPI\Client\Model\shipping\v2\ChannelDetails $channel_details): self
+    public function setChannelDetails(\SpApi\Model\shipping\v2\ChannelDetails $channel_details): self
     {
         if (is_null($channel_details)) {
             throw new \InvalidArgumentException('non-nullable channel_details cannot be null');
@@ -734,9 +734,9 @@ class GetRatesRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets destination_access_point_details
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\AccessPointDetails|null
+     * @return \SpApi\Model\shipping\v2\AccessPointDetails|null
      */
-    public function getDestinationAccessPointDetails(): ?\OpenAPI\Client\Model\shipping\v2\AccessPointDetails
+    public function getDestinationAccessPointDetails(): ?\SpApi\Model\shipping\v2\AccessPointDetails
     {
         return $this->container['destination_access_point_details'];
     }
@@ -744,11 +744,11 @@ class GetRatesRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets destination_access_point_details
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\AccessPointDetails|null $destination_access_point_details destination_access_point_details
+     * @param \SpApi\Model\shipping\v2\AccessPointDetails|null $destination_access_point_details destination_access_point_details
      *
      * @return self
      */
-    public function setDestinationAccessPointDetails(?\OpenAPI\Client\Model\shipping\v2\AccessPointDetails $destination_access_point_details): self
+    public function setDestinationAccessPointDetails(?\SpApi\Model\shipping\v2\AccessPointDetails $destination_access_point_details): self
     {
         if (is_null($destination_access_point_details)) {
             array_push($this->openAPINullablesSetToNull, 'destination_access_point_details');

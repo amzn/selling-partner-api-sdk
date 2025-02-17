@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\invoices\v2024_06_19;
+namespace SpApi\Model\invoices\v2024_06_19;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetInvoicesAttributesResponse Class Doc Comment
  *
  * @category Class
  * @description Success.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class GetInvoicesAttributesResponse implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'invoices_attributes' => '\OpenAPI\Client\Model\invoices\v2024_06_19\InvoicesAttributes'    ];
+             'invoices_attributes' => '\SpApi\Model\invoices\v2024_06_19\InvoicesAttributes'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -294,9 +294,9 @@ class GetInvoicesAttributesResponse implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets invoices_attributes
      *
-     * @return \OpenAPI\Client\Model\invoices\v2024_06_19\InvoicesAttributes|null
+     * @return \SpApi\Model\invoices\v2024_06_19\InvoicesAttributes|null
      */
-    public function getInvoicesAttributes(): ?\OpenAPI\Client\Model\invoices\v2024_06_19\InvoicesAttributes
+    public function getInvoicesAttributes(): ?\SpApi\Model\invoices\v2024_06_19\InvoicesAttributes
     {
         return $this->container['invoices_attributes'];
     }
@@ -304,11 +304,11 @@ class GetInvoicesAttributesResponse implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets invoices_attributes
      *
-     * @param \OpenAPI\Client\Model\invoices\v2024_06_19\InvoicesAttributes|null $invoices_attributes invoices_attributes
+     * @param \SpApi\Model\invoices\v2024_06_19\InvoicesAttributes|null $invoices_attributes invoices_attributes
      *
      * @return self
      */
-    public function setInvoicesAttributes(?\OpenAPI\Client\Model\invoices\v2024_06_19\InvoicesAttributes $invoices_attributes): self
+    public function setInvoicesAttributes(?\SpApi\Model\invoices\v2024_06_19\InvoicesAttributes $invoices_attributes): self
     {
         if (is_null($invoices_attributes)) {
             array_push($this->openAPINullablesSetToNull, 'invoices_attributes');

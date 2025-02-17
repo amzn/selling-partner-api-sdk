@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\replenishment\v2022_11_07;
+namespace SpApi\Model\replenishment\v2022_11_07;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ListOffersRequestFilters Class Doc Comment
  *
  * @category Class
  * @description Use these parameters to filter results. Any result must match all of the provided parameters. For any parameter that is an array, the result must match at least one element in the provided array.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,10 +63,10 @@ class ListOffersRequestFilters implements ModelInterface, ArrayAccess, \JsonSeri
              'marketplace_id' => 'string',
              'skus' => 'string[]',
              'asins' => 'string[]',
-             'eligibilities' => '\OpenAPI\Client\Model\replenishment\v2022_11_07\EligibilityStatus[]',
-             'preferences' => '\OpenAPI\Client\Model\replenishment\v2022_11_07\Preference',
-             'promotions' => '\OpenAPI\Client\Model\replenishment\v2022_11_07\Promotion',
-             'program_types' => '\OpenAPI\Client\Model\replenishment\v2022_11_07\ProgramType[]'    ];
+             'eligibilities' => '\SpApi\Model\replenishment\v2022_11_07\EligibilityStatus[]',
+             'preferences' => '\SpApi\Model\replenishment\v2022_11_07\Preference',
+             'promotions' => '\SpApi\Model\replenishment\v2022_11_07\Promotion',
+             'program_types' => '\SpApi\Model\replenishment\v2022_11_07\ProgramType[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -514,9 +514,9 @@ class ListOffersRequestFilters implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets preferences
      *
-     * @return \OpenAPI\Client\Model\replenishment\v2022_11_07\Preference|null
+     * @return \SpApi\Model\replenishment\v2022_11_07\Preference|null
      */
-    public function getPreferences(): ?\OpenAPI\Client\Model\replenishment\v2022_11_07\Preference
+    public function getPreferences(): ?\SpApi\Model\replenishment\v2022_11_07\Preference
     {
         return $this->container['preferences'];
     }
@@ -524,11 +524,11 @@ class ListOffersRequestFilters implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets preferences
      *
-     * @param \OpenAPI\Client\Model\replenishment\v2022_11_07\Preference|null $preferences preferences
+     * @param \SpApi\Model\replenishment\v2022_11_07\Preference|null $preferences preferences
      *
      * @return self
      */
-    public function setPreferences(?\OpenAPI\Client\Model\replenishment\v2022_11_07\Preference $preferences): self
+    public function setPreferences(?\SpApi\Model\replenishment\v2022_11_07\Preference $preferences): self
     {
         if (is_null($preferences)) {
             array_push($this->openAPINullablesSetToNull, 'preferences');
@@ -548,9 +548,9 @@ class ListOffersRequestFilters implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets promotions
      *
-     * @return \OpenAPI\Client\Model\replenishment\v2022_11_07\Promotion|null
+     * @return \SpApi\Model\replenishment\v2022_11_07\Promotion|null
      */
-    public function getPromotions(): ?\OpenAPI\Client\Model\replenishment\v2022_11_07\Promotion
+    public function getPromotions(): ?\SpApi\Model\replenishment\v2022_11_07\Promotion
     {
         return $this->container['promotions'];
     }
@@ -558,11 +558,11 @@ class ListOffersRequestFilters implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets promotions
      *
-     * @param \OpenAPI\Client\Model\replenishment\v2022_11_07\Promotion|null $promotions promotions
+     * @param \SpApi\Model\replenishment\v2022_11_07\Promotion|null $promotions promotions
      *
      * @return self
      */
-    public function setPromotions(?\OpenAPI\Client\Model\replenishment\v2022_11_07\Promotion $promotions): self
+    public function setPromotions(?\SpApi\Model\replenishment\v2022_11_07\Promotion $promotions): self
     {
         if (is_null($promotions)) {
             array_push($this->openAPINullablesSetToNull, 'promotions');

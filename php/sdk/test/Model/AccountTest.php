@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\sellers\v1\Account;
+use SpApi\Model\sellers\v1\Account;
 
 /**
  * AccountTest Class Doc Comment
  *
  * @category    Class
  * @description The response schema for the &#x60;getAccount&#x60; operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class AccountTest extends TestCase
 {
@@ -92,7 +92,7 @@ class AccountTest extends TestCase
     public function testPropertyBusiness()
     {
         
-        $testValue = new \OpenAPI\Client\Model\sellers\v1\Business();
+        $testValue = new \SpApi\Model\sellers\v1\Business();
         
         $this->model->setBusiness($testValue);
         $this->assertEquals($testValue, $this->model->getBusiness());
@@ -104,7 +104,7 @@ class AccountTest extends TestCase
     public function testPropertyPrimaryContact()
     {
         
-        $testValue = new \OpenAPI\Client\Model\sellers\v1\PrimaryContact();
+        $testValue = new \SpApi\Model\sellers\v1\PrimaryContact();
         
         $this->model->setPrimaryContact($testValue);
         $this->assertEquals($testValue, $this->model->getPrimaryContact());

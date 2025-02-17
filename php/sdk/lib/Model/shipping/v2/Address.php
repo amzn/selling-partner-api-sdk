@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,19 +27,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\shipping\v2;
+namespace SpApi\Model\shipping\v2;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Address Class Doc Comment
  *
  * @category Class
  * @description The address.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -72,7 +72,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
              'postal_code' => 'string',
              'email' => 'string',
              'phone_number' => 'string',
-             'geocode' => '\OpenAPI\Client\Model\shipping\v2\Geocode'    ];
+             'geocode' => '\SpApi\Model\shipping\v2\Geocode'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -805,9 +805,9 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets geocode
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\Geocode|null
+     * @return \SpApi\Model\shipping\v2\Geocode|null
      */
-    public function getGeocode(): ?\OpenAPI\Client\Model\shipping\v2\Geocode
+    public function getGeocode(): ?\SpApi\Model\shipping\v2\Geocode
     {
         return $this->container['geocode'];
     }
@@ -815,11 +815,11 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets geocode
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\Geocode|null $geocode geocode
+     * @param \SpApi\Model\shipping\v2\Geocode|null $geocode geocode
      *
      * @return self
      */
-    public function setGeocode(?\OpenAPI\Client\Model\shipping\v2\Geocode $geocode): self
+    public function setGeocode(?\SpApi\Model\shipping\v2\Geocode $geocode): self
     {
         if (is_null($geocode)) {
             array_push($this->openAPINullablesSetToNull, 'geocode');

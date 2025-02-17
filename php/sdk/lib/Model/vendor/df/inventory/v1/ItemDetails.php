@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\df\inventory\v1;
+namespace SpApi\Model\vendor\df\inventory\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ItemDetails Class Doc Comment
  *
  * @category Class
  * @description Updated inventory details for an item.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +62,7 @@ class ItemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPITypes = [
              'buyer_product_identifier' => 'string',
              'vendor_product_identifier' => 'string',
-             'available_quantity' => '\OpenAPI\Client\Model\vendor\df\inventory\v1\ItemQuantity',
+             'available_quantity' => '\SpApi\Model\vendor\df\inventory\v1\ItemQuantity',
              'is_obsolete' => 'bool'    ];
 
     /**
@@ -386,9 +386,9 @@ class ItemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets available_quantity
      *
-     * @return \OpenAPI\Client\Model\vendor\df\inventory\v1\ItemQuantity
+     * @return \SpApi\Model\vendor\df\inventory\v1\ItemQuantity
      */
-    public function getAvailableQuantity(): \OpenAPI\Client\Model\vendor\df\inventory\v1\ItemQuantity
+    public function getAvailableQuantity(): \SpApi\Model\vendor\df\inventory\v1\ItemQuantity
     {
         return $this->container['available_quantity'];
     }
@@ -396,11 +396,11 @@ class ItemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets available_quantity
      *
-     * @param \OpenAPI\Client\Model\vendor\df\inventory\v1\ItemQuantity $available_quantity available_quantity
+     * @param \SpApi\Model\vendor\df\inventory\v1\ItemQuantity $available_quantity available_quantity
      *
      * @return self
      */
-    public function setAvailableQuantity(\OpenAPI\Client\Model\vendor\df\inventory\v1\ItemQuantity $available_quantity): self
+    public function setAvailableQuantity(\SpApi\Model\vendor\df\inventory\v1\ItemQuantity $available_quantity): self
     {
         if (is_null($available_quantity)) {
             throw new \InvalidArgumentException('non-nullable available_quantity cannot be null');

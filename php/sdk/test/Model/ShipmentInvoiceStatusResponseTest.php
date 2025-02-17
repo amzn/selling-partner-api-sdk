@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\invoicing\v0\ShipmentInvoiceStatusResponse;
+use SpApi\Model\invoicing\v0\ShipmentInvoiceStatusResponse;
 
 /**
  * ShipmentInvoiceStatusResponseTest Class Doc Comment
  *
  * @category    Class
  * @description The shipment invoice status response.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ShipmentInvoiceStatusResponseTest extends TestCase
 {
@@ -57,7 +57,7 @@ class ShipmentInvoiceStatusResponseTest extends TestCase
     public function testPropertyShipments()
     {
         
-        $testValue = new \OpenAPI\Client\Model\invoicing\v0\ShipmentInvoiceStatusInfo();
+        $testValue = new \SpApi\Model\invoicing\v0\ShipmentInvoiceStatusInfo();
         
         $this->model->setShipments($testValue);
         $this->assertEquals($testValue, $this->model->getShipments());

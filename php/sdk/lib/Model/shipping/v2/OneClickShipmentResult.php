@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,19 +27,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\shipping\v2;
+namespace SpApi\Model\shipping\v2;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * OneClickShipmentResult Class Doc Comment
  *
  * @category Class
  * @description The payload for the OneClickShipment API.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,11 +62,11 @@ class OneClickShipmentResult implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static array $openAPITypes = [
              'shipment_id' => 'string',
-             'package_document_details' => '\OpenAPI\Client\Model\shipping\v2\PackageDocumentDetail[]',
-             'promise' => '\OpenAPI\Client\Model\shipping\v2\Promise',
-             'carrier' => '\OpenAPI\Client\Model\shipping\v2\Carrier',
-             'service' => '\OpenAPI\Client\Model\shipping\v2\Service',
-             'total_charge' => '\OpenAPI\Client\Model\shipping\v2\Currency'    ];
+             'package_document_details' => '\SpApi\Model\shipping\v2\PackageDocumentDetail[]',
+             'promise' => '\SpApi\Model\shipping\v2\Promise',
+             'carrier' => '\SpApi\Model\shipping\v2\Carrier',
+             'service' => '\SpApi\Model\shipping\v2\Service',
+             'total_charge' => '\SpApi\Model\shipping\v2\Currency'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -402,9 +402,9 @@ class OneClickShipmentResult implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets promise
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\Promise
+     * @return \SpApi\Model\shipping\v2\Promise
      */
-    public function getPromise(): \OpenAPI\Client\Model\shipping\v2\Promise
+    public function getPromise(): \SpApi\Model\shipping\v2\Promise
     {
         return $this->container['promise'];
     }
@@ -412,11 +412,11 @@ class OneClickShipmentResult implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets promise
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\Promise $promise promise
+     * @param \SpApi\Model\shipping\v2\Promise $promise promise
      *
      * @return self
      */
-    public function setPromise(\OpenAPI\Client\Model\shipping\v2\Promise $promise): self
+    public function setPromise(\SpApi\Model\shipping\v2\Promise $promise): self
     {
         if (is_null($promise)) {
             throw new \InvalidArgumentException('non-nullable promise cannot be null');
@@ -429,9 +429,9 @@ class OneClickShipmentResult implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets carrier
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\Carrier
+     * @return \SpApi\Model\shipping\v2\Carrier
      */
-    public function getCarrier(): \OpenAPI\Client\Model\shipping\v2\Carrier
+    public function getCarrier(): \SpApi\Model\shipping\v2\Carrier
     {
         return $this->container['carrier'];
     }
@@ -439,11 +439,11 @@ class OneClickShipmentResult implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets carrier
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\Carrier $carrier carrier
+     * @param \SpApi\Model\shipping\v2\Carrier $carrier carrier
      *
      * @return self
      */
-    public function setCarrier(\OpenAPI\Client\Model\shipping\v2\Carrier $carrier): self
+    public function setCarrier(\SpApi\Model\shipping\v2\Carrier $carrier): self
     {
         if (is_null($carrier)) {
             throw new \InvalidArgumentException('non-nullable carrier cannot be null');
@@ -456,9 +456,9 @@ class OneClickShipmentResult implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets service
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\Service
+     * @return \SpApi\Model\shipping\v2\Service
      */
-    public function getService(): \OpenAPI\Client\Model\shipping\v2\Service
+    public function getService(): \SpApi\Model\shipping\v2\Service
     {
         return $this->container['service'];
     }
@@ -466,11 +466,11 @@ class OneClickShipmentResult implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets service
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\Service $service service
+     * @param \SpApi\Model\shipping\v2\Service $service service
      *
      * @return self
      */
-    public function setService(\OpenAPI\Client\Model\shipping\v2\Service $service): self
+    public function setService(\SpApi\Model\shipping\v2\Service $service): self
     {
         if (is_null($service)) {
             throw new \InvalidArgumentException('non-nullable service cannot be null');
@@ -483,9 +483,9 @@ class OneClickShipmentResult implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets total_charge
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\Currency
+     * @return \SpApi\Model\shipping\v2\Currency
      */
-    public function getTotalCharge(): \OpenAPI\Client\Model\shipping\v2\Currency
+    public function getTotalCharge(): \SpApi\Model\shipping\v2\Currency
     {
         return $this->container['total_charge'];
     }
@@ -493,11 +493,11 @@ class OneClickShipmentResult implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets total_charge
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\Currency $total_charge total_charge
+     * @param \SpApi\Model\shipping\v2\Currency $total_charge total_charge
      *
      * @return self
      */
-    public function setTotalCharge(\OpenAPI\Client\Model\shipping\v2\Currency $total_charge): self
+    public function setTotalCharge(\SpApi\Model\shipping\v2\Currency $total_charge): self
     {
         if (is_null($total_charge)) {
             throw new \InvalidArgumentException('non-nullable total_charge cannot be null');

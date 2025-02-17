@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\easyship\v2022_03_23\Code;
+use SpApi\Model\easyship\v2022_03_23\Code;
 
 /**
  * CodeTest Class Doc Comment
  *
  * @category    Class
  * @description An error code that identifies the type of error that occurred. The error codes listed below are specific to the Easy Ship section.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class CodeTest extends TestCase
 {

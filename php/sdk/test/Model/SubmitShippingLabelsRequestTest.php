@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\SubmitShippingLabelsRequest;
+use SpApi\Model\vendor\df\shipping\v2021_12_28\SubmitShippingLabelsRequest;
 
 /**
  * SubmitShippingLabelsRequestTest Class Doc Comment
  *
  * @category    Class
  * @description The request schema for the &#x60;submitShippingLabelRequest&#x60; operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class SubmitShippingLabelsRequestTest extends TestCase
 {

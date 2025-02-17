@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\v1\ServiceUploadDocument;
+use SpApi\Model\services\v1\ServiceUploadDocument;
 
 /**
  * ServiceUploadDocumentTest Class Doc Comment
  *
  * @category    Class
  * @description Input for to be uploaded document.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ServiceUploadDocumentTest extends TestCase
 {

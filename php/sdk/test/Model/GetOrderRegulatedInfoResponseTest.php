@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\v0\GetOrderRegulatedInfoResponse;
+use SpApi\Model\orders\v0\GetOrderRegulatedInfoResponse;
 
 /**
  * GetOrderRegulatedInfoResponseTest Class Doc Comment
  *
  * @category    Class
  * @description The response schema for the &#x60;getOrderRegulatedInfo&#x60; operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetOrderRegulatedInfoResponseTest extends TestCase
 {
@@ -57,7 +57,7 @@ class GetOrderRegulatedInfoResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\v0\OrderRegulatedInfo();
+        $testValue = new \SpApi\Model\orders\v0\OrderRegulatedInfo();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

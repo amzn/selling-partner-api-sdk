@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\FreightInformation;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\FreightInformation;
 
 /**
  * FreightInformationTest Class Doc Comment
  *
  * @category    Class
  * @description Freight information describes the skus being transported. Freight carrier options and quotes will only be returned if the freight information is provided.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class FreightInformationTest extends TestCase
 {
@@ -57,7 +57,7 @@ class FreightInformationTest extends TestCase
     public function testPropertyDeclaredValue()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Currency();
+        $testValue = new \SpApi\Model\fulfillment\inbound\v2024_03_20\Currency();
         
         $this->model->setDeclaredValue($testValue);
         $this->assertEquals($testValue, $this->model->getDeclaredValue());

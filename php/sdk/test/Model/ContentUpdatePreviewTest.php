@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ContentUpdatePreview;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\ContentUpdatePreview;
 
 /**
  * ContentUpdatePreviewTest Class Doc Comment
  *
  * @category    Class
  * @description Preview of the changes that will be applied to the shipment.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ContentUpdatePreviewTest extends TestCase
 {
@@ -80,7 +80,7 @@ class ContentUpdatePreviewTest extends TestCase
     public function testPropertyRequestedUpdates()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\RequestedUpdates();
+        $testValue = new \SpApi\Model\fulfillment\inbound\v2024_03_20\RequestedUpdates();
         
         $this->model->setRequestedUpdates($testValue);
         $this->assertEquals($testValue, $this->model->getRequestedUpdates());
@@ -92,7 +92,7 @@ class ContentUpdatePreviewTest extends TestCase
     public function testPropertyTransportationOption()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\TransportationOption();
+        $testValue = new \SpApi\Model\fulfillment\inbound\v2024_03_20\TransportationOption();
         
         $this->model->setTransportationOption($testValue);
         $this->assertEquals($testValue, $this->model->getTransportationOption());

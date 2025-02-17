@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\sellers\v1;
+namespace SpApi\Model\sellers\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * PrimaryContact Class Doc Comment
  *
  * @category Class
  * @description Information about the seller&#39;s primary contact.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class PrimaryContact implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPITypes = [
              'name' => 'string',
-             'address' => '\OpenAPI\Client\Model\sellers\v1\Address',
+             'address' => '\SpApi\Model\sellers\v1\Address',
              'non_latin_name' => 'string'    ];
 
     /**
@@ -341,9 +341,9 @@ class PrimaryContact implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets address
      *
-     * @return \OpenAPI\Client\Model\sellers\v1\Address
+     * @return \SpApi\Model\sellers\v1\Address
      */
-    public function getAddress(): \OpenAPI\Client\Model\sellers\v1\Address
+    public function getAddress(): \SpApi\Model\sellers\v1\Address
     {
         return $this->container['address'];
     }
@@ -351,11 +351,11 @@ class PrimaryContact implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets address
      *
-     * @param \OpenAPI\Client\Model\sellers\v1\Address $address address
+     * @param \SpApi\Model\sellers\v1\Address $address address
      *
      * @return self
      */
-    public function setAddress(\OpenAPI\Client\Model\sellers\v1\Address $address): self
+    public function setAddress(\SpApi\Model\sellers\v1\Address $address): self
     {
         if (is_null($address)) {
             throw new \InvalidArgumentException('non-nullable address cannot be null');

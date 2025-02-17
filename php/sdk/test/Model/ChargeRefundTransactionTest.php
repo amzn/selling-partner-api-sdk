@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\finances\v0\ChargeRefundTransaction;
+use SpApi\Model\finances\v0\ChargeRefundTransaction;
 
 /**
  * ChargeRefundTransactionTest Class Doc Comment
  *
  * @category    Class
  * @description The charge refund transaction.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ChargeRefundTransactionTest extends TestCase
 {
@@ -57,7 +57,7 @@ class ChargeRefundTransactionTest extends TestCase
     public function testPropertyChargeAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v0\Currency();
+        $testValue = new \SpApi\Model\finances\v0\Currency();
         
         $this->model->setChargeAmount($testValue);
         $this->assertEquals($testValue, $this->model->getChargeAmount());

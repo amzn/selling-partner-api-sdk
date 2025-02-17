@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\notifications\v1;
+namespace SpApi\Model\notifications\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * DestinationResourceSpecification Class Doc Comment
  *
  * @category Class
  * @description The information required to create a destination resource. Applications should use one resource type (sqs or eventBridge) per destination.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class DestinationResourceSpecification implements ModelInterface, ArrayAccess, \
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'sqs' => '\OpenAPI\Client\Model\notifications\v1\SqsResource',
-             'event_bridge' => '\OpenAPI\Client\Model\notifications\v1\EventBridgeResourceSpecification'    ];
+             'sqs' => '\SpApi\Model\notifications\v1\SqsResource',
+             'event_bridge' => '\SpApi\Model\notifications\v1\EventBridgeResourceSpecification'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -301,9 +301,9 @@ class DestinationResourceSpecification implements ModelInterface, ArrayAccess, \
     /**
      * Gets sqs
      *
-     * @return \OpenAPI\Client\Model\notifications\v1\SqsResource|null
+     * @return \SpApi\Model\notifications\v1\SqsResource|null
      */
-    public function getSqs(): ?\OpenAPI\Client\Model\notifications\v1\SqsResource
+    public function getSqs(): ?\SpApi\Model\notifications\v1\SqsResource
     {
         return $this->container['sqs'];
     }
@@ -311,11 +311,11 @@ class DestinationResourceSpecification implements ModelInterface, ArrayAccess, \
     /**
      * Sets sqs
      *
-     * @param \OpenAPI\Client\Model\notifications\v1\SqsResource|null $sqs sqs
+     * @param \SpApi\Model\notifications\v1\SqsResource|null $sqs sqs
      *
      * @return self
      */
-    public function setSqs(?\OpenAPI\Client\Model\notifications\v1\SqsResource $sqs): self
+    public function setSqs(?\SpApi\Model\notifications\v1\SqsResource $sqs): self
     {
         if (is_null($sqs)) {
             array_push($this->openAPINullablesSetToNull, 'sqs');
@@ -335,9 +335,9 @@ class DestinationResourceSpecification implements ModelInterface, ArrayAccess, \
     /**
      * Gets event_bridge
      *
-     * @return \OpenAPI\Client\Model\notifications\v1\EventBridgeResourceSpecification|null
+     * @return \SpApi\Model\notifications\v1\EventBridgeResourceSpecification|null
      */
-    public function getEventBridge(): ?\OpenAPI\Client\Model\notifications\v1\EventBridgeResourceSpecification
+    public function getEventBridge(): ?\SpApi\Model\notifications\v1\EventBridgeResourceSpecification
     {
         return $this->container['event_bridge'];
     }
@@ -345,11 +345,11 @@ class DestinationResourceSpecification implements ModelInterface, ArrayAccess, \
     /**
      * Sets event_bridge
      *
-     * @param \OpenAPI\Client\Model\notifications\v1\EventBridgeResourceSpecification|null $event_bridge event_bridge
+     * @param \SpApi\Model\notifications\v1\EventBridgeResourceSpecification|null $event_bridge event_bridge
      *
      * @return self
      */
-    public function setEventBridge(?\OpenAPI\Client\Model\notifications\v1\EventBridgeResourceSpecification $event_bridge): self
+    public function setEventBridge(?\SpApi\Model\notifications\v1\EventBridgeResourceSpecification $event_bridge): self
     {
         if (is_null($event_bridge)) {
             array_push($this->openAPINullablesSetToNull, 'event_bridge');

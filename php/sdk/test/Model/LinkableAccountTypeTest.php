@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\v2\LinkableAccountType;
+use SpApi\Model\shipping\v2\LinkableAccountType;
 
 /**
  * LinkableAccountTypeTest Class Doc Comment
  *
  * @category    Class
  * @description Info About Linkable Account Type
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class LinkableAccountTypeTest extends TestCase
 {
@@ -56,7 +56,7 @@ class LinkableAccountTypeTest extends TestCase
      */
     public function testPropertyAccountType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\shipping\v2\AccountType();
+        $enumInstance = new \SpApi\Model\shipping\v2\AccountType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

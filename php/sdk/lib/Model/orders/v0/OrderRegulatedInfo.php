@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\orders\v0;
+namespace SpApi\Model\orders\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * OrderRegulatedInfo Class Doc Comment
  *
  * @category Class
  * @description The order&#39;s regulated information along with its verification status.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,9 +61,9 @@ class OrderRegulatedInfo implements ModelInterface, ArrayAccess, \JsonSerializab
       */
     protected static array $openAPITypes = [
              'amazon_order_id' => 'string',
-             'regulated_information' => '\OpenAPI\Client\Model\orders\v0\RegulatedInformation',
+             'regulated_information' => '\SpApi\Model\orders\v0\RegulatedInformation',
              'requires_dosage_label' => 'bool',
-             'regulated_order_verification_status' => '\OpenAPI\Client\Model\orders\v0\RegulatedOrderVerificationStatus'    ];
+             'regulated_order_verification_status' => '\SpApi\Model\orders\v0\RegulatedOrderVerificationStatus'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -354,9 +354,9 @@ class OrderRegulatedInfo implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets regulated_information
      *
-     * @return \OpenAPI\Client\Model\orders\v0\RegulatedInformation
+     * @return \SpApi\Model\orders\v0\RegulatedInformation
      */
-    public function getRegulatedInformation(): \OpenAPI\Client\Model\orders\v0\RegulatedInformation
+    public function getRegulatedInformation(): \SpApi\Model\orders\v0\RegulatedInformation
     {
         return $this->container['regulated_information'];
     }
@@ -364,11 +364,11 @@ class OrderRegulatedInfo implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets regulated_information
      *
-     * @param \OpenAPI\Client\Model\orders\v0\RegulatedInformation $regulated_information regulated_information
+     * @param \SpApi\Model\orders\v0\RegulatedInformation $regulated_information regulated_information
      *
      * @return self
      */
-    public function setRegulatedInformation(\OpenAPI\Client\Model\orders\v0\RegulatedInformation $regulated_information): self
+    public function setRegulatedInformation(\SpApi\Model\orders\v0\RegulatedInformation $regulated_information): self
     {
         if (is_null($regulated_information)) {
             throw new \InvalidArgumentException('non-nullable regulated_information cannot be null');
@@ -408,9 +408,9 @@ class OrderRegulatedInfo implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets regulated_order_verification_status
      *
-     * @return \OpenAPI\Client\Model\orders\v0\RegulatedOrderVerificationStatus
+     * @return \SpApi\Model\orders\v0\RegulatedOrderVerificationStatus
      */
-    public function getRegulatedOrderVerificationStatus(): \OpenAPI\Client\Model\orders\v0\RegulatedOrderVerificationStatus
+    public function getRegulatedOrderVerificationStatus(): \SpApi\Model\orders\v0\RegulatedOrderVerificationStatus
     {
         return $this->container['regulated_order_verification_status'];
     }
@@ -418,11 +418,11 @@ class OrderRegulatedInfo implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets regulated_order_verification_status
      *
-     * @param \OpenAPI\Client\Model\orders\v0\RegulatedOrderVerificationStatus $regulated_order_verification_status regulated_order_verification_status
+     * @param \SpApi\Model\orders\v0\RegulatedOrderVerificationStatus $regulated_order_verification_status regulated_order_verification_status
      *
      * @return self
      */
-    public function setRegulatedOrderVerificationStatus(\OpenAPI\Client\Model\orders\v0\RegulatedOrderVerificationStatus $regulated_order_verification_status): self
+    public function setRegulatedOrderVerificationStatus(\SpApi\Model\orders\v0\RegulatedOrderVerificationStatus $regulated_order_verification_status): self
     {
         if (is_null($regulated_order_verification_status)) {
             throw new \InvalidArgumentException('non-nullable regulated_order_verification_status cannot be null');

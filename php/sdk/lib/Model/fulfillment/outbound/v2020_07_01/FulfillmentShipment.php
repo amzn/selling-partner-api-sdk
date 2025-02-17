@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01;
+namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * FulfillmentShipment Class Doc Comment
  *
  * @category Class
  * @description Delivery and item information for a shipment in a fulfillment order.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -66,8 +66,8 @@ class FulfillmentShipment implements ModelInterface, ArrayAccess, \JsonSerializa
              'shipping_date' => '\DateTime',
              'estimated_arrival_date' => '\DateTime',
              'shipping_notes' => 'string[]',
-             'fulfillment_shipment_item' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\FulfillmentShipmentItem[]',
-             'fulfillment_shipment_package' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\FulfillmentShipmentPackage[]'    ];
+             'fulfillment_shipment_item' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\FulfillmentShipmentItem[]',
+             'fulfillment_shipment_package' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\FulfillmentShipmentPackage[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

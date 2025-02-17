@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,18 +26,18 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\aplusContent\v2020_11_01;
+namespace SpApi\Model\aplusContent\v2020_11_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * SearchContentPublishRecordsResponse Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,9 +59,9 @@ class SearchContentPublishRecordsResponse implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'warnings' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\Error[]',
+             'warnings' => '\SpApi\Model\aplusContent\v2020_11_01\Error[]',
              'next_page_token' => 'string',
-             'publish_record_list' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\PublishRecord[]'    ];
+             'publish_record_list' => '\SpApi\Model\aplusContent\v2020_11_01\PublishRecord[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

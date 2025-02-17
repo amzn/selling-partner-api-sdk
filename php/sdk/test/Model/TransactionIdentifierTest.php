@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\invoices\v2024_06_19\TransactionIdentifier;
+use SpApi\Model\invoices\v2024_06_19\TransactionIdentifier;
 
 /**
  * TransactionIdentifierTest Class Doc Comment
  *
  * @category    Class
  * @description The identifier for a transaction.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class TransactionIdentifierTest extends TestCase
 {

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\UpdateFulfillmentOrderRequest;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\UpdateFulfillmentOrderRequest;
 
 /**
  * UpdateFulfillmentOrderRequestTest Class Doc Comment
  *
  * @category    Class
  * @description The request body schema for the &#x60;updateFulfillmentOrder&#x60; operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class UpdateFulfillmentOrderRequestTest extends TestCase
 {
@@ -101,7 +101,7 @@ class UpdateFulfillmentOrderRequestTest extends TestCase
      */
     public function testPropertyShippingSpeedCategory()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\ShippingSpeedCategory();
+        $enumInstance = new \SpApi\Model\fulfillment\outbound\v2020_07_01\ShippingSpeedCategory();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -115,7 +115,7 @@ class UpdateFulfillmentOrderRequestTest extends TestCase
     public function testPropertyDestinationAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Address();
+        $testValue = new \SpApi\Model\fulfillment\outbound\v2020_07_01\Address();
         
         $this->model->setDestinationAddress($testValue);
         $this->assertEquals($testValue, $this->model->getDestinationAddress());
@@ -126,7 +126,7 @@ class UpdateFulfillmentOrderRequestTest extends TestCase
      */
     public function testPropertyFulfillmentAction()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\FulfillmentAction();
+        $enumInstance = new \SpApi\Model\fulfillment\outbound\v2020_07_01\FulfillmentAction();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -139,7 +139,7 @@ class UpdateFulfillmentOrderRequestTest extends TestCase
      */
     public function testPropertyFulfillmentPolicy()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\FulfillmentPolicy();
+        $enumInstance = new \SpApi\Model\fulfillment\outbound\v2020_07_01\FulfillmentPolicy();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

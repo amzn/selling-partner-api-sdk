@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\listings\restrictions\v2021_08_01;
+namespace SpApi\Model\listings\restrictions\v2021_08_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * RestrictionList Class Doc Comment
  *
  * @category Class
  * @description A list of restrictions for the specified Amazon catalog item.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class RestrictionList implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'restrictions' => '\OpenAPI\Client\Model\listings\restrictions\v2021_08_01\Restriction[]'    ];
+             'restrictions' => '\SpApi\Model\listings\restrictions\v2021_08_01\Restriction[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

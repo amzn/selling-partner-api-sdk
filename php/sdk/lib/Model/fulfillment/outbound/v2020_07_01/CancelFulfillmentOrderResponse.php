@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01;
+namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * CancelFulfillmentOrderResponse Class Doc Comment
  *
  * @category Class
  * @description The response schema for the &#x60;cancelFulfillmentOrder&#x60; operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class CancelFulfillmentOrderResponse implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'errors' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Error[]'    ];
+             'errors' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\Error[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

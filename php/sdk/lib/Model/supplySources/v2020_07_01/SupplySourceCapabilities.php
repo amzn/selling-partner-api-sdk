@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\supplySources\v2020_07_01;
+namespace SpApi\Model\supplySources\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * SupplySourceCapabilities Class Doc Comment
  *
  * @category Class
  * @description The capabilities of a supply source.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class SupplySourceCapabilities implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'outbound' => '\OpenAPI\Client\Model\supplySources\v2020_07_01\OutboundCapability',
-             'services' => '\OpenAPI\Client\Model\supplySources\v2020_07_01\ServicesCapability'    ];
+             'outbound' => '\SpApi\Model\supplySources\v2020_07_01\OutboundCapability',
+             'services' => '\SpApi\Model\supplySources\v2020_07_01\ServicesCapability'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -301,9 +301,9 @@ class SupplySourceCapabilities implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets outbound
      *
-     * @return \OpenAPI\Client\Model\supplySources\v2020_07_01\OutboundCapability|null
+     * @return \SpApi\Model\supplySources\v2020_07_01\OutboundCapability|null
      */
-    public function getOutbound(): ?\OpenAPI\Client\Model\supplySources\v2020_07_01\OutboundCapability
+    public function getOutbound(): ?\SpApi\Model\supplySources\v2020_07_01\OutboundCapability
     {
         return $this->container['outbound'];
     }
@@ -311,11 +311,11 @@ class SupplySourceCapabilities implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets outbound
      *
-     * @param \OpenAPI\Client\Model\supplySources\v2020_07_01\OutboundCapability|null $outbound outbound
+     * @param \SpApi\Model\supplySources\v2020_07_01\OutboundCapability|null $outbound outbound
      *
      * @return self
      */
-    public function setOutbound(?\OpenAPI\Client\Model\supplySources\v2020_07_01\OutboundCapability $outbound): self
+    public function setOutbound(?\SpApi\Model\supplySources\v2020_07_01\OutboundCapability $outbound): self
     {
         if (is_null($outbound)) {
             array_push($this->openAPINullablesSetToNull, 'outbound');
@@ -335,9 +335,9 @@ class SupplySourceCapabilities implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets services
      *
-     * @return \OpenAPI\Client\Model\supplySources\v2020_07_01\ServicesCapability|null
+     * @return \SpApi\Model\supplySources\v2020_07_01\ServicesCapability|null
      */
-    public function getServices(): ?\OpenAPI\Client\Model\supplySources\v2020_07_01\ServicesCapability
+    public function getServices(): ?\SpApi\Model\supplySources\v2020_07_01\ServicesCapability
     {
         return $this->container['services'];
     }
@@ -345,11 +345,11 @@ class SupplySourceCapabilities implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets services
      *
-     * @param \OpenAPI\Client\Model\supplySources\v2020_07_01\ServicesCapability|null $services services
+     * @param \SpApi\Model\supplySources\v2020_07_01\ServicesCapability|null $services services
      *
      * @return self
      */
-    public function setServices(?\OpenAPI\Client\Model\supplySources\v2020_07_01\ServicesCapability $services): self
+    public function setServices(?\SpApi\Model\supplySources\v2020_07_01\ServicesCapability $services): self
     {
         if (is_null($services)) {
             array_push($this->openAPINullablesSetToNull, 'services');

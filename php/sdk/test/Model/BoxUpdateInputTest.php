@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\BoxUpdateInput;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\BoxUpdateInput;
 
 /**
  * BoxUpdateInputTest Class Doc Comment
  *
  * @category    Class
  * @description Input information for updating a box
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class BoxUpdateInputTest extends TestCase
 {
@@ -56,7 +56,7 @@ class BoxUpdateInputTest extends TestCase
      */
     public function testPropertyContentInformationSource()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\BoxContentInformationSource();
+        $enumInstance = new \SpApi\Model\fulfillment\inbound\v2024_03_20\BoxContentInformationSource();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -70,7 +70,7 @@ class BoxUpdateInputTest extends TestCase
     public function testPropertyDimensions()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Dimensions();
+        $testValue = new \SpApi\Model\fulfillment\inbound\v2024_03_20\Dimensions();
         
         $this->model->setDimensions($testValue);
         $this->assertEquals($testValue, $this->model->getDimensions());
@@ -115,7 +115,7 @@ class BoxUpdateInputTest extends TestCase
     public function testPropertyWeight()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Weight();
+        $testValue = new \SpApi\Model\fulfillment\inbound\v2024_03_20\Weight();
         
         $this->model->setWeight($testValue);
         $this->assertEquals($testValue, $this->model->getWeight());

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\finances\v2024_06_19\SellingPartnerMetadata;
+use SpApi\Model\finances\v2024_06_19\SellingPartnerMetadata;
 
 /**
  * SellingPartnerMetadataTest Class Doc Comment
  *
  * @category    Class
  * @description Metadata that describes the seller.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class SellingPartnerMetadataTest extends TestCase
 {

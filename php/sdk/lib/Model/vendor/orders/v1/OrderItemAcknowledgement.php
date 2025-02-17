@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\orders\v1;
+namespace SpApi\Model\vendor\orders\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * OrderItemAcknowledgement Class Doc Comment
  *
  * @category Class
  * @description Represents the acknowledgement details for an individual order item, including the acknowledgement code, acknowledged quantity, scheduled ship and delivery dates, and rejection reason (if applicable).
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class OrderItemAcknowledgement implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static array $openAPITypes = [
              'acknowledgement_code' => 'string',
-             'acknowledged_quantity' => '\OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity',
+             'acknowledged_quantity' => '\SpApi\Model\vendor\orders\v1\ItemQuantity',
              'scheduled_ship_date' => '\DateTime',
              'scheduled_delivery_date' => '\DateTime',
              'rejection_reason' => 'string'    ];
@@ -417,9 +417,9 @@ class OrderItemAcknowledgement implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets acknowledged_quantity
      *
-     * @return \OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity
+     * @return \SpApi\Model\vendor\orders\v1\ItemQuantity
      */
-    public function getAcknowledgedQuantity(): \OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity
+    public function getAcknowledgedQuantity(): \SpApi\Model\vendor\orders\v1\ItemQuantity
     {
         return $this->container['acknowledged_quantity'];
     }
@@ -427,11 +427,11 @@ class OrderItemAcknowledgement implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets acknowledged_quantity
      *
-     * @param \OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity $acknowledged_quantity acknowledged_quantity
+     * @param \SpApi\Model\vendor\orders\v1\ItemQuantity $acknowledged_quantity acknowledged_quantity
      *
      * @return self
      */
-    public function setAcknowledgedQuantity(\OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity $acknowledged_quantity): self
+    public function setAcknowledgedQuantity(\SpApi\Model\vendor\orders\v1\ItemQuantity $acknowledged_quantity): self
     {
         if (is_null($acknowledged_quantity)) {
             throw new \InvalidArgumentException('non-nullable acknowledged_quantity cannot be null');

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\notifications\v1\MarketplaceFilter;
+use SpApi\Model\notifications\v1\MarketplaceFilter;
 
 /**
  * MarketplaceFilterTest Class Doc Comment
  *
  * @category    Class
  * @description An event filter to customize your subscription to send notifications for only the specified &#x60;marketplaceId&#x60;s.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class MarketplaceFilterTest extends TestCase
 {

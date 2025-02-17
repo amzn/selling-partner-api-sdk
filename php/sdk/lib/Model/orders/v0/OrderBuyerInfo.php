@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\orders\v0;
+namespace SpApi\Model\orders\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * OrderBuyerInfo Class Doc Comment
  *
  * @category Class
  * @description Buyer information for an order.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -64,7 +64,7 @@ class OrderBuyerInfo implements ModelInterface, ArrayAccess, \JsonSerializable
              'buyer_email' => 'string',
              'buyer_name' => 'string',
              'buyer_county' => 'string',
-             'buyer_tax_info' => '\OpenAPI\Client\Model\orders\v0\BuyerTaxInfo',
+             'buyer_tax_info' => '\SpApi\Model\orders\v0\BuyerTaxInfo',
              'purchase_order_number' => 'string'    ];
 
     /**
@@ -461,9 +461,9 @@ class OrderBuyerInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets buyer_tax_info
      *
-     * @return \OpenAPI\Client\Model\orders\v0\BuyerTaxInfo|null
+     * @return \SpApi\Model\orders\v0\BuyerTaxInfo|null
      */
-    public function getBuyerTaxInfo(): ?\OpenAPI\Client\Model\orders\v0\BuyerTaxInfo
+    public function getBuyerTaxInfo(): ?\SpApi\Model\orders\v0\BuyerTaxInfo
     {
         return $this->container['buyer_tax_info'];
     }
@@ -471,11 +471,11 @@ class OrderBuyerInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets buyer_tax_info
      *
-     * @param \OpenAPI\Client\Model\orders\v0\BuyerTaxInfo|null $buyer_tax_info buyer_tax_info
+     * @param \SpApi\Model\orders\v0\BuyerTaxInfo|null $buyer_tax_info buyer_tax_info
      *
      * @return self
      */
-    public function setBuyerTaxInfo(?\OpenAPI\Client\Model\orders\v0\BuyerTaxInfo $buyer_tax_info): self
+    public function setBuyerTaxInfo(?\SpApi\Model\orders\v0\BuyerTaxInfo $buyer_tax_info): self
     {
         if (is_null($buyer_tax_info)) {
             array_push($this->openAPINullablesSetToNull, 'buyer_tax_info');

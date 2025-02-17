@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28;
+namespace SpApi\Model\vendor\df\shipping\v2021_12_28;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * SubmitShipmentStatusUpdatesRequest Class Doc Comment
  *
  * @category Class
  * @description The request schema for the &#x60;submitShipmentStatusUpdates&#x60; operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class SubmitShipmentStatusUpdatesRequest implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'shipment_status_updates' => '\OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\ShipmentStatusUpdate[]'    ];
+             'shipment_status_updates' => '\SpApi\Model\vendor\df\shipping\v2021_12_28\ShipmentStatusUpdate[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

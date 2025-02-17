@@ -4,7 +4,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api\vendor\invoices\v1;
+namespace SpApi\Api\vendor\invoices\v1;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -39,16 +39,16 @@ use SpApi\AuthAndAuth\RateLimitConfiguration;
 use Symfony\Component\RateLimiter\LimiterInterface;
 use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\ObjectSerializer;
+use SpApi\ApiException;
+use SpApi\Configuration;
+use SpApi\HeaderSelector;
+use SpApi\ObjectSerializer;
 
 /**
  * VendorInvoicesApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -154,16 +154,16 @@ class VendorInvoicesApi
      *
      * submitInvoices
      *
-     * @param  \OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesRequest $body
+     * @param  \SpApi\Model\vendor\invoices\v1\SubmitInvoicesRequest $body
      *  The request body containing the invoice data to submit. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesResponse
+     * @return \SpApi\Model\vendor\invoices\v1\SubmitInvoicesResponse
      */
     public function submitInvoices(
-        \OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesRequest $body
-    ): \OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesResponse {
+        \SpApi\Model\vendor\invoices\v1\SubmitInvoicesRequest $body
+    ): \SpApi\Model\vendor\invoices\v1\SubmitInvoicesResponse {
         list($response) = $this->submitInvoicesWithHttpInfo($body);
         return $response;
     }
@@ -173,15 +173,15 @@ class VendorInvoicesApi
      *
      * submitInvoices
      *
-     * @param  \OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesRequest $body
+     * @param  \SpApi\Model\vendor\invoices\v1\SubmitInvoicesRequest $body
      *  The request body containing the invoice data to submit. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\vendor\invoices\v1\SubmitInvoicesResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function submitInvoicesWithHttpInfo(
-        \OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesRequest $body
+        \SpApi\Model\vendor\invoices\v1\SubmitInvoicesRequest $body
     ): array {
         $request = $this->submitInvoicesRequest($body);
         $request = $this->config->sign($request);
@@ -224,143 +224,143 @@ class VendorInvoicesApi
 
             switch($statusCode) {
                 case 202:
-                    if ('\OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\vendor\invoices\v1\SubmitInvoicesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesResponse' !== 'string') {
+                        if ('\SpApi\Model\vendor\invoices\v1\SubmitInvoicesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\invoices\v1\SubmitInvoicesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\vendor\invoices\v1\SubmitInvoicesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesResponse' !== 'string') {
+                        if ('\SpApi\Model\vendor\invoices\v1\SubmitInvoicesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\invoices\v1\SubmitInvoicesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\vendor\invoices\v1\SubmitInvoicesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesResponse' !== 'string') {
+                        if ('\SpApi\Model\vendor\invoices\v1\SubmitInvoicesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\invoices\v1\SubmitInvoicesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\vendor\invoices\v1\SubmitInvoicesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesResponse' !== 'string') {
+                        if ('\SpApi\Model\vendor\invoices\v1\SubmitInvoicesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\invoices\v1\SubmitInvoicesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\vendor\invoices\v1\SubmitInvoicesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesResponse' !== 'string') {
+                        if ('\SpApi\Model\vendor\invoices\v1\SubmitInvoicesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\invoices\v1\SubmitInvoicesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\vendor\invoices\v1\SubmitInvoicesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesResponse' !== 'string') {
+                        if ('\SpApi\Model\vendor\invoices\v1\SubmitInvoicesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\invoices\v1\SubmitInvoicesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\vendor\invoices\v1\SubmitInvoicesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesResponse' !== 'string') {
+                        if ('\SpApi\Model\vendor\invoices\v1\SubmitInvoicesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\invoices\v1\SubmitInvoicesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\vendor\invoices\v1\SubmitInvoicesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesResponse' !== 'string') {
+                        if ('\SpApi\Model\vendor\invoices\v1\SubmitInvoicesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\invoices\v1\SubmitInvoicesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\vendor\invoices\v1\SubmitInvoicesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesResponse' !== 'string') {
+                        if ('\SpApi\Model\vendor\invoices\v1\SubmitInvoicesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\invoices\v1\SubmitInvoicesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesResponse';
+            $returnType = '\SpApi\Model\vendor\invoices\v1\SubmitInvoicesResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -381,7 +381,7 @@ class VendorInvoicesApi
                 case 202:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesResponse',
+                        '\SpApi\Model\vendor\invoices\v1\SubmitInvoicesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -389,7 +389,7 @@ class VendorInvoicesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesResponse',
+                        '\SpApi\Model\vendor\invoices\v1\SubmitInvoicesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -397,7 +397,7 @@ class VendorInvoicesApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesResponse',
+                        '\SpApi\Model\vendor\invoices\v1\SubmitInvoicesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -405,7 +405,7 @@ class VendorInvoicesApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesResponse',
+                        '\SpApi\Model\vendor\invoices\v1\SubmitInvoicesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -413,7 +413,7 @@ class VendorInvoicesApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesResponse',
+                        '\SpApi\Model\vendor\invoices\v1\SubmitInvoicesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -421,7 +421,7 @@ class VendorInvoicesApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesResponse',
+                        '\SpApi\Model\vendor\invoices\v1\SubmitInvoicesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -429,7 +429,7 @@ class VendorInvoicesApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesResponse',
+                        '\SpApi\Model\vendor\invoices\v1\SubmitInvoicesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -437,7 +437,7 @@ class VendorInvoicesApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesResponse',
+                        '\SpApi\Model\vendor\invoices\v1\SubmitInvoicesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -445,7 +445,7 @@ class VendorInvoicesApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesResponse',
+                        '\SpApi\Model\vendor\invoices\v1\SubmitInvoicesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -460,14 +460,14 @@ class VendorInvoicesApi
      *
      * submitInvoices
      *
-     * @param  \OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesRequest $body
+     * @param  \SpApi\Model\vendor\invoices\v1\SubmitInvoicesRequest $body
      *  The request body containing the invoice data to submit. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function submitInvoicesAsync(
-        \OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesRequest $body
+        \SpApi\Model\vendor\invoices\v1\SubmitInvoicesRequest $body
     ): PromiseInterface {
         return $this->submitInvoicesAsyncWithHttpInfo($body)
             ->then(
@@ -482,16 +482,16 @@ class VendorInvoicesApi
      *
      * submitInvoices
      *
-     * @param  \OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesRequest $body
+     * @param  \SpApi\Model\vendor\invoices\v1\SubmitInvoicesRequest $body
      *  The request body containing the invoice data to submit. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
      */
     public function submitInvoicesAsyncWithHttpInfo(
-        \OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesRequest $body
+        \SpApi\Model\vendor\invoices\v1\SubmitInvoicesRequest $body
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesResponse';
+        $returnType = '\SpApi\Model\vendor\invoices\v1\SubmitInvoicesResponse';
         $request = $this->submitInvoicesRequest($body);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -535,14 +535,14 @@ class VendorInvoicesApi
     /**
      * Create request for operation 'submitInvoices'
      *
-     * @param  \OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesRequest $body
+     * @param  \SpApi\Model\vendor\invoices\v1\SubmitInvoicesRequest $body
      *  The request body containing the invoice data to submit. (required)
      *
      * @throws \InvalidArgumentException
      * @return Request
      */
     public function submitInvoicesRequest(
-        \OpenAPI\Client\Model\vendor\invoices\v1\SubmitInvoicesRequest $body
+        \SpApi\Model\vendor\invoices\v1\SubmitInvoicesRequest $body
     ): Request {
         // verify the required parameter 'body' is set
         if ($body === null || (is_array($body) && count($body) === 0)) {

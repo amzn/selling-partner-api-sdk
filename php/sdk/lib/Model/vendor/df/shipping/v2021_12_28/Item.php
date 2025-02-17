@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28;
+namespace SpApi\Model\vendor\df\shipping\v2021_12_28;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Item Class Doc Comment
  *
  * @category Class
  * @description Details of the item being shipped.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,7 +63,7 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
              'item_sequence_number' => 'int',
              'buyer_product_identifier' => 'string',
              'vendor_product_identifier' => 'string',
-             'shipped_quantity' => '\OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\ItemQuantity'    ];
+             'shipped_quantity' => '\SpApi\Model\vendor\df\shipping\v2021_12_28\ItemQuantity'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -416,9 +416,9 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets shipped_quantity
      *
-     * @return \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\ItemQuantity
+     * @return \SpApi\Model\vendor\df\shipping\v2021_12_28\ItemQuantity
      */
-    public function getShippedQuantity(): \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\ItemQuantity
+    public function getShippedQuantity(): \SpApi\Model\vendor\df\shipping\v2021_12_28\ItemQuantity
     {
         return $this->container['shipped_quantity'];
     }
@@ -426,11 +426,11 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets shipped_quantity
      *
-     * @param \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\ItemQuantity $shipped_quantity shipped_quantity
+     * @param \SpApi\Model\vendor\df\shipping\v2021_12_28\ItemQuantity $shipped_quantity shipped_quantity
      *
      * @return self
      */
-    public function setShippedQuantity(\OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\ItemQuantity $shipped_quantity): self
+    public function setShippedQuantity(\SpApi\Model\vendor\df\shipping\v2021_12_28\ItemQuantity $shipped_quantity): self
     {
         if (is_null($shipped_quantity)) {
             throw new \InvalidArgumentException('non-nullable shipped_quantity cannot be null');

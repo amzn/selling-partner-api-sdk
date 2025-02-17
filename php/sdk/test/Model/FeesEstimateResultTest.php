@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\productFees\v0\FeesEstimateResult;
+use SpApi\Model\productFees\v0\FeesEstimateResult;
 
 /**
  * FeesEstimateResultTest Class Doc Comment
  *
  * @category    Class
  * @description An item identifier and the estimated fees for the item.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class FeesEstimateResultTest extends TestCase
 {
@@ -68,7 +68,7 @@ class FeesEstimateResultTest extends TestCase
     public function testPropertyFeesEstimateIdentifier()
     {
         
-        $testValue = new \OpenAPI\Client\Model\productFees\v0\FeesEstimateIdentifier();
+        $testValue = new \SpApi\Model\productFees\v0\FeesEstimateIdentifier();
         
         $this->model->setFeesEstimateIdentifier($testValue);
         $this->assertEquals($testValue, $this->model->getFeesEstimateIdentifier());
@@ -80,7 +80,7 @@ class FeesEstimateResultTest extends TestCase
     public function testPropertyFeesEstimate()
     {
         
-        $testValue = new \OpenAPI\Client\Model\productFees\v0\FeesEstimate();
+        $testValue = new \SpApi\Model\productFees\v0\FeesEstimate();
         
         $this->model->setFeesEstimate($testValue);
         $this->assertEquals($testValue, $this->model->getFeesEstimate());
@@ -92,7 +92,7 @@ class FeesEstimateResultTest extends TestCase
     public function testPropertyError()
     {
         
-        $testValue = new \OpenAPI\Client\Model\productFees\v0\FeesEstimateError();
+        $testValue = new \SpApi\Model\productFees\v0\FeesEstimateError();
         
         $this->model->setError($testValue);
         $this->assertEquals($testValue, $this->model->getError());

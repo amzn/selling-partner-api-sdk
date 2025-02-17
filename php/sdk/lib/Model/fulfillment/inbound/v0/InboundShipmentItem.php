@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\inbound\v0;
+namespace SpApi\Model\fulfillment\inbound\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * InboundShipmentItem Class Doc Comment
  *
  * @category Class
  * @description Item information for an inbound shipment. Submitted with a call to the createInboundShipment or updateInboundShipment operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -67,7 +67,7 @@ class InboundShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializa
              'quantity_received' => 'int',
              'quantity_in_case' => 'int',
              'release_date' => '\DateTime',
-             'prep_details_list' => '\OpenAPI\Client\Model\fulfillment\inbound\v0\PrepDetails[]'    ];
+             'prep_details_list' => '\SpApi\Model\fulfillment\inbound\v0\PrepDetails[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

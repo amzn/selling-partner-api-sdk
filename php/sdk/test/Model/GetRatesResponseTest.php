@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\v2\GetRatesResponse;
+use SpApi\Model\shipping\v2\GetRatesResponse;
 
 /**
  * GetRatesResponseTest Class Doc Comment
  *
  * @category    Class
  * @description The response schema for the getRates operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetRatesResponseTest extends TestCase
 {
@@ -57,7 +57,7 @@ class GetRatesResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\v2\GetRatesResult();
+        $testValue = new \SpApi\Model\shipping\v2\GetRatesResult();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

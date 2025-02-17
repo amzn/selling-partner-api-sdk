@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersProduct;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersProduct;
 
 /**
  * GetDeliveryOffersProductTest Class Doc Comment
  *
  * @category    Class
  * @description The product details for the delivery offer.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetDeliveryOffersProductTest extends TestCase
 {
@@ -57,7 +57,7 @@ class GetDeliveryOffersProductTest extends TestCase
     public function testPropertyProductIdentifier()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\ProductIdentifier();
+        $testValue = new \SpApi\Model\fulfillment\outbound\v2020_07_01\ProductIdentifier();
         
         $this->model->setProductIdentifier($testValue);
         $this->assertEquals($testValue, $this->model->getProductIdentifier());
@@ -69,7 +69,7 @@ class GetDeliveryOffersProductTest extends TestCase
     public function testPropertyAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Amount();
+        $testValue = new \SpApi\Model\fulfillment\outbound\v2020_07_01\Amount();
         
         $this->model->setAmount($testValue);
         $this->assertEquals($testValue, $this->model->getAmount());

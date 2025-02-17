@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\transfers\v2024_06_01\AssignmentType;
+use SpApi\Model\transfers\v2024_06_01\AssignmentType;
 
 /**
  * AssignmentTypeTest Class Doc Comment
  *
  * @category    Class
  * @description The default payment method type.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class AssignmentTypeTest extends TestCase
 {

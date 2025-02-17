@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\v1\AvailabilityRecord;
+use SpApi\Model\services\v1\AvailabilityRecord;
 
 /**
  * AvailabilityRecordTest Class Doc Comment
  *
  * @category    Class
  * @description &#x60;AvailabilityRecord&#x60; to represent the capacity of a resource over a time range.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class AvailabilityRecordTest extends TestCase
 {
@@ -81,7 +81,7 @@ class AvailabilityRecordTest extends TestCase
     public function testPropertyRecurrence()
     {
         
-        $testValue = new \OpenAPI\Client\Model\services\v1\Recurrence();
+        $testValue = new \SpApi\Model\services\v1\Recurrence();
         
         $this->model->setRecurrence($testValue);
         $this->assertEquals($testValue, $this->model->getRecurrence());

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\shipments\v1\Stop;
+use SpApi\Model\vendor\shipments\v1\Stop;
 
 /**
  * StopTest Class Doc Comment
  *
  * @category    Class
  * @description Contractual or operational port or point relevant to the movement of the cargo.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class StopTest extends TestCase
 {
@@ -69,7 +69,7 @@ class StopTest extends TestCase
     public function testPropertyLocationIdentification()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\shipments\v1\Location();
+        $testValue = new \SpApi\Model\vendor\shipments\v1\Location();
         
         $this->model->setLocationIdentification($testValue);
         $this->assertEquals($testValue, $this->model->getLocationIdentification());

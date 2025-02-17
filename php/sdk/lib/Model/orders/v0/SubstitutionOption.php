@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\orders\v0;
+namespace SpApi\Model\orders\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * SubstitutionOption Class Doc Comment
  *
  * @category Class
  * @description Substitution options for an order item.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -64,7 +64,7 @@ class SubstitutionOption implements ModelInterface, ArrayAccess, \JsonSerializab
              'quantity_ordered' => 'int',
              'seller_sku' => 'string',
              'title' => 'string',
-             'measurement' => '\OpenAPI\Client\Model\orders\v0\Measurement'    ];
+             'measurement' => '\SpApi\Model\orders\v0\Measurement'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -458,9 +458,9 @@ class SubstitutionOption implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets measurement
      *
-     * @return \OpenAPI\Client\Model\orders\v0\Measurement|null
+     * @return \SpApi\Model\orders\v0\Measurement|null
      */
-    public function getMeasurement(): ?\OpenAPI\Client\Model\orders\v0\Measurement
+    public function getMeasurement(): ?\SpApi\Model\orders\v0\Measurement
     {
         return $this->container['measurement'];
     }
@@ -468,11 +468,11 @@ class SubstitutionOption implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets measurement
      *
-     * @param \OpenAPI\Client\Model\orders\v0\Measurement|null $measurement measurement
+     * @param \SpApi\Model\orders\v0\Measurement|null $measurement measurement
      *
      * @return self
      */
-    public function setMeasurement(?\OpenAPI\Client\Model\orders\v0\Measurement $measurement): self
+    public function setMeasurement(?\SpApi\Model\orders\v0\Measurement $measurement): self
     {
         if (is_null($measurement)) {
             array_push($this->openAPINullablesSetToNull, 'measurement');

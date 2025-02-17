@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Stackability;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\Stackability;
 
 /**
  * StackabilityTest Class Doc Comment
  *
  * @category    Class
  * @description Indicates whether pallets will be stacked when carrier arrives for pick-up.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class StackabilityTest extends TestCase
 {

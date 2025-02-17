@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\merchantFulfillment\v0;
+namespace SpApi\Model\merchantFulfillment\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * AdditionalSellerInputs Class Doc Comment
  *
  * @category Class
  * @description An additional set of seller inputs required to purchase shipping.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class AdditionalSellerInputs implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static array $openAPITypes = [
              'additional_input_field_name' => 'string',
-             'additional_seller_input' => '\OpenAPI\Client\Model\merchantFulfillment\v0\AdditionalSellerInput'    ];
+             'additional_seller_input' => '\SpApi\Model\merchantFulfillment\v0\AdditionalSellerInput'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -334,9 +334,9 @@ class AdditionalSellerInputs implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets additional_seller_input
      *
-     * @return \OpenAPI\Client\Model\merchantFulfillment\v0\AdditionalSellerInput
+     * @return \SpApi\Model\merchantFulfillment\v0\AdditionalSellerInput
      */
-    public function getAdditionalSellerInput(): \OpenAPI\Client\Model\merchantFulfillment\v0\AdditionalSellerInput
+    public function getAdditionalSellerInput(): \SpApi\Model\merchantFulfillment\v0\AdditionalSellerInput
     {
         return $this->container['additional_seller_input'];
     }
@@ -344,11 +344,11 @@ class AdditionalSellerInputs implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets additional_seller_input
      *
-     * @param \OpenAPI\Client\Model\merchantFulfillment\v0\AdditionalSellerInput $additional_seller_input additional_seller_input
+     * @param \SpApi\Model\merchantFulfillment\v0\AdditionalSellerInput $additional_seller_input additional_seller_input
      *
      * @return self
      */
-    public function setAdditionalSellerInput(\OpenAPI\Client\Model\merchantFulfillment\v0\AdditionalSellerInput $additional_seller_input): self
+    public function setAdditionalSellerInput(\SpApi\Model\merchantFulfillment\v0\AdditionalSellerInput $additional_seller_input): self
     {
         if (is_null($additional_seller_input)) {
             throw new \InvalidArgumentException('non-nullable additional_seller_input cannot be null');

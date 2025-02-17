@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardHeaderImageTextModule;
+use SpApi\Model\aplusContent\v2020_11_01\StandardHeaderImageTextModule;
 
 /**
  * StandardHeaderImageTextModuleTest Class Doc Comment
  *
  * @category    Class
  * @description Standard headline text, an image, and body text.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class StandardHeaderImageTextModuleTest extends TestCase
 {
@@ -57,7 +57,7 @@ class StandardHeaderImageTextModuleTest extends TestCase
     public function testPropertyHeadline()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\TextComponent();
         
         $this->model->setHeadline($testValue);
         $this->assertEquals($testValue, $this->model->getHeadline());
@@ -69,7 +69,7 @@ class StandardHeaderImageTextModuleTest extends TestCase
     public function testPropertyBlock()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock();
         
         $this->model->setBlock($testValue);
         $this->assertEquals($testValue, $this->model->getBlock());

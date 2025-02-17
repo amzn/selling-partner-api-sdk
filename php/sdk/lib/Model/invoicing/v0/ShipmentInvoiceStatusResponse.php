@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\invoicing\v0;
+namespace SpApi\Model\invoicing\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ShipmentInvoiceStatusResponse Class Doc Comment
  *
  * @category Class
  * @description The shipment invoice status response.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class ShipmentInvoiceStatusResponse implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'shipments' => '\OpenAPI\Client\Model\invoicing\v0\ShipmentInvoiceStatusInfo'    ];
+             'shipments' => '\SpApi\Model\invoicing\v0\ShipmentInvoiceStatusInfo'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -294,9 +294,9 @@ class ShipmentInvoiceStatusResponse implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets shipments
      *
-     * @return \OpenAPI\Client\Model\invoicing\v0\ShipmentInvoiceStatusInfo|null
+     * @return \SpApi\Model\invoicing\v0\ShipmentInvoiceStatusInfo|null
      */
-    public function getShipments(): ?\OpenAPI\Client\Model\invoicing\v0\ShipmentInvoiceStatusInfo
+    public function getShipments(): ?\SpApi\Model\invoicing\v0\ShipmentInvoiceStatusInfo
     {
         return $this->container['shipments'];
     }
@@ -304,11 +304,11 @@ class ShipmentInvoiceStatusResponse implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets shipments
      *
-     * @param \OpenAPI\Client\Model\invoicing\v0\ShipmentInvoiceStatusInfo|null $shipments shipments
+     * @param \SpApi\Model\invoicing\v0\ShipmentInvoiceStatusInfo|null $shipments shipments
      *
      * @return self
      */
-    public function setShipments(?\OpenAPI\Client\Model\invoicing\v0\ShipmentInvoiceStatusInfo $shipments): self
+    public function setShipments(?\SpApi\Model\invoicing\v0\ShipmentInvoiceStatusInfo $shipments): self
     {
         if (is_null($shipments)) {
             array_push($this->openAPINullablesSetToNull, 'shipments');

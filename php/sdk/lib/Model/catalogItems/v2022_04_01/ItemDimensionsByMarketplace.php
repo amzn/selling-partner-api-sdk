@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\catalogItems\v2022_04_01;
+namespace SpApi\Model\catalogItems\v2022_04_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ItemDimensionsByMarketplace Class Doc Comment
  *
  * @category Class
  * @description Dimensions associated with the item in the Amazon catalog for the indicated Amazon marketplace.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,8 +61,8 @@ class ItemDimensionsByMarketplace implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static array $openAPITypes = [
              'marketplace_id' => 'string',
-             'item' => '\OpenAPI\Client\Model\catalogItems\v2022_04_01\Dimensions',
-             'package' => '\OpenAPI\Client\Model\catalogItems\v2022_04_01\Dimensions'    ];
+             'item' => '\SpApi\Model\catalogItems\v2022_04_01\Dimensions',
+             'package' => '\SpApi\Model\catalogItems\v2022_04_01\Dimensions'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -338,9 +338,9 @@ class ItemDimensionsByMarketplace implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets item
      *
-     * @return \OpenAPI\Client\Model\catalogItems\v2022_04_01\Dimensions|null
+     * @return \SpApi\Model\catalogItems\v2022_04_01\Dimensions|null
      */
-    public function getItem(): ?\OpenAPI\Client\Model\catalogItems\v2022_04_01\Dimensions
+    public function getItem(): ?\SpApi\Model\catalogItems\v2022_04_01\Dimensions
     {
         return $this->container['item'];
     }
@@ -348,11 +348,11 @@ class ItemDimensionsByMarketplace implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets item
      *
-     * @param \OpenAPI\Client\Model\catalogItems\v2022_04_01\Dimensions|null $item item
+     * @param \SpApi\Model\catalogItems\v2022_04_01\Dimensions|null $item item
      *
      * @return self
      */
-    public function setItem(?\OpenAPI\Client\Model\catalogItems\v2022_04_01\Dimensions $item): self
+    public function setItem(?\SpApi\Model\catalogItems\v2022_04_01\Dimensions $item): self
     {
         if (is_null($item)) {
             array_push($this->openAPINullablesSetToNull, 'item');
@@ -372,9 +372,9 @@ class ItemDimensionsByMarketplace implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets package
      *
-     * @return \OpenAPI\Client\Model\catalogItems\v2022_04_01\Dimensions|null
+     * @return \SpApi\Model\catalogItems\v2022_04_01\Dimensions|null
      */
-    public function getPackage(): ?\OpenAPI\Client\Model\catalogItems\v2022_04_01\Dimensions
+    public function getPackage(): ?\SpApi\Model\catalogItems\v2022_04_01\Dimensions
     {
         return $this->container['package'];
     }
@@ -382,11 +382,11 @@ class ItemDimensionsByMarketplace implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets package
      *
-     * @param \OpenAPI\Client\Model\catalogItems\v2022_04_01\Dimensions|null $package package
+     * @param \SpApi\Model\catalogItems\v2022_04_01\Dimensions|null $package package
      *
      * @return self
      */
-    public function setPackage(?\OpenAPI\Client\Model\catalogItems\v2022_04_01\Dimensions $package): self
+    public function setPackage(?\SpApi\Model\catalogItems\v2022_04_01\Dimensions $package): self
     {
         if (is_null($package)) {
             array_push($this->openAPINullablesSetToNull, 'package');

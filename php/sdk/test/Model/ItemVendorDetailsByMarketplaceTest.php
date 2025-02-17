@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemVendorDetailsByMarketplace;
+use SpApi\Model\catalogItems\v2022_04_01\ItemVendorDetailsByMarketplace;
 
 /**
  * ItemVendorDetailsByMarketplaceTest Class Doc Comment
  *
  * @category    Class
  * @description Vendor details associated with an Amazon catalog item for the indicated Amazon marketplace.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ItemVendorDetailsByMarketplaceTest extends TestCase
 {
@@ -101,7 +101,7 @@ class ItemVendorDetailsByMarketplaceTest extends TestCase
     public function testPropertyProductCategory()
     {
         
-        $testValue = new \OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemVendorDetailsCategory();
+        $testValue = new \SpApi\Model\catalogItems\v2022_04_01\ItemVendorDetailsCategory();
         
         $this->model->setProductCategory($testValue);
         $this->assertEquals($testValue, $this->model->getProductCategory());
@@ -124,7 +124,7 @@ class ItemVendorDetailsByMarketplaceTest extends TestCase
     public function testPropertyProductSubcategory()
     {
         
-        $testValue = new \OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemVendorDetailsCategory();
+        $testValue = new \SpApi\Model\catalogItems\v2022_04_01\ItemVendorDetailsCategory();
         
         $this->model->setProductSubcategory($testValue);
         $this->assertEquals($testValue, $this->model->getProductSubcategory());

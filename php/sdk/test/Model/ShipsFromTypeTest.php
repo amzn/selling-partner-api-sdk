@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v0\ShipsFromType;
+use SpApi\Model\pricing\v0\ShipsFromType;
 
 /**
  * ShipsFromTypeTest Class Doc Comment
  *
  * @category    Class
  * @description The state and country from where the item is shipped.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ShipsFromTypeTest extends TestCase
 {

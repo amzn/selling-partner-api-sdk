@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\listings\items\v2021_08_01\FulfillmentAvailability;
+use SpApi\Model\listings\items\v2021_08_01\FulfillmentAvailability;
 
 /**
  * FulfillmentAvailabilityTest Class Doc Comment
  *
  * @category    Class
  * @description The fulfillment availability details for the listings item.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class FulfillmentAvailabilityTest extends TestCase
 {

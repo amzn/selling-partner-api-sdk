@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v0\AmazonPrepFeesDetails;
+use SpApi\Model\fulfillment\inbound\v0\AmazonPrepFeesDetails;
 
 /**
  * AmazonPrepFeesDetailsTest Class Doc Comment
  *
  * @category    Class
  * @description The fees for Amazon to prep goods for shipment.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class AmazonPrepFeesDetailsTest extends TestCase
 {
@@ -56,7 +56,7 @@ class AmazonPrepFeesDetailsTest extends TestCase
      */
     public function testPropertyPrepInstruction()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\inbound\v0\PrepInstruction();
+        $enumInstance = new \SpApi\Model\fulfillment\inbound\v0\PrepInstruction();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -70,7 +70,7 @@ class AmazonPrepFeesDetailsTest extends TestCase
     public function testPropertyFeePerUnit()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\inbound\v0\Amount();
+        $testValue = new \SpApi\Model\fulfillment\inbound\v0\Amount();
         
         $this->model->setFeePerUnit($testValue);
         $this->assertEquals($testValue, $this->model->getFeePerUnit());

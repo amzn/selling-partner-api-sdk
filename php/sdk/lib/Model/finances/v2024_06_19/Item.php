@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\finances\v2024_06_19;
+namespace SpApi\Model\finances\v2024_06_19;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Item Class Doc Comment
  *
  * @category Class
  * @description Additional information about the items in a transaction.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,10 +61,10 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPITypes = [
              'description' => 'string',
-             'related_identifiers' => '\OpenAPI\Client\Model\finances\v2024_06_19\ItemRelatedIdentifier[]',
-             'total_amount' => '\OpenAPI\Client\Model\finances\v2024_06_19\Currency',
-             'breakdowns' => '\OpenAPI\Client\Model\finances\v2024_06_19\Breakdown[]',
-             'contexts' => '\OpenAPI\Client\Model\finances\v2024_06_19\Context[]'    ];
+             'related_identifiers' => '\SpApi\Model\finances\v2024_06_19\ItemRelatedIdentifier[]',
+             'total_amount' => '\SpApi\Model\finances\v2024_06_19\Currency',
+             'breakdowns' => '\SpApi\Model\finances\v2024_06_19\Breakdown[]',
+             'contexts' => '\SpApi\Model\finances\v2024_06_19\Context[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -390,9 +390,9 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets total_amount
      *
-     * @return \OpenAPI\Client\Model\finances\v2024_06_19\Currency|null
+     * @return \SpApi\Model\finances\v2024_06_19\Currency|null
      */
-    public function getTotalAmount(): ?\OpenAPI\Client\Model\finances\v2024_06_19\Currency
+    public function getTotalAmount(): ?\SpApi\Model\finances\v2024_06_19\Currency
     {
         return $this->container['total_amount'];
     }
@@ -400,11 +400,11 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets total_amount
      *
-     * @param \OpenAPI\Client\Model\finances\v2024_06_19\Currency|null $total_amount total_amount
+     * @param \SpApi\Model\finances\v2024_06_19\Currency|null $total_amount total_amount
      *
      * @return self
      */
-    public function setTotalAmount(?\OpenAPI\Client\Model\finances\v2024_06_19\Currency $total_amount): self
+    public function setTotalAmount(?\SpApi\Model\finances\v2024_06_19\Currency $total_amount): self
     {
         if (is_null($total_amount)) {
             array_push($this->openAPINullablesSetToNull, 'total_amount');

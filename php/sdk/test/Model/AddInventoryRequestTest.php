@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fba\inventory\v1\AddInventoryRequest;
+use SpApi\Model\fba\inventory\v1\AddInventoryRequest;
 
 /**
  * AddInventoryRequestTest Class Doc Comment
  *
  * @category    Class
  * @description The object with the list of Inventory to be added
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class AddInventoryRequestTest extends TestCase
 {

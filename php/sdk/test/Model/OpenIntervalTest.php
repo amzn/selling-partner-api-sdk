@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\v0\OpenInterval;
+use SpApi\Model\orders\v0\OpenInterval;
 
 /**
  * OpenIntervalTest Class Doc Comment
  *
  * @category    Class
  * @description The time interval for which the business is open.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class OpenIntervalTest extends TestCase
 {
@@ -57,7 +57,7 @@ class OpenIntervalTest extends TestCase
     public function testPropertyStartTime()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\v0\OpenTimeInterval();
+        $testValue = new \SpApi\Model\orders\v0\OpenTimeInterval();
         
         $this->model->setStartTime($testValue);
         $this->assertEquals($testValue, $this->model->getStartTime());
@@ -69,7 +69,7 @@ class OpenIntervalTest extends TestCase
     public function testPropertyEndTime()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\v0\OpenTimeInterval();
+        $testValue = new \SpApi\Model\orders\v0\OpenTimeInterval();
         
         $this->model->setEndTime($testValue);
         $this->assertEquals($testValue, $this->model->getEndTime());

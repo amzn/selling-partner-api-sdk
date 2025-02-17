@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\productFees\v0;
+namespace SpApi\Model\productFees\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * FeeDetail Class Doc Comment
  *
  * @category Class
  * @description The type of fee, fee amount, and other details.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,11 +61,11 @@ class FeeDetail implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPITypes = [
              'fee_type' => 'string',
-             'fee_amount' => '\OpenAPI\Client\Model\productFees\v0\MoneyType',
-             'fee_promotion' => '\OpenAPI\Client\Model\productFees\v0\MoneyType',
-             'tax_amount' => '\OpenAPI\Client\Model\productFees\v0\MoneyType',
-             'final_fee' => '\OpenAPI\Client\Model\productFees\v0\MoneyType',
-             'included_fee_detail_list' => '\OpenAPI\Client\Model\productFees\v0\IncludedFeeDetail[]'    ];
+             'fee_amount' => '\SpApi\Model\productFees\v0\MoneyType',
+             'fee_promotion' => '\SpApi\Model\productFees\v0\MoneyType',
+             'tax_amount' => '\SpApi\Model\productFees\v0\MoneyType',
+             'final_fee' => '\SpApi\Model\productFees\v0\MoneyType',
+             'included_fee_detail_list' => '\SpApi\Model\productFees\v0\IncludedFeeDetail[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -365,9 +365,9 @@ class FeeDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets fee_amount
      *
-     * @return \OpenAPI\Client\Model\productFees\v0\MoneyType
+     * @return \SpApi\Model\productFees\v0\MoneyType
      */
-    public function getFeeAmount(): \OpenAPI\Client\Model\productFees\v0\MoneyType
+    public function getFeeAmount(): \SpApi\Model\productFees\v0\MoneyType
     {
         return $this->container['fee_amount'];
     }
@@ -375,11 +375,11 @@ class FeeDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets fee_amount
      *
-     * @param \OpenAPI\Client\Model\productFees\v0\MoneyType $fee_amount fee_amount
+     * @param \SpApi\Model\productFees\v0\MoneyType $fee_amount fee_amount
      *
      * @return self
      */
-    public function setFeeAmount(\OpenAPI\Client\Model\productFees\v0\MoneyType $fee_amount): self
+    public function setFeeAmount(\SpApi\Model\productFees\v0\MoneyType $fee_amount): self
     {
         if (is_null($fee_amount)) {
             throw new \InvalidArgumentException('non-nullable fee_amount cannot be null');
@@ -392,9 +392,9 @@ class FeeDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets fee_promotion
      *
-     * @return \OpenAPI\Client\Model\productFees\v0\MoneyType|null
+     * @return \SpApi\Model\productFees\v0\MoneyType|null
      */
-    public function getFeePromotion(): ?\OpenAPI\Client\Model\productFees\v0\MoneyType
+    public function getFeePromotion(): ?\SpApi\Model\productFees\v0\MoneyType
     {
         return $this->container['fee_promotion'];
     }
@@ -402,11 +402,11 @@ class FeeDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets fee_promotion
      *
-     * @param \OpenAPI\Client\Model\productFees\v0\MoneyType|null $fee_promotion fee_promotion
+     * @param \SpApi\Model\productFees\v0\MoneyType|null $fee_promotion fee_promotion
      *
      * @return self
      */
-    public function setFeePromotion(?\OpenAPI\Client\Model\productFees\v0\MoneyType $fee_promotion): self
+    public function setFeePromotion(?\SpApi\Model\productFees\v0\MoneyType $fee_promotion): self
     {
         if (is_null($fee_promotion)) {
             array_push($this->openAPINullablesSetToNull, 'fee_promotion');
@@ -426,9 +426,9 @@ class FeeDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets tax_amount
      *
-     * @return \OpenAPI\Client\Model\productFees\v0\MoneyType|null
+     * @return \SpApi\Model\productFees\v0\MoneyType|null
      */
-    public function getTaxAmount(): ?\OpenAPI\Client\Model\productFees\v0\MoneyType
+    public function getTaxAmount(): ?\SpApi\Model\productFees\v0\MoneyType
     {
         return $this->container['tax_amount'];
     }
@@ -436,11 +436,11 @@ class FeeDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tax_amount
      *
-     * @param \OpenAPI\Client\Model\productFees\v0\MoneyType|null $tax_amount tax_amount
+     * @param \SpApi\Model\productFees\v0\MoneyType|null $tax_amount tax_amount
      *
      * @return self
      */
-    public function setTaxAmount(?\OpenAPI\Client\Model\productFees\v0\MoneyType $tax_amount): self
+    public function setTaxAmount(?\SpApi\Model\productFees\v0\MoneyType $tax_amount): self
     {
         if (is_null($tax_amount)) {
             array_push($this->openAPINullablesSetToNull, 'tax_amount');
@@ -460,9 +460,9 @@ class FeeDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets final_fee
      *
-     * @return \OpenAPI\Client\Model\productFees\v0\MoneyType
+     * @return \SpApi\Model\productFees\v0\MoneyType
      */
-    public function getFinalFee(): \OpenAPI\Client\Model\productFees\v0\MoneyType
+    public function getFinalFee(): \SpApi\Model\productFees\v0\MoneyType
     {
         return $this->container['final_fee'];
     }
@@ -470,11 +470,11 @@ class FeeDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets final_fee
      *
-     * @param \OpenAPI\Client\Model\productFees\v0\MoneyType $final_fee final_fee
+     * @param \SpApi\Model\productFees\v0\MoneyType $final_fee final_fee
      *
      * @return self
      */
-    public function setFinalFee(\OpenAPI\Client\Model\productFees\v0\MoneyType $final_fee): self
+    public function setFinalFee(\SpApi\Model\productFees\v0\MoneyType $final_fee): self
     {
         if (is_null($final_fee)) {
             throw new \InvalidArgumentException('non-nullable final_fee cannot be null');

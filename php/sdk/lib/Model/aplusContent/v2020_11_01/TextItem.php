@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\aplusContent\v2020_11_01;
+namespace SpApi\Model\aplusContent\v2020_11_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * TextItem Class Doc Comment
  *
  * @category Class
  * @description Rich positional text, usually presented as a collection of bullet points.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class TextItem implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPITypes = [
              'position' => 'int',
-             'text' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent'    ];
+             'text' => '\SpApi\Model\aplusContent\v2020_11_01\TextComponent'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -350,9 +350,9 @@ class TextItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets text
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent
+     * @return \SpApi\Model\aplusContent\v2020_11_01\TextComponent
      */
-    public function getText(): \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent
+    public function getText(): \SpApi\Model\aplusContent\v2020_11_01\TextComponent
     {
         return $this->container['text'];
     }
@@ -360,11 +360,11 @@ class TextItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets text
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent $text text
+     * @param \SpApi\Model\aplusContent\v2020_11_01\TextComponent $text text
      *
      * @return self
      */
-    public function setText(\OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent $text): self
+    public function setText(\SpApi\Model\aplusContent\v2020_11_01\TextComponent $text): self
     {
         if (is_null($text)) {
             throw new \InvalidArgumentException('non-nullable text cannot be null');

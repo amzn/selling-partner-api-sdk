@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\shipments\v1\Expiry;
+use SpApi\Model\vendor\shipments\v1\Expiry;
 
 /**
  * ExpiryTest Class Doc Comment
  *
  * @category    Class
  * @description Expiry refers to the collection of dates required  for certain items. These could be either expiryDate or mfgDate and expiryAfterDuration. These are mandatory for perishable items.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ExpiryTest extends TestCase
 {
@@ -81,7 +81,7 @@ class ExpiryTest extends TestCase
     public function testPropertyExpiryAfterDuration()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\shipments\v1\Duration();
+        $testValue = new \SpApi\Model\vendor\shipments\v1\Duration();
         
         $this->model->setExpiryAfterDuration($testValue);
         $this->assertEquals($testValue, $this->model->getExpiryAfterDuration());

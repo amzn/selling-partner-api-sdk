@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\datakiosk\v2023_11_15;
+namespace SpApi\Model\datakiosk\v2023_11_15;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Query Class Doc Comment
  *
  * @category Class
  * @description Detailed information about the query.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -68,7 +68,7 @@ class Query implements ModelInterface, ArrayAccess, \JsonSerializable
              'processing_end_time' => '\DateTime',
              'data_document_id' => 'string',
              'error_document_id' => 'string',
-             'pagination' => '\OpenAPI\Client\Model\datakiosk\v2023_11_15\QueryPagination'    ];
+             'pagination' => '\SpApi\Model\datakiosk\v2023_11_15\QueryPagination'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -646,9 +646,9 @@ class Query implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets pagination
      *
-     * @return \OpenAPI\Client\Model\datakiosk\v2023_11_15\QueryPagination|null
+     * @return \SpApi\Model\datakiosk\v2023_11_15\QueryPagination|null
      */
-    public function getPagination(): ?\OpenAPI\Client\Model\datakiosk\v2023_11_15\QueryPagination
+    public function getPagination(): ?\SpApi\Model\datakiosk\v2023_11_15\QueryPagination
     {
         return $this->container['pagination'];
     }
@@ -656,11 +656,11 @@ class Query implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets pagination
      *
-     * @param \OpenAPI\Client\Model\datakiosk\v2023_11_15\QueryPagination|null $pagination pagination
+     * @param \SpApi\Model\datakiosk\v2023_11_15\QueryPagination|null $pagination pagination
      *
      * @return self
      */
-    public function setPagination(?\OpenAPI\Client\Model\datakiosk\v2023_11_15\QueryPagination $pagination): self
+    public function setPagination(?\SpApi\Model\datakiosk\v2023_11_15\QueryPagination $pagination): self
     {
         if (is_null($pagination)) {
             array_push($this->openAPINullablesSetToNull, 'pagination');

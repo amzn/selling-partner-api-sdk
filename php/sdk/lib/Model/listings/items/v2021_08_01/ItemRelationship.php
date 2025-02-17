@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\listings\items\v2021_08_01;
+namespace SpApi\Model\listings\items\v2021_08_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ItemRelationship Class Doc Comment
  *
  * @category Class
  * @description the relationship details for a listing item.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +62,7 @@ class ItemRelationship implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPITypes = [
              'child_skus' => 'string[]',
              'parent_skus' => 'string[]',
-             'variation_theme' => '\OpenAPI\Client\Model\listings\items\v2021_08_01\ItemVariationTheme',
+             'variation_theme' => '\SpApi\Model\listings\items\v2021_08_01\ItemVariationTheme',
              'type' => 'string'    ];
 
     /**
@@ -410,9 +410,9 @@ class ItemRelationship implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets variation_theme
      *
-     * @return \OpenAPI\Client\Model\listings\items\v2021_08_01\ItemVariationTheme|null
+     * @return \SpApi\Model\listings\items\v2021_08_01\ItemVariationTheme|null
      */
-    public function getVariationTheme(): ?\OpenAPI\Client\Model\listings\items\v2021_08_01\ItemVariationTheme
+    public function getVariationTheme(): ?\SpApi\Model\listings\items\v2021_08_01\ItemVariationTheme
     {
         return $this->container['variation_theme'];
     }
@@ -420,11 +420,11 @@ class ItemRelationship implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets variation_theme
      *
-     * @param \OpenAPI\Client\Model\listings\items\v2021_08_01\ItemVariationTheme|null $variation_theme variation_theme
+     * @param \SpApi\Model\listings\items\v2021_08_01\ItemVariationTheme|null $variation_theme variation_theme
      *
      * @return self
      */
-    public function setVariationTheme(?\OpenAPI\Client\Model\listings\items\v2021_08_01\ItemVariationTheme $variation_theme): self
+    public function setVariationTheme(?\SpApi\Model\listings\items\v2021_08_01\ItemVariationTheme $variation_theme): self
     {
         if (is_null($variation_theme)) {
             array_push($this->openAPINullablesSetToNull, 'variation_theme');

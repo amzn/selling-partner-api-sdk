@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,18 +26,18 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\pricing\v0;
+namespace SpApi\Model\pricing\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * OfferDetail Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,19 +60,19 @@ class OfferDetail implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPITypes = [
              'my_offer' => 'bool',
-             'offer_type' => '\OpenAPI\Client\Model\pricing\v0\OfferCustomerType',
+             'offer_type' => '\SpApi\Model\pricing\v0\OfferCustomerType',
              'sub_condition' => 'string',
              'seller_id' => 'string',
              'condition_notes' => 'string',
-             'seller_feedback_rating' => '\OpenAPI\Client\Model\pricing\v0\SellerFeedbackType',
-             'shipping_time' => '\OpenAPI\Client\Model\pricing\v0\DetailedShippingTimeType',
-             'listing_price' => '\OpenAPI\Client\Model\pricing\v0\MoneyType',
-             'quantity_discount_prices' => '\OpenAPI\Client\Model\pricing\v0\QuantityDiscountPriceType[]',
-             'points' => '\OpenAPI\Client\Model\pricing\v0\Points',
-             'shipping' => '\OpenAPI\Client\Model\pricing\v0\MoneyType',
-             'ships_from' => '\OpenAPI\Client\Model\pricing\v0\ShipsFromType',
+             'seller_feedback_rating' => '\SpApi\Model\pricing\v0\SellerFeedbackType',
+             'shipping_time' => '\SpApi\Model\pricing\v0\DetailedShippingTimeType',
+             'listing_price' => '\SpApi\Model\pricing\v0\MoneyType',
+             'quantity_discount_prices' => '\SpApi\Model\pricing\v0\QuantityDiscountPriceType[]',
+             'points' => '\SpApi\Model\pricing\v0\Points',
+             'shipping' => '\SpApi\Model\pricing\v0\MoneyType',
+             'ships_from' => '\SpApi\Model\pricing\v0\ShipsFromType',
              'is_fulfilled_by_amazon' => 'bool',
-             'prime_information' => '\OpenAPI\Client\Model\pricing\v0\PrimeInformationType',
+             'prime_information' => '\SpApi\Model\pricing\v0\PrimeInformationType',
              'is_buy_box_winner' => 'bool',
              'is_featured_merchant' => 'bool'    ];
 
@@ -576,9 +576,9 @@ class OfferDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets seller_feedback_rating
      *
-     * @return \OpenAPI\Client\Model\pricing\v0\SellerFeedbackType|null
+     * @return \SpApi\Model\pricing\v0\SellerFeedbackType|null
      */
-    public function getSellerFeedbackRating(): ?\OpenAPI\Client\Model\pricing\v0\SellerFeedbackType
+    public function getSellerFeedbackRating(): ?\SpApi\Model\pricing\v0\SellerFeedbackType
     {
         return $this->container['seller_feedback_rating'];
     }
@@ -586,11 +586,11 @@ class OfferDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets seller_feedback_rating
      *
-     * @param \OpenAPI\Client\Model\pricing\v0\SellerFeedbackType|null $seller_feedback_rating seller_feedback_rating
+     * @param \SpApi\Model\pricing\v0\SellerFeedbackType|null $seller_feedback_rating seller_feedback_rating
      *
      * @return self
      */
-    public function setSellerFeedbackRating(?\OpenAPI\Client\Model\pricing\v0\SellerFeedbackType $seller_feedback_rating): self
+    public function setSellerFeedbackRating(?\SpApi\Model\pricing\v0\SellerFeedbackType $seller_feedback_rating): self
     {
         if (is_null($seller_feedback_rating)) {
             array_push($this->openAPINullablesSetToNull, 'seller_feedback_rating');
@@ -610,9 +610,9 @@ class OfferDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets shipping_time
      *
-     * @return \OpenAPI\Client\Model\pricing\v0\DetailedShippingTimeType
+     * @return \SpApi\Model\pricing\v0\DetailedShippingTimeType
      */
-    public function getShippingTime(): \OpenAPI\Client\Model\pricing\v0\DetailedShippingTimeType
+    public function getShippingTime(): \SpApi\Model\pricing\v0\DetailedShippingTimeType
     {
         return $this->container['shipping_time'];
     }
@@ -620,11 +620,11 @@ class OfferDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets shipping_time
      *
-     * @param \OpenAPI\Client\Model\pricing\v0\DetailedShippingTimeType $shipping_time shipping_time
+     * @param \SpApi\Model\pricing\v0\DetailedShippingTimeType $shipping_time shipping_time
      *
      * @return self
      */
-    public function setShippingTime(\OpenAPI\Client\Model\pricing\v0\DetailedShippingTimeType $shipping_time): self
+    public function setShippingTime(\SpApi\Model\pricing\v0\DetailedShippingTimeType $shipping_time): self
     {
         if (is_null($shipping_time)) {
             throw new \InvalidArgumentException('non-nullable shipping_time cannot be null');
@@ -637,9 +637,9 @@ class OfferDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets listing_price
      *
-     * @return \OpenAPI\Client\Model\pricing\v0\MoneyType
+     * @return \SpApi\Model\pricing\v0\MoneyType
      */
-    public function getListingPrice(): \OpenAPI\Client\Model\pricing\v0\MoneyType
+    public function getListingPrice(): \SpApi\Model\pricing\v0\MoneyType
     {
         return $this->container['listing_price'];
     }
@@ -647,11 +647,11 @@ class OfferDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets listing_price
      *
-     * @param \OpenAPI\Client\Model\pricing\v0\MoneyType $listing_price listing_price
+     * @param \SpApi\Model\pricing\v0\MoneyType $listing_price listing_price
      *
      * @return self
      */
-    public function setListingPrice(\OpenAPI\Client\Model\pricing\v0\MoneyType $listing_price): self
+    public function setListingPrice(\SpApi\Model\pricing\v0\MoneyType $listing_price): self
     {
         if (is_null($listing_price)) {
             throw new \InvalidArgumentException('non-nullable listing_price cannot be null');
@@ -698,9 +698,9 @@ class OfferDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets points
      *
-     * @return \OpenAPI\Client\Model\pricing\v0\Points|null
+     * @return \SpApi\Model\pricing\v0\Points|null
      */
-    public function getPoints(): ?\OpenAPI\Client\Model\pricing\v0\Points
+    public function getPoints(): ?\SpApi\Model\pricing\v0\Points
     {
         return $this->container['points'];
     }
@@ -708,11 +708,11 @@ class OfferDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets points
      *
-     * @param \OpenAPI\Client\Model\pricing\v0\Points|null $points points
+     * @param \SpApi\Model\pricing\v0\Points|null $points points
      *
      * @return self
      */
-    public function setPoints(?\OpenAPI\Client\Model\pricing\v0\Points $points): self
+    public function setPoints(?\SpApi\Model\pricing\v0\Points $points): self
     {
         if (is_null($points)) {
             array_push($this->openAPINullablesSetToNull, 'points');
@@ -732,9 +732,9 @@ class OfferDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets shipping
      *
-     * @return \OpenAPI\Client\Model\pricing\v0\MoneyType
+     * @return \SpApi\Model\pricing\v0\MoneyType
      */
-    public function getShipping(): \OpenAPI\Client\Model\pricing\v0\MoneyType
+    public function getShipping(): \SpApi\Model\pricing\v0\MoneyType
     {
         return $this->container['shipping'];
     }
@@ -742,11 +742,11 @@ class OfferDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets shipping
      *
-     * @param \OpenAPI\Client\Model\pricing\v0\MoneyType $shipping shipping
+     * @param \SpApi\Model\pricing\v0\MoneyType $shipping shipping
      *
      * @return self
      */
-    public function setShipping(\OpenAPI\Client\Model\pricing\v0\MoneyType $shipping): self
+    public function setShipping(\SpApi\Model\pricing\v0\MoneyType $shipping): self
     {
         if (is_null($shipping)) {
             throw new \InvalidArgumentException('non-nullable shipping cannot be null');
@@ -759,9 +759,9 @@ class OfferDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets ships_from
      *
-     * @return \OpenAPI\Client\Model\pricing\v0\ShipsFromType|null
+     * @return \SpApi\Model\pricing\v0\ShipsFromType|null
      */
-    public function getShipsFrom(): ?\OpenAPI\Client\Model\pricing\v0\ShipsFromType
+    public function getShipsFrom(): ?\SpApi\Model\pricing\v0\ShipsFromType
     {
         return $this->container['ships_from'];
     }
@@ -769,11 +769,11 @@ class OfferDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ships_from
      *
-     * @param \OpenAPI\Client\Model\pricing\v0\ShipsFromType|null $ships_from ships_from
+     * @param \SpApi\Model\pricing\v0\ShipsFromType|null $ships_from ships_from
      *
      * @return self
      */
-    public function setShipsFrom(?\OpenAPI\Client\Model\pricing\v0\ShipsFromType $ships_from): self
+    public function setShipsFrom(?\SpApi\Model\pricing\v0\ShipsFromType $ships_from): self
     {
         if (is_null($ships_from)) {
             array_push($this->openAPINullablesSetToNull, 'ships_from');
@@ -820,9 +820,9 @@ class OfferDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets prime_information
      *
-     * @return \OpenAPI\Client\Model\pricing\v0\PrimeInformationType|null
+     * @return \SpApi\Model\pricing\v0\PrimeInformationType|null
      */
-    public function getPrimeInformation(): ?\OpenAPI\Client\Model\pricing\v0\PrimeInformationType
+    public function getPrimeInformation(): ?\SpApi\Model\pricing\v0\PrimeInformationType
     {
         return $this->container['prime_information'];
     }
@@ -830,11 +830,11 @@ class OfferDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets prime_information
      *
-     * @param \OpenAPI\Client\Model\pricing\v0\PrimeInformationType|null $prime_information prime_information
+     * @param \SpApi\Model\pricing\v0\PrimeInformationType|null $prime_information prime_information
      *
      * @return self
      */
-    public function setPrimeInformation(?\OpenAPI\Client\Model\pricing\v0\PrimeInformationType $prime_information): self
+    public function setPrimeInformation(?\SpApi\Model\pricing\v0\PrimeInformationType $prime_information): self
     {
         if (is_null($prime_information)) {
             array_push($this->openAPINullablesSetToNull, 'prime_information');

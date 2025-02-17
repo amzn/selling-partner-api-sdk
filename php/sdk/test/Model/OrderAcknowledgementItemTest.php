@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\orders\v1\OrderAcknowledgementItem;
+use SpApi\Model\vendor\orders\v1\OrderAcknowledgementItem;
 
 /**
  * OrderAcknowledgementItemTest Class Doc Comment
  *
  * @category    Class
  * @description Details of the item being acknowledged.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class OrderAcknowledgementItemTest extends TestCase
 {
@@ -90,7 +90,7 @@ class OrderAcknowledgementItemTest extends TestCase
     public function testPropertyOrderedQuantity()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity();
+        $testValue = new \SpApi\Model\vendor\orders\v1\ItemQuantity();
         
         $this->model->setOrderedQuantity($testValue);
         $this->assertEquals($testValue, $this->model->getOrderedQuantity());
@@ -102,7 +102,7 @@ class OrderAcknowledgementItemTest extends TestCase
     public function testPropertyNetCost()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\orders\v1\Money();
+        $testValue = new \SpApi\Model\vendor\orders\v1\Money();
         
         $this->model->setNetCost($testValue);
         $this->assertEquals($testValue, $this->model->getNetCost());
@@ -114,7 +114,7 @@ class OrderAcknowledgementItemTest extends TestCase
     public function testPropertyListPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\orders\v1\Money();
+        $testValue = new \SpApi\Model\vendor\orders\v1\Money();
         
         $this->model->setListPrice($testValue);
         $this->assertEquals($testValue, $this->model->getListPrice());

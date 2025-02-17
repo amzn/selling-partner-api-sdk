@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantFulfillment\v0\ShippingServiceOptions;
+use SpApi\Model\merchantFulfillment\v0\ShippingServiceOptions;
 
 /**
  * ShippingServiceOptionsTest Class Doc Comment
  *
  * @category    Class
  * @description Extra services provided by a carrier.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ShippingServiceOptionsTest extends TestCase
 {
@@ -56,7 +56,7 @@ class ShippingServiceOptionsTest extends TestCase
      */
     public function testPropertyDeliveryExperience()
     {
-        $enumInstance = new \OpenAPI\Client\Model\merchantFulfillment\v0\DeliveryExperienceType();
+        $enumInstance = new \SpApi\Model\merchantFulfillment\v0\DeliveryExperienceType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -70,7 +70,7 @@ class ShippingServiceOptionsTest extends TestCase
     public function testPropertyDeclaredValue()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\v0\CurrencyAmount();
+        $testValue = new \SpApi\Model\merchantFulfillment\v0\CurrencyAmount();
         
         $this->model->setDeclaredValue($testValue);
         $this->assertEquals($testValue, $this->model->getDeclaredValue());
@@ -92,7 +92,7 @@ class ShippingServiceOptionsTest extends TestCase
      */
     public function testPropertyCarrierWillPickUpOption()
     {
-        $enumInstance = new \OpenAPI\Client\Model\merchantFulfillment\v0\CarrierWillPickUpOption();
+        $enumInstance = new \SpApi\Model\merchantFulfillment\v0\CarrierWillPickUpOption();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -105,7 +105,7 @@ class ShippingServiceOptionsTest extends TestCase
      */
     public function testPropertyLabelFormat()
     {
-        $enumInstance = new \OpenAPI\Client\Model\merchantFulfillment\v0\LabelFormat();
+        $enumInstance = new \SpApi\Model\merchantFulfillment\v0\LabelFormat();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

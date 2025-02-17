@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\finances\v0;
+namespace SpApi\Model\finances\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * RemovalShipmentItemAdjustment Class Doc Comment
  *
  * @category Class
  * @description Item-level information for a removal shipment item adjustment.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -64,9 +64,9 @@ class RemovalShipmentItemAdjustment implements ModelInterface, ArrayAccess, \Jso
              'tax_collection_model' => 'string',
              'fulfillment_network_sku' => 'string',
              'adjusted_quantity' => 'int',
-             'revenue_adjustment' => '\OpenAPI\Client\Model\finances\v0\Currency',
-             'tax_amount_adjustment' => '\OpenAPI\Client\Model\finances\v0\Currency',
-             'tax_withheld_adjustment' => '\OpenAPI\Client\Model\finances\v0\Currency'    ];
+             'revenue_adjustment' => '\SpApi\Model\finances\v0\Currency',
+             'tax_amount_adjustment' => '\SpApi\Model\finances\v0\Currency',
+             'tax_withheld_adjustment' => '\SpApi\Model\finances\v0\Currency'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -472,9 +472,9 @@ class RemovalShipmentItemAdjustment implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets revenue_adjustment
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency|null
+     * @return \SpApi\Model\finances\v0\Currency|null
      */
-    public function getRevenueAdjustment(): ?\OpenAPI\Client\Model\finances\v0\Currency
+    public function getRevenueAdjustment(): ?\SpApi\Model\finances\v0\Currency
     {
         return $this->container['revenue_adjustment'];
     }
@@ -482,11 +482,11 @@ class RemovalShipmentItemAdjustment implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets revenue_adjustment
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency|null $revenue_adjustment revenue_adjustment
+     * @param \SpApi\Model\finances\v0\Currency|null $revenue_adjustment revenue_adjustment
      *
      * @return self
      */
-    public function setRevenueAdjustment(?\OpenAPI\Client\Model\finances\v0\Currency $revenue_adjustment): self
+    public function setRevenueAdjustment(?\SpApi\Model\finances\v0\Currency $revenue_adjustment): self
     {
         if (is_null($revenue_adjustment)) {
             array_push($this->openAPINullablesSetToNull, 'revenue_adjustment');
@@ -506,9 +506,9 @@ class RemovalShipmentItemAdjustment implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets tax_amount_adjustment
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency|null
+     * @return \SpApi\Model\finances\v0\Currency|null
      */
-    public function getTaxAmountAdjustment(): ?\OpenAPI\Client\Model\finances\v0\Currency
+    public function getTaxAmountAdjustment(): ?\SpApi\Model\finances\v0\Currency
     {
         return $this->container['tax_amount_adjustment'];
     }
@@ -516,11 +516,11 @@ class RemovalShipmentItemAdjustment implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets tax_amount_adjustment
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency|null $tax_amount_adjustment tax_amount_adjustment
+     * @param \SpApi\Model\finances\v0\Currency|null $tax_amount_adjustment tax_amount_adjustment
      *
      * @return self
      */
-    public function setTaxAmountAdjustment(?\OpenAPI\Client\Model\finances\v0\Currency $tax_amount_adjustment): self
+    public function setTaxAmountAdjustment(?\SpApi\Model\finances\v0\Currency $tax_amount_adjustment): self
     {
         if (is_null($tax_amount_adjustment)) {
             array_push($this->openAPINullablesSetToNull, 'tax_amount_adjustment');
@@ -540,9 +540,9 @@ class RemovalShipmentItemAdjustment implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets tax_withheld_adjustment
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency|null
+     * @return \SpApi\Model\finances\v0\Currency|null
      */
-    public function getTaxWithheldAdjustment(): ?\OpenAPI\Client\Model\finances\v0\Currency
+    public function getTaxWithheldAdjustment(): ?\SpApi\Model\finances\v0\Currency
     {
         return $this->container['tax_withheld_adjustment'];
     }
@@ -550,11 +550,11 @@ class RemovalShipmentItemAdjustment implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets tax_withheld_adjustment
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency|null $tax_withheld_adjustment tax_withheld_adjustment
+     * @param \SpApi\Model\finances\v0\Currency|null $tax_withheld_adjustment tax_withheld_adjustment
      *
      * @return self
      */
-    public function setTaxWithheldAdjustment(?\OpenAPI\Client\Model\finances\v0\Currency $tax_withheld_adjustment): self
+    public function setTaxWithheldAdjustment(?\SpApi\Model\finances\v0\Currency $tax_withheld_adjustment): self
     {
         if (is_null($tax_withheld_adjustment)) {
             array_push($this->openAPINullablesSetToNull, 'tax_withheld_adjustment');

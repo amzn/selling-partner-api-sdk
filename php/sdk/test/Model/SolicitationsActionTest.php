@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\solicitations\v1\SolicitationsAction;
+use SpApi\Model\solicitations\v1\SolicitationsAction;
 
 /**
  * SolicitationsActionTest Class Doc Comment
  *
  * @category    Class
  * @description A simple object containing the name of the template.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class SolicitationsActionTest extends TestCase
 {

@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\finances\v0;
+namespace SpApi\Model\finances\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * RentalTransactionEvent Class Doc Comment
  *
  * @category Class
  * @description An event related to a rental transaction.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -64,12 +64,12 @@ class RentalTransactionEvent implements ModelInterface, ArrayAccess, \JsonSerial
              'rental_event_type' => 'string',
              'extension_length' => 'int',
              'posted_date' => '\DateTime',
-             'rental_charge_list' => '\OpenAPI\Client\Model\finances\v0\ChargeComponent[]',
-             'rental_fee_list' => '\OpenAPI\Client\Model\finances\v0\FeeComponent[]',
+             'rental_charge_list' => '\SpApi\Model\finances\v0\ChargeComponent[]',
+             'rental_fee_list' => '\SpApi\Model\finances\v0\FeeComponent[]',
              'marketplace_name' => 'string',
-             'rental_initial_value' => '\OpenAPI\Client\Model\finances\v0\Currency',
-             'rental_reimbursement' => '\OpenAPI\Client\Model\finances\v0\Currency',
-             'rental_tax_withheld_list' => '\OpenAPI\Client\Model\finances\v0\TaxWithheldComponent[]'    ];
+             'rental_initial_value' => '\SpApi\Model\finances\v0\Currency',
+             'rental_reimbursement' => '\SpApi\Model\finances\v0\Currency',
+             'rental_tax_withheld_list' => '\SpApi\Model\finances\v0\TaxWithheldComponent[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -595,9 +595,9 @@ class RentalTransactionEvent implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets rental_initial_value
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency|null
+     * @return \SpApi\Model\finances\v0\Currency|null
      */
-    public function getRentalInitialValue(): ?\OpenAPI\Client\Model\finances\v0\Currency
+    public function getRentalInitialValue(): ?\SpApi\Model\finances\v0\Currency
     {
         return $this->container['rental_initial_value'];
     }
@@ -605,11 +605,11 @@ class RentalTransactionEvent implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets rental_initial_value
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency|null $rental_initial_value rental_initial_value
+     * @param \SpApi\Model\finances\v0\Currency|null $rental_initial_value rental_initial_value
      *
      * @return self
      */
-    public function setRentalInitialValue(?\OpenAPI\Client\Model\finances\v0\Currency $rental_initial_value): self
+    public function setRentalInitialValue(?\SpApi\Model\finances\v0\Currency $rental_initial_value): self
     {
         if (is_null($rental_initial_value)) {
             array_push($this->openAPINullablesSetToNull, 'rental_initial_value');
@@ -629,9 +629,9 @@ class RentalTransactionEvent implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets rental_reimbursement
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency|null
+     * @return \SpApi\Model\finances\v0\Currency|null
      */
-    public function getRentalReimbursement(): ?\OpenAPI\Client\Model\finances\v0\Currency
+    public function getRentalReimbursement(): ?\SpApi\Model\finances\v0\Currency
     {
         return $this->container['rental_reimbursement'];
     }
@@ -639,11 +639,11 @@ class RentalTransactionEvent implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets rental_reimbursement
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency|null $rental_reimbursement rental_reimbursement
+     * @param \SpApi\Model\finances\v0\Currency|null $rental_reimbursement rental_reimbursement
      *
      * @return self
      */
-    public function setRentalReimbursement(?\OpenAPI\Client\Model\finances\v0\Currency $rental_reimbursement): self
+    public function setRentalReimbursement(?\SpApi\Model\finances\v0\Currency $rental_reimbursement): self
     {
         if (is_null($rental_reimbursement)) {
             array_push($this->openAPINullablesSetToNull, 'rental_reimbursement');

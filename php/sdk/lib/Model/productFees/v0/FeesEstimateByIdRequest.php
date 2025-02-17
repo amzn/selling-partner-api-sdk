@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\productFees\v0;
+namespace SpApi\Model\productFees\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * FeesEstimateByIdRequest Class Doc Comment
  *
  * @category Class
  * @description A product, marketplace, and proposed price used to request estimated fees.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class FeesEstimateByIdRequest implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'fees_estimate_request' => '\OpenAPI\Client\Model\productFees\v0\FeesEstimateRequest',
-             'id_type' => '\OpenAPI\Client\Model\productFees\v0\IdType',
+             'fees_estimate_request' => '\SpApi\Model\productFees\v0\FeesEstimateRequest',
+             'id_type' => '\SpApi\Model\productFees\v0\IdType',
              'id_value' => 'string'    ];
 
     /**
@@ -314,9 +314,9 @@ class FeesEstimateByIdRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets fees_estimate_request
      *
-     * @return \OpenAPI\Client\Model\productFees\v0\FeesEstimateRequest|null
+     * @return \SpApi\Model\productFees\v0\FeesEstimateRequest|null
      */
-    public function getFeesEstimateRequest(): ?\OpenAPI\Client\Model\productFees\v0\FeesEstimateRequest
+    public function getFeesEstimateRequest(): ?\SpApi\Model\productFees\v0\FeesEstimateRequest
     {
         return $this->container['fees_estimate_request'];
     }
@@ -324,11 +324,11 @@ class FeesEstimateByIdRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets fees_estimate_request
      *
-     * @param \OpenAPI\Client\Model\productFees\v0\FeesEstimateRequest|null $fees_estimate_request fees_estimate_request
+     * @param \SpApi\Model\productFees\v0\FeesEstimateRequest|null $fees_estimate_request fees_estimate_request
      *
      * @return self
      */
-    public function setFeesEstimateRequest(?\OpenAPI\Client\Model\productFees\v0\FeesEstimateRequest $fees_estimate_request): self
+    public function setFeesEstimateRequest(?\SpApi\Model\productFees\v0\FeesEstimateRequest $fees_estimate_request): self
     {
         if (is_null($fees_estimate_request)) {
             array_push($this->openAPINullablesSetToNull, 'fees_estimate_request');

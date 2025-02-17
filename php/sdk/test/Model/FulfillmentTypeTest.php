@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v2022_05_01\FulfillmentType;
+use SpApi\Model\pricing\v2022_05_01\FulfillmentType;
 
 /**
  * FulfillmentTypeTest Class Doc Comment
  *
  * @category    Class
  * @description Indicates whether the item is fulfilled by Amazon or by the seller (merchant).
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class FulfillmentTypeTest extends TestCase
 {

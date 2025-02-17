@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\supplySources\v2020_07_01\ParkingSpotIdentificationType;
+use SpApi\Model\supplySources\v2020_07_01\ParkingSpotIdentificationType;
 
 /**
  * ParkingSpotIdentificationTypeTest Class Doc Comment
  *
  * @category    Class
  * @description The type of parking spot identification.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ParkingSpotIdentificationTypeTest extends TestCase
 {

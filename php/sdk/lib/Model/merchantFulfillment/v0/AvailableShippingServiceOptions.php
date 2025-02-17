@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\merchantFulfillment\v0;
+namespace SpApi\Model\merchantFulfillment\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * AvailableShippingServiceOptions Class Doc Comment
  *
  * @category Class
  * @description The available shipping service options.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class AvailableShippingServiceOptions implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'available_carrier_will_pick_up_options' => '\OpenAPI\Client\Model\merchantFulfillment\v0\AvailableCarrierWillPickUpOption[]',
-             'available_delivery_experience_options' => '\OpenAPI\Client\Model\merchantFulfillment\v0\AvailableDeliveryExperienceOption[]'    ];
+             'available_carrier_will_pick_up_options' => '\SpApi\Model\merchantFulfillment\v0\AvailableCarrierWillPickUpOption[]',
+             'available_delivery_experience_options' => '\SpApi\Model\merchantFulfillment\v0\AvailableDeliveryExperienceOption[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

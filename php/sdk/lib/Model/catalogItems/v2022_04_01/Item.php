@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\catalogItems\v2022_04_01;
+namespace SpApi\Model\catalogItems\v2022_04_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Item Class Doc Comment
  *
  * @category Class
  * @description An item in the Amazon catalog.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,15 +62,15 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPITypes = [
              'asin' => 'string',
              'attributes' => 'array<string,mixed>',
-             'classifications' => '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemBrowseClassificationsByMarketplace[]',
-             'dimensions' => '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemDimensionsByMarketplace[]',
-             'identifiers' => '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemIdentifiersByMarketplace[]',
-             'images' => '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemImagesByMarketplace[]',
-             'product_types' => '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemProductTypeByMarketplace[]',
-             'relationships' => '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemRelationshipsByMarketplace[]',
-             'sales_ranks' => '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemSalesRanksByMarketplace[]',
-             'summaries' => '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemSummaryByMarketplace[]',
-             'vendor_details' => '\OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemVendorDetailsByMarketplace[]'    ];
+             'classifications' => '\SpApi\Model\catalogItems\v2022_04_01\ItemBrowseClassificationsByMarketplace[]',
+             'dimensions' => '\SpApi\Model\catalogItems\v2022_04_01\ItemDimensionsByMarketplace[]',
+             'identifiers' => '\SpApi\Model\catalogItems\v2022_04_01\ItemIdentifiersByMarketplace[]',
+             'images' => '\SpApi\Model\catalogItems\v2022_04_01\ItemImagesByMarketplace[]',
+             'product_types' => '\SpApi\Model\catalogItems\v2022_04_01\ItemProductTypeByMarketplace[]',
+             'relationships' => '\SpApi\Model\catalogItems\v2022_04_01\ItemRelationshipsByMarketplace[]',
+             'sales_ranks' => '\SpApi\Model\catalogItems\v2022_04_01\ItemSalesRanksByMarketplace[]',
+             'summaries' => '\SpApi\Model\catalogItems\v2022_04_01\ItemSummaryByMarketplace[]',
+             'vendor_details' => '\SpApi\Model\catalogItems\v2022_04_01\ItemVendorDetailsByMarketplace[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

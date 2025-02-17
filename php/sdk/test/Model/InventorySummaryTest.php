@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\awd\v2024_05_09\InventorySummary;
+use SpApi\Model\awd\v2024_05_09\InventorySummary;
 
 /**
  * InventorySummaryTest Class Doc Comment
  *
  * @category    Class
  * @description Summary of inventory per SKU.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class InventorySummaryTest extends TestCase
 {
@@ -68,7 +68,7 @@ class InventorySummaryTest extends TestCase
     public function testPropertyInventoryDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\awd\v2024_05_09\InventoryDetails();
+        $testValue = new \SpApi\Model\awd\v2024_05_09\InventoryDetails();
         
         $this->model->setInventoryDetails($testValue);
         $this->assertEquals($testValue, $this->model->getInventoryDetails());

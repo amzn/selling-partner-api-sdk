@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantFulfillment\v0\GetAdditionalSellerInputsResponse;
+use SpApi\Model\merchantFulfillment\v0\GetAdditionalSellerInputsResponse;
 
 /**
  * GetAdditionalSellerInputsResponseTest Class Doc Comment
  *
  * @category    Class
  * @description Response schema.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetAdditionalSellerInputsResponseTest extends TestCase
 {
@@ -57,7 +57,7 @@ class GetAdditionalSellerInputsResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\v0\GetAdditionalSellerInputsResult();
+        $testValue = new \SpApi\Model\merchantFulfillment\v0\GetAdditionalSellerInputsResult();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

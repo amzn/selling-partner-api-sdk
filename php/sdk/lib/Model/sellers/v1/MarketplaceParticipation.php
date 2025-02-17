@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,18 +26,18 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\sellers\v1;
+namespace SpApi\Model\sellers\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * MarketplaceParticipation Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,8 +59,8 @@ class MarketplaceParticipation implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'marketplace' => '\OpenAPI\Client\Model\sellers\v1\Marketplace',
-             'participation' => '\OpenAPI\Client\Model\sellers\v1\Participation',
+             'marketplace' => '\SpApi\Model\sellers\v1\Marketplace',
+             'participation' => '\SpApi\Model\sellers\v1\Participation',
              'store_name' => 'string'    ];
 
     /**
@@ -316,9 +316,9 @@ class MarketplaceParticipation implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets marketplace
      *
-     * @return \OpenAPI\Client\Model\sellers\v1\Marketplace
+     * @return \SpApi\Model\sellers\v1\Marketplace
      */
-    public function getMarketplace(): \OpenAPI\Client\Model\sellers\v1\Marketplace
+    public function getMarketplace(): \SpApi\Model\sellers\v1\Marketplace
     {
         return $this->container['marketplace'];
     }
@@ -326,11 +326,11 @@ class MarketplaceParticipation implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets marketplace
      *
-     * @param \OpenAPI\Client\Model\sellers\v1\Marketplace $marketplace marketplace
+     * @param \SpApi\Model\sellers\v1\Marketplace $marketplace marketplace
      *
      * @return self
      */
-    public function setMarketplace(\OpenAPI\Client\Model\sellers\v1\Marketplace $marketplace): self
+    public function setMarketplace(\SpApi\Model\sellers\v1\Marketplace $marketplace): self
     {
         if (is_null($marketplace)) {
             throw new \InvalidArgumentException('non-nullable marketplace cannot be null');
@@ -343,9 +343,9 @@ class MarketplaceParticipation implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets participation
      *
-     * @return \OpenAPI\Client\Model\sellers\v1\Participation
+     * @return \SpApi\Model\sellers\v1\Participation
      */
-    public function getParticipation(): \OpenAPI\Client\Model\sellers\v1\Participation
+    public function getParticipation(): \SpApi\Model\sellers\v1\Participation
     {
         return $this->container['participation'];
     }
@@ -353,11 +353,11 @@ class MarketplaceParticipation implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets participation
      *
-     * @param \OpenAPI\Client\Model\sellers\v1\Participation $participation participation
+     * @param \SpApi\Model\sellers\v1\Participation $participation participation
      *
      * @return self
      */
-    public function setParticipation(\OpenAPI\Client\Model\sellers\v1\Participation $participation): self
+    public function setParticipation(\SpApi\Model\sellers\v1\Participation $participation): self
     {
         if (is_null($participation)) {
             throw new \InvalidArgumentException('non-nullable participation cannot be null');

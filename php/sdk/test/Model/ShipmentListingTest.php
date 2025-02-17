@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\awd\v2024_05_09\ShipmentListing;
+use SpApi\Model\awd\v2024_05_09\ShipmentListing;
 
 /**
  * ShipmentListingTest Class Doc Comment
  *
  * @category    Class
  * @description A list of inbound shipment summaries filtered by the attributes specified in the request.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ShipmentListingTest extends TestCase
 {

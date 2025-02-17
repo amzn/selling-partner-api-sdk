@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\AppointmentSlot;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\AppointmentSlot;
 
 /**
  * AppointmentSlotTest Class Doc Comment
  *
  * @category    Class
  * @description The fulfillment center appointment slot for the transportation option.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class AppointmentSlotTest extends TestCase
 {
@@ -68,7 +68,7 @@ class AppointmentSlotTest extends TestCase
     public function testPropertySlotTime()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\AppointmentSlotTime();
+        $testValue = new \SpApi\Model\fulfillment\inbound\v2024_03_20\AppointmentSlotTime();
         
         $this->model->setSlotTime($testValue);
         $this->assertEquals($testValue, $this->model->getSlotTime());

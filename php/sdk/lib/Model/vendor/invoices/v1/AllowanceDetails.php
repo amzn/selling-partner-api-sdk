@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\invoices\v1;
+namespace SpApi\Model\vendor\invoices\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * AllowanceDetails Class Doc Comment
  *
  * @category Class
  * @description Monetary and tax details of the allowance.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,8 +62,8 @@ class AllowanceDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPITypes = [
              'type' => 'string',
              'description' => 'string',
-             'allowance_amount' => '\OpenAPI\Client\Model\vendor\invoices\v1\Money',
-             'tax_details' => '\OpenAPI\Client\Model\vendor\invoices\v1\TaxDetails[]'    ];
+             'allowance_amount' => '\SpApi\Model\vendor\invoices\v1\Money',
+             'tax_details' => '\SpApi\Model\vendor\invoices\v1\TaxDetails[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -424,9 +424,9 @@ class AllowanceDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets allowance_amount
      *
-     * @return \OpenAPI\Client\Model\vendor\invoices\v1\Money
+     * @return \SpApi\Model\vendor\invoices\v1\Money
      */
-    public function getAllowanceAmount(): \OpenAPI\Client\Model\vendor\invoices\v1\Money
+    public function getAllowanceAmount(): \SpApi\Model\vendor\invoices\v1\Money
     {
         return $this->container['allowance_amount'];
     }
@@ -434,11 +434,11 @@ class AllowanceDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets allowance_amount
      *
-     * @param \OpenAPI\Client\Model\vendor\invoices\v1\Money $allowance_amount allowance_amount
+     * @param \SpApi\Model\vendor\invoices\v1\Money $allowance_amount allowance_amount
      *
      * @return self
      */
-    public function setAllowanceAmount(\OpenAPI\Client\Model\vendor\invoices\v1\Money $allowance_amount): self
+    public function setAllowanceAmount(\SpApi\Model\vendor\invoices\v1\Money $allowance_amount): self
     {
         if (is_null($allowance_amount)) {
             throw new \InvalidArgumentException('non-nullable allowance_amount cannot be null');

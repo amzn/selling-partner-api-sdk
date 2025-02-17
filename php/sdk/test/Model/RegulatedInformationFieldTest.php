@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\v0\RegulatedInformationField;
+use SpApi\Model\orders\v0\RegulatedInformationField;
 
 /**
  * RegulatedInformationFieldTest Class Doc Comment
  *
  * @category    Class
  * @description A field collected from the regulatory form.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class RegulatedInformationFieldTest extends TestCase
 {

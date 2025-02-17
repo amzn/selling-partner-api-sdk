@@ -4,7 +4,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api\vendor\transactionStatus\v1;
+namespace SpApi\Api\vendor\transactionStatus\v1;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -39,16 +39,16 @@ use SpApi\AuthAndAuth\RateLimitConfiguration;
 use Symfony\Component\RateLimiter\LimiterInterface;
 use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\ObjectSerializer;
+use SpApi\ApiException;
+use SpApi\Configuration;
+use SpApi\HeaderSelector;
+use SpApi\ObjectSerializer;
 
 /**
  * VendorTransactionApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -155,13 +155,13 @@ class VendorTransactionApi
      * @param  string $transaction_id
      *  The GUID provided by Amazon in the &#39;transactionId&#39; field in response to the post request of a specific transaction. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\vendor\transactionStatus\v1\GetTransactionResponse
+     * @return \SpApi\Model\vendor\transactionStatus\v1\GetTransactionResponse
      */
     public function getTransaction(
         string $transaction_id
-    ): \OpenAPI\Client\Model\vendor\transactionStatus\v1\GetTransactionResponse {
+    ): \SpApi\Model\vendor\transactionStatus\v1\GetTransactionResponse {
         list($response) = $this->getTransactionWithHttpInfo($transaction_id);
         return $response;
     }
@@ -172,9 +172,9 @@ class VendorTransactionApi
      * @param  string $transaction_id
      *  The GUID provided by Amazon in the &#39;transactionId&#39; field in response to the post request of a specific transaction. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\vendor\transactionStatus\v1\GetTransactionResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\vendor\transactionStatus\v1\GetTransactionResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTransactionWithHttpInfo(
         string $transaction_id
@@ -220,143 +220,143 @@ class VendorTransactionApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\vendor\transactionStatus\v1\GetTransactionResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\vendor\transactionStatus\v1\GetTransactionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\vendor\transactionStatus\v1\GetTransactionResponse' !== 'string') {
+                        if ('\SpApi\Model\vendor\transactionStatus\v1\GetTransactionResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\vendor\transactionStatus\v1\GetTransactionResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\transactionStatus\v1\GetTransactionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\vendor\transactionStatus\v1\GetTransactionResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\vendor\transactionStatus\v1\GetTransactionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\vendor\transactionStatus\v1\GetTransactionResponse' !== 'string') {
+                        if ('\SpApi\Model\vendor\transactionStatus\v1\GetTransactionResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\vendor\transactionStatus\v1\GetTransactionResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\transactionStatus\v1\GetTransactionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\vendor\transactionStatus\v1\GetTransactionResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\vendor\transactionStatus\v1\GetTransactionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\vendor\transactionStatus\v1\GetTransactionResponse' !== 'string') {
+                        if ('\SpApi\Model\vendor\transactionStatus\v1\GetTransactionResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\vendor\transactionStatus\v1\GetTransactionResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\transactionStatus\v1\GetTransactionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\vendor\transactionStatus\v1\GetTransactionResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\vendor\transactionStatus\v1\GetTransactionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\vendor\transactionStatus\v1\GetTransactionResponse' !== 'string') {
+                        if ('\SpApi\Model\vendor\transactionStatus\v1\GetTransactionResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\vendor\transactionStatus\v1\GetTransactionResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\transactionStatus\v1\GetTransactionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\vendor\transactionStatus\v1\GetTransactionResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\vendor\transactionStatus\v1\GetTransactionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\vendor\transactionStatus\v1\GetTransactionResponse' !== 'string') {
+                        if ('\SpApi\Model\vendor\transactionStatus\v1\GetTransactionResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\vendor\transactionStatus\v1\GetTransactionResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\transactionStatus\v1\GetTransactionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\vendor\transactionStatus\v1\GetTransactionResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\vendor\transactionStatus\v1\GetTransactionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\vendor\transactionStatus\v1\GetTransactionResponse' !== 'string') {
+                        if ('\SpApi\Model\vendor\transactionStatus\v1\GetTransactionResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\vendor\transactionStatus\v1\GetTransactionResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\transactionStatus\v1\GetTransactionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\vendor\transactionStatus\v1\GetTransactionResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\vendor\transactionStatus\v1\GetTransactionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\vendor\transactionStatus\v1\GetTransactionResponse' !== 'string') {
+                        if ('\SpApi\Model\vendor\transactionStatus\v1\GetTransactionResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\vendor\transactionStatus\v1\GetTransactionResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\transactionStatus\v1\GetTransactionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\vendor\transactionStatus\v1\GetTransactionResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\vendor\transactionStatus\v1\GetTransactionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\vendor\transactionStatus\v1\GetTransactionResponse' !== 'string') {
+                        if ('\SpApi\Model\vendor\transactionStatus\v1\GetTransactionResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\vendor\transactionStatus\v1\GetTransactionResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\transactionStatus\v1\GetTransactionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\vendor\transactionStatus\v1\GetTransactionResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\vendor\transactionStatus\v1\GetTransactionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\vendor\transactionStatus\v1\GetTransactionResponse' !== 'string') {
+                        if ('\SpApi\Model\vendor\transactionStatus\v1\GetTransactionResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\vendor\transactionStatus\v1\GetTransactionResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\transactionStatus\v1\GetTransactionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\vendor\transactionStatus\v1\GetTransactionResponse';
+            $returnType = '\SpApi\Model\vendor\transactionStatus\v1\GetTransactionResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -377,7 +377,7 @@ class VendorTransactionApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\vendor\transactionStatus\v1\GetTransactionResponse',
+                        '\SpApi\Model\vendor\transactionStatus\v1\GetTransactionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -385,7 +385,7 @@ class VendorTransactionApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\vendor\transactionStatus\v1\GetTransactionResponse',
+                        '\SpApi\Model\vendor\transactionStatus\v1\GetTransactionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -393,7 +393,7 @@ class VendorTransactionApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\vendor\transactionStatus\v1\GetTransactionResponse',
+                        '\SpApi\Model\vendor\transactionStatus\v1\GetTransactionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -401,7 +401,7 @@ class VendorTransactionApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\vendor\transactionStatus\v1\GetTransactionResponse',
+                        '\SpApi\Model\vendor\transactionStatus\v1\GetTransactionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -409,7 +409,7 @@ class VendorTransactionApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\vendor\transactionStatus\v1\GetTransactionResponse',
+                        '\SpApi\Model\vendor\transactionStatus\v1\GetTransactionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -417,7 +417,7 @@ class VendorTransactionApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\vendor\transactionStatus\v1\GetTransactionResponse',
+                        '\SpApi\Model\vendor\transactionStatus\v1\GetTransactionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -425,7 +425,7 @@ class VendorTransactionApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\vendor\transactionStatus\v1\GetTransactionResponse',
+                        '\SpApi\Model\vendor\transactionStatus\v1\GetTransactionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -433,7 +433,7 @@ class VendorTransactionApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\vendor\transactionStatus\v1\GetTransactionResponse',
+                        '\SpApi\Model\vendor\transactionStatus\v1\GetTransactionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -441,7 +441,7 @@ class VendorTransactionApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\vendor\transactionStatus\v1\GetTransactionResponse',
+                        '\SpApi\Model\vendor\transactionStatus\v1\GetTransactionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -483,7 +483,7 @@ class VendorTransactionApi
     public function getTransactionAsyncWithHttpInfo(
         string $transaction_id
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\vendor\transactionStatus\v1\GetTransactionResponse';
+        $returnType = '\SpApi\Model\vendor\transactionStatus\v1\GetTransactionResponse';
         $request = $this->getTransactionRequest($transaction_id);
         $request = $this->config->sign($request);
         $this->rateLimitWait();

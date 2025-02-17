@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01;
+namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetDeliveryOffersTerms Class Doc Comment
  *
  * @category Class
  * @description The delivery terms for the delivery offer.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class GetDeliveryOffersTerms implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'origin' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Origin',
-             'destination' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Destination'    ];
+             'origin' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\Origin',
+             'destination' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\Destination'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -307,9 +307,9 @@ class GetDeliveryOffersTerms implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets origin
      *
-     * @return \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Origin
+     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\Origin
      */
-    public function getOrigin(): \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Origin
+    public function getOrigin(): \SpApi\Model\fulfillment\outbound\v2020_07_01\Origin
     {
         return $this->container['origin'];
     }
@@ -317,11 +317,11 @@ class GetDeliveryOffersTerms implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets origin
      *
-     * @param \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Origin $origin origin
+     * @param \SpApi\Model\fulfillment\outbound\v2020_07_01\Origin $origin origin
      *
      * @return self
      */
-    public function setOrigin(\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Origin $origin): self
+    public function setOrigin(\SpApi\Model\fulfillment\outbound\v2020_07_01\Origin $origin): self
     {
         if (is_null($origin)) {
             throw new \InvalidArgumentException('non-nullable origin cannot be null');
@@ -334,9 +334,9 @@ class GetDeliveryOffersTerms implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets destination
      *
-     * @return \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Destination
+     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\Destination
      */
-    public function getDestination(): \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Destination
+    public function getDestination(): \SpApi\Model\fulfillment\outbound\v2020_07_01\Destination
     {
         return $this->container['destination'];
     }
@@ -344,11 +344,11 @@ class GetDeliveryOffersTerms implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets destination
      *
-     * @param \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Destination $destination destination
+     * @param \SpApi\Model\fulfillment\outbound\v2020_07_01\Destination $destination destination
      *
      * @return self
      */
-    public function setDestination(\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Destination $destination): self
+    public function setDestination(\SpApi\Model\fulfillment\outbound\v2020_07_01\Destination $destination): self
     {
         if (is_null($destination)) {
             throw new \InvalidArgumentException('non-nullable destination cannot be null');

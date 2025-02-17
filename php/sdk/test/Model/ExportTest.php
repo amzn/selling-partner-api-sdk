@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\invoices\v2024_06_19\Export;
+use SpApi\Model\invoices\v2024_06_19\Export;
 
 /**
  * ExportTest Class Doc Comment
  *
  * @category    Class
  * @description Detailed information about the export.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ExportTest extends TestCase
 {
@@ -113,7 +113,7 @@ class ExportTest extends TestCase
      */
     public function testPropertyStatus()
     {
-        $enumInstance = new \OpenAPI\Client\Model\invoices\v2024_06_19\ExportStatus();
+        $enumInstance = new \SpApi\Model\invoices\v2024_06_19\ExportStatus();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

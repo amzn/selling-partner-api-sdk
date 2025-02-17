@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\v2\ChannelDetails;
+use SpApi\Model\shipping\v2\ChannelDetails;
 
 /**
  * ChannelDetailsTest Class Doc Comment
  *
  * @category    Class
  * @description Shipment source channel related information.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ChannelDetailsTest extends TestCase
 {
@@ -56,7 +56,7 @@ class ChannelDetailsTest extends TestCase
      */
     public function testPropertyChannelType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\shipping\v2\ChannelType();
+        $enumInstance = new \SpApi\Model\shipping\v2\ChannelType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -70,7 +70,7 @@ class ChannelDetailsTest extends TestCase
     public function testPropertyAmazonOrderDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\v2\AmazonOrderDetails();
+        $testValue = new \SpApi\Model\shipping\v2\AmazonOrderDetails();
         
         $this->model->setAmazonOrderDetails($testValue);
         $this->assertEquals($testValue, $this->model->getAmazonOrderDetails());
@@ -82,7 +82,7 @@ class ChannelDetailsTest extends TestCase
     public function testPropertyAmazonShipmentDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\v2\AmazonShipmentDetails();
+        $testValue = new \SpApi\Model\shipping\v2\AmazonShipmentDetails();
         
         $this->model->setAmazonShipmentDetails($testValue);
         $this->assertEquals($testValue, $this->model->getAmazonShipmentDetails());

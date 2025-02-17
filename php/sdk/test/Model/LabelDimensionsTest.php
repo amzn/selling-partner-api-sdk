@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantFulfillment\v0\LabelDimensions;
+use SpApi\Model\merchantFulfillment\v0\LabelDimensions;
 
 /**
  * LabelDimensionsTest Class Doc Comment
  *
  * @category    Class
  * @description Dimensions for printing a shipping label.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class LabelDimensionsTest extends TestCase
 {
@@ -78,7 +78,7 @@ class LabelDimensionsTest extends TestCase
      */
     public function testPropertyUnit()
     {
-        $enumInstance = new \OpenAPI\Client\Model\merchantFulfillment\v0\UnitOfLength();
+        $enumInstance = new \SpApi\Model\merchantFulfillment\v0\UnitOfLength();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

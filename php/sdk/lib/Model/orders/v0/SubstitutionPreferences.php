@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\orders\v0;
+namespace SpApi\Model\orders\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * SubstitutionPreferences Class Doc Comment
  *
  * @category Class
  * @description Substitution preferences for an order item.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class SubstitutionPreferences implements ModelInterface, ArrayAccess, \JsonSeria
       */
     protected static array $openAPITypes = [
              'substitution_type' => 'string',
-             'substitution_options' => '\OpenAPI\Client\Model\orders\v0\SubstitutionOption[]'    ];
+             'substitution_options' => '\SpApi\Model\orders\v0\SubstitutionOption[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

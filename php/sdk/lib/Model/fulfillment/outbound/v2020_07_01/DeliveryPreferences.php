@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01;
+namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * DeliveryPreferences Class Doc Comment
  *
  * @category Class
  * @description The delivery preferences applied to the destination address. These preferences are applied when possible and are best effort. This feature is currently supported only in the JP marketplace and not applicable for other marketplaces. For eligible orders, the default delivery preference will be to deliver the package unattended at the front door, unless you specify otherwise.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class DeliveryPreferences implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static array $openAPITypes = [
              'delivery_instructions' => 'string',
-             'drop_off_location' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DropOffLocation'    ];
+             'drop_off_location' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\DropOffLocation'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -343,9 +343,9 @@ class DeliveryPreferences implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets drop_off_location
      *
-     * @return \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DropOffLocation|null
+     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\DropOffLocation|null
      */
-    public function getDropOffLocation(): ?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DropOffLocation
+    public function getDropOffLocation(): ?\SpApi\Model\fulfillment\outbound\v2020_07_01\DropOffLocation
     {
         return $this->container['drop_off_location'];
     }
@@ -353,11 +353,11 @@ class DeliveryPreferences implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets drop_off_location
      *
-     * @param \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DropOffLocation|null $drop_off_location drop_off_location
+     * @param \SpApi\Model\fulfillment\outbound\v2020_07_01\DropOffLocation|null $drop_off_location drop_off_location
      *
      * @return self
      */
-    public function setDropOffLocation(?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\DropOffLocation $drop_off_location): self
+    public function setDropOffLocation(?\SpApi\Model\fulfillment\outbound\v2020_07_01\DropOffLocation $drop_off_location): self
     {
         if (is_null($drop_off_location)) {
             array_push($this->openAPINullablesSetToNull, 'drop_off_location');

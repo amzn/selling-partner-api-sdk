@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\catalogItems\v2022_04_01\Dimensions;
+use SpApi\Model\catalogItems\v2022_04_01\Dimensions;
 
 /**
  * DimensionsTest Class Doc Comment
  *
  * @category    Class
  * @description Dimensions of an Amazon catalog item or item in its packaging.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class DimensionsTest extends TestCase
 {
@@ -57,7 +57,7 @@ class DimensionsTest extends TestCase
     public function testPropertyHeight()
     {
         
-        $testValue = new \OpenAPI\Client\Model\catalogItems\v2022_04_01\Dimension();
+        $testValue = new \SpApi\Model\catalogItems\v2022_04_01\Dimension();
         
         $this->model->setHeight($testValue);
         $this->assertEquals($testValue, $this->model->getHeight());
@@ -69,7 +69,7 @@ class DimensionsTest extends TestCase
     public function testPropertyLength()
     {
         
-        $testValue = new \OpenAPI\Client\Model\catalogItems\v2022_04_01\Dimension();
+        $testValue = new \SpApi\Model\catalogItems\v2022_04_01\Dimension();
         
         $this->model->setLength($testValue);
         $this->assertEquals($testValue, $this->model->getLength());
@@ -81,7 +81,7 @@ class DimensionsTest extends TestCase
     public function testPropertyWeight()
     {
         
-        $testValue = new \OpenAPI\Client\Model\catalogItems\v2022_04_01\Dimension();
+        $testValue = new \SpApi\Model\catalogItems\v2022_04_01\Dimension();
         
         $this->model->setWeight($testValue);
         $this->assertEquals($testValue, $this->model->getWeight());
@@ -93,7 +93,7 @@ class DimensionsTest extends TestCase
     public function testPropertyWidth()
     {
         
-        $testValue = new \OpenAPI\Client\Model\catalogItems\v2022_04_01\Dimension();
+        $testValue = new \SpApi\Model\catalogItems\v2022_04_01\Dimension();
         
         $this->model->setWidth($testValue);
         $this->assertEquals($testValue, $this->model->getWidth());

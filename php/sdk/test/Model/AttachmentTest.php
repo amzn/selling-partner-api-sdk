@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\messaging\v1\Attachment;
+use SpApi\Model\messaging\v1\Attachment;
 
 /**
  * AttachmentTest Class Doc Comment
  *
  * @category    Class
  * @description Represents a file that was uploaded to a destination that was created by the Uploads API [&#x60;createUploadDestinationForResource&#x60;](https://developer-docs.amazon.com/sp-api/docs/uploads-api-reference#post-uploads2020-11-01uploaddestinationsresource) operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class AttachmentTest extends TestCase
 {

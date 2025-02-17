@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01;
+namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetFulfillmentPreviewItem Class Doc Comment
  *
  * @category Class
  * @description Item information for a fulfillment order preview.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +62,7 @@ class GetFulfillmentPreviewItem implements ModelInterface, ArrayAccess, \JsonSer
     protected static array $openAPITypes = [
              'seller_sku' => 'string',
              'quantity' => 'int',
-             'per_unit_declared_value' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money',
+             'per_unit_declared_value' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\Money',
              'seller_fulfillment_order_item_id' => 'string'    ];
 
     /**
@@ -390,9 +390,9 @@ class GetFulfillmentPreviewItem implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets per_unit_declared_value
      *
-     * @return \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money|null
+     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\Money|null
      */
-    public function getPerUnitDeclaredValue(): ?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money
+    public function getPerUnitDeclaredValue(): ?\SpApi\Model\fulfillment\outbound\v2020_07_01\Money
     {
         return $this->container['per_unit_declared_value'];
     }
@@ -400,11 +400,11 @@ class GetFulfillmentPreviewItem implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets per_unit_declared_value
      *
-     * @param \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money|null $per_unit_declared_value per_unit_declared_value
+     * @param \SpApi\Model\fulfillment\outbound\v2020_07_01\Money|null $per_unit_declared_value per_unit_declared_value
      *
      * @return self
      */
-    public function setPerUnitDeclaredValue(?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\Money $per_unit_declared_value): self
+    public function setPerUnitDeclaredValue(?\SpApi\Model\fulfillment\outbound\v2020_07_01\Money $per_unit_declared_value): self
     {
         if (is_null($per_unit_declared_value)) {
             array_push($this->openAPINullablesSetToNull, 'per_unit_declared_value');

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Box;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\Box;
 
 /**
  * BoxTest Class Doc Comment
  *
  * @category    Class
  * @description Contains information about a box that is used in the inbound plan. The box is a container that holds multiple items.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class BoxTest extends TestCase
 {
@@ -67,7 +67,7 @@ class BoxTest extends TestCase
      */
     public function testPropertyContentInformationSource()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\BoxContentInformationSource();
+        $enumInstance = new \SpApi\Model\fulfillment\inbound\v2024_03_20\BoxContentInformationSource();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -81,7 +81,7 @@ class BoxTest extends TestCase
     public function testPropertyDestinationRegion()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Region();
+        $testValue = new \SpApi\Model\fulfillment\inbound\v2024_03_20\Region();
         
         $this->model->setDestinationRegion($testValue);
         $this->assertEquals($testValue, $this->model->getDestinationRegion());
@@ -93,7 +93,7 @@ class BoxTest extends TestCase
     public function testPropertyDimensions()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Dimensions();
+        $testValue = new \SpApi\Model\fulfillment\inbound\v2024_03_20\Dimensions();
         
         $this->model->setDimensions($testValue);
         $this->assertEquals($testValue, $this->model->getDimensions());
@@ -171,7 +171,7 @@ class BoxTest extends TestCase
     public function testPropertyWeight()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Weight();
+        $testValue = new \SpApi\Model\fulfillment\inbound\v2024_03_20\Weight();
         
         $this->model->setWeight($testValue);
         $this->assertEquals($testValue, $this->model->getWeight());

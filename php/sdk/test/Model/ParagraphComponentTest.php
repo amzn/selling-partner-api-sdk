@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\aplusContent\v2020_11_01\ParagraphComponent;
+use SpApi\Model\aplusContent\v2020_11_01\ParagraphComponent;
 
 /**
  * ParagraphComponentTest Class Doc Comment
  *
  * @category    Class
  * @description A list of rich text content, usually presented in a text box.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ParagraphComponentTest extends TestCase
 {

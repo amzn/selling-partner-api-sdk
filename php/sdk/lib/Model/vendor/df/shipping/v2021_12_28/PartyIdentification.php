@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28;
+namespace SpApi\Model\vendor\df\shipping\v2021_12_28;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * PartyIdentification Class Doc Comment
  *
  * @category Class
  * @description The name, address, and tax details of a party.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,8 +61,8 @@ class PartyIdentification implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static array $openAPITypes = [
              'party_id' => 'string',
-             'address' => '\OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\Address',
-             'tax_registration_details' => '\OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\TaxRegistrationDetails[]'    ];
+             'address' => '\SpApi\Model\vendor\df\shipping\v2021_12_28\Address',
+             'tax_registration_details' => '\SpApi\Model\vendor\df\shipping\v2021_12_28\TaxRegistrationDetails[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -338,9 +338,9 @@ class PartyIdentification implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets address
      *
-     * @return \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\Address|null
+     * @return \SpApi\Model\vendor\df\shipping\v2021_12_28\Address|null
      */
-    public function getAddress(): ?\OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\Address
+    public function getAddress(): ?\SpApi\Model\vendor\df\shipping\v2021_12_28\Address
     {
         return $this->container['address'];
     }
@@ -348,11 +348,11 @@ class PartyIdentification implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets address
      *
-     * @param \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\Address|null $address address
+     * @param \SpApi\Model\vendor\df\shipping\v2021_12_28\Address|null $address address
      *
      * @return self
      */
-    public function setAddress(?\OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\Address $address): self
+    public function setAddress(?\SpApi\Model\vendor\df\shipping\v2021_12_28\Address $address): self
     {
         if (is_null($address)) {
             array_push($this->openAPINullablesSetToNull, 'address');

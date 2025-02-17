@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\solicitations\v1;
+namespace SpApi\Model\solicitations\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetSolicitationActionResponse Class Doc Comment
  *
  * @category Class
  * @description Describes a solicitation action that can be taken for an order. Provides a JSON Hypertext Application Language (HAL) link to the JSON schema document that describes the expected input.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,10 +60,10 @@ class GetSolicitationActionResponse implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static array $openAPITypes = [
-             '_links' => '\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionResponseLinks',
-             '_embedded' => '\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionResponseEmbedded',
-             'payload' => '\OpenAPI\Client\Model\solicitations\v1\SolicitationsAction',
-             'errors' => '\OpenAPI\Client\Model\solicitations\v1\Error[]'    ];
+             '_links' => '\SpApi\Model\solicitations\v1\GetSolicitationActionResponseLinks',
+             '_embedded' => '\SpApi\Model\solicitations\v1\GetSolicitationActionResponseEmbedded',
+             'payload' => '\SpApi\Model\solicitations\v1\SolicitationsAction',
+             'errors' => '\SpApi\Model\solicitations\v1\Error[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -315,9 +315,9 @@ class GetSolicitationActionResponse implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets _links
      *
-     * @return \OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionResponseLinks|null
+     * @return \SpApi\Model\solicitations\v1\GetSolicitationActionResponseLinks|null
      */
-    public function getLinks(): ?\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionResponseLinks
+    public function getLinks(): ?\SpApi\Model\solicitations\v1\GetSolicitationActionResponseLinks
     {
         return $this->container['_links'];
     }
@@ -325,11 +325,11 @@ class GetSolicitationActionResponse implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets _links
      *
-     * @param \OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionResponseLinks|null $_links _links
+     * @param \SpApi\Model\solicitations\v1\GetSolicitationActionResponseLinks|null $_links _links
      *
      * @return self
      */
-    public function setLinks(?\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionResponseLinks $_links): self
+    public function setLinks(?\SpApi\Model\solicitations\v1\GetSolicitationActionResponseLinks $_links): self
     {
         if (is_null($_links)) {
             array_push($this->openAPINullablesSetToNull, '_links');
@@ -349,9 +349,9 @@ class GetSolicitationActionResponse implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets _embedded
      *
-     * @return \OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionResponseEmbedded|null
+     * @return \SpApi\Model\solicitations\v1\GetSolicitationActionResponseEmbedded|null
      */
-    public function getEmbedded(): ?\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionResponseEmbedded
+    public function getEmbedded(): ?\SpApi\Model\solicitations\v1\GetSolicitationActionResponseEmbedded
     {
         return $this->container['_embedded'];
     }
@@ -359,11 +359,11 @@ class GetSolicitationActionResponse implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets _embedded
      *
-     * @param \OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionResponseEmbedded|null $_embedded _embedded
+     * @param \SpApi\Model\solicitations\v1\GetSolicitationActionResponseEmbedded|null $_embedded _embedded
      *
      * @return self
      */
-    public function setEmbedded(?\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionResponseEmbedded $_embedded): self
+    public function setEmbedded(?\SpApi\Model\solicitations\v1\GetSolicitationActionResponseEmbedded $_embedded): self
     {
         if (is_null($_embedded)) {
             array_push($this->openAPINullablesSetToNull, '_embedded');
@@ -383,9 +383,9 @@ class GetSolicitationActionResponse implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets payload
      *
-     * @return \OpenAPI\Client\Model\solicitations\v1\SolicitationsAction|null
+     * @return \SpApi\Model\solicitations\v1\SolicitationsAction|null
      */
-    public function getPayload(): ?\OpenAPI\Client\Model\solicitations\v1\SolicitationsAction
+    public function getPayload(): ?\SpApi\Model\solicitations\v1\SolicitationsAction
     {
         return $this->container['payload'];
     }
@@ -393,11 +393,11 @@ class GetSolicitationActionResponse implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets payload
      *
-     * @param \OpenAPI\Client\Model\solicitations\v1\SolicitationsAction|null $payload payload
+     * @param \SpApi\Model\solicitations\v1\SolicitationsAction|null $payload payload
      *
      * @return self
      */
-    public function setPayload(?\OpenAPI\Client\Model\solicitations\v1\SolicitationsAction $payload): self
+    public function setPayload(?\SpApi\Model\solicitations\v1\SolicitationsAction $payload): self
     {
         if (is_null($payload)) {
             array_push($this->openAPINullablesSetToNull, 'payload');

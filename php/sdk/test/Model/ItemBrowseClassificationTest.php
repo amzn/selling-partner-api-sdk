@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemBrowseClassification;
+use SpApi\Model\catalogItems\v2022_04_01\ItemBrowseClassification;
 
 /**
  * ItemBrowseClassificationTest Class Doc Comment
  *
  * @category    Class
  * @description Classification (browse node) associated with an Amazon catalog item.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ItemBrowseClassificationTest extends TestCase
 {
@@ -79,7 +79,7 @@ class ItemBrowseClassificationTest extends TestCase
     public function testPropertyParent()
     {
         
-        $testValue = new \OpenAPI\Client\Model\catalogItems\v2022_04_01\ItemBrowseClassification();
+        $testValue = new \SpApi\Model\catalogItems\v2022_04_01\ItemBrowseClassification();
         
         $this->model->setParent($testValue);
         $this->assertEquals($testValue, $this->model->getParent());

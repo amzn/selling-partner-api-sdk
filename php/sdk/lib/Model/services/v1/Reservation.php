@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\services\v1;
+namespace SpApi\Model\services\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Reservation Class Doc Comment
  *
  * @category Class
  * @description Reservation object reduces the capacity of a resource.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +62,7 @@ class Reservation implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPITypes = [
              'reservation_id' => 'string',
              'type' => 'string',
-             'availability' => '\OpenAPI\Client\Model\services\v1\AvailabilityRecord'    ];
+             'availability' => '\SpApi\Model\services\v1\AvailabilityRecord'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -415,9 +415,9 @@ class Reservation implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets availability
      *
-     * @return \OpenAPI\Client\Model\services\v1\AvailabilityRecord
+     * @return \SpApi\Model\services\v1\AvailabilityRecord
      */
-    public function getAvailability(): \OpenAPI\Client\Model\services\v1\AvailabilityRecord
+    public function getAvailability(): \SpApi\Model\services\v1\AvailabilityRecord
     {
         return $this->container['availability'];
     }
@@ -425,11 +425,11 @@ class Reservation implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets availability
      *
-     * @param \OpenAPI\Client\Model\services\v1\AvailabilityRecord $availability availability
+     * @param \SpApi\Model\services\v1\AvailabilityRecord $availability availability
      *
      * @return self
      */
-    public function setAvailability(\OpenAPI\Client\Model\services\v1\AvailabilityRecord $availability): self
+    public function setAvailability(\SpApi\Model\services\v1\AvailabilityRecord $availability): self
     {
         if (is_null($availability)) {
             throw new \InvalidArgumentException('non-nullable availability cannot be null');

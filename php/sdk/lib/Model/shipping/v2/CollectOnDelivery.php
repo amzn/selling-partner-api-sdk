@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,19 +27,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\shipping\v2;
+namespace SpApi\Model\shipping\v2;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * CollectOnDelivery Class Doc Comment
  *
  * @category Class
  * @description The amount to collect on delivery.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class CollectOnDelivery implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'amount' => '\OpenAPI\Client\Model\shipping\v2\Currency'    ];
+             'amount' => '\SpApi\Model\shipping\v2\Currency'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -298,9 +298,9 @@ class CollectOnDelivery implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets amount
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\Currency
+     * @return \SpApi\Model\shipping\v2\Currency
      */
-    public function getAmount(): \OpenAPI\Client\Model\shipping\v2\Currency
+    public function getAmount(): \SpApi\Model\shipping\v2\Currency
     {
         return $this->container['amount'];
     }
@@ -308,11 +308,11 @@ class CollectOnDelivery implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets amount
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\Currency $amount amount
+     * @param \SpApi\Model\shipping\v2\Currency $amount amount
      *
      * @return self
      */
-    public function setAmount(\OpenAPI\Client\Model\shipping\v2\Currency $amount): self
+    public function setAmount(\SpApi\Model\shipping\v2\Currency $amount): self
     {
         if (is_null($amount)) {
             throw new \InvalidArgumentException('non-nullable amount cannot be null');

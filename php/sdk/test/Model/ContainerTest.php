@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\Container;
+use SpApi\Model\vendor\df\shipping\v2021_12_28\Container;
 
 /**
  * ContainerTest Class Doc Comment
  *
  * @category    Class
  * @description A container used for shipping and packing items.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ContainerTest extends TestCase
 {
@@ -157,7 +157,7 @@ class ContainerTest extends TestCase
     public function testPropertyDimensions()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\Dimensions();
+        $testValue = new \SpApi\Model\vendor\df\shipping\v2021_12_28\Dimensions();
         
         $this->model->setDimensions($testValue);
         $this->assertEquals($testValue, $this->model->getDimensions());
@@ -169,7 +169,7 @@ class ContainerTest extends TestCase
     public function testPropertyWeight()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\Weight();
+        $testValue = new \SpApi\Model\vendor\df\shipping\v2021_12_28\Weight();
         
         $this->model->setWeight($testValue);
         $this->assertEquals($testValue, $this->model->getWeight());

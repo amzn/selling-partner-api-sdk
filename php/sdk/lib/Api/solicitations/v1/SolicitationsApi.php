@@ -4,7 +4,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api\solicitations\v1;
+namespace SpApi\Api\solicitations\v1;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -39,16 +39,16 @@ use SpApi\AuthAndAuth\RateLimitConfiguration;
 use Symfony\Component\RateLimiter\LimiterInterface;
 use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\ObjectSerializer;
+use SpApi\ApiException;
+use SpApi\Configuration;
+use SpApi\HeaderSelector;
+use SpApi\ObjectSerializer;
 
 /**
  * SolicitationsApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -157,14 +157,14 @@ class SolicitationsApi
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse
+     * @return \SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse
      */
     public function createProductReviewAndSellerFeedbackSolicitation(
         string $amazon_order_id,
         array $marketplace_ids
-    ): \OpenAPI\Client\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse {
+    ): \SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse {
         list($response) = $this->createProductReviewAndSellerFeedbackSolicitationWithHttpInfo($amazon_order_id, $marketplace_ids);
         return $response;
     }
@@ -177,9 +177,9 @@ class SolicitationsApi
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createProductReviewAndSellerFeedbackSolicitationWithHttpInfo(
         string $amazon_order_id,
@@ -226,143 +226,143 @@ class SolicitationsApi
 
             switch($statusCode) {
                 case 201:
-                    if ('\OpenAPI\Client\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse' !== 'string') {
+                        if ('\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse' !== 'string') {
+                        if ('\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse' !== 'string') {
+                        if ('\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse' !== 'string') {
+                        if ('\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse' !== 'string') {
+                        if ('\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse' !== 'string') {
+                        if ('\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse' !== 'string') {
+                        if ('\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse' !== 'string') {
+                        if ('\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse' !== 'string') {
+                        if ('\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse';
+            $returnType = '\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -383,7 +383,7 @@ class SolicitationsApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse',
+                        '\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -391,7 +391,7 @@ class SolicitationsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse',
+                        '\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -399,7 +399,7 @@ class SolicitationsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse',
+                        '\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -407,7 +407,7 @@ class SolicitationsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse',
+                        '\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -415,7 +415,7 @@ class SolicitationsApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse',
+                        '\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -423,7 +423,7 @@ class SolicitationsApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse',
+                        '\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -431,7 +431,7 @@ class SolicitationsApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse',
+                        '\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -439,7 +439,7 @@ class SolicitationsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse',
+                        '\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -447,7 +447,7 @@ class SolicitationsApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse',
+                        '\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -495,7 +495,7 @@ class SolicitationsApi
         string $amazon_order_id,
         array $marketplace_ids
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse';
+        $returnType = '\SpApi\Model\solicitations\v1\CreateProductReviewAndSellerFeedbackSolicitationResponse';
         $request = $this->createProductReviewAndSellerFeedbackSolicitationRequest($amazon_order_id, $marketplace_ids);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -663,14 +663,14 @@ class SolicitationsApi
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponse
+     * @return \SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse
      */
     public function getSolicitationActionsForOrder(
         string $amazon_order_id,
         array $marketplace_ids
-    ): \OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponse {
+    ): \SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse {
         list($response) = $this->getSolicitationActionsForOrderWithHttpInfo($amazon_order_id, $marketplace_ids);
         return $response;
     }
@@ -683,9 +683,9 @@ class SolicitationsApi
      * @param  string[] $marketplace_ids
      *  A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getSolicitationActionsForOrderWithHttpInfo(
         string $amazon_order_id,
@@ -732,143 +732,143 @@ class SolicitationsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponse' !== 'string') {
+                        if ('\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponse' !== 'string') {
+                        if ('\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponse' !== 'string') {
+                        if ('\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponse' !== 'string') {
+                        if ('\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponse' !== 'string') {
+                        if ('\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponse' !== 'string') {
+                        if ('\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponse' !== 'string') {
+                        if ('\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponse' !== 'string') {
+                        if ('\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponse' !== 'string') {
+                        if ('\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponse';
+            $returnType = '\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -889,7 +889,7 @@ class SolicitationsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponse',
+                        '\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -897,7 +897,7 @@ class SolicitationsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponse',
+                        '\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -905,7 +905,7 @@ class SolicitationsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponse',
+                        '\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -913,7 +913,7 @@ class SolicitationsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponse',
+                        '\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -921,7 +921,7 @@ class SolicitationsApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponse',
+                        '\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -929,7 +929,7 @@ class SolicitationsApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponse',
+                        '\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -937,7 +937,7 @@ class SolicitationsApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponse',
+                        '\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -945,7 +945,7 @@ class SolicitationsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponse',
+                        '\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -953,7 +953,7 @@ class SolicitationsApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponse',
+                        '\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1001,7 +1001,7 @@ class SolicitationsApi
         string $amazon_order_id,
         array $marketplace_ids
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\solicitations\v1\GetSolicitationActionsForOrderResponse';
+        $returnType = '\SpApi\Model\solicitations\v1\GetSolicitationActionsForOrderResponse';
         $request = $this->getSolicitationActionsForOrderRequest($amazon_order_id, $marketplace_ids);
         $request = $this->config->sign($request);
         $this->rateLimitWait();

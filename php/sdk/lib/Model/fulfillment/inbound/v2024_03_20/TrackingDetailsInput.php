@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20;
+namespace SpApi\Model\fulfillment\inbound\v2024_03_20;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * TrackingDetailsInput Class Doc Comment
  *
  * @category Class
  * @description Tracking information input for Less-Than-Truckload (LTL) and Small Parcel Delivery (SPD) shipments.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class TrackingDetailsInput implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'ltl_tracking_detail' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\LtlTrackingDetailInput',
-             'spd_tracking_detail' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\SpdTrackingDetailInput'    ];
+             'ltl_tracking_detail' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\LtlTrackingDetailInput',
+             'spd_tracking_detail' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\SpdTrackingDetailInput'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -301,9 +301,9 @@ class TrackingDetailsInput implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets ltl_tracking_detail
      *
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\LtlTrackingDetailInput|null
+     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\LtlTrackingDetailInput|null
      */
-    public function getLtlTrackingDetail(): ?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\LtlTrackingDetailInput
+    public function getLtlTrackingDetail(): ?\SpApi\Model\fulfillment\inbound\v2024_03_20\LtlTrackingDetailInput
     {
         return $this->container['ltl_tracking_detail'];
     }
@@ -311,11 +311,11 @@ class TrackingDetailsInput implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets ltl_tracking_detail
      *
-     * @param \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\LtlTrackingDetailInput|null $ltl_tracking_detail ltl_tracking_detail
+     * @param \SpApi\Model\fulfillment\inbound\v2024_03_20\LtlTrackingDetailInput|null $ltl_tracking_detail ltl_tracking_detail
      *
      * @return self
      */
-    public function setLtlTrackingDetail(?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\LtlTrackingDetailInput $ltl_tracking_detail): self
+    public function setLtlTrackingDetail(?\SpApi\Model\fulfillment\inbound\v2024_03_20\LtlTrackingDetailInput $ltl_tracking_detail): self
     {
         if (is_null($ltl_tracking_detail)) {
             array_push($this->openAPINullablesSetToNull, 'ltl_tracking_detail');
@@ -335,9 +335,9 @@ class TrackingDetailsInput implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets spd_tracking_detail
      *
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\SpdTrackingDetailInput|null
+     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\SpdTrackingDetailInput|null
      */
-    public function getSpdTrackingDetail(): ?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\SpdTrackingDetailInput
+    public function getSpdTrackingDetail(): ?\SpApi\Model\fulfillment\inbound\v2024_03_20\SpdTrackingDetailInput
     {
         return $this->container['spd_tracking_detail'];
     }
@@ -345,11 +345,11 @@ class TrackingDetailsInput implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets spd_tracking_detail
      *
-     * @param \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\SpdTrackingDetailInput|null $spd_tracking_detail spd_tracking_detail
+     * @param \SpApi\Model\fulfillment\inbound\v2024_03_20\SpdTrackingDetailInput|null $spd_tracking_detail spd_tracking_detail
      *
      * @return self
      */
-    public function setSpdTrackingDetail(?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\SpdTrackingDetailInput $spd_tracking_detail): self
+    public function setSpdTrackingDetail(?\SpApi\Model\fulfillment\inbound\v2024_03_20\SpdTrackingDetailInput $spd_tracking_detail): self
     {
         if (is_null($spd_tracking_detail)) {
             array_push($this->openAPINullablesSetToNull, 'spd_tracking_detail');

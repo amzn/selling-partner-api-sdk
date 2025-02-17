@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\v2\RequestedDocumentSpecification;
+use SpApi\Model\shipping\v2\RequestedDocumentSpecification;
 
 /**
  * RequestedDocumentSpecificationTest Class Doc Comment
  *
  * @category    Class
  * @description The document specifications requested. For calls to the purchaseShipment operation, the shipment purchase fails if the specified document specifications are not among those returned in the response to the getRates operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class RequestedDocumentSpecificationTest extends TestCase
 {
@@ -56,7 +56,7 @@ class RequestedDocumentSpecificationTest extends TestCase
      */
     public function testPropertyFormat()
     {
-        $enumInstance = new \OpenAPI\Client\Model\shipping\v2\DocumentFormat();
+        $enumInstance = new \SpApi\Model\shipping\v2\DocumentFormat();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -70,7 +70,7 @@ class RequestedDocumentSpecificationTest extends TestCase
     public function testPropertySize()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\v2\DocumentSize();
+        $testValue = new \SpApi\Model\shipping\v2\DocumentSize();
         
         $this->model->setSize($testValue);
         $this->assertEquals($testValue, $this->model->getSize());

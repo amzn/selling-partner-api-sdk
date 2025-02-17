@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\finances\v2024_06_19\Breakdown;
+use SpApi\Model\finances\v2024_06_19\Breakdown;
 
 /**
  * BreakdownTest Class Doc Comment
  *
  * @category    Class
  * @description Details about the movement of money in the financial transaction. Breakdowns are further categorized into breakdown types, breakdown amounts, and further breakdowns.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class BreakdownTest extends TestCase
 {
@@ -68,7 +68,7 @@ class BreakdownTest extends TestCase
     public function testPropertyBreakdownAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v2024_06_19\Currency();
+        $testValue = new \SpApi\Model\finances\v2024_06_19\Currency();
         
         $this->model->setBreakdownAmount($testValue);
         $this->assertEquals($testValue, $this->model->getBreakdownAmount());
@@ -80,7 +80,7 @@ class BreakdownTest extends TestCase
     public function testPropertyBreakdowns()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v2024_06_19\Breakdown();
+        $testValue = new \SpApi\Model\finances\v2024_06_19\Breakdown();
         
         $this->model->setBreakdowns($testValue);
         $this->assertEquals($testValue, $this->model->getBreakdowns());

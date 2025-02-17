@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantFulfillment\v0\ShippingService;
+use SpApi\Model\merchantFulfillment\v0\ShippingService;
 
 /**
  * ShippingServiceTest Class Doc Comment
  *
  * @category    Class
  * @description A shipping service offer made by a carrier.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ShippingServiceTest extends TestCase
 {
@@ -137,7 +137,7 @@ class ShippingServiceTest extends TestCase
     public function testPropertyRate()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\v0\CurrencyAmount();
+        $testValue = new \SpApi\Model\merchantFulfillment\v0\CurrencyAmount();
         
         $this->model->setRate($testValue);
         $this->assertEquals($testValue, $this->model->getRate());
@@ -149,7 +149,7 @@ class ShippingServiceTest extends TestCase
     public function testPropertyShippingServiceOptions()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\v0\ShippingServiceOptions();
+        $testValue = new \SpApi\Model\merchantFulfillment\v0\ShippingServiceOptions();
         
         $this->model->setShippingServiceOptions($testValue);
         $this->assertEquals($testValue, $this->model->getShippingServiceOptions());
@@ -161,7 +161,7 @@ class ShippingServiceTest extends TestCase
     public function testPropertyAvailableShippingServiceOptions()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\v0\AvailableShippingServiceOptions();
+        $testValue = new \SpApi\Model\merchantFulfillment\v0\AvailableShippingServiceOptions();
         
         $this->model->setAvailableShippingServiceOptions($testValue);
         $this->assertEquals($testValue, $this->model->getAvailableShippingServiceOptions());
@@ -206,7 +206,7 @@ class ShippingServiceTest extends TestCase
     public function testPropertyBenefits()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\v0\Benefits();
+        $testValue = new \SpApi\Model\merchantFulfillment\v0\Benefits();
         
         $this->model->setBenefits($testValue);
         $this->assertEquals($testValue, $this->model->getBenefits());

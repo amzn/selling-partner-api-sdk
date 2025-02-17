@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\aplusContent\v2020_11_01;
+namespace SpApi\Model\aplusContent\v2020_11_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ImageDimensions Class Doc Comment
  *
  * @category Class
  * @description The dimensions extending from the top left corner of the cropped image, or the top left corner of the original image if there is no cropping. Only &#x60;pixels&#x60; is allowed as the units value for ImageDimensions.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class ImageDimensions implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'width' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\IntegerWithUnits',
-             'height' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\IntegerWithUnits'    ];
+             'width' => '\SpApi\Model\aplusContent\v2020_11_01\IntegerWithUnits',
+             'height' => '\SpApi\Model\aplusContent\v2020_11_01\IntegerWithUnits'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -307,9 +307,9 @@ class ImageDimensions implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets width
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\IntegerWithUnits
+     * @return \SpApi\Model\aplusContent\v2020_11_01\IntegerWithUnits
      */
-    public function getWidth(): \OpenAPI\Client\Model\aplusContent\v2020_11_01\IntegerWithUnits
+    public function getWidth(): \SpApi\Model\aplusContent\v2020_11_01\IntegerWithUnits
     {
         return $this->container['width'];
     }
@@ -317,11 +317,11 @@ class ImageDimensions implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets width
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\IntegerWithUnits $width width
+     * @param \SpApi\Model\aplusContent\v2020_11_01\IntegerWithUnits $width width
      *
      * @return self
      */
-    public function setWidth(\OpenAPI\Client\Model\aplusContent\v2020_11_01\IntegerWithUnits $width): self
+    public function setWidth(\SpApi\Model\aplusContent\v2020_11_01\IntegerWithUnits $width): self
     {
         if (is_null($width)) {
             throw new \InvalidArgumentException('non-nullable width cannot be null');
@@ -334,9 +334,9 @@ class ImageDimensions implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets height
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\IntegerWithUnits
+     * @return \SpApi\Model\aplusContent\v2020_11_01\IntegerWithUnits
      */
-    public function getHeight(): \OpenAPI\Client\Model\aplusContent\v2020_11_01\IntegerWithUnits
+    public function getHeight(): \SpApi\Model\aplusContent\v2020_11_01\IntegerWithUnits
     {
         return $this->container['height'];
     }
@@ -344,11 +344,11 @@ class ImageDimensions implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets height
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\IntegerWithUnits $height height
+     * @param \SpApi\Model\aplusContent\v2020_11_01\IntegerWithUnits $height height
      *
      * @return self
      */
-    public function setHeight(\OpenAPI\Client\Model\aplusContent\v2020_11_01\IntegerWithUnits $height): self
+    public function setHeight(\SpApi\Model\aplusContent\v2020_11_01\IntegerWithUnits $height): self
     {
         if (is_null($height)) {
             throw new \InvalidArgumentException('non-nullable height cannot be null');

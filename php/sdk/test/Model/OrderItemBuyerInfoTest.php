@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\orders\v0\OrderItemBuyerInfo;
+use SpApi\Model\orders\v0\OrderItemBuyerInfo;
 
 /**
  * OrderItemBuyerInfoTest Class Doc Comment
  *
  * @category    Class
  * @description A single order item&#39;s buyer information.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class OrderItemBuyerInfoTest extends TestCase
 {
@@ -68,7 +68,7 @@ class OrderItemBuyerInfoTest extends TestCase
     public function testPropertyBuyerCustomizedInfo()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\v0\BuyerCustomizedInfoDetail();
+        $testValue = new \SpApi\Model\orders\v0\BuyerCustomizedInfoDetail();
         
         $this->model->setBuyerCustomizedInfo($testValue);
         $this->assertEquals($testValue, $this->model->getBuyerCustomizedInfo());
@@ -80,7 +80,7 @@ class OrderItemBuyerInfoTest extends TestCase
     public function testPropertyGiftWrapPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\v0\Money();
+        $testValue = new \SpApi\Model\orders\v0\Money();
         
         $this->model->setGiftWrapPrice($testValue);
         $this->assertEquals($testValue, $this->model->getGiftWrapPrice());
@@ -92,7 +92,7 @@ class OrderItemBuyerInfoTest extends TestCase
     public function testPropertyGiftWrapTax()
     {
         
-        $testValue = new \OpenAPI\Client\Model\orders\v0\Money();
+        $testValue = new \SpApi\Model\orders\v0\Money();
         
         $this->model->setGiftWrapTax($testValue);
         $this->assertEquals($testValue, $this->model->getGiftWrapTax());

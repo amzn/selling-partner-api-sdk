@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\catalogItems\v2022_04_01;
+namespace SpApi\Model\catalogItems\v2022_04_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ItemSearchResults Class Doc Comment
  *
  * @category Class
  * @description Items in the Amazon catalog and search related metadata.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,9 +61,9 @@ class ItemSearchResults implements ModelInterface, ArrayAccess, \JsonSerializabl
       */
     protected static array $openAPITypes = [
              'number_of_results' => 'int',
-             'pagination' => '\OpenAPI\Client\Model\catalogItems\v2022_04_01\Pagination',
-             'refinements' => '\OpenAPI\Client\Model\catalogItems\v2022_04_01\Refinements',
-             'items' => '\OpenAPI\Client\Model\catalogItems\v2022_04_01\Item[]'    ];
+             'pagination' => '\SpApi\Model\catalogItems\v2022_04_01\Pagination',
+             'refinements' => '\SpApi\Model\catalogItems\v2022_04_01\Refinements',
+             'items' => '\SpApi\Model\catalogItems\v2022_04_01\Item[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -354,9 +354,9 @@ class ItemSearchResults implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets pagination
      *
-     * @return \OpenAPI\Client\Model\catalogItems\v2022_04_01\Pagination
+     * @return \SpApi\Model\catalogItems\v2022_04_01\Pagination
      */
-    public function getPagination(): \OpenAPI\Client\Model\catalogItems\v2022_04_01\Pagination
+    public function getPagination(): \SpApi\Model\catalogItems\v2022_04_01\Pagination
     {
         return $this->container['pagination'];
     }
@@ -364,11 +364,11 @@ class ItemSearchResults implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets pagination
      *
-     * @param \OpenAPI\Client\Model\catalogItems\v2022_04_01\Pagination $pagination pagination
+     * @param \SpApi\Model\catalogItems\v2022_04_01\Pagination $pagination pagination
      *
      * @return self
      */
-    public function setPagination(\OpenAPI\Client\Model\catalogItems\v2022_04_01\Pagination $pagination): self
+    public function setPagination(\SpApi\Model\catalogItems\v2022_04_01\Pagination $pagination): self
     {
         if (is_null($pagination)) {
             throw new \InvalidArgumentException('non-nullable pagination cannot be null');
@@ -381,9 +381,9 @@ class ItemSearchResults implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets refinements
      *
-     * @return \OpenAPI\Client\Model\catalogItems\v2022_04_01\Refinements
+     * @return \SpApi\Model\catalogItems\v2022_04_01\Refinements
      */
-    public function getRefinements(): \OpenAPI\Client\Model\catalogItems\v2022_04_01\Refinements
+    public function getRefinements(): \SpApi\Model\catalogItems\v2022_04_01\Refinements
     {
         return $this->container['refinements'];
     }
@@ -391,11 +391,11 @@ class ItemSearchResults implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets refinements
      *
-     * @param \OpenAPI\Client\Model\catalogItems\v2022_04_01\Refinements $refinements refinements
+     * @param \SpApi\Model\catalogItems\v2022_04_01\Refinements $refinements refinements
      *
      * @return self
      */
-    public function setRefinements(\OpenAPI\Client\Model\catalogItems\v2022_04_01\Refinements $refinements): self
+    public function setRefinements(\SpApi\Model\catalogItems\v2022_04_01\Refinements $refinements): self
     {
         if (is_null($refinements)) {
             throw new \InvalidArgumentException('non-nullable refinements cannot be null');

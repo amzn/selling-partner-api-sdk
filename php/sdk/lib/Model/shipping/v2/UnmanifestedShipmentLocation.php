@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,19 +27,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\shipping\v2;
+namespace SpApi\Model\shipping\v2;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * UnmanifestedShipmentLocation Class Doc Comment
  *
  * @category Class
  * @description UnmanifestedShipmentLocation info
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class UnmanifestedShipmentLocation implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'address' => '\OpenAPI\Client\Model\shipping\v2\Address',
+             'address' => '\SpApi\Model\shipping\v2\Address',
              'last_manifest_date' => 'string'    ];
 
     /**
@@ -302,9 +302,9 @@ class UnmanifestedShipmentLocation implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets address
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\Address|null
+     * @return \SpApi\Model\shipping\v2\Address|null
      */
-    public function getAddress(): ?\OpenAPI\Client\Model\shipping\v2\Address
+    public function getAddress(): ?\SpApi\Model\shipping\v2\Address
     {
         return $this->container['address'];
     }
@@ -312,11 +312,11 @@ class UnmanifestedShipmentLocation implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets address
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\Address|null $address address
+     * @param \SpApi\Model\shipping\v2\Address|null $address address
      *
      * @return self
      */
-    public function setAddress(?\OpenAPI\Client\Model\shipping\v2\Address $address): self
+    public function setAddress(?\SpApi\Model\shipping\v2\Address $address): self
     {
         if (is_null($address)) {
             array_push($this->openAPINullablesSetToNull, 'address');

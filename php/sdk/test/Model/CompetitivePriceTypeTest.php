@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v0\CompetitivePriceType;
+use SpApi\Model\pricing\v0\CompetitivePriceType;
 
 /**
  * CompetitivePriceTypeTest Class Doc Comment
  *
  * @category    Class
  * @description CompetitivePriceType
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class CompetitivePriceTypeTest extends TestCase
 {
@@ -68,7 +68,7 @@ class CompetitivePriceTypeTest extends TestCase
     public function testPropertyPrice()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v0\PriceType();
+        $testValue = new \SpApi\Model\pricing\v0\PriceType();
         
         $this->model->setPrice($testValue);
         $this->assertEquals($testValue, $this->model->getPrice());
@@ -101,7 +101,7 @@ class CompetitivePriceTypeTest extends TestCase
      */
     public function testPropertyOfferType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\pricing\v0\OfferCustomerType();
+        $enumInstance = new \SpApi\Model\pricing\v0\OfferCustomerType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -125,7 +125,7 @@ class CompetitivePriceTypeTest extends TestCase
      */
     public function testPropertyQuantityDiscountType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\pricing\v0\QuantityDiscountType();
+        $enumInstance = new \SpApi\Model\pricing\v0\QuantityDiscountType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

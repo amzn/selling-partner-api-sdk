@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\v2\GetShipmentDocumentsResponse;
+use SpApi\Model\shipping\v2\GetShipmentDocumentsResponse;
 
 /**
  * GetShipmentDocumentsResponseTest Class Doc Comment
  *
  * @category    Class
  * @description The response schema for the the getShipmentDocuments operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetShipmentDocumentsResponseTest extends TestCase
 {
@@ -57,7 +57,7 @@ class GetShipmentDocumentsResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\shipping\v2\GetShipmentDocumentsResult();
+        $testValue = new \SpApi\Model\shipping\v2\GetShipmentDocumentsResult();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

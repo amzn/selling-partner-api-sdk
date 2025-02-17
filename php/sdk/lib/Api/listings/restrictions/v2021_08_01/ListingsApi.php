@@ -4,7 +4,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api\listings\restrictions\v2021_08_01;
+namespace SpApi\Api\listings\restrictions\v2021_08_01;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -39,16 +39,16 @@ use SpApi\AuthAndAuth\RateLimitConfiguration;
 use Symfony\Component\RateLimiter\LimiterInterface;
 use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\ObjectSerializer;
+use SpApi\ApiException;
+use SpApi\Configuration;
+use SpApi\HeaderSelector;
+use SpApi\ObjectSerializer;
 
 /**
  * ListingsApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -163,9 +163,9 @@ class ListingsApi
      * @param  string|null $reason_locale
      *  A locale for reason text localization. When not provided, the default language code of the first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. Localized messages default to \&quot;en_US\&quot; when a localization is not available in the specified locale. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\listings\restrictions\v2021_08_01\RestrictionList
+     * @return \SpApi\Model\listings\restrictions\v2021_08_01\RestrictionList
      */
     public function getListingsRestrictions(
         string $asin,
@@ -173,7 +173,7 @@ class ListingsApi
         array $marketplace_ids,
         ?string $condition_type = null,
         ?string $reason_locale = null
-    ): \OpenAPI\Client\Model\listings\restrictions\v2021_08_01\RestrictionList {
+    ): \SpApi\Model\listings\restrictions\v2021_08_01\RestrictionList {
         list($response) = $this->getListingsRestrictionsWithHttpInfo($asin, $seller_id, $marketplace_ids, $condition_type, $reason_locale);
         return $response;
     }
@@ -192,9 +192,9 @@ class ListingsApi
      * @param  string|null $reason_locale
      *  A locale for reason text localization. When not provided, the default language code of the first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. Localized messages default to \&quot;en_US\&quot; when a localization is not available in the specified locale. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\listings\restrictions\v2021_08_01\RestrictionList, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\listings\restrictions\v2021_08_01\RestrictionList, HTTP status code, HTTP response headers (array of strings)
      */
     public function getListingsRestrictionsWithHttpInfo(
         string $asin,
@@ -244,143 +244,143 @@ class ListingsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\listings\restrictions\v2021_08_01\RestrictionList' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\restrictions\v2021_08_01\RestrictionList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\restrictions\v2021_08_01\RestrictionList' !== 'string') {
+                        if ('\SpApi\Model\listings\restrictions\v2021_08_01\RestrictionList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\restrictions\v2021_08_01\RestrictionList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\restrictions\v2021_08_01\RestrictionList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\listings\restrictions\v2021_08_01\Error[]' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\restrictions\v2021_08_01\Error[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\restrictions\v2021_08_01\Error[]' !== 'string') {
+                        if ('\SpApi\Model\listings\restrictions\v2021_08_01\Error[]' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\restrictions\v2021_08_01\Error[]', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\restrictions\v2021_08_01\Error[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\listings\restrictions\v2021_08_01\Error[]' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\restrictions\v2021_08_01\Error[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\restrictions\v2021_08_01\Error[]' !== 'string') {
+                        if ('\SpApi\Model\listings\restrictions\v2021_08_01\Error[]' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\restrictions\v2021_08_01\Error[]', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\restrictions\v2021_08_01\Error[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\listings\restrictions\v2021_08_01\Error[]' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\restrictions\v2021_08_01\Error[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\restrictions\v2021_08_01\Error[]' !== 'string') {
+                        if ('\SpApi\Model\listings\restrictions\v2021_08_01\Error[]' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\restrictions\v2021_08_01\Error[]', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\restrictions\v2021_08_01\Error[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 413:
-                    if ('\OpenAPI\Client\Model\listings\restrictions\v2021_08_01\Error[]' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\restrictions\v2021_08_01\Error[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\restrictions\v2021_08_01\Error[]' !== 'string') {
+                        if ('\SpApi\Model\listings\restrictions\v2021_08_01\Error[]' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\restrictions\v2021_08_01\Error[]', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\restrictions\v2021_08_01\Error[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 415:
-                    if ('\OpenAPI\Client\Model\listings\restrictions\v2021_08_01\Error[]' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\restrictions\v2021_08_01\Error[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\restrictions\v2021_08_01\Error[]' !== 'string') {
+                        if ('\SpApi\Model\listings\restrictions\v2021_08_01\Error[]' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\restrictions\v2021_08_01\Error[]', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\restrictions\v2021_08_01\Error[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\listings\restrictions\v2021_08_01\Error[]' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\restrictions\v2021_08_01\Error[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\restrictions\v2021_08_01\Error[]' !== 'string') {
+                        if ('\SpApi\Model\listings\restrictions\v2021_08_01\Error[]' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\restrictions\v2021_08_01\Error[]', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\restrictions\v2021_08_01\Error[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\listings\restrictions\v2021_08_01\Error[]' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\restrictions\v2021_08_01\Error[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\restrictions\v2021_08_01\Error[]' !== 'string') {
+                        if ('\SpApi\Model\listings\restrictions\v2021_08_01\Error[]' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\restrictions\v2021_08_01\Error[]', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\restrictions\v2021_08_01\Error[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\listings\restrictions\v2021_08_01\Error[]' === '\SplFileObject') {
+                    if ('\SpApi\Model\listings\restrictions\v2021_08_01\Error[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\listings\restrictions\v2021_08_01\Error[]' !== 'string') {
+                        if ('\SpApi\Model\listings\restrictions\v2021_08_01\Error[]' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\listings\restrictions\v2021_08_01\Error[]', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\listings\restrictions\v2021_08_01\Error[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\listings\restrictions\v2021_08_01\RestrictionList';
+            $returnType = '\SpApi\Model\listings\restrictions\v2021_08_01\RestrictionList';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -401,7 +401,7 @@ class ListingsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\restrictions\v2021_08_01\RestrictionList',
+                        '\SpApi\Model\listings\restrictions\v2021_08_01\RestrictionList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -409,7 +409,7 @@ class ListingsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\restrictions\v2021_08_01\Error[]',
+                        '\SpApi\Model\listings\restrictions\v2021_08_01\Error[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -417,7 +417,7 @@ class ListingsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\restrictions\v2021_08_01\Error[]',
+                        '\SpApi\Model\listings\restrictions\v2021_08_01\Error[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -425,7 +425,7 @@ class ListingsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\restrictions\v2021_08_01\Error[]',
+                        '\SpApi\Model\listings\restrictions\v2021_08_01\Error[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -433,7 +433,7 @@ class ListingsApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\restrictions\v2021_08_01\Error[]',
+                        '\SpApi\Model\listings\restrictions\v2021_08_01\Error[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -441,7 +441,7 @@ class ListingsApi
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\restrictions\v2021_08_01\Error[]',
+                        '\SpApi\Model\listings\restrictions\v2021_08_01\Error[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -449,7 +449,7 @@ class ListingsApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\restrictions\v2021_08_01\Error[]',
+                        '\SpApi\Model\listings\restrictions\v2021_08_01\Error[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -457,7 +457,7 @@ class ListingsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\restrictions\v2021_08_01\Error[]',
+                        '\SpApi\Model\listings\restrictions\v2021_08_01\Error[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -465,7 +465,7 @@ class ListingsApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\listings\restrictions\v2021_08_01\Error[]',
+                        '\SpApi\Model\listings\restrictions\v2021_08_01\Error[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -531,7 +531,7 @@ class ListingsApi
         ?string $condition_type = null,
         ?string $reason_locale = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\listings\restrictions\v2021_08_01\RestrictionList';
+        $returnType = '\SpApi\Model\listings\restrictions\v2021_08_01\RestrictionList';
         $request = $this->getListingsRestrictionsRequest($asin, $seller_id, $marketplace_ids, $condition_type, $reason_locale);
         $request = $this->config->sign($request);
         $this->rateLimitWait();

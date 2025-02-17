@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01;
+namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetFeatureSkuResult Class Doc Comment
  *
  * @category Class
  * @description The payload for the &#x60;getFeatureSKU&#x60; operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -64,7 +64,7 @@ class GetFeatureSkuResult implements ModelInterface, ArrayAccess, \JsonSerializa
              'feature_name' => 'string',
              'is_eligible' => 'bool',
              'ineligible_reasons' => 'string[]',
-             'sku_info' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\FeatureSku'    ];
+             'sku_info' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\FeatureSku'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -446,9 +446,9 @@ class GetFeatureSkuResult implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets sku_info
      *
-     * @return \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\FeatureSku|null
+     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\FeatureSku|null
      */
-    public function getSkuInfo(): ?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\FeatureSku
+    public function getSkuInfo(): ?\SpApi\Model\fulfillment\outbound\v2020_07_01\FeatureSku
     {
         return $this->container['sku_info'];
     }
@@ -456,11 +456,11 @@ class GetFeatureSkuResult implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets sku_info
      *
-     * @param \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\FeatureSku|null $sku_info sku_info
+     * @param \SpApi\Model\fulfillment\outbound\v2020_07_01\FeatureSku|null $sku_info sku_info
      *
      * @return self
      */
-    public function setSkuInfo(?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\FeatureSku $sku_info): self
+    public function setSkuInfo(?\SpApi\Model\fulfillment\outbound\v2020_07_01\FeatureSku $sku_info): self
     {
         if (is_null($sku_info)) {
             array_push($this->openAPINullablesSetToNull, 'sku_info');

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\TaxRegistrationDetails;
+use SpApi\Model\vendor\df\shipping\v2021_12_28\TaxRegistrationDetails;
 
 /**
  * TaxRegistrationDetailsTest Class Doc Comment
  *
  * @category    Class
  * @description Tax registration details of the entity.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class TaxRegistrationDetailsTest extends TestCase
 {
@@ -80,7 +80,7 @@ class TaxRegistrationDetailsTest extends TestCase
     public function testPropertyTaxRegistrationAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\Address();
+        $testValue = new \SpApi\Model\vendor\df\shipping\v2021_12_28\Address();
         
         $this->model->setTaxRegistrationAddress($testValue);
         $this->assertEquals($testValue, $this->model->getTaxRegistrationAddress());

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\pricing\v0\Product;
+use SpApi\Model\pricing\v0\Product;
 
 /**
  * ProductTest Class Doc Comment
  *
  * @category    Class
  * @description An item.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ProductTest extends TestCase
 {
@@ -57,7 +57,7 @@ class ProductTest extends TestCase
     public function testPropertyIdentifiers()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v0\IdentifierType();
+        $testValue = new \SpApi\Model\pricing\v0\IdentifierType();
         
         $this->model->setIdentifiers($testValue);
         $this->assertEquals($testValue, $this->model->getIdentifiers());
@@ -91,7 +91,7 @@ class ProductTest extends TestCase
     public function testPropertyCompetitivePricing()
     {
         
-        $testValue = new \OpenAPI\Client\Model\pricing\v0\CompetitivePricingType();
+        $testValue = new \SpApi\Model\pricing\v0\CompetitivePricingType();
         
         $this->model->setCompetitivePricing($testValue);
         $this->assertEquals($testValue, $this->model->getCompetitivePricing());

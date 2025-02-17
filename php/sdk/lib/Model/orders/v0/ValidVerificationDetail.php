@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\orders\v0;
+namespace SpApi\Model\orders\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ValidVerificationDetail Class Doc Comment
  *
  * @category Class
  * @description The types of verification details that may be provided for the order and the criteria required for when the type of verification detail can be provided. The types of verification details allowed depend on the type of regulated product and will not change order to order.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class ValidVerificationDetail implements ModelInterface, ArrayAccess, \JsonSeria
       */
     protected static array $openAPITypes = [
              'verification_detail_type' => 'string',
-             'valid_verification_statuses' => '\OpenAPI\Client\Model\orders\v0\VerificationStatus[]'    ];
+             'valid_verification_statuses' => '\SpApi\Model\orders\v0\VerificationStatus[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

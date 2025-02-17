@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantFulfillment\v0\ShippingOfferingFilter;
+use SpApi\Model\merchantFulfillment\v0\ShippingOfferingFilter;
 
 /**
  * ShippingOfferingFilterTest Class Doc Comment
  *
  * @category    Class
  * @description Filter for use when requesting eligible shipping services.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ShippingOfferingFilterTest extends TestCase
 {
@@ -78,7 +78,7 @@ class ShippingOfferingFilterTest extends TestCase
      */
     public function testPropertyCarrierWillPickUp()
     {
-        $enumInstance = new \OpenAPI\Client\Model\merchantFulfillment\v0\CarrierWillPickUpOption();
+        $enumInstance = new \SpApi\Model\merchantFulfillment\v0\CarrierWillPickUpOption();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -91,7 +91,7 @@ class ShippingOfferingFilterTest extends TestCase
      */
     public function testPropertyDeliveryExperience()
     {
-        $enumInstance = new \OpenAPI\Client\Model\merchantFulfillment\v0\DeliveryExperienceOption();
+        $enumInstance = new \SpApi\Model\merchantFulfillment\v0\DeliveryExperienceOption();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

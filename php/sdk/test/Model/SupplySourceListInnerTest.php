@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\supplySources\v2020_07_01\SupplySourceListInner;
+use SpApi\Model\supplySources\v2020_07_01\SupplySourceListInner;
 
 /**
  * SupplySourceListInnerTest Class Doc Comment
  *
  * @category    Class
  * @description SupplySourceListInner
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class SupplySourceListInnerTest extends TestCase
 {
@@ -90,7 +90,7 @@ class SupplySourceListInnerTest extends TestCase
     public function testPropertyAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplySources\v2020_07_01\Address();
+        $testValue = new \SpApi\Model\supplySources\v2020_07_01\Address();
         
         $this->model->setAddress($testValue);
         $this->assertEquals($testValue, $this->model->getAddress());

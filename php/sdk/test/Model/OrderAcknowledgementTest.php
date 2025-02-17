@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\orders\v1\OrderAcknowledgement;
+use SpApi\Model\vendor\orders\v1\OrderAcknowledgement;
 
 /**
  * OrderAcknowledgementTest Class Doc Comment
  *
  * @category    Class
  * @description Represents an acknowledgement for an order, including the purchase order number, selling party details, acknowledgement date, and a list of acknowledged items.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class OrderAcknowledgementTest extends TestCase
 {
@@ -68,7 +68,7 @@ class OrderAcknowledgementTest extends TestCase
     public function testPropertySellingParty()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\orders\v1\PartyIdentification();
+        $testValue = new \SpApi\Model\vendor\orders\v1\PartyIdentification();
         
         $this->model->setSellingParty($testValue);
         $this->assertEquals($testValue, $this->model->getSellingParty());

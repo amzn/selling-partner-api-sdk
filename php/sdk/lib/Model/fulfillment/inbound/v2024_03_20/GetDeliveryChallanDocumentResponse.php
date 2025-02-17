@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20;
+namespace SpApi\Model\fulfillment\inbound\v2024_03_20;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetDeliveryChallanDocumentResponse Class Doc Comment
  *
  * @category Class
  * @description The &#x60;getDeliveryChallanDocumentResponse&#x60; response.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class GetDeliveryChallanDocumentResponse implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'document_download' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\DocumentDownload'    ];
+             'document_download' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\DocumentDownload'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -297,9 +297,9 @@ class GetDeliveryChallanDocumentResponse implements ModelInterface, ArrayAccess,
     /**
      * Gets document_download
      *
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\DocumentDownload
+     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\DocumentDownload
      */
-    public function getDocumentDownload(): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\DocumentDownload
+    public function getDocumentDownload(): \SpApi\Model\fulfillment\inbound\v2024_03_20\DocumentDownload
     {
         return $this->container['document_download'];
     }
@@ -307,11 +307,11 @@ class GetDeliveryChallanDocumentResponse implements ModelInterface, ArrayAccess,
     /**
      * Sets document_download
      *
-     * @param \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\DocumentDownload $document_download document_download
+     * @param \SpApi\Model\fulfillment\inbound\v2024_03_20\DocumentDownload $document_download document_download
      *
      * @return self
      */
-    public function setDocumentDownload(\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\DocumentDownload $document_download): self
+    public function setDocumentDownload(\SpApi\Model\fulfillment\inbound\v2024_03_20\DocumentDownload $document_download): self
     {
         if (is_null($document_download)) {
             throw new \InvalidArgumentException('non-nullable document_download cannot be null');

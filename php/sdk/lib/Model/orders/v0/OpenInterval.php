@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\orders\v0;
+namespace SpApi\Model\orders\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * OpenInterval Class Doc Comment
  *
  * @category Class
  * @description The time interval for which the business is open.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class OpenInterval implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'start_time' => '\OpenAPI\Client\Model\orders\v0\OpenTimeInterval',
-             'end_time' => '\OpenAPI\Client\Model\orders\v0\OpenTimeInterval'    ];
+             'start_time' => '\SpApi\Model\orders\v0\OpenTimeInterval',
+             'end_time' => '\SpApi\Model\orders\v0\OpenTimeInterval'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -301,9 +301,9 @@ class OpenInterval implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets start_time
      *
-     * @return \OpenAPI\Client\Model\orders\v0\OpenTimeInterval|null
+     * @return \SpApi\Model\orders\v0\OpenTimeInterval|null
      */
-    public function getStartTime(): ?\OpenAPI\Client\Model\orders\v0\OpenTimeInterval
+    public function getStartTime(): ?\SpApi\Model\orders\v0\OpenTimeInterval
     {
         return $this->container['start_time'];
     }
@@ -311,11 +311,11 @@ class OpenInterval implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets start_time
      *
-     * @param \OpenAPI\Client\Model\orders\v0\OpenTimeInterval|null $start_time start_time
+     * @param \SpApi\Model\orders\v0\OpenTimeInterval|null $start_time start_time
      *
      * @return self
      */
-    public function setStartTime(?\OpenAPI\Client\Model\orders\v0\OpenTimeInterval $start_time): self
+    public function setStartTime(?\SpApi\Model\orders\v0\OpenTimeInterval $start_time): self
     {
         if (is_null($start_time)) {
             array_push($this->openAPINullablesSetToNull, 'start_time');
@@ -335,9 +335,9 @@ class OpenInterval implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets end_time
      *
-     * @return \OpenAPI\Client\Model\orders\v0\OpenTimeInterval|null
+     * @return \SpApi\Model\orders\v0\OpenTimeInterval|null
      */
-    public function getEndTime(): ?\OpenAPI\Client\Model\orders\v0\OpenTimeInterval
+    public function getEndTime(): ?\SpApi\Model\orders\v0\OpenTimeInterval
     {
         return $this->container['end_time'];
     }
@@ -345,11 +345,11 @@ class OpenInterval implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets end_time
      *
-     * @param \OpenAPI\Client\Model\orders\v0\OpenTimeInterval|null $end_time end_time
+     * @param \SpApi\Model\orders\v0\OpenTimeInterval|null $end_time end_time
      *
      * @return self
      */
-    public function setEndTime(?\OpenAPI\Client\Model\orders\v0\OpenTimeInterval $end_time): self
+    public function setEndTime(?\SpApi\Model\orders\v0\OpenTimeInterval $end_time): self
     {
         if (is_null($end_time)) {
             array_push($this->openAPINullablesSetToNull, 'end_time');

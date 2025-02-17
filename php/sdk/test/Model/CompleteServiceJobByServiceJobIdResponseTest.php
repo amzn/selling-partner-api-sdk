@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\v1\CompleteServiceJobByServiceJobIdResponse;
+use SpApi\Model\services\v1\CompleteServiceJobByServiceJobIdResponse;
 
 /**
  * CompleteServiceJobByServiceJobIdResponseTest Class Doc Comment
  *
  * @category    Class
  * @description Response schema for the &#x60;completeServiceJobByServiceJobId&#x60; operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class CompleteServiceJobByServiceJobIdResponseTest extends TestCase
 {

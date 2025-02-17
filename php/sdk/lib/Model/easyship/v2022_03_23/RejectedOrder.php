@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\easyship\v2022_03_23;
+namespace SpApi\Model\easyship\v2022_03_23;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * RejectedOrder Class Doc Comment
  *
  * @category Class
  * @description A order which we couldn&#39;t schedule on your behalf. It contains its id, and information on the error.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class RejectedOrder implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPITypes = [
              'amazon_order_id' => 'string',
-             'error' => '\OpenAPI\Client\Model\easyship\v2022_03_23\Error'    ];
+             'error' => '\SpApi\Model\easyship\v2022_03_23\Error'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -331,9 +331,9 @@ class RejectedOrder implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets error
      *
-     * @return \OpenAPI\Client\Model\easyship\v2022_03_23\Error|null
+     * @return \SpApi\Model\easyship\v2022_03_23\Error|null
      */
-    public function getError(): ?\OpenAPI\Client\Model\easyship\v2022_03_23\Error
+    public function getError(): ?\SpApi\Model\easyship\v2022_03_23\Error
     {
         return $this->container['error'];
     }
@@ -341,11 +341,11 @@ class RejectedOrder implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets error
      *
-     * @param \OpenAPI\Client\Model\easyship\v2022_03_23\Error|null $error error
+     * @param \SpApi\Model\easyship\v2022_03_23\Error|null $error error
      *
      * @return self
      */
-    public function setError(?\OpenAPI\Client\Model\easyship\v2022_03_23\Error $error): self
+    public function setError(?\SpApi\Model\easyship\v2022_03_23\Error $error): self
     {
         if (is_null($error)) {
             array_push($this->openAPINullablesSetToNull, 'error');

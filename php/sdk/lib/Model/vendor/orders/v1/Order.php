@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\orders\v1;
+namespace SpApi\Model\vendor\orders\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Order Class Doc Comment
  *
  * @category Class
  * @description Represents an order placed by Amazon, including the purchase order number, current state, and order details.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +62,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPITypes = [
              'purchase_order_number' => 'string',
              'purchase_order_state' => 'string',
-             'order_details' => '\OpenAPI\Client\Model\vendor\orders\v1\OrderDetails'    ];
+             'order_details' => '\SpApi\Model\vendor\orders\v1\OrderDetails'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -404,9 +404,9 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets order_details
      *
-     * @return \OpenAPI\Client\Model\vendor\orders\v1\OrderDetails|null
+     * @return \SpApi\Model\vendor\orders\v1\OrderDetails|null
      */
-    public function getOrderDetails(): ?\OpenAPI\Client\Model\vendor\orders\v1\OrderDetails
+    public function getOrderDetails(): ?\SpApi\Model\vendor\orders\v1\OrderDetails
     {
         return $this->container['order_details'];
     }
@@ -414,11 +414,11 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets order_details
      *
-     * @param \OpenAPI\Client\Model\vendor\orders\v1\OrderDetails|null $order_details order_details
+     * @param \SpApi\Model\vendor\orders\v1\OrderDetails|null $order_details order_details
      *
      * @return self
      */
-    public function setOrderDetails(?\OpenAPI\Client\Model\vendor\orders\v1\OrderDetails $order_details): self
+    public function setOrderDetails(?\SpApi\Model\vendor\orders\v1\OrderDetails $order_details): self
     {
         if (is_null($order_details)) {
             array_push($this->openAPINullablesSetToNull, 'order_details');

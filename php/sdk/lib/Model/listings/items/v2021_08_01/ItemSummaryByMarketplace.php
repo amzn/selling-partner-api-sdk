@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\listings\items\v2021_08_01;
+namespace SpApi\Model\listings\items\v2021_08_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ItemSummaryByMarketplace Class Doc Comment
  *
  * @category Class
  * @description Summary details of a listings item for an Amazon marketplace.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -69,7 +69,7 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
              'item_name' => 'string',
              'created_date' => '\DateTime',
              'last_updated_date' => '\DateTime',
-             'main_image' => '\OpenAPI\Client\Model\listings\items\v2021_08_01\ItemImage'    ];
+             'main_image' => '\SpApi\Model\listings\items\v2021_08_01\ItemImage'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -723,9 +723,9 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets main_image
      *
-     * @return \OpenAPI\Client\Model\listings\items\v2021_08_01\ItemImage|null
+     * @return \SpApi\Model\listings\items\v2021_08_01\ItemImage|null
      */
-    public function getMainImage(): ?\OpenAPI\Client\Model\listings\items\v2021_08_01\ItemImage
+    public function getMainImage(): ?\SpApi\Model\listings\items\v2021_08_01\ItemImage
     {
         return $this->container['main_image'];
     }
@@ -733,11 +733,11 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets main_image
      *
-     * @param \OpenAPI\Client\Model\listings\items\v2021_08_01\ItemImage|null $main_image main_image
+     * @param \SpApi\Model\listings\items\v2021_08_01\ItemImage|null $main_image main_image
      *
      * @return self
      */
-    public function setMainImage(?\OpenAPI\Client\Model\listings\items\v2021_08_01\ItemImage $main_image): self
+    public function setMainImage(?\SpApi\Model\listings\items\v2021_08_01\ItemImage $main_image): self
     {
         if (is_null($main_image)) {
             array_push($this->openAPINullablesSetToNull, 'main_image');

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\finances\v0\AdjustmentItem;
+use SpApi\Model\finances\v0\AdjustmentItem;
 
 /**
  * AdjustmentItemTest Class Doc Comment
  *
  * @category    Class
  * @description An item in an adjustment to the seller&#39;s account.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class AdjustmentItemTest extends TestCase
 {
@@ -68,7 +68,7 @@ class AdjustmentItemTest extends TestCase
     public function testPropertyPerUnitAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v0\Currency();
+        $testValue = new \SpApi\Model\finances\v0\Currency();
         
         $this->model->setPerUnitAmount($testValue);
         $this->assertEquals($testValue, $this->model->getPerUnitAmount());
@@ -80,7 +80,7 @@ class AdjustmentItemTest extends TestCase
     public function testPropertyTotalAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v0\Currency();
+        $testValue = new \SpApi\Model\finances\v0\Currency();
         
         $this->model->setTotalAmount($testValue);
         $this->assertEquals($testValue, $this->model->getTotalAmount());

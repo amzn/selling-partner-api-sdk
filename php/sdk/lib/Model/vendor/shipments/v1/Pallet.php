@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\shipments\v1;
+namespace SpApi\Model\vendor\shipments\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Pallet Class Doc Comment
  *
  * @category Class
  * @description Details of the Pallet/Tare being shipped.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,13 +60,13 @@ class Pallet implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'pallet_identifiers' => '\OpenAPI\Client\Model\vendor\shipments\v1\ContainerIdentification[]',
+             'pallet_identifiers' => '\SpApi\Model\vendor\shipments\v1\ContainerIdentification[]',
              'tier' => 'int',
              'block' => 'int',
-             'dimensions' => '\OpenAPI\Client\Model\vendor\shipments\v1\Dimensions',
-             'weight' => '\OpenAPI\Client\Model\vendor\shipments\v1\Weight',
-             'carton_reference_details' => '\OpenAPI\Client\Model\vendor\shipments\v1\CartonReferenceDetails',
-             'items' => '\OpenAPI\Client\Model\vendor\shipments\v1\ContainerItem[]'    ];
+             'dimensions' => '\SpApi\Model\vendor\shipments\v1\Dimensions',
+             'weight' => '\SpApi\Model\vendor\shipments\v1\Weight',
+             'carton_reference_details' => '\SpApi\Model\vendor\shipments\v1\CartonReferenceDetails',
+             'items' => '\SpApi\Model\vendor\shipments\v1\ContainerItem[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -434,9 +434,9 @@ class Pallet implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets dimensions
      *
-     * @return \OpenAPI\Client\Model\vendor\shipments\v1\Dimensions|null
+     * @return \SpApi\Model\vendor\shipments\v1\Dimensions|null
      */
-    public function getDimensions(): ?\OpenAPI\Client\Model\vendor\shipments\v1\Dimensions
+    public function getDimensions(): ?\SpApi\Model\vendor\shipments\v1\Dimensions
     {
         return $this->container['dimensions'];
     }
@@ -444,11 +444,11 @@ class Pallet implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets dimensions
      *
-     * @param \OpenAPI\Client\Model\vendor\shipments\v1\Dimensions|null $dimensions dimensions
+     * @param \SpApi\Model\vendor\shipments\v1\Dimensions|null $dimensions dimensions
      *
      * @return self
      */
-    public function setDimensions(?\OpenAPI\Client\Model\vendor\shipments\v1\Dimensions $dimensions): self
+    public function setDimensions(?\SpApi\Model\vendor\shipments\v1\Dimensions $dimensions): self
     {
         if (is_null($dimensions)) {
             array_push($this->openAPINullablesSetToNull, 'dimensions');
@@ -468,9 +468,9 @@ class Pallet implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets weight
      *
-     * @return \OpenAPI\Client\Model\vendor\shipments\v1\Weight|null
+     * @return \SpApi\Model\vendor\shipments\v1\Weight|null
      */
-    public function getWeight(): ?\OpenAPI\Client\Model\vendor\shipments\v1\Weight
+    public function getWeight(): ?\SpApi\Model\vendor\shipments\v1\Weight
     {
         return $this->container['weight'];
     }
@@ -478,11 +478,11 @@ class Pallet implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets weight
      *
-     * @param \OpenAPI\Client\Model\vendor\shipments\v1\Weight|null $weight weight
+     * @param \SpApi\Model\vendor\shipments\v1\Weight|null $weight weight
      *
      * @return self
      */
-    public function setWeight(?\OpenAPI\Client\Model\vendor\shipments\v1\Weight $weight): self
+    public function setWeight(?\SpApi\Model\vendor\shipments\v1\Weight $weight): self
     {
         if (is_null($weight)) {
             array_push($this->openAPINullablesSetToNull, 'weight');
@@ -502,9 +502,9 @@ class Pallet implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets carton_reference_details
      *
-     * @return \OpenAPI\Client\Model\vendor\shipments\v1\CartonReferenceDetails|null
+     * @return \SpApi\Model\vendor\shipments\v1\CartonReferenceDetails|null
      */
-    public function getCartonReferenceDetails(): ?\OpenAPI\Client\Model\vendor\shipments\v1\CartonReferenceDetails
+    public function getCartonReferenceDetails(): ?\SpApi\Model\vendor\shipments\v1\CartonReferenceDetails
     {
         return $this->container['carton_reference_details'];
     }
@@ -512,11 +512,11 @@ class Pallet implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets carton_reference_details
      *
-     * @param \OpenAPI\Client\Model\vendor\shipments\v1\CartonReferenceDetails|null $carton_reference_details carton_reference_details
+     * @param \SpApi\Model\vendor\shipments\v1\CartonReferenceDetails|null $carton_reference_details carton_reference_details
      *
      * @return self
      */
-    public function setCartonReferenceDetails(?\OpenAPI\Client\Model\vendor\shipments\v1\CartonReferenceDetails $carton_reference_details): self
+    public function setCartonReferenceDetails(?\SpApi\Model\vendor\shipments\v1\CartonReferenceDetails $carton_reference_details): self
     {
         if (is_null($carton_reference_details)) {
             array_push($this->openAPINullablesSetToNull, 'carton_reference_details');

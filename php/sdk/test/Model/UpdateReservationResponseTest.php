@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\v1\UpdateReservationResponse;
+use SpApi\Model\services\v1\UpdateReservationResponse;
 
 /**
  * UpdateReservationResponseTest Class Doc Comment
  *
  * @category    Class
  * @description Response schema for the &#x60;updateReservation&#x60; operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class UpdateReservationResponseTest extends TestCase
 {
@@ -57,7 +57,7 @@ class UpdateReservationResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\services\v1\UpdateReservationRecord();
+        $testValue = new \SpApi\Model\services\v1\UpdateReservationRecord();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

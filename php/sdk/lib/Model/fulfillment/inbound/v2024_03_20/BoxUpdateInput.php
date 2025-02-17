@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20;
+namespace SpApi\Model\fulfillment\inbound\v2024_03_20;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * BoxUpdateInput Class Doc Comment
  *
  * @category Class
  * @description Input information for updating a box
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,12 +60,12 @@ class BoxUpdateInput implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'content_information_source' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\BoxContentInformationSource',
-             'dimensions' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Dimensions',
-             'items' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ItemInput[]',
+             'content_information_source' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\BoxContentInformationSource',
+             'dimensions' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\Dimensions',
+             'items' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\ItemInput[]',
              'package_id' => 'string',
              'quantity' => 'int',
-             'weight' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Weight'    ];
+             'weight' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\Weight'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -388,9 +388,9 @@ class BoxUpdateInput implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets dimensions
      *
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Dimensions
+     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\Dimensions
      */
-    public function getDimensions(): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Dimensions
+    public function getDimensions(): \SpApi\Model\fulfillment\inbound\v2024_03_20\Dimensions
     {
         return $this->container['dimensions'];
     }
@@ -398,11 +398,11 @@ class BoxUpdateInput implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets dimensions
      *
-     * @param \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Dimensions $dimensions dimensions
+     * @param \SpApi\Model\fulfillment\inbound\v2024_03_20\Dimensions $dimensions dimensions
      *
      * @return self
      */
-    public function setDimensions(\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Dimensions $dimensions): self
+    public function setDimensions(\SpApi\Model\fulfillment\inbound\v2024_03_20\Dimensions $dimensions): self
     {
         if (is_null($dimensions)) {
             throw new \InvalidArgumentException('non-nullable dimensions cannot be null');
@@ -528,9 +528,9 @@ class BoxUpdateInput implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets weight
      *
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Weight
+     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\Weight
      */
-    public function getWeight(): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Weight
+    public function getWeight(): \SpApi\Model\fulfillment\inbound\v2024_03_20\Weight
     {
         return $this->container['weight'];
     }
@@ -538,11 +538,11 @@ class BoxUpdateInput implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets weight
      *
-     * @param \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Weight $weight weight
+     * @param \SpApi\Model\fulfillment\inbound\v2024_03_20\Weight $weight weight
      *
      * @return self
      */
-    public function setWeight(\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Weight $weight): self
+    public function setWeight(\SpApi\Model\fulfillment\inbound\v2024_03_20\Weight $weight): self
     {
         if (is_null($weight)) {
             throw new \InvalidArgumentException('non-nullable weight cannot be null');

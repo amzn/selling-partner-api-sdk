@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\ContainerLabel;
+use SpApi\Model\vendor\df\shipping\v2021_12_28\ContainerLabel;
 
 /**
  * ContainerLabelTest Class Doc Comment
  *
  * @category    Class
  * @description The details of the container label.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ContainerLabelTest extends TestCase
 {
@@ -78,7 +78,7 @@ class ContainerLabelTest extends TestCase
      */
     public function testPropertyFormat()
     {
-        $enumInstance = new \OpenAPI\Client\Model\vendor\df\shipping\v2021_12_28\ContainerLabelFormat();
+        $enumInstance = new \SpApi\Model\vendor\df\shipping\v2021_12_28\ContainerLabelFormat();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

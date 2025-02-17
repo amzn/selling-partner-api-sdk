@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\transfers\v2024_06_01\PaymentMethodDetails;
+use SpApi\Model\transfers\v2024_06_01\PaymentMethodDetails;
 
 /**
  * PaymentMethodDetailsTest Class Doc Comment
  *
  * @category    Class
  * @description The details of a payment method.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class PaymentMethodDetailsTest extends TestCase
 {
@@ -90,7 +90,7 @@ class PaymentMethodDetailsTest extends TestCase
     public function testPropertyExpiryDate()
     {
         
-        $testValue = new \OpenAPI\Client\Model\transfers\v2024_06_01\ExpiryDate();
+        $testValue = new \SpApi\Model\transfers\v2024_06_01\ExpiryDate();
         
         $this->model->setExpiryDate($testValue);
         $this->assertEquals($testValue, $this->model->getExpiryDate());
@@ -112,7 +112,7 @@ class PaymentMethodDetailsTest extends TestCase
      */
     public function testPropertyPaymentMethodType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\transfers\v2024_06_01\PaymentMethodType();
+        $enumInstance = new \SpApi\Model\transfers\v2024_06_01\PaymentMethodType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -125,7 +125,7 @@ class PaymentMethodDetailsTest extends TestCase
      */
     public function testPropertyAssignmentType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\transfers\v2024_06_01\AssignmentType();
+        $enumInstance = new \SpApi\Model\transfers\v2024_06_01\AssignmentType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

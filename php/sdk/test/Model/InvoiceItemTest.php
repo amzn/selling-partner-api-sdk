@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\df\payments\v1\InvoiceItem;
+use SpApi\Model\vendor\df\payments\v1\InvoiceItem;
 
 /**
  * InvoiceItemTest Class Doc Comment
  *
  * @category    Class
  * @description Provides the details of the items in this invoice.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class InvoiceItemTest extends TestCase
 {
@@ -90,7 +90,7 @@ class InvoiceItemTest extends TestCase
     public function testPropertyInvoicedQuantity()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\df\payments\v1\ItemQuantity();
+        $testValue = new \SpApi\Model\vendor\df\payments\v1\ItemQuantity();
         
         $this->model->setInvoicedQuantity($testValue);
         $this->assertEquals($testValue, $this->model->getInvoicedQuantity());
@@ -102,7 +102,7 @@ class InvoiceItemTest extends TestCase
     public function testPropertyNetCost()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\df\payments\v1\Money();
+        $testValue = new \SpApi\Model\vendor\df\payments\v1\Money();
         
         $this->model->setNetCost($testValue);
         $this->assertEquals($testValue, $this->model->getNetCost());

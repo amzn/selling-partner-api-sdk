@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\inbound\v0;
+namespace SpApi\Model\fulfillment\inbound\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * InboundShipmentInfo Class Doc Comment
  *
  * @category Class
  * @description Information about the seller&#39;s inbound shipments. Returned by the listInboundShipments operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,14 +62,14 @@ class InboundShipmentInfo implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static array $openAPITypes = [
              'shipment_id' => 'string',
              'shipment_name' => 'string',
-             'ship_from_address' => '\OpenAPI\Client\Model\fulfillment\inbound\v0\Address',
+             'ship_from_address' => '\SpApi\Model\fulfillment\inbound\v0\Address',
              'destination_fulfillment_center_id' => 'string',
-             'shipment_status' => '\OpenAPI\Client\Model\fulfillment\inbound\v0\ShipmentStatus',
-             'label_prep_type' => '\OpenAPI\Client\Model\fulfillment\inbound\v0\LabelPrepType',
+             'shipment_status' => '\SpApi\Model\fulfillment\inbound\v0\ShipmentStatus',
+             'label_prep_type' => '\SpApi\Model\fulfillment\inbound\v0\LabelPrepType',
              'are_cases_required' => 'bool',
              'confirmed_need_by_date' => '\DateTime',
-             'box_contents_source' => '\OpenAPI\Client\Model\fulfillment\inbound\v0\BoxContentsSource',
-             'estimated_box_contents_fee' => '\OpenAPI\Client\Model\fulfillment\inbound\v0\BoxContentsFeeDetails'    ];
+             'box_contents_source' => '\SpApi\Model\fulfillment\inbound\v0\BoxContentsSource',
+             'estimated_box_contents_fee' => '\SpApi\Model\fulfillment\inbound\v0\BoxContentsFeeDetails'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -431,9 +431,9 @@ class InboundShipmentInfo implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets ship_from_address
      *
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v0\Address
+     * @return \SpApi\Model\fulfillment\inbound\v0\Address
      */
-    public function getShipFromAddress(): \OpenAPI\Client\Model\fulfillment\inbound\v0\Address
+    public function getShipFromAddress(): \SpApi\Model\fulfillment\inbound\v0\Address
     {
         return $this->container['ship_from_address'];
     }
@@ -441,11 +441,11 @@ class InboundShipmentInfo implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets ship_from_address
      *
-     * @param \OpenAPI\Client\Model\fulfillment\inbound\v0\Address $ship_from_address ship_from_address
+     * @param \SpApi\Model\fulfillment\inbound\v0\Address $ship_from_address ship_from_address
      *
      * @return self
      */
-    public function setShipFromAddress(\OpenAPI\Client\Model\fulfillment\inbound\v0\Address $ship_from_address): self
+    public function setShipFromAddress(\SpApi\Model\fulfillment\inbound\v0\Address $ship_from_address): self
     {
         if (is_null($ship_from_address)) {
             throw new \InvalidArgumentException('non-nullable ship_from_address cannot be null');
@@ -655,9 +655,9 @@ class InboundShipmentInfo implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets estimated_box_contents_fee
      *
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v0\BoxContentsFeeDetails|null
+     * @return \SpApi\Model\fulfillment\inbound\v0\BoxContentsFeeDetails|null
      */
-    public function getEstimatedBoxContentsFee(): ?\OpenAPI\Client\Model\fulfillment\inbound\v0\BoxContentsFeeDetails
+    public function getEstimatedBoxContentsFee(): ?\SpApi\Model\fulfillment\inbound\v0\BoxContentsFeeDetails
     {
         return $this->container['estimated_box_contents_fee'];
     }
@@ -665,11 +665,11 @@ class InboundShipmentInfo implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets estimated_box_contents_fee
      *
-     * @param \OpenAPI\Client\Model\fulfillment\inbound\v0\BoxContentsFeeDetails|null $estimated_box_contents_fee estimated_box_contents_fee
+     * @param \SpApi\Model\fulfillment\inbound\v0\BoxContentsFeeDetails|null $estimated_box_contents_fee estimated_box_contents_fee
      *
      * @return self
      */
-    public function setEstimatedBoxContentsFee(?\OpenAPI\Client\Model\fulfillment\inbound\v0\BoxContentsFeeDetails $estimated_box_contents_fee): self
+    public function setEstimatedBoxContentsFee(?\SpApi\Model\fulfillment\inbound\v0\BoxContentsFeeDetails $estimated_box_contents_fee): self
     {
         if (is_null($estimated_box_contents_fee)) {
             array_push($this->openAPINullablesSetToNull, 'estimated_box_contents_fee');

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\TrackingDetailsInput;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\TrackingDetailsInput;
 
 /**
  * TrackingDetailsInputTest Class Doc Comment
  *
  * @category    Class
  * @description Tracking information input for Less-Than-Truckload (LTL) and Small Parcel Delivery (SPD) shipments.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class TrackingDetailsInputTest extends TestCase
 {
@@ -57,7 +57,7 @@ class TrackingDetailsInputTest extends TestCase
     public function testPropertyLtlTrackingDetail()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\LtlTrackingDetailInput();
+        $testValue = new \SpApi\Model\fulfillment\inbound\v2024_03_20\LtlTrackingDetailInput();
         
         $this->model->setLtlTrackingDetail($testValue);
         $this->assertEquals($testValue, $this->model->getLtlTrackingDetail());
@@ -69,7 +69,7 @@ class TrackingDetailsInputTest extends TestCase
     public function testPropertySpdTrackingDetail()
     {
         
-        $testValue = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\SpdTrackingDetailInput();
+        $testValue = new \SpApi\Model\fulfillment\inbound\v2024_03_20\SpdTrackingDetailInput();
         
         $this->model->setSpdTrackingDetail($testValue);
         $this->assertEquals($testValue, $this->model->getSpdTrackingDetail());

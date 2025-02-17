@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\finances\v0\SAFETReimbursementEvent;
+use SpApi\Model\finances\v0\SAFETReimbursementEvent;
 
 /**
  * SAFETReimbursementEventTest Class Doc Comment
  *
  * @category    Class
  * @description A SAFE-T claim reimbursement on the seller&#39;s account.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class SAFETReimbursementEventTest extends TestCase
 {
@@ -80,7 +80,7 @@ class SAFETReimbursementEventTest extends TestCase
     public function testPropertyReimbursedAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v0\Currency();
+        $testValue = new \SpApi\Model\finances\v0\Currency();
         
         $this->model->setReimbursedAmount($testValue);
         $this->assertEquals($testValue, $this->model->getReimbursedAmount());

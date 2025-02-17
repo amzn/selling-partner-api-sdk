@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\v1\FixedSlotCapacityQuery;
+use SpApi\Model\services\v1\FixedSlotCapacityQuery;
 
 /**
  * FixedSlotCapacityQueryTest Class Doc Comment
  *
  * @category    Class
  * @description Request schema for the &#x60;getFixedSlotCapacity&#x60; operation. This schema is used to define the time range, capacity types and slot duration which are being queried.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class FixedSlotCapacityQueryTest extends TestCase
 {

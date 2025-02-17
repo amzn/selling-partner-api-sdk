@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\aplusContent\v2020_11_01;
+namespace SpApi\Model\aplusContent\v2020_11_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ContentMetadata Class Doc Comment
  *
  * @category Class
  * @description The metadata of an A+ Content document.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,8 +62,8 @@ class ContentMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPITypes = [
              'name' => 'string',
              'marketplace_id' => 'string',
-             'status' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentStatus',
-             'badge_set' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentBadge[]',
+             'status' => '\SpApi\Model\aplusContent\v2020_11_01\ContentStatus',
+             'badge_set' => '\SpApi\Model\aplusContent\v2020_11_01\ContentBadge[]',
              'update_time' => '\DateTime'    ];
 
     /**

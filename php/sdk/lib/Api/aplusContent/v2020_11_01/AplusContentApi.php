@@ -4,7 +4,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api\aplusContent\v2020_11_01;
+namespace SpApi\Api\aplusContent\v2020_11_01;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -39,16 +39,16 @@ use SpApi\AuthAndAuth\RateLimitConfiguration;
 use Symfony\Component\RateLimiter\LimiterInterface;
 use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\ObjectSerializer;
+use SpApi\ApiException;
+use SpApi\Configuration;
+use SpApi\HeaderSelector;
+use SpApi\ObjectSerializer;
 
 /**
  * AplusContentApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -154,17 +154,17 @@ class AplusContentApi
      *
      * @param  string $marketplace_id
      *  The identifier for the marketplace where the A+ Content is published. (required)
-     * @param  \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
+     * @param  \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
      *  The content document request details. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentResponse
+     * @return \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentResponse
      */
     public function createContentDocument(
         string $marketplace_id,
-        \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
-    ): \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentResponse {
+        \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
+    ): \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentResponse {
         list($response) = $this->createContentDocumentWithHttpInfo($marketplace_id, $post_content_document_request);
         return $response;
     }
@@ -174,16 +174,16 @@ class AplusContentApi
      *
      * @param  string $marketplace_id
      *  The identifier for the marketplace where the A+ Content is published. (required)
-     * @param  \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
+     * @param  \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
      *  The content document request details. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createContentDocumentWithHttpInfo(
         string $marketplace_id,
-        \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
+        \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
     ): array {
         $request = $this->createContentDocumentRequest($marketplace_id, $post_content_document_request);
         $request = $this->config->sign($request);
@@ -226,128 +226,128 @@ class AplusContentApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentResponse' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentResponse';
+            $returnType = '\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -368,7 +368,7 @@ class AplusContentApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentResponse',
+                        '\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -376,7 +376,7 @@ class AplusContentApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -384,7 +384,7 @@ class AplusContentApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -392,7 +392,7 @@ class AplusContentApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -400,7 +400,7 @@ class AplusContentApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -408,7 +408,7 @@ class AplusContentApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -416,7 +416,7 @@ class AplusContentApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -424,7 +424,7 @@ class AplusContentApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -439,7 +439,7 @@ class AplusContentApi
      *
      * @param  string $marketplace_id
      *  The identifier for the marketplace where the A+ Content is published. (required)
-     * @param  \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
+     * @param  \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
      *  The content document request details. (required)
      *
      * @throws \InvalidArgumentException
@@ -447,7 +447,7 @@ class AplusContentApi
      */
     public function createContentDocumentAsync(
         string $marketplace_id,
-        \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
+        \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
     ): PromiseInterface {
         return $this->createContentDocumentAsyncWithHttpInfo($marketplace_id, $post_content_document_request)
             ->then(
@@ -462,7 +462,7 @@ class AplusContentApi
      *
      * @param  string $marketplace_id
      *  The identifier for the marketplace where the A+ Content is published. (required)
-     * @param  \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
+     * @param  \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
      *  The content document request details. (required)
      *
      * @throws \InvalidArgumentException
@@ -470,9 +470,9 @@ class AplusContentApi
      */
     public function createContentDocumentAsyncWithHttpInfo(
         string $marketplace_id,
-        \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
+        \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentResponse';
+        $returnType = '\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentResponse';
         $request = $this->createContentDocumentRequest($marketplace_id, $post_content_document_request);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -518,7 +518,7 @@ class AplusContentApi
      *
      * @param  string $marketplace_id
      *  The identifier for the marketplace where the A+ Content is published. (required)
-     * @param  \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
+     * @param  \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
      *  The content document request details. (required)
      *
      * @throws \InvalidArgumentException
@@ -526,7 +526,7 @@ class AplusContentApi
      */
     public function createContentDocumentRequest(
         string $marketplace_id,
-        \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
+        \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
     ): Request {
         // verify the required parameter 'marketplace_id' is set
         if ($marketplace_id === null || (is_array($marketplace_id) && count($marketplace_id) === 0)) {
@@ -640,15 +640,15 @@ class AplusContentApi
      * @param  string[] $included_data_set
      *  The set of A+ Content data types to include in the response. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\GetContentDocumentResponse
+     * @return \SpApi\Model\aplusContent\v2020_11_01\GetContentDocumentResponse
      */
     public function getContentDocument(
         string $content_reference_key,
         string $marketplace_id,
         array $included_data_set
-    ): \OpenAPI\Client\Model\aplusContent\v2020_11_01\GetContentDocumentResponse {
+    ): \SpApi\Model\aplusContent\v2020_11_01\GetContentDocumentResponse {
         list($response) = $this->getContentDocumentWithHttpInfo($content_reference_key, $marketplace_id, $included_data_set);
         return $response;
     }
@@ -663,9 +663,9 @@ class AplusContentApi
      * @param  string[] $included_data_set
      *  The set of A+ Content data types to include in the response. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\aplusContent\v2020_11_01\GetContentDocumentResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\aplusContent\v2020_11_01\GetContentDocumentResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getContentDocumentWithHttpInfo(
         string $content_reference_key,
@@ -713,143 +713,143 @@ class AplusContentApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\GetContentDocumentResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\GetContentDocumentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\GetContentDocumentResponse' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\GetContentDocumentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\GetContentDocumentResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\GetContentDocumentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 410:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\aplusContent\v2020_11_01\GetContentDocumentResponse';
+            $returnType = '\SpApi\Model\aplusContent\v2020_11_01\GetContentDocumentResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -870,7 +870,7 @@ class AplusContentApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\GetContentDocumentResponse',
+                        '\SpApi\Model\aplusContent\v2020_11_01\GetContentDocumentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -878,7 +878,7 @@ class AplusContentApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -886,7 +886,7 @@ class AplusContentApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -894,7 +894,7 @@ class AplusContentApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -902,7 +902,7 @@ class AplusContentApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -910,7 +910,7 @@ class AplusContentApi
                 case 410:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -918,7 +918,7 @@ class AplusContentApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -926,7 +926,7 @@ class AplusContentApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -934,7 +934,7 @@ class AplusContentApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -988,7 +988,7 @@ class AplusContentApi
         string $marketplace_id,
         array $included_data_set
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\aplusContent\v2020_11_01\GetContentDocumentResponse';
+        $returnType = '\SpApi\Model\aplusContent\v2020_11_01\GetContentDocumentResponse';
         $request = $this->getContentDocumentRequest($content_reference_key, $marketplace_id, $included_data_set);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -1188,9 +1188,9 @@ class AplusContentApi
      * @param  string|null $page_token
      *  A page token from the nextPageToken response element returned by your previous call to this operation. nextPageToken is returned when the results of a call exceed the page size. To get the next page of results, call the operation and include pageToken as the only parameter. Specifying pageToken with any other parameter will cause the request to fail. When no nextPageToken value is returned there are no more pages to return. A pageToken value is not usable across different operations. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\ListContentDocumentAsinRelationsResponse
+     * @return \SpApi\Model\aplusContent\v2020_11_01\ListContentDocumentAsinRelationsResponse
      */
     public function listContentDocumentAsinRelations(
         string $content_reference_key,
@@ -1198,7 +1198,7 @@ class AplusContentApi
         ?array $included_data_set = null,
         ?array $asin_set = null,
         ?string $page_token = null
-    ): \OpenAPI\Client\Model\aplusContent\v2020_11_01\ListContentDocumentAsinRelationsResponse {
+    ): \SpApi\Model\aplusContent\v2020_11_01\ListContentDocumentAsinRelationsResponse {
         list($response) = $this->listContentDocumentAsinRelationsWithHttpInfo($content_reference_key, $marketplace_id, $included_data_set, $asin_set, $page_token);
         return $response;
     }
@@ -1217,9 +1217,9 @@ class AplusContentApi
      * @param  string|null $page_token
      *  A page token from the nextPageToken response element returned by your previous call to this operation. nextPageToken is returned when the results of a call exceed the page size. To get the next page of results, call the operation and include pageToken as the only parameter. Specifying pageToken with any other parameter will cause the request to fail. When no nextPageToken value is returned there are no more pages to return. A pageToken value is not usable across different operations. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\aplusContent\v2020_11_01\ListContentDocumentAsinRelationsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\aplusContent\v2020_11_01\ListContentDocumentAsinRelationsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listContentDocumentAsinRelationsWithHttpInfo(
         string $content_reference_key,
@@ -1269,143 +1269,143 @@ class AplusContentApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ListContentDocumentAsinRelationsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ListContentDocumentAsinRelationsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ListContentDocumentAsinRelationsResponse' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ListContentDocumentAsinRelationsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ListContentDocumentAsinRelationsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ListContentDocumentAsinRelationsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 410:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ListContentDocumentAsinRelationsResponse';
+            $returnType = '\SpApi\Model\aplusContent\v2020_11_01\ListContentDocumentAsinRelationsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1426,7 +1426,7 @@ class AplusContentApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ListContentDocumentAsinRelationsResponse',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ListContentDocumentAsinRelationsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1434,7 +1434,7 @@ class AplusContentApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1442,7 +1442,7 @@ class AplusContentApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1450,7 +1450,7 @@ class AplusContentApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1458,7 +1458,7 @@ class AplusContentApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1466,7 +1466,7 @@ class AplusContentApi
                 case 410:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1474,7 +1474,7 @@ class AplusContentApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1482,7 +1482,7 @@ class AplusContentApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1490,7 +1490,7 @@ class AplusContentApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1556,7 +1556,7 @@ class AplusContentApi
         ?array $asin_set = null,
         ?string $page_token = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ListContentDocumentAsinRelationsResponse';
+        $returnType = '\SpApi\Model\aplusContent\v2020_11_01\ListContentDocumentAsinRelationsResponse';
         $request = $this->listContentDocumentAsinRelationsRequest($content_reference_key, $marketplace_id, $included_data_set, $asin_set, $page_token);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -1773,14 +1773,14 @@ class AplusContentApi
      * @param  string $marketplace_id
      *  The identifier for the marketplace where the A+ Content is published. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentApprovalSubmissionResponse
+     * @return \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentApprovalSubmissionResponse
      */
     public function postContentDocumentApprovalSubmission(
         string $content_reference_key,
         string $marketplace_id
-    ): \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentApprovalSubmissionResponse {
+    ): \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentApprovalSubmissionResponse {
         list($response) = $this->postContentDocumentApprovalSubmissionWithHttpInfo($content_reference_key, $marketplace_id);
         return $response;
     }
@@ -1793,9 +1793,9 @@ class AplusContentApi
      * @param  string $marketplace_id
      *  The identifier for the marketplace where the A+ Content is published. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentApprovalSubmissionResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentApprovalSubmissionResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function postContentDocumentApprovalSubmissionWithHttpInfo(
         string $content_reference_key,
@@ -1842,143 +1842,143 @@ class AplusContentApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentApprovalSubmissionResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentApprovalSubmissionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentApprovalSubmissionResponse' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentApprovalSubmissionResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentApprovalSubmissionResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentApprovalSubmissionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 410:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentApprovalSubmissionResponse';
+            $returnType = '\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentApprovalSubmissionResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1999,7 +1999,7 @@ class AplusContentApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentApprovalSubmissionResponse',
+                        '\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentApprovalSubmissionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2007,7 +2007,7 @@ class AplusContentApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2015,7 +2015,7 @@ class AplusContentApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2023,7 +2023,7 @@ class AplusContentApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2031,7 +2031,7 @@ class AplusContentApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2039,7 +2039,7 @@ class AplusContentApi
                 case 410:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2047,7 +2047,7 @@ class AplusContentApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2055,7 +2055,7 @@ class AplusContentApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2063,7 +2063,7 @@ class AplusContentApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2111,7 +2111,7 @@ class AplusContentApi
         string $content_reference_key,
         string $marketplace_id
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentApprovalSubmissionResponse';
+        $returnType = '\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentApprovalSubmissionResponse';
         $request = $this->postContentDocumentApprovalSubmissionRequest($content_reference_key, $marketplace_id);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -2282,18 +2282,18 @@ class AplusContentApi
      *  The unique reference key for the A+ Content document. A content reference key cannot form a permalink and may change in the future. A content reference key is not guaranteed to match any A+ content identifier. (required)
      * @param  string $marketplace_id
      *  The identifier for the marketplace where the A+ Content is published. (required)
-     * @param  \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request
+     * @param  \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request
      *  The content document ASIN relations request details. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsResponse
+     * @return \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsResponse
      */
     public function postContentDocumentAsinRelations(
         string $content_reference_key,
         string $marketplace_id,
-        \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request
-    ): \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsResponse {
+        \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request
+    ): \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsResponse {
         list($response) = $this->postContentDocumentAsinRelationsWithHttpInfo($content_reference_key, $marketplace_id, $post_content_document_asin_relations_request);
         return $response;
     }
@@ -2305,17 +2305,17 @@ class AplusContentApi
      *  The unique reference key for the A+ Content document. A content reference key cannot form a permalink and may change in the future. A content reference key is not guaranteed to match any A+ content identifier. (required)
      * @param  string $marketplace_id
      *  The identifier for the marketplace where the A+ Content is published. (required)
-     * @param  \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request
+     * @param  \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request
      *  The content document ASIN relations request details. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function postContentDocumentAsinRelationsWithHttpInfo(
         string $content_reference_key,
         string $marketplace_id,
-        \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request
+        \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request
     ): array {
         $request = $this->postContentDocumentAsinRelationsRequest($content_reference_key, $marketplace_id, $post_content_document_asin_relations_request);
         $request = $this->config->sign($request);
@@ -2358,143 +2358,143 @@ class AplusContentApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsResponse' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 410:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsResponse';
+            $returnType = '\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2515,7 +2515,7 @@ class AplusContentApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsResponse',
+                        '\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2523,7 +2523,7 @@ class AplusContentApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2531,7 +2531,7 @@ class AplusContentApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2539,7 +2539,7 @@ class AplusContentApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2547,7 +2547,7 @@ class AplusContentApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2555,7 +2555,7 @@ class AplusContentApi
                 case 410:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2563,7 +2563,7 @@ class AplusContentApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2571,7 +2571,7 @@ class AplusContentApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2579,7 +2579,7 @@ class AplusContentApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2596,7 +2596,7 @@ class AplusContentApi
      *  The unique reference key for the A+ Content document. A content reference key cannot form a permalink and may change in the future. A content reference key is not guaranteed to match any A+ content identifier. (required)
      * @param  string $marketplace_id
      *  The identifier for the marketplace where the A+ Content is published. (required)
-     * @param  \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request
+     * @param  \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request
      *  The content document ASIN relations request details. (required)
      *
      * @throws \InvalidArgumentException
@@ -2605,7 +2605,7 @@ class AplusContentApi
     public function postContentDocumentAsinRelationsAsync(
         string $content_reference_key,
         string $marketplace_id,
-        \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request
+        \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request
     ): PromiseInterface {
         return $this->postContentDocumentAsinRelationsAsyncWithHttpInfo($content_reference_key, $marketplace_id, $post_content_document_asin_relations_request)
             ->then(
@@ -2622,7 +2622,7 @@ class AplusContentApi
      *  The unique reference key for the A+ Content document. A content reference key cannot form a permalink and may change in the future. A content reference key is not guaranteed to match any A+ content identifier. (required)
      * @param  string $marketplace_id
      *  The identifier for the marketplace where the A+ Content is published. (required)
-     * @param  \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request
+     * @param  \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request
      *  The content document ASIN relations request details. (required)
      *
      * @throws \InvalidArgumentException
@@ -2631,9 +2631,9 @@ class AplusContentApi
     public function postContentDocumentAsinRelationsAsyncWithHttpInfo(
         string $content_reference_key,
         string $marketplace_id,
-        \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request
+        \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsResponse';
+        $returnType = '\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsResponse';
         $request = $this->postContentDocumentAsinRelationsRequest($content_reference_key, $marketplace_id, $post_content_document_asin_relations_request);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -2681,7 +2681,7 @@ class AplusContentApi
      *  The unique reference key for the A+ Content document. A content reference key cannot form a permalink and may change in the future. A content reference key is not guaranteed to match any A+ content identifier. (required)
      * @param  string $marketplace_id
      *  The identifier for the marketplace where the A+ Content is published. (required)
-     * @param  \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request
+     * @param  \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request
      *  The content document ASIN relations request details. (required)
      *
      * @throws \InvalidArgumentException
@@ -2690,7 +2690,7 @@ class AplusContentApi
     public function postContentDocumentAsinRelationsRequest(
         string $content_reference_key,
         string $marketplace_id,
-        \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request
+        \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request
     ): Request {
         // verify the required parameter 'content_reference_key' is set
         if ($content_reference_key === null || (is_array($content_reference_key) && count($content_reference_key) === 0)) {
@@ -2820,14 +2820,14 @@ class AplusContentApi
      * @param  string $marketplace_id
      *  The identifier for the marketplace where the A+ Content is published. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentSuspendSubmissionResponse
+     * @return \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentSuspendSubmissionResponse
      */
     public function postContentDocumentSuspendSubmission(
         string $content_reference_key,
         string $marketplace_id
-    ): \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentSuspendSubmissionResponse {
+    ): \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentSuspendSubmissionResponse {
         list($response) = $this->postContentDocumentSuspendSubmissionWithHttpInfo($content_reference_key, $marketplace_id);
         return $response;
     }
@@ -2840,9 +2840,9 @@ class AplusContentApi
      * @param  string $marketplace_id
      *  The identifier for the marketplace where the A+ Content is published. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentSuspendSubmissionResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentSuspendSubmissionResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function postContentDocumentSuspendSubmissionWithHttpInfo(
         string $content_reference_key,
@@ -2889,143 +2889,143 @@ class AplusContentApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentSuspendSubmissionResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentSuspendSubmissionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentSuspendSubmissionResponse' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentSuspendSubmissionResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentSuspendSubmissionResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentSuspendSubmissionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 410:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentSuspendSubmissionResponse';
+            $returnType = '\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentSuspendSubmissionResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -3046,7 +3046,7 @@ class AplusContentApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentSuspendSubmissionResponse',
+                        '\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentSuspendSubmissionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3054,7 +3054,7 @@ class AplusContentApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3062,7 +3062,7 @@ class AplusContentApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3070,7 +3070,7 @@ class AplusContentApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3078,7 +3078,7 @@ class AplusContentApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3086,7 +3086,7 @@ class AplusContentApi
                 case 410:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3094,7 +3094,7 @@ class AplusContentApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3102,7 +3102,7 @@ class AplusContentApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3110,7 +3110,7 @@ class AplusContentApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3158,7 +3158,7 @@ class AplusContentApi
         string $content_reference_key,
         string $marketplace_id
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentSuspendSubmissionResponse';
+        $returnType = '\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentSuspendSubmissionResponse';
         $request = $this->postContentDocumentSuspendSubmissionRequest($content_reference_key, $marketplace_id);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -3330,14 +3330,14 @@ class AplusContentApi
      * @param  string|null $page_token
      *  A page token from the nextPageToken response element returned by your previous call to this operation. nextPageToken is returned when the results of a call exceed the page size. To get the next page of results, call the operation and include pageToken as the only parameter. Specifying pageToken with any other parameter will cause the request to fail. When no nextPageToken value is returned there are no more pages to return. A pageToken value is not usable across different operations. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\SearchContentDocumentsResponse
+     * @return \SpApi\Model\aplusContent\v2020_11_01\SearchContentDocumentsResponse
      */
     public function searchContentDocuments(
         string $marketplace_id,
         ?string $page_token = null
-    ): \OpenAPI\Client\Model\aplusContent\v2020_11_01\SearchContentDocumentsResponse {
+    ): \SpApi\Model\aplusContent\v2020_11_01\SearchContentDocumentsResponse {
         list($response) = $this->searchContentDocumentsWithHttpInfo($marketplace_id, $page_token);
         return $response;
     }
@@ -3350,9 +3350,9 @@ class AplusContentApi
      * @param  string|null $page_token
      *  A page token from the nextPageToken response element returned by your previous call to this operation. nextPageToken is returned when the results of a call exceed the page size. To get the next page of results, call the operation and include pageToken as the only parameter. Specifying pageToken with any other parameter will cause the request to fail. When no nextPageToken value is returned there are no more pages to return. A pageToken value is not usable across different operations. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\aplusContent\v2020_11_01\SearchContentDocumentsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\aplusContent\v2020_11_01\SearchContentDocumentsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function searchContentDocumentsWithHttpInfo(
         string $marketplace_id,
@@ -3399,143 +3399,143 @@ class AplusContentApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\SearchContentDocumentsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\SearchContentDocumentsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\SearchContentDocumentsResponse' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\SearchContentDocumentsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\SearchContentDocumentsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\SearchContentDocumentsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 410:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\aplusContent\v2020_11_01\SearchContentDocumentsResponse';
+            $returnType = '\SpApi\Model\aplusContent\v2020_11_01\SearchContentDocumentsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -3556,7 +3556,7 @@ class AplusContentApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\SearchContentDocumentsResponse',
+                        '\SpApi\Model\aplusContent\v2020_11_01\SearchContentDocumentsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3564,7 +3564,7 @@ class AplusContentApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3572,7 +3572,7 @@ class AplusContentApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3580,7 +3580,7 @@ class AplusContentApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3588,7 +3588,7 @@ class AplusContentApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3596,7 +3596,7 @@ class AplusContentApi
                 case 410:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3604,7 +3604,7 @@ class AplusContentApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3612,7 +3612,7 @@ class AplusContentApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3620,7 +3620,7 @@ class AplusContentApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3668,7 +3668,7 @@ class AplusContentApi
         string $marketplace_id,
         ?string $page_token = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\aplusContent\v2020_11_01\SearchContentDocumentsResponse';
+        $returnType = '\SpApi\Model\aplusContent\v2020_11_01\SearchContentDocumentsResponse';
         $request = $this->searchContentDocumentsRequest($marketplace_id, $page_token);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -3837,15 +3837,15 @@ class AplusContentApi
      * @param  string|null $page_token
      *  A page token from the nextPageToken response element returned by your previous call to this operation. nextPageToken is returned when the results of a call exceed the page size. To get the next page of results, call the operation and include pageToken as the only parameter. Specifying pageToken with any other parameter will cause the request to fail. When no nextPageToken value is returned there are no more pages to return. A pageToken value is not usable across different operations. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\SearchContentPublishRecordsResponse
+     * @return \SpApi\Model\aplusContent\v2020_11_01\SearchContentPublishRecordsResponse
      */
     public function searchContentPublishRecords(
         string $marketplace_id,
         string $asin,
         ?string $page_token = null
-    ): \OpenAPI\Client\Model\aplusContent\v2020_11_01\SearchContentPublishRecordsResponse {
+    ): \SpApi\Model\aplusContent\v2020_11_01\SearchContentPublishRecordsResponse {
         list($response) = $this->searchContentPublishRecordsWithHttpInfo($marketplace_id, $asin, $page_token);
         return $response;
     }
@@ -3860,9 +3860,9 @@ class AplusContentApi
      * @param  string|null $page_token
      *  A page token from the nextPageToken response element returned by your previous call to this operation. nextPageToken is returned when the results of a call exceed the page size. To get the next page of results, call the operation and include pageToken as the only parameter. Specifying pageToken with any other parameter will cause the request to fail. When no nextPageToken value is returned there are no more pages to return. A pageToken value is not usable across different operations. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\aplusContent\v2020_11_01\SearchContentPublishRecordsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\aplusContent\v2020_11_01\SearchContentPublishRecordsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function searchContentPublishRecordsWithHttpInfo(
         string $marketplace_id,
@@ -3910,128 +3910,128 @@ class AplusContentApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\SearchContentPublishRecordsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\SearchContentPublishRecordsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\SearchContentPublishRecordsResponse' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\SearchContentPublishRecordsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\SearchContentPublishRecordsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\SearchContentPublishRecordsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\aplusContent\v2020_11_01\SearchContentPublishRecordsResponse';
+            $returnType = '\SpApi\Model\aplusContent\v2020_11_01\SearchContentPublishRecordsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -4052,7 +4052,7 @@ class AplusContentApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\SearchContentPublishRecordsResponse',
+                        '\SpApi\Model\aplusContent\v2020_11_01\SearchContentPublishRecordsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4060,7 +4060,7 @@ class AplusContentApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4068,7 +4068,7 @@ class AplusContentApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4076,7 +4076,7 @@ class AplusContentApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4084,7 +4084,7 @@ class AplusContentApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4092,7 +4092,7 @@ class AplusContentApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4100,7 +4100,7 @@ class AplusContentApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4108,7 +4108,7 @@ class AplusContentApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4162,7 +4162,7 @@ class AplusContentApi
         string $asin,
         ?string $page_token = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\aplusContent\v2020_11_01\SearchContentPublishRecordsResponse';
+        $returnType = '\SpApi\Model\aplusContent\v2020_11_01\SearchContentPublishRecordsResponse';
         $request = $this->searchContentPublishRecordsRequest($marketplace_id, $asin, $page_token);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -4350,18 +4350,18 @@ class AplusContentApi
      *  The unique reference key for the A+ Content document. A content reference key cannot form a permalink and may change in the future. A content reference key is not guaranteed to match any A+ Content identifier. (required)
      * @param  string $marketplace_id
      *  The identifier for the marketplace where the A+ Content is published. (required)
-     * @param  \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
+     * @param  \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
      *  The content document request details. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentResponse
+     * @return \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentResponse
      */
     public function updateContentDocument(
         string $content_reference_key,
         string $marketplace_id,
-        \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
-    ): \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentResponse {
+        \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
+    ): \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentResponse {
         list($response) = $this->updateContentDocumentWithHttpInfo($content_reference_key, $marketplace_id, $post_content_document_request);
         return $response;
     }
@@ -4373,17 +4373,17 @@ class AplusContentApi
      *  The unique reference key for the A+ Content document. A content reference key cannot form a permalink and may change in the future. A content reference key is not guaranteed to match any A+ Content identifier. (required)
      * @param  string $marketplace_id
      *  The identifier for the marketplace where the A+ Content is published. (required)
-     * @param  \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
+     * @param  \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
      *  The content document request details. (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateContentDocumentWithHttpInfo(
         string $content_reference_key,
         string $marketplace_id,
-        \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
+        \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
     ): array {
         $request = $this->updateContentDocumentRequest($content_reference_key, $marketplace_id, $post_content_document_request);
         $request = $this->config->sign($request);
@@ -4426,143 +4426,143 @@ class AplusContentApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentResponse' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 410:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentResponse';
+            $returnType = '\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -4583,7 +4583,7 @@ class AplusContentApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentResponse',
+                        '\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4591,7 +4591,7 @@ class AplusContentApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4599,7 +4599,7 @@ class AplusContentApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4607,7 +4607,7 @@ class AplusContentApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4615,7 +4615,7 @@ class AplusContentApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4623,7 +4623,7 @@ class AplusContentApi
                 case 410:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4631,7 +4631,7 @@ class AplusContentApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4639,7 +4639,7 @@ class AplusContentApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4647,7 +4647,7 @@ class AplusContentApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4664,7 +4664,7 @@ class AplusContentApi
      *  The unique reference key for the A+ Content document. A content reference key cannot form a permalink and may change in the future. A content reference key is not guaranteed to match any A+ Content identifier. (required)
      * @param  string $marketplace_id
      *  The identifier for the marketplace where the A+ Content is published. (required)
-     * @param  \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
+     * @param  \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
      *  The content document request details. (required)
      *
      * @throws \InvalidArgumentException
@@ -4673,7 +4673,7 @@ class AplusContentApi
     public function updateContentDocumentAsync(
         string $content_reference_key,
         string $marketplace_id,
-        \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
+        \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
     ): PromiseInterface {
         return $this->updateContentDocumentAsyncWithHttpInfo($content_reference_key, $marketplace_id, $post_content_document_request)
             ->then(
@@ -4690,7 +4690,7 @@ class AplusContentApi
      *  The unique reference key for the A+ Content document. A content reference key cannot form a permalink and may change in the future. A content reference key is not guaranteed to match any A+ Content identifier. (required)
      * @param  string $marketplace_id
      *  The identifier for the marketplace where the A+ Content is published. (required)
-     * @param  \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
+     * @param  \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
      *  The content document request details. (required)
      *
      * @throws \InvalidArgumentException
@@ -4699,9 +4699,9 @@ class AplusContentApi
     public function updateContentDocumentAsyncWithHttpInfo(
         string $content_reference_key,
         string $marketplace_id,
-        \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
+        \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentResponse';
+        $returnType = '\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentResponse';
         $request = $this->updateContentDocumentRequest($content_reference_key, $marketplace_id, $post_content_document_request);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -4749,7 +4749,7 @@ class AplusContentApi
      *  The unique reference key for the A+ Content document. A content reference key cannot form a permalink and may change in the future. A content reference key is not guaranteed to match any A+ Content identifier. (required)
      * @param  string $marketplace_id
      *  The identifier for the marketplace where the A+ Content is published. (required)
-     * @param  \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
+     * @param  \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
      *  The content document request details. (required)
      *
      * @throws \InvalidArgumentException
@@ -4758,7 +4758,7 @@ class AplusContentApi
     public function updateContentDocumentRequest(
         string $content_reference_key,
         string $marketplace_id,
-        \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
+        \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
     ): Request {
         // verify the required parameter 'content_reference_key' is set
         if ($content_reference_key === null || (is_array($content_reference_key) && count($content_reference_key) === 0)) {
@@ -4885,20 +4885,20 @@ class AplusContentApi
      *
      * @param  string $marketplace_id
      *  The identifier for the marketplace where the A+ Content is published. (required)
-     * @param  \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
+     * @param  \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
      *  The content document request details. (required)
      * @param  string[]|null $asin_set
      *  The set of ASINs. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\ValidateContentDocumentAsinRelationsResponse
+     * @return \SpApi\Model\aplusContent\v2020_11_01\ValidateContentDocumentAsinRelationsResponse
      */
     public function validateContentDocumentAsinRelations(
         string $marketplace_id,
-        \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request,
+        \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request,
         ?array $asin_set = null
-    ): \OpenAPI\Client\Model\aplusContent\v2020_11_01\ValidateContentDocumentAsinRelationsResponse {
+    ): \SpApi\Model\aplusContent\v2020_11_01\ValidateContentDocumentAsinRelationsResponse {
         list($response) = $this->validateContentDocumentAsinRelationsWithHttpInfo($marketplace_id, $post_content_document_request, $asin_set);
         return $response;
     }
@@ -4908,18 +4908,18 @@ class AplusContentApi
      *
      * @param  string $marketplace_id
      *  The identifier for the marketplace where the A+ Content is published. (required)
-     * @param  \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
+     * @param  \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
      *  The content document request details. (required)
      * @param  string[]|null $asin_set
      *  The set of ASINs. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\aplusContent\v2020_11_01\ValidateContentDocumentAsinRelationsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\aplusContent\v2020_11_01\ValidateContentDocumentAsinRelationsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function validateContentDocumentAsinRelationsWithHttpInfo(
         string $marketplace_id,
-        \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request,
+        \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request,
         ?array $asin_set = null
     ): array {
         $request = $this->validateContentDocumentAsinRelationsRequest($marketplace_id, $post_content_document_request, $asin_set);
@@ -4963,128 +4963,128 @@ class AplusContentApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ValidateContentDocumentAsinRelationsResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ValidateContentDocumentAsinRelationsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ValidateContentDocumentAsinRelationsResponse' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ValidateContentDocumentAsinRelationsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ValidateContentDocumentAsinRelationsResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ValidateContentDocumentAsinRelationsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
+                    if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
+                        if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ValidateContentDocumentAsinRelationsResponse';
+            $returnType = '\SpApi\Model\aplusContent\v2020_11_01\ValidateContentDocumentAsinRelationsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -5105,7 +5105,7 @@ class AplusContentApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ValidateContentDocumentAsinRelationsResponse',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ValidateContentDocumentAsinRelationsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5113,7 +5113,7 @@ class AplusContentApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5121,7 +5121,7 @@ class AplusContentApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5129,7 +5129,7 @@ class AplusContentApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5137,7 +5137,7 @@ class AplusContentApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5145,7 +5145,7 @@ class AplusContentApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5153,7 +5153,7 @@ class AplusContentApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5161,7 +5161,7 @@ class AplusContentApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ErrorList',
+                        '\SpApi\Model\aplusContent\v2020_11_01\ErrorList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5176,7 +5176,7 @@ class AplusContentApi
      *
      * @param  string $marketplace_id
      *  The identifier for the marketplace where the A+ Content is published. (required)
-     * @param  \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
+     * @param  \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
      *  The content document request details. (required)
      * @param  string[]|null $asin_set
      *  The set of ASINs. (optional)
@@ -5186,7 +5186,7 @@ class AplusContentApi
      */
     public function validateContentDocumentAsinRelationsAsync(
         string $marketplace_id,
-        \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request,
+        \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request,
         ?array $asin_set = null
     ): PromiseInterface {
         return $this->validateContentDocumentAsinRelationsAsyncWithHttpInfo($marketplace_id, $post_content_document_request, $asin_set)
@@ -5202,7 +5202,7 @@ class AplusContentApi
      *
      * @param  string $marketplace_id
      *  The identifier for the marketplace where the A+ Content is published. (required)
-     * @param  \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
+     * @param  \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
      *  The content document request details. (required)
      * @param  string[]|null $asin_set
      *  The set of ASINs. (optional)
@@ -5212,10 +5212,10 @@ class AplusContentApi
      */
     public function validateContentDocumentAsinRelationsAsyncWithHttpInfo(
         string $marketplace_id,
-        \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request,
+        \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request,
         ?array $asin_set = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ValidateContentDocumentAsinRelationsResponse';
+        $returnType = '\SpApi\Model\aplusContent\v2020_11_01\ValidateContentDocumentAsinRelationsResponse';
         $request = $this->validateContentDocumentAsinRelationsRequest($marketplace_id, $post_content_document_request, $asin_set);
         $request = $this->config->sign($request);
         $this->rateLimitWait();
@@ -5261,7 +5261,7 @@ class AplusContentApi
      *
      * @param  string $marketplace_id
      *  The identifier for the marketplace where the A+ Content is published. (required)
-     * @param  \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
+     * @param  \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
      *  The content document request details. (required)
      * @param  string[]|null $asin_set
      *  The set of ASINs. (optional)
@@ -5271,7 +5271,7 @@ class AplusContentApi
      */
     public function validateContentDocumentAsinRelationsRequest(
         string $marketplace_id,
-        \OpenAPI\Client\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request,
+        \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request,
         ?array $asin_set = null
     ): Request {
         // verify the required parameter 'marketplace_id' is set

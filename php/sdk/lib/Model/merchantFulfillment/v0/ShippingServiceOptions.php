@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\merchantFulfillment\v0;
+namespace SpApi\Model\merchantFulfillment\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ShippingServiceOptions Class Doc Comment
  *
  * @category Class
  * @description Extra services provided by a carrier.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,11 +60,11 @@ class ShippingServiceOptions implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'delivery_experience' => '\OpenAPI\Client\Model\merchantFulfillment\v0\DeliveryExperienceType',
-             'declared_value' => '\OpenAPI\Client\Model\merchantFulfillment\v0\CurrencyAmount',
+             'delivery_experience' => '\SpApi\Model\merchantFulfillment\v0\DeliveryExperienceType',
+             'declared_value' => '\SpApi\Model\merchantFulfillment\v0\CurrencyAmount',
              'carrier_will_pick_up' => 'bool',
-             'carrier_will_pick_up_option' => '\OpenAPI\Client\Model\merchantFulfillment\v0\CarrierWillPickUpOption',
-             'label_format' => '\OpenAPI\Client\Model\merchantFulfillment\v0\LabelFormat'    ];
+             'carrier_will_pick_up_option' => '\SpApi\Model\merchantFulfillment\v0\CarrierWillPickUpOption',
+             'label_format' => '\SpApi\Model\merchantFulfillment\v0\LabelFormat'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -355,9 +355,9 @@ class ShippingServiceOptions implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets declared_value
      *
-     * @return \OpenAPI\Client\Model\merchantFulfillment\v0\CurrencyAmount|null
+     * @return \SpApi\Model\merchantFulfillment\v0\CurrencyAmount|null
      */
-    public function getDeclaredValue(): ?\OpenAPI\Client\Model\merchantFulfillment\v0\CurrencyAmount
+    public function getDeclaredValue(): ?\SpApi\Model\merchantFulfillment\v0\CurrencyAmount
     {
         return $this->container['declared_value'];
     }
@@ -365,11 +365,11 @@ class ShippingServiceOptions implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets declared_value
      *
-     * @param \OpenAPI\Client\Model\merchantFulfillment\v0\CurrencyAmount|null $declared_value declared_value
+     * @param \SpApi\Model\merchantFulfillment\v0\CurrencyAmount|null $declared_value declared_value
      *
      * @return self
      */
-    public function setDeclaredValue(?\OpenAPI\Client\Model\merchantFulfillment\v0\CurrencyAmount $declared_value): self
+    public function setDeclaredValue(?\SpApi\Model\merchantFulfillment\v0\CurrencyAmount $declared_value): self
     {
         if (is_null($declared_value)) {
             array_push($this->openAPINullablesSetToNull, 'declared_value');

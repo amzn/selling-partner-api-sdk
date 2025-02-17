@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\awd\v2024_05_09;
+namespace SpApi\Model\awd\v2024_05_09;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ErrorList Class Doc Comment
  *
  * @category Class
  * @description This exception is thrown when client inputs are invalid.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class ErrorList implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'errors' => '\OpenAPI\Client\Model\awd\v2024_05_09\Error[]'    ];
+             'errors' => '\SpApi\Model\awd\v2024_05_09\Error[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization

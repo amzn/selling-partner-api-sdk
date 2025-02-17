@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ItemInput;
+use SpApi\Model\fulfillment\inbound\v2024_03_20\ItemInput;
 
 /**
  * ItemInputTest Class Doc Comment
  *
  * @category    Class
  * @description Defines an item&#39;s input parameters.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ItemInputTest extends TestCase
 {
@@ -67,7 +67,7 @@ class ItemInputTest extends TestCase
      */
     public function testPropertyLabelOwner()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\LabelOwner();
+        $enumInstance = new \SpApi\Model\fulfillment\inbound\v2024_03_20\LabelOwner();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -102,7 +102,7 @@ class ItemInputTest extends TestCase
      */
     public function testPropertyPrepOwner()
     {
-        $enumInstance = new \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\PrepOwner();
+        $enumInstance = new \SpApi\Model\fulfillment\inbound\v2024_03_20\PrepOwner();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

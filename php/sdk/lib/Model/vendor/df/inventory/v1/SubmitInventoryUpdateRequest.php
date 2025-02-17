@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\df\inventory\v1;
+namespace SpApi\Model\vendor\df\inventory\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * SubmitInventoryUpdateRequest Class Doc Comment
  *
  * @category Class
  * @description The request body for the submitInventoryUpdate operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class SubmitInventoryUpdateRequest implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'inventory' => '\OpenAPI\Client\Model\vendor\df\inventory\v1\InventoryUpdate'    ];
+             'inventory' => '\SpApi\Model\vendor\df\inventory\v1\InventoryUpdate'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -294,9 +294,9 @@ class SubmitInventoryUpdateRequest implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets inventory
      *
-     * @return \OpenAPI\Client\Model\vendor\df\inventory\v1\InventoryUpdate|null
+     * @return \SpApi\Model\vendor\df\inventory\v1\InventoryUpdate|null
      */
-    public function getInventory(): ?\OpenAPI\Client\Model\vendor\df\inventory\v1\InventoryUpdate
+    public function getInventory(): ?\SpApi\Model\vendor\df\inventory\v1\InventoryUpdate
     {
         return $this->container['inventory'];
     }
@@ -304,11 +304,11 @@ class SubmitInventoryUpdateRequest implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets inventory
      *
-     * @param \OpenAPI\Client\Model\vendor\df\inventory\v1\InventoryUpdate|null $inventory inventory
+     * @param \SpApi\Model\vendor\df\inventory\v1\InventoryUpdate|null $inventory inventory
      *
      * @return self
      */
-    public function setInventory(?\OpenAPI\Client\Model\vendor\df\inventory\v1\InventoryUpdate $inventory): self
+    public function setInventory(?\SpApi\Model\vendor\df\inventory\v1\InventoryUpdate $inventory): self
     {
         if (is_null($inventory)) {
             array_push($this->openAPINullablesSetToNull, 'inventory');

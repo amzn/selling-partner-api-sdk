@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\orders\v1;
+namespace SpApi\Model\vendor\orders\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * OrderItem Class Doc Comment
  *
  * @category Class
  * @description Represents an individual item in an order, including item details, quantities, pricing, and backorder information.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,10 +63,10 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
              'item_sequence_number' => 'string',
              'amazon_product_identifier' => 'string',
              'vendor_product_identifier' => 'string',
-             'ordered_quantity' => '\OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity',
+             'ordered_quantity' => '\SpApi\Model\vendor\orders\v1\ItemQuantity',
              'is_back_order_allowed' => 'bool',
-             'net_cost' => '\OpenAPI\Client\Model\vendor\orders\v1\Money',
-             'list_price' => '\OpenAPI\Client\Model\vendor\orders\v1\Money'    ];
+             'net_cost' => '\SpApi\Model\vendor\orders\v1\Money',
+             'list_price' => '\SpApi\Model\vendor\orders\v1\Money'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -440,9 +440,9 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets ordered_quantity
      *
-     * @return \OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity
+     * @return \SpApi\Model\vendor\orders\v1\ItemQuantity
      */
-    public function getOrderedQuantity(): \OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity
+    public function getOrderedQuantity(): \SpApi\Model\vendor\orders\v1\ItemQuantity
     {
         return $this->container['ordered_quantity'];
     }
@@ -450,11 +450,11 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ordered_quantity
      *
-     * @param \OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity $ordered_quantity ordered_quantity
+     * @param \SpApi\Model\vendor\orders\v1\ItemQuantity $ordered_quantity ordered_quantity
      *
      * @return self
      */
-    public function setOrderedQuantity(\OpenAPI\Client\Model\vendor\orders\v1\ItemQuantity $ordered_quantity): self
+    public function setOrderedQuantity(\SpApi\Model\vendor\orders\v1\ItemQuantity $ordered_quantity): self
     {
         if (is_null($ordered_quantity)) {
             throw new \InvalidArgumentException('non-nullable ordered_quantity cannot be null');
@@ -494,9 +494,9 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets net_cost
      *
-     * @return \OpenAPI\Client\Model\vendor\orders\v1\Money|null
+     * @return \SpApi\Model\vendor\orders\v1\Money|null
      */
-    public function getNetCost(): ?\OpenAPI\Client\Model\vendor\orders\v1\Money
+    public function getNetCost(): ?\SpApi\Model\vendor\orders\v1\Money
     {
         return $this->container['net_cost'];
     }
@@ -504,11 +504,11 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets net_cost
      *
-     * @param \OpenAPI\Client\Model\vendor\orders\v1\Money|null $net_cost net_cost
+     * @param \SpApi\Model\vendor\orders\v1\Money|null $net_cost net_cost
      *
      * @return self
      */
-    public function setNetCost(?\OpenAPI\Client\Model\vendor\orders\v1\Money $net_cost): self
+    public function setNetCost(?\SpApi\Model\vendor\orders\v1\Money $net_cost): self
     {
         if (is_null($net_cost)) {
             array_push($this->openAPINullablesSetToNull, 'net_cost');
@@ -528,9 +528,9 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets list_price
      *
-     * @return \OpenAPI\Client\Model\vendor\orders\v1\Money|null
+     * @return \SpApi\Model\vendor\orders\v1\Money|null
      */
-    public function getListPrice(): ?\OpenAPI\Client\Model\vendor\orders\v1\Money
+    public function getListPrice(): ?\SpApi\Model\vendor\orders\v1\Money
     {
         return $this->container['list_price'];
     }
@@ -538,11 +538,11 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets list_price
      *
-     * @param \OpenAPI\Client\Model\vendor\orders\v1\Money|null $list_price list_price
+     * @param \SpApi\Model\vendor\orders\v1\Money|null $list_price list_price
      *
      * @return self
      */
-    public function setListPrice(?\OpenAPI\Client\Model\vendor\orders\v1\Money $list_price): self
+    public function setListPrice(?\SpApi\Model\vendor\orders\v1\Money $list_price): self
     {
         if (is_null($list_price)) {
             array_push($this->openAPINullablesSetToNull, 'list_price');

@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\finances\v0;
+namespace SpApi\Model\finances\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * AdjustmentItem Class Doc Comment
  *
  * @category Class
  * @description An item in an adjustment to the seller&#39;s account.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,8 +61,8 @@ class AdjustmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPITypes = [
              'quantity' => 'string',
-             'per_unit_amount' => '\OpenAPI\Client\Model\finances\v0\Currency',
-             'total_amount' => '\OpenAPI\Client\Model\finances\v0\Currency',
+             'per_unit_amount' => '\SpApi\Model\finances\v0\Currency',
+             'total_amount' => '\SpApi\Model\finances\v0\Currency',
              'seller_sku' => 'string',
              'fn_sku' => 'string',
              'product_description' => 'string',
@@ -377,9 +377,9 @@ class AdjustmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets per_unit_amount
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency|null
+     * @return \SpApi\Model\finances\v0\Currency|null
      */
-    public function getPerUnitAmount(): ?\OpenAPI\Client\Model\finances\v0\Currency
+    public function getPerUnitAmount(): ?\SpApi\Model\finances\v0\Currency
     {
         return $this->container['per_unit_amount'];
     }
@@ -387,11 +387,11 @@ class AdjustmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets per_unit_amount
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency|null $per_unit_amount per_unit_amount
+     * @param \SpApi\Model\finances\v0\Currency|null $per_unit_amount per_unit_amount
      *
      * @return self
      */
-    public function setPerUnitAmount(?\OpenAPI\Client\Model\finances\v0\Currency $per_unit_amount): self
+    public function setPerUnitAmount(?\SpApi\Model\finances\v0\Currency $per_unit_amount): self
     {
         if (is_null($per_unit_amount)) {
             array_push($this->openAPINullablesSetToNull, 'per_unit_amount');
@@ -411,9 +411,9 @@ class AdjustmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets total_amount
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency|null
+     * @return \SpApi\Model\finances\v0\Currency|null
      */
-    public function getTotalAmount(): ?\OpenAPI\Client\Model\finances\v0\Currency
+    public function getTotalAmount(): ?\SpApi\Model\finances\v0\Currency
     {
         return $this->container['total_amount'];
     }
@@ -421,11 +421,11 @@ class AdjustmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets total_amount
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency|null $total_amount total_amount
+     * @param \SpApi\Model\finances\v0\Currency|null $total_amount total_amount
      *
      * @return self
      */
-    public function setTotalAmount(?\OpenAPI\Client\Model\finances\v0\Currency $total_amount): self
+    public function setTotalAmount(?\SpApi\Model\finances\v0\Currency $total_amount): self
     {
         if (is_null($total_amount)) {
             array_push($this->openAPINullablesSetToNull, 'total_amount');

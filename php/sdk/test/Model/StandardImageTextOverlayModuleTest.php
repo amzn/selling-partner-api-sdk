@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextOverlayModule;
+use SpApi\Model\aplusContent\v2020_11_01\StandardImageTextOverlayModule;
 
 /**
  * StandardImageTextOverlayModuleTest Class Doc Comment
  *
  * @category    Class
  * @description A standard background image with a floating text box.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class StandardImageTextOverlayModuleTest extends TestCase
 {
@@ -56,7 +56,7 @@ class StandardImageTextOverlayModuleTest extends TestCase
      */
     public function testPropertyOverlayColorType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\ColorType();
+        $enumInstance = new \SpApi\Model\aplusContent\v2020_11_01\ColorType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -70,7 +70,7 @@ class StandardImageTextOverlayModuleTest extends TestCase
     public function testPropertyBlock()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock();
         
         $this->model->setBlock($testValue);
         $this->assertEquals($testValue, $this->model->getBlock());

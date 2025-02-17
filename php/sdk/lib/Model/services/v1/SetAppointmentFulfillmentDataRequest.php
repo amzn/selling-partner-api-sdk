@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\services\v1;
+namespace SpApi\Model\services\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * SetAppointmentFulfillmentDataRequest Class Doc Comment
  *
  * @category Class
  * @description Input for set appointment fulfillment data operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,9 +60,9 @@ class SetAppointmentFulfillmentDataRequest implements ModelInterface, ArrayAcces
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'fulfillment_time' => '\OpenAPI\Client\Model\services\v1\FulfillmentTime',
-             'appointment_resources' => '\OpenAPI\Client\Model\services\v1\AppointmentResource[]',
-             'fulfillment_documents' => '\OpenAPI\Client\Model\services\v1\FulfillmentDocument[]'    ];
+             'fulfillment_time' => '\SpApi\Model\services\v1\FulfillmentTime',
+             'appointment_resources' => '\SpApi\Model\services\v1\AppointmentResource[]',
+             'fulfillment_documents' => '\SpApi\Model\services\v1\FulfillmentDocument[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -308,9 +308,9 @@ class SetAppointmentFulfillmentDataRequest implements ModelInterface, ArrayAcces
     /**
      * Gets fulfillment_time
      *
-     * @return \OpenAPI\Client\Model\services\v1\FulfillmentTime|null
+     * @return \SpApi\Model\services\v1\FulfillmentTime|null
      */
-    public function getFulfillmentTime(): ?\OpenAPI\Client\Model\services\v1\FulfillmentTime
+    public function getFulfillmentTime(): ?\SpApi\Model\services\v1\FulfillmentTime
     {
         return $this->container['fulfillment_time'];
     }
@@ -318,11 +318,11 @@ class SetAppointmentFulfillmentDataRequest implements ModelInterface, ArrayAcces
     /**
      * Sets fulfillment_time
      *
-     * @param \OpenAPI\Client\Model\services\v1\FulfillmentTime|null $fulfillment_time fulfillment_time
+     * @param \SpApi\Model\services\v1\FulfillmentTime|null $fulfillment_time fulfillment_time
      *
      * @return self
      */
-    public function setFulfillmentTime(?\OpenAPI\Client\Model\services\v1\FulfillmentTime $fulfillment_time): self
+    public function setFulfillmentTime(?\SpApi\Model\services\v1\FulfillmentTime $fulfillment_time): self
     {
         if (is_null($fulfillment_time)) {
             array_push($this->openAPINullablesSetToNull, 'fulfillment_time');

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\finances\v0\AdjustmentEvent;
+use SpApi\Model\finances\v0\AdjustmentEvent;
 
 /**
  * AdjustmentEventTest Class Doc Comment
  *
  * @category    Class
  * @description An adjustment to the seller&#39;s account.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class AdjustmentEventTest extends TestCase
 {
@@ -91,7 +91,7 @@ class AdjustmentEventTest extends TestCase
     public function testPropertyAdjustmentAmount()
     {
         
-        $testValue = new \OpenAPI\Client\Model\finances\v0\Currency();
+        $testValue = new \SpApi\Model\finances\v0\Currency();
         
         $this->model->setAdjustmentAmount($testValue);
         $this->assertEquals($testValue, $this->model->getAdjustmentAmount());

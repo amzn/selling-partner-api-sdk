@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\finances\v0;
+namespace SpApi\Model\finances\v0;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * FBALiquidationEvent Class Doc Comment
  *
  * @category Class
  * @description A payment event for Fulfillment by Amazon (FBA) inventory liquidation. This event is used only in the US marketplace.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,8 +62,8 @@ class FBALiquidationEvent implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static array $openAPITypes = [
              'posted_date' => '\DateTime',
              'original_removal_order_id' => 'string',
-             'liquidation_proceeds_amount' => '\OpenAPI\Client\Model\finances\v0\Currency',
-             'liquidation_fee_amount' => '\OpenAPI\Client\Model\finances\v0\Currency'    ];
+             'liquidation_proceeds_amount' => '\SpApi\Model\finances\v0\Currency',
+             'liquidation_fee_amount' => '\SpApi\Model\finances\v0\Currency'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -383,9 +383,9 @@ class FBALiquidationEvent implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets liquidation_proceeds_amount
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency|null
+     * @return \SpApi\Model\finances\v0\Currency|null
      */
-    public function getLiquidationProceedsAmount(): ?\OpenAPI\Client\Model\finances\v0\Currency
+    public function getLiquidationProceedsAmount(): ?\SpApi\Model\finances\v0\Currency
     {
         return $this->container['liquidation_proceeds_amount'];
     }
@@ -393,11 +393,11 @@ class FBALiquidationEvent implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets liquidation_proceeds_amount
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency|null $liquidation_proceeds_amount liquidation_proceeds_amount
+     * @param \SpApi\Model\finances\v0\Currency|null $liquidation_proceeds_amount liquidation_proceeds_amount
      *
      * @return self
      */
-    public function setLiquidationProceedsAmount(?\OpenAPI\Client\Model\finances\v0\Currency $liquidation_proceeds_amount): self
+    public function setLiquidationProceedsAmount(?\SpApi\Model\finances\v0\Currency $liquidation_proceeds_amount): self
     {
         if (is_null($liquidation_proceeds_amount)) {
             array_push($this->openAPINullablesSetToNull, 'liquidation_proceeds_amount');
@@ -417,9 +417,9 @@ class FBALiquidationEvent implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets liquidation_fee_amount
      *
-     * @return \OpenAPI\Client\Model\finances\v0\Currency|null
+     * @return \SpApi\Model\finances\v0\Currency|null
      */
-    public function getLiquidationFeeAmount(): ?\OpenAPI\Client\Model\finances\v0\Currency
+    public function getLiquidationFeeAmount(): ?\SpApi\Model\finances\v0\Currency
     {
         return $this->container['liquidation_fee_amount'];
     }
@@ -427,11 +427,11 @@ class FBALiquidationEvent implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets liquidation_fee_amount
      *
-     * @param \OpenAPI\Client\Model\finances\v0\Currency|null $liquidation_fee_amount liquidation_fee_amount
+     * @param \SpApi\Model\finances\v0\Currency|null $liquidation_fee_amount liquidation_fee_amount
      *
      * @return self
      */
-    public function setLiquidationFeeAmount(?\OpenAPI\Client\Model\finances\v0\Currency $liquidation_fee_amount): self
+    public function setLiquidationFeeAmount(?\SpApi\Model\finances\v0\Currency $liquidation_fee_amount): self
     {
         if (is_null($liquidation_fee_amount)) {
             array_push($this->openAPINullablesSetToNull, 'liquidation_fee_amount');

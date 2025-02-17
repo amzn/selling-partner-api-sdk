@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\awd\v2024_05_09\ProductQuantity;
+use SpApi\Model\awd\v2024_05_09\ProductQuantity;
 
 /**
  * ProductQuantityTest Class Doc Comment
  *
  * @category    Class
  * @description Represents a product with the SKU details and the corresponding quantity.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ProductQuantityTest extends TestCase
 {
@@ -102,7 +102,7 @@ class ProductQuantityTest extends TestCase
     public function testPropertyPrepDetails()
     {
         
-        $testValue = new \OpenAPI\Client\Model\awd\v2024_05_09\PrepDetails();
+        $testValue = new \SpApi\Model\awd\v2024_05_09\PrepDetails();
         
         $this->model->setPrepDetails($testValue);
         $this->assertEquals($testValue, $this->model->getPrepDetails());

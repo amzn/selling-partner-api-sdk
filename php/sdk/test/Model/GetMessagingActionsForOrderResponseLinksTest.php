@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\messaging\v1\GetMessagingActionsForOrderResponseLinks;
+use SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponseLinks;
 
 /**
  * GetMessagingActionsForOrderResponseLinksTest Class Doc Comment
  *
  * @category    Class
  * @description The links response that is associated with the specified &#x60;amazonOrderId&#x60;.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetMessagingActionsForOrderResponseLinksTest extends TestCase
 {
@@ -57,7 +57,7 @@ class GetMessagingActionsForOrderResponseLinksTest extends TestCase
     public function testPropertySelf()
     {
         
-        $testValue = new \OpenAPI\Client\Model\messaging\v1\LinkObject();
+        $testValue = new \SpApi\Model\messaging\v1\LinkObject();
         
         $this->model->setSelf($testValue);
         $this->assertEquals($testValue, $this->model->getSelf());

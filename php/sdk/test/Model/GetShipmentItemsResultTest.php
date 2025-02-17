@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\fulfillment\inbound\v0\GetShipmentItemsResult;
+use SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResult;
 
 /**
  * GetShipmentItemsResultTest Class Doc Comment
  *
  * @category    Class
  * @description Result for the get shipment items operation
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetShipmentItemsResultTest extends TestCase
 {

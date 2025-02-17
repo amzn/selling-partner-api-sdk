@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01;
+namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetFulfillmentOrderResult Class Doc Comment
  *
  * @category Class
  * @description The request for the getFulfillmentOrder operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,12 +60,12 @@ class GetFulfillmentOrderResult implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'fulfillment_order' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\FulfillmentOrder',
-             'fulfillment_order_items' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\FulfillmentOrderItem[]',
-             'fulfillment_shipments' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\FulfillmentShipment[]',
-             'return_items' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\ReturnItem[]',
-             'return_authorizations' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\ReturnAuthorization[]',
-             'payment_information' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\PaymentInformation[]'    ];
+             'fulfillment_order' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\FulfillmentOrder',
+             'fulfillment_order_items' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\FulfillmentOrderItem[]',
+             'fulfillment_shipments' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\FulfillmentShipment[]',
+             'return_items' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\ReturnItem[]',
+             'return_authorizations' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\ReturnAuthorization[]',
+             'payment_information' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\PaymentInformation[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -341,9 +341,9 @@ class GetFulfillmentOrderResult implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets fulfillment_order
      *
-     * @return \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\FulfillmentOrder
+     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\FulfillmentOrder
      */
-    public function getFulfillmentOrder(): \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\FulfillmentOrder
+    public function getFulfillmentOrder(): \SpApi\Model\fulfillment\outbound\v2020_07_01\FulfillmentOrder
     {
         return $this->container['fulfillment_order'];
     }
@@ -351,11 +351,11 @@ class GetFulfillmentOrderResult implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets fulfillment_order
      *
-     * @param \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\FulfillmentOrder $fulfillment_order fulfillment_order
+     * @param \SpApi\Model\fulfillment\outbound\v2020_07_01\FulfillmentOrder $fulfillment_order fulfillment_order
      *
      * @return self
      */
-    public function setFulfillmentOrder(\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\FulfillmentOrder $fulfillment_order): self
+    public function setFulfillmentOrder(\SpApi\Model\fulfillment\outbound\v2020_07_01\FulfillmentOrder $fulfillment_order): self
     {
         if (is_null($fulfillment_order)) {
             throw new \InvalidArgumentException('non-nullable fulfillment_order cannot be null');

@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\invoices\v2024_06_19;
+namespace SpApi\Model\invoices\v2024_06_19;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * GetInvoiceResponse Class Doc Comment
  *
  * @category Class
  * @description Success.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class GetInvoiceResponse implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'invoice' => '\OpenAPI\Client\Model\invoices\v2024_06_19\Invoice'    ];
+             'invoice' => '\SpApi\Model\invoices\v2024_06_19\Invoice'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -294,9 +294,9 @@ class GetInvoiceResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets invoice
      *
-     * @return \OpenAPI\Client\Model\invoices\v2024_06_19\Invoice|null
+     * @return \SpApi\Model\invoices\v2024_06_19\Invoice|null
      */
-    public function getInvoice(): ?\OpenAPI\Client\Model\invoices\v2024_06_19\Invoice
+    public function getInvoice(): ?\SpApi\Model\invoices\v2024_06_19\Invoice
     {
         return $this->container['invoice'];
     }
@@ -304,11 +304,11 @@ class GetInvoiceResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets invoice
      *
-     * @param \OpenAPI\Client\Model\invoices\v2024_06_19\Invoice|null $invoice invoice
+     * @param \SpApi\Model\invoices\v2024_06_19\Invoice|null $invoice invoice
      *
      * @return self
      */
-    public function setInvoice(?\OpenAPI\Client\Model\invoices\v2024_06_19\Invoice $invoice): self
+    public function setInvoice(?\SpApi\Model\invoices\v2024_06_19\Invoice $invoice): self
     {
         if (is_null($invoice)) {
             array_push($this->openAPINullablesSetToNull, 'invoice');

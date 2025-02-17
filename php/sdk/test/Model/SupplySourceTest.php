@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\supplySources\v2020_07_01\SupplySource;
+use SpApi\Model\supplySources\v2020_07_01\SupplySource;
 
 /**
  * SupplySourceTest Class Doc Comment
  *
  * @category    Class
  * @description The supply source details, including configurations and capabilities.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class SupplySourceTest extends TestCase
 {
@@ -89,7 +89,7 @@ class SupplySourceTest extends TestCase
      */
     public function testPropertyStatus()
     {
-        $enumInstance = new \OpenAPI\Client\Model\supplySources\v2020_07_01\SupplySourceStatusReadOnly();
+        $enumInstance = new \SpApi\Model\supplySources\v2020_07_01\SupplySourceStatusReadOnly();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         
@@ -103,7 +103,7 @@ class SupplySourceTest extends TestCase
     public function testPropertyAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplySources\v2020_07_01\Address();
+        $testValue = new \SpApi\Model\supplySources\v2020_07_01\Address();
         
         $this->model->setAddress($testValue);
         $this->assertEquals($testValue, $this->model->getAddress());
@@ -115,7 +115,7 @@ class SupplySourceTest extends TestCase
     public function testPropertyConfiguration()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplySources\v2020_07_01\SupplySourceConfiguration();
+        $testValue = new \SpApi\Model\supplySources\v2020_07_01\SupplySourceConfiguration();
         
         $this->model->setConfiguration($testValue);
         $this->assertEquals($testValue, $this->model->getConfiguration());
@@ -127,7 +127,7 @@ class SupplySourceTest extends TestCase
     public function testPropertyCapabilities()
     {
         
-        $testValue = new \OpenAPI\Client\Model\supplySources\v2020_07_01\SupplySourceCapabilities();
+        $testValue = new \SpApi\Model\supplySources\v2020_07_01\SupplySourceCapabilities();
         
         $this->model->setCapabilities($testValue);
         $this->assertEquals($testValue, $this->model->getCapabilities());

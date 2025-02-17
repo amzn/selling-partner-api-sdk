@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\notifications\v1\SqsResource;
+use SpApi\Model\notifications\v1\SqsResource;
 
 /**
  * SqsResourceTest Class Doc Comment
  *
  * @category    Class
  * @description The information required to create an Amazon Simple Queue Service (Amazon SQS) queue destination.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class SqsResourceTest extends TestCase
 {

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\aplusContent\v2020_11_01\PublishRecord;
+use SpApi\Model\aplusContent\v2020_11_01\PublishRecord;
 
 /**
  * PublishRecordTest Class Doc Comment
  *
  * @category    Class
  * @description The full context for an A+ Content publishing event.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class PublishRecordTest extends TestCase
 {
@@ -89,7 +89,7 @@ class PublishRecordTest extends TestCase
      */
     public function testPropertyContentType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentType();
+        $enumInstance = new \SpApi\Model\aplusContent\v2020_11_01\ContentType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

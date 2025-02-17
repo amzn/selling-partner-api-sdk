@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\aplusContent\v2020_11_01;
+namespace SpApi\Model\aplusContent\v2020_11_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * StandardSingleImageSpecsDetailModule Class Doc Comment
  *
  * @category Class
  * @description A standard image with paragraphs and a bulleted list, and extra space for technical details.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,14 +60,14 @@ class StandardSingleImageSpecsDetailModule implements ModelInterface, ArrayAcces
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'headline' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent',
-             'image' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageComponent',
-             'description_headline' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent',
-             'description_block1' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextBlock',
-             'description_block2' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextBlock',
-             'specification_headline' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent',
-             'specification_list_block' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardHeaderTextListBlock',
-             'specification_text_block' => '\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextBlock'    ];
+             'headline' => '\SpApi\Model\aplusContent\v2020_11_01\TextComponent',
+             'image' => '\SpApi\Model\aplusContent\v2020_11_01\ImageComponent',
+             'description_headline' => '\SpApi\Model\aplusContent\v2020_11_01\TextComponent',
+             'description_block1' => '\SpApi\Model\aplusContent\v2020_11_01\StandardTextBlock',
+             'description_block2' => '\SpApi\Model\aplusContent\v2020_11_01\StandardTextBlock',
+             'specification_headline' => '\SpApi\Model\aplusContent\v2020_11_01\TextComponent',
+             'specification_list_block' => '\SpApi\Model\aplusContent\v2020_11_01\StandardHeaderTextListBlock',
+             'specification_text_block' => '\SpApi\Model\aplusContent\v2020_11_01\StandardTextBlock'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -343,9 +343,9 @@ class StandardSingleImageSpecsDetailModule implements ModelInterface, ArrayAcces
     /**
      * Gets headline
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\TextComponent|null
      */
-    public function getHeadline(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent
+    public function getHeadline(): ?\SpApi\Model\aplusContent\v2020_11_01\TextComponent
     {
         return $this->container['headline'];
     }
@@ -353,11 +353,11 @@ class StandardSingleImageSpecsDetailModule implements ModelInterface, ArrayAcces
     /**
      * Sets headline
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent|null $headline headline
+     * @param \SpApi\Model\aplusContent\v2020_11_01\TextComponent|null $headline headline
      *
      * @return self
      */
-    public function setHeadline(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent $headline): self
+    public function setHeadline(?\SpApi\Model\aplusContent\v2020_11_01\TextComponent $headline): self
     {
         if (is_null($headline)) {
             array_push($this->openAPINullablesSetToNull, 'headline');
@@ -377,9 +377,9 @@ class StandardSingleImageSpecsDetailModule implements ModelInterface, ArrayAcces
     /**
      * Gets image
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageComponent|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\ImageComponent|null
      */
-    public function getImage(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageComponent
+    public function getImage(): ?\SpApi\Model\aplusContent\v2020_11_01\ImageComponent
     {
         return $this->container['image'];
     }
@@ -387,11 +387,11 @@ class StandardSingleImageSpecsDetailModule implements ModelInterface, ArrayAcces
     /**
      * Sets image
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageComponent|null $image image
+     * @param \SpApi\Model\aplusContent\v2020_11_01\ImageComponent|null $image image
      *
      * @return self
      */
-    public function setImage(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageComponent $image): self
+    public function setImage(?\SpApi\Model\aplusContent\v2020_11_01\ImageComponent $image): self
     {
         if (is_null($image)) {
             array_push($this->openAPINullablesSetToNull, 'image');
@@ -411,9 +411,9 @@ class StandardSingleImageSpecsDetailModule implements ModelInterface, ArrayAcces
     /**
      * Gets description_headline
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\TextComponent|null
      */
-    public function getDescriptionHeadline(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent
+    public function getDescriptionHeadline(): ?\SpApi\Model\aplusContent\v2020_11_01\TextComponent
     {
         return $this->container['description_headline'];
     }
@@ -421,11 +421,11 @@ class StandardSingleImageSpecsDetailModule implements ModelInterface, ArrayAcces
     /**
      * Sets description_headline
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent|null $description_headline description_headline
+     * @param \SpApi\Model\aplusContent\v2020_11_01\TextComponent|null $description_headline description_headline
      *
      * @return self
      */
-    public function setDescriptionHeadline(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent $description_headline): self
+    public function setDescriptionHeadline(?\SpApi\Model\aplusContent\v2020_11_01\TextComponent $description_headline): self
     {
         if (is_null($description_headline)) {
             array_push($this->openAPINullablesSetToNull, 'description_headline');
@@ -445,9 +445,9 @@ class StandardSingleImageSpecsDetailModule implements ModelInterface, ArrayAcces
     /**
      * Gets description_block1
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextBlock|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\StandardTextBlock|null
      */
-    public function getDescriptionBlock1(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextBlock
+    public function getDescriptionBlock1(): ?\SpApi\Model\aplusContent\v2020_11_01\StandardTextBlock
     {
         return $this->container['description_block1'];
     }
@@ -455,11 +455,11 @@ class StandardSingleImageSpecsDetailModule implements ModelInterface, ArrayAcces
     /**
      * Sets description_block1
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextBlock|null $description_block1 description_block1
+     * @param \SpApi\Model\aplusContent\v2020_11_01\StandardTextBlock|null $description_block1 description_block1
      *
      * @return self
      */
-    public function setDescriptionBlock1(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextBlock $description_block1): self
+    public function setDescriptionBlock1(?\SpApi\Model\aplusContent\v2020_11_01\StandardTextBlock $description_block1): self
     {
         if (is_null($description_block1)) {
             array_push($this->openAPINullablesSetToNull, 'description_block1');
@@ -479,9 +479,9 @@ class StandardSingleImageSpecsDetailModule implements ModelInterface, ArrayAcces
     /**
      * Gets description_block2
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextBlock|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\StandardTextBlock|null
      */
-    public function getDescriptionBlock2(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextBlock
+    public function getDescriptionBlock2(): ?\SpApi\Model\aplusContent\v2020_11_01\StandardTextBlock
     {
         return $this->container['description_block2'];
     }
@@ -489,11 +489,11 @@ class StandardSingleImageSpecsDetailModule implements ModelInterface, ArrayAcces
     /**
      * Sets description_block2
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextBlock|null $description_block2 description_block2
+     * @param \SpApi\Model\aplusContent\v2020_11_01\StandardTextBlock|null $description_block2 description_block2
      *
      * @return self
      */
-    public function setDescriptionBlock2(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextBlock $description_block2): self
+    public function setDescriptionBlock2(?\SpApi\Model\aplusContent\v2020_11_01\StandardTextBlock $description_block2): self
     {
         if (is_null($description_block2)) {
             array_push($this->openAPINullablesSetToNull, 'description_block2');
@@ -513,9 +513,9 @@ class StandardSingleImageSpecsDetailModule implements ModelInterface, ArrayAcces
     /**
      * Gets specification_headline
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\TextComponent|null
      */
-    public function getSpecificationHeadline(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent
+    public function getSpecificationHeadline(): ?\SpApi\Model\aplusContent\v2020_11_01\TextComponent
     {
         return $this->container['specification_headline'];
     }
@@ -523,11 +523,11 @@ class StandardSingleImageSpecsDetailModule implements ModelInterface, ArrayAcces
     /**
      * Sets specification_headline
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent|null $specification_headline specification_headline
+     * @param \SpApi\Model\aplusContent\v2020_11_01\TextComponent|null $specification_headline specification_headline
      *
      * @return self
      */
-    public function setSpecificationHeadline(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent $specification_headline): self
+    public function setSpecificationHeadline(?\SpApi\Model\aplusContent\v2020_11_01\TextComponent $specification_headline): self
     {
         if (is_null($specification_headline)) {
             array_push($this->openAPINullablesSetToNull, 'specification_headline');
@@ -547,9 +547,9 @@ class StandardSingleImageSpecsDetailModule implements ModelInterface, ArrayAcces
     /**
      * Gets specification_list_block
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardHeaderTextListBlock|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\StandardHeaderTextListBlock|null
      */
-    public function getSpecificationListBlock(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardHeaderTextListBlock
+    public function getSpecificationListBlock(): ?\SpApi\Model\aplusContent\v2020_11_01\StandardHeaderTextListBlock
     {
         return $this->container['specification_list_block'];
     }
@@ -557,11 +557,11 @@ class StandardSingleImageSpecsDetailModule implements ModelInterface, ArrayAcces
     /**
      * Sets specification_list_block
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardHeaderTextListBlock|null $specification_list_block specification_list_block
+     * @param \SpApi\Model\aplusContent\v2020_11_01\StandardHeaderTextListBlock|null $specification_list_block specification_list_block
      *
      * @return self
      */
-    public function setSpecificationListBlock(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardHeaderTextListBlock $specification_list_block): self
+    public function setSpecificationListBlock(?\SpApi\Model\aplusContent\v2020_11_01\StandardHeaderTextListBlock $specification_list_block): self
     {
         if (is_null($specification_list_block)) {
             array_push($this->openAPINullablesSetToNull, 'specification_list_block');
@@ -581,9 +581,9 @@ class StandardSingleImageSpecsDetailModule implements ModelInterface, ArrayAcces
     /**
      * Gets specification_text_block
      *
-     * @return \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextBlock|null
+     * @return \SpApi\Model\aplusContent\v2020_11_01\StandardTextBlock|null
      */
-    public function getSpecificationTextBlock(): ?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextBlock
+    public function getSpecificationTextBlock(): ?\SpApi\Model\aplusContent\v2020_11_01\StandardTextBlock
     {
         return $this->container['specification_text_block'];
     }
@@ -591,11 +591,11 @@ class StandardSingleImageSpecsDetailModule implements ModelInterface, ArrayAcces
     /**
      * Sets specification_text_block
      *
-     * @param \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextBlock|null $specification_text_block specification_text_block
+     * @param \SpApi\Model\aplusContent\v2020_11_01\StandardTextBlock|null $specification_text_block specification_text_block
      *
      * @return self
      */
-    public function setSpecificationTextBlock(?\OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardTextBlock $specification_text_block): self
+    public function setSpecificationTextBlock(?\SpApi\Model\aplusContent\v2020_11_01\StandardTextBlock $specification_text_block): self
     {
         if (is_null($specification_text_block)) {
             array_push($this->openAPINullablesSetToNull, 'specification_text_block');

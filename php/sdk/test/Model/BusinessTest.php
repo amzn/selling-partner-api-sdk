@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\sellers\v1\Business;
+use SpApi\Model\sellers\v1\Business;
 
 /**
  * BusinessTest Class Doc Comment
  *
  * @category    Class
  * @description Information about the Seller&#39;s business. These fields may be omitted if the Seller is registered as an individual.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class BusinessTest extends TestCase
 {
@@ -68,7 +68,7 @@ class BusinessTest extends TestCase
     public function testPropertyRegisteredBusinessAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\sellers\v1\Address();
+        $testValue = new \SpApi\Model\sellers\v1\Address();
         
         $this->model->setRegisteredBusinessAddress($testValue);
         $this->assertEquals($testValue, $this->model->getRegisteredBusinessAddress());

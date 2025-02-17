@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\sellers\v1;
+namespace SpApi\Model\sellers\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Account Class Doc Comment
  *
  * @category Class
  * @description The response schema for the &#x60;getAccount&#x60; operation.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,11 +60,11 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'marketplace_participation_list' => '\OpenAPI\Client\Model\sellers\v1\MarketplaceParticipation[]',
+             'marketplace_participation_list' => '\SpApi\Model\sellers\v1\MarketplaceParticipation[]',
              'business_type' => 'string',
              'selling_plan' => 'string',
-             'business' => '\OpenAPI\Client\Model\sellers\v1\Business',
-             'primary_contact' => '\OpenAPI\Client\Model\sellers\v1\PrimaryContact'    ];
+             'business' => '\SpApi\Model\sellers\v1\Business',
+             'primary_contact' => '\SpApi\Model\sellers\v1\PrimaryContact'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -492,9 +492,9 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets business
      *
-     * @return \OpenAPI\Client\Model\sellers\v1\Business|null
+     * @return \SpApi\Model\sellers\v1\Business|null
      */
-    public function getBusiness(): ?\OpenAPI\Client\Model\sellers\v1\Business
+    public function getBusiness(): ?\SpApi\Model\sellers\v1\Business
     {
         return $this->container['business'];
     }
@@ -502,11 +502,11 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets business
      *
-     * @param \OpenAPI\Client\Model\sellers\v1\Business|null $business business
+     * @param \SpApi\Model\sellers\v1\Business|null $business business
      *
      * @return self
      */
-    public function setBusiness(?\OpenAPI\Client\Model\sellers\v1\Business $business): self
+    public function setBusiness(?\SpApi\Model\sellers\v1\Business $business): self
     {
         if (is_null($business)) {
             array_push($this->openAPINullablesSetToNull, 'business');
@@ -526,9 +526,9 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets primary_contact
      *
-     * @return \OpenAPI\Client\Model\sellers\v1\PrimaryContact|null
+     * @return \SpApi\Model\sellers\v1\PrimaryContact|null
      */
-    public function getPrimaryContact(): ?\OpenAPI\Client\Model\sellers\v1\PrimaryContact
+    public function getPrimaryContact(): ?\SpApi\Model\sellers\v1\PrimaryContact
     {
         return $this->container['primary_contact'];
     }
@@ -536,11 +536,11 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets primary_contact
      *
-     * @param \OpenAPI\Client\Model\sellers\v1\PrimaryContact|null $primary_contact primary_contact
+     * @param \SpApi\Model\sellers\v1\PrimaryContact|null $primary_contact primary_contact
      *
      * @return self
      */
-    public function setPrimaryContact(?\OpenAPI\Client\Model\sellers\v1\PrimaryContact $primary_contact): self
+    public function setPrimaryContact(?\SpApi\Model\sellers\v1\PrimaryContact $primary_contact): self
     {
         if (is_null($primary_contact)) {
             array_push($this->openAPINullablesSetToNull, 'primary_contact');

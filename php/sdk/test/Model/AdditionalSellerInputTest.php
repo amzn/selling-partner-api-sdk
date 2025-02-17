@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\merchantFulfillment\v0\AdditionalSellerInput;
+use SpApi\Model\merchantFulfillment\v0\AdditionalSellerInput;
 
 /**
  * AdditionalSellerInputTest Class Doc Comment
  *
  * @category    Class
  * @description Additional information required to purchase shipping.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class AdditionalSellerInputTest extends TestCase
 {
@@ -113,7 +113,7 @@ class AdditionalSellerInputTest extends TestCase
     public function testPropertyValueAsAddress()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\v0\Address();
+        $testValue = new \SpApi\Model\merchantFulfillment\v0\Address();
         
         $this->model->setValueAsAddress($testValue);
         $this->assertEquals($testValue, $this->model->getValueAsAddress());
@@ -125,7 +125,7 @@ class AdditionalSellerInputTest extends TestCase
     public function testPropertyValueAsWeight()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\v0\Weight();
+        $testValue = new \SpApi\Model\merchantFulfillment\v0\Weight();
         
         $this->model->setValueAsWeight($testValue);
         $this->assertEquals($testValue, $this->model->getValueAsWeight());
@@ -137,7 +137,7 @@ class AdditionalSellerInputTest extends TestCase
     public function testPropertyValueAsDimension()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\v0\Length();
+        $testValue = new \SpApi\Model\merchantFulfillment\v0\Length();
         
         $this->model->setValueAsDimension($testValue);
         $this->assertEquals($testValue, $this->model->getValueAsDimension());
@@ -149,7 +149,7 @@ class AdditionalSellerInputTest extends TestCase
     public function testPropertyValueAsCurrency()
     {
         
-        $testValue = new \OpenAPI\Client\Model\merchantFulfillment\v0\CurrencyAmount();
+        $testValue = new \SpApi\Model\merchantFulfillment\v0\CurrencyAmount();
         
         $this->model->setValueAsCurrency($testValue);
         $this->assertEquals($testValue, $this->model->getValueAsCurrency());

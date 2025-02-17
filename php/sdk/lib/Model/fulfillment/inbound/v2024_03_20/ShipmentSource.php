@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20;
+namespace SpApi\Model\fulfillment\inbound\v2024_03_20;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * ShipmentSource Class Doc Comment
  *
  * @category Class
  * @description Specifies the &#39;ship from&#39; address for the shipment.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class ShipmentSource implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'address' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Address',
+             'address' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\Address',
              'source_type' => 'string'    ];
 
     /**
@@ -312,9 +312,9 @@ class ShipmentSource implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets address
      *
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Address|null
+     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\Address|null
      */
-    public function getAddress(): ?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Address
+    public function getAddress(): ?\SpApi\Model\fulfillment\inbound\v2024_03_20\Address
     {
         return $this->container['address'];
     }
@@ -322,11 +322,11 @@ class ShipmentSource implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets address
      *
-     * @param \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Address|null $address address
+     * @param \SpApi\Model\fulfillment\inbound\v2024_03_20\Address|null $address address
      *
      * @return self
      */
-    public function setAddress(?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Address $address): self
+    public function setAddress(?\SpApi\Model\fulfillment\inbound\v2024_03_20\Address $address): self
     {
         if (is_null($address)) {
             array_push($this->openAPINullablesSetToNull, 'address');

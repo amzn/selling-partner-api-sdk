@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\v2\CarrierAccountAttribute;
+use SpApi\Model\shipping\v2\CarrierAccountAttribute;
 
 /**
  * CarrierAccountAttributeTest Class Doc Comment
  *
  * @category    Class
  * @description Attribute Properties required by carrier
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class CarrierAccountAttributeTest extends TestCase
 {

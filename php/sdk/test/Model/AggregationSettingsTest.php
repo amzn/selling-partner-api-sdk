@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\notifications\v1\AggregationSettings;
+use SpApi\Model\notifications\v1\AggregationSettings;
 
 /**
  * AggregationSettingsTest Class Doc Comment
  *
  * @category    Class
  * @description A container that holds all of the necessary properties to configure the aggregation of notifications.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class AggregationSettingsTest extends TestCase
 {
@@ -56,7 +56,7 @@ class AggregationSettingsTest extends TestCase
      */
     public function testPropertyAggregationTimePeriod()
     {
-        $enumInstance = new \OpenAPI\Client\Model\notifications\v1\AggregationTimePeriod();
+        $enumInstance = new \SpApi\Model\notifications\v1\AggregationTimePeriod();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

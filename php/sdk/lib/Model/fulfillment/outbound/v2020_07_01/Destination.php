@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01;
+namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Destination Class Doc Comment
  *
  * @category Class
  * @description The destination for the delivery offer.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class Destination implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'delivery_address' => '\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\VariablePrecisionAddress',
+             'delivery_address' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\VariablePrecisionAddress',
              'ip_address' => 'string'    ];
 
     /**
@@ -301,9 +301,9 @@ class Destination implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets delivery_address
      *
-     * @return \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\VariablePrecisionAddress|null
+     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\VariablePrecisionAddress|null
      */
-    public function getDeliveryAddress(): ?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\VariablePrecisionAddress
+    public function getDeliveryAddress(): ?\SpApi\Model\fulfillment\outbound\v2020_07_01\VariablePrecisionAddress
     {
         return $this->container['delivery_address'];
     }
@@ -311,11 +311,11 @@ class Destination implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets delivery_address
      *
-     * @param \OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\VariablePrecisionAddress|null $delivery_address delivery_address
+     * @param \SpApi\Model\fulfillment\outbound\v2020_07_01\VariablePrecisionAddress|null $delivery_address delivery_address
      *
      * @return self
      */
-    public function setDeliveryAddress(?\OpenAPI\Client\Model\fulfillment\outbound\v2020_07_01\VariablePrecisionAddress $delivery_address): self
+    public function setDeliveryAddress(?\SpApi\Model\fulfillment\outbound\v2020_07_01\VariablePrecisionAddress $delivery_address): self
     {
         if (is_null($delivery_address)) {
             array_push($this->openAPINullablesSetToNull, 'delivery_address');

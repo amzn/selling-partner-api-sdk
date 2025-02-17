@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\productTypeDefinitions\v2020_09_01\SchemaLink;
+use SpApi\Model\productTypeDefinitions\v2020_09_01\SchemaLink;
 
 /**
  * SchemaLinkTest Class Doc Comment
  *
  * @category    Class
  * @description SchemaLink
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class SchemaLinkTest extends TestCase
 {
@@ -57,7 +57,7 @@ class SchemaLinkTest extends TestCase
     public function testPropertyLink()
     {
         
-        $testValue = new \OpenAPI\Client\Model\productTypeDefinitions\v2020_09_01\SchemaLinkLink();
+        $testValue = new \SpApi\Model\productTypeDefinitions\v2020_09_01\SchemaLinkLink();
         
         $this->model->setLink($testValue);
         $this->assertEquals($testValue, $this->model->getLink());

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\v1\Technician;
+use SpApi\Model\services\v1\Technician;
 
 /**
  * TechnicianTest Class Doc Comment
  *
  * @category    Class
  * @description A technician who is assigned to perform the service job in part or in full.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class TechnicianTest extends TestCase
 {

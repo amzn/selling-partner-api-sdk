@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardComparisonProductBlock;
+use SpApi\Model\aplusContent\v2020_11_01\StandardComparisonProductBlock;
 
 /**
  * StandardComparisonProductBlockTest Class Doc Comment
  *
  * @category    Class
  * @description The A+ Content standard comparison product block.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class StandardComparisonProductBlockTest extends TestCase
 {
@@ -68,7 +68,7 @@ class StandardComparisonProductBlockTest extends TestCase
     public function testPropertyImage()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\ImageComponent();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\ImageComponent();
         
         $this->model->setImage($testValue);
         $this->assertEquals($testValue, $this->model->getImage());

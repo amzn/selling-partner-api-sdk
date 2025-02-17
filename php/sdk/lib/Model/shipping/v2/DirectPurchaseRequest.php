@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,19 +27,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\shipping\v2;
+namespace SpApi\Model\shipping\v2;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * DirectPurchaseRequest Class Doc Comment
  *
  * @category Class
  * @description The request schema for the directPurchaseShipment operation. When the channel type is Amazon, the shipTo address is not required and will be ignored.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,12 +61,12 @@ class DirectPurchaseRequest implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'ship_to' => '\OpenAPI\Client\Model\shipping\v2\Address',
-             'ship_from' => '\OpenAPI\Client\Model\shipping\v2\Address',
-             'return_to' => '\OpenAPI\Client\Model\shipping\v2\Address',
-             'packages' => '\OpenAPI\Client\Model\shipping\v2\Package[]',
-             'channel_details' => '\OpenAPI\Client\Model\shipping\v2\ChannelDetails',
-             'label_specifications' => '\OpenAPI\Client\Model\shipping\v2\RequestedDocumentSpecification'    ];
+             'ship_to' => '\SpApi\Model\shipping\v2\Address',
+             'ship_from' => '\SpApi\Model\shipping\v2\Address',
+             'return_to' => '\SpApi\Model\shipping\v2\Address',
+             'packages' => '\SpApi\Model\shipping\v2\Package[]',
+             'channel_details' => '\SpApi\Model\shipping\v2\ChannelDetails',
+             'label_specifications' => '\SpApi\Model\shipping\v2\RequestedDocumentSpecification'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -333,9 +333,9 @@ class DirectPurchaseRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets ship_to
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\Address|null
+     * @return \SpApi\Model\shipping\v2\Address|null
      */
-    public function getShipTo(): ?\OpenAPI\Client\Model\shipping\v2\Address
+    public function getShipTo(): ?\SpApi\Model\shipping\v2\Address
     {
         return $this->container['ship_to'];
     }
@@ -343,11 +343,11 @@ class DirectPurchaseRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets ship_to
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\Address|null $ship_to ship_to
+     * @param \SpApi\Model\shipping\v2\Address|null $ship_to ship_to
      *
      * @return self
      */
-    public function setShipTo(?\OpenAPI\Client\Model\shipping\v2\Address $ship_to): self
+    public function setShipTo(?\SpApi\Model\shipping\v2\Address $ship_to): self
     {
         if (is_null($ship_to)) {
             array_push($this->openAPINullablesSetToNull, 'ship_to');
@@ -367,9 +367,9 @@ class DirectPurchaseRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets ship_from
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\Address|null
+     * @return \SpApi\Model\shipping\v2\Address|null
      */
-    public function getShipFrom(): ?\OpenAPI\Client\Model\shipping\v2\Address
+    public function getShipFrom(): ?\SpApi\Model\shipping\v2\Address
     {
         return $this->container['ship_from'];
     }
@@ -377,11 +377,11 @@ class DirectPurchaseRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets ship_from
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\Address|null $ship_from ship_from
+     * @param \SpApi\Model\shipping\v2\Address|null $ship_from ship_from
      *
      * @return self
      */
-    public function setShipFrom(?\OpenAPI\Client\Model\shipping\v2\Address $ship_from): self
+    public function setShipFrom(?\SpApi\Model\shipping\v2\Address $ship_from): self
     {
         if (is_null($ship_from)) {
             array_push($this->openAPINullablesSetToNull, 'ship_from');
@@ -401,9 +401,9 @@ class DirectPurchaseRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets return_to
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\Address|null
+     * @return \SpApi\Model\shipping\v2\Address|null
      */
-    public function getReturnTo(): ?\OpenAPI\Client\Model\shipping\v2\Address
+    public function getReturnTo(): ?\SpApi\Model\shipping\v2\Address
     {
         return $this->container['return_to'];
     }
@@ -411,11 +411,11 @@ class DirectPurchaseRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets return_to
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\Address|null $return_to return_to
+     * @param \SpApi\Model\shipping\v2\Address|null $return_to return_to
      *
      * @return self
      */
-    public function setReturnTo(?\OpenAPI\Client\Model\shipping\v2\Address $return_to): self
+    public function setReturnTo(?\SpApi\Model\shipping\v2\Address $return_to): self
     {
         if (is_null($return_to)) {
             array_push($this->openAPINullablesSetToNull, 'return_to');
@@ -469,9 +469,9 @@ class DirectPurchaseRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets channel_details
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\ChannelDetails
+     * @return \SpApi\Model\shipping\v2\ChannelDetails
      */
-    public function getChannelDetails(): \OpenAPI\Client\Model\shipping\v2\ChannelDetails
+    public function getChannelDetails(): \SpApi\Model\shipping\v2\ChannelDetails
     {
         return $this->container['channel_details'];
     }
@@ -479,11 +479,11 @@ class DirectPurchaseRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets channel_details
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\ChannelDetails $channel_details channel_details
+     * @param \SpApi\Model\shipping\v2\ChannelDetails $channel_details channel_details
      *
      * @return self
      */
-    public function setChannelDetails(\OpenAPI\Client\Model\shipping\v2\ChannelDetails $channel_details): self
+    public function setChannelDetails(\SpApi\Model\shipping\v2\ChannelDetails $channel_details): self
     {
         if (is_null($channel_details)) {
             throw new \InvalidArgumentException('non-nullable channel_details cannot be null');
@@ -496,9 +496,9 @@ class DirectPurchaseRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets label_specifications
      *
-     * @return \OpenAPI\Client\Model\shipping\v2\RequestedDocumentSpecification|null
+     * @return \SpApi\Model\shipping\v2\RequestedDocumentSpecification|null
      */
-    public function getLabelSpecifications(): ?\OpenAPI\Client\Model\shipping\v2\RequestedDocumentSpecification
+    public function getLabelSpecifications(): ?\SpApi\Model\shipping\v2\RequestedDocumentSpecification
     {
         return $this->container['label_specifications'];
     }
@@ -506,11 +506,11 @@ class DirectPurchaseRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets label_specifications
      *
-     * @param \OpenAPI\Client\Model\shipping\v2\RequestedDocumentSpecification|null $label_specifications label_specifications
+     * @param \SpApi\Model\shipping\v2\RequestedDocumentSpecification|null $label_specifications label_specifications
      *
      * @return self
      */
-    public function setLabelSpecifications(?\OpenAPI\Client\Model\shipping\v2\RequestedDocumentSpecification $label_specifications): self
+    public function setLabelSpecifications(?\SpApi\Model\shipping\v2\RequestedDocumentSpecification $label_specifications): self
     {
         if (is_null($label_specifications)) {
             array_push($this->openAPINullablesSetToNull, 'label_specifications');

@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\pricing\v2022_05_01;
+namespace SpApi\Model\pricing\v2022_05_01;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * FeaturedOfferExpectedPriceResponseBody Class Doc Comment
  *
  * @category Class
  * @description The FOEP response data for a requested SKU.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,9 +60,9 @@ class FeaturedOfferExpectedPriceResponseBody implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'offer_identifier' => '\OpenAPI\Client\Model\pricing\v2022_05_01\OfferIdentifier',
-             'featured_offer_expected_price_results' => '\OpenAPI\Client\Model\pricing\v2022_05_01\FeaturedOfferExpectedPriceResult[]',
-             'errors' => '\OpenAPI\Client\Model\pricing\v2022_05_01\Error[]'    ];
+             'offer_identifier' => '\SpApi\Model\pricing\v2022_05_01\OfferIdentifier',
+             'featured_offer_expected_price_results' => '\SpApi\Model\pricing\v2022_05_01\FeaturedOfferExpectedPriceResult[]',
+             'errors' => '\SpApi\Model\pricing\v2022_05_01\Error[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -308,9 +308,9 @@ class FeaturedOfferExpectedPriceResponseBody implements ModelInterface, ArrayAcc
     /**
      * Gets offer_identifier
      *
-     * @return \OpenAPI\Client\Model\pricing\v2022_05_01\OfferIdentifier|null
+     * @return \SpApi\Model\pricing\v2022_05_01\OfferIdentifier|null
      */
-    public function getOfferIdentifier(): ?\OpenAPI\Client\Model\pricing\v2022_05_01\OfferIdentifier
+    public function getOfferIdentifier(): ?\SpApi\Model\pricing\v2022_05_01\OfferIdentifier
     {
         return $this->container['offer_identifier'];
     }
@@ -318,11 +318,11 @@ class FeaturedOfferExpectedPriceResponseBody implements ModelInterface, ArrayAcc
     /**
      * Sets offer_identifier
      *
-     * @param \OpenAPI\Client\Model\pricing\v2022_05_01\OfferIdentifier|null $offer_identifier offer_identifier
+     * @param \SpApi\Model\pricing\v2022_05_01\OfferIdentifier|null $offer_identifier offer_identifier
      *
      * @return self
      */
-    public function setOfferIdentifier(?\OpenAPI\Client\Model\pricing\v2022_05_01\OfferIdentifier $offer_identifier): self
+    public function setOfferIdentifier(?\SpApi\Model\pricing\v2022_05_01\OfferIdentifier $offer_identifier): self
     {
         if (is_null($offer_identifier)) {
             array_push($this->openAPINullablesSetToNull, 'offer_identifier');

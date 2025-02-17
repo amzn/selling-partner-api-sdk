@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\vendor\orders\v1\GetPurchaseOrderResponse;
+use SpApi\Model\vendor\orders\v1\GetPurchaseOrderResponse;
 
 /**
  * GetPurchaseOrderResponseTest Class Doc Comment
  *
  * @category    Class
  * @description The response schema for the getPurchaseOrder operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class GetPurchaseOrderResponseTest extends TestCase
 {
@@ -57,7 +57,7 @@ class GetPurchaseOrderResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \OpenAPI\Client\Model\vendor\orders\v1\Order();
+        $testValue = new \SpApi\Model\vendor\orders\v1\Order();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());

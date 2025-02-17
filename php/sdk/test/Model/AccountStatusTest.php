@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\shipping\v2\AccountStatus;
+use SpApi\Model\shipping\v2\AccountStatus;
 
 /**
  * AccountStatusTest Class Doc Comment
  *
  * @category    Class
  * @description Account Status.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class AccountStatusTest extends TestCase
 {

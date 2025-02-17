@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\listings\items\v2021_08_01\PatchOperation;
+use SpApi\Model\listings\items\v2021_08_01\PatchOperation;
 
 /**
  * PatchOperationTest Class Doc Comment
  *
  * @category    Class
  * @description Individual JSON Patch operation for an HTTP PATCH request.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class PatchOperationTest extends TestCase
 {

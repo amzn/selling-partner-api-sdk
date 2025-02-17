@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20;
+namespace SpApi\Model\fulfillment\inbound\v2024_03_20;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * Shipment Class Doc Comment
  *
  * @category Class
  * @description Contains information pertaining to a shipment in an inbound plan.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,20 +61,20 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPITypes = [
              'amazon_reference_id' => 'string',
-             'contact_information' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ContactInformation',
-             'dates' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Dates',
-             'destination' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ShipmentDestination',
-             'freight_information' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\FreightInformation',
+             'contact_information' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\ContactInformation',
+             'dates' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\Dates',
+             'destination' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\ShipmentDestination',
+             'freight_information' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\FreightInformation',
              'name' => 'string',
              'placement_option_id' => 'string',
-             'selected_delivery_window' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\SelectedDeliveryWindow',
+             'selected_delivery_window' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\SelectedDeliveryWindow',
              'selected_transportation_option_id' => 'string',
-             'self_ship_appointment_details' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\SelfShipAppointmentDetails[]',
+             'self_ship_appointment_details' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\SelfShipAppointmentDetails[]',
              'shipment_confirmation_id' => 'string',
              'shipment_id' => 'string',
-             'source' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ShipmentSource',
+             'source' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\ShipmentSource',
              'status' => 'string',
-             'tracking_details' => '\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\TrackingDetails'    ];
+             'tracking_details' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\TrackingDetails'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -505,9 +505,9 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets contact_information
      *
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ContactInformation|null
+     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\ContactInformation|null
      */
-    public function getContactInformation(): ?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ContactInformation
+    public function getContactInformation(): ?\SpApi\Model\fulfillment\inbound\v2024_03_20\ContactInformation
     {
         return $this->container['contact_information'];
     }
@@ -515,11 +515,11 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets contact_information
      *
-     * @param \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ContactInformation|null $contact_information contact_information
+     * @param \SpApi\Model\fulfillment\inbound\v2024_03_20\ContactInformation|null $contact_information contact_information
      *
      * @return self
      */
-    public function setContactInformation(?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ContactInformation $contact_information): self
+    public function setContactInformation(?\SpApi\Model\fulfillment\inbound\v2024_03_20\ContactInformation $contact_information): self
     {
         if (is_null($contact_information)) {
             array_push($this->openAPINullablesSetToNull, 'contact_information');
@@ -539,9 +539,9 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets dates
      *
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Dates|null
+     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\Dates|null
      */
-    public function getDates(): ?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Dates
+    public function getDates(): ?\SpApi\Model\fulfillment\inbound\v2024_03_20\Dates
     {
         return $this->container['dates'];
     }
@@ -549,11 +549,11 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets dates
      *
-     * @param \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Dates|null $dates dates
+     * @param \SpApi\Model\fulfillment\inbound\v2024_03_20\Dates|null $dates dates
      *
      * @return self
      */
-    public function setDates(?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\Dates $dates): self
+    public function setDates(?\SpApi\Model\fulfillment\inbound\v2024_03_20\Dates $dates): self
     {
         if (is_null($dates)) {
             array_push($this->openAPINullablesSetToNull, 'dates');
@@ -573,9 +573,9 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets destination
      *
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ShipmentDestination
+     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\ShipmentDestination
      */
-    public function getDestination(): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ShipmentDestination
+    public function getDestination(): \SpApi\Model\fulfillment\inbound\v2024_03_20\ShipmentDestination
     {
         return $this->container['destination'];
     }
@@ -583,11 +583,11 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets destination
      *
-     * @param \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ShipmentDestination $destination destination
+     * @param \SpApi\Model\fulfillment\inbound\v2024_03_20\ShipmentDestination $destination destination
      *
      * @return self
      */
-    public function setDestination(\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ShipmentDestination $destination): self
+    public function setDestination(\SpApi\Model\fulfillment\inbound\v2024_03_20\ShipmentDestination $destination): self
     {
         if (is_null($destination)) {
             throw new \InvalidArgumentException('non-nullable destination cannot be null');
@@ -600,9 +600,9 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets freight_information
      *
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\FreightInformation|null
+     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\FreightInformation|null
      */
-    public function getFreightInformation(): ?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\FreightInformation
+    public function getFreightInformation(): ?\SpApi\Model\fulfillment\inbound\v2024_03_20\FreightInformation
     {
         return $this->container['freight_information'];
     }
@@ -610,11 +610,11 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets freight_information
      *
-     * @param \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\FreightInformation|null $freight_information freight_information
+     * @param \SpApi\Model\fulfillment\inbound\v2024_03_20\FreightInformation|null $freight_information freight_information
      *
      * @return self
      */
-    public function setFreightInformation(?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\FreightInformation $freight_information): self
+    public function setFreightInformation(?\SpApi\Model\fulfillment\inbound\v2024_03_20\FreightInformation $freight_information): self
     {
         if (is_null($freight_information)) {
             array_push($this->openAPINullablesSetToNull, 'freight_information');
@@ -705,9 +705,9 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets selected_delivery_window
      *
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\SelectedDeliveryWindow|null
+     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\SelectedDeliveryWindow|null
      */
-    public function getSelectedDeliveryWindow(): ?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\SelectedDeliveryWindow
+    public function getSelectedDeliveryWindow(): ?\SpApi\Model\fulfillment\inbound\v2024_03_20\SelectedDeliveryWindow
     {
         return $this->container['selected_delivery_window'];
     }
@@ -715,11 +715,11 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets selected_delivery_window
      *
-     * @param \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\SelectedDeliveryWindow|null $selected_delivery_window selected_delivery_window
+     * @param \SpApi\Model\fulfillment\inbound\v2024_03_20\SelectedDeliveryWindow|null $selected_delivery_window selected_delivery_window
      *
      * @return self
      */
-    public function setSelectedDeliveryWindow(?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\SelectedDeliveryWindow $selected_delivery_window): self
+    public function setSelectedDeliveryWindow(?\SpApi\Model\fulfillment\inbound\v2024_03_20\SelectedDeliveryWindow $selected_delivery_window): self
     {
         if (is_null($selected_delivery_window)) {
             array_push($this->openAPINullablesSetToNull, 'selected_delivery_window');
@@ -895,9 +895,9 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets source
      *
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ShipmentSource
+     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\ShipmentSource
      */
-    public function getSource(): \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ShipmentSource
+    public function getSource(): \SpApi\Model\fulfillment\inbound\v2024_03_20\ShipmentSource
     {
         return $this->container['source'];
     }
@@ -905,11 +905,11 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets source
      *
-     * @param \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ShipmentSource $source source
+     * @param \SpApi\Model\fulfillment\inbound\v2024_03_20\ShipmentSource $source source
      *
      * @return self
      */
-    public function setSource(\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\ShipmentSource $source): self
+    public function setSource(\SpApi\Model\fulfillment\inbound\v2024_03_20\ShipmentSource $source): self
     {
         if (is_null($source)) {
             throw new \InvalidArgumentException('non-nullable source cannot be null');
@@ -963,9 +963,9 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets tracking_details
      *
-     * @return \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\TrackingDetails|null
+     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\TrackingDetails|null
      */
-    public function getTrackingDetails(): ?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\TrackingDetails
+    public function getTrackingDetails(): ?\SpApi\Model\fulfillment\inbound\v2024_03_20\TrackingDetails
     {
         return $this->container['tracking_details'];
     }
@@ -973,11 +973,11 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tracking_details
      *
-     * @param \OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\TrackingDetails|null $tracking_details tracking_details
+     * @param \SpApi\Model\fulfillment\inbound\v2024_03_20\TrackingDetails|null $tracking_details tracking_details
      *
      * @return self
      */
-    public function setTrackingDetails(?\OpenAPI\Client\Model\fulfillment\inbound\v2024_03_20\TrackingDetails $tracking_details): self
+    public function setTrackingDetails(?\SpApi\Model\fulfillment\inbound\v2024_03_20\TrackingDetails $tracking_details): self
     {
         if (is_null($tracking_details)) {
             array_push($this->openAPINullablesSetToNull, 'tracking_details');

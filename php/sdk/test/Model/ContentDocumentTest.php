@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentDocument;
+use SpApi\Model\aplusContent\v2020_11_01\ContentDocument;
 
 /**
  * ContentDocumentTest Class Doc Comment
  *
  * @category    Class
  * @description The A+ Content document. This is the enhanced content that is published to product detail pages.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class ContentDocumentTest extends TestCase
 {
@@ -67,7 +67,7 @@ class ContentDocumentTest extends TestCase
      */
     public function testPropertyContentType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\ContentType();
+        $enumInstance = new \SpApi\Model\aplusContent\v2020_11_01\ContentType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

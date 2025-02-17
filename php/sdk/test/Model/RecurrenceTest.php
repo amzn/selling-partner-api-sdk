@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\v1\Recurrence;
+use SpApi\Model\services\v1\Recurrence;
 
 /**
  * RecurrenceTest Class Doc Comment
  *
  * @category    Class
  * @description Repeated occurrence of an event in a time range.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class RecurrenceTest extends TestCase
 {

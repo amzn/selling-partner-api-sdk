@@ -5,7 +5,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,19 +26,19 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model\vendor\shipments\v1;
+namespace SpApi\Model\vendor\shipments\v1;
 
 use
 ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
-use OpenAPI\Client\Model\ModelInterface;
+use SpApi\ObjectSerializer;
+use SpApi\Model\ModelInterface;
 
 /**
  * PackageItemDetails Class Doc Comment
  *
  * @category Class
  * @description Item details for be provided for every item in shipment at either the item or carton or pallet level, whichever is appropriate.
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +62,7 @@ class PackageItemDetails implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static array $openAPITypes = [
              'purchase_order_number' => 'string',
              'lot_number' => 'string',
-             'expiry' => '\OpenAPI\Client\Model\vendor\shipments\v1\Expiry'    ];
+             'expiry' => '\SpApi\Model\vendor\shipments\v1\Expiry'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -376,9 +376,9 @@ class PackageItemDetails implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets expiry
      *
-     * @return \OpenAPI\Client\Model\vendor\shipments\v1\Expiry|null
+     * @return \SpApi\Model\vendor\shipments\v1\Expiry|null
      */
-    public function getExpiry(): ?\OpenAPI\Client\Model\vendor\shipments\v1\Expiry
+    public function getExpiry(): ?\SpApi\Model\vendor\shipments\v1\Expiry
     {
         return $this->container['expiry'];
     }
@@ -386,11 +386,11 @@ class PackageItemDetails implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets expiry
      *
-     * @param \OpenAPI\Client\Model\vendor\shipments\v1\Expiry|null $expiry expiry
+     * @param \SpApi\Model\vendor\shipments\v1\Expiry|null $expiry expiry
      *
      * @return self
      */
-    public function setExpiry(?\OpenAPI\Client\Model\vendor\shipments\v1\Expiry $expiry): self
+    public function setExpiry(?\SpApi\Model\vendor\shipments\v1\Expiry $expiry): self
     {
         if (is_null($expiry)) {
             array_push($this->openAPINullablesSetToNull, 'expiry');

@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\services\v1\RangeCapacity;
+use SpApi\Model\services\v1\RangeCapacity;
 
 /**
  * RangeCapacityTest Class Doc Comment
  *
  * @category    Class
  * @description Range capacity entity where each entry has a capacity type and corresponding slots.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class RangeCapacityTest extends TestCase
 {
@@ -56,7 +56,7 @@ class RangeCapacityTest extends TestCase
      */
     public function testPropertyCapacityType()
     {
-        $enumInstance = new \OpenAPI\Client\Model\services\v1\CapacityType();
+        $enumInstance = new \SpApi\Model\services\v1\CapacityType();
         $allowedValues = $enumInstance->getAllowableEnumValues();
         $testValue = reset($allowedValues);
         

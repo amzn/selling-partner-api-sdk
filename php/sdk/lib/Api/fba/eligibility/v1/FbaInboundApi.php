@@ -4,7 +4,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api\fba\eligibility\v1;
+namespace SpApi\Api\fba\eligibility\v1;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -39,16 +39,16 @@ use SpApi\AuthAndAuth\RateLimitConfiguration;
 use Symfony\Component\RateLimiter\LimiterInterface;
 use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\ObjectSerializer;
+use SpApi\ApiException;
+use SpApi\Configuration;
+use SpApi\HeaderSelector;
+use SpApi\ObjectSerializer;
 
 /**
  * FbaInboundApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -159,15 +159,15 @@ class FbaInboundApi
      * @param  string[]|null $marketplace_ids
      *  The identifier for the marketplace in which you want to determine eligibility. Required only when program&#x3D;INBOUND. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse
+     * @return \SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse
      */
     public function getItemEligibilityPreview(
         string $asin,
         string $program,
         ?array $marketplace_ids = null
-    ): \OpenAPI\Client\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse {
+    ): \SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse {
         list($response) = $this->getItemEligibilityPreviewWithHttpInfo($asin, $program, $marketplace_ids);
         return $response;
     }
@@ -182,9 +182,9 @@ class FbaInboundApi
      * @param  string[]|null $marketplace_ids
      *  The identifier for the marketplace in which you want to determine eligibility. Required only when program&#x3D;INBOUND. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getItemEligibilityPreviewWithHttpInfo(
         string $asin,
@@ -232,128 +232,128 @@ class FbaInboundApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse' !== 'string') {
+                        if ('\SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse' !== 'string') {
+                        if ('\SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse' !== 'string') {
+                        if ('\SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse' !== 'string') {
+                        if ('\SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse' !== 'string') {
+                        if ('\SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 429:
-                    if ('\OpenAPI\Client\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse' !== 'string') {
+                        if ('\SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse' !== 'string') {
+                        if ('\SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 503:
-                    if ('\OpenAPI\Client\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse' === '\SplFileObject') {
+                    if ('\SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse' !== 'string') {
+                        if ('\SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse', []),
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse';
+            $returnType = '\SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -374,7 +374,7 @@ class FbaInboundApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse',
+                        '\SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -382,7 +382,7 @@ class FbaInboundApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse',
+                        '\SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -390,7 +390,7 @@ class FbaInboundApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse',
+                        '\SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -398,7 +398,7 @@ class FbaInboundApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse',
+                        '\SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -406,7 +406,7 @@ class FbaInboundApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse',
+                        '\SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -414,7 +414,7 @@ class FbaInboundApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse',
+                        '\SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -422,7 +422,7 @@ class FbaInboundApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse',
+                        '\SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -430,7 +430,7 @@ class FbaInboundApi
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse',
+                        '\SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -484,7 +484,7 @@ class FbaInboundApi
         string $program,
         ?array $marketplace_ids = null
     ): PromiseInterface {
-        $returnType = '\OpenAPI\Client\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse';
+        $returnType = '\SpApi\Model\fba\eligibility\v1\GetItemEligibilityPreviewResponse';
         $request = $this->getItemEligibilityPreviewRequest($asin, $program, $marketplace_ids);
         $request = $this->config->sign($request);
         $this->rateLimitWait();

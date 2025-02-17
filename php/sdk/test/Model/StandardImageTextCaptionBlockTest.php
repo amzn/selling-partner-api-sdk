@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextCaptionBlock;
+use SpApi\Model\aplusContent\v2020_11_01\StandardImageTextCaptionBlock;
 
 /**
  * StandardImageTextCaptionBlockTest Class Doc Comment
  *
  * @category    Class
  * @description The A+ Content standard image and text block, with a related caption. The caption may not display on all devices.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class StandardImageTextCaptionBlockTest extends TestCase
 {
@@ -57,7 +57,7 @@ class StandardImageTextCaptionBlockTest extends TestCase
     public function testPropertyBlock()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\StandardImageTextBlock();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\StandardImageTextBlock();
         
         $this->model->setBlock($testValue);
         $this->assertEquals($testValue, $this->model->getBlock());
@@ -69,7 +69,7 @@ class StandardImageTextCaptionBlockTest extends TestCase
     public function testPropertyCaption()
     {
         
-        $testValue = new \OpenAPI\Client\Model\aplusContent\v2020_11_01\TextComponent();
+        $testValue = new \SpApi\Model\aplusContent\v2020_11_01\TextComponent();
         
         $this->model->setCaption($testValue);
         $this->assertEquals($testValue, $this->model->getCaption());

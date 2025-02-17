@@ -5,22 +5,22 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
-namespace OpenAPI\Client\Test\Model;
+namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use OpenAPI\Client\Model\transfers\v2024_06_01\InitiatePayoutResponse;
+use SpApi\Model\transfers\v2024_06_01\InitiatePayoutResponse;
 
 /**
  * InitiatePayoutResponseTest Class Doc Comment
  *
  * @category    Class
  * @description The response schema for the &#x60;initiatePayout&#x60; operation.
- * @package     OpenAPI\Client
+ * @package     SpApi
  */
 class InitiatePayoutResponseTest extends TestCase
 {
