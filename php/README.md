@@ -42,8 +42,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 use SpApi\AuthAndAuth\LWAAuthorizationCredentials;
 use SpApi\AuthAndAuth\LWAAuthorizationSigner;
-use OpenAPI\Client\Api\OrdersApi;
-use OpenAPI\Client\Configuration;
+use SpApi\Api\OrdersApi;
+use SpApi\Configuration;
 
 
 // Set up LWA credentials
@@ -81,14 +81,6 @@ echo 'Exception when calling OrderApi->getOrders: ', $e->getMessage(), PHP_EOL;
 
 
 ```
-
-
-## API Endpoints Documentation
-
-Class | Method                                           | HTTP request | Description
------------- |--------------------------------------------------| ------------- | -------------
-*Orders API* | [**getOrders**](docs/Api/OrdersApi.md#getorders) | **GET** /orders/v0/orders | Returns orders that are created or updated during the specified time period. If you want to return specific types of orders, you can apply filters to your request. NextToken doesn't affect any filters that you include in your request; it only impacts the pagination for the filtered orders response.
-
 
 ### Giving Feedback
 
