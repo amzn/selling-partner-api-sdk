@@ -4,8 +4,8 @@ require_once '../sdk/vendor/autoload.php';
 
 use SpApi\AuthAndAuth\LWAAuthorizationCredentials;
 use SpApi\AuthAndAuth\LWAAuthorizationSigner;
-use OpenAPI\Client\Api\orders\v0\OrdersApi;
-use OpenAPI\Client\Configuration;
+use SpApi\Api\orders\v0\OrdersApi;
+use SpApi\Configuration;
 use Dotenv\Dotenv;
 
 // Set the credentials, region and marketplace in .env file

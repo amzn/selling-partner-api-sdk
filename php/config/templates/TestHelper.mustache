@@ -16,7 +16,7 @@
 
 namespace {{invokerPackage}}\Test;
 
-use OpenAPI\Client\ObjectSerializer;
+use {{invokerPackage}}\ObjectSerializer;
 use ReflectionClass;
 use ReflectionException;
 use ReflectionMethod;
@@ -487,12 +487,12 @@ class TestHelper
      * @var array|string[]
      */
     private static array $vendorApiTestClassNameList = [
-        'OpenAPI\Client\Test\Api\UpdateInventoryApiTest',
-        'OpenAPI\Client\Test\Api\VendorOrdersApiTest',
-        'OpenAPI\Client\Test\Api\VendorInvoiceApiTest',
-        'OpenAPI\Client\Test\Api\VendorShippingApiTest',
-        'OpenAPI\Client\Test\Api\VendorShippingLabelsApiTest',
-        'OpenAPI\Client\Test\Api\VendorTransactionApi'
+        '{{invokerPackage}}\Test\Api\UpdateInventoryApiTest',
+        '{{invokerPackage}}\Test\Api\VendorOrdersApiTest',
+        '{{invokerPackage}}\Test\Api\VendorInvoiceApiTest',
+        '{{invokerPackage}}\Test\Api\VendorShippingApiTest',
+        '{{invokerPackage}}\Test\Api\VendorShippingLabelsApiTest',
+        '{{invokerPackage}}\Test\Api\VendorTransactionApi'
     ];
 
     /**
