@@ -10,11 +10,11 @@
  * Do not edit the class manually.
  */
 
-package com.amazon.SellingPartnerAPI.models.fba.inbound.v1;
+package com.amazon.SellingPartnerAPI.models.fba.eligibility.v1;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.amazon.SellingPartnerAPI.models.fba.inbound.v1.Error;
+import com.amazon.SellingPartnerAPI.models.fba.eligibility.v1.Error;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;

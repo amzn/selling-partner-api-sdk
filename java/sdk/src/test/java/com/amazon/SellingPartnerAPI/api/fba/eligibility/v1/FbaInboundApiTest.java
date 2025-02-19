@@ -10,11 +10,11 @@
  * Do not edit the class manually.
  */
 
-package com.amazon.SellingPartnerAPI.api.fba.inbound.v1;
+package com.amazon.SellingPartnerAPI.api.fba.eligibility.v1;
 
 import com.amazon.SellingPartnerAPI.ApiResponse;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
-import com.amazon.SellingPartnerAPI.models.fba.inbound.v1.GetItemEligibilityPreviewResponse;
+import com.amazon.SellingPartnerAPI.models.fba.eligibility.v1.GetItemEligibilityPreviewResponse;
 import org.junit.jupiter.api.Test;
 
 import java.net.URI;

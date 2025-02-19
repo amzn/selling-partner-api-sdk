@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 
-package com.amazon.SellingPartnerAPI.api.fba.inbound.v1;
+package com.amazon.SellingPartnerAPI.api.fba.eligibility.v1;
 
 import com.amazon.SellingPartnerAPI.ApiCallback;
 import com.amazon.SellingPartnerAPI.ApiClient;
@@ -27,7 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.amazon.SellingPartnerAPI.models.fba.inbound.v1.GetItemEligibilityPreviewResponse;
+import com.amazon.SellingPartnerAPI.models.fba.eligibility.v1.GetItemEligibilityPreviewResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;

@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 
-package com.amazon.SellingPartnerAPI.models.fba.inbound.v1;
+package com.amazon.SellingPartnerAPI.models.fba.eligibility.v1;
 
 import java.util.Objects;
 import java.util.Arrays;

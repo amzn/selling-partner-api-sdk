@@ -10,12 +10,12 @@
  * Do not edit the class manually.
  */
 
-package com.amazon.SellingPartnerAPI.models.fba.inbound.v1;
+package com.amazon.SellingPartnerAPI.models.fba.eligibility.v1;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.amazon.SellingPartnerAPI.models.fba.inbound.v1.ErrorList;
-import com.amazon.SellingPartnerAPI.models.fba.inbound.v1.ItemEligibilityPreview;
+import com.amazon.SellingPartnerAPI.models.fba.eligibility.v1.ErrorList;
+import com.amazon.SellingPartnerAPI.models.fba.eligibility.v1.ItemEligibilityPreview;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
