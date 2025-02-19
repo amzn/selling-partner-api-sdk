@@ -1,5 +1,73 @@
 plugins {
     id "com.github.node-gradle.node" version "7.1.0"
+    id 'maven-publish'
+    id "signing"
+}
+
+apply plugin: 'java'
+
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
+ext.isReleaseVersion = false
+
+publishing {
+    repositories {
+        maven {
+            def releaseRepo = "https://aws.oss.sonatype.org/service/local/staging/deploy/maven2/"
+            def snapshotRepo = "https://aws.oss.sonatype.org/content/repositories/snapshots/"
+
+            name = "OSSRH"
+            url = isReleaseVersion ? releaseRepo : snapshotRepo
+
+            credentials {
+                username = findProperty("ossrhUsername") ?: System.getenv("OSSRH_USERNAME")
+                password = findProperty("ossrhPassword") ?: System.getenv("OSSRH_PASSWORD")
+            }
+        }
+    }
+
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+
+            pom {
+                groupId = 'software.amazon'
+                name = 'spapi'
+                description = 'The Selling Partner API SDK enables you to easily connect to and work with Amazon\'s REST-based SP-API.'
+                url = 'https://github.com/amzn/selling-partner-api-sdk'
+                packaging = 'jar'
+
+                licenses {
+                    license {
+                        name = 'Apache-2.0'
+                        url = 'https://opensource.org/licenses/Apache-2.0'
+                    }
+                }
+
+                scm {
+                    url = 'https://github.com/amzn/selling-partner-api-sdk.git'
+                    connection = 'scm:git://github.com/amzn/selling-partner-api-sdk.git'
+                    developerConnection = 'scm:git://github.com/amzn/selling-partner-api-sdk.git'
+                }
+
+                developers {
+                    developer {
+                        id = 'spapi'
+                        name = 'Amazon Selling Partner Developer Services'
+                        email = 'mws-dx-support@amazon.com'
+                        organizationUrl = 'https://developer.amazonservices.com/'
+                    }
+                }
+            }
+        }
+    }
+}
+
+signing {
+    sign publishing.publications.mavenJava
 }
 
 group = '{{groupId}}'
@@ -8,8 +76,6 @@ version = '{{artifactVersion}}'
 repositories {
     mavenCentral()
 }
-
-apply plugin: 'java'
 
 sourceSets {
     test {

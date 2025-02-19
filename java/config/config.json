@@ -1,8 +1,7 @@
 {
-  "groupId": "com.amazon.SellingPartnerAPI",
-  "apiPackage" : "com.amazon.SellingPartnerAPI.api",
-  "invokerPackage": "com.amazon.SellingPartnerAPI",
-  "artifactId": "selling-partner-api-java-sdk",
+  "groupId": "software.amazon",
+  "invokerPackage": "software.amazon.spapi",
+  "artifactId": "spapi",
   "artifactVersion": "0.2.0",
   "library": "okhttp4-gson",
   "hideGenerationTimestamp": "true"
