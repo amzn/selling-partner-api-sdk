@@ -17,7 +17,6 @@ jobs:
     env:
       ORG_GRADLE_PROJECT_ossrhUsername: ${{ secrets.JAVA_OSSRH_USER_NAME }}
       ORG_GRADLE_PROJECT_ossrhPassword: ${{ secrets.JAVA_OSSRH_PASSWORD }}
-      ORG_GRADLE_PROJECT_signingKeyId: ${{ secrets.JAVA_SIGNING_KEY_ID }}
       ORG_GRADLE_PROJECT_signingKey: ${{ secrets.JAVA_SIGNING_KEY }}
       ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.JAVA_SIGNING_PASSWORD }}
 
