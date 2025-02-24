@@ -11,10 +11,13 @@ java {
     withSourcesJar()
 }
 
+group = 'software.amazon'
+version = findProperty("sdkVersion") ?: System.getenv("SDK_VERSION")
+
 publishing {
     repositories {
         maven {
-            if(project.version.endsWith('-SNAPSHOT')) {
+            if(version.endsWith('-SNAPSHOT')) {
                 url "https://aws.oss.sonatype.org/content/repositories/snapshots/"
             } else {
                 url "https://aws.oss.sonatype.org/service/local/staging/deploy/maven2/"
@@ -72,9 +75,6 @@ signing {
     useInMemoryPgpKeys(signingKeyId, signingKey, signingPassword)
     sign publishing.publications.mavenJava
 }
-
-group = 'software.amazon'
-version = findProperty("sdkVersion") ?: System.getenv("SDK_VERSION")
 
 repositories {
     mavenCentral()
