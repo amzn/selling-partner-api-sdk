@@ -13,13 +13,13 @@
 namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use SpApi\Model\vendor\orders\v1\OrderItemAcknowledgement;
+use SpApi\Model\vendor\df\orders\v2021_12_28\OrderItemAcknowledgement;
 
 /**
  * OrderItemAcknowledgementTest Class Doc Comment
  *
  * @category    Class
- * @description Represents the acknowledgement details for an individual order item, including the acknowledgement code, acknowledged quantity, scheduled ship and delivery dates, and rejection reason (if applicable).
+ * @description Details of an individual item within the order being acknowledged.
  * @package     SpApi
  */
 class OrderItemAcknowledgementTest extends TestCase
@@ -52,15 +52,36 @@ class OrderItemAcknowledgementTest extends TestCase
     }
 
     /**
-     * Test attribute "acknowledgement_code"
+     * Test attribute "item_sequence_number"
      */
-    public function testPropertyAcknowledgementCode()
+    public function testPropertyItemSequenceNumber()
     {
-        $enumInstance = new OrderItemAcknowledgement();
-        $allowedValues = $enumInstance->getAcknowledgementCodeAllowableValues();
-        $testValue = reset($allowedValues);
-        $this->model->setAcknowledgementCode($testValue);
-        $this->assertEquals($testValue, $this->model->getAcknowledgementCode());
+        $testValue = 'test';
+        
+        $this->model->setItemSequenceNumber($testValue);
+        $this->assertEquals($testValue, $this->model->getItemSequenceNumber());
+    }
+
+    /**
+     * Test attribute "buyer_product_identifier"
+     */
+    public function testPropertyBuyerProductIdentifier()
+    {
+        $testValue = 'test';
+        
+        $this->model->setBuyerProductIdentifier($testValue);
+        $this->assertEquals($testValue, $this->model->getBuyerProductIdentifier());
+    }
+
+    /**
+     * Test attribute "vendor_product_identifier"
+     */
+    public function testPropertyVendorProductIdentifier()
+    {
+        $testValue = 'test';
+        
+        $this->model->setVendorProductIdentifier($testValue);
+        $this->assertEquals($testValue, $this->model->getVendorProductIdentifier());
     }
 
     /**
@@ -69,45 +90,9 @@ class OrderItemAcknowledgementTest extends TestCase
     public function testPropertyAcknowledgedQuantity()
     {
         
-        $testValue = new \SpApi\Model\vendor\orders\v1\ItemQuantity();
+        $testValue = new \SpApi\Model\vendor\df\orders\v2021_12_28\ItemQuantity();
         
         $this->model->setAcknowledgedQuantity($testValue);
         $this->assertEquals($testValue, $this->model->getAcknowledgedQuantity());
-    }
-
-    /**
-     * Test attribute "scheduled_ship_date"
-     */
-    public function testPropertyScheduledShipDate()
-    {
-        
-        $testValue = new \DateTime();
-        
-        $this->model->setScheduledShipDate($testValue);
-        $this->assertEquals($testValue, $this->model->getScheduledShipDate());
-    }
-
-    /**
-     * Test attribute "scheduled_delivery_date"
-     */
-    public function testPropertyScheduledDeliveryDate()
-    {
-        
-        $testValue = new \DateTime();
-        
-        $this->model->setScheduledDeliveryDate($testValue);
-        $this->assertEquals($testValue, $this->model->getScheduledDeliveryDate());
-    }
-
-    /**
-     * Test attribute "rejection_reason"
-     */
-    public function testPropertyRejectionReason()
-    {
-        $enumInstance = new OrderItemAcknowledgement();
-        $allowedValues = $enumInstance->getRejectionReasonAllowableValues();
-        $testValue = reset($allowedValues);
-        $this->model->setRejectionReason($testValue);
-        $this->assertEquals($testValue, $this->model->getRejectionReason());
     }
 }

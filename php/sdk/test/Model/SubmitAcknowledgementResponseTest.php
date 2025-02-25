@@ -13,13 +13,13 @@
 namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use SpApi\Model\vendor\orders\v1\SubmitAcknowledgementResponse;
+use SpApi\Model\vendor\df\orders\v2021_12_28\SubmitAcknowledgementResponse;
 
 /**
  * SubmitAcknowledgementResponseTest Class Doc Comment
  *
  * @category    Class
- * @description The response schema for the submitAcknowledgement operation
+ * @description The response schema for the submitAcknowledgement operation.
  * @package     SpApi
  */
 class SubmitAcknowledgementResponseTest extends TestCase
@@ -57,7 +57,7 @@ class SubmitAcknowledgementResponseTest extends TestCase
     public function testPropertyPayload()
     {
         
-        $testValue = new \SpApi\Model\vendor\orders\v1\TransactionId();
+        $testValue = new \SpApi\Model\vendor\df\orders\v2021_12_28\TransactionId();
         
         $this->model->setPayload($testValue);
         $this->assertEquals($testValue, $this->model->getPayload());
@@ -68,7 +68,8 @@ class SubmitAcknowledgementResponseTest extends TestCase
      */
     public function testPropertyErrors()
     {
-        $testValue = [];
+        
+        $testValue = new \SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList();
         
         $this->model->setErrors($testValue);
         $this->assertEquals($testValue, $this->model->getErrors());

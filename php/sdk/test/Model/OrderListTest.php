@@ -13,13 +13,13 @@
 namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use SpApi\Model\vendor\orders\v1\OrderList;
+use SpApi\Model\vendor\df\orders\v2021_12_28\OrderList;
 
 /**
  * OrderListTest Class Doc Comment
  *
  * @category    Class
- * @description A list of orders returned as response.
+ * @description A list of purchase orders.
  * @package     SpApi
  */
 class OrderListTest extends TestCase
@@ -57,7 +57,7 @@ class OrderListTest extends TestCase
     public function testPropertyPagination()
     {
         
-        $testValue = new \SpApi\Model\vendor\orders\v1\Pagination();
+        $testValue = new \SpApi\Model\vendor\df\orders\v2021_12_28\Pagination();
         
         $this->model->setPagination($testValue);
         $this->assertEquals($testValue, $this->model->getPagination());
