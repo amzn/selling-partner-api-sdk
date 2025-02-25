@@ -1,7 +1,7 @@
 {
-  "groupId": "software.amazon",
+  "groupId": "software.amazon.spapi",
   "invokerPackage": "software.amazon.spapi",
-  "artifactId": "spapi",
+  "artifactId": "spapi-sdk",
   "library": "okhttp4-gson",
   "hideGenerationTimestamp": "true"
 }
