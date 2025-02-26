@@ -1,6 +1,6 @@
 /*
  * The Selling Partner API for Finances
- * The Selling Partner API for Finances provides financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
+ * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
  *
  * OpenAPI spec version: 2024-06-19
  * 
@@ -29,7 +29,7 @@ import java.io.IOException;
 
 public class RelatedIdentifier {
   /**
-   * An enumerated set of related business identifier names.
+   * Enumerated set of related business identifier names.
    */
   @JsonAdapter(RelatedIdentifierNameEnum.Adapter.class)
   public enum RelatedIdentifierNameEnum {
@@ -46,9 +46,7 @@ public class RelatedIdentifier {
     @SerializedName("DISBURSEMENT_ID")
     DISBURSEMENT_ID("DISBURSEMENT_ID"),
     @SerializedName("TRANSFER_ID")
-    TRANSFER_ID("TRANSFER_ID"),
-    @SerializedName("DEFERRED_TRANSACTION_ID")
-    DEFERRED_TRANSACTION_ID("DEFERRED_TRANSACTION_ID");
+    TRANSFER_ID("TRANSFER_ID");
 
     private String value;
 
@@ -95,10 +93,10 @@ public class RelatedIdentifier {
   }
 
    /**
-   * An enumerated set of related business identifier names.
+   * Enumerated set of related business identifier names.
    * @return relatedIdentifierName
   **/
-  @Schema(description = "An enumerated set of related business identifier names.")
+  @Schema(description = "Enumerated set of related business identifier names.")
   public RelatedIdentifierNameEnum getRelatedIdentifierName() {
     return relatedIdentifierName;
   }
@@ -113,10 +111,10 @@ public class RelatedIdentifier {
   }
 
    /**
-   * Corresponding value of &#x60;RelatedIdentifierName&#x60;.
+   * Corresponding value of RelatedIdentifierName
    * @return relatedIdentifierValue
   **/
-  @Schema(description = "Corresponding value of `RelatedIdentifierName`.")
+  @Schema(description = "Corresponding value of RelatedIdentifierName")
   public String getRelatedIdentifierValue() {
     return relatedIdentifierValue;
   }

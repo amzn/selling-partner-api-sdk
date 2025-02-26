@@ -24,6 +24,7 @@ import java.io.IOException;
 import org.threeten.bp.OffsetDateTime;
 import software.amazon.spapi.models.fulfillment.outbound.v2020_07_01.AdditionalLocationInfo;
 import software.amazon.spapi.models.fulfillment.outbound.v2020_07_01.CurrentStatus;
+import software.amazon.spapi.models.fulfillment.outbound.v2020_07_01.DateRange;
 import software.amazon.spapi.models.fulfillment.outbound.v2020_07_01.TrackingAddress;
 import software.amazon.spapi.models.fulfillment.outbound.v2020_07_01.TrackingEventList;
 /**
@@ -65,6 +66,9 @@ public class PackageTrackingDetails {
 
   @SerializedName("currentStatusDescription")
   private String currentStatusDescription = null;
+
+  @SerializedName("deliveryWindow")
+  private DateRange deliveryWindow = null;
 
   @SerializedName("signedForBy")
   private String signedForBy = null;
@@ -261,16 +265,34 @@ public class PackageTrackingDetails {
   }
 
    /**
-   * Description corresponding to the &#x60;CurrentStatus&#x60; value.
+   * Description corresponding to the CurrentStatus value.
    * @return currentStatusDescription
   **/
-  @Schema(description = "Description corresponding to the `CurrentStatus` value.")
+  @Schema(description = "Description corresponding to the CurrentStatus value.")
   public String getCurrentStatusDescription() {
     return currentStatusDescription;
   }
 
   public void setCurrentStatusDescription(String currentStatusDescription) {
     this.currentStatusDescription = currentStatusDescription;
+  }
+
+  public PackageTrackingDetails deliveryWindow(DateRange deliveryWindow) {
+    this.deliveryWindow = deliveryWindow;
+    return this;
+  }
+
+   /**
+   * Get deliveryWindow
+   * @return deliveryWindow
+  **/
+  @Schema(description = "")
+  public DateRange getDeliveryWindow() {
+    return deliveryWindow;
+  }
+
+  public void setDeliveryWindow(DateRange deliveryWindow) {
+    this.deliveryWindow = deliveryWindow;
   }
 
   public PackageTrackingDetails signedForBy(String signedForBy) {
@@ -348,6 +370,7 @@ public class PackageTrackingDetails {
         Objects.equals(this.shipToAddress, packageTrackingDetails.shipToAddress) &&
         Objects.equals(this.currentStatus, packageTrackingDetails.currentStatus) &&
         Objects.equals(this.currentStatusDescription, packageTrackingDetails.currentStatusDescription) &&
+        Objects.equals(this.deliveryWindow, packageTrackingDetails.deliveryWindow) &&
         Objects.equals(this.signedForBy, packageTrackingDetails.signedForBy) &&
         Objects.equals(this.additionalLocationInfo, packageTrackingDetails.additionalLocationInfo) &&
         Objects.equals(this.trackingEvents, packageTrackingDetails.trackingEvents);
@@ -355,7 +378,7 @@ public class PackageTrackingDetails {
 
   @Override
   public int hashCode() {
-    return Objects.hash(packageNumber, trackingNumber, customerTrackingLink, carrierCode, carrierPhoneNumber, carrierURL, shipDate, estimatedArrivalDate, shipToAddress, currentStatus, currentStatusDescription, signedForBy, additionalLocationInfo, trackingEvents);
+    return Objects.hash(packageNumber, trackingNumber, customerTrackingLink, carrierCode, carrierPhoneNumber, carrierURL, shipDate, estimatedArrivalDate, shipToAddress, currentStatus, currentStatusDescription, deliveryWindow, signedForBy, additionalLocationInfo, trackingEvents);
   }
 
 
@@ -375,6 +398,7 @@ public class PackageTrackingDetails {
     sb.append("    shipToAddress: ").append(toIndentedString(shipToAddress)).append("\n");
     sb.append("    currentStatus: ").append(toIndentedString(currentStatus)).append("\n");
     sb.append("    currentStatusDescription: ").append(toIndentedString(currentStatusDescription)).append("\n");
+    sb.append("    deliveryWindow: ").append(toIndentedString(deliveryWindow)).append("\n");
     sb.append("    signedForBy: ").append(toIndentedString(signedForBy)).append("\n");
     sb.append("    additionalLocationInfo: ").append(toIndentedString(additionalLocationInfo)).append("\n");
     sb.append("    trackingEvents: ").append(toIndentedString(trackingEvents)).append("\n");

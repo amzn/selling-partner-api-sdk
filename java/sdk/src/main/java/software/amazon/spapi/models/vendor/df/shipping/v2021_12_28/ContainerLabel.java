@@ -62,10 +62,10 @@ public class ContainerLabel {
   }
 
    /**
-   * The &#x60;Base64encoded&#x60; string of the container label content.
+   * The container label content encoded into a Base64 string.
    * @return content
   **/
-  @Schema(required = true, description = "The `Base64encoded` string of the container label content.")
+  @Schema(required = true, description = "The container label content encoded into a Base64 string.")
   public String getContent() {
     return content;
   }

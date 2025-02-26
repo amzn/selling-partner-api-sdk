@@ -48,7 +48,13 @@ public enum EventCode {
   @SerializedName("Undeliverable")
   UNDELIVERABLE("Undeliverable"),
   @SerializedName("PickupCancelled")
-  PICKUPCANCELLED("PickupCancelled");
+  PICKUPCANCELLED("PickupCancelled"),
+  @SerializedName("ReturnInitiated")
+  RETURNINITIATED("ReturnInitiated"),
+  @SerializedName("AvailableForPickup")
+  AVAILABLEFORPICKUP("AvailableForPickup"),
+  @SerializedName("RecipientRequestedAlternateDeliveryTiming")
+  RECIPIENTREQUESTEDALTERNATEDELIVERYTIMING("RecipientRequestedAlternateDeliveryTiming");
 
   private String value;
 

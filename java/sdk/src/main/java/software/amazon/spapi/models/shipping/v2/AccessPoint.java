@@ -57,7 +57,7 @@ public class AccessPoint {
   private List<ExceptionOperatingHours> exceptionOperatingHours = null;
 
   /**
-   * Gets or Sets assistanceType
+   * Assistance type enum for Access point i.e. STAFF_ASSISTED or SELF_ASSISTED
    */
   @JsonAdapter(AssistanceTypeEnum.Adapter.class)
   public enum AssistanceTypeEnum {
@@ -230,10 +230,10 @@ public class AccessPoint {
   }
 
    /**
-   * Get exceptionOperatingHours
+   * Exception operating hours for Access Point
    * @return exceptionOperatingHours
   **/
-  @Schema(description = "")
+  @Schema(description = "Exception operating hours for Access Point")
   public List<ExceptionOperatingHours> getExceptionOperatingHours() {
     return exceptionOperatingHours;
   }
@@ -248,10 +248,10 @@ public class AccessPoint {
   }
 
    /**
-   * Get assistanceType
+   * Assistance type enum for Access point i.e. STAFF_ASSISTED or SELF_ASSISTED
    * @return assistanceType
   **/
-  @Schema(description = "")
+  @Schema(description = "Assistance type enum for Access point i.e. STAFF_ASSISTED or SELF_ASSISTED")
   public AssistanceTypeEnum getAssistanceType() {
     return assistanceType;
   }

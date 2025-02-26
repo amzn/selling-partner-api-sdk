@@ -26,6 +26,7 @@ import java.util.List;
 import software.amazon.spapi.models.shipping.v2.DocumentFormat;
 import software.amazon.spapi.models.shipping.v2.DocumentSize;
 import software.amazon.spapi.models.shipping.v2.DocumentType;
+import software.amazon.spapi.models.shipping.v2.RequestedLabelCustomization;
 /**
  * The document specifications requested. For calls to the purchaseShipment operation, the shipment purchase fails if the specified document specifications are not among those returned in the response to the getRates operation.
  */
@@ -50,6 +51,9 @@ public class RequestedDocumentSpecification {
 
   @SerializedName("requestedDocumentTypes")
   private List<DocumentType> requestedDocumentTypes = new ArrayList<DocumentType>();
+
+  @SerializedName("requestedLabelCustomization")
+  private RequestedLabelCustomization requestedLabelCustomization = null;
 
   public RequestedDocumentSpecification format(DocumentFormat format) {
     this.format = format;
@@ -164,6 +168,24 @@ public class RequestedDocumentSpecification {
     this.requestedDocumentTypes = requestedDocumentTypes;
   }
 
+  public RequestedDocumentSpecification requestedLabelCustomization(RequestedLabelCustomization requestedLabelCustomization) {
+    this.requestedLabelCustomization = requestedLabelCustomization;
+    return this;
+  }
+
+   /**
+   * Get requestedLabelCustomization
+   * @return requestedLabelCustomization
+  **/
+  @Schema(description = "")
+  public RequestedLabelCustomization getRequestedLabelCustomization() {
+    return requestedLabelCustomization;
+  }
+
+  public void setRequestedLabelCustomization(RequestedLabelCustomization requestedLabelCustomization) {
+    this.requestedLabelCustomization = requestedLabelCustomization;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -179,12 +201,13 @@ public class RequestedDocumentSpecification {
         Objects.equals(this.dpi, requestedDocumentSpecification.dpi) &&
         Objects.equals(this.pageLayout, requestedDocumentSpecification.pageLayout) &&
         Objects.equals(this.needFileJoining, requestedDocumentSpecification.needFileJoining) &&
-        Objects.equals(this.requestedDocumentTypes, requestedDocumentSpecification.requestedDocumentTypes);
+        Objects.equals(this.requestedDocumentTypes, requestedDocumentSpecification.requestedDocumentTypes) &&
+        Objects.equals(this.requestedLabelCustomization, requestedDocumentSpecification.requestedLabelCustomization);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(format, size, dpi, pageLayout, needFileJoining, requestedDocumentTypes);
+    return Objects.hash(format, size, dpi, pageLayout, needFileJoining, requestedDocumentTypes, requestedLabelCustomization);
   }
 
 
@@ -199,6 +222,7 @@ public class RequestedDocumentSpecification {
     sb.append("    pageLayout: ").append(toIndentedString(pageLayout)).append("\n");
     sb.append("    needFileJoining: ").append(toIndentedString(needFileJoining)).append("\n");
     sb.append("    requestedDocumentTypes: ").append(toIndentedString(requestedDocumentTypes)).append("\n");
+    sb.append("    requestedLabelCustomization: ").append(toIndentedString(requestedLabelCustomization)).append("\n");
     sb.append("}");
     return sb.toString();
   }

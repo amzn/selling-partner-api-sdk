@@ -24,9 +24,9 @@ import java.io.IOException;
 import software.amazon.spapi.models.pricing.v0.CustomerType;
 import software.amazon.spapi.models.pricing.v0.ItemCondition;
 /**
- * BatchOffersRequestParams
+ * Common request parameters that can be accepted by &#x60;ItemOffersRequest&#x60; and &#x60;ListingOffersRequest&#x60;
  */
-
+@Schema(description = "Common request parameters that can be accepted by `ItemOffersRequest` and `ListingOffersRequest`")
 
 
 public class BatchOffersRequestParams {

@@ -22,9 +22,9 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 /**
- * ASINIdentifier
+ * Schema to identify an item by MarketPlaceId and ASIN.
  */
-
+@Schema(description = "Schema to identify an item by MarketPlaceId and ASIN.")
 
 
 public class ASINIdentifier {

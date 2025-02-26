@@ -1,6 +1,6 @@
 /*
  * The Selling Partner API for Finances
- * The Selling Partner API for Finances provides financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
+ * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
  *
  * OpenAPI spec version: 2024-06-19
  * 
@@ -109,10 +109,10 @@ public class Context {
   }
 
    /**
-   * The name of the store that is related to the transaction.
+   * Store name related to transaction.
    * @return storeName
   **/
-  @Schema(description = "The name of the store that is related to the transaction.")
+  @Schema(description = "Store name related to transaction.")
   public String getStoreName() {
     return storeName;
   }
@@ -127,10 +127,10 @@ public class Context {
   }
 
    /**
-   * The transaction&#x27;s order type.
+   * Order type of the transaction.
    * @return orderType
   **/
-  @Schema(description = "The transaction's order type.")
+  @Schema(description = "Order type of the transaction.")
   public String getOrderType() {
     return orderType;
   }
@@ -163,10 +163,10 @@ public class Context {
   }
 
    /**
-   * The Amazon Standard Identification Number (ASIN) of the item.
+   * Amazon Standard Identification Number (ASIN) of the item.
    * @return asin
   **/
-  @Schema(description = "The Amazon Standard Identification Number (ASIN) of the item.")
+  @Schema(description = "Amazon Standard Identification Number (ASIN) of the item.")
   public String getAsin() {
     return asin;
   }
@@ -181,10 +181,10 @@ public class Context {
   }
 
    /**
-   * The Stock Keeping Unit (SKU) of the item.
+   * Stock keeping unit (SKU) of the item.
    * @return sku
   **/
-  @Schema(description = "The Stock Keeping Unit (SKU) of the item.")
+  @Schema(description = "Stock keeping unit (SKU) of the item.")
   public String getSku() {
     return sku;
   }
@@ -199,10 +199,10 @@ public class Context {
   }
 
    /**
-   * The quantity of the item shipped.
+   * Quantity of the item shipped.
    * @return quantityShipped
   **/
-  @Schema(description = "The quantity of the item shipped.")
+  @Schema(description = "Quantity of the item shipped.")
   public Integer getQuantityShipped() {
     return quantityShipped;
   }
@@ -217,10 +217,10 @@ public class Context {
   }
 
    /**
-   * The fulfillment network of the item.
+   * Fulfillment network of the item.
    * @return fulfillmentNetwork
   **/
-  @Schema(description = "The fulfillment network of the item.")
+  @Schema(description = "Fulfillment network of the item.")
   public String getFulfillmentNetwork() {
     return fulfillmentNetwork;
   }
@@ -235,10 +235,10 @@ public class Context {
   }
 
    /**
-   * The type of payment.
+   * Type of payment made.
    * @return paymentType
   **/
-  @Schema(description = "The type of payment.")
+  @Schema(description = "Type of payment made.")
   public String getPaymentType() {
     return paymentType;
   }
@@ -253,10 +253,10 @@ public class Context {
   }
 
    /**
-   * The method of payment.
+   * Method of payment made.
    * @return paymentMethod
   **/
-  @Schema(description = "The method of payment.")
+  @Schema(description = "Method of payment made.")
   public String getPaymentMethod() {
     return paymentMethod;
   }
@@ -271,10 +271,10 @@ public class Context {
   }
 
    /**
-   * The reference number of the payment.
+   * Reference number of payment made.
    * @return paymentReference
   **/
-  @Schema(description = "The reference number of the payment.")
+  @Schema(description = "Reference number of payment made.")
   public String getPaymentReference() {
     return paymentReference;
   }
@@ -307,10 +307,10 @@ public class Context {
   }
 
    /**
-   * Deferral policy applied on the transaction.  **Examples:** &#x60;B2B&#x60;,&#x60;DD7&#x60;
+   * Deferral policy applied on the transaction.  Example: &#x27;B2B&#x27;,&#x27;DD7&#x27;
    * @return deferralReason
   **/
-  @Schema(description = "Deferral policy applied on the transaction.  **Examples:** `B2B`,`DD7`")
+  @Schema(description = "Deferral policy applied on the transaction.  Example: 'B2B','DD7'")
   public String getDeferralReason() {
     return deferralReason;
   }
@@ -343,10 +343,10 @@ public class Context {
   }
 
    /**
-   * The status of the transaction. For example, &#x60;HOLD&#x60;,&#x60;RELEASE&#x60;.
+   * Status of the transaction.   Example: &#x27;HOLD&#x27;,&#x27;RELEASE&#x27;
    * @return deferralStatus
   **/
-  @Schema(description = "The status of the transaction. For example, `HOLD`,`RELEASE`.")
+  @Schema(description = "Status of the transaction.   Example: 'HOLD','RELEASE'")
   public String getDeferralStatus() {
     return deferralStatus;
   }

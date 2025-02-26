@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for A+ Content Management
- * With the A+ Content API, you can build applications that help selling partners add rich marketing content to their Amazon product detail pages. A+ content helps selling partners share their brand and product story, which helps buyers make informed purchasing decisions. Selling partners assemble content by choosing from content modules and adding images and text.
+ * Use the A+ Content API to build applications that help selling partners add rich marketing content to their Amazon product detail pages. Selling partners can use A+ content to share their brand and product story, which helps buyers make informed purchasing decisions. Selling partners use content modules to add images and text.
  *
  * OpenAPI spec version: 2020-11-01
  * 
@@ -23,9 +23,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import software.amazon.spapi.models.apluscontent.v2020_11_01.TextComponent;
 /**
- * Rich positional text, usually presented as a collection of bullet points.
+ * Rich positional text that is usually presented as a collection of bullet points.
  */
-@Schema(description = "Rich positional text, usually presented as a collection of bullet points.")
+@Schema(description = "Rich positional text that is usually presented as a collection of bullet points.")
 
 
 public class TextItem {

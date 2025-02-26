@@ -107,10 +107,10 @@ public class Error {
   }
 
    /**
-   * A message that describes the error condition in a human-readable form.
+   * A message that describes the error condition.
    * @return message
   **/
-  @Schema(required = true, description = "A message that describes the error condition in a human-readable form.")
+  @Schema(required = true, description = "A message that describes the error condition.")
   public String getMessage() {
     return message;
   }

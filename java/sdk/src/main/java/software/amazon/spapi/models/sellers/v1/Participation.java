@@ -1,6 +1,6 @@
 /*
  * The Selling Partner API for Sellers
- * The Selling Partner API for Sellers lets you retrieve information on behalf of sellers about their seller account, such as the marketplaces they participate in. Along with listing the marketplaces that a seller can sell in, the API also provides additional information about the marketplace such as the default language and the default currency. The API also provides seller-specific information such as whether the seller has suspended listings in that marketplace.
+ * The [Selling Partner API for Sellers](https://developer-docs.amazon.com/sp-api/docs/sellers-api-v1-reference) (Sellers API) provides essential information about seller accounts, such as:  - The marketplaces a seller can list in - The default language and currency of a marketplace - Whether the seller has suspended listings  Refer to the [Sellers API reference](https://developer-docs.amazon.com/sp-api/docs/sellers-api-v1-reference) for details about this API's operations, data types, and schemas.
  *
  * OpenAPI spec version: v1
  * 
@@ -22,9 +22,9 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 /**
- * Detailed information that is specific to a seller in a marketplace.
+ * Information that is specific to a seller in a marketplace.
  */
-@Schema(description = "Detailed information that is specific to a seller in a marketplace.")
+@Schema(description = "Information that is specific to a seller in a marketplace.")
 
 
 public class Participation {
@@ -40,10 +40,10 @@ public class Participation {
   }
 
    /**
-   * If true, the seller participates in the marketplace.
+   * If &#x60;true&#x60;, the seller participates in the marketplace. Otherwise &#x60;false&#x60;.
    * @return isParticipating
   **/
-  @Schema(required = true, description = "If true, the seller participates in the marketplace.")
+  @Schema(required = true, description = "If `true`, the seller participates in the marketplace. Otherwise `false`.")
   public Boolean isIsParticipating() {
     return isParticipating;
   }
@@ -58,10 +58,10 @@ public class Participation {
   }
 
    /**
-   * If true, the seller has suspended listings.
+   * Specifies if the seller has suspended listings. &#x60;true&#x60; if the seller Listing Status is set to Inactive, otherwise &#x60;false&#x60;.
    * @return hasSuspendedListings
   **/
-  @Schema(required = true, description = "If true, the seller has suspended listings.")
+  @Schema(required = true, description = "Specifies if the seller has suspended listings. `true` if the seller Listing Status is set to Inactive, otherwise `false`.")
   public Boolean isHasSuspendedListings() {
     return hasSuspendedListings;
   }

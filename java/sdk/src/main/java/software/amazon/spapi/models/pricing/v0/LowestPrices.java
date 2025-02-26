@@ -14,13 +14,14 @@ package software.amazon.spapi.models.pricing.v0;
 
 import java.util.Objects;
 import java.util.Arrays;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import software.amazon.spapi.models.pricing.v0.LowestPriceType;
 /**
- * LowestPrices
+ * A list of the lowest prices.
  */
-
+@Schema(description = "A list of the lowest prices.")
 
 
 public class LowestPrices extends ArrayList<LowestPriceType> {

@@ -32,9 +32,9 @@ import software.amazon.spapi.models.pricing.v0.QuantityDiscountPriceType;
 import software.amazon.spapi.models.pricing.v0.SellerFeedbackType;
 import software.amazon.spapi.models.pricing.v0.ShipsFromType;
 /**
- * OfferDetail
+ * Schema for an individual offer. Object in &#x60;OfferDetailList&#x60;.
  */
-
+@Schema(description = "Schema for an individual offer. Object in `OfferDetailList`.")
 
 
 public class OfferDetail {
@@ -244,10 +244,10 @@ public class OfferDetail {
   }
 
    /**
-   * Get quantityDiscountPrices
+   * List of &#x60;QuantityDiscountPrice&#x60; that contains item&#x27;s pricing information when buy in bulk.
    * @return quantityDiscountPrices
   **/
-  @Schema(description = "")
+  @Schema(description = "List of `QuantityDiscountPrice` that contains item's pricing information when buy in bulk.")
   public List<QuantityDiscountPriceType> getQuantityDiscountPrices() {
     return quantityDiscountPrices;
   }

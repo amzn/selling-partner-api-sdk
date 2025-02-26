@@ -24,6 +24,7 @@ import java.io.IOException;
 import org.threeten.bp.OffsetDateTime;
 import software.amazon.spapi.models.shipping.v2.AccessPointDetails;
 import software.amazon.spapi.models.shipping.v2.Address;
+import software.amazon.spapi.models.shipping.v2.CarrierAccounts;
 import software.amazon.spapi.models.shipping.v2.ChannelDetails;
 import software.amazon.spapi.models.shipping.v2.ClientReferenceDetails;
 import software.amazon.spapi.models.shipping.v2.PackageList;
@@ -73,6 +74,9 @@ public class GetRatesRequest {
 
   @SerializedName("destinationAccessPointDetails")
   private AccessPointDetails destinationAccessPointDetails = null;
+
+  @SerializedName("carrierAccounts")
+  private CarrierAccounts carrierAccounts = null;
 
   public GetRatesRequest shipTo(Address shipTo) {
     this.shipTo = shipTo;
@@ -290,6 +294,24 @@ public class GetRatesRequest {
     this.destinationAccessPointDetails = destinationAccessPointDetails;
   }
 
+  public GetRatesRequest carrierAccounts(CarrierAccounts carrierAccounts) {
+    this.carrierAccounts = carrierAccounts;
+    return this;
+  }
+
+   /**
+   * Get carrierAccounts
+   * @return carrierAccounts
+  **/
+  @Schema(description = "")
+  public CarrierAccounts getCarrierAccounts() {
+    return carrierAccounts;
+  }
+
+  public void setCarrierAccounts(CarrierAccounts carrierAccounts) {
+    this.carrierAccounts = carrierAccounts;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -311,12 +333,13 @@ public class GetRatesRequest {
         Objects.equals(this.channelDetails, getRatesRequest.channelDetails) &&
         Objects.equals(this.clientReferenceDetails, getRatesRequest.clientReferenceDetails) &&
         Objects.equals(this.shipmentType, getRatesRequest.shipmentType) &&
-        Objects.equals(this.destinationAccessPointDetails, getRatesRequest.destinationAccessPointDetails);
+        Objects.equals(this.destinationAccessPointDetails, getRatesRequest.destinationAccessPointDetails) &&
+        Objects.equals(this.carrierAccounts, getRatesRequest.carrierAccounts);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(shipTo, shipFrom, returnTo, shipDate, shipperInstruction, packages, valueAddedServices, taxDetails, channelDetails, clientReferenceDetails, shipmentType, destinationAccessPointDetails);
+    return Objects.hash(shipTo, shipFrom, returnTo, shipDate, shipperInstruction, packages, valueAddedServices, taxDetails, channelDetails, clientReferenceDetails, shipmentType, destinationAccessPointDetails, carrierAccounts);
   }
 
 
@@ -337,6 +360,7 @@ public class GetRatesRequest {
     sb.append("    clientReferenceDetails: ").append(toIndentedString(clientReferenceDetails)).append("\n");
     sb.append("    shipmentType: ").append(toIndentedString(shipmentType)).append("\n");
     sb.append("    destinationAccessPointDetails: ").append(toIndentedString(destinationAccessPointDetails)).append("\n");
+    sb.append("    carrierAccounts: ").append(toIndentedString(carrierAccounts)).append("\n");
     sb.append("}");
     return sb.toString();
   }

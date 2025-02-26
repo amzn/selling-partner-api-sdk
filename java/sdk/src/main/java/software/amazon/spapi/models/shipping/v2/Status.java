@@ -44,7 +44,9 @@ public enum Status {
   @SerializedName("DeliveryAttempted")
   DELIVERYATTEMPTED("DeliveryAttempted"),
   @SerializedName("PickupCancelled")
-  PICKUPCANCELLED("PickupCancelled");
+  PICKUPCANCELLED("PickupCancelled"),
+  @SerializedName("AwaitingCustomerPickup")
+  AWAITINGCUSTOMERPICKUP("AwaitingCustomerPickup");
 
   private String value;
 

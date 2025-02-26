@@ -1,6 +1,6 @@
 /*
  * The Selling Partner API for Amazon Warehousing and Distribution
- * The Selling Partner API for Amazon Warehousing and Distribution (AWD) provides programmatic access to information about AWD shipments and inventory. 
+ * The Selling Partner API for Amazon Warehousing and Distribution (AWD) provides programmatic access to information about AWD shipments and inventory.
  *
  * OpenAPI spec version: 2024-05-09
  * 

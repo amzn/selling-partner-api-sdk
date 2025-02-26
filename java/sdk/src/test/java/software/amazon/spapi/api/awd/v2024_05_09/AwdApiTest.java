@@ -1,6 +1,6 @@
 /*
  * The Selling Partner API for Amazon Warehousing and Distribution
- * The Selling Partner API for Amazon Warehousing and Distribution (AWD) provides programmatic access to information about AWD shipments and inventory. 
+ * The Selling Partner API for Amazon Warehousing and Distribution (AWD) provides programmatic access to information about AWD shipments and inventory.
  *
  * OpenAPI spec version: 2024-05-09
  * 
@@ -15,10 +15,17 @@ package software.amazon.spapi.api.awd.v2024_05_09;
 import software.amazon.spapi.ApiResponse;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import software.amazon.spapi.models.awd.v2024_05_09.ErrorList;
+import software.amazon.spapi.models.awd.v2024_05_09.InboundEligibility;
+import software.amazon.spapi.models.awd.v2024_05_09.InboundOrder;
+import software.amazon.spapi.models.awd.v2024_05_09.InboundOrderCreationData;
+import software.amazon.spapi.models.awd.v2024_05_09.InboundOrderReference;
+import software.amazon.spapi.models.awd.v2024_05_09.InboundPackages;
 import software.amazon.spapi.models.awd.v2024_05_09.InboundShipment;
 import software.amazon.spapi.models.awd.v2024_05_09.InventoryListing;
 import org.threeten.bp.OffsetDateTime;
+import software.amazon.spapi.models.awd.v2024_05_09.ShipmentLabels;
 import software.amazon.spapi.models.awd.v2024_05_09.ShipmentListing;
+import software.amazon.spapi.models.awd.v2024_05_09.TransportationDetails;
 import org.junit.jupiter.api.Test;
 
 import java.net.URI;
@@ -46,11 +53,73 @@ public class AwdApiTest {
         .build();
 
     @Test
+    public void cancelInboundTest() throws Exception {
+        instructBackendMock("cancelInbound", "204");
+        String orderId = "";
+
+        api.cancelInboundWithHttpInfo(orderId);
+
+    }
+
+    @Test
+    public void checkInboundEligibilityTest() throws Exception {
+        instructBackendMock("checkInboundEligibility", "200");
+        InboundPackages body = new InboundPackages();
+
+        ApiResponse<InboundEligibility> response = api.checkInboundEligibilityWithHttpInfo(body);
+
+        assertEquals(200, response.getStatusCode());
+        assertValidResponsePayload(200, response.getData());
+    }
+
+    @Test
+    public void confirmInboundTest() throws Exception {
+        instructBackendMock("confirmInbound", "204");
+        String orderId = "";
+
+        api.confirmInboundWithHttpInfo(orderId);
+
+    }
+
+    @Test
+    public void createInboundTest() throws Exception {
+        instructBackendMock("createInbound", "201");
+        InboundOrderCreationData body = new InboundOrderCreationData();
+
+        ApiResponse<InboundOrderReference> response = api.createInboundWithHttpInfo(body);
+
+        assertEquals(201, response.getStatusCode());
+        assertValidResponsePayload(201, response.getData());
+    }
+
+    @Test
+    public void getInboundTest() throws Exception {
+        instructBackendMock("getInbound", "200");
+        String orderId = "";
+
+        ApiResponse<InboundOrder> response = api.getInboundWithHttpInfo(orderId);
+
+        assertEquals(200, response.getStatusCode());
+        assertValidResponsePayload(200, response.getData());
+    }
+
+    @Test
     public void getInboundShipmentTest() throws Exception {
         instructBackendMock("getInboundShipment", "200");
         String shipmentId = "";
 
         ApiResponse<InboundShipment> response = api.getInboundShipmentWithHttpInfo(shipmentId, null);
+
+        assertEquals(200, response.getStatusCode());
+        assertValidResponsePayload(200, response.getData());
+    }
+
+    @Test
+    public void getInboundShipmentLabelsTest() throws Exception {
+        instructBackendMock("getInboundShipmentLabels", "200");
+        String shipmentId = "";
+
+        ApiResponse<ShipmentLabels> response = api.getInboundShipmentLabelsWithHttpInfo(shipmentId, null, null);
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());
@@ -74,6 +143,26 @@ public class AwdApiTest {
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());
+    }
+
+    @Test
+    public void updateInboundTest() throws Exception {
+        instructBackendMock("updateInbound", "204");
+        InboundOrder body = new InboundOrder();
+        String orderId = "";
+
+        api.updateInboundWithHttpInfo(body, orderId);
+
+    }
+
+    @Test
+    public void updateInboundShipmentTransportDetailsTest() throws Exception {
+        instructBackendMock("updateInboundShipmentTransportDetails", "204");
+        TransportationDetails body = new TransportationDetails();
+        String shipmentId = "";
+
+        api.updateInboundShipmentTransportDetailsWithHttpInfo(body, shipmentId);
+
     }
 
 

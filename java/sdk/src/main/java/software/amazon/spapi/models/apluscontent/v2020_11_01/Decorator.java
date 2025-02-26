@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for A+ Content Management
- * With the A+ Content API, you can build applications that help selling partners add rich marketing content to their Amazon product detail pages. A+ content helps selling partners share their brand and product story, which helps buyers make informed purchasing decisions. Selling partners assemble content by choosing from content modules and adding images and text.
+ * Use the A+ Content API to build applications that help selling partners add rich marketing content to their Amazon product detail pages. Selling partners can use A+ content to share their brand and product story, which helps buyers make informed purchasing decisions. Selling partners use content modules to add images and text.
  *
  * OpenAPI spec version: 2020-11-01
  * 
@@ -23,9 +23,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import software.amazon.spapi.models.apluscontent.v2020_11_01.DecoratorType;
 /**
- * A decorator applied to a content string value in order to create rich text.
+ * A decorator that is applied to a content string value in order to create rich text.
  */
-@Schema(description = "A decorator applied to a content string value in order to create rich text.")
+@Schema(description = "A decorator that is applied to a content string value in order to create rich text.")
 
 
 public class Decorator {
@@ -65,12 +65,12 @@ public class Decorator {
   }
 
    /**
-   * The starting character of this decorator within the content string. Use zero for the first character.
+   * The starting value of this decorator within the content string. Use zero (&#x60;0&#x60;) for the first value.
    * minimum: 0
    * maximum: 10000
    * @return offset
   **/
-  @Schema(description = "The starting character of this decorator within the content string. Use zero for the first character.")
+  @Schema(description = "The starting value of this decorator within the content string. Use zero (`0`) for the first value.")
   public Integer getOffset() {
     return offset;
   }
@@ -85,12 +85,12 @@ public class Decorator {
   }
 
    /**
-   * The number of content characters to alter with this decorator. Decorators such as line breaks can have zero length and fit between characters.
+   * The number of content characters to alter with this decorator. Decorators, such as line breaks, can have zero length and fit between characters.
    * minimum: 0
    * maximum: 10000
    * @return length
   **/
-  @Schema(description = "The number of content characters to alter with this decorator. Decorators such as line breaks can have zero length and fit between characters.")
+  @Schema(description = "The number of content characters to alter with this decorator. Decorators, such as line breaks, can have zero length and fit between characters.")
   public Integer getLength() {
     return length;
   }
@@ -105,12 +105,12 @@ public class Decorator {
   }
 
    /**
-   * The relative intensity or variation of this decorator. Decorators such as bullet-points, for example, can have multiple indentation depths.
+   * The relative intensity or variation of this decorator. Decorators, such as bullet-points, can have multiple indentation depths.
    * minimum: 0
    * maximum: 100
    * @return depth
   **/
-  @Schema(description = "The relative intensity or variation of this decorator. Decorators such as bullet-points, for example, can have multiple indentation depths.")
+  @Schema(description = "The relative intensity or variation of this decorator. Decorators, such as bullet-points, can have multiple indentation depths.")
   public Integer getDepth() {
     return depth;
   }

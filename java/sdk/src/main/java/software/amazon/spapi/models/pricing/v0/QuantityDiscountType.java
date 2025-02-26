@@ -14,6 +14,7 @@ package software.amazon.spapi.models.pricing.v0;
 
 import java.util.Objects;
 import java.util.Arrays;
+import io.swagger.v3.oas.annotations.media.Schema;
 import com.google.gson.annotations.SerializedName;
 import java.io.IOException;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * Gets or Sets QuantityDiscountType
+ * Indicates the type of quantity discount this price applies to.
  */
 @JsonAdapter(QuantityDiscountType.Adapter.class)
 public enum QuantityDiscountType {

@@ -1,5 +1,5 @@
 /*
- * Catalog Items v2022-04-01
+ * Selling Partner API for Catalog Items
  * The Selling Partner API for Catalog Items provides programmatic access to information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](doc:catalog-items-api-v2022-04-01-use-case-guide).
  *
  * OpenAPI spec version: 2022-04-01
@@ -44,14 +44,14 @@ import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.RateLimitConfiguration;
 import com.amazon.SellingPartnerAPIAA.LWAException;
 
-public class CatalogItemsApi {
+public class CatalogApi {
     private ApiClient apiClient;
 
-    CatalogItemsApi() {
+    CatalogApi() {
         this(Configuration.getDefaultApiClient());
     }
 
-    public CatalogItemsApi(ApiClient apiClient) {
+    public CatalogApi(ApiClient apiClient) {
         this.apiClient = apiClient;
     }
 
@@ -140,7 +140,7 @@ public class CatalogItemsApi {
     }
 
     /**
-     * getCatalogItem
+     * 
      * Retrieves details for an item in the Amazon catalog.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may observe higher rate and burst values than those shown here. For more information, refer to the [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param asin The Amazon Standard Identification Number (ASIN) of the item. (required)
      * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers. Data sets in the response contain data only for the specified marketplaces. (required)
@@ -156,7 +156,7 @@ public class CatalogItemsApi {
     }
 
     /**
-     * getCatalogItem
+     * 
      * Retrieves details for an item in the Amazon catalog.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may observe higher rate and burst values than those shown here. For more information, refer to the [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param asin The Amazon Standard Identification Number (ASIN) of the item. (required)
      * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers. Data sets in the response contain data only for the specified marketplaces. (required)
@@ -173,7 +173,7 @@ public class CatalogItemsApi {
     }
 
     /**
-     * getCatalogItem (asynchronously)
+     *  (asynchronously)
      * Retrieves details for an item in the Amazon catalog.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may observe higher rate and burst values than those shown here. For more information, refer to the [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param asin The Amazon Standard Identification Number (ASIN) of the item. (required)
      * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers. Data sets in the response contain data only for the specified marketplaces. (required)
@@ -308,7 +308,7 @@ public class CatalogItemsApi {
     }
 
     /**
-     * searchCatalogItems
+     * 
      * Search for and return a list of Amazon catalog items and associated information either by identifier or by keywords.  **Usage Plans:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may observe higher rate and burst values than those shown here. For more information, refer to the [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
      * @param identifiers A comma-delimited list of product identifiers to search the Amazon catalog for. **Note:** Cannot be used with &#x60;keywords&#x60;. (optional)
@@ -332,7 +332,7 @@ public class CatalogItemsApi {
     }
 
     /**
-     * searchCatalogItems
+     * 
      * Search for and return a list of Amazon catalog items and associated information either by identifier or by keywords.  **Usage Plans:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may observe higher rate and burst values than those shown here. For more information, refer to the [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
      * @param identifiers A comma-delimited list of product identifiers to search the Amazon catalog for. **Note:** Cannot be used with &#x60;keywords&#x60;. (optional)
@@ -357,7 +357,7 @@ public class CatalogItemsApi {
     }
 
     /**
-     * searchCatalogItems (asynchronously)
+     *  (asynchronously)
      * Search for and return a list of Amazon catalog items and associated information either by identifier or by keywords.  **Usage Plans:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may observe higher rate and burst values than those shown here. For more information, refer to the [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
      * @param identifiers A comma-delimited list of product identifiers to search the Amazon catalog for. **Note:** Cannot be used with &#x60;keywords&#x60;. (optional)
@@ -441,7 +441,7 @@ public class CatalogItemsApi {
             return this;
         }
 
-        public CatalogItemsApi build() {
+        public CatalogApi build() {
             if (lwaAuthorizationCredentials == null) {
                 throw new RuntimeException("LWAAuthorizationCredentials not set");
             }
@@ -461,7 +461,7 @@ public class CatalogItemsApi {
                  lwaAuthorizationSigner = new LWAAuthorizationSigner(lwaAuthorizationCredentials,lwaAccessTokenCache);
             }
 
-            return new CatalogItemsApi(new ApiClient()
+            return new CatalogApi(new ApiClient()
                 .setLWAAuthorizationSigner(lwaAuthorizationSigner)
                 .setBasePath(endpoint)
                 .setRateLimiter(rateLimitConfiguration));

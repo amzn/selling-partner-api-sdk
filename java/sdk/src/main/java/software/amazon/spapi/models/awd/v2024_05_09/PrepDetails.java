@@ -1,6 +1,6 @@
 /*
  * The Selling Partner API for Amazon Warehousing and Distribution
- * The Selling Partner API for Amazon Warehousing and Distribution (AWD) provides programmatic access to information about AWD shipments and inventory. 
+ * The Selling Partner API for Amazon Warehousing and Distribution (AWD) provides programmatic access to information about AWD shipments and inventory.
  *
  * OpenAPI spec version: 2024-05-09
  * 
@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import software.amazon.spapi.models.awd.v2024_05_09.LabelOwner;
+import software.amazon.spapi.models.awd.v2024_05_09.PrepCategory;
 import software.amazon.spapi.models.awd.v2024_05_09.PrepInstruction;
 import software.amazon.spapi.models.awd.v2024_05_09.PrepOwner;
 /**
@@ -37,7 +38,7 @@ public class PrepDetails {
   private LabelOwner labelOwner = null;
 
   @SerializedName("prepCategory")
-  private String prepCategory = null;
+  private PrepCategory prepCategory = null;
 
   @SerializedName("prepInstructions")
   private List<PrepInstruction> prepInstructions = null;
@@ -63,21 +64,21 @@ public class PrepDetails {
     this.labelOwner = labelOwner;
   }
 
-  public PrepDetails prepCategory(String prepCategory) {
+  public PrepDetails prepCategory(PrepCategory prepCategory) {
     this.prepCategory = prepCategory;
     return this;
   }
 
    /**
-   * The preparation category for shipping an item to Amazon&#x27;s fulfillment network.
+   * Get prepCategory
    * @return prepCategory
   **/
-  @Schema(description = "The preparation category for shipping an item to Amazon's fulfillment network.")
-  public String getPrepCategory() {
+  @Schema(description = "")
+  public PrepCategory getPrepCategory() {
     return prepCategory;
   }
 
-  public void setPrepCategory(String prepCategory) {
+  public void setPrepCategory(PrepCategory prepCategory) {
     this.prepCategory = prepCategory;
   }
 
@@ -95,10 +96,10 @@ public class PrepDetails {
   }
 
    /**
-   * Information that pertains to the preparation of inbound products. This is generated based on the specified category.
+   * Contains information about the preparation of the inbound products. The system auto-generates this field with the use of the &#x60;prepCategory&#x60;, and if you attempt to pass a value for this field, the system will ignore it.
    * @return prepInstructions
   **/
-  @Schema(description = "Information that pertains to the preparation of inbound products. This is generated based on the specified category.")
+  @Schema(description = "Contains information about the preparation of the inbound products. The system auto-generates this field with the use of the `prepCategory`, and if you attempt to pass a value for this field, the system will ignore it.")
   public List<PrepInstruction> getPrepInstructions() {
     return prepInstructions;
   }

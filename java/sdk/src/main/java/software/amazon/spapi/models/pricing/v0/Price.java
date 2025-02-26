@@ -23,9 +23,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import software.amazon.spapi.models.pricing.v0.Product;
 /**
- * Price
+ * Schema for price info in &#x60;getPricing&#x60; response
  */
-
+@Schema(description = "Schema for price info in `getPricing` response")
 
 
 public class Price {

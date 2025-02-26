@@ -1,6 +1,6 @@
 /*
  * The Selling Partner API for Finances
- * The Selling Partner API for Finances provides financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
+ * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
  *
  * OpenAPI spec version: 2024-06-19
  * 
@@ -30,9 +30,9 @@ import software.amazon.spapi.models.finances.v2024_06_19.MarketplaceDetails;
 import software.amazon.spapi.models.finances.v2024_06_19.RelatedIdentifiers;
 import software.amazon.spapi.models.finances.v2024_06_19.SellingPartnerMetadata;
 /**
- * All the information related to a transaction.
+ * Contains all information related to the transaction.
  */
-@Schema(description = "All the information related to a transaction.")
+@Schema(description = "Contains all information related to the transaction.")
 
 
 public class Transaction {
@@ -114,10 +114,10 @@ public class Transaction {
   }
 
    /**
-   * The type of transaction.  **Possible value:** &#x60;Shipment&#x60;
+   * The type of transaction.  Possible values:  * Shipment
    * @return transactionType
   **/
-  @Schema(description = "The type of transaction.  **Possible value:** `Shipment`")
+  @Schema(description = "The type of transaction.  Possible values:  * Shipment")
   public String getTransactionType() {
     return transactionType;
   }
@@ -132,10 +132,10 @@ public class Transaction {
   }
 
    /**
-   * The unique identifier of the transaction.
+   * The unique identifier for the transaction.
    * @return transactionId
   **/
-  @Schema(description = "The unique identifier of the transaction.")
+  @Schema(description = "The unique identifier for the transaction.")
   public String getTransactionId() {
     return transactionId;
   }
@@ -150,10 +150,10 @@ public class Transaction {
   }
 
    /**
-   * The status of the transaction.   **Possible values:**  * &#x60;Deferred&#x60; * &#x60;Released&#x60;
+   * The status for the transaction.   Possible values:  * Deferred *Released
    * @return transactionStatus
   **/
-  @Schema(description = "The status of the transaction.   **Possible values:**  * `Deferred` * `Released`")
+  @Schema(description = "The status for the transaction.   Possible values:  * Deferred *Released")
   public String getTransactionStatus() {
     return transactionStatus;
   }
@@ -168,10 +168,10 @@ public class Transaction {
   }
 
    /**
-   * Describes the reasons for the transaction.  **Example:** &#x27;Order Payment&#x27;, &#x27;Refund Order&#x27;
+   * Describes the reasons for the transaction.  Example: &#x27;Order Payment&#x27;,&#x27;Refund Order&#x27;
    * @return description
   **/
-  @Schema(description = "Describes the reasons for the transaction.  **Example:** 'Order Payment', 'Refund Order'")
+  @Schema(description = "Describes the reasons for the transaction.  Example: 'Order Payment','Refund Order'")
   public String getDescription() {
     return description;
   }

@@ -25,9 +25,9 @@ import software.amazon.spapi.models.pricing.v0.GetOffersHttpStatusLine;
 import software.amazon.spapi.models.pricing.v0.GetOffersResponse;
 import software.amazon.spapi.models.pricing.v0.HttpResponseHeaders;
 /**
- * BatchOffersResponse
+ * Common schema that present in &#x60;ItemOffersResponse&#x60; and &#x60;ListingOffersResponse&#x60;
  */
-
+@Schema(description = "Common schema that present in `ItemOffersResponse` and `ListingOffersResponse`")
 
 
 public class BatchOffersResponse {

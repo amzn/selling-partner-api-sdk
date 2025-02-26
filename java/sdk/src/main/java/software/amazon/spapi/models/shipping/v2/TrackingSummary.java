@@ -22,6 +22,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import software.amazon.spapi.models.shipping.v2.Status;
+import software.amazon.spapi.models.shipping.v2.TrackingDetailCodes;
 /**
  * A package status summary.
  */
@@ -31,6 +32,9 @@ import software.amazon.spapi.models.shipping.v2.Status;
 public class TrackingSummary {
   @SerializedName("status")
   private Status status = null;
+
+  @SerializedName("trackingDetailCodes")
+  private TrackingDetailCodes trackingDetailCodes = null;
 
   public TrackingSummary status(Status status) {
     this.status = status;
@@ -50,6 +54,24 @@ public class TrackingSummary {
     this.status = status;
   }
 
+  public TrackingSummary trackingDetailCodes(TrackingDetailCodes trackingDetailCodes) {
+    this.trackingDetailCodes = trackingDetailCodes;
+    return this;
+  }
+
+   /**
+   * Get trackingDetailCodes
+   * @return trackingDetailCodes
+  **/
+  @Schema(description = "")
+  public TrackingDetailCodes getTrackingDetailCodes() {
+    return trackingDetailCodes;
+  }
+
+  public void setTrackingDetailCodes(TrackingDetailCodes trackingDetailCodes) {
+    this.trackingDetailCodes = trackingDetailCodes;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -60,12 +82,13 @@ public class TrackingSummary {
       return false;
     }
     TrackingSummary trackingSummary = (TrackingSummary) o;
-    return Objects.equals(this.status, trackingSummary.status);
+    return Objects.equals(this.status, trackingSummary.status) &&
+        Objects.equals(this.trackingDetailCodes, trackingSummary.trackingDetailCodes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status);
+    return Objects.hash(status, trackingDetailCodes);
   }
 
 
@@ -75,6 +98,7 @@ public class TrackingSummary {
     sb.append("class TrackingSummary {\n");
     
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    trackingDetailCodes: ").append(toIndentedString(trackingDetailCodes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

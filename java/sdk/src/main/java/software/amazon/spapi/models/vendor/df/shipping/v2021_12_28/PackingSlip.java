@@ -102,10 +102,10 @@ public class PackingSlip {
   }
 
    /**
-   * A Base64encoded string of the packing slip PDF.
+   * A Base64 string of the packing slip PDF.
    * @return content
   **/
-  @Schema(required = true, description = "A Base64encoded string of the packing slip PDF.")
+  @Schema(required = true, description = "A Base64 string of the packing slip PDF.")
   public String getContent() {
     return content;
   }

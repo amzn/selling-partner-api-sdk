@@ -14,13 +14,14 @@ package software.amazon.spapi.models.pricing.v0;
 
 import java.util.Objects;
 import java.util.Arrays;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import software.amazon.spapi.models.pricing.v0.BuyBoxPriceType;
 /**
- * BuyBoxPrices
+ * A list of the Buy Box prices.
  */
-
+@Schema(description = "A list of the Buy Box prices.")
 
 
 public class BuyBoxPrices extends ArrayList<BuyBoxPriceType> {

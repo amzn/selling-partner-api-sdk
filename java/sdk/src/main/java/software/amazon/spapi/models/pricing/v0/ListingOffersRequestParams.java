@@ -25,9 +25,9 @@ import software.amazon.spapi.models.pricing.v0.BatchOffersRequestParams;
 import software.amazon.spapi.models.pricing.v0.CustomerType;
 import software.amazon.spapi.models.pricing.v0.ItemCondition;
 /**
- * ListingOffersRequestParams
+ * List of request parameters that can be accepted by &#x60;ListingOffersRequest&#x60;
  */
-
+@Schema(description = "List of request parameters that can be accepted by `ListingOffersRequest`")
 
 
 public class ListingOffersRequestParams extends BatchOffersRequestParams {

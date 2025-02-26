@@ -40,10 +40,10 @@ public class ActiveAccount {
   }
 
    /**
-   * Account Id associated with this account.
+   * Get accountId
    * @return accountId
   **/
-  @Schema(description = "Account Id associated with this account.")
+  @Schema(description = "")
   public String getAccountId() {
     return accountId;
   }

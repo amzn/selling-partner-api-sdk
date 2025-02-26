@@ -32,6 +32,9 @@ public class UnlinkCarrierAccountRequest {
   @SerializedName("clientReferenceDetails")
   private ClientReferenceDetails clientReferenceDetails = null;
 
+  @SerializedName("accountId")
+  private String accountId = null;
+
   public UnlinkCarrierAccountRequest clientReferenceDetails(ClientReferenceDetails clientReferenceDetails) {
     this.clientReferenceDetails = clientReferenceDetails;
     return this;
@@ -50,6 +53,24 @@ public class UnlinkCarrierAccountRequest {
     this.clientReferenceDetails = clientReferenceDetails;
   }
 
+  public UnlinkCarrierAccountRequest accountId(String accountId) {
+    this.accountId = accountId;
+    return this;
+  }
+
+   /**
+   * Get accountId
+   * @return accountId
+  **/
+  @Schema(description = "")
+  public String getAccountId() {
+    return accountId;
+  }
+
+  public void setAccountId(String accountId) {
+    this.accountId = accountId;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -60,12 +81,13 @@ public class UnlinkCarrierAccountRequest {
       return false;
     }
     UnlinkCarrierAccountRequest unlinkCarrierAccountRequest = (UnlinkCarrierAccountRequest) o;
-    return Objects.equals(this.clientReferenceDetails, unlinkCarrierAccountRequest.clientReferenceDetails);
+    return Objects.equals(this.clientReferenceDetails, unlinkCarrierAccountRequest.clientReferenceDetails) &&
+        Objects.equals(this.accountId, unlinkCarrierAccountRequest.accountId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(clientReferenceDetails);
+    return Objects.hash(clientReferenceDetails, accountId);
   }
 
 
@@ -75,6 +97,7 @@ public class UnlinkCarrierAccountRequest {
     sb.append("class UnlinkCarrierAccountRequest {\n");
     
     sb.append("    clientReferenceDetails: ").append(toIndentedString(clientReferenceDetails)).append("\n");
+    sb.append("    accountId: ").append(toIndentedString(accountId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

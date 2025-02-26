@@ -60,10 +60,10 @@ public class HttpResponseHeaders extends HashMap<String, String> {
   }
 
    /**
-   * Unique request reference ID.
+   * Unique request reference identifier.
    * @return xAmznRequestId
   **/
-  @Schema(description = "Unique request reference ID.")
+  @Schema(description = "Unique request reference identifier.")
   public String getXAmznRequestId() {
     return xAmznRequestId;
   }

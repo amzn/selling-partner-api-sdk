@@ -121,10 +121,10 @@ public class LabelData {
   }
 
    /**
-   * This field will contain the Base64encoded string of the shipment label content.
+   * This field will contain the Base64 string of the shipment label content.
    * @return content
   **/
-  @Schema(required = true, description = "This field will contain the Base64encoded string of the shipment label content.")
+  @Schema(required = true, description = "This field will contain the Base64 string of the shipment label content.")
   public String getContent() {
     return content;
   }

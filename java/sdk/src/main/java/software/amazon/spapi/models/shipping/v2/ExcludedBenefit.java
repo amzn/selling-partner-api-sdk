@@ -21,18 +21,19 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import software.amazon.spapi.models.shipping.v2.ExcludedBenefitReasonCodes;
 /**
- * Object representing an excluded benefit that is excluded for an ShippingOffering/Rate.
+ * Object representing a benefit that is excluded for a shipping offer or rate.
  */
-@Schema(description = "Object representing an excluded benefit that is excluded for an ShippingOffering/Rate.")
+@Schema(description = "Object representing a benefit that is excluded for a shipping offer or rate.")
 
 
 public class ExcludedBenefit {
   @SerializedName("benefit")
   private String benefit = null;
 
-  @SerializedName("reasonCode")
-  private String reasonCode = null;
+  @SerializedName("reasonCodes")
+  private ExcludedBenefitReasonCodes reasonCodes = null;
 
   public ExcludedBenefit benefit(String benefit) {
     this.benefit = benefit;
@@ -40,10 +41,10 @@ public class ExcludedBenefit {
   }
 
    /**
-   * Get benefit
+   * benefit
    * @return benefit
   **/
-  @Schema(required = true, description = "")
+  @Schema(required = true, description = "benefit")
   public String getBenefit() {
     return benefit;
   }
@@ -52,22 +53,22 @@ public class ExcludedBenefit {
     this.benefit = benefit;
   }
 
-  public ExcludedBenefit reasonCode(String reasonCode) {
-    this.reasonCode = reasonCode;
+  public ExcludedBenefit reasonCodes(ExcludedBenefitReasonCodes reasonCodes) {
+    this.reasonCodes = reasonCodes;
     return this;
   }
 
    /**
-   * Get reasonCode
-   * @return reasonCode
+   * Get reasonCodes
+   * @return reasonCodes
   **/
-  @Schema(required = true, description = "")
-  public String getReasonCode() {
-    return reasonCode;
+  @Schema(description = "")
+  public ExcludedBenefitReasonCodes getReasonCodes() {
+    return reasonCodes;
   }
 
-  public void setReasonCode(String reasonCode) {
-    this.reasonCode = reasonCode;
+  public void setReasonCodes(ExcludedBenefitReasonCodes reasonCodes) {
+    this.reasonCodes = reasonCodes;
   }
 
 
@@ -81,12 +82,12 @@ public class ExcludedBenefit {
     }
     ExcludedBenefit excludedBenefit = (ExcludedBenefit) o;
     return Objects.equals(this.benefit, excludedBenefit.benefit) &&
-        Objects.equals(this.reasonCode, excludedBenefit.reasonCode);
+        Objects.equals(this.reasonCodes, excludedBenefit.reasonCodes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(benefit, reasonCode);
+    return Objects.hash(benefit, reasonCodes);
   }
 
 
@@ -96,7 +97,7 @@ public class ExcludedBenefit {
     sb.append("class ExcludedBenefit {\n");
     
     sb.append("    benefit: ").append(toIndentedString(benefit)).append("\n");
-    sb.append("    reasonCode: ").append(toIndentedString(reasonCode)).append("\n");
+    sb.append("    reasonCodes: ").append(toIndentedString(reasonCodes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

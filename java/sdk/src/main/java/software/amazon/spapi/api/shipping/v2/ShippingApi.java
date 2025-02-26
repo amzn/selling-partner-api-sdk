@@ -29,6 +29,8 @@ import java.io.IOException;
 
 import java.math.BigDecimal;
 import software.amazon.spapi.models.shipping.v2.CancelShipmentResponse;
+import software.amazon.spapi.models.shipping.v2.CreateClaimRequest;
+import software.amazon.spapi.models.shipping.v2.CreateClaimResponse;
 import software.amazon.spapi.models.shipping.v2.DirectPurchaseRequest;
 import software.amazon.spapi.models.shipping.v2.DirectPurchaseResponse;
 import software.amazon.spapi.models.shipping.v2.ErrorList;
@@ -54,6 +56,7 @@ import software.amazon.spapi.models.shipping.v2.OneClickShipmentRequest;
 import software.amazon.spapi.models.shipping.v2.OneClickShipmentResponse;
 import software.amazon.spapi.models.shipping.v2.PurchaseShipmentRequest;
 import software.amazon.spapi.models.shipping.v2.PurchaseShipmentResponse;
+import software.amazon.spapi.models.shipping.v2.SubmitNdrFeedbackRequest;
 import software.amazon.spapi.models.shipping.v2.UnlinkCarrierAccountRequest;
 import software.amazon.spapi.models.shipping.v2.UnlinkCarrierAccountResponse;
 
@@ -221,8 +224,138 @@ public class ShippingApi {
         return call;
     }
     /**
+     * Build call for createClaim
+     * @param body Request body for the createClaim operation (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call createClaimCall(CreateClaimRequest body, String xAmznShippingBusinessId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException, LWAException {
+        Object localVarPostBody = body;
+
+        // create path and map variables
+        String localVarPath = "/shipping/v2/claims";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        if (xAmznShippingBusinessId != null)
+        localVarHeaderParams.put("x-amzn-shipping-business-id", apiClient.parameterToString(xAmznShippingBusinessId));
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
+                @Override
+                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
+                    okhttp3.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createClaimValidateBeforeCall(CreateClaimRequest body, String xAmznShippingBusinessId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException, LWAException {
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling createClaim(Async)");
+        }
+
+        okhttp3.Call call = createClaimCall(body, xAmznShippingBusinessId, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * 
+     * This API will be used to create claim for single eligible shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     * @param body Request body for the createClaim operation (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
+     * @return CreateClaimResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public CreateClaimResponse createClaim(CreateClaimRequest body, String xAmznShippingBusinessId) throws ApiException,LWAException {
+        ApiResponse<CreateClaimResponse> resp = createClaimWithHttpInfo(body, xAmznShippingBusinessId);
+        return resp.getData();
+    }
+
+    /**
+     * 
+     * This API will be used to create claim for single eligible shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     * @param body Request body for the createClaim operation (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
+     * @return ApiResponse&lt;CreateClaimResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<CreateClaimResponse> createClaimWithHttpInfo(CreateClaimRequest body, String xAmznShippingBusinessId) throws ApiException,LWAException {
+        okhttp3.Call call = createClaimValidateBeforeCall(body, xAmznShippingBusinessId, null, null);
+        Type localVarReturnType = new TypeToken<CreateClaimResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * This API will be used to create claim for single eligible shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     * @param body Request body for the createClaim operation (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call createClaimAsync(CreateClaimRequest body, String xAmznShippingBusinessId, final ApiCallback<CreateClaimResponse> callback) throws ApiException, LWAException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        okhttp3.Call call = createClaimValidateBeforeCall(body, xAmznShippingBusinessId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<CreateClaimResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for directPurchaseShipment
-     * @param body  (required)
+     * @param body DirectPurchaseRequest body (required)
      * @param xAmznIdempotencyKey A unique value which the server uses to recognize subsequent retries of the same request. (optional)
      * @param locale The IETF Language Tag. Note that this only supports the primary language subtag with one secondary language subtag (i.e. en-US, fr-CA). The secondary language subtag is almost always a regional designation. This does not support additional subtags beyond the primary and secondary language subtags.  (optional)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
@@ -294,7 +427,7 @@ public class ShippingApi {
     /**
      * 
      * Purchases the shipping service for a shipment using the best fit service offering. Returns purchase related details and documents.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
+     * @param body DirectPurchaseRequest body (required)
      * @param xAmznIdempotencyKey A unique value which the server uses to recognize subsequent retries of the same request. (optional)
      * @param locale The IETF Language Tag. Note that this only supports the primary language subtag with one secondary language subtag (i.e. en-US, fr-CA). The secondary language subtag is almost always a regional designation. This does not support additional subtags beyond the primary and secondary language subtags.  (optional)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
@@ -310,7 +443,7 @@ public class ShippingApi {
     /**
      * 
      * Purchases the shipping service for a shipment using the best fit service offering. Returns purchase related details and documents.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
+     * @param body DirectPurchaseRequest body (required)
      * @param xAmznIdempotencyKey A unique value which the server uses to recognize subsequent retries of the same request. (optional)
      * @param locale The IETF Language Tag. Note that this only supports the primary language subtag with one secondary language subtag (i.e. en-US, fr-CA). The secondary language subtag is almost always a regional designation. This does not support additional subtags beyond the primary and secondary language subtags.  (optional)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
@@ -327,7 +460,7 @@ public class ShippingApi {
     /**
      *  (asynchronously)
      * Purchases the shipping service for a shipment using the best fit service offering. Returns purchase related details and documents.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
+     * @param body DirectPurchaseRequest body (required)
      * @param xAmznIdempotencyKey A unique value which the server uses to recognize subsequent retries of the same request. (optional)
      * @param locale The IETF Language Tag. Note that this only supports the primary language subtag with one secondary language subtag (i.e. en-US, fr-CA). The secondary language subtag is almost always a regional designation. This does not support additional subtags beyond the primary and secondary language subtags.  (optional)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
@@ -364,7 +497,7 @@ public class ShippingApi {
     }
     /**
      * Build call for generateCollectionForm
-     * @param body  (required)
+     * @param body GenerateCollectionFormRequest body (required)
      * @param xAmznIdempotencyKey A unique value which the server uses to recognize subsequent retries of the same request. (optional)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      * @param progressListener Progress listener
@@ -433,7 +566,7 @@ public class ShippingApi {
     /**
      * 
      * This API  Call to generate the collection form.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
+     * @param body GenerateCollectionFormRequest body (required)
      * @param xAmznIdempotencyKey A unique value which the server uses to recognize subsequent retries of the same request. (optional)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      * @return GenerateCollectionFormResponse
@@ -448,7 +581,7 @@ public class ShippingApi {
     /**
      * 
      * This API  Call to generate the collection form.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
+     * @param body GenerateCollectionFormRequest body (required)
      * @param xAmznIdempotencyKey A unique value which the server uses to recognize subsequent retries of the same request. (optional)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      * @return ApiResponse&lt;GenerateCollectionFormResponse&gt;
@@ -464,7 +597,7 @@ public class ShippingApi {
     /**
      *  (asynchronously)
      * This API  Call to generate the collection form.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
+     * @param body GenerateCollectionFormRequest body (required)
      * @param xAmznIdempotencyKey A unique value which the server uses to recognize subsequent retries of the same request. (optional)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
@@ -500,9 +633,9 @@ public class ShippingApi {
     }
     /**
      * Build call for getAccessPoints
-     * @param accessPointTypes  (required)
-     * @param countryCode  (required)
-     * @param postalCode  (required)
+     * @param accessPointTypes Access point types (required)
+     * @param countryCode Country code for access point (required)
+     * @param postalCode postal code for access point (required)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -582,9 +715,9 @@ public class ShippingApi {
     /**
      * 
      * Returns a list of access points in proximity of input postal code.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param accessPointTypes  (required)
-     * @param countryCode  (required)
-     * @param postalCode  (required)
+     * @param accessPointTypes Access point types (required)
+     * @param countryCode Country code for access point (required)
+     * @param postalCode postal code for access point (required)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      * @return GetAccessPointsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -598,9 +731,9 @@ public class ShippingApi {
     /**
      * 
      * Returns a list of access points in proximity of input postal code.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param accessPointTypes  (required)
-     * @param countryCode  (required)
-     * @param postalCode  (required)
+     * @param accessPointTypes Access point types (required)
+     * @param countryCode Country code for access point (required)
+     * @param postalCode postal code for access point (required)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      * @return ApiResponse&lt;GetAccessPointsResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -615,9 +748,9 @@ public class ShippingApi {
     /**
      *  (asynchronously)
      * Returns a list of access points in proximity of input postal code.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param accessPointTypes  (required)
-     * @param countryCode  (required)
-     * @param postalCode  (required)
+     * @param accessPointTypes Access point types (required)
+     * @param countryCode Country code for access point (required)
+     * @param postalCode postal code for access point (required)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -916,7 +1049,7 @@ public class ShippingApi {
     }
     /**
      * Build call for getCarrierAccounts
-     * @param body  (required)
+     * @param body GetCarrierAccountsRequest body (required)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -982,7 +1115,7 @@ public class ShippingApi {
     /**
      * 
      * This API will return Get all carrier accounts for a merchant.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
+     * @param body GetCarrierAccountsRequest body (required)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      * @return GetCarrierAccountsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -996,7 +1129,7 @@ public class ShippingApi {
     /**
      * 
      * This API will return Get all carrier accounts for a merchant.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
+     * @param body GetCarrierAccountsRequest body (required)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      * @return ApiResponse&lt;GetCarrierAccountsResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1011,7 +1144,7 @@ public class ShippingApi {
     /**
      *  (asynchronously)
      * This API will return Get all carrier accounts for a merchant.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
+     * @param body GetCarrierAccountsRequest body (required)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1177,7 +1310,7 @@ public class ShippingApi {
     }
     /**
      * Build call for getCollectionFormHistory
-     * @param body  (required)
+     * @param body GetCollectionFormHistoryRequest body (required)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -1243,7 +1376,7 @@ public class ShippingApi {
     /**
      * 
      * This API Call to get the history of the previously generated collection forms.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
+     * @param body GetCollectionFormHistoryRequest body (required)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      * @return GetCollectionFormHistoryResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1257,7 +1390,7 @@ public class ShippingApi {
     /**
      * 
      * This API Call to get the history of the previously generated collection forms.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
+     * @param body GetCollectionFormHistoryRequest body (required)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      * @return ApiResponse&lt;GetCollectionFormHistoryResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1272,7 +1405,7 @@ public class ShippingApi {
     /**
      *  (asynchronously)
      * This API Call to get the history of the previously generated collection forms.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
+     * @param body GetCollectionFormHistoryRequest body (required)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1307,7 +1440,7 @@ public class ShippingApi {
     }
     /**
      * Build call for getRates
-     * @param body  (required)
+     * @param body GetRatesRequest body (required)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -1373,7 +1506,7 @@ public class ShippingApi {
     /**
      * 
      * Returns the available shipping service offerings.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
+     * @param body GetRatesRequest body (required)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      * @return GetRatesResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1387,7 +1520,7 @@ public class ShippingApi {
     /**
      * 
      * Returns the available shipping service offerings.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
+     * @param body GetRatesRequest body (required)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      * @return ApiResponse&lt;GetRatesResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1402,7 +1535,7 @@ public class ShippingApi {
     /**
      *  (asynchronously)
      * Returns the available shipping service offerings.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
+     * @param body GetRatesRequest body (required)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1732,7 +1865,7 @@ public class ShippingApi {
     }
     /**
      * Build call for getUnmanifestedShipments
-     * @param body  (required)
+     * @param body GetUmanifestedShipmentsRequest body (required)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -1798,7 +1931,7 @@ public class ShippingApi {
     /**
      * 
      * This API Get all unmanifested carriers with shipment locations. Any locations which has unmanifested shipments         with an eligible carrier for manifesting shall be returned.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
+     * @param body GetUmanifestedShipmentsRequest body (required)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      * @return GetUnmanifestedShipmentsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1812,7 +1945,7 @@ public class ShippingApi {
     /**
      * 
      * This API Get all unmanifested carriers with shipment locations. Any locations which has unmanifested shipments         with an eligible carrier for manifesting shall be returned.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
+     * @param body GetUmanifestedShipmentsRequest body (required)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      * @return ApiResponse&lt;GetUnmanifestedShipmentsResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1827,7 +1960,7 @@ public class ShippingApi {
     /**
      *  (asynchronously)
      * This API Get all unmanifested carriers with shipment locations. Any locations which has unmanifested shipments         with an eligible carrier for manifesting shall be returned.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
+     * @param body GetUmanifestedShipmentsRequest body (required)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1862,8 +1995,8 @@ public class ShippingApi {
     }
     /**
      * Build call for linkCarrierAccount
-     * @param body  (required)
-     * @param carrierId The unique identifier associated with the carrier account. (required)
+     * @param body LinkCarrierAccountRequest body (required)
+     * @param carrierId An identifier for the carrier with which the seller&#x27;s account is being linked. (required)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -1934,8 +2067,8 @@ public class ShippingApi {
     /**
      * 
      * This API associates/links the specified carrier account with the merchant.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
-     * @param carrierId The unique identifier associated with the carrier account. (required)
+     * @param body LinkCarrierAccountRequest body (required)
+     * @param carrierId An identifier for the carrier with which the seller&#x27;s account is being linked. (required)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      * @return LinkCarrierAccountResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1949,8 +2082,8 @@ public class ShippingApi {
     /**
      * 
      * This API associates/links the specified carrier account with the merchant.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
-     * @param carrierId The unique identifier associated with the carrier account. (required)
+     * @param body LinkCarrierAccountRequest body (required)
+     * @param carrierId An identifier for the carrier with which the seller&#x27;s account is being linked. (required)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      * @return ApiResponse&lt;LinkCarrierAccountResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1965,8 +2098,8 @@ public class ShippingApi {
     /**
      *  (asynchronously)
      * This API associates/links the specified carrier account with the merchant.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
-     * @param carrierId The unique identifier associated with the carrier account. (required)
+     * @param body LinkCarrierAccountRequest body (required)
+     * @param carrierId An identifier for the carrier with which the seller&#x27;s account is being linked. (required)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2000,8 +2133,147 @@ public class ShippingApi {
         return call;
     }
     /**
+     * Build call for linkCarrierAccount_0
+     * @param body LinkCarrierAccountRequest body (required)
+     * @param carrierId An identifier for the carrier with which the seller&#x27;s account is being linked. (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call linkCarrierAccount_0Call(LinkCarrierAccountRequest body, String carrierId, String xAmznShippingBusinessId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException, LWAException {
+        Object localVarPostBody = body;
+
+        // create path and map variables
+        String localVarPath = "/shipping/v2/carrierAccounts/{carrierId}"
+            .replaceAll("\\{" + "carrierId" + "\\}", apiClient.escapeString(carrierId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        if (xAmznShippingBusinessId != null)
+        localVarHeaderParams.put("x-amzn-shipping-business-id", apiClient.parameterToString(xAmznShippingBusinessId));
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
+                @Override
+                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
+                    okhttp3.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call linkCarrierAccount_0ValidateBeforeCall(LinkCarrierAccountRequest body, String carrierId, String xAmznShippingBusinessId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException, LWAException {
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling linkCarrierAccount_0(Async)");
+        }
+        // verify the required parameter 'carrierId' is set
+        if (carrierId == null) {
+            throw new ApiException("Missing the required parameter 'carrierId' when calling linkCarrierAccount_0(Async)");
+        }
+
+        okhttp3.Call call = linkCarrierAccount_0Call(body, carrierId, xAmznShippingBusinessId, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * 
+     * This API associates/links the specified carrier account with the merchant.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     * @param body LinkCarrierAccountRequest body (required)
+     * @param carrierId An identifier for the carrier with which the seller&#x27;s account is being linked. (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
+     * @return LinkCarrierAccountResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public LinkCarrierAccountResponse linkCarrierAccount_0(LinkCarrierAccountRequest body, String carrierId, String xAmznShippingBusinessId) throws ApiException,LWAException {
+        ApiResponse<LinkCarrierAccountResponse> resp = linkCarrierAccount_0WithHttpInfo(body, carrierId, xAmznShippingBusinessId);
+        return resp.getData();
+    }
+
+    /**
+     * 
+     * This API associates/links the specified carrier account with the merchant.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     * @param body LinkCarrierAccountRequest body (required)
+     * @param carrierId An identifier for the carrier with which the seller&#x27;s account is being linked. (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
+     * @return ApiResponse&lt;LinkCarrierAccountResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<LinkCarrierAccountResponse> linkCarrierAccount_0WithHttpInfo(LinkCarrierAccountRequest body, String carrierId, String xAmznShippingBusinessId) throws ApiException,LWAException {
+        okhttp3.Call call = linkCarrierAccount_0ValidateBeforeCall(body, carrierId, xAmznShippingBusinessId, null, null);
+        Type localVarReturnType = new TypeToken<LinkCarrierAccountResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * This API associates/links the specified carrier account with the merchant.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     * @param body LinkCarrierAccountRequest body (required)
+     * @param carrierId An identifier for the carrier with which the seller&#x27;s account is being linked. (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call linkCarrierAccount_0Async(LinkCarrierAccountRequest body, String carrierId, String xAmznShippingBusinessId, final ApiCallback<LinkCarrierAccountResponse> callback) throws ApiException, LWAException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        okhttp3.Call call = linkCarrierAccount_0ValidateBeforeCall(body, carrierId, xAmznShippingBusinessId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<LinkCarrierAccountResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for oneClickShipment
-     * @param body  (required)
+     * @param body OneClickShipmentRequest body (required)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -2067,7 +2339,7 @@ public class ShippingApi {
     /**
      * 
      * Purchases a shipping service identifier and returns purchase-related details and documents.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
+     * @param body OneClickShipmentRequest body (required)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      * @return OneClickShipmentResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2081,7 +2353,7 @@ public class ShippingApi {
     /**
      * 
      * Purchases a shipping service identifier and returns purchase-related details and documents.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
+     * @param body OneClickShipmentRequest body (required)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      * @return ApiResponse&lt;OneClickShipmentResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2096,7 +2368,7 @@ public class ShippingApi {
     /**
      *  (asynchronously)
      * Purchases a shipping service identifier and returns purchase-related details and documents.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
+     * @param body OneClickShipmentRequest body (required)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2131,7 +2403,7 @@ public class ShippingApi {
     }
     /**
      * Build call for purchaseShipment
-     * @param body  (required)
+     * @param body PurchaseShipmentRequest body (required)
      * @param xAmznIdempotencyKey A unique value which the server uses to recognize subsequent retries of the same request. (optional)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      * @param progressListener Progress listener
@@ -2200,7 +2472,7 @@ public class ShippingApi {
     /**
      * 
      * Purchases a shipping service and returns purchase related details and documents.  Note: You must complete the purchase within 10 minutes of rate creation by the shipping service provider. If you make the request after the 10 minutes have expired, you will receive an error response with the error code equal to \&quot;TOKEN_EXPIRED\&quot;. If you receive this error response, you must get the rates for the shipment again.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
+     * @param body PurchaseShipmentRequest body (required)
      * @param xAmznIdempotencyKey A unique value which the server uses to recognize subsequent retries of the same request. (optional)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      * @return PurchaseShipmentResponse
@@ -2215,7 +2487,7 @@ public class ShippingApi {
     /**
      * 
      * Purchases a shipping service and returns purchase related details and documents.  Note: You must complete the purchase within 10 minutes of rate creation by the shipping service provider. If you make the request after the 10 minutes have expired, you will receive an error response with the error code equal to \&quot;TOKEN_EXPIRED\&quot;. If you receive this error response, you must get the rates for the shipment again.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
+     * @param body PurchaseShipmentRequest body (required)
      * @param xAmznIdempotencyKey A unique value which the server uses to recognize subsequent retries of the same request. (optional)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      * @return ApiResponse&lt;PurchaseShipmentResponse&gt;
@@ -2231,7 +2503,7 @@ public class ShippingApi {
     /**
      *  (asynchronously)
      * Purchases a shipping service and returns purchase related details and documents.  Note: You must complete the purchase within 10 minutes of rate creation by the shipping service provider. If you make the request after the 10 minutes have expired, you will receive an error response with the error code equal to \&quot;TOKEN_EXPIRED\&quot;. If you receive this error response, you must get the rates for the shipment again.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
+     * @param body PurchaseShipmentRequest body (required)
      * @param xAmznIdempotencyKey A unique value which the server uses to recognize subsequent retries of the same request. (optional)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes
@@ -2266,8 +2538,134 @@ public class ShippingApi {
         return call;
     }
     /**
+     * Build call for submitNdrFeedback
+     * @param body Request body for ndrFeedback operation (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call submitNdrFeedbackCall(SubmitNdrFeedbackRequest body, String xAmznShippingBusinessId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException, LWAException {
+        Object localVarPostBody = body;
+
+        // create path and map variables
+        String localVarPath = "/shipping/v2/ndrFeedback";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        if (xAmznShippingBusinessId != null)
+        localVarHeaderParams.put("x-amzn-shipping-business-id", apiClient.parameterToString(xAmznShippingBusinessId));
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
+                @Override
+                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
+                    okhttp3.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call submitNdrFeedbackValidateBeforeCall(SubmitNdrFeedbackRequest body, String xAmznShippingBusinessId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException, LWAException {
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling submitNdrFeedback(Async)");
+        }
+
+        okhttp3.Call call = submitNdrFeedbackCall(body, xAmznShippingBusinessId, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * 
+     * This API submits the NDR (Non-delivery Report) Feedback for any eligible shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     * @param body Request body for ndrFeedback operation (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public void submitNdrFeedback(SubmitNdrFeedbackRequest body, String xAmznShippingBusinessId) throws ApiException,LWAException {
+        submitNdrFeedbackWithHttpInfo(body, xAmznShippingBusinessId);
+    }
+
+    /**
+     * 
+     * This API submits the NDR (Non-delivery Report) Feedback for any eligible shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     * @param body Request body for ndrFeedback operation (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<Void> submitNdrFeedbackWithHttpInfo(SubmitNdrFeedbackRequest body, String xAmznShippingBusinessId) throws ApiException,LWAException {
+        okhttp3.Call call = submitNdrFeedbackValidateBeforeCall(body, xAmznShippingBusinessId, null, null);
+        return apiClient.execute(call);
+    }
+
+    /**
+     *  (asynchronously)
+     * This API submits the NDR (Non-delivery Report) Feedback for any eligible shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
+     * @param body Request body for ndrFeedback operation (required)
+     * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call submitNdrFeedbackAsync(SubmitNdrFeedbackRequest body, String xAmznShippingBusinessId, final ApiCallback<Void> callback) throws ApiException, LWAException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        okhttp3.Call call = submitNdrFeedbackValidateBeforeCall(body, xAmznShippingBusinessId, progressListener, progressRequestListener);
+        apiClient.executeAsync(call, callback);
+        return call;
+    }
+    /**
      * Build call for unlinkCarrierAccount
-     * @param body  (required)
+     * @param body UnlinkCarrierAccountRequest body (required)
      * @param carrierId carrier Id to unlink with merchant. (required)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      * @param progressListener Progress listener
@@ -2339,7 +2737,7 @@ public class ShippingApi {
     /**
      * 
      * This API Unlink the specified carrier account with the merchant.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
+     * @param body UnlinkCarrierAccountRequest body (required)
      * @param carrierId carrier Id to unlink with merchant. (required)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      * @return UnlinkCarrierAccountResponse
@@ -2354,7 +2752,7 @@ public class ShippingApi {
     /**
      * 
      * This API Unlink the specified carrier account with the merchant.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
+     * @param body UnlinkCarrierAccountRequest body (required)
      * @param carrierId carrier Id to unlink with merchant. (required)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      * @return ApiResponse&lt;UnlinkCarrierAccountResponse&gt;
@@ -2370,7 +2768,7 @@ public class ShippingApi {
     /**
      *  (asynchronously)
      * This API Unlink the specified carrier account with the merchant.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param body  (required)
+     * @param body UnlinkCarrierAccountRequest body (required)
      * @param carrierId carrier Id to unlink with merchant. (required)
      * @param xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      * @param callback The callback to be executed when the API call finishes

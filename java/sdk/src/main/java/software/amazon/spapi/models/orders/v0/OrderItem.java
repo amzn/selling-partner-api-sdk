@@ -1,5 +1,5 @@
 /*
- * Orders v0
+ * Selling Partner API for Orders
  * Use the Orders Selling Partner API to programmatically retrieve order information. With this API, you can develop fast, flexible, and custom applications to manage order synchronization, perform order research, and create demand-based decision support tools.   _Note:_ For the JP, AU, and SG marketplaces, the Orders API supports orders from 2016 onward. For all other marketplaces, the Orders API supports orders for the last two years (orders older than this don't show up in the response).
  *
  * OpenAPI spec version: v0
@@ -26,6 +26,7 @@ import java.util.List;
 import software.amazon.spapi.models.orders.v0.AmazonPrograms;
 import software.amazon.spapi.models.orders.v0.AssociatedItem;
 import software.amazon.spapi.models.orders.v0.BuyerRequestedCancel;
+import software.amazon.spapi.models.orders.v0.ExportInfo;
 import software.amazon.spapi.models.orders.v0.ItemBuyerInfo;
 import software.amazon.spapi.models.orders.v0.Measurement;
 import software.amazon.spapi.models.orders.v0.Money;
@@ -204,6 +205,9 @@ public class OrderItem {
 
   @SerializedName("AmazonPrograms")
   private AmazonPrograms amazonPrograms = null;
+
+  @SerializedName("ExportInfo")
+  private ExportInfo exportInfo = null;
 
   public OrderItem ASIN(String ASIN) {
     this.ASIN = ASIN;
@@ -941,6 +945,24 @@ public class OrderItem {
     this.amazonPrograms = amazonPrograms;
   }
 
+  public OrderItem exportInfo(ExportInfo exportInfo) {
+    this.exportInfo = exportInfo;
+    return this;
+  }
+
+   /**
+   * Get exportInfo
+   * @return exportInfo
+  **/
+  @Schema(description = "")
+  public ExportInfo getExportInfo() {
+    return exportInfo;
+  }
+
+  public void setExportInfo(ExportInfo exportInfo) {
+    this.exportInfo = exportInfo;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -990,12 +1012,13 @@ public class OrderItem {
         Objects.equals(this.substitutionPreferences, orderItem.substitutionPreferences) &&
         Objects.equals(this.measurement, orderItem.measurement) &&
         Objects.equals(this.shippingConstraints, orderItem.shippingConstraints) &&
-        Objects.equals(this.amazonPrograms, orderItem.amazonPrograms);
+        Objects.equals(this.amazonPrograms, orderItem.amazonPrograms) &&
+        Objects.equals(this.exportInfo, orderItem.exportInfo);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(ASIN, sellerSKU, orderItemId, associatedItems, title, quantityOrdered, quantityShipped, productInfo, pointsGranted, itemPrice, shippingPrice, itemTax, shippingTax, shippingDiscount, shippingDiscountTax, promotionDiscount, promotionDiscountTax, promotionIds, coDFee, coDFeeDiscount, isGift, conditionNote, conditionId, conditionSubtypeId, scheduledDeliveryStartDate, scheduledDeliveryEndDate, priceDesignation, taxCollection, serialNumberRequired, isTransparency, iossNumber, storeChainStoreId, deemedResellerCategory, buyerInfo, buyerRequestedCancel, serialNumbers, substitutionPreferences, measurement, shippingConstraints, amazonPrograms);
+    return Objects.hash(ASIN, sellerSKU, orderItemId, associatedItems, title, quantityOrdered, quantityShipped, productInfo, pointsGranted, itemPrice, shippingPrice, itemTax, shippingTax, shippingDiscount, shippingDiscountTax, promotionDiscount, promotionDiscountTax, promotionIds, coDFee, coDFeeDiscount, isGift, conditionNote, conditionId, conditionSubtypeId, scheduledDeliveryStartDate, scheduledDeliveryEndDate, priceDesignation, taxCollection, serialNumberRequired, isTransparency, iossNumber, storeChainStoreId, deemedResellerCategory, buyerInfo, buyerRequestedCancel, serialNumbers, substitutionPreferences, measurement, shippingConstraints, amazonPrograms, exportInfo);
   }
 
 
@@ -1044,6 +1067,7 @@ public class OrderItem {
     sb.append("    measurement: ").append(toIndentedString(measurement)).append("\n");
     sb.append("    shippingConstraints: ").append(toIndentedString(shippingConstraints)).append("\n");
     sb.append("    amazonPrograms: ").append(toIndentedString(amazonPrograms)).append("\n");
+    sb.append("    exportInfo: ").append(toIndentedString(exportInfo)).append("\n");
     sb.append("}");
     return sb.toString();
   }

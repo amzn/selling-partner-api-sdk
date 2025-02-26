@@ -1,6 +1,6 @@
 /*
  * The Selling Partner API for Finances
- * The Selling Partner API for Finances provides financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
+ * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
  *
  * OpenAPI spec version: 2024-06-19
  * 
@@ -23,9 +23,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import org.threeten.bp.OffsetDateTime;
 /**
- * Additional information that is related to the time range of the transaction.
+ * Additional information related to time range for transaction.
  */
-@Schema(description = "Additional information that is related to the time range of the transaction.")
+@Schema(description = "Additional information related to time range for transaction.")
 
 
 public class TimeRangeContext {
