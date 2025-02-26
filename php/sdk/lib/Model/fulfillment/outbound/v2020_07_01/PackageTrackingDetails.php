@@ -71,6 +71,7 @@ class PackageTrackingDetails implements ModelInterface, ArrayAccess, \JsonSerial
              'ship_to_address' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\TrackingAddress',
              'current_status' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\CurrentStatus',
              'current_status_description' => 'string',
+             'delivery_window' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\DateRange',
              'signed_for_by' => 'string',
              'additional_location_info' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\AdditionalLocationInfo',
              'tracking_events' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\TrackingEvent[]'    ];
@@ -94,6 +95,7 @@ class PackageTrackingDetails implements ModelInterface, ArrayAccess, \JsonSerial
             'ship_to_address' => null,
             'current_status' => null,
             'current_status_description' => null,
+            'delivery_window' => null,
             'signed_for_by' => null,
             'additional_location_info' => null,
             'tracking_events' => null    ];
@@ -115,6 +117,7 @@ class PackageTrackingDetails implements ModelInterface, ArrayAccess, \JsonSerial
         'ship_to_address' => true,
         'current_status' => true,
         'current_status_description' => true,
+        'delivery_window' => true,
         'signed_for_by' => true,
         'additional_location_info' => true,
         'tracking_events' => true
@@ -217,6 +220,7 @@ class PackageTrackingDetails implements ModelInterface, ArrayAccess, \JsonSerial
                 'ship_to_address' => 'shipToAddress',
                 'current_status' => 'currentStatus',
                 'current_status_description' => 'currentStatusDescription',
+                'delivery_window' => 'deliveryWindow',
                 'signed_for_by' => 'signedForBy',
                 'additional_location_info' => 'additionalLocationInfo',
                 'tracking_events' => 'trackingEvents'
@@ -240,6 +244,7 @@ class PackageTrackingDetails implements ModelInterface, ArrayAccess, \JsonSerial
         'ship_to_address' => 'setShipToAddress',
         'current_status' => 'setCurrentStatus',
         'current_status_description' => 'setCurrentStatusDescription',
+        'delivery_window' => 'setDeliveryWindow',
         'signed_for_by' => 'setSignedForBy',
         'additional_location_info' => 'setAdditionalLocationInfo',
         'tracking_events' => 'setTrackingEvents'
@@ -262,6 +267,7 @@ class PackageTrackingDetails implements ModelInterface, ArrayAccess, \JsonSerial
         'ship_to_address' => 'getShipToAddress',
         'current_status' => 'getCurrentStatus',
         'current_status_description' => 'getCurrentStatusDescription',
+        'delivery_window' => 'getDeliveryWindow',
         'signed_for_by' => 'getSignedForBy',
         'additional_location_info' => 'getAdditionalLocationInfo',
         'tracking_events' => 'getTrackingEvents'
@@ -335,6 +341,7 @@ class PackageTrackingDetails implements ModelInterface, ArrayAccess, \JsonSerial
         $this->setIfExists('ship_to_address', $data ?? [], null);
         $this->setIfExists('current_status', $data ?? [], null);
         $this->setIfExists('current_status_description', $data ?? [], null);
+        $this->setIfExists('delivery_window', $data ?? [], null);
         $this->setIfExists('signed_for_by', $data ?? [], null);
         $this->setIfExists('additional_location_info', $data ?? [], null);
         $this->setIfExists('tracking_events', $data ?? [], null);
@@ -731,7 +738,7 @@ class PackageTrackingDetails implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets current_status_description
      *
-     * @param string|null $current_status_description Description corresponding to the `CurrentStatus` value.
+     * @param string|null $current_status_description Description corresponding to the CurrentStatus value.
      *
      * @return self
      */
@@ -748,6 +755,40 @@ class PackageTrackingDetails implements ModelInterface, ArrayAccess, \JsonSerial
             }
         }
         $this->container['current_status_description'] = $current_status_description;
+
+        return $this;
+    }
+
+    /**
+     * Gets delivery_window
+     *
+     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\DateRange|null
+     */
+    public function getDeliveryWindow(): ?\SpApi\Model\fulfillment\outbound\v2020_07_01\DateRange
+    {
+        return $this->container['delivery_window'];
+    }
+
+    /**
+     * Sets delivery_window
+     *
+     * @param \SpApi\Model\fulfillment\outbound\v2020_07_01\DateRange|null $delivery_window delivery_window
+     *
+     * @return self
+     */
+    public function setDeliveryWindow(?\SpApi\Model\fulfillment\outbound\v2020_07_01\DateRange $delivery_window): self
+    {
+        if (is_null($delivery_window)) {
+            array_push($this->openAPINullablesSetToNull, 'delivery_window');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('delivery_window', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['delivery_window'] = $delivery_window;
 
         return $this;
     }

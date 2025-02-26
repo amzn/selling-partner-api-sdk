@@ -69,7 +69,9 @@ class PrepDetailsTest extends TestCase
      */
     public function testPropertyPrepCategory()
     {
-        $testValue = 'test';
+        $enumInstance = new \SpApi\Model\awd\v2024_05_09\PrepCategory();
+        $allowedValues = $enumInstance->getAllowableEnumValues();
+        $testValue = reset($allowedValues);
         
         $this->model->setPrepCategory($testValue);
         $this->assertEquals($testValue, $this->model->getPrepCategory());

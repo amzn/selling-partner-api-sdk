@@ -338,7 +338,7 @@ class ProductQuantity implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets attributes
      *
-     * @param array|null $attributes Attributes for this instance of the product. For example, already-prepped, or other attributes that distinguish the product beyond the SKU.
+     * @param array|null $attributes Contains attributes for this instance of the product. For example, item color, or other attributes that distinguish the product beyond the SKU. This is metadata for the product and Amazon does not process this data.
      *
      * @return self
      */

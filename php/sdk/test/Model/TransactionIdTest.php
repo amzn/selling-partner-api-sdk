@@ -13,7 +13,7 @@
 namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use SpApi\Model\vendor\invoices\v1\TransactionId;
+use SpApi\Model\vendor\df\orders\v2021_12_28\TransactionId;
 
 /**
  * TransactionIdTest Class Doc Comment

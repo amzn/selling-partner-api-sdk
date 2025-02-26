@@ -13,7 +13,7 @@
 namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use SpApi\Model\vendor\df\shipping\v2021_12_28\TaxRegistrationDetails;
+use SpApi\Model\vendor\df\orders\v2021_12_28\TaxRegistrationDetails;
 
 /**
  * TaxRegistrationDetailsTest Class Doc Comment
@@ -80,7 +80,7 @@ class TaxRegistrationDetailsTest extends TestCase
     public function testPropertyTaxRegistrationAddress()
     {
         
-        $testValue = new \SpApi\Model\vendor\df\shipping\v2021_12_28\Address();
+        $testValue = new \SpApi\Model\vendor\df\orders\v2021_12_28\Address();
         
         $this->model->setTaxRegistrationAddress($testValue);
         $this->assertEquals($testValue, $this->model->getTaxRegistrationAddress());

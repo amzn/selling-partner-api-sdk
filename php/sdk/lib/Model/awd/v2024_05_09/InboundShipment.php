@@ -788,7 +788,7 @@ class InboundShipment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets destination_region
      *
-     * @param string|null $destination_region Assigned region where the order will be shipped. This can differ from what was passed as preference. AWD currently supports following region IDs: [us-west, us-east]
+     * @param string|null $destination_region Assigned region where the order will be shipped. This can differ from what was passed as preference. AWD currently supports following region IDs: [us-west, us-east, us-southcentral, us-southeast]
      *
      * @return self
      */

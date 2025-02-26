@@ -13,13 +13,13 @@
 namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use SpApi\Model\vendor\df\shipping\v2021_12_28\ShipmentDetails;
+use SpApi\Model\vendor\df\orders\v2021_12_28\ShipmentDetails;
 
 /**
  * ShipmentDetailsTest Class Doc Comment
  *
  * @category    Class
- * @description Details about a shipment.
+ * @description Shipment details required for the shipment.
  * @package     SpApi
  */
 class ShipmentDetailsTest extends TestCase
@@ -52,30 +52,6 @@ class ShipmentDetailsTest extends TestCase
     }
 
     /**
-     * Test attribute "shipped_date"
-     */
-    public function testPropertyShippedDate()
-    {
-        
-        $testValue = new \DateTime();
-        
-        $this->model->setShippedDate($testValue);
-        $this->assertEquals($testValue, $this->model->getShippedDate());
-    }
-
-    /**
-     * Test attribute "shipment_status"
-     */
-    public function testPropertyShipmentStatus()
-    {
-        $enumInstance = new ShipmentDetails();
-        $allowedValues = $enumInstance->getShipmentStatusAllowableValues();
-        $testValue = reset($allowedValues);
-        $this->model->setShipmentStatus($testValue);
-        $this->assertEquals($testValue, $this->model->getShipmentStatus());
-    }
-
-    /**
      * Test attribute "is_priority_shipment"
      */
     public function testPropertyIsPriorityShipment()
@@ -87,25 +63,69 @@ class ShipmentDetailsTest extends TestCase
     }
 
     /**
-     * Test attribute "vendor_order_number"
+     * Test attribute "is_scheduled_delivery_shipment"
      */
-    public function testPropertyVendorOrderNumber()
+    public function testPropertyIsScheduledDeliveryShipment()
     {
-        $testValue = 'test';
+        $testValue = true;
         
-        $this->model->setVendorOrderNumber($testValue);
-        $this->assertEquals($testValue, $this->model->getVendorOrderNumber());
+        $this->model->setIsScheduledDeliveryShipment($testValue);
+        $this->assertEquals($testValue, $this->model->getIsScheduledDeliveryShipment());
     }
 
     /**
-     * Test attribute "estimated_delivery_date"
+     * Test attribute "is_pslip_required"
      */
-    public function testPropertyEstimatedDeliveryDate()
+    public function testPropertyIsPslipRequired()
+    {
+        $testValue = true;
+        
+        $this->model->setIsPslipRequired($testValue);
+        $this->assertEquals($testValue, $this->model->getIsPslipRequired());
+    }
+
+    /**
+     * Test attribute "is_gift"
+     */
+    public function testPropertyIsGift()
+    {
+        $testValue = true;
+        
+        $this->model->setIsGift($testValue);
+        $this->assertEquals($testValue, $this->model->getIsGift());
+    }
+
+    /**
+     * Test attribute "ship_method"
+     */
+    public function testPropertyShipMethod()
+    {
+        $testValue = 'test';
+        
+        $this->model->setShipMethod($testValue);
+        $this->assertEquals($testValue, $this->model->getShipMethod());
+    }
+
+    /**
+     * Test attribute "shipment_dates"
+     */
+    public function testPropertyShipmentDates()
     {
         
-        $testValue = new \DateTime();
+        $testValue = new \SpApi\Model\vendor\df\orders\v2021_12_28\ShipmentDates();
         
-        $this->model->setEstimatedDeliveryDate($testValue);
-        $this->assertEquals($testValue, $this->model->getEstimatedDeliveryDate());
+        $this->model->setShipmentDates($testValue);
+        $this->assertEquals($testValue, $this->model->getShipmentDates());
+    }
+
+    /**
+     * Test attribute "message_to_customer"
+     */
+    public function testPropertyMessageToCustomer()
+    {
+        $testValue = 'test';
+        
+        $this->model->setMessageToCustomer($testValue);
+        $this->assertEquals($testValue, $this->model->getMessageToCustomer());
     }
 }

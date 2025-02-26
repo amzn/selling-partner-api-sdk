@@ -1,5 +1,5 @@
 {
-    "name": "amzn/spapi-sdk",
+    "name": "spapi/sdk",
     "description": "Amazon Selling Partner APIs official client library for PHP.",
     "type": "library",
     "keywords": [
@@ -10,7 +10,7 @@
         "php",
         "rest"
     ],
-    "homepage": "https://github.com/amzn/selling-partner-api-sdk",
+    "homepage": "https://developer-docs.amazon.com/sp-api",
     "license": "Apache-2.0",
     "authors": [
         {

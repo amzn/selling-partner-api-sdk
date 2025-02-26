@@ -13,13 +13,13 @@
 namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use SpApi\Model\vendor\orders\v1\SubmitAcknowledgementRequest;
+use SpApi\Model\vendor\df\orders\v2021_12_28\SubmitAcknowledgementRequest;
 
 /**
  * SubmitAcknowledgementRequestTest Class Doc Comment
  *
  * @category    Class
- * @description The request schema for the submitAcknowledgment operation.
+ * @description The request schema for the submitAcknowledgement operation.
  * @package     SpApi
  */
 class SubmitAcknowledgementRequestTest extends TestCase
@@ -52,13 +52,13 @@ class SubmitAcknowledgementRequestTest extends TestCase
     }
 
     /**
-     * Test attribute "acknowledgements"
+     * Test attribute "order_acknowledgements"
      */
-    public function testPropertyAcknowledgements()
+    public function testPropertyOrderAcknowledgements()
     {
         $testValue = [];
         
-        $this->model->setAcknowledgements($testValue);
-        $this->assertEquals($testValue, $this->model->getAcknowledgements());
+        $this->model->setOrderAcknowledgements($testValue);
+        $this->assertEquals($testValue, $this->model->getOrderAcknowledgements());
     }
 }

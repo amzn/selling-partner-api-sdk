@@ -13,13 +13,13 @@
 namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use SpApi\Model\easyship\v2022_03_23\TrackingDetails;
+use SpApi\Model\awd\v2024_05_09\TrackingDetails;
 
 /**
  * TrackingDetailsTest Class Doc Comment
  *
  * @category    Class
- * @description Representation of tracking metadata.
+ * @description Tracking details for the shipment. If using SPD transportation, this can be for each case. If not using SPD transportation, this is a single tracking entry for the entire shipment.
  * @package     SpApi
  */
 class TrackingDetailsTest extends TestCase
@@ -52,13 +52,25 @@ class TrackingDetailsTest extends TestCase
     }
 
     /**
-     * Test attribute "tracking_id"
+     * Test attribute "carrier_code"
      */
-    public function testPropertyTrackingId()
+    public function testPropertyCarrierCode()
+    {
+        
+        $testValue = new \SpApi\Model\awd\v2024_05_09\CarrierCode();
+        
+        $this->model->setCarrierCode($testValue);
+        $this->assertEquals($testValue, $this->model->getCarrierCode());
+    }
+
+    /**
+     * Test attribute "booking_id"
+     */
+    public function testPropertyBookingId()
     {
         $testValue = 'test';
         
-        $this->model->setTrackingId($testValue);
-        $this->assertEquals($testValue, $this->model->getTrackingId());
+        $this->model->setBookingId($testValue);
+        $this->assertEquals($testValue, $this->model->getBookingId());
     }
 }

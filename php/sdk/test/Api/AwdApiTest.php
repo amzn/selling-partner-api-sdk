@@ -56,6 +56,1447 @@ class AwdApiTest extends BaseTestCase
     }
 
     /**
+     * Test case for cancelInbound_204
+     */
+    public function testCancelInbound204()
+    {
+        try {
+            // Skip test if it is in the skip list
+            if ($this->testHelper->shouldSkipTest('testCancelInbound204', 'AwdApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;The 204 response for &#x60;cancelInbound&#x60;.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;example&quot; : [ { } ]
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;orderId&quot; : {
+            &quot;value&quot; : &quot;TestOrderId1&quot;
+          }
+        }
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
+                $this->apiInstance,
+                $jsonSchema,
+                'cancelInbound'
+            );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
+
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('AwdApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
+
+            // Act: Call API
+            list($response, $statusCode, $headers) =
+                $this->apiInstance->cancelInboundWithHttpInfo(...array_values($requestParams));
+
+            // Assert the response code
+            $this->assertHttpStatusCode(204, $statusCode);
+
+            // Handle different response codes
+            $this->handleResponse($response, $statusCode, 204, $expectedResponse);
+        } catch (ApiException $e) {
+            $this->handleApiException($e, 204);
+        } catch (\ReflectionException $e) {
+            $this->fail("Reflection exception: " . $e->getMessage());
+        }
+    }
+    /**
+     * Test case for cancelInbound_400
+     */
+    public function testCancelInbound400()
+    {
+        try {
+            // Skip test if it is in the skip list
+            if ($this->testHelper->shouldSkipTest('testCancelInbound400', 'AwdApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ErrorList&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;orderId&quot; : {
+            &quot;value&quot; : &quot; &quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;BAD_REQUEST&quot;,
+          &quot;details&quot; : &quot;This exception is thrown when client inputs are invalid&quot;,
+          &quot;message&quot; : &quot;OrderId should be present for this request&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
+                $this->apiInstance,
+                $jsonSchema,
+                'cancelInbound'
+            );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
+
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('AwdApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
+
+            // Act: Call API
+            list($response, $statusCode, $headers) =
+                $this->apiInstance->cancelInboundWithHttpInfo(...array_values($requestParams));
+
+            // Assert the response code
+            $this->assertHttpStatusCode(400, $statusCode);
+
+            // Handle different response codes
+            $this->handleResponse($response, $statusCode, 400, $expectedResponse);
+        } catch (ApiException $e) {
+            $this->handleApiException($e, 400);
+        } catch (\ReflectionException $e) {
+            $this->fail("Reflection exception: " . $e->getMessage());
+        }
+    }
+    /**
+     * Test case for cancelInbound_403
+     */
+    public function testCancelInbound403()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for cancelInbound_404
+     */
+    public function testCancelInbound404()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for cancelInbound_409
+     */
+    public function testCancelInbound409()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for cancelInbound_413
+     */
+    public function testCancelInbound413()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for cancelInbound_415
+     */
+    public function testCancelInbound415()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for cancelInbound_429
+     */
+    public function testCancelInbound429()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for cancelInbound_500
+     */
+    public function testCancelInbound500()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for cancelInbound_503
+     */
+    public function testCancelInbound503()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for checkInboundEligibility_200
+     */
+    public function testCheckInboundEligibility200()
+    {
+        try {
+            // Skip test if it is in the skip list
+            if ($this->testHelper->shouldSkipTest('testCheckInboundEligibility200', 'AwdApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;The 200 response for &#x60;checkInboundEligibility&#x60;.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/InboundEligibility&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;packagesToInbound&quot; : [ {
+                &quot;count&quot; : 1,
+                &quot;distributionPackage&quot; : {
+                  &quot;contents&quot; : {
+                    &quot;products&quot; : [ {
+                      &quot;quantity&quot; : 1,
+                      &quot;sku&quot; : &quot;TestDVDSku&quot;
+                    } ]
+                  },
+                  &quot;measurements&quot; : {
+                    &quot;dimensions&quot; : {
+                      &quot;height&quot; : 1,
+                      &quot;length&quot; : 1,
+                      &quot;unitOfMeasurement&quot; : &quot;INCHES&quot;,
+                      &quot;width&quot; : 1
+                    },
+                    &quot;volume&quot; : {
+                      &quot;unitOfMeasurement&quot; : &quot;CUIN&quot;,
+                      &quot;volume&quot; : 1
+                    },
+                    &quot;weight&quot; : {
+                      &quot;unitOfMeasurement&quot; : &quot;POUNDS&quot;,
+                      &quot;weight&quot; : 1
+                    }
+                  },
+                  &quot;type&quot; : &quot;CASE&quot;
+                }
+              }, {
+                &quot;count&quot; : 1,
+                &quot;distributionPackage&quot; : {
+                  &quot;contents&quot; : {
+                    &quot;products&quot; : [ {
+                      &quot;quantity&quot; : 1,
+                      &quot;sku&quot; : &quot;testPen&quot;
+                    } ]
+                  },
+                  &quot;measurements&quot; : {
+                    &quot;dimensions&quot; : {
+                      &quot;height&quot; : 1,
+                      &quot;length&quot; : 1,
+                      &quot;unitOfMeasurement&quot; : &quot;INCHES&quot;,
+                      &quot;width&quot; : 1
+                    },
+                    &quot;volume&quot; : {
+                      &quot;unitOfMeasurement&quot; : &quot;CUIN&quot;,
+                      &quot;volume&quot; : 1
+                    },
+                    &quot;weight&quot; : {
+                      &quot;unitOfMeasurement&quot; : &quot;POUNDS&quot;,
+                      &quot;weight&quot; : 1
+                    }
+                  },
+                  &quot;type&quot; : &quot;CASE&quot;
+                }
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;ineligibilityReasons&quot; : [ ],
+        &quot;status&quot; : &quot;INELIGIBLE&quot;,
+        &quot;packagesToInbound&quot; : [ {
+          &quot;ineligibilityReasons&quot; : [ {
+            &quot;description&quot; : &quot;You can&#39;t use the gating service to buy this item.&quot;,
+            &quot;code&quot; : &quot;GATING_BLOCK_ON_GL&quot;
+          } ],
+          &quot;status&quot; : &quot;INELIGIBLE&quot;,
+          &quot;packageQuantity&quot; : {
+            &quot;count&quot; : 1,
+            &quot;distributionPackage&quot; : {
+              &quot;contents&quot; : {
+                &quot;packages&quot; : [ ],
+                &quot;products&quot; : [ {
+                  &quot;quantity&quot; : 1,
+                  &quot;sku&quot; : &quot;TestDVDSku&quot;
+                } ]
+              },
+              &quot;measurements&quot; : {
+                &quot;dimensions&quot; : {
+                  &quot;height&quot; : 1.0,
+                  &quot;length&quot; : 1.0,
+                  &quot;unitOfMeasurement&quot; : &quot;INCHES&quot;,
+                  &quot;width&quot; : 1.0
+                },
+                &quot;volume&quot; : {
+                  &quot;unitOfMeasurement&quot; : &quot;CUIN&quot;,
+                  &quot;volume&quot; : 1.0
+                },
+                &quot;weight&quot; : {
+                  &quot;unitOfMeasurement&quot; : &quot;POUNDS&quot;,
+                  &quot;weight&quot; : 1.0
+                }
+              },
+              &quot;type&quot; : &quot;CASE&quot;
+            }
+          }
+        }, {
+          &quot;ineligibilityReasons&quot; : [ ],
+          &quot;status&quot; : &quot;ELIGIBLE&quot;,
+          &quot;packageQuantity&quot; : {
+            &quot;count&quot; : 1,
+            &quot;distributionPackage&quot; : {
+              &quot;contents&quot; : {
+                &quot;packages&quot; : [ ],
+                &quot;products&quot; : [ {
+                  &quot;quantity&quot; : 1,
+                  &quot;sku&quot; : &quot;testPen&quot;
+                } ]
+              },
+              &quot;measurements&quot; : {
+                &quot;dimensions&quot; : {
+                  &quot;height&quot; : 1.0,
+                  &quot;length&quot; : 1.0,
+                  &quot;unitOfMeasurement&quot; : &quot;INCHES&quot;,
+                  &quot;width&quot; : 1.0
+                },
+                &quot;volume&quot; : {
+                  &quot;unitOfMeasurement&quot; : &quot;CUIN&quot;,
+                  &quot;volume&quot; : 1.0
+                },
+                &quot;weight&quot; : {
+                  &quot;unitOfMeasurement&quot; : &quot;POUNDS&quot;,
+                  &quot;weight&quot; : 1.0
+                }
+              },
+              &quot;type&quot; : &quot;CASE&quot;
+            }
+          }
+        } ],
+        &quot;previewedAt&quot; : &quot;1688454771870&quot;
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
+                $this->apiInstance,
+                $jsonSchema,
+                'checkInboundEligibility'
+            );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
+
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('AwdApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
+
+            // Act: Call API
+            list($response, $statusCode, $headers) =
+                $this->apiInstance->checkInboundEligibilityWithHttpInfo(...array_values($requestParams));
+
+            // Assert the response code
+            $this->assertHttpStatusCode(200, $statusCode);
+
+            // Handle different response codes
+            $this->handleResponse($response, $statusCode, 200, $expectedResponse);
+        } catch (ApiException $e) {
+            $this->handleApiException($e, 200);
+        } catch (\ReflectionException $e) {
+            $this->fail("Reflection exception: " . $e->getMessage());
+        }
+    }
+    /**
+     * Test case for checkInboundEligibility_400
+     */
+    public function testCheckInboundEligibility400()
+    {
+        try {
+            // Skip test if it is in the skip list
+            if ($this->testHelper->shouldSkipTest('testCheckInboundEligibility400', 'AwdApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ErrorList&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;packagesToInbound&quot; : [ {
+                &quot;count&quot; : 1,
+                &quot;distributionPackage&quot; : {
+                  &quot;contents&quot; : {
+                    &quot;products&quot; : [ {
+                      &quot;quantity&quot; : 1,
+                      &quot;sku&quot; : &quot;TestDVDSku&quot;
+                    } ]
+                  },
+                  &quot;measurements&quot; : {
+                    &quot;dimensions&quot; : {
+                      &quot;height&quot; : 1,
+                      &quot;length&quot; : 1,
+                      &quot;unitOfMeasurement&quot; : &quot;INCHES&quot;,
+                      &quot;width&quot; : 1
+                    },
+                    &quot;volume&quot; : {
+                      &quot;unitOfMeasurement&quot; : &quot;CUIN&quot;,
+                      &quot;volume&quot; : 1
+                    },
+                    &quot;weight&quot; : {
+                      &quot;unitOfMeasurement&quot; : &quot;POUNDS&quot;,
+                      &quot;weight&quot; : 1
+                    }
+                  },
+                  &quot;type&quot; : &quot;CASE&quot;
+                }
+              }, {
+                &quot;count&quot; : 1,
+                &quot;distributionPackage&quot; : {
+                  &quot;contents&quot; : {
+                    &quot;products&quot; : [ {
+                      &quot;quantity&quot; : 1,
+                      &quot;sku&quot; : &quot;testPen&quot;
+                    } ]
+                  },
+                  &quot;measurements&quot; : {
+                    &quot;dimensions&quot; : {
+                      &quot;height&quot; : 1,
+                      &quot;length&quot; : 1,
+                      &quot;unitOfMeasurement&quot; : &quot;INCHES&quot;,
+                      &quot;width&quot; : 1
+                    },
+                    &quot;volume&quot; : {
+                      &quot;unitOfMeasurement&quot; : &quot;CUIN&quot;,
+                      &quot;volume&quot; : 1
+                    },
+                    &quot;weight&quot; : {
+                      &quot;unitOfMeasurement&quot; : &quot;POUNDS&quot;,
+                      &quot;weight&quot; : 1
+                    }
+                  },
+                  &quot;type&quot; : &quot;TEST&quot;
+                }
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;BAD_REQUEST&quot;,
+          &quot;details&quot; : &quot;This exception is thrown when client inputs are invalid&quot;,
+          &quot;message&quot; : &quot;OrderId should be present for this request&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
+                $this->apiInstance,
+                $jsonSchema,
+                'checkInboundEligibility'
+            );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
+
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('AwdApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
+
+            // Act: Call API
+            list($response, $statusCode, $headers) =
+                $this->apiInstance->checkInboundEligibilityWithHttpInfo(...array_values($requestParams));
+
+            // Assert the response code
+            $this->assertHttpStatusCode(400, $statusCode);
+
+            // Handle different response codes
+            $this->handleResponse($response, $statusCode, 400, $expectedResponse);
+        } catch (ApiException $e) {
+            $this->handleApiException($e, 400);
+        } catch (\ReflectionException $e) {
+            $this->fail("Reflection exception: " . $e->getMessage());
+        }
+    }
+    /**
+     * Test case for checkInboundEligibility_403
+     */
+    public function testCheckInboundEligibility403()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for checkInboundEligibility_404
+     */
+    public function testCheckInboundEligibility404()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for checkInboundEligibility_413
+     */
+    public function testCheckInboundEligibility413()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for checkInboundEligibility_415
+     */
+    public function testCheckInboundEligibility415()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for checkInboundEligibility_429
+     */
+    public function testCheckInboundEligibility429()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for checkInboundEligibility_500
+     */
+    public function testCheckInboundEligibility500()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for checkInboundEligibility_503
+     */
+    public function testCheckInboundEligibility503()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for confirmInbound_204
+     */
+    public function testConfirmInbound204()
+    {
+        try {
+            // Skip test if it is in the skip list
+            if ($this->testHelper->shouldSkipTest('testConfirmInbound204', 'AwdApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;The 204 response for &#x60;confirmInbound&#x60;.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;example&quot; : [ { } ]
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;orderId&quot; : {
+            &quot;value&quot; : &quot;TestOrderId1&quot;
+          }
+        }
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
+                $this->apiInstance,
+                $jsonSchema,
+                'confirmInbound'
+            );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
+
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('AwdApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
+
+            // Act: Call API
+            list($response, $statusCode, $headers) =
+                $this->apiInstance->confirmInboundWithHttpInfo(...array_values($requestParams));
+
+            // Assert the response code
+            $this->assertHttpStatusCode(204, $statusCode);
+
+            // Handle different response codes
+            $this->handleResponse($response, $statusCode, 204, $expectedResponse);
+        } catch (ApiException $e) {
+            $this->handleApiException($e, 204);
+        } catch (\ReflectionException $e) {
+            $this->fail("Reflection exception: " . $e->getMessage());
+        }
+    }
+    /**
+     * Test case for confirmInbound_400
+     */
+    public function testConfirmInbound400()
+    {
+        try {
+            // Skip test if it is in the skip list
+            if ($this->testHelper->shouldSkipTest('testConfirmInbound400', 'AwdApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ErrorList&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;orderId&quot; : {
+            &quot;value&quot; : &quot; &quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;BAD_REQUEST&quot;,
+          &quot;details&quot; : &quot;This exception is thrown when client inputs are invalid&quot;,
+          &quot;message&quot; : &quot;OrderId should be present for this request&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
+                $this->apiInstance,
+                $jsonSchema,
+                'confirmInbound'
+            );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
+
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('AwdApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
+
+            // Act: Call API
+            list($response, $statusCode, $headers) =
+                $this->apiInstance->confirmInboundWithHttpInfo(...array_values($requestParams));
+
+            // Assert the response code
+            $this->assertHttpStatusCode(400, $statusCode);
+
+            // Handle different response codes
+            $this->handleResponse($response, $statusCode, 400, $expectedResponse);
+        } catch (ApiException $e) {
+            $this->handleApiException($e, 400);
+        } catch (\ReflectionException $e) {
+            $this->fail("Reflection exception: " . $e->getMessage());
+        }
+    }
+    /**
+     * Test case for confirmInbound_403
+     */
+    public function testConfirmInbound403()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for confirmInbound_404
+     */
+    public function testConfirmInbound404()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for confirmInbound_409
+     */
+    public function testConfirmInbound409()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for confirmInbound_413
+     */
+    public function testConfirmInbound413()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for confirmInbound_415
+     */
+    public function testConfirmInbound415()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for confirmInbound_429
+     */
+    public function testConfirmInbound429()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for confirmInbound_500
+     */
+    public function testConfirmInbound500()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for confirmInbound_503
+     */
+    public function testConfirmInbound503()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for createInbound_201
+     */
+    public function testCreateInbound201()
+    {
+        try {
+            // Skip test if it is in the skip list
+            if ($this->testHelper->shouldSkipTest('testCreateInbound201', 'AwdApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;&#x60;createInbound&#x60; 201 response.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;Location&quot; : {
+      &quot;description&quot; : &quot;Location header with the order ID for the newly created inbound order.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/InboundOrderReference&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;externalReferenceId&quot; : &quot;string&quot;,
+              &quot;originAddress&quot; : {
+                &quot;addressLine1&quot; : &quot;address_1&quot;,
+                &quot;addressLine2&quot; : &quot;address_2&quot;,
+                &quot;addressLine3&quot; : &quot;address_3&quot;,
+                &quot;city&quot; : &quot;City1&quot;,
+                &quot;countryCode&quot; : &quot;CC&quot;,
+                &quot;district&quot; : &quot;District1&quot;,
+                &quot;name&quot; : &quot;address_name&quot;,
+                &quot;postalCode&quot; : &quot;123456&quot;,
+                &quot;stateOrRegion&quot; : &quot;State1&quot;
+              },
+              &quot;packagesToInbound&quot; : [ {
+                &quot;count&quot; : 1,
+                &quot;distributionPackage&quot; : {
+                  &quot;contents&quot; : {
+                    &quot;products&quot; : [ {
+                      &quot;quantity&quot; : 1,
+                      &quot;sku&quot; : &quot;testPen&quot;,
+                      &quot;expiration&quot; : &quot;2025-06-07T12:12:09.061Z&quot;,
+                      &quot;prepDetails&quot; : {
+                        &quot;prepCategory&quot; : &quot;PERFORATED&quot;,
+                        &quot;prepOwner&quot; : &quot;AMAZON&quot;,
+                        &quot;labelOwner&quot; : &quot;SELF&quot;
+                      }
+                    } ]
+                  },
+                  &quot;measurements&quot; : {
+                    &quot;dimensions&quot; : {
+                      &quot;height&quot; : 1,
+                      &quot;length&quot; : 1,
+                      &quot;unitOfMeasurement&quot; : &quot;INCHES&quot;,
+                      &quot;width&quot; : 1
+                    },
+                    &quot;volume&quot; : {
+                      &quot;unitOfMeasurement&quot; : &quot;CUIN&quot;,
+                      &quot;volume&quot; : 1
+                    },
+                    &quot;weight&quot; : {
+                      &quot;unitOfMeasurement&quot; : &quot;POUNDS&quot;,
+                      &quot;weight&quot; : 1
+                    }
+                  },
+                  &quot;type&quot; : &quot;CASE&quot;
+                }
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;orderId&quot; : &quot;TestOrderId&quot;
+      },
+      &quot;responseHeaders&quot; : {
+        &quot;Location&quot; : {
+          &quot;value&quot; : &quot;TestOrderId&quot;
+        }
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
+                $this->apiInstance,
+                $jsonSchema,
+                'createInbound'
+            );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
+
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('AwdApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
+
+            // Act: Call API
+            list($response, $statusCode, $headers) =
+                $this->apiInstance->createInboundWithHttpInfo(...array_values($requestParams));
+
+            // Assert the response code
+            $this->assertHttpStatusCode(201, $statusCode);
+
+            // Handle different response codes
+            $this->handleResponse($response, $statusCode, 201, $expectedResponse);
+        } catch (ApiException $e) {
+            $this->handleApiException($e, 201);
+        } catch (\ReflectionException $e) {
+            $this->fail("Reflection exception: " . $e->getMessage());
+        }
+    }
+    /**
+     * Test case for createInbound_400
+     */
+    public function testCreateInbound400()
+    {
+        try {
+            // Skip test if it is in the skip list
+            if ($this->testHelper->shouldSkipTest('testCreateInbound400', 'AwdApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ErrorList&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;externalReferenceId&quot; : &quot;string&quot;,
+              &quot;originAddress&quot; : {
+                &quot;addressLine1&quot; : &quot;address_1&quot;,
+                &quot;addressLine2&quot; : &quot;address_2&quot;,
+                &quot;addressLine3&quot; : &quot;address_3&quot;,
+                &quot;city&quot; : &quot;City1&quot;,
+                &quot;countryCode&quot; : &quot;CC&quot;,
+                &quot;district&quot; : &quot;District1&quot;,
+                &quot;name&quot; : &quot;address_name&quot;,
+                &quot;postalCode&quot; : &quot;123456&quot;,
+                &quot;stateOrRegion&quot; : &quot;State1&quot;
+              },
+              &quot;packagesToInbound&quot; : [ {
+                &quot;count&quot; : 1,
+                &quot;distributionPackage&quot; : {
+                  &quot;contents&quot; : {
+                    &quot;products&quot; : [ {
+                      &quot;quantity&quot; : 1,
+                      &quot;sku&quot; : &quot;testPen&quot;,
+                      &quot;expiration&quot; : &quot;2025-06-07T12:12:09.061Z&quot;,
+                      &quot;prepDetails&quot; : {
+                        &quot;prepCategory&quot; : &quot;PERFORATED&quot;,
+                        &quot;prepOwner&quot; : &quot;AMAZON&quot;,
+                        &quot;labelOwner&quot; : &quot;SELF&quot;
+                      }
+                    } ]
+                  },
+                  &quot;measurements&quot; : {
+                    &quot;dimensions&quot; : {
+                      &quot;height&quot; : 1,
+                      &quot;length&quot; : 1,
+                      &quot;unitOfMeasurement&quot; : &quot;INCHES&quot;,
+                      &quot;width&quot; : 1
+                    },
+                    &quot;volume&quot; : {
+                      &quot;unitOfMeasurement&quot; : &quot;CUIN&quot;,
+                      &quot;volume&quot; : 1
+                    },
+                    &quot;weight&quot; : {
+                      &quot;unitOfMeasurement&quot; : &quot;POUNDS&quot;,
+                      &quot;weight&quot; : 1
+                    }
+                  },
+                  &quot;type&quot; : &quot;TEST&quot;
+                }
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;BAD_REQUEST&quot;,
+          &quot;message&quot; : &quot;Invalid value (&#x60;TEST&#x60;) passed for &#x60;DistributionPackageType&#x60;. Valid values are: &#x60;CASE&#x60;, &#x60;PALLET&#x60;&quot;,
+          &quot;details&quot; : &quot;This exception is thrown when client inputs are invalid.&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
+                $this->apiInstance,
+                $jsonSchema,
+                'createInbound'
+            );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
+
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('AwdApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
+
+            // Act: Call API
+            list($response, $statusCode, $headers) =
+                $this->apiInstance->createInboundWithHttpInfo(...array_values($requestParams));
+
+            // Assert the response code
+            $this->assertHttpStatusCode(400, $statusCode);
+
+            // Handle different response codes
+            $this->handleResponse($response, $statusCode, 400, $expectedResponse);
+        } catch (ApiException $e) {
+            $this->handleApiException($e, 400);
+        } catch (\ReflectionException $e) {
+            $this->fail("Reflection exception: " . $e->getMessage());
+        }
+    }
+    /**
+     * Test case for createInbound_403
+     */
+    public function testCreateInbound403()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for createInbound_404
+     */
+    public function testCreateInbound404()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for createInbound_413
+     */
+    public function testCreateInbound413()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for createInbound_415
+     */
+    public function testCreateInbound415()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for createInbound_429
+     */
+    public function testCreateInbound429()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for createInbound_500
+     */
+    public function testCreateInbound500()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for createInbound_503
+     */
+    public function testCreateInbound503()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getInbound_200
+     */
+    public function testGetInbound200()
+    {
+        try {
+            // Skip test if it is in the skip list
+            if ($this->testHelper->shouldSkipTest('testGetInbound200', 'AwdApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;The 200 response for &#x60;getInbound&#x60;.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/InboundOrder&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;orderId&quot; : {
+            &quot;value&quot; : &quot;TestOrderId&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;destinationDetails&quot; : {
+          &quot;destinationAddress&quot; : {
+            &quot;addressLine1&quot; : &quot;address_1&quot;,
+            &quot;addressLine2&quot; : &quot;address_2&quot;,
+            &quot;addressLine3&quot; : &quot;address_3&quot;,
+            &quot;city&quot; : &quot;Seattle&quot;,
+            &quot;countryCode&quot; : &quot;US&quot;,
+            &quot;county&quot; : &quot;Washington&quot;,
+            &quot;district&quot; : &quot;District1&quot;,
+            &quot;name&quot; : &quot;address_name&quot;,
+            &quot;phoneNumber&quot; : &quot;+14155552671&quot;,
+            &quot;postalCode&quot; : &quot;123456&quot;,
+            &quot;stateOrRegion&quot; : &quot;Washington&quot;
+          },
+          &quot;destinationRegion&quot; : &quot;us-east&quot;
+        },
+        &quot;createdAt&quot; : &quot;2023-06-07T12:12:09.061Z&quot;,
+        &quot;externalReferenceId&quot; : &quot;TestReferenceId&quot;,
+        &quot;orderId&quot; : &quot;TestOrderId&quot;,
+        &quot;orderStatus&quot; : &quot;DRAFT&quot;,
+        &quot;originAddress&quot; : {
+          &quot;addressLine1&quot; : &quot;address_1&quot;,
+          &quot;addressLine2&quot; : &quot;address_2&quot;,
+          &quot;addressLine3&quot; : &quot;address_3&quot;,
+          &quot;city&quot; : &quot;Seattle&quot;,
+          &quot;countryCode&quot; : &quot;US&quot;,
+          &quot;county&quot; : &quot;Washington&quot;,
+          &quot;district&quot; : &quot;District1&quot;,
+          &quot;name&quot; : &quot;address_name&quot;,
+          &quot;phoneNumber&quot; : &quot;+14155552671&quot;,
+          &quot;postalCode&quot; : &quot;123456&quot;,
+          &quot;stateOrRegion&quot; : &quot;Washington&quot;
+        },
+        &quot;packagesToInbound&quot; : [ {
+          &quot;count&quot; : 1,
+          &quot;distributionPackage&quot; : {
+            &quot;contents&quot; : {
+              &quot;packages&quot; : [ ],
+              &quot;products&quot; : [ {
+                &quot;quantity&quot; : 1,
+                &quot;sku&quot; : &quot;testPen&quot;,
+                &quot;expiration&quot; : &quot;2025-06-07T12:12:09.061Z&quot;,
+                &quot;prepDetails&quot; : {
+                  &quot;prepCategory&quot; : &quot;PERFORATED&quot;,
+                  &quot;prepOwner&quot; : &quot;AMAZON&quot;,
+                  &quot;labelOwner&quot; : &quot;SELF&quot;,
+                  &quot;prepInstructions&quot; : [ {
+                    &quot;prepType&quot; : &quot;ITEM_POLYBAGGING&quot;,
+                    &quot;prepOwner&quot; : &quot;AMAZON&quot;
+                  } ]
+                }
+              } ]
+            },
+            &quot;measurements&quot; : {
+              &quot;dimensions&quot; : {
+                &quot;height&quot; : 2.54,
+                &quot;length&quot; : 2.54,
+                &quot;unitOfMeasurement&quot; : &quot;CENTIMETERS&quot;,
+                &quot;width&quot; : 2.54
+              },
+              &quot;weight&quot; : {
+                &quot;unitOfMeasurement&quot; : &quot;KILOGRAMS&quot;,
+                &quot;weight&quot; : 0.453592
+              }
+            },
+            &quot;type&quot; : &quot;CASE&quot;
+          }
+        } ],
+        &quot;updatedAt&quot; : &quot;2023-06-07T12:12:09.061Z&quot;
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
+                $this->apiInstance,
+                $jsonSchema,
+                'getInbound'
+            );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
+
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('AwdApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
+
+            // Act: Call API
+            list($response, $statusCode, $headers) =
+                $this->apiInstance->getInboundWithHttpInfo(...array_values($requestParams));
+
+            // Assert the response code
+            $this->assertHttpStatusCode(200, $statusCode);
+
+            // Handle different response codes
+            $this->handleResponse($response, $statusCode, 200, $expectedResponse);
+        } catch (ApiException $e) {
+            $this->handleApiException($e, 200);
+        } catch (\ReflectionException $e) {
+            $this->fail("Reflection exception: " . $e->getMessage());
+        }
+    }
+    /**
+     * Test case for getInbound_400
+     */
+    public function testGetInbound400()
+    {
+        try {
+            // Skip test if it is in the skip list
+            if ($this->testHelper->shouldSkipTest('testGetInbound400', 'AwdApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ErrorList&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;orderId&quot; : {
+            &quot;value&quot; : &quot; &quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;BAD_REQUEST&quot;,
+          &quot;details&quot; : &quot;This exception is thrown when client inputs are invalid&quot;,
+          &quot;message&quot; : &quot;OrderId should be present for this request&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
+                $this->apiInstance,
+                $jsonSchema,
+                'getInbound'
+            );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
+
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('AwdApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
+
+            // Act: Call API
+            list($response, $statusCode, $headers) =
+                $this->apiInstance->getInboundWithHttpInfo(...array_values($requestParams));
+
+            // Assert the response code
+            $this->assertHttpStatusCode(400, $statusCode);
+
+            // Handle different response codes
+            $this->handleResponse($response, $statusCode, 400, $expectedResponse);
+        } catch (ApiException $e) {
+            $this->handleApiException($e, 400);
+        } catch (\ReflectionException $e) {
+            $this->fail("Reflection exception: " . $e->getMessage());
+        }
+    }
+    /**
+     * Test case for getInbound_403
+     */
+    public function testGetInbound403()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getInbound_404
+     */
+    public function testGetInbound404()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getInbound_413
+     */
+    public function testGetInbound413()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getInbound_415
+     */
+    public function testGetInbound415()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getInbound_429
+     */
+    public function testGetInbound429()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getInbound_500
+     */
+    public function testGetInbound500()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getInbound_503
+     */
+    public function testGetInbound503()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
      * Test case for getInboundShipment_200
      */
     public function testGetInboundShipment200()
@@ -333,6 +1774,223 @@ class AwdApiTest extends BaseTestCase
      * Test case for getInboundShipment_503
      */
     public function testGetInboundShipment503()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getInboundShipmentLabels_200
+     */
+    public function testGetInboundShipmentLabels200()
+    {
+        try {
+            // Skip test if it is in the skip list
+            if ($this->testHelper->shouldSkipTest('testGetInboundShipmentLabels200', 'AwdApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;The 200 response for &#x60;getInboundShipmentLabels&#x60;.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ShipmentLabels&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;shipmentId&quot; : {
+            &quot;value&quot; : &quot;TestShipmentId&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;labelDownloadURL&quot; : &quot;TEST_URL&quot;,
+        &quot;labelStatus&quot; : &quot;GENERATED&quot;
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
+                $this->apiInstance,
+                $jsonSchema,
+                'getInboundShipmentLabels'
+            );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
+
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('AwdApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
+
+            // Act: Call API
+            list($response, $statusCode, $headers) =
+                $this->apiInstance->getInboundShipmentLabelsWithHttpInfo(...array_values($requestParams));
+
+            // Assert the response code
+            $this->assertHttpStatusCode(200, $statusCode);
+
+            // Handle different response codes
+            $this->handleResponse($response, $statusCode, 200, $expectedResponse);
+        } catch (ApiException $e) {
+            $this->handleApiException($e, 200);
+        } catch (\ReflectionException $e) {
+            $this->fail("Reflection exception: " . $e->getMessage());
+        }
+    }
+    /**
+     * Test case for getInboundShipmentLabels_400
+     */
+    public function testGetInboundShipmentLabels400()
+    {
+        try {
+            // Skip test if it is in the skip list
+            if ($this->testHelper->shouldSkipTest('testGetInboundShipmentLabels400', 'AwdApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ErrorList&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;shipmentId&quot; : {
+            &quot;value&quot; : &quot; &quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;BAD_REQUEST&quot;,
+          &quot;details&quot; : &quot;This exception is thrown when client inputs are invalid&quot;,
+          &quot;message&quot; : &quot;ShipmentId should be present for this request&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
+                $this->apiInstance,
+                $jsonSchema,
+                'getInboundShipmentLabels'
+            );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
+
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('AwdApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
+
+            // Act: Call API
+            list($response, $statusCode, $headers) =
+                $this->apiInstance->getInboundShipmentLabelsWithHttpInfo(...array_values($requestParams));
+
+            // Assert the response code
+            $this->assertHttpStatusCode(400, $statusCode);
+
+            // Handle different response codes
+            $this->handleResponse($response, $statusCode, 400, $expectedResponse);
+        } catch (ApiException $e) {
+            $this->handleApiException($e, 400);
+        } catch (\ReflectionException $e) {
+            $this->fail("Reflection exception: " . $e->getMessage());
+        }
+    }
+    /**
+     * Test case for getInboundShipmentLabels_403
+     */
+    public function testGetInboundShipmentLabels403()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getInboundShipmentLabels_404
+     */
+    public function testGetInboundShipmentLabels404()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getInboundShipmentLabels_413
+     */
+    public function testGetInboundShipmentLabels413()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getInboundShipmentLabels_415
+     */
+    public function testGetInboundShipmentLabels415()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getInboundShipmentLabels_429
+     */
+    public function testGetInboundShipmentLabels429()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getInboundShipmentLabels_500
+     */
+    public function testGetInboundShipmentLabels500()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getInboundShipmentLabels_503
+     */
+    public function testGetInboundShipmentLabels503()
     {
         // Skip this test
         $this->markTestSkipped('Skip test for this operation.');
@@ -790,6 +2448,578 @@ class AwdApiTest extends BaseTestCase
      * Test case for listInventory_503
      */
     public function testListInventory503()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for updateInbound_204
+     */
+    public function testUpdateInbound204()
+    {
+        try {
+            // Skip test if it is in the skip list
+            if ($this->testHelper->shouldSkipTest('testUpdateInbound204', 'AwdApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;The 204 response for &#x60;updateInbound&#x60;.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : { },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;orderId&quot; : {
+            &quot;value&quot; : &quot;TestOrderId1&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;createdAt&quot; : &quot;2023-06-07T12:12:09.061Z&quot;,
+              &quot;destinationDetails&quot; : {
+                &quot;destinationAddress&quot; : {
+                  &quot;addressLine1&quot; : &quot;address_1&quot;,
+                  &quot;addressLine2&quot; : &quot;address_2&quot;,
+                  &quot;addressLine3&quot; : &quot;address_3&quot;,
+                  &quot;city&quot; : &quot;Seattle&quot;,
+                  &quot;countryCode&quot; : &quot;US&quot;,
+                  &quot;county&quot; : &quot;Washington&quot;,
+                  &quot;district&quot; : &quot;District1&quot;,
+                  &quot;name&quot; : &quot;address_name&quot;,
+                  &quot;phoneNumber&quot; : &quot;+14155552671&quot;,
+                  &quot;postalCode&quot; : &quot;123456&quot;,
+                  &quot;stateOrRegion&quot; : &quot;Washington&quot;
+                },
+                &quot;destinationRegion&quot; : &quot;us-east&quot;
+              },
+              &quot;orderId&quot; : &quot;TestOrderId1&quot;,
+              &quot;orderStatus&quot; : &quot;DRAFT&quot;,
+              &quot;originAddress&quot; : {
+                &quot;addressLine1&quot; : &quot;address_1&quot;,
+                &quot;addressLine2&quot; : &quot;address_2&quot;,
+                &quot;addressLine3&quot; : &quot;address_3&quot;,
+                &quot;city&quot; : &quot;City1&quot;,
+                &quot;countryCode&quot; : &quot;CC&quot;,
+                &quot;district&quot; : &quot;District1&quot;,
+                &quot;name&quot; : &quot;DestinationName&quot;,
+                &quot;postalCode&quot; : &quot;123456&quot;,
+                &quot;stateOrRegion&quot; : &quot;State1&quot;
+              },
+              &quot;packagesToInbound&quot; : [ {
+                &quot;count&quot; : 2,
+                &quot;distributionPackage&quot; : {
+                  &quot;contents&quot; : {
+                    &quot;packages&quot; : [ ],
+                    &quot;products&quot; : [ {
+                      &quot;quantity&quot; : 10,
+                      &quot;sku&quot; : &quot;testPen&quot;,
+                      &quot;expiration&quot; : &quot;2025-06-07T12:12:09.061Z&quot;,
+                      &quot;prepDetails&quot; : {
+                        &quot;prepCategory&quot; : &quot;PERFORATED&quot;,
+                        &quot;prepOwner&quot; : &quot;AMAZON&quot;,
+                        &quot;labelOwner&quot; : &quot;SELF&quot;,
+                        &quot;prepInstructions&quot; : [ {
+                          &quot;prepType&quot; : &quot;ITEM_POLYBAGGING&quot;,
+                          &quot;prepOwner&quot; : &quot;AMAZON&quot;
+                        } ]
+                      }
+                    } ]
+                  },
+                  &quot;measurements&quot; : {
+                    &quot;dimensions&quot; : {
+                      &quot;height&quot; : 1,
+                      &quot;length&quot; : 1,
+                      &quot;unitOfMeasurement&quot; : &quot;CENTIMETERS&quot;,
+                      &quot;width&quot; : 1
+                    },
+                    &quot;weight&quot; : {
+                      &quot;unitOfMeasurement&quot; : &quot;KILOGRAMS&quot;,
+                      &quot;weight&quot; : 1
+                    }
+                  },
+                  &quot;type&quot; : &quot;CASE&quot;
+                }
+              } ],
+              &quot;updatedAt&quot; : &quot;2023-06-07T12:12:09.061Z&quot;
+            }
+          }
+        }
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
+                $this->apiInstance,
+                $jsonSchema,
+                'updateInbound'
+            );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
+
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('AwdApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
+
+            // Act: Call API
+            list($response, $statusCode, $headers) =
+                $this->apiInstance->updateInboundWithHttpInfo(...array_values($requestParams));
+
+            // Assert the response code
+            $this->assertHttpStatusCode(204, $statusCode);
+
+            // Handle different response codes
+            $this->handleResponse($response, $statusCode, 204, $expectedResponse);
+        } catch (ApiException $e) {
+            $this->handleApiException($e, 204);
+        } catch (\ReflectionException $e) {
+            $this->fail("Reflection exception: " . $e->getMessage());
+        }
+    }
+    /**
+     * Test case for updateInbound_400
+     */
+    public function testUpdateInbound400()
+    {
+        try {
+            // Skip test if it is in the skip list
+            if ($this->testHelper->shouldSkipTest('testUpdateInbound400', 'AwdApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ErrorList&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;orderId&quot; : {
+            &quot;value&quot; : &quot;TestOrderId1&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;destinationDetails&quot; : {
+                &quot;destinationAddress&quot; : {
+                  &quot;addressLine1&quot; : &quot;address_1&quot;,
+                  &quot;addressLine2&quot; : &quot;address_2&quot;,
+                  &quot;addressLine3&quot; : &quot;address_3&quot;,
+                  &quot;city&quot; : &quot;Seattle&quot;,
+                  &quot;countryCode&quot; : &quot;US&quot;,
+                  &quot;county&quot; : &quot;Washington&quot;,
+                  &quot;district&quot; : &quot;District1&quot;,
+                  &quot;name&quot; : &quot;address_name&quot;,
+                  &quot;phoneNumber&quot; : &quot;+14155552671&quot;,
+                  &quot;postalCode&quot; : &quot;123456&quot;,
+                  &quot;stateOrRegion&quot; : &quot;Washington&quot;
+                },
+                &quot;destinationRegion&quot; : &quot;us-east&quot;
+              },
+              &quot;createdAt&quot; : &quot;2023-06-07T12:12:09.061Z&quot;,
+              &quot;orderId&quot; : &quot;TestOrderId1&quot;,
+              &quot;orderStatus&quot; : &quot;DRAFT&quot;,
+              &quot;originAddress&quot; : {
+                &quot;addressLine1&quot; : &quot;address_1&quot;,
+                &quot;addressLine2&quot; : &quot;address_2&quot;,
+                &quot;addressLine3&quot; : &quot;address_3&quot;,
+                &quot;city&quot; : &quot;City1&quot;,
+                &quot;countryCode&quot; : &quot;CC&quot;,
+                &quot;district&quot; : &quot;District1&quot;,
+                &quot;name&quot; : &quot;DestinationName&quot;,
+                &quot;postalCode&quot; : &quot;123456&quot;,
+                &quot;stateOrRegion&quot; : &quot;State1&quot;
+              },
+              &quot;packagesToInbound&quot; : [ {
+                &quot;count&quot; : 2,
+                &quot;distributionPackage&quot; : {
+                  &quot;contents&quot; : {
+                    &quot;packages&quot; : [ ],
+                    &quot;products&quot; : [ {
+                      &quot;quantity&quot; : 10,
+                      &quot;sku&quot; : &quot;testPen&quot;,
+                      &quot;expiration&quot; : &quot;2025-06-07T12:12:09.061Z&quot;,
+                      &quot;prepDetails&quot; : {
+                        &quot;prepCategory&quot; : &quot;PERFORATED&quot;,
+                        &quot;prepOwner&quot; : &quot;AMAZON&quot;,
+                        &quot;labelOwner&quot; : &quot;SELF&quot;,
+                        &quot;prepInstructions&quot; : [ {
+                          &quot;prepType&quot; : &quot;ITEM_POLYBAGGING&quot;,
+                          &quot;prepOwner&quot; : &quot;AMAZON&quot;
+                        } ]
+                      }
+                    } ]
+                  },
+                  &quot;measurements&quot; : {
+                    &quot;dimensions&quot; : {
+                      &quot;height&quot; : 1,
+                      &quot;length&quot; : 1,
+                      &quot;unitOfMeasurement&quot; : &quot;CENTIMETERS&quot;,
+                      &quot;width&quot; : 1
+                    },
+                    &quot;weight&quot; : {
+                      &quot;unitOfMeasurement&quot; : &quot;KILOGRAMS&quot;,
+                      &quot;weight&quot; : 1
+                    }
+                  },
+                  &quot;type&quot; : &quot;TEST&quot;
+                }
+              } ],
+              &quot;updatedAt&quot; : &quot;2023-06-07T12:12:09.061Z&quot;
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;BAD_REQUEST&quot;,
+          &quot;message&quot; : &quot;Invalid value (&#x60;TEST&#x60;) passed for &#x60;DistributionPackageType&#x60;. Valid values are: &#x60;CASE&#x60;, &#x60;PALLET&#x60;&quot;,
+          &quot;details&quot; : &quot;This exception is thrown when client inputs are invalid.&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
+                $this->apiInstance,
+                $jsonSchema,
+                'updateInbound'
+            );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
+
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('AwdApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
+
+            // Act: Call API
+            list($response, $statusCode, $headers) =
+                $this->apiInstance->updateInboundWithHttpInfo(...array_values($requestParams));
+
+            // Assert the response code
+            $this->assertHttpStatusCode(400, $statusCode);
+
+            // Handle different response codes
+            $this->handleResponse($response, $statusCode, 400, $expectedResponse);
+        } catch (ApiException $e) {
+            $this->handleApiException($e, 400);
+        } catch (\ReflectionException $e) {
+            $this->fail("Reflection exception: " . $e->getMessage());
+        }
+    }
+    /**
+     * Test case for updateInbound_403
+     */
+    public function testUpdateInbound403()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for updateInbound_404
+     */
+    public function testUpdateInbound404()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for updateInbound_409
+     */
+    public function testUpdateInbound409()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for updateInbound_413
+     */
+    public function testUpdateInbound413()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for updateInbound_415
+     */
+    public function testUpdateInbound415()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for updateInbound_429
+     */
+    public function testUpdateInbound429()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for updateInbound_500
+     */
+    public function testUpdateInbound500()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for updateInbound_503
+     */
+    public function testUpdateInbound503()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for updateInboundShipmentTransportDetails_204
+     */
+    public function testUpdateInboundShipmentTransportDetails204()
+    {
+        try {
+            // Skip test if it is in the skip list
+            if ($this->testHelper->shouldSkipTest('testUpdateInboundShipmentTransportDetails204', 'AwdApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;The 204 response for &#x60;updateInboundShipmentTransportDetails&#x60;.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : { },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;shipmentId&quot; : {
+            &quot;value&quot; : &quot;TestShipmentId&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;trackingDetails&quot; : [ {
+                &quot;carrierCode&quot; : {
+                  &quot;carrierCodeType&quot; : &quot;SCAC&quot;
+                },
+                &quot;bookingId&quot; : &quot;TRACKING_ID&quot;
+              } ]
+            }
+          }
+        }
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
+                $this->apiInstance,
+                $jsonSchema,
+                'updateInboundShipmentTransportDetails'
+            );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
+
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('AwdApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
+
+            // Act: Call API
+            list($response, $statusCode, $headers) =
+                $this->apiInstance->updateInboundShipmentTransportDetailsWithHttpInfo(...array_values($requestParams));
+
+            // Assert the response code
+            $this->assertHttpStatusCode(204, $statusCode);
+
+            // Handle different response codes
+            $this->handleResponse($response, $statusCode, 204, $expectedResponse);
+        } catch (ApiException $e) {
+            $this->handleApiException($e, 204);
+        } catch (\ReflectionException $e) {
+            $this->fail("Reflection exception: " . $e->getMessage());
+        }
+    }
+    /**
+     * Test case for updateInboundShipmentTransportDetails_400
+     */
+    public function testUpdateInboundShipmentTransportDetails400()
+    {
+        try {
+            // Skip test if it is in the skip list
+            if ($this->testHelper->shouldSkipTest('testUpdateInboundShipmentTransportDetails400', 'AwdApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ErrorList&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;shipmentId&quot; : {
+            &quot;value&quot; : &quot; &quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;BAD_REQUEST&quot;,
+          &quot;details&quot; : &quot;This exception is thrown when client inputs are invalid&quot;,
+          &quot;message&quot; : &quot;ShipmentId should be present for this request&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
+                $this->apiInstance,
+                $jsonSchema,
+                'updateInboundShipmentTransportDetails'
+            );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
+
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('AwdApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
+
+            // Act: Call API
+            list($response, $statusCode, $headers) =
+                $this->apiInstance->updateInboundShipmentTransportDetailsWithHttpInfo(...array_values($requestParams));
+
+            // Assert the response code
+            $this->assertHttpStatusCode(400, $statusCode);
+
+            // Handle different response codes
+            $this->handleResponse($response, $statusCode, 400, $expectedResponse);
+        } catch (ApiException $e) {
+            $this->handleApiException($e, 400);
+        } catch (\ReflectionException $e) {
+            $this->fail("Reflection exception: " . $e->getMessage());
+        }
+    }
+    /**
+     * Test case for updateInboundShipmentTransportDetails_403
+     */
+    public function testUpdateInboundShipmentTransportDetails403()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for updateInboundShipmentTransportDetails_404
+     */
+    public function testUpdateInboundShipmentTransportDetails404()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for updateInboundShipmentTransportDetails_413
+     */
+    public function testUpdateInboundShipmentTransportDetails413()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for updateInboundShipmentTransportDetails_415
+     */
+    public function testUpdateInboundShipmentTransportDetails415()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for updateInboundShipmentTransportDetails_429
+     */
+    public function testUpdateInboundShipmentTransportDetails429()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for updateInboundShipmentTransportDetails_500
+     */
+    public function testUpdateInboundShipmentTransportDetails500()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for updateInboundShipmentTransportDetails_503
+     */
+    public function testUpdateInboundShipmentTransportDetails503()
     {
         // Skip this test
         $this->markTestSkipped('Skip test for this operation.');

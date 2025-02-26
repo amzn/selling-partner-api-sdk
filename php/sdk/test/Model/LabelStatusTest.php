@@ -1,0 +1,53 @@
+<?php
+/**
+ * LabelStatusTest
+ *
+ * PHP version 8.3
+ *
+ * @category Class
+ * @package  SpApi
+ * @author   OpenAPI Generator team
+ * @link     https://openapi-generator.tech
+ */
+
+namespace SpApi\Test\Model;
+
+use PHPUnit\Framework\TestCase;
+use SpApi\Model\awd\v2024_05_09\LabelStatus;
+
+/**
+ * LabelStatusTest Class Doc Comment
+ *
+ * @category    Class
+ * @description The status of your label.
+ * @package     SpApi
+ */
+class LabelStatusTest extends TestCase
+{
+
+    private LabelStatus $model;
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+        $this->model = new LabelStatus();
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+        unset($this->model);
+    }
+
+    /**
+     * Test "LabelStatus"
+     */
+    public function testLabelStatus()
+    {
+        $this->assertInstanceOf(LabelStatus::class, $this->model);
+    }
+}

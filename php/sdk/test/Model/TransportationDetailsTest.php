@@ -13,13 +13,13 @@
 namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use SpApi\Model\vendor\shipments\v1\TransportationDetails;
+use SpApi\Model\awd\v2024_05_09\TransportationDetails;
 
 /**
  * TransportationDetailsTest Class Doc Comment
  *
  * @category    Class
- * @description Transportation details for this shipment.
+ * @description Transportation details for the shipment.
  * @package     SpApi
  */
 class TransportationDetailsTest extends TestCase
@@ -52,85 +52,13 @@ class TransportationDetailsTest extends TestCase
     }
 
     /**
-     * Test attribute "ship_mode"
+     * Test attribute "tracking_details"
      */
-    public function testPropertyShipMode()
+    public function testPropertyTrackingDetails()
     {
-        $enumInstance = new TransportationDetails();
-        $allowedValues = $enumInstance->getShipModeAllowableValues();
-        $testValue = reset($allowedValues);
-        $this->model->setShipMode($testValue);
-        $this->assertEquals($testValue, $this->model->getShipMode());
-    }
-
-    /**
-     * Test attribute "transportation_mode"
-     */
-    public function testPropertyTransportationMode()
-    {
-        $enumInstance = new TransportationDetails();
-        $allowedValues = $enumInstance->getTransportationModeAllowableValues();
-        $testValue = reset($allowedValues);
-        $this->model->setTransportationMode($testValue);
-        $this->assertEquals($testValue, $this->model->getTransportationMode());
-    }
-
-    /**
-     * Test attribute "shipped_date"
-     */
-    public function testPropertyShippedDate()
-    {
+        $testValue = [];
         
-        $testValue = new \DateTime();
-        
-        $this->model->setShippedDate($testValue);
-        $this->assertEquals($testValue, $this->model->getShippedDate());
-    }
-
-    /**
-     * Test attribute "estimated_delivery_date"
-     */
-    public function testPropertyEstimatedDeliveryDate()
-    {
-        
-        $testValue = new \DateTime();
-        
-        $this->model->setEstimatedDeliveryDate($testValue);
-        $this->assertEquals($testValue, $this->model->getEstimatedDeliveryDate());
-    }
-
-    /**
-     * Test attribute "shipment_delivery_date"
-     */
-    public function testPropertyShipmentDeliveryDate()
-    {
-        
-        $testValue = new \DateTime();
-        
-        $this->model->setShipmentDeliveryDate($testValue);
-        $this->assertEquals($testValue, $this->model->getShipmentDeliveryDate());
-    }
-
-    /**
-     * Test attribute "carrier_details"
-     */
-    public function testPropertyCarrierDetails()
-    {
-        
-        $testValue = new \SpApi\Model\vendor\shipments\v1\CarrierDetails();
-        
-        $this->model->setCarrierDetails($testValue);
-        $this->assertEquals($testValue, $this->model->getCarrierDetails());
-    }
-
-    /**
-     * Test attribute "bill_of_lading_number"
-     */
-    public function testPropertyBillOfLadingNumber()
-    {
-        $testValue = 'test';
-        
-        $this->model->setBillOfLadingNumber($testValue);
-        $this->assertEquals($testValue, $this->model->getBillOfLadingNumber());
+        $this->model->setTrackingDetails($testValue);
+        $this->assertEquals($testValue, $this->model->getTrackingDetails());
     }
 }

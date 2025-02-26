@@ -1,0 +1,75 @@
+<?php
+/**
+ * SkuIneligibilityReasonTest
+ *
+ * PHP version 8.3
+ *
+ * @category Class
+ * @package  SpApi
+ * @author   OpenAPI Generator team
+ * @link     https://openapi-generator.tech
+ */
+
+namespace SpApi\Test\Model;
+
+use PHPUnit\Framework\TestCase;
+use SpApi\Model\awd\v2024_05_09\SkuIneligibilityReason;
+
+/**
+ * SkuIneligibilityReasonTest Class Doc Comment
+ *
+ * @category    Class
+ * @description Represents the ineligibility reason for one SKU.
+ * @package     SpApi
+ */
+class SkuIneligibilityReasonTest extends TestCase
+{
+
+    private SkuIneligibilityReason $model;
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp(): void
+    {
+        $this->model = new SkuIneligibilityReason();
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown(): void
+    {
+        unset($this->model);
+    }
+
+    /**
+     * Test "SkuIneligibilityReason"
+     */
+    public function testSkuIneligibilityReason()
+    {
+        $this->assertInstanceOf(SkuIneligibilityReason::class, $this->model);
+    }
+
+    /**
+     * Test attribute "code"
+     */
+    public function testPropertyCode()
+    {
+        $testValue = 'test';
+        
+        $this->model->setCode($testValue);
+        $this->assertEquals($testValue, $this->model->getCode());
+    }
+
+    /**
+     * Test attribute "description"
+     */
+    public function testPropertyDescription()
+    {
+        $testValue = 'test';
+        
+        $this->model->setDescription($testValue);
+        $this->assertEquals($testValue, $this->model->getDescription());
+    }
+}

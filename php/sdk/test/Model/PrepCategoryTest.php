@@ -13,7 +13,7 @@
 namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use SpApi\Model\fulfillment\inbound\v2024_03_20\PrepCategory;
+use SpApi\Model\awd\v2024_05_09\PrepCategory;
 
 /**
  * PrepCategoryTest Class Doc Comment

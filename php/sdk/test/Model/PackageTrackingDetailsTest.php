@@ -178,6 +178,18 @@ class PackageTrackingDetailsTest extends TestCase
     }
 
     /**
+     * Test attribute "delivery_window"
+     */
+    public function testPropertyDeliveryWindow()
+    {
+        
+        $testValue = new \SpApi\Model\fulfillment\outbound\v2020_07_01\DateRange();
+        
+        $this->model->setDeliveryWindow($testValue);
+        $this->assertEquals($testValue, $this->model->getDeliveryWindow());
+    }
+
+    /**
      * Test attribute "signed_for_by"
      */
     public function testPropertySignedForBy()

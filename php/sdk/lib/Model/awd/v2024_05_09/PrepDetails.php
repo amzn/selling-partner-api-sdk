@@ -61,7 +61,7 @@ class PrepDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPITypes = [
              'label_owner' => '\SpApi\Model\awd\v2024_05_09\LabelOwner',
-             'prep_category' => 'string',
+             'prep_category' => '\SpApi\Model\awd\v2024_05_09\PrepCategory',
              'prep_instructions' => '\SpApi\Model\awd\v2024_05_09\PrepInstruction[]',
              'prep_owner' => '\SpApi\Model\awd\v2024_05_09\PrepOwner'    ];
 
@@ -359,7 +359,7 @@ class PrepDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets prep_category
      *
-     * @param string|null $prep_category The preparation category for shipping an item to Amazon's fulfillment network.
+     * @param string|null $prep_category prep_category
      *
      * @return self
      */
@@ -393,7 +393,7 @@ class PrepDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets prep_instructions
      *
-     * @param array|null $prep_instructions Information that pertains to the preparation of inbound products. This is generated based on the specified category.
+     * @param array|null $prep_instructions Contains information about the preparation of the inbound products. The system auto-generates this field with the use of the `prepCategory`, and if you attempt to pass a value for this field, the system will ignore it.
      *
      * @return self
      */
