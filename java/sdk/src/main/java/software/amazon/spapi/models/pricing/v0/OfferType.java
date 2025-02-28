@@ -28,9 +28,9 @@ import software.amazon.spapi.models.pricing.v0.OfferCustomerType;
 import software.amazon.spapi.models.pricing.v0.PriceType;
 import software.amazon.spapi.models.pricing.v0.QuantityDiscountPriceType;
 /**
- * OfferType
+ * Schema for an individual offer.
  */
-
+@Schema(description = "Schema for an individual offer.")
 
 
 public class OfferType {
@@ -147,10 +147,10 @@ public class OfferType {
   }
 
    /**
-   * Get quantityDiscountPrices
+   * List of &#x60;QuantityDiscountPrice&#x60; that contains item&#x27;s pricing information when buy in bulk.
    * @return quantityDiscountPrices
   **/
-  @Schema(description = "")
+  @Schema(description = "List of `QuantityDiscountPrice` that contains item's pricing information when buy in bulk.")
   public List<QuantityDiscountPriceType> getQuantityDiscountPrices() {
     return quantityDiscountPrices;
   }

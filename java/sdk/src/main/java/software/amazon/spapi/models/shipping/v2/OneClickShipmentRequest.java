@@ -25,6 +25,7 @@ import org.threeten.bp.OffsetDateTime;
 import software.amazon.spapi.models.shipping.v2.AccessPointDetails;
 import software.amazon.spapi.models.shipping.v2.Address;
 import software.amazon.spapi.models.shipping.v2.ChannelDetails;
+import software.amazon.spapi.models.shipping.v2.GoodsOwner;
 import software.amazon.spapi.models.shipping.v2.OneClickShipmentValueAddedServiceDetails;
 import software.amazon.spapi.models.shipping.v2.PackageList;
 import software.amazon.spapi.models.shipping.v2.RequestedDocumentSpecification;
@@ -49,6 +50,9 @@ public class OneClickShipmentRequest {
 
   @SerializedName("shipDate")
   private OffsetDateTime shipDate = null;
+
+  @SerializedName("goodsOwner")
+  private GoodsOwner goodsOwner = null;
 
   @SerializedName("packages")
   private PackageList packages = null;
@@ -144,6 +148,24 @@ public class OneClickShipmentRequest {
 
   public void setShipDate(OffsetDateTime shipDate) {
     this.shipDate = shipDate;
+  }
+
+  public OneClickShipmentRequest goodsOwner(GoodsOwner goodsOwner) {
+    this.goodsOwner = goodsOwner;
+    return this;
+  }
+
+   /**
+   * Get goodsOwner
+   * @return goodsOwner
+  **/
+  @Schema(description = "")
+  public GoodsOwner getGoodsOwner() {
+    return goodsOwner;
+  }
+
+  public void setGoodsOwner(GoodsOwner goodsOwner) {
+    this.goodsOwner = goodsOwner;
   }
 
   public OneClickShipmentRequest packages(PackageList packages) {
@@ -304,6 +326,7 @@ public class OneClickShipmentRequest {
         Objects.equals(this.shipFrom, oneClickShipmentRequest.shipFrom) &&
         Objects.equals(this.returnTo, oneClickShipmentRequest.returnTo) &&
         Objects.equals(this.shipDate, oneClickShipmentRequest.shipDate) &&
+        Objects.equals(this.goodsOwner, oneClickShipmentRequest.goodsOwner) &&
         Objects.equals(this.packages, oneClickShipmentRequest.packages) &&
         Objects.equals(this.valueAddedServicesDetails, oneClickShipmentRequest.valueAddedServicesDetails) &&
         Objects.equals(this.taxDetails, oneClickShipmentRequest.taxDetails) &&
@@ -316,7 +339,7 @@ public class OneClickShipmentRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(shipTo, shipFrom, returnTo, shipDate, packages, valueAddedServicesDetails, taxDetails, channelDetails, labelSpecifications, serviceSelection, shipperInstruction, destinationAccessPointDetails);
+    return Objects.hash(shipTo, shipFrom, returnTo, shipDate, goodsOwner, packages, valueAddedServicesDetails, taxDetails, channelDetails, labelSpecifications, serviceSelection, shipperInstruction, destinationAccessPointDetails);
   }
 
 
@@ -329,6 +352,7 @@ public class OneClickShipmentRequest {
     sb.append("    shipFrom: ").append(toIndentedString(shipFrom)).append("\n");
     sb.append("    returnTo: ").append(toIndentedString(returnTo)).append("\n");
     sb.append("    shipDate: ").append(toIndentedString(shipDate)).append("\n");
+    sb.append("    goodsOwner: ").append(toIndentedString(goodsOwner)).append("\n");
     sb.append("    packages: ").append(toIndentedString(packages)).append("\n");
     sb.append("    valueAddedServicesDetails: ").append(toIndentedString(valueAddedServicesDetails)).append("\n");
     sb.append("    taxDetails: ").append(toIndentedString(taxDetails)).append("\n");

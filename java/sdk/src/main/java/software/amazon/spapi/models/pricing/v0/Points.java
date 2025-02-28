@@ -23,9 +23,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import software.amazon.spapi.models.pricing.v0.MoneyType;
 /**
- * Points
+ * The number of Amazon Points offered with the purchase of an item, and their monetary value.
  */
-
+@Schema(description = "The number of Amazon Points offered with the purchase of an item, and their monetary value.")
 
 
 public class Points {

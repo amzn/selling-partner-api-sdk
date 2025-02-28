@@ -23,9 +23,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.math.BigDecimal;
 /**
- * MoneyType
+ * Currency type and monetary value. Schema for demonstrating pricing info.
  */
-
+@Schema(description = "Currency type and monetary value. Schema for demonstrating pricing info.")
 
 
 public class MoneyType {

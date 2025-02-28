@@ -14,13 +14,14 @@ package software.amazon.spapi.models.pricing.v0;
 
 import java.util.Objects;
 import java.util.Arrays;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import software.amazon.spapi.models.pricing.v0.OfferDetail;
 /**
- * OfferDetailList
+ * A list of offer details. The list is the same length as the TotalOfferCount in the Summary or 20, whichever is less.
  */
-
+@Schema(description = "A list of offer details. The list is the same length as the TotalOfferCount in the Summary or 20, whichever is less.")
 
 
 public class OfferDetailList extends ArrayList<OfferDetail> {

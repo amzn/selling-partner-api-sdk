@@ -90,10 +90,10 @@ public class OperatingHours {
   }
 
    /**
-   * Get midDayClosures
+   * midDayClosures operating hours array
    * @return midDayClosures
   **/
-  @Schema(description = "")
+  @Schema(description = "midDayClosures operating hours array")
   public List<TimeOfDay> getMidDayClosures() {
     return midDayClosures;
   }

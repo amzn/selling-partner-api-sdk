@@ -1,6 +1,6 @@
 /*
  * The Selling Partner API for Finances
- * The Selling Partner API for Finances provides financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
+ * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
  *
  * OpenAPI spec version: 2024-06-19
  * 
@@ -46,10 +46,10 @@ public class ProductContext {
   }
 
    /**
-   * The Amazon Standard Identification Number (ASIN) of the item.
+   * Amazon Standard Identification Number (ASIN) of the item.
    * @return asin
   **/
-  @Schema(description = "The Amazon Standard Identification Number (ASIN) of the item.")
+  @Schema(description = "Amazon Standard Identification Number (ASIN) of the item.")
   public String getAsin() {
     return asin;
   }
@@ -64,10 +64,10 @@ public class ProductContext {
   }
 
    /**
-   * The Stock Keeping Unit (SKU) of the item.
+   * Stock keeping unit (SKU) of the item.
    * @return sku
   **/
-  @Schema(description = "The Stock Keeping Unit (SKU) of the item.")
+  @Schema(description = "Stock keeping unit (SKU) of the item.")
   public String getSku() {
     return sku;
   }
@@ -82,10 +82,10 @@ public class ProductContext {
   }
 
    /**
-   * The quantity of the item shipped.
+   * Quantity of the item shipped.
    * @return quantityShipped
   **/
-  @Schema(description = "The quantity of the item shipped.")
+  @Schema(description = "Quantity of the item shipped.")
   public Integer getQuantityShipped() {
     return quantityShipped;
   }
@@ -100,10 +100,10 @@ public class ProductContext {
   }
 
    /**
-   * The fulfillment network of the item.
+   * Fulfillment network of the item.
    * @return fulfillmentNetwork
   **/
-  @Schema(description = "The fulfillment network of the item.")
+  @Schema(description = "Fulfillment network of the item.")
   public String getFulfillmentNetwork() {
     return fulfillmentNetwork;
   }

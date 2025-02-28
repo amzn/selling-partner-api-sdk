@@ -14,13 +14,14 @@ package software.amazon.spapi.models.pricing.v0;
 
 import java.util.Objects;
 import java.util.Arrays;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import software.amazon.spapi.models.pricing.v0.OfferCountType;
 /**
- * NumberOfOffers
+ * A list that contains the total number of offers information for given conditions and fulfillment channels.
  */
-
+@Schema(description = "A list that contains the total number of offers information for given conditions and fulfillment channels.")
 
 
 public class NumberOfOffers extends ArrayList<OfferCountType> {

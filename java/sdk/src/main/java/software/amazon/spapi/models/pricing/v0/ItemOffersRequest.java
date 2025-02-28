@@ -28,9 +28,9 @@ import software.amazon.spapi.models.pricing.v0.HttpMethod;
 import software.amazon.spapi.models.pricing.v0.HttpRequestHeaders;
 import software.amazon.spapi.models.pricing.v0.ItemCondition;
 /**
- * ItemOffersRequest
+ * List of request parameters can be accepted by &#x60;ItemOffersRequests&#x60; operation
  */
-
+@Schema(description = "List of request parameters can be accepted by `ItemOffersRequests` operation")
 
 
 public class ItemOffersRequest extends BatchRequest {

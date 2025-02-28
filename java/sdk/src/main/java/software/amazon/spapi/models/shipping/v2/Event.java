@@ -24,6 +24,7 @@ import java.io.IOException;
 import org.threeten.bp.OffsetDateTime;
 import software.amazon.spapi.models.shipping.v2.EventCode;
 import software.amazon.spapi.models.shipping.v2.Location;
+import software.amazon.spapi.models.shipping.v2.ShipmentType;
 /**
  * A tracking event.
  */
@@ -39,6 +40,9 @@ public class Event {
 
   @SerializedName("eventTime")
   private OffsetDateTime eventTime = null;
+
+  @SerializedName("shipmentType")
+  private ShipmentType shipmentType = null;
 
   public Event eventCode(EventCode eventCode) {
     this.eventCode = eventCode;
@@ -94,6 +98,24 @@ public class Event {
     this.eventTime = eventTime;
   }
 
+  public Event shipmentType(ShipmentType shipmentType) {
+    this.shipmentType = shipmentType;
+    return this;
+  }
+
+   /**
+   * Get shipmentType
+   * @return shipmentType
+  **/
+  @Schema(description = "")
+  public ShipmentType getShipmentType() {
+    return shipmentType;
+  }
+
+  public void setShipmentType(ShipmentType shipmentType) {
+    this.shipmentType = shipmentType;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -106,12 +128,13 @@ public class Event {
     Event event = (Event) o;
     return Objects.equals(this.eventCode, event.eventCode) &&
         Objects.equals(this.location, event.location) &&
-        Objects.equals(this.eventTime, event.eventTime);
+        Objects.equals(this.eventTime, event.eventTime) &&
+        Objects.equals(this.shipmentType, event.shipmentType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(eventCode, location, eventTime);
+    return Objects.hash(eventCode, location, eventTime, shipmentType);
   }
 
 
@@ -123,6 +146,7 @@ public class Event {
     sb.append("    eventCode: ").append(toIndentedString(eventCode)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
     sb.append("    eventTime: ").append(toIndentedString(eventTime)).append("\n");
+    sb.append("    shipmentType: ").append(toIndentedString(shipmentType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

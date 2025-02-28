@@ -58,10 +58,10 @@ public class CustomerInvoice {
   }
 
    /**
-   * The Base64encoded customer invoice.
+   * The Base64 customer invoice.
    * @return content
   **/
-  @Schema(required = true, description = "The Base64encoded customer invoice.")
+  @Schema(required = true, description = "The Base64 customer invoice.")
   public String getContent() {
     return content;
   }

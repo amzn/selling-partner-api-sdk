@@ -26,9 +26,9 @@ import software.amazon.spapi.models.pricing.v0.OfferCustomerType;
 import software.amazon.spapi.models.pricing.v0.Points;
 import software.amazon.spapi.models.pricing.v0.QuantityDiscountType;
 /**
- * LowestPriceType
+ * Schema for an individual lowest price.
  */
-
+@Schema(description = "Schema for an individual lowest price.")
 
 
 public class LowestPriceType {

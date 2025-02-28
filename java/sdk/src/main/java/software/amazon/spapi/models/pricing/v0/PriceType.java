@@ -24,9 +24,9 @@ import java.io.IOException;
 import software.amazon.spapi.models.pricing.v0.MoneyType;
 import software.amazon.spapi.models.pricing.v0.Points;
 /**
- * PriceType
+ * Schema for item&#x27;s price information, including listing price, shipping price, and Amazon points.
  */
-
+@Schema(description = "Schema for item's price information, including listing price, shipping price, and Amazon points.")
 
 
 public class PriceType {

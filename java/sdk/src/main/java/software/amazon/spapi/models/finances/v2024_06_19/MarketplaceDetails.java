@@ -1,6 +1,6 @@
 /*
  * The Selling Partner API for Finances
- * The Selling Partner API for Finances provides financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
+ * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
  *
  * OpenAPI spec version: 2024-06-19
  * 
@@ -40,10 +40,10 @@ public class MarketplaceDetails {
   }
 
    /**
-   * The identifier of the marketplace where the transaction occured.
+   * The identifier of the marketplace where the transaction was made.
    * @return marketplaceId
   **/
-  @Schema(description = "The identifier of the marketplace where the transaction occured.")
+  @Schema(description = "The identifier of the marketplace where the transaction was made.")
   public String getMarketplaceId() {
     return marketplaceId;
   }
@@ -58,10 +58,10 @@ public class MarketplaceDetails {
   }
 
    /**
-   * The name of the marketplace where the transaction occurred. For example: &#x60;Amazon.com&#x60;,&#x60;Amazon.in&#x60;
+   * The name of the marketplace where the transaction occurred.   Example: &#x27;Amazon.com&#x27;,&#x27;Amazon.in&#x27;
    * @return marketplaceName
   **/
-  @Schema(description = "The name of the marketplace where the transaction occurred. For example: `Amazon.com`,`Amazon.in`")
+  @Schema(description = "The name of the marketplace where the transaction occurred.   Example: 'Amazon.com','Amazon.in'")
   public String getMarketplaceName() {
     return marketplaceName;
   }

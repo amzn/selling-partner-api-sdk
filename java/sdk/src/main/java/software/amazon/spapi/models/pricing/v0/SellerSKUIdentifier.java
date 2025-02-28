@@ -22,9 +22,9 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 /**
- * SellerSKUIdentifier
+ * Schema to identify an item by MarketPlaceId, SellerId, and SellerSKU.
  */
-
+@Schema(description = "Schema to identify an item by MarketPlaceId, SellerId, and SellerSKU.")
 
 
 public class SellerSKUIdentifier {

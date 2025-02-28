@@ -32,6 +32,9 @@ public class LinkCarrierAccountResponse {
   @SerializedName("registrationStatus")
   private AccountStatus registrationStatus = null;
 
+  @SerializedName("accountId")
+  private String accountId = null;
+
   public LinkCarrierAccountResponse registrationStatus(AccountStatus registrationStatus) {
     this.registrationStatus = registrationStatus;
     return this;
@@ -50,6 +53,24 @@ public class LinkCarrierAccountResponse {
     this.registrationStatus = registrationStatus;
   }
 
+  public LinkCarrierAccountResponse accountId(String accountId) {
+    this.accountId = accountId;
+    return this;
+  }
+
+   /**
+   * Get accountId
+   * @return accountId
+  **/
+  @Schema(description = "")
+  public String getAccountId() {
+    return accountId;
+  }
+
+  public void setAccountId(String accountId) {
+    this.accountId = accountId;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -60,12 +81,13 @@ public class LinkCarrierAccountResponse {
       return false;
     }
     LinkCarrierAccountResponse linkCarrierAccountResponse = (LinkCarrierAccountResponse) o;
-    return Objects.equals(this.registrationStatus, linkCarrierAccountResponse.registrationStatus);
+    return Objects.equals(this.registrationStatus, linkCarrierAccountResponse.registrationStatus) &&
+        Objects.equals(this.accountId, linkCarrierAccountResponse.accountId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(registrationStatus);
+    return Objects.hash(registrationStatus, accountId);
   }
 
 
@@ -75,6 +97,7 @@ public class LinkCarrierAccountResponse {
     sb.append("class LinkCarrierAccountResponse {\n");
     
     sb.append("    registrationStatus: ").append(toIndentedString(registrationStatus)).append("\n");
+    sb.append("    accountId: ").append(toIndentedString(accountId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

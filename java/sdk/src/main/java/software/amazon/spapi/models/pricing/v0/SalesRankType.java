@@ -22,9 +22,9 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 /**
- * SalesRankType
+ * Sales rank information for the item, by category
  */
-
+@Schema(description = "Sales rank information for the item, by category")
 
 
 public class SalesRankType {

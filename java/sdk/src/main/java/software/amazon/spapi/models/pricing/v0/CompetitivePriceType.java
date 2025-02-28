@@ -25,9 +25,9 @@ import software.amazon.spapi.models.pricing.v0.OfferCustomerType;
 import software.amazon.spapi.models.pricing.v0.PriceType;
 import software.amazon.spapi.models.pricing.v0.QuantityDiscountType;
 /**
- * CompetitivePriceType
+ * Schema for competitive pricing information
  */
-
+@Schema(description = "Schema for competitive pricing information")
 
 
 public class CompetitivePriceType {

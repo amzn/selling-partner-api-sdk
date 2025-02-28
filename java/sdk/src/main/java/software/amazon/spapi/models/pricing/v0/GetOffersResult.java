@@ -26,9 +26,9 @@ import software.amazon.spapi.models.pricing.v0.ItemIdentifier;
 import software.amazon.spapi.models.pricing.v0.OfferDetailList;
 import software.amazon.spapi.models.pricing.v0.Summary;
 /**
- * GetOffersResult
+ * The payload for the getListingOffers and getItemOffers operations.
  */
-
+@Schema(description = "The payload for the getListingOffers and getItemOffers operations.")
 
 
 public class GetOffersResult {

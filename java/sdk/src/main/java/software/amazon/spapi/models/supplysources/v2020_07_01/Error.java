@@ -43,10 +43,10 @@ public class Error {
   }
 
    /**
-   * An error code that identifies the type of error that occured.
+   * An error code that identifies the type of error that occurred.
    * @return code
   **/
-  @Schema(required = true, description = "An error code that identifies the type of error that occured.")
+  @Schema(required = true, description = "An error code that identifies the type of error that occurred.")
   public String getCode() {
     return code;
   }
@@ -61,10 +61,10 @@ public class Error {
   }
 
    /**
-   * A message that describes the error condition in a human-readable form.
+   * A message that describes the error condition.
    * @return message
   **/
-  @Schema(required = true, description = "A message that describes the error condition in a human-readable form.")
+  @Schema(required = true, description = "A message that describes the error condition.")
   public String getMessage() {
     return message;
   }
@@ -79,10 +79,10 @@ public class Error {
   }
 
    /**
-   * The additional details that can help the caller understand or fix the issue.
+   * Additional details that can help the caller understand or fix the issue.
    * @return details
   **/
-  @Schema(description = "The additional details that can help the caller understand or fix the issue.")
+  @Schema(description = "Additional details that can help the caller understand or fix the issue.")
   public String getDetails() {
     return details;
   }

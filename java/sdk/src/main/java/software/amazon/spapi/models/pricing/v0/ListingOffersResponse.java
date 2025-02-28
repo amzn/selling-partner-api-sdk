@@ -27,9 +27,9 @@ import software.amazon.spapi.models.pricing.v0.GetOffersResponse;
 import software.amazon.spapi.models.pricing.v0.HttpResponseHeaders;
 import software.amazon.spapi.models.pricing.v0.ListingOffersRequestParams;
 /**
- * ListingOffersResponse
+ * Schema for an individual &#x60;ListingOffersResponse&#x60;
  */
-
+@Schema(description = "Schema for an individual `ListingOffersResponse`")
 
 
 public class ListingOffersResponse extends BatchOffersResponse {

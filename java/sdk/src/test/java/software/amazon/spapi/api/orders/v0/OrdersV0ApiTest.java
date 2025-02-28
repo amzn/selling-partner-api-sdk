@@ -1,5 +1,5 @@
 /*
- * Orders v0
+ * Selling Partner API for Orders
  * Use the Orders Selling Partner API to programmatically retrieve order information. With this API, you can develop fast, flexible, and custom applications to manage order synchronization, perform order research, and create demand-based decision support tools.   _Note:_ For the JP, AU, and SG marketplaces, the Orders API supports orders from 2016 onward. For all other marketplaces, the Orders API supports orders for the last two years (orders older than this don't show up in the response).
  *
  * OpenAPI spec version: v0
@@ -23,8 +23,6 @@ import software.amazon.spapi.models.orders.v0.GetOrderItemsResponse;
 import software.amazon.spapi.models.orders.v0.GetOrderRegulatedInfoResponse;
 import software.amazon.spapi.models.orders.v0.GetOrderResponse;
 import software.amazon.spapi.models.orders.v0.GetOrdersResponse;
-import software.amazon.spapi.models.orders.v0.UpdateShipmentStatusErrorResponse;
-import software.amazon.spapi.models.orders.v0.UpdateShipmentStatusRequest;
 import software.amazon.spapi.models.orders.v0.UpdateVerificationStatusErrorResponse;
 import software.amazon.spapi.models.orders.v0.UpdateVerificationStatusRequest;
 import org.junit.jupiter.api.Test;
@@ -37,7 +35,7 @@ import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class OrdersApiTest {
+public class OrdersV0ApiTest {
 
    private static String endpoint = "http://localhost:3000";
    private static String authEndpoint = "http://localhost:3000/auth/o2/token";
@@ -48,7 +46,7 @@ public class OrdersApiTest {
         .endpoint(authEndpoint)
         .build();
 
-   private final OrdersApi api = new OrdersApi.Builder()
+   private final OrdersV0Api api = new OrdersV0Api.Builder()
         .lwaAuthorizationCredentials(credentials)
         .endpoint(endpoint)
         .build();
@@ -138,16 +136,6 @@ public class OrdersApiTest {
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());
-    }
-
-    @Test
-    public void updateShipmentStatusTest() throws Exception {
-        instructBackendMock("updateShipmentStatus", "204");
-        UpdateShipmentStatusRequest body = new UpdateShipmentStatusRequest();
-        String orderId = "";
-
-        api.updateShipmentStatusWithHttpInfo(body, orderId);
-
     }
 
     @Test

@@ -16,6 +16,8 @@ import software.amazon.spapi.ApiResponse;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import java.math.BigDecimal;
 import software.amazon.spapi.models.shipping.v2.CancelShipmentResponse;
+import software.amazon.spapi.models.shipping.v2.CreateClaimRequest;
+import software.amazon.spapi.models.shipping.v2.CreateClaimResponse;
 import software.amazon.spapi.models.shipping.v2.DirectPurchaseRequest;
 import software.amazon.spapi.models.shipping.v2.DirectPurchaseResponse;
 import software.amazon.spapi.models.shipping.v2.ErrorList;
@@ -41,6 +43,7 @@ import software.amazon.spapi.models.shipping.v2.OneClickShipmentRequest;
 import software.amazon.spapi.models.shipping.v2.OneClickShipmentResponse;
 import software.amazon.spapi.models.shipping.v2.PurchaseShipmentRequest;
 import software.amazon.spapi.models.shipping.v2.PurchaseShipmentResponse;
+import software.amazon.spapi.models.shipping.v2.SubmitNdrFeedbackRequest;
 import software.amazon.spapi.models.shipping.v2.UnlinkCarrierAccountRequest;
 import software.amazon.spapi.models.shipping.v2.UnlinkCarrierAccountResponse;
 import org.junit.jupiter.api.Test;
@@ -78,6 +81,17 @@ public class ShippingApiTest {
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());
+    }
+
+    @Test
+    public void createClaimTest() throws Exception {
+        instructBackendMock("createClaim", "201");
+        CreateClaimRequest body = new CreateClaimRequest();
+
+        ApiResponse<CreateClaimResponse> response = api.createClaimWithHttpInfo(body, null);
+
+        assertEquals(201, response.getStatusCode());
+        assertValidResponsePayload(201, response.getData());
     }
 
     @Test
@@ -229,6 +243,18 @@ public class ShippingApiTest {
     }
 
     @Test
+    public void linkCarrierAccount_0Test() throws Exception {
+        instructBackendMock("linkCarrierAccount_0", "200");
+        LinkCarrierAccountRequest body = new LinkCarrierAccountRequest();
+        String carrierId = "";
+
+        ApiResponse<LinkCarrierAccountResponse> response = api.linkCarrierAccount_0WithHttpInfo(body, carrierId, null);
+
+        assertEquals(200, response.getStatusCode());
+        assertValidResponsePayload(200, response.getData());
+    }
+
+    @Test
     public void oneClickShipmentTest() throws Exception {
         instructBackendMock("oneClickShipment", "200");
         OneClickShipmentRequest body = new OneClickShipmentRequest();
@@ -248,6 +274,15 @@ public class ShippingApiTest {
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());
+    }
+
+    @Test
+    public void submitNdrFeedbackTest() throws Exception {
+        instructBackendMock("submitNdrFeedback", "204");
+        SubmitNdrFeedbackRequest body = new SubmitNdrFeedbackRequest();
+
+        api.submitNdrFeedbackWithHttpInfo(body, null);
+
     }
 
     @Test

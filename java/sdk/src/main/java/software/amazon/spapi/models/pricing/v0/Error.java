@@ -61,10 +61,10 @@ public class Error {
   }
 
    /**
-   * A message that describes the error condition in a human-readable form.
+   * A message that describes the error condition.
    * @return message
   **/
-  @Schema(required = true, description = "A message that describes the error condition in a human-readable form.")
+  @Schema(required = true, description = "A message that describes the error condition.")
   public String getMessage() {
     return message;
   }
@@ -79,10 +79,10 @@ public class Error {
   }
 
    /**
-   * Additional information that can help the caller understand or fix the issue.
+   * Additional details that can help the caller understand or fix the issue.
    * @return details
   **/
-  @Schema(description = "Additional information that can help the caller understand or fix the issue.")
+  @Schema(description = "Additional details that can help the caller understand or fix the issue.")
   public String getDetails() {
     return details;
   }

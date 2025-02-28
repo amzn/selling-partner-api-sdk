@@ -83,10 +83,10 @@ public class UpdateFulfillmentOrderItem {
   }
 
    /**
-   * Identifies the fulfillment order item to update. Created with a previous call to the &#x60;createFulfillmentOrder&#x60; operation.
+   * Identifies the fulfillment order item to update. Created with a previous call to the createFulfillmentOrder operation.
    * @return sellerFulfillmentOrderItemId
   **/
-  @Schema(required = true, description = "Identifies the fulfillment order item to update. Created with a previous call to the `createFulfillmentOrder` operation.")
+  @Schema(required = true, description = "Identifies the fulfillment order item to update. Created with a previous call to the createFulfillmentOrder operation.")
   public String getSellerFulfillmentOrderItemId() {
     return sellerFulfillmentOrderItemId;
   }

@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import software.amazon.spapi.models.shipping.v2.Benefits;
 import software.amazon.spapi.models.shipping.v2.PackageDocumentDetail;
 /**
  * The payload for the getShipmentDocuments operation.
@@ -34,6 +35,9 @@ public class GetShipmentDocumentsResult {
 
   @SerializedName("packageDocumentDetail")
   private PackageDocumentDetail packageDocumentDetail = null;
+
+  @SerializedName("benefits")
+  private Benefits benefits = null;
 
   public GetShipmentDocumentsResult shipmentId(String shipmentId) {
     this.shipmentId = shipmentId;
@@ -71,6 +75,24 @@ public class GetShipmentDocumentsResult {
     this.packageDocumentDetail = packageDocumentDetail;
   }
 
+  public GetShipmentDocumentsResult benefits(Benefits benefits) {
+    this.benefits = benefits;
+    return this;
+  }
+
+   /**
+   * Get benefits
+   * @return benefits
+  **/
+  @Schema(description = "")
+  public Benefits getBenefits() {
+    return benefits;
+  }
+
+  public void setBenefits(Benefits benefits) {
+    this.benefits = benefits;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -82,12 +104,13 @@ public class GetShipmentDocumentsResult {
     }
     GetShipmentDocumentsResult getShipmentDocumentsResult = (GetShipmentDocumentsResult) o;
     return Objects.equals(this.shipmentId, getShipmentDocumentsResult.shipmentId) &&
-        Objects.equals(this.packageDocumentDetail, getShipmentDocumentsResult.packageDocumentDetail);
+        Objects.equals(this.packageDocumentDetail, getShipmentDocumentsResult.packageDocumentDetail) &&
+        Objects.equals(this.benefits, getShipmentDocumentsResult.benefits);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(shipmentId, packageDocumentDetail);
+    return Objects.hash(shipmentId, packageDocumentDetail, benefits);
   }
 
 
@@ -98,6 +121,7 @@ public class GetShipmentDocumentsResult {
     
     sb.append("    shipmentId: ").append(toIndentedString(shipmentId)).append("\n");
     sb.append("    packageDocumentDetail: ").append(toIndentedString(packageDocumentDetail)).append("\n");
+    sb.append("    benefits: ").append(toIndentedString(benefits)).append("\n");
     sb.append("}");
     return sb.toString();
   }

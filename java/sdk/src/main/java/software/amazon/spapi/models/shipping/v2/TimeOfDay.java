@@ -43,10 +43,10 @@ public class TimeOfDay {
   }
 
    /**
-   * Get hourOfDay
+   * Denotes hour of the day, used for defining opening or closing time of access points
    * @return hourOfDay
   **/
-  @Schema(description = "")
+  @Schema(description = "Denotes hour of the day, used for defining opening or closing time of access points")
   public Integer getHourOfDay() {
     return hourOfDay;
   }
@@ -61,10 +61,10 @@ public class TimeOfDay {
   }
 
    /**
-   * Get minuteOfHour
+   * Denotes minute of the hour, used for defining opening or closing time of access points
    * @return minuteOfHour
   **/
-  @Schema(description = "")
+  @Schema(description = "Denotes minute of the hour, used for defining opening or closing time of access points")
   public Integer getMinuteOfHour() {
     return minuteOfHour;
   }
@@ -79,10 +79,10 @@ public class TimeOfDay {
   }
 
    /**
-   * Get secondOfMinute
+   * Denotes second of the minute, used for defining opening or closing time of access points
    * @return secondOfMinute
   **/
-  @Schema(description = "")
+  @Schema(description = "Denotes second of the minute, used for defining opening or closing time of access points")
   public Integer getSecondOfMinute() {
     return secondOfMinute;
   }

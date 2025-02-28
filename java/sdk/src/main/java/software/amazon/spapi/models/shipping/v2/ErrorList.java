@@ -45,10 +45,10 @@ public class ErrorList {
   }
 
    /**
-   * Get errors
+   * Array of Errors
    * @return errors
   **/
-  @Schema(required = true, description = "")
+  @Schema(required = true, description = "Array of Errors")
   public List<Error> getErrors() {
     return errors;
   }

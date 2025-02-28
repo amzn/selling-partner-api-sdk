@@ -14,13 +14,14 @@ package software.amazon.spapi.models.pricing.v0;
 
 import java.util.Objects;
 import java.util.Arrays;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import software.amazon.spapi.models.pricing.v0.Price;
 /**
- * PriceList
+ * The payload for the &#x60;getPricing&#x60; and &#x60;getCompetitivePricing&#x60; operations.
  */
-
+@Schema(description = "The payload for the `getPricing` and `getCompetitivePricing` operations.")
 
 
 public class PriceList extends ArrayList<Price> {

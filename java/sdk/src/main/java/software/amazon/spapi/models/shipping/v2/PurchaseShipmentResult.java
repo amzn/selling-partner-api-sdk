@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import software.amazon.spapi.models.shipping.v2.Benefits;
 import software.amazon.spapi.models.shipping.v2.PackageDocumentDetailList;
 import software.amazon.spapi.models.shipping.v2.Promise;
 /**
@@ -38,6 +39,9 @@ public class PurchaseShipmentResult {
 
   @SerializedName("promise")
   private Promise promise = null;
+
+  @SerializedName("benefits")
+  private Benefits benefits = null;
 
   public PurchaseShipmentResult shipmentId(String shipmentId) {
     this.shipmentId = shipmentId;
@@ -93,6 +97,24 @@ public class PurchaseShipmentResult {
     this.promise = promise;
   }
 
+  public PurchaseShipmentResult benefits(Benefits benefits) {
+    this.benefits = benefits;
+    return this;
+  }
+
+   /**
+   * Get benefits
+   * @return benefits
+  **/
+  @Schema(description = "")
+  public Benefits getBenefits() {
+    return benefits;
+  }
+
+  public void setBenefits(Benefits benefits) {
+    this.benefits = benefits;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -105,12 +127,13 @@ public class PurchaseShipmentResult {
     PurchaseShipmentResult purchaseShipmentResult = (PurchaseShipmentResult) o;
     return Objects.equals(this.shipmentId, purchaseShipmentResult.shipmentId) &&
         Objects.equals(this.packageDocumentDetails, purchaseShipmentResult.packageDocumentDetails) &&
-        Objects.equals(this.promise, purchaseShipmentResult.promise);
+        Objects.equals(this.promise, purchaseShipmentResult.promise) &&
+        Objects.equals(this.benefits, purchaseShipmentResult.benefits);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(shipmentId, packageDocumentDetails, promise);
+    return Objects.hash(shipmentId, packageDocumentDetails, promise, benefits);
   }
 
 
@@ -122,6 +145,7 @@ public class PurchaseShipmentResult {
     sb.append("    shipmentId: ").append(toIndentedString(shipmentId)).append("\n");
     sb.append("    packageDocumentDetails: ").append(toIndentedString(packageDocumentDetails)).append("\n");
     sb.append("    promise: ").append(toIndentedString(promise)).append("\n");
+    sb.append("    benefits: ").append(toIndentedString(benefits)).append("\n");
     sb.append("}");
     return sb.toString();
   }

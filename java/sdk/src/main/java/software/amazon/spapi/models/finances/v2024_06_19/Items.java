@@ -1,6 +1,6 @@
 /*
  * The Selling Partner API for Finances
- * The Selling Partner API for Finances provides financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
+ * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
  *
  * OpenAPI spec version: 2024-06-19
  * 
@@ -19,9 +19,9 @@ import java.util.ArrayList;
 import java.util.List;
 import software.amazon.spapi.models.finances.v2024_06_19.Item;
 /**
- * A list of items in the transaction.
+ * List of items in the transaction
  */
-@Schema(description = "A list of items in the transaction.")
+@Schema(description = "List of items in the transaction")
 
 
 public class Items extends ArrayList<Item> {

@@ -1,6 +1,6 @@
 /*
  * The Selling Partner API for Sellers
- * The Selling Partner API for Sellers lets you retrieve information on behalf of sellers about their seller account, such as the marketplaces they participate in. Along with listing the marketplaces that a seller can sell in, the API also provides additional information about the marketplace such as the default language and the default currency. The API also provides seller-specific information such as whether the seller has suspended listings in that marketplace.
+ * The [Selling Partner API for Sellers](https://developer-docs.amazon.com/sp-api/docs/sellers-api-v1-reference) (Sellers API) provides essential information about seller accounts, such as:  - The marketplaces a seller can list in - The default language and currency of a marketplace - Whether the seller has suspended listings  Refer to the [Sellers API reference](https://developer-docs.amazon.com/sp-api/docs/sellers-api-v1-reference) for details about this API's operations, data types, and schemas.
  *
  * OpenAPI spec version: v1
  * 
@@ -22,9 +22,9 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 /**
- * Detailed information about an Amazon market where a seller can list items for sale and customers can view and purchase items.
+ * Information about an Amazon marketplace where a seller can list items and customers can view and purchase items.
  */
-@Schema(description = "Detailed information about an Amazon market where a seller can list items for sale and customers can view and purchase items.")
+@Schema(description = "Information about an Amazon marketplace where a seller can list items and customers can view and purchase items.")
 
 
 public class Marketplace {
@@ -70,10 +70,10 @@ public class Marketplace {
   }
 
    /**
-   * Marketplace name.
+   * The marketplace name.
    * @return name
   **/
-  @Schema(required = true, description = "Marketplace name.")
+  @Schema(required = true, description = "The marketplace name.")
   public String getName() {
     return name;
   }

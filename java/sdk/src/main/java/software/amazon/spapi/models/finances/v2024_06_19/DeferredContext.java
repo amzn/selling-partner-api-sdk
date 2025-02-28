@@ -1,6 +1,6 @@
 /*
  * The Selling Partner API for Finances
- * The Selling Partner API for Finances provides financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
+ * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
  *
  * OpenAPI spec version: 2024-06-19
  * 
@@ -23,9 +23,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import org.threeten.bp.OffsetDateTime;
 /**
- * Additional information related to deferred transactions.
+ * Additional information related to Deferred transactions.
  */
-@Schema(description = "Additional information related to deferred transactions.")
+@Schema(description = "Additional information related to Deferred transactions.")
 
 
 public class DeferredContext {
@@ -44,10 +44,10 @@ public class DeferredContext {
   }
 
    /**
-   * Deferral policy applied on the transaction.  **Examples:** &#x60;B2B&#x60;,&#x60;DD7&#x60;
+   * Deferral policy applied on the transaction.  Example: &#x27;B2B&#x27;,&#x27;DD7&#x27;
    * @return deferralReason
   **/
-  @Schema(description = "Deferral policy applied on the transaction.  **Examples:** `B2B`,`DD7`")
+  @Schema(description = "Deferral policy applied on the transaction.  Example: 'B2B','DD7'")
   public String getDeferralReason() {
     return deferralReason;
   }
@@ -80,10 +80,10 @@ public class DeferredContext {
   }
 
    /**
-   * The status of the transaction. For example, &#x60;HOLD&#x60;,&#x60;RELEASE&#x60;.
+   * Status of the transaction.   Example: &#x27;HOLD&#x27;,&#x27;RELEASE&#x27;
    * @return deferralStatus
   **/
-  @Schema(description = "The status of the transaction. For example, `HOLD`,`RELEASE`.")
+  @Schema(description = "Status of the transaction.   Example: 'HOLD','RELEASE'")
   public String getDeferralStatus() {
     return deferralStatus;
   }

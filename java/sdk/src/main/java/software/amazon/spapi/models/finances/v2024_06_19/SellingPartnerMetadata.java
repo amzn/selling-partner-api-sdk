@@ -1,6 +1,6 @@
 /*
  * The Selling Partner API for Finances
- * The Selling Partner API for Finances provides financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
+ * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
  *
  * OpenAPI spec version: 2024-06-19
  * 
@@ -22,9 +22,9 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 /**
- * Metadata that describes the seller.
+ * Metadata describing the seller.
  */
-@Schema(description = "Metadata that describes the seller.")
+@Schema(description = "Metadata describing the seller.")
 
 
 public class SellingPartnerMetadata {
@@ -43,10 +43,10 @@ public class SellingPartnerMetadata {
   }
 
    /**
-   * A unique seller identifier.
+   * Unique seller identifier.
    * @return sellingPartnerId
   **/
-  @Schema(description = "A unique seller identifier.")
+  @Schema(description = "Unique seller identifier.")
   public String getSellingPartnerId() {
     return sellingPartnerId;
   }
@@ -61,10 +61,10 @@ public class SellingPartnerMetadata {
   }
 
    /**
-   * The type of account in the transaction.
+   * Account type of transaction.
    * @return accountType
   **/
-  @Schema(description = "The type of account in the transaction.")
+  @Schema(description = "Account type of transaction.")
   public String getAccountType() {
     return accountType;
   }
@@ -79,10 +79,10 @@ public class SellingPartnerMetadata {
   }
 
    /**
-   * The identifier of the marketplace where the transaction occurred.
+   * Marketplace identifier of transaction.
    * @return marketplaceId
   **/
-  @Schema(description = "The identifier of the marketplace where the transaction occurred.")
+  @Schema(description = "Marketplace identifier of transaction.")
   public String getMarketplaceId() {
     return marketplaceId;
   }

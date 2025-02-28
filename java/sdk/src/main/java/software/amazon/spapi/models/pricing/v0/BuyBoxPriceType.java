@@ -26,9 +26,9 @@ import software.amazon.spapi.models.pricing.v0.OfferCustomerType;
 import software.amazon.spapi.models.pricing.v0.Points;
 import software.amazon.spapi.models.pricing.v0.QuantityDiscountType;
 /**
- * BuyBoxPriceType
+ * Schema for an individual buybox price.
  */
-
+@Schema(description = "Schema for an individual buybox price.")
 
 
 public class BuyBoxPriceType {
