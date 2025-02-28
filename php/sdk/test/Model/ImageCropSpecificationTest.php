@@ -19,7 +19,7 @@ use SpApi\Model\aplusContent\v2020_11_01\ImageCropSpecification;
  * ImageCropSpecificationTest Class Doc Comment
  *
  * @category    Class
- * @description The instructions for optionally cropping an image. If no cropping is desired, set the dimensions to the original image size. If the image is cropped and no offset values are provided, then the coordinates of the top left corner of the cropped image, relative to the original image, are defaulted to (0,0).
+ * @description The instructions for optionally cropping an image. If you don&#39;t want to crop the image, set the dimensions to the original image size. If the image is cropped and you don&#39;t include offset values, the coordinates of the top left corner of the cropped image are set to (0,0) by default.
  * @package     SpApi
  */
 class ImageCropSpecificationTest extends TestCase

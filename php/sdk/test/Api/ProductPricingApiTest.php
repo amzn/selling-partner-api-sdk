@@ -70,7 +70,7 @@ class ProductPricingApiTest extends BaseTestCase
   &quot;description&quot; : &quot;Success.&quot;,
   &quot;headers&quot; : {
     &quot;x-amzn-RequestId&quot; : {
-      &quot;description&quot; : &quot;Unique request reference ID.&quot;,
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }
@@ -350,178 +350,6 @@ class ProductPricingApiTest extends BaseTestCase
           },
           &quot;ItemType&quot; : {
             &quot;value&quot; : &quot;Asin&quot;
-          }
-        }
-      },
-      &quot;response&quot; : {
-        &quot;payload&quot; : [ {
-          &quot;status&quot; : &quot;Success&quot;,
-          &quot;ASIN&quot; : &quot;B00V5DG6IQ&quot;,
-          &quot;Product&quot; : {
-            &quot;Identifiers&quot; : {
-              &quot;MarketplaceASIN&quot; : {
-                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
-                &quot;ASIN&quot; : &quot;B00V5DG6IQ&quot;
-              },
-              &quot;SKUIdentifier&quot; : {
-                &quot;MarketplaceId&quot; : &quot;&quot;,
-                &quot;SellerId&quot; : &quot;&quot;,
-                &quot;SellerSKU&quot; : &quot;&quot;
-              }
-            },
-            &quot;CompetitivePricing&quot; : {
-              &quot;CompetitivePrices&quot; : [ ],
-              &quot;NumberOfOfferListings&quot; : [ {
-                &quot;Count&quot; : 1,
-                &quot;condition&quot; : &quot;New&quot;
-              }, {
-                &quot;Count&quot; : 1,
-                &quot;condition&quot; : &quot;Any&quot;
-              } ]
-            },
-            &quot;SalesRankings&quot; : [ {
-              &quot;ProductCategoryId&quot; : &quot;office_product_display_on_website&quot;,
-              &quot;Rank&quot; : 19
-            }, {
-              &quot;ProductCategoryId&quot; : &quot;1069616&quot;,
-              &quot;Rank&quot; : 1
-            }, {
-              &quot;ProductCategoryId&quot; : &quot;705333011&quot;,
-              &quot;Rank&quot; : 1
-            }, {
-              &quot;ProductCategoryId&quot; : &quot;1069242&quot;,
-              &quot;Rank&quot; : 17
-            } ]
-          }
-        }, {
-          &quot;status&quot; : &quot;Success&quot;,
-          &quot;ASIN&quot; : &quot;B00551Q3CS&quot;,
-          &quot;Product&quot; : {
-            &quot;Identifiers&quot; : {
-              &quot;MarketplaceASIN&quot; : {
-                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
-                &quot;ASIN&quot; : &quot;B00551Q3CS&quot;
-              },
-              &quot;SKUIdentifier&quot; : {
-                &quot;MarketplaceId&quot; : &quot;&quot;,
-                &quot;SellerId&quot; : &quot;&quot;,
-                &quot;SellerSKU&quot; : &quot;&quot;
-              }
-            },
-            &quot;CompetitivePricing&quot; : {
-              &quot;CompetitivePrices&quot; : [ ],
-              &quot;NumberOfOfferListings&quot; : [ {
-                &quot;Count&quot; : 1,
-                &quot;condition&quot; : &quot;New&quot;
-              }, {
-                &quot;Count&quot; : 1,
-                &quot;condition&quot; : &quot;Any&quot;
-              } ]
-            },
-            &quot;SalesRankings&quot; : [ {
-              &quot;ProductCategoryId&quot; : &quot;464394&quot;,
-              &quot;Rank&quot; : 224
-            }, {
-              &quot;ProductCategoryId&quot; : &quot;12954861&quot;,
-              &quot;Rank&quot; : 1057
-            } ]
-          }
-        } ]
-      }
-    }, {
-      &quot;request&quot; : {
-        &quot;parameters&quot; : {
-          &quot;MarketplaceId&quot; : {
-            &quot;value&quot; : &quot;ATVPDKIKX0DER&quot;
-          },
-          &quot;ItemType&quot; : {
-            &quot;value&quot; : &quot;Sku&quot;
-          }
-        }
-      },
-      &quot;response&quot; : {
-        &quot;payload&quot; : [ {
-          &quot;status&quot; : &quot;Success&quot;,
-          &quot;SellerSKU&quot; : &quot;NABetaASINB00V5DG6IQ&quot;,
-          &quot;Product&quot; : {
-            &quot;Identifiers&quot; : {
-              &quot;MarketplaceASIN&quot; : {
-                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
-                &quot;ASIN&quot; : &quot;B00V5DG6IQ&quot;
-              },
-              &quot;SKUIdentifier&quot; : {
-                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
-                &quot;SellerId&quot; : &quot;AXXXXXXXXXXXXX&quot;,
-                &quot;SellerSKU&quot; : &quot;NABetaASINB00V5DG6IQ&quot;
-              }
-            },
-            &quot;CompetitivePricing&quot; : {
-              &quot;CompetitivePrices&quot; : [ ],
-              &quot;NumberOfOfferListings&quot; : [ {
-                &quot;Count&quot; : 1,
-                &quot;condition&quot; : &quot;New&quot;
-              }, {
-                &quot;Count&quot; : 1,
-                &quot;condition&quot; : &quot;Any&quot;
-              } ]
-            },
-            &quot;SalesRankings&quot; : [ {
-              &quot;ProductCategoryId&quot; : &quot;office_product_display_on_website&quot;,
-              &quot;Rank&quot; : 19
-            }, {
-              &quot;ProductCategoryId&quot; : &quot;1069616&quot;,
-              &quot;Rank&quot; : 1
-            }, {
-              &quot;ProductCategoryId&quot; : &quot;705333011&quot;,
-              &quot;Rank&quot; : 1
-            }, {
-              &quot;ProductCategoryId&quot; : &quot;1069242&quot;,
-              &quot;Rank&quot; : 17
-            } ]
-          }
-        }, {
-          &quot;status&quot; : &quot;Success&quot;,
-          &quot;SellerSKU&quot; : &quot;NABetaASINB00551Q3CS&quot;,
-          &quot;Product&quot; : {
-            &quot;Identifiers&quot; : {
-              &quot;MarketplaceASIN&quot; : {
-                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
-                &quot;ASIN&quot; : &quot;B00551Q3CS&quot;
-              },
-              &quot;SKUIdentifier&quot; : {
-                &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
-                &quot;SellerId&quot; : &quot;AXXXXXXXXXXXXX&quot;,
-                &quot;SellerSKU&quot; : &quot;NABetaASINB00551Q3CS&quot;
-              }
-            },
-            &quot;CompetitivePricing&quot; : {
-              &quot;CompetitivePrices&quot; : [ ],
-              &quot;NumberOfOfferListings&quot; : [ {
-                &quot;Count&quot; : 1,
-                &quot;condition&quot; : &quot;New&quot;
-              }, {
-                &quot;Count&quot; : 1,
-                &quot;condition&quot; : &quot;Any&quot;
-              } ]
-            },
-            &quot;SalesRankings&quot; : [ {
-              &quot;ProductCategoryId&quot; : &quot;464394&quot;,
-              &quot;Rank&quot; : 224
-            }, {
-              &quot;ProductCategoryId&quot; : &quot;12954861&quot;,
-              &quot;Rank&quot; : 1057
-            } ]
-          }
-        } ]
-      }
-    }, {
-      &quot;request&quot; : {
-        &quot;parameters&quot; : {
-          &quot;MarketplaceId&quot; : {
-            &quot;value&quot; : &quot;ATVPDKIKX0DER&quot;
-          },
-          &quot;ItemType&quot; : {
-            &quot;value&quot; : &quot;Asin&quot;
           },
           &quot;CustomerType&quot; : {
             &quot;value&quot; : &quot;Business&quot;
@@ -722,7 +550,7 @@ class ProductPricingApiTest extends BaseTestCase
   &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
   &quot;headers&quot; : {
     &quot;x-amzn-RequestId&quot; : {
-      &quot;description&quot; : &quot;Unique request reference ID.&quot;,
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }
@@ -851,7 +679,7 @@ class ProductPricingApiTest extends BaseTestCase
   &quot;description&quot; : &quot;Success.&quot;,
   &quot;headers&quot; : {
     &quot;x-amzn-RequestId&quot; : {
-      &quot;description&quot; : &quot;Unique request reference ID.&quot;,
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }
@@ -1151,7 +979,7 @@ class ProductPricingApiTest extends BaseTestCase
   &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
   &quot;headers&quot; : {
     &quot;x-amzn-RequestId&quot; : {
-      &quot;description&quot; : &quot;Unique request reference ID.&quot;,
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }
@@ -1280,7 +1108,7 @@ class ProductPricingApiTest extends BaseTestCase
   &quot;description&quot; : &quot;Indicates that requests were run in batch.  Check the batch response status lines for information on whether a batch request succeeded.&quot;,
   &quot;headers&quot; : {
     &quot;x-amzn-RequestId&quot; : {
-      &quot;description&quot; : &quot;Unique request reference ID.&quot;,
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }
@@ -3416,7 +3244,7 @@ class ProductPricingApiTest extends BaseTestCase
   &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
   &quot;headers&quot; : {
     &quot;x-amzn-RequestId&quot; : {
-      &quot;description&quot; : &quot;Unique request reference ID.&quot;,
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }
@@ -3553,7 +3381,7 @@ class ProductPricingApiTest extends BaseTestCase
   &quot;description&quot; : &quot;Success.&quot;,
   &quot;headers&quot; : {
     &quot;x-amzn-RequestId&quot; : {
-      &quot;description&quot; : &quot;Unique request reference ID.&quot;,
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }
@@ -3854,7 +3682,7 @@ class ProductPricingApiTest extends BaseTestCase
   &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
   &quot;headers&quot; : {
     &quot;x-amzn-RequestId&quot; : {
-      &quot;description&quot; : &quot;Unique request reference ID.&quot;,
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }
@@ -3983,7 +3811,7 @@ class ProductPricingApiTest extends BaseTestCase
   &quot;description&quot; : &quot;Indicates that requests were run in batch.  Check the batch response status lines for information on whether a batch request succeeded.&quot;,
   &quot;headers&quot; : {
     &quot;x-amzn-RequestId&quot; : {
-      &quot;description&quot; : &quot;Unique request reference ID.&quot;,
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }
@@ -5540,7 +5368,7 @@ class ProductPricingApiTest extends BaseTestCase
   &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
   &quot;headers&quot; : {
     &quot;x-amzn-RequestId&quot; : {
-      &quot;description&quot; : &quot;Unique request reference ID.&quot;,
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }
@@ -5677,7 +5505,7 @@ class ProductPricingApiTest extends BaseTestCase
   &quot;description&quot; : &quot;Success.&quot;,
   &quot;headers&quot; : {
     &quot;x-amzn-RequestId&quot; : {
-      &quot;description&quot; : &quot;Unique request reference ID.&quot;,
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }
@@ -6046,7 +5874,7 @@ class ProductPricingApiTest extends BaseTestCase
   &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
   &quot;headers&quot; : {
     &quot;x-amzn-RequestId&quot; : {
-      &quot;description&quot; : &quot;Unique request reference ID.&quot;,
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }

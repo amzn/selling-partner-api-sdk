@@ -164,6 +164,113 @@ class ShippingApiTest extends BaseTestCase
         $this->markTestSkipped('Skip test for this operation.');
     }
     /**
+     * Test case for createClaim_201
+     */
+    public function testCreateClaim201()
+    {
+        // Dynamic sandbox case
+        try {
+            // Skip test if it is in the skip list
+            if ($this->testHelper->shouldSkipTest('testCreateClaim201', 'ShippingApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            // Skip entire class
+            if ($this->testHelper->shouldSkipTest('ShippingApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $result = $this->testHelper->buildRequestForDynamicSandBox(
+                $this->apiInstance,
+                'createClaim'
+            );
+            $requestParams = $result;
+
+            // Act: Call API
+            list($response, $statusCode, $headers) =
+                $this->apiInstance->createClaimWithHttpInfo(...array_values($requestParams));
+
+            // Assert the response code
+            $this->assertHttpStatusCode(201, $statusCode);
+        } catch (ApiException $e) {
+            $this->handleApiException($e, 201);
+        } catch (\ReflectionException $e) {
+            $this->fail("Reflection exception: " . $e->getMessage());
+        }
+    }
+    /**
+     * Test case for createClaim_400
+     */
+    public function testCreateClaim400()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for createClaim_401
+     */
+    public function testCreateClaim401()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for createClaim_403
+     */
+    public function testCreateClaim403()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for createClaim_404
+     */
+    public function testCreateClaim404()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for createClaim_413
+     */
+    public function testCreateClaim413()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for createClaim_415
+     */
+    public function testCreateClaim415()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for createClaim_429
+     */
+    public function testCreateClaim429()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for createClaim_500
+     */
+    public function testCreateClaim500()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for createClaim_503
+     */
+    public function testCreateClaim503()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
      * Test case for directPurchaseShipment_200
      */
     public function testDirectPurchaseShipment200()
@@ -1702,6 +1809,113 @@ class ShippingApiTest extends BaseTestCase
         $this->markTestSkipped('Skip test for this operation.');
     }
     /**
+     * Test case for linkCarrierAccount_0_200
+     */
+    public function testLinkCarrierAccount0200()
+    {
+        // Dynamic sandbox case
+        try {
+            // Skip test if it is in the skip list
+            if ($this->testHelper->shouldSkipTest('testLinkCarrierAccount0200', 'ShippingApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            // Skip entire class
+            if ($this->testHelper->shouldSkipTest('ShippingApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $result = $this->testHelper->buildRequestForDynamicSandBox(
+                $this->apiInstance,
+                'linkCarrierAccount_0'
+            );
+            $requestParams = $result;
+
+            // Act: Call API
+            list($response, $statusCode, $headers) =
+                $this->apiInstance->linkCarrierAccount_0WithHttpInfo(...array_values($requestParams));
+
+            // Assert the response code
+            $this->assertHttpStatusCode(200, $statusCode);
+        } catch (ApiException $e) {
+            $this->handleApiException($e, 200);
+        } catch (\ReflectionException $e) {
+            $this->fail("Reflection exception: " . $e->getMessage());
+        }
+    }
+    /**
+     * Test case for linkCarrierAccount_0_400
+     */
+    public function testLinkCarrierAccount0400()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for linkCarrierAccount_0_401
+     */
+    public function testLinkCarrierAccount0401()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for linkCarrierAccount_0_403
+     */
+    public function testLinkCarrierAccount0403()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for linkCarrierAccount_0_404
+     */
+    public function testLinkCarrierAccount0404()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for linkCarrierAccount_0_413
+     */
+    public function testLinkCarrierAccount0413()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for linkCarrierAccount_0_415
+     */
+    public function testLinkCarrierAccount0415()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for linkCarrierAccount_0_429
+     */
+    public function testLinkCarrierAccount0429()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for linkCarrierAccount_0_500
+     */
+    public function testLinkCarrierAccount0500()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for linkCarrierAccount_0_503
+     */
+    public function testLinkCarrierAccount0503()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
      * Test case for oneClickShipment_200
      */
     public function testOneClickShipment200()
@@ -1911,6 +2125,113 @@ class ShippingApiTest extends BaseTestCase
      * Test case for purchaseShipment_503
      */
     public function testPurchaseShipment503()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for submitNdrFeedback_204
+     */
+    public function testSubmitNdrFeedback204()
+    {
+        // Dynamic sandbox case
+        try {
+            // Skip test if it is in the skip list
+            if ($this->testHelper->shouldSkipTest('testSubmitNdrFeedback204', 'ShippingApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            // Skip entire class
+            if ($this->testHelper->shouldSkipTest('ShippingApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $result = $this->testHelper->buildRequestForDynamicSandBox(
+                $this->apiInstance,
+                'submitNdrFeedback'
+            );
+            $requestParams = $result;
+
+            // Act: Call API
+            list($response, $statusCode, $headers) =
+                $this->apiInstance->submitNdrFeedbackWithHttpInfo(...array_values($requestParams));
+
+            // Assert the response code
+            $this->assertHttpStatusCode(204, $statusCode);
+        } catch (ApiException $e) {
+            $this->handleApiException($e, 204);
+        } catch (\ReflectionException $e) {
+            $this->fail("Reflection exception: " . $e->getMessage());
+        }
+    }
+    /**
+     * Test case for submitNdrFeedback_400
+     */
+    public function testSubmitNdrFeedback400()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for submitNdrFeedback_401
+     */
+    public function testSubmitNdrFeedback401()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for submitNdrFeedback_403
+     */
+    public function testSubmitNdrFeedback403()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for submitNdrFeedback_404
+     */
+    public function testSubmitNdrFeedback404()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for submitNdrFeedback_413
+     */
+    public function testSubmitNdrFeedback413()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for submitNdrFeedback_415
+     */
+    public function testSubmitNdrFeedback415()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for submitNdrFeedback_429
+     */
+    public function testSubmitNdrFeedback429()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for submitNdrFeedback_500
+     */
+    public function testSubmitNdrFeedback500()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for submitNdrFeedback_503
+     */
+    public function testSubmitNdrFeedback503()
     {
         // Skip this test
         $this->markTestSkipped('Skip test for this operation.');

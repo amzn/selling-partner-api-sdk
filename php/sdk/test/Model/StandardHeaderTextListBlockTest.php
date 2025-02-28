@@ -19,7 +19,7 @@ use SpApi\Model\aplusContent\v2020_11_01\StandardHeaderTextListBlock;
  * StandardHeaderTextListBlockTest Class Doc Comment
  *
  * @category    Class
- * @description The A+ standard fixed-length list of text, with a related headline.
+ * @description The A+ standard fixed-length list of text and a related headline.
  * @package     SpApi
  */
 class StandardHeaderTextListBlockTest extends TestCase

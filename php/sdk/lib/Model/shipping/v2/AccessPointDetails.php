@@ -38,6 +38,7 @@ use SpApi\Model\ModelInterface;
  * AccessPointDetails Class Doc Comment
  *
  * @category Class
+ * @description AccessPointDetails object
  * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

@@ -665,10 +665,522 @@ class ShippingApi
     }
 
     /**
+     * Operation createClaim
+     *
+     * @param  \SpApi\Model\shipping\v2\CreateClaimRequest $body
+     *  Request body for the createClaim operation (required)
+     * @param  string|null $x_amzn_shipping_business_id
+     *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
+     *
+     * @throws \SpApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \SpApi\Model\shipping\v2\CreateClaimResponse
+     */
+    public function createClaim(
+        \SpApi\Model\shipping\v2\CreateClaimRequest $body,
+        ?string $x_amzn_shipping_business_id = null
+    ): \SpApi\Model\shipping\v2\CreateClaimResponse {
+        list($response) = $this->createClaimWithHttpInfo($body, $x_amzn_shipping_business_id);
+        return $response;
+    }
+
+    /**
+     * Operation createClaimWithHttpInfo
+     *
+     * @param  \SpApi\Model\shipping\v2\CreateClaimRequest $body
+     *  Request body for the createClaim operation (required)
+     * @param  string|null $x_amzn_shipping_business_id
+     *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
+     *
+     * @throws \SpApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \SpApi\Model\shipping\v2\CreateClaimResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createClaimWithHttpInfo(
+        \SpApi\Model\shipping\v2\CreateClaimRequest $body,
+        ?string $x_amzn_shipping_business_id = null
+    ): array {
+        $request = $this->createClaimRequest($body, $x_amzn_shipping_business_id);
+        $request = $this->config->sign($request);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $this->rateLimitWait();
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 201:
+                    if ('\SpApi\Model\shipping\v2\CreateClaimResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\SpApi\Model\shipping\v2\CreateClaimResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\CreateClaimResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 413:
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 415:
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 500:
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 503:
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\SpApi\Model\shipping\v2\CreateClaimResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SpApi\Model\shipping\v2\CreateClaimResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SpApi\Model\shipping\v2\ErrorList',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SpApi\Model\shipping\v2\ErrorList',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SpApi\Model\shipping\v2\ErrorList',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SpApi\Model\shipping\v2\ErrorList',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SpApi\Model\shipping\v2\ErrorList',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 415:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SpApi\Model\shipping\v2\ErrorList',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SpApi\Model\shipping\v2\ErrorList',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SpApi\Model\shipping\v2\ErrorList',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 503:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SpApi\Model\shipping\v2\ErrorList',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createClaimAsync
+     *
+     * @param  \SpApi\Model\shipping\v2\CreateClaimRequest $body
+     *  Request body for the createClaim operation (required)
+     * @param  string|null $x_amzn_shipping_business_id
+     *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return PromiseInterface
+     */
+    public function createClaimAsync(
+        \SpApi\Model\shipping\v2\CreateClaimRequest $body,
+        ?string $x_amzn_shipping_business_id = null
+    ): PromiseInterface {
+        return $this->createClaimAsyncWithHttpInfo($body, $x_amzn_shipping_business_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createClaimAsyncWithHttpInfo
+     *
+     * @param  \SpApi\Model\shipping\v2\CreateClaimRequest $body
+     *  Request body for the createClaim operation (required)
+     * @param  string|null $x_amzn_shipping_business_id
+     *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return PromiseInterface
+     */
+    public function createClaimAsyncWithHttpInfo(
+        \SpApi\Model\shipping\v2\CreateClaimRequest $body,
+        ?string $x_amzn_shipping_business_id = null
+    ): PromiseInterface {
+        $returnType = '\SpApi\Model\shipping\v2\CreateClaimResponse';
+        $request = $this->createClaimRequest($body, $x_amzn_shipping_business_id);
+        $request = $this->config->sign($request);
+        $this->rateLimitWait();
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createClaim'
+     *
+     * @param  \SpApi\Model\shipping\v2\CreateClaimRequest $body
+     *  Request body for the createClaim operation (required)
+     * @param  string|null $x_amzn_shipping_business_id
+     *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return Request
+     */
+    public function createClaimRequest(
+        \SpApi\Model\shipping\v2\CreateClaimRequest $body,
+        ?string $x_amzn_shipping_business_id = null
+    ): Request {
+        // verify the required parameter 'body' is set
+        if ($body === null || (is_array($body) && count($body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $body when calling createClaim'
+            );
+        }
+
+        $resourcePath = '/shipping/v2/claims';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+        // header params
+        if ($x_amzn_shipping_business_id !== null) {
+            $headerParams['x-amzn-shipping-business-id'] = ObjectSerializer::toHeaderValue($x_amzn_shipping_business_id);
+        }
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                'application/json'
+                ,
+                false
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($body)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
+            } else {
+                $httpBody = $body;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation directPurchaseShipment
      *
      * @param  \SpApi\Model\shipping\v2\DirectPurchaseRequest $body
-     *  body (required)
+     *  DirectPurchaseRequest body (required)
      * @param  string|null $x_amzn_idempotency_key
      *  A unique value which the server uses to recognize subsequent retries of the same request. (optional)
      * @param  string|null $locale
@@ -694,7 +1206,7 @@ class ShippingApi
      * Operation directPurchaseShipmentWithHttpInfo
      *
      * @param  \SpApi\Model\shipping\v2\DirectPurchaseRequest $body
-     *  (required)
+     *  DirectPurchaseRequest body (required)
      * @param  string|null $x_amzn_idempotency_key
      *  A unique value which the server uses to recognize subsequent retries of the same request. (optional)
      * @param  string|null $locale
@@ -1011,7 +1523,7 @@ class ShippingApi
      * Operation directPurchaseShipmentAsync
      *
      * @param  \SpApi\Model\shipping\v2\DirectPurchaseRequest $body
-     *  (required)
+     *  DirectPurchaseRequest body (required)
      * @param  string|null $x_amzn_idempotency_key
      *  A unique value which the server uses to recognize subsequent retries of the same request. (optional)
      * @param  string|null $locale
@@ -1040,7 +1552,7 @@ class ShippingApi
      * Operation directPurchaseShipmentAsyncWithHttpInfo
      *
      * @param  \SpApi\Model\shipping\v2\DirectPurchaseRequest $body
-     *  (required)
+     *  DirectPurchaseRequest body (required)
      * @param  string|null $x_amzn_idempotency_key
      *  A unique value which the server uses to recognize subsequent retries of the same request. (optional)
      * @param  string|null $locale
@@ -1102,7 +1614,7 @@ class ShippingApi
      * Create request for operation 'directPurchaseShipment'
      *
      * @param  \SpApi\Model\shipping\v2\DirectPurchaseRequest $body
-     *  (required)
+     *  DirectPurchaseRequest body (required)
      * @param  string|null $x_amzn_idempotency_key
      *  A unique value which the server uses to recognize subsequent retries of the same request. (optional)
      * @param  string|null $locale
@@ -1218,7 +1730,7 @@ class ShippingApi
      * Operation generateCollectionForm
      *
      * @param  \SpApi\Model\shipping\v2\GenerateCollectionFormRequest $body
-     *  body (required)
+     *  GenerateCollectionFormRequest body (required)
      * @param  string|null $x_amzn_idempotency_key
      *  A unique value which the server uses to recognize subsequent retries of the same request. (optional)
      * @param  string|null $x_amzn_shipping_business_id
@@ -1241,7 +1753,7 @@ class ShippingApi
      * Operation generateCollectionFormWithHttpInfo
      *
      * @param  \SpApi\Model\shipping\v2\GenerateCollectionFormRequest $body
-     *  (required)
+     *  GenerateCollectionFormRequest body (required)
      * @param  string|null $x_amzn_idempotency_key
      *  A unique value which the server uses to recognize subsequent retries of the same request. (optional)
      * @param  string|null $x_amzn_shipping_business_id
@@ -1555,7 +2067,7 @@ class ShippingApi
      * Operation generateCollectionFormAsync
      *
      * @param  \SpApi\Model\shipping\v2\GenerateCollectionFormRequest $body
-     *  (required)
+     *  GenerateCollectionFormRequest body (required)
      * @param  string|null $x_amzn_idempotency_key
      *  A unique value which the server uses to recognize subsequent retries of the same request. (optional)
      * @param  string|null $x_amzn_shipping_business_id
@@ -1581,7 +2093,7 @@ class ShippingApi
      * Operation generateCollectionFormAsyncWithHttpInfo
      *
      * @param  \SpApi\Model\shipping\v2\GenerateCollectionFormRequest $body
-     *  (required)
+     *  GenerateCollectionFormRequest body (required)
      * @param  string|null $x_amzn_idempotency_key
      *  A unique value which the server uses to recognize subsequent retries of the same request. (optional)
      * @param  string|null $x_amzn_shipping_business_id
@@ -1640,7 +2152,7 @@ class ShippingApi
      * Create request for operation 'generateCollectionForm'
      *
      * @param  \SpApi\Model\shipping\v2\GenerateCollectionFormRequest $body
-     *  (required)
+     *  GenerateCollectionFormRequest body (required)
      * @param  string|null $x_amzn_idempotency_key
      *  A unique value which the server uses to recognize subsequent retries of the same request. (optional)
      * @param  string|null $x_amzn_shipping_business_id
@@ -1749,11 +2261,11 @@ class ShippingApi
      * Operation getAccessPoints
      *
      * @param  string[] $access_point_types
-     *  access_point_types (required)
+     *  Access point types (required)
      * @param  string $country_code
-     *  country_code (required)
+     *  Country code for access point (required)
      * @param  string $postal_code
-     *  postal_code (required)
+     *  postal code for access point (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
@@ -1775,11 +2287,11 @@ class ShippingApi
      * Operation getAccessPointsWithHttpInfo
      *
      * @param  string[] $access_point_types
-     *  (required)
+     *  Access point types (required)
      * @param  string $country_code
-     *  (required)
+     *  Country code for access point (required)
      * @param  string $postal_code
-     *  (required)
+     *  postal code for access point (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
@@ -2092,11 +2604,11 @@ class ShippingApi
      * Operation getAccessPointsAsync
      *
      * @param  string[] $access_point_types
-     *  (required)
+     *  Access point types (required)
      * @param  string $country_code
-     *  (required)
+     *  Country code for access point (required)
      * @param  string $postal_code
-     *  (required)
+     *  postal code for access point (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
@@ -2121,11 +2633,11 @@ class ShippingApi
      * Operation getAccessPointsAsyncWithHttpInfo
      *
      * @param  string[] $access_point_types
-     *  (required)
+     *  Access point types (required)
      * @param  string $country_code
-     *  (required)
+     *  Country code for access point (required)
      * @param  string $postal_code
-     *  (required)
+     *  postal code for access point (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
@@ -2183,11 +2695,11 @@ class ShippingApi
      * Create request for operation 'getAccessPoints'
      *
      * @param  string[] $access_point_types
-     *  (required)
+     *  Access point types (required)
      * @param  string $country_code
-     *  (required)
+     *  Country code for access point (required)
      * @param  string $postal_code
-     *  (required)
+     *  postal code for access point (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
@@ -3354,7 +3866,7 @@ class ShippingApi
      * Operation getCarrierAccounts
      *
      * @param  \SpApi\Model\shipping\v2\GetCarrierAccountsRequest $body
-     *  body (required)
+     *  GetCarrierAccountsRequest body (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
@@ -3374,7 +3886,7 @@ class ShippingApi
      * Operation getCarrierAccountsWithHttpInfo
      *
      * @param  \SpApi\Model\shipping\v2\GetCarrierAccountsRequest $body
-     *  (required)
+     *  GetCarrierAccountsRequest body (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
@@ -3685,7 +4197,7 @@ class ShippingApi
      * Operation getCarrierAccountsAsync
      *
      * @param  \SpApi\Model\shipping\v2\GetCarrierAccountsRequest $body
-     *  (required)
+     *  GetCarrierAccountsRequest body (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
@@ -3708,7 +4220,7 @@ class ShippingApi
      * Operation getCarrierAccountsAsyncWithHttpInfo
      *
      * @param  \SpApi\Model\shipping\v2\GetCarrierAccountsRequest $body
-     *  (required)
+     *  GetCarrierAccountsRequest body (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
@@ -3764,7 +4276,7 @@ class ShippingApi
      * Create request for operation 'getCarrierAccounts'
      *
      * @param  \SpApi\Model\shipping\v2\GetCarrierAccountsRequest $body
-     *  (required)
+     *  GetCarrierAccountsRequest body (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
@@ -4380,7 +4892,7 @@ class ShippingApi
      * Operation getCollectionFormHistory
      *
      * @param  \SpApi\Model\shipping\v2\GetCollectionFormHistoryRequest $body
-     *  body (required)
+     *  GetCollectionFormHistoryRequest body (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
@@ -4400,7 +4912,7 @@ class ShippingApi
      * Operation getCollectionFormHistoryWithHttpInfo
      *
      * @param  \SpApi\Model\shipping\v2\GetCollectionFormHistoryRequest $body
-     *  (required)
+     *  GetCollectionFormHistoryRequest body (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
@@ -4711,7 +5223,7 @@ class ShippingApi
      * Operation getCollectionFormHistoryAsync
      *
      * @param  \SpApi\Model\shipping\v2\GetCollectionFormHistoryRequest $body
-     *  (required)
+     *  GetCollectionFormHistoryRequest body (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
@@ -4734,7 +5246,7 @@ class ShippingApi
      * Operation getCollectionFormHistoryAsyncWithHttpInfo
      *
      * @param  \SpApi\Model\shipping\v2\GetCollectionFormHistoryRequest $body
-     *  (required)
+     *  GetCollectionFormHistoryRequest body (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
@@ -4790,7 +5302,7 @@ class ShippingApi
      * Create request for operation 'getCollectionFormHistory'
      *
      * @param  \SpApi\Model\shipping\v2\GetCollectionFormHistoryRequest $body
-     *  (required)
+     *  GetCollectionFormHistoryRequest body (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
@@ -4892,7 +5404,7 @@ class ShippingApi
      * Operation getRates
      *
      * @param  \SpApi\Model\shipping\v2\GetRatesRequest $body
-     *  body (required)
+     *  GetRatesRequest body (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
@@ -4912,7 +5424,7 @@ class ShippingApi
      * Operation getRatesWithHttpInfo
      *
      * @param  \SpApi\Model\shipping\v2\GetRatesRequest $body
-     *  (required)
+     *  GetRatesRequest body (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
@@ -5223,7 +5735,7 @@ class ShippingApi
      * Operation getRatesAsync
      *
      * @param  \SpApi\Model\shipping\v2\GetRatesRequest $body
-     *  (required)
+     *  GetRatesRequest body (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
@@ -5246,7 +5758,7 @@ class ShippingApi
      * Operation getRatesAsyncWithHttpInfo
      *
      * @param  \SpApi\Model\shipping\v2\GetRatesRequest $body
-     *  (required)
+     *  GetRatesRequest body (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
@@ -5302,7 +5814,7 @@ class ShippingApi
      * Create request for operation 'getRates'
      *
      * @param  \SpApi\Model\shipping\v2\GetRatesRequest $body
-     *  (required)
+     *  GetRatesRequest body (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
@@ -6541,7 +7053,7 @@ class ShippingApi
      * Operation getUnmanifestedShipments
      *
      * @param  \SpApi\Model\shipping\v2\GetUnmanifestedShipmentsRequest $body
-     *  body (required)
+     *  GetUmanifestedShipmentsRequest body (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
@@ -6561,7 +7073,7 @@ class ShippingApi
      * Operation getUnmanifestedShipmentsWithHttpInfo
      *
      * @param  \SpApi\Model\shipping\v2\GetUnmanifestedShipmentsRequest $body
-     *  (required)
+     *  GetUmanifestedShipmentsRequest body (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
@@ -6872,7 +7384,7 @@ class ShippingApi
      * Operation getUnmanifestedShipmentsAsync
      *
      * @param  \SpApi\Model\shipping\v2\GetUnmanifestedShipmentsRequest $body
-     *  (required)
+     *  GetUmanifestedShipmentsRequest body (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
@@ -6895,7 +7407,7 @@ class ShippingApi
      * Operation getUnmanifestedShipmentsAsyncWithHttpInfo
      *
      * @param  \SpApi\Model\shipping\v2\GetUnmanifestedShipmentsRequest $body
-     *  (required)
+     *  GetUmanifestedShipmentsRequest body (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
@@ -6951,7 +7463,7 @@ class ShippingApi
      * Create request for operation 'getUnmanifestedShipments'
      *
      * @param  \SpApi\Model\shipping\v2\GetUnmanifestedShipmentsRequest $body
-     *  (required)
+     *  GetUmanifestedShipmentsRequest body (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
@@ -7053,9 +7565,9 @@ class ShippingApi
      * Operation linkCarrierAccount
      *
      * @param  string $carrier_id
-     *  The unique identifier associated with the carrier account. (required)
+     *  An identifier for the carrier with which the seller&#39;s account is being linked. (required)
      * @param  \SpApi\Model\shipping\v2\LinkCarrierAccountRequest $body
-     *  body (required)
+     *  LinkCarrierAccountRequest body (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
@@ -7076,9 +7588,9 @@ class ShippingApi
      * Operation linkCarrierAccountWithHttpInfo
      *
      * @param  string $carrier_id
-     *  The unique identifier associated with the carrier account. (required)
+     *  An identifier for the carrier with which the seller&#39;s account is being linked. (required)
      * @param  \SpApi\Model\shipping\v2\LinkCarrierAccountRequest $body
-     *  (required)
+     *  LinkCarrierAccountRequest body (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
@@ -7390,9 +7902,9 @@ class ShippingApi
      * Operation linkCarrierAccountAsync
      *
      * @param  string $carrier_id
-     *  The unique identifier associated with the carrier account. (required)
+     *  An identifier for the carrier with which the seller&#39;s account is being linked. (required)
      * @param  \SpApi\Model\shipping\v2\LinkCarrierAccountRequest $body
-     *  (required)
+     *  LinkCarrierAccountRequest body (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
@@ -7416,9 +7928,9 @@ class ShippingApi
      * Operation linkCarrierAccountAsyncWithHttpInfo
      *
      * @param  string $carrier_id
-     *  The unique identifier associated with the carrier account. (required)
+     *  An identifier for the carrier with which the seller&#39;s account is being linked. (required)
      * @param  \SpApi\Model\shipping\v2\LinkCarrierAccountRequest $body
-     *  (required)
+     *  LinkCarrierAccountRequest body (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
@@ -7475,9 +7987,9 @@ class ShippingApi
      * Create request for operation 'linkCarrierAccount'
      *
      * @param  string $carrier_id
-     *  The unique identifier associated with the carrier account. (required)
+     *  An identifier for the carrier with which the seller&#39;s account is being linked. (required)
      * @param  \SpApi\Model\shipping\v2\LinkCarrierAccountRequest $body
-     *  (required)
+     *  LinkCarrierAccountRequest body (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
@@ -7591,10 +8103,551 @@ class ShippingApi
     }
 
     /**
+     * Operation linkCarrierAccount_0
+     *
+     * @param  string $carrier_id
+     *  An identifier for the carrier with which the seller&#39;s account is being linked. (required)
+     * @param  \SpApi\Model\shipping\v2\LinkCarrierAccountRequest $body
+     *  LinkCarrierAccountRequest body (required)
+     * @param  string|null $x_amzn_shipping_business_id
+     *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
+     *
+     * @throws \SpApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \SpApi\Model\shipping\v2\LinkCarrierAccountResponse
+     */
+    public function linkCarrierAccount_0(
+        string $carrier_id,
+        \SpApi\Model\shipping\v2\LinkCarrierAccountRequest $body,
+        ?string $x_amzn_shipping_business_id = null
+    ): \SpApi\Model\shipping\v2\LinkCarrierAccountResponse {
+        list($response) = $this->linkCarrierAccount_0WithHttpInfo($carrier_id, $body, $x_amzn_shipping_business_id);
+        return $response;
+    }
+
+    /**
+     * Operation linkCarrierAccount_0WithHttpInfo
+     *
+     * @param  string $carrier_id
+     *  An identifier for the carrier with which the seller&#39;s account is being linked. (required)
+     * @param  \SpApi\Model\shipping\v2\LinkCarrierAccountRequest $body
+     *  LinkCarrierAccountRequest body (required)
+     * @param  string|null $x_amzn_shipping_business_id
+     *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
+     *
+     * @throws \SpApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \SpApi\Model\shipping\v2\LinkCarrierAccountResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function linkCarrierAccount_0WithHttpInfo(
+        string $carrier_id,
+        \SpApi\Model\shipping\v2\LinkCarrierAccountRequest $body,
+        ?string $x_amzn_shipping_business_id = null
+    ): array {
+        $request = $this->linkCarrierAccount_0Request($carrier_id, $body, $x_amzn_shipping_business_id);
+        $request = $this->config->sign($request);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $this->rateLimitWait();
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\SpApi\Model\shipping\v2\LinkCarrierAccountResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\SpApi\Model\shipping\v2\LinkCarrierAccountResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\LinkCarrierAccountResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 413:
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 415:
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 500:
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 503:
+                    if ('\SpApi\Model\shipping\v2\ErrorList' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\SpApi\Model\shipping\v2\ErrorList' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\shipping\v2\ErrorList', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\SpApi\Model\shipping\v2\LinkCarrierAccountResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SpApi\Model\shipping\v2\LinkCarrierAccountResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SpApi\Model\shipping\v2\ErrorList',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SpApi\Model\shipping\v2\ErrorList',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SpApi\Model\shipping\v2\ErrorList',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SpApi\Model\shipping\v2\ErrorList',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SpApi\Model\shipping\v2\ErrorList',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 415:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SpApi\Model\shipping\v2\ErrorList',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SpApi\Model\shipping\v2\ErrorList',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SpApi\Model\shipping\v2\ErrorList',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 503:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SpApi\Model\shipping\v2\ErrorList',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation linkCarrierAccount_0Async
+     *
+     * @param  string $carrier_id
+     *  An identifier for the carrier with which the seller&#39;s account is being linked. (required)
+     * @param  \SpApi\Model\shipping\v2\LinkCarrierAccountRequest $body
+     *  LinkCarrierAccountRequest body (required)
+     * @param  string|null $x_amzn_shipping_business_id
+     *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return PromiseInterface
+     */
+    public function linkCarrierAccount_0Async(
+        string $carrier_id,
+        \SpApi\Model\shipping\v2\LinkCarrierAccountRequest $body,
+        ?string $x_amzn_shipping_business_id = null
+    ): PromiseInterface {
+        return $this->linkCarrierAccount_0AsyncWithHttpInfo($carrier_id, $body, $x_amzn_shipping_business_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation linkCarrierAccount_0AsyncWithHttpInfo
+     *
+     * @param  string $carrier_id
+     *  An identifier for the carrier with which the seller&#39;s account is being linked. (required)
+     * @param  \SpApi\Model\shipping\v2\LinkCarrierAccountRequest $body
+     *  LinkCarrierAccountRequest body (required)
+     * @param  string|null $x_amzn_shipping_business_id
+     *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return PromiseInterface
+     */
+    public function linkCarrierAccount_0AsyncWithHttpInfo(
+        string $carrier_id,
+        \SpApi\Model\shipping\v2\LinkCarrierAccountRequest $body,
+        ?string $x_amzn_shipping_business_id = null
+    ): PromiseInterface {
+        $returnType = '\SpApi\Model\shipping\v2\LinkCarrierAccountResponse';
+        $request = $this->linkCarrierAccount_0Request($carrier_id, $body, $x_amzn_shipping_business_id);
+        $request = $this->config->sign($request);
+        $this->rateLimitWait();
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'linkCarrierAccount_0'
+     *
+     * @param  string $carrier_id
+     *  An identifier for the carrier with which the seller&#39;s account is being linked. (required)
+     * @param  \SpApi\Model\shipping\v2\LinkCarrierAccountRequest $body
+     *  LinkCarrierAccountRequest body (required)
+     * @param  string|null $x_amzn_shipping_business_id
+     *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return Request
+     */
+    public function linkCarrierAccount_0Request(
+        string $carrier_id,
+        \SpApi\Model\shipping\v2\LinkCarrierAccountRequest $body,
+        ?string $x_amzn_shipping_business_id = null
+    ): Request {
+        // verify the required parameter 'carrier_id' is set
+        if ($carrier_id === null || (is_array($carrier_id) && count($carrier_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $carrier_id when calling linkCarrierAccount_0'
+            );
+        }
+        // verify the required parameter 'body' is set
+        if ($body === null || (is_array($body) && count($body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $body when calling linkCarrierAccount_0'
+            );
+        }
+
+        $resourcePath = '/shipping/v2/carrierAccounts/{carrierId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+        // header params
+        if ($x_amzn_shipping_business_id !== null) {
+            $headerParams['x-amzn-shipping-business-id'] = ObjectSerializer::toHeaderValue($x_amzn_shipping_business_id);
+        }
+
+        // path params
+        if ($carrier_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'carrierId' . '}',
+                ObjectSerializer::toPathValue($carrier_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                'application/json'
+                ,
+                false
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($body)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
+            } else {
+                $httpBody = $body;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation oneClickShipment
      *
      * @param  \SpApi\Model\shipping\v2\OneClickShipmentRequest $body
-     *  body (required)
+     *  OneClickShipmentRequest body (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
@@ -7614,7 +8667,7 @@ class ShippingApi
      * Operation oneClickShipmentWithHttpInfo
      *
      * @param  \SpApi\Model\shipping\v2\OneClickShipmentRequest $body
-     *  (required)
+     *  OneClickShipmentRequest body (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
@@ -7925,7 +8978,7 @@ class ShippingApi
      * Operation oneClickShipmentAsync
      *
      * @param  \SpApi\Model\shipping\v2\OneClickShipmentRequest $body
-     *  (required)
+     *  OneClickShipmentRequest body (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
@@ -7948,7 +9001,7 @@ class ShippingApi
      * Operation oneClickShipmentAsyncWithHttpInfo
      *
      * @param  \SpApi\Model\shipping\v2\OneClickShipmentRequest $body
-     *  (required)
+     *  OneClickShipmentRequest body (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
@@ -8004,7 +9057,7 @@ class ShippingApi
      * Create request for operation 'oneClickShipment'
      *
      * @param  \SpApi\Model\shipping\v2\OneClickShipmentRequest $body
-     *  (required)
+     *  OneClickShipmentRequest body (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
@@ -8106,7 +9159,7 @@ class ShippingApi
      * Operation purchaseShipment
      *
      * @param  \SpApi\Model\shipping\v2\PurchaseShipmentRequest $body
-     *  body (required)
+     *  PurchaseShipmentRequest body (required)
      * @param  string|null $x_amzn_idempotency_key
      *  A unique value which the server uses to recognize subsequent retries of the same request. (optional)
      * @param  string|null $x_amzn_shipping_business_id
@@ -8129,7 +9182,7 @@ class ShippingApi
      * Operation purchaseShipmentWithHttpInfo
      *
      * @param  \SpApi\Model\shipping\v2\PurchaseShipmentRequest $body
-     *  (required)
+     *  PurchaseShipmentRequest body (required)
      * @param  string|null $x_amzn_idempotency_key
      *  A unique value which the server uses to recognize subsequent retries of the same request. (optional)
      * @param  string|null $x_amzn_shipping_business_id
@@ -8443,7 +9496,7 @@ class ShippingApi
      * Operation purchaseShipmentAsync
      *
      * @param  \SpApi\Model\shipping\v2\PurchaseShipmentRequest $body
-     *  (required)
+     *  PurchaseShipmentRequest body (required)
      * @param  string|null $x_amzn_idempotency_key
      *  A unique value which the server uses to recognize subsequent retries of the same request. (optional)
      * @param  string|null $x_amzn_shipping_business_id
@@ -8469,7 +9522,7 @@ class ShippingApi
      * Operation purchaseShipmentAsyncWithHttpInfo
      *
      * @param  \SpApi\Model\shipping\v2\PurchaseShipmentRequest $body
-     *  (required)
+     *  PurchaseShipmentRequest body (required)
      * @param  string|null $x_amzn_idempotency_key
      *  A unique value which the server uses to recognize subsequent retries of the same request. (optional)
      * @param  string|null $x_amzn_shipping_business_id
@@ -8528,7 +9581,7 @@ class ShippingApi
      * Create request for operation 'purchaseShipment'
      *
      * @param  \SpApi\Model\shipping\v2\PurchaseShipmentRequest $body
-     *  (required)
+     *  PurchaseShipmentRequest body (required)
      * @param  string|null $x_amzn_idempotency_key
      *  A unique value which the server uses to recognize subsequent retries of the same request. (optional)
      * @param  string|null $x_amzn_shipping_business_id
@@ -8634,12 +9687,335 @@ class ShippingApi
     }
 
     /**
+     * Operation submitNdrFeedback
+     *
+     * @param  \SpApi\Model\shipping\v2\SubmitNdrFeedbackRequest $body
+     *  Request body for ndrFeedback operation (required)
+     * @param  string|null $x_amzn_shipping_business_id
+     *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
+     *
+     * @throws \SpApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return 
+     */
+    public function submitNdrFeedback(
+        \SpApi\Model\shipping\v2\SubmitNdrFeedbackRequest $body,
+        ?string $x_amzn_shipping_business_id = null
+    ): void {
+        $this->submitNdrFeedbackWithHttpInfo($body, $x_amzn_shipping_business_id);
+    }
+
+    /**
+     * Operation submitNdrFeedbackWithHttpInfo
+     *
+     * @param  \SpApi\Model\shipping\v2\SubmitNdrFeedbackRequest $body
+     *  Request body for ndrFeedback operation (required)
+     * @param  string|null $x_amzn_shipping_business_id
+     *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
+     *
+     * @throws \SpApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of , HTTP status code, HTTP response headers (array of strings)
+     */
+    public function submitNdrFeedbackWithHttpInfo(
+        \SpApi\Model\shipping\v2\SubmitNdrFeedbackRequest $body,
+        ?string $x_amzn_shipping_business_id = null
+    ): array {
+        $request = $this->submitNdrFeedbackRequest($body, $x_amzn_shipping_business_id);
+        $request = $this->config->sign($request);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $this->rateLimitWait();
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SpApi\Model\shipping\v2\ErrorList',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SpApi\Model\shipping\v2\ErrorList',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SpApi\Model\shipping\v2\ErrorList',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SpApi\Model\shipping\v2\ErrorList',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SpApi\Model\shipping\v2\ErrorList',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 415:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SpApi\Model\shipping\v2\ErrorList',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SpApi\Model\shipping\v2\ErrorList',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SpApi\Model\shipping\v2\ErrorList',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 503:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SpApi\Model\shipping\v2\ErrorList',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation submitNdrFeedbackAsync
+     *
+     * @param  \SpApi\Model\shipping\v2\SubmitNdrFeedbackRequest $body
+     *  Request body for ndrFeedback operation (required)
+     * @param  string|null $x_amzn_shipping_business_id
+     *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return PromiseInterface
+     */
+    public function submitNdrFeedbackAsync(
+        \SpApi\Model\shipping\v2\SubmitNdrFeedbackRequest $body,
+        ?string $x_amzn_shipping_business_id = null
+    ): PromiseInterface {
+        return $this->submitNdrFeedbackAsyncWithHttpInfo($body, $x_amzn_shipping_business_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation submitNdrFeedbackAsyncWithHttpInfo
+     *
+     * @param  \SpApi\Model\shipping\v2\SubmitNdrFeedbackRequest $body
+     *  Request body for ndrFeedback operation (required)
+     * @param  string|null $x_amzn_shipping_business_id
+     *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return PromiseInterface
+     */
+    public function submitNdrFeedbackAsyncWithHttpInfo(
+        \SpApi\Model\shipping\v2\SubmitNdrFeedbackRequest $body,
+        ?string $x_amzn_shipping_business_id = null
+    ): PromiseInterface {
+        $returnType = '';
+        $request = $this->submitNdrFeedbackRequest($body, $x_amzn_shipping_business_id);
+        $request = $this->config->sign($request);
+        $this->rateLimitWait();
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'submitNdrFeedback'
+     *
+     * @param  \SpApi\Model\shipping\v2\SubmitNdrFeedbackRequest $body
+     *  Request body for ndrFeedback operation (required)
+     * @param  string|null $x_amzn_shipping_business_id
+     *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return Request
+     */
+    public function submitNdrFeedbackRequest(
+        \SpApi\Model\shipping\v2\SubmitNdrFeedbackRequest $body,
+        ?string $x_amzn_shipping_business_id = null
+    ): Request {
+        // verify the required parameter 'body' is set
+        if ($body === null || (is_array($body) && count($body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $body when calling submitNdrFeedback'
+            );
+        }
+
+        $resourcePath = '/shipping/v2/ndrFeedback';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+        // header params
+        if ($x_amzn_shipping_business_id !== null) {
+            $headerParams['x-amzn-shipping-business-id'] = ObjectSerializer::toHeaderValue($x_amzn_shipping_business_id);
+        }
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                'application/json'
+                ,
+                false
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($body)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
+            } else {
+                $httpBody = $body;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation unlinkCarrierAccount
      *
      * @param  string $carrier_id
      *  carrier Id to unlink with merchant. (required)
      * @param  \SpApi\Model\shipping\v2\UnlinkCarrierAccountRequest $body
-     *  body (required)
+     *  UnlinkCarrierAccountRequest body (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
@@ -8662,7 +10038,7 @@ class ShippingApi
      * @param  string $carrier_id
      *  carrier Id to unlink with merchant. (required)
      * @param  \SpApi\Model\shipping\v2\UnlinkCarrierAccountRequest $body
-     *  (required)
+     *  UnlinkCarrierAccountRequest body (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
@@ -8976,7 +10352,7 @@ class ShippingApi
      * @param  string $carrier_id
      *  carrier Id to unlink with merchant. (required)
      * @param  \SpApi\Model\shipping\v2\UnlinkCarrierAccountRequest $body
-     *  (required)
+     *  UnlinkCarrierAccountRequest body (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
@@ -9002,7 +10378,7 @@ class ShippingApi
      * @param  string $carrier_id
      *  carrier Id to unlink with merchant. (required)
      * @param  \SpApi\Model\shipping\v2\UnlinkCarrierAccountRequest $body
-     *  (required)
+     *  UnlinkCarrierAccountRequest body (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *
@@ -9061,7 +10437,7 @@ class ShippingApi
      * @param  string $carrier_id
      *  carrier Id to unlink with merchant. (required)
      * @param  \SpApi\Model\shipping\v2\UnlinkCarrierAccountRequest $body
-     *  (required)
+     *  UnlinkCarrierAccountRequest body (required)
      * @param  string|null $x_amzn_shipping_business_id
      *  Amazon shipping business to assume for this request. The default is AmazonShipping_UK. (optional)
      *

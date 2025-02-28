@@ -38,7 +38,7 @@ use SpApi\Model\ModelInterface;
  * ExcludedBenefit Class Doc Comment
  *
  * @category Class
- * @description Object representing an excluded benefit that is excluded for an ShippingOffering/Rate.
+ * @description Object representing a benefit that is excluded for a shipping offer or rate.
  * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -62,7 +62,7 @@ class ExcludedBenefit implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPITypes = [
              'benefit' => 'string',
-             'reason_code' => 'string'    ];
+             'reason_codes' => 'string[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -73,7 +73,7 @@ class ExcludedBenefit implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPIFormats = [
             'benefit' => null,
-            'reason_code' => null    ];
+            'reason_codes' => null    ];
 
     /**
       * Array of nullable properties. Used for (de)serialization
@@ -82,7 +82,7 @@ class ExcludedBenefit implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'benefit' => false,
-        'reason_code' => false
+        'reason_codes' => true
     ];
 
     /**
@@ -172,7 +172,7 @@ class ExcludedBenefit implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static array $attributeMap = [
         'benefit' => 'benefit',
-                'reason_code' => 'reasonCode'
+                'reason_codes' => 'reasonCodes'
         
     ];
 
@@ -183,7 +183,7 @@ class ExcludedBenefit implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static array $setters = [
         'benefit' => 'setBenefit',
-        'reason_code' => 'setReasonCode'
+        'reason_codes' => 'setReasonCodes'
     ];
 
     /**
@@ -193,7 +193,7 @@ class ExcludedBenefit implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static array $getters = [
         'benefit' => 'getBenefit',
-        'reason_code' => 'getReasonCode'
+        'reason_codes' => 'getReasonCodes'
     ];
 
     /**
@@ -254,7 +254,7 @@ class ExcludedBenefit implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(?array $data = null)
     {
         $this->setIfExists('benefit', $data ?? [], null);
-        $this->setIfExists('reason_code', $data ?? [], null);
+        $this->setIfExists('reason_codes', $data ?? [], null);
     }
 
     /**
@@ -287,9 +287,10 @@ class ExcludedBenefit implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['benefit'] === null) {
             $invalidProperties[] = "'benefit' can't be null";
         }
-        if ($this->container['reason_code'] === null) {
-            $invalidProperties[] = "'reason_code' can't be null";
+        if (!is_null($this->container['reason_codes']) && (count($this->container['reason_codes']) < 1)) {
+            $invalidProperties[] = "invalid value for 'reason_codes', number of items must be greater than or equal to 1.";
         }
+
         return $invalidProperties;
     }
 
@@ -333,28 +334,40 @@ class ExcludedBenefit implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets reason_code
+     * Gets reason_codes
      *
-     * @return string
+     * @return array|null
      */
-    public function getReasonCode(): string
+    public function getReasonCodes(): ?array
     {
-        return $this->container['reason_code'];
+        return $this->container['reason_codes'];
     }
 
     /**
-     * Sets reason_code
+     * Sets reason_codes
      *
-     * @param string $reason_code reason_code
+     * @param array|null $reason_codes List of reasons (eg. LATE_DELIVERY_RISK, etc.) indicating why a benefit is excluded for a shipping offer.
      *
      * @return self
      */
-    public function setReasonCode(string $reason_code): self
+    public function setReasonCodes(?array $reason_codes): self
     {
-        if (is_null($reason_code)) {
-            throw new \InvalidArgumentException('non-nullable reason_code cannot be null');
+        if (is_null($reason_codes)) {
+            array_push($this->openAPINullablesSetToNull, 'reason_codes');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('reason_codes', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['reason_code'] = $reason_code;
+
+
+        if (!is_null($reason_codes) && (count($reason_codes) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $reason_codes when calling ExcludedBenefit., number of items must be greater than or equal to 1.');
+        }
+        $this->container['reason_codes'] = $reason_codes;
 
         return $this;
     }

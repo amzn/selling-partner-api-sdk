@@ -34,6 +34,7 @@ use SpApi\Model\ModelInterface;
  * OfferCustomerType Class Doc Comment
  *
  * @category Class
+ * @description Indicates whether the offer is a B2B or B2C offer
  * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

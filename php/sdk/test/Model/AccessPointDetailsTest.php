@@ -19,7 +19,7 @@ use SpApi\Model\shipping\v2\AccessPointDetails;
  * AccessPointDetailsTest Class Doc Comment
  *
  * @category    Class
- * @description AccessPointDetails
+ * @description AccessPointDetails object
  * @package     SpApi
  */
 class AccessPointDetailsTest extends TestCase

@@ -1,6 +1,6 @@
 <?php
 /**
- * OrdersApiTest
+ * OrdersV0ApiTest
  * PHP version 8.3
  *
  * @category Class
@@ -10,7 +10,7 @@
  */
 
 /**
- * Orders v0
+ * Selling Partner API for Orders
  *
  * Use the Orders Selling Partner API to programmatically retrieve order information. With this API, you can develop fast, flexible, and custom applications to manage order synchronization, perform order research, and create demand-based decision support tools.   _Note:_ For the JP, AU, and SG marketplaces, the Orders API supports orders from 2016 onward. For all other marketplaces, the Orders API supports orders for the last two years (orders older than this don't show up in the response).
  *
@@ -28,28 +28,28 @@
 namespace SpApi\Test\Api;
 
 use SpApi\ApiException;
-use SpApi\Api\orders\v0\OrdersApi;
+use SpApi\Api\orders\v0\OrdersV0Api;
 use SpApi\ObjectSerializer;
 
 /**
- * OrdersApiTest Class Doc Comment
+ * OrdersV0ApiTest Class Doc Comment
  *
  * @category Class
  * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class OrdersApiTest extends BaseTestCase
+class OrdersV0ApiTest extends BaseTestCase
 {
-    private OrdersApi $apiInstance;
+    private OrdersV0Api $apiInstance;
     public function setUp(): void
     {
         parent::setUp();
         // Initialize parameter value specific to case
-        $this->testHelper->setSpecificValue('OrdersApi', $this->getName());
-        $this->apiInstance = new OrdersApi($this->config, null, null);
+        $this->testHelper->setSpecificValue('OrdersV0Api', $this->getName());
+        $this->apiInstance = new OrdersV0Api($this->config, null, null);
         // Change Time Format if it requires
-        $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('OrdersApi');
+        $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('OrdersV0Api');
         if ($specificTimeFormat) {
             ObjectSerializer::setDateTimeFormat($specificTimeFormat);
         }
@@ -62,7 +62,7 @@ class OrdersApiTest extends BaseTestCase
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testConfirmShipment204', 'OrdersApi')) {
+            if ($this->testHelper->shouldSkipTest('testConfirmShipment204', 'OrdersV0Api')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -124,7 +124,7 @@ class OrdersApiTest extends BaseTestCase
             $expectedResponse = $result['expectedResponse'];
 
             // Change Time Format if it requires
-            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('OrdersApi');
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('OrdersV0Api');
             if ($specificTimeFormat) {
                 ObjectSerializer::setDateTimeFormat($specificTimeFormat);
             }
@@ -151,7 +151,7 @@ class OrdersApiTest extends BaseTestCase
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testConfirmShipment400', 'OrdersApi')) {
+            if ($this->testHelper->shouldSkipTest('testConfirmShipment400', 'OrdersV0Api')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -224,7 +224,7 @@ class OrdersApiTest extends BaseTestCase
             $expectedResponse = $result['expectedResponse'];
 
             // Change Time Format if it requires
-            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('OrdersApi');
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('OrdersV0Api');
             if ($specificTimeFormat) {
                 ObjectSerializer::setDateTimeFormat($specificTimeFormat);
             }
@@ -299,7 +299,7 @@ class OrdersApiTest extends BaseTestCase
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetOrder200', 'OrdersApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetOrder200', 'OrdersV0Api')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -519,7 +519,7 @@ class OrdersApiTest extends BaseTestCase
             $expectedResponse = $result['expectedResponse'];
 
             // Change Time Format if it requires
-            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('OrdersApi');
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('OrdersV0Api');
             if ($specificTimeFormat) {
                 ObjectSerializer::setDateTimeFormat($specificTimeFormat);
             }
@@ -546,7 +546,7 @@ class OrdersApiTest extends BaseTestCase
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetOrder400', 'OrdersApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetOrder400', 'OrdersV0Api')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -600,7 +600,7 @@ class OrdersApiTest extends BaseTestCase
             $expectedResponse = $result['expectedResponse'];
 
             // Change Time Format if it requires
-            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('OrdersApi');
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('OrdersV0Api');
             if ($specificTimeFormat) {
                 ObjectSerializer::setDateTimeFormat($specificTimeFormat);
             }
@@ -667,7 +667,7 @@ class OrdersApiTest extends BaseTestCase
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetOrderAddress200', 'OrdersApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetOrderAddress200', 'OrdersV0Api')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -743,7 +743,7 @@ class OrdersApiTest extends BaseTestCase
             $expectedResponse = $result['expectedResponse'];
 
             // Change Time Format if it requires
-            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('OrdersApi');
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('OrdersV0Api');
             if ($specificTimeFormat) {
                 ObjectSerializer::setDateTimeFormat($specificTimeFormat);
             }
@@ -770,7 +770,7 @@ class OrdersApiTest extends BaseTestCase
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetOrderAddress400', 'OrdersApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetOrderAddress400', 'OrdersV0Api')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -824,7 +824,7 @@ class OrdersApiTest extends BaseTestCase
             $expectedResponse = $result['expectedResponse'];
 
             // Change Time Format if it requires
-            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('OrdersApi');
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('OrdersV0Api');
             if ($specificTimeFormat) {
                 ObjectSerializer::setDateTimeFormat($specificTimeFormat);
             }
@@ -891,7 +891,7 @@ class OrdersApiTest extends BaseTestCase
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetOrderBuyerInfo200', 'OrdersApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetOrderBuyerInfo200', 'OrdersV0Api')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -957,7 +957,7 @@ class OrdersApiTest extends BaseTestCase
             $expectedResponse = $result['expectedResponse'];
 
             // Change Time Format if it requires
-            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('OrdersApi');
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('OrdersV0Api');
             if ($specificTimeFormat) {
                 ObjectSerializer::setDateTimeFormat($specificTimeFormat);
             }
@@ -984,7 +984,7 @@ class OrdersApiTest extends BaseTestCase
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetOrderBuyerInfo400', 'OrdersApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetOrderBuyerInfo400', 'OrdersV0Api')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1038,7 +1038,7 @@ class OrdersApiTest extends BaseTestCase
             $expectedResponse = $result['expectedResponse'];
 
             // Change Time Format if it requires
-            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('OrdersApi');
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('OrdersV0Api');
             if ($specificTimeFormat) {
                 ObjectSerializer::setDateTimeFormat($specificTimeFormat);
             }
@@ -1105,7 +1105,7 @@ class OrdersApiTest extends BaseTestCase
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetOrderItems200', 'OrdersApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetOrderItems200', 'OrdersV0Api')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1279,7 +1279,7 @@ class OrdersApiTest extends BaseTestCase
             $expectedResponse = $result['expectedResponse'];
 
             // Change Time Format if it requires
-            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('OrdersApi');
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('OrdersV0Api');
             if ($specificTimeFormat) {
                 ObjectSerializer::setDateTimeFormat($specificTimeFormat);
             }
@@ -1306,7 +1306,7 @@ class OrdersApiTest extends BaseTestCase
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetOrderItems400', 'OrdersApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetOrderItems400', 'OrdersV0Api')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1360,7 +1360,7 @@ class OrdersApiTest extends BaseTestCase
             $expectedResponse = $result['expectedResponse'];
 
             // Change Time Format if it requires
-            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('OrdersApi');
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('OrdersV0Api');
             if ($specificTimeFormat) {
                 ObjectSerializer::setDateTimeFormat($specificTimeFormat);
             }
@@ -1427,7 +1427,7 @@ class OrdersApiTest extends BaseTestCase
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetOrderItemsBuyerInfo200', 'OrdersApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetOrderItemsBuyerInfo200', 'OrdersV0Api')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1505,7 +1505,7 @@ class OrdersApiTest extends BaseTestCase
             $expectedResponse = $result['expectedResponse'];
 
             // Change Time Format if it requires
-            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('OrdersApi');
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('OrdersV0Api');
             if ($specificTimeFormat) {
                 ObjectSerializer::setDateTimeFormat($specificTimeFormat);
             }
@@ -1532,7 +1532,7 @@ class OrdersApiTest extends BaseTestCase
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetOrderItemsBuyerInfo400', 'OrdersApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetOrderItemsBuyerInfo400', 'OrdersV0Api')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1586,7 +1586,7 @@ class OrdersApiTest extends BaseTestCase
             $expectedResponse = $result['expectedResponse'];
 
             // Change Time Format if it requires
-            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('OrdersApi');
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('OrdersV0Api');
             if ($specificTimeFormat) {
                 ObjectSerializer::setDateTimeFormat($specificTimeFormat);
             }
@@ -1653,7 +1653,7 @@ class OrdersApiTest extends BaseTestCase
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetOrderRegulatedInfo200', 'OrdersApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetOrderRegulatedInfo200', 'OrdersV0Api')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1977,7 +1977,7 @@ class OrdersApiTest extends BaseTestCase
             $expectedResponse = $result['expectedResponse'];
 
             // Change Time Format if it requires
-            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('OrdersApi');
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('OrdersV0Api');
             if ($specificTimeFormat) {
                 ObjectSerializer::setDateTimeFormat($specificTimeFormat);
             }
@@ -2004,7 +2004,7 @@ class OrdersApiTest extends BaseTestCase
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetOrderRegulatedInfo400', 'OrdersApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetOrderRegulatedInfo400', 'OrdersV0Api')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -2058,7 +2058,7 @@ class OrdersApiTest extends BaseTestCase
             $expectedResponse = $result['expectedResponse'];
 
             // Change Time Format if it requires
-            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('OrdersApi');
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('OrdersV0Api');
             if ($specificTimeFormat) {
                 ObjectSerializer::setDateTimeFormat($specificTimeFormat);
             }
@@ -2125,7 +2125,7 @@ class OrdersApiTest extends BaseTestCase
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetOrders200', 'OrdersApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetOrders200', 'OrdersV0Api')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -2393,7 +2393,7 @@ class OrdersApiTest extends BaseTestCase
             $expectedResponse = $result['expectedResponse'];
 
             // Change Time Format if it requires
-            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('OrdersApi');
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('OrdersV0Api');
             if ($specificTimeFormat) {
                 ObjectSerializer::setDateTimeFormat($specificTimeFormat);
             }
@@ -2420,7 +2420,7 @@ class OrdersApiTest extends BaseTestCase
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetOrders400', 'OrdersApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetOrders400', 'OrdersV0Api')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -2474,7 +2474,7 @@ class OrdersApiTest extends BaseTestCase
             $expectedResponse = $result['expectedResponse'];
 
             // Change Time Format if it requires
-            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('OrdersApi');
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('OrdersV0Api');
             if ($specificTimeFormat) {
                 ObjectSerializer::setDateTimeFormat($specificTimeFormat);
             }
@@ -2535,220 +2535,13 @@ class OrdersApiTest extends BaseTestCase
         $this->markTestSkipped('Skip test for this operation.');
     }
     /**
-     * Test case for updateShipmentStatus_204
-     */
-    public function testUpdateShipmentStatus204()
-    {
-        try {
-            // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testUpdateShipmentStatus204', 'OrdersApi')) {
-                $this->assertTrue(true);
-                return;
-            }
-            $jsonSchema = '{
-  &quot;description&quot; : &quot;Success.&quot;,
-  &quot;headers&quot; : {
-    &quot;x-amzn-RequestId&quot; : {
-      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
-      &quot;schema&quot; : {
-        &quot;type&quot; : &quot;string&quot;
-      }
-    },
-    &quot;x-amzn-RateLimit-Limit&quot; : {
-      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
-      &quot;schema&quot; : {
-        &quot;type&quot; : &quot;string&quot;
-      }
-    }
-  },
-  &quot;content&quot; : { },
-  &quot;x-amzn-api-sandbox&quot; : {
-    &quot;static&quot; : [ {
-      &quot;request&quot; : {
-        &quot;parameters&quot; : { }
-      },
-      &quot;response&quot; : { }
-    } ]
-  }
-}';
-            $result = $this->testHelper->extractRequestAndResponse(
-                $this->apiInstance,
-                $jsonSchema,
-                'updateShipmentStatus'
-            );
-            $requestParams = $result['requestParams'];
-            $expectedResponse = $result['expectedResponse'];
-
-            // Change Time Format if it requires
-            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('OrdersApi');
-            if ($specificTimeFormat) {
-                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
-            }
-
-            // Act: Call API
-            list($response, $statusCode, $headers) =
-                $this->apiInstance->updateShipmentStatusWithHttpInfo(...array_values($requestParams));
-
-            // Assert the response code
-            $this->assertHttpStatusCode(204, $statusCode);
-
-            // Handle different response codes
-            $this->handleResponse($response, $statusCode, 204, $expectedResponse);
-        } catch (ApiException $e) {
-            $this->handleApiException($e, 204);
-        } catch (\ReflectionException $e) {
-            $this->fail("Reflection exception: " . $e->getMessage());
-        }
-    }
-    /**
-     * Test case for updateShipmentStatus_400
-     */
-    public function testUpdateShipmentStatus400()
-    {
-        try {
-            // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testUpdateShipmentStatus400', 'OrdersApi')) {
-                $this->assertTrue(true);
-                return;
-            }
-            $jsonSchema = '{
-  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
-  &quot;headers&quot; : {
-    &quot;x-amzn-RequestId&quot; : {
-      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
-      &quot;schema&quot; : {
-        &quot;type&quot; : &quot;string&quot;
-      }
-    },
-    &quot;x-amzn-RateLimit-Limit&quot; : {
-      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
-      &quot;schema&quot; : {
-        &quot;type&quot; : &quot;string&quot;
-      }
-    }
-  },
-  &quot;content&quot; : {
-    &quot;application/json&quot; : {
-      &quot;schema&quot; : {
-        &quot;$ref&quot; : &quot;#/components/schemas/UpdateShipmentStatusErrorResponse&quot;
-      }
-    }
-  },
-  &quot;x-amzn-api-sandbox&quot; : {
-    &quot;static&quot; : [ {
-      &quot;request&quot; : {
-        &quot;parameters&quot; : {
-          &quot;body&quot; : {
-            &quot;value&quot; : {
-              &quot;marketplaceId&quot; : &quot;1&quot;,
-              &quot;shipmentStatus&quot; : &quot;ReadyForPickup&quot;
-            }
-          }
-        }
-      },
-      &quot;response&quot; : {
-        &quot;errors&quot; : [ {
-          &quot;code&quot; : &quot;InvalidInput&quot;,
-          &quot;message&quot; : &quot;Marketplace ID is not defined&quot;,
-          &quot;details&quot; : &quot;1001&quot;
-        } ]
-      }
-    } ]
-  }
-}';
-            $result = $this->testHelper->extractRequestAndResponse(
-                $this->apiInstance,
-                $jsonSchema,
-                'updateShipmentStatus'
-            );
-            $requestParams = $result['requestParams'];
-            $expectedResponse = $result['expectedResponse'];
-
-            // Change Time Format if it requires
-            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('OrdersApi');
-            if ($specificTimeFormat) {
-                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
-            }
-
-            // Act: Call API
-            list($response, $statusCode, $headers) =
-                $this->apiInstance->updateShipmentStatusWithHttpInfo(...array_values($requestParams));
-
-            // Assert the response code
-            $this->assertHttpStatusCode(400, $statusCode);
-
-            // Handle different response codes
-            $this->handleResponse($response, $statusCode, 400, $expectedResponse);
-        } catch (ApiException $e) {
-            $this->handleApiException($e, 400);
-        } catch (\ReflectionException $e) {
-            $this->fail("Reflection exception: " . $e->getMessage());
-        }
-    }
-    /**
-     * Test case for updateShipmentStatus_403
-     */
-    public function testUpdateShipmentStatus403()
-    {
-        // Skip this test
-        $this->markTestSkipped('Skip test for this operation.');
-    }
-    /**
-     * Test case for updateShipmentStatus_404
-     */
-    public function testUpdateShipmentStatus404()
-    {
-        // Skip this test
-        $this->markTestSkipped('Skip test for this operation.');
-    }
-    /**
-     * Test case for updateShipmentStatus_413
-     */
-    public function testUpdateShipmentStatus413()
-    {
-        // Skip this test
-        $this->markTestSkipped('Skip test for this operation.');
-    }
-    /**
-     * Test case for updateShipmentStatus_415
-     */
-    public function testUpdateShipmentStatus415()
-    {
-        // Skip this test
-        $this->markTestSkipped('Skip test for this operation.');
-    }
-    /**
-     * Test case for updateShipmentStatus_429
-     */
-    public function testUpdateShipmentStatus429()
-    {
-        // Skip this test
-        $this->markTestSkipped('Skip test for this operation.');
-    }
-    /**
-     * Test case for updateShipmentStatus_500
-     */
-    public function testUpdateShipmentStatus500()
-    {
-        // Skip this test
-        $this->markTestSkipped('Skip test for this operation.');
-    }
-    /**
-     * Test case for updateShipmentStatus_503
-     */
-    public function testUpdateShipmentStatus503()
-    {
-        // Skip this test
-        $this->markTestSkipped('Skip test for this operation.');
-    }
-    /**
      * Test case for updateVerificationStatus_204
      */
     public function testUpdateVerificationStatus204()
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testUpdateVerificationStatus204', 'OrdersApi')) {
+            if ($this->testHelper->shouldSkipTest('testUpdateVerificationStatus204', 'OrdersV0Api')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -2827,7 +2620,7 @@ class OrdersApiTest extends BaseTestCase
             $expectedResponse = $result['expectedResponse'];
 
             // Change Time Format if it requires
-            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('OrdersApi');
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('OrdersV0Api');
             if ($specificTimeFormat) {
                 ObjectSerializer::setDateTimeFormat($specificTimeFormat);
             }
@@ -2854,7 +2647,7 @@ class OrdersApiTest extends BaseTestCase
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testUpdateVerificationStatus400', 'OrdersApi')) {
+            if ($this->testHelper->shouldSkipTest('testUpdateVerificationStatus400', 'OrdersV0Api')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -3007,7 +2800,7 @@ class OrdersApiTest extends BaseTestCase
             $expectedResponse = $result['expectedResponse'];
 
             // Change Time Format if it requires
-            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('OrdersApi');
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('OrdersV0Api');
             if ($specificTimeFormat) {
                 ObjectSerializer::setDateTimeFormat($specificTimeFormat);
             }

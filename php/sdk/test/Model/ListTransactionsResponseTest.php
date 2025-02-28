@@ -19,7 +19,7 @@ use SpApi\Model\finances\v2024_06_19\ListTransactionsResponse;
  * ListTransactionsResponseTest Class Doc Comment
  *
  * @category    Class
- * @description The response schema for the &#x60;listTransactions&#x60; operation.
+ * @description The Response schema.
  * @package     SpApi
  */
 class ListTransactionsResponseTest extends TestCase

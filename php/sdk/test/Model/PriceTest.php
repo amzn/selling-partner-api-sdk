@@ -19,7 +19,7 @@ use SpApi\Model\pricing\v0\Price;
  * PriceTest Class Doc Comment
  *
  * @category    Class
- * @description Price
+ * @description Schema for price info in &#x60;getPricing&#x60; response
  * @package     SpApi
  */
 class PriceTest extends TestCase

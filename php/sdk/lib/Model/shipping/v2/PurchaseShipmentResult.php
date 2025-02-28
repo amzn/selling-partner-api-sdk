@@ -63,7 +63,8 @@ class PurchaseShipmentResult implements ModelInterface, ArrayAccess, \JsonSerial
     protected static array $openAPITypes = [
              'shipment_id' => 'string',
              'package_document_details' => '\SpApi\Model\shipping\v2\PackageDocumentDetail[]',
-             'promise' => '\SpApi\Model\shipping\v2\Promise'    ];
+             'promise' => '\SpApi\Model\shipping\v2\Promise',
+             'benefits' => '\SpApi\Model\shipping\v2\Benefits'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -75,7 +76,8 @@ class PurchaseShipmentResult implements ModelInterface, ArrayAccess, \JsonSerial
     protected static array $openAPIFormats = [
             'shipment_id' => null,
             'package_document_details' => null,
-            'promise' => null    ];
+            'promise' => null,
+            'benefits' => null    ];
 
     /**
       * Array of nullable properties. Used for (de)serialization
@@ -85,7 +87,8 @@ class PurchaseShipmentResult implements ModelInterface, ArrayAccess, \JsonSerial
     protected static array $openAPINullables = [
         'shipment_id' => false,
         'package_document_details' => false,
-        'promise' => false
+        'promise' => false,
+        'benefits' => true
     ];
 
     /**
@@ -176,7 +179,8 @@ class PurchaseShipmentResult implements ModelInterface, ArrayAccess, \JsonSerial
     protected static array $attributeMap = [
         'shipment_id' => 'shipmentId',
                 'package_document_details' => 'packageDocumentDetails',
-                'promise' => 'promise'
+                'promise' => 'promise',
+                'benefits' => 'benefits'
         
     ];
 
@@ -188,7 +192,8 @@ class PurchaseShipmentResult implements ModelInterface, ArrayAccess, \JsonSerial
     protected static array $setters = [
         'shipment_id' => 'setShipmentId',
         'package_document_details' => 'setPackageDocumentDetails',
-        'promise' => 'setPromise'
+        'promise' => 'setPromise',
+        'benefits' => 'setBenefits'
     ];
 
     /**
@@ -199,7 +204,8 @@ class PurchaseShipmentResult implements ModelInterface, ArrayAccess, \JsonSerial
     protected static array $getters = [
         'shipment_id' => 'getShipmentId',
         'package_document_details' => 'getPackageDocumentDetails',
-        'promise' => 'getPromise'
+        'promise' => 'getPromise',
+        'benefits' => 'getBenefits'
     ];
 
     /**
@@ -262,6 +268,7 @@ class PurchaseShipmentResult implements ModelInterface, ArrayAccess, \JsonSerial
         $this->setIfExists('shipment_id', $data ?? [], null);
         $this->setIfExists('package_document_details', $data ?? [], null);
         $this->setIfExists('promise', $data ?? [], null);
+        $this->setIfExists('benefits', $data ?? [], null);
     }
 
     /**
@@ -392,6 +399,40 @@ class PurchaseShipmentResult implements ModelInterface, ArrayAccess, \JsonSerial
             throw new \InvalidArgumentException('non-nullable promise cannot be null');
         }
         $this->container['promise'] = $promise;
+
+        return $this;
+    }
+
+    /**
+     * Gets benefits
+     *
+     * @return \SpApi\Model\shipping\v2\Benefits|null
+     */
+    public function getBenefits(): ?\SpApi\Model\shipping\v2\Benefits
+    {
+        return $this->container['benefits'];
+    }
+
+    /**
+     * Sets benefits
+     *
+     * @param \SpApi\Model\shipping\v2\Benefits|null $benefits benefits
+     *
+     * @return self
+     */
+    public function setBenefits(?\SpApi\Model\shipping\v2\Benefits $benefits): self
+    {
+        if (is_null($benefits)) {
+            array_push($this->openAPINullablesSetToNull, 'benefits');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('benefits', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['benefits'] = $benefits;
 
         return $this;
     }

@@ -37,6 +37,7 @@ use SpApi\Model\ModelInterface;
  * PriceType Class Doc Comment
  *
  * @category Class
+ * @description Schema for item&#39;s price information, including listing price, shipping price, and Amazon points.
  * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

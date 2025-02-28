@@ -10,7 +10,7 @@
  */
 
 /**
- * Report v2021-06-30
+ * Selling Partner API for Reports
  *
  * The Selling Partner API for Reports lets you retrieve and manage a variety of reports that can help selling partners manage their businesses.
  *
@@ -152,8 +152,6 @@ class ReportsApi
     /**
      * Operation cancelReport
      *
-     * cancelReport
-     *
      * @param  string $report_id
      *  The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
      *
@@ -169,8 +167,6 @@ class ReportsApi
 
     /**
      * Operation cancelReportWithHttpInfo
-     *
-     * cancelReport
      *
      * @param  string $report_id
      *  The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
@@ -297,8 +293,6 @@ class ReportsApi
     /**
      * Operation cancelReportAsync
      *
-     * cancelReport
-     *
      * @param  string $report_id
      *  The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
      *
@@ -318,8 +312,6 @@ class ReportsApi
 
     /**
      * Operation cancelReportAsyncWithHttpInfo
-     *
-     * cancelReport
      *
      * @param  string $report_id
      *  The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
@@ -458,8 +450,6 @@ class ReportsApi
     /**
      * Operation cancelReportSchedule
      *
-     * cancelReportSchedule
-     *
      * @param  string $report_schedule_id
      *  The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
      *
@@ -475,8 +465,6 @@ class ReportsApi
 
     /**
      * Operation cancelReportScheduleWithHttpInfo
-     *
-     * cancelReportSchedule
      *
      * @param  string $report_schedule_id
      *  The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
@@ -603,8 +591,6 @@ class ReportsApi
     /**
      * Operation cancelReportScheduleAsync
      *
-     * cancelReportSchedule
-     *
      * @param  string $report_schedule_id
      *  The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
      *
@@ -624,8 +610,6 @@ class ReportsApi
 
     /**
      * Operation cancelReportScheduleAsyncWithHttpInfo
-     *
-     * cancelReportSchedule
      *
      * @param  string $report_schedule_id
      *  The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
@@ -764,8 +748,6 @@ class ReportsApi
     /**
      * Operation createReport
      *
-     * createReport
-     *
      * @param  \SpApi\Model\reports\v2021_06_30\CreateReportSpecification $body
      *  Information required to create the report. (required)
      *
@@ -782,8 +764,6 @@ class ReportsApi
 
     /**
      * Operation createReportWithHttpInfo
-     *
-     * createReport
      *
      * @param  \SpApi\Model\reports\v2021_06_30\CreateReportSpecification $body
      *  Information required to create the report. (required)
@@ -1070,8 +1050,6 @@ class ReportsApi
     /**
      * Operation createReportAsync
      *
-     * createReport
-     *
      * @param  \SpApi\Model\reports\v2021_06_30\CreateReportSpecification $body
      *  Information required to create the report. (required)
      *
@@ -1091,8 +1069,6 @@ class ReportsApi
 
     /**
      * Operation createReportAsyncWithHttpInfo
-     *
-     * createReport
      *
      * @param  \SpApi\Model\reports\v2021_06_30\CreateReportSpecification $body
      *  Information required to create the report. (required)
@@ -1242,8 +1218,6 @@ class ReportsApi
     /**
      * Operation createReportSchedule
      *
-     * createReportSchedule
-     *
      * @param  \SpApi\Model\reports\v2021_06_30\CreateReportScheduleSpecification $body
      *  Information required to create the report schedule. (required)
      *
@@ -1260,8 +1234,6 @@ class ReportsApi
 
     /**
      * Operation createReportScheduleWithHttpInfo
-     *
-     * createReportSchedule
      *
      * @param  \SpApi\Model\reports\v2021_06_30\CreateReportScheduleSpecification $body
      *  Information required to create the report schedule. (required)
@@ -1548,8 +1520,6 @@ class ReportsApi
     /**
      * Operation createReportScheduleAsync
      *
-     * createReportSchedule
-     *
      * @param  \SpApi\Model\reports\v2021_06_30\CreateReportScheduleSpecification $body
      *  Information required to create the report schedule. (required)
      *
@@ -1569,8 +1539,6 @@ class ReportsApi
 
     /**
      * Operation createReportScheduleAsyncWithHttpInfo
-     *
-     * createReportSchedule
      *
      * @param  \SpApi\Model\reports\v2021_06_30\CreateReportScheduleSpecification $body
      *  Information required to create the report schedule. (required)
@@ -1720,8 +1688,6 @@ class ReportsApi
     /**
      * Operation getReport
      *
-     * getReport
-     *
      * @param  string $report_id
      *  The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
      *
@@ -1738,8 +1704,6 @@ class ReportsApi
 
     /**
      * Operation getReportWithHttpInfo
-     *
-     * getReport
      *
      * @param  string $report_id
      *  The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
@@ -2026,8 +1990,6 @@ class ReportsApi
     /**
      * Operation getReportAsync
      *
-     * getReport
-     *
      * @param  string $report_id
      *  The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
      *
@@ -2047,8 +2009,6 @@ class ReportsApi
 
     /**
      * Operation getReportAsyncWithHttpInfo
-     *
-     * getReport
      *
      * @param  string $report_id
      *  The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
@@ -2200,8 +2160,6 @@ class ReportsApi
     /**
      * Operation getReportDocument
      *
-     * getReportDocument
-     *
      * @param  string $report_document_id
      *  The identifier for the report document. (required)
      *
@@ -2218,8 +2176,6 @@ class ReportsApi
 
     /**
      * Operation getReportDocumentWithHttpInfo
-     *
-     * getReportDocument
      *
      * @param  string $report_document_id
      *  The identifier for the report document. (required)
@@ -2506,8 +2462,6 @@ class ReportsApi
     /**
      * Operation getReportDocumentAsync
      *
-     * getReportDocument
-     *
      * @param  string $report_document_id
      *  The identifier for the report document. (required)
      *
@@ -2527,8 +2481,6 @@ class ReportsApi
 
     /**
      * Operation getReportDocumentAsyncWithHttpInfo
-     *
-     * getReportDocument
      *
      * @param  string $report_document_id
      *  The identifier for the report document. (required)
@@ -2680,8 +2632,6 @@ class ReportsApi
     /**
      * Operation getReportSchedule
      *
-     * getReportSchedule
-     *
      * @param  string $report_schedule_id
      *  The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
      *
@@ -2698,8 +2648,6 @@ class ReportsApi
 
     /**
      * Operation getReportScheduleWithHttpInfo
-     *
-     * getReportSchedule
      *
      * @param  string $report_schedule_id
      *  The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
@@ -2986,8 +2934,6 @@ class ReportsApi
     /**
      * Operation getReportScheduleAsync
      *
-     * getReportSchedule
-     *
      * @param  string $report_schedule_id
      *  The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
      *
@@ -3007,8 +2953,6 @@ class ReportsApi
 
     /**
      * Operation getReportScheduleAsyncWithHttpInfo
-     *
-     * getReportSchedule
      *
      * @param  string $report_schedule_id
      *  The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
@@ -3160,8 +3104,6 @@ class ReportsApi
     /**
      * Operation getReportSchedules
      *
-     * getReportSchedules
-     *
      * @param  string[] $report_types
      *  A list of report types used to filter report schedules. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. (required)
      *
@@ -3178,8 +3120,6 @@ class ReportsApi
 
     /**
      * Operation getReportSchedulesWithHttpInfo
-     *
-     * getReportSchedules
      *
      * @param  string[] $report_types
      *  A list of report types used to filter report schedules. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. (required)
@@ -3466,8 +3406,6 @@ class ReportsApi
     /**
      * Operation getReportSchedulesAsync
      *
-     * getReportSchedules
-     *
      * @param  string[] $report_types
      *  A list of report types used to filter report schedules. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. (required)
      *
@@ -3487,8 +3425,6 @@ class ReportsApi
 
     /**
      * Operation getReportSchedulesAsyncWithHttpInfo
-     *
-     * getReportSchedules
      *
      * @param  string[] $report_types
      *  A list of report types used to filter report schedules. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. (required)
@@ -3648,8 +3584,6 @@ class ReportsApi
     /**
      * Operation getReports
      *
-     * getReports
-     *
      * @param  string[]|null $report_types
      *  A list of report types used to filter reports. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. When reportTypes is provided, the other filter parameters (processingStatuses, marketplaceIds, createdSince, createdUntil) and pageSize may also be provided. Either reportTypes or nextToken is required. (optional)
      * @param  string[]|null $processing_statuses
@@ -3684,8 +3618,6 @@ class ReportsApi
 
     /**
      * Operation getReportsWithHttpInfo
-     *
-     * getReports
      *
      * @param  string[]|null $report_types
      *  A list of report types used to filter reports. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. When reportTypes is provided, the other filter parameters (processingStatuses, marketplaceIds, createdSince, createdUntil) and pageSize may also be provided. Either reportTypes or nextToken is required. (optional)
@@ -3990,8 +3922,6 @@ class ReportsApi
     /**
      * Operation getReportsAsync
      *
-     * getReports
-     *
      * @param  string[]|null $report_types
      *  A list of report types used to filter reports. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. When reportTypes is provided, the other filter parameters (processingStatuses, marketplaceIds, createdSince, createdUntil) and pageSize may also be provided. Either reportTypes or nextToken is required. (optional)
      * @param  string[]|null $processing_statuses
@@ -4029,8 +3959,6 @@ class ReportsApi
 
     /**
      * Operation getReportsAsyncWithHttpInfo
-     *
-     * getReports
      *
      * @param  string[]|null $report_types
      *  A list of report types used to filter reports. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. When reportTypes is provided, the other filter parameters (processingStatuses, marketplaceIds, createdSince, createdUntil) and pageSize may also be provided. Either reportTypes or nextToken is required. (optional)

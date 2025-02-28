@@ -19,7 +19,7 @@ use SpApi\Model\pricing\v0\SellerSKUIdentifier;
  * SellerSKUIdentifierTest Class Doc Comment
  *
  * @category    Class
- * @description SellerSKUIdentifier
+ * @description Schema to identify an item by MarketPlaceId, SellerId, and SellerSKU.
  * @package     SpApi
  */
 class SellerSKUIdentifierTest extends TestCase

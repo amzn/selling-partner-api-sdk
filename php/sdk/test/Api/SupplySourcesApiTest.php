@@ -70,7 +70,7 @@ class SupplySourcesApiTest extends BaseTestCase
   &quot;description&quot; : &quot;Success.&quot;,
   &quot;headers&quot; : {
     &quot;x-amzn-RequestId&quot; : {
-      &quot;description&quot; : &quot;The unique request reference ID.&quot;,
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }
@@ -142,7 +142,7 @@ class SupplySourcesApiTest extends BaseTestCase
   &quot;description&quot; : &quot;The request has missing or invalid parameters and cannot be parsed.&quot;,
   &quot;headers&quot; : {
     &quot;x-amzn-RequestId&quot; : {
-      &quot;description&quot; : &quot;The unique request reference ID.&quot;,
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }
@@ -280,7 +280,7 @@ class SupplySourcesApiTest extends BaseTestCase
   &quot;description&quot; : &quot;Success.&quot;,
   &quot;headers&quot; : {
     &quot;x-amzn-RequestId&quot; : {
-      &quot;description&quot; : &quot;The unique request reference ID.&quot;,
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }
@@ -355,7 +355,7 @@ class SupplySourcesApiTest extends BaseTestCase
   &quot;description&quot; : &quot;The request has missing or invalid parameters and cannot be parsed.&quot;,
   &quot;headers&quot; : {
     &quot;x-amzn-RequestId&quot; : {
-      &quot;description&quot; : &quot;The unique request reference ID.&quot;,
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }
@@ -506,7 +506,7 @@ class SupplySourcesApiTest extends BaseTestCase
   &quot;description&quot; : &quot;Success.&quot;,
   &quot;headers&quot; : {
     &quot;x-amzn-RequestId&quot; : {
-      &quot;description&quot; : &quot;The unique request reference ID.&quot;,
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }
@@ -791,7 +791,7 @@ class SupplySourcesApiTest extends BaseTestCase
   &quot;description&quot; : &quot;The request has missing or invalid parameters and cannot be parsed.&quot;,
   &quot;headers&quot; : {
     &quot;x-amzn-RequestId&quot; : {
-      &quot;description&quot; : &quot;The unique request reference ID.&quot;,
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }
@@ -929,7 +929,7 @@ class SupplySourcesApiTest extends BaseTestCase
   &quot;description&quot; : &quot;Success.&quot;,
   &quot;headers&quot; : {
     &quot;x-amzn-RequestId&quot; : {
-      &quot;description&quot; : &quot;The unique request reference ID.&quot;,
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }
@@ -1015,7 +1015,7 @@ class SupplySourcesApiTest extends BaseTestCase
   &quot;description&quot; : &quot;The request has missing or invalid parameters and cannot be parsed.&quot;,
   &quot;headers&quot; : {
     &quot;x-amzn-RequestId&quot; : {
-      &quot;description&quot; : &quot;The unique request reference ID.&quot;,
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }
@@ -1153,7 +1153,7 @@ class SupplySourcesApiTest extends BaseTestCase
   &quot;description&quot; : &quot;Success.&quot;,
   &quot;headers&quot; : {
     &quot;x-amzn-RequestId&quot; : {
-      &quot;description&quot; : &quot;The unique request reference ID.&quot;,
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }
@@ -1225,7 +1225,7 @@ class SupplySourcesApiTest extends BaseTestCase
   &quot;description&quot; : &quot;The request has missing or invalid parameters and cannot be parsed.&quot;,
   &quot;headers&quot; : {
     &quot;x-amzn-RequestId&quot; : {
-      &quot;description&quot; : &quot;The unique request reference ID.&quot;,
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }
@@ -1534,7 +1534,7 @@ class SupplySourcesApiTest extends BaseTestCase
   &quot;description&quot; : &quot;Success.&quot;,
   &quot;headers&quot; : {
     &quot;x-amzn-RequestId&quot; : {
-      &quot;description&quot; : &quot;The unique request reference ID.&quot;,
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }
@@ -1606,7 +1606,7 @@ class SupplySourcesApiTest extends BaseTestCase
   &quot;description&quot; : &quot;The request has missing or invalid parameters and cannot be parsed.&quot;,
   &quot;headers&quot; : {
     &quot;x-amzn-RequestId&quot; : {
-      &quot;description&quot; : &quot;The unique request reference ID.&quot;,
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }

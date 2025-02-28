@@ -19,7 +19,7 @@ use SpApi\Model\finances\v2024_06_19\DeferredContext;
  * DeferredContextTest Class Doc Comment
  *
  * @category    Class
- * @description Additional information related to deferred transactions.
+ * @description Additional information related to Deferred transactions.
  * @package     SpApi
  */
 class DeferredContextTest extends TestCase

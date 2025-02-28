@@ -19,7 +19,7 @@ use SpApi\Model\aplusContent\v2020_11_01\AplusResponse;
  * AplusResponseTest Class Doc Comment
  *
  * @category    Class
- * @description The base response data for all A+ Content operations when a request is successful or partially successful. Individual operations may extend this with additional data.
+ * @description The base response data for all A+ Content operations when a request is successful or partially successful. Individual operations can extend this with additional data.
  * @package     SpApi
  */
 class AplusResponseTest extends TestCase

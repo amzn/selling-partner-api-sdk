@@ -19,7 +19,7 @@ use SpApi\Model\aplusContent\v2020_11_01\ContentMetadata;
  * ContentMetadataTest Class Doc Comment
  *
  * @category    Class
- * @description The metadata of an A+ Content document.
+ * @description The A+ Content document&#39;s metadata.
  * @package     SpApi
  */
 class ContentMetadataTest extends TestCase

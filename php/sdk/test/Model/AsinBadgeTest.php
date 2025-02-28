@@ -19,7 +19,7 @@ use SpApi\Model\aplusContent\v2020_11_01\AsinBadge;
  * AsinBadgeTest Class Doc Comment
  *
  * @category    Class
- * @description A flag that provides additional information about an ASIN. This is contextual and may change depending on the request that generated it.
+ * @description A flag that provides additional information about an ASIN. This is contextual and can change depending on the request that generated it.
  * @package     SpApi
  */
 class AsinBadgeTest extends TestCase

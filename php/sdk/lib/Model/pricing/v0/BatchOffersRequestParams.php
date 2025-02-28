@@ -37,6 +37,7 @@ use SpApi\Model\ModelInterface;
  * BatchOffersRequestParams Class Doc Comment
  *
  * @category Class
+ * @description Common request parameters that can be accepted by &#x60;ItemOffersRequest&#x60; and &#x60;ListingOffersRequest&#x60;
  * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

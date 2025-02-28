@@ -192,4 +192,15 @@ class GetRatesRequestTest extends TestCase
         $this->model->setDestinationAccessPointDetails($testValue);
         $this->assertEquals($testValue, $this->model->getDestinationAccessPointDetails());
     }
+
+    /**
+     * Test attribute "carrier_accounts"
+     */
+    public function testPropertyCarrierAccounts()
+    {
+        $testValue = [];
+        
+        $this->model->setCarrierAccounts($testValue);
+        $this->assertEquals($testValue, $this->model->getCarrierAccounts());
+    }
 }

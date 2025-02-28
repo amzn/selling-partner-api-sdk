@@ -66,7 +66,8 @@ class RequestedDocumentSpecification implements ModelInterface, ArrayAccess, \Js
              'dpi' => 'int',
              'page_layout' => 'string',
              'need_file_joining' => 'bool',
-             'requested_document_types' => '\SpApi\Model\shipping\v2\DocumentType[]'    ];
+             'requested_document_types' => '\SpApi\Model\shipping\v2\DocumentType[]',
+             'requested_label_customization' => '\SpApi\Model\shipping\v2\RequestedLabelCustomization'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -81,7 +82,8 @@ class RequestedDocumentSpecification implements ModelInterface, ArrayAccess, \Js
             'dpi' => null,
             'page_layout' => null,
             'need_file_joining' => null,
-            'requested_document_types' => null    ];
+            'requested_document_types' => null,
+            'requested_label_customization' => null    ];
 
     /**
       * Array of nullable properties. Used for (de)serialization
@@ -94,7 +96,8 @@ class RequestedDocumentSpecification implements ModelInterface, ArrayAccess, \Js
         'dpi' => true,
         'page_layout' => true,
         'need_file_joining' => false,
-        'requested_document_types' => false
+        'requested_document_types' => false,
+        'requested_label_customization' => true
     ];
 
     /**
@@ -188,7 +191,8 @@ class RequestedDocumentSpecification implements ModelInterface, ArrayAccess, \Js
                 'dpi' => 'dpi',
                 'page_layout' => 'pageLayout',
                 'need_file_joining' => 'needFileJoining',
-                'requested_document_types' => 'requestedDocumentTypes'
+                'requested_document_types' => 'requestedDocumentTypes',
+                'requested_label_customization' => 'requestedLabelCustomization'
         
     ];
 
@@ -203,7 +207,8 @@ class RequestedDocumentSpecification implements ModelInterface, ArrayAccess, \Js
         'dpi' => 'setDpi',
         'page_layout' => 'setPageLayout',
         'need_file_joining' => 'setNeedFileJoining',
-        'requested_document_types' => 'setRequestedDocumentTypes'
+        'requested_document_types' => 'setRequestedDocumentTypes',
+        'requested_label_customization' => 'setRequestedLabelCustomization'
     ];
 
     /**
@@ -217,7 +222,8 @@ class RequestedDocumentSpecification implements ModelInterface, ArrayAccess, \Js
         'dpi' => 'getDpi',
         'page_layout' => 'getPageLayout',
         'need_file_joining' => 'getNeedFileJoining',
-        'requested_document_types' => 'getRequestedDocumentTypes'
+        'requested_document_types' => 'getRequestedDocumentTypes',
+        'requested_label_customization' => 'getRequestedLabelCustomization'
     ];
 
     /**
@@ -283,6 +289,7 @@ class RequestedDocumentSpecification implements ModelInterface, ArrayAccess, \Js
         $this->setIfExists('page_layout', $data ?? [], null);
         $this->setIfExists('need_file_joining', $data ?? [], null);
         $this->setIfExists('requested_document_types', $data ?? [], null);
+        $this->setIfExists('requested_label_customization', $data ?? [], null);
     }
 
     /**
@@ -511,6 +518,40 @@ class RequestedDocumentSpecification implements ModelInterface, ArrayAccess, \Js
             throw new \InvalidArgumentException('non-nullable requested_document_types cannot be null');
         }
         $this->container['requested_document_types'] = $requested_document_types;
+
+        return $this;
+    }
+
+    /**
+     * Gets requested_label_customization
+     *
+     * @return \SpApi\Model\shipping\v2\RequestedLabelCustomization|null
+     */
+    public function getRequestedLabelCustomization(): ?\SpApi\Model\shipping\v2\RequestedLabelCustomization
+    {
+        return $this->container['requested_label_customization'];
+    }
+
+    /**
+     * Sets requested_label_customization
+     *
+     * @param \SpApi\Model\shipping\v2\RequestedLabelCustomization|null $requested_label_customization requested_label_customization
+     *
+     * @return self
+     */
+    public function setRequestedLabelCustomization(?\SpApi\Model\shipping\v2\RequestedLabelCustomization $requested_label_customization): self
+    {
+        if (is_null($requested_label_customization)) {
+            array_push($this->openAPINullablesSetToNull, 'requested_label_customization');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('requested_label_customization', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['requested_label_customization'] = $requested_label_customization;
 
         return $this;
     }

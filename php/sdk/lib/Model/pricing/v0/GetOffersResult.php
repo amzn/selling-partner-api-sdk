@@ -37,6 +37,7 @@ use SpApi\Model\ModelInterface;
  * GetOffersResult Class Doc Comment
  *
  * @category Class
+ * @description The payload for the getListingOffers and getItemOffers operations.
  * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -577,7 +578,7 @@ class GetOffersResult implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets offers
      *
-     * @param array $offers offers
+     * @param array $offers A list of offer details. The list is the same length as the TotalOfferCount in the Summary or 20, whichever is less.
      *
      * @return self
      */

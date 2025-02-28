@@ -73,4 +73,16 @@ class GetShipmentDocumentsResultTest extends TestCase
         $this->model->setPackageDocumentDetail($testValue);
         $this->assertEquals($testValue, $this->model->getPackageDocumentDetail());
     }
+
+    /**
+     * Test attribute "benefits"
+     */
+    public function testPropertyBenefits()
+    {
+        
+        $testValue = new \SpApi\Model\shipping\v2\Benefits();
+        
+        $this->model->setBenefits($testValue);
+        $this->assertEquals($testValue, $this->model->getBenefits());
+    }
 }

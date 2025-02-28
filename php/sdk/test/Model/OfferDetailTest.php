@@ -19,7 +19,7 @@ use SpApi\Model\pricing\v0\OfferDetail;
  * OfferDetailTest Class Doc Comment
  *
  * @category    Class
- * @description OfferDetail
+ * @description Schema for an individual offer. Object in &#x60;OfferDetailList&#x60;.
  * @package     SpApi
  */
 class OfferDetailTest extends TestCase

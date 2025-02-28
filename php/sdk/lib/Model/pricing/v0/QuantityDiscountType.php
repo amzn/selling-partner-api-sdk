@@ -34,6 +34,7 @@ use SpApi\Model\ModelInterface;
  * QuantityDiscountType Class Doc Comment
  *
  * @category Class
+ * @description Indicates the type of quantity discount this price applies to.
  * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

@@ -19,7 +19,7 @@ use SpApi\Model\aplusContent\v2020_11_01\AplusPaginatedResponse;
  * AplusPaginatedResponseTest Class Doc Comment
  *
  * @category    Class
- * @description The base response data for paginated A+ Content operations. Individual operations may extend this with additional data. If nextPageToken is not returned, there are no more pages to return.
+ * @description A token that you use to retrieve the next page of results. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages.
  * @package     SpApi
  */
 class AplusPaginatedResponseTest extends TestCase

@@ -471,7 +471,7 @@ class LabelData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets content
      *
-     * @param string $content This field will contain the Base64encoded string of the shipment label content.
+     * @param string $content This field will contain the Base64 string of the shipment label content.
      *
      * @return self
      */

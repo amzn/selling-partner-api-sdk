@@ -61,7 +61,8 @@ class UnlinkCarrierAccountRequest implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'client_reference_details' => '\SpApi\Model\shipping\v2\ClientReferenceDetail[]'    ];
+             'client_reference_details' => '\SpApi\Model\shipping\v2\ClientReferenceDetail[]',
+             'account_id' => 'string'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -71,7 +72,8 @@ class UnlinkCarrierAccountRequest implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static array $openAPIFormats = [
-            'client_reference_details' => null    ];
+            'client_reference_details' => null,
+            'account_id' => null    ];
 
     /**
       * Array of nullable properties. Used for (de)serialization
@@ -79,7 +81,8 @@ class UnlinkCarrierAccountRequest implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'client_reference_details' => true
+        'client_reference_details' => true,
+        'account_id' => true
     ];
 
     /**
@@ -168,7 +171,8 @@ class UnlinkCarrierAccountRequest implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static array $attributeMap = [
-        'client_reference_details' => 'clientReferenceDetails'
+        'client_reference_details' => 'clientReferenceDetails',
+                'account_id' => 'accountId'
         
     ];
 
@@ -178,7 +182,8 @@ class UnlinkCarrierAccountRequest implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static array $setters = [
-        'client_reference_details' => 'setClientReferenceDetails'
+        'client_reference_details' => 'setClientReferenceDetails',
+        'account_id' => 'setAccountId'
     ];
 
     /**
@@ -187,7 +192,8 @@ class UnlinkCarrierAccountRequest implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static array $getters = [
-        'client_reference_details' => 'getClientReferenceDetails'
+        'client_reference_details' => 'getClientReferenceDetails',
+        'account_id' => 'getAccountId'
     ];
 
     /**
@@ -248,6 +254,7 @@ class UnlinkCarrierAccountRequest implements ModelInterface, ArrayAccess, \JsonS
     public function __construct(?array $data = null)
     {
         $this->setIfExists('client_reference_details', $data ?? [], null);
+        $this->setIfExists('account_id', $data ?? [], null);
     }
 
     /**
@@ -322,6 +329,40 @@ class UnlinkCarrierAccountRequest implements ModelInterface, ArrayAccess, \JsonS
             }
         }
         $this->container['client_reference_details'] = $client_reference_details;
+
+        return $this;
+    }
+
+    /**
+     * Gets account_id
+     *
+     * @return string|null
+     */
+    public function getAccountId(): ?string
+    {
+        return $this->container['account_id'];
+    }
+
+    /**
+     * Sets account_id
+     *
+     * @param string|null $account_id Identifier for the seller's carrier account.
+     *
+     * @return self
+     */
+    public function setAccountId(?string $account_id): self
+    {
+        if (is_null($account_id)) {
+            array_push($this->openAPINullablesSetToNull, 'account_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('account_id', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['account_id'] = $account_id;
 
         return $this;
     }

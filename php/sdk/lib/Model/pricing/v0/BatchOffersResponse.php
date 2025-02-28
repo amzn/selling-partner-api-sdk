@@ -37,6 +37,7 @@ use SpApi\Model\ModelInterface;
  * BatchOffersResponse Class Doc Comment
  *
  * @category Class
+ * @description Common schema that present in &#x60;ItemOffersResponse&#x60; and &#x60;ListingOffersResponse&#x60;
  * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

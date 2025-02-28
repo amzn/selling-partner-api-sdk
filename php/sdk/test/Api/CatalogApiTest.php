@@ -1,6 +1,6 @@
 <?php
 /**
- * CatalogItemsApiTest
+ * CatalogApiTest
  * PHP version 8.3
  *
  * @category Class
@@ -10,7 +10,7 @@
  */
 
 /**
- * Catalog Items v2022-04-01
+ * Selling Partner API for Catalog Items
  *
  * The Selling Partner API for Catalog Items provides programmatic access to information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](doc:catalog-items-api-v2022-04-01-use-case-guide).
  *
@@ -28,28 +28,28 @@
 namespace SpApi\Test\Api;
 
 use SpApi\ApiException;
-use SpApi\Api\catalogItems\v2022_04_01\CatalogItemsApi;
+use SpApi\Api\catalogItems\v2022_04_01\CatalogApi;
 use SpApi\ObjectSerializer;
 
 /**
- * CatalogItemsApiTest Class Doc Comment
+ * CatalogApiTest Class Doc Comment
  *
  * @category Class
  * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class CatalogItemsApiTest extends BaseTestCase
+class CatalogApiTest extends BaseTestCase
 {
-    private CatalogItemsApi $apiInstance;
+    private CatalogApi $apiInstance;
     public function setUp(): void
     {
         parent::setUp();
         // Initialize parameter value specific to case
-        $this->testHelper->setSpecificValue('CatalogItemsApi', $this->getName());
-        $this->apiInstance = new CatalogItemsApi($this->config, null, null);
+        $this->testHelper->setSpecificValue('CatalogApi', $this->getName());
+        $this->apiInstance = new CatalogApi($this->config, null, null);
         // Change Time Format if it requires
-        $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('CatalogItemsApi');
+        $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('CatalogApi');
         if ($specificTimeFormat) {
             ObjectSerializer::setDateTimeFormat($specificTimeFormat);
         }
@@ -62,7 +62,7 @@ class CatalogItemsApiTest extends BaseTestCase
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testGetCatalogItem200', 'CatalogItemsApi')) {
+            if ($this->testHelper->shouldSkipTest('testGetCatalogItem200', 'CatalogApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -1043,7 +1043,7 @@ class CatalogItemsApiTest extends BaseTestCase
             $expectedResponse = $result['expectedResponse'];
 
             // Change Time Format if it requires
-            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('CatalogItemsApi');
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('CatalogApi');
             if ($specificTimeFormat) {
                 ObjectSerializer::setDateTimeFormat($specificTimeFormat);
             }
@@ -1134,7 +1134,7 @@ class CatalogItemsApiTest extends BaseTestCase
     {
         try {
             // Skip test if it is in the skip list
-            if ($this->testHelper->shouldSkipTest('testSearchCatalogItems200', 'CatalogItemsApi')) {
+            if ($this->testHelper->shouldSkipTest('testSearchCatalogItems200', 'CatalogApi')) {
                 $this->assertTrue(true);
                 return;
             }
@@ -2151,7 +2151,7 @@ class CatalogItemsApiTest extends BaseTestCase
             $expectedResponse = $result['expectedResponse'];
 
             // Change Time Format if it requires
-            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('CatalogItemsApi');
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('CatalogApi');
             if ($specificTimeFormat) {
                 ObjectSerializer::setDateTimeFormat($specificTimeFormat);
             }

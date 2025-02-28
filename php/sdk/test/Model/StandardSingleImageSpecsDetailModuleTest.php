@@ -19,7 +19,7 @@ use SpApi\Model\aplusContent\v2020_11_01\StandardSingleImageSpecsDetailModule;
  * StandardSingleImageSpecsDetailModuleTest Class Doc Comment
  *
  * @category    Class
- * @description A standard image with paragraphs and a bulleted list, and extra space for technical details.
+ * @description A standard image with paragraphs, a bulleted list, and extra space for technical details.
  * @package     SpApi
  */
 class StandardSingleImageSpecsDetailModuleTest extends TestCase

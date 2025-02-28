@@ -61,4 +61,15 @@ class UnlinkCarrierAccountRequestTest extends TestCase
         $this->model->setClientReferenceDetails($testValue);
         $this->assertEquals($testValue, $this->model->getClientReferenceDetails());
     }
+
+    /**
+     * Test attribute "account_id"
+     */
+    public function testPropertyAccountId()
+    {
+        $testValue = 'test';
+        
+        $this->model->setAccountId($testValue);
+        $this->assertEquals($testValue, $this->model->getAccountId());
+    }
 }

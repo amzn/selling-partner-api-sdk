@@ -19,7 +19,7 @@ use SpApi\Model\aplusContent\v2020_11_01\PlainTextItem;
  * PlainTextItemTest Class Doc Comment
  *
  * @category    Class
- * @description Plain positional text, used in collections of brief labels and descriptors.
+ * @description Plain positional text that is used in collections of brief labels and descriptors.
  * @package     SpApi
  */
 class PlainTextItemTest extends TestCase

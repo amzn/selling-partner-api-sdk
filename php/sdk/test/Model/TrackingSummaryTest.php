@@ -63,4 +63,16 @@ class TrackingSummaryTest extends TestCase
         $this->model->setStatus($testValue);
         $this->assertEquals($testValue, $this->model->getStatus());
     }
+
+    /**
+     * Test attribute "tracking_detail_codes"
+     */
+    public function testPropertyTrackingDetailCodes()
+    {
+        
+        $testValue = new \SpApi\Model\shipping\v2\TrackingDetailCodes();
+        
+        $this->model->setTrackingDetailCodes($testValue);
+        $this->assertEquals($testValue, $this->model->getTrackingDetailCodes());
+    }
 }

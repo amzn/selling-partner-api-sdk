@@ -19,7 +19,7 @@ use SpApi\Model\sellers\v1\Marketplace;
  * MarketplaceTest Class Doc Comment
  *
  * @category    Class
- * @description Detailed information about an Amazon market where a seller can list items for sale and customers can view and purchase items.
+ * @description Information about an Amazon marketplace where a seller can list items and customers can view and purchase items.
  * @package     SpApi
  */
 class MarketplaceTest extends TestCase

@@ -19,7 +19,7 @@ use SpApi\Model\pricing\v0\PriceType;
  * PriceTypeTest Class Doc Comment
  *
  * @category    Class
- * @description PriceType
+ * @description Schema for item&#39;s price information, including listing price, shipping price, and Amazon points.
  * @package     SpApi
  */
 class PriceTypeTest extends TestCase

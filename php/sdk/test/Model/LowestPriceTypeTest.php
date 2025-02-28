@@ -19,7 +19,7 @@ use SpApi\Model\pricing\v0\LowestPriceType;
  * LowestPriceTypeTest Class Doc Comment
  *
  * @category    Class
- * @description LowestPriceType
+ * @description Schema for an individual lowest price.
  * @package     SpApi
  */
 class LowestPriceTypeTest extends TestCase

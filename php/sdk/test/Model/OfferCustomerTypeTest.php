@@ -19,7 +19,7 @@ use SpApi\Model\pricing\v0\OfferCustomerType;
  * OfferCustomerTypeTest Class Doc Comment
  *
  * @category    Class
- * @description OfferCustomerType
+ * @description Indicates whether the offer is a B2B or B2C offer
  * @package     SpApi
  */
 class OfferCustomerTypeTest extends TestCase

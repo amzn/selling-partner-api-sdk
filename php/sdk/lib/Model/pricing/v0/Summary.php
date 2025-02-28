@@ -397,7 +397,7 @@ class Summary implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets number_of_offers
      *
-     * @param array|null $number_of_offers number_of_offers
+     * @param array|null $number_of_offers A list that contains the total number of offers information for given conditions and fulfillment channels.
      *
      * @return self
      */
@@ -431,7 +431,7 @@ class Summary implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets lowest_prices
      *
-     * @param array|null $lowest_prices lowest_prices
+     * @param array|null $lowest_prices A list of the lowest prices.
      *
      * @return self
      */
@@ -465,7 +465,7 @@ class Summary implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets buy_box_prices
      *
-     * @param array|null $buy_box_prices buy_box_prices
+     * @param array|null $buy_box_prices A list of the Buy Box prices.
      *
      * @return self
      */
@@ -635,7 +635,7 @@ class Summary implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets buy_box_eligible_offers
      *
-     * @param array|null $buy_box_eligible_offers buy_box_eligible_offers
+     * @param array|null $buy_box_eligible_offers A list that contains the total number of offers that are eligible for the Buy Box for the given conditions and fulfillment channels.
      *
      * @return self
      */

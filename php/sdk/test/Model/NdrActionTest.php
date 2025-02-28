@@ -1,6 +1,6 @@
 <?php
 /**
- * CodeTest
+ * NdrActionTest
  *
  * PHP version 8.3
  *
@@ -13,26 +13,26 @@
 namespace SpApi\Test\Model;
 
 use PHPUnit\Framework\TestCase;
-use SpApi\Model\easyship\v2022_03_23\Code;
+use SpApi\Model\shipping\v2\NdrAction;
 
 /**
- * CodeTest Class Doc Comment
+ * NdrActionTest Class Doc Comment
  *
  * @category    Class
- * @description An error code that identifies the type of error that occurred. The error codes listed below are specific to the Easy Ship section.
+ * @description The type of NDR action shipper wants to take for a particular shipment.
  * @package     SpApi
  */
-class CodeTest extends TestCase
+class NdrActionTest extends TestCase
 {
 
-    private Code $model;
+    private NdrAction $model;
 
     /**
      * Setup before running each test case
      */
     public function setUp(): void
     {
-        $this->model = new Code();
+        $this->model = new NdrAction();
     }
 
     /**
@@ -44,10 +44,10 @@ class CodeTest extends TestCase
     }
 
     /**
-     * Test "Code"
+     * Test "NdrAction"
      */
-    public function testCode()
+    public function testNdrAction()
     {
-        $this->assertInstanceOf(Code::class, $this->model);
+        $this->assertInstanceOf(NdrAction::class, $this->model);
     }
 }

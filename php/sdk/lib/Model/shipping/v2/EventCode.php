@@ -67,6 +67,12 @@ class EventCode
 
     public const PICKUP_CANCELLED = 'PickupCancelled';
 
+    public const RETURN_INITIATED = 'ReturnInitiated';
+
+    public const AVAILABLE_FOR_PICKUP = 'AvailableForPickup';
+
+    public const RECIPIENT_REQUESTED_ALTERNATE_DELIVERY_TIMING = 'RecipientRequestedAlternateDeliveryTiming';
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -84,7 +90,10 @@ class EventCode
             self::ARRIVED_AT_CARRIER_FACILITY,
             self::REJECTED,
             self::UNDELIVERABLE,
-            self::PICKUP_CANCELLED
+            self::PICKUP_CANCELLED,
+            self::RETURN_INITIATED,
+            self::AVAILABLE_FOR_PICKUP,
+            self::RECIPIENT_REQUESTED_ALTERNATE_DELIVERY_TIMING
         ];
     }
 }

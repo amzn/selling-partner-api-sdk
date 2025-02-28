@@ -19,7 +19,7 @@ use SpApi\Model\aplusContent\v2020_11_01\PositionType;
  * PositionTypeTest Class Doc Comment
  *
  * @category    Class
- * @description The relative positioning of content.
+ * @description The content&#39;s relative positioning.
  * @package     SpApi
  */
 class PositionTypeTest extends TestCase

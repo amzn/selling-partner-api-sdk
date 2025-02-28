@@ -19,7 +19,7 @@ use SpApi\Model\aplusContent\v2020_11_01\TextItem;
  * TextItemTest Class Doc Comment
  *
  * @category    Class
- * @description Rich positional text, usually presented as a collection of bullet points.
+ * @description Rich positional text that is usually presented as a collection of bullet points.
  * @package     SpApi
  */
 class TextItemTest extends TestCase

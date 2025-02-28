@@ -61,7 +61,8 @@ class TrackingSummary implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'status' => '\SpApi\Model\shipping\v2\Status'    ];
+             'status' => '\SpApi\Model\shipping\v2\Status',
+             'tracking_detail_codes' => '\SpApi\Model\shipping\v2\TrackingDetailCodes'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -71,7 +72,8 @@ class TrackingSummary implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static array $openAPIFormats = [
-            'status' => null    ];
+            'status' => null,
+            'tracking_detail_codes' => null    ];
 
     /**
       * Array of nullable properties. Used for (de)serialization
@@ -79,7 +81,8 @@ class TrackingSummary implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'status' => true
+        'status' => true,
+        'tracking_detail_codes' => true
     ];
 
     /**
@@ -168,7 +171,8 @@ class TrackingSummary implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $attributeMap = [
-        'status' => 'status'
+        'status' => 'status',
+                'tracking_detail_codes' => 'trackingDetailCodes'
         
     ];
 
@@ -178,7 +182,8 @@ class TrackingSummary implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $setters = [
-        'status' => 'setStatus'
+        'status' => 'setStatus',
+        'tracking_detail_codes' => 'setTrackingDetailCodes'
     ];
 
     /**
@@ -187,7 +192,8 @@ class TrackingSummary implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $getters = [
-        'status' => 'getStatus'
+        'status' => 'getStatus',
+        'tracking_detail_codes' => 'getTrackingDetailCodes'
     ];
 
     /**
@@ -248,6 +254,7 @@ class TrackingSummary implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(?array $data = null)
     {
         $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('tracking_detail_codes', $data ?? [], null);
     }
 
     /**
@@ -322,6 +329,40 @@ class TrackingSummary implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets tracking_detail_codes
+     *
+     * @return \SpApi\Model\shipping\v2\TrackingDetailCodes|null
+     */
+    public function getTrackingDetailCodes(): ?\SpApi\Model\shipping\v2\TrackingDetailCodes
+    {
+        return $this->container['tracking_detail_codes'];
+    }
+
+    /**
+     * Sets tracking_detail_codes
+     *
+     * @param \SpApi\Model\shipping\v2\TrackingDetailCodes|null $tracking_detail_codes tracking_detail_codes
+     *
+     * @return self
+     */
+    public function setTrackingDetailCodes(?\SpApi\Model\shipping\v2\TrackingDetailCodes $tracking_detail_codes): self
+    {
+        if (is_null($tracking_detail_codes)) {
+            array_push($this->openAPINullablesSetToNull, 'tracking_detail_codes');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tracking_detail_codes', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['tracking_detail_codes'] = $tracking_detail_codes;
 
         return $this;
     }

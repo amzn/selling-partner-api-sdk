@@ -19,7 +19,7 @@ use SpApi\Model\pricing\v0\OfferType;
  * OfferTypeTest Class Doc Comment
  *
  * @category    Class
- * @description OfferType
+ * @description Schema for an individual offer.
  * @package     SpApi
  */
 class OfferTypeTest extends TestCase

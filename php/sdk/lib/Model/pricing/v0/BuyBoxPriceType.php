@@ -37,6 +37,7 @@ use SpApi\Model\ModelInterface;
  * BuyBoxPriceType Class Doc Comment
  *
  * @category Class
+ * @description Schema for an individual buybox price.
  * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

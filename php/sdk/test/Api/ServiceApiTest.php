@@ -1373,7 +1373,7 @@ class ServiceApiTest extends BaseTestCase
   &quot;description&quot; : &quot;Success response.&quot;,
   &quot;headers&quot; : {
     &quot;x-amzn-RequestId&quot; : {
-      &quot;description&quot; : &quot;Unique request reference id.&quot;,
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }
@@ -1449,7 +1449,7 @@ class ServiceApiTest extends BaseTestCase
   &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
   &quot;headers&quot; : {
     &quot;x-amzn-RequestId&quot; : {
-      &quot;description&quot; : &quot;Unique request reference id.&quot;,
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }
@@ -1538,7 +1538,7 @@ class ServiceApiTest extends BaseTestCase
   &quot;description&quot; : &quot;The reservation specified does not exist.&quot;,
   &quot;headers&quot; : {
     &quot;x-amzn-RequestId&quot; : {
-      &quot;description&quot; : &quot;Unique request reference id.&quot;,
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }
@@ -2852,7 +2852,7 @@ class ServiceApiTest extends BaseTestCase
   &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
   &quot;headers&quot; : {
     &quot;x-amzn-RequestId&quot; : {
-      &quot;description&quot; : &quot;Unique request reference id.&quot;,
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }
@@ -5613,7 +5613,7 @@ class ServiceApiTest extends BaseTestCase
   &quot;description&quot; : &quot;Success response.&quot;,
   &quot;headers&quot; : {
     &quot;x-amzn-RequestId&quot; : {
-      &quot;description&quot; : &quot;Unique request reference id.&quot;,
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }
@@ -5994,7 +5994,7 @@ class ServiceApiTest extends BaseTestCase
   &quot;description&quot; : &quot;403 can be caused for reasons like Access Denied, Unauthorized, Expired Token, Invalid Signature or Resource Not Found.&quot;,
   &quot;headers&quot; : {
     &quot;x-amzn-RequestId&quot; : {
-      &quot;description&quot; : &quot;Unique request reference id.&quot;,
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }
@@ -6112,7 +6112,7 @@ class ServiceApiTest extends BaseTestCase
   &quot;description&quot; : &quot;Unprocessable Entity. Unable to process the contained instructions.&quot;,
   &quot;headers&quot; : {
     &quot;x-amzn-RequestId&quot; : {
-      &quot;description&quot; : &quot;Unique request reference id.&quot;,
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }

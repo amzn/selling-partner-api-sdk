@@ -19,7 +19,7 @@ use SpApi\Model\sellers\v1\Participation;
  * ParticipationTest Class Doc Comment
  *
  * @category    Class
- * @description Detailed information that is specific to a seller in a marketplace.
+ * @description Information that is specific to a seller in a marketplace.
  * @package     SpApi
  */
 class ParticipationTest extends TestCase

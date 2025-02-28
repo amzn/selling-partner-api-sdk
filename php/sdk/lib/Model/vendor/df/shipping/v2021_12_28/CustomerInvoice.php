@@ -353,7 +353,7 @@ class CustomerInvoice implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets content
      *
-     * @param string $content The Base64encoded customer invoice.
+     * @param string $content The Base64 customer invoice.
      *
      * @return self
      */

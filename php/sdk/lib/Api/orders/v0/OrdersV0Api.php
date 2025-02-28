@@ -1,6 +1,6 @@
 <?php
 /**
- * OrdersApi
+ * OrdersV0Api
  * PHP version 8.3
  *
  * @category Class
@@ -10,7 +10,7 @@
  */
 
 /**
- * Orders v0
+ * Selling Partner API for Orders
  *
  * Use the Orders Selling Partner API to programmatically retrieve order information. With this API, you can develop fast, flexible, and custom applications to manage order synchronization, perform order research, and create demand-based decision support tools.   _Note:_ For the JP, AU, and SG marketplaces, the Orders API supports orders from 2016 onward. For all other marketplaces, the Orders API supports orders for the last two years (orders older than this don't show up in the response).
  *
@@ -45,14 +45,14 @@ use SpApi\HeaderSelector;
 use SpApi\ObjectSerializer;
 
 /**
- * OrdersApi Class Doc Comment
+ * OrdersV0Api Class Doc Comment
  *
  * @category Class
  * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class OrdersApi
+class OrdersV0Api
 {
     /**
      * @var ClientInterface
@@ -152,8 +152,6 @@ class OrdersApi
     /**
      * Operation confirmShipment
      *
-     * confirmShipment
-     *
      * @param  string $order_id
      *  An Amazon-defined order identifier, in 3-7-7 format. (required)
      * @param  \SpApi\Model\orders\v0\ConfirmShipmentRequest $payload
@@ -172,8 +170,6 @@ class OrdersApi
 
     /**
      * Operation confirmShipmentWithHttpInfo
-     *
-     * confirmShipment
      *
      * @param  string $order_id
      *  An Amazon-defined order identifier, in 3-7-7 format. (required)
@@ -295,8 +291,6 @@ class OrdersApi
     /**
      * Operation confirmShipmentAsync
      *
-     * confirmShipment
-     *
      * @param  string $order_id
      *  An Amazon-defined order identifier, in 3-7-7 format. (required)
      * @param  \SpApi\Model\orders\v0\ConfirmShipmentRequest $payload
@@ -319,8 +313,6 @@ class OrdersApi
 
     /**
      * Operation confirmShipmentAsyncWithHttpInfo
-     *
-     * confirmShipment
      *
      * @param  string $order_id
      *  An Amazon-defined order identifier, in 3-7-7 format. (required)
@@ -477,8 +469,6 @@ class OrdersApi
     /**
      * Operation getOrder
      *
-     * getOrder
-     *
      * @param  string $order_id
      *  An Amazon-defined order identifier, in 3-7-7 format. (required)
      *
@@ -495,8 +485,6 @@ class OrdersApi
 
     /**
      * Operation getOrderWithHttpInfo
-     *
-     * getOrder
      *
      * @param  string $order_id
      *  An Amazon-defined order identifier, in 3-7-7 format. (required)
@@ -737,8 +725,6 @@ class OrdersApi
     /**
      * Operation getOrderAsync
      *
-     * getOrder
-     *
      * @param  string $order_id
      *  An Amazon-defined order identifier, in 3-7-7 format. (required)
      *
@@ -758,8 +744,6 @@ class OrdersApi
 
     /**
      * Operation getOrderAsyncWithHttpInfo
-     *
-     * getOrder
      *
      * @param  string $order_id
      *  An Amazon-defined order identifier, in 3-7-7 format. (required)
@@ -911,8 +895,6 @@ class OrdersApi
     /**
      * Operation getOrderAddress
      *
-     * getOrderAddress
-     *
      * @param  string $order_id
      *  An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
      *
@@ -929,8 +911,6 @@ class OrdersApi
 
     /**
      * Operation getOrderAddressWithHttpInfo
-     *
-     * getOrderAddress
      *
      * @param  string $order_id
      *  An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
@@ -1171,8 +1151,6 @@ class OrdersApi
     /**
      * Operation getOrderAddressAsync
      *
-     * getOrderAddress
-     *
      * @param  string $order_id
      *  An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
      *
@@ -1192,8 +1170,6 @@ class OrdersApi
 
     /**
      * Operation getOrderAddressAsyncWithHttpInfo
-     *
-     * getOrderAddress
      *
      * @param  string $order_id
      *  An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
@@ -1345,8 +1321,6 @@ class OrdersApi
     /**
      * Operation getOrderBuyerInfo
      *
-     * getOrderBuyerInfo
-     *
      * @param  string $order_id
      *  An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
      *
@@ -1363,8 +1337,6 @@ class OrdersApi
 
     /**
      * Operation getOrderBuyerInfoWithHttpInfo
-     *
-     * getOrderBuyerInfo
      *
      * @param  string $order_id
      *  An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
@@ -1605,8 +1577,6 @@ class OrdersApi
     /**
      * Operation getOrderBuyerInfoAsync
      *
-     * getOrderBuyerInfo
-     *
      * @param  string $order_id
      *  An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
      *
@@ -1626,8 +1596,6 @@ class OrdersApi
 
     /**
      * Operation getOrderBuyerInfoAsyncWithHttpInfo
-     *
-     * getOrderBuyerInfo
      *
      * @param  string $order_id
      *  An &#x60;orderId&#x60; is an Amazon-defined order identifier, in 3-7-7 format. (required)
@@ -1779,8 +1747,6 @@ class OrdersApi
     /**
      * Operation getOrderItems
      *
-     * getOrderItems
-     *
      * @param  string $order_id
      *  An Amazon-defined order identifier, in 3-7-7 format. (required)
      * @param  string|null $next_token
@@ -1800,8 +1766,6 @@ class OrdersApi
 
     /**
      * Operation getOrderItemsWithHttpInfo
-     *
-     * getOrderItems
      *
      * @param  string $order_id
      *  An Amazon-defined order identifier, in 3-7-7 format. (required)
@@ -2045,8 +2009,6 @@ class OrdersApi
     /**
      * Operation getOrderItemsAsync
      *
-     * getOrderItems
-     *
      * @param  string $order_id
      *  An Amazon-defined order identifier, in 3-7-7 format. (required)
      * @param  string|null $next_token
@@ -2069,8 +2031,6 @@ class OrdersApi
 
     /**
      * Operation getOrderItemsAsyncWithHttpInfo
-     *
-     * getOrderItems
      *
      * @param  string $order_id
      *  An Amazon-defined order identifier, in 3-7-7 format. (required)
@@ -2237,8 +2197,6 @@ class OrdersApi
     /**
      * Operation getOrderItemsBuyerInfo
      *
-     * getOrderItemsBuyerInfo
-     *
      * @param  string $order_id
      *  An Amazon-defined order identifier, in 3-7-7 format. (required)
      * @param  string|null $next_token
@@ -2258,8 +2216,6 @@ class OrdersApi
 
     /**
      * Operation getOrderItemsBuyerInfoWithHttpInfo
-     *
-     * getOrderItemsBuyerInfo
      *
      * @param  string $order_id
      *  An Amazon-defined order identifier, in 3-7-7 format. (required)
@@ -2503,8 +2459,6 @@ class OrdersApi
     /**
      * Operation getOrderItemsBuyerInfoAsync
      *
-     * getOrderItemsBuyerInfo
-     *
      * @param  string $order_id
      *  An Amazon-defined order identifier, in 3-7-7 format. (required)
      * @param  string|null $next_token
@@ -2527,8 +2481,6 @@ class OrdersApi
 
     /**
      * Operation getOrderItemsBuyerInfoAsyncWithHttpInfo
-     *
-     * getOrderItemsBuyerInfo
      *
      * @param  string $order_id
      *  An Amazon-defined order identifier, in 3-7-7 format. (required)
@@ -2695,8 +2647,6 @@ class OrdersApi
     /**
      * Operation getOrderRegulatedInfo
      *
-     * getOrderRegulatedInfo
-     *
      * @param  string $order_id
      *  An Amazon-defined order identifier, in 3-7-7 format. (required)
      *
@@ -2713,8 +2663,6 @@ class OrdersApi
 
     /**
      * Operation getOrderRegulatedInfoWithHttpInfo
-     *
-     * getOrderRegulatedInfo
      *
      * @param  string $order_id
      *  An Amazon-defined order identifier, in 3-7-7 format. (required)
@@ -2955,8 +2903,6 @@ class OrdersApi
     /**
      * Operation getOrderRegulatedInfoAsync
      *
-     * getOrderRegulatedInfo
-     *
      * @param  string $order_id
      *  An Amazon-defined order identifier, in 3-7-7 format. (required)
      *
@@ -2976,8 +2922,6 @@ class OrdersApi
 
     /**
      * Operation getOrderRegulatedInfoAsyncWithHttpInfo
-     *
-     * getOrderRegulatedInfo
      *
      * @param  string $order_id
      *  An Amazon-defined order identifier, in 3-7-7 format. (required)
@@ -3129,8 +3073,6 @@ class OrdersApi
     /**
      * Operation getOrders
      *
-     * getOrders
-     *
      * @param  string[] $marketplace_ids
      *  A list of &#x60;MarketplaceId&#x60; values. Used to select orders that were placed in the specified marketplaces.  Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) for a complete list of &#x60;marketplaceId&#x60; values. (required)
      * @param  string|null $created_after
@@ -3210,8 +3152,6 @@ class OrdersApi
 
     /**
      * Operation getOrdersWithHttpInfo
-     *
-     * getOrders
      *
      * @param  string[] $marketplace_ids
      *  A list of &#x60;MarketplaceId&#x60; values. Used to select orders that were placed in the specified marketplaces.  Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) for a complete list of &#x60;marketplaceId&#x60; values. (required)
@@ -3515,8 +3455,6 @@ class OrdersApi
     /**
      * Operation getOrdersAsync
      *
-     * getOrders
-     *
      * @param  string[] $marketplace_ids
      *  A list of &#x60;MarketplaceId&#x60; values. Used to select orders that were placed in the specified marketplaces.  Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) for a complete list of &#x60;marketplaceId&#x60; values. (required)
      * @param  string|null $created_after
@@ -3599,8 +3537,6 @@ class OrdersApi
 
     /**
      * Operation getOrdersAsyncWithHttpInfo
-     *
-     * getOrders
      *
      * @param  string[] $marketplace_ids
      *  A list of &#x60;MarketplaceId&#x60; values. Used to select orders that were placed in the specified marketplaces.  Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) for a complete list of &#x60;marketplaceId&#x60; values. (required)
@@ -3797,11 +3733,11 @@ class OrdersApi
             );
         }
         if (count($marketplace_ids) > 50) {
-            throw new \InvalidArgumentException('invalid value for "$marketplace_ids" when calling OrdersApi.getOrders, number of items must be less than or equal to 50.');
+            throw new \InvalidArgumentException('invalid value for "$marketplace_ids" when calling OrdersV0Api.getOrders, number of items must be less than or equal to 50.');
         }
 
         if ($amazon_order_ids !== null && count($amazon_order_ids) > 50) {
-            throw new \InvalidArgumentException('invalid value for "$amazon_order_ids" when calling OrdersApi.getOrders, number of items must be less than or equal to 50.');
+            throw new \InvalidArgumentException('invalid value for "$amazon_order_ids" when calling OrdersV0Api.getOrders, number of items must be less than or equal to 50.');
         }
 
 
@@ -4074,342 +4010,7 @@ class OrdersApi
     }
 
     /**
-     * Operation updateShipmentStatus
-     *
-     * updateShipmentStatus
-     *
-     * @param  string $order_id
-     *  An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param  \SpApi\Model\orders\v0\UpdateShipmentStatusRequest $payload
-     *  The request body for the &#x60;updateShipmentStatus&#x60; operation. (required)
-     *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return 
-     */
-    public function updateShipmentStatus(
-        string $order_id,
-        \SpApi\Model\orders\v0\UpdateShipmentStatusRequest $payload
-    ): void {
-        $this->updateShipmentStatusWithHttpInfo($order_id, $payload);
-    }
-
-    /**
-     * Operation updateShipmentStatusWithHttpInfo
-     *
-     * updateShipmentStatus
-     *
-     * @param  string $order_id
-     *  An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param  \SpApi\Model\orders\v0\UpdateShipmentStatusRequest $payload
-     *  The request body for the &#x60;updateShipmentStatus&#x60; operation. (required)
-     *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of , HTTP status code, HTTP response headers (array of strings)
-     */
-    public function updateShipmentStatusWithHttpInfo(
-        string $order_id,
-        \SpApi\Model\orders\v0\UpdateShipmentStatusRequest $payload
-    ): array {
-        $request = $this->updateShipmentStatusRequest($order_id, $payload);
-        $request = $this->config->sign($request);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $this->rateLimitWait();
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return [null, $statusCode, $response->getHeaders()];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\orders\v0\UpdateShipmentStatusErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\orders\v0\UpdateShipmentStatusErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\orders\v0\UpdateShipmentStatusErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 413:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\orders\v0\UpdateShipmentStatusErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 415:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\orders\v0\UpdateShipmentStatusErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\orders\v0\UpdateShipmentStatusErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\orders\v0\UpdateShipmentStatusErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 503:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\orders\v0\UpdateShipmentStatusErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation updateShipmentStatusAsync
-     *
-     * updateShipmentStatus
-     *
-     * @param  string $order_id
-     *  An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param  \SpApi\Model\orders\v0\UpdateShipmentStatusRequest $payload
-     *  The request body for the &#x60;updateShipmentStatus&#x60; operation. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return PromiseInterface
-     */
-    public function updateShipmentStatusAsync(
-        string $order_id,
-        \SpApi\Model\orders\v0\UpdateShipmentStatusRequest $payload
-    ): PromiseInterface {
-        return $this->updateShipmentStatusAsyncWithHttpInfo($order_id, $payload)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation updateShipmentStatusAsyncWithHttpInfo
-     *
-     * updateShipmentStatus
-     *
-     * @param  string $order_id
-     *  An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param  \SpApi\Model\orders\v0\UpdateShipmentStatusRequest $payload
-     *  The request body for the &#x60;updateShipmentStatus&#x60; operation. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return PromiseInterface
-     */
-    public function updateShipmentStatusAsyncWithHttpInfo(
-        string $order_id,
-        \SpApi\Model\orders\v0\UpdateShipmentStatusRequest $payload
-    ): PromiseInterface {
-        $returnType = '';
-        $request = $this->updateShipmentStatusRequest($order_id, $payload);
-        $request = $this->config->sign($request);
-        $this->rateLimitWait();
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'updateShipmentStatus'
-     *
-     * @param  string $order_id
-     *  An Amazon-defined order identifier, in 3-7-7 format. (required)
-     * @param  \SpApi\Model\orders\v0\UpdateShipmentStatusRequest $payload
-     *  The request body for the &#x60;updateShipmentStatus&#x60; operation. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return Request
-     */
-    public function updateShipmentStatusRequest(
-        string $order_id,
-        \SpApi\Model\orders\v0\UpdateShipmentStatusRequest $payload
-    ): Request {
-        // verify the required parameter 'order_id' is set
-        if ($order_id === null || (is_array($order_id) && count($order_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $order_id when calling updateShipmentStatus'
-            );
-        }
-        // verify the required parameter 'payload' is set
-        if ($payload === null || (is_array($payload) && count($payload) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $payload when calling updateShipmentStatus'
-            );
-        }
-
-        $resourcePath = '/orders/v0/orders/{orderId}/shipment';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($order_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'orderId' . '}',
-                ObjectSerializer::toPathValue($order_id),
-                $resourcePath
-            );
-        }
-
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                'application/json'
-                ,
-                false
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($payload)) {
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($payload));
-            } else {
-                $httpBody = $payload;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
-            }
-        }
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = ObjectSerializer::buildQuery($queryParams, $this->config);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
      * Operation updateVerificationStatus
-     *
-     * updateVerificationStatus
      *
      * @param  string $order_id
      *  An Amazon-defined order identifier, in 3-7-7 format. (required)
@@ -4429,8 +4030,6 @@ class OrdersApi
 
     /**
      * Operation updateVerificationStatusWithHttpInfo
-     *
-     * updateVerificationStatus
      *
      * @param  string $order_id
      *  An Amazon-defined order identifier, in 3-7-7 format. (required)
@@ -4560,8 +4159,6 @@ class OrdersApi
     /**
      * Operation updateVerificationStatusAsync
      *
-     * updateVerificationStatus
-     *
      * @param  string $order_id
      *  An Amazon-defined order identifier, in 3-7-7 format. (required)
      * @param  \SpApi\Model\orders\v0\UpdateVerificationStatusRequest $payload
@@ -4584,8 +4181,6 @@ class OrdersApi
 
     /**
      * Operation updateVerificationStatusAsyncWithHttpInfo
-     *
-     * updateVerificationStatus
      *
      * @param  string $order_id
      *  An Amazon-defined order identifier, in 3-7-7 format. (required)

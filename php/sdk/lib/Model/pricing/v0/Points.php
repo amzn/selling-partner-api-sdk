@@ -37,6 +37,7 @@ use SpApi\Model\ModelInterface;
  * Points Class Doc Comment
  *
  * @category Class
+ * @description The number of Amazon Points offered with the purchase of an item, and their monetary value.
  * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

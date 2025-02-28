@@ -37,6 +37,7 @@ use SpApi\Model\ModelInterface;
  * MoneyType Class Doc Comment
  *
  * @category Class
+ * @description Currency type and monetary value. Schema for demonstrating pricing info.
  * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

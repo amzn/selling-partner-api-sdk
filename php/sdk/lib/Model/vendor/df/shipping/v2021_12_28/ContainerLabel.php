@@ -358,7 +358,7 @@ class ContainerLabel implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets content
      *
-     * @param string $content The `Base64encoded` string of the container label content.
+     * @param string $content The container label content encoded into a Base64 string.
      *
      * @return self
      */

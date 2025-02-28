@@ -19,7 +19,7 @@ use SpApi\Model\aplusContent\v2020_11_01\StandardTextPairBlock;
  * StandardTextPairBlockTest Class Doc Comment
  *
  * @category    Class
- * @description The A+ Content standard label and description block, comprised of a pair of text components.
+ * @description The A+ Content standard label and description block, which contains a pair of text components.
  * @package     SpApi
  */
 class StandardTextPairBlockTest extends TestCase

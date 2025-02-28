@@ -63,6 +63,8 @@ class Status
 
     public const PICKUP_CANCELLED = 'PickupCancelled';
 
+    public const AWAITING_CUSTOMER_PICKUP = 'AwaitingCustomerPickup';
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -78,7 +80,8 @@ class Status
             self::REJECTED,
             self::UNDELIVERABLE,
             self::DELIVERY_ATTEMPTED,
-            self::PICKUP_CANCELLED
+            self::PICKUP_CANCELLED,
+            self::AWAITING_CUSTOMER_PICKUP
         ];
     }
 }

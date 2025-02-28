@@ -345,7 +345,7 @@ class HttpResponseHeaders implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets x_amzn_request_id
      *
-     * @param string|null $x_amzn_request_id Unique request reference ID.
+     * @param string|null $x_amzn_request_id Unique request reference identifier.
      *
      * @return self
      */

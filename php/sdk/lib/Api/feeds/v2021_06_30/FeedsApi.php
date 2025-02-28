@@ -10,7 +10,7 @@
  */
 
 /**
- * Feeds v2021-06-30
+ * Selling Partner API for Feeds
  *
  * The Selling Partner API for Feeds lets you upload data to Amazon on behalf of a selling partner.
  *
@@ -152,8 +152,6 @@ class FeedsApi
     /**
      * Operation cancelFeed
      *
-     * cancelFeed
-     *
      * @param  string $feed_id
      *  The identifier for the feed. This identifier is unique only in combination with a seller ID. (required)
      *
@@ -169,8 +167,6 @@ class FeedsApi
 
     /**
      * Operation cancelFeedWithHttpInfo
-     *
-     * cancelFeed
      *
      * @param  string $feed_id
      *  The identifier for the feed. This identifier is unique only in combination with a seller ID. (required)
@@ -297,8 +293,6 @@ class FeedsApi
     /**
      * Operation cancelFeedAsync
      *
-     * cancelFeed
-     *
      * @param  string $feed_id
      *  The identifier for the feed. This identifier is unique only in combination with a seller ID. (required)
      *
@@ -318,8 +312,6 @@ class FeedsApi
 
     /**
      * Operation cancelFeedAsyncWithHttpInfo
-     *
-     * cancelFeed
      *
      * @param  string $feed_id
      *  The identifier for the feed. This identifier is unique only in combination with a seller ID. (required)
@@ -458,8 +450,6 @@ class FeedsApi
     /**
      * Operation createFeed
      *
-     * createFeed
-     *
      * @param  \SpApi\Model\feeds\v2021_06_30\CreateFeedSpecification $body
      *  Information required to create the feed. (required)
      *
@@ -476,8 +466,6 @@ class FeedsApi
 
     /**
      * Operation createFeedWithHttpInfo
-     *
-     * createFeed
      *
      * @param  \SpApi\Model\feeds\v2021_06_30\CreateFeedSpecification $body
      *  Information required to create the feed. (required)
@@ -764,8 +752,6 @@ class FeedsApi
     /**
      * Operation createFeedAsync
      *
-     * createFeed
-     *
      * @param  \SpApi\Model\feeds\v2021_06_30\CreateFeedSpecification $body
      *  Information required to create the feed. (required)
      *
@@ -785,8 +771,6 @@ class FeedsApi
 
     /**
      * Operation createFeedAsyncWithHttpInfo
-     *
-     * createFeed
      *
      * @param  \SpApi\Model\feeds\v2021_06_30\CreateFeedSpecification $body
      *  Information required to create the feed. (required)
@@ -936,8 +920,6 @@ class FeedsApi
     /**
      * Operation createFeedDocument
      *
-     * createFeedDocument
-     *
      * @param  \SpApi\Model\feeds\v2021_06_30\CreateFeedDocumentSpecification $body
      *  Specifies the content type for the createFeedDocument operation. (required)
      *
@@ -954,8 +936,6 @@ class FeedsApi
 
     /**
      * Operation createFeedDocumentWithHttpInfo
-     *
-     * createFeedDocument
      *
      * @param  \SpApi\Model\feeds\v2021_06_30\CreateFeedDocumentSpecification $body
      *  Specifies the content type for the createFeedDocument operation. (required)
@@ -1242,8 +1222,6 @@ class FeedsApi
     /**
      * Operation createFeedDocumentAsync
      *
-     * createFeedDocument
-     *
      * @param  \SpApi\Model\feeds\v2021_06_30\CreateFeedDocumentSpecification $body
      *  Specifies the content type for the createFeedDocument operation. (required)
      *
@@ -1263,8 +1241,6 @@ class FeedsApi
 
     /**
      * Operation createFeedDocumentAsyncWithHttpInfo
-     *
-     * createFeedDocument
      *
      * @param  \SpApi\Model\feeds\v2021_06_30\CreateFeedDocumentSpecification $body
      *  Specifies the content type for the createFeedDocument operation. (required)
@@ -1414,8 +1390,6 @@ class FeedsApi
     /**
      * Operation getFeed
      *
-     * getFeed
-     *
      * @param  string $feed_id
      *  The identifier for the feed. This identifier is unique only in combination with a seller ID. (required)
      *
@@ -1432,8 +1406,6 @@ class FeedsApi
 
     /**
      * Operation getFeedWithHttpInfo
-     *
-     * getFeed
      *
      * @param  string $feed_id
      *  The identifier for the feed. This identifier is unique only in combination with a seller ID. (required)
@@ -1720,8 +1692,6 @@ class FeedsApi
     /**
      * Operation getFeedAsync
      *
-     * getFeed
-     *
      * @param  string $feed_id
      *  The identifier for the feed. This identifier is unique only in combination with a seller ID. (required)
      *
@@ -1741,8 +1711,6 @@ class FeedsApi
 
     /**
      * Operation getFeedAsyncWithHttpInfo
-     *
-     * getFeed
      *
      * @param  string $feed_id
      *  The identifier for the feed. This identifier is unique only in combination with a seller ID. (required)
@@ -1894,8 +1862,6 @@ class FeedsApi
     /**
      * Operation getFeedDocument
      *
-     * getFeedDocument
-     *
      * @param  string $feed_document_id
      *  The identifier of the feed document. (required)
      *
@@ -1912,8 +1878,6 @@ class FeedsApi
 
     /**
      * Operation getFeedDocumentWithHttpInfo
-     *
-     * getFeedDocument
      *
      * @param  string $feed_document_id
      *  The identifier of the feed document. (required)
@@ -2200,8 +2164,6 @@ class FeedsApi
     /**
      * Operation getFeedDocumentAsync
      *
-     * getFeedDocument
-     *
      * @param  string $feed_document_id
      *  The identifier of the feed document. (required)
      *
@@ -2221,8 +2183,6 @@ class FeedsApi
 
     /**
      * Operation getFeedDocumentAsyncWithHttpInfo
-     *
-     * getFeedDocument
      *
      * @param  string $feed_document_id
      *  The identifier of the feed document. (required)
@@ -2374,8 +2334,6 @@ class FeedsApi
     /**
      * Operation getFeeds
      *
-     * getFeeds
-     *
      * @param  string[]|null $feed_types
      *  A list of feed types used to filter feeds. When feedTypes is provided, the other filter parameters (processingStatuses, marketplaceIds, createdSince, createdUntil) and pageSize may also be provided. Either feedTypes or nextToken is required. (optional)
      * @param  string[]|null $marketplace_ids
@@ -2410,8 +2368,6 @@ class FeedsApi
 
     /**
      * Operation getFeedsWithHttpInfo
-     *
-     * getFeeds
      *
      * @param  string[]|null $feed_types
      *  A list of feed types used to filter feeds. When feedTypes is provided, the other filter parameters (processingStatuses, marketplaceIds, createdSince, createdUntil) and pageSize may also be provided. Either feedTypes or nextToken is required. (optional)
@@ -2716,8 +2672,6 @@ class FeedsApi
     /**
      * Operation getFeedsAsync
      *
-     * getFeeds
-     *
      * @param  string[]|null $feed_types
      *  A list of feed types used to filter feeds. When feedTypes is provided, the other filter parameters (processingStatuses, marketplaceIds, createdSince, createdUntil) and pageSize may also be provided. Either feedTypes or nextToken is required. (optional)
      * @param  string[]|null $marketplace_ids
@@ -2755,8 +2709,6 @@ class FeedsApi
 
     /**
      * Operation getFeedsAsyncWithHttpInfo
-     *
-     * getFeeds
      *
      * @param  string[]|null $feed_types
      *  A list of feed types used to filter feeds. When feedTypes is provided, the other filter parameters (processingStatuses, marketplaceIds, createdSince, createdUntil) and pageSize may also be provided. Either feedTypes or nextToken is required. (optional)

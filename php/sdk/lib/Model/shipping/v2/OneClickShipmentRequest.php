@@ -65,6 +65,7 @@ class OneClickShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeria
              'ship_from' => '\SpApi\Model\shipping\v2\Address',
              'return_to' => '\SpApi\Model\shipping\v2\Address',
              'ship_date' => '\DateTime',
+             'goods_owner' => '\SpApi\Model\shipping\v2\GoodsOwner',
              'packages' => '\SpApi\Model\shipping\v2\Package[]',
              'value_added_services_details' => '\SpApi\Model\shipping\v2\OneClickShipmentValueAddedService[]',
              'tax_details' => '\SpApi\Model\shipping\v2\TaxDetail[]',
@@ -86,6 +87,7 @@ class OneClickShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeria
             'ship_from' => null,
             'return_to' => null,
             'ship_date' => 'date-time',
+            'goods_owner' => null,
             'packages' => null,
             'value_added_services_details' => null,
             'tax_details' => null,
@@ -105,6 +107,7 @@ class OneClickShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'ship_from' => false,
         'return_to' => true,
         'ship_date' => true,
+        'goods_owner' => true,
         'packages' => false,
         'value_added_services_details' => true,
         'tax_details' => true,
@@ -205,6 +208,7 @@ class OneClickShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeria
                 'ship_from' => 'shipFrom',
                 'return_to' => 'returnTo',
                 'ship_date' => 'shipDate',
+                'goods_owner' => 'goodsOwner',
                 'packages' => 'packages',
                 'value_added_services_details' => 'valueAddedServicesDetails',
                 'tax_details' => 'taxDetails',
@@ -226,6 +230,7 @@ class OneClickShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'ship_from' => 'setShipFrom',
         'return_to' => 'setReturnTo',
         'ship_date' => 'setShipDate',
+        'goods_owner' => 'setGoodsOwner',
         'packages' => 'setPackages',
         'value_added_services_details' => 'setValueAddedServicesDetails',
         'tax_details' => 'setTaxDetails',
@@ -246,6 +251,7 @@ class OneClickShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'ship_from' => 'getShipFrom',
         'return_to' => 'getReturnTo',
         'ship_date' => 'getShipDate',
+        'goods_owner' => 'getGoodsOwner',
         'packages' => 'getPackages',
         'value_added_services_details' => 'getValueAddedServicesDetails',
         'tax_details' => 'getTaxDetails',
@@ -317,6 +323,7 @@ class OneClickShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeria
         $this->setIfExists('ship_from', $data ?? [], null);
         $this->setIfExists('return_to', $data ?? [], null);
         $this->setIfExists('ship_date', $data ?? [], null);
+        $this->setIfExists('goods_owner', $data ?? [], null);
         $this->setIfExists('packages', $data ?? [], null);
         $this->setIfExists('value_added_services_details', $data ?? [], null);
         $this->setIfExists('tax_details', $data ?? [], null);
@@ -509,6 +516,40 @@ class OneClickShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeria
             }
         }
         $this->container['ship_date'] = $ship_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets goods_owner
+     *
+     * @return \SpApi\Model\shipping\v2\GoodsOwner|null
+     */
+    public function getGoodsOwner(): ?\SpApi\Model\shipping\v2\GoodsOwner
+    {
+        return $this->container['goods_owner'];
+    }
+
+    /**
+     * Sets goods_owner
+     *
+     * @param \SpApi\Model\shipping\v2\GoodsOwner|null $goods_owner goods_owner
+     *
+     * @return self
+     */
+    public function setGoodsOwner(?\SpApi\Model\shipping\v2\GoodsOwner $goods_owner): self
+    {
+        if (is_null($goods_owner)) {
+            array_push($this->openAPINullablesSetToNull, 'goods_owner');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('goods_owner', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['goods_owner'] = $goods_owner;
 
         return $this;
     }

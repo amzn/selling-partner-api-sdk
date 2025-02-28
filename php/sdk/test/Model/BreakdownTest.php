@@ -19,7 +19,7 @@ use SpApi\Model\finances\v2024_06_19\Breakdown;
  * BreakdownTest Class Doc Comment
  *
  * @category    Class
- * @description Details about the movement of money in the financial transaction. Breakdowns are further categorized into breakdown types, breakdown amounts, and further breakdowns.
+ * @description Breakdown provides details regarding the money movement under the financial transaction. Breakdowns get categorized further into breakdown types, breakdown amounts, and further breakdowns into a hierarchical structure.
  * @package     SpApi
  */
 class BreakdownTest extends TestCase

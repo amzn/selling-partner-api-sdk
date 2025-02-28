@@ -19,7 +19,7 @@ use SpApi\Model\pricing\v0\GetOffersResult;
  * GetOffersResultTest Class Doc Comment
  *
  * @category    Class
- * @description GetOffersResult
+ * @description The payload for the getListingOffers and getItemOffers operations.
  * @package     SpApi
  */
 class GetOffersResultTest extends TestCase

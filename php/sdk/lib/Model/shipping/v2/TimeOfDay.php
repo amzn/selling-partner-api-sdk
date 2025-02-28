@@ -319,7 +319,7 @@ class TimeOfDay implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets hour_of_day
      *
-     * @param int|null $hour_of_day hour_of_day
+     * @param int|null $hour_of_day Denotes hour of the day, used for defining opening or closing time of access points
      *
      * @return self
      */
@@ -353,7 +353,7 @@ class TimeOfDay implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets minute_of_hour
      *
-     * @param int|null $minute_of_hour minute_of_hour
+     * @param int|null $minute_of_hour Denotes minute of the hour, used for defining opening or closing time of access points
      *
      * @return self
      */
@@ -387,7 +387,7 @@ class TimeOfDay implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets second_of_minute
      *
-     * @param int|null $second_of_minute second_of_minute
+     * @param int|null $second_of_minute Denotes second of the minute, used for defining opening or closing time of access points
      *
      * @return self
      */

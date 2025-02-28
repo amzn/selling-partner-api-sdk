@@ -37,6 +37,7 @@ use SpApi\Model\ModelInterface;
  * Price Class Doc Comment
  *
  * @category Class
+ * @description Schema for price info in &#x60;getPricing&#x60; response
  * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

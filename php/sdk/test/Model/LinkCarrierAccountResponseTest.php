@@ -63,4 +63,15 @@ class LinkCarrierAccountResponseTest extends TestCase
         $this->model->setRegistrationStatus($testValue);
         $this->assertEquals($testValue, $this->model->getRegistrationStatus());
     }
+
+    /**
+     * Test attribute "account_id"
+     */
+    public function testPropertyAccountId()
+    {
+        $testValue = 'test';
+        
+        $this->model->setAccountId($testValue);
+        $this->assertEquals($testValue, $this->model->getAccountId());
+    }
 }

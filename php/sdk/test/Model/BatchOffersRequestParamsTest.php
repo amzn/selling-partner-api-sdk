@@ -19,7 +19,7 @@ use SpApi\Model\pricing\v0\BatchOffersRequestParams;
  * BatchOffersRequestParamsTest Class Doc Comment
  *
  * @category    Class
- * @description BatchOffersRequestParams
+ * @description Common request parameters that can be accepted by &#x60;ItemOffersRequest&#x60; and &#x60;ListingOffersRequest&#x60;
  * @package     SpApi
  */
 class BatchOffersRequestParamsTest extends TestCase

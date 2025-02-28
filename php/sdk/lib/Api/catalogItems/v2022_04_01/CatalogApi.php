@@ -1,6 +1,6 @@
 <?php
 /**
- * CatalogItemsApi
+ * CatalogApi
  * PHP version 8.3
  *
  * @category Class
@@ -10,7 +10,7 @@
  */
 
 /**
- * Catalog Items v2022-04-01
+ * Selling Partner API for Catalog Items
  *
  * The Selling Partner API for Catalog Items provides programmatic access to information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](doc:catalog-items-api-v2022-04-01-use-case-guide).
  *
@@ -45,14 +45,14 @@ use SpApi\HeaderSelector;
 use SpApi\ObjectSerializer;
 
 /**
- * CatalogItemsApi Class Doc Comment
+ * CatalogApi Class Doc Comment
  *
  * @category Class
  * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class CatalogItemsApi
+class CatalogApi
 {
     /**
      * @var ClientInterface
@@ -152,8 +152,6 @@ class CatalogItemsApi
     /**
      * Operation getCatalogItem
      *
-     * getCatalogItem
-     *
      * @param  string $asin
      *  The Amazon Standard Identification Number (ASIN) of the item. (required)
      * @param  string[] $marketplace_ids
@@ -179,8 +177,6 @@ class CatalogItemsApi
 
     /**
      * Operation getCatalogItemWithHttpInfo
-     *
-     * getCatalogItem
      *
      * @param  string $asin
      *  The Amazon Standard Identification Number (ASIN) of the item. (required)
@@ -476,8 +472,6 @@ class CatalogItemsApi
     /**
      * Operation getCatalogItemAsync
      *
-     * getCatalogItem
-     *
      * @param  string $asin
      *  The Amazon Standard Identification Number (ASIN) of the item. (required)
      * @param  string[] $marketplace_ids
@@ -506,8 +500,6 @@ class CatalogItemsApi
 
     /**
      * Operation getCatalogItemAsyncWithHttpInfo
-     *
-     * getCatalogItem
      *
      * @param  string $asin
      *  The Amazon Standard Identification Number (ASIN) of the item. (required)
@@ -710,8 +702,6 @@ class CatalogItemsApi
     /**
      * Operation searchCatalogItems
      *
-     * searchCatalogItems
-     *
      * @param  string[] $marketplace_ids
      *  A comma-delimited list of Amazon marketplace identifiers for the request. (required)
      * @param  string[]|null $identifiers
@@ -761,8 +751,6 @@ class CatalogItemsApi
 
     /**
      * Operation searchCatalogItemsWithHttpInfo
-     *
-     * searchCatalogItems
      *
      * @param  string[] $marketplace_ids
      *  A comma-delimited list of Amazon marketplace identifiers for the request. (required)
@@ -1082,8 +1070,6 @@ class CatalogItemsApi
     /**
      * Operation searchCatalogItemsAsync
      *
-     * searchCatalogItems
-     *
      * @param  string[] $marketplace_ids
      *  A comma-delimited list of Amazon marketplace identifiers for the request. (required)
      * @param  string[]|null $identifiers
@@ -1136,8 +1122,6 @@ class CatalogItemsApi
 
     /**
      * Operation searchCatalogItemsAsyncWithHttpInfo
-     *
-     * searchCatalogItems
      *
      * @param  string[] $marketplace_ids
      *  A comma-delimited list of Amazon marketplace identifiers for the request. (required)
@@ -1274,19 +1258,19 @@ class CatalogItemsApi
             );
         }
         if (count($marketplace_ids) > 1) {
-            throw new \InvalidArgumentException('invalid value for "$marketplace_ids" when calling CatalogItemsApi.searchCatalogItems, number of items must be less than or equal to 1.');
+            throw new \InvalidArgumentException('invalid value for "$marketplace_ids" when calling CatalogApi.searchCatalogItems, number of items must be less than or equal to 1.');
         }
 
         if ($identifiers !== null && count($identifiers) > 20) {
-            throw new \InvalidArgumentException('invalid value for "$identifiers" when calling CatalogItemsApi.searchCatalogItems, number of items must be less than or equal to 20.');
+            throw new \InvalidArgumentException('invalid value for "$identifiers" when calling CatalogApi.searchCatalogItems, number of items must be less than or equal to 20.');
         }
 
         if ($keywords !== null && count($keywords) > 20) {
-            throw new \InvalidArgumentException('invalid value for "$keywords" when calling CatalogItemsApi.searchCatalogItems, number of items must be less than or equal to 20.');
+            throw new \InvalidArgumentException('invalid value for "$keywords" when calling CatalogApi.searchCatalogItems, number of items must be less than or equal to 20.');
         }
 
         if ($page_size !== null && $page_size > 20) {
-            throw new \InvalidArgumentException('invalid value for "$page_size" when calling CatalogItemsApi.searchCatalogItems, must be smaller than or equal to 20.');
+            throw new \InvalidArgumentException('invalid value for "$page_size" when calling CatalogApi.searchCatalogItems, must be smaller than or equal to 20.');
         }
 
 

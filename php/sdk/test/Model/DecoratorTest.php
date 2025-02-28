@@ -19,7 +19,7 @@ use SpApi\Model\aplusContent\v2020_11_01\Decorator;
  * DecoratorTest Class Doc Comment
  *
  * @category    Class
- * @description A decorator applied to a content string value in order to create rich text.
+ * @description A decorator that is applied to a content string value in order to create rich text.
  * @package     SpApi
  */
 class DecoratorTest extends TestCase

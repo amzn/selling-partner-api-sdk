@@ -19,7 +19,7 @@ use SpApi\Model\aplusContent\v2020_11_01\ColorType;
  * ColorTypeTest Class Doc Comment
  *
  * @category    Class
- * @description The relative color scheme of content.
+ * @description The relative color scheme of your content.
  * @package     SpApi
  */
 class ColorTypeTest extends TestCase

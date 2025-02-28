@@ -19,7 +19,7 @@ use SpApi\Model\pricing\v0\CompetitivePriceType;
  * CompetitivePriceTypeTest Class Doc Comment
  *
  * @category    Class
- * @description CompetitivePriceType
+ * @description Schema for competitive pricing information
  * @package     SpApi
  */
 class CompetitivePriceTypeTest extends TestCase

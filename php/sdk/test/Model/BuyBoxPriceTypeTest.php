@@ -19,7 +19,7 @@ use SpApi\Model\pricing\v0\BuyBoxPriceType;
  * BuyBoxPriceTypeTest Class Doc Comment
  *
  * @category    Class
- * @description BuyBoxPriceType
+ * @description Schema for an individual buybox price.
  * @package     SpApi
  */
 class BuyBoxPriceTypeTest extends TestCase

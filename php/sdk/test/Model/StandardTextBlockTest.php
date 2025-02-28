@@ -19,7 +19,7 @@ use SpApi\Model\aplusContent\v2020_11_01\StandardTextBlock;
  * StandardTextBlockTest Class Doc Comment
  *
  * @category    Class
- * @description The A+ Content standard text box block, comprised of a paragraph with a headline.
+ * @description The A+ Content standard text box block, which contains a paragraph and a headline.
  * @package     SpApi
  */
 class StandardTextBlockTest extends TestCase

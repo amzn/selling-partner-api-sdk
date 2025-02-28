@@ -19,7 +19,7 @@ use SpApi\Model\aplusContent\v2020_11_01\ParagraphComponent;
  * ParagraphComponentTest Class Doc Comment
  *
  * @category    Class
- * @description A list of rich text content, usually presented in a text box.
+ * @description A list of rich text content that is typically presented in a text box.
  * @package     SpApi
  */
 class ParagraphComponentTest extends TestCase

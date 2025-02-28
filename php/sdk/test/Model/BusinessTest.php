@@ -19,7 +19,7 @@ use SpApi\Model\sellers\v1\Business;
  * BusinessTest Class Doc Comment
  *
  * @category    Class
- * @description Information about the Seller&#39;s business. These fields may be omitted if the Seller is registered as an individual.
+ * @description Information about the seller&#39;s business. Certain fields may be omitted depending on the seller&#39;s &#x60;businessType&#x60;.
  * @package     SpApi
  */
 class BusinessTest extends TestCase

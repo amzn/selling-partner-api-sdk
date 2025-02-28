@@ -19,7 +19,7 @@ use SpApi\Model\finances\v2024_06_19\TimeRangeContext;
  * TimeRangeContextTest Class Doc Comment
  *
  * @category    Class
- * @description Additional information that is related to the time range of the transaction.
+ * @description Additional information related to time range for transaction.
  * @package     SpApi
  */
 class TimeRangeContextTest extends TestCase

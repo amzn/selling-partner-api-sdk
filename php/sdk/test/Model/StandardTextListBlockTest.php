@@ -19,7 +19,7 @@ use SpApi\Model\aplusContent\v2020_11_01\StandardTextListBlock;
  * StandardTextListBlockTest Class Doc Comment
  *
  * @category    Class
- * @description The A+ Content standard fixed length list of text, usually presented as bullet points.
+ * @description The A+ Content standard fixed-length list of text, usually presented as bullet points.
  * @package     SpApi
  */
 class StandardTextListBlockTest extends TestCase

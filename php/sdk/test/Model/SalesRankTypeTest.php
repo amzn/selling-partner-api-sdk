@@ -19,7 +19,7 @@ use SpApi\Model\pricing\v0\SalesRankType;
  * SalesRankTypeTest Class Doc Comment
  *
  * @category    Class
- * @description SalesRankType
+ * @description Sales rank information for the item, by category
  * @package     SpApi
  */
 class SalesRankTypeTest extends TestCase

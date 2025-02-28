@@ -84,4 +84,16 @@ class PurchaseShipmentResultTest extends TestCase
         $this->model->setPromise($testValue);
         $this->assertEquals($testValue, $this->model->getPromise());
     }
+
+    /**
+     * Test attribute "benefits"
+     */
+    public function testPropertyBenefits()
+    {
+        
+        $testValue = new \SpApi\Model\shipping\v2\Benefits();
+        
+        $this->model->setBenefits($testValue);
+        $this->assertEquals($testValue, $this->model->getBenefits());
+    }
 }

@@ -19,7 +19,7 @@ use SpApi\Model\finances\v2024_06_19\Transaction;
  * TransactionTest Class Doc Comment
  *
  * @category    Class
- * @description All the information related to a transaction.
+ * @description Contains all information related to the transaction.
  * @package     SpApi
  */
 class TransactionTest extends TestCase

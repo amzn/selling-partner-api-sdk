@@ -72,7 +72,8 @@ class GetRatesRequest implements ModelInterface, ArrayAccess, \JsonSerializable
              'channel_details' => '\SpApi\Model\shipping\v2\ChannelDetails',
              'client_reference_details' => '\SpApi\Model\shipping\v2\ClientReferenceDetail[]',
              'shipment_type' => '\SpApi\Model\shipping\v2\ShipmentType',
-             'destination_access_point_details' => '\SpApi\Model\shipping\v2\AccessPointDetails'    ];
+             'destination_access_point_details' => '\SpApi\Model\shipping\v2\AccessPointDetails',
+             'carrier_accounts' => '\SpApi\Model\shipping\v2\CarrierAccount[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -93,7 +94,8 @@ class GetRatesRequest implements ModelInterface, ArrayAccess, \JsonSerializable
             'channel_details' => null,
             'client_reference_details' => null,
             'shipment_type' => null,
-            'destination_access_point_details' => null    ];
+            'destination_access_point_details' => null,
+            'carrier_accounts' => null    ];
 
     /**
       * Array of nullable properties. Used for (de)serialization
@@ -112,7 +114,8 @@ class GetRatesRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'channel_details' => false,
         'client_reference_details' => true,
         'shipment_type' => true,
-        'destination_access_point_details' => true
+        'destination_access_point_details' => true,
+        'carrier_accounts' => true
     ];
 
     /**
@@ -212,7 +215,8 @@ class GetRatesRequest implements ModelInterface, ArrayAccess, \JsonSerializable
                 'channel_details' => 'channelDetails',
                 'client_reference_details' => 'clientReferenceDetails',
                 'shipment_type' => 'shipmentType',
-                'destination_access_point_details' => 'destinationAccessPointDetails'
+                'destination_access_point_details' => 'destinationAccessPointDetails',
+                'carrier_accounts' => 'carrierAccounts'
         
     ];
 
@@ -233,7 +237,8 @@ class GetRatesRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'channel_details' => 'setChannelDetails',
         'client_reference_details' => 'setClientReferenceDetails',
         'shipment_type' => 'setShipmentType',
-        'destination_access_point_details' => 'setDestinationAccessPointDetails'
+        'destination_access_point_details' => 'setDestinationAccessPointDetails',
+        'carrier_accounts' => 'setCarrierAccounts'
     ];
 
     /**
@@ -253,7 +258,8 @@ class GetRatesRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'channel_details' => 'getChannelDetails',
         'client_reference_details' => 'getClientReferenceDetails',
         'shipment_type' => 'getShipmentType',
-        'destination_access_point_details' => 'getDestinationAccessPointDetails'
+        'destination_access_point_details' => 'getDestinationAccessPointDetails',
+        'carrier_accounts' => 'getCarrierAccounts'
     ];
 
     /**
@@ -325,6 +331,7 @@ class GetRatesRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('client_reference_details', $data ?? [], null);
         $this->setIfExists('shipment_type', $data ?? [], null);
         $this->setIfExists('destination_access_point_details', $data ?? [], null);
+        $this->setIfExists('carrier_accounts', $data ?? [], null);
     }
 
     /**
@@ -761,6 +768,40 @@ class GetRatesRequest implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['destination_access_point_details'] = $destination_access_point_details;
+
+        return $this;
+    }
+
+    /**
+     * Gets carrier_accounts
+     *
+     * @return array|null
+     */
+    public function getCarrierAccounts(): ?array
+    {
+        return $this->container['carrier_accounts'];
+    }
+
+    /**
+     * Sets carrier_accounts
+     *
+     * @param array|null $carrier_accounts A list of CarrierAccounts
+     *
+     * @return self
+     */
+    public function setCarrierAccounts(?array $carrier_accounts): self
+    {
+        if (is_null($carrier_accounts)) {
+            array_push($this->openAPINullablesSetToNull, 'carrier_accounts');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('carrier_accounts', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['carrier_accounts'] = $carrier_accounts;
 
         return $this;
     }

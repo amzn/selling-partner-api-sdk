@@ -37,6 +37,7 @@ use SpApi\Model\ModelInterface;
  * OfferDetail Class Doc Comment
  *
  * @category Class
+ * @description Schema for an individual offer. Object in &#x60;OfferDetailList&#x60;.
  * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -674,7 +675,7 @@ class OfferDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets quantity_discount_prices
      *
-     * @param array|null $quantity_discount_prices quantity_discount_prices
+     * @param array|null $quantity_discount_prices List of `QuantityDiscountPrice` that contains item's pricing information when buy in bulk.
      *
      * @return self
      */

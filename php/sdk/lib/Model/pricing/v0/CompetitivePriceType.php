@@ -37,6 +37,7 @@ use SpApi\Model\ModelInterface;
  * CompetitivePriceType Class Doc Comment
  *
  * @category Class
+ * @description Schema for competitive pricing information
  * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

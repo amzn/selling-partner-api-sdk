@@ -62,7 +62,8 @@ class GetShipmentDocumentsResult implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static array $openAPITypes = [
              'shipment_id' => 'string',
-             'package_document_detail' => '\SpApi\Model\shipping\v2\PackageDocumentDetail'    ];
+             'package_document_detail' => '\SpApi\Model\shipping\v2\PackageDocumentDetail',
+             'benefits' => '\SpApi\Model\shipping\v2\Benefits'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -73,7 +74,8 @@ class GetShipmentDocumentsResult implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static array $openAPIFormats = [
             'shipment_id' => null,
-            'package_document_detail' => null    ];
+            'package_document_detail' => null,
+            'benefits' => null    ];
 
     /**
       * Array of nullable properties. Used for (de)serialization
@@ -82,7 +84,8 @@ class GetShipmentDocumentsResult implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static array $openAPINullables = [
         'shipment_id' => false,
-        'package_document_detail' => false
+        'package_document_detail' => false,
+        'benefits' => true
     ];
 
     /**
@@ -172,7 +175,8 @@ class GetShipmentDocumentsResult implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static array $attributeMap = [
         'shipment_id' => 'shipmentId',
-                'package_document_detail' => 'packageDocumentDetail'
+                'package_document_detail' => 'packageDocumentDetail',
+                'benefits' => 'benefits'
         
     ];
 
@@ -183,7 +187,8 @@ class GetShipmentDocumentsResult implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static array $setters = [
         'shipment_id' => 'setShipmentId',
-        'package_document_detail' => 'setPackageDocumentDetail'
+        'package_document_detail' => 'setPackageDocumentDetail',
+        'benefits' => 'setBenefits'
     ];
 
     /**
@@ -193,7 +198,8 @@ class GetShipmentDocumentsResult implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static array $getters = [
         'shipment_id' => 'getShipmentId',
-        'package_document_detail' => 'getPackageDocumentDetail'
+        'package_document_detail' => 'getPackageDocumentDetail',
+        'benefits' => 'getBenefits'
     ];
 
     /**
@@ -255,6 +261,7 @@ class GetShipmentDocumentsResult implements ModelInterface, ArrayAccess, \JsonSe
     {
         $this->setIfExists('shipment_id', $data ?? [], null);
         $this->setIfExists('package_document_detail', $data ?? [], null);
+        $this->setIfExists('benefits', $data ?? [], null);
     }
 
     /**
@@ -355,6 +362,40 @@ class GetShipmentDocumentsResult implements ModelInterface, ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable package_document_detail cannot be null');
         }
         $this->container['package_document_detail'] = $package_document_detail;
+
+        return $this;
+    }
+
+    /**
+     * Gets benefits
+     *
+     * @return \SpApi\Model\shipping\v2\Benefits|null
+     */
+    public function getBenefits(): ?\SpApi\Model\shipping\v2\Benefits
+    {
+        return $this->container['benefits'];
+    }
+
+    /**
+     * Sets benefits
+     *
+     * @param \SpApi\Model\shipping\v2\Benefits|null $benefits benefits
+     *
+     * @return self
+     */
+    public function setBenefits(?\SpApi\Model\shipping\v2\Benefits $benefits): self
+    {
+        if (is_null($benefits)) {
+            array_push($this->openAPINullablesSetToNull, 'benefits');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('benefits', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['benefits'] = $benefits;
 
         return $this;
     }

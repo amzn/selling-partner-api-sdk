@@ -119,4 +119,16 @@ class RequestedDocumentSpecificationTest extends TestCase
         $this->model->setRequestedDocumentTypes($testValue);
         $this->assertEquals($testValue, $this->model->getRequestedDocumentTypes());
     }
+
+    /**
+     * Test attribute "requested_label_customization"
+     */
+    public function testPropertyRequestedLabelCustomization()
+    {
+        
+        $testValue = new \SpApi\Model\shipping\v2\RequestedLabelCustomization();
+        
+        $this->model->setRequestedLabelCustomization($testValue);
+        $this->assertEquals($testValue, $this->model->getRequestedLabelCustomization());
+    }
 }

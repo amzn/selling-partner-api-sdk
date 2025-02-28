@@ -315,7 +315,7 @@ class GetPricingResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets payload
      *
-     * @param array|null $payload payload
+     * @param array|null $payload The payload for the `getPricing` and `getCompetitivePricing` operations.
      *
      * @return self
      */

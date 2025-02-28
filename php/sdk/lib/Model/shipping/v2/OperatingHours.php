@@ -387,7 +387,7 @@ class OperatingHours implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets mid_day_closures
      *
-     * @param array|null $mid_day_closures mid_day_closures
+     * @param array|null $mid_day_closures midDayClosures operating hours array
      *
      * @return self
      */

@@ -19,7 +19,7 @@ use SpApi\Model\aplusContent\v2020_11_01\AsinMetadata;
  * AsinMetadataTest Class Doc Comment
  *
  * @category    Class
- * @description The A+ Content ASIN with additional metadata for content management. If you don&#39;t include the &#x60;includedDataSet&#x60; parameter in a call to the listContentDocumentAsinRelations operation, the related ASINs are returned without metadata.
+ * @description The A+ Content ASIN with additional metadata for content management. If you don&#39;t include the &#x60;includedDataSet&#x60; parameter in a call to the &#x60;listContentDocumentAsinRelations&#x60; operation, the related ASINs are returned without metadata.
  * @package     SpApi
  */
 class AsinMetadataTest extends TestCase

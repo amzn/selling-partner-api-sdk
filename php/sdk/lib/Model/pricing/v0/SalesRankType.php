@@ -37,6 +37,7 @@ use SpApi\Model\ModelInterface;
  * SalesRankType Class Doc Comment
  *
  * @category Class
+ * @description Sales rank information for the item, by category
  * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

@@ -19,7 +19,7 @@ use SpApi\Model\aplusContent\v2020_11_01\ContentModule;
  * ContentModuleTest Class Doc Comment
  *
  * @category    Class
- * @description An A+ Content module. An A+ Content document is composed of content modules. The contentModuleType property selects which content module types to use.
+ * @description An A+ Content module. An A+ Content document is composed of content modules. The &#x60;contentModuleType&#x60; property selects which content module types to use.
  * @package     SpApi
  */
 class ContentModuleTest extends TestCase

@@ -100,6 +100,18 @@ class OneClickShipmentRequestTest extends TestCase
     }
 
     /**
+     * Test attribute "goods_owner"
+     */
+    public function testPropertyGoodsOwner()
+    {
+        
+        $testValue = new \SpApi\Model\shipping\v2\GoodsOwner();
+        
+        $this->model->setGoodsOwner($testValue);
+        $this->assertEquals($testValue, $this->model->getGoodsOwner());
+    }
+
+    /**
      * Test attribute "packages"
      */
     public function testPropertyPackages()

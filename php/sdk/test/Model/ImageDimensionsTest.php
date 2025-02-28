@@ -19,7 +19,7 @@ use SpApi\Model\aplusContent\v2020_11_01\ImageDimensions;
  * ImageDimensionsTest Class Doc Comment
  *
  * @category    Class
- * @description The dimensions extending from the top left corner of the cropped image, or the top left corner of the original image if there is no cropping. Only &#x60;pixels&#x60; is allowed as the units value for ImageDimensions.
+ * @description The dimensions that extend from the top left corner of the image (this applies to cropped and uncropped images). &#x60;ImageDimensions&#x60; units must be in pixels.
  * @package     SpApi
  */
 class ImageDimensionsTest extends TestCase

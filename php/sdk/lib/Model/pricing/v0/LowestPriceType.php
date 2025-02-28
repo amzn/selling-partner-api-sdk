@@ -37,6 +37,7 @@ use SpApi\Model\ModelInterface;
  * LowestPriceType Class Doc Comment
  *
  * @category Class
+ * @description Schema for an individual lowest price.
  * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

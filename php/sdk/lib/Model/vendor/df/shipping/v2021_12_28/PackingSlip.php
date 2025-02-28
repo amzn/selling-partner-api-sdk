@@ -382,7 +382,7 @@ class PackingSlip implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets content
      *
-     * @param string $content A Base64encoded string of the packing slip PDF.
+     * @param string $content A Base64 string of the packing slip PDF.
      *
      * @return self
      */

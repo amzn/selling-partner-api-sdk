@@ -37,6 +37,7 @@ use SpApi\Model\ModelInterface;
  * ItemOffersResponse Class Doc Comment
  *
  * @category Class
+ * @description Schema for an individual &#x60;ItemOffersResponse&#x60;
  * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

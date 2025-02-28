@@ -19,7 +19,7 @@ use SpApi\Model\pricing\v0\QuantityDiscountType;
  * QuantityDiscountTypeTest Class Doc Comment
  *
  * @category    Class
- * @description QuantityDiscountType
+ * @description Indicates the type of quantity discount this price applies to.
  * @package     SpApi
  */
 class QuantityDiscountTypeTest extends TestCase

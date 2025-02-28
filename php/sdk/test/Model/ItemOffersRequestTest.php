@@ -19,7 +19,7 @@ use SpApi\Model\pricing\v0\ItemOffersRequest;
  * ItemOffersRequestTest Class Doc Comment
  *
  * @category    Class
- * @description ItemOffersRequest
+ * @description List of request parameters can be accepted by &#x60;ItemOffersRequests&#x60; operation
  * @package     SpApi
  */
 class ItemOffersRequestTest extends TestCase

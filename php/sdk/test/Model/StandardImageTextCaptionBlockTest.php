@@ -19,7 +19,7 @@ use SpApi\Model\aplusContent\v2020_11_01\StandardImageTextCaptionBlock;
  * StandardImageTextCaptionBlockTest Class Doc Comment
  *
  * @category    Class
- * @description The A+ Content standard image and text block, with a related caption. The caption may not display on all devices.
+ * @description The A+ Content standard image and text block, with a related caption. The caption might not display on all devices.
  * @package     SpApi
  */
 class StandardImageTextCaptionBlockTest extends TestCase

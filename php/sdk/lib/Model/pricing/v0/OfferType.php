@@ -37,6 +37,7 @@ use SpApi\Model\ModelInterface;
  * OfferType Class Doc Comment
  *
  * @category Class
+ * @description Schema for an individual offer.
  * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -499,7 +500,7 @@ class OfferType implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets quantity_discount_prices
      *
-     * @param array|null $quantity_discount_prices quantity_discount_prices
+     * @param array|null $quantity_discount_prices List of `QuantityDiscountPrice` that contains item's pricing information when buy in bulk.
      *
      * @return self
      */

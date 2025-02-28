@@ -37,6 +37,7 @@ use SpApi\Model\ModelInterface;
  * ItemOffersRequestParams Class Doc Comment
  *
  * @category Class
+ * @description List of request parameters that can be accepted by &#x60;ItemOffersRequest&#x60;
  * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

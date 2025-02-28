@@ -19,7 +19,7 @@ use SpApi\Model\pricing\v0\BatchOffersResponse;
  * BatchOffersResponseTest Class Doc Comment
  *
  * @category    Class
- * @description BatchOffersResponse
+ * @description Common schema that present in &#x60;ItemOffersResponse&#x60; and &#x60;ListingOffersResponse&#x60;
  * @package     SpApi
  */
 class BatchOffersResponseTest extends TestCase

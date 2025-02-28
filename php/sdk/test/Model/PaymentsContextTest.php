@@ -19,7 +19,7 @@ use SpApi\Model\finances\v2024_06_19\PaymentsContext;
  * PaymentsContextTest Class Doc Comment
  *
  * @category    Class
- * @description Additional information related to payments-related transactions.
+ * @description Additional information related to Payments related transactions.
  * @package     SpApi
  */
 class PaymentsContextTest extends TestCase

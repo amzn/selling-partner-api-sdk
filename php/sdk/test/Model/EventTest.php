@@ -87,4 +87,17 @@ class EventTest extends TestCase
         $this->model->setEventTime($testValue);
         $this->assertEquals($testValue, $this->model->getEventTime());
     }
+
+    /**
+     * Test attribute "shipment_type"
+     */
+    public function testPropertyShipmentType()
+    {
+        $enumInstance = new \SpApi\Model\shipping\v2\ShipmentType();
+        $allowedValues = $enumInstance->getAllowableEnumValues();
+        $testValue = reset($allowedValues);
+        
+        $this->model->setShipmentType($testValue);
+        $this->assertEquals($testValue, $this->model->getShipmentType());
+    }
 }

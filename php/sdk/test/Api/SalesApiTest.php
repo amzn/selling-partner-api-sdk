@@ -70,7 +70,7 @@ class SalesApiTest extends BaseTestCase
   &quot;description&quot; : &quot;OrderMetric action taken on the resource OrderMetrics.&quot;,
   &quot;headers&quot; : {
     &quot;x-amzn-RequestId&quot; : {
-      &quot;description&quot; : &quot;unique request reference id.&quot;,
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }

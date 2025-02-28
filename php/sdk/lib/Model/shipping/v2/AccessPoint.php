@@ -596,7 +596,7 @@ class AccessPoint implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets exception_operating_hours
      *
-     * @param array|null $exception_operating_hours exception_operating_hours
+     * @param array|null $exception_operating_hours Exception operating hours for Access Point
      *
      * @return self
      */
@@ -630,7 +630,7 @@ class AccessPoint implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets assistance_type
      *
-     * @param string|null $assistance_type assistance_type
+     * @param string|null $assistance_type Assistance type enum for Access point i.e. STAFF_ASSISTED or SELF_ASSISTED
      *
      * @return self
      */

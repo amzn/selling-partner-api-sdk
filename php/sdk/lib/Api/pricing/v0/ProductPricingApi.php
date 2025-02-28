@@ -1246,7 +1246,7 @@ class ProductPricingApi
      * Operation getItemOffersBatch
      *
      * @param  \SpApi\Model\pricing\v0\GetItemOffersBatchRequest $get_item_offers_batch_request_body
-     *  get_item_offers_batch_request_body (required)
+     *  The request associated with the &#x60;getItemOffersBatch&#x60; API call. (required)
      *
      * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1263,7 +1263,7 @@ class ProductPricingApi
      * Operation getItemOffersBatchWithHttpInfo
      *
      * @param  \SpApi\Model\pricing\v0\GetItemOffersBatchRequest $get_item_offers_batch_request_body
-     *  (required)
+     *  The request associated with the &#x60;getItemOffersBatch&#x60; API call. (required)
      *
      * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1525,7 +1525,7 @@ class ProductPricingApi
      * Operation getItemOffersBatchAsync
      *
      * @param  \SpApi\Model\pricing\v0\GetItemOffersBatchRequest $get_item_offers_batch_request_body
-     *  (required)
+     *  The request associated with the &#x60;getItemOffersBatch&#x60; API call. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
@@ -1545,7 +1545,7 @@ class ProductPricingApi
      * Operation getItemOffersBatchAsyncWithHttpInfo
      *
      * @param  \SpApi\Model\pricing\v0\GetItemOffersBatchRequest $get_item_offers_batch_request_body
-     *  (required)
+     *  The request associated with the &#x60;getItemOffersBatch&#x60; API call. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
@@ -1598,7 +1598,7 @@ class ProductPricingApi
      * Create request for operation 'getItemOffersBatch'
      *
      * @param  \SpApi\Model\pricing\v0\GetItemOffersBatchRequest $get_item_offers_batch_request_body
-     *  (required)
+     *  The request associated with the &#x60;getItemOffersBatch&#x60; API call. (required)
      *
      * @throws \InvalidArgumentException
      * @return Request
@@ -2226,7 +2226,7 @@ class ProductPricingApi
      * Operation getListingOffersBatch
      *
      * @param  \SpApi\Model\pricing\v0\GetListingOffersBatchRequest $get_listing_offers_batch_request_body
-     *  get_listing_offers_batch_request_body (required)
+     *  The request associated with the &#x60;getListingOffersBatch&#x60; API call. (required)
      *
      * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2243,7 +2243,7 @@ class ProductPricingApi
      * Operation getListingOffersBatchWithHttpInfo
      *
      * @param  \SpApi\Model\pricing\v0\GetListingOffersBatchRequest $get_listing_offers_batch_request_body
-     *  (required)
+     *  The request associated with the &#x60;getListingOffersBatch&#x60; API call. (required)
      *
      * @throws \SpApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2505,7 +2505,7 @@ class ProductPricingApi
      * Operation getListingOffersBatchAsync
      *
      * @param  \SpApi\Model\pricing\v0\GetListingOffersBatchRequest $get_listing_offers_batch_request_body
-     *  (required)
+     *  The request associated with the &#x60;getListingOffersBatch&#x60; API call. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
@@ -2525,7 +2525,7 @@ class ProductPricingApi
      * Operation getListingOffersBatchAsyncWithHttpInfo
      *
      * @param  \SpApi\Model\pricing\v0\GetListingOffersBatchRequest $get_listing_offers_batch_request_body
-     *  (required)
+     *  The request associated with the &#x60;getListingOffersBatch&#x60; API call. (required)
      *
      * @throws \InvalidArgumentException
      * @return PromiseInterface
@@ -2578,7 +2578,7 @@ class ProductPricingApi
      * Create request for operation 'getListingOffersBatch'
      *
      * @param  \SpApi\Model\pricing\v0\GetListingOffersBatchRequest $get_listing_offers_batch_request_body
-     *  (required)
+     *  The request associated with the &#x60;getListingOffersBatch&#x60; API call. (required)
      *
      * @throws \InvalidArgumentException
      * @return Request

@@ -101,6 +101,16 @@ class RateItemID
 
     public const REBATE = 'REBATE';
 
+    public const HIGH_CUBE_SURCHARGE = 'HIGH_CUBE_SURCHARGE';
+
+    public const HIGH_LENGTH_SURCHARGE = 'HIGH_LENGTH_SURCHARGE';
+
+    public const HIGH_WIDTH_SURCHARGE = 'HIGH_WIDTH_SURCHARGE';
+
+    public const DEMAND_SURCHARGE = 'DEMAND_SURCHARGE';
+
+    public const NONSTANDARD_FEE = 'NONSTANDARD_FEE';
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -135,7 +145,12 @@ class RateItemID
             self::RESIDENTIAL_SURCHARGE,
             self::ADDITIONAL_SURCHARGE,
             self::SURCHARGE,
-            self::REBATE
+            self::REBATE,
+            self::HIGH_CUBE_SURCHARGE,
+            self::HIGH_LENGTH_SURCHARGE,
+            self::HIGH_WIDTH_SURCHARGE,
+            self::DEMAND_SURCHARGE,
+            self::NONSTANDARD_FEE
         ];
     }
 }

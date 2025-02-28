@@ -19,7 +19,7 @@ use SpApi\Model\finances\v2024_06_19\SellingPartnerMetadata;
  * SellingPartnerMetadataTest Class Doc Comment
  *
  * @category    Class
- * @description Metadata that describes the seller.
+ * @description Metadata describing the seller.
  * @package     SpApi
  */
 class SellingPartnerMetadataTest extends TestCase

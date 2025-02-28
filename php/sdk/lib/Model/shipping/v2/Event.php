@@ -63,7 +63,8 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPITypes = [
              'event_code' => '\SpApi\Model\shipping\v2\EventCode',
              'location' => '\SpApi\Model\shipping\v2\Location',
-             'event_time' => '\DateTime'    ];
+             'event_time' => '\DateTime',
+             'shipment_type' => '\SpApi\Model\shipping\v2\ShipmentType'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -75,7 +76,8 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPIFormats = [
             'event_code' => null,
             'location' => null,
-            'event_time' => 'date-time'    ];
+            'event_time' => 'date-time',
+            'shipment_type' => null    ];
 
     /**
       * Array of nullable properties. Used for (de)serialization
@@ -85,7 +87,8 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'event_code' => false,
         'location' => true,
-        'event_time' => false
+        'event_time' => false,
+        'shipment_type' => true
     ];
 
     /**
@@ -176,7 +179,8 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $attributeMap = [
         'event_code' => 'eventCode',
                 'location' => 'location',
-                'event_time' => 'eventTime'
+                'event_time' => 'eventTime',
+                'shipment_type' => 'shipmentType'
         
     ];
 
@@ -188,7 +192,8 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $setters = [
         'event_code' => 'setEventCode',
         'location' => 'setLocation',
-        'event_time' => 'setEventTime'
+        'event_time' => 'setEventTime',
+        'shipment_type' => 'setShipmentType'
     ];
 
     /**
@@ -199,7 +204,8 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $getters = [
         'event_code' => 'getEventCode',
         'location' => 'getLocation',
-        'event_time' => 'getEventTime'
+        'event_time' => 'getEventTime',
+        'shipment_type' => 'getShipmentType'
     ];
 
     /**
@@ -262,6 +268,7 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('event_code', $data ?? [], null);
         $this->setIfExists('location', $data ?? [], null);
         $this->setIfExists('event_time', $data ?? [], null);
+        $this->setIfExists('shipment_type', $data ?? [], null);
     }
 
     /**
@@ -396,6 +403,40 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable event_time cannot be null');
         }
         $this->container['event_time'] = $event_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets shipment_type
+     *
+     * @return string|null
+     */
+    public function getShipmentType(): ?string
+    {
+        return $this->container['shipment_type'];
+    }
+
+    /**
+     * Sets shipment_type
+     *
+     * @param string|null $shipment_type shipment_type
+     *
+     * @return self
+     */
+    public function setShipmentType(?string $shipment_type): self
+    {
+        if (is_null($shipment_type)) {
+            array_push($this->openAPINullablesSetToNull, 'shipment_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipment_type', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['shipment_type'] = $shipment_type;
 
         return $this;
     }

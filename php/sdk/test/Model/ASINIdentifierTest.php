@@ -19,7 +19,7 @@ use SpApi\Model\pricing\v0\ASINIdentifier;
  * ASINIdentifierTest Class Doc Comment
  *
  * @category    Class
- * @description ASINIdentifier
+ * @description Schema to identify an item by MarketPlaceId and ASIN.
  * @package     SpApi
  */
 class ASINIdentifierTest extends TestCase

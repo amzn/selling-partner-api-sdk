@@ -19,7 +19,7 @@ use SpApi\Model\pricing\v0\ItemOffersResponse;
  * ItemOffersResponseTest Class Doc Comment
  *
  * @category    Class
- * @description ItemOffersResponse
+ * @description Schema for an individual &#x60;ItemOffersResponse&#x60;
  * @package     SpApi
  */
 class ItemOffersResponseTest extends TestCase

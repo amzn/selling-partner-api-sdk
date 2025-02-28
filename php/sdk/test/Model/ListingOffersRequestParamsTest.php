@@ -19,7 +19,7 @@ use SpApi\Model\pricing\v0\ListingOffersRequestParams;
  * ListingOffersRequestParamsTest Class Doc Comment
  *
  * @category    Class
- * @description ListingOffersRequestParams
+ * @description List of request parameters that can be accepted by &#x60;ListingOffersRequest&#x60;
  * @package     SpApi
  */
 class ListingOffersRequestParamsTest extends TestCase

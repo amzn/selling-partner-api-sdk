@@ -6,7 +6,7 @@
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi\Model\vendor\transactionStatus\v1
+ * @package  SpApi\Model\vehicles\v2024_11_01
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -33,7 +33,7 @@ namespace SpApi\Model;
 /**
  * Interface abstracting model access.
  *
- * @package SpApi\Model\vendor\transactionStatus\v1
+ * @package SpApi\Model\vehicles\v2024_11_01
  * @author  OpenAPI Generator team
  */
 interface ModelInterface
