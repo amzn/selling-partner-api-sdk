@@ -1,9 +1,11 @@
 ## Java SDK for Selling Partner API
+[![Maven](https://img.shields.io/maven-central/v/software.amazon.spapi/spapi-sdk.svg?label=Maven)](https://central.sonatype.com/artifact/software.amazon.spapi/spapi-sdk)
 
-The Selling Partner API SDK for Java enables you to easily connect your Java application to Amazon's REST-based SP-API.
+The Selling Partner API SDK for Java enables you to easily connect your Java application to Amazon's REST-based Selling Partner API.
 
-* [Learn more about SP-API](https://developer.amazonservices.com/)
-* [API Documentation](https://developer-docs.amazon.com/sp-api/)
+* [Learn more about Selling Partner API](https://developer.amazonservices.com/)
+* [Selling Partner API Documentation](https://developer-docs.amazon.com/sp-api/)
+* [JavaDoc](https://www.javadoc.io/doc/software.amazon.spapi/spapi-sdk/latest/index.html)
 
 ### Getting started
 
@@ -19,23 +21,17 @@ To run the SDK you need Java 11 or higher.
 
 #### Integrate the SDK
 
-Download the latest version [here](https://github.com/amzn/selling-partner-api-sdk/releases).
+Find the latest version number [here](https://github.com/amzn/selling-partner-api-sdk/releases).
 
 ##### Gradle
 
 Add the following line to the dependencies in your `build.gradle` file:
 
 ```
-implementation files('path/to/selling-partner-api-java-sdk-0.1.0.jar')
+implementation 'software.amazon.spapi:spapi-sdk:0.1.0'
 ```
 
 ##### Maven
-
-Run the following command to install the `JAR` file in your local Maven repository (Note: Make sure to use the correct path to the downloaded `JAR` file):
-
-```sh
-mvn install:install-file -Dfile=[Replace with path to downloaded JAR file] -DgroupId=com.amazon.sellingpartnerapi -DartifactId=java-sdk -Dversion=0.1.0 -Dpackaging=jar
-```
 
 Add the following lines to the dependencies in your `maven.pom` file:
 
@@ -43,8 +39,8 @@ Add the following lines to the dependencies in your `maven.pom` file:
 <dependencies>
     ...
     <dependency>
-        <groupId>com.amazon.sellingpartnerapi</groupId>
-        <artifactId>java-sdk</artifactId>
+        <groupId>software.amazon.spapi</groupId>
+        <artifactId>spapi-sdk</artifactId>
         <version>0.1.0</version>
     </dependency>
     ...
@@ -76,6 +72,10 @@ SellersApi sellersApi = new SellersApi.Builder()
 // Call operation
 GetMarketplaceParticipationsResponse result = sellersApi.getMarketplaceParticipations();
 ```
+
+### Additional documentation
+
+You can find the JavaDoc for the latest SDK version [here](https://www.javadoc.io/doc/software.amazon.spapi/spapi-sdk/latest/index.html).
 
 ### Giving Feedback
 

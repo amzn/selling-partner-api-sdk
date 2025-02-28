@@ -3,8 +3,7 @@
 require_once '../sdk/vendor/autoload.php';
 
 use SpApi\AuthAndAuth\LWAAuthorizationCredentials;
-use SpApi\AuthAndAuth\LWAAuthorizationSigner;
-use SpApi\Api\orders\v0\OrdersApi;
+use SpApi\Api\orders\v0\OrdersV0Api;
 use SpApi\Configuration;
 use Dotenv\Dotenv;
 
@@ -19,9 +18,6 @@ $lwaAuthorizationCredentials = new LWAAuthorizationCredentials([
     "refreshToken" => $_ENV['SP_API_REFRESH_TOKEN'],
     "endpoint" => $_ENV['SP_API_ENDPOINT']
 ]);
-
-// Initialize LWAAuthorizationSigner instance
-$lwaAuthorizationSigner = new LWAAuthorizationSigner($lwaAuthorizationCredentials);
 $config = new Configuration([], $lwaAuthorizationCredentials);
 
 // Setting SP-API endpoint region
@@ -31,7 +27,7 @@ $config->setHost($_ENV['SP_API_ENDPOINT_HOST']);
 $client = new GuzzleHttp\Client();
 
 // Create an instance of the Orders Api
-$api = new OrdersApi($config, null, $client);
+$api = new OrdersV0Api($config, null, $client);
 
 try {
     // Call getOrders
