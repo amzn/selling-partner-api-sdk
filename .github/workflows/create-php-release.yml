@@ -28,16 +28,9 @@ jobs:
       - name: Install jq
         run: sudo apt-get install -y jq
 
-      - name: Update version in composer.json
+      - name: Update version in composer.json (local only)
         run: |
           jq --arg version "${{ env.SDK_VERSION }}" '.version = $version' composer.json > composer_temp.json && mv composer_temp.json composer.json
-
-      - name: Commit & Push composer.json
-        run: |
-          git config --global user.email "github-actions@github.com"
-          git config --global user.name "GitHub Actions"
-          git add composer.json
-          git diff --cached --quiet || (git commit -m "Release PHP SDK version ${{ env.SDK_VERSION }}" && git push https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git main)
 
       - name: Notify Packagist
         run: |
@@ -56,10 +49,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Create tag
-        run: |
-          git tag ${{ env.SDK_VERSION }} $GITHUB_SHA
-          git push origin ${{ env.SDK_VERSION }}
+      - name: Create tag using GitHub API
+        uses: actions/github-script@v5
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: "refs/tags/${{ env.SDK_VERSION }}",
+              sha: context.sha
+            });
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
