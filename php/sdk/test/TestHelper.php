@@ -684,11 +684,6 @@ class TestHelper
         'testListOffers400',
         // Vendor Invoices API
         'testSubmitInvoices202',
-        'testSubmitInvoices400',
-        // Vehicles Api
-        'testGetVehicles0200', // returns 403
-        'testGetVehicles0400', // returns 403
-        'testGetVehicles200', // returns 403
-        'testGetVehicles400' // returns 403
+        'testSubmitInvoices400'
     ];
 }
