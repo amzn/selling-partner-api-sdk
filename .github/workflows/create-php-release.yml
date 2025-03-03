@@ -36,7 +36,12 @@ jobs:
           -d '{ "repository": "https://github.com/amzn/selling-partner-api-sdk" }')
 
           cat response.json
-          if [ "$RESPONSE" -ne 200 ]; then exit 1; fi
+          STATUS=$(jq -r '.status' response.json)
+      
+          if [ "$STATUS" != "success" ]; then
+          echo "Error: Packagist update failed"
+          exit 1
+          fi
 
   tag_and_release:
     needs: release_php
