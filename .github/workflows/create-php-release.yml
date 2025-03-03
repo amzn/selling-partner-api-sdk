@@ -1,0 +1,70 @@
+name: Create PHP Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      newVersionNumber:
+        type: string
+        description: New version number
+        required: true
+
+env:
+  SDK_VERSION: ${{ github.event.inputs.newVersionNumber }}
+
+jobs:
+  release_php:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Debug file structure
+        run: ls -R
+
+      - name: Copy composer.json to root
+        run: cp php/sdk/composer.json composer.json
+
+      - name: Install jq
+        run: sudo apt-get install -y jq
+
+      - name: Update version in composer.json
+        run: |
+          jq --arg version "${{ env.SDK_VERSION }}" '.version = $version' composer.json > composer_temp.json && mv composer_temp.json composer.json
+
+      - name: Commit & Push composer.json
+        run: |
+          git config --global user.email "github-actions@github.com"
+          git config --global user.name "GitHub Actions"
+          git add composer.json
+          git diff --cached --quiet || (git commit -m "Release PHP SDK version ${{ env.SDK_VERSION }}" && git push https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git main)
+
+      - name: Notify Packagist
+        run: |
+          RESPONSE=$(curl -s -o response.json -w "%{http_code}" -XPOST -H 'content-type:application/json' \
+          "https://packagist.org/api/update-package?username=${{ secrets.PACKAGIST_USERNAME }}&apiToken=${{ secrets.PACKAGIST_API_TOKEN }}" \
+          -d '{ "repository": "https://github.com/amzn/selling-partner-api-sdk" }')
+
+          cat response.json
+          if [ "$RESPONSE" -ne 200 ]; then exit 1; fi
+
+  tag_and_release:
+    needs: release_php
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create tag
+        run: |
+          git tag ${{ env.SDK_VERSION }} $GITHUB_SHA
+          git push origin ${{ env.SDK_VERSION }}
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ env.SDK_VERSION }}
+          name: "PHP SDK v${{ env.SDK_VERSION }}"
+          draft: false
+          prerelease: false
