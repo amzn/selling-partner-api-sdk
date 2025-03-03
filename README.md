@@ -1,9 +1,9 @@
-## Selling Partner API SDK
+<img src="docs/logo.png" alt="Selling Partner API SDK logo" width="700"/>
 
 The Selling Partner API SDK enables you to easily connect to and work with Amazon's REST-based SP-API. 
 
-* [Learn more about SP-API](https://developer.amazonservices.com/)
-* [API Documentation](https://developer-docs.amazon.com/sp-api/)
+* [Learn more about Selling Partner API](https://developer.amazonservices.com/)
+* [Selling Partner API Documentation](https://developer-docs.amazon.com/sp-api/)
 * [Issues][sdk-issues]
 
 ### Getting Started
