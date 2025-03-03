@@ -22,9 +22,6 @@ jobs:
       - name: Debug file structure
         run: ls -R
 
-      - name: Copy composer.json to root
-        run: cp php/sdk/composer.json composer.json
-
       - name: Install jq
         run: sudo apt-get install -y jq
 
