@@ -1,72 +1,29 @@
-name: Create PHP Release
+name: Deploy PackageA to Separate Repo
 
 on:
-  workflow_dispatch:
-    inputs:
-      newVersionNumber:
-        type: string
-        description: New version number
-        required: true
-
-env:
-  SDK_VERSION: ${{ github.event.inputs.newVersionNumber }}
+  push:
+    paths:
+      - "php/sdk/**"
+    branches:
+      - main
 
 jobs:
-  release_php:
+  deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v3
 
-      - name: Debug file structure
-        run: ls -R
-
-      - name: Install jq
-        run: sudo apt-get install -y jq
-
-      - name: Update version in composer.json (local only)
+      - name: Copy php/sdk to Temporary Directory
         run: |
-          jq --arg version "${{ env.SDK_VERSION }}" '.version = $version' composer.json > composer_temp.json && mv composer_temp.json composer.json
+          mkdir sdk
+          cp -r php/sdk/* sdk/
+          cd sdk
 
-      - name: Notify Packagist
+      - name: Push sdk to Separate Repository
         run: |
-          RESPONSE=$(curl -s -o response.json -w "%{http_code}" -XPOST -H 'content-type:application/json' \
-          "https://packagist.org/api/update-package?username=${{ secrets.PACKAGIST_USERNAME }}&apiToken=${{ secrets.PACKAGIST_API_TOKEN }}" \
-          -d '{ "repository": "https://github.com/amzn/selling-partner-api-sdk" }')
-
-          cat response.json
-          STATUS=$(jq -r '.status' response.json)
-      
-          if [ "$STATUS" != "success" ]; then
-          echo "Error: Packagist update failed"
-          exit 1
-          fi
-
-  tag_and_release:
-    needs: release_php
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Create tag using GitHub API
-        uses: actions/github-script@v5
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            github.rest.git.createRef({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              ref: "refs/tags/${{ env.SDK_VERSION }}",
-              sha: context.sha
-            });
-
-      - name: Create Release
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: ${{ env.SDK_VERSION }}
-          name: "PHP SDK v${{ env.SDK_VERSION }}"
-          draft: false
-          prerelease: false
+          git init
+          git remote add origin https://github.com/amzn/selling-partner-api-php-release.git
+          git add .
+          git commit -m "Deploy PHP SDK"
+          git push origin main --force
