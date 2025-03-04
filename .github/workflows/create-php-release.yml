@@ -6,6 +6,7 @@ on:
       - "php/sdk/**"
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   deploy:
