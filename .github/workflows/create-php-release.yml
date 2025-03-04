@@ -10,11 +10,11 @@ on:
     inputs:
       newVersionNumber:
         type: string
-        description: New version number (e.g., 1.0.0)
+        description: New version number
         required: true
 
 env:
-    SDK_VERSION: ${{ github.event.inputs.newVersionNumber }}
+  SDK_VERSION: ${{ github.event.inputs.newVersionNumber }}
 
 jobs:
   deploy:
@@ -32,19 +32,27 @@ jobs:
 
       - name: Create a new branch for changes
         run: |
-          BRANCH_NAME="deploy-sdk-${{ github.event.inputs.newVersionNumber }}-$(date +%Y%m%d-%H%M%S)"
+          BRANCH_NAME="deploy-sdk-${{ env.SDK_VERSION }}-$(date +%Y%m%d-%H%M%S)"
           git checkout -b $BRANCH_NAME
-          git add php/sdk/
-          git commit -m "Automated Deploy PHP SDK - Version ${{ github.event.inputs.newVersionNumber }}"
+          
+          # Add all changes (even if no changes are made)
+          git add -A
+          git commit -m "Automated Deploy PHP SDK - Version ${{ env.SDK_VERSION }}" || echo "No changes to commit"
+          
+          # Push to origin
           git push origin $BRANCH_NAME
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Create a Git Tag
+      - name: Add Remote for Target Repository
         run: |
-          TAG_NAME="sdk-release-${{ github.event.inputs.newVersionNumber }}"
-          git tag $TAG_NAME
-          git push origin $TAG_NAME
+          git remote add release-repo https://github.com/amzn/selling-partner-api-php-release.git
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Push to Target Repository
+        run: |
+          git push release-repo $BRANCH_NAME --force
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
