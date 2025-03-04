@@ -10,7 +10,7 @@ on:
     inputs:
       newVersionNumber:
         type: string
-        description: New version number
+        description: New version number (e.g., 1.0.0)
         required: true
 
 env:
@@ -25,19 +25,24 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Configure Git user
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+
       - name: Create a new branch for changes
         run: |
-          BRANCH_NAME="deploy-sdk-$(date +%Y%m%d-%H%M%S)"
+          BRANCH_NAME="deploy-sdk-${{ github.event.inputs.newVersionNumber }}-$(date +%Y%m%d-%H%M%S)"
           git checkout -b $BRANCH_NAME
           git add php/sdk/
-          git commit -m "Automated Deploy PHP SDK"
+          git commit -m "Automated Deploy PHP SDK - Version ${{ github.event.inputs.newVersionNumber }}"
           git push origin $BRANCH_NAME
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create a Git Tag
         run: |
-          TAG_NAME="sdk-release-$(date +%Y%m%d-%H%M%S)"
+          TAG_NAME="sdk-release-${{ github.event.inputs.newVersionNumber }}"
           git tag $TAG_NAME
           git push origin $TAG_NAME
         env:
@@ -50,11 +55,12 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: $BRANCH_NAME
           base: main
-          title: "Automated PR: Deploy PHP SDK"
+          title: "Automated PR: Deploy PHP SDK - Version ${{ github.event.inputs.newVersionNumber }}"
           body: |
             This PR is automatically created by GitHub Actions.
             - Changes: `php/sdk/`
-            - Tag: `${{ github.event.inputs.newVersionNumber }}`
+            - Version: ${{ github.event.inputs.newVersionNumber }}
+            - Tag: `sdk-release-${{ github.event.inputs.newVersionNumber }}`
           labels: automated, sdk-update
 
       - name: Auto-Merge the PR
