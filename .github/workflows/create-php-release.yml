@@ -1,4 +1,4 @@
-name: Deploy PackageA to Separate Repo
+name: Auto Deploy PHP SDK
 
 on:
   push:
@@ -7,6 +7,14 @@ on:
     branches:
       - main
   workflow_dispatch:
+    inputs:
+      newVersionNumber:
+        type: string
+        description: New version number
+        required: true
+
+env:
+    SDK_VERSION: ${{ github.event.inputs.newVersionNumber }}
 
 jobs:
   deploy:
@@ -14,17 +22,45 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
-      - name: Copy php/sdk to Temporary Directory
+      - name: Create a new branch for changes
         run: |
-          mkdir sdk
-          cp -r php/sdk/* sdk/
-          cd sdk
+          BRANCH_NAME="deploy-sdk-$(date +%Y%m%d-%H%M%S)"
+          git checkout -b $BRANCH_NAME
+          git add php/sdk/
+          git commit -m "Automated Deploy PHP SDK"
+          git push origin $BRANCH_NAME
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Push sdk to Separate Repository
+      - name: Create a Git Tag
         run: |
-          git init
-          git remote add origin https://github.com/amzn/selling-partner-api-php-release.git
-          git add .
-          git commit -m "Deploy PHP SDK"
-          git push origin main --force
+          TAG_NAME="sdk-release-$(date +%Y%m%d-%H%M%S)"
+          git tag $TAG_NAME
+          git push origin $TAG_NAME
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create a Pull Request
+        id: create_pr
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: $BRANCH_NAME
+          base: main
+          title: "Automated PR: Deploy PHP SDK"
+          body: |
+            This PR is automatically created by GitHub Actions.
+            - Changes: `php/sdk/`
+            - Tag: `${{ github.event.inputs.newVersionNumber }}`
+          labels: automated, sdk-update
+
+      - name: Auto-Merge the PR
+        uses: pascalgn/automerge-action@v0.15.3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          mergeMethod: "squash"
+          base: "main"
