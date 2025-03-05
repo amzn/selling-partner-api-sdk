@@ -32,6 +32,8 @@ jobs:
 
       - name: Clone Target Repository (selling-partner-api-php-release)
         run: |
+          mkdir -p ~/workspace
+          cd ~/workspace
           git clone --depth=1 https://x-access-token:${{ secrets.TOMLIKED_PAT }}@github.com/amzn/selling-partner-api-php-release.git target-repo
           cd target-repo
           git fetch origin
@@ -45,22 +47,22 @@ jobs:
 
       - name: Sync `php/sdk/` to Target Repo Root
         run: |
-          rsync -av --delete php/sdk/ target-repo/
+          rsync -av --delete php/sdk/ ~/workspace/target-repo/
 
       - name: Check for Changes
         run: |
-          cd target-repo
+          cd ~/workspace/target-repo
           git status
           git diff --stat origin/main || true
 
       - name: Verify Remote URL
         run: |
-          cd target-repo
+          cd ~/workspace/target-repo
           git remote -v
 
       - name: Commit and Push Changes
         run: |
-          cd target-repo
+          cd ~/workspace/target-repo
           git add -A
           git commit -m "Sync PHP SDK - Version ${{ env.SDK_VERSION }}" || echo "No changes to commit"
           echo "Current Branch: $(git branch --show-current)"
@@ -78,3 +80,4 @@ jobs:
             This PR syncs the latest changes from `selling-partner-api-sdk/php/sdk/` to `selling-partner-api-php-release/`.
             - Version: ${{ github.event.inputs.newVersionNumber }}
           labels: automated, sdk-sync
+
