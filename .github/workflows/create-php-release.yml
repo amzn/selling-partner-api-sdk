@@ -55,12 +55,14 @@ jobs:
           git config --global url."https://${{ secrets.TOMLIKED_PAT }}@github.com/".insteadOf "https://github.com/"
           git remote add release-repo https://github.com/amzn/selling-partner-api-php-release.git
           
-      - name: Set Remote URL with Debug
+      - name: Reset and Set Remote URL
         run: |
           set -x
+          git remote remove release-repo || echo "release-repo does not exist, skipping remove"
+          git remote add release-repo https://github.com/amzn/selling-partner-api-php-release.git
           git remote set-url release-repo https://x-access-token:${{ secrets.TOMLIKED_PAT }}@github.com/amzn/selling-partner-api-php-release.git
           echo "After setting URL:"
-          git remote get-url release-repo
+          git remote -v
       
       - name: Show Remote URL
         run: |
