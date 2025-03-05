@@ -49,9 +49,8 @@ jobs:
 
       - name: Push to Target Repository
         run: |
+          git remote set-url release-repo https://x-access-token:${{ secrets.TOMLIKED_PAT }}@github.com/amzn/selling-partner-api-php-release.git
           git push release-repo $BRANCH_NAME --force
-        env:
-          TARGET_REPO_PAT: ${{ secrets.TOMLIKED_PAT }}
 
       - name: Create a Pull Request
         id: create_pr
