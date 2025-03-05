@@ -1,4 +1,4 @@
-name: Auto Sync PHP SDK
+name: Sync PHP SDK to selling-partner-api-php-release
 
 on:
   push:
@@ -30,43 +30,55 @@ jobs:
           git config user.email "tomliked@amazon.co.jp"
           git config user.name "tomliked"
 
-      - name: Define Branch Name
-        run: |
-          echo "SYNC_BRANCH=sync-sdk-${{ env.SDK_VERSION }}-$(date +%Y%m%d-%H%M%S)" >> $GITHUB_ENV
-
       - name: Clone Target Repository (selling-partner-api-php-release)
         run: |
           git clone --depth=1 https://x-access-token:${{ secrets.TOMLIKED_PAT }}@github.com/amzn/selling-partner-api-php-release.git target-repo
           cd target-repo
-          git checkout -b "$SYNC_BRANCH"
+          
+          # Fetch the latest changes
+          git fetch origin
+          git checkout main
+          git reset --hard origin/main
 
-      - name: Sync `php/sdk/` Directory
+          # Create a new branch
+          BRANCH_NAME="sync-sdk-${{ env.SDK_VERSION }}-$(date +%Y%m%d-%H%M%S)"
+          git checkout -b "$BRANCH_NAME"
+          
+          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
+
+      - name: Sync `php/sdk/` to Target Repo Root
         run: |
-          rsync -av --delete php/sdk/ target-repo/sdk/
+          rsync -av --delete php/sdk/ target-repo/
+
+      - name: Check for Changes
+        run: |
+          cd target-repo
+          git status
+          git diff --stat origin/main || true
 
       - name: Commit and Push Changes
         run: |
           cd target-repo
           git add -A
-          git rm --cached .git -r || true
           git commit -m "Sync PHP SDK - Version ${{ env.SDK_VERSION }}" || echo "No changes to commit"
-          git push origin "$SYNC_BRANCH"
+          git push origin "$BRANCH_NAME"
 
-      - name: Create a Pull Request in `amzn/selling-partner-api-php-release`
+      - name: Create a Pull Request
         id: create_pr
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.TOMLIKED_PAT }}
-          branch: ${{ env.SYNC_BRANCH }}
+          branch: ${{ env.BRANCH_NAME }}
           base: main
           title: "Sync PHP SDK - Version ${{ github.event.inputs.newVersionNumber }}"
           body: |
-            This PR syncs the latest changes from `amzn/selling-partner-api-sdk/php/sdk/` to `amzn/selling-partner-api-php-release/sdk/`.
+            This PR syncs the latest changes from `selling-partner-api-sdk/php/sdk/` to `selling-partner-api-php-release/`.
             - Version: ${{ github.event.inputs.newVersionNumber }}
+            - Created at: $(date +%Y-%m-%d %H:%M:%S)
           labels: automated, sdk-sync
 
       - name: Enable Auto Merge for PR
         run: |
-          gh pr merge --auto --merge --repo amzn/selling-partner-api-php-release --head "$SYNC_BRANCH"
+          gh pr merge --auto --merge --repo amzn/selling-partner-api-php-release ${{ steps.create_pr.outputs.pull-request-number }}
         env:
           GH_TOKEN: ${{ secrets.TOMLIKED_PAT }}
