@@ -41,10 +41,14 @@ jobs:
           
           # Push to origin
           git push origin $BRANCH_NAME
+          
       - name: Debug Token
         run: |
-          echo "TOKEN length: ${#secrets.TOMLIKED_PAT}"
-          echo "First 5 characters: ${secrets.TOMLIKED_PAT:0:5}"
+          echo "TOKEN length: $(echo -n "$TOKEN" | wc -c)"
+          echo "First 5 characters: $(echo -n "$TOKEN" | cut -c1-5)"
+        env:
+          TOKEN: ${{ secrets.TOMLIKED_PAT }}
+
 
       - name: Add Remote for Target Repository
         run: |
