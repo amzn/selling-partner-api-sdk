@@ -34,16 +34,27 @@ jobs:
         run: |
           mkdir -p ~/workspace
           cd ~/workspace
-          git clone --depth=1 https://x-access-token:${{ secrets.TOMLIKED_PAT }}@github.com/amzn/selling-partner-api-php-release.git target-repo
+          echo "Cloning selling-partner-api-php-release into ~/workspace/target-repo"
+          git clone --depth=1 https://x-access-token:${{ secrets.TOMLIKED_PAT }}@github.com/amzn/selling-partner-api-php-release.git target-repo || { echo "Git clone failed"; exit 1; }
+          
           cd target-repo
           git fetch origin
           git checkout main
           git reset --hard origin/main
           git remote set-url origin https://x-access-token:${{ secrets.TOMLIKED_PAT }}@github.com/amzn/selling-partner-api-php-release.git
+          
           BRANCH_NAME="sync-sdk-${{ env.SDK_VERSION }}-$(date +%Y%m%d-%H%M%S)"
           git checkout -b "$BRANCH_NAME"
           echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
           git branch
+
+      - name: Check `.git` directory in `target-repo`
+        run: |
+          cd ~/workspace/target-repo || { echo "Directory does not exist"; exit 1; }
+          if [ ! -d ".git" ]; then
+            echo "ERROR: .git directory is missing!"
+            exit 1
+          fi
 
       - name: Sync `php/sdk/` to Target Repo Root
         run: |
@@ -51,7 +62,9 @@ jobs:
 
       - name: Check for Changes
         run: |
-          cd ~/workspace/target-repo
+          cd ~/workspace/target-repo || { echo "Directory does not exist"; exit 1; }
+          pwd
+          ls -la
           git status
           git diff --stat origin/main || true
 
@@ -62,11 +75,8 @@ jobs:
 
       - name: Commit and Push Changes
         run: |
-          cd ~/workspace/target-repo
-          git add -A
-          git commit -m "Sync PHP SDK - Version ${{ env.SDK_VERSION }}" || echo "No changes to commit"
-          echo "Current Branch: $(git branch --show-current)"
-          git push origin "$(git branch --show-current)"
+          cd ~/workspace/target-repo && git add -A && git commit -m "Sync PHP SDK - Version ${{ env.SDK_VERSION }}" || echo "No changes to commit"
+          cd ~/workspace/target-repo && git push origin "$(git branch --show-current)"
 
       - name: Create a Pull Request
         id: create_pr
@@ -80,4 +90,3 @@ jobs:
             This PR syncs the latest changes from `selling-partner-api-sdk/php/sdk/` to `selling-partner-api-php-release/`.
             - Version: ${{ github.event.inputs.newVersionNumber }}
           labels: automated, sdk-sync
-
