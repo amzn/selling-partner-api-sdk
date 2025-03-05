@@ -34,21 +34,14 @@ jobs:
         run: |
           git clone --depth=1 https://x-access-token:${{ secrets.TOMLIKED_PAT }}@github.com/amzn/selling-partner-api-php-release.git target-repo
           cd target-repo
-          
-          # Fetch the latest changes
           git fetch origin
           git checkout main
           git reset --hard origin/main
-
-          # Ensure the remote is correct
           git remote set-url origin https://x-access-token:${{ secrets.TOMLIKED_PAT }}@github.com/amzn/selling-partner-api-php-release.git
-          git remote -v
-
-          # Create a new branch
           BRANCH_NAME="sync-sdk-${{ env.SDK_VERSION }}-$(date +%Y%m%d-%H%M%S)"
           git checkout -b "$BRANCH_NAME"
-          
           echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
+          git branch
 
       - name: Sync `php/sdk/` to Target Repo Root
         run: |
@@ -60,12 +53,18 @@ jobs:
           git status
           git diff --stat origin/main || true
 
+      - name: Verify Remote URL
+        run: |
+          cd target-repo
+          git remote -v
+
       - name: Commit and Push Changes
         run: |
           cd target-repo
           git add -A
           git commit -m "Sync PHP SDK - Version ${{ env.SDK_VERSION }}" || echo "No changes to commit"
-          git push origin "$BRANCH_NAME"
+          echo "Current Branch: $(git branch --show-current)"
+          git push origin "$(git branch --show-current)"
 
       - name: Create a Pull Request
         id: create_pr
@@ -78,11 +77,4 @@ jobs:
           body: |
             This PR syncs the latest changes from `selling-partner-api-sdk/php/sdk/` to `selling-partner-api-php-release/`.
             - Version: ${{ github.event.inputs.newVersionNumber }}
-            - Created at: $(date +%Y-%m-%d %H:%M:%S)
           labels: automated, sdk-sync
-
-     #- name: Enable Auto Merge for PR
-     #   run: |
-     #     gh pr merge --auto --merge --repo amzn/selling-partner-api-php-release ${{ steps.create_pr.outputs.pull-request-number }}
-     #   env:
-     #     GH_TOKEN: ${{ secrets.TOMLIKED_PAT }}
