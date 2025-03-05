@@ -42,25 +42,25 @@ jobs:
           # Push to origin
           git push origin $BRANCH_NAME
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.MAFGE_PAT }}
 
       - name: Add Remote for Target Repository
         run: |
           git remote add release-repo https://github.com/amzn/selling-partner-api-php-release.git
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.MAFGE_PAT }}
 
       - name: Push to Target Repository
         run: |
           git push release-repo $BRANCH_NAME --force
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.MAFGE_PAT }}
 
       - name: Create a Pull Request
         id: create_pr
         uses: peter-evans/create-pull-request@v5
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.MAFGE_PAT }}
           branch: $BRANCH_NAME
           base: main
           title: "Automated PR: Deploy PHP SDK - Version ${{ github.event.inputs.newVersionNumber }}"
@@ -74,7 +74,7 @@ jobs:
       - name: Auto-Merge the PR
         uses: pascalgn/automerge-action@v0.15.3
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.MAFGE_PAT }}
         with:
           mergeMethod: "squash"
           base: "main"
