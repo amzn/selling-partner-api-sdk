@@ -41,39 +41,12 @@ jobs:
           
           # Push to origin
           git push origin $BRANCH_NAME
-          
-      - name: Debug Token
-        run: |
-          echo "TOKEN length: $(echo -n "$TOKEN" | wc -c)"
-          echo "First 5 characters: $(echo -n "$TOKEN" | cut -c1-5)"
-        env:
-          TOKEN: ${{ secrets.TOMLIKED_PAT }}
 
-      - name: Reset and Set Remote URL
+      - name: Push to Target Repository with PAT
         run: |
           set -x
-          git remote remove release-repo || echo "release-repo does not exist, skipping remove"
-          git remote add release-repo https://github.com/amzn/selling-partner-api-php-release.git
-          git remote set-url release-repo https://x-access-token:${{ secrets.TOMLIKED_PAT }}@github.com/amzn/selling-partner-api-php-release.git
-          echo "After setting URL:"
-          git remote -v
-      
-      - name: Show Remote URL
-        run: |
-          echo "Remote URL is: $(git remote get-url release-repo)"
-          
-      - name: Show Remote URL in GitHub Actions
-        run: |
-          git remote -v
-      
-      - name: Apply Git Config Override
-        run: |
-          git config --global url."https://${{ secrets.TOMLIKED_PAT }}@github.com/".insteadOf "https://github.com/"
-
-      - name: Push to Target Repository with Debug
-        run: |
-          set -x
-          git push release-repo $BRANCH_NAME --force || (echo "Push failed, checking remote URL" && git remote -v)
+          git remote add release-repo https://x-access-token:${{ secrets.TOMLIKED_PAT }}@github.com/amzn/selling-partner-api-php-release.git
+          git push release-repo $BRANCH_NAME --force
 
       - name: Create a Pull Request
         id: create_pr
@@ -90,10 +63,8 @@ jobs:
             - Tag: `sdk-release-${{ github.event.inputs.newVersionNumber }}`
           labels: automated, sdk-update
 
-      - name: Auto-Merge the PR
-        uses: pascalgn/automerge-action@v0.15.3
+      - name: Enable Auto Merge
+        run: |
+          gh pr merge --auto --merge --repo amzn/selling-partner-api-php-release --head $BRANCH_NAME
         env:
-          GITHUB_TOKEN: ${{ secrets.TOMLIKED_PAT }}
-        with:
-          mergeMethod: "squash"
-          base: "main"
+          GH_TOKEN: ${{ secrets.TOMLIKED_PAT }}
