@@ -1,4 +1,4 @@
-name: Auto Deploy PHP SDK
+name: Auto Sync PHP SDK
 
 on:
   push:
@@ -17,10 +17,10 @@ env:
   SDK_VERSION: ${{ github.event.inputs.newVersionNumber }}
 
 jobs:
-  deploy:
+  sync:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
+      - name: Checkout Source Repository (selling-partner-api-sdk)
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
@@ -30,50 +30,38 @@ jobs:
           git config user.email "tomliked@amazon.co.jp"
           git config user.name "tomliked"
 
-      - name: Create a new branch for changes
+      - name: Clone Target Repository (selling-partner-api-php-release)
         run: |
-          BRANCH_NAME="deploy-sdk-${{ env.SDK_VERSION }}-$(date +%Y%m%d-%H%M%S)"
-          git checkout -b $BRANCH_NAME
-          
-          # Add all changes (even if no changes are made)
+          git clone "https://x-access-token:${{ secrets.TOMLIKED_PAT }}@github.com/amzn/selling-partner-api-php-release.git" target-repo
+          cd target-repo
+          git checkout -b sync-sdk-${{ env.SDK_VERSION }}-$(date +%Y%m%d-%H%M%S)
+
+      - name: Sync `php/sdk/` Directory
+        run: |
+          rsync -av --delete php/sdk/ target-repo/sdk/
+
+      - name: Commit and Push Changes
+        run: |
+          cd target-repo
           git add -A
-          git commit -m "Automated Deploy PHP SDK - Version ${{ env.SDK_VERSION }}" || echo "No changes to commit"
-          
-          # Push to origin
-          git push origin $BRANCH_NAME
+          git commit -m "Sync PHP SDK - Version ${{ env.SDK_VERSION }}" || echo "No changes to commit"
+          git push origin HEAD
 
-      - name: Set Remote URL with PAT
-        run: |
-          git remote remove release-repo || true  
-          git remote add release-repo "https://x-access-token:${{ secrets.TOMLIKED_PAT }}@github.com/amzn/selling-partner-api-php-release.git"
-          git remote -v
-
-      - name: Push to Target Repository with PAT
-        run: |
-          set -x
-          GIT_TRACE=1 GIT_CURL_VERBOSE=1 git push release-repo $BRANCH_NAME --force
-
-      - name: Show Remote URL After Setting PAT
-        run: |
-          git remote -v
-
-      - name: Create a Pull Request
+      - name: Create a Pull Request in `amzn/selling-partner-api-php-release`
         id: create_pr
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.TOMLIKED_PAT }}
-          branch: $BRANCH_NAME
+          branch: sync-sdk-${{ env.SDK_VERSION }}-$(date +%Y%m%d-%H%M%S)
           base: main
-          title: "Automated PR: Deploy PHP SDK - Version ${{ github.event.inputs.newVersionNumber }}"
+          title: "Sync PHP SDK - Version ${{ github.event.inputs.newVersionNumber }}"
           body: |
-            This PR is automatically created by GitHub Actions.
-            - Changes: `php/sdk/`
+            This PR syncs the latest changes from `amzn/selling-partner-api-sdk/php/sdk/` to `amzn/selling-partner-api-php-release/sdk/`.
             - Version: ${{ github.event.inputs.newVersionNumber }}
-            - Tag: `sdk-release-${{ github.event.inputs.newVersionNumber }}`
-          labels: automated, sdk-update
+          labels: automated, sdk-sync
 
-      - name: Enable Auto Merge
+      - name: Enable Auto Merge for PR
         run: |
-          gh pr merge --auto --merge --repo amzn/selling-partner-api-php-release --head $BRANCH_NAME
+          gh pr merge --auto --merge --repo amzn/selling-partner-api-php-release --head sync-sdk-${{ env.SDK_VERSION }}-$(date +%Y%m%d-%H%M%S)
         env:
           GH_TOKEN: ${{ secrets.TOMLIKED_PAT }}
