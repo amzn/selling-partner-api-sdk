@@ -45,8 +45,13 @@ jobs:
       - name: Push to Target Repository with PAT
         run: |
           set -x
-          git remote add release-repo https://x-access-token:${{ secrets.TOMLIKED_PAT }}@github.com/amzn/selling-partner-api-php-release.git
+          git remote add release-repo https://x-access-token:${{ secrets.MY_DEPLOY_PAT }}@github.com/amzn/selling-partner-api-php-release.git
+          git remote -v
           git push release-repo $BRANCH_NAME --force
+
+      - name: Show Remote URL After Setting PAT
+        run: |
+          git remote -v
 
       - name: Create a Pull Request
         id: create_pr
