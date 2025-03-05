@@ -52,7 +52,7 @@ jobs:
       - name: Push to Target Repository with PAT
         run: |
           set -x
-          git push release-repo $BRANCH_NAME --force || (echo "Push failed, checking remote URL" && git remote -v)
+          GIT_TRACE=1 GIT_CURL_VERBOSE=1 git push release-repo $BRANCH_NAME --force
 
       - name: Show Remote URL After Setting PAT
         run: |
