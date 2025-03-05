@@ -51,6 +51,8 @@ jobs:
         run: |
           set -x
           git remote set-url release-repo https://x-access-token:${{ secrets.TOMLIKED_PAT }}@github.com/amzn/selling-partner-api-php-release.git
+          echo "After setting URL:"
+          git remote get-url release-repo
       
       - name: Show Remote URL
         run: |
@@ -59,7 +61,7 @@ jobs:
       - name: Push to Target Repository with Debug
         run: |
           set -x
-          git push release-repo $BRANCH_NAME --force || echo "Push failed, proceeding to remote URL check"
+          git push https://x-access-token:${{ secrets.TOMLIKED_PAT }}@github.com/amzn/selling-partner-api-php-release.git $BRANCH_NAME --force
 
       - name: Create a Pull Request
         id: create_pr
