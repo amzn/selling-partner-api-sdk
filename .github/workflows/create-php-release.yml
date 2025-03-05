@@ -41,6 +41,10 @@ jobs:
           
           # Push to origin
           git push origin $BRANCH_NAME
+      - name: Debug Token
+        run: |
+          echo "TOKEN length: ${#secrets.TOMLIKED_PAT}"
+          echo "First 5 characters: ${secrets.TOMLIKED_PAT:0:5}"
 
       - name: Add Remote for Target Repository
         run: |
@@ -57,6 +61,10 @@ jobs:
       - name: Show Remote URL
         run: |
           echo "Remote URL is: $(git remote get-url release-repo)"
+          
+      - name: Show Remote URL in GitHub Actions
+        run: |
+          git remote -v
       
       - name: Push to Target Repository with Debug
         run: |
