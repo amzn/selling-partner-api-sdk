@@ -40,6 +40,10 @@ jobs:
           git checkout main
           git reset --hard origin/main
 
+          # Ensure the remote is correct
+          git remote set-url origin https://x-access-token:${{ secrets.TOMLIKED_PAT }}@github.com/amzn/selling-partner-api-php-release.git
+          git remote -v
+
           # Create a new branch
           BRANCH_NAME="sync-sdk-${{ env.SDK_VERSION }}-$(date +%Y%m%d-%H%M%S)"
           git checkout -b "$BRANCH_NAME"
@@ -77,8 +81,8 @@ jobs:
             - Created at: $(date +%Y-%m-%d %H:%M:%S)
           labels: automated, sdk-sync
 
-      - name: Enable Auto Merge for PR
-        run: |
-          gh pr merge --auto --merge --repo amzn/selling-partner-api-php-release ${{ steps.create_pr.outputs.pull-request-number }}
-        env:
-          GH_TOKEN: ${{ secrets.TOMLIKED_PAT }}
+     #- name: Enable Auto Merge for PR
+     #   run: |
+     #     gh pr merge --auto --merge --repo amzn/selling-partner-api-php-release ${{ steps.create_pr.outputs.pull-request-number }}
+     #   env:
+     #     GH_TOKEN: ${{ secrets.TOMLIKED_PAT }}
