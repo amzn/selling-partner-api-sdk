@@ -44,11 +44,10 @@ jobs:
 
       - name: Set Remote URL with PAT
         run: |
-          set -x
-          git remote add release-repo https://github.com/amzn/selling-partner-api-php-release.git || echo "release-repo already exists"
-          git remote set-url release-repo https://x-access-token:${{ secrets.TOMLIKED_PAT }}@github.com/amzn/selling-partner-api-php-release.git
+          git remote remove release-repo || true  
+          git remote add release-repo https://x-access-token:${{ secrets.TOMLIKED_PAT }}@github.com/amzn/selling-partner-api-php-release.git
           git remote -v
-      
+
       - name: Push to Target Repository with PAT
         run: |
           set -x
