@@ -41,15 +41,11 @@ jobs:
           
           # Push to origin
           git push origin $BRANCH_NAME
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOMLIKED_PAT }}
 
       - name: Add Remote for Target Repository
         run: |
-          git remote add release-repo https://github.com/amzn/selling-partner-api-php-release.git
           git config --global url."https://${{ secrets.TOMLIKED_PAT }}@github.com/".insteadOf "https://github.com/"
-        env:
-          TARGET_REPO_PAT: ${{ secrets.TOMLIKED_PAT }}
+          git remote add release-repo https://github.com/amzn/selling-partner-api-php-release.git
 
       - name: Push to Target Repository
         run: |
