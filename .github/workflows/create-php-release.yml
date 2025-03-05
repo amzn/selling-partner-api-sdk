@@ -46,11 +46,16 @@ jobs:
         run: |
           git config --global url."https://${{ secrets.TOMLIKED_PAT }}@github.com/".insteadOf "https://github.com/"
           git remote add release-repo https://github.com/amzn/selling-partner-api-php-release.git
-
-      - name: Push to Target Repository
+          
+      - name: Push to Target Repository with Debug
         run: |
+          set -x
           git remote set-url release-repo https://x-access-token:${{ secrets.TOMLIKED_PAT }}@github.com/amzn/selling-partner-api-php-release.git
           git push release-repo $BRANCH_NAME --force
+
+      - name: Show Remote URL
+        run: |
+          echo "Remote URL is: $(git remote get-url release-repo)"
 
       - name: Create a Pull Request
         id: create_pr
