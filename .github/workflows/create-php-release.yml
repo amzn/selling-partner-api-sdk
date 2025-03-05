@@ -49,12 +49,6 @@ jobs:
         env:
           TOKEN: ${{ secrets.TOMLIKED_PAT }}
 
-
-      - name: Add Remote for Target Repository
-        run: |
-          git config --global url."https://${{ secrets.TOMLIKED_PAT }}@github.com/".insteadOf "https://github.com/"
-          git remote add release-repo https://github.com/amzn/selling-partner-api-php-release.git
-          
       - name: Reset and Set Remote URL
         run: |
           set -x
@@ -72,10 +66,14 @@ jobs:
         run: |
           git remote -v
       
+      - name: Apply Git Config Override
+        run: |
+          git config --global url."https://${{ secrets.TOMLIKED_PAT }}@github.com/".insteadOf "https://github.com/"
+
       - name: Push to Target Repository with Debug
         run: |
           set -x
-          git push https://x-access-token:${{ secrets.TOMLIKED_PAT }}@github.com/amzn/selling-partner-api-php-release.git $BRANCH_NAME --force
+          git push release-repo $BRANCH_NAME --force || (echo "Push failed, checking remote URL" && git remote -v)
 
       - name: Create a Pull Request
         id: create_pr
