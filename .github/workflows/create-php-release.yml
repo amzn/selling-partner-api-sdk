@@ -27,8 +27,8 @@ jobs:
 
       - name: Configure Git user
         run: |
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git config user.name "github-actions[bot]"
+          git config user.email "tomliked@amazon.co.jp"
+          git config user.name "tomliked"
 
       - name: Create a new branch for changes
         run: |
@@ -42,12 +42,17 @@ jobs:
           # Push to origin
           git push origin $BRANCH_NAME
 
+      - name: Set Remote URL with PAT
+        run: |
+          set -x
+          git remote add release-repo https://github.com/amzn/selling-partner-api-php-release.git || echo "release-repo already exists"
+          git remote set-url release-repo https://x-access-token:${{ secrets.TOMLIKED_PAT }}@github.com/amzn/selling-partner-api-php-release.git
+          git remote -v
+      
       - name: Push to Target Repository with PAT
         run: |
           set -x
-          git remote add release-repo https://x-access-token:${{ secrets.MY_DEPLOY_PAT }}@github.com/amzn/selling-partner-api-php-release.git
-          git remote -v
-          git push release-repo $BRANCH_NAME --force
+          git push release-repo $BRANCH_NAME --force || (echo "Push failed, checking remote URL" && git remote -v)
 
       - name: Show Remote URL After Setting PAT
         run: |
