@@ -30,11 +30,15 @@ jobs:
           git config user.email "tomliked@amazon.co.jp"
           git config user.name "tomliked"
 
+      - name: Define Branch Name
+        run: |
+          echo "SYNC_BRANCH=sync-sdk-${{ env.SDK_VERSION }}-$(date +%Y%m%d-%H%M%S)" >> $GITHUB_ENV
+
       - name: Clone Target Repository (selling-partner-api-php-release)
         run: |
-          git clone "https://x-access-token:${{ secrets.TOMLIKED_PAT }}@github.com/amzn/selling-partner-api-php-release.git" target-repo
+          git clone --depth=1 https://x-access-token:${{ secrets.TOMLIKED_PAT }}@github.com/amzn/selling-partner-api-php-release.git target-repo
           cd target-repo
-          git checkout -b sync-sdk-${{ env.SDK_VERSION }}-$(date +%Y%m%d-%H%M%S)
+          git checkout -b "$SYNC_BRANCH"
 
       - name: Sync `php/sdk/` Directory
         run: |
@@ -44,15 +48,16 @@ jobs:
         run: |
           cd target-repo
           git add -A
+          git rm --cached .git -r || true
           git commit -m "Sync PHP SDK - Version ${{ env.SDK_VERSION }}" || echo "No changes to commit"
-          git push origin HEAD
+          git push origin "$SYNC_BRANCH"
 
       - name: Create a Pull Request in `amzn/selling-partner-api-php-release`
         id: create_pr
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.TOMLIKED_PAT }}
-          branch: sync-sdk-${{ env.SDK_VERSION }}-$(date +%Y%m%d-%H%M%S)
+          branch: ${{ env.SYNC_BRANCH }}
           base: main
           title: "Sync PHP SDK - Version ${{ github.event.inputs.newVersionNumber }}"
           body: |
@@ -62,6 +67,6 @@ jobs:
 
       - name: Enable Auto Merge for PR
         run: |
-          gh pr merge --auto --merge --repo amzn/selling-partner-api-php-release --head sync-sdk-${{ env.SDK_VERSION }}-$(date +%Y%m%d-%H%M%S)
+          gh pr merge --auto --merge --repo amzn/selling-partner-api-php-release --head "$SYNC_BRANCH"
         env:
           GH_TOKEN: ${{ secrets.TOMLIKED_PAT }}
