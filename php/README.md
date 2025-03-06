@@ -2,6 +2,11 @@
 
 The Selling Partner API SDK for PHP enables you to easily connect your PHP application to Amazon's REST-based SP-API.
 
+This SDK helps developers:
+- Authenticate with Amazon's Selling Partner API (SP-API)
+- Send and receive data using RESTful endpoints
+- Manage Amazon marketplace operations programmatically
+
 * [Learn more about SP-API](https://developer.amazonservices.com/)
 * [API Documentation](https://developer-docs.amazon.com/sp-api/)
 
@@ -17,11 +22,39 @@ If you are already registered successfully, you can find instructions on how to 
 
 ### Minimum Requirements
 
-To run the SDK you need PHP 7.4 or higher.
+To run the SDK you need PHP 8.3 or higher.
 
+
+### Installation
+Install the SDK via Composer:
+```config
+    "require": {
+        "amzn-spapi/sdk": "*"
+    }
+```
+If needed, you can set "minimum-stability": "dev" in your composer.json: 
+```Json
+{
+  "require": {
+    "amzn-spapi/sdk": "*"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
+
+```
+
+Then run:
+```command
+    composer install
+```
+or 
+```command
+    composer update
+```
+Then you are ready to interact with SP-API!
 
 ### Manual Installation
-
 By using the download files, composer dependencies are already installed. You only need to include `autoload.php`:
 
 ```php
@@ -41,9 +74,9 @@ In order to call one of the APIs included in the Selling Partner API, you need t
 require_once(__DIR__ . '/vendor/autoload.php');
 
 use SpApi\AuthAndAuth\LWAAuthorizationCredentials;
-use SpApi\AuthAndAuth\LWAAuthorizationSigner;
-use SpApi\Api\OrdersApi;
 use SpApi\Configuration;
+use SpApi\Api\orders\v0\OrdersV0Api;
+use Dotenv\Dotenv;
 
 
 // Set up LWA credentials
@@ -54,28 +87,27 @@ $lwaAuthorizationCredentials = new LWAAuthorizationCredentials([
 "endpoint" => "https://api.amazon.com/auth/o2/token"
 ]);
 
-// Initialize LWAAuthorizationSigner instance
-$lwaAuthorizationSigner = new LWAAuthorizationSigner($lwaAuthorizationCredentials);
+//Initialize config
 $config = new Configuration([], $lwaAuthorizationCredentials);
 
 // Setting SP-API endpoint region
-$config->setHost('https://sellingpartnerapi-na.amazon.com');
+$config->setHost($_ENV['SP_API_ENDPOINT_HOST']);
 
 // Create a new HTTP client
 $client = new GuzzleHttp\Client();
 
 // Create an instance of the Orders Api
-$api = new OrdersApi($config, null, $client);
+$api = new OrdersV0Api($config, null, $client);
 
 try {
-// Call getOrders
-$result = $api->getOrders(
-$marketplace_ids = ['ATVPDKIKX0DER'],
-$created_after = '2024-01-01'
-);
-print_r($result);
+    // Call getOrders
+    $result = $api->getOrders(
+        $marketplace_ids = ['A1VC38T7YXB528'],
+        $created_after = '2025-01-01'
+    );
+    print_r($result);
 } catch (Exception $e) {
-echo 'Exception when calling OrderApi->getOrders: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling OrderApi->getOrders: ', $e->getMessage(), PHP_EOL;
 }
 
 
@@ -84,13 +116,12 @@ echo 'Exception when calling OrderApi->getOrders: ', $e->getMessage(), PHP_EOL;
 
 ### Giving Feedback
 
-We need your help in making this SDK great. Please participate in the community and contribute to this effort by submitting issues, participating in discussion forums and submitting pull requests through the following channels:
+### Feedback and Contributions
 
-Submit [issues][sdk-issues] - this is the preferred channel to interact with our team
-Articulate your feature request or upvote existing ones on our [Issues][sdk-issues] page
+Your feedback is invaluable in improving this SDK! You can contribute by:
 
-[sdk-issues]: https://github.com/amzn/selling-partner-api-sdk/issues
-
+- Reporting issues: [Submit an issue](https://github.com/amzn/selling-partner-api-sdk/issues)
+- Suggesting enhancements: Upvote or comment on existing [feature requests](https://github.com/amzn/selling-partner-api-sdk/issues)
 
 
 ## Disclaimer
