@@ -16,6 +16,10 @@ on:
 env:
   SDK_VERSION: ${{ github.event.inputs.newVersionNumber }}
 
+concurrency:
+  group: sync-php-sdk-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   sync:
     runs-on: ubuntu-latest
@@ -24,60 +28,80 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-
-      - name: Configure Git user
-        run: |
-          git config user.email "tomliked@amazon.co.jp"
-          git config user.name "tomliked"
+          submodules: true
+          path: selling-partner-api-sdk
 
       - name: Clone Target Repository (selling-partner-api-php-release)
         run: |
           mkdir -p ~/workspace
           cd ~/workspace
-          git clone --depth=1 https://x-access-token:${{ secrets.TOMLIKED_PAT }}@github.com/amzn/selling-partner-api-php-release.git target-repo
-          cd target-repo
-          git fetch origin
-          git checkout main
-          git reset --hard origin/main
-          git remote set-url origin https://x-access-token:${{ secrets.TOMLIKED_PAT }}@github.com/amzn/selling-partner-api-php-release.git
-          BRANCH_NAME="sync-sdk-${{ env.SDK_VERSION }}-$(date +%Y%m%d-%H%M%S)"
-          git checkout -b "$BRANCH_NAME"
-          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
-          git branch
+          echo "Cloning selling-partner-api-php-release..."
+          git clone --depth=1 https://x-access-token:${{ secrets.TOMLIKED_PAT }}@github.com/amzn/selling-partner-api-php-release.git target-repo || { echo "Git clone failed"; exit 1; }
 
-      - name: Sync `php/sdk/` to Target Repo Root
+      - name: Fully Sync php/sdk/ to Target Repo
         run: |
-          rsync -av --delete php/sdk/ ~/workspace/target-repo/
-
-      - name: Check for Changes
-        run: |
-          cd ~/workspace/target-repo
-          git status
-          git diff --stat origin/main || true
-
-      - name: Verify Remote URL
-        run: |
-          cd ~/workspace/target-repo
-          git remote -v
+          echo "Syncing selling-partner-api-sdk/php/sdk/ to ~/workspace/target-repo/..."
+          rsync -av --delete --force --exclude='.git/' --exclude='test/' selling-partner-api-sdk/php/sdk/ ~/workspace/target-repo/
+          echo "Sync complete. Checking target-repo/"
+          ls -la ~/workspace/target-repo/
 
       - name: Commit and Push Changes
         run: |
           cd ~/workspace/target-repo
+          git config user.email "tomliked@amazon.co.jp"
+          git config user.name "tomliked"
+          BRANCH_NAME="sync-sdk-${{ env.SDK_VERSION }}-$(date +%Y%m%d-%H%M%S)"
+          git checkout -b "$BRANCH_NAME"
+          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
+          
           git add -A
           git commit -m "Sync PHP SDK - Version ${{ env.SDK_VERSION }}" || echo "No changes to commit"
-          echo "Current Branch: $(git branch --show-current)"
-          git push origin "$(git branch --show-current)"
+          
+          git remote set-url origin https://x-access-token:${{ secrets.TOMLIKED_PAT }}@github.com/amzn/selling-partner-api-php-release.git
+          git push origin "$BRANCH_NAME"
 
       - name: Create a Pull Request
         id: create_pr
-        uses: peter-evans/create-pull-request@v5
-        with:
-          token: ${{ secrets.TOMLIKED_PAT }}
-          branch: ${{ env.BRANCH_NAME }}
-          base: main
-          title: "Sync PHP SDK - Version ${{ github.event.inputs.newVersionNumber }}"
-          body: |
-            This PR syncs the latest changes from `selling-partner-api-sdk/php/sdk/` to `selling-partner-api-php-release/`.
-            - Version: ${{ github.event.inputs.newVersionNumber }}
-          labels: automated, sdk-sync
+        run: |
+          cd ~/workspace/target-repo
+          echo "Current directory: $(pwd)"
+          git status || { echo "ERROR: Not in a Git repository!"; exit 1; }
+          
+          gh pr create --title "Sync PHP SDK - Version ${{ env.SDK_VERSION }}" \
+                       --body "This PR syncs the latest changes from \`selling-partner-api-sdk/php/sdk/\` to \`selling-partner-api-php-release/\`." \
+                       --head "${{ env.BRANCH_NAME }}" --base "main"
+          
+          PR_URL=$(gh pr view "${{ env.BRANCH_NAME }}" --json url --jq '.url')
+          echo "Pull Request Created: $PR_URL"
+          echo "PULL_REQUEST_URL=$PR_URL" >> $GITHUB_ENV
+        env:
+          GH_TOKEN: ${{ secrets.TOMLIKED_PAT }}
+
+      - name: Enable Auto Merge for PR
+        run: |
+          echo "Merging PR: ${{ env.PULL_REQUEST_URL }}"
+          gh pr merge --auto --merge "${{ env.PULL_REQUEST_URL }}"
+        env:
+          GH_TOKEN: ${{ secrets.TOMLIKED_PAT }}
+
+      - name: Create a Release Tag
+        run: |
+          cd ~/workspace/target-repo
+          git fetch origin main
+          git checkout main
+          TAG_NAME="${{ env.SDK_VERSION }}"
+          git tag "$TAG_NAME"
+          git push origin "$TAG_NAME"
+          echo "TAG_NAME=$TAG_NAME" >> $GITHUB_ENV
+        env:
+          GH_TOKEN: ${{ secrets.TOMLIKED_PAT }}
+
+      - name: Publish GitHub Release
+        run: |
+          cd ~/workspace/target-repo
+          gh release create "${{ env.TAG_NAME }}" \
+            --title "SDK Release ${{ env.SDK_VERSION }}" \
+            --notes "This release includes the latest sync from \`selling-partner-api-sdk/php/sdk/\`."
+        env:
+          GH_TOKEN: ${{ secrets.TOMLIKED_PAT }}
 
