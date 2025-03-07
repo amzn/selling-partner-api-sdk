@@ -27,33 +27,9 @@ To run the SDK you need PHP 8.3 or higher.
 
 ### Installation
 Install the SDK via Composer:
-```config
-    "require": {
-        "amzn-spapi/sdk": "*"
-    }
-```
-If needed, you can set "minimum-stability": "dev" in your composer.json: 
-```Json
-{
-  "require": {
-    "amzn-spapi/sdk": "*"
-  },
-  "minimum-stability": "dev",
-  "prefer-stable": true
-}
-
-```
-
-Then run:
 ```command
-    composer install
+composer require amzn-spapi/sdk
 ```
-or 
-```command
-    composer update
-```
-Then you are ready to interact with SP-API!
-
 ### Manual Installation
 By using the download files, composer dependencies are already installed. You only need to include `autoload.php`:
 
@@ -109,9 +85,6 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling OrderApi->getOrders: ', $e->getMessage(), PHP_EOL;
 }
-
-
-
 ```
 
 ### Giving Feedback
@@ -120,8 +93,7 @@ try {
 
 Your feedback is invaluable in improving this SDK! You can contribute by:
 
-- Reporting issues: [Submit an issue](https://github.com/amzn/selling-partner-api-sdk/issues)
-- Suggesting enhancements: Upvote or comment on existing [feature requests](https://github.com/amzn/selling-partner-api-sdk/issues)
+- Reporting issues: [Submit an issue](https://github.com/amzn/selling-partner-api-sdk/issues/new/choose)
 
 
 ## Disclaimer
