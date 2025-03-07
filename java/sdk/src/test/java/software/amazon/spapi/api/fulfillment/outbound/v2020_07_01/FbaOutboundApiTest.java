@@ -14,6 +14,10 @@ package software.amazon.spapi.api.fulfillment.outbound.v2020_07_01;
 
 import software.amazon.spapi.ApiResponse;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
+import org.jeasy.random.EasyRandom;
+import org.jeasy.random.EasyRandomParameters;
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.OffsetDateTime;
 import software.amazon.spapi.models.fulfillment.outbound.v2020_07_01.CancelFulfillmentOrderResponse;
 import software.amazon.spapi.models.fulfillment.outbound.v2020_07_01.CreateFulfillmentOrderRequest;
 import software.amazon.spapi.models.fulfillment.outbound.v2020_07_01.CreateFulfillmentOrderResponse;
@@ -47,24 +51,30 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class FbaOutboundApiTest {
 
-   private static String endpoint = "http://localhost:3000";
-   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
-   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+    private static String endpoint = "http://localhost:3000";
+    private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+    private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
         .clientId("clientId")
         .clientSecret("clientSecret")
         .refreshToken("refreshToken")
         .endpoint(authEndpoint)
         .build();
 
-   private final FbaOutboundApi api = new FbaOutboundApi.Builder()
+    private final FbaOutboundApi api = new FbaOutboundApi.Builder()
         .lwaAuthorizationCredentials(credentials)
         .endpoint(endpoint)
         .build();
 
+    private final EasyRandom easyRandom = new EasyRandom(
+        new EasyRandomParameters().randomize(OffsetDateTime.class, OffsetDateTime::now)
+                .randomize(LocalDate.class, LocalDate::now)
+                .collectionSizeRange(1, 2)
+    );
+
     @Test
     public void cancelFulfillmentOrderTest() throws Exception {
         instructBackendMock("cancelFulfillmentOrder", "200");
-        String sellerFulfillmentOrderId = "";
+        String sellerFulfillmentOrderId = easyRandom.nextObject(String.class);
 
         ApiResponse<CancelFulfillmentOrderResponse> response = api.cancelFulfillmentOrderWithHttpInfo(sellerFulfillmentOrderId);
 
@@ -75,7 +85,7 @@ public class FbaOutboundApiTest {
     @Test
     public void createFulfillmentOrderTest() throws Exception {
         instructBackendMock("createFulfillmentOrder", "200");
-        CreateFulfillmentOrderRequest body = new CreateFulfillmentOrderRequest();
+        CreateFulfillmentOrderRequest body = easyRandom.nextObject(CreateFulfillmentOrderRequest.class);
 
         ApiResponse<CreateFulfillmentOrderResponse> response = api.createFulfillmentOrderWithHttpInfo(body);
 
@@ -86,8 +96,8 @@ public class FbaOutboundApiTest {
     @Test
     public void createFulfillmentReturnTest() throws Exception {
         instructBackendMock("createFulfillmentReturn", "200");
-        CreateFulfillmentReturnRequest body = new CreateFulfillmentReturnRequest();
-        String sellerFulfillmentOrderId = "";
+        CreateFulfillmentReturnRequest body = easyRandom.nextObject(CreateFulfillmentReturnRequest.class);
+        String sellerFulfillmentOrderId = easyRandom.nextObject(String.class);
 
         ApiResponse<CreateFulfillmentReturnResponse> response = api.createFulfillmentReturnWithHttpInfo(body, sellerFulfillmentOrderId);
 
@@ -98,7 +108,7 @@ public class FbaOutboundApiTest {
     @Test
     public void deliveryOffersTest() throws Exception {
         instructBackendMock("deliveryOffers", "200");
-        GetDeliveryOffersRequest body = new GetDeliveryOffersRequest();
+        GetDeliveryOffersRequest body = easyRandom.nextObject(GetDeliveryOffersRequest.class);
 
         ApiResponse<GetDeliveryOffersResponse> response = api.deliveryOffersWithHttpInfo(body);
 
@@ -109,8 +119,8 @@ public class FbaOutboundApiTest {
     @Test
     public void getFeatureInventoryTest() throws Exception {
         instructBackendMock("getFeatureInventory", "200");
-        String marketplaceId = "";
-        String featureName = "";
+        String marketplaceId = easyRandom.nextObject(String.class);
+        String featureName = easyRandom.nextObject(String.class);
 
         ApiResponse<GetFeatureInventoryResponse> response = api.getFeatureInventoryWithHttpInfo(marketplaceId, featureName, null, null);
 
@@ -121,9 +131,9 @@ public class FbaOutboundApiTest {
     @Test
     public void getFeatureSKUTest() throws Exception {
         instructBackendMock("getFeatureSKU", "200");
-        String marketplaceId = "";
-        String featureName = "";
-        String sellerSku = "";
+        String marketplaceId = easyRandom.nextObject(String.class);
+        String featureName = easyRandom.nextObject(String.class);
+        String sellerSku = easyRandom.nextObject(String.class);
 
         ApiResponse<GetFeatureSkuResponse> response = api.getFeatureSKUWithHttpInfo(marketplaceId, featureName, sellerSku);
 
@@ -134,7 +144,7 @@ public class FbaOutboundApiTest {
     @Test
     public void getFeaturesTest() throws Exception {
         instructBackendMock("getFeatures", "200");
-        String marketplaceId = "";
+        String marketplaceId = easyRandom.nextObject(String.class);
 
         ApiResponse<GetFeaturesResponse> response = api.getFeaturesWithHttpInfo(marketplaceId);
 
@@ -145,7 +155,7 @@ public class FbaOutboundApiTest {
     @Test
     public void getFulfillmentOrderTest() throws Exception {
         instructBackendMock("getFulfillmentOrder", "200");
-        String sellerFulfillmentOrderId = "";
+        String sellerFulfillmentOrderId = easyRandom.nextObject(String.class);
 
         ApiResponse<GetFulfillmentOrderResponse> response = api.getFulfillmentOrderWithHttpInfo(sellerFulfillmentOrderId);
 
@@ -156,7 +166,7 @@ public class FbaOutboundApiTest {
     @Test
     public void getFulfillmentPreviewTest() throws Exception {
         instructBackendMock("getFulfillmentPreview", "200");
-        GetFulfillmentPreviewRequest body = new GetFulfillmentPreviewRequest();
+        GetFulfillmentPreviewRequest body = easyRandom.nextObject(GetFulfillmentPreviewRequest.class);
 
         ApiResponse<GetFulfillmentPreviewResponse> response = api.getFulfillmentPreviewWithHttpInfo(body);
 
@@ -167,7 +177,7 @@ public class FbaOutboundApiTest {
     @Test
     public void getPackageTrackingDetailsTest() throws Exception {
         instructBackendMock("getPackageTrackingDetails", "200");
-        int packageNumber = 1;
+        Integer packageNumber = easyRandom.nextObject(Integer.class);
 
         ApiResponse<GetPackageTrackingDetailsResponse> response = api.getPackageTrackingDetailsWithHttpInfo(packageNumber);
 
@@ -188,7 +198,7 @@ public class FbaOutboundApiTest {
     @Test
     public void listReturnReasonCodesTest() throws Exception {
         instructBackendMock("listReturnReasonCodes", "200");
-        String sellerSku = "";
+        String sellerSku = easyRandom.nextObject(String.class);
 
         ApiResponse<ListReturnReasonCodesResponse> response = api.listReturnReasonCodesWithHttpInfo(sellerSku, null, null, null);
 
@@ -199,8 +209,8 @@ public class FbaOutboundApiTest {
     @Test
     public void submitFulfillmentOrderStatusUpdateTest() throws Exception {
         instructBackendMock("submitFulfillmentOrderStatusUpdate", "200");
-        SubmitFulfillmentOrderStatusUpdateRequest body = new SubmitFulfillmentOrderStatusUpdateRequest();
-        String sellerFulfillmentOrderId = "";
+        SubmitFulfillmentOrderStatusUpdateRequest body = easyRandom.nextObject(SubmitFulfillmentOrderStatusUpdateRequest.class);
+        String sellerFulfillmentOrderId = easyRandom.nextObject(String.class);
 
         ApiResponse<SubmitFulfillmentOrderStatusUpdateResponse> response = api.submitFulfillmentOrderStatusUpdateWithHttpInfo(body, sellerFulfillmentOrderId);
 
@@ -211,8 +221,8 @@ public class FbaOutboundApiTest {
     @Test
     public void updateFulfillmentOrderTest() throws Exception {
         instructBackendMock("updateFulfillmentOrder", "200");
-        UpdateFulfillmentOrderRequest body = new UpdateFulfillmentOrderRequest();
-        String sellerFulfillmentOrderId = "";
+        UpdateFulfillmentOrderRequest body = easyRandom.nextObject(UpdateFulfillmentOrderRequest.class);
+        String sellerFulfillmentOrderId = easyRandom.nextObject(String.class);
 
         ApiResponse<UpdateFulfillmentOrderResponse> response = api.updateFulfillmentOrderWithHttpInfo(body, sellerFulfillmentOrderId);
 

@@ -14,6 +14,10 @@ package software.amazon.spapi.api.orders.v0;
 
 import software.amazon.spapi.ApiResponse;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
+import org.jeasy.random.EasyRandom;
+import org.jeasy.random.EasyRandomParameters;
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.OffsetDateTime;
 import software.amazon.spapi.models.orders.v0.ConfirmShipmentErrorResponse;
 import software.amazon.spapi.models.orders.v0.ConfirmShipmentRequest;
 import software.amazon.spapi.models.orders.v0.GetOrderAddressResponse;
@@ -37,25 +41,31 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class OrdersV0ApiTest {
 
-   private static String endpoint = "http://localhost:3000";
-   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
-   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+    private static String endpoint = "http://localhost:3000";
+    private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+    private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
         .clientId("clientId")
         .clientSecret("clientSecret")
         .refreshToken("refreshToken")
         .endpoint(authEndpoint)
         .build();
 
-   private final OrdersV0Api api = new OrdersV0Api.Builder()
+    private final OrdersV0Api api = new OrdersV0Api.Builder()
         .lwaAuthorizationCredentials(credentials)
         .endpoint(endpoint)
         .build();
 
+    private final EasyRandom easyRandom = new EasyRandom(
+        new EasyRandomParameters().randomize(OffsetDateTime.class, OffsetDateTime::now)
+                .randomize(LocalDate.class, LocalDate::now)
+                .collectionSizeRange(1, 2)
+    );
+
     @Test
     public void confirmShipmentTest() throws Exception {
         instructBackendMock("confirmShipment", "204");
-        ConfirmShipmentRequest body = new ConfirmShipmentRequest();
-        String orderId = "";
+        ConfirmShipmentRequest body = easyRandom.nextObject(ConfirmShipmentRequest.class);
+        String orderId = easyRandom.nextObject(String.class);
 
         api.confirmShipmentWithHttpInfo(body, orderId);
 
@@ -64,7 +74,7 @@ public class OrdersV0ApiTest {
     @Test
     public void getOrderTest() throws Exception {
         instructBackendMock("getOrder", "200");
-        String orderId = "";
+        String orderId = easyRandom.nextObject(String.class);
 
         ApiResponse<GetOrderResponse> response = api.getOrderWithHttpInfo(orderId);
 
@@ -75,7 +85,7 @@ public class OrdersV0ApiTest {
     @Test
     public void getOrderAddressTest() throws Exception {
         instructBackendMock("getOrderAddress", "200");
-        String orderId = "";
+        String orderId = easyRandom.nextObject(String.class);
 
         ApiResponse<GetOrderAddressResponse> response = api.getOrderAddressWithHttpInfo(orderId);
 
@@ -86,7 +96,7 @@ public class OrdersV0ApiTest {
     @Test
     public void getOrderBuyerInfoTest() throws Exception {
         instructBackendMock("getOrderBuyerInfo", "200");
-        String orderId = "";
+        String orderId = easyRandom.nextObject(String.class);
 
         ApiResponse<GetOrderBuyerInfoResponse> response = api.getOrderBuyerInfoWithHttpInfo(orderId);
 
@@ -97,7 +107,7 @@ public class OrdersV0ApiTest {
     @Test
     public void getOrderItemsTest() throws Exception {
         instructBackendMock("getOrderItems", "200");
-        String orderId = "";
+        String orderId = easyRandom.nextObject(String.class);
 
         ApiResponse<GetOrderItemsResponse> response = api.getOrderItemsWithHttpInfo(orderId, null);
 
@@ -108,7 +118,7 @@ public class OrdersV0ApiTest {
     @Test
     public void getOrderItemsBuyerInfoTest() throws Exception {
         instructBackendMock("getOrderItemsBuyerInfo", "200");
-        String orderId = "";
+        String orderId = easyRandom.nextObject(String.class);
 
         ApiResponse<GetOrderItemsBuyerInfoResponse> response = api.getOrderItemsBuyerInfoWithHttpInfo(orderId, null);
 
@@ -119,7 +129,7 @@ public class OrdersV0ApiTest {
     @Test
     public void getOrderRegulatedInfoTest() throws Exception {
         instructBackendMock("getOrderRegulatedInfo", "200");
-        String orderId = "";
+        String orderId = easyRandom.nextObject(String.class);
 
         ApiResponse<GetOrderRegulatedInfoResponse> response = api.getOrderRegulatedInfoWithHttpInfo(orderId);
 
@@ -141,8 +151,8 @@ public class OrdersV0ApiTest {
     @Test
     public void updateVerificationStatusTest() throws Exception {
         instructBackendMock("updateVerificationStatus", "204");
-        UpdateVerificationStatusRequest body = new UpdateVerificationStatusRequest();
-        String orderId = "";
+        UpdateVerificationStatusRequest body = easyRandom.nextObject(UpdateVerificationStatusRequest.class);
+        String orderId = easyRandom.nextObject(String.class);
 
         api.updateVerificationStatusWithHttpInfo(body, orderId);
 

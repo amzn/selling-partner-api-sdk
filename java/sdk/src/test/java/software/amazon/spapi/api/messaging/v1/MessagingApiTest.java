@@ -14,6 +14,10 @@ package software.amazon.spapi.api.messaging.v1;
 
 import software.amazon.spapi.ApiResponse;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
+import org.jeasy.random.EasyRandom;
+import org.jeasy.random.EasyRandomParameters;
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.OffsetDateTime;
 import software.amazon.spapi.models.messaging.v1.CreateAmazonMotorsRequest;
 import software.amazon.spapi.models.messaging.v1.CreateAmazonMotorsResponse;
 import software.amazon.spapi.models.messaging.v1.CreateConfirmCustomizationDetailsRequest;
@@ -49,25 +53,31 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class MessagingApiTest {
 
-   private static String endpoint = "http://localhost:3000";
-   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
-   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+    private static String endpoint = "http://localhost:3000";
+    private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+    private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
         .clientId("clientId")
         .clientSecret("clientSecret")
         .refreshToken("refreshToken")
         .endpoint(authEndpoint)
         .build();
 
-   private final MessagingApi api = new MessagingApi.Builder()
+    private final MessagingApi api = new MessagingApi.Builder()
         .lwaAuthorizationCredentials(credentials)
         .endpoint(endpoint)
         .build();
 
+    private final EasyRandom easyRandom = new EasyRandom(
+        new EasyRandomParameters().randomize(OffsetDateTime.class, OffsetDateTime::now)
+                .randomize(LocalDate.class, LocalDate::now)
+                .collectionSizeRange(1, 2)
+    );
+
     @Test
     public void confirmCustomizationDetailsTest() throws Exception {
         instructBackendMock("confirmCustomizationDetails", "201");
-        CreateConfirmCustomizationDetailsRequest body = new CreateConfirmCustomizationDetailsRequest();
-        String amazonOrderId = "";
+        CreateConfirmCustomizationDetailsRequest body = easyRandom.nextObject(CreateConfirmCustomizationDetailsRequest.class);
+        String amazonOrderId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<CreateConfirmCustomizationDetailsResponse> response = api.confirmCustomizationDetailsWithHttpInfo(body, amazonOrderId, marketplaceIds);
@@ -79,8 +89,8 @@ public class MessagingApiTest {
     @Test
     public void createAmazonMotorsTest() throws Exception {
         instructBackendMock("createAmazonMotors", "201");
-        CreateAmazonMotorsRequest body = new CreateAmazonMotorsRequest();
-        String amazonOrderId = "";
+        CreateAmazonMotorsRequest body = easyRandom.nextObject(CreateAmazonMotorsRequest.class);
+        String amazonOrderId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<CreateAmazonMotorsResponse> response = api.createAmazonMotorsWithHttpInfo(body, amazonOrderId, marketplaceIds);
@@ -92,8 +102,8 @@ public class MessagingApiTest {
     @Test
     public void createConfirmDeliveryDetailsTest() throws Exception {
         instructBackendMock("createConfirmDeliveryDetails", "201");
-        CreateConfirmDeliveryDetailsRequest body = new CreateConfirmDeliveryDetailsRequest();
-        String amazonOrderId = "";
+        CreateConfirmDeliveryDetailsRequest body = easyRandom.nextObject(CreateConfirmDeliveryDetailsRequest.class);
+        String amazonOrderId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<CreateConfirmDeliveryDetailsResponse> response = api.createConfirmDeliveryDetailsWithHttpInfo(body, amazonOrderId, marketplaceIds);
@@ -105,8 +115,8 @@ public class MessagingApiTest {
     @Test
     public void createConfirmOrderDetailsTest() throws Exception {
         instructBackendMock("createConfirmOrderDetails", "201");
-        CreateConfirmOrderDetailsRequest body = new CreateConfirmOrderDetailsRequest();
-        String amazonOrderId = "";
+        CreateConfirmOrderDetailsRequest body = easyRandom.nextObject(CreateConfirmOrderDetailsRequest.class);
+        String amazonOrderId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<CreateConfirmOrderDetailsResponse> response = api.createConfirmOrderDetailsWithHttpInfo(body, amazonOrderId, marketplaceIds);
@@ -118,8 +128,8 @@ public class MessagingApiTest {
     @Test
     public void createConfirmServiceDetailsTest() throws Exception {
         instructBackendMock("createConfirmServiceDetails", "201");
-        CreateConfirmServiceDetailsRequest body = new CreateConfirmServiceDetailsRequest();
-        String amazonOrderId = "";
+        CreateConfirmServiceDetailsRequest body = easyRandom.nextObject(CreateConfirmServiceDetailsRequest.class);
+        String amazonOrderId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<CreateConfirmServiceDetailsResponse> response = api.createConfirmServiceDetailsWithHttpInfo(body, amazonOrderId, marketplaceIds);
@@ -131,8 +141,8 @@ public class MessagingApiTest {
     @Test
     public void createDigitalAccessKeyTest() throws Exception {
         instructBackendMock("createDigitalAccessKey", "201");
-        CreateDigitalAccessKeyRequest body = new CreateDigitalAccessKeyRequest();
-        String amazonOrderId = "";
+        CreateDigitalAccessKeyRequest body = easyRandom.nextObject(CreateDigitalAccessKeyRequest.class);
+        String amazonOrderId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<CreateDigitalAccessKeyResponse> response = api.createDigitalAccessKeyWithHttpInfo(body, amazonOrderId, marketplaceIds);
@@ -144,8 +154,8 @@ public class MessagingApiTest {
     @Test
     public void createLegalDisclosureTest() throws Exception {
         instructBackendMock("createLegalDisclosure", "201");
-        CreateLegalDisclosureRequest body = new CreateLegalDisclosureRequest();
-        String amazonOrderId = "";
+        CreateLegalDisclosureRequest body = easyRandom.nextObject(CreateLegalDisclosureRequest.class);
+        String amazonOrderId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<CreateLegalDisclosureResponse> response = api.createLegalDisclosureWithHttpInfo(body, amazonOrderId, marketplaceIds);
@@ -157,7 +167,7 @@ public class MessagingApiTest {
     @Test
     public void createNegativeFeedbackRemovalTest() throws Exception {
         instructBackendMock("createNegativeFeedbackRemoval", "201");
-        String amazonOrderId = "";
+        String amazonOrderId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<CreateNegativeFeedbackRemovalResponse> response = api.createNegativeFeedbackRemovalWithHttpInfo(amazonOrderId, marketplaceIds);
@@ -169,8 +179,8 @@ public class MessagingApiTest {
     @Test
     public void createUnexpectedProblemTest() throws Exception {
         instructBackendMock("createUnexpectedProblem", "201");
-        CreateUnexpectedProblemRequest body = new CreateUnexpectedProblemRequest();
-        String amazonOrderId = "";
+        CreateUnexpectedProblemRequest body = easyRandom.nextObject(CreateUnexpectedProblemRequest.class);
+        String amazonOrderId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<CreateUnexpectedProblemResponse> response = api.createUnexpectedProblemWithHttpInfo(body, amazonOrderId, marketplaceIds);
@@ -182,8 +192,8 @@ public class MessagingApiTest {
     @Test
     public void createWarrantyTest() throws Exception {
         instructBackendMock("createWarranty", "201");
-        CreateWarrantyRequest body = new CreateWarrantyRequest();
-        String amazonOrderId = "";
+        CreateWarrantyRequest body = easyRandom.nextObject(CreateWarrantyRequest.class);
+        String amazonOrderId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<CreateWarrantyResponse> response = api.createWarrantyWithHttpInfo(body, amazonOrderId, marketplaceIds);
@@ -195,7 +205,7 @@ public class MessagingApiTest {
     @Test
     public void getAttributesTest() throws Exception {
         instructBackendMock("getAttributes", "200");
-        String amazonOrderId = "";
+        String amazonOrderId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<GetAttributesResponse> response = api.getAttributesWithHttpInfo(amazonOrderId, marketplaceIds);
@@ -207,7 +217,7 @@ public class MessagingApiTest {
     @Test
     public void getMessagingActionsForOrderTest() throws Exception {
         instructBackendMock("getMessagingActionsForOrder", "200");
-        String amazonOrderId = "";
+        String amazonOrderId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<GetMessagingActionsForOrderResponse> response = api.getMessagingActionsForOrderWithHttpInfo(amazonOrderId, marketplaceIds);
@@ -219,8 +229,8 @@ public class MessagingApiTest {
     @Test
     public void sendInvoiceTest() throws Exception {
         instructBackendMock("sendInvoice", "201");
-        InvoiceRequest body = new InvoiceRequest();
-        String amazonOrderId = "";
+        InvoiceRequest body = easyRandom.nextObject(InvoiceRequest.class);
+        String amazonOrderId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<InvoiceResponse> response = api.sendInvoiceWithHttpInfo(body, amazonOrderId, marketplaceIds);
