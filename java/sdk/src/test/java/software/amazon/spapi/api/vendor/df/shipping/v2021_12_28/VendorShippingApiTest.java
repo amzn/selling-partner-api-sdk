@@ -14,6 +14,10 @@ package software.amazon.spapi.api.vendor.df.shipping.v2021_12_28;
 
 import software.amazon.spapi.ApiResponse;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
+import org.jeasy.random.EasyRandom;
+import org.jeasy.random.EasyRandomParameters;
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.OffsetDateTime;
 import software.amazon.spapi.models.vendor.df.shipping.v2021_12_28.ErrorList;
 import org.threeten.bp.OffsetDateTime;
 import software.amazon.spapi.models.vendor.df.shipping.v2021_12_28.PackingSlip;
@@ -33,24 +37,30 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class VendorShippingApiTest {
 
-   private static String endpoint = "http://localhost:3000";
-   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
-   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+    private static String endpoint = "http://localhost:3000";
+    private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+    private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
         .clientId("clientId")
         .clientSecret("clientSecret")
         .refreshToken("refreshToken")
         .endpoint(authEndpoint)
         .build();
 
-   private final VendorShippingApi api = new VendorShippingApi.Builder()
+    private final VendorShippingApi api = new VendorShippingApi.Builder()
         .lwaAuthorizationCredentials(credentials)
         .endpoint(endpoint)
         .build();
 
+    private final EasyRandom easyRandom = new EasyRandom(
+        new EasyRandomParameters().randomize(OffsetDateTime.class, OffsetDateTime::now)
+                .randomize(LocalDate.class, LocalDate::now)
+                .collectionSizeRange(1, 2)
+    );
+
     @Test
     public void getPackingSlipTest() throws Exception {
         instructBackendMock("getPackingSlip", "200");
-        String purchaseOrderNumber = "";
+        String purchaseOrderNumber = easyRandom.nextObject(String.class);
 
         ApiResponse<PackingSlip> response = api.getPackingSlipWithHttpInfo(purchaseOrderNumber);
 
@@ -61,8 +71,8 @@ public class VendorShippingApiTest {
     @Test
     public void getPackingSlipsTest() throws Exception {
         instructBackendMock("getPackingSlips", "200");
-        OffsetDateTime createdAfter = OffsetDateTime.now();
-        OffsetDateTime createdBefore = OffsetDateTime.now();
+        OffsetDateTime createdAfter = easyRandom.nextObject(OffsetDateTime.class);
+        OffsetDateTime createdBefore = easyRandom.nextObject(OffsetDateTime.class);
 
         ApiResponse<PackingSlipList> response = api.getPackingSlipsWithHttpInfo(createdAfter, createdBefore, null, null, null, null);
 
@@ -73,7 +83,7 @@ public class VendorShippingApiTest {
     @Test
     public void submitShipmentConfirmationsTest() throws Exception {
         instructBackendMock("submitShipmentConfirmations", "202");
-        SubmitShipmentConfirmationsRequest body = new SubmitShipmentConfirmationsRequest();
+        SubmitShipmentConfirmationsRequest body = easyRandom.nextObject(SubmitShipmentConfirmationsRequest.class);
 
         ApiResponse<TransactionReference> response = api.submitShipmentConfirmationsWithHttpInfo(body);
 
@@ -84,7 +94,7 @@ public class VendorShippingApiTest {
     @Test
     public void submitShipmentStatusUpdatesTest() throws Exception {
         instructBackendMock("submitShipmentStatusUpdates", "202");
-        SubmitShipmentStatusUpdatesRequest body = new SubmitShipmentStatusUpdatesRequest();
+        SubmitShipmentStatusUpdatesRequest body = easyRandom.nextObject(SubmitShipmentStatusUpdatesRequest.class);
 
         ApiResponse<TransactionReference> response = api.submitShipmentStatusUpdatesWithHttpInfo(body);
 

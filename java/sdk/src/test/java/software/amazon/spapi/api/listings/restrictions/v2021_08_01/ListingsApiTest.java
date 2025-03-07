@@ -14,6 +14,10 @@ package software.amazon.spapi.api.listings.restrictions.v2021_08_01;
 
 import software.amazon.spapi.ApiResponse;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
+import org.jeasy.random.EasyRandom;
+import org.jeasy.random.EasyRandomParameters;
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.OffsetDateTime;
 import software.amazon.spapi.models.listings.restrictions.v2021_08_01.ErrorList;
 import software.amazon.spapi.models.listings.restrictions.v2021_08_01.RestrictionList;
 import org.junit.jupiter.api.Test;
@@ -28,25 +32,31 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ListingsApiTest {
 
-   private static String endpoint = "http://localhost:3000";
-   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
-   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+    private static String endpoint = "http://localhost:3000";
+    private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+    private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
         .clientId("clientId")
         .clientSecret("clientSecret")
         .refreshToken("refreshToken")
         .endpoint(authEndpoint)
         .build();
 
-   private final ListingsApi api = new ListingsApi.Builder()
+    private final ListingsApi api = new ListingsApi.Builder()
         .lwaAuthorizationCredentials(credentials)
         .endpoint(endpoint)
         .build();
 
+    private final EasyRandom easyRandom = new EasyRandom(
+        new EasyRandomParameters().randomize(OffsetDateTime.class, OffsetDateTime::now)
+                .randomize(LocalDate.class, LocalDate::now)
+                .collectionSizeRange(1, 2)
+    );
+
     @Test
     public void getListingsRestrictionsTest() throws Exception {
         instructBackendMock("getListingsRestrictions", "200");
-        String asin = "";
-        String sellerId = "";
+        String asin = easyRandom.nextObject(String.class);
+        String sellerId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<RestrictionList> response = api.getListingsRestrictionsWithHttpInfo(asin, sellerId, marketplaceIds, null, null);

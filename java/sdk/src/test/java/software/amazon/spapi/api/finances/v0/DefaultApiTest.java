@@ -14,6 +14,10 @@ package software.amazon.spapi.api.finances.v0;
 
 import software.amazon.spapi.ApiResponse;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
+import org.jeasy.random.EasyRandom;
+import org.jeasy.random.EasyRandomParameters;
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.OffsetDateTime;
 import software.amazon.spapi.models.finances.v0.ListFinancialEventGroupsResponse;
 import software.amazon.spapi.models.finances.v0.ListFinancialEventsResponse;
 import org.threeten.bp.OffsetDateTime;
@@ -29,19 +33,25 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class DefaultApiTest {
 
-   private static String endpoint = "http://localhost:3000";
-   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
-   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+    private static String endpoint = "http://localhost:3000";
+    private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+    private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
         .clientId("clientId")
         .clientSecret("clientSecret")
         .refreshToken("refreshToken")
         .endpoint(authEndpoint)
         .build();
 
-   private final DefaultApi api = new DefaultApi.Builder()
+    private final DefaultApi api = new DefaultApi.Builder()
         .lwaAuthorizationCredentials(credentials)
         .endpoint(endpoint)
         .build();
+
+    private final EasyRandom easyRandom = new EasyRandom(
+        new EasyRandomParameters().randomize(OffsetDateTime.class, OffsetDateTime::now)
+                .randomize(LocalDate.class, LocalDate::now)
+                .collectionSizeRange(1, 2)
+    );
 
     @Test
     public void listFinancialEventGroupsTest() throws Exception {
@@ -66,7 +76,7 @@ public class DefaultApiTest {
     @Test
     public void listFinancialEventsByGroupIdTest() throws Exception {
         instructBackendMock("listFinancialEventsByGroupId", "200");
-        String eventGroupId = "";
+        String eventGroupId = easyRandom.nextObject(String.class);
 
         ApiResponse<ListFinancialEventsResponse> response = api.listFinancialEventsByGroupIdWithHttpInfo(eventGroupId, null, null, null, null);
 
@@ -77,7 +87,7 @@ public class DefaultApiTest {
     @Test
     public void listFinancialEventsByOrderIdTest() throws Exception {
         instructBackendMock("listFinancialEventsByOrderId", "200");
-        String orderId = "";
+        String orderId = easyRandom.nextObject(String.class);
 
         ApiResponse<ListFinancialEventsResponse> response = api.listFinancialEventsByOrderIdWithHttpInfo(orderId, null, null);
 

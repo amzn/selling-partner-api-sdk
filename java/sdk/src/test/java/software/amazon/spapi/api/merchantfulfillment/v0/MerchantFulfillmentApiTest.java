@@ -14,6 +14,10 @@ package software.amazon.spapi.api.merchantfulfillment.v0;
 
 import software.amazon.spapi.ApiResponse;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
+import org.jeasy.random.EasyRandom;
+import org.jeasy.random.EasyRandomParameters;
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.OffsetDateTime;
 import software.amazon.spapi.models.merchantfulfillment.v0.CancelShipmentResponse;
 import software.amazon.spapi.models.merchantfulfillment.v0.CreateShipmentRequest;
 import software.amazon.spapi.models.merchantfulfillment.v0.CreateShipmentResponse;
@@ -34,24 +38,30 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class MerchantFulfillmentApiTest {
 
-   private static String endpoint = "http://localhost:3000";
-   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
-   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+    private static String endpoint = "http://localhost:3000";
+    private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+    private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
         .clientId("clientId")
         .clientSecret("clientSecret")
         .refreshToken("refreshToken")
         .endpoint(authEndpoint)
         .build();
 
-   private final MerchantFulfillmentApi api = new MerchantFulfillmentApi.Builder()
+    private final MerchantFulfillmentApi api = new MerchantFulfillmentApi.Builder()
         .lwaAuthorizationCredentials(credentials)
         .endpoint(endpoint)
         .build();
 
+    private final EasyRandom easyRandom = new EasyRandom(
+        new EasyRandomParameters().randomize(OffsetDateTime.class, OffsetDateTime::now)
+                .randomize(LocalDate.class, LocalDate::now)
+                .collectionSizeRange(1, 2)
+    );
+
     @Test
     public void cancelShipmentTest() throws Exception {
         instructBackendMock("cancelShipment", "200");
-        String shipmentId = "";
+        String shipmentId = easyRandom.nextObject(String.class);
 
         ApiResponse<CancelShipmentResponse> response = api.cancelShipmentWithHttpInfo(shipmentId);
 
@@ -62,7 +72,7 @@ public class MerchantFulfillmentApiTest {
     @Test
     public void createShipmentTest() throws Exception {
         instructBackendMock("createShipment", "200");
-        CreateShipmentRequest body = new CreateShipmentRequest();
+        CreateShipmentRequest body = easyRandom.nextObject(CreateShipmentRequest.class);
 
         ApiResponse<CreateShipmentResponse> response = api.createShipmentWithHttpInfo(body);
 
@@ -73,7 +83,7 @@ public class MerchantFulfillmentApiTest {
     @Test
     public void getAdditionalSellerInputsTest() throws Exception {
         instructBackendMock("getAdditionalSellerInputs", "200");
-        GetAdditionalSellerInputsRequest body = new GetAdditionalSellerInputsRequest();
+        GetAdditionalSellerInputsRequest body = easyRandom.nextObject(GetAdditionalSellerInputsRequest.class);
 
         ApiResponse<GetAdditionalSellerInputsResponse> response = api.getAdditionalSellerInputsWithHttpInfo(body);
 
@@ -84,7 +94,7 @@ public class MerchantFulfillmentApiTest {
     @Test
     public void getEligibleShipmentServicesTest() throws Exception {
         instructBackendMock("getEligibleShipmentServices", "200");
-        GetEligibleShipmentServicesRequest body = new GetEligibleShipmentServicesRequest();
+        GetEligibleShipmentServicesRequest body = easyRandom.nextObject(GetEligibleShipmentServicesRequest.class);
 
         ApiResponse<GetEligibleShipmentServicesResponse> response = api.getEligibleShipmentServicesWithHttpInfo(body);
 
@@ -95,7 +105,7 @@ public class MerchantFulfillmentApiTest {
     @Test
     public void getShipmentTest() throws Exception {
         instructBackendMock("getShipment", "200");
-        String shipmentId = "";
+        String shipmentId = easyRandom.nextObject(String.class);
 
         ApiResponse<GetShipmentResponse> response = api.getShipmentWithHttpInfo(shipmentId);
 

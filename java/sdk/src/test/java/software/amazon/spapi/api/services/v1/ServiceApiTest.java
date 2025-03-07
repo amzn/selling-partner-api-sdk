@@ -14,6 +14,10 @@ package software.amazon.spapi.api.services.v1;
 
 import software.amazon.spapi.ApiResponse;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
+import org.jeasy.random.EasyRandom;
+import org.jeasy.random.EasyRandomParameters;
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.OffsetDateTime;
 import software.amazon.spapi.models.services.v1.AddAppointmentRequest;
 import software.amazon.spapi.models.services.v1.AssignAppointmentResourcesRequest;
 import software.amazon.spapi.models.services.v1.AssignAppointmentResourcesResponse;
@@ -53,25 +57,31 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ServiceApiTest {
 
-   private static String endpoint = "http://localhost:3000";
-   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
-   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+    private static String endpoint = "http://localhost:3000";
+    private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+    private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
         .clientId("clientId")
         .clientSecret("clientSecret")
         .refreshToken("refreshToken")
         .endpoint(authEndpoint)
         .build();
 
-   private final ServiceApi api = new ServiceApi.Builder()
+    private final ServiceApi api = new ServiceApi.Builder()
         .lwaAuthorizationCredentials(credentials)
         .endpoint(endpoint)
         .build();
 
+    private final EasyRandom easyRandom = new EasyRandom(
+        new EasyRandomParameters().randomize(OffsetDateTime.class, OffsetDateTime::now)
+                .randomize(LocalDate.class, LocalDate::now)
+                .collectionSizeRange(1, 2)
+    );
+
     @Test
     public void addAppointmentForServiceJobByServiceJobIdTest() throws Exception {
         instructBackendMock("addAppointmentForServiceJobByServiceJobId", "200");
-        AddAppointmentRequest body = new AddAppointmentRequest();
-        String serviceJobId = "";
+        AddAppointmentRequest body = easyRandom.nextObject(AddAppointmentRequest.class);
+        String serviceJobId = easyRandom.nextObject(String.class);
 
         ApiResponse<SetAppointmentResponse> response = api.addAppointmentForServiceJobByServiceJobIdWithHttpInfo(body, serviceJobId);
 
@@ -82,9 +92,9 @@ public class ServiceApiTest {
     @Test
     public void assignAppointmentResourcesTest() throws Exception {
         instructBackendMock("assignAppointmentResources", "200");
-        AssignAppointmentResourcesRequest body = new AssignAppointmentResourcesRequest();
-        String serviceJobId = "";
-        String appointmentId = "";
+        AssignAppointmentResourcesRequest body = easyRandom.nextObject(AssignAppointmentResourcesRequest.class);
+        String serviceJobId = easyRandom.nextObject(String.class);
+        String appointmentId = easyRandom.nextObject(String.class);
 
         ApiResponse<AssignAppointmentResourcesResponse> response = api.assignAppointmentResourcesWithHttpInfo(body, serviceJobId, appointmentId);
 
@@ -95,7 +105,7 @@ public class ServiceApiTest {
     @Test
     public void cancelReservationTest() throws Exception {
         instructBackendMock("cancelReservation", "204");
-        String reservationId = "";
+        String reservationId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<CancelReservationResponse> response = api.cancelReservationWithHttpInfo(reservationId, marketplaceIds);
@@ -107,8 +117,8 @@ public class ServiceApiTest {
     @Test
     public void cancelServiceJobByServiceJobIdTest() throws Exception {
         instructBackendMock("cancelServiceJobByServiceJobId", "200");
-        String serviceJobId = "";
-        String cancellationReasonCode = "";
+        String serviceJobId = easyRandom.nextObject(String.class);
+        String cancellationReasonCode = easyRandom.nextObject(String.class);
 
         ApiResponse<CancelServiceJobByServiceJobIdResponse> response = api.cancelServiceJobByServiceJobIdWithHttpInfo(serviceJobId, cancellationReasonCode);
 
@@ -119,7 +129,7 @@ public class ServiceApiTest {
     @Test
     public void completeServiceJobByServiceJobIdTest() throws Exception {
         instructBackendMock("completeServiceJobByServiceJobId", "200");
-        String serviceJobId = "";
+        String serviceJobId = easyRandom.nextObject(String.class);
 
         ApiResponse<CompleteServiceJobByServiceJobIdResponse> response = api.completeServiceJobByServiceJobIdWithHttpInfo(serviceJobId);
 
@@ -130,7 +140,7 @@ public class ServiceApiTest {
     @Test
     public void createReservationTest() throws Exception {
         instructBackendMock("createReservation", "200");
-        CreateReservationRequest body = new CreateReservationRequest();
+        CreateReservationRequest body = easyRandom.nextObject(CreateReservationRequest.class);
         List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<CreateReservationResponse> response = api.createReservationWithHttpInfo(body, marketplaceIds);
@@ -142,7 +152,7 @@ public class ServiceApiTest {
     @Test
     public void createServiceDocumentUploadDestinationTest() throws Exception {
         instructBackendMock("createServiceDocumentUploadDestination", "200");
-        ServiceUploadDocument body = new ServiceUploadDocument();
+        ServiceUploadDocument body = easyRandom.nextObject(ServiceUploadDocument.class);
 
         ApiResponse<CreateServiceDocumentUploadDestination> response = api.createServiceDocumentUploadDestinationWithHttpInfo(body);
 
@@ -153,8 +163,8 @@ public class ServiceApiTest {
     @Test
     public void getAppointmentSlotsTest() throws Exception {
         instructBackendMock("getAppointmentSlots", "200");
-        String asin = "";
-        String storeId = "";
+        String asin = easyRandom.nextObject(String.class);
+        String storeId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<GetAppointmentSlotsResponse> response = api.getAppointmentSlotsWithHttpInfo(asin, storeId, marketplaceIds, null, null);
@@ -166,7 +176,7 @@ public class ServiceApiTest {
     @Test
     public void getAppointmmentSlotsByJobIdTest() throws Exception {
         instructBackendMock("getAppointmmentSlotsByJobId", "200");
-        String serviceJobId = "";
+        String serviceJobId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<GetAppointmentSlotsResponse> response = api.getAppointmmentSlotsByJobIdWithHttpInfo(serviceJobId, marketplaceIds, null, null);
@@ -178,8 +188,8 @@ public class ServiceApiTest {
     @Test
     public void getFixedSlotCapacityTest() throws Exception {
         instructBackendMock("getFixedSlotCapacity", "200");
-        FixedSlotCapacityQuery body = new FixedSlotCapacityQuery();
-        String resourceId = "";
+        FixedSlotCapacityQuery body = easyRandom.nextObject(FixedSlotCapacityQuery.class);
+        String resourceId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<FixedSlotCapacity> response = api.getFixedSlotCapacityWithHttpInfo(body, resourceId, marketplaceIds, null);
@@ -191,8 +201,8 @@ public class ServiceApiTest {
     @Test
     public void getRangeSlotCapacityTest() throws Exception {
         instructBackendMock("getRangeSlotCapacity", "200");
-        RangeSlotCapacityQuery body = new RangeSlotCapacityQuery();
-        String resourceId = "";
+        RangeSlotCapacityQuery body = easyRandom.nextObject(RangeSlotCapacityQuery.class);
+        String resourceId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<RangeSlotCapacity> response = api.getRangeSlotCapacityWithHttpInfo(body, resourceId, marketplaceIds, null);
@@ -204,7 +214,7 @@ public class ServiceApiTest {
     @Test
     public void getServiceJobByServiceJobIdTest() throws Exception {
         instructBackendMock("getServiceJobByServiceJobId", "200");
-        String serviceJobId = "";
+        String serviceJobId = easyRandom.nextObject(String.class);
 
         ApiResponse<GetServiceJobByServiceJobIdResponse> response = api.getServiceJobByServiceJobIdWithHttpInfo(serviceJobId);
 
@@ -226,9 +236,9 @@ public class ServiceApiTest {
     @Test
     public void rescheduleAppointmentForServiceJobByServiceJobIdTest() throws Exception {
         instructBackendMock("rescheduleAppointmentForServiceJobByServiceJobId", "200");
-        RescheduleAppointmentRequest body = new RescheduleAppointmentRequest();
-        String serviceJobId = "";
-        String appointmentId = "";
+        RescheduleAppointmentRequest body = easyRandom.nextObject(RescheduleAppointmentRequest.class);
+        String serviceJobId = easyRandom.nextObject(String.class);
+        String appointmentId = easyRandom.nextObject(String.class);
 
         ApiResponse<SetAppointmentResponse> response = api.rescheduleAppointmentForServiceJobByServiceJobIdWithHttpInfo(body, serviceJobId, appointmentId);
 
@@ -239,9 +249,9 @@ public class ServiceApiTest {
     @Test
     public void setAppointmentFulfillmentDataTest() throws Exception {
         instructBackendMock("setAppointmentFulfillmentData", "204");
-        SetAppointmentFulfillmentDataRequest body = new SetAppointmentFulfillmentDataRequest();
-        String serviceJobId = "";
-        String appointmentId = "";
+        SetAppointmentFulfillmentDataRequest body = easyRandom.nextObject(SetAppointmentFulfillmentDataRequest.class);
+        String serviceJobId = easyRandom.nextObject(String.class);
+        String appointmentId = easyRandom.nextObject(String.class);
 
         ApiResponse<String> response = api.setAppointmentFulfillmentDataWithHttpInfo(body, serviceJobId, appointmentId);
 
@@ -252,8 +262,8 @@ public class ServiceApiTest {
     @Test
     public void updateReservationTest() throws Exception {
         instructBackendMock("updateReservation", "200");
-        UpdateReservationRequest body = new UpdateReservationRequest();
-        String reservationId = "";
+        UpdateReservationRequest body = easyRandom.nextObject(UpdateReservationRequest.class);
+        String reservationId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<UpdateReservationResponse> response = api.updateReservationWithHttpInfo(body, reservationId, marketplaceIds);
@@ -265,8 +275,8 @@ public class ServiceApiTest {
     @Test
     public void updateScheduleTest() throws Exception {
         instructBackendMock("updateSchedule", "200");
-        UpdateScheduleRequest body = new UpdateScheduleRequest();
-        String resourceId = "";
+        UpdateScheduleRequest body = easyRandom.nextObject(UpdateScheduleRequest.class);
+        String resourceId = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = new ArrayList<>();
 
         ApiResponse<UpdateScheduleResponse> response = api.updateScheduleWithHttpInfo(body, resourceId, marketplaceIds);
