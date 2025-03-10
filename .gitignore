@@ -10,6 +10,5 @@ php/sdk/.DS_Store
 *.cache
 package.xml
 php/.env
-php/config/templates/README.mustache
 **/node_modules
 php/sdk/composer.lock
