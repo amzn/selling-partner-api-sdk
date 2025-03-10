@@ -4,6 +4,10 @@ package {{package}};
 
 import {{invokerPackage}}.ApiResponse;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
+import org.jeasy.random.EasyRandom;
+import org.jeasy.random.EasyRandomParameters;
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.OffsetDateTime;
 {{#imports}}import {{import}};
 {{/imports}}
 import org.junit.jupiter.api.Test;
@@ -13,31 +17,38 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class {{classname}}Test {
 
-   private static String endpoint = "http://localhost:3000";
-   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
-   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+    private static String endpoint = "http://localhost:3000";
+    private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+    private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
         .clientId("clientId")
         .clientSecret("clientSecret")
         .refreshToken("refreshToken")
         .endpoint(authEndpoint)
         .build();
 
-   private final {{classname}} api = new {{classname}}.Builder()
+    private final {{classname}} api = new {{classname}}.Builder()
         .lwaAuthorizationCredentials(credentials)
         .endpoint(endpoint)
         .build();
+
+    private final EasyRandom easyRandom = new EasyRandom(
+        new EasyRandomParameters().randomize(OffsetDateTime.class, OffsetDateTime::now)
+                .randomize(LocalDate.class, LocalDate::now)
+                .collectionSizeRange(1, 2)
+    );
 
 {{#operations}}{{#operation}}
     @Test
     public void {{operationId}}Test() throws Exception {
         instructBackendMock("{{operationId}}", "{{responses.0.code}}");
         {{#allParams}}{{#required}}
-        {{#isString}}{{{dataType}}} {{paramName}} = "";{{/isString}}{{#isInteger}}int {{paramName}} = 1;{{/isInteger}}{{#isDateTime}}{{dataType}} {{paramName}} = {{dataType}}.now();{{/isDateTime}}{{#isDate}}{{dataType}} {{paramName}} = {{dataType}}.now();{{/isDate}}{{^isString}}{{^isInteger}}{{^isDateTime}}{{^isDate}}{{{dataType}}} {{paramName}} = new {{#isListContainer}}ArrayList<>{{/isListContainer}}{{^isListContainer}}{{{dataType}}}{{/isListContainer}}();{{/isDate}}{{/isDateTime}}{{/isInteger}}{{/isString}}
+        {{{dataType}}} {{paramName}} = {{#isListContainer}}easyRandom.objects({{baseType}}.class, 2).collect(Collectors.toList()){{/isListContainer}}{{^isListContainer}}easyRandom.nextObject({{{dataType}}}.class){{/isListContainer}};
         {{/required}}{{/allParams}}
 
         {{#returnType}}ApiResponse<{{{returnType}}}> response = {{/returnType}}api.{{operationId}}WithHttpInfo({{#allParams}}{{#required}}{{paramName}}{{/required}}{{^required}}null{{/required}}{{#hasMore}}, {{/hasMore}}{{/allParams}});
