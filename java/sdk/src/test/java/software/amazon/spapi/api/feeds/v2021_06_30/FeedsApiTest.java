@@ -14,6 +14,10 @@ package software.amazon.spapi.api.feeds.v2021_06_30;
 
 import software.amazon.spapi.ApiResponse;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
+import org.jeasy.random.EasyRandom;
+import org.jeasy.random.EasyRandomParameters;
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.OffsetDateTime;
 import software.amazon.spapi.models.feeds.v2021_06_30.CreateFeedDocumentResponse;
 import software.amazon.spapi.models.feeds.v2021_06_30.CreateFeedDocumentSpecification;
 import software.amazon.spapi.models.feeds.v2021_06_30.CreateFeedResponse;
@@ -30,29 +34,36 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class FeedsApiTest {
 
-   private static String endpoint = "http://localhost:3000";
-   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
-   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+    private static String endpoint = "http://localhost:3000";
+    private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+    private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
         .clientId("clientId")
         .clientSecret("clientSecret")
         .refreshToken("refreshToken")
         .endpoint(authEndpoint)
         .build();
 
-   private final FeedsApi api = new FeedsApi.Builder()
+    private final FeedsApi api = new FeedsApi.Builder()
         .lwaAuthorizationCredentials(credentials)
         .endpoint(endpoint)
         .build();
 
+    private final EasyRandom easyRandom = new EasyRandom(
+        new EasyRandomParameters().randomize(OffsetDateTime.class, OffsetDateTime::now)
+                .randomize(LocalDate.class, LocalDate::now)
+                .collectionSizeRange(1, 2)
+    );
+
     @Test
     public void cancelFeedTest() throws Exception {
         instructBackendMock("cancelFeed", "200");
-        String feedId = "";
+        String feedId = easyRandom.nextObject(String.class);
 
         api.cancelFeedWithHttpInfo(feedId);
 
@@ -61,7 +72,7 @@ public class FeedsApiTest {
     @Test
     public void createFeedTest() throws Exception {
         instructBackendMock("createFeed", "202");
-        CreateFeedSpecification body = new CreateFeedSpecification();
+        CreateFeedSpecification body = easyRandom.nextObject(CreateFeedSpecification.class);
 
         ApiResponse<CreateFeedResponse> response = api.createFeedWithHttpInfo(body);
 
@@ -72,7 +83,7 @@ public class FeedsApiTest {
     @Test
     public void createFeedDocumentTest() throws Exception {
         instructBackendMock("createFeedDocument", "201");
-        CreateFeedDocumentSpecification body = new CreateFeedDocumentSpecification();
+        CreateFeedDocumentSpecification body = easyRandom.nextObject(CreateFeedDocumentSpecification.class);
 
         ApiResponse<CreateFeedDocumentResponse> response = api.createFeedDocumentWithHttpInfo(body);
 
@@ -83,7 +94,7 @@ public class FeedsApiTest {
     @Test
     public void getFeedTest() throws Exception {
         instructBackendMock("getFeed", "200");
-        String feedId = "";
+        String feedId = easyRandom.nextObject(String.class);
 
         ApiResponse<Feed> response = api.getFeedWithHttpInfo(feedId);
 
@@ -94,7 +105,7 @@ public class FeedsApiTest {
     @Test
     public void getFeedDocumentTest() throws Exception {
         instructBackendMock("getFeedDocument", "200");
-        String feedDocumentId = "";
+        String feedDocumentId = easyRandom.nextObject(String.class);
 
         ApiResponse<FeedDocument> response = api.getFeedDocumentWithHttpInfo(feedDocumentId);
 

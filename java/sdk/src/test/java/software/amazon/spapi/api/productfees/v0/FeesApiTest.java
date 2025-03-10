@@ -14,6 +14,10 @@ package software.amazon.spapi.api.productfees.v0;
 
 import software.amazon.spapi.ApiResponse;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
+import org.jeasy.random.EasyRandom;
+import org.jeasy.random.EasyRandomParameters;
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.OffsetDateTime;
 import software.amazon.spapi.models.productfees.v0.FeesEstimateByIdRequest;
 import software.amazon.spapi.models.productfees.v0.GetMyFeesEstimateRequest;
 import software.amazon.spapi.models.productfees.v0.GetMyFeesEstimateResponse;
@@ -26,30 +30,37 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class FeesApiTest {
 
-   private static String endpoint = "http://localhost:3000";
-   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
-   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+    private static String endpoint = "http://localhost:3000";
+    private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+    private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
         .clientId("clientId")
         .clientSecret("clientSecret")
         .refreshToken("refreshToken")
         .endpoint(authEndpoint)
         .build();
 
-   private final FeesApi api = new FeesApi.Builder()
+    private final FeesApi api = new FeesApi.Builder()
         .lwaAuthorizationCredentials(credentials)
         .endpoint(endpoint)
         .build();
 
+    private final EasyRandom easyRandom = new EasyRandom(
+        new EasyRandomParameters().randomize(OffsetDateTime.class, OffsetDateTime::now)
+                .randomize(LocalDate.class, LocalDate::now)
+                .collectionSizeRange(1, 2)
+    );
+
     @Test
     public void getMyFeesEstimateForASINTest() throws Exception {
         instructBackendMock("getMyFeesEstimateForASIN", "200");
-        GetMyFeesEstimateRequest body = new GetMyFeesEstimateRequest();
-        String asin = "";
+        GetMyFeesEstimateRequest body = easyRandom.nextObject(GetMyFeesEstimateRequest.class);
+        String asin = easyRandom.nextObject(String.class);
 
         ApiResponse<GetMyFeesEstimateResponse> response = api.getMyFeesEstimateForASINWithHttpInfo(body, asin);
 
@@ -60,8 +71,8 @@ public class FeesApiTest {
     @Test
     public void getMyFeesEstimateForSKUTest() throws Exception {
         instructBackendMock("getMyFeesEstimateForSKU", "200");
-        GetMyFeesEstimateRequest body = new GetMyFeesEstimateRequest();
-        String sellerSKU = "";
+        GetMyFeesEstimateRequest body = easyRandom.nextObject(GetMyFeesEstimateRequest.class);
+        String sellerSKU = easyRandom.nextObject(String.class);
 
         ApiResponse<GetMyFeesEstimateResponse> response = api.getMyFeesEstimateForSKUWithHttpInfo(body, sellerSKU);
 
@@ -72,7 +83,7 @@ public class FeesApiTest {
     @Test
     public void getMyFeesEstimatesTest() throws Exception {
         instructBackendMock("getMyFeesEstimates", "200");
-        List<FeesEstimateByIdRequest> body = new ArrayList<>();
+        List<FeesEstimateByIdRequest> body = easyRandom.objects(FeesEstimateByIdRequest.class, 2).collect(Collectors.toList());
 
         ApiResponse<GetMyFeesEstimatesResponse> response = api.getMyFeesEstimatesWithHttpInfo(body);
 

@@ -14,6 +14,10 @@ package software.amazon.spapi.api.appintegrations.v2024_04_01;
 
 import software.amazon.spapi.ApiResponse;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
+import org.jeasy.random.EasyRandom;
+import org.jeasy.random.EasyRandomParameters;
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.OffsetDateTime;
 import software.amazon.spapi.models.appintegrations.v2024_04_01.CreateNotificationRequest;
 import software.amazon.spapi.models.appintegrations.v2024_04_01.CreateNotificationResponse;
 import software.amazon.spapi.models.appintegrations.v2024_04_01.DeleteNotificationsRequest;
@@ -26,29 +30,36 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AppIntegrationsApiTest {
 
-   private static String endpoint = "http://localhost:3000";
-   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
-   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+    private static String endpoint = "http://localhost:3000";
+    private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+    private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
         .clientId("clientId")
         .clientSecret("clientSecret")
         .refreshToken("refreshToken")
         .endpoint(authEndpoint)
         .build();
 
-   private final AppIntegrationsApi api = new AppIntegrationsApi.Builder()
+    private final AppIntegrationsApi api = new AppIntegrationsApi.Builder()
         .lwaAuthorizationCredentials(credentials)
         .endpoint(endpoint)
         .build();
 
+    private final EasyRandom easyRandom = new EasyRandom(
+        new EasyRandomParameters().randomize(OffsetDateTime.class, OffsetDateTime::now)
+                .randomize(LocalDate.class, LocalDate::now)
+                .collectionSizeRange(1, 2)
+    );
+
     @Test
     public void createNotificationTest() throws Exception {
         instructBackendMock("createNotification", "200");
-        CreateNotificationRequest body = new CreateNotificationRequest();
+        CreateNotificationRequest body = easyRandom.nextObject(CreateNotificationRequest.class);
 
         ApiResponse<CreateNotificationResponse> response = api.createNotificationWithHttpInfo(body);
 
@@ -59,7 +70,7 @@ public class AppIntegrationsApiTest {
     @Test
     public void deleteNotificationsTest() throws Exception {
         instructBackendMock("deleteNotifications", "204");
-        DeleteNotificationsRequest body = new DeleteNotificationsRequest();
+        DeleteNotificationsRequest body = easyRandom.nextObject(DeleteNotificationsRequest.class);
 
         api.deleteNotificationsWithHttpInfo(body);
 
@@ -68,8 +79,8 @@ public class AppIntegrationsApiTest {
     @Test
     public void recordActionFeedbackTest() throws Exception {
         instructBackendMock("recordActionFeedback", "204");
-        RecordActionFeedbackRequest body = new RecordActionFeedbackRequest();
-        String notificationId = "";
+        RecordActionFeedbackRequest body = easyRandom.nextObject(RecordActionFeedbackRequest.class);
+        String notificationId = easyRandom.nextObject(String.class);
 
         api.recordActionFeedbackWithHttpInfo(body, notificationId);
 

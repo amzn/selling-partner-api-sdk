@@ -14,6 +14,10 @@ package software.amazon.spapi.api.vendor.df.orders.v2021_12_28;
 
 import software.amazon.spapi.ApiResponse;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
+import org.jeasy.random.EasyRandom;
+import org.jeasy.random.EasyRandomParameters;
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.OffsetDateTime;
 import software.amazon.spapi.models.vendor.df.orders.v2021_12_28.ErrorList;
 import org.threeten.bp.OffsetDateTime;
 import software.amazon.spapi.models.vendor.df.orders.v2021_12_28.Order;
@@ -27,29 +31,36 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class VendorOrdersApiTest {
 
-   private static String endpoint = "http://localhost:3000";
-   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
-   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+    private static String endpoint = "http://localhost:3000";
+    private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+    private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
         .clientId("clientId")
         .clientSecret("clientSecret")
         .refreshToken("refreshToken")
         .endpoint(authEndpoint)
         .build();
 
-   private final VendorOrdersApi api = new VendorOrdersApi.Builder()
+    private final VendorOrdersApi api = new VendorOrdersApi.Builder()
         .lwaAuthorizationCredentials(credentials)
         .endpoint(endpoint)
         .build();
 
+    private final EasyRandom easyRandom = new EasyRandom(
+        new EasyRandomParameters().randomize(OffsetDateTime.class, OffsetDateTime::now)
+                .randomize(LocalDate.class, LocalDate::now)
+                .collectionSizeRange(1, 2)
+    );
+
     @Test
     public void getOrderTest() throws Exception {
         instructBackendMock("getOrder", "200");
-        String purchaseOrderNumber = "";
+        String purchaseOrderNumber = easyRandom.nextObject(String.class);
 
         ApiResponse<Order> response = api.getOrderWithHttpInfo(purchaseOrderNumber);
 
@@ -60,8 +71,8 @@ public class VendorOrdersApiTest {
     @Test
     public void getOrdersTest() throws Exception {
         instructBackendMock("getOrders", "200");
-        OffsetDateTime createdAfter = OffsetDateTime.now();
-        OffsetDateTime createdBefore = OffsetDateTime.now();
+        OffsetDateTime createdAfter = easyRandom.nextObject(OffsetDateTime.class);
+        OffsetDateTime createdBefore = easyRandom.nextObject(OffsetDateTime.class);
 
         ApiResponse<OrderList> response = api.getOrdersWithHttpInfo(createdAfter, createdBefore, null, null, null, null, null, null);
 
@@ -72,7 +83,7 @@ public class VendorOrdersApiTest {
     @Test
     public void submitAcknowledgementTest() throws Exception {
         instructBackendMock("submitAcknowledgement", "202");
-        SubmitAcknowledgementRequest body = new SubmitAcknowledgementRequest();
+        SubmitAcknowledgementRequest body = easyRandom.nextObject(SubmitAcknowledgementRequest.class);
 
         ApiResponse<TransactionId> response = api.submitAcknowledgementWithHttpInfo(body);
 

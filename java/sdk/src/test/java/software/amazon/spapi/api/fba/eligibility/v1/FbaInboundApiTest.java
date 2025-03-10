@@ -14,6 +14,10 @@ package software.amazon.spapi.api.fba.eligibility.v1;
 
 import software.amazon.spapi.ApiResponse;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
+import org.jeasy.random.EasyRandom;
+import org.jeasy.random.EasyRandomParameters;
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.OffsetDateTime;
 import software.amazon.spapi.models.fba.eligibility.v1.GetItemEligibilityPreviewResponse;
 import org.junit.jupiter.api.Test;
 
@@ -22,30 +26,37 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class FbaInboundApiTest {
 
-   private static String endpoint = "http://localhost:3000";
-   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
-   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+    private static String endpoint = "http://localhost:3000";
+    private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+    private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
         .clientId("clientId")
         .clientSecret("clientSecret")
         .refreshToken("refreshToken")
         .endpoint(authEndpoint)
         .build();
 
-   private final FbaInboundApi api = new FbaInboundApi.Builder()
+    private final FbaInboundApi api = new FbaInboundApi.Builder()
         .lwaAuthorizationCredentials(credentials)
         .endpoint(endpoint)
         .build();
 
+    private final EasyRandom easyRandom = new EasyRandom(
+        new EasyRandomParameters().randomize(OffsetDateTime.class, OffsetDateTime::now)
+                .randomize(LocalDate.class, LocalDate::now)
+                .collectionSizeRange(1, 2)
+    );
+
     @Test
     public void getItemEligibilityPreviewTest() throws Exception {
         instructBackendMock("getItemEligibilityPreview", "200");
-        String asin = "";
-        String program = "";
+        String asin = easyRandom.nextObject(String.class);
+        String program = easyRandom.nextObject(String.class);
 
         ApiResponse<GetItemEligibilityPreviewResponse> response = api.getItemEligibilityPreviewWithHttpInfo(asin, program, null);
 
