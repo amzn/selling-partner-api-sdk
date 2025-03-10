@@ -52,7 +52,6 @@ require_once(__DIR__ . '/vendor/autoload.php');
 use SpApi\AuthAndAuth\LWAAuthorizationCredentials;
 use SpApi\Configuration;
 use SpApi\Api\orders\v0\OrdersV0Api;
-use Dotenv\Dotenv;
 
 
 // Set up LWA credentials
