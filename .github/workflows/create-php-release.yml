@@ -1,11 +1,6 @@
 name: Sync PHP SDK to selling-partner-api-php-release
 
 on:
-  push:
-    paths:
-      - "php/sdk/**"
-    branches:
-      - main
   workflow_dispatch:
     inputs:
       newVersionNumber:
