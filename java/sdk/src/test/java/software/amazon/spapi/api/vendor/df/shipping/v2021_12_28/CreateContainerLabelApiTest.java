@@ -14,6 +14,10 @@ package software.amazon.spapi.api.vendor.df.shipping.v2021_12_28;
 
 import software.amazon.spapi.ApiResponse;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
+import org.jeasy.random.EasyRandom;
+import org.jeasy.random.EasyRandomParameters;
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.OffsetDateTime;
 import software.amazon.spapi.models.vendor.df.shipping.v2021_12_28.CreateContainerLabelRequest;
 import software.amazon.spapi.models.vendor.df.shipping.v2021_12_28.CreateContainerLabelResponse;
 import software.amazon.spapi.models.vendor.df.shipping.v2021_12_28.ErrorList;
@@ -24,29 +28,36 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CreateContainerLabelApiTest {
 
-   private static String endpoint = "http://localhost:3000";
-   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
-   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+    private static String endpoint = "http://localhost:3000";
+    private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+    private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
         .clientId("clientId")
         .clientSecret("clientSecret")
         .refreshToken("refreshToken")
         .endpoint(authEndpoint)
         .build();
 
-   private final CreateContainerLabelApi api = new CreateContainerLabelApi.Builder()
+    private final CreateContainerLabelApi api = new CreateContainerLabelApi.Builder()
         .lwaAuthorizationCredentials(credentials)
         .endpoint(endpoint)
         .build();
 
+    private final EasyRandom easyRandom = new EasyRandom(
+        new EasyRandomParameters().randomize(OffsetDateTime.class, OffsetDateTime::now)
+                .randomize(LocalDate.class, LocalDate::now)
+                .collectionSizeRange(1, 2)
+    );
+
     @Test
     public void createContainerLabelTest() throws Exception {
         instructBackendMock("createContainerLabel", "200");
-        CreateContainerLabelRequest body = new CreateContainerLabelRequest();
+        CreateContainerLabelRequest body = easyRandom.nextObject(CreateContainerLabelRequest.class);
 
         ApiResponse<CreateContainerLabelResponse> response = api.createContainerLabelWithHttpInfo(body);
 

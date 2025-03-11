@@ -14,6 +14,10 @@ package software.amazon.spapi.api.catalogitems.v2022_04_01;
 
 import software.amazon.spapi.ApiResponse;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
+import org.jeasy.random.EasyRandom;
+import org.jeasy.random.EasyRandomParameters;
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.OffsetDateTime;
 import software.amazon.spapi.models.catalogitems.v2022_04_01.ErrorList;
 import software.amazon.spapi.models.catalogitems.v2022_04_01.Item;
 import software.amazon.spapi.models.catalogitems.v2022_04_01.ItemSearchResults;
@@ -24,30 +28,37 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CatalogApiTest {
 
-   private static String endpoint = "http://localhost:3000";
-   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
-   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+    private static String endpoint = "http://localhost:3000";
+    private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+    private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
         .clientId("clientId")
         .clientSecret("clientSecret")
         .refreshToken("refreshToken")
         .endpoint(authEndpoint)
         .build();
 
-   private final CatalogApi api = new CatalogApi.Builder()
+    private final CatalogApi api = new CatalogApi.Builder()
         .lwaAuthorizationCredentials(credentials)
         .endpoint(endpoint)
         .build();
 
+    private final EasyRandom easyRandom = new EasyRandom(
+        new EasyRandomParameters().randomize(OffsetDateTime.class, OffsetDateTime::now)
+                .randomize(LocalDate.class, LocalDate::now)
+                .collectionSizeRange(1, 2)
+    );
+
     @Test
     public void getCatalogItemTest() throws Exception {
         instructBackendMock("getCatalogItem", "200");
-        String asin = "";
-        List<String> marketplaceIds = new ArrayList<>();
+        String asin = easyRandom.nextObject(String.class);
+        List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
 
         ApiResponse<Item> response = api.getCatalogItemWithHttpInfo(asin, marketplaceIds, null, null);
 
@@ -58,7 +69,7 @@ public class CatalogApiTest {
     @Test
     public void searchCatalogItemsTest() throws Exception {
         instructBackendMock("searchCatalogItems", "200");
-        List<String> marketplaceIds = new ArrayList<>();
+        List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
 
         ApiResponse<ItemSearchResults> response = api.searchCatalogItemsWithHttpInfo(marketplaceIds, null, null, null, null, null, null, null, null, null, null, null);
 

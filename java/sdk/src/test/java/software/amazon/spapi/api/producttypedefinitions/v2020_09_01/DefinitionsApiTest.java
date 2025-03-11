@@ -14,6 +14,10 @@ package software.amazon.spapi.api.producttypedefinitions.v2020_09_01;
 
 import software.amazon.spapi.ApiResponse;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
+import org.jeasy.random.EasyRandom;
+import org.jeasy.random.EasyRandomParameters;
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.OffsetDateTime;
 import software.amazon.spapi.models.producttypedefinitions.v2020_09_01.ErrorList;
 import software.amazon.spapi.models.producttypedefinitions.v2020_09_01.ProductTypeDefinition;
 import software.amazon.spapi.models.producttypedefinitions.v2020_09_01.ProductTypeList;
@@ -24,30 +28,37 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class DefinitionsApiTest {
 
-   private static String endpoint = "http://localhost:3000";
-   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
-   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+    private static String endpoint = "http://localhost:3000";
+    private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+    private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
         .clientId("clientId")
         .clientSecret("clientSecret")
         .refreshToken("refreshToken")
         .endpoint(authEndpoint)
         .build();
 
-   private final DefinitionsApi api = new DefinitionsApi.Builder()
+    private final DefinitionsApi api = new DefinitionsApi.Builder()
         .lwaAuthorizationCredentials(credentials)
         .endpoint(endpoint)
         .build();
 
+    private final EasyRandom easyRandom = new EasyRandom(
+        new EasyRandomParameters().randomize(OffsetDateTime.class, OffsetDateTime::now)
+                .randomize(LocalDate.class, LocalDate::now)
+                .collectionSizeRange(1, 2)
+    );
+
     @Test
     public void getDefinitionsProductTypeTest() throws Exception {
         instructBackendMock("getDefinitionsProductType", "200");
-        String productType = "";
-        List<String> marketplaceIds = new ArrayList<>();
+        String productType = easyRandom.nextObject(String.class);
+        List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
 
         ApiResponse<ProductTypeDefinition> response = api.getDefinitionsProductTypeWithHttpInfo(productType, marketplaceIds, null, null, null, null, null);
 
@@ -58,7 +69,7 @@ public class DefinitionsApiTest {
     @Test
     public void searchDefinitionsProductTypesTest() throws Exception {
         instructBackendMock("searchDefinitionsProductTypes", "200");
-        List<String> marketplaceIds = new ArrayList<>();
+        List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
 
         ApiResponse<ProductTypeList> response = api.searchDefinitionsProductTypesWithHttpInfo(marketplaceIds, null, null, null, null);
 

@@ -14,6 +14,10 @@ package software.amazon.spapi.api.transfers.v2024_06_01;
 
 import software.amazon.spapi.ApiResponse;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
+import org.jeasy.random.EasyRandom;
+import org.jeasy.random.EasyRandomParameters;
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.OffsetDateTime;
 import software.amazon.spapi.models.transfers.v2024_06_01.ErrorList;
 import software.amazon.spapi.models.transfers.v2024_06_01.GetPaymentMethodsResponse;
 import software.amazon.spapi.models.transfers.v2024_06_01.InitiatePayoutRequest;
@@ -25,29 +29,36 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class DefaultApiTest {
 
-   private static String endpoint = "http://localhost:3000";
-   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
-   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+    private static String endpoint = "http://localhost:3000";
+    private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+    private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
         .clientId("clientId")
         .clientSecret("clientSecret")
         .refreshToken("refreshToken")
         .endpoint(authEndpoint)
         .build();
 
-   private final DefaultApi api = new DefaultApi.Builder()
+    private final DefaultApi api = new DefaultApi.Builder()
         .lwaAuthorizationCredentials(credentials)
         .endpoint(endpoint)
         .build();
 
+    private final EasyRandom easyRandom = new EasyRandom(
+        new EasyRandomParameters().randomize(OffsetDateTime.class, OffsetDateTime::now)
+                .randomize(LocalDate.class, LocalDate::now)
+                .collectionSizeRange(1, 2)
+    );
+
     @Test
     public void getPaymentMethodsTest() throws Exception {
         instructBackendMock("getPaymentMethods", "200");
-        String marketplaceId = "";
+        String marketplaceId = easyRandom.nextObject(String.class);
 
         ApiResponse<GetPaymentMethodsResponse> response = api.getPaymentMethodsWithHttpInfo(marketplaceId, null);
 
@@ -58,7 +69,7 @@ public class DefaultApiTest {
     @Test
     public void initiatePayoutTest() throws Exception {
         instructBackendMock("initiatePayout", "200");
-        InitiatePayoutRequest body = new InitiatePayoutRequest();
+        InitiatePayoutRequest body = easyRandom.nextObject(InitiatePayoutRequest.class);
 
         ApiResponse<InitiatePayoutResponse> response = api.initiatePayoutWithHttpInfo(body);
 

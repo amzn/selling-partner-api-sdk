@@ -14,6 +14,10 @@ package software.amazon.spapi.api.apluscontent.v2020_11_01;
 
 import software.amazon.spapi.ApiResponse;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
+import org.jeasy.random.EasyRandom;
+import org.jeasy.random.EasyRandomParameters;
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.OffsetDateTime;
 import software.amazon.spapi.models.apluscontent.v2020_11_01.ErrorList;
 import software.amazon.spapi.models.apluscontent.v2020_11_01.GetContentDocumentResponse;
 import software.amazon.spapi.models.apluscontent.v2020_11_01.ListContentDocumentAsinRelationsResponse;
@@ -33,30 +37,37 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AplusContentApiTest {
 
-   private static String endpoint = "http://localhost:3000";
-   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
-   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+    private static String endpoint = "http://localhost:3000";
+    private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+    private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
         .clientId("clientId")
         .clientSecret("clientSecret")
         .refreshToken("refreshToken")
         .endpoint(authEndpoint)
         .build();
 
-   private final AplusContentApi api = new AplusContentApi.Builder()
+    private final AplusContentApi api = new AplusContentApi.Builder()
         .lwaAuthorizationCredentials(credentials)
         .endpoint(endpoint)
         .build();
 
+    private final EasyRandom easyRandom = new EasyRandom(
+        new EasyRandomParameters().randomize(OffsetDateTime.class, OffsetDateTime::now)
+                .randomize(LocalDate.class, LocalDate::now)
+                .collectionSizeRange(1, 2)
+    );
+
     @Test
     public void createContentDocumentTest() throws Exception {
         instructBackendMock("createContentDocument", "200");
-        PostContentDocumentRequest body = new PostContentDocumentRequest();
-        String marketplaceId = "";
+        PostContentDocumentRequest body = easyRandom.nextObject(PostContentDocumentRequest.class);
+        String marketplaceId = easyRandom.nextObject(String.class);
 
         ApiResponse<PostContentDocumentResponse> response = api.createContentDocumentWithHttpInfo(body, marketplaceId);
 
@@ -67,9 +78,9 @@ public class AplusContentApiTest {
     @Test
     public void getContentDocumentTest() throws Exception {
         instructBackendMock("getContentDocument", "200");
-        String contentReferenceKey = "";
-        String marketplaceId = "";
-        List<String> includedDataSet = new ArrayList<>();
+        String contentReferenceKey = easyRandom.nextObject(String.class);
+        String marketplaceId = easyRandom.nextObject(String.class);
+        List<String> includedDataSet = easyRandom.objects(String.class, 2).collect(Collectors.toList());
 
         ApiResponse<GetContentDocumentResponse> response = api.getContentDocumentWithHttpInfo(contentReferenceKey, marketplaceId, includedDataSet);
 
@@ -80,8 +91,8 @@ public class AplusContentApiTest {
     @Test
     public void listContentDocumentAsinRelationsTest() throws Exception {
         instructBackendMock("listContentDocumentAsinRelations", "200");
-        String contentReferenceKey = "";
-        String marketplaceId = "";
+        String contentReferenceKey = easyRandom.nextObject(String.class);
+        String marketplaceId = easyRandom.nextObject(String.class);
 
         ApiResponse<ListContentDocumentAsinRelationsResponse> response = api.listContentDocumentAsinRelationsWithHttpInfo(contentReferenceKey, marketplaceId, null, null, null);
 
@@ -92,8 +103,8 @@ public class AplusContentApiTest {
     @Test
     public void postContentDocumentApprovalSubmissionTest() throws Exception {
         instructBackendMock("postContentDocumentApprovalSubmission", "200");
-        String contentReferenceKey = "";
-        String marketplaceId = "";
+        String contentReferenceKey = easyRandom.nextObject(String.class);
+        String marketplaceId = easyRandom.nextObject(String.class);
 
         ApiResponse<PostContentDocumentApprovalSubmissionResponse> response = api.postContentDocumentApprovalSubmissionWithHttpInfo(contentReferenceKey, marketplaceId);
 
@@ -104,9 +115,9 @@ public class AplusContentApiTest {
     @Test
     public void postContentDocumentAsinRelationsTest() throws Exception {
         instructBackendMock("postContentDocumentAsinRelations", "200");
-        PostContentDocumentAsinRelationsRequest body = new PostContentDocumentAsinRelationsRequest();
-        String contentReferenceKey = "";
-        String marketplaceId = "";
+        PostContentDocumentAsinRelationsRequest body = easyRandom.nextObject(PostContentDocumentAsinRelationsRequest.class);
+        String contentReferenceKey = easyRandom.nextObject(String.class);
+        String marketplaceId = easyRandom.nextObject(String.class);
 
         ApiResponse<PostContentDocumentAsinRelationsResponse> response = api.postContentDocumentAsinRelationsWithHttpInfo(body, contentReferenceKey, marketplaceId);
 
@@ -117,8 +128,8 @@ public class AplusContentApiTest {
     @Test
     public void postContentDocumentSuspendSubmissionTest() throws Exception {
         instructBackendMock("postContentDocumentSuspendSubmission", "200");
-        String contentReferenceKey = "";
-        String marketplaceId = "";
+        String contentReferenceKey = easyRandom.nextObject(String.class);
+        String marketplaceId = easyRandom.nextObject(String.class);
 
         ApiResponse<PostContentDocumentSuspendSubmissionResponse> response = api.postContentDocumentSuspendSubmissionWithHttpInfo(contentReferenceKey, marketplaceId);
 
@@ -129,7 +140,7 @@ public class AplusContentApiTest {
     @Test
     public void searchContentDocumentsTest() throws Exception {
         instructBackendMock("searchContentDocuments", "200");
-        String marketplaceId = "";
+        String marketplaceId = easyRandom.nextObject(String.class);
 
         ApiResponse<SearchContentDocumentsResponse> response = api.searchContentDocumentsWithHttpInfo(marketplaceId, null);
 
@@ -140,8 +151,8 @@ public class AplusContentApiTest {
     @Test
     public void searchContentPublishRecordsTest() throws Exception {
         instructBackendMock("searchContentPublishRecords", "200");
-        String marketplaceId = "";
-        String asin = "";
+        String marketplaceId = easyRandom.nextObject(String.class);
+        String asin = easyRandom.nextObject(String.class);
 
         ApiResponse<SearchContentPublishRecordsResponse> response = api.searchContentPublishRecordsWithHttpInfo(marketplaceId, asin, null);
 
@@ -152,9 +163,9 @@ public class AplusContentApiTest {
     @Test
     public void updateContentDocumentTest() throws Exception {
         instructBackendMock("updateContentDocument", "200");
-        PostContentDocumentRequest body = new PostContentDocumentRequest();
-        String contentReferenceKey = "";
-        String marketplaceId = "";
+        PostContentDocumentRequest body = easyRandom.nextObject(PostContentDocumentRequest.class);
+        String contentReferenceKey = easyRandom.nextObject(String.class);
+        String marketplaceId = easyRandom.nextObject(String.class);
 
         ApiResponse<PostContentDocumentResponse> response = api.updateContentDocumentWithHttpInfo(body, contentReferenceKey, marketplaceId);
 
@@ -165,8 +176,8 @@ public class AplusContentApiTest {
     @Test
     public void validateContentDocumentAsinRelationsTest() throws Exception {
         instructBackendMock("validateContentDocumentAsinRelations", "200");
-        PostContentDocumentRequest body = new PostContentDocumentRequest();
-        String marketplaceId = "";
+        PostContentDocumentRequest body = easyRandom.nextObject(PostContentDocumentRequest.class);
+        String marketplaceId = easyRandom.nextObject(String.class);
 
         ApiResponse<ValidateContentDocumentAsinRelationsResponse> response = api.validateContentDocumentAsinRelationsWithHttpInfo(body, marketplaceId, null);
 

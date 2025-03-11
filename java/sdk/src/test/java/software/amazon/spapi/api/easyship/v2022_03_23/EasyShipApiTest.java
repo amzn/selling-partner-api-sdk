@@ -14,6 +14,10 @@ package software.amazon.spapi.api.easyship.v2022_03_23;
 
 import software.amazon.spapi.ApiResponse;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
+import org.jeasy.random.EasyRandom;
+import org.jeasy.random.EasyRandomParameters;
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.OffsetDateTime;
 import software.amazon.spapi.models.easyship.v2022_03_23.CreateScheduledPackageRequest;
 import software.amazon.spapi.models.easyship.v2022_03_23.CreateScheduledPackagesRequest;
 import software.amazon.spapi.models.easyship.v2022_03_23.CreateScheduledPackagesResponse;
@@ -30,29 +34,36 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class EasyShipApiTest {
 
-   private static String endpoint = "http://localhost:3000";
-   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
-   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+    private static String endpoint = "http://localhost:3000";
+    private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+    private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
         .clientId("clientId")
         .clientSecret("clientSecret")
         .refreshToken("refreshToken")
         .endpoint(authEndpoint)
         .build();
 
-   private final EasyShipApi api = new EasyShipApi.Builder()
+    private final EasyShipApi api = new EasyShipApi.Builder()
         .lwaAuthorizationCredentials(credentials)
         .endpoint(endpoint)
         .build();
 
+    private final EasyRandom easyRandom = new EasyRandom(
+        new EasyRandomParameters().randomize(OffsetDateTime.class, OffsetDateTime::now)
+                .randomize(LocalDate.class, LocalDate::now)
+                .collectionSizeRange(1, 2)
+    );
+
     @Test
     public void createScheduledPackageTest() throws Exception {
         instructBackendMock("createScheduledPackage", "200");
-        CreateScheduledPackageRequest body = new CreateScheduledPackageRequest();
+        CreateScheduledPackageRequest body = easyRandom.nextObject(CreateScheduledPackageRequest.class);
 
         ApiResponse<ModelPackage> response = api.createScheduledPackageWithHttpInfo(body);
 
@@ -63,7 +74,7 @@ public class EasyShipApiTest {
     @Test
     public void createScheduledPackageBulkTest() throws Exception {
         instructBackendMock("createScheduledPackageBulk", "200");
-        CreateScheduledPackagesRequest body = new CreateScheduledPackagesRequest();
+        CreateScheduledPackagesRequest body = easyRandom.nextObject(CreateScheduledPackagesRequest.class);
 
         ApiResponse<CreateScheduledPackagesResponse> response = api.createScheduledPackageBulkWithHttpInfo(body);
 
@@ -74,8 +85,8 @@ public class EasyShipApiTest {
     @Test
     public void getScheduledPackageTest() throws Exception {
         instructBackendMock("getScheduledPackage", "200");
-        String amazonOrderId = "";
-        String marketplaceId = "";
+        String amazonOrderId = easyRandom.nextObject(String.class);
+        String marketplaceId = easyRandom.nextObject(String.class);
 
         ApiResponse<ModelPackage> response = api.getScheduledPackageWithHttpInfo(amazonOrderId, marketplaceId);
 

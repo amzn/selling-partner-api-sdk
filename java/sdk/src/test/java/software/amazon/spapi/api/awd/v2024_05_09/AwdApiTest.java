@@ -14,6 +14,10 @@ package software.amazon.spapi.api.awd.v2024_05_09;
 
 import software.amazon.spapi.ApiResponse;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
+import org.jeasy.random.EasyRandom;
+import org.jeasy.random.EasyRandomParameters;
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.OffsetDateTime;
 import software.amazon.spapi.models.awd.v2024_05_09.ErrorList;
 import software.amazon.spapi.models.awd.v2024_05_09.InboundEligibility;
 import software.amazon.spapi.models.awd.v2024_05_09.InboundOrder;
@@ -33,29 +37,36 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AwdApiTest {
 
-   private static String endpoint = "http://localhost:3000";
-   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
-   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+    private static String endpoint = "http://localhost:3000";
+    private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+    private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
         .clientId("clientId")
         .clientSecret("clientSecret")
         .refreshToken("refreshToken")
         .endpoint(authEndpoint)
         .build();
 
-   private final AwdApi api = new AwdApi.Builder()
+    private final AwdApi api = new AwdApi.Builder()
         .lwaAuthorizationCredentials(credentials)
         .endpoint(endpoint)
         .build();
 
+    private final EasyRandom easyRandom = new EasyRandom(
+        new EasyRandomParameters().randomize(OffsetDateTime.class, OffsetDateTime::now)
+                .randomize(LocalDate.class, LocalDate::now)
+                .collectionSizeRange(1, 2)
+    );
+
     @Test
     public void cancelInboundTest() throws Exception {
         instructBackendMock("cancelInbound", "204");
-        String orderId = "";
+        String orderId = easyRandom.nextObject(String.class);
 
         api.cancelInboundWithHttpInfo(orderId);
 
@@ -64,7 +75,7 @@ public class AwdApiTest {
     @Test
     public void checkInboundEligibilityTest() throws Exception {
         instructBackendMock("checkInboundEligibility", "200");
-        InboundPackages body = new InboundPackages();
+        InboundPackages body = easyRandom.nextObject(InboundPackages.class);
 
         ApiResponse<InboundEligibility> response = api.checkInboundEligibilityWithHttpInfo(body);
 
@@ -75,7 +86,7 @@ public class AwdApiTest {
     @Test
     public void confirmInboundTest() throws Exception {
         instructBackendMock("confirmInbound", "204");
-        String orderId = "";
+        String orderId = easyRandom.nextObject(String.class);
 
         api.confirmInboundWithHttpInfo(orderId);
 
@@ -84,7 +95,7 @@ public class AwdApiTest {
     @Test
     public void createInboundTest() throws Exception {
         instructBackendMock("createInbound", "201");
-        InboundOrderCreationData body = new InboundOrderCreationData();
+        InboundOrderCreationData body = easyRandom.nextObject(InboundOrderCreationData.class);
 
         ApiResponse<InboundOrderReference> response = api.createInboundWithHttpInfo(body);
 
@@ -95,7 +106,7 @@ public class AwdApiTest {
     @Test
     public void getInboundTest() throws Exception {
         instructBackendMock("getInbound", "200");
-        String orderId = "";
+        String orderId = easyRandom.nextObject(String.class);
 
         ApiResponse<InboundOrder> response = api.getInboundWithHttpInfo(orderId);
 
@@ -106,7 +117,7 @@ public class AwdApiTest {
     @Test
     public void getInboundShipmentTest() throws Exception {
         instructBackendMock("getInboundShipment", "200");
-        String shipmentId = "";
+        String shipmentId = easyRandom.nextObject(String.class);
 
         ApiResponse<InboundShipment> response = api.getInboundShipmentWithHttpInfo(shipmentId, null);
 
@@ -117,7 +128,7 @@ public class AwdApiTest {
     @Test
     public void getInboundShipmentLabelsTest() throws Exception {
         instructBackendMock("getInboundShipmentLabels", "200");
-        String shipmentId = "";
+        String shipmentId = easyRandom.nextObject(String.class);
 
         ApiResponse<ShipmentLabels> response = api.getInboundShipmentLabelsWithHttpInfo(shipmentId, null, null);
 
@@ -148,8 +159,8 @@ public class AwdApiTest {
     @Test
     public void updateInboundTest() throws Exception {
         instructBackendMock("updateInbound", "204");
-        InboundOrder body = new InboundOrder();
-        String orderId = "";
+        InboundOrder body = easyRandom.nextObject(InboundOrder.class);
+        String orderId = easyRandom.nextObject(String.class);
 
         api.updateInboundWithHttpInfo(body, orderId);
 
@@ -158,8 +169,8 @@ public class AwdApiTest {
     @Test
     public void updateInboundShipmentTransportDetailsTest() throws Exception {
         instructBackendMock("updateInboundShipmentTransportDetails", "204");
-        TransportationDetails body = new TransportationDetails();
-        String shipmentId = "";
+        TransportationDetails body = easyRandom.nextObject(TransportationDetails.class);
+        String shipmentId = easyRandom.nextObject(String.class);
 
         api.updateInboundShipmentTransportDetailsWithHttpInfo(body, shipmentId);
 

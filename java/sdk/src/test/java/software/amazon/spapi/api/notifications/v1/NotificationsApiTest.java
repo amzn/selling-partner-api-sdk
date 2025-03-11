@@ -14,6 +14,10 @@ package software.amazon.spapi.api.notifications.v1;
 
 import software.amazon.spapi.ApiResponse;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
+import org.jeasy.random.EasyRandom;
+import org.jeasy.random.EasyRandomParameters;
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.OffsetDateTime;
 import software.amazon.spapi.models.notifications.v1.CreateDestinationRequest;
 import software.amazon.spapi.models.notifications.v1.CreateDestinationResponse;
 import software.amazon.spapi.models.notifications.v1.CreateSubscriptionRequest;
@@ -31,29 +35,36 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class NotificationsApiTest {
 
-   private static String endpoint = "http://localhost:3000";
-   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
-   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+    private static String endpoint = "http://localhost:3000";
+    private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+    private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
         .clientId("clientId")
         .clientSecret("clientSecret")
         .refreshToken("refreshToken")
         .endpoint(authEndpoint)
         .build();
 
-   private final NotificationsApi api = new NotificationsApi.Builder()
+    private final NotificationsApi api = new NotificationsApi.Builder()
         .lwaAuthorizationCredentials(credentials)
         .endpoint(endpoint)
         .build();
 
+    private final EasyRandom easyRandom = new EasyRandom(
+        new EasyRandomParameters().randomize(OffsetDateTime.class, OffsetDateTime::now)
+                .randomize(LocalDate.class, LocalDate::now)
+                .collectionSizeRange(1, 2)
+    );
+
     @Test
     public void createDestinationTest() throws Exception {
         instructBackendMock("createDestination", "200");
-        CreateDestinationRequest body = new CreateDestinationRequest();
+        CreateDestinationRequest body = easyRandom.nextObject(CreateDestinationRequest.class);
 
         ApiResponse<CreateDestinationResponse> response = api.createDestinationWithHttpInfo(body);
 
@@ -64,8 +75,8 @@ public class NotificationsApiTest {
     @Test
     public void createSubscriptionTest() throws Exception {
         instructBackendMock("createSubscription", "200");
-        CreateSubscriptionRequest body = new CreateSubscriptionRequest();
-        String notificationType = "";
+        CreateSubscriptionRequest body = easyRandom.nextObject(CreateSubscriptionRequest.class);
+        String notificationType = easyRandom.nextObject(String.class);
 
         ApiResponse<CreateSubscriptionResponse> response = api.createSubscriptionWithHttpInfo(body, notificationType);
 
@@ -76,7 +87,7 @@ public class NotificationsApiTest {
     @Test
     public void deleteDestinationTest() throws Exception {
         instructBackendMock("deleteDestination", "200");
-        String destinationId = "";
+        String destinationId = easyRandom.nextObject(String.class);
 
         ApiResponse<DeleteDestinationResponse> response = api.deleteDestinationWithHttpInfo(destinationId);
 
@@ -87,8 +98,8 @@ public class NotificationsApiTest {
     @Test
     public void deleteSubscriptionByIdTest() throws Exception {
         instructBackendMock("deleteSubscriptionById", "200");
-        String subscriptionId = "";
-        String notificationType = "";
+        String subscriptionId = easyRandom.nextObject(String.class);
+        String notificationType = easyRandom.nextObject(String.class);
 
         ApiResponse<DeleteSubscriptionByIdResponse> response = api.deleteSubscriptionByIdWithHttpInfo(subscriptionId, notificationType);
 
@@ -99,7 +110,7 @@ public class NotificationsApiTest {
     @Test
     public void getDestinationTest() throws Exception {
         instructBackendMock("getDestination", "200");
-        String destinationId = "";
+        String destinationId = easyRandom.nextObject(String.class);
 
         ApiResponse<GetDestinationResponse> response = api.getDestinationWithHttpInfo(destinationId);
 
@@ -120,7 +131,7 @@ public class NotificationsApiTest {
     @Test
     public void getSubscriptionTest() throws Exception {
         instructBackendMock("getSubscription", "200");
-        String notificationType = "";
+        String notificationType = easyRandom.nextObject(String.class);
 
         ApiResponse<GetSubscriptionResponse> response = api.getSubscriptionWithHttpInfo(notificationType, null);
 
@@ -131,8 +142,8 @@ public class NotificationsApiTest {
     @Test
     public void getSubscriptionByIdTest() throws Exception {
         instructBackendMock("getSubscriptionById", "200");
-        String subscriptionId = "";
-        String notificationType = "";
+        String subscriptionId = easyRandom.nextObject(String.class);
+        String notificationType = easyRandom.nextObject(String.class);
 
         ApiResponse<GetSubscriptionByIdResponse> response = api.getSubscriptionByIdWithHttpInfo(subscriptionId, notificationType);
 

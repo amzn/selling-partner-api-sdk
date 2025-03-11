@@ -14,6 +14,10 @@ package software.amazon.spapi.api.pricing.v2022_05_01;
 
 import software.amazon.spapi.ApiResponse;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
+import org.jeasy.random.EasyRandom;
+import org.jeasy.random.EasyRandomParameters;
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.OffsetDateTime;
 import software.amazon.spapi.models.pricing.v2022_05_01.CompetitiveSummaryBatchRequest;
 import software.amazon.spapi.models.pricing.v2022_05_01.CompetitiveSummaryBatchResponse;
 import software.amazon.spapi.models.pricing.v2022_05_01.Errors;
@@ -26,29 +30,36 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ProductPricingApiTest {
 
-   private static String endpoint = "http://localhost:3000";
-   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
-   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+    private static String endpoint = "http://localhost:3000";
+    private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+    private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
         .clientId("clientId")
         .clientSecret("clientSecret")
         .refreshToken("refreshToken")
         .endpoint(authEndpoint)
         .build();
 
-   private final ProductPricingApi api = new ProductPricingApi.Builder()
+    private final ProductPricingApi api = new ProductPricingApi.Builder()
         .lwaAuthorizationCredentials(credentials)
         .endpoint(endpoint)
         .build();
 
+    private final EasyRandom easyRandom = new EasyRandom(
+        new EasyRandomParameters().randomize(OffsetDateTime.class, OffsetDateTime::now)
+                .randomize(LocalDate.class, LocalDate::now)
+                .collectionSizeRange(1, 2)
+    );
+
     @Test
     public void getCompetitiveSummaryTest() throws Exception {
         instructBackendMock("getCompetitiveSummary", "200");
-        CompetitiveSummaryBatchRequest body = new CompetitiveSummaryBatchRequest();
+        CompetitiveSummaryBatchRequest body = easyRandom.nextObject(CompetitiveSummaryBatchRequest.class);
 
         ApiResponse<CompetitiveSummaryBatchResponse> response = api.getCompetitiveSummaryWithHttpInfo(body);
 
@@ -59,7 +70,7 @@ public class ProductPricingApiTest {
     @Test
     public void getFeaturedOfferExpectedPriceBatchTest() throws Exception {
         instructBackendMock("getFeaturedOfferExpectedPriceBatch", "200");
-        GetFeaturedOfferExpectedPriceBatchRequest body = new GetFeaturedOfferExpectedPriceBatchRequest();
+        GetFeaturedOfferExpectedPriceBatchRequest body = easyRandom.nextObject(GetFeaturedOfferExpectedPriceBatchRequest.class);
 
         ApiResponse<GetFeaturedOfferExpectedPriceBatchResponse> response = api.getFeaturedOfferExpectedPriceBatchWithHttpInfo(body);
 

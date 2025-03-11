@@ -14,6 +14,10 @@ package software.amazon.spapi.api.vehicles.v2024_11_01;
 
 import software.amazon.spapi.ApiResponse;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
+import org.jeasy.random.EasyRandom;
+import org.jeasy.random.EasyRandomParameters;
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.OffsetDateTime;
 import software.amazon.spapi.models.vehicles.v2024_11_01.ErrorList;
 import software.amazon.spapi.models.vehicles.v2024_11_01.VehiclesResponse;
 import org.junit.jupiter.api.Test;
@@ -23,30 +27,37 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class VehiclesApiTest {
 
-   private static String endpoint = "http://localhost:3000";
-   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
-   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+    private static String endpoint = "http://localhost:3000";
+    private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+    private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
         .clientId("clientId")
         .clientSecret("clientSecret")
         .refreshToken("refreshToken")
         .endpoint(authEndpoint)
         .build();
 
-   private final VehiclesApi api = new VehiclesApi.Builder()
+    private final VehiclesApi api = new VehiclesApi.Builder()
         .lwaAuthorizationCredentials(credentials)
         .endpoint(endpoint)
         .build();
 
+    private final EasyRandom easyRandom = new EasyRandom(
+        new EasyRandomParameters().randomize(OffsetDateTime.class, OffsetDateTime::now)
+                .randomize(LocalDate.class, LocalDate::now)
+                .collectionSizeRange(1, 2)
+    );
+
     @Test
     public void getVehiclesTest() throws Exception {
         instructBackendMock("getVehicles", "200");
-        String marketplaceId = "";
-        String vehicleType = "";
+        String marketplaceId = easyRandom.nextObject(String.class);
+        String vehicleType = easyRandom.nextObject(String.class);
 
         ApiResponse<VehiclesResponse> response = api.getVehiclesWithHttpInfo(marketplaceId, vehicleType, null, null);
 

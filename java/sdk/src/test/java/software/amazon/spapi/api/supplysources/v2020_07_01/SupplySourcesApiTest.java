@@ -14,6 +14,10 @@ package software.amazon.spapi.api.supplysources.v2020_07_01;
 
 import software.amazon.spapi.ApiResponse;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
+import org.jeasy.random.EasyRandom;
+import org.jeasy.random.EasyRandomParameters;
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.OffsetDateTime;
 import java.math.BigDecimal;
 import software.amazon.spapi.models.supplysources.v2020_07_01.CreateSupplySourceRequest;
 import software.amazon.spapi.models.supplysources.v2020_07_01.CreateSupplySourceResponse;
@@ -29,29 +33,36 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class SupplySourcesApiTest {
 
-   private static String endpoint = "http://localhost:3000";
-   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
-   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+    private static String endpoint = "http://localhost:3000";
+    private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+    private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
         .clientId("clientId")
         .clientSecret("clientSecret")
         .refreshToken("refreshToken")
         .endpoint(authEndpoint)
         .build();
 
-   private final SupplySourcesApi api = new SupplySourcesApi.Builder()
+    private final SupplySourcesApi api = new SupplySourcesApi.Builder()
         .lwaAuthorizationCredentials(credentials)
         .endpoint(endpoint)
         .build();
 
+    private final EasyRandom easyRandom = new EasyRandom(
+        new EasyRandomParameters().randomize(OffsetDateTime.class, OffsetDateTime::now)
+                .randomize(LocalDate.class, LocalDate::now)
+                .collectionSizeRange(1, 2)
+    );
+
     @Test
     public void archiveSupplySourceTest() throws Exception {
         instructBackendMock("archiveSupplySource", "204");
-        String supplySourceId = "";
+        String supplySourceId = easyRandom.nextObject(String.class);
 
         ApiResponse<ErrorList> response = api.archiveSupplySourceWithHttpInfo(supplySourceId);
 
@@ -62,7 +73,7 @@ public class SupplySourcesApiTest {
     @Test
     public void createSupplySourceTest() throws Exception {
         instructBackendMock("createSupplySource", "200");
-        CreateSupplySourceRequest body = new CreateSupplySourceRequest();
+        CreateSupplySourceRequest body = easyRandom.nextObject(CreateSupplySourceRequest.class);
 
         ApiResponse<CreateSupplySourceResponse> response = api.createSupplySourceWithHttpInfo(body);
 
@@ -73,7 +84,7 @@ public class SupplySourcesApiTest {
     @Test
     public void getSupplySourceTest() throws Exception {
         instructBackendMock("getSupplySource", "200");
-        String supplySourceId = "";
+        String supplySourceId = easyRandom.nextObject(String.class);
 
         ApiResponse<SupplySource> response = api.getSupplySourceWithHttpInfo(supplySourceId);
 
@@ -94,7 +105,7 @@ public class SupplySourcesApiTest {
     @Test
     public void updateSupplySourceTest() throws Exception {
         instructBackendMock("updateSupplySource", "204");
-        String supplySourceId = "";
+        String supplySourceId = easyRandom.nextObject(String.class);
 
         ApiResponse<ErrorList> response = api.updateSupplySourceWithHttpInfo(supplySourceId, null);
 
@@ -105,7 +116,7 @@ public class SupplySourcesApiTest {
     @Test
     public void updateSupplySourceStatusTest() throws Exception {
         instructBackendMock("updateSupplySourceStatus", "204");
-        String supplySourceId = "";
+        String supplySourceId = easyRandom.nextObject(String.class);
 
         ApiResponse<ErrorList> response = api.updateSupplySourceStatusWithHttpInfo(supplySourceId, null);
 

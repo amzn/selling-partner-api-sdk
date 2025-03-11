@@ -14,6 +14,10 @@ package software.amazon.spapi.api.datakiosk.v2023_11_15;
 
 import software.amazon.spapi.ApiResponse;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
+import org.jeasy.random.EasyRandom;
+import org.jeasy.random.EasyRandomParameters;
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.OffsetDateTime;
 import software.amazon.spapi.models.datakiosk.v2023_11_15.CreateQueryResponse;
 import software.amazon.spapi.models.datakiosk.v2023_11_15.CreateQuerySpecification;
 import software.amazon.spapi.models.datakiosk.v2023_11_15.ErrorList;
@@ -28,29 +32,36 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class QueriesApiTest {
 
-   private static String endpoint = "http://localhost:3000";
-   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
-   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+    private static String endpoint = "http://localhost:3000";
+    private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+    private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
         .clientId("clientId")
         .clientSecret("clientSecret")
         .refreshToken("refreshToken")
         .endpoint(authEndpoint)
         .build();
 
-   private final QueriesApi api = new QueriesApi.Builder()
+    private final QueriesApi api = new QueriesApi.Builder()
         .lwaAuthorizationCredentials(credentials)
         .endpoint(endpoint)
         .build();
 
+    private final EasyRandom easyRandom = new EasyRandom(
+        new EasyRandomParameters().randomize(OffsetDateTime.class, OffsetDateTime::now)
+                .randomize(LocalDate.class, LocalDate::now)
+                .collectionSizeRange(1, 2)
+    );
+
     @Test
     public void cancelQueryTest() throws Exception {
         instructBackendMock("cancelQuery", "204");
-        String queryId = "";
+        String queryId = easyRandom.nextObject(String.class);
 
         api.cancelQueryWithHttpInfo(queryId);
 
@@ -59,7 +70,7 @@ public class QueriesApiTest {
     @Test
     public void createQueryTest() throws Exception {
         instructBackendMock("createQuery", "202");
-        CreateQuerySpecification body = new CreateQuerySpecification();
+        CreateQuerySpecification body = easyRandom.nextObject(CreateQuerySpecification.class);
 
         ApiResponse<CreateQueryResponse> response = api.createQueryWithHttpInfo(body);
 
@@ -70,7 +81,7 @@ public class QueriesApiTest {
     @Test
     public void getDocumentTest() throws Exception {
         instructBackendMock("getDocument", "200");
-        String documentId = "";
+        String documentId = easyRandom.nextObject(String.class);
 
         ApiResponse<GetDocumentResponse> response = api.getDocumentWithHttpInfo(documentId);
 
@@ -91,7 +102,7 @@ public class QueriesApiTest {
     @Test
     public void getQueryTest() throws Exception {
         instructBackendMock("getQuery", "200");
-        String queryId = "";
+        String queryId = easyRandom.nextObject(String.class);
 
         ApiResponse<Query> response = api.getQueryWithHttpInfo(queryId);
 

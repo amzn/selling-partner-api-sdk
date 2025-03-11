@@ -14,6 +14,10 @@ package software.amazon.spapi.api.listings.items.v2021_08_01;
 
 import software.amazon.spapi.ApiResponse;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
+import org.jeasy.random.EasyRandom;
+import org.jeasy.random.EasyRandomParameters;
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.OffsetDateTime;
 import software.amazon.spapi.models.listings.items.v2021_08_01.ErrorList;
 import software.amazon.spapi.models.listings.items.v2021_08_01.Item;
 import software.amazon.spapi.models.listings.items.v2021_08_01.ItemSearchResults;
@@ -28,31 +32,38 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ListingsApiTest {
 
-   private static String endpoint = "http://localhost:3000";
-   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
-   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+    private static String endpoint = "http://localhost:3000";
+    private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+    private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
         .clientId("clientId")
         .clientSecret("clientSecret")
         .refreshToken("refreshToken")
         .endpoint(authEndpoint)
         .build();
 
-   private final ListingsApi api = new ListingsApi.Builder()
+    private final ListingsApi api = new ListingsApi.Builder()
         .lwaAuthorizationCredentials(credentials)
         .endpoint(endpoint)
         .build();
 
+    private final EasyRandom easyRandom = new EasyRandom(
+        new EasyRandomParameters().randomize(OffsetDateTime.class, OffsetDateTime::now)
+                .randomize(LocalDate.class, LocalDate::now)
+                .collectionSizeRange(1, 2)
+    );
+
     @Test
     public void deleteListingsItemTest() throws Exception {
         instructBackendMock("deleteListingsItem", "200");
-        String sellerId = "";
-        String sku = "";
-        List<String> marketplaceIds = new ArrayList<>();
+        String sellerId = easyRandom.nextObject(String.class);
+        String sku = easyRandom.nextObject(String.class);
+        List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
 
         ApiResponse<ListingsItemSubmissionResponse> response = api.deleteListingsItemWithHttpInfo(sellerId, sku, marketplaceIds, null);
 
@@ -63,9 +74,9 @@ public class ListingsApiTest {
     @Test
     public void getListingsItemTest() throws Exception {
         instructBackendMock("getListingsItem", "200");
-        String sellerId = "";
-        String sku = "";
-        List<String> marketplaceIds = new ArrayList<>();
+        String sellerId = easyRandom.nextObject(String.class);
+        String sku = easyRandom.nextObject(String.class);
+        List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
 
         ApiResponse<Item> response = api.getListingsItemWithHttpInfo(sellerId, sku, marketplaceIds, null, null);
 
@@ -76,10 +87,10 @@ public class ListingsApiTest {
     @Test
     public void patchListingsItemTest() throws Exception {
         instructBackendMock("patchListingsItem", "200");
-        ListingsItemPatchRequest body = new ListingsItemPatchRequest();
-        String sellerId = "";
-        String sku = "";
-        List<String> marketplaceIds = new ArrayList<>();
+        ListingsItemPatchRequest body = easyRandom.nextObject(ListingsItemPatchRequest.class);
+        String sellerId = easyRandom.nextObject(String.class);
+        String sku = easyRandom.nextObject(String.class);
+        List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
 
         ApiResponse<ListingsItemSubmissionResponse> response = api.patchListingsItemWithHttpInfo(body, sellerId, sku, marketplaceIds, null, null, null);
 
@@ -90,10 +101,10 @@ public class ListingsApiTest {
     @Test
     public void putListingsItemTest() throws Exception {
         instructBackendMock("putListingsItem", "200");
-        ListingsItemPutRequest body = new ListingsItemPutRequest();
-        String sellerId = "";
-        String sku = "";
-        List<String> marketplaceIds = new ArrayList<>();
+        ListingsItemPutRequest body = easyRandom.nextObject(ListingsItemPutRequest.class);
+        String sellerId = easyRandom.nextObject(String.class);
+        String sku = easyRandom.nextObject(String.class);
+        List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
 
         ApiResponse<ListingsItemSubmissionResponse> response = api.putListingsItemWithHttpInfo(body, sellerId, sku, marketplaceIds, null, null, null);
 
@@ -104,8 +115,8 @@ public class ListingsApiTest {
     @Test
     public void searchListingsItemsTest() throws Exception {
         instructBackendMock("searchListingsItems", "200");
-        String sellerId = "";
-        List<String> marketplaceIds = new ArrayList<>();
+        String sellerId = easyRandom.nextObject(String.class);
+        List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
 
         ApiResponse<ItemSearchResults> response = api.searchListingsItemsWithHttpInfo(sellerId, marketplaceIds, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 

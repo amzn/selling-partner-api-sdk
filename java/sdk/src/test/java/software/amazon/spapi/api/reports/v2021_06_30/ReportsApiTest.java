@@ -14,6 +14,10 @@ package software.amazon.spapi.api.reports.v2021_06_30;
 
 import software.amazon.spapi.ApiResponse;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
+import org.jeasy.random.EasyRandom;
+import org.jeasy.random.EasyRandomParameters;
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.OffsetDateTime;
 import software.amazon.spapi.models.reports.v2021_06_30.CreateReportResponse;
 import software.amazon.spapi.models.reports.v2021_06_30.CreateReportScheduleResponse;
 import software.amazon.spapi.models.reports.v2021_06_30.CreateReportScheduleSpecification;
@@ -32,29 +36,36 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ReportsApiTest {
 
-   private static String endpoint = "http://localhost:3000";
-   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
-   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+    private static String endpoint = "http://localhost:3000";
+    private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+    private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
         .clientId("clientId")
         .clientSecret("clientSecret")
         .refreshToken("refreshToken")
         .endpoint(authEndpoint)
         .build();
 
-   private final ReportsApi api = new ReportsApi.Builder()
+    private final ReportsApi api = new ReportsApi.Builder()
         .lwaAuthorizationCredentials(credentials)
         .endpoint(endpoint)
         .build();
 
+    private final EasyRandom easyRandom = new EasyRandom(
+        new EasyRandomParameters().randomize(OffsetDateTime.class, OffsetDateTime::now)
+                .randomize(LocalDate.class, LocalDate::now)
+                .collectionSizeRange(1, 2)
+    );
+
     @Test
     public void cancelReportTest() throws Exception {
         instructBackendMock("cancelReport", "200");
-        String reportId = "";
+        String reportId = easyRandom.nextObject(String.class);
 
         api.cancelReportWithHttpInfo(reportId);
 
@@ -63,7 +74,7 @@ public class ReportsApiTest {
     @Test
     public void cancelReportScheduleTest() throws Exception {
         instructBackendMock("cancelReportSchedule", "200");
-        String reportScheduleId = "";
+        String reportScheduleId = easyRandom.nextObject(String.class);
 
         api.cancelReportScheduleWithHttpInfo(reportScheduleId);
 
@@ -72,7 +83,7 @@ public class ReportsApiTest {
     @Test
     public void createReportTest() throws Exception {
         instructBackendMock("createReport", "202");
-        CreateReportSpecification body = new CreateReportSpecification();
+        CreateReportSpecification body = easyRandom.nextObject(CreateReportSpecification.class);
 
         ApiResponse<CreateReportResponse> response = api.createReportWithHttpInfo(body);
 
@@ -83,7 +94,7 @@ public class ReportsApiTest {
     @Test
     public void createReportScheduleTest() throws Exception {
         instructBackendMock("createReportSchedule", "201");
-        CreateReportScheduleSpecification body = new CreateReportScheduleSpecification();
+        CreateReportScheduleSpecification body = easyRandom.nextObject(CreateReportScheduleSpecification.class);
 
         ApiResponse<CreateReportScheduleResponse> response = api.createReportScheduleWithHttpInfo(body);
 
@@ -94,7 +105,7 @@ public class ReportsApiTest {
     @Test
     public void getReportTest() throws Exception {
         instructBackendMock("getReport", "200");
-        String reportId = "";
+        String reportId = easyRandom.nextObject(String.class);
 
         ApiResponse<Report> response = api.getReportWithHttpInfo(reportId);
 
@@ -105,7 +116,7 @@ public class ReportsApiTest {
     @Test
     public void getReportDocumentTest() throws Exception {
         instructBackendMock("getReportDocument", "200");
-        String reportDocumentId = "";
+        String reportDocumentId = easyRandom.nextObject(String.class);
 
         ApiResponse<ReportDocument> response = api.getReportDocumentWithHttpInfo(reportDocumentId);
 
@@ -116,7 +127,7 @@ public class ReportsApiTest {
     @Test
     public void getReportScheduleTest() throws Exception {
         instructBackendMock("getReportSchedule", "200");
-        String reportScheduleId = "";
+        String reportScheduleId = easyRandom.nextObject(String.class);
 
         ApiResponse<ReportSchedule> response = api.getReportScheduleWithHttpInfo(reportScheduleId);
 
@@ -127,7 +138,7 @@ public class ReportsApiTest {
     @Test
     public void getReportSchedulesTest() throws Exception {
         instructBackendMock("getReportSchedules", "200");
-        List<String> reportTypes = new ArrayList<>();
+        List<String> reportTypes = easyRandom.objects(String.class, 2).collect(Collectors.toList());
 
         ApiResponse<ReportScheduleList> response = api.getReportSchedulesWithHttpInfo(reportTypes);
 

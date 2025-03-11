@@ -14,6 +14,10 @@ package software.amazon.spapi.api.fba.inventory.v1;
 
 import software.amazon.spapi.ApiResponse;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
+import org.jeasy.random.EasyRandom;
+import org.jeasy.random.EasyRandomParameters;
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.OffsetDateTime;
 import software.amazon.spapi.models.fba.inventory.v1.AddInventoryRequest;
 import software.amazon.spapi.models.fba.inventory.v1.AddInventoryResponse;
 import software.amazon.spapi.models.fba.inventory.v1.CreateInventoryItemRequest;
@@ -28,30 +32,37 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class FbaInventoryApiTest {
 
-   private static String endpoint = "http://localhost:3000";
-   private static String authEndpoint = "http://localhost:3000/auth/o2/token";
-   private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+    private static String endpoint = "http://localhost:3000";
+    private static String authEndpoint = "http://localhost:3000/auth/o2/token";
+    private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
         .clientId("clientId")
         .clientSecret("clientSecret")
         .refreshToken("refreshToken")
         .endpoint(authEndpoint)
         .build();
 
-   private final FbaInventoryApi api = new FbaInventoryApi.Builder()
+    private final FbaInventoryApi api = new FbaInventoryApi.Builder()
         .lwaAuthorizationCredentials(credentials)
         .endpoint(endpoint)
         .build();
 
+    private final EasyRandom easyRandom = new EasyRandom(
+        new EasyRandomParameters().randomize(OffsetDateTime.class, OffsetDateTime::now)
+                .randomize(LocalDate.class, LocalDate::now)
+                .collectionSizeRange(1, 2)
+    );
+
     @Test
     public void addInventoryTest() throws Exception {
         instructBackendMock("addInventory", "200");
-        AddInventoryRequest body = new AddInventoryRequest();
-        String xAmznIdempotencyToken = "";
+        AddInventoryRequest body = easyRandom.nextObject(AddInventoryRequest.class);
+        String xAmznIdempotencyToken = easyRandom.nextObject(String.class);
 
         ApiResponse<AddInventoryResponse> response = api.addInventoryWithHttpInfo(body, xAmznIdempotencyToken);
 
@@ -62,7 +73,7 @@ public class FbaInventoryApiTest {
     @Test
     public void createInventoryItemTest() throws Exception {
         instructBackendMock("createInventoryItem", "200");
-        CreateInventoryItemRequest body = new CreateInventoryItemRequest();
+        CreateInventoryItemRequest body = easyRandom.nextObject(CreateInventoryItemRequest.class);
 
         ApiResponse<CreateInventoryItemResponse> response = api.createInventoryItemWithHttpInfo(body);
 
@@ -73,8 +84,8 @@ public class FbaInventoryApiTest {
     @Test
     public void deleteInventoryItemTest() throws Exception {
         instructBackendMock("deleteInventoryItem", "200");
-        String sellerSku = "";
-        String marketplaceId = "";
+        String sellerSku = easyRandom.nextObject(String.class);
+        String marketplaceId = easyRandom.nextObject(String.class);
 
         ApiResponse<DeleteInventoryItemResponse> response = api.deleteInventoryItemWithHttpInfo(sellerSku, marketplaceId);
 
@@ -85,9 +96,9 @@ public class FbaInventoryApiTest {
     @Test
     public void getInventorySummariesTest() throws Exception {
         instructBackendMock("getInventorySummaries", "200");
-        String granularityType = "";
-        String granularityId = "";
-        List<String> marketplaceIds = new ArrayList<>();
+        String granularityType = easyRandom.nextObject(String.class);
+        String granularityId = easyRandom.nextObject(String.class);
+        List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
 
         ApiResponse<GetInventorySummariesResponse> response = api.getInventorySummariesWithHttpInfo(granularityType, granularityId, marketplaceIds, null, null, null, null, null);
 
