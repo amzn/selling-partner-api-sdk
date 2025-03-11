@@ -66,7 +66,7 @@ $lwaAuthorizationCredentials = new LWAAuthorizationCredentials([
 $config = new Configuration([], $lwaAuthorizationCredentials);
 
 // Setting SP-API endpoint region
-$config->setHost($_ENV['SP_API_ENDPOINT_HOST']);
+$config->setHost('https://sellingpartnerapi-na.amazon.com');
 
 // Create a new HTTP client
 $client = new GuzzleHttp\Client();
@@ -77,7 +77,7 @@ $api = new OrdersV0Api($config, null, $client);
 try {
     // Call getOrders
     $result = $api->getOrders(
-        $marketplace_ids = ['A1VC38T7YXB528'],
+        $marketplace_ids = ['ATVPDKIKX0DER'],
         $created_after = '2025-01-01'
     );
     print_r($result);
