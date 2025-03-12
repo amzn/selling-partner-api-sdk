@@ -1,6 +1,10 @@
 ## Java SDK for Selling Partner API
 [![Maven](https://img.shields.io/maven-central/v/software.amazon.spapi/spapi-sdk.svg?label=Maven)](https://central.sonatype.com/artifact/software.amazon.spapi/spapi-sdk)
 
+[![Video Thumbnail](docs/video-thumbnail.png)](https://www.youtube.com/watch?v=OmYTAA80V_4)
+
+*Click on the image to watch the video.*
+
 The Selling Partner API SDK for Java enables you to easily connect your Java application to Amazon's REST-based Selling Partner API.
 
 * [Learn more about Selling Partner API](https://developer.amazonservices.com/)

@@ -1,5 +1,9 @@
 ## PHP SDK for Selling Partner API
 
+[![Video Thumbnail](docs/video-thumbnail.png)](https://www.youtube.com/watch?v=ZxG7wvmelj0)
+
+*Click on the image to watch the video.*
+
 The Selling Partner API SDK for PHP enables you to easily connect your PHP application to Amazon's REST-based SP-API.
 
 This SDK helps developers:
