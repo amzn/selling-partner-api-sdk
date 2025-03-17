@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Catalog Items
- * The Selling Partner API for Catalog Items provides programmatic access to information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](doc:catalog-items-api-v2022-04-01-use-case-guide).
+ * Use the Selling Partner API for Catalog Items to retrieve information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/:catalog-items-api-v2022-04-01-use-case-guide).
  *
  * OpenAPI spec version: 2022-04-01
  * 
@@ -22,9 +22,9 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 /**
- * When a request produces a response that exceeds the &#x60;pageSize&#x60;, pagination occurs. This means the response is divided into individual pages. To retrieve the next page or the previous page, you must pass the &#x60;nextToken&#x60; value or the &#x60;previousToken&#x60; value as the &#x60;pageToken&#x60; parameter in the next request. When you receive the last page, there will be no &#x60;nextToken&#x60; key in the pagination object.
+ * Pagination occurs when a request produces a response that exceeds the &#x60;pageSize&#x60;. This means that the response is divided into individual pages. To retrieve the next page or the previous page of results, you must pass the &#x60;nextToken&#x60; value or the &#x60;previousToken&#x60; value as the &#x60;pageToken&#x60; parameter in the next request. There is no &#x60;nextToken&#x60; in the pagination object on the last page.
  */
-@Schema(description = "When a request produces a response that exceeds the `pageSize`, pagination occurs. This means the response is divided into individual pages. To retrieve the next page or the previous page, you must pass the `nextToken` value or the `previousToken` value as the `pageToken` parameter in the next request. When you receive the last page, there will be no `nextToken` key in the pagination object.")
+@Schema(description = "Pagination occurs when a request produces a response that exceeds the `pageSize`. This means that the response is divided into individual pages. To retrieve the next page or the previous page of results, you must pass the `nextToken` value or the `previousToken` value as the `pageToken` parameter in the next request. There is no `nextToken` in the pagination object on the last page.")
 
 
 public class Pagination {
@@ -40,10 +40,10 @@ public class Pagination {
   }
 
    /**
-   * A token that can be used to fetch the next page.
+   * A token that you can use to retrieve the next page.
    * @return nextToken
   **/
-  @Schema(description = "A token that can be used to fetch the next page.")
+  @Schema(description = "A token that you can use to retrieve the next page.")
   public String getNextToken() {
     return nextToken;
   }
@@ -58,10 +58,10 @@ public class Pagination {
   }
 
    /**
-   * A token that can be used to fetch the previous page.
+   * A token that you can use to retrieve the previous page.
    * @return previousToken
   **/
-  @Schema(description = "A token that can be used to fetch the previous page.")
+  @Schema(description = "A token that you can use to retrieve the previous page.")
   public String getPreviousToken() {
     return previousToken;
   }

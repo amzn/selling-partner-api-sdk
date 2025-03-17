@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Catalog Items
- * The Selling Partner API for Catalog Items provides programmatic access to information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](doc:catalog-items-api-v2022-04-01-use-case-guide).
+ * Use the Selling Partner API for Catalog Items to retrieve information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/:catalog-items-api-v2022-04-01-use-case-guide).
  *
  * OpenAPI spec version: 2022-04-01
  * 
@@ -25,9 +25,9 @@ import java.util.ArrayList;
 import java.util.List;
 import software.amazon.spapi.models.catalogitems.v2022_04_01.ItemIdentifier;
 /**
- * Identifiers associated with the item in the Amazon catalog for the indicated Amazon marketplace.
+ * Identifiers that are associated with the item in the Amazon catalog, grouped by &#x60;marketplaceId&#x60;.
  */
-@Schema(description = "Identifiers associated with the item in the Amazon catalog for the indicated Amazon marketplace.")
+@Schema(description = "Identifiers that are associated with the item in the Amazon catalog, grouped by `marketplaceId`.")
 
 
 public class ItemIdentifiersByMarketplace {
@@ -43,10 +43,10 @@ public class ItemIdentifiersByMarketplace {
   }
 
    /**
-   * Amazon marketplace identifier.
+   * Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).identifier.
    * @return marketplaceId
   **/
-  @Schema(required = true, description = "Amazon marketplace identifier.")
+  @Schema(required = true, description = "Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).identifier.")
   public String getMarketplaceId() {
     return marketplaceId;
   }
@@ -66,10 +66,10 @@ public class ItemIdentifiersByMarketplace {
   }
 
    /**
-   * Identifiers associated with the item in the Amazon catalog for the indicated Amazon marketplace.
+   * Identifiers associated with the item in the Amazon catalog for the indicated &#x60;marketplaceId&#x60;.
    * @return identifiers
   **/
-  @Schema(required = true, description = "Identifiers associated with the item in the Amazon catalog for the indicated Amazon marketplace.")
+  @Schema(required = true, description = "Identifiers associated with the item in the Amazon catalog for the indicated `marketplaceId`.")
   public List<ItemIdentifier> getIdentifiers() {
     return identifiers;
   }

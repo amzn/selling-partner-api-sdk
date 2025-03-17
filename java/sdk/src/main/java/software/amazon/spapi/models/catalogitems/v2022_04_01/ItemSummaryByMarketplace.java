@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Catalog Items
- * The Selling Partner API for Catalog Items provides programmatic access to information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](doc:catalog-items-api-v2022-04-01-use-case-guide).
+ * Use the Selling Partner API for Catalog Items to retrieve information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/:catalog-items-api-v2022-04-01-use-case-guide).
  *
  * OpenAPI spec version: 2022-04-01
  * 
@@ -27,9 +27,9 @@ import org.threeten.bp.LocalDate;
 import software.amazon.spapi.models.catalogitems.v2022_04_01.ItemBrowseClassification;
 import software.amazon.spapi.models.catalogitems.v2022_04_01.ItemContributor;
 /**
- * Summary details of an Amazon catalog item for the indicated Amazon marketplace.
+ * Information about an Amazon catalog item for the indicated &#x60;marketplaceId&#x60;.
  */
-@Schema(description = "Summary details of an Amazon catalog item for the indicated Amazon marketplace.")
+@Schema(description = "Information about an Amazon catalog item for the indicated `marketplaceId`.")
 
 
 public class ItemSummaryByMarketplace {
@@ -55,7 +55,7 @@ public class ItemSummaryByMarketplace {
   private List<ItemContributor> contributors = null;
 
   /**
-   * Classification type associated with the Amazon catalog item.
+   * Classification type that is associated with the Amazon catalog item.
    */
   @JsonAdapter(ItemClassificationEnum.Adapter.class)
   public enum ItemClassificationEnum {
@@ -146,10 +146,10 @@ public class ItemSummaryByMarketplace {
   }
 
    /**
-   * Amazon marketplace identifier.
+   * Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
    * @return marketplaceId
   **/
-  @Schema(required = true, description = "Amazon marketplace identifier.")
+  @Schema(required = true, description = "Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).")
   public String getMarketplaceId() {
     return marketplaceId;
   }
@@ -164,10 +164,10 @@ public class ItemSummaryByMarketplace {
   }
 
    /**
-   * Identifies an Amazon catalog item is intended for an adult audience or is sexual in nature.
+   * When &#x60;true&#x60;, the Amazon catalog item is intended for an adult audience or is sexual in nature.
    * @return adultProduct
   **/
-  @Schema(description = "Identifies an Amazon catalog item is intended for an adult audience or is sexual in nature.")
+  @Schema(description = "When `true`, the Amazon catalog item is intended for an adult audience or is sexual in nature.")
   public Boolean isAdultProduct() {
     return adultProduct;
   }
@@ -182,10 +182,10 @@ public class ItemSummaryByMarketplace {
   }
 
    /**
-   * Identifies an Amazon catalog item is autographed by a player or celebrity.
+   * When &#x60;true&#x60;, the Amazon catalog item is autographed.
    * @return autographed
   **/
-  @Schema(description = "Identifies an Amazon catalog item is autographed by a player or celebrity.")
+  @Schema(description = "When `true`, the Amazon catalog item is autographed.")
   public Boolean isAutographed() {
     return autographed;
   }
@@ -200,10 +200,10 @@ public class ItemSummaryByMarketplace {
   }
 
    /**
-   * Name of the brand associated with an Amazon catalog item.
+   * Name of the brand that is associated with the Amazon catalog item.
    * @return brand
   **/
-  @Schema(description = "Name of the brand associated with an Amazon catalog item.")
+  @Schema(description = "Name of the brand that is associated with the Amazon catalog item.")
   public String getBrand() {
     return brand;
   }
@@ -236,10 +236,10 @@ public class ItemSummaryByMarketplace {
   }
 
    /**
-   * Name of the color associated with an Amazon catalog item.
+   * The color that is associated with the Amazon catalog item.
    * @return color
   **/
-  @Schema(description = "Name of the color associated with an Amazon catalog item.")
+  @Schema(description = "The color that is associated with the Amazon catalog item.")
   public String getColor() {
     return color;
   }
@@ -262,10 +262,10 @@ public class ItemSummaryByMarketplace {
   }
 
    /**
-   * Individual contributors to the creation of an item, such as the authors or actors.
+   * Individual contributors to the creation of the item, such as the authors or actors.
    * @return contributors
   **/
-  @Schema(description = "Individual contributors to the creation of an item, such as the authors or actors.")
+  @Schema(description = "Individual contributors to the creation of the item, such as the authors or actors.")
   public List<ItemContributor> getContributors() {
     return contributors;
   }
@@ -280,10 +280,10 @@ public class ItemSummaryByMarketplace {
   }
 
    /**
-   * Classification type associated with the Amazon catalog item.
+   * Classification type that is associated with the Amazon catalog item.
    * @return itemClassification
   **/
-  @Schema(description = "Classification type associated with the Amazon catalog item.")
+  @Schema(description = "Classification type that is associated with the Amazon catalog item.")
   public ItemClassificationEnum getItemClassification() {
     return itemClassification;
   }
@@ -298,10 +298,10 @@ public class ItemSummaryByMarketplace {
   }
 
    /**
-   * Name, or title, associated with an Amazon catalog item.
+   * The name that is associated with the Amazon catalog item.
    * @return itemName
   **/
-  @Schema(description = "Name, or title, associated with an Amazon catalog item.")
+  @Schema(description = "The name that is associated with the Amazon catalog item.")
   public String getItemName() {
     return itemName;
   }
@@ -316,10 +316,10 @@ public class ItemSummaryByMarketplace {
   }
 
    /**
-   * Name of the manufacturer associated with an Amazon catalog item.
+   * The name of the manufacturer that is associated with the Amazon catalog item.
    * @return manufacturer
   **/
-  @Schema(description = "Name of the manufacturer associated with an Amazon catalog item.")
+  @Schema(description = "The name of the manufacturer that is associated with the Amazon catalog item.")
   public String getManufacturer() {
     return manufacturer;
   }
@@ -334,10 +334,10 @@ public class ItemSummaryByMarketplace {
   }
 
    /**
-   * Identifies an Amazon catalog item is memorabilia valued for its connection with historical events, culture, or entertainment.
+   * When true, the item is classified as memorabilia.
    * @return memorabilia
   **/
-  @Schema(description = "Identifies an Amazon catalog item is memorabilia valued for its connection with historical events, culture, or entertainment.")
+  @Schema(description = "When true, the item is classified as memorabilia.")
   public Boolean isMemorabilia() {
     return memorabilia;
   }
@@ -352,10 +352,10 @@ public class ItemSummaryByMarketplace {
   }
 
    /**
-   * Model number associated with an Amazon catalog item.
+   * The model number that is associated with the Amazon catalog item.
    * @return modelNumber
   **/
-  @Schema(description = "Model number associated with an Amazon catalog item.")
+  @Schema(description = "The model number that is associated with the Amazon catalog item.")
   public String getModelNumber() {
     return modelNumber;
   }
@@ -370,10 +370,10 @@ public class ItemSummaryByMarketplace {
   }
 
    /**
-   * Quantity of an Amazon catalog item in one package.
+   * The quantity of the Amazon catalog item within one package.
    * @return packageQuantity
   **/
-  @Schema(description = "Quantity of an Amazon catalog item in one package.")
+  @Schema(description = "The quantity of the Amazon catalog item within one package.")
   public Integer getPackageQuantity() {
     return packageQuantity;
   }
@@ -388,10 +388,10 @@ public class ItemSummaryByMarketplace {
   }
 
    /**
-   * Part number associated with an Amazon catalog item.
+   * The part number that is associated with the Amazon catalog item.
    * @return partNumber
   **/
-  @Schema(description = "Part number associated with an Amazon catalog item.")
+  @Schema(description = "The part number that is associated with the Amazon catalog item.")
   public String getPartNumber() {
     return partNumber;
   }
@@ -406,10 +406,10 @@ public class ItemSummaryByMarketplace {
   }
 
    /**
-   * First date on which an Amazon catalog item is shippable to customers.
+   * The earliest date on which the Amazon catalog item can be shipped to customers.
    * @return releaseDate
   **/
-  @Schema(description = "First date on which an Amazon catalog item is shippable to customers.")
+  @Schema(description = "The earliest date on which the Amazon catalog item can be shipped to customers.")
   public LocalDate getReleaseDate() {
     return releaseDate;
   }
@@ -424,10 +424,10 @@ public class ItemSummaryByMarketplace {
   }
 
    /**
-   * Name of the size associated with an Amazon catalog item.
+   * The name of the size of the Amazon catalog item.
    * @return size
   **/
-  @Schema(description = "Name of the size associated with an Amazon catalog item.")
+  @Schema(description = "The name of the size of the Amazon catalog item.")
   public String getSize() {
     return size;
   }
@@ -442,10 +442,10 @@ public class ItemSummaryByMarketplace {
   }
 
    /**
-   * Name of the style associated with an Amazon catalog item.
+   * The name of the style that is associated with the Amazon catalog item.
    * @return style
   **/
-  @Schema(description = "Name of the style associated with an Amazon catalog item.")
+  @Schema(description = "The name of the style that is associated with the Amazon catalog item.")
   public String getStyle() {
     return style;
   }
@@ -460,10 +460,10 @@ public class ItemSummaryByMarketplace {
   }
 
    /**
-   * Identifies an Amazon catalog item is eligible for trade-in.
+   * When true, the Amazon catalog item is eligible for trade-in.
    * @return tradeInEligible
   **/
-  @Schema(description = "Identifies an Amazon catalog item is eligible for trade-in.")
+  @Schema(description = "When true, the Amazon catalog item is eligible for trade-in.")
   public Boolean isTradeInEligible() {
     return tradeInEligible;
   }
@@ -478,10 +478,10 @@ public class ItemSummaryByMarketplace {
   }
 
    /**
-   * Identifier of the website display group associated with an Amazon catalog item.
+   * The identifier of the website display group that is associated with the Amazon catalog item.
    * @return websiteDisplayGroup
   **/
-  @Schema(description = "Identifier of the website display group associated with an Amazon catalog item.")
+  @Schema(description = "The identifier of the website display group that is associated with the Amazon catalog item.")
   public String getWebsiteDisplayGroup() {
     return websiteDisplayGroup;
   }
@@ -496,10 +496,10 @@ public class ItemSummaryByMarketplace {
   }
 
    /**
-   * Display name of the website display group associated with an Amazon catalog item.
+   * The display name of the website display group that is associated with the Amazon catalog item.
    * @return websiteDisplayGroupName
   **/
-  @Schema(description = "Display name of the website display group associated with an Amazon catalog item.")
+  @Schema(description = "The display name of the website display group that is associated with the Amazon catalog item.")
   public String getWebsiteDisplayGroupName() {
     return websiteDisplayGroupName;
   }

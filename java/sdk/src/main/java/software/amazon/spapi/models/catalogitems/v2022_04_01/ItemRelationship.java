@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Catalog Items
- * The Selling Partner API for Catalog Items provides programmatic access to information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](doc:catalog-items-api-v2022-04-01-use-case-guide).
+ * Use the Selling Partner API for Catalog Items to retrieve information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/:catalog-items-api-v2022-04-01-use-case-guide).
  *
  * OpenAPI spec version: 2022-04-01
  * 
@@ -100,10 +100,10 @@ public class ItemRelationship {
   }
 
    /**
-   * Identifiers (ASINs) of the related items that are children of this item.
+   * ASINs of the related items that are children of this item.
    * @return childAsins
   **/
-  @Schema(description = "Identifiers (ASINs) of the related items that are children of this item.")
+  @Schema(description = "ASINs of the related items that are children of this item.")
   public List<String> getChildAsins() {
     return childAsins;
   }
@@ -126,10 +126,10 @@ public class ItemRelationship {
   }
 
    /**
-   * Identifiers (ASINs) of the related items that are parents of this item.
+   * ASINs of the related items that are parents of this item.
    * @return parentAsins
   **/
-  @Schema(description = "Identifiers (ASINs) of the related items that are parents of this item.")
+  @Schema(description = "ASINs of the related items that are parents of this item.")
   public List<String> getParentAsins() {
     return parentAsins;
   }

@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Catalog Items
- * The Selling Partner API for Catalog Items provides programmatic access to information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](doc:catalog-items-api-v2022-04-01-use-case-guide).
+ * Use the Selling Partner API for Catalog Items to retrieve information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/:catalog-items-api-v2022-04-01-use-case-guide).
  *
  * OpenAPI spec version: 2022-04-01
  * 
@@ -22,9 +22,9 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 /**
- * Identifier associated with the item in the Amazon catalog, such as a UPC or EAN identifier.
+ * The identifier that is associated with the item in the Amazon catalog, such as a UPC or EAN identifier.
  */
-@Schema(description = "Identifier associated with the item in the Amazon catalog, such as a UPC or EAN identifier.")
+@Schema(description = "The identifier that is associated with the item in the Amazon catalog, such as a UPC or EAN identifier.")
 
 
 public class ItemIdentifier {
@@ -58,10 +58,10 @@ public class ItemIdentifier {
   }
 
    /**
-   * Identifier.
+   * Identifier of the item.
    * @return identifier
   **/
-  @Schema(required = true, description = "Identifier.")
+  @Schema(required = true, description = "Identifier of the item.")
   public String getIdentifier() {
     return identifier;
   }

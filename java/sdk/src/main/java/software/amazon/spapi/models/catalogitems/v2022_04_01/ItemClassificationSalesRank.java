@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Catalog Items
- * The Selling Partner API for Catalog Items provides programmatic access to information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](doc:catalog-items-api-v2022-04-01-use-case-guide).
+ * Use the Selling Partner API for Catalog Items to retrieve information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/:catalog-items-api-v2022-04-01-use-case-guide).
  *
  * OpenAPI spec version: 2022-04-01
  * 
@@ -22,9 +22,9 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 /**
- * Sales rank of an Amazon catalog item by classification.
+ * Sales rank of an Amazon catalog item.
  */
-@Schema(description = "Sales rank of an Amazon catalog item by classification.")
+@Schema(description = "Sales rank of an Amazon catalog item.")
 
 
 public class ItemClassificationSalesRank {
@@ -46,10 +46,10 @@ public class ItemClassificationSalesRank {
   }
 
    /**
-   * Identifier of the classification associated with the sales rank.
+   * Identifier of the classification that is associated with the sales rank.
    * @return classificationId
   **/
-  @Schema(required = true, description = "Identifier of the classification associated with the sales rank.")
+  @Schema(required = true, description = "Identifier of the classification that is associated with the sales rank.")
   public String getClassificationId() {
     return classificationId;
   }
@@ -64,10 +64,10 @@ public class ItemClassificationSalesRank {
   }
 
    /**
-   * Title, or name, of the sales rank.
+   * Name of the sales rank.
    * @return title
   **/
-  @Schema(required = true, description = "Title, or name, of the sales rank.")
+  @Schema(required = true, description = "Name of the sales rank.")
   public String getTitle() {
     return title;
   }
@@ -82,10 +82,10 @@ public class ItemClassificationSalesRank {
   }
 
    /**
-   * Corresponding Amazon retail website link, or URL, for the sales rank.
+   * Corresponding Amazon retail website URL for the sales category.
    * @return link
   **/
-  @Schema(description = "Corresponding Amazon retail website link, or URL, for the sales rank.")
+  @Schema(description = "Corresponding Amazon retail website URL for the sales category.")
   public String getLink() {
     return link;
   }
@@ -100,10 +100,10 @@ public class ItemClassificationSalesRank {
   }
 
    /**
-   * Sales rank value.
+   * Sales rank.
    * @return rank
   **/
-  @Schema(required = true, description = "Sales rank value.")
+  @Schema(required = true, description = "Sales rank.")
   public Integer getRank() {
     return rank;
   }

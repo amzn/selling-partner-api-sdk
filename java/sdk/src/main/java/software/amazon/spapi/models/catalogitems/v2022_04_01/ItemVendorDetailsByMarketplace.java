@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Catalog Items
- * The Selling Partner API for Catalog Items provides programmatic access to information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](doc:catalog-items-api-v2022-04-01-use-case-guide).
+ * Use the Selling Partner API for Catalog Items to retrieve information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/:catalog-items-api-v2022-04-01-use-case-guide).
  *
  * OpenAPI spec version: 2022-04-01
  * 
@@ -23,9 +23,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import software.amazon.spapi.models.catalogitems.v2022_04_01.ItemVendorDetailsCategory;
 /**
- * Vendor details associated with an Amazon catalog item for the indicated Amazon marketplace.
+ * The vendor details that are associated with an Amazon catalog item for the specified &#x60;marketplaceId&#x60;.
  */
-@Schema(description = "Vendor details associated with an Amazon catalog item for the indicated Amazon marketplace.")
+@Schema(description = "The vendor details that are associated with an Amazon catalog item for the specified `marketplaceId`.")
 
 
 public class ItemVendorDetailsByMarketplace {
@@ -51,7 +51,7 @@ public class ItemVendorDetailsByMarketplace {
   private ItemVendorDetailsCategory productSubcategory = null;
 
   /**
-   * Replenishment category associated with an Amazon catalog item.
+   * The replenishment category that is associated with an Amazon catalog item.
    */
   @JsonAdapter(ReplenishmentCategoryEnum.Adapter.class)
   public enum ReplenishmentCategoryEnum {
@@ -118,10 +118,10 @@ public class ItemVendorDetailsByMarketplace {
   }
 
    /**
-   * Amazon marketplace identifier.
+   * Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
    * @return marketplaceId
   **/
-  @Schema(required = true, description = "Amazon marketplace identifier.")
+  @Schema(required = true, description = "Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).")
   public String getMarketplaceId() {
     return marketplaceId;
   }
@@ -136,10 +136,10 @@ public class ItemVendorDetailsByMarketplace {
   }
 
    /**
-   * Brand code associated with an Amazon catalog item.
+   * The brand code that is associated with an Amazon catalog item.
    * @return brandCode
   **/
-  @Schema(description = "Brand code associated with an Amazon catalog item.")
+  @Schema(description = "The brand code that is associated with an Amazon catalog item.")
   public String getBrandCode() {
     return brandCode;
   }
@@ -154,10 +154,10 @@ public class ItemVendorDetailsByMarketplace {
   }
 
    /**
-   * Manufacturer code associated with an Amazon catalog item.
+   * The manufacturer code that is associated with an Amazon catalog item.
    * @return manufacturerCode
   **/
-  @Schema(description = "Manufacturer code associated with an Amazon catalog item.")
+  @Schema(description = "The manufacturer code that is associated with an Amazon catalog item.")
   public String getManufacturerCode() {
     return manufacturerCode;
   }
@@ -172,10 +172,10 @@ public class ItemVendorDetailsByMarketplace {
   }
 
    /**
-   * Parent vendor code of the manufacturer code.
+   * The parent vendor code of the manufacturer code.
    * @return manufacturerCodeParent
   **/
-  @Schema(description = "Parent vendor code of the manufacturer code.")
+  @Schema(description = "The parent vendor code of the manufacturer code.")
   public String getManufacturerCodeParent() {
     return manufacturerCodeParent;
   }
@@ -208,10 +208,10 @@ public class ItemVendorDetailsByMarketplace {
   }
 
    /**
-   * Product group associated with an Amazon catalog item.
+   * The product group that is associated with an Amazon catalog item.
    * @return productGroup
   **/
-  @Schema(description = "Product group associated with an Amazon catalog item.")
+  @Schema(description = "The product group that is associated with an Amazon catalog item.")
   public String getProductGroup() {
     return productGroup;
   }
@@ -244,10 +244,10 @@ public class ItemVendorDetailsByMarketplace {
   }
 
    /**
-   * Replenishment category associated with an Amazon catalog item.
+   * The replenishment category that is associated with an Amazon catalog item.
    * @return replenishmentCategory
   **/
-  @Schema(description = "Replenishment category associated with an Amazon catalog item.")
+  @Schema(description = "The replenishment category that is associated with an Amazon catalog item.")
   public ReplenishmentCategoryEnum getReplenishmentCategory() {
     return replenishmentCategory;
   }

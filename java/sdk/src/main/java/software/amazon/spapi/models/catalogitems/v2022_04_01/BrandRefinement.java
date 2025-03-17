@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Catalog Items
- * The Selling Partner API for Catalog Items provides programmatic access to information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](doc:catalog-items-api-v2022-04-01-use-case-guide).
+ * Use the Selling Partner API for Catalog Items to retrieve information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/:catalog-items-api-v2022-04-01-use-case-guide).
  *
  * OpenAPI spec version: 2022-04-01
  * 
@@ -22,9 +22,9 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 /**
- * Description of a brand that can be used to get more fine-grained search results.
+ * A brand that you can use to refine your search.
  */
-@Schema(description = "Description of a brand that can be used to get more fine-grained search results.")
+@Schema(description = "A brand that you can use to refine your search.")
 
 
 public class BrandRefinement {
@@ -40,10 +40,10 @@ public class BrandRefinement {
   }
 
    /**
-   * The estimated number of results that would still be returned if refinement key applied.
+   * The estimated number of results that would be returned if you refine your search by the specified &#x60;brandName&#x60;.
    * @return numberOfResults
   **/
-  @Schema(required = true, description = "The estimated number of results that would still be returned if refinement key applied.")
+  @Schema(required = true, description = "The estimated number of results that would be returned if you refine your search by the specified `brandName`.")
   public Integer getNumberOfResults() {
     return numberOfResults;
   }
@@ -58,10 +58,10 @@ public class BrandRefinement {
   }
 
    /**
-   * Brand name. For display and can be used as a search refinement.
+   * The brand name that you can use to refine your search.
    * @return brandName
   **/
-  @Schema(required = true, description = "Brand name. For display and can be used as a search refinement.")
+  @Schema(required = true, description = "The brand name that you can use to refine your search.")
   public String getBrandName() {
     return brandName;
   }

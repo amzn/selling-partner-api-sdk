@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Catalog Items
- * The Selling Partner API for Catalog Items provides programmatic access to information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](doc:catalog-items-api-v2022-04-01-use-case-guide).
+ * Use the Selling Partner API for Catalog Items to retrieve information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/:catalog-items-api-v2022-04-01-use-case-guide).
  *
  * OpenAPI spec version: 2022-04-01
  * 
@@ -22,9 +22,9 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 /**
- * Product type associated with the Amazon catalog item for the indicated Amazon marketplace.
+ * Product type that is associated with the Amazon catalog item, grouped by &#x60;marketplaceId&#x60;.
  */
-@Schema(description = "Product type associated with the Amazon catalog item for the indicated Amazon marketplace.")
+@Schema(description = "Product type that is associated with the Amazon catalog item, grouped by `marketplaceId`.")
 
 
 public class ItemProductTypeByMarketplace {
@@ -40,10 +40,10 @@ public class ItemProductTypeByMarketplace {
   }
 
    /**
-   * Amazon marketplace identifier.
+   * Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
    * @return marketplaceId
   **/
-  @Schema(description = "Amazon marketplace identifier.")
+  @Schema(description = "Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).")
   public String getMarketplaceId() {
     return marketplaceId;
   }
@@ -58,10 +58,10 @@ public class ItemProductTypeByMarketplace {
   }
 
    /**
-   * Name of the product type associated with the Amazon catalog item.
+   * Name of the product type that is associated with the Amazon catalog item.
    * @return productType
   **/
-  @Schema(example = "LUGGAGE", description = "Name of the product type associated with the Amazon catalog item.")
+  @Schema(example = "LUGGAGE", description = "Name of the product type that is associated with the Amazon catalog item.")
   public String getProductType() {
     return productType;
   }

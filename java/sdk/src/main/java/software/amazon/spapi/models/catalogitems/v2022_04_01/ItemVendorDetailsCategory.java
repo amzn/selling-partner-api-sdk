@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Catalog Items
- * The Selling Partner API for Catalog Items provides programmatic access to information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](doc:catalog-items-api-v2022-04-01-use-case-guide).
+ * Use the Selling Partner API for Catalog Items to retrieve information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/:catalog-items-api-v2022-04-01-use-case-guide).
  *
  * OpenAPI spec version: 2022-04-01
  * 
@@ -22,9 +22,9 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 /**
- * Product category or subcategory associated with an Amazon catalog item.
+ * The product category or subcategory that is associated with an Amazon catalog item.
  */
-@Schema(description = "Product category or subcategory associated with an Amazon catalog item.")
+@Schema(description = "The product category or subcategory that is associated with an Amazon catalog item.")
 
 
 public class ItemVendorDetailsCategory {
@@ -40,10 +40,10 @@ public class ItemVendorDetailsCategory {
   }
 
    /**
-   * Display name of the product category or subcategory
+   * The display name of the product category or subcategory.
    * @return displayName
   **/
-  @Schema(description = "Display name of the product category or subcategory")
+  @Schema(description = "The display name of the product category or subcategory.")
   public String getDisplayName() {
     return displayName;
   }
@@ -58,10 +58,10 @@ public class ItemVendorDetailsCategory {
   }
 
    /**
-   * Value (code) of the product category or subcategory.
+   * The code that identifies the product category or subcategory.
    * @return value
   **/
-  @Schema(description = "Value (code) of the product category or subcategory.")
+  @Schema(description = "The code that identifies the product category or subcategory.")
   public String getValue() {
     return value;
   }

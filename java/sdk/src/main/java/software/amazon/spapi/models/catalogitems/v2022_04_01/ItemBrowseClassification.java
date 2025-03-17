@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Catalog Items
- * The Selling Partner API for Catalog Items provides programmatic access to information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](doc:catalog-items-api-v2022-04-01-use-case-guide).
+ * Use the Selling Partner API for Catalog Items to retrieve information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/:catalog-items-api-v2022-04-01-use-case-guide).
  *
  * OpenAPI spec version: 2022-04-01
  * 
@@ -23,9 +23,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import software.amazon.spapi.models.catalogitems.v2022_04_01.ItemBrowseClassification;
 /**
- * Classification (browse node) associated with an Amazon catalog item.
+ * Classification (browse node) for an Amazon catalog item.
  */
-@Schema(description = "Classification (browse node) associated with an Amazon catalog item.")
+@Schema(description = "Classification (browse node) for an Amazon catalog item.")
 
 
 public class ItemBrowseClassification {
@@ -44,10 +44,10 @@ public class ItemBrowseClassification {
   }
 
    /**
-   * Display name for the classification (browse node).
+   * Display name for the classification.
    * @return displayName
   **/
-  @Schema(required = true, description = "Display name for the classification (browse node).")
+  @Schema(required = true, description = "Display name for the classification.")
   public String getDisplayName() {
     return displayName;
   }
@@ -62,10 +62,10 @@ public class ItemBrowseClassification {
   }
 
    /**
-   * Identifier of the classification (browse node identifier).
+   * Identifier of the classification.
    * @return classificationId
   **/
-  @Schema(required = true, description = "Identifier of the classification (browse node identifier).")
+  @Schema(required = true, description = "Identifier of the classification.")
   public String getClassificationId() {
     return classificationId;
   }

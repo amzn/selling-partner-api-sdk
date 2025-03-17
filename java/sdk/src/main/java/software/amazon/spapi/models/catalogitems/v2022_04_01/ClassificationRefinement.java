@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Catalog Items
- * The Selling Partner API for Catalog Items provides programmatic access to information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](doc:catalog-items-api-v2022-04-01-use-case-guide).
+ * Use the Selling Partner API for Catalog Items to retrieve information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/:catalog-items-api-v2022-04-01-use-case-guide).
  *
  * OpenAPI spec version: 2022-04-01
  * 
@@ -22,9 +22,9 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 /**
- * Description of a classification that can be used to get more fine-grained search results.
+ * A classification that you can use to refine your search.
  */
-@Schema(description = "Description of a classification that can be used to get more fine-grained search results.")
+@Schema(description = "A classification that you can use to refine your search.")
 
 
 public class ClassificationRefinement {
@@ -43,10 +43,10 @@ public class ClassificationRefinement {
   }
 
    /**
-   * The estimated number of results that would still be returned if refinement key applied.
+   * The estimated number of results that would be returned if you refine your search by the specified &#x60;classificationId&#x60;.
    * @return numberOfResults
   **/
-  @Schema(required = true, description = "The estimated number of results that would still be returned if refinement key applied.")
+  @Schema(required = true, description = "The estimated number of results that would be returned if you refine your search by the specified `classificationId`.")
   public Integer getNumberOfResults() {
     return numberOfResults;
   }
@@ -79,10 +79,10 @@ public class ClassificationRefinement {
   }
 
    /**
-   * Identifier for the classification that can be used for search refinement purposes.
+   * The identifier of the classification that you can use to refine your search.
    * @return classificationId
   **/
-  @Schema(required = true, description = "Identifier for the classification that can be used for search refinement purposes.")
+  @Schema(required = true, description = "The identifier of the classification that you can use to refine your search.")
   public String getClassificationId() {
     return classificationId;
   }

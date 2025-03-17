@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Catalog Items
- * The Selling Partner API for Catalog Items provides programmatic access to information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](doc:catalog-items-api-v2022-04-01-use-case-guide).
+ * Use the Selling Partner API for Catalog Items to retrieve information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/:catalog-items-api-v2022-04-01-use-case-guide).
  *
  * OpenAPI spec version: 2022-04-01
  * 
@@ -19,9 +19,9 @@ import java.util.ArrayList;
 import java.util.List;
 import software.amazon.spapi.models.catalogitems.v2022_04_01.ItemVendorDetailsByMarketplace;
 /**
- * Vendor details associated with an Amazon catalog item. Vendor details are available to vendors only.
+ * The vendor details that are associated with an Amazon catalog item. Vendor details are only available to vendors.
  */
-@Schema(description = "Vendor details associated with an Amazon catalog item. Vendor details are available to vendors only.")
+@Schema(description = "The vendor details that are associated with an Amazon catalog item. Vendor details are only available to vendors.")
 
 
 public class ItemVendorDetails extends ArrayList<ItemVendorDetailsByMarketplace> {

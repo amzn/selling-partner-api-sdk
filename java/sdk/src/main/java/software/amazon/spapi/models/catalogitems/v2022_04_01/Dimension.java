@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Catalog Items
- * The Selling Partner API for Catalog Items provides programmatic access to information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](doc:catalog-items-api-v2022-04-01-use-case-guide).
+ * Use the Selling Partner API for Catalog Items to retrieve information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/:catalog-items-api-v2022-04-01-use-case-guide).
  *
  * OpenAPI spec version: 2022-04-01
  * 
@@ -23,9 +23,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.math.BigDecimal;
 /**
- * Individual dimension value of an Amazon catalog item or item package.
+ * The value of an individual dimension for an Amazon catalog item or item package.
  */
-@Schema(description = "Individual dimension value of an Amazon catalog item or item package.")
+@Schema(description = "The value of an individual dimension for an Amazon catalog item or item package.")
 
 
 public class Dimension {
@@ -41,10 +41,10 @@ public class Dimension {
   }
 
    /**
-   * Measurement unit of the dimension value.
+   * Unit of measurement for the dimension value.
    * @return unit
   **/
-  @Schema(description = "Measurement unit of the dimension value.")
+  @Schema(description = "Unit of measurement for the dimension value.")
   public String getUnit() {
     return unit;
   }
@@ -59,10 +59,10 @@ public class Dimension {
   }
 
    /**
-   * Numeric dimension value.
+   * Numeric value of the dimension.
    * @return value
   **/
-  @Schema(description = "Numeric dimension value.")
+  @Schema(description = "Numeric value of the dimension.")
   public BigDecimal getValue() {
     return value;
   }

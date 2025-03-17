@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Catalog Items
- * The Selling Partner API for Catalog Items provides programmatic access to information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](doc:catalog-items-api-v2022-04-01-use-case-guide).
+ * Use the Selling Partner API for Catalog Items to retrieve information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/:catalog-items-api-v2022-04-01-use-case-guide).
  *
  * OpenAPI spec version: 2022-04-01
  * 
@@ -40,10 +40,10 @@ public class ItemContributorRole {
   }
 
    /**
-   * Display name of the role in the requested locale, such as Author or Actor.
+   * Display name of the role in the requested locale, such as &#x60;Author&#x60; or &#x60;Actor&#x60;.
    * @return displayName
   **/
-  @Schema(description = "Display name of the role in the requested locale, such as Author or Actor.")
+  @Schema(description = "Display name of the role in the requested locale, such as `Author` or `Actor`.")
   public String getDisplayName() {
     return displayName;
   }
@@ -58,10 +58,10 @@ public class ItemContributorRole {
   }
 
    /**
-   * Role value for the Amazon catalog item, such as author or actor.
+   * Role value for the Amazon catalog item, such as &#x60;author&#x60; or &#x60;actor&#x60;.
    * @return value
   **/
-  @Schema(required = true, description = "Role value for the Amazon catalog item, such as author or actor.")
+  @Schema(required = true, description = "Role value for the Amazon catalog item, such as `author` or `actor`.")
   public String getValue() {
     return value;
   }

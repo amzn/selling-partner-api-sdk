@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Catalog Items
- * The Selling Partner API for Catalog Items provides programmatic access to information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](doc:catalog-items-api-v2022-04-01-use-case-guide).
+ * Use the Selling Partner API for Catalog Items to retrieve information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/:catalog-items-api-v2022-04-01-use-case-guide).
  *
  * OpenAPI spec version: 2022-04-01
  * 
@@ -27,9 +27,9 @@ import software.amazon.spapi.models.catalogitems.v2022_04_01.Item;
 import software.amazon.spapi.models.catalogitems.v2022_04_01.Pagination;
 import software.amazon.spapi.models.catalogitems.v2022_04_01.Refinements;
 /**
- * Items in the Amazon catalog and search related metadata.
+ * Items in the Amazon catalog and search-related metadata.
  */
-@Schema(description = "Items in the Amazon catalog and search related metadata.")
+@Schema(description = "Items in the Amazon catalog and search-related metadata.")
 
 
 public class ItemSearchResults {
@@ -51,10 +51,10 @@ public class ItemSearchResults {
   }
 
    /**
-   * For &#x60;identifiers&#x60;-based searches, the total number of Amazon catalog items found. For &#x60;keywords&#x60;-based searches, the estimated total number of Amazon catalog items matched by the search query (only results up to the page count limit will be returned per request regardless of the number found).  Note: The maximum number of items (ASINs) that can be returned and paged through is 1000.
+   * For searches that are based on &#x60;identifiers&#x60;, &#x60;numberOfResults&#x60; is the total number of Amazon catalog items found. For searches that are based on &#x60;keywords&#x60;, &#x60;numberOfResults&#x60; is the estimated total number of Amazon catalog items that are matched by the search query. Only results up to the page count limit are returned per request regardless of the number found.  **Note:** The maximum number of items (ASINs) that can be returned and paged through is 1,000.
    * @return numberOfResults
   **/
-  @Schema(required = true, description = "For `identifiers`-based searches, the total number of Amazon catalog items found. For `keywords`-based searches, the estimated total number of Amazon catalog items matched by the search query (only results up to the page count limit will be returned per request regardless of the number found).  Note: The maximum number of items (ASINs) that can be returned and paged through is 1000.")
+  @Schema(required = true, description = "For searches that are based on `identifiers`, `numberOfResults` is the total number of Amazon catalog items found. For searches that are based on `keywords`, `numberOfResults` is the estimated total number of Amazon catalog items that are matched by the search query. Only results up to the page count limit are returned per request regardless of the number found.  **Note:** The maximum number of items (ASINs) that can be returned and paged through is 1,000.")
   public Integer getNumberOfResults() {
     return numberOfResults;
   }

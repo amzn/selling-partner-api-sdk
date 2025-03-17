@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Catalog Items
- * The Selling Partner API for Catalog Items provides programmatic access to information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](doc:catalog-items-api-v2022-04-01-use-case-guide).
+ * Use the Selling Partner API for Catalog Items to retrieve information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/:catalog-items-api-v2022-04-01-use-case-guide).
  *
  * OpenAPI spec version: 2022-04-01
  * 
@@ -25,9 +25,9 @@ import java.util.ArrayList;
 import java.util.List;
 import software.amazon.spapi.models.catalogitems.v2022_04_01.ItemBrowseClassification;
 /**
- * Classifications (browse nodes) associated with the item in the Amazon catalog for the indicated Amazon marketplace.
+ * Classifications (browse nodes) that are associated with the item in the Amazon catalog for the indicated &#x60;marketplaceId&#x60;.
  */
-@Schema(description = "Classifications (browse nodes) associated with the item in the Amazon catalog for the indicated Amazon marketplace.")
+@Schema(description = "Classifications (browse nodes) that are associated with the item in the Amazon catalog for the indicated `marketplaceId`.")
 
 
 public class ItemBrowseClassificationsByMarketplace {
@@ -43,10 +43,10 @@ public class ItemBrowseClassificationsByMarketplace {
   }
 
    /**
-   * Amazon marketplace identifier.
+   * Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
    * @return marketplaceId
   **/
-  @Schema(required = true, description = "Amazon marketplace identifier.")
+  @Schema(required = true, description = "Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).")
   public String getMarketplaceId() {
     return marketplaceId;
   }
@@ -69,10 +69,10 @@ public class ItemBrowseClassificationsByMarketplace {
   }
 
    /**
-   * Classifications (browse nodes) associated with the item in the Amazon catalog for the indicated Amazon marketplace.
+   * Classifications (browse nodes) that are associated with the item in the Amazon catalog.
    * @return classifications
   **/
-  @Schema(description = "Classifications (browse nodes) associated with the item in the Amazon catalog for the indicated Amazon marketplace.")
+  @Schema(description = "Classifications (browse nodes) that are associated with the item in the Amazon catalog.")
   public List<ItemBrowseClassification> getClassifications() {
     return classifications;
   }

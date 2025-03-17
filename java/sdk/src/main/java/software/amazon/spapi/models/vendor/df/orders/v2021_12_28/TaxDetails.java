@@ -23,9 +23,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import software.amazon.spapi.models.vendor.df.orders.v2021_12_28.Money;
 /**
- * The tax details related to the order.
+ * The tax details for the order. _Note:_ Amazon calculates tax on the list price (Amazon retail price).
  */
-@Schema(description = "The tax details related to the order.")
+@Schema(description = "The tax details for the order. _Note:_ Amazon calculates tax on the list price (Amazon retail price).")
 
 
 public class TaxDetails {

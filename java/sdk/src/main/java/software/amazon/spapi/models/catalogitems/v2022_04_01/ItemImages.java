@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Catalog Items
- * The Selling Partner API for Catalog Items provides programmatic access to information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](doc:catalog-items-api-v2022-04-01-use-case-guide).
+ * Use the Selling Partner API for Catalog Items to retrieve information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/:catalog-items-api-v2022-04-01-use-case-guide).
  *
  * OpenAPI spec version: 2022-04-01
  * 
@@ -19,9 +19,9 @@ import java.util.ArrayList;
 import java.util.List;
 import software.amazon.spapi.models.catalogitems.v2022_04_01.ItemImagesByMarketplace;
 /**
- * Images for an item in the Amazon catalog.
+ * The images for an item in the Amazon catalog.
  */
-@Schema(description = "Images for an item in the Amazon catalog.")
+@Schema(description = "The images for an item in the Amazon catalog.")
 
 
 public class ItemImages extends ArrayList<ItemImagesByMarketplace> {

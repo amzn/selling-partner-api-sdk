@@ -23,18 +23,36 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * Identifies the method by which a seller will hand a package over to Amazon Logistics.
+ * An error code that identifies the type of error that occurred. The error codes listed below are specific to the Easy Ship section.
  */
-@JsonAdapter(HandoverMethod.Adapter.class)
-public enum HandoverMethod {
-  @SerializedName("Pickup")
-  PICKUP("Pickup"),
-  @SerializedName("Dropoff")
-  DROPOFF("Dropoff");
+@JsonAdapter(Code.Adapter.class)
+public enum Code {
+  @SerializedName("InvalidInput")
+  INVALIDINPUT("InvalidInput"),
+  @SerializedName("InvalidTimeSlotId")
+  INVALIDTIMESLOTID("InvalidTimeSlotId"),
+  @SerializedName("ScheduledPackageAlreadyExists")
+  SCHEDULEDPACKAGEALREADYEXISTS("ScheduledPackageAlreadyExists"),
+  @SerializedName("ScheduleWindowExpired")
+  SCHEDULEWINDOWEXPIRED("ScheduleWindowExpired"),
+  @SerializedName("RetryableAfterGettingNewSlots")
+  RETRYABLEAFTERGETTINGNEWSLOTS("RetryableAfterGettingNewSlots"),
+  @SerializedName("TimeSlotNotAvailable")
+  TIMESLOTNOTAVAILABLE("TimeSlotNotAvailable"),
+  @SerializedName("ResourceNotFound")
+  RESOURCENOTFOUND("ResourceNotFound"),
+  @SerializedName("InvalidOrderState")
+  INVALIDORDERSTATE("InvalidOrderState"),
+  @SerializedName("RegionNotSupported")
+  REGIONNOTSUPPORTED("RegionNotSupported"),
+  @SerializedName("OrderNotEligibleForRescheduling")
+  ORDERNOTELIGIBLEFORRESCHEDULING("OrderNotEligibleForRescheduling"),
+  @SerializedName("InternalServerError")
+  INTERNALSERVERERROR("InternalServerError");
 
   private String value;
 
-  HandoverMethod(String value) {
+  Code(String value) {
     this.value = value;
   }
 
@@ -47,8 +65,8 @@ public enum HandoverMethod {
     return String.valueOf(value);
   }
 
-  public static HandoverMethod fromValue(String input) {
-    for (HandoverMethod b : HandoverMethod.values()) {
+  public static Code fromValue(String input) {
+    for (Code b : Code.values()) {
       if (b.value.equals(input)) {
         return b;
       }
@@ -56,16 +74,16 @@ public enum HandoverMethod {
     return null;
   }
 
-  public static class Adapter extends TypeAdapter<HandoverMethod> {
+  public static class Adapter extends TypeAdapter<Code> {
     @Override
-    public void write(final JsonWriter jsonWriter, final HandoverMethod enumeration) throws IOException {
+    public void write(final JsonWriter jsonWriter, final Code enumeration) throws IOException {
       jsonWriter.value(String.valueOf(enumeration.getValue()));
     }
 
     @Override
-    public HandoverMethod read(final JsonReader jsonReader) throws IOException {
+    public Code read(final JsonReader jsonReader) throws IOException {
       Object value = jsonReader.nextString();
-      return HandoverMethod.fromValue((String)(value));
+      return Code.fromValue((String)(value));
     }
   }
 }

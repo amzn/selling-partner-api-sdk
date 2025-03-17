@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Catalog Items
- * The Selling Partner API for Catalog Items provides programmatic access to information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](doc:catalog-items-api-v2022-04-01-use-case-guide).
+ * Use the Selling Partner API for Catalog Items to retrieve information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/:catalog-items-api-v2022-04-01-use-case-guide).
  *
  * OpenAPI spec version: 2022-04-01
  * 
@@ -24,9 +24,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 /**
- * Variation theme indicating the combination of Amazon item catalog attributes that define the variation family.
+ * The variation theme is a list of Amazon catalog item attributes that define the variation family.
  */
-@Schema(description = "Variation theme indicating the combination of Amazon item catalog attributes that define the variation family.")
+@Schema(description = "The variation theme is a list of Amazon catalog item attributes that define the variation family.")
 
 
 public class ItemVariationTheme {
@@ -50,10 +50,10 @@ public class ItemVariationTheme {
   }
 
    /**
-   * Names of the Amazon catalog item attributes associated with the variation theme.
+   * Names of the Amazon catalog item attributes that are associated with the variation theme.
    * @return attributes
   **/
-  @Schema(description = "Names of the Amazon catalog item attributes associated with the variation theme.")
+  @Schema(description = "Names of the Amazon catalog item attributes that are associated with the variation theme.")
   public List<String> getAttributes() {
     return attributes;
   }
@@ -68,10 +68,10 @@ public class ItemVariationTheme {
   }
 
    /**
-   * Variation theme indicating the combination of Amazon item catalog attributes that define the variation family.
+   * Variation theme that indicates the combination of Amazon catalog item attributes that define the variation family.
    * @return theme
   **/
-  @Schema(example = "COLOR_NAME/STYLE_NAME", description = "Variation theme indicating the combination of Amazon item catalog attributes that define the variation family.")
+  @Schema(example = "COLOR_NAME/STYLE_NAME", description = "Variation theme that indicates the combination of Amazon catalog item attributes that define the variation family.")
   public String getTheme() {
     return theme;
   }

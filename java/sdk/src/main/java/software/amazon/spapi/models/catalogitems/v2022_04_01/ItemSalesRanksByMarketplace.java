@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Catalog Items
- * The Selling Partner API for Catalog Items provides programmatic access to information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](doc:catalog-items-api-v2022-04-01-use-case-guide).
+ * Use the Selling Partner API for Catalog Items to retrieve information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/:catalog-items-api-v2022-04-01-use-case-guide).
  *
  * OpenAPI spec version: 2022-04-01
  * 
@@ -26,9 +26,9 @@ import java.util.List;
 import software.amazon.spapi.models.catalogitems.v2022_04_01.ItemClassificationSalesRank;
 import software.amazon.spapi.models.catalogitems.v2022_04_01.ItemDisplayGroupSalesRank;
 /**
- * Sales ranks of an Amazon catalog item for the indicated Amazon marketplace.
+ * Sales ranks of an Amazon catalog item, grouped by &#x60;marketplaceId&#x60;.
  */
-@Schema(description = "Sales ranks of an Amazon catalog item for the indicated Amazon marketplace.")
+@Schema(description = "Sales ranks of an Amazon catalog item, grouped by `marketplaceId`.")
 
 
 public class ItemSalesRanksByMarketplace {
@@ -47,10 +47,10 @@ public class ItemSalesRanksByMarketplace {
   }
 
    /**
-   * Amazon marketplace identifier.
+   * Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
    * @return marketplaceId
   **/
-  @Schema(required = true, description = "Amazon marketplace identifier.")
+  @Schema(required = true, description = "Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).")
   public String getMarketplaceId() {
     return marketplaceId;
   }
@@ -73,10 +73,10 @@ public class ItemSalesRanksByMarketplace {
   }
 
    /**
-   * Sales ranks of an Amazon catalog item for an Amazon marketplace by classification.
+   * Sales ranks of an Amazon catalog item for a &#x60;marketplaceId&#x60;, grouped by classification.
    * @return classificationRanks
   **/
-  @Schema(description = "Sales ranks of an Amazon catalog item for an Amazon marketplace by classification.")
+  @Schema(description = "Sales ranks of an Amazon catalog item for a `marketplaceId`, grouped by classification.")
   public List<ItemClassificationSalesRank> getClassificationRanks() {
     return classificationRanks;
   }
@@ -99,10 +99,10 @@ public class ItemSalesRanksByMarketplace {
   }
 
    /**
-   * Sales ranks of an Amazon catalog item for an Amazon marketplace by website display group.
+   * Sales ranks of an Amazon catalog item for a &#x60;marketplaceId&#x60;, grouped by website display group.
    * @return displayGroupRanks
   **/
-  @Schema(description = "Sales ranks of an Amazon catalog item for an Amazon marketplace by website display group.")
+  @Schema(description = "Sales ranks of an Amazon catalog item for a `marketplaceId`, grouped by website display group.")
   public List<ItemDisplayGroupSalesRank> getDisplayGroupRanks() {
     return displayGroupRanks;
   }

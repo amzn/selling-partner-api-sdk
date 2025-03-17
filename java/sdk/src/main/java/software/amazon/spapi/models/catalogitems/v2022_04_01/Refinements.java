@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Catalog Items
- * The Selling Partner API for Catalog Items provides programmatic access to information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](doc:catalog-items-api-v2022-04-01-use-case-guide).
+ * Use the Selling Partner API for Catalog Items to retrieve information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/:catalog-items-api-v2022-04-01-use-case-guide).
  *
  * OpenAPI spec version: 2022-04-01
  * 
@@ -26,9 +26,9 @@ import java.util.List;
 import software.amazon.spapi.models.catalogitems.v2022_04_01.BrandRefinement;
 import software.amazon.spapi.models.catalogitems.v2022_04_01.ClassificationRefinement;
 /**
- * Search refinements.
+ * Optional fields that you can use to refine your search results.
  */
-@Schema(description = "Search refinements.")
+@Schema(description = "Optional fields that you can use to refine your search results.")
 
 
 public class Refinements {
@@ -49,10 +49,10 @@ public class Refinements {
   }
 
    /**
-   * Brand search refinements.
+   * A list of brands you can use to refine your search.
    * @return brands
   **/
-  @Schema(required = true, description = "Brand search refinements.")
+  @Schema(required = true, description = "A list of brands you can use to refine your search.")
   public List<BrandRefinement> getBrands() {
     return brands;
   }
@@ -72,10 +72,10 @@ public class Refinements {
   }
 
    /**
-   * Classification search refinements.
+   * A list of classifications you can use to refine your search.
    * @return classifications
   **/
-  @Schema(required = true, description = "Classification search refinements.")
+  @Schema(required = true, description = "A list of classifications you can use to refine your search.")
   public List<ClassificationRefinement> getClassifications() {
     return classifications;
   }
