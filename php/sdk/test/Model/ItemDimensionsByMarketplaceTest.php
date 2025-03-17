@@ -19,7 +19,7 @@ use SpApi\Model\catalogItems\v2022_04_01\ItemDimensionsByMarketplace;
  * ItemDimensionsByMarketplaceTest Class Doc Comment
  *
  * @category    Class
- * @description Dimensions associated with the item in the Amazon catalog for the indicated Amazon marketplace.
+ * @description Dimensions that are associated with the item in the Amazon catalog for the indicated &#x60;marketplaceId&#x60;.
  * @package     SpApi
  */
 class ItemDimensionsByMarketplaceTest extends TestCase

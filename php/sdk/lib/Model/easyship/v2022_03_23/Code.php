@@ -1,6 +1,6 @@
 <?php
 /**
- * UnitOfLength
+ * Code
  *
  * PHP version 8.3
  *
@@ -31,20 +31,40 @@ use SpApi\ObjectSerializer;
 use SpApi\Model\ModelInterface;
 
 /**
- * UnitOfLength Class Doc Comment
+ * Code Class Doc Comment
  *
  * @category Class
- * @description The unit of measurement used to measure the length.
+ * @description An error code that identifies the type of error that occurred. The error codes listed below are specific to the Easy Ship section.
  * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class UnitOfLength
+class Code
 {
     /**
      * Possible values of this enum
      */
-    public const CM = 'Cm';
+    public const INVALID_INPUT = 'InvalidInput';
+
+    public const INVALID_TIME_SLOT_ID = 'InvalidTimeSlotId';
+
+    public const SCHEDULED_PACKAGE_ALREADY_EXISTS = 'ScheduledPackageAlreadyExists';
+
+    public const SCHEDULE_WINDOW_EXPIRED = 'ScheduleWindowExpired';
+
+    public const RETRYABLE_AFTER_GETTING_NEW_SLOTS = 'RetryableAfterGettingNewSlots';
+
+    public const TIME_SLOT_NOT_AVAILABLE = 'TimeSlotNotAvailable';
+
+    public const RESOURCE_NOT_FOUND = 'ResourceNotFound';
+
+    public const INVALID_ORDER_STATE = 'InvalidOrderState';
+
+    public const REGION_NOT_SUPPORTED = 'RegionNotSupported';
+
+    public const ORDER_NOT_ELIGIBLE_FOR_RESCHEDULING = 'OrderNotEligibleForRescheduling';
+
+    public const INTERNAL_SERVER_ERROR = 'InternalServerError';
 
     /**
      * Gets allowable values of the enum
@@ -53,7 +73,17 @@ class UnitOfLength
     public static function getAllowableEnumValues(): array
     {
         return [
-            self::CM
+            self::INVALID_INPUT,
+            self::INVALID_TIME_SLOT_ID,
+            self::SCHEDULED_PACKAGE_ALREADY_EXISTS,
+            self::SCHEDULE_WINDOW_EXPIRED,
+            self::RETRYABLE_AFTER_GETTING_NEW_SLOTS,
+            self::TIME_SLOT_NOT_AVAILABLE,
+            self::RESOURCE_NOT_FOUND,
+            self::INVALID_ORDER_STATE,
+            self::REGION_NOT_SUPPORTED,
+            self::ORDER_NOT_ELIGIBLE_FOR_RESCHEDULING,
+            self::INTERNAL_SERVER_ERROR
         ];
     }
 }

@@ -19,7 +19,7 @@ use SpApi\Model\catalogItems\v2022_04_01\ItemClassificationSalesRank;
  * ItemClassificationSalesRankTest Class Doc Comment
  *
  * @category    Class
- * @description Sales rank of an Amazon catalog item by classification.
+ * @description Sales rank of an Amazon catalog item.
  * @package     SpApi
  */
 class ItemClassificationSalesRankTest extends TestCase

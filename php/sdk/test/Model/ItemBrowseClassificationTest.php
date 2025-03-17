@@ -19,7 +19,7 @@ use SpApi\Model\catalogItems\v2022_04_01\ItemBrowseClassification;
  * ItemBrowseClassificationTest Class Doc Comment
  *
  * @category    Class
- * @description Classification (browse node) associated with an Amazon catalog item.
+ * @description Classification (browse node) for an Amazon catalog item.
  * @package     SpApi
  */
 class ItemBrowseClassificationTest extends TestCase

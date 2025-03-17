@@ -19,7 +19,7 @@ use SpApi\Model\catalogItems\v2022_04_01\ItemDisplayGroupSalesRank;
  * ItemDisplayGroupSalesRankTest Class Doc Comment
  *
  * @category    Class
- * @description Sales rank of an Amazon catalog item by website display group.
+ * @description Sales rank of an Amazon catalog item, grouped by website display group.
  * @package     SpApi
  */
 class ItemDisplayGroupSalesRankTest extends TestCase

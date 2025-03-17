@@ -19,7 +19,7 @@ use SpApi\Model\catalogItems\v2022_04_01\ItemVendorDetailsByMarketplace;
  * ItemVendorDetailsByMarketplaceTest Class Doc Comment
  *
  * @category    Class
- * @description Vendor details associated with an Amazon catalog item for the indicated Amazon marketplace.
+ * @description The vendor details that are associated with an Amazon catalog item for the specified &#x60;marketplaceId&#x60;.
  * @package     SpApi
  */
 class ItemVendorDetailsByMarketplaceTest extends TestCase

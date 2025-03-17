@@ -19,7 +19,7 @@ use SpApi\Model\catalogItems\v2022_04_01\ItemIdentifiersByMarketplace;
  * ItemIdentifiersByMarketplaceTest Class Doc Comment
  *
  * @category    Class
- * @description Identifiers associated with the item in the Amazon catalog for the indicated Amazon marketplace.
+ * @description Identifiers that are associated with the item in the Amazon catalog, grouped by &#x60;marketplaceId&#x60;.
  * @package     SpApi
  */
 class ItemIdentifiersByMarketplaceTest extends TestCase

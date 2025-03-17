@@ -37,7 +37,7 @@ use SpApi\Model\ModelInterface;
  * TaxDetails Class Doc Comment
  *
  * @category Class
- * @description The tax details related to the order.
+ * @description The tax details for the order. _Note:_ Amazon calculates tax on the list price (Amazon retail price).
  * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

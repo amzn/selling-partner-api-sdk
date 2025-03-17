@@ -19,7 +19,7 @@ use SpApi\Model\catalogItems\v2022_04_01\Refinements;
  * RefinementsTest Class Doc Comment
  *
  * @category    Class
- * @description Search refinements.
+ * @description Optional fields that you can use to refine your search results.
  * @package     SpApi
  */
 class RefinementsTest extends TestCase

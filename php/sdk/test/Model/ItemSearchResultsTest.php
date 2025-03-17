@@ -19,7 +19,7 @@ use SpApi\Model\catalogItems\v2022_04_01\ItemSearchResults;
  * ItemSearchResultsTest Class Doc Comment
  *
  * @category    Class
- * @description Items in the Amazon catalog and search related metadata.
+ * @description Items in the Amazon catalog and search-related metadata.
  * @package     SpApi
  */
 class ItemSearchResultsTest extends TestCase

@@ -19,7 +19,7 @@ use SpApi\Model\catalogItems\v2022_04_01\ItemProductTypeByMarketplace;
  * ItemProductTypeByMarketplaceTest Class Doc Comment
  *
  * @category    Class
- * @description Product type associated with the Amazon catalog item for the indicated Amazon marketplace.
+ * @description Product type that is associated with the Amazon catalog item, grouped by &#x60;marketplaceId&#x60;.
  * @package     SpApi
  */
 class ItemProductTypeByMarketplaceTest extends TestCase

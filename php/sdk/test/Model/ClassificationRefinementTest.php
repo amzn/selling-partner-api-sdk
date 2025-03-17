@@ -19,7 +19,7 @@ use SpApi\Model\catalogItems\v2022_04_01\ClassificationRefinement;
  * ClassificationRefinementTest Class Doc Comment
  *
  * @category    Class
- * @description Description of a classification that can be used to get more fine-grained search results.
+ * @description A classification that you can use to refine your search.
  * @package     SpApi
  */
 class ClassificationRefinementTest extends TestCase

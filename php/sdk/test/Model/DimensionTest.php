@@ -19,7 +19,7 @@ use SpApi\Model\catalogItems\v2022_04_01\Dimension;
  * DimensionTest Class Doc Comment
  *
  * @category    Class
- * @description Individual dimension value of an Amazon catalog item or item package.
+ * @description The value of an individual dimension for an Amazon catalog item or item package.
  * @package     SpApi
  */
 class DimensionTest extends TestCase

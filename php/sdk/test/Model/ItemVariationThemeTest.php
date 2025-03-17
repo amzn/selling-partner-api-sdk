@@ -19,7 +19,7 @@ use SpApi\Model\catalogItems\v2022_04_01\ItemVariationTheme;
  * ItemVariationThemeTest Class Doc Comment
  *
  * @category    Class
- * @description Variation theme indicating the combination of Amazon item catalog attributes that define the variation family.
+ * @description The variation theme is a list of Amazon catalog item attributes that define the variation family.
  * @package     SpApi
  */
 class ItemVariationThemeTest extends TestCase

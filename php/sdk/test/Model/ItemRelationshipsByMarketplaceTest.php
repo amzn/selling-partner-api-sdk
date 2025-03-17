@@ -19,7 +19,7 @@ use SpApi\Model\catalogItems\v2022_04_01\ItemRelationshipsByMarketplace;
  * ItemRelationshipsByMarketplaceTest Class Doc Comment
  *
  * @category    Class
- * @description Relationship details for the Amazon catalog item for the indicated Amazon marketplace.
+ * @description Relationship details for the Amazon catalog item for the specified Amazon &#x60;marketplaceId&#x60;.
  * @package     SpApi
  */
 class ItemRelationshipsByMarketplaceTest extends TestCase

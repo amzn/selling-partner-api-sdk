@@ -19,7 +19,7 @@ use SpApi\Model\catalogItems\v2022_04_01\BrandRefinement;
  * BrandRefinementTest Class Doc Comment
  *
  * @category    Class
- * @description Description of a brand that can be used to get more fine-grained search results.
+ * @description A brand that you can use to refine your search.
  * @package     SpApi
  */
 class BrandRefinementTest extends TestCase

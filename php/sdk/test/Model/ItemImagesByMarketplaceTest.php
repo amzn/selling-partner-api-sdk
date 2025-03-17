@@ -19,7 +19,7 @@ use SpApi\Model\catalogItems\v2022_04_01\ItemImagesByMarketplace;
  * ItemImagesByMarketplaceTest Class Doc Comment
  *
  * @category    Class
- * @description Images for an item in the Amazon catalog for the indicated Amazon marketplace.
+ * @description Images for an item in the Amazon catalog, grouped by &#x60;marketplaceId&#x60;.
  * @package     SpApi
  */
 class ItemImagesByMarketplaceTest extends TestCase

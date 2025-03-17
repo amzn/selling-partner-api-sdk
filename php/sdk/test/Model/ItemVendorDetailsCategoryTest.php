@@ -19,7 +19,7 @@ use SpApi\Model\catalogItems\v2022_04_01\ItemVendorDetailsCategory;
  * ItemVendorDetailsCategoryTest Class Doc Comment
  *
  * @category    Class
- * @description Product category or subcategory associated with an Amazon catalog item.
+ * @description The product category or subcategory that is associated with an Amazon catalog item.
  * @package     SpApi
  */
 class ItemVendorDetailsCategoryTest extends TestCase

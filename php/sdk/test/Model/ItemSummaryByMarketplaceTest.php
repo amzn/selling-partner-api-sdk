@@ -19,7 +19,7 @@ use SpApi\Model\catalogItems\v2022_04_01\ItemSummaryByMarketplace;
  * ItemSummaryByMarketplaceTest Class Doc Comment
  *
  * @category    Class
- * @description Summary details of an Amazon catalog item for the indicated Amazon marketplace.
+ * @description Information about an Amazon catalog item for the indicated &#x60;marketplaceId&#x60;.
  * @package     SpApi
  */
 class ItemSummaryByMarketplaceTest extends TestCase

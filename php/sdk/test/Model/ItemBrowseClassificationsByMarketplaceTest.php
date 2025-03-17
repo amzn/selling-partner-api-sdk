@@ -19,7 +19,7 @@ use SpApi\Model\catalogItems\v2022_04_01\ItemBrowseClassificationsByMarketplace;
  * ItemBrowseClassificationsByMarketplaceTest Class Doc Comment
  *
  * @category    Class
- * @description Classifications (browse nodes) associated with the item in the Amazon catalog for the indicated Amazon marketplace.
+ * @description Classifications (browse nodes) that are associated with the item in the Amazon catalog for the indicated &#x60;marketplaceId&#x60;.
  * @package     SpApi
  */
 class ItemBrowseClassificationsByMarketplaceTest extends TestCase

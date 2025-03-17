@@ -19,7 +19,7 @@ use SpApi\Model\catalogItems\v2022_04_01\ItemIdentifier;
  * ItemIdentifierTest Class Doc Comment
  *
  * @category    Class
- * @description Identifier associated with the item in the Amazon catalog, such as a UPC or EAN identifier.
+ * @description The identifier that is associated with the item in the Amazon catalog, such as a UPC or EAN identifier.
  * @package     SpApi
  */
 class ItemIdentifierTest extends TestCase
