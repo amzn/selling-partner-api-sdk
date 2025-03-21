@@ -83,8 +83,7 @@ jobs:
         java -jar swagger-codegen-cli-3.0.63.jar generate -i ../../selling-partner-api-models/models/vendor-transaction-status-api-model/vendorTransactionStatus.json -l java -t config/templates -o sdk -c config/config.json --model-package software.amazon.spapi.models.vendor.transactionstatus.v1 --api-package software.amazon.spapi.api.vendor.transactionstatus.v1 && \
         java -jar swagger-codegen-cli-3.0.63.jar generate -i ../../selling-partner-api-models/models/vehicles-api-model/vehicles_2024-11-01.json -l java -t config/templates -o sdk -c config/config.json --model-package software.amazon.spapi.models.vehicles.v2024_11_01 --api-package software.amazon.spapi.api.vehicles.v2024_11_01
     - name: Copy Auth&Auth lib
-      working-directory: ./selling-partner-api-sdk/java
-      run: cp -R tmp/com sdk/src/main/java
+      run: cp -R selling-partner-api-models/clients/sellingpartner-api-aa-java/src/com selling-partner-api-sdk/java/sdk/src/main/java
     - name: Make gradlew executable
       working-directory: ./selling-partner-api-sdk/java/sdk
       run: chmod +x ./gradlew
