@@ -384,7 +384,7 @@ public class ApiClient {
         this.lwaAuthorizationSigner = lwaAuthorizationSigner;
         return this;
     }
-
+     
     /**
      * Format the given parameter object into string.
      *

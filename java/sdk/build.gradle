@@ -129,7 +129,6 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.10.1'
     implementation 'io.gsonfire:gson-fire:1.8.5'
     implementation 'org.threeten:threetenbp:1.6.5'
-    implementation 'com.google.guava:guava:33.3.1-jre'
     implementation 'io.swagger.core.v3:swagger-annotations:2.2.16'
     implementation 'com.squareup.okio:okio:3.9.1'
     implementation 'org.apache.commons:commons-lang3:3.17.0'

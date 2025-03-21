@@ -50,7 +50,6 @@ import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCache;
 import com.amazon.SellingPartnerAPIAA.LWAAccessTokenCacheImpl;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
-import com.amazon.SellingPartnerAPIAA.RateLimitConfiguration;
 import com.amazon.SellingPartnerAPIAA.LWAException;
 
 public class AplusContentApi {
@@ -1480,7 +1479,6 @@ public class AplusContentApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private RateLimitConfiguration rateLimitConfiguration;
 
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
@@ -1500,16 +1498,6 @@ public class AplusContentApi {
 		
 	   public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder rateLimitConfigurationOnRequests(RateLimitConfiguration rateLimitConfiguration){
-            this.rateLimitConfiguration = rateLimitConfiguration;
-            return this;
-        }
-        
-        public Builder disableRateLimitOnRequests() {
-            this.rateLimitConfiguration = null;
             return this;
         }
 
@@ -1535,8 +1523,7 @@ public class AplusContentApi {
 
             return new AplusContentApi(new ApiClient()
                 .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                .setBasePath(endpoint)
-                .setRateLimiter(rateLimitConfiguration));
+                .setBasePath(endpoint));
         }
     }
 }
