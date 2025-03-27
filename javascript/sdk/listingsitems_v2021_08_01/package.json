@@ -1,0 +1,29 @@
+{
+  "name": "selling_partner_api_for_listings_items",
+  "type": "module",
+  "version": "2021-08-01",
+  "description": "The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, see the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).",
+  "license": "Apache License 2.0",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha --compilers js:babel-core/register --recursive"
+  },
+  "browser": {
+    "fs": false
+  },
+  "dependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-builtin-extend": "^1.1.2",
+    "superagent": "3.7.0",
+    "querystring": "0.2.0"
+  },
+  "devDependencies": {
+    "babel-core": "6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "mocha": "~2.3.4",
+    "sinon": "1.17.3",
+    "expect.js": "~0.3.1"
+  }
+}

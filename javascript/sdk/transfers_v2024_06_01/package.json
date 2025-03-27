@@ -1,0 +1,29 @@
+{
+  "name": "the_selling_partner_api_for_transfers_",
+  "type": "module",
+  "version": "2024-06-01",
+  "description": "The Selling Partner API for Transfers enables selling partners to retrieve payment methods and initiate payouts for their seller accounts. This API supports the following marketplaces: DE, FR, IT, ES, SE, NL, PL, and BE.",
+  "license": "Apache License 2.0",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha --compilers js:babel-core/register --recursive"
+  },
+  "browser": {
+    "fs": false
+  },
+  "dependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-builtin-extend": "^1.1.2",
+    "superagent": "3.7.0",
+    "querystring": "0.2.0"
+  },
+  "devDependencies": {
+    "babel-core": "6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "mocha": "~2.3.4",
+    "sinon": "1.17.3",
+    "expect.js": "~0.3.1"
+  }
+}

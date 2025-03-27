@@ -1,0 +1,16 @@
+# AmazonShippingApi.ClaimReason
+
+## Enum
+
+
+* `LOST_IN_TRANSIT` (value: `"LOST_IN_TRANSIT"`)
+
+* `DAMAGED_IN_TRANSIT` (value: `"DAMAGED_IN_TRANSIT"`)
+
+* `DELIVERED_NOT_RECEIVED` (value: `"DELIVERED_NOT_RECEIVED"`)
+
+* `ITEM_MISSING_SWITCHEROO` (value: `"ITEM_MISSING_SWITCHEROO"`)
+
+* `COD_ABUSE` (value: `"COD_ABUSE"`)
+
+

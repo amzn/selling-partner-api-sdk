@@ -1,0 +1,29 @@
+{
+  "name": "amazon_shipping_api",
+  "type": "module",
+  "version": "v2",
+  "description": "The Amazon Shipping API is designed to support outbound shipping use cases both for orders originating on Amazon-owned marketplaces as well as external channels/marketplaces. With these APIs, you can request shipping rates, create shipments, cancel shipments, and track shipments.",
+  "license": "Amazon Software License",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha --compilers js:babel-core/register --recursive"
+  },
+  "browser": {
+    "fs": false
+  },
+  "dependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-builtin-extend": "^1.1.2",
+    "superagent": "3.7.0",
+    "querystring": "0.2.0"
+  },
+  "devDependencies": {
+    "babel-core": "6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "mocha": "~2.3.4",
+    "sinon": "1.17.3",
+    "expect.js": "~0.3.1"
+  }
+}

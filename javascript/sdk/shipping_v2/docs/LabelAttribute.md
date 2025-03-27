@@ -1,0 +1,12 @@
+# AmazonShippingApi.LabelAttribute
+
+## Enum
+
+
+* `PACKAGE_CLIENT_REFERENCE_ID` (value: `"PACKAGE_CLIENT_REFERENCE_ID"`)
+
+* `SELLER_DISPLAY_NAME` (value: `"SELLER_DISPLAY_NAME"`)
+
+* `COLLECT_ON_DELIVERY_AMOUNT` (value: `"COLLECT_ON_DELIVERY_AMOUNT"`)
+
+

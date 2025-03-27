@@ -1,0 +1,14 @@
+# SellingPartnerApiForServices.CapacityType
+
+## Enum
+
+
+* `SCHEDULED_CAPACITY` (value: `"SCHEDULED_CAPACITY"`)
+
+* `AVAILABLE_CAPACITY` (value: `"AVAILABLE_CAPACITY"`)
+
+* `ENCUMBERED_CAPACITY` (value: `"ENCUMBERED_CAPACITY"`)
+
+* `RESERVED_CAPACITY` (value: `"RESERVED_CAPACITY"`)
+
+
