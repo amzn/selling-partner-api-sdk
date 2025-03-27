@@ -82,8 +82,6 @@ jobs:
     - name: Copy Auth&Auth helper
       working-directory: ./selling-partner-api-sdk/javascript
       run: |
-        mkdir src && \
-        mkdir src/helper && \
         cp -R ../../selling-partner-api-models/clients/sellingpartner-api-aa-javascript/src/helper/* src/helper/
     - name: Pack tarball SDK package
       working-directory: ./selling-partner-api-sdk/javascript
