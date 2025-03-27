@@ -13,3 +13,4 @@ php/.env
 php/config/templates/README.mustache
 **/node_modules
 php/sdk/composer.lock
+javascript/openapitools.json
