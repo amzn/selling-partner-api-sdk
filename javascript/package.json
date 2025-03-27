@@ -1,27 +1,17 @@
 {
-    "name": "@amzn/sellingpartnerjavascriptapilwalib",
-    "type": "module",
-    "version": "1.0.0",
-    "description": "The NPM package name should always start with `@amzn/` to cleanly separate from public packages, avoid accidental publish to public repository, and allow publishing to CodeArtifact.",
-    "main": "/src/index.mjs",
-    "scripts": {
-      "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --config test_for_generated_sdk/jest.config.json"
-    },
-    "repository": {
-      "type": "git",
-      "url": "ssh://git.amazon.com/pkg/SellingPartnerJavaScriptApiLwaLib"
-    },
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-      "superagent": "^8.0.9"
-    },
-    "devDependencies": {
-      "jest": "^29.6.2"
-    },
-    "files": [
-        "src/helper/",
-        "sdk/"
-    ]
-  }
-  
+  "name": "@amzn/sellingpartnerjavascriptapilwalib",
+  "type": "module",
+  "description": "This package is sellingpartnerAPI Javascript SDK with LWA library.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
