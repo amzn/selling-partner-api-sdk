@@ -35,7 +35,7 @@ jobs:
       - name: Run tests and generate reports
         working-directory: ./javascript/sdk
         run: |
-          mkdir -p testreports
+          mkdir -p ../testreports
           
           for dir in */; do
             if [ -f "$dir/package.json" ]; then
