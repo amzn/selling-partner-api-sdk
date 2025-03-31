@@ -53,12 +53,6 @@
           const ModelClass = TheSellingPartnerApiForFbaInboundOperations[dataType];
           if (ModelClass) {
             const instance = Object.create(ModelClass.prototype);
-            if (ModelClass.RequiredProperties) {
-              ModelClass.RequiredProperties.forEach(prop => {
-                const propType = ModelClass.types[prop];
-                instance[prop] = generateMockData(propType);
-              });
-            }
             return instance;
           }
         } catch (e) {
@@ -354,7 +348,7 @@ const mocklistInboundPlansData = {
 };
 const mocklistItemComplianceDetailsData = {
   request: {
-    'mskus': generateMockData('[String]', true),
+    'mskus': generateMockData('String', true),
     'marketplaceId': generateMockData('String')
   },
   response: {
@@ -408,7 +402,7 @@ const mocklistPlacementOptionsData = {
 const mocklistPrepDetailsData = {
   request: {
     'marketplaceId': generateMockData('String'),
-    'mskus': generateMockData('[String]', true)
+    'mskus': generateMockData('String', true)
   },
   response: {
     data: generateMockData('ListPrepDetailsResponse'),

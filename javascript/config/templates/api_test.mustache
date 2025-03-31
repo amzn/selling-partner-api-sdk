@@ -41,12 +41,6 @@
           const ModelClass = {{moduleName}}[dataType];
           if (ModelClass) {
             const instance = Object.create(ModelClass.prototype);
-            if (ModelClass.RequiredProperties) {
-              ModelClass.RequiredProperties.forEach(prop => {
-                const propType = ModelClass.types[prop];
-                instance[prop] = generateMockData(propType);
-              });
-            }
             return instance;
           }
         } catch (e) {
@@ -65,7 +59,7 @@ const mock{{operationId}}Data = {
   request: {
     {{#allParams}}
     {{#required}}
-    '{{paramName}}': {{#isBodyParam}}generateMockData('{{dataType}}'{{#isArray}}, true{{/isArray}}){{/isBodyParam}}{{^isBodyParam}}generateMockData('{{dataType}}'{{#isArray}}, true{{/isArray}}){{/isBodyParam}}{{^-last}},{{/-last}}
+    '{{paramName}}': {{#isBodyParam}}generateMockData('{{dataType}}'{{#isArray}}, true{{/isArray}}){{/isBodyParam}}{{^isBodyParam}}{{#isArray}}generateMockData('{{items.dataType}}', true){{/isArray}}{{^isArray}}generateMockData('{{dataType}}'){{/isArray}}{{/isBodyParam}}{{^-last}},{{/-last}}
     {{/required}}
     {{/allParams}}
   },
@@ -122,7 +116,7 @@ const mock{{operationId}}Data = {
             {{#responses}}
             {{#-first}}
             {{#schema}}
-            expect(data instanceof {{moduleName}}.{{returnBaseType}}).to.be.true;
+            expect(data instanceof {{#isPrimitiveType}}{{returnBaseType}}{{/isPrimitiveType}}{{^isPrimitiveType}}{{moduleName}}.{{returnBaseType}}{{/isPrimitiveType}}).to.be.true;
             {{/schema}}
             {{^schema}}
             expect(data).to.be.undefined;

@@ -53,12 +53,6 @@
           const ModelClass = SellingPartnerApiForProductTypeDefinitions[dataType];
           if (ModelClass) {
             const instance = Object.create(ModelClass.prototype);
-            if (ModelClass.RequiredProperties) {
-              ModelClass.RequiredProperties.forEach(prop => {
-                const propType = ModelClass.types[prop];
-                instance[prop] = generateMockData(propType);
-              });
-            }
             return instance;
           }
         } catch (e) {
@@ -74,7 +68,7 @@
 const mockgetDefinitionsProductTypeData = {
   request: {
     'productType': generateMockData('String'),
-    'marketplaceIds': generateMockData('[String]', true),
+    'marketplaceIds': generateMockData('String', true),
   },
   response: {
     data: generateMockData('ProductTypeDefinition'),
@@ -84,7 +78,7 @@ const mockgetDefinitionsProductTypeData = {
 };
 const mocksearchDefinitionsProductTypesData = {
   request: {
-    'marketplaceIds': generateMockData('[String]', true),
+    'marketplaceIds': generateMockData('String', true),
   },
   response: {
     data: generateMockData('ProductTypeList'),

@@ -53,12 +53,6 @@
           const ModelClass = SellingPartnerApiForFbaInventory[dataType];
           if (ModelClass) {
             const instance = Object.create(ModelClass.prototype);
-            if (ModelClass.RequiredProperties) {
-              ModelClass.RequiredProperties.forEach(prop => {
-                const propType = ModelClass.types[prop];
-                instance[prop] = generateMockData(propType);
-              });
-            }
             return instance;
           }
         } catch (e) {
@@ -107,7 +101,7 @@ const mockgetInventorySummariesData = {
   request: {
     'granularityType': generateMockData('String'),
     'granularityId': generateMockData('String'),
-    'marketplaceIds': generateMockData('[String]', true),
+    'marketplaceIds': generateMockData('String', true),
   },
   response: {
     data: generateMockData('GetInventorySummariesResponse'),

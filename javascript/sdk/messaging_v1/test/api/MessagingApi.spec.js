@@ -53,12 +53,6 @@
           const ModelClass = SellingPartnerApiForMessaging[dataType];
           if (ModelClass) {
             const instance = Object.create(ModelClass.prototype);
-            if (ModelClass.RequiredProperties) {
-              ModelClass.RequiredProperties.forEach(prop => {
-                const propType = ModelClass.types[prop];
-                instance[prop] = generateMockData(propType);
-              });
-            }
             return instance;
           }
         } catch (e) {
@@ -74,7 +68,7 @@
 const mockconfirmCustomizationDetailsData = {
   request: {
     'amazonOrderId': generateMockData('String'),
-    'marketplaceIds': generateMockData('[String]', true),
+    'marketplaceIds': generateMockData('String', true),
     'body': generateMockData('CreateConfirmCustomizationDetailsRequest')
   },
   response: {
@@ -86,7 +80,7 @@ const mockconfirmCustomizationDetailsData = {
 const mockcreateAmazonMotorsData = {
   request: {
     'amazonOrderId': generateMockData('String'),
-    'marketplaceIds': generateMockData('[String]', true),
+    'marketplaceIds': generateMockData('String', true),
     'body': generateMockData('CreateAmazonMotorsRequest')
   },
   response: {
@@ -98,7 +92,7 @@ const mockcreateAmazonMotorsData = {
 const mockcreateConfirmDeliveryDetailsData = {
   request: {
     'amazonOrderId': generateMockData('String'),
-    'marketplaceIds': generateMockData('[String]', true),
+    'marketplaceIds': generateMockData('String', true),
     'body': generateMockData('CreateConfirmDeliveryDetailsRequest')
   },
   response: {
@@ -110,7 +104,7 @@ const mockcreateConfirmDeliveryDetailsData = {
 const mockcreateConfirmOrderDetailsData = {
   request: {
     'amazonOrderId': generateMockData('String'),
-    'marketplaceIds': generateMockData('[String]', true),
+    'marketplaceIds': generateMockData('String', true),
     'body': generateMockData('CreateConfirmOrderDetailsRequest')
   },
   response: {
@@ -122,7 +116,7 @@ const mockcreateConfirmOrderDetailsData = {
 const mockcreateConfirmServiceDetailsData = {
   request: {
     'amazonOrderId': generateMockData('String'),
-    'marketplaceIds': generateMockData('[String]', true),
+    'marketplaceIds': generateMockData('String', true),
     'body': generateMockData('CreateConfirmServiceDetailsRequest')
   },
   response: {
@@ -134,7 +128,7 @@ const mockcreateConfirmServiceDetailsData = {
 const mockcreateDigitalAccessKeyData = {
   request: {
     'amazonOrderId': generateMockData('String'),
-    'marketplaceIds': generateMockData('[String]', true),
+    'marketplaceIds': generateMockData('String', true),
     'body': generateMockData('CreateDigitalAccessKeyRequest')
   },
   response: {
@@ -146,7 +140,7 @@ const mockcreateDigitalAccessKeyData = {
 const mockcreateLegalDisclosureData = {
   request: {
     'amazonOrderId': generateMockData('String'),
-    'marketplaceIds': generateMockData('[String]', true),
+    'marketplaceIds': generateMockData('String', true),
     'body': generateMockData('CreateLegalDisclosureRequest')
   },
   response: {
@@ -158,7 +152,7 @@ const mockcreateLegalDisclosureData = {
 const mockcreateNegativeFeedbackRemovalData = {
   request: {
     'amazonOrderId': generateMockData('String'),
-    'marketplaceIds': generateMockData('[String]', true)
+    'marketplaceIds': generateMockData('String', true)
   },
   response: {
     data: generateMockData('CreateNegativeFeedbackRemovalResponse'),
@@ -169,7 +163,7 @@ const mockcreateNegativeFeedbackRemovalData = {
 const mockcreateUnexpectedProblemData = {
   request: {
     'amazonOrderId': generateMockData('String'),
-    'marketplaceIds': generateMockData('[String]', true),
+    'marketplaceIds': generateMockData('String', true),
     'body': generateMockData('CreateUnexpectedProblemRequest')
   },
   response: {
@@ -181,7 +175,7 @@ const mockcreateUnexpectedProblemData = {
 const mockcreateWarrantyData = {
   request: {
     'amazonOrderId': generateMockData('String'),
-    'marketplaceIds': generateMockData('[String]', true),
+    'marketplaceIds': generateMockData('String', true),
     'body': generateMockData('CreateWarrantyRequest')
   },
   response: {
@@ -193,7 +187,7 @@ const mockcreateWarrantyData = {
 const mockgetAttributesData = {
   request: {
     'amazonOrderId': generateMockData('String'),
-    'marketplaceIds': generateMockData('[String]', true)
+    'marketplaceIds': generateMockData('String', true)
   },
   response: {
     data: generateMockData('GetAttributesResponse'),
@@ -204,7 +198,7 @@ const mockgetAttributesData = {
 const mockgetMessagingActionsForOrderData = {
   request: {
     'amazonOrderId': generateMockData('String'),
-    'marketplaceIds': generateMockData('[String]', true)
+    'marketplaceIds': generateMockData('String', true)
   },
   response: {
     data: generateMockData('GetMessagingActionsForOrderResponse'),
@@ -215,7 +209,7 @@ const mockgetMessagingActionsForOrderData = {
 const mocksendInvoiceData = {
   request: {
     'amazonOrderId': generateMockData('String'),
-    'marketplaceIds': generateMockData('[String]', true),
+    'marketplaceIds': generateMockData('String', true),
     'body': generateMockData('InvoiceRequest')
   },
   response: {

@@ -53,12 +53,6 @@
           const ModelClass = SellingPartnerApiForListingsRestrictions[dataType];
           if (ModelClass) {
             const instance = Object.create(ModelClass.prototype);
-            if (ModelClass.RequiredProperties) {
-              ModelClass.RequiredProperties.forEach(prop => {
-                const propType = ModelClass.types[prop];
-                instance[prop] = generateMockData(propType);
-              });
-            }
             return instance;
           }
         } catch (e) {
@@ -75,7 +69,7 @@ const mockgetListingsRestrictionsData = {
   request: {
     'asin': generateMockData('String'),
     'sellerId': generateMockData('String'),
-    'marketplaceIds': generateMockData('[String]', true),
+    'marketplaceIds': generateMockData('String', true),
   },
   response: {
     data: generateMockData('RestrictionList'),

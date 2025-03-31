@@ -53,12 +53,6 @@
           const ModelClass = SellingPartnerApiForServices[dataType];
           if (ModelClass) {
             const instance = Object.create(ModelClass.prototype);
-            if (ModelClass.RequiredProperties) {
-              ModelClass.RequiredProperties.forEach(prop => {
-                const propType = ModelClass.types[prop];
-                instance[prop] = generateMockData(propType);
-              });
-            }
             return instance;
           }
         } catch (e) {
@@ -97,7 +91,7 @@ const mockassignAppointmentResourcesData = {
 const mockcancelReservationData = {
   request: {
     'reservationId': generateMockData('String'),
-    'marketplaceIds': generateMockData('[String]', true)
+    'marketplaceIds': generateMockData('String', true)
   },
   response: {
     data: generateMockData('CancelReservationResponse'),
@@ -128,7 +122,7 @@ const mockcompleteServiceJobByServiceJobIdData = {
 };
 const mockcreateReservationData = {
   request: {
-    'marketplaceIds': generateMockData('[String]', true),
+    'marketplaceIds': generateMockData('String', true),
     'body': generateMockData('CreateReservationRequest')
   },
   response: {
@@ -151,7 +145,7 @@ const mockgetAppointmentSlotsData = {
   request: {
     'asin': generateMockData('String'),
     'storeId': generateMockData('String'),
-    'marketplaceIds': generateMockData('[String]', true),
+    'marketplaceIds': generateMockData('String', true),
   },
   response: {
     data: generateMockData('GetAppointmentSlotsResponse'),
@@ -162,7 +156,7 @@ const mockgetAppointmentSlotsData = {
 const mockgetAppointmmentSlotsByJobIdData = {
   request: {
     'serviceJobId': generateMockData('String'),
-    'marketplaceIds': generateMockData('[String]', true),
+    'marketplaceIds': generateMockData('String', true),
   },
   response: {
     data: generateMockData('GetAppointmentSlotsResponse'),
@@ -173,7 +167,7 @@ const mockgetAppointmmentSlotsByJobIdData = {
 const mockgetFixedSlotCapacityData = {
   request: {
     'resourceId': generateMockData('String'),
-    'marketplaceIds': generateMockData('[String]', true),
+    'marketplaceIds': generateMockData('String', true),
     'body': generateMockData('FixedSlotCapacityQuery'),
   },
   response: {
@@ -185,7 +179,7 @@ const mockgetFixedSlotCapacityData = {
 const mockgetRangeSlotCapacityData = {
   request: {
     'resourceId': generateMockData('String'),
-    'marketplaceIds': generateMockData('[String]', true),
+    'marketplaceIds': generateMockData('String', true),
     'body': generateMockData('RangeSlotCapacityQuery'),
   },
   response: {
@@ -206,7 +200,7 @@ const mockgetServiceJobByServiceJobIdData = {
 };
 const mockgetServiceJobsData = {
   request: {
-    'marketplaceIds': generateMockData('[String]', true),
+    'marketplaceIds': generateMockData('String', true),
   },
   response: {
     data: generateMockData('GetServiceJobsResponse'),
@@ -241,7 +235,7 @@ const mocksetAppointmentFulfillmentDataData = {
 const mockupdateReservationData = {
   request: {
     'reservationId': generateMockData('String'),
-    'marketplaceIds': generateMockData('[String]', true),
+    'marketplaceIds': generateMockData('String', true),
     'body': generateMockData('UpdateReservationRequest')
   },
   response: {
@@ -253,7 +247,7 @@ const mockupdateReservationData = {
 const mockupdateScheduleData = {
   request: {
     'resourceId': generateMockData('String'),
-    'marketplaceIds': generateMockData('[String]', true),
+    'marketplaceIds': generateMockData('String', true),
     'body': generateMockData('UpdateScheduleRequest')
   },
   response: {
@@ -1103,7 +1097,7 @@ const mockupdateScheduleData = {
         ];
         instance.setAppointmentFulfillmentData(...params)
           .then(function(data) {
-            expect(data instanceof SellingPartnerApiForServices.String).to.be.true;
+            expect(data instanceof String).to.be.true;
             done();
           })
           .catch(done);

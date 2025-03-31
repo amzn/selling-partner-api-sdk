@@ -53,12 +53,6 @@
           const ModelClass = SellingPartnerApiForListingsItems[dataType];
           if (ModelClass) {
             const instance = Object.create(ModelClass.prototype);
-            if (ModelClass.RequiredProperties) {
-              ModelClass.RequiredProperties.forEach(prop => {
-                const propType = ModelClass.types[prop];
-                instance[prop] = generateMockData(propType);
-              });
-            }
             return instance;
           }
         } catch (e) {
@@ -75,7 +69,7 @@ const mockdeleteListingsItemData = {
   request: {
     'sellerId': generateMockData('String'),
     'sku': generateMockData('String'),
-    'marketplaceIds': generateMockData('[String]', true),
+    'marketplaceIds': generateMockData('String', true),
   },
   response: {
     data: generateMockData('ListingsItemSubmissionResponse'),
@@ -87,7 +81,7 @@ const mockgetListingsItemData = {
   request: {
     'sellerId': generateMockData('String'),
     'sku': generateMockData('String'),
-    'marketplaceIds': generateMockData('[String]', true),
+    'marketplaceIds': generateMockData('String', true),
   },
   response: {
     data: generateMockData('Item'),
@@ -99,7 +93,7 @@ const mockpatchListingsItemData = {
   request: {
     'sellerId': generateMockData('String'),
     'sku': generateMockData('String'),
-    'marketplaceIds': generateMockData('[String]', true),
+    'marketplaceIds': generateMockData('String', true),
     'body': generateMockData('ListingsItemPatchRequest'),
   },
   response: {
@@ -112,7 +106,7 @@ const mockputListingsItemData = {
   request: {
     'sellerId': generateMockData('String'),
     'sku': generateMockData('String'),
-    'marketplaceIds': generateMockData('[String]', true),
+    'marketplaceIds': generateMockData('String', true),
     'body': generateMockData('ListingsItemPutRequest'),
   },
   response: {
@@ -124,7 +118,7 @@ const mockputListingsItemData = {
 const mocksearchListingsItemsData = {
   request: {
     'sellerId': generateMockData('String'),
-    'marketplaceIds': generateMockData('[String]', true),
+    'marketplaceIds': generateMockData('String', true),
   },
   response: {
     data: generateMockData('ItemSearchResults'),
