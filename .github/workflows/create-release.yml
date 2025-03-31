@@ -46,8 +46,9 @@ jobs:
           PR_LABELS: false
       - name: Enable auto merge for PR
         run: |
-          echo "Merging PR: ${{ steps.sync.outputs.pull_request_urls[0] }}"
-          gh pr merge --auto --merge "${{ steps.sync.outputs.pull_request_urls[0] }}"
+          URL='${{ steps.sync.outputs.pull_request_urls }}' | jq '.[0]'
+          echo "Merging PR: $URL"
+          gh pr merge --auto --merge $URL
         env:
           GH_TOKEN: ${{ secrets.TOMLIKED_PAT }}
       - name: Create tag
