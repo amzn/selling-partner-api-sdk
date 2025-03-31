@@ -16,8 +16,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
-
+          
       - name: Install dependencies in each API dir
         working-directory: ./javascript/sdk
         run: |
@@ -40,7 +39,7 @@ jobs:
               echo "🧪 Running tests in $dir"
               cd "$dir"
               
-              # Skip serviceAPI setAppointmentFulfillmentData tests
+              # Skip servicesAPI setAppointmentFulfillmentData tests due to json model issues
               npx mocha --require @babel/register --recursive \
                 --reporter mocha-junit-reporter \
                 --reporter-options mochaFile="../../testreports/junit-${dir%/}.xml" \
