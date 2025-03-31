@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForFinances.Currency();
   });
 
   var getProperty = function(object, getter, property) {

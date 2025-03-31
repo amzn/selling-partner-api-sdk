@@ -14,60 +14,227 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
+    define(['expect.js', 'sinon', process.cwd()+'/src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
+    factory(require('expect.js'), require('sinon'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForSolicitations);
+    factory(root.expect, root.sinon, root.SellingPartnerApiForSolicitations);
   }
-}(this, function(expect, SellingPartnerApiForSolicitations) {
+}(this, function(expect, sinon, SellingPartnerApiForSolicitations) {
   'use strict';
 
   var instance;
+  var sandbox;
+  const testEndpoint = 'https://localhost:3000';
+  const testAccessToken = "testAccessToken";
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForSolicitations[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            if (ModelClass.RequiredProperties) {
+              ModelClass.RequiredProperties.forEach(prop => {
+                const propType = ModelClass.types[prop];
+                instance[prop] = generateMockData(propType);
+              });
+            }
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
+  
+
+// Generate mock requests and responses for each operation
+const mockcreateProductReviewAndSellerFeedbackSolicitationData = {
+  request: {
+    'amazonOrderId': generateMockData('String'),
+    'marketplaceIds': generateMockData('[String]', true)
+  },
+  response: {
+    data: generateMockData('CreateProductReviewAndSellerFeedbackSolicitationResponse'),
+    statusCode: 201,
+    headers: {}
+  }
+};
+const mockgetSolicitationActionsForOrderData = {
+  request: {
+    'amazonOrderId': generateMockData('String'),
+    'marketplaceIds': generateMockData('[String]', true)
+  },
+  response: {
+    data: generateMockData('GetSolicitationActionsForOrderResponse'),
+    statusCode: 200,
+    headers: {}
+  }
+};
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForSolicitations.SolicitationsApi();
+    sandbox = sinon.createSandbox();
+    var apiClientInstance = new SellingPartnerApiForSolicitations.ApiClient(testEndpoint);
+    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    sandbox.stub(apiClientInstance, 'callApi');
+    instance = new SellingPartnerApiForSolicitations.SolicitationsApi(apiClientInstance);
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    sandbox.restore();
+  });
 
   describe('SolicitationsApi', function() {
     describe('createProductReviewAndSellerFeedbackSolicitation', function() {
-      it('should call createProductReviewAndSellerFeedbackSolicitation successfully', function(done) {
-        //uncomment below and update the code to test createProductReviewAndSellerFeedbackSolicitation
-        //instance.createProductReviewAndSellerFeedbackSolicitation(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      
+      it('should successfully call createProductReviewAndSellerFeedbackSolicitation', function(done) {
+        instance.apiClient.callApi.resolves(mockcreateProductReviewAndSellerFeedbackSolicitationData.response);
+
+        const params = [
+          mockcreateProductReviewAndSellerFeedbackSolicitationData.request['amazonOrderId'],
+          mockcreateProductReviewAndSellerFeedbackSolicitationData.request['marketplaceIds']
+        ];
+        instance.createProductReviewAndSellerFeedbackSolicitation(...params)
+          .then(function(data) {
+            expect(data instanceof SellingPartnerApiForSolicitations.CreateProductReviewAndSellerFeedbackSolicitationResponse).to.be.true;
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should successfully call createProductReviewAndSellerFeedbackSolicitationWithHttpInfo', function(done) {
+        instance.apiClient.callApi.resolves(mockcreateProductReviewAndSellerFeedbackSolicitationData.response);
+
+        const params = [
+          mockcreateProductReviewAndSellerFeedbackSolicitationData.request['amazonOrderId'],
+          mockcreateProductReviewAndSellerFeedbackSolicitationData.request['marketplaceIds']
+        ];
+        instance.createProductReviewAndSellerFeedbackSolicitationWithHttpInfo(...params)
+          .then(function(response) {
+            expect(response).to.have.property('statusCode');
+            expect(response.statusCode).to.equal(mockcreateProductReviewAndSellerFeedbackSolicitationData.response.statusCode)
+            expect(response).to.have.property('headers');
+            expect(response).to.have.property('data');
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should handle API errors', function(done) {
+        var errorResponse = {
+          errors: new Error('Expected error to be thrown'),
+          statusCode: 400,
+          headers: {}
+        };
+        instance.apiClient.callApi.rejects(errorResponse);
+
+        const params = [
+          mockcreateProductReviewAndSellerFeedbackSolicitationData.request['amazonOrderId'],
+          mockcreateProductReviewAndSellerFeedbackSolicitationData.request['marketplaceIds']
+        ];
+        instance.createProductReviewAndSellerFeedbackSolicitation(...params)
+          .then(function() {
+            done(new Error('Expected error to be thrown'));
+          })
+          .catch(function(error) {
+            expect(error).to.exist;
+            expect(error.statusCode).to.equal(400)
+            done();
+          });
       });
     });
     describe('getSolicitationActionsForOrder', function() {
-      it('should call getSolicitationActionsForOrder successfully', function(done) {
-        //uncomment below and update the code to test getSolicitationActionsForOrder
-        //instance.getSolicitationActionsForOrder(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      
+      it('should successfully call getSolicitationActionsForOrder', function(done) {
+        instance.apiClient.callApi.resolves(mockgetSolicitationActionsForOrderData.response);
+
+        const params = [
+          mockgetSolicitationActionsForOrderData.request['amazonOrderId'],
+          mockgetSolicitationActionsForOrderData.request['marketplaceIds']
+        ];
+        instance.getSolicitationActionsForOrder(...params)
+          .then(function(data) {
+            expect(data instanceof SellingPartnerApiForSolicitations.GetSolicitationActionsForOrderResponse).to.be.true;
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should successfully call getSolicitationActionsForOrderWithHttpInfo', function(done) {
+        instance.apiClient.callApi.resolves(mockgetSolicitationActionsForOrderData.response);
+
+        const params = [
+          mockgetSolicitationActionsForOrderData.request['amazonOrderId'],
+          mockgetSolicitationActionsForOrderData.request['marketplaceIds']
+        ];
+        instance.getSolicitationActionsForOrderWithHttpInfo(...params)
+          .then(function(response) {
+            expect(response).to.have.property('statusCode');
+            expect(response.statusCode).to.equal(mockgetSolicitationActionsForOrderData.response.statusCode)
+            expect(response).to.have.property('headers');
+            expect(response).to.have.property('data');
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should handle API errors', function(done) {
+        var errorResponse = {
+          errors: new Error('Expected error to be thrown'),
+          statusCode: 400,
+          headers: {}
+        };
+        instance.apiClient.callApi.rejects(errorResponse);
+
+        const params = [
+          mockgetSolicitationActionsForOrderData.request['amazonOrderId'],
+          mockgetSolicitationActionsForOrderData.request['marketplaceIds']
+        ];
+        instance.getSolicitationActionsForOrder(...params)
+          .then(function() {
+            done(new Error('Expected error to be thrown'));
+          })
+          .catch(function(error) {
+            expect(error).to.exist;
+            expect(error.statusCode).to.equal(400)
+            done();
+          });
+      });
+    });
+
+    describe('constructor', function() {
+      it('should use default ApiClient when none provided', function() {
+        var defaultInstance = new SellingPartnerApiForSolicitations.SolicitationsApi();
+        expect(defaultInstance.apiClient).to.equal(SellingPartnerApiForSolicitations.ApiClient.instance);
+      });
+
+      it('should use provided ApiClient', function() {
+        var customClient = new SellingPartnerApiForSolicitations.ApiClient();
+        var customInstance = new SellingPartnerApiForSolicitations.SolicitationsApi(customClient);
+        expect(customInstance.apiClient).to.equal(customClient);
       });
     });
   });
-
 }));

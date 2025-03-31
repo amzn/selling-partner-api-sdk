@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForPricing.CompetitiveSummaryResponse();
   });
 
   var getProperty = function(object, getter, property) {

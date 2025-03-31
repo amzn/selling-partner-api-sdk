@@ -14,80 +14,341 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
+    define(['expect.js', 'sinon', process.cwd()+'/src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
+    factory(require('expect.js'), require('sinon'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForFinances);
+    factory(root.expect, root.sinon, root.SellingPartnerApiForFinances);
   }
-}(this, function(expect, SellingPartnerApiForFinances) {
+}(this, function(expect, sinon, SellingPartnerApiForFinances) {
   'use strict';
 
   var instance;
+  var sandbox;
+  const testEndpoint = 'https://localhost:3000';
+  const testAccessToken = "testAccessToken";
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForFinances[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            if (ModelClass.RequiredProperties) {
+              ModelClass.RequiredProperties.forEach(prop => {
+                const propType = ModelClass.types[prop];
+                instance[prop] = generateMockData(propType);
+              });
+            }
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
+  
+
+// Generate mock requests and responses for each operation
+const mocklistFinancialEventGroupsData = {
+  request: {
+  },
+  response: {
+    data: generateMockData('ListFinancialEventGroupsResponse'),
+    statusCode: 200,
+    headers: {}
+  }
+};
+const mocklistFinancialEventsData = {
+  request: {
+  },
+  response: {
+    data: generateMockData('ListFinancialEventsResponse'),
+    statusCode: 200,
+    headers: {}
+  }
+};
+const mocklistFinancialEventsByGroupIdData = {
+  request: {
+    'eventGroupId': generateMockData('String'),
+  },
+  response: {
+    data: generateMockData('ListFinancialEventsResponse'),
+    statusCode: 200,
+    headers: {}
+  }
+};
+const mocklistFinancialEventsByOrderIdData = {
+  request: {
+    'orderId': generateMockData('String'),
+  },
+  response: {
+    data: generateMockData('ListFinancialEventsResponse'),
+    statusCode: 200,
+    headers: {}
+  }
+};
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForFinances.DefaultApi();
+    sandbox = sinon.createSandbox();
+    var apiClientInstance = new SellingPartnerApiForFinances.ApiClient(testEndpoint);
+    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    sandbox.stub(apiClientInstance, 'callApi');
+    instance = new SellingPartnerApiForFinances.DefaultApi(apiClientInstance);
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    sandbox.restore();
+  });
 
   describe('DefaultApi', function() {
     describe('listFinancialEventGroups', function() {
-      it('should call listFinancialEventGroups successfully', function(done) {
-        //uncomment below and update the code to test listFinancialEventGroups
-        //instance.listFinancialEventGroups(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      
+      it('should successfully call listFinancialEventGroups', function(done) {
+        instance.apiClient.callApi.resolves(mocklistFinancialEventGroupsData.response);
+
+        const params = [
+        ];
+        instance.listFinancialEventGroups(...params)
+          .then(function(data) {
+            expect(data instanceof SellingPartnerApiForFinances.ListFinancialEventGroupsResponse).to.be.true;
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should successfully call listFinancialEventGroupsWithHttpInfo', function(done) {
+        instance.apiClient.callApi.resolves(mocklistFinancialEventGroupsData.response);
+
+        const params = [
+        ];
+        instance.listFinancialEventGroupsWithHttpInfo(...params)
+          .then(function(response) {
+            expect(response).to.have.property('statusCode');
+            expect(response.statusCode).to.equal(mocklistFinancialEventGroupsData.response.statusCode)
+            expect(response).to.have.property('headers');
+            expect(response).to.have.property('data');
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should handle API errors', function(done) {
+        var errorResponse = {
+          errors: new Error('Expected error to be thrown'),
+          statusCode: 400,
+          headers: {}
+        };
+        instance.apiClient.callApi.rejects(errorResponse);
+
+        const params = [
+        ];
+        instance.listFinancialEventGroups(...params)
+          .then(function() {
+            done(new Error('Expected error to be thrown'));
+          })
+          .catch(function(error) {
+            expect(error).to.exist;
+            expect(error.statusCode).to.equal(400)
+            done();
+          });
       });
     });
     describe('listFinancialEvents', function() {
-      it('should call listFinancialEvents successfully', function(done) {
-        //uncomment below and update the code to test listFinancialEvents
-        //instance.listFinancialEvents(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      
+      it('should successfully call listFinancialEvents', function(done) {
+        instance.apiClient.callApi.resolves(mocklistFinancialEventsData.response);
+
+        const params = [
+        ];
+        instance.listFinancialEvents(...params)
+          .then(function(data) {
+            expect(data instanceof SellingPartnerApiForFinances.ListFinancialEventsResponse).to.be.true;
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should successfully call listFinancialEventsWithHttpInfo', function(done) {
+        instance.apiClient.callApi.resolves(mocklistFinancialEventsData.response);
+
+        const params = [
+        ];
+        instance.listFinancialEventsWithHttpInfo(...params)
+          .then(function(response) {
+            expect(response).to.have.property('statusCode');
+            expect(response.statusCode).to.equal(mocklistFinancialEventsData.response.statusCode)
+            expect(response).to.have.property('headers');
+            expect(response).to.have.property('data');
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should handle API errors', function(done) {
+        var errorResponse = {
+          errors: new Error('Expected error to be thrown'),
+          statusCode: 400,
+          headers: {}
+        };
+        instance.apiClient.callApi.rejects(errorResponse);
+
+        const params = [
+        ];
+        instance.listFinancialEvents(...params)
+          .then(function() {
+            done(new Error('Expected error to be thrown'));
+          })
+          .catch(function(error) {
+            expect(error).to.exist;
+            expect(error.statusCode).to.equal(400)
+            done();
+          });
       });
     });
     describe('listFinancialEventsByGroupId', function() {
-      it('should call listFinancialEventsByGroupId successfully', function(done) {
-        //uncomment below and update the code to test listFinancialEventsByGroupId
-        //instance.listFinancialEventsByGroupId(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      
+      it('should successfully call listFinancialEventsByGroupId', function(done) {
+        instance.apiClient.callApi.resolves(mocklistFinancialEventsByGroupIdData.response);
+
+        const params = [
+          mocklistFinancialEventsByGroupIdData.request['eventGroupId'],
+        ];
+        instance.listFinancialEventsByGroupId(...params)
+          .then(function(data) {
+            expect(data instanceof SellingPartnerApiForFinances.ListFinancialEventsResponse).to.be.true;
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should successfully call listFinancialEventsByGroupIdWithHttpInfo', function(done) {
+        instance.apiClient.callApi.resolves(mocklistFinancialEventsByGroupIdData.response);
+
+        const params = [
+          mocklistFinancialEventsByGroupIdData.request['eventGroupId'],
+        ];
+        instance.listFinancialEventsByGroupIdWithHttpInfo(...params)
+          .then(function(response) {
+            expect(response).to.have.property('statusCode');
+            expect(response.statusCode).to.equal(mocklistFinancialEventsByGroupIdData.response.statusCode)
+            expect(response).to.have.property('headers');
+            expect(response).to.have.property('data');
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should handle API errors', function(done) {
+        var errorResponse = {
+          errors: new Error('Expected error to be thrown'),
+          statusCode: 400,
+          headers: {}
+        };
+        instance.apiClient.callApi.rejects(errorResponse);
+
+        const params = [
+          mocklistFinancialEventsByGroupIdData.request['eventGroupId'],
+        ];
+        instance.listFinancialEventsByGroupId(...params)
+          .then(function() {
+            done(new Error('Expected error to be thrown'));
+          })
+          .catch(function(error) {
+            expect(error).to.exist;
+            expect(error.statusCode).to.equal(400)
+            done();
+          });
       });
     });
     describe('listFinancialEventsByOrderId', function() {
-      it('should call listFinancialEventsByOrderId successfully', function(done) {
-        //uncomment below and update the code to test listFinancialEventsByOrderId
-        //instance.listFinancialEventsByOrderId(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      
+      it('should successfully call listFinancialEventsByOrderId', function(done) {
+        instance.apiClient.callApi.resolves(mocklistFinancialEventsByOrderIdData.response);
+
+        const params = [
+          mocklistFinancialEventsByOrderIdData.request['orderId'],
+        ];
+        instance.listFinancialEventsByOrderId(...params)
+          .then(function(data) {
+            expect(data instanceof SellingPartnerApiForFinances.ListFinancialEventsResponse).to.be.true;
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should successfully call listFinancialEventsByOrderIdWithHttpInfo', function(done) {
+        instance.apiClient.callApi.resolves(mocklistFinancialEventsByOrderIdData.response);
+
+        const params = [
+          mocklistFinancialEventsByOrderIdData.request['orderId'],
+        ];
+        instance.listFinancialEventsByOrderIdWithHttpInfo(...params)
+          .then(function(response) {
+            expect(response).to.have.property('statusCode');
+            expect(response.statusCode).to.equal(mocklistFinancialEventsByOrderIdData.response.statusCode)
+            expect(response).to.have.property('headers');
+            expect(response).to.have.property('data');
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should handle API errors', function(done) {
+        var errorResponse = {
+          errors: new Error('Expected error to be thrown'),
+          statusCode: 400,
+          headers: {}
+        };
+        instance.apiClient.callApi.rejects(errorResponse);
+
+        const params = [
+          mocklistFinancialEventsByOrderIdData.request['orderId'],
+        ];
+        instance.listFinancialEventsByOrderId(...params)
+          .then(function() {
+            done(new Error('Expected error to be thrown'));
+          })
+          .catch(function(error) {
+            expect(error).to.exist;
+            expect(error.statusCode).to.equal(400)
+            done();
+          });
+      });
+    });
+
+    describe('constructor', function() {
+      it('should use default ApiClient when none provided', function() {
+        var defaultInstance = new SellingPartnerApiForFinances.DefaultApi();
+        expect(defaultInstance.apiClient).to.equal(SellingPartnerApiForFinances.ApiClient.instance);
+      });
+
+      it('should use provided ApiClient', function() {
+        var customClient = new SellingPartnerApiForFinances.ApiClient();
+        var customInstance = new SellingPartnerApiForFinances.DefaultApi(customClient);
+        expect(customInstance.apiClient).to.equal(customClient);
       });
     });
   });
-
 }));

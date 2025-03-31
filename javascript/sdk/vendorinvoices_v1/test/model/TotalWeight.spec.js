@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForRetailProcurementPayments.TotalWeight();
   });
 
   var getProperty = function(object, getter, property) {

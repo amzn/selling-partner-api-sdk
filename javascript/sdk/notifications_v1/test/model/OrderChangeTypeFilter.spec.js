@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForNotifications.OrderChangeTypeFilter();
   });
 
   var getProperty = function(object, getter, property) {

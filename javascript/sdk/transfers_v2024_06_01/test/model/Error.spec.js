@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new TheSellingPartnerApiForTransfers.Error();
   });
 
   var getProperty = function(object, getter, property) {

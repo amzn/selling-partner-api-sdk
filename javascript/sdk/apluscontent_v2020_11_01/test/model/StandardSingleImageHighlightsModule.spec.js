@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForAContentManagement.StandardSingleImageHighlightsModule();
   });
 
   var getProperty = function(object, getter, property) {

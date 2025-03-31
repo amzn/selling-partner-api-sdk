@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForMerchantFulfillment.ExcludedBenefit();
   });
 
   var getProperty = function(object, getter, property) {

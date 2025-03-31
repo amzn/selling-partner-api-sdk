@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForFinances.TDSReimbursementEvent();
   });
 
   var getProperty = function(object, getter, property) {

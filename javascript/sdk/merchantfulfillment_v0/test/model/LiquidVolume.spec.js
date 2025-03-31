@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForMerchantFulfillment.LiquidVolume();
   });
 
   var getProperty = function(object, getter, property) {

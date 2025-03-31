@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForServices.FixedSlotCapacity();
   });
 
   var getProperty = function(object, getter, property) {

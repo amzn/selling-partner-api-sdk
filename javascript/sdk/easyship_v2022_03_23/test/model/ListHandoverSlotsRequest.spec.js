@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForEasyShip.ListHandoverSlotsRequest();
   });
 
   var getProperty = function(object, getter, property) {

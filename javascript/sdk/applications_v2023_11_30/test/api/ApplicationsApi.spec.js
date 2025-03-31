@@ -14,50 +14,142 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
+    define(['expect.js', 'sinon', process.cwd()+'/src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
+    factory(require('expect.js'), require('sinon'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForApplicationManagement);
+    factory(root.expect, root.sinon, root.SellingPartnerApiForApplicationManagement);
   }
-}(this, function(expect, SellingPartnerApiForApplicationManagement) {
+}(this, function(expect, sinon, SellingPartnerApiForApplicationManagement) {
   'use strict';
 
   var instance;
+  var sandbox;
+  const testEndpoint = 'https://localhost:3000';
+  const testAccessToken = "testAccessToken";
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForApplicationManagement[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            if (ModelClass.RequiredProperties) {
+              ModelClass.RequiredProperties.forEach(prop => {
+                const propType = ModelClass.types[prop];
+                instance[prop] = generateMockData(propType);
+              });
+            }
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
+  
+
+// Generate mock requests and responses for each operation
+const mockrotateApplicationClientSecretData = {
+  request: {
+  },
+  response: {
+    statusCode: 204,
+    headers: {}
+  }
+};
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForApplicationManagement.ApplicationsApi();
+    sandbox = sinon.createSandbox();
+    var apiClientInstance = new SellingPartnerApiForApplicationManagement.ApiClient(testEndpoint);
+    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    sandbox.stub(apiClientInstance, 'callApi');
+    instance = new SellingPartnerApiForApplicationManagement.ApplicationsApi(apiClientInstance);
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    sandbox.restore();
+  });
 
   describe('ApplicationsApi', function() {
     describe('rotateApplicationClientSecret', function() {
-      it('should call rotateApplicationClientSecret successfully', function(done) {
-        //uncomment below and update the code to test rotateApplicationClientSecret
-        //instance.rotateApplicationClientSecret(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      
+      it('should successfully call rotateApplicationClientSecret', function(done) {
+        instance.apiClient.callApi.resolves(mockrotateApplicationClientSecretData.response);
+
+        instance.rotateApplicationClientSecret()
+          .then(function(data) {
+            expect(data).to.be.undefined;
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should successfully call rotateApplicationClientSecretWithHttpInfo', function(done) {
+        instance.apiClient.callApi.resolves(mockrotateApplicationClientSecretData.response);
+
+        instance.rotateApplicationClientSecretWithHttpInfo()
+          .then(function(response) {
+            expect(response).to.have.property('statusCode');
+            expect(response.statusCode).to.equal(mockrotateApplicationClientSecretData.response.statusCode)
+            expect(response).to.have.property('headers');
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should handle API errors', function(done) {
+        var errorResponse = {
+          errors: new Error('Expected error to be thrown'),
+          statusCode: 400,
+          headers: {}
+        };
+        instance.apiClient.callApi.rejects(errorResponse);
+
+        instance.rotateApplicationClientSecret()
+          .then(function() {
+            done(new Error('Expected error to be thrown'));
+          })
+          .catch(function(error) {
+            expect(error).to.exist;
+            expect(error.statusCode).to.equal(400)
+            done();
+          });
+      });
+    });
+
+    describe('constructor', function() {
+      it('should use default ApiClient when none provided', function() {
+        var defaultInstance = new SellingPartnerApiForApplicationManagement.ApplicationsApi();
+        expect(defaultInstance.apiClient).to.equal(SellingPartnerApiForApplicationManagement.ApiClient.instance);
+      });
+
+      it('should use provided ApiClient', function() {
+        var customClient = new SellingPartnerApiForApplicationManagement.ApiClient();
+        var customInstance = new SellingPartnerApiForApplicationManagement.ApplicationsApi(customClient);
+        expect(customInstance.apiClient).to.equal(customClient);
       });
     });
   });
-
 }));

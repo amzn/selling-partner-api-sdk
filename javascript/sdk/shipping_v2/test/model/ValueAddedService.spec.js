@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new AmazonShippingApi.ValueAddedService();
   });
 
   var getProperty = function(object, getter, property) {

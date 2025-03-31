@@ -14,100 +14,475 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
+    define(['expect.js', 'sinon', process.cwd()+'/src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
+    factory(require('expect.js'), require('sinon'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForSupplySources);
+    factory(root.expect, root.sinon, root.SellingPartnerApiForSupplySources);
   }
-}(this, function(expect, SellingPartnerApiForSupplySources) {
+}(this, function(expect, sinon, SellingPartnerApiForSupplySources) {
   'use strict';
 
   var instance;
+  var sandbox;
+  const testEndpoint = 'https://localhost:3000';
+  const testAccessToken = "testAccessToken";
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForSupplySources[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            if (ModelClass.RequiredProperties) {
+              ModelClass.RequiredProperties.forEach(prop => {
+                const propType = ModelClass.types[prop];
+                instance[prop] = generateMockData(propType);
+              });
+            }
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
+  
+
+// Generate mock requests and responses for each operation
+const mockarchiveSupplySourceData = {
+  request: {
+    'supplySourceId': generateMockData('String')
+  },
+  response: {
+    data: generateMockData('ErrorList'),
+    statusCode: 204,
+    headers: {}
+  }
+};
+const mockcreateSupplySourceData = {
+  request: {
+    'payload': generateMockData('CreateSupplySourceRequest')
+  },
+  response: {
+    data: generateMockData('CreateSupplySourceResponse'),
+    statusCode: 200,
+    headers: {}
+  }
+};
+const mockgetSupplySourceData = {
+  request: {
+    'supplySourceId': generateMockData('String')
+  },
+  response: {
+    data: generateMockData('SupplySource'),
+    statusCode: 200,
+    headers: {}
+  }
+};
+const mockgetSupplySourcesData = {
+  request: {
+  },
+  response: {
+    data: generateMockData('GetSupplySourcesResponse'),
+    statusCode: 200,
+    headers: {}
+  }
+};
+const mockupdateSupplySourceData = {
+  request: {
+    'supplySourceId': generateMockData('String'),
+  },
+  response: {
+    data: generateMockData('ErrorList'),
+    statusCode: 204,
+    headers: {}
+  }
+};
+const mockupdateSupplySourceStatusData = {
+  request: {
+    'supplySourceId': generateMockData('String'),
+  },
+  response: {
+    data: generateMockData('ErrorList'),
+    statusCode: 204,
+    headers: {}
+  }
+};
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForSupplySources.SupplySourcesApi();
+    sandbox = sinon.createSandbox();
+    var apiClientInstance = new SellingPartnerApiForSupplySources.ApiClient(testEndpoint);
+    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    sandbox.stub(apiClientInstance, 'callApi');
+    instance = new SellingPartnerApiForSupplySources.SupplySourcesApi(apiClientInstance);
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    sandbox.restore();
+  });
 
   describe('SupplySourcesApi', function() {
     describe('archiveSupplySource', function() {
-      it('should call archiveSupplySource successfully', function(done) {
-        //uncomment below and update the code to test archiveSupplySource
-        //instance.archiveSupplySource(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      
+      it('should successfully call archiveSupplySource', function(done) {
+        instance.apiClient.callApi.resolves(mockarchiveSupplySourceData.response);
+
+        const params = [
+          mockarchiveSupplySourceData.request['supplySourceId']
+        ];
+        instance.archiveSupplySource(...params)
+          .then(function(data) {
+            expect(data instanceof SellingPartnerApiForSupplySources.ErrorList).to.be.true;
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should successfully call archiveSupplySourceWithHttpInfo', function(done) {
+        instance.apiClient.callApi.resolves(mockarchiveSupplySourceData.response);
+
+        const params = [
+          mockarchiveSupplySourceData.request['supplySourceId']
+        ];
+        instance.archiveSupplySourceWithHttpInfo(...params)
+          .then(function(response) {
+            expect(response).to.have.property('statusCode');
+            expect(response.statusCode).to.equal(mockarchiveSupplySourceData.response.statusCode)
+            expect(response).to.have.property('headers');
+            expect(response).to.have.property('data');
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should handle API errors', function(done) {
+        var errorResponse = {
+          errors: new Error('Expected error to be thrown'),
+          statusCode: 400,
+          headers: {}
+        };
+        instance.apiClient.callApi.rejects(errorResponse);
+
+        const params = [
+          mockarchiveSupplySourceData.request['supplySourceId']
+        ];
+        instance.archiveSupplySource(...params)
+          .then(function() {
+            done(new Error('Expected error to be thrown'));
+          })
+          .catch(function(error) {
+            expect(error).to.exist;
+            expect(error.statusCode).to.equal(400)
+            done();
+          });
       });
     });
     describe('createSupplySource', function() {
-      it('should call createSupplySource successfully', function(done) {
-        //uncomment below and update the code to test createSupplySource
-        //instance.createSupplySource(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      
+      it('should successfully call createSupplySource', function(done) {
+        instance.apiClient.callApi.resolves(mockcreateSupplySourceData.response);
+
+        const params = [
+          mockcreateSupplySourceData.request['payload']
+        ];
+        instance.createSupplySource(...params)
+          .then(function(data) {
+            expect(data instanceof SellingPartnerApiForSupplySources.CreateSupplySourceResponse).to.be.true;
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should successfully call createSupplySourceWithHttpInfo', function(done) {
+        instance.apiClient.callApi.resolves(mockcreateSupplySourceData.response);
+
+        const params = [
+          mockcreateSupplySourceData.request['payload']
+        ];
+        instance.createSupplySourceWithHttpInfo(...params)
+          .then(function(response) {
+            expect(response).to.have.property('statusCode');
+            expect(response.statusCode).to.equal(mockcreateSupplySourceData.response.statusCode)
+            expect(response).to.have.property('headers');
+            expect(response).to.have.property('data');
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should handle API errors', function(done) {
+        var errorResponse = {
+          errors: new Error('Expected error to be thrown'),
+          statusCode: 400,
+          headers: {}
+        };
+        instance.apiClient.callApi.rejects(errorResponse);
+
+        const params = [
+          mockcreateSupplySourceData.request['payload']
+        ];
+        instance.createSupplySource(...params)
+          .then(function() {
+            done(new Error('Expected error to be thrown'));
+          })
+          .catch(function(error) {
+            expect(error).to.exist;
+            expect(error.statusCode).to.equal(400)
+            done();
+          });
       });
     });
     describe('getSupplySource', function() {
-      it('should call getSupplySource successfully', function(done) {
-        //uncomment below and update the code to test getSupplySource
-        //instance.getSupplySource(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      
+      it('should successfully call getSupplySource', function(done) {
+        instance.apiClient.callApi.resolves(mockgetSupplySourceData.response);
+
+        const params = [
+          mockgetSupplySourceData.request['supplySourceId']
+        ];
+        instance.getSupplySource(...params)
+          .then(function(data) {
+            expect(data instanceof SellingPartnerApiForSupplySources.SupplySource).to.be.true;
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should successfully call getSupplySourceWithHttpInfo', function(done) {
+        instance.apiClient.callApi.resolves(mockgetSupplySourceData.response);
+
+        const params = [
+          mockgetSupplySourceData.request['supplySourceId']
+        ];
+        instance.getSupplySourceWithHttpInfo(...params)
+          .then(function(response) {
+            expect(response).to.have.property('statusCode');
+            expect(response.statusCode).to.equal(mockgetSupplySourceData.response.statusCode)
+            expect(response).to.have.property('headers');
+            expect(response).to.have.property('data');
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should handle API errors', function(done) {
+        var errorResponse = {
+          errors: new Error('Expected error to be thrown'),
+          statusCode: 400,
+          headers: {}
+        };
+        instance.apiClient.callApi.rejects(errorResponse);
+
+        const params = [
+          mockgetSupplySourceData.request['supplySourceId']
+        ];
+        instance.getSupplySource(...params)
+          .then(function() {
+            done(new Error('Expected error to be thrown'));
+          })
+          .catch(function(error) {
+            expect(error).to.exist;
+            expect(error.statusCode).to.equal(400)
+            done();
+          });
       });
     });
     describe('getSupplySources', function() {
-      it('should call getSupplySources successfully', function(done) {
-        //uncomment below and update the code to test getSupplySources
-        //instance.getSupplySources(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      
+      it('should successfully call getSupplySources', function(done) {
+        instance.apiClient.callApi.resolves(mockgetSupplySourcesData.response);
+
+        const params = [
+        ];
+        instance.getSupplySources(...params)
+          .then(function(data) {
+            expect(data instanceof SellingPartnerApiForSupplySources.GetSupplySourcesResponse).to.be.true;
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should successfully call getSupplySourcesWithHttpInfo', function(done) {
+        instance.apiClient.callApi.resolves(mockgetSupplySourcesData.response);
+
+        const params = [
+        ];
+        instance.getSupplySourcesWithHttpInfo(...params)
+          .then(function(response) {
+            expect(response).to.have.property('statusCode');
+            expect(response.statusCode).to.equal(mockgetSupplySourcesData.response.statusCode)
+            expect(response).to.have.property('headers');
+            expect(response).to.have.property('data');
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should handle API errors', function(done) {
+        var errorResponse = {
+          errors: new Error('Expected error to be thrown'),
+          statusCode: 400,
+          headers: {}
+        };
+        instance.apiClient.callApi.rejects(errorResponse);
+
+        const params = [
+        ];
+        instance.getSupplySources(...params)
+          .then(function() {
+            done(new Error('Expected error to be thrown'));
+          })
+          .catch(function(error) {
+            expect(error).to.exist;
+            expect(error.statusCode).to.equal(400)
+            done();
+          });
       });
     });
     describe('updateSupplySource', function() {
-      it('should call updateSupplySource successfully', function(done) {
-        //uncomment below and update the code to test updateSupplySource
-        //instance.updateSupplySource(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      
+      it('should successfully call updateSupplySource', function(done) {
+        instance.apiClient.callApi.resolves(mockupdateSupplySourceData.response);
+
+        const params = [
+          mockupdateSupplySourceData.request['supplySourceId'],
+        ];
+        instance.updateSupplySource(...params)
+          .then(function(data) {
+            expect(data instanceof SellingPartnerApiForSupplySources.ErrorList).to.be.true;
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should successfully call updateSupplySourceWithHttpInfo', function(done) {
+        instance.apiClient.callApi.resolves(mockupdateSupplySourceData.response);
+
+        const params = [
+          mockupdateSupplySourceData.request['supplySourceId'],
+        ];
+        instance.updateSupplySourceWithHttpInfo(...params)
+          .then(function(response) {
+            expect(response).to.have.property('statusCode');
+            expect(response.statusCode).to.equal(mockupdateSupplySourceData.response.statusCode)
+            expect(response).to.have.property('headers');
+            expect(response).to.have.property('data');
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should handle API errors', function(done) {
+        var errorResponse = {
+          errors: new Error('Expected error to be thrown'),
+          statusCode: 400,
+          headers: {}
+        };
+        instance.apiClient.callApi.rejects(errorResponse);
+
+        const params = [
+          mockupdateSupplySourceData.request['supplySourceId'],
+        ];
+        instance.updateSupplySource(...params)
+          .then(function() {
+            done(new Error('Expected error to be thrown'));
+          })
+          .catch(function(error) {
+            expect(error).to.exist;
+            expect(error.statusCode).to.equal(400)
+            done();
+          });
       });
     });
     describe('updateSupplySourceStatus', function() {
-      it('should call updateSupplySourceStatus successfully', function(done) {
-        //uncomment below and update the code to test updateSupplySourceStatus
-        //instance.updateSupplySourceStatus(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      
+      it('should successfully call updateSupplySourceStatus', function(done) {
+        instance.apiClient.callApi.resolves(mockupdateSupplySourceStatusData.response);
+
+        const params = [
+          mockupdateSupplySourceStatusData.request['supplySourceId'],
+        ];
+        instance.updateSupplySourceStatus(...params)
+          .then(function(data) {
+            expect(data instanceof SellingPartnerApiForSupplySources.ErrorList).to.be.true;
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should successfully call updateSupplySourceStatusWithHttpInfo', function(done) {
+        instance.apiClient.callApi.resolves(mockupdateSupplySourceStatusData.response);
+
+        const params = [
+          mockupdateSupplySourceStatusData.request['supplySourceId'],
+        ];
+        instance.updateSupplySourceStatusWithHttpInfo(...params)
+          .then(function(response) {
+            expect(response).to.have.property('statusCode');
+            expect(response.statusCode).to.equal(mockupdateSupplySourceStatusData.response.statusCode)
+            expect(response).to.have.property('headers');
+            expect(response).to.have.property('data');
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should handle API errors', function(done) {
+        var errorResponse = {
+          errors: new Error('Expected error to be thrown'),
+          statusCode: 400,
+          headers: {}
+        };
+        instance.apiClient.callApi.rejects(errorResponse);
+
+        const params = [
+          mockupdateSupplySourceStatusData.request['supplySourceId'],
+        ];
+        instance.updateSupplySourceStatus(...params)
+          .then(function() {
+            done(new Error('Expected error to be thrown'));
+          })
+          .catch(function(error) {
+            expect(error).to.exist;
+            expect(error.statusCode).to.equal(400)
+            done();
+          });
+      });
+    });
+
+    describe('constructor', function() {
+      it('should use default ApiClient when none provided', function() {
+        var defaultInstance = new SellingPartnerApiForSupplySources.SupplySourcesApi();
+        expect(defaultInstance.apiClient).to.equal(SellingPartnerApiForSupplySources.ApiClient.instance);
+      });
+
+      it('should use provided ApiClient', function() {
+        var customClient = new SellingPartnerApiForSupplySources.ApiClient();
+        var customInstance = new SellingPartnerApiForSupplySources.SupplySourcesApi(customClient);
+        expect(customInstance.apiClient).to.equal(customClient);
       });
     });
   });
-
 }));

@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new TheSellingPartnerApiForTransfers.InitiatePayoutResponse();
   });
 
   var getProperty = function(object, getter, property) {

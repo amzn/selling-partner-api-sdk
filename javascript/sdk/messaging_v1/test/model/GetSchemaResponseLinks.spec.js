@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForMessaging.GetSchemaResponseLinks();
   });
 
   var getProperty = function(object, getter, property) {

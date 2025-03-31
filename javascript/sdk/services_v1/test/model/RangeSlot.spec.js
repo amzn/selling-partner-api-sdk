@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForServices.RangeSlot();
   });
 
   var getProperty = function(object, getter, property) {

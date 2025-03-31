@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForMerchantFulfillment.ItemLevelFields();
   });
 
   var getProperty = function(object, getter, property) {

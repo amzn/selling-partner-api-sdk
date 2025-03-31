@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new AmazonShippingApi.RequestedDocumentSpecification();
   });
 
   var getProperty = function(object, getter, property) {

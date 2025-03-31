@@ -14,100 +14,473 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
+    define(['expect.js', 'sinon', process.cwd()+'/src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
+    factory(require('expect.js'), require('sinon'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForFeeds);
+    factory(root.expect, root.sinon, root.SellingPartnerApiForFeeds);
   }
-}(this, function(expect, SellingPartnerApiForFeeds) {
+}(this, function(expect, sinon, SellingPartnerApiForFeeds) {
   'use strict';
 
   var instance;
+  var sandbox;
+  const testEndpoint = 'https://localhost:3000';
+  const testAccessToken = "testAccessToken";
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForFeeds[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            if (ModelClass.RequiredProperties) {
+              ModelClass.RequiredProperties.forEach(prop => {
+                const propType = ModelClass.types[prop];
+                instance[prop] = generateMockData(propType);
+              });
+            }
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
+  
+
+// Generate mock requests and responses for each operation
+const mockcancelFeedData = {
+  request: {
+    'feedId': generateMockData('String')
+  },
+  response: {
+    statusCode: 200,
+    headers: {}
+  }
+};
+const mockcreateFeedData = {
+  request: {
+    'body': generateMockData('CreateFeedSpecification')
+  },
+  response: {
+    data: generateMockData('CreateFeedResponse'),
+    statusCode: 202,
+    headers: {}
+  }
+};
+const mockcreateFeedDocumentData = {
+  request: {
+    'body': generateMockData('CreateFeedDocumentSpecification')
+  },
+  response: {
+    data: generateMockData('CreateFeedDocumentResponse'),
+    statusCode: 201,
+    headers: {}
+  }
+};
+const mockgetFeedData = {
+  request: {
+    'feedId': generateMockData('String')
+  },
+  response: {
+    data: generateMockData('Feed'),
+    statusCode: 200,
+    headers: {}
+  }
+};
+const mockgetFeedDocumentData = {
+  request: {
+    'feedDocumentId': generateMockData('String')
+  },
+  response: {
+    data: generateMockData('FeedDocument'),
+    statusCode: 200,
+    headers: {}
+  }
+};
+const mockgetFeedsData = {
+  request: {
+  },
+  response: {
+    data: generateMockData('GetFeedsResponse'),
+    statusCode: 200,
+    headers: {}
+  }
+};
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForFeeds.FeedsApi();
+    sandbox = sinon.createSandbox();
+    var apiClientInstance = new SellingPartnerApiForFeeds.ApiClient(testEndpoint);
+    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    sandbox.stub(apiClientInstance, 'callApi');
+    instance = new SellingPartnerApiForFeeds.FeedsApi(apiClientInstance);
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    sandbox.restore();
+  });
 
   describe('FeedsApi', function() {
     describe('cancelFeed', function() {
-      it('should call cancelFeed successfully', function(done) {
-        //uncomment below and update the code to test cancelFeed
-        //instance.cancelFeed(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      
+      it('should successfully call cancelFeed', function(done) {
+        instance.apiClient.callApi.resolves(mockcancelFeedData.response);
+
+        const params = [
+          mockcancelFeedData.request['feedId']
+        ];
+        instance.cancelFeed(...params)
+          .then(function(data) {
+            expect(data).to.be.undefined;
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should successfully call cancelFeedWithHttpInfo', function(done) {
+        instance.apiClient.callApi.resolves(mockcancelFeedData.response);
+
+        const params = [
+          mockcancelFeedData.request['feedId']
+        ];
+        instance.cancelFeedWithHttpInfo(...params)
+          .then(function(response) {
+            expect(response).to.have.property('statusCode');
+            expect(response.statusCode).to.equal(mockcancelFeedData.response.statusCode)
+            expect(response).to.have.property('headers');
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should handle API errors', function(done) {
+        var errorResponse = {
+          errors: new Error('Expected error to be thrown'),
+          statusCode: 400,
+          headers: {}
+        };
+        instance.apiClient.callApi.rejects(errorResponse);
+
+        const params = [
+          mockcancelFeedData.request['feedId']
+        ];
+        instance.cancelFeed(...params)
+          .then(function() {
+            done(new Error('Expected error to be thrown'));
+          })
+          .catch(function(error) {
+            expect(error).to.exist;
+            expect(error.statusCode).to.equal(400)
+            done();
+          });
       });
     });
     describe('createFeed', function() {
-      it('should call createFeed successfully', function(done) {
-        //uncomment below and update the code to test createFeed
-        //instance.createFeed(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      
+      it('should successfully call createFeed', function(done) {
+        instance.apiClient.callApi.resolves(mockcreateFeedData.response);
+
+        const params = [
+          mockcreateFeedData.request['body']
+        ];
+        instance.createFeed(...params)
+          .then(function(data) {
+            expect(data instanceof SellingPartnerApiForFeeds.CreateFeedResponse).to.be.true;
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should successfully call createFeedWithHttpInfo', function(done) {
+        instance.apiClient.callApi.resolves(mockcreateFeedData.response);
+
+        const params = [
+          mockcreateFeedData.request['body']
+        ];
+        instance.createFeedWithHttpInfo(...params)
+          .then(function(response) {
+            expect(response).to.have.property('statusCode');
+            expect(response.statusCode).to.equal(mockcreateFeedData.response.statusCode)
+            expect(response).to.have.property('headers');
+            expect(response).to.have.property('data');
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should handle API errors', function(done) {
+        var errorResponse = {
+          errors: new Error('Expected error to be thrown'),
+          statusCode: 400,
+          headers: {}
+        };
+        instance.apiClient.callApi.rejects(errorResponse);
+
+        const params = [
+          mockcreateFeedData.request['body']
+        ];
+        instance.createFeed(...params)
+          .then(function() {
+            done(new Error('Expected error to be thrown'));
+          })
+          .catch(function(error) {
+            expect(error).to.exist;
+            expect(error.statusCode).to.equal(400)
+            done();
+          });
       });
     });
     describe('createFeedDocument', function() {
-      it('should call createFeedDocument successfully', function(done) {
-        //uncomment below and update the code to test createFeedDocument
-        //instance.createFeedDocument(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      
+      it('should successfully call createFeedDocument', function(done) {
+        instance.apiClient.callApi.resolves(mockcreateFeedDocumentData.response);
+
+        const params = [
+          mockcreateFeedDocumentData.request['body']
+        ];
+        instance.createFeedDocument(...params)
+          .then(function(data) {
+            expect(data instanceof SellingPartnerApiForFeeds.CreateFeedDocumentResponse).to.be.true;
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should successfully call createFeedDocumentWithHttpInfo', function(done) {
+        instance.apiClient.callApi.resolves(mockcreateFeedDocumentData.response);
+
+        const params = [
+          mockcreateFeedDocumentData.request['body']
+        ];
+        instance.createFeedDocumentWithHttpInfo(...params)
+          .then(function(response) {
+            expect(response).to.have.property('statusCode');
+            expect(response.statusCode).to.equal(mockcreateFeedDocumentData.response.statusCode)
+            expect(response).to.have.property('headers');
+            expect(response).to.have.property('data');
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should handle API errors', function(done) {
+        var errorResponse = {
+          errors: new Error('Expected error to be thrown'),
+          statusCode: 400,
+          headers: {}
+        };
+        instance.apiClient.callApi.rejects(errorResponse);
+
+        const params = [
+          mockcreateFeedDocumentData.request['body']
+        ];
+        instance.createFeedDocument(...params)
+          .then(function() {
+            done(new Error('Expected error to be thrown'));
+          })
+          .catch(function(error) {
+            expect(error).to.exist;
+            expect(error.statusCode).to.equal(400)
+            done();
+          });
       });
     });
     describe('getFeed', function() {
-      it('should call getFeed successfully', function(done) {
-        //uncomment below and update the code to test getFeed
-        //instance.getFeed(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      
+      it('should successfully call getFeed', function(done) {
+        instance.apiClient.callApi.resolves(mockgetFeedData.response);
+
+        const params = [
+          mockgetFeedData.request['feedId']
+        ];
+        instance.getFeed(...params)
+          .then(function(data) {
+            expect(data instanceof SellingPartnerApiForFeeds.Feed).to.be.true;
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should successfully call getFeedWithHttpInfo', function(done) {
+        instance.apiClient.callApi.resolves(mockgetFeedData.response);
+
+        const params = [
+          mockgetFeedData.request['feedId']
+        ];
+        instance.getFeedWithHttpInfo(...params)
+          .then(function(response) {
+            expect(response).to.have.property('statusCode');
+            expect(response.statusCode).to.equal(mockgetFeedData.response.statusCode)
+            expect(response).to.have.property('headers');
+            expect(response).to.have.property('data');
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should handle API errors', function(done) {
+        var errorResponse = {
+          errors: new Error('Expected error to be thrown'),
+          statusCode: 400,
+          headers: {}
+        };
+        instance.apiClient.callApi.rejects(errorResponse);
+
+        const params = [
+          mockgetFeedData.request['feedId']
+        ];
+        instance.getFeed(...params)
+          .then(function() {
+            done(new Error('Expected error to be thrown'));
+          })
+          .catch(function(error) {
+            expect(error).to.exist;
+            expect(error.statusCode).to.equal(400)
+            done();
+          });
       });
     });
     describe('getFeedDocument', function() {
-      it('should call getFeedDocument successfully', function(done) {
-        //uncomment below and update the code to test getFeedDocument
-        //instance.getFeedDocument(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      
+      it('should successfully call getFeedDocument', function(done) {
+        instance.apiClient.callApi.resolves(mockgetFeedDocumentData.response);
+
+        const params = [
+          mockgetFeedDocumentData.request['feedDocumentId']
+        ];
+        instance.getFeedDocument(...params)
+          .then(function(data) {
+            expect(data instanceof SellingPartnerApiForFeeds.FeedDocument).to.be.true;
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should successfully call getFeedDocumentWithHttpInfo', function(done) {
+        instance.apiClient.callApi.resolves(mockgetFeedDocumentData.response);
+
+        const params = [
+          mockgetFeedDocumentData.request['feedDocumentId']
+        ];
+        instance.getFeedDocumentWithHttpInfo(...params)
+          .then(function(response) {
+            expect(response).to.have.property('statusCode');
+            expect(response.statusCode).to.equal(mockgetFeedDocumentData.response.statusCode)
+            expect(response).to.have.property('headers');
+            expect(response).to.have.property('data');
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should handle API errors', function(done) {
+        var errorResponse = {
+          errors: new Error('Expected error to be thrown'),
+          statusCode: 400,
+          headers: {}
+        };
+        instance.apiClient.callApi.rejects(errorResponse);
+
+        const params = [
+          mockgetFeedDocumentData.request['feedDocumentId']
+        ];
+        instance.getFeedDocument(...params)
+          .then(function() {
+            done(new Error('Expected error to be thrown'));
+          })
+          .catch(function(error) {
+            expect(error).to.exist;
+            expect(error.statusCode).to.equal(400)
+            done();
+          });
       });
     });
     describe('getFeeds', function() {
-      it('should call getFeeds successfully', function(done) {
-        //uncomment below and update the code to test getFeeds
-        //instance.getFeeds(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      
+      it('should successfully call getFeeds', function(done) {
+        instance.apiClient.callApi.resolves(mockgetFeedsData.response);
+
+        const params = [
+        ];
+        instance.getFeeds(...params)
+          .then(function(data) {
+            expect(data instanceof SellingPartnerApiForFeeds.GetFeedsResponse).to.be.true;
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should successfully call getFeedsWithHttpInfo', function(done) {
+        instance.apiClient.callApi.resolves(mockgetFeedsData.response);
+
+        const params = [
+        ];
+        instance.getFeedsWithHttpInfo(...params)
+          .then(function(response) {
+            expect(response).to.have.property('statusCode');
+            expect(response.statusCode).to.equal(mockgetFeedsData.response.statusCode)
+            expect(response).to.have.property('headers');
+            expect(response).to.have.property('data');
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should handle API errors', function(done) {
+        var errorResponse = {
+          errors: new Error('Expected error to be thrown'),
+          statusCode: 400,
+          headers: {}
+        };
+        instance.apiClient.callApi.rejects(errorResponse);
+
+        const params = [
+        ];
+        instance.getFeeds(...params)
+          .then(function() {
+            done(new Error('Expected error to be thrown'));
+          })
+          .catch(function(error) {
+            expect(error).to.exist;
+            expect(error.statusCode).to.equal(400)
+            done();
+          });
+      });
+    });
+
+    describe('constructor', function() {
+      it('should use default ApiClient when none provided', function() {
+        var defaultInstance = new SellingPartnerApiForFeeds.FeedsApi();
+        expect(defaultInstance.apiClient).to.equal(SellingPartnerApiForFeeds.ApiClient.instance);
+      });
+
+      it('should use provided ApiClient', function() {
+        var customClient = new SellingPartnerApiForFeeds.ApiClient();
+        var customInstance = new SellingPartnerApiForFeeds.FeedsApi(customClient);
+        expect(customInstance.apiClient).to.equal(customClient);
       });
     });
   });
-
 }));

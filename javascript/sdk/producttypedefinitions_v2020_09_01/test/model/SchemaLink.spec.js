@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForProductTypeDefinitions.SchemaLink();
   });
 
   var getProperty = function(object, getter, property) {

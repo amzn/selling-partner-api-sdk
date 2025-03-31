@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new TheSellingPartnerApiForAmazonWarehousingAndDistribution.OrderIneligibilityReason();
   });
 
   var getProperty = function(object, getter, property) {

@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new SellingPartnerApisForFulfillmentOutbound.DeliveryWindow();
   });
 
   var getProperty = function(object, getter, property) {

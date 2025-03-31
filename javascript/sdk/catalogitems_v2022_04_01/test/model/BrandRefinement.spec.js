@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForCatalogItems.BrandRefinement();
   });
 
   var getProperty = function(object, getter, property) {

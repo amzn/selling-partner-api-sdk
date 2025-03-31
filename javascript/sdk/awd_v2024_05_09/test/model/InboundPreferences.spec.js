@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new TheSellingPartnerApiForAmazonWarehousingAndDistribution.InboundPreferences();
   });
 
   var getProperty = function(object, getter, property) {

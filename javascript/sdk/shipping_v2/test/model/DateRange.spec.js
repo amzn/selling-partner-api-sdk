@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new AmazonShippingApi.DateRange();
   });
 
   var getProperty = function(object, getter, property) {

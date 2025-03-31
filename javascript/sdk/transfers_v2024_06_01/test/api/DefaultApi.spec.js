@@ -14,60 +14,219 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
+    define(['expect.js', 'sinon', process.cwd()+'/src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
+    factory(require('expect.js'), require('sinon'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.TheSellingPartnerApiForTransfers);
+    factory(root.expect, root.sinon, root.TheSellingPartnerApiForTransfers);
   }
-}(this, function(expect, TheSellingPartnerApiForTransfers) {
+}(this, function(expect, sinon, TheSellingPartnerApiForTransfers) {
   'use strict';
 
   var instance;
+  var sandbox;
+  const testEndpoint = 'https://localhost:3000';
+  const testAccessToken = "testAccessToken";
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = TheSellingPartnerApiForTransfers[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            if (ModelClass.RequiredProperties) {
+              ModelClass.RequiredProperties.forEach(prop => {
+                const propType = ModelClass.types[prop];
+                instance[prop] = generateMockData(propType);
+              });
+            }
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
+  
+
+// Generate mock requests and responses for each operation
+const mockgetPaymentMethodsData = {
+  request: {
+    'marketplaceId': generateMockData('String'),
+  },
+  response: {
+    data: generateMockData('GetPaymentMethodsResponse'),
+    statusCode: 200,
+    headers: {}
+  }
+};
+const mockinitiatePayoutData = {
+  request: {
+    'body': generateMockData('InitiatePayoutRequest')
+  },
+  response: {
+    data: generateMockData('InitiatePayoutResponse'),
+    statusCode: 200,
+    headers: {}
+  }
+};
 
   beforeEach(function() {
-    instance = new TheSellingPartnerApiForTransfers.DefaultApi();
+    sandbox = sinon.createSandbox();
+    var apiClientInstance = new TheSellingPartnerApiForTransfers.ApiClient(testEndpoint);
+    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    sandbox.stub(apiClientInstance, 'callApi');
+    instance = new TheSellingPartnerApiForTransfers.DefaultApi(apiClientInstance);
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    sandbox.restore();
+  });
 
   describe('DefaultApi', function() {
     describe('getPaymentMethods', function() {
-      it('should call getPaymentMethods successfully', function(done) {
-        //uncomment below and update the code to test getPaymentMethods
-        //instance.getPaymentMethods(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      
+      it('should successfully call getPaymentMethods', function(done) {
+        instance.apiClient.callApi.resolves(mockgetPaymentMethodsData.response);
+
+        const params = [
+          mockgetPaymentMethodsData.request['marketplaceId'],
+        ];
+        instance.getPaymentMethods(...params)
+          .then(function(data) {
+            expect(data instanceof TheSellingPartnerApiForTransfers.GetPaymentMethodsResponse).to.be.true;
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should successfully call getPaymentMethodsWithHttpInfo', function(done) {
+        instance.apiClient.callApi.resolves(mockgetPaymentMethodsData.response);
+
+        const params = [
+          mockgetPaymentMethodsData.request['marketplaceId'],
+        ];
+        instance.getPaymentMethodsWithHttpInfo(...params)
+          .then(function(response) {
+            expect(response).to.have.property('statusCode');
+            expect(response.statusCode).to.equal(mockgetPaymentMethodsData.response.statusCode)
+            expect(response).to.have.property('headers');
+            expect(response).to.have.property('data');
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should handle API errors', function(done) {
+        var errorResponse = {
+          errors: new Error('Expected error to be thrown'),
+          statusCode: 400,
+          headers: {}
+        };
+        instance.apiClient.callApi.rejects(errorResponse);
+
+        const params = [
+          mockgetPaymentMethodsData.request['marketplaceId'],
+        ];
+        instance.getPaymentMethods(...params)
+          .then(function() {
+            done(new Error('Expected error to be thrown'));
+          })
+          .catch(function(error) {
+            expect(error).to.exist;
+            expect(error.statusCode).to.equal(400)
+            done();
+          });
       });
     });
     describe('initiatePayout', function() {
-      it('should call initiatePayout successfully', function(done) {
-        //uncomment below and update the code to test initiatePayout
-        //instance.initiatePayout(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      
+      it('should successfully call initiatePayout', function(done) {
+        instance.apiClient.callApi.resolves(mockinitiatePayoutData.response);
+
+        const params = [
+          mockinitiatePayoutData.request['body']
+        ];
+        instance.initiatePayout(...params)
+          .then(function(data) {
+            expect(data instanceof TheSellingPartnerApiForTransfers.InitiatePayoutResponse).to.be.true;
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should successfully call initiatePayoutWithHttpInfo', function(done) {
+        instance.apiClient.callApi.resolves(mockinitiatePayoutData.response);
+
+        const params = [
+          mockinitiatePayoutData.request['body']
+        ];
+        instance.initiatePayoutWithHttpInfo(...params)
+          .then(function(response) {
+            expect(response).to.have.property('statusCode');
+            expect(response.statusCode).to.equal(mockinitiatePayoutData.response.statusCode)
+            expect(response).to.have.property('headers');
+            expect(response).to.have.property('data');
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should handle API errors', function(done) {
+        var errorResponse = {
+          errors: new Error('Expected error to be thrown'),
+          statusCode: 400,
+          headers: {}
+        };
+        instance.apiClient.callApi.rejects(errorResponse);
+
+        const params = [
+          mockinitiatePayoutData.request['body']
+        ];
+        instance.initiatePayout(...params)
+          .then(function() {
+            done(new Error('Expected error to be thrown'));
+          })
+          .catch(function(error) {
+            expect(error).to.exist;
+            expect(error.statusCode).to.equal(400)
+            done();
+          });
+      });
+    });
+
+    describe('constructor', function() {
+      it('should use default ApiClient when none provided', function() {
+        var defaultInstance = new TheSellingPartnerApiForTransfers.DefaultApi();
+        expect(defaultInstance.apiClient).to.equal(TheSellingPartnerApiForTransfers.ApiClient.instance);
+      });
+
+      it('should use provided ApiClient', function() {
+        var customClient = new TheSellingPartnerApiForTransfers.ApiClient();
+        var customInstance = new TheSellingPartnerApiForTransfers.DefaultApi(customClient);
+        expect(customInstance.apiClient).to.equal(customClient);
       });
     });
   });
-
 }));

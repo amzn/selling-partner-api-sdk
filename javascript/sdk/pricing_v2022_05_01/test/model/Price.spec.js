@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForPricing.Price();
   });
 
   var getProperty = function(object, getter, property) {

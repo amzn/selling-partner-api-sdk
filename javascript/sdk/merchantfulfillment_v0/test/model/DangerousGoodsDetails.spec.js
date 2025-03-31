@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForMerchantFulfillment.DangerousGoodsDetails();
   });
 
   var getProperty = function(object, getter, property) {

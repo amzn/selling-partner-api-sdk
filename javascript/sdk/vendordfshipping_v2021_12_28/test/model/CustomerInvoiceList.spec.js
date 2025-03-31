@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForDirectFulfillmentShipping.CustomerInvoiceList();
   });
 
   var getProperty = function(object, getter, property) {

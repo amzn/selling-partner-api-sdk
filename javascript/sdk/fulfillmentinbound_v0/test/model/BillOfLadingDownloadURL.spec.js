@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForFulfillmentInbound.BillOfLadingDownloadURL();
   });
 
   var getProperty = function(object, getter, property) {

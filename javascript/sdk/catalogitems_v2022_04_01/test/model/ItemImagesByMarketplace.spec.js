@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForCatalogItems.ItemImagesByMarketplace();
   });
 
   var getProperty = function(object, getter, property) {

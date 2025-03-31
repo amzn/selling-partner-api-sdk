@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForSales.OrderMetricsInterval();
   });
 
   var getProperty = function(object, getter, property) {

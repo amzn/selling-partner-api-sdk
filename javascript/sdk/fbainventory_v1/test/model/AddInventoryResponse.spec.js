@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForFbaInventory.AddInventoryResponse();
   });
 
   var getProperty = function(object, getter, property) {

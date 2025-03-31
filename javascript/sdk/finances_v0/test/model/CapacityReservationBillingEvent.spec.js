@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForFinances.CapacityReservationBillingEvent();
   });
 
   var getProperty = function(object, getter, property) {

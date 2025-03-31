@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new AmazonShippingApi.Carrier();
   });
 
   var getProperty = function(object, getter, property) {

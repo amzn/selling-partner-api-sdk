@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForServices.GetAppointmentSlotsResponse();
   });
 
   var getProperty = function(object, getter, property) {

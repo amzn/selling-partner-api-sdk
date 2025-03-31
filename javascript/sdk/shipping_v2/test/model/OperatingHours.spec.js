@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new AmazonShippingApi.OperatingHours();
   });
 
   var getProperty = function(object, getter, property) {

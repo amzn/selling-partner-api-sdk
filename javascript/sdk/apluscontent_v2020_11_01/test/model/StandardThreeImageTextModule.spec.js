@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForAContentManagement.StandardThreeImageTextModule();
   });
 
   var getProperty = function(object, getter, property) {

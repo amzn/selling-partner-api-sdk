@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForAContentManagement.StandardTextPairBlock();
   });
 
   var getProperty = function(object, getter, property) {

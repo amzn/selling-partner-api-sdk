@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForProductFees.GetMyFeesEstimateResult();
   });
 
   var getProperty = function(object, getter, property) {

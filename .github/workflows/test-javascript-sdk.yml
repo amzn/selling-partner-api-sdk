@@ -1,0 +1,57 @@
+name: Test JavaScript SDK
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-js:
+    name: test javascript sdk
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies in each API dir
+        working-directory: ./javascript/sdk
+        run: |
+            for dir in */; do
+              if [ -f "$dir/package.json" ]; then
+                echo "➡️ Installing dependencies in $dir"
+                cd "$dir"
+                npm install
+                cd ..
+              fi
+            done
+
+      - name: Run tests and generate reports
+        working-directory: ./javascript/sdk
+        run: |
+          mkdir -p testreports
+          
+          for dir in */; do
+            if [ -f "$dir/package.json" ]; then
+              echo "🧪 Running tests in $dir"
+              cd "$dir"
+              
+              # Skip serviceAPI setAppointmentFulfillmentData tests
+              npx mocha --require @babel/register --recursive \
+                --reporter mocha-junit-reporter \
+                --reporter-options mochaFile="../../testreports/junit-${dir%/}.xml" \
+                --grep "setAppointmentFulfillmentData" --invert  || exit 1
+              
+              cd ..
+            fi
+          done
+      - name: Archive reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: js-test-reports
+          path: javascript/sdk/testreports

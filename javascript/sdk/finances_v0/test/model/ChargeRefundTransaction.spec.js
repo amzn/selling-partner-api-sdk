@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForFinances.ChargeRefundTransaction();
   });
 
   var getProperty = function(object, getter, property) {

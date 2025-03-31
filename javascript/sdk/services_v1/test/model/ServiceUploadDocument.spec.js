@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForServices.ServiceUploadDocument();
   });
 
   var getProperty = function(object, getter, property) {

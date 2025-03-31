@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForMerchantFulfillment.LabelFormatOption();
   });
 
   var getProperty = function(object, getter, property) {

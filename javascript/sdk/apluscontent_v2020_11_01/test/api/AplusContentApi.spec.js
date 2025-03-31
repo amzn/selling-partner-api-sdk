@@ -14,140 +14,787 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
+    define(['expect.js', 'sinon', process.cwd()+'/src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
+    factory(require('expect.js'), require('sinon'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForAContentManagement);
+    factory(root.expect, root.sinon, root.SellingPartnerApiForAContentManagement);
   }
-}(this, function(expect, SellingPartnerApiForAContentManagement) {
+}(this, function(expect, sinon, SellingPartnerApiForAContentManagement) {
   'use strict';
 
   var instance;
+  var sandbox;
+  const testEndpoint = 'https://localhost:3000';
+  const testAccessToken = "testAccessToken";
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForAContentManagement[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            if (ModelClass.RequiredProperties) {
+              ModelClass.RequiredProperties.forEach(prop => {
+                const propType = ModelClass.types[prop];
+                instance[prop] = generateMockData(propType);
+              });
+            }
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
+  
+
+// Generate mock requests and responses for each operation
+const mockcreateContentDocumentData = {
+  request: {
+    'marketplaceId': generateMockData('String'),
+    'postContentDocumentRequest': generateMockData('PostContentDocumentRequest')
+  },
+  response: {
+    data: generateMockData('PostContentDocumentResponse'),
+    statusCode: 200,
+    headers: {}
+  }
+};
+const mockgetContentDocumentData = {
+  request: {
+    'contentReferenceKey': generateMockData('String'),
+    'marketplaceId': generateMockData('String'),
+    'includedDataSet': generateMockData('[String]', true)
+  },
+  response: {
+    data: generateMockData('GetContentDocumentResponse'),
+    statusCode: 200,
+    headers: {}
+  }
+};
+const mocklistContentDocumentAsinRelationsData = {
+  request: {
+    'contentReferenceKey': generateMockData('String'),
+    'marketplaceId': generateMockData('String'),
+  },
+  response: {
+    data: generateMockData('ListContentDocumentAsinRelationsResponse'),
+    statusCode: 200,
+    headers: {}
+  }
+};
+const mockpostContentDocumentApprovalSubmissionData = {
+  request: {
+    'contentReferenceKey': generateMockData('String'),
+    'marketplaceId': generateMockData('String')
+  },
+  response: {
+    data: generateMockData('PostContentDocumentApprovalSubmissionResponse'),
+    statusCode: 200,
+    headers: {}
+  }
+};
+const mockpostContentDocumentAsinRelationsData = {
+  request: {
+    'contentReferenceKey': generateMockData('String'),
+    'marketplaceId': generateMockData('String'),
+    'postContentDocumentAsinRelationsRequest': generateMockData('PostContentDocumentAsinRelationsRequest')
+  },
+  response: {
+    data: generateMockData('PostContentDocumentAsinRelationsResponse'),
+    statusCode: 200,
+    headers: {}
+  }
+};
+const mockpostContentDocumentSuspendSubmissionData = {
+  request: {
+    'contentReferenceKey': generateMockData('String'),
+    'marketplaceId': generateMockData('String')
+  },
+  response: {
+    data: generateMockData('PostContentDocumentSuspendSubmissionResponse'),
+    statusCode: 200,
+    headers: {}
+  }
+};
+const mocksearchContentDocumentsData = {
+  request: {
+    'marketplaceId': generateMockData('String'),
+  },
+  response: {
+    data: generateMockData('SearchContentDocumentsResponse'),
+    statusCode: 200,
+    headers: {}
+  }
+};
+const mocksearchContentPublishRecordsData = {
+  request: {
+    'marketplaceId': generateMockData('String'),
+    'asin': generateMockData('String'),
+  },
+  response: {
+    data: generateMockData('SearchContentPublishRecordsResponse'),
+    statusCode: 200,
+    headers: {}
+  }
+};
+const mockupdateContentDocumentData = {
+  request: {
+    'contentReferenceKey': generateMockData('String'),
+    'marketplaceId': generateMockData('String'),
+    'postContentDocumentRequest': generateMockData('PostContentDocumentRequest')
+  },
+  response: {
+    data: generateMockData('PostContentDocumentResponse'),
+    statusCode: 200,
+    headers: {}
+  }
+};
+const mockvalidateContentDocumentAsinRelationsData = {
+  request: {
+    'marketplaceId': generateMockData('String'),
+    'postContentDocumentRequest': generateMockData('PostContentDocumentRequest'),
+  },
+  response: {
+    data: generateMockData('ValidateContentDocumentAsinRelationsResponse'),
+    statusCode: 200,
+    headers: {}
+  }
+};
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForAContentManagement.AplusContentApi();
+    sandbox = sinon.createSandbox();
+    var apiClientInstance = new SellingPartnerApiForAContentManagement.ApiClient(testEndpoint);
+    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    sandbox.stub(apiClientInstance, 'callApi');
+    instance = new SellingPartnerApiForAContentManagement.AplusContentApi(apiClientInstance);
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    sandbox.restore();
+  });
 
   describe('AplusContentApi', function() {
     describe('createContentDocument', function() {
-      it('should call createContentDocument successfully', function(done) {
-        //uncomment below and update the code to test createContentDocument
-        //instance.createContentDocument(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      
+      it('should successfully call createContentDocument', function(done) {
+        instance.apiClient.callApi.resolves(mockcreateContentDocumentData.response);
+
+        const params = [
+          mockcreateContentDocumentData.request['marketplaceId'],
+          mockcreateContentDocumentData.request['postContentDocumentRequest']
+        ];
+        instance.createContentDocument(...params)
+          .then(function(data) {
+            expect(data instanceof SellingPartnerApiForAContentManagement.PostContentDocumentResponse).to.be.true;
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should successfully call createContentDocumentWithHttpInfo', function(done) {
+        instance.apiClient.callApi.resolves(mockcreateContentDocumentData.response);
+
+        const params = [
+          mockcreateContentDocumentData.request['marketplaceId'],
+          mockcreateContentDocumentData.request['postContentDocumentRequest']
+        ];
+        instance.createContentDocumentWithHttpInfo(...params)
+          .then(function(response) {
+            expect(response).to.have.property('statusCode');
+            expect(response.statusCode).to.equal(mockcreateContentDocumentData.response.statusCode)
+            expect(response).to.have.property('headers');
+            expect(response).to.have.property('data');
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should handle API errors', function(done) {
+        var errorResponse = {
+          errors: new Error('Expected error to be thrown'),
+          statusCode: 400,
+          headers: {}
+        };
+        instance.apiClient.callApi.rejects(errorResponse);
+
+        const params = [
+          mockcreateContentDocumentData.request['marketplaceId'],
+          mockcreateContentDocumentData.request['postContentDocumentRequest']
+        ];
+        instance.createContentDocument(...params)
+          .then(function() {
+            done(new Error('Expected error to be thrown'));
+          })
+          .catch(function(error) {
+            expect(error).to.exist;
+            expect(error.statusCode).to.equal(400)
+            done();
+          });
       });
     });
     describe('getContentDocument', function() {
-      it('should call getContentDocument successfully', function(done) {
-        //uncomment below and update the code to test getContentDocument
-        //instance.getContentDocument(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      
+      it('should successfully call getContentDocument', function(done) {
+        instance.apiClient.callApi.resolves(mockgetContentDocumentData.response);
+
+        const params = [
+          mockgetContentDocumentData.request['contentReferenceKey'],
+          mockgetContentDocumentData.request['marketplaceId'],
+          mockgetContentDocumentData.request['includedDataSet']
+        ];
+        instance.getContentDocument(...params)
+          .then(function(data) {
+            expect(data instanceof SellingPartnerApiForAContentManagement.GetContentDocumentResponse).to.be.true;
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should successfully call getContentDocumentWithHttpInfo', function(done) {
+        instance.apiClient.callApi.resolves(mockgetContentDocumentData.response);
+
+        const params = [
+          mockgetContentDocumentData.request['contentReferenceKey'],
+          mockgetContentDocumentData.request['marketplaceId'],
+          mockgetContentDocumentData.request['includedDataSet']
+        ];
+        instance.getContentDocumentWithHttpInfo(...params)
+          .then(function(response) {
+            expect(response).to.have.property('statusCode');
+            expect(response.statusCode).to.equal(mockgetContentDocumentData.response.statusCode)
+            expect(response).to.have.property('headers');
+            expect(response).to.have.property('data');
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should handle API errors', function(done) {
+        var errorResponse = {
+          errors: new Error('Expected error to be thrown'),
+          statusCode: 400,
+          headers: {}
+        };
+        instance.apiClient.callApi.rejects(errorResponse);
+
+        const params = [
+          mockgetContentDocumentData.request['contentReferenceKey'],
+          mockgetContentDocumentData.request['marketplaceId'],
+          mockgetContentDocumentData.request['includedDataSet']
+        ];
+        instance.getContentDocument(...params)
+          .then(function() {
+            done(new Error('Expected error to be thrown'));
+          })
+          .catch(function(error) {
+            expect(error).to.exist;
+            expect(error.statusCode).to.equal(400)
+            done();
+          });
       });
     });
     describe('listContentDocumentAsinRelations', function() {
-      it('should call listContentDocumentAsinRelations successfully', function(done) {
-        //uncomment below and update the code to test listContentDocumentAsinRelations
-        //instance.listContentDocumentAsinRelations(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      
+      it('should successfully call listContentDocumentAsinRelations', function(done) {
+        instance.apiClient.callApi.resolves(mocklistContentDocumentAsinRelationsData.response);
+
+        const params = [
+          mocklistContentDocumentAsinRelationsData.request['contentReferenceKey'],
+          mocklistContentDocumentAsinRelationsData.request['marketplaceId'],
+        ];
+        instance.listContentDocumentAsinRelations(...params)
+          .then(function(data) {
+            expect(data instanceof SellingPartnerApiForAContentManagement.ListContentDocumentAsinRelationsResponse).to.be.true;
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should successfully call listContentDocumentAsinRelationsWithHttpInfo', function(done) {
+        instance.apiClient.callApi.resolves(mocklistContentDocumentAsinRelationsData.response);
+
+        const params = [
+          mocklistContentDocumentAsinRelationsData.request['contentReferenceKey'],
+          mocklistContentDocumentAsinRelationsData.request['marketplaceId'],
+        ];
+        instance.listContentDocumentAsinRelationsWithHttpInfo(...params)
+          .then(function(response) {
+            expect(response).to.have.property('statusCode');
+            expect(response.statusCode).to.equal(mocklistContentDocumentAsinRelationsData.response.statusCode)
+            expect(response).to.have.property('headers');
+            expect(response).to.have.property('data');
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should handle API errors', function(done) {
+        var errorResponse = {
+          errors: new Error('Expected error to be thrown'),
+          statusCode: 400,
+          headers: {}
+        };
+        instance.apiClient.callApi.rejects(errorResponse);
+
+        const params = [
+          mocklistContentDocumentAsinRelationsData.request['contentReferenceKey'],
+          mocklistContentDocumentAsinRelationsData.request['marketplaceId'],
+        ];
+        instance.listContentDocumentAsinRelations(...params)
+          .then(function() {
+            done(new Error('Expected error to be thrown'));
+          })
+          .catch(function(error) {
+            expect(error).to.exist;
+            expect(error.statusCode).to.equal(400)
+            done();
+          });
       });
     });
     describe('postContentDocumentApprovalSubmission', function() {
-      it('should call postContentDocumentApprovalSubmission successfully', function(done) {
-        //uncomment below and update the code to test postContentDocumentApprovalSubmission
-        //instance.postContentDocumentApprovalSubmission(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      
+      it('should successfully call postContentDocumentApprovalSubmission', function(done) {
+        instance.apiClient.callApi.resolves(mockpostContentDocumentApprovalSubmissionData.response);
+
+        const params = [
+          mockpostContentDocumentApprovalSubmissionData.request['contentReferenceKey'],
+          mockpostContentDocumentApprovalSubmissionData.request['marketplaceId']
+        ];
+        instance.postContentDocumentApprovalSubmission(...params)
+          .then(function(data) {
+            expect(data instanceof SellingPartnerApiForAContentManagement.PostContentDocumentApprovalSubmissionResponse).to.be.true;
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should successfully call postContentDocumentApprovalSubmissionWithHttpInfo', function(done) {
+        instance.apiClient.callApi.resolves(mockpostContentDocumentApprovalSubmissionData.response);
+
+        const params = [
+          mockpostContentDocumentApprovalSubmissionData.request['contentReferenceKey'],
+          mockpostContentDocumentApprovalSubmissionData.request['marketplaceId']
+        ];
+        instance.postContentDocumentApprovalSubmissionWithHttpInfo(...params)
+          .then(function(response) {
+            expect(response).to.have.property('statusCode');
+            expect(response.statusCode).to.equal(mockpostContentDocumentApprovalSubmissionData.response.statusCode)
+            expect(response).to.have.property('headers');
+            expect(response).to.have.property('data');
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should handle API errors', function(done) {
+        var errorResponse = {
+          errors: new Error('Expected error to be thrown'),
+          statusCode: 400,
+          headers: {}
+        };
+        instance.apiClient.callApi.rejects(errorResponse);
+
+        const params = [
+          mockpostContentDocumentApprovalSubmissionData.request['contentReferenceKey'],
+          mockpostContentDocumentApprovalSubmissionData.request['marketplaceId']
+        ];
+        instance.postContentDocumentApprovalSubmission(...params)
+          .then(function() {
+            done(new Error('Expected error to be thrown'));
+          })
+          .catch(function(error) {
+            expect(error).to.exist;
+            expect(error.statusCode).to.equal(400)
+            done();
+          });
       });
     });
     describe('postContentDocumentAsinRelations', function() {
-      it('should call postContentDocumentAsinRelations successfully', function(done) {
-        //uncomment below and update the code to test postContentDocumentAsinRelations
-        //instance.postContentDocumentAsinRelations(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      
+      it('should successfully call postContentDocumentAsinRelations', function(done) {
+        instance.apiClient.callApi.resolves(mockpostContentDocumentAsinRelationsData.response);
+
+        const params = [
+          mockpostContentDocumentAsinRelationsData.request['contentReferenceKey'],
+          mockpostContentDocumentAsinRelationsData.request['marketplaceId'],
+          mockpostContentDocumentAsinRelationsData.request['postContentDocumentAsinRelationsRequest']
+        ];
+        instance.postContentDocumentAsinRelations(...params)
+          .then(function(data) {
+            expect(data instanceof SellingPartnerApiForAContentManagement.PostContentDocumentAsinRelationsResponse).to.be.true;
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should successfully call postContentDocumentAsinRelationsWithHttpInfo', function(done) {
+        instance.apiClient.callApi.resolves(mockpostContentDocumentAsinRelationsData.response);
+
+        const params = [
+          mockpostContentDocumentAsinRelationsData.request['contentReferenceKey'],
+          mockpostContentDocumentAsinRelationsData.request['marketplaceId'],
+          mockpostContentDocumentAsinRelationsData.request['postContentDocumentAsinRelationsRequest']
+        ];
+        instance.postContentDocumentAsinRelationsWithHttpInfo(...params)
+          .then(function(response) {
+            expect(response).to.have.property('statusCode');
+            expect(response.statusCode).to.equal(mockpostContentDocumentAsinRelationsData.response.statusCode)
+            expect(response).to.have.property('headers');
+            expect(response).to.have.property('data');
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should handle API errors', function(done) {
+        var errorResponse = {
+          errors: new Error('Expected error to be thrown'),
+          statusCode: 400,
+          headers: {}
+        };
+        instance.apiClient.callApi.rejects(errorResponse);
+
+        const params = [
+          mockpostContentDocumentAsinRelationsData.request['contentReferenceKey'],
+          mockpostContentDocumentAsinRelationsData.request['marketplaceId'],
+          mockpostContentDocumentAsinRelationsData.request['postContentDocumentAsinRelationsRequest']
+        ];
+        instance.postContentDocumentAsinRelations(...params)
+          .then(function() {
+            done(new Error('Expected error to be thrown'));
+          })
+          .catch(function(error) {
+            expect(error).to.exist;
+            expect(error.statusCode).to.equal(400)
+            done();
+          });
       });
     });
     describe('postContentDocumentSuspendSubmission', function() {
-      it('should call postContentDocumentSuspendSubmission successfully', function(done) {
-        //uncomment below and update the code to test postContentDocumentSuspendSubmission
-        //instance.postContentDocumentSuspendSubmission(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      
+      it('should successfully call postContentDocumentSuspendSubmission', function(done) {
+        instance.apiClient.callApi.resolves(mockpostContentDocumentSuspendSubmissionData.response);
+
+        const params = [
+          mockpostContentDocumentSuspendSubmissionData.request['contentReferenceKey'],
+          mockpostContentDocumentSuspendSubmissionData.request['marketplaceId']
+        ];
+        instance.postContentDocumentSuspendSubmission(...params)
+          .then(function(data) {
+            expect(data instanceof SellingPartnerApiForAContentManagement.PostContentDocumentSuspendSubmissionResponse).to.be.true;
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should successfully call postContentDocumentSuspendSubmissionWithHttpInfo', function(done) {
+        instance.apiClient.callApi.resolves(mockpostContentDocumentSuspendSubmissionData.response);
+
+        const params = [
+          mockpostContentDocumentSuspendSubmissionData.request['contentReferenceKey'],
+          mockpostContentDocumentSuspendSubmissionData.request['marketplaceId']
+        ];
+        instance.postContentDocumentSuspendSubmissionWithHttpInfo(...params)
+          .then(function(response) {
+            expect(response).to.have.property('statusCode');
+            expect(response.statusCode).to.equal(mockpostContentDocumentSuspendSubmissionData.response.statusCode)
+            expect(response).to.have.property('headers');
+            expect(response).to.have.property('data');
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should handle API errors', function(done) {
+        var errorResponse = {
+          errors: new Error('Expected error to be thrown'),
+          statusCode: 400,
+          headers: {}
+        };
+        instance.apiClient.callApi.rejects(errorResponse);
+
+        const params = [
+          mockpostContentDocumentSuspendSubmissionData.request['contentReferenceKey'],
+          mockpostContentDocumentSuspendSubmissionData.request['marketplaceId']
+        ];
+        instance.postContentDocumentSuspendSubmission(...params)
+          .then(function() {
+            done(new Error('Expected error to be thrown'));
+          })
+          .catch(function(error) {
+            expect(error).to.exist;
+            expect(error.statusCode).to.equal(400)
+            done();
+          });
       });
     });
     describe('searchContentDocuments', function() {
-      it('should call searchContentDocuments successfully', function(done) {
-        //uncomment below and update the code to test searchContentDocuments
-        //instance.searchContentDocuments(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      
+      it('should successfully call searchContentDocuments', function(done) {
+        instance.apiClient.callApi.resolves(mocksearchContentDocumentsData.response);
+
+        const params = [
+          mocksearchContentDocumentsData.request['marketplaceId'],
+        ];
+        instance.searchContentDocuments(...params)
+          .then(function(data) {
+            expect(data instanceof SellingPartnerApiForAContentManagement.SearchContentDocumentsResponse).to.be.true;
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should successfully call searchContentDocumentsWithHttpInfo', function(done) {
+        instance.apiClient.callApi.resolves(mocksearchContentDocumentsData.response);
+
+        const params = [
+          mocksearchContentDocumentsData.request['marketplaceId'],
+        ];
+        instance.searchContentDocumentsWithHttpInfo(...params)
+          .then(function(response) {
+            expect(response).to.have.property('statusCode');
+            expect(response.statusCode).to.equal(mocksearchContentDocumentsData.response.statusCode)
+            expect(response).to.have.property('headers');
+            expect(response).to.have.property('data');
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should handle API errors', function(done) {
+        var errorResponse = {
+          errors: new Error('Expected error to be thrown'),
+          statusCode: 400,
+          headers: {}
+        };
+        instance.apiClient.callApi.rejects(errorResponse);
+
+        const params = [
+          mocksearchContentDocumentsData.request['marketplaceId'],
+        ];
+        instance.searchContentDocuments(...params)
+          .then(function() {
+            done(new Error('Expected error to be thrown'));
+          })
+          .catch(function(error) {
+            expect(error).to.exist;
+            expect(error.statusCode).to.equal(400)
+            done();
+          });
       });
     });
     describe('searchContentPublishRecords', function() {
-      it('should call searchContentPublishRecords successfully', function(done) {
-        //uncomment below and update the code to test searchContentPublishRecords
-        //instance.searchContentPublishRecords(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      
+      it('should successfully call searchContentPublishRecords', function(done) {
+        instance.apiClient.callApi.resolves(mocksearchContentPublishRecordsData.response);
+
+        const params = [
+          mocksearchContentPublishRecordsData.request['marketplaceId'],
+          mocksearchContentPublishRecordsData.request['asin'],
+        ];
+        instance.searchContentPublishRecords(...params)
+          .then(function(data) {
+            expect(data instanceof SellingPartnerApiForAContentManagement.SearchContentPublishRecordsResponse).to.be.true;
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should successfully call searchContentPublishRecordsWithHttpInfo', function(done) {
+        instance.apiClient.callApi.resolves(mocksearchContentPublishRecordsData.response);
+
+        const params = [
+          mocksearchContentPublishRecordsData.request['marketplaceId'],
+          mocksearchContentPublishRecordsData.request['asin'],
+        ];
+        instance.searchContentPublishRecordsWithHttpInfo(...params)
+          .then(function(response) {
+            expect(response).to.have.property('statusCode');
+            expect(response.statusCode).to.equal(mocksearchContentPublishRecordsData.response.statusCode)
+            expect(response).to.have.property('headers');
+            expect(response).to.have.property('data');
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should handle API errors', function(done) {
+        var errorResponse = {
+          errors: new Error('Expected error to be thrown'),
+          statusCode: 400,
+          headers: {}
+        };
+        instance.apiClient.callApi.rejects(errorResponse);
+
+        const params = [
+          mocksearchContentPublishRecordsData.request['marketplaceId'],
+          mocksearchContentPublishRecordsData.request['asin'],
+        ];
+        instance.searchContentPublishRecords(...params)
+          .then(function() {
+            done(new Error('Expected error to be thrown'));
+          })
+          .catch(function(error) {
+            expect(error).to.exist;
+            expect(error.statusCode).to.equal(400)
+            done();
+          });
       });
     });
     describe('updateContentDocument', function() {
-      it('should call updateContentDocument successfully', function(done) {
-        //uncomment below and update the code to test updateContentDocument
-        //instance.updateContentDocument(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      
+      it('should successfully call updateContentDocument', function(done) {
+        instance.apiClient.callApi.resolves(mockupdateContentDocumentData.response);
+
+        const params = [
+          mockupdateContentDocumentData.request['contentReferenceKey'],
+          mockupdateContentDocumentData.request['marketplaceId'],
+          mockupdateContentDocumentData.request['postContentDocumentRequest']
+        ];
+        instance.updateContentDocument(...params)
+          .then(function(data) {
+            expect(data instanceof SellingPartnerApiForAContentManagement.PostContentDocumentResponse).to.be.true;
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should successfully call updateContentDocumentWithHttpInfo', function(done) {
+        instance.apiClient.callApi.resolves(mockupdateContentDocumentData.response);
+
+        const params = [
+          mockupdateContentDocumentData.request['contentReferenceKey'],
+          mockupdateContentDocumentData.request['marketplaceId'],
+          mockupdateContentDocumentData.request['postContentDocumentRequest']
+        ];
+        instance.updateContentDocumentWithHttpInfo(...params)
+          .then(function(response) {
+            expect(response).to.have.property('statusCode');
+            expect(response.statusCode).to.equal(mockupdateContentDocumentData.response.statusCode)
+            expect(response).to.have.property('headers');
+            expect(response).to.have.property('data');
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should handle API errors', function(done) {
+        var errorResponse = {
+          errors: new Error('Expected error to be thrown'),
+          statusCode: 400,
+          headers: {}
+        };
+        instance.apiClient.callApi.rejects(errorResponse);
+
+        const params = [
+          mockupdateContentDocumentData.request['contentReferenceKey'],
+          mockupdateContentDocumentData.request['marketplaceId'],
+          mockupdateContentDocumentData.request['postContentDocumentRequest']
+        ];
+        instance.updateContentDocument(...params)
+          .then(function() {
+            done(new Error('Expected error to be thrown'));
+          })
+          .catch(function(error) {
+            expect(error).to.exist;
+            expect(error.statusCode).to.equal(400)
+            done();
+          });
       });
     });
     describe('validateContentDocumentAsinRelations', function() {
-      it('should call validateContentDocumentAsinRelations successfully', function(done) {
-        //uncomment below and update the code to test validateContentDocumentAsinRelations
-        //instance.validateContentDocumentAsinRelations(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      
+      it('should successfully call validateContentDocumentAsinRelations', function(done) {
+        instance.apiClient.callApi.resolves(mockvalidateContentDocumentAsinRelationsData.response);
+
+        const params = [
+          mockvalidateContentDocumentAsinRelationsData.request['marketplaceId'],
+          mockvalidateContentDocumentAsinRelationsData.request['postContentDocumentRequest'],
+        ];
+        instance.validateContentDocumentAsinRelations(...params)
+          .then(function(data) {
+            expect(data instanceof SellingPartnerApiForAContentManagement.ValidateContentDocumentAsinRelationsResponse).to.be.true;
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should successfully call validateContentDocumentAsinRelationsWithHttpInfo', function(done) {
+        instance.apiClient.callApi.resolves(mockvalidateContentDocumentAsinRelationsData.response);
+
+        const params = [
+          mockvalidateContentDocumentAsinRelationsData.request['marketplaceId'],
+          mockvalidateContentDocumentAsinRelationsData.request['postContentDocumentRequest'],
+        ];
+        instance.validateContentDocumentAsinRelationsWithHttpInfo(...params)
+          .then(function(response) {
+            expect(response).to.have.property('statusCode');
+            expect(response.statusCode).to.equal(mockvalidateContentDocumentAsinRelationsData.response.statusCode)
+            expect(response).to.have.property('headers');
+            expect(response).to.have.property('data');
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should handle API errors', function(done) {
+        var errorResponse = {
+          errors: new Error('Expected error to be thrown'),
+          statusCode: 400,
+          headers: {}
+        };
+        instance.apiClient.callApi.rejects(errorResponse);
+
+        const params = [
+          mockvalidateContentDocumentAsinRelationsData.request['marketplaceId'],
+          mockvalidateContentDocumentAsinRelationsData.request['postContentDocumentRequest'],
+        ];
+        instance.validateContentDocumentAsinRelations(...params)
+          .then(function() {
+            done(new Error('Expected error to be thrown'));
+          })
+          .catch(function(error) {
+            expect(error).to.exist;
+            expect(error.statusCode).to.equal(400)
+            done();
+          });
+      });
+    });
+
+    describe('constructor', function() {
+      it('should use default ApiClient when none provided', function() {
+        var defaultInstance = new SellingPartnerApiForAContentManagement.AplusContentApi();
+        expect(defaultInstance.apiClient).to.equal(SellingPartnerApiForAContentManagement.ApiClient.instance);
+      });
+
+      it('should use provided ApiClient', function() {
+        var customClient = new SellingPartnerApiForAContentManagement.ApiClient();
+        var customInstance = new SellingPartnerApiForAContentManagement.AplusContentApi(customClient);
+        expect(customInstance.apiClient).to.equal(customClient);
       });
     });
   });
-
 }));

@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForOrders.BusinessHours();
   });
 
   var getProperty = function(object, getter, property) {

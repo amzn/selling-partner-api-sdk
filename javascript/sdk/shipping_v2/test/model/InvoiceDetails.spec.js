@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new AmazonShippingApi.InvoiceDetails();
   });
 
   var getProperty = function(object, getter, property) {

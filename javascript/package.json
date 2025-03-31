@@ -8,10 +8,15 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "superagent": "^8.0.9"
   },
   "devDependencies": {
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "files": [
+    "src/helper/",
+    "sdk/"
+   ]
 }

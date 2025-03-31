@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new AmazonShippingApi.SubmitNdrFeedbackRequest();
   });
 
   var getProperty = function(object, getter, property) {

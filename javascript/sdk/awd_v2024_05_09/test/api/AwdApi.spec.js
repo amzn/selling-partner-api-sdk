@@ -14,150 +14,796 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
+    define(['expect.js', 'sinon', process.cwd()+'/src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
+    factory(require('expect.js'), require('sinon'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.TheSellingPartnerApiForAmazonWarehousingAndDistribution);
+    factory(root.expect, root.sinon, root.TheSellingPartnerApiForAmazonWarehousingAndDistribution);
   }
-}(this, function(expect, TheSellingPartnerApiForAmazonWarehousingAndDistribution) {
+}(this, function(expect, sinon, TheSellingPartnerApiForAmazonWarehousingAndDistribution) {
   'use strict';
 
   var instance;
+  var sandbox;
+  const testEndpoint = 'https://localhost:3000';
+  const testAccessToken = "testAccessToken";
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = TheSellingPartnerApiForAmazonWarehousingAndDistribution[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            if (ModelClass.RequiredProperties) {
+              ModelClass.RequiredProperties.forEach(prop => {
+                const propType = ModelClass.types[prop];
+                instance[prop] = generateMockData(propType);
+              });
+            }
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
+  
+
+// Generate mock requests and responses for each operation
+const mockcancelInboundData = {
+  request: {
+    'orderId': generateMockData('String')
+  },
+  response: {
+    statusCode: 204,
+    headers: {}
+  }
+};
+const mockcheckInboundEligibilityData = {
+  request: {
+    'body': generateMockData('InboundPackages')
+  },
+  response: {
+    data: generateMockData('InboundEligibility'),
+    statusCode: 200,
+    headers: {}
+  }
+};
+const mockconfirmInboundData = {
+  request: {
+    'orderId': generateMockData('String')
+  },
+  response: {
+    statusCode: 204,
+    headers: {}
+  }
+};
+const mockcreateInboundData = {
+  request: {
+    'body': generateMockData('InboundOrderCreationData')
+  },
+  response: {
+    data: generateMockData('InboundOrderReference'),
+    statusCode: 201,
+    headers: {}
+  }
+};
+const mockgetInboundData = {
+  request: {
+    'orderId': generateMockData('String')
+  },
+  response: {
+    data: generateMockData('InboundOrder'),
+    statusCode: 200,
+    headers: {}
+  }
+};
+const mockgetInboundShipmentData = {
+  request: {
+    'shipmentId': generateMockData('String'),
+  },
+  response: {
+    data: generateMockData('InboundShipment'),
+    statusCode: 200,
+    headers: {}
+  }
+};
+const mockgetInboundShipmentLabelsData = {
+  request: {
+    'shipmentId': generateMockData('String'),
+  },
+  response: {
+    data: generateMockData('ShipmentLabels'),
+    statusCode: 200,
+    headers: {}
+  }
+};
+const mocklistInboundShipmentsData = {
+  request: {
+  },
+  response: {
+    data: generateMockData('ShipmentListing'),
+    statusCode: 200,
+    headers: {}
+  }
+};
+const mocklistInventoryData = {
+  request: {
+  },
+  response: {
+    data: generateMockData('InventoryListing'),
+    statusCode: 200,
+    headers: {}
+  }
+};
+const mockupdateInboundData = {
+  request: {
+    'orderId': generateMockData('String'),
+    'body': generateMockData('InboundOrder')
+  },
+  response: {
+    statusCode: 204,
+    headers: {}
+  }
+};
+const mockupdateInboundShipmentTransportDetailsData = {
+  request: {
+    'shipmentId': generateMockData('String'),
+    'body': generateMockData('TransportationDetails')
+  },
+  response: {
+    statusCode: 204,
+    headers: {}
+  }
+};
 
   beforeEach(function() {
-    instance = new TheSellingPartnerApiForAmazonWarehousingAndDistribution.AwdApi();
+    sandbox = sinon.createSandbox();
+    var apiClientInstance = new TheSellingPartnerApiForAmazonWarehousingAndDistribution.ApiClient(testEndpoint);
+    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    sandbox.stub(apiClientInstance, 'callApi');
+    instance = new TheSellingPartnerApiForAmazonWarehousingAndDistribution.AwdApi(apiClientInstance);
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    sandbox.restore();
+  });
 
   describe('AwdApi', function() {
     describe('cancelInbound', function() {
-      it('should call cancelInbound successfully', function(done) {
-        //uncomment below and update the code to test cancelInbound
-        //instance.cancelInbound(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      
+      it('should successfully call cancelInbound', function(done) {
+        instance.apiClient.callApi.resolves(mockcancelInboundData.response);
+
+        const params = [
+          mockcancelInboundData.request['orderId']
+        ];
+        instance.cancelInbound(...params)
+          .then(function(data) {
+            expect(data).to.be.undefined;
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should successfully call cancelInboundWithHttpInfo', function(done) {
+        instance.apiClient.callApi.resolves(mockcancelInboundData.response);
+
+        const params = [
+          mockcancelInboundData.request['orderId']
+        ];
+        instance.cancelInboundWithHttpInfo(...params)
+          .then(function(response) {
+            expect(response).to.have.property('statusCode');
+            expect(response.statusCode).to.equal(mockcancelInboundData.response.statusCode)
+            expect(response).to.have.property('headers');
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should handle API errors', function(done) {
+        var errorResponse = {
+          errors: new Error('Expected error to be thrown'),
+          statusCode: 400,
+          headers: {}
+        };
+        instance.apiClient.callApi.rejects(errorResponse);
+
+        const params = [
+          mockcancelInboundData.request['orderId']
+        ];
+        instance.cancelInbound(...params)
+          .then(function() {
+            done(new Error('Expected error to be thrown'));
+          })
+          .catch(function(error) {
+            expect(error).to.exist;
+            expect(error.statusCode).to.equal(400)
+            done();
+          });
       });
     });
     describe('checkInboundEligibility', function() {
-      it('should call checkInboundEligibility successfully', function(done) {
-        //uncomment below and update the code to test checkInboundEligibility
-        //instance.checkInboundEligibility(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      
+      it('should successfully call checkInboundEligibility', function(done) {
+        instance.apiClient.callApi.resolves(mockcheckInboundEligibilityData.response);
+
+        const params = [
+          mockcheckInboundEligibilityData.request['body']
+        ];
+        instance.checkInboundEligibility(...params)
+          .then(function(data) {
+            expect(data instanceof TheSellingPartnerApiForAmazonWarehousingAndDistribution.InboundEligibility).to.be.true;
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should successfully call checkInboundEligibilityWithHttpInfo', function(done) {
+        instance.apiClient.callApi.resolves(mockcheckInboundEligibilityData.response);
+
+        const params = [
+          mockcheckInboundEligibilityData.request['body']
+        ];
+        instance.checkInboundEligibilityWithHttpInfo(...params)
+          .then(function(response) {
+            expect(response).to.have.property('statusCode');
+            expect(response.statusCode).to.equal(mockcheckInboundEligibilityData.response.statusCode)
+            expect(response).to.have.property('headers');
+            expect(response).to.have.property('data');
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should handle API errors', function(done) {
+        var errorResponse = {
+          errors: new Error('Expected error to be thrown'),
+          statusCode: 400,
+          headers: {}
+        };
+        instance.apiClient.callApi.rejects(errorResponse);
+
+        const params = [
+          mockcheckInboundEligibilityData.request['body']
+        ];
+        instance.checkInboundEligibility(...params)
+          .then(function() {
+            done(new Error('Expected error to be thrown'));
+          })
+          .catch(function(error) {
+            expect(error).to.exist;
+            expect(error.statusCode).to.equal(400)
+            done();
+          });
       });
     });
     describe('confirmInbound', function() {
-      it('should call confirmInbound successfully', function(done) {
-        //uncomment below and update the code to test confirmInbound
-        //instance.confirmInbound(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      
+      it('should successfully call confirmInbound', function(done) {
+        instance.apiClient.callApi.resolves(mockconfirmInboundData.response);
+
+        const params = [
+          mockconfirmInboundData.request['orderId']
+        ];
+        instance.confirmInbound(...params)
+          .then(function(data) {
+            expect(data).to.be.undefined;
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should successfully call confirmInboundWithHttpInfo', function(done) {
+        instance.apiClient.callApi.resolves(mockconfirmInboundData.response);
+
+        const params = [
+          mockconfirmInboundData.request['orderId']
+        ];
+        instance.confirmInboundWithHttpInfo(...params)
+          .then(function(response) {
+            expect(response).to.have.property('statusCode');
+            expect(response.statusCode).to.equal(mockconfirmInboundData.response.statusCode)
+            expect(response).to.have.property('headers');
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should handle API errors', function(done) {
+        var errorResponse = {
+          errors: new Error('Expected error to be thrown'),
+          statusCode: 400,
+          headers: {}
+        };
+        instance.apiClient.callApi.rejects(errorResponse);
+
+        const params = [
+          mockconfirmInboundData.request['orderId']
+        ];
+        instance.confirmInbound(...params)
+          .then(function() {
+            done(new Error('Expected error to be thrown'));
+          })
+          .catch(function(error) {
+            expect(error).to.exist;
+            expect(error.statusCode).to.equal(400)
+            done();
+          });
       });
     });
     describe('createInbound', function() {
-      it('should call createInbound successfully', function(done) {
-        //uncomment below and update the code to test createInbound
-        //instance.createInbound(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      
+      it('should successfully call createInbound', function(done) {
+        instance.apiClient.callApi.resolves(mockcreateInboundData.response);
+
+        const params = [
+          mockcreateInboundData.request['body']
+        ];
+        instance.createInbound(...params)
+          .then(function(data) {
+            expect(data instanceof TheSellingPartnerApiForAmazonWarehousingAndDistribution.InboundOrderReference).to.be.true;
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should successfully call createInboundWithHttpInfo', function(done) {
+        instance.apiClient.callApi.resolves(mockcreateInboundData.response);
+
+        const params = [
+          mockcreateInboundData.request['body']
+        ];
+        instance.createInboundWithHttpInfo(...params)
+          .then(function(response) {
+            expect(response).to.have.property('statusCode');
+            expect(response.statusCode).to.equal(mockcreateInboundData.response.statusCode)
+            expect(response).to.have.property('headers');
+            expect(response).to.have.property('data');
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should handle API errors', function(done) {
+        var errorResponse = {
+          errors: new Error('Expected error to be thrown'),
+          statusCode: 400,
+          headers: {}
+        };
+        instance.apiClient.callApi.rejects(errorResponse);
+
+        const params = [
+          mockcreateInboundData.request['body']
+        ];
+        instance.createInbound(...params)
+          .then(function() {
+            done(new Error('Expected error to be thrown'));
+          })
+          .catch(function(error) {
+            expect(error).to.exist;
+            expect(error.statusCode).to.equal(400)
+            done();
+          });
       });
     });
     describe('getInbound', function() {
-      it('should call getInbound successfully', function(done) {
-        //uncomment below and update the code to test getInbound
-        //instance.getInbound(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      
+      it('should successfully call getInbound', function(done) {
+        instance.apiClient.callApi.resolves(mockgetInboundData.response);
+
+        const params = [
+          mockgetInboundData.request['orderId']
+        ];
+        instance.getInbound(...params)
+          .then(function(data) {
+            expect(data instanceof TheSellingPartnerApiForAmazonWarehousingAndDistribution.InboundOrder).to.be.true;
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should successfully call getInboundWithHttpInfo', function(done) {
+        instance.apiClient.callApi.resolves(mockgetInboundData.response);
+
+        const params = [
+          mockgetInboundData.request['orderId']
+        ];
+        instance.getInboundWithHttpInfo(...params)
+          .then(function(response) {
+            expect(response).to.have.property('statusCode');
+            expect(response.statusCode).to.equal(mockgetInboundData.response.statusCode)
+            expect(response).to.have.property('headers');
+            expect(response).to.have.property('data');
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should handle API errors', function(done) {
+        var errorResponse = {
+          errors: new Error('Expected error to be thrown'),
+          statusCode: 400,
+          headers: {}
+        };
+        instance.apiClient.callApi.rejects(errorResponse);
+
+        const params = [
+          mockgetInboundData.request['orderId']
+        ];
+        instance.getInbound(...params)
+          .then(function() {
+            done(new Error('Expected error to be thrown'));
+          })
+          .catch(function(error) {
+            expect(error).to.exist;
+            expect(error.statusCode).to.equal(400)
+            done();
+          });
       });
     });
     describe('getInboundShipment', function() {
-      it('should call getInboundShipment successfully', function(done) {
-        //uncomment below and update the code to test getInboundShipment
-        //instance.getInboundShipment(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      
+      it('should successfully call getInboundShipment', function(done) {
+        instance.apiClient.callApi.resolves(mockgetInboundShipmentData.response);
+
+        const params = [
+          mockgetInboundShipmentData.request['shipmentId'],
+        ];
+        instance.getInboundShipment(...params)
+          .then(function(data) {
+            expect(data instanceof TheSellingPartnerApiForAmazonWarehousingAndDistribution.InboundShipment).to.be.true;
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should successfully call getInboundShipmentWithHttpInfo', function(done) {
+        instance.apiClient.callApi.resolves(mockgetInboundShipmentData.response);
+
+        const params = [
+          mockgetInboundShipmentData.request['shipmentId'],
+        ];
+        instance.getInboundShipmentWithHttpInfo(...params)
+          .then(function(response) {
+            expect(response).to.have.property('statusCode');
+            expect(response.statusCode).to.equal(mockgetInboundShipmentData.response.statusCode)
+            expect(response).to.have.property('headers');
+            expect(response).to.have.property('data');
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should handle API errors', function(done) {
+        var errorResponse = {
+          errors: new Error('Expected error to be thrown'),
+          statusCode: 400,
+          headers: {}
+        };
+        instance.apiClient.callApi.rejects(errorResponse);
+
+        const params = [
+          mockgetInboundShipmentData.request['shipmentId'],
+        ];
+        instance.getInboundShipment(...params)
+          .then(function() {
+            done(new Error('Expected error to be thrown'));
+          })
+          .catch(function(error) {
+            expect(error).to.exist;
+            expect(error.statusCode).to.equal(400)
+            done();
+          });
       });
     });
     describe('getInboundShipmentLabels', function() {
-      it('should call getInboundShipmentLabels successfully', function(done) {
-        //uncomment below and update the code to test getInboundShipmentLabels
-        //instance.getInboundShipmentLabels(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      
+      it('should successfully call getInboundShipmentLabels', function(done) {
+        instance.apiClient.callApi.resolves(mockgetInboundShipmentLabelsData.response);
+
+        const params = [
+          mockgetInboundShipmentLabelsData.request['shipmentId'],
+        ];
+        instance.getInboundShipmentLabels(...params)
+          .then(function(data) {
+            expect(data instanceof TheSellingPartnerApiForAmazonWarehousingAndDistribution.ShipmentLabels).to.be.true;
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should successfully call getInboundShipmentLabelsWithHttpInfo', function(done) {
+        instance.apiClient.callApi.resolves(mockgetInboundShipmentLabelsData.response);
+
+        const params = [
+          mockgetInboundShipmentLabelsData.request['shipmentId'],
+        ];
+        instance.getInboundShipmentLabelsWithHttpInfo(...params)
+          .then(function(response) {
+            expect(response).to.have.property('statusCode');
+            expect(response.statusCode).to.equal(mockgetInboundShipmentLabelsData.response.statusCode)
+            expect(response).to.have.property('headers');
+            expect(response).to.have.property('data');
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should handle API errors', function(done) {
+        var errorResponse = {
+          errors: new Error('Expected error to be thrown'),
+          statusCode: 400,
+          headers: {}
+        };
+        instance.apiClient.callApi.rejects(errorResponse);
+
+        const params = [
+          mockgetInboundShipmentLabelsData.request['shipmentId'],
+        ];
+        instance.getInboundShipmentLabels(...params)
+          .then(function() {
+            done(new Error('Expected error to be thrown'));
+          })
+          .catch(function(error) {
+            expect(error).to.exist;
+            expect(error.statusCode).to.equal(400)
+            done();
+          });
       });
     });
     describe('listInboundShipments', function() {
-      it('should call listInboundShipments successfully', function(done) {
-        //uncomment below and update the code to test listInboundShipments
-        //instance.listInboundShipments(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      
+      it('should successfully call listInboundShipments', function(done) {
+        instance.apiClient.callApi.resolves(mocklistInboundShipmentsData.response);
+
+        const params = [
+        ];
+        instance.listInboundShipments(...params)
+          .then(function(data) {
+            expect(data instanceof TheSellingPartnerApiForAmazonWarehousingAndDistribution.ShipmentListing).to.be.true;
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should successfully call listInboundShipmentsWithHttpInfo', function(done) {
+        instance.apiClient.callApi.resolves(mocklistInboundShipmentsData.response);
+
+        const params = [
+        ];
+        instance.listInboundShipmentsWithHttpInfo(...params)
+          .then(function(response) {
+            expect(response).to.have.property('statusCode');
+            expect(response.statusCode).to.equal(mocklistInboundShipmentsData.response.statusCode)
+            expect(response).to.have.property('headers');
+            expect(response).to.have.property('data');
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should handle API errors', function(done) {
+        var errorResponse = {
+          errors: new Error('Expected error to be thrown'),
+          statusCode: 400,
+          headers: {}
+        };
+        instance.apiClient.callApi.rejects(errorResponse);
+
+        const params = [
+        ];
+        instance.listInboundShipments(...params)
+          .then(function() {
+            done(new Error('Expected error to be thrown'));
+          })
+          .catch(function(error) {
+            expect(error).to.exist;
+            expect(error.statusCode).to.equal(400)
+            done();
+          });
       });
     });
     describe('listInventory', function() {
-      it('should call listInventory successfully', function(done) {
-        //uncomment below and update the code to test listInventory
-        //instance.listInventory(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      
+      it('should successfully call listInventory', function(done) {
+        instance.apiClient.callApi.resolves(mocklistInventoryData.response);
+
+        const params = [
+        ];
+        instance.listInventory(...params)
+          .then(function(data) {
+            expect(data instanceof TheSellingPartnerApiForAmazonWarehousingAndDistribution.InventoryListing).to.be.true;
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should successfully call listInventoryWithHttpInfo', function(done) {
+        instance.apiClient.callApi.resolves(mocklistInventoryData.response);
+
+        const params = [
+        ];
+        instance.listInventoryWithHttpInfo(...params)
+          .then(function(response) {
+            expect(response).to.have.property('statusCode');
+            expect(response.statusCode).to.equal(mocklistInventoryData.response.statusCode)
+            expect(response).to.have.property('headers');
+            expect(response).to.have.property('data');
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should handle API errors', function(done) {
+        var errorResponse = {
+          errors: new Error('Expected error to be thrown'),
+          statusCode: 400,
+          headers: {}
+        };
+        instance.apiClient.callApi.rejects(errorResponse);
+
+        const params = [
+        ];
+        instance.listInventory(...params)
+          .then(function() {
+            done(new Error('Expected error to be thrown'));
+          })
+          .catch(function(error) {
+            expect(error).to.exist;
+            expect(error.statusCode).to.equal(400)
+            done();
+          });
       });
     });
     describe('updateInbound', function() {
-      it('should call updateInbound successfully', function(done) {
-        //uncomment below and update the code to test updateInbound
-        //instance.updateInbound(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      
+      it('should successfully call updateInbound', function(done) {
+        instance.apiClient.callApi.resolves(mockupdateInboundData.response);
+
+        const params = [
+          mockupdateInboundData.request['orderId'],
+          mockupdateInboundData.request['body']
+        ];
+        instance.updateInbound(...params)
+          .then(function(data) {
+            expect(data).to.be.undefined;
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should successfully call updateInboundWithHttpInfo', function(done) {
+        instance.apiClient.callApi.resolves(mockupdateInboundData.response);
+
+        const params = [
+          mockupdateInboundData.request['orderId'],
+          mockupdateInboundData.request['body']
+        ];
+        instance.updateInboundWithHttpInfo(...params)
+          .then(function(response) {
+            expect(response).to.have.property('statusCode');
+            expect(response.statusCode).to.equal(mockupdateInboundData.response.statusCode)
+            expect(response).to.have.property('headers');
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should handle API errors', function(done) {
+        var errorResponse = {
+          errors: new Error('Expected error to be thrown'),
+          statusCode: 400,
+          headers: {}
+        };
+        instance.apiClient.callApi.rejects(errorResponse);
+
+        const params = [
+          mockupdateInboundData.request['orderId'],
+          mockupdateInboundData.request['body']
+        ];
+        instance.updateInbound(...params)
+          .then(function() {
+            done(new Error('Expected error to be thrown'));
+          })
+          .catch(function(error) {
+            expect(error).to.exist;
+            expect(error.statusCode).to.equal(400)
+            done();
+          });
       });
     });
     describe('updateInboundShipmentTransportDetails', function() {
-      it('should call updateInboundShipmentTransportDetails successfully', function(done) {
-        //uncomment below and update the code to test updateInboundShipmentTransportDetails
-        //instance.updateInboundShipmentTransportDetails(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      
+      it('should successfully call updateInboundShipmentTransportDetails', function(done) {
+        instance.apiClient.callApi.resolves(mockupdateInboundShipmentTransportDetailsData.response);
+
+        const params = [
+          mockupdateInboundShipmentTransportDetailsData.request['shipmentId'],
+          mockupdateInboundShipmentTransportDetailsData.request['body']
+        ];
+        instance.updateInboundShipmentTransportDetails(...params)
+          .then(function(data) {
+            expect(data).to.be.undefined;
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should successfully call updateInboundShipmentTransportDetailsWithHttpInfo', function(done) {
+        instance.apiClient.callApi.resolves(mockupdateInboundShipmentTransportDetailsData.response);
+
+        const params = [
+          mockupdateInboundShipmentTransportDetailsData.request['shipmentId'],
+          mockupdateInboundShipmentTransportDetailsData.request['body']
+        ];
+        instance.updateInboundShipmentTransportDetailsWithHttpInfo(...params)
+          .then(function(response) {
+            expect(response).to.have.property('statusCode');
+            expect(response.statusCode).to.equal(mockupdateInboundShipmentTransportDetailsData.response.statusCode)
+            expect(response).to.have.property('headers');
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should handle API errors', function(done) {
+        var errorResponse = {
+          errors: new Error('Expected error to be thrown'),
+          statusCode: 400,
+          headers: {}
+        };
+        instance.apiClient.callApi.rejects(errorResponse);
+
+        const params = [
+          mockupdateInboundShipmentTransportDetailsData.request['shipmentId'],
+          mockupdateInboundShipmentTransportDetailsData.request['body']
+        ];
+        instance.updateInboundShipmentTransportDetails(...params)
+          .then(function() {
+            done(new Error('Expected error to be thrown'));
+          })
+          .catch(function(error) {
+            expect(error).to.exist;
+            expect(error.statusCode).to.equal(400)
+            done();
+          });
+      });
+    });
+
+    describe('constructor', function() {
+      it('should use default ApiClient when none provided', function() {
+        var defaultInstance = new TheSellingPartnerApiForAmazonWarehousingAndDistribution.AwdApi();
+        expect(defaultInstance.apiClient).to.equal(TheSellingPartnerApiForAmazonWarehousingAndDistribution.ApiClient.instance);
+      });
+
+      it('should use provided ApiClient', function() {
+        var customClient = new TheSellingPartnerApiForAmazonWarehousingAndDistribution.ApiClient();
+        var customInstance = new TheSellingPartnerApiForAmazonWarehousingAndDistribution.AwdApi(customClient);
+        expect(customInstance.apiClient).to.equal(customClient);
       });
     });
   });
-
 }));

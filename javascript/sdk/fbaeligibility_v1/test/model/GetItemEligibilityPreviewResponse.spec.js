@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForFbaInboundEligibilty.GetItemEligibilityPreviewResponse();
   });
 
   var getProperty = function(object, getter, property) {

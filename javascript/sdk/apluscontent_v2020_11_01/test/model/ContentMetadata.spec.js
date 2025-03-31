@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForAContentManagement.ContentMetadata();
   });
 
   var getProperty = function(object, getter, property) {

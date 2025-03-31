@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForSupplySources.ParkingWithAddressConfiguration();
   });
 
   var getProperty = function(object, getter, property) {

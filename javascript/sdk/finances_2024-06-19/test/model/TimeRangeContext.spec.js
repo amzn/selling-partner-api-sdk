@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new TheSellingPartnerApiForFinances.TimeRangeContext();
   });
 
   var getProperty = function(object, getter, property) {

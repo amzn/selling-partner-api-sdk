@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForMessaging.CreateDigitalAccessKeyRequest();
   });
 
   var getProperty = function(object, getter, property) {

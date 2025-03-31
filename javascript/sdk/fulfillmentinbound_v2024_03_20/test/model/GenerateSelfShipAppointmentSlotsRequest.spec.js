@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new TheSellingPartnerApiForFbaInboundOperations.GenerateSelfShipAppointmentSlotsRequest();
   });
 
   var getProperty = function(object, getter, property) {

@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForFinances.PayWithAmazonEvent();
   });
 
   var getProperty = function(object, getter, property) {

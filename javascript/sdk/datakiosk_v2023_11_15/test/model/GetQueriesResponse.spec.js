@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForDataKiosk.GetQueriesResponse();
   });
 
   var getProperty = function(object, getter, property) {

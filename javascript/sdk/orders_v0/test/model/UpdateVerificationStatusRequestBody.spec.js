@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForOrders.UpdateVerificationStatusRequestBody();
   });
 
   var getProperty = function(object, getter, property) {

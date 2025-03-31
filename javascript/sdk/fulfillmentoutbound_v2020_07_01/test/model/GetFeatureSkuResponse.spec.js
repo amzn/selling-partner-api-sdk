@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new SellingPartnerApisForFulfillmentOutbound.GetFeatureSkuResponse();
   });
 
   var getProperty = function(object, getter, property) {

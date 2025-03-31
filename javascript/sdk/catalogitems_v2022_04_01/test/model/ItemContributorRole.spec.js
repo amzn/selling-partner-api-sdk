@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForCatalogItems.ItemContributorRole();
   });
 
   var getProperty = function(object, getter, property) {

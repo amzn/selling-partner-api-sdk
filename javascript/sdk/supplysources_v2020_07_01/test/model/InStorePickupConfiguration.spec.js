@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForSupplySources.InStorePickupConfiguration();
   });
 
   var getProperty = function(object, getter, property) {

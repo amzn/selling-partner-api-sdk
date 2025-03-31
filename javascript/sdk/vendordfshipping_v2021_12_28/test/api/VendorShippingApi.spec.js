@@ -14,80 +14,353 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
+    define(['expect.js', 'sinon', process.cwd()+'/src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
+    factory(require('expect.js'), require('sinon'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForDirectFulfillmentShipping);
+    factory(root.expect, root.sinon, root.SellingPartnerApiForDirectFulfillmentShipping);
   }
-}(this, function(expect, SellingPartnerApiForDirectFulfillmentShipping) {
+}(this, function(expect, sinon, SellingPartnerApiForDirectFulfillmentShipping) {
   'use strict';
 
   var instance;
+  var sandbox;
+  const testEndpoint = 'https://localhost:3000';
+  const testAccessToken = "testAccessToken";
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForDirectFulfillmentShipping[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            if (ModelClass.RequiredProperties) {
+              ModelClass.RequiredProperties.forEach(prop => {
+                const propType = ModelClass.types[prop];
+                instance[prop] = generateMockData(propType);
+              });
+            }
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
+  
+
+// Generate mock requests and responses for each operation
+const mockgetPackingSlipData = {
+  request: {
+    'purchaseOrderNumber': generateMockData('String')
+  },
+  response: {
+    data: generateMockData('PackingSlip'),
+    statusCode: 200,
+    headers: {}
+  }
+};
+const mockgetPackingSlipsData = {
+  request: {
+    'createdAfter': generateMockData('Date'),
+    'createdBefore': generateMockData('Date'),
+  },
+  response: {
+    data: generateMockData('PackingSlipList'),
+    statusCode: 200,
+    headers: {}
+  }
+};
+const mocksubmitShipmentConfirmationsData = {
+  request: {
+    'body': generateMockData('SubmitShipmentConfirmationsRequest')
+  },
+  response: {
+    data: generateMockData('TransactionReference'),
+    statusCode: 202,
+    headers: {}
+  }
+};
+const mocksubmitShipmentStatusUpdatesData = {
+  request: {
+    'body': generateMockData('SubmitShipmentStatusUpdatesRequest')
+  },
+  response: {
+    data: generateMockData('TransactionReference'),
+    statusCode: 202,
+    headers: {}
+  }
+};
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForDirectFulfillmentShipping.VendorShippingApi();
+    sandbox = sinon.createSandbox();
+    var apiClientInstance = new SellingPartnerApiForDirectFulfillmentShipping.ApiClient(testEndpoint);
+    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    sandbox.stub(apiClientInstance, 'callApi');
+    instance = new SellingPartnerApiForDirectFulfillmentShipping.VendorShippingApi(apiClientInstance);
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    sandbox.restore();
+  });
 
   describe('VendorShippingApi', function() {
     describe('getPackingSlip', function() {
-      it('should call getPackingSlip successfully', function(done) {
-        //uncomment below and update the code to test getPackingSlip
-        //instance.getPackingSlip(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      
+      it('should successfully call getPackingSlip', function(done) {
+        instance.apiClient.callApi.resolves(mockgetPackingSlipData.response);
+
+        const params = [
+          mockgetPackingSlipData.request['purchaseOrderNumber']
+        ];
+        instance.getPackingSlip(...params)
+          .then(function(data) {
+            expect(data instanceof SellingPartnerApiForDirectFulfillmentShipping.PackingSlip).to.be.true;
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should successfully call getPackingSlipWithHttpInfo', function(done) {
+        instance.apiClient.callApi.resolves(mockgetPackingSlipData.response);
+
+        const params = [
+          mockgetPackingSlipData.request['purchaseOrderNumber']
+        ];
+        instance.getPackingSlipWithHttpInfo(...params)
+          .then(function(response) {
+            expect(response).to.have.property('statusCode');
+            expect(response.statusCode).to.equal(mockgetPackingSlipData.response.statusCode)
+            expect(response).to.have.property('headers');
+            expect(response).to.have.property('data');
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should handle API errors', function(done) {
+        var errorResponse = {
+          errors: new Error('Expected error to be thrown'),
+          statusCode: 400,
+          headers: {}
+        };
+        instance.apiClient.callApi.rejects(errorResponse);
+
+        const params = [
+          mockgetPackingSlipData.request['purchaseOrderNumber']
+        ];
+        instance.getPackingSlip(...params)
+          .then(function() {
+            done(new Error('Expected error to be thrown'));
+          })
+          .catch(function(error) {
+            expect(error).to.exist;
+            expect(error.statusCode).to.equal(400)
+            done();
+          });
       });
     });
     describe('getPackingSlips', function() {
-      it('should call getPackingSlips successfully', function(done) {
-        //uncomment below and update the code to test getPackingSlips
-        //instance.getPackingSlips(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      
+      it('should successfully call getPackingSlips', function(done) {
+        instance.apiClient.callApi.resolves(mockgetPackingSlipsData.response);
+
+        const params = [
+          mockgetPackingSlipsData.request['createdAfter'],
+          mockgetPackingSlipsData.request['createdBefore'],
+        ];
+        instance.getPackingSlips(...params)
+          .then(function(data) {
+            expect(data instanceof SellingPartnerApiForDirectFulfillmentShipping.PackingSlipList).to.be.true;
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should successfully call getPackingSlipsWithHttpInfo', function(done) {
+        instance.apiClient.callApi.resolves(mockgetPackingSlipsData.response);
+
+        const params = [
+          mockgetPackingSlipsData.request['createdAfter'],
+          mockgetPackingSlipsData.request['createdBefore'],
+        ];
+        instance.getPackingSlipsWithHttpInfo(...params)
+          .then(function(response) {
+            expect(response).to.have.property('statusCode');
+            expect(response.statusCode).to.equal(mockgetPackingSlipsData.response.statusCode)
+            expect(response).to.have.property('headers');
+            expect(response).to.have.property('data');
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should handle API errors', function(done) {
+        var errorResponse = {
+          errors: new Error('Expected error to be thrown'),
+          statusCode: 400,
+          headers: {}
+        };
+        instance.apiClient.callApi.rejects(errorResponse);
+
+        const params = [
+          mockgetPackingSlipsData.request['createdAfter'],
+          mockgetPackingSlipsData.request['createdBefore'],
+        ];
+        instance.getPackingSlips(...params)
+          .then(function() {
+            done(new Error('Expected error to be thrown'));
+          })
+          .catch(function(error) {
+            expect(error).to.exist;
+            expect(error.statusCode).to.equal(400)
+            done();
+          });
       });
     });
     describe('submitShipmentConfirmations', function() {
-      it('should call submitShipmentConfirmations successfully', function(done) {
-        //uncomment below and update the code to test submitShipmentConfirmations
-        //instance.submitShipmentConfirmations(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      
+      it('should successfully call submitShipmentConfirmations', function(done) {
+        instance.apiClient.callApi.resolves(mocksubmitShipmentConfirmationsData.response);
+
+        const params = [
+          mocksubmitShipmentConfirmationsData.request['body']
+        ];
+        instance.submitShipmentConfirmations(...params)
+          .then(function(data) {
+            expect(data instanceof SellingPartnerApiForDirectFulfillmentShipping.TransactionReference).to.be.true;
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should successfully call submitShipmentConfirmationsWithHttpInfo', function(done) {
+        instance.apiClient.callApi.resolves(mocksubmitShipmentConfirmationsData.response);
+
+        const params = [
+          mocksubmitShipmentConfirmationsData.request['body']
+        ];
+        instance.submitShipmentConfirmationsWithHttpInfo(...params)
+          .then(function(response) {
+            expect(response).to.have.property('statusCode');
+            expect(response.statusCode).to.equal(mocksubmitShipmentConfirmationsData.response.statusCode)
+            expect(response).to.have.property('headers');
+            expect(response).to.have.property('data');
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should handle API errors', function(done) {
+        var errorResponse = {
+          errors: new Error('Expected error to be thrown'),
+          statusCode: 400,
+          headers: {}
+        };
+        instance.apiClient.callApi.rejects(errorResponse);
+
+        const params = [
+          mocksubmitShipmentConfirmationsData.request['body']
+        ];
+        instance.submitShipmentConfirmations(...params)
+          .then(function() {
+            done(new Error('Expected error to be thrown'));
+          })
+          .catch(function(error) {
+            expect(error).to.exist;
+            expect(error.statusCode).to.equal(400)
+            done();
+          });
       });
     });
     describe('submitShipmentStatusUpdates', function() {
-      it('should call submitShipmentStatusUpdates successfully', function(done) {
-        //uncomment below and update the code to test submitShipmentStatusUpdates
-        //instance.submitShipmentStatusUpdates(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      
+      it('should successfully call submitShipmentStatusUpdates', function(done) {
+        instance.apiClient.callApi.resolves(mocksubmitShipmentStatusUpdatesData.response);
+
+        const params = [
+          mocksubmitShipmentStatusUpdatesData.request['body']
+        ];
+        instance.submitShipmentStatusUpdates(...params)
+          .then(function(data) {
+            expect(data instanceof SellingPartnerApiForDirectFulfillmentShipping.TransactionReference).to.be.true;
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should successfully call submitShipmentStatusUpdatesWithHttpInfo', function(done) {
+        instance.apiClient.callApi.resolves(mocksubmitShipmentStatusUpdatesData.response);
+
+        const params = [
+          mocksubmitShipmentStatusUpdatesData.request['body']
+        ];
+        instance.submitShipmentStatusUpdatesWithHttpInfo(...params)
+          .then(function(response) {
+            expect(response).to.have.property('statusCode');
+            expect(response.statusCode).to.equal(mocksubmitShipmentStatusUpdatesData.response.statusCode)
+            expect(response).to.have.property('headers');
+            expect(response).to.have.property('data');
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should handle API errors', function(done) {
+        var errorResponse = {
+          errors: new Error('Expected error to be thrown'),
+          statusCode: 400,
+          headers: {}
+        };
+        instance.apiClient.callApi.rejects(errorResponse);
+
+        const params = [
+          mocksubmitShipmentStatusUpdatesData.request['body']
+        ];
+        instance.submitShipmentStatusUpdates(...params)
+          .then(function() {
+            done(new Error('Expected error to be thrown'));
+          })
+          .catch(function(error) {
+            expect(error).to.exist;
+            expect(error.statusCode).to.equal(400)
+            done();
+          });
+      });
+    });
+
+    describe('constructor', function() {
+      it('should use default ApiClient when none provided', function() {
+        var defaultInstance = new SellingPartnerApiForDirectFulfillmentShipping.VendorShippingApi();
+        expect(defaultInstance.apiClient).to.equal(SellingPartnerApiForDirectFulfillmentShipping.ApiClient.instance);
+      });
+
+      it('should use provided ApiClient', function() {
+        var customClient = new SellingPartnerApiForDirectFulfillmentShipping.ApiClient();
+        var customInstance = new SellingPartnerApiForDirectFulfillmentShipping.VendorShippingApi(customClient);
+        expect(customInstance.apiClient).to.equal(customClient);
       });
     });
   });
-
 }));

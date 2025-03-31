@@ -14,50 +14,154 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
+    define(['expect.js', 'sinon', process.cwd()+'/src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
+    factory(require('expect.js'), require('sinon'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForDirectFulfillmentPayments);
+    factory(root.expect, root.sinon, root.SellingPartnerApiForDirectFulfillmentPayments);
   }
-}(this, function(expect, SellingPartnerApiForDirectFulfillmentPayments) {
+}(this, function(expect, sinon, SellingPartnerApiForDirectFulfillmentPayments) {
   'use strict';
 
   var instance;
+  var sandbox;
+  const testEndpoint = 'https://localhost:3000';
+  const testAccessToken = "testAccessToken";
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForDirectFulfillmentPayments[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            if (ModelClass.RequiredProperties) {
+              ModelClass.RequiredProperties.forEach(prop => {
+                const propType = ModelClass.types[prop];
+                instance[prop] = generateMockData(propType);
+              });
+            }
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
+  
+
+// Generate mock requests and responses for each operation
+const mocksubmitInvoiceData = {
+  request: {
+    'body': generateMockData('SubmitInvoiceRequest')
+  },
+  response: {
+    data: generateMockData('SubmitInvoiceResponse'),
+    statusCode: 202,
+    headers: {}
+  }
+};
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForDirectFulfillmentPayments.VendorInvoiceApi();
+    sandbox = sinon.createSandbox();
+    var apiClientInstance = new SellingPartnerApiForDirectFulfillmentPayments.ApiClient(testEndpoint);
+    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    sandbox.stub(apiClientInstance, 'callApi');
+    instance = new SellingPartnerApiForDirectFulfillmentPayments.VendorInvoiceApi(apiClientInstance);
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    sandbox.restore();
+  });
 
   describe('VendorInvoiceApi', function() {
     describe('submitInvoice', function() {
-      it('should call submitInvoice successfully', function(done) {
-        //uncomment below and update the code to test submitInvoice
-        //instance.submitInvoice(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
+      
+      it('should successfully call submitInvoice', function(done) {
+        instance.apiClient.callApi.resolves(mocksubmitInvoiceData.response);
+
+        const params = [
+          mocksubmitInvoiceData.request['body']
+        ];
+        instance.submitInvoice(...params)
+          .then(function(data) {
+            expect(data instanceof SellingPartnerApiForDirectFulfillmentPayments.SubmitInvoiceResponse).to.be.true;
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should successfully call submitInvoiceWithHttpInfo', function(done) {
+        instance.apiClient.callApi.resolves(mocksubmitInvoiceData.response);
+
+        const params = [
+          mocksubmitInvoiceData.request['body']
+        ];
+        instance.submitInvoiceWithHttpInfo(...params)
+          .then(function(response) {
+            expect(response).to.have.property('statusCode');
+            expect(response.statusCode).to.equal(mocksubmitInvoiceData.response.statusCode)
+            expect(response).to.have.property('headers');
+            expect(response).to.have.property('data');
+            done();
+          })
+          .catch(done);
+      });
+
+      it('should handle API errors', function(done) {
+        var errorResponse = {
+          errors: new Error('Expected error to be thrown'),
+          statusCode: 400,
+          headers: {}
+        };
+        instance.apiClient.callApi.rejects(errorResponse);
+
+        const params = [
+          mocksubmitInvoiceData.request['body']
+        ];
+        instance.submitInvoice(...params)
+          .then(function() {
+            done(new Error('Expected error to be thrown'));
+          })
+          .catch(function(error) {
+            expect(error).to.exist;
+            expect(error.statusCode).to.equal(400)
+            done();
+          });
+      });
+    });
+
+    describe('constructor', function() {
+      it('should use default ApiClient when none provided', function() {
+        var defaultInstance = new SellingPartnerApiForDirectFulfillmentPayments.VendorInvoiceApi();
+        expect(defaultInstance.apiClient).to.equal(SellingPartnerApiForDirectFulfillmentPayments.ApiClient.instance);
+      });
+
+      it('should use provided ApiClient', function() {
+        var customClient = new SellingPartnerApiForDirectFulfillmentPayments.ApiClient();
+        var customInstance = new SellingPartnerApiForDirectFulfillmentPayments.VendorInvoiceApi(customClient);
+        expect(customInstance.apiClient).to.equal(customClient);
       });
     });
   });
-
 }));

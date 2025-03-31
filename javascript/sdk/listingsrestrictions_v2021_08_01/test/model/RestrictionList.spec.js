@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForListingsRestrictions.RestrictionList();
   });
 
   var getProperty = function(object, getter, property) {

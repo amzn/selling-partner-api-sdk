@@ -28,7 +28,6 @@
   var instance;
 
   beforeEach(function() {
-    instance = new SellingPartnerApiForShipmentInvoicing.TaxClassification();
   });
 
   var getProperty = function(object, getter, property) {
