@@ -94,7 +94,7 @@ jobs:
               owner: context.repo.owner,
               repo: 'selling-partner-api-php-release',
               ref: "refs/tags/${{ github.event.inputs.newVersionNumber }}",
-              sha: ${{ steps.sha.outputs.sha }}
+              sha: "${{ steps.sha.outputs.sha }}"
             })
       - name: Create Release
         uses: softprops/action-gh-release@v2
