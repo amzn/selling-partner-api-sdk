@@ -28,49 +28,86 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new TheSellingPartnerApiForFbaInboundOperations.Quote();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(TheSellingPartnerApiForFbaInboundOperations.Quote.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('Quote', function() {
     it('should create an instance of Quote', function() {
-      // uncomment below and update the code to test Quote
-      //var instance = new TheSellingPartnerApiForFbaInboundOperations.Quote();
-      //expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.Quote);
+      expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.Quote);
     });
 
     it('should have the property cost (base name: "cost")', function() {
-      // uncomment below and update the code to test the property cost
-      //var instance = new TheSellingPartnerApiForFbaInboundOperations.Quote();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('cost');
+
+      // set and verify value
+      var validValue = generateMockData('Currency');
+      instance.cost = validValue;
+      expect(instance.cost).to.equal(validValue);
     });
 
     it('should have the property expiration (base name: "expiration")', function() {
-      // uncomment below and update the code to test the property expiration
-      //var instance = new TheSellingPartnerApiForFbaInboundOperations.Quote();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('expiration');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.expiration = validValue;
+      expect(instance.expiration).to.equal(validValue);
     });
 
     it('should have the property voidableUntil (base name: "voidableUntil")', function() {
-      // uncomment below and update the code to test the property voidableUntil
-      //var instance = new TheSellingPartnerApiForFbaInboundOperations.Quote();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('voidableUntil');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.voidableUntil = validValue;
+      expect(instance.voidableUntil).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = TheSellingPartnerApiForFbaInboundOperations[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

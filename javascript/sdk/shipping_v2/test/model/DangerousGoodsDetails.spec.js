@@ -28,55 +28,96 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new AmazonShippingApi.DangerousGoodsDetails();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(AmazonShippingApi.DangerousGoodsDetails.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('DangerousGoodsDetails', function() {
     it('should create an instance of DangerousGoodsDetails', function() {
-      // uncomment below and update the code to test DangerousGoodsDetails
-      //var instance = new AmazonShippingApi.DangerousGoodsDetails();
-      //expect(instance).to.be.a(AmazonShippingApi.DangerousGoodsDetails);
+      expect(instance).to.be.a(AmazonShippingApi.DangerousGoodsDetails);
     });
 
     it('should have the property unitedNationsRegulatoryId (base name: "unitedNationsRegulatoryId")', function() {
-      // uncomment below and update the code to test the property unitedNationsRegulatoryId
-      //var instance = new AmazonShippingApi.DangerousGoodsDetails();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('unitedNationsRegulatoryId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.unitedNationsRegulatoryId = validValue;
+      expect(instance.unitedNationsRegulatoryId).to.equal(validValue);
     });
 
     it('should have the property transportationRegulatoryClass (base name: "transportationRegulatoryClass")', function() {
-      // uncomment below and update the code to test the property transportationRegulatoryClass
-      //var instance = new AmazonShippingApi.DangerousGoodsDetails();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('transportationRegulatoryClass');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.transportationRegulatoryClass = validValue;
+      expect(instance.transportationRegulatoryClass).to.equal(validValue);
     });
 
     it('should have the property packingGroup (base name: "packingGroup")', function() {
-      // uncomment below and update the code to test the property packingGroup
-      //var instance = new AmazonShippingApi.DangerousGoodsDetails();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('packingGroup');
+
+      // set and verify value
+      var validValue = ['I', 'II', 'III', ][0];
+      instance.packingGroup = validValue;
+      expect(instance.packingGroup).to.equal(validValue);
     });
 
     it('should have the property packingInstruction (base name: "packingInstruction")', function() {
-      // uncomment below and update the code to test the property packingInstruction
-      //var instance = new AmazonShippingApi.DangerousGoodsDetails();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('packingInstruction');
+
+      // set and verify value
+      var validValue = ['PI965_SECTION_IA', 'PI965_SECTION_IB', 'PI965_SECTION_II', 'PI966_SECTION_I', 'PI966_SECTION_II', 'PI967_SECTION_I', 'PI967_SECTION_II', 'PI968_SECTION_IA', 'PI968_SECTION_IB', 'PI969_SECTION_I', 'PI969_SECTION_II', 'PI970_SECTION_I', 'PI970_SECTION_II', ][0];
+      instance.packingInstruction = validValue;
+      expect(instance.packingInstruction).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = AmazonShippingApi[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

@@ -28,61 +28,106 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForListingsItems.ItemOfferByMarketplace();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForListingsItems.ItemOfferByMarketplace.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('ItemOfferByMarketplace', function() {
     it('should create an instance of ItemOfferByMarketplace', function() {
-      // uncomment below and update the code to test ItemOfferByMarketplace
-      //var instance = new SellingPartnerApiForListingsItems.ItemOfferByMarketplace();
-      //expect(instance).to.be.a(SellingPartnerApiForListingsItems.ItemOfferByMarketplace);
+      expect(instance).to.be.a(SellingPartnerApiForListingsItems.ItemOfferByMarketplace);
     });
 
     it('should have the property marketplaceId (base name: "marketplaceId")', function() {
-      // uncomment below and update the code to test the property marketplaceId
-      //var instance = new SellingPartnerApiForListingsItems.ItemOfferByMarketplace();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('marketplaceId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.marketplaceId = validValue;
+      expect(instance.marketplaceId).to.equal(validValue);
     });
 
     it('should have the property offerType (base name: "offerType")', function() {
-      // uncomment below and update the code to test the property offerType
-      //var instance = new SellingPartnerApiForListingsItems.ItemOfferByMarketplace();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('offerType');
+
+      // set and verify value
+      var validValue = ['B2C', 'B2B', ][0];
+      instance.offerType = validValue;
+      expect(instance.offerType).to.equal(validValue);
     });
 
     it('should have the property price (base name: "price")', function() {
-      // uncomment below and update the code to test the property price
-      //var instance = new SellingPartnerApiForListingsItems.ItemOfferByMarketplace();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('price');
+
+      // set and verify value
+      var validValue = generateMockData('Money');
+      instance.price = validValue;
+      expect(instance.price).to.equal(validValue);
     });
 
     it('should have the property points (base name: "points")', function() {
-      // uncomment below and update the code to test the property points
-      //var instance = new SellingPartnerApiForListingsItems.ItemOfferByMarketplace();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('points');
+
+      // set and verify value
+      var validValue = generateMockData('Points');
+      instance.points = validValue;
+      expect(instance.points).to.equal(validValue);
     });
 
     it('should have the property audience (base name: "audience")', function() {
-      // uncomment below and update the code to test the property audience
-      //var instance = new SellingPartnerApiForListingsItems.ItemOfferByMarketplace();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('audience');
+
+      // set and verify value
+      var validValue = generateMockData('Audience');
+      instance.audience = validValue;
+      expect(instance.audience).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForListingsItems[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

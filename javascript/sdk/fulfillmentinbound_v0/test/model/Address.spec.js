@@ -28,79 +28,136 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForFulfillmentInbound.Address();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForFulfillmentInbound.Address.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('Address', function() {
     it('should create an instance of Address', function() {
-      // uncomment below and update the code to test Address
-      //var instance = new SellingPartnerApiForFulfillmentInbound.Address();
-      //expect(instance).to.be.a(SellingPartnerApiForFulfillmentInbound.Address);
+      expect(instance).to.be.a(SellingPartnerApiForFulfillmentInbound.Address);
     });
 
     it('should have the property name (base name: "Name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instance = new SellingPartnerApiForFulfillmentInbound.Address();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('name');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.name = validValue;
+      expect(instance.name).to.equal(validValue);
     });
 
     it('should have the property addressLine1 (base name: "AddressLine1")', function() {
-      // uncomment below and update the code to test the property addressLine1
-      //var instance = new SellingPartnerApiForFulfillmentInbound.Address();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('addressLine1');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.addressLine1 = validValue;
+      expect(instance.addressLine1).to.equal(validValue);
     });
 
     it('should have the property addressLine2 (base name: "AddressLine2")', function() {
-      // uncomment below and update the code to test the property addressLine2
-      //var instance = new SellingPartnerApiForFulfillmentInbound.Address();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('addressLine2');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.addressLine2 = validValue;
+      expect(instance.addressLine2).to.equal(validValue);
     });
 
     it('should have the property districtOrCounty (base name: "DistrictOrCounty")', function() {
-      // uncomment below and update the code to test the property districtOrCounty
-      //var instance = new SellingPartnerApiForFulfillmentInbound.Address();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('districtOrCounty');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.districtOrCounty = validValue;
+      expect(instance.districtOrCounty).to.equal(validValue);
     });
 
     it('should have the property city (base name: "City")', function() {
-      // uncomment below and update the code to test the property city
-      //var instance = new SellingPartnerApiForFulfillmentInbound.Address();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('city');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.city = validValue;
+      expect(instance.city).to.equal(validValue);
     });
 
     it('should have the property stateOrProvinceCode (base name: "StateOrProvinceCode")', function() {
-      // uncomment below and update the code to test the property stateOrProvinceCode
-      //var instance = new SellingPartnerApiForFulfillmentInbound.Address();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('stateOrProvinceCode');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.stateOrProvinceCode = validValue;
+      expect(instance.stateOrProvinceCode).to.equal(validValue);
     });
 
     it('should have the property countryCode (base name: "CountryCode")', function() {
-      // uncomment below and update the code to test the property countryCode
-      //var instance = new SellingPartnerApiForFulfillmentInbound.Address();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('countryCode');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.countryCode = validValue;
+      expect(instance.countryCode).to.equal(validValue);
     });
 
     it('should have the property postalCode (base name: "PostalCode")', function() {
-      // uncomment below and update the code to test the property postalCode
-      //var instance = new SellingPartnerApiForFulfillmentInbound.Address();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('postalCode');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.postalCode = validValue;
+      expect(instance.postalCode).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForFulfillmentInbound[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

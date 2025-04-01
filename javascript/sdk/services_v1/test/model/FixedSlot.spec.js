@@ -28,61 +28,106 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForServices.FixedSlot();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForServices.FixedSlot.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('FixedSlot', function() {
     it('should create an instance of FixedSlot', function() {
-      // uncomment below and update the code to test FixedSlot
-      //var instance = new SellingPartnerApiForServices.FixedSlot();
-      //expect(instance).to.be.a(SellingPartnerApiForServices.FixedSlot);
+      expect(instance).to.be.a(SellingPartnerApiForServices.FixedSlot);
     });
 
     it('should have the property startDateTime (base name: "startDateTime")', function() {
-      // uncomment below and update the code to test the property startDateTime
-      //var instance = new SellingPartnerApiForServices.FixedSlot();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('startDateTime');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.startDateTime = validValue;
+      expect(instance.startDateTime).to.equal(validValue);
     });
 
     it('should have the property scheduledCapacity (base name: "scheduledCapacity")', function() {
-      // uncomment below and update the code to test the property scheduledCapacity
-      //var instance = new SellingPartnerApiForServices.FixedSlot();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('scheduledCapacity');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.scheduledCapacity = validValue;
+      expect(instance.scheduledCapacity).to.equal(validValue);
     });
 
     it('should have the property availableCapacity (base name: "availableCapacity")', function() {
-      // uncomment below and update the code to test the property availableCapacity
-      //var instance = new SellingPartnerApiForServices.FixedSlot();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('availableCapacity');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.availableCapacity = validValue;
+      expect(instance.availableCapacity).to.equal(validValue);
     });
 
     it('should have the property encumberedCapacity (base name: "encumberedCapacity")', function() {
-      // uncomment below and update the code to test the property encumberedCapacity
-      //var instance = new SellingPartnerApiForServices.FixedSlot();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('encumberedCapacity');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.encumberedCapacity = validValue;
+      expect(instance.encumberedCapacity).to.equal(validValue);
     });
 
     it('should have the property reservedCapacity (base name: "reservedCapacity")', function() {
-      // uncomment below and update the code to test the property reservedCapacity
-      //var instance = new SellingPartnerApiForServices.FixedSlot();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('reservedCapacity');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.reservedCapacity = validValue;
+      expect(instance.reservedCapacity).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForServices[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

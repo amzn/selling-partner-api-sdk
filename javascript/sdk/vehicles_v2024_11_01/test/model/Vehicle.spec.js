@@ -28,103 +28,176 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new TheSellingPartnerApiForAutomotive.Vehicle();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(TheSellingPartnerApiForAutomotive.Vehicle.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('Vehicle', function() {
     it('should create an instance of Vehicle', function() {
-      // uncomment below and update the code to test Vehicle
-      //var instance = new TheSellingPartnerApiForAutomotive.Vehicle();
-      //expect(instance).to.be.a(TheSellingPartnerApiForAutomotive.Vehicle);
+      expect(instance).to.be.a(TheSellingPartnerApiForAutomotive.Vehicle);
     });
 
     it('should have the property make (base name: "make")', function() {
-      // uncomment below and update the code to test the property make
-      //var instance = new TheSellingPartnerApiForAutomotive.Vehicle();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('make');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.make = validValue;
+      expect(instance.make).to.equal(validValue);
     });
 
     it('should have the property model (base name: "model")', function() {
-      // uncomment below and update the code to test the property model
-      //var instance = new TheSellingPartnerApiForAutomotive.Vehicle();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('model');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.model = validValue;
+      expect(instance.model).to.equal(validValue);
     });
 
     it('should have the property variantName (base name: "variantName")', function() {
-      // uncomment below and update the code to test the property variantName
-      //var instance = new TheSellingPartnerApiForAutomotive.Vehicle();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('variantName');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.variantName = validValue;
+      expect(instance.variantName).to.equal(validValue);
     });
 
     it('should have the property bodyStyle (base name: "bodyStyle")', function() {
-      // uncomment below and update the code to test the property bodyStyle
-      //var instance = new TheSellingPartnerApiForAutomotive.Vehicle();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('bodyStyle');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.bodyStyle = validValue;
+      expect(instance.bodyStyle).to.equal(validValue);
     });
 
     it('should have the property driveType (base name: "driveType")', function() {
-      // uncomment below and update the code to test the property driveType
-      //var instance = new TheSellingPartnerApiForAutomotive.Vehicle();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('driveType');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.driveType = validValue;
+      expect(instance.driveType).to.equal(validValue);
     });
 
     it('should have the property energy (base name: "energy")', function() {
-      // uncomment below and update the code to test the property energy
-      //var instance = new TheSellingPartnerApiForAutomotive.Vehicle();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('energy');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.energy = validValue;
+      expect(instance.energy).to.equal(validValue);
     });
 
     it('should have the property engineOutput (base name: "engineOutput")', function() {
-      // uncomment below and update the code to test the property engineOutput
-      //var instance = new TheSellingPartnerApiForAutomotive.Vehicle();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('engineOutput');
+
+      // set and verify value
+      var validValue = generateMockData('[EngineOutput]', true);
+      instance.engineOutput = validValue;
+      expect(instance.engineOutput).to.equal(validValue);
     });
 
     it('should have the property manufacturingStartDate (base name: "manufacturingStartDate")', function() {
-      // uncomment below and update the code to test the property manufacturingStartDate
-      //var instance = new TheSellingPartnerApiForAutomotive.Vehicle();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('manufacturingStartDate');
+
+      // set and verify value
+      var validValue = generateMockData('MonthAndYear');
+      instance.manufacturingStartDate = validValue;
+      expect(instance.manufacturingStartDate).to.equal(validValue);
     });
 
     it('should have the property manufacturingStopDate (base name: "manufacturingStopDate")', function() {
-      // uncomment below and update the code to test the property manufacturingStopDate
-      //var instance = new TheSellingPartnerApiForAutomotive.Vehicle();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('manufacturingStopDate');
+
+      // set and verify value
+      var validValue = generateMockData('MonthAndYear');
+      instance.manufacturingStopDate = validValue;
+      expect(instance.manufacturingStopDate).to.equal(validValue);
     });
 
     it('should have the property lastProcessedDate (base name: "lastProcessedDate")', function() {
-      // uncomment below and update the code to test the property lastProcessedDate
-      //var instance = new TheSellingPartnerApiForAutomotive.Vehicle();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('lastProcessedDate');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.lastProcessedDate = validValue;
+      expect(instance.lastProcessedDate).to.equal(validValue);
     });
 
     it('should have the property status (base name: "status")', function() {
-      // uncomment below and update the code to test the property status
-      //var instance = new TheSellingPartnerApiForAutomotive.Vehicle();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('status');
+
+      // set and verify value
+      var validValue = generateMockData('VehicleStatusInCatalog');
+      instance.status = validValue;
+      expect(instance.status).to.equal(validValue);
     });
 
     it('should have the property identifiers (base name: "identifiers")', function() {
-      // uncomment below and update the code to test the property identifiers
-      //var instance = new TheSellingPartnerApiForAutomotive.Vehicle();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('identifiers');
+
+      // set and verify value
+      var validValue = generateMockData('[VehicleIdentifiers]', true);
+      instance.identifiers = validValue;
+      expect(instance.identifiers).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = TheSellingPartnerApiForAutomotive[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

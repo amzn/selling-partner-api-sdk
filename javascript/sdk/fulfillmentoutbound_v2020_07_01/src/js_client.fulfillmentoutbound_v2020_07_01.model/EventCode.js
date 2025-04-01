@@ -261,4 +261,3 @@ export default class EventCode {
         return object;
     }
 }
-

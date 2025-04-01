@@ -28,133 +28,226 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForReplenishment.ListOfferMetricsResponseOffer();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForReplenishment.ListOfferMetricsResponseOffer.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('ListOfferMetricsResponseOffer', function() {
     it('should create an instance of ListOfferMetricsResponseOffer', function() {
-      // uncomment below and update the code to test ListOfferMetricsResponseOffer
-      //var instance = new SellingPartnerApiForReplenishment.ListOfferMetricsResponseOffer();
-      //expect(instance).to.be.a(SellingPartnerApiForReplenishment.ListOfferMetricsResponseOffer);
+      expect(instance).to.be.a(SellingPartnerApiForReplenishment.ListOfferMetricsResponseOffer);
     });
 
     it('should have the property asin (base name: "asin")', function() {
-      // uncomment below and update the code to test the property asin
-      //var instance = new SellingPartnerApiForReplenishment.ListOfferMetricsResponseOffer();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('asin');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.asin = validValue;
+      expect(instance.asin).to.equal(validValue);
     });
 
     it('should have the property notDeliveredDueToOOS (base name: "notDeliveredDueToOOS")', function() {
-      // uncomment below and update the code to test the property notDeliveredDueToOOS
-      //var instance = new SellingPartnerApiForReplenishment.ListOfferMetricsResponseOffer();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('notDeliveredDueToOOS');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.notDeliveredDueToOOS = validValue;
+      expect(instance.notDeliveredDueToOOS).to.equal(validValue);
     });
 
     it('should have the property totalSubscriptionsRevenue (base name: "totalSubscriptionsRevenue")', function() {
-      // uncomment below and update the code to test the property totalSubscriptionsRevenue
-      //var instance = new SellingPartnerApiForReplenishment.ListOfferMetricsResponseOffer();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('totalSubscriptionsRevenue');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.totalSubscriptionsRevenue = validValue;
+      expect(instance.totalSubscriptionsRevenue).to.equal(validValue);
     });
 
     it('should have the property shippedSubscriptionUnits (base name: "shippedSubscriptionUnits")', function() {
-      // uncomment below and update the code to test the property shippedSubscriptionUnits
-      //var instance = new SellingPartnerApiForReplenishment.ListOfferMetricsResponseOffer();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('shippedSubscriptionUnits');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.shippedSubscriptionUnits = validValue;
+      expect(instance.shippedSubscriptionUnits).to.equal(validValue);
     });
 
     it('should have the property activeSubscriptions (base name: "activeSubscriptions")', function() {
-      // uncomment below and update the code to test the property activeSubscriptions
-      //var instance = new SellingPartnerApiForReplenishment.ListOfferMetricsResponseOffer();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('activeSubscriptions');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.activeSubscriptions = validValue;
+      expect(instance.activeSubscriptions).to.equal(validValue);
     });
 
     it('should have the property revenuePenetration (base name: "revenuePenetration")', function() {
-      // uncomment below and update the code to test the property revenuePenetration
-      //var instance = new SellingPartnerApiForReplenishment.ListOfferMetricsResponseOffer();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('revenuePenetration');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.revenuePenetration = validValue;
+      expect(instance.revenuePenetration).to.equal(validValue);
     });
 
     it('should have the property lostRevenueDueToOOS (base name: "lostRevenueDueToOOS")', function() {
-      // uncomment below and update the code to test the property lostRevenueDueToOOS
-      //var instance = new SellingPartnerApiForReplenishment.ListOfferMetricsResponseOffer();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('lostRevenueDueToOOS');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.lostRevenueDueToOOS = validValue;
+      expect(instance.lostRevenueDueToOOS).to.equal(validValue);
     });
 
     it('should have the property couponsRevenuePenetration (base name: "couponsRevenuePenetration")', function() {
-      // uncomment below and update the code to test the property couponsRevenuePenetration
-      //var instance = new SellingPartnerApiForReplenishment.ListOfferMetricsResponseOffer();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('couponsRevenuePenetration');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.couponsRevenuePenetration = validValue;
+      expect(instance.couponsRevenuePenetration).to.equal(validValue);
     });
 
     it('should have the property shareOfCouponSubscriptions (base name: "shareOfCouponSubscriptions")', function() {
-      // uncomment below and update the code to test the property shareOfCouponSubscriptions
-      //var instance = new SellingPartnerApiForReplenishment.ListOfferMetricsResponseOffer();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('shareOfCouponSubscriptions');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.shareOfCouponSubscriptions = validValue;
+      expect(instance.shareOfCouponSubscriptions).to.equal(validValue);
     });
 
     it('should have the property next30DayTotalSubscriptionsRevenue (base name: "next30DayTotalSubscriptionsRevenue")', function() {
-      // uncomment below and update the code to test the property next30DayTotalSubscriptionsRevenue
-      //var instance = new SellingPartnerApiForReplenishment.ListOfferMetricsResponseOffer();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('next30DayTotalSubscriptionsRevenue');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.next30DayTotalSubscriptionsRevenue = validValue;
+      expect(instance.next30DayTotalSubscriptionsRevenue).to.equal(validValue);
     });
 
     it('should have the property next60DayTotalSubscriptionsRevenue (base name: "next60DayTotalSubscriptionsRevenue")', function() {
-      // uncomment below and update the code to test the property next60DayTotalSubscriptionsRevenue
-      //var instance = new SellingPartnerApiForReplenishment.ListOfferMetricsResponseOffer();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('next60DayTotalSubscriptionsRevenue');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.next60DayTotalSubscriptionsRevenue = validValue;
+      expect(instance.next60DayTotalSubscriptionsRevenue).to.equal(validValue);
     });
 
     it('should have the property next90DayTotalSubscriptionsRevenue (base name: "next90DayTotalSubscriptionsRevenue")', function() {
-      // uncomment below and update the code to test the property next90DayTotalSubscriptionsRevenue
-      //var instance = new SellingPartnerApiForReplenishment.ListOfferMetricsResponseOffer();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('next90DayTotalSubscriptionsRevenue');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.next90DayTotalSubscriptionsRevenue = validValue;
+      expect(instance.next90DayTotalSubscriptionsRevenue).to.equal(validValue);
     });
 
     it('should have the property next30DayShippedSubscriptionUnits (base name: "next30DayShippedSubscriptionUnits")', function() {
-      // uncomment below and update the code to test the property next30DayShippedSubscriptionUnits
-      //var instance = new SellingPartnerApiForReplenishment.ListOfferMetricsResponseOffer();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('next30DayShippedSubscriptionUnits');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.next30DayShippedSubscriptionUnits = validValue;
+      expect(instance.next30DayShippedSubscriptionUnits).to.equal(validValue);
     });
 
     it('should have the property next60DayShippedSubscriptionUnits (base name: "next60DayShippedSubscriptionUnits")', function() {
-      // uncomment below and update the code to test the property next60DayShippedSubscriptionUnits
-      //var instance = new SellingPartnerApiForReplenishment.ListOfferMetricsResponseOffer();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('next60DayShippedSubscriptionUnits');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.next60DayShippedSubscriptionUnits = validValue;
+      expect(instance.next60DayShippedSubscriptionUnits).to.equal(validValue);
     });
 
     it('should have the property next90DayShippedSubscriptionUnits (base name: "next90DayShippedSubscriptionUnits")', function() {
-      // uncomment below and update the code to test the property next90DayShippedSubscriptionUnits
-      //var instance = new SellingPartnerApiForReplenishment.ListOfferMetricsResponseOffer();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('next90DayShippedSubscriptionUnits');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.next90DayShippedSubscriptionUnits = validValue;
+      expect(instance.next90DayShippedSubscriptionUnits).to.equal(validValue);
     });
 
     it('should have the property timeInterval (base name: "timeInterval")', function() {
-      // uncomment below and update the code to test the property timeInterval
-      //var instance = new SellingPartnerApiForReplenishment.ListOfferMetricsResponseOffer();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('timeInterval');
+
+      // set and verify value
+      var validValue = generateMockData('TimeInterval');
+      instance.timeInterval = validValue;
+      expect(instance.timeInterval).to.equal(validValue);
     });
 
     it('should have the property currencyCode (base name: "currencyCode")', function() {
-      // uncomment below and update the code to test the property currencyCode
-      //var instance = new SellingPartnerApiForReplenishment.ListOfferMetricsResponseOffer();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('currencyCode');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.currencyCode = validValue;
+      expect(instance.currencyCode).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForReplenishment[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

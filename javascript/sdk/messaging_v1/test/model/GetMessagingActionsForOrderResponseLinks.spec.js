@@ -28,43 +28,76 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForMessaging.GetMessagingActionsForOrderResponseLinks();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForMessaging.GetMessagingActionsForOrderResponseLinks.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('GetMessagingActionsForOrderResponseLinks', function() {
     it('should create an instance of GetMessagingActionsForOrderResponseLinks', function() {
-      // uncomment below and update the code to test GetMessagingActionsForOrderResponseLinks
-      //var instance = new SellingPartnerApiForMessaging.GetMessagingActionsForOrderResponseLinks();
-      //expect(instance).to.be.a(SellingPartnerApiForMessaging.GetMessagingActionsForOrderResponseLinks);
+      expect(instance).to.be.a(SellingPartnerApiForMessaging.GetMessagingActionsForOrderResponseLinks);
     });
 
     it('should have the property self (base name: "self")', function() {
-      // uncomment below and update the code to test the property self
-      //var instance = new SellingPartnerApiForMessaging.GetMessagingActionsForOrderResponseLinks();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('self');
+
+      // set and verify value
+      var validValue = generateMockData('LinkObject');
+      instance.self = validValue;
+      expect(instance.self).to.equal(validValue);
     });
 
     it('should have the property actions (base name: "actions")', function() {
-      // uncomment below and update the code to test the property actions
-      //var instance = new SellingPartnerApiForMessaging.GetMessagingActionsForOrderResponseLinks();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('actions');
+
+      // set and verify value
+      var validValue = generateMockData('[LinkObject]', true);
+      instance.actions = validValue;
+      expect(instance.actions).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForMessaging[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

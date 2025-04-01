@@ -28,73 +28,126 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new TheSellingPartnerApiForTransfers.PaymentMethodDetails();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(TheSellingPartnerApiForTransfers.PaymentMethodDetails.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('PaymentMethodDetails', function() {
     it('should create an instance of PaymentMethodDetails', function() {
-      // uncomment below and update the code to test PaymentMethodDetails
-      //var instance = new TheSellingPartnerApiForTransfers.PaymentMethodDetails();
-      //expect(instance).to.be.a(TheSellingPartnerApiForTransfers.PaymentMethodDetails);
+      expect(instance).to.be.a(TheSellingPartnerApiForTransfers.PaymentMethodDetails);
     });
 
     it('should have the property accountHolderName (base name: "accountHolderName")', function() {
-      // uncomment below and update the code to test the property accountHolderName
-      //var instance = new TheSellingPartnerApiForTransfers.PaymentMethodDetails();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('accountHolderName');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.accountHolderName = validValue;
+      expect(instance.accountHolderName).to.equal(validValue);
     });
 
     it('should have the property paymentMethodId (base name: "paymentMethodId")', function() {
-      // uncomment below and update the code to test the property paymentMethodId
-      //var instance = new TheSellingPartnerApiForTransfers.PaymentMethodDetails();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('paymentMethodId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.paymentMethodId = validValue;
+      expect(instance.paymentMethodId).to.equal(validValue);
     });
 
     it('should have the property tail (base name: "tail")', function() {
-      // uncomment below and update the code to test the property tail
-      //var instance = new TheSellingPartnerApiForTransfers.PaymentMethodDetails();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('tail');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.tail = validValue;
+      expect(instance.tail).to.equal(validValue);
     });
 
     it('should have the property expiryDate (base name: "expiryDate")', function() {
-      // uncomment below and update the code to test the property expiryDate
-      //var instance = new TheSellingPartnerApiForTransfers.PaymentMethodDetails();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('expiryDate');
+
+      // set and verify value
+      var validValue = generateMockData('ExpiryDate');
+      instance.expiryDate = validValue;
+      expect(instance.expiryDate).to.equal(validValue);
     });
 
     it('should have the property countryCode (base name: "countryCode")', function() {
-      // uncomment below and update the code to test the property countryCode
-      //var instance = new TheSellingPartnerApiForTransfers.PaymentMethodDetails();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('countryCode');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.countryCode = validValue;
+      expect(instance.countryCode).to.equal(validValue);
     });
 
     it('should have the property paymentMethodType (base name: "paymentMethodType")', function() {
-      // uncomment below and update the code to test the property paymentMethodType
-      //var instance = new TheSellingPartnerApiForTransfers.PaymentMethodDetails();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('paymentMethodType');
+
+      // set and verify value
+      var validValue = generateMockData('PaymentMethodType');
+      instance.paymentMethodType = validValue;
+      expect(instance.paymentMethodType).to.equal(validValue);
     });
 
     it('should have the property assignmentType (base name: "assignmentType")', function() {
-      // uncomment below and update the code to test the property assignmentType
-      //var instance = new TheSellingPartnerApiForTransfers.PaymentMethodDetails();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('assignmentType');
+
+      // set and verify value
+      var validValue = generateMockData('AssignmentType');
+      instance.assignmentType = validValue;
+      expect(instance.assignmentType).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = TheSellingPartnerApiForTransfers[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

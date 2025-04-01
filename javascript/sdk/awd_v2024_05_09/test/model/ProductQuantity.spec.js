@@ -28,61 +28,106 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new TheSellingPartnerApiForAmazonWarehousingAndDistribution.ProductQuantity();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(TheSellingPartnerApiForAmazonWarehousingAndDistribution.ProductQuantity.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('ProductQuantity', function() {
     it('should create an instance of ProductQuantity', function() {
-      // uncomment below and update the code to test ProductQuantity
-      //var instance = new TheSellingPartnerApiForAmazonWarehousingAndDistribution.ProductQuantity();
-      //expect(instance).to.be.a(TheSellingPartnerApiForAmazonWarehousingAndDistribution.ProductQuantity);
+      expect(instance).to.be.a(TheSellingPartnerApiForAmazonWarehousingAndDistribution.ProductQuantity);
     });
 
     it('should have the property attributes (base name: "attributes")', function() {
-      // uncomment below and update the code to test the property attributes
-      //var instance = new TheSellingPartnerApiForAmazonWarehousingAndDistribution.ProductQuantity();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('attributes');
+
+      // set and verify value
+      var validValue = generateMockData('[ProductAttribute]', true);
+      instance.attributes = validValue;
+      expect(instance.attributes).to.equal(validValue);
     });
 
     it('should have the property quantity (base name: "quantity")', function() {
-      // uncomment below and update the code to test the property quantity
-      //var instance = new TheSellingPartnerApiForAmazonWarehousingAndDistribution.ProductQuantity();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('quantity');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.quantity = validValue;
+      expect(instance.quantity).to.equal(validValue);
     });
 
     it('should have the property sku (base name: "sku")', function() {
-      // uncomment below and update the code to test the property sku
-      //var instance = new TheSellingPartnerApiForAmazonWarehousingAndDistribution.ProductQuantity();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('sku');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.sku = validValue;
+      expect(instance.sku).to.equal(validValue);
     });
 
     it('should have the property expiration (base name: "expiration")', function() {
-      // uncomment below and update the code to test the property expiration
-      //var instance = new TheSellingPartnerApiForAmazonWarehousingAndDistribution.ProductQuantity();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('expiration');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.expiration = validValue;
+      expect(instance.expiration).to.equal(validValue);
     });
 
     it('should have the property prepDetails (base name: "prepDetails")', function() {
-      // uncomment below and update the code to test the property prepDetails
-      //var instance = new TheSellingPartnerApiForAmazonWarehousingAndDistribution.ProductQuantity();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('prepDetails');
+
+      // set and verify value
+      var validValue = generateMockData('PrepDetails');
+      instance.prepDetails = validValue;
+      expect(instance.prepDetails).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = TheSellingPartnerApiForAmazonWarehousingAndDistribution[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

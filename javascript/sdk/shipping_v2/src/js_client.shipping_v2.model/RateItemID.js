@@ -261,4 +261,3 @@ export default class RateItemID {
         return object;
     }
 }
-

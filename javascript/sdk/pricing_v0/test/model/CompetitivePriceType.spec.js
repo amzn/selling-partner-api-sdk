@@ -28,85 +28,146 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForPricing.CompetitivePriceType();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForPricing.CompetitivePriceType.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('CompetitivePriceType', function() {
     it('should create an instance of CompetitivePriceType', function() {
-      // uncomment below and update the code to test CompetitivePriceType
-      //var instance = new SellingPartnerApiForPricing.CompetitivePriceType();
-      //expect(instance).to.be.a(SellingPartnerApiForPricing.CompetitivePriceType);
+      expect(instance).to.be.a(SellingPartnerApiForPricing.CompetitivePriceType);
     });
 
     it('should have the property competitivePriceId (base name: "CompetitivePriceId")', function() {
-      // uncomment below and update the code to test the property competitivePriceId
-      //var instance = new SellingPartnerApiForPricing.CompetitivePriceType();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('competitivePriceId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.competitivePriceId = validValue;
+      expect(instance.competitivePriceId).to.equal(validValue);
     });
 
     it('should have the property price (base name: "Price")', function() {
-      // uncomment below and update the code to test the property price
-      //var instance = new SellingPartnerApiForPricing.CompetitivePriceType();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('price');
+
+      // set and verify value
+      var validValue = generateMockData('PriceType');
+      instance.price = validValue;
+      expect(instance.price).to.equal(validValue);
     });
 
     it('should have the property condition (base name: "condition")', function() {
-      // uncomment below and update the code to test the property condition
-      //var instance = new SellingPartnerApiForPricing.CompetitivePriceType();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('condition');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.condition = validValue;
+      expect(instance.condition).to.equal(validValue);
     });
 
     it('should have the property subcondition (base name: "subcondition")', function() {
-      // uncomment below and update the code to test the property subcondition
-      //var instance = new SellingPartnerApiForPricing.CompetitivePriceType();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('subcondition');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.subcondition = validValue;
+      expect(instance.subcondition).to.equal(validValue);
     });
 
     it('should have the property offerType (base name: "offerType")', function() {
-      // uncomment below and update the code to test the property offerType
-      //var instance = new SellingPartnerApiForPricing.CompetitivePriceType();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('offerType');
+
+      // set and verify value
+      var validValue = generateMockData('OfferCustomerType');
+      instance.offerType = validValue;
+      expect(instance.offerType).to.equal(validValue);
     });
 
     it('should have the property quantityTier (base name: "quantityTier")', function() {
-      // uncomment below and update the code to test the property quantityTier
-      //var instance = new SellingPartnerApiForPricing.CompetitivePriceType();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('quantityTier');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.quantityTier = validValue;
+      expect(instance.quantityTier).to.equal(validValue);
     });
 
     it('should have the property quantityDiscountType (base name: "quantityDiscountType")', function() {
-      // uncomment below and update the code to test the property quantityDiscountType
-      //var instance = new SellingPartnerApiForPricing.CompetitivePriceType();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('quantityDiscountType');
+
+      // set and verify value
+      var validValue = generateMockData('QuantityDiscountType');
+      instance.quantityDiscountType = validValue;
+      expect(instance.quantityDiscountType).to.equal(validValue);
     });
 
     it('should have the property sellerId (base name: "sellerId")', function() {
-      // uncomment below and update the code to test the property sellerId
-      //var instance = new SellingPartnerApiForPricing.CompetitivePriceType();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('sellerId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.sellerId = validValue;
+      expect(instance.sellerId).to.equal(validValue);
     });
 
     it('should have the property belongsToRequester (base name: "belongsToRequester")', function() {
-      // uncomment below and update the code to test the property belongsToRequester
-      //var instance = new SellingPartnerApiForPricing.CompetitivePriceType();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('belongsToRequester');
+
+      // set and verify value
+      var validValue = generateMockData('Boolean');
+      instance.belongsToRequester = validValue;
+      expect(instance.belongsToRequester).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForPricing[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

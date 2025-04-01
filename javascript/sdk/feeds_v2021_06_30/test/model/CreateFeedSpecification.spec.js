@@ -28,55 +28,96 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForFeeds.CreateFeedSpecification();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForFeeds.CreateFeedSpecification.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('CreateFeedSpecification', function() {
     it('should create an instance of CreateFeedSpecification', function() {
-      // uncomment below and update the code to test CreateFeedSpecification
-      //var instance = new SellingPartnerApiForFeeds.CreateFeedSpecification();
-      //expect(instance).to.be.a(SellingPartnerApiForFeeds.CreateFeedSpecification);
+      expect(instance).to.be.a(SellingPartnerApiForFeeds.CreateFeedSpecification);
     });
 
     it('should have the property feedType (base name: "feedType")', function() {
-      // uncomment below and update the code to test the property feedType
-      //var instance = new SellingPartnerApiForFeeds.CreateFeedSpecification();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('feedType');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.feedType = validValue;
+      expect(instance.feedType).to.equal(validValue);
     });
 
     it('should have the property marketplaceIds (base name: "marketplaceIds")', function() {
-      // uncomment below and update the code to test the property marketplaceIds
-      //var instance = new SellingPartnerApiForFeeds.CreateFeedSpecification();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('marketplaceIds');
+
+      // set and verify value
+      var validValue = generateMockData('[String]', true);
+      instance.marketplaceIds = validValue;
+      expect(instance.marketplaceIds).to.equal(validValue);
     });
 
     it('should have the property inputFeedDocumentId (base name: "inputFeedDocumentId")', function() {
-      // uncomment below and update the code to test the property inputFeedDocumentId
-      //var instance = new SellingPartnerApiForFeeds.CreateFeedSpecification();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('inputFeedDocumentId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.inputFeedDocumentId = validValue;
+      expect(instance.inputFeedDocumentId).to.equal(validValue);
     });
 
     it('should have the property feedOptions (base name: "feedOptions")', function() {
-      // uncomment below and update the code to test the property feedOptions
-      //var instance = new SellingPartnerApiForFeeds.CreateFeedSpecification();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('feedOptions');
+
+      // set and verify value
+      var validValue = generateMockData('{String: String}');
+      instance.feedOptions = validValue;
+      expect(instance.feedOptions).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForFeeds[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

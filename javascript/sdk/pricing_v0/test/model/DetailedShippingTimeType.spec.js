@@ -28,55 +28,96 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForPricing.DetailedShippingTimeType();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForPricing.DetailedShippingTimeType.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('DetailedShippingTimeType', function() {
     it('should create an instance of DetailedShippingTimeType', function() {
-      // uncomment below and update the code to test DetailedShippingTimeType
-      //var instance = new SellingPartnerApiForPricing.DetailedShippingTimeType();
-      //expect(instance).to.be.a(SellingPartnerApiForPricing.DetailedShippingTimeType);
+      expect(instance).to.be.a(SellingPartnerApiForPricing.DetailedShippingTimeType);
     });
 
     it('should have the property minimumHours (base name: "minimumHours")', function() {
-      // uncomment below and update the code to test the property minimumHours
-      //var instance = new SellingPartnerApiForPricing.DetailedShippingTimeType();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('minimumHours');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.minimumHours = validValue;
+      expect(instance.minimumHours).to.equal(validValue);
     });
 
     it('should have the property maximumHours (base name: "maximumHours")', function() {
-      // uncomment below and update the code to test the property maximumHours
-      //var instance = new SellingPartnerApiForPricing.DetailedShippingTimeType();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('maximumHours');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.maximumHours = validValue;
+      expect(instance.maximumHours).to.equal(validValue);
     });
 
     it('should have the property availableDate (base name: "availableDate")', function() {
-      // uncomment below and update the code to test the property availableDate
-      //var instance = new SellingPartnerApiForPricing.DetailedShippingTimeType();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('availableDate');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.availableDate = validValue;
+      expect(instance.availableDate).to.equal(validValue);
     });
 
     it('should have the property availabilityType (base name: "availabilityType")', function() {
-      // uncomment below and update the code to test the property availabilityType
-      //var instance = new SellingPartnerApiForPricing.DetailedShippingTimeType();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('availabilityType');
+
+      // set and verify value
+      var validValue = ['NOW', 'FUTURE_WITHOUT_DATE', 'FUTURE_WITH_DATE', ][0];
+      instance.availabilityType = validValue;
+      expect(instance.availabilityType).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForPricing[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

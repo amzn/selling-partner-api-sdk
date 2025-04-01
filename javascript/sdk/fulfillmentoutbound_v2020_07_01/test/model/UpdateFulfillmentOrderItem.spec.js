@@ -28,91 +28,156 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApisForFulfillmentOutbound.UpdateFulfillmentOrderItem();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApisForFulfillmentOutbound.UpdateFulfillmentOrderItem.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('UpdateFulfillmentOrderItem', function() {
     it('should create an instance of UpdateFulfillmentOrderItem', function() {
-      // uncomment below and update the code to test UpdateFulfillmentOrderItem
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.UpdateFulfillmentOrderItem();
-      //expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.UpdateFulfillmentOrderItem);
+      expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.UpdateFulfillmentOrderItem);
     });
 
     it('should have the property sellerSku (base name: "sellerSku")', function() {
-      // uncomment below and update the code to test the property sellerSku
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.UpdateFulfillmentOrderItem();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('sellerSku');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.sellerSku = validValue;
+      expect(instance.sellerSku).to.equal(validValue);
     });
 
     it('should have the property sellerFulfillmentOrderItemId (base name: "sellerFulfillmentOrderItemId")', function() {
-      // uncomment below and update the code to test the property sellerFulfillmentOrderItemId
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.UpdateFulfillmentOrderItem();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('sellerFulfillmentOrderItemId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.sellerFulfillmentOrderItemId = validValue;
+      expect(instance.sellerFulfillmentOrderItemId).to.equal(validValue);
     });
 
     it('should have the property quantity (base name: "quantity")', function() {
-      // uncomment below and update the code to test the property quantity
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.UpdateFulfillmentOrderItem();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('quantity');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.quantity = validValue;
+      expect(instance.quantity).to.equal(validValue);
     });
 
     it('should have the property giftMessage (base name: "giftMessage")', function() {
-      // uncomment below and update the code to test the property giftMessage
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.UpdateFulfillmentOrderItem();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('giftMessage');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.giftMessage = validValue;
+      expect(instance.giftMessage).to.equal(validValue);
     });
 
     it('should have the property displayableComment (base name: "displayableComment")', function() {
-      // uncomment below and update the code to test the property displayableComment
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.UpdateFulfillmentOrderItem();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('displayableComment');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.displayableComment = validValue;
+      expect(instance.displayableComment).to.equal(validValue);
     });
 
     it('should have the property fulfillmentNetworkSku (base name: "fulfillmentNetworkSku")', function() {
-      // uncomment below and update the code to test the property fulfillmentNetworkSku
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.UpdateFulfillmentOrderItem();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('fulfillmentNetworkSku');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.fulfillmentNetworkSku = validValue;
+      expect(instance.fulfillmentNetworkSku).to.equal(validValue);
     });
 
     it('should have the property orderItemDisposition (base name: "orderItemDisposition")', function() {
-      // uncomment below and update the code to test the property orderItemDisposition
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.UpdateFulfillmentOrderItem();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('orderItemDisposition');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.orderItemDisposition = validValue;
+      expect(instance.orderItemDisposition).to.equal(validValue);
     });
 
     it('should have the property perUnitDeclaredValue (base name: "perUnitDeclaredValue")', function() {
-      // uncomment below and update the code to test the property perUnitDeclaredValue
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.UpdateFulfillmentOrderItem();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('perUnitDeclaredValue');
+
+      // set and verify value
+      var validValue = generateMockData('Money');
+      instance.perUnitDeclaredValue = validValue;
+      expect(instance.perUnitDeclaredValue).to.equal(validValue);
     });
 
     it('should have the property perUnitPrice (base name: "perUnitPrice")', function() {
-      // uncomment below and update the code to test the property perUnitPrice
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.UpdateFulfillmentOrderItem();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('perUnitPrice');
+
+      // set and verify value
+      var validValue = generateMockData('Money');
+      instance.perUnitPrice = validValue;
+      expect(instance.perUnitPrice).to.equal(validValue);
     });
 
     it('should have the property perUnitTax (base name: "perUnitTax")', function() {
-      // uncomment below and update the code to test the property perUnitTax
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.UpdateFulfillmentOrderItem();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('perUnitTax');
+
+      // set and verify value
+      var validValue = generateMockData('Money');
+      instance.perUnitTax = validValue;
+      expect(instance.perUnitTax).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApisForFulfillmentOutbound[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

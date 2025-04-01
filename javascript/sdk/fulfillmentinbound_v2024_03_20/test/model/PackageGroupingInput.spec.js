@@ -28,49 +28,86 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new TheSellingPartnerApiForFbaInboundOperations.PackageGroupingInput();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(TheSellingPartnerApiForFbaInboundOperations.PackageGroupingInput.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('PackageGroupingInput', function() {
     it('should create an instance of PackageGroupingInput', function() {
-      // uncomment below and update the code to test PackageGroupingInput
-      //var instance = new TheSellingPartnerApiForFbaInboundOperations.PackageGroupingInput();
-      //expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.PackageGroupingInput);
+      expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.PackageGroupingInput);
     });
 
     it('should have the property boxes (base name: "boxes")', function() {
-      // uncomment below and update the code to test the property boxes
-      //var instance = new TheSellingPartnerApiForFbaInboundOperations.PackageGroupingInput();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('boxes');
+
+      // set and verify value
+      var validValue = generateMockData('[BoxInput]', true);
+      instance.boxes = validValue;
+      expect(instance.boxes).to.equal(validValue);
     });
 
     it('should have the property packingGroupId (base name: "packingGroupId")', function() {
-      // uncomment below and update the code to test the property packingGroupId
-      //var instance = new TheSellingPartnerApiForFbaInboundOperations.PackageGroupingInput();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('packingGroupId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.packingGroupId = validValue;
+      expect(instance.packingGroupId).to.equal(validValue);
     });
 
     it('should have the property shipmentId (base name: "shipmentId")', function() {
-      // uncomment below and update the code to test the property shipmentId
-      //var instance = new TheSellingPartnerApiForFbaInboundOperations.PackageGroupingInput();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('shipmentId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.shipmentId = validValue;
+      expect(instance.shipmentId).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = TheSellingPartnerApiForFbaInboundOperations[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

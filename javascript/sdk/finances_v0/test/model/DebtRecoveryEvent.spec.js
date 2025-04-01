@@ -28,61 +28,106 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForFinances.DebtRecoveryEvent();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForFinances.DebtRecoveryEvent.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('DebtRecoveryEvent', function() {
     it('should create an instance of DebtRecoveryEvent', function() {
-      // uncomment below and update the code to test DebtRecoveryEvent
-      //var instance = new SellingPartnerApiForFinances.DebtRecoveryEvent();
-      //expect(instance).to.be.a(SellingPartnerApiForFinances.DebtRecoveryEvent);
+      expect(instance).to.be.a(SellingPartnerApiForFinances.DebtRecoveryEvent);
     });
 
     it('should have the property debtRecoveryType (base name: "DebtRecoveryType")', function() {
-      // uncomment below and update the code to test the property debtRecoveryType
-      //var instance = new SellingPartnerApiForFinances.DebtRecoveryEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('debtRecoveryType');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.debtRecoveryType = validValue;
+      expect(instance.debtRecoveryType).to.equal(validValue);
     });
 
     it('should have the property recoveryAmount (base name: "RecoveryAmount")', function() {
-      // uncomment below and update the code to test the property recoveryAmount
-      //var instance = new SellingPartnerApiForFinances.DebtRecoveryEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('recoveryAmount');
+
+      // set and verify value
+      var validValue = generateMockData('Currency');
+      instance.recoveryAmount = validValue;
+      expect(instance.recoveryAmount).to.equal(validValue);
     });
 
     it('should have the property overPaymentCredit (base name: "OverPaymentCredit")', function() {
-      // uncomment below and update the code to test the property overPaymentCredit
-      //var instance = new SellingPartnerApiForFinances.DebtRecoveryEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('overPaymentCredit');
+
+      // set and verify value
+      var validValue = generateMockData('Currency');
+      instance.overPaymentCredit = validValue;
+      expect(instance.overPaymentCredit).to.equal(validValue);
     });
 
     it('should have the property debtRecoveryItemList (base name: "DebtRecoveryItemList")', function() {
-      // uncomment below and update the code to test the property debtRecoveryItemList
-      //var instance = new SellingPartnerApiForFinances.DebtRecoveryEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('debtRecoveryItemList');
+
+      // set and verify value
+      var validValue = generateMockData('[DebtRecoveryItem]', true);
+      instance.debtRecoveryItemList = validValue;
+      expect(instance.debtRecoveryItemList).to.equal(validValue);
     });
 
     it('should have the property chargeInstrumentList (base name: "ChargeInstrumentList")', function() {
-      // uncomment below and update the code to test the property chargeInstrumentList
-      //var instance = new SellingPartnerApiForFinances.DebtRecoveryEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('chargeInstrumentList');
+
+      // set and verify value
+      var validValue = generateMockData('[ChargeInstrument]', true);
+      instance.chargeInstrumentList = validValue;
+      expect(instance.chargeInstrumentList).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForFinances[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

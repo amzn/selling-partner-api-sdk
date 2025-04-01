@@ -58,4 +58,3 @@ export default class CapacityType {
         return object;
     }
 }
-

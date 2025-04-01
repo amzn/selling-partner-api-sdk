@@ -28,61 +28,106 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForProductFees.IncludedFeeDetail();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForProductFees.IncludedFeeDetail.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('IncludedFeeDetail', function() {
     it('should create an instance of IncludedFeeDetail', function() {
-      // uncomment below and update the code to test IncludedFeeDetail
-      //var instance = new SellingPartnerApiForProductFees.IncludedFeeDetail();
-      //expect(instance).to.be.a(SellingPartnerApiForProductFees.IncludedFeeDetail);
+      expect(instance).to.be.a(SellingPartnerApiForProductFees.IncludedFeeDetail);
     });
 
     it('should have the property feeType (base name: "FeeType")', function() {
-      // uncomment below and update the code to test the property feeType
-      //var instance = new SellingPartnerApiForProductFees.IncludedFeeDetail();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('feeType');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.feeType = validValue;
+      expect(instance.feeType).to.equal(validValue);
     });
 
     it('should have the property feeAmount (base name: "FeeAmount")', function() {
-      // uncomment below and update the code to test the property feeAmount
-      //var instance = new SellingPartnerApiForProductFees.IncludedFeeDetail();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('feeAmount');
+
+      // set and verify value
+      var validValue = generateMockData('MoneyType');
+      instance.feeAmount = validValue;
+      expect(instance.feeAmount).to.equal(validValue);
     });
 
     it('should have the property feePromotion (base name: "FeePromotion")', function() {
-      // uncomment below and update the code to test the property feePromotion
-      //var instance = new SellingPartnerApiForProductFees.IncludedFeeDetail();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('feePromotion');
+
+      // set and verify value
+      var validValue = generateMockData('MoneyType');
+      instance.feePromotion = validValue;
+      expect(instance.feePromotion).to.equal(validValue);
     });
 
     it('should have the property taxAmount (base name: "TaxAmount")', function() {
-      // uncomment below and update the code to test the property taxAmount
-      //var instance = new SellingPartnerApiForProductFees.IncludedFeeDetail();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('taxAmount');
+
+      // set and verify value
+      var validValue = generateMockData('MoneyType');
+      instance.taxAmount = validValue;
+      expect(instance.taxAmount).to.equal(validValue);
     });
 
     it('should have the property finalFee (base name: "FinalFee")', function() {
-      // uncomment below and update the code to test the property finalFee
-      //var instance = new SellingPartnerApiForProductFees.IncludedFeeDetail();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('finalFee');
+
+      // set and verify value
+      var validValue = generateMockData('MoneyType');
+      instance.finalFee = validValue;
+      expect(instance.finalFee).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForProductFees[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

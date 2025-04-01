@@ -28,67 +28,116 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new TheSellingPartnerApiForFbaInboundOperations.PlacementOption();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(TheSellingPartnerApiForFbaInboundOperations.PlacementOption.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('PlacementOption', function() {
     it('should create an instance of PlacementOption', function() {
-      // uncomment below and update the code to test PlacementOption
-      //var instance = new TheSellingPartnerApiForFbaInboundOperations.PlacementOption();
-      //expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.PlacementOption);
+      expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.PlacementOption);
     });
 
     it('should have the property discounts (base name: "discounts")', function() {
-      // uncomment below and update the code to test the property discounts
-      //var instance = new TheSellingPartnerApiForFbaInboundOperations.PlacementOption();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('discounts');
+
+      // set and verify value
+      var validValue = generateMockData('[Incentive]', true);
+      instance.discounts = validValue;
+      expect(instance.discounts).to.equal(validValue);
     });
 
     it('should have the property expiration (base name: "expiration")', function() {
-      // uncomment below and update the code to test the property expiration
-      //var instance = new TheSellingPartnerApiForFbaInboundOperations.PlacementOption();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('expiration');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.expiration = validValue;
+      expect(instance.expiration).to.equal(validValue);
     });
 
     it('should have the property fees (base name: "fees")', function() {
-      // uncomment below and update the code to test the property fees
-      //var instance = new TheSellingPartnerApiForFbaInboundOperations.PlacementOption();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('fees');
+
+      // set and verify value
+      var validValue = generateMockData('[Incentive]', true);
+      instance.fees = validValue;
+      expect(instance.fees).to.equal(validValue);
     });
 
     it('should have the property placementOptionId (base name: "placementOptionId")', function() {
-      // uncomment below and update the code to test the property placementOptionId
-      //var instance = new TheSellingPartnerApiForFbaInboundOperations.PlacementOption();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('placementOptionId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.placementOptionId = validValue;
+      expect(instance.placementOptionId).to.equal(validValue);
     });
 
     it('should have the property shipmentIds (base name: "shipmentIds")', function() {
-      // uncomment below and update the code to test the property shipmentIds
-      //var instance = new TheSellingPartnerApiForFbaInboundOperations.PlacementOption();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('shipmentIds');
+
+      // set and verify value
+      var validValue = generateMockData('[String]', true);
+      instance.shipmentIds = validValue;
+      expect(instance.shipmentIds).to.equal(validValue);
     });
 
     it('should have the property status (base name: "status")', function() {
-      // uncomment below and update the code to test the property status
-      //var instance = new TheSellingPartnerApiForFbaInboundOperations.PlacementOption();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('status');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.status = validValue;
+      expect(instance.status).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = TheSellingPartnerApiForFbaInboundOperations[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

@@ -28,79 +28,136 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForAContentManagement.StandardSingleImageSpecsDetailModule();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForAContentManagement.StandardSingleImageSpecsDetailModule.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('StandardSingleImageSpecsDetailModule', function() {
     it('should create an instance of StandardSingleImageSpecsDetailModule', function() {
-      // uncomment below and update the code to test StandardSingleImageSpecsDetailModule
-      //var instance = new SellingPartnerApiForAContentManagement.StandardSingleImageSpecsDetailModule();
-      //expect(instance).to.be.a(SellingPartnerApiForAContentManagement.StandardSingleImageSpecsDetailModule);
+      expect(instance).to.be.a(SellingPartnerApiForAContentManagement.StandardSingleImageSpecsDetailModule);
     });
 
     it('should have the property headline (base name: "headline")', function() {
-      // uncomment below and update the code to test the property headline
-      //var instance = new SellingPartnerApiForAContentManagement.StandardSingleImageSpecsDetailModule();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('headline');
+
+      // set and verify value
+      var validValue = generateMockData('TextComponent');
+      instance.headline = validValue;
+      expect(instance.headline).to.equal(validValue);
     });
 
     it('should have the property image (base name: "image")', function() {
-      // uncomment below and update the code to test the property image
-      //var instance = new SellingPartnerApiForAContentManagement.StandardSingleImageSpecsDetailModule();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('image');
+
+      // set and verify value
+      var validValue = generateMockData('ImageComponent');
+      instance.image = validValue;
+      expect(instance.image).to.equal(validValue);
     });
 
     it('should have the property descriptionHeadline (base name: "descriptionHeadline")', function() {
-      // uncomment below and update the code to test the property descriptionHeadline
-      //var instance = new SellingPartnerApiForAContentManagement.StandardSingleImageSpecsDetailModule();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('descriptionHeadline');
+
+      // set and verify value
+      var validValue = generateMockData('TextComponent');
+      instance.descriptionHeadline = validValue;
+      expect(instance.descriptionHeadline).to.equal(validValue);
     });
 
     it('should have the property descriptionBlock1 (base name: "descriptionBlock1")', function() {
-      // uncomment below and update the code to test the property descriptionBlock1
-      //var instance = new SellingPartnerApiForAContentManagement.StandardSingleImageSpecsDetailModule();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('descriptionBlock1');
+
+      // set and verify value
+      var validValue = generateMockData('StandardTextBlock');
+      instance.descriptionBlock1 = validValue;
+      expect(instance.descriptionBlock1).to.equal(validValue);
     });
 
     it('should have the property descriptionBlock2 (base name: "descriptionBlock2")', function() {
-      // uncomment below and update the code to test the property descriptionBlock2
-      //var instance = new SellingPartnerApiForAContentManagement.StandardSingleImageSpecsDetailModule();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('descriptionBlock2');
+
+      // set and verify value
+      var validValue = generateMockData('StandardTextBlock');
+      instance.descriptionBlock2 = validValue;
+      expect(instance.descriptionBlock2).to.equal(validValue);
     });
 
     it('should have the property specificationHeadline (base name: "specificationHeadline")', function() {
-      // uncomment below and update the code to test the property specificationHeadline
-      //var instance = new SellingPartnerApiForAContentManagement.StandardSingleImageSpecsDetailModule();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('specificationHeadline');
+
+      // set and verify value
+      var validValue = generateMockData('TextComponent');
+      instance.specificationHeadline = validValue;
+      expect(instance.specificationHeadline).to.equal(validValue);
     });
 
     it('should have the property specificationListBlock (base name: "specificationListBlock")', function() {
-      // uncomment below and update the code to test the property specificationListBlock
-      //var instance = new SellingPartnerApiForAContentManagement.StandardSingleImageSpecsDetailModule();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('specificationListBlock');
+
+      // set and verify value
+      var validValue = generateMockData('StandardHeaderTextListBlock');
+      instance.specificationListBlock = validValue;
+      expect(instance.specificationListBlock).to.equal(validValue);
     });
 
     it('should have the property specificationTextBlock (base name: "specificationTextBlock")', function() {
-      // uncomment below and update the code to test the property specificationTextBlock
-      //var instance = new SellingPartnerApiForAContentManagement.StandardSingleImageSpecsDetailModule();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('specificationTextBlock');
+
+      // set and verify value
+      var validValue = generateMockData('StandardTextBlock');
+      instance.specificationTextBlock = validValue;
+      expect(instance.specificationTextBlock).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForAContentManagement[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

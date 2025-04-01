@@ -51,4 +51,3 @@ export default class LabelOwner {
         return object;
     }
 }
-

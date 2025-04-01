@@ -28,79 +28,136 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new AmazonShippingApi.CarrierAccountInput();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(AmazonShippingApi.CarrierAccountInput.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('CarrierAccountInput', function() {
     it('should create an instance of CarrierAccountInput', function() {
-      // uncomment below and update the code to test CarrierAccountInput
-      //var instance = new AmazonShippingApi.CarrierAccountInput();
-      //expect(instance).to.be.a(AmazonShippingApi.CarrierAccountInput);
+      expect(instance).to.be.a(AmazonShippingApi.CarrierAccountInput);
     });
 
     it('should have the property descriptionLocalizationKey (base name: "descriptionLocalizationKey")', function() {
-      // uncomment below and update the code to test the property descriptionLocalizationKey
-      //var instance = new AmazonShippingApi.CarrierAccountInput();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('descriptionLocalizationKey');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.descriptionLocalizationKey = validValue;
+      expect(instance.descriptionLocalizationKey).to.equal(validValue);
     });
 
     it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instance = new AmazonShippingApi.CarrierAccountInput();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('name');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.name = validValue;
+      expect(instance.name).to.equal(validValue);
     });
 
     it('should have the property groupName (base name: "groupName")', function() {
-      // uncomment below and update the code to test the property groupName
-      //var instance = new AmazonShippingApi.CarrierAccountInput();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('groupName');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.groupName = validValue;
+      expect(instance.groupName).to.equal(validValue);
     });
 
     it('should have the property inputType (base name: "inputType")', function() {
-      // uncomment below and update the code to test the property inputType
-      //var instance = new AmazonShippingApi.CarrierAccountInput();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('inputType');
+
+      // set and verify value
+      var validValue = generateMockData('InputType');
+      instance.inputType = validValue;
+      expect(instance.inputType).to.equal(validValue);
     });
 
     it('should have the property isMandatory (base name: "isMandatory")', function() {
-      // uncomment below and update the code to test the property isMandatory
-      //var instance = new AmazonShippingApi.CarrierAccountInput();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('isMandatory');
+
+      // set and verify value
+      var validValue = generateMockData('Boolean');
+      instance.isMandatory = validValue;
+      expect(instance.isMandatory).to.equal(validValue);
     });
 
     it('should have the property isConfidential (base name: "isConfidential")', function() {
-      // uncomment below and update the code to test the property isConfidential
-      //var instance = new AmazonShippingApi.CarrierAccountInput();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('isConfidential');
+
+      // set and verify value
+      var validValue = generateMockData('Boolean');
+      instance.isConfidential = validValue;
+      expect(instance.isConfidential).to.equal(validValue);
     });
 
     it('should have the property isHidden (base name: "isHidden")', function() {
-      // uncomment below and update the code to test the property isHidden
-      //var instance = new AmazonShippingApi.CarrierAccountInput();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('isHidden');
+
+      // set and verify value
+      var validValue = generateMockData('Boolean');
+      instance.isHidden = validValue;
+      expect(instance.isHidden).to.equal(validValue);
     });
 
     it('should have the property validationMetadata (base name: "validationMetadata")', function() {
-      // uncomment below and update the code to test the property validationMetadata
-      //var instance = new AmazonShippingApi.CarrierAccountInput();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('validationMetadata');
+
+      // set and verify value
+      var validValue = generateMockData('[ValidationMetadata]', true);
+      instance.validationMetadata = validValue;
+      expect(instance.validationMetadata).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = AmazonShippingApi[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

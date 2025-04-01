@@ -28,127 +28,216 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForAContentManagement.ContentModule();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForAContentManagement.ContentModule.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('ContentModule', function() {
     it('should create an instance of ContentModule', function() {
-      // uncomment below and update the code to test ContentModule
-      //var instance = new SellingPartnerApiForAContentManagement.ContentModule();
-      //expect(instance).to.be.a(SellingPartnerApiForAContentManagement.ContentModule);
+      expect(instance).to.be.a(SellingPartnerApiForAContentManagement.ContentModule);
     });
 
     it('should have the property contentModuleType (base name: "contentModuleType")', function() {
-      // uncomment below and update the code to test the property contentModuleType
-      //var instance = new SellingPartnerApiForAContentManagement.ContentModule();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('contentModuleType');
+
+      // set and verify value
+      var validValue = generateMockData('ContentModuleType');
+      instance.contentModuleType = validValue;
+      expect(instance.contentModuleType).to.equal(validValue);
     });
 
     it('should have the property standardCompanyLogo (base name: "standardCompanyLogo")', function() {
-      // uncomment below and update the code to test the property standardCompanyLogo
-      //var instance = new SellingPartnerApiForAContentManagement.ContentModule();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('standardCompanyLogo');
+
+      // set and verify value
+      var validValue = generateMockData('StandardCompanyLogoModule');
+      instance.standardCompanyLogo = validValue;
+      expect(instance.standardCompanyLogo).to.equal(validValue);
     });
 
     it('should have the property standardComparisonTable (base name: "standardComparisonTable")', function() {
-      // uncomment below and update the code to test the property standardComparisonTable
-      //var instance = new SellingPartnerApiForAContentManagement.ContentModule();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('standardComparisonTable');
+
+      // set and verify value
+      var validValue = generateMockData('StandardComparisonTableModule');
+      instance.standardComparisonTable = validValue;
+      expect(instance.standardComparisonTable).to.equal(validValue);
     });
 
     it('should have the property standardFourImageText (base name: "standardFourImageText")', function() {
-      // uncomment below and update the code to test the property standardFourImageText
-      //var instance = new SellingPartnerApiForAContentManagement.ContentModule();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('standardFourImageText');
+
+      // set and verify value
+      var validValue = generateMockData('StandardFourImageTextModule');
+      instance.standardFourImageText = validValue;
+      expect(instance.standardFourImageText).to.equal(validValue);
     });
 
     it('should have the property standardFourImageTextQuadrant (base name: "standardFourImageTextQuadrant")', function() {
-      // uncomment below and update the code to test the property standardFourImageTextQuadrant
-      //var instance = new SellingPartnerApiForAContentManagement.ContentModule();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('standardFourImageTextQuadrant');
+
+      // set and verify value
+      var validValue = generateMockData('StandardFourImageTextQuadrantModule');
+      instance.standardFourImageTextQuadrant = validValue;
+      expect(instance.standardFourImageTextQuadrant).to.equal(validValue);
     });
 
     it('should have the property standardHeaderImageText (base name: "standardHeaderImageText")', function() {
-      // uncomment below and update the code to test the property standardHeaderImageText
-      //var instance = new SellingPartnerApiForAContentManagement.ContentModule();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('standardHeaderImageText');
+
+      // set and verify value
+      var validValue = generateMockData('StandardHeaderImageTextModule');
+      instance.standardHeaderImageText = validValue;
+      expect(instance.standardHeaderImageText).to.equal(validValue);
     });
 
     it('should have the property standardImageSidebar (base name: "standardImageSidebar")', function() {
-      // uncomment below and update the code to test the property standardImageSidebar
-      //var instance = new SellingPartnerApiForAContentManagement.ContentModule();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('standardImageSidebar');
+
+      // set and verify value
+      var validValue = generateMockData('StandardImageSidebarModule');
+      instance.standardImageSidebar = validValue;
+      expect(instance.standardImageSidebar).to.equal(validValue);
     });
 
     it('should have the property standardImageTextOverlay (base name: "standardImageTextOverlay")', function() {
-      // uncomment below and update the code to test the property standardImageTextOverlay
-      //var instance = new SellingPartnerApiForAContentManagement.ContentModule();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('standardImageTextOverlay');
+
+      // set and verify value
+      var validValue = generateMockData('StandardImageTextOverlayModule');
+      instance.standardImageTextOverlay = validValue;
+      expect(instance.standardImageTextOverlay).to.equal(validValue);
     });
 
     it('should have the property standardMultipleImageText (base name: "standardMultipleImageText")', function() {
-      // uncomment below and update the code to test the property standardMultipleImageText
-      //var instance = new SellingPartnerApiForAContentManagement.ContentModule();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('standardMultipleImageText');
+
+      // set and verify value
+      var validValue = generateMockData('StandardMultipleImageTextModule');
+      instance.standardMultipleImageText = validValue;
+      expect(instance.standardMultipleImageText).to.equal(validValue);
     });
 
     it('should have the property standardProductDescription (base name: "standardProductDescription")', function() {
-      // uncomment below and update the code to test the property standardProductDescription
-      //var instance = new SellingPartnerApiForAContentManagement.ContentModule();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('standardProductDescription');
+
+      // set and verify value
+      var validValue = generateMockData('StandardProductDescriptionModule');
+      instance.standardProductDescription = validValue;
+      expect(instance.standardProductDescription).to.equal(validValue);
     });
 
     it('should have the property standardSingleImageHighlights (base name: "standardSingleImageHighlights")', function() {
-      // uncomment below and update the code to test the property standardSingleImageHighlights
-      //var instance = new SellingPartnerApiForAContentManagement.ContentModule();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('standardSingleImageHighlights');
+
+      // set and verify value
+      var validValue = generateMockData('StandardSingleImageHighlightsModule');
+      instance.standardSingleImageHighlights = validValue;
+      expect(instance.standardSingleImageHighlights).to.equal(validValue);
     });
 
     it('should have the property standardSingleImageSpecsDetail (base name: "standardSingleImageSpecsDetail")', function() {
-      // uncomment below and update the code to test the property standardSingleImageSpecsDetail
-      //var instance = new SellingPartnerApiForAContentManagement.ContentModule();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('standardSingleImageSpecsDetail');
+
+      // set and verify value
+      var validValue = generateMockData('StandardSingleImageSpecsDetailModule');
+      instance.standardSingleImageSpecsDetail = validValue;
+      expect(instance.standardSingleImageSpecsDetail).to.equal(validValue);
     });
 
     it('should have the property standardSingleSideImage (base name: "standardSingleSideImage")', function() {
-      // uncomment below and update the code to test the property standardSingleSideImage
-      //var instance = new SellingPartnerApiForAContentManagement.ContentModule();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('standardSingleSideImage');
+
+      // set and verify value
+      var validValue = generateMockData('StandardSingleSideImageModule');
+      instance.standardSingleSideImage = validValue;
+      expect(instance.standardSingleSideImage).to.equal(validValue);
     });
 
     it('should have the property standardTechSpecs (base name: "standardTechSpecs")', function() {
-      // uncomment below and update the code to test the property standardTechSpecs
-      //var instance = new SellingPartnerApiForAContentManagement.ContentModule();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('standardTechSpecs');
+
+      // set and verify value
+      var validValue = generateMockData('StandardTechSpecsModule');
+      instance.standardTechSpecs = validValue;
+      expect(instance.standardTechSpecs).to.equal(validValue);
     });
 
     it('should have the property standardText (base name: "standardText")', function() {
-      // uncomment below and update the code to test the property standardText
-      //var instance = new SellingPartnerApiForAContentManagement.ContentModule();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('standardText');
+
+      // set and verify value
+      var validValue = generateMockData('StandardTextModule');
+      instance.standardText = validValue;
+      expect(instance.standardText).to.equal(validValue);
     });
 
     it('should have the property standardThreeImageText (base name: "standardThreeImageText")', function() {
-      // uncomment below and update the code to test the property standardThreeImageText
-      //var instance = new SellingPartnerApiForAContentManagement.ContentModule();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('standardThreeImageText');
+
+      // set and verify value
+      var validValue = generateMockData('StandardThreeImageTextModule');
+      instance.standardThreeImageText = validValue;
+      expect(instance.standardThreeImageText).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForAContentManagement[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

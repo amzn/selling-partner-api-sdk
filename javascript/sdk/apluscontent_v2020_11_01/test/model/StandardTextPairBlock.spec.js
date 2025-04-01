@@ -28,43 +28,76 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForAContentManagement.StandardTextPairBlock();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForAContentManagement.StandardTextPairBlock.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('StandardTextPairBlock', function() {
     it('should create an instance of StandardTextPairBlock', function() {
-      // uncomment below and update the code to test StandardTextPairBlock
-      //var instance = new SellingPartnerApiForAContentManagement.StandardTextPairBlock();
-      //expect(instance).to.be.a(SellingPartnerApiForAContentManagement.StandardTextPairBlock);
+      expect(instance).to.be.a(SellingPartnerApiForAContentManagement.StandardTextPairBlock);
     });
 
     it('should have the property label (base name: "label")', function() {
-      // uncomment below and update the code to test the property label
-      //var instance = new SellingPartnerApiForAContentManagement.StandardTextPairBlock();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('label');
+
+      // set and verify value
+      var validValue = generateMockData('TextComponent');
+      instance.label = validValue;
+      expect(instance.label).to.equal(validValue);
     });
 
     it('should have the property description (base name: "description")', function() {
-      // uncomment below and update the code to test the property description
-      //var instance = new SellingPartnerApiForAContentManagement.StandardTextPairBlock();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('description');
+
+      // set and verify value
+      var validValue = generateMockData('TextComponent');
+      instance.description = validValue;
+      expect(instance.description).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForAContentManagement[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

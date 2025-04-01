@@ -28,55 +28,96 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new TheSellingPartnerApiForFbaInboundOperations.ComplianceDetail();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(TheSellingPartnerApiForFbaInboundOperations.ComplianceDetail.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('ComplianceDetail', function() {
     it('should create an instance of ComplianceDetail', function() {
-      // uncomment below and update the code to test ComplianceDetail
-      //var instance = new TheSellingPartnerApiForFbaInboundOperations.ComplianceDetail();
-      //expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.ComplianceDetail);
+      expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.ComplianceDetail);
     });
 
     it('should have the property asin (base name: "asin")', function() {
-      // uncomment below and update the code to test the property asin
-      //var instance = new TheSellingPartnerApiForFbaInboundOperations.ComplianceDetail();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('asin');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.asin = validValue;
+      expect(instance.asin).to.equal(validValue);
     });
 
     it('should have the property fnsku (base name: "fnsku")', function() {
-      // uncomment below and update the code to test the property fnsku
-      //var instance = new TheSellingPartnerApiForFbaInboundOperations.ComplianceDetail();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('fnsku');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.fnsku = validValue;
+      expect(instance.fnsku).to.equal(validValue);
     });
 
     it('should have the property msku (base name: "msku")', function() {
-      // uncomment below and update the code to test the property msku
-      //var instance = new TheSellingPartnerApiForFbaInboundOperations.ComplianceDetail();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('msku');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.msku = validValue;
+      expect(instance.msku).to.equal(validValue);
     });
 
     it('should have the property taxDetails (base name: "taxDetails")', function() {
-      // uncomment below and update the code to test the property taxDetails
-      //var instance = new TheSellingPartnerApiForFbaInboundOperations.ComplianceDetail();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('taxDetails');
+
+      // set and verify value
+      var validValue = generateMockData('TaxDetails');
+      instance.taxDetails = validValue;
+      expect(instance.taxDetails).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = TheSellingPartnerApiForFbaInboundOperations[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

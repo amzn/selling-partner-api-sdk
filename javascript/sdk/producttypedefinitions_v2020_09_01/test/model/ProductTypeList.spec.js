@@ -28,43 +28,76 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForProductTypeDefinitions.ProductTypeList();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForProductTypeDefinitions.ProductTypeList.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('ProductTypeList', function() {
     it('should create an instance of ProductTypeList', function() {
-      // uncomment below and update the code to test ProductTypeList
-      //var instance = new SellingPartnerApiForProductTypeDefinitions.ProductTypeList();
-      //expect(instance).to.be.a(SellingPartnerApiForProductTypeDefinitions.ProductTypeList);
+      expect(instance).to.be.a(SellingPartnerApiForProductTypeDefinitions.ProductTypeList);
     });
 
     it('should have the property productTypes (base name: "productTypes")', function() {
-      // uncomment below and update the code to test the property productTypes
-      //var instance = new SellingPartnerApiForProductTypeDefinitions.ProductTypeList();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('productTypes');
+
+      // set and verify value
+      var validValue = generateMockData('[ProductType]', true);
+      instance.productTypes = validValue;
+      expect(instance.productTypes).to.equal(validValue);
     });
 
     it('should have the property productTypeVersion (base name: "productTypeVersion")', function() {
-      // uncomment below and update the code to test the property productTypeVersion
-      //var instance = new SellingPartnerApiForProductTypeDefinitions.ProductTypeList();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('productTypeVersion');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.productTypeVersion = validValue;
+      expect(instance.productTypeVersion).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForProductTypeDefinitions[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

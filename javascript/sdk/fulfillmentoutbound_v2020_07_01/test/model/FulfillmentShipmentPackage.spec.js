@@ -28,67 +28,116 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApisForFulfillmentOutbound.FulfillmentShipmentPackage();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApisForFulfillmentOutbound.FulfillmentShipmentPackage.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('FulfillmentShipmentPackage', function() {
     it('should create an instance of FulfillmentShipmentPackage', function() {
-      // uncomment below and update the code to test FulfillmentShipmentPackage
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.FulfillmentShipmentPackage();
-      //expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.FulfillmentShipmentPackage);
+      expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.FulfillmentShipmentPackage);
     });
 
     it('should have the property packageNumber (base name: "packageNumber")', function() {
-      // uncomment below and update the code to test the property packageNumber
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.FulfillmentShipmentPackage();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('packageNumber');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.packageNumber = validValue;
+      expect(instance.packageNumber).to.equal(validValue);
     });
 
     it('should have the property carrierCode (base name: "carrierCode")', function() {
-      // uncomment below and update the code to test the property carrierCode
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.FulfillmentShipmentPackage();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('carrierCode');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.carrierCode = validValue;
+      expect(instance.carrierCode).to.equal(validValue);
     });
 
     it('should have the property trackingNumber (base name: "trackingNumber")', function() {
-      // uncomment below and update the code to test the property trackingNumber
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.FulfillmentShipmentPackage();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('trackingNumber');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.trackingNumber = validValue;
+      expect(instance.trackingNumber).to.equal(validValue);
     });
 
     it('should have the property estimatedArrivalDate (base name: "estimatedArrivalDate")', function() {
-      // uncomment below and update the code to test the property estimatedArrivalDate
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.FulfillmentShipmentPackage();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('estimatedArrivalDate');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.estimatedArrivalDate = validValue;
+      expect(instance.estimatedArrivalDate).to.equal(validValue);
     });
 
     it('should have the property lockerDetails (base name: "lockerDetails")', function() {
-      // uncomment below and update the code to test the property lockerDetails
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.FulfillmentShipmentPackage();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('lockerDetails');
+
+      // set and verify value
+      var validValue = generateMockData('LockerDetails');
+      instance.lockerDetails = validValue;
+      expect(instance.lockerDetails).to.equal(validValue);
     });
 
     it('should have the property deliveryInformation (base name: "deliveryInformation")', function() {
-      // uncomment below and update the code to test the property deliveryInformation
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.FulfillmentShipmentPackage();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('deliveryInformation');
+
+      // set and verify value
+      var validValue = generateMockData('DeliveryInformation');
+      instance.deliveryInformation = validValue;
+      expect(instance.deliveryInformation).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApisForFulfillmentOutbound[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

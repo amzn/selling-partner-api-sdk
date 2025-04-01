@@ -93,4 +93,3 @@ export default class FulfillmentOrderStatus {
         return object;
     }
 }
-

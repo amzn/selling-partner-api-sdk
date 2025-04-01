@@ -28,49 +28,86 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForReplenishment.ListOfferMetricsRequest();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForReplenishment.ListOfferMetricsRequest.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('ListOfferMetricsRequest', function() {
     it('should create an instance of ListOfferMetricsRequest', function() {
-      // uncomment below and update the code to test ListOfferMetricsRequest
-      //var instance = new SellingPartnerApiForReplenishment.ListOfferMetricsRequest();
-      //expect(instance).to.be.a(SellingPartnerApiForReplenishment.ListOfferMetricsRequest);
+      expect(instance).to.be.a(SellingPartnerApiForReplenishment.ListOfferMetricsRequest);
     });
 
     it('should have the property pagination (base name: "pagination")', function() {
-      // uncomment below and update the code to test the property pagination
-      //var instance = new SellingPartnerApiForReplenishment.ListOfferMetricsRequest();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('pagination');
+
+      // set and verify value
+      var validValue = generateMockData('ListOfferMetricsRequestPagination');
+      instance.pagination = validValue;
+      expect(instance.pagination).to.equal(validValue);
     });
 
     it('should have the property sort (base name: "sort")', function() {
-      // uncomment below and update the code to test the property sort
-      //var instance = new SellingPartnerApiForReplenishment.ListOfferMetricsRequest();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('sort');
+
+      // set and verify value
+      var validValue = generateMockData('ListOfferMetricsRequestSort');
+      instance.sort = validValue;
+      expect(instance.sort).to.equal(validValue);
     });
 
     it('should have the property filters (base name: "filters")', function() {
-      // uncomment below and update the code to test the property filters
-      //var instance = new SellingPartnerApiForReplenishment.ListOfferMetricsRequest();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('filters');
+
+      // set and verify value
+      var validValue = generateMockData('ListOfferMetricsRequestFilters');
+      instance.filters = validValue;
+      expect(instance.filters).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForReplenishment[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

@@ -28,49 +28,86 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForShipmentInvoicing.BuyerTaxInfo();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForShipmentInvoicing.BuyerTaxInfo.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('BuyerTaxInfo', function() {
     it('should create an instance of BuyerTaxInfo', function() {
-      // uncomment below and update the code to test BuyerTaxInfo
-      //var instance = new SellingPartnerApiForShipmentInvoicing.BuyerTaxInfo();
-      //expect(instance).to.be.a(SellingPartnerApiForShipmentInvoicing.BuyerTaxInfo);
+      expect(instance).to.be.a(SellingPartnerApiForShipmentInvoicing.BuyerTaxInfo);
     });
 
     it('should have the property companyLegalName (base name: "CompanyLegalName")', function() {
-      // uncomment below and update the code to test the property companyLegalName
-      //var instance = new SellingPartnerApiForShipmentInvoicing.BuyerTaxInfo();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('companyLegalName');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.companyLegalName = validValue;
+      expect(instance.companyLegalName).to.equal(validValue);
     });
 
     it('should have the property taxingRegion (base name: "TaxingRegion")', function() {
-      // uncomment below and update the code to test the property taxingRegion
-      //var instance = new SellingPartnerApiForShipmentInvoicing.BuyerTaxInfo();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('taxingRegion');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.taxingRegion = validValue;
+      expect(instance.taxingRegion).to.equal(validValue);
     });
 
     it('should have the property taxClassifications (base name: "TaxClassifications")', function() {
-      // uncomment below and update the code to test the property taxClassifications
-      //var instance = new SellingPartnerApiForShipmentInvoicing.BuyerTaxInfo();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('taxClassifications');
+
+      // set and verify value
+      var validValue = generateMockData('[TaxClassification]', true);
+      instance.taxClassifications = validValue;
+      expect(instance.taxClassifications).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForShipmentInvoicing[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

@@ -28,61 +28,106 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForSupplySources.OutboundCapability();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForSupplySources.OutboundCapability.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('OutboundCapability', function() {
     it('should create an instance of OutboundCapability', function() {
-      // uncomment below and update the code to test OutboundCapability
-      //var instance = new SellingPartnerApiForSupplySources.OutboundCapability();
-      //expect(instance).to.be.a(SellingPartnerApiForSupplySources.OutboundCapability);
+      expect(instance).to.be.a(SellingPartnerApiForSupplySources.OutboundCapability);
     });
 
     it('should have the property isSupported (base name: "isSupported")', function() {
-      // uncomment below and update the code to test the property isSupported
-      //var instance = new SellingPartnerApiForSupplySources.OutboundCapability();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('isSupported');
+
+      // set and verify value
+      var validValue = generateMockData('Boolean');
+      instance.isSupported = validValue;
+      expect(instance.isSupported).to.equal(validValue);
     });
 
     it('should have the property operationalConfiguration (base name: "operationalConfiguration")', function() {
-      // uncomment below and update the code to test the property operationalConfiguration
-      //var instance = new SellingPartnerApiForSupplySources.OutboundCapability();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('operationalConfiguration');
+
+      // set and verify value
+      var validValue = generateMockData('OperationalConfiguration');
+      instance.operationalConfiguration = validValue;
+      expect(instance.operationalConfiguration).to.equal(validValue);
     });
 
     it('should have the property returnLocation (base name: "returnLocation")', function() {
-      // uncomment below and update the code to test the property returnLocation
-      //var instance = new SellingPartnerApiForSupplySources.OutboundCapability();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('returnLocation');
+
+      // set and verify value
+      var validValue = generateMockData('ReturnLocation');
+      instance.returnLocation = validValue;
+      expect(instance.returnLocation).to.equal(validValue);
     });
 
     it('should have the property deliveryChannel (base name: "deliveryChannel")', function() {
-      // uncomment below and update the code to test the property deliveryChannel
-      //var instance = new SellingPartnerApiForSupplySources.OutboundCapability();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('deliveryChannel');
+
+      // set and verify value
+      var validValue = generateMockData('DeliveryChannel');
+      instance.deliveryChannel = validValue;
+      expect(instance.deliveryChannel).to.equal(validValue);
     });
 
     it('should have the property pickupChannel (base name: "pickupChannel")', function() {
-      // uncomment below and update the code to test the property pickupChannel
-      //var instance = new SellingPartnerApiForSupplySources.OutboundCapability();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('pickupChannel');
+
+      // set and verify value
+      var validValue = generateMockData('PickupChannel');
+      instance.pickupChannel = validValue;
+      expect(instance.pickupChannel).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForSupplySources[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

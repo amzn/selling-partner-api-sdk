@@ -28,79 +28,136 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForFeeds.Feed();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForFeeds.Feed.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('Feed', function() {
     it('should create an instance of Feed', function() {
-      // uncomment below and update the code to test Feed
-      //var instance = new SellingPartnerApiForFeeds.Feed();
-      //expect(instance).to.be.a(SellingPartnerApiForFeeds.Feed);
+      expect(instance).to.be.a(SellingPartnerApiForFeeds.Feed);
     });
 
     it('should have the property feedId (base name: "feedId")', function() {
-      // uncomment below and update the code to test the property feedId
-      //var instance = new SellingPartnerApiForFeeds.Feed();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('feedId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.feedId = validValue;
+      expect(instance.feedId).to.equal(validValue);
     });
 
     it('should have the property feedType (base name: "feedType")', function() {
-      // uncomment below and update the code to test the property feedType
-      //var instance = new SellingPartnerApiForFeeds.Feed();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('feedType');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.feedType = validValue;
+      expect(instance.feedType).to.equal(validValue);
     });
 
     it('should have the property marketplaceIds (base name: "marketplaceIds")', function() {
-      // uncomment below and update the code to test the property marketplaceIds
-      //var instance = new SellingPartnerApiForFeeds.Feed();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('marketplaceIds');
+
+      // set and verify value
+      var validValue = generateMockData('[String]', true);
+      instance.marketplaceIds = validValue;
+      expect(instance.marketplaceIds).to.equal(validValue);
     });
 
     it('should have the property createdTime (base name: "createdTime")', function() {
-      // uncomment below and update the code to test the property createdTime
-      //var instance = new SellingPartnerApiForFeeds.Feed();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('createdTime');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.createdTime = validValue;
+      expect(instance.createdTime).to.equal(validValue);
     });
 
     it('should have the property processingStatus (base name: "processingStatus")', function() {
-      // uncomment below and update the code to test the property processingStatus
-      //var instance = new SellingPartnerApiForFeeds.Feed();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('processingStatus');
+
+      // set and verify value
+      var validValue = ['CANCELLED', 'DONE', 'FATAL', 'IN_PROGRESS', 'IN_QUEUE', ][0];
+      instance.processingStatus = validValue;
+      expect(instance.processingStatus).to.equal(validValue);
     });
 
     it('should have the property processingStartTime (base name: "processingStartTime")', function() {
-      // uncomment below and update the code to test the property processingStartTime
-      //var instance = new SellingPartnerApiForFeeds.Feed();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('processingStartTime');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.processingStartTime = validValue;
+      expect(instance.processingStartTime).to.equal(validValue);
     });
 
     it('should have the property processingEndTime (base name: "processingEndTime")', function() {
-      // uncomment below and update the code to test the property processingEndTime
-      //var instance = new SellingPartnerApiForFeeds.Feed();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('processingEndTime');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.processingEndTime = validValue;
+      expect(instance.processingEndTime).to.equal(validValue);
     });
 
     it('should have the property resultFeedDocumentId (base name: "resultFeedDocumentId")', function() {
-      // uncomment below and update the code to test the property resultFeedDocumentId
-      //var instance = new SellingPartnerApiForFeeds.Feed();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('resultFeedDocumentId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.resultFeedDocumentId = validValue;
+      expect(instance.resultFeedDocumentId).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForFeeds[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

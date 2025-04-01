@@ -28,67 +28,116 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForAContentManagement.PublishRecord();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForAContentManagement.PublishRecord.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('PublishRecord', function() {
     it('should create an instance of PublishRecord', function() {
-      // uncomment below and update the code to test PublishRecord
-      //var instance = new SellingPartnerApiForAContentManagement.PublishRecord();
-      //expect(instance).to.be.a(SellingPartnerApiForAContentManagement.PublishRecord);
+      expect(instance).to.be.a(SellingPartnerApiForAContentManagement.PublishRecord);
     });
 
     it('should have the property marketplaceId (base name: "marketplaceId")', function() {
-      // uncomment below and update the code to test the property marketplaceId
-      //var instance = new SellingPartnerApiForAContentManagement.PublishRecord();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('marketplaceId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.marketplaceId = validValue;
+      expect(instance.marketplaceId).to.equal(validValue);
     });
 
     it('should have the property locale (base name: "locale")', function() {
-      // uncomment below and update the code to test the property locale
-      //var instance = new SellingPartnerApiForAContentManagement.PublishRecord();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('locale');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.locale = validValue;
+      expect(instance.locale).to.equal(validValue);
     });
 
     it('should have the property asin (base name: "asin")', function() {
-      // uncomment below and update the code to test the property asin
-      //var instance = new SellingPartnerApiForAContentManagement.PublishRecord();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('asin');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.asin = validValue;
+      expect(instance.asin).to.equal(validValue);
     });
 
     it('should have the property contentType (base name: "contentType")', function() {
-      // uncomment below and update the code to test the property contentType
-      //var instance = new SellingPartnerApiForAContentManagement.PublishRecord();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('contentType');
+
+      // set and verify value
+      var validValue = generateMockData('ContentType');
+      instance.contentType = validValue;
+      expect(instance.contentType).to.equal(validValue);
     });
 
     it('should have the property contentSubType (base name: "contentSubType")', function() {
-      // uncomment below and update the code to test the property contentSubType
-      //var instance = new SellingPartnerApiForAContentManagement.PublishRecord();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('contentSubType');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.contentSubType = validValue;
+      expect(instance.contentSubType).to.equal(validValue);
     });
 
     it('should have the property contentReferenceKey (base name: "contentReferenceKey")', function() {
-      // uncomment below and update the code to test the property contentReferenceKey
-      //var instance = new SellingPartnerApiForAContentManagement.PublishRecord();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('contentReferenceKey');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.contentReferenceKey = validValue;
+      expect(instance.contentReferenceKey).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForAContentManagement[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

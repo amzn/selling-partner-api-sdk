@@ -28,67 +28,116 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new AmazonShippingApi.CreateClaimRequest();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(AmazonShippingApi.CreateClaimRequest.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('CreateClaimRequest', function() {
     it('should create an instance of CreateClaimRequest', function() {
-      // uncomment below and update the code to test CreateClaimRequest
-      //var instance = new AmazonShippingApi.CreateClaimRequest();
-      //expect(instance).to.be.a(AmazonShippingApi.CreateClaimRequest);
+      expect(instance).to.be.a(AmazonShippingApi.CreateClaimRequest);
     });
 
     it('should have the property trackingId (base name: "trackingId")', function() {
-      // uncomment below and update the code to test the property trackingId
-      //var instance = new AmazonShippingApi.CreateClaimRequest();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('trackingId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.trackingId = validValue;
+      expect(instance.trackingId).to.equal(validValue);
     });
 
     it('should have the property declaredValue (base name: "declaredValue")', function() {
-      // uncomment below and update the code to test the property declaredValue
-      //var instance = new AmazonShippingApi.CreateClaimRequest();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('declaredValue');
+
+      // set and verify value
+      var validValue = generateMockData('Currency');
+      instance.declaredValue = validValue;
+      expect(instance.declaredValue).to.equal(validValue);
     });
 
     it('should have the property claimReason (base name: "claimReason")', function() {
-      // uncomment below and update the code to test the property claimReason
-      //var instance = new AmazonShippingApi.CreateClaimRequest();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('claimReason');
+
+      // set and verify value
+      var validValue = generateMockData('ClaimReason');
+      instance.claimReason = validValue;
+      expect(instance.claimReason).to.equal(validValue);
     });
 
     it('should have the property isReplacementPackageSent (base name: "isReplacementPackageSent")', function() {
-      // uncomment below and update the code to test the property isReplacementPackageSent
-      //var instance = new AmazonShippingApi.CreateClaimRequest();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('isReplacementPackageSent');
+
+      // set and verify value
+      var validValue = generateMockData('Boolean');
+      instance.isReplacementPackageSent = validValue;
+      expect(instance.isReplacementPackageSent).to.equal(validValue);
     });
 
     it('should have the property proofs (base name: "proofs")', function() {
-      // uncomment below and update the code to test the property proofs
-      //var instance = new AmazonShippingApi.CreateClaimRequest();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('proofs');
+
+      // set and verify value
+      var validValue = generateMockData('[String]', true);
+      instance.proofs = validValue;
+      expect(instance.proofs).to.equal(validValue);
     });
 
     it('should have the property settlementType (base name: "settlementType")', function() {
-      // uncomment below and update the code to test the property settlementType
-      //var instance = new AmazonShippingApi.CreateClaimRequest();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('settlementType');
+
+      // set and verify value
+      var validValue = generateMockData('SettlementType');
+      instance.settlementType = validValue;
+      expect(instance.settlementType).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = AmazonShippingApi[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

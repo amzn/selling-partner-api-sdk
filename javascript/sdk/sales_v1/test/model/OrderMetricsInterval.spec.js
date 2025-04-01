@@ -28,67 +28,116 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForSales.OrderMetricsInterval();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForSales.OrderMetricsInterval.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('OrderMetricsInterval', function() {
     it('should create an instance of OrderMetricsInterval', function() {
-      // uncomment below and update the code to test OrderMetricsInterval
-      //var instance = new SellingPartnerApiForSales.OrderMetricsInterval();
-      //expect(instance).to.be.a(SellingPartnerApiForSales.OrderMetricsInterval);
+      expect(instance).to.be.a(SellingPartnerApiForSales.OrderMetricsInterval);
     });
 
     it('should have the property interval (base name: "interval")', function() {
-      // uncomment below and update the code to test the property interval
-      //var instance = new SellingPartnerApiForSales.OrderMetricsInterval();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('interval');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.interval = validValue;
+      expect(instance.interval).to.equal(validValue);
     });
 
     it('should have the property unitCount (base name: "unitCount")', function() {
-      // uncomment below and update the code to test the property unitCount
-      //var instance = new SellingPartnerApiForSales.OrderMetricsInterval();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('unitCount');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.unitCount = validValue;
+      expect(instance.unitCount).to.equal(validValue);
     });
 
     it('should have the property orderItemCount (base name: "orderItemCount")', function() {
-      // uncomment below and update the code to test the property orderItemCount
-      //var instance = new SellingPartnerApiForSales.OrderMetricsInterval();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('orderItemCount');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.orderItemCount = validValue;
+      expect(instance.orderItemCount).to.equal(validValue);
     });
 
     it('should have the property orderCount (base name: "orderCount")', function() {
-      // uncomment below and update the code to test the property orderCount
-      //var instance = new SellingPartnerApiForSales.OrderMetricsInterval();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('orderCount');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.orderCount = validValue;
+      expect(instance.orderCount).to.equal(validValue);
     });
 
     it('should have the property averageUnitPrice (base name: "averageUnitPrice")', function() {
-      // uncomment below and update the code to test the property averageUnitPrice
-      //var instance = new SellingPartnerApiForSales.OrderMetricsInterval();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('averageUnitPrice');
+
+      // set and verify value
+      var validValue = generateMockData('Money');
+      instance.averageUnitPrice = validValue;
+      expect(instance.averageUnitPrice).to.equal(validValue);
     });
 
     it('should have the property totalSales (base name: "totalSales")', function() {
-      // uncomment below and update the code to test the property totalSales
-      //var instance = new SellingPartnerApiForSales.OrderMetricsInterval();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('totalSales');
+
+      // set and verify value
+      var validValue = generateMockData('Money');
+      instance.totalSales = validValue;
+      expect(instance.totalSales).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForSales[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

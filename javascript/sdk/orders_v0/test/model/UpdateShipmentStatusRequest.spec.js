@@ -28,49 +28,86 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForOrders.UpdateShipmentStatusRequest();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForOrders.UpdateShipmentStatusRequest.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('UpdateShipmentStatusRequest', function() {
     it('should create an instance of UpdateShipmentStatusRequest', function() {
-      // uncomment below and update the code to test UpdateShipmentStatusRequest
-      //var instance = new SellingPartnerApiForOrders.UpdateShipmentStatusRequest();
-      //expect(instance).to.be.a(SellingPartnerApiForOrders.UpdateShipmentStatusRequest);
+      expect(instance).to.be.a(SellingPartnerApiForOrders.UpdateShipmentStatusRequest);
     });
 
     it('should have the property marketplaceId (base name: "marketplaceId")', function() {
-      // uncomment below and update the code to test the property marketplaceId
-      //var instance = new SellingPartnerApiForOrders.UpdateShipmentStatusRequest();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('marketplaceId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.marketplaceId = validValue;
+      expect(instance.marketplaceId).to.equal(validValue);
     });
 
     it('should have the property shipmentStatus (base name: "shipmentStatus")', function() {
-      // uncomment below and update the code to test the property shipmentStatus
-      //var instance = new SellingPartnerApiForOrders.UpdateShipmentStatusRequest();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('shipmentStatus');
+
+      // set and verify value
+      var validValue = generateMockData('ShipmentStatus');
+      instance.shipmentStatus = validValue;
+      expect(instance.shipmentStatus).to.equal(validValue);
     });
 
     it('should have the property orderItems (base name: "orderItems")', function() {
-      // uncomment below and update the code to test the property orderItems
-      //var instance = new SellingPartnerApiForOrders.UpdateShipmentStatusRequest();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('orderItems');
+
+      // set and verify value
+      var validValue = generateMockData('[OrderItemsInner]', true);
+      instance.orderItems = validValue;
+      expect(instance.orderItems).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForOrders[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

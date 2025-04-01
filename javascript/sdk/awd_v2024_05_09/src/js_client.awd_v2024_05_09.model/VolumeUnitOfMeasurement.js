@@ -51,4 +51,3 @@ export default class VolumeUnitOfMeasurement {
         return object;
     }
 }
-

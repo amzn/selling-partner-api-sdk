@@ -28,79 +28,136 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForCatalogItems.ItemVendorDetailsByMarketplace();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForCatalogItems.ItemVendorDetailsByMarketplace.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('ItemVendorDetailsByMarketplace', function() {
     it('should create an instance of ItemVendorDetailsByMarketplace', function() {
-      // uncomment below and update the code to test ItemVendorDetailsByMarketplace
-      //var instance = new SellingPartnerApiForCatalogItems.ItemVendorDetailsByMarketplace();
-      //expect(instance).to.be.a(SellingPartnerApiForCatalogItems.ItemVendorDetailsByMarketplace);
+      expect(instance).to.be.a(SellingPartnerApiForCatalogItems.ItemVendorDetailsByMarketplace);
     });
 
     it('should have the property marketplaceId (base name: "marketplaceId")', function() {
-      // uncomment below and update the code to test the property marketplaceId
-      //var instance = new SellingPartnerApiForCatalogItems.ItemVendorDetailsByMarketplace();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('marketplaceId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.marketplaceId = validValue;
+      expect(instance.marketplaceId).to.equal(validValue);
     });
 
     it('should have the property brandCode (base name: "brandCode")', function() {
-      // uncomment below and update the code to test the property brandCode
-      //var instance = new SellingPartnerApiForCatalogItems.ItemVendorDetailsByMarketplace();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('brandCode');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.brandCode = validValue;
+      expect(instance.brandCode).to.equal(validValue);
     });
 
     it('should have the property manufacturerCode (base name: "manufacturerCode")', function() {
-      // uncomment below and update the code to test the property manufacturerCode
-      //var instance = new SellingPartnerApiForCatalogItems.ItemVendorDetailsByMarketplace();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('manufacturerCode');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.manufacturerCode = validValue;
+      expect(instance.manufacturerCode).to.equal(validValue);
     });
 
     it('should have the property manufacturerCodeParent (base name: "manufacturerCodeParent")', function() {
-      // uncomment below and update the code to test the property manufacturerCodeParent
-      //var instance = new SellingPartnerApiForCatalogItems.ItemVendorDetailsByMarketplace();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('manufacturerCodeParent');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.manufacturerCodeParent = validValue;
+      expect(instance.manufacturerCodeParent).to.equal(validValue);
     });
 
     it('should have the property productCategory (base name: "productCategory")', function() {
-      // uncomment below and update the code to test the property productCategory
-      //var instance = new SellingPartnerApiForCatalogItems.ItemVendorDetailsByMarketplace();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('productCategory');
+
+      // set and verify value
+      var validValue = generateMockData('ItemVendorDetailsCategory');
+      instance.productCategory = validValue;
+      expect(instance.productCategory).to.equal(validValue);
     });
 
     it('should have the property productGroup (base name: "productGroup")', function() {
-      // uncomment below and update the code to test the property productGroup
-      //var instance = new SellingPartnerApiForCatalogItems.ItemVendorDetailsByMarketplace();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('productGroup');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.productGroup = validValue;
+      expect(instance.productGroup).to.equal(validValue);
     });
 
     it('should have the property productSubcategory (base name: "productSubcategory")', function() {
-      // uncomment below and update the code to test the property productSubcategory
-      //var instance = new SellingPartnerApiForCatalogItems.ItemVendorDetailsByMarketplace();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('productSubcategory');
+
+      // set and verify value
+      var validValue = generateMockData('ItemVendorDetailsCategory');
+      instance.productSubcategory = validValue;
+      expect(instance.productSubcategory).to.equal(validValue);
     });
 
     it('should have the property replenishmentCategory (base name: "replenishmentCategory")', function() {
-      // uncomment below and update the code to test the property replenishmentCategory
-      //var instance = new SellingPartnerApiForCatalogItems.ItemVendorDetailsByMarketplace();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('replenishmentCategory');
+
+      // set and verify value
+      var validValue = ['ALLOCATED', 'BASIC_REPLENISHMENT', 'IN_SEASON', 'LIMITED_REPLENISHMENT', 'MANUFACTURER_OUT_OF_STOCK', 'NEW_PRODUCT', 'NON_REPLENISHABLE', 'NON_STOCKUPABLE', 'OBSOLETE', 'PLANNED_REPLENISHMENT', ][0];
+      instance.replenishmentCategory = validValue;
+      expect(instance.replenishmentCategory).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForCatalogItems[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

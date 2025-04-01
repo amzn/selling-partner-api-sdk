@@ -28,43 +28,76 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForCatalogItems.ItemVariationTheme();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForCatalogItems.ItemVariationTheme.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('ItemVariationTheme', function() {
     it('should create an instance of ItemVariationTheme', function() {
-      // uncomment below and update the code to test ItemVariationTheme
-      //var instance = new SellingPartnerApiForCatalogItems.ItemVariationTheme();
-      //expect(instance).to.be.a(SellingPartnerApiForCatalogItems.ItemVariationTheme);
+      expect(instance).to.be.a(SellingPartnerApiForCatalogItems.ItemVariationTheme);
     });
 
     it('should have the property attributes (base name: "attributes")', function() {
-      // uncomment below and update the code to test the property attributes
-      //var instance = new SellingPartnerApiForCatalogItems.ItemVariationTheme();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('attributes');
+
+      // set and verify value
+      var validValue = generateMockData('[String]', true);
+      instance.attributes = validValue;
+      expect(instance.attributes).to.equal(validValue);
     });
 
     it('should have the property theme (base name: "theme")', function() {
-      // uncomment below and update the code to test the property theme
-      //var instance = new SellingPartnerApiForCatalogItems.ItemVariationTheme();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('theme');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.theme = validValue;
+      expect(instance.theme).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForCatalogItems[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

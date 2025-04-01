@@ -28,97 +28,166 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForReports.Report();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForReports.Report.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('Report', function() {
     it('should create an instance of Report', function() {
-      // uncomment below and update the code to test Report
-      //var instance = new SellingPartnerApiForReports.Report();
-      //expect(instance).to.be.a(SellingPartnerApiForReports.Report);
+      expect(instance).to.be.a(SellingPartnerApiForReports.Report);
     });
 
     it('should have the property marketplaceIds (base name: "marketplaceIds")', function() {
-      // uncomment below and update the code to test the property marketplaceIds
-      //var instance = new SellingPartnerApiForReports.Report();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('marketplaceIds');
+
+      // set and verify value
+      var validValue = generateMockData('[String]', true);
+      instance.marketplaceIds = validValue;
+      expect(instance.marketplaceIds).to.equal(validValue);
     });
 
     it('should have the property reportId (base name: "reportId")', function() {
-      // uncomment below and update the code to test the property reportId
-      //var instance = new SellingPartnerApiForReports.Report();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('reportId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.reportId = validValue;
+      expect(instance.reportId).to.equal(validValue);
     });
 
     it('should have the property reportType (base name: "reportType")', function() {
-      // uncomment below and update the code to test the property reportType
-      //var instance = new SellingPartnerApiForReports.Report();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('reportType');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.reportType = validValue;
+      expect(instance.reportType).to.equal(validValue);
     });
 
     it('should have the property dataStartTime (base name: "dataStartTime")', function() {
-      // uncomment below and update the code to test the property dataStartTime
-      //var instance = new SellingPartnerApiForReports.Report();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('dataStartTime');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.dataStartTime = validValue;
+      expect(instance.dataStartTime).to.equal(validValue);
     });
 
     it('should have the property dataEndTime (base name: "dataEndTime")', function() {
-      // uncomment below and update the code to test the property dataEndTime
-      //var instance = new SellingPartnerApiForReports.Report();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('dataEndTime');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.dataEndTime = validValue;
+      expect(instance.dataEndTime).to.equal(validValue);
     });
 
     it('should have the property reportScheduleId (base name: "reportScheduleId")', function() {
-      // uncomment below and update the code to test the property reportScheduleId
-      //var instance = new SellingPartnerApiForReports.Report();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('reportScheduleId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.reportScheduleId = validValue;
+      expect(instance.reportScheduleId).to.equal(validValue);
     });
 
     it('should have the property createdTime (base name: "createdTime")', function() {
-      // uncomment below and update the code to test the property createdTime
-      //var instance = new SellingPartnerApiForReports.Report();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('createdTime');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.createdTime = validValue;
+      expect(instance.createdTime).to.equal(validValue);
     });
 
     it('should have the property processingStatus (base name: "processingStatus")', function() {
-      // uncomment below and update the code to test the property processingStatus
-      //var instance = new SellingPartnerApiForReports.Report();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('processingStatus');
+
+      // set and verify value
+      var validValue = ['CANCELLED', 'DONE', 'FATAL', 'IN_PROGRESS', 'IN_QUEUE', ][0];
+      instance.processingStatus = validValue;
+      expect(instance.processingStatus).to.equal(validValue);
     });
 
     it('should have the property processingStartTime (base name: "processingStartTime")', function() {
-      // uncomment below and update the code to test the property processingStartTime
-      //var instance = new SellingPartnerApiForReports.Report();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('processingStartTime');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.processingStartTime = validValue;
+      expect(instance.processingStartTime).to.equal(validValue);
     });
 
     it('should have the property processingEndTime (base name: "processingEndTime")', function() {
-      // uncomment below and update the code to test the property processingEndTime
-      //var instance = new SellingPartnerApiForReports.Report();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('processingEndTime');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.processingEndTime = validValue;
+      expect(instance.processingEndTime).to.equal(validValue);
     });
 
     it('should have the property reportDocumentId (base name: "reportDocumentId")', function() {
-      // uncomment below and update the code to test the property reportDocumentId
-      //var instance = new SellingPartnerApiForReports.Report();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('reportDocumentId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.reportDocumentId = validValue;
+      expect(instance.reportDocumentId).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForReports[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

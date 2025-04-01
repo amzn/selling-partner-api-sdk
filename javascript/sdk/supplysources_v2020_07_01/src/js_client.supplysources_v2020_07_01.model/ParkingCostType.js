@@ -44,4 +44,3 @@ export default class ParkingCostType {
         return object;
     }
 }
-

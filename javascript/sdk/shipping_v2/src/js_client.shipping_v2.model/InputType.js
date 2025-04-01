@@ -44,4 +44,3 @@ export default class InputType {
         return object;
     }
 }
-

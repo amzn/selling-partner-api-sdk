@@ -28,67 +28,116 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new AmazonShippingApi.OneClickShipmentResult();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(AmazonShippingApi.OneClickShipmentResult.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('OneClickShipmentResult', function() {
     it('should create an instance of OneClickShipmentResult', function() {
-      // uncomment below and update the code to test OneClickShipmentResult
-      //var instance = new AmazonShippingApi.OneClickShipmentResult();
-      //expect(instance).to.be.a(AmazonShippingApi.OneClickShipmentResult);
+      expect(instance).to.be.a(AmazonShippingApi.OneClickShipmentResult);
     });
 
     it('should have the property shipmentId (base name: "shipmentId")', function() {
-      // uncomment below and update the code to test the property shipmentId
-      //var instance = new AmazonShippingApi.OneClickShipmentResult();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('shipmentId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.shipmentId = validValue;
+      expect(instance.shipmentId).to.equal(validValue);
     });
 
     it('should have the property packageDocumentDetails (base name: "packageDocumentDetails")', function() {
-      // uncomment below and update the code to test the property packageDocumentDetails
-      //var instance = new AmazonShippingApi.OneClickShipmentResult();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('packageDocumentDetails');
+
+      // set and verify value
+      var validValue = generateMockData('[PackageDocumentDetail]', true);
+      instance.packageDocumentDetails = validValue;
+      expect(instance.packageDocumentDetails).to.equal(validValue);
     });
 
     it('should have the property promise (base name: "promise")', function() {
-      // uncomment below and update the code to test the property promise
-      //var instance = new AmazonShippingApi.OneClickShipmentResult();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('promise');
+
+      // set and verify value
+      var validValue = generateMockData('Promise');
+      instance.promise = validValue;
+      expect(instance.promise).to.equal(validValue);
     });
 
     it('should have the property carrier (base name: "carrier")', function() {
-      // uncomment below and update the code to test the property carrier
-      //var instance = new AmazonShippingApi.OneClickShipmentResult();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('carrier');
+
+      // set and verify value
+      var validValue = generateMockData('Carrier');
+      instance.carrier = validValue;
+      expect(instance.carrier).to.equal(validValue);
     });
 
     it('should have the property service (base name: "service")', function() {
-      // uncomment below and update the code to test the property service
-      //var instance = new AmazonShippingApi.OneClickShipmentResult();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('service');
+
+      // set and verify value
+      var validValue = generateMockData('Service');
+      instance.service = validValue;
+      expect(instance.service).to.equal(validValue);
     });
 
     it('should have the property totalCharge (base name: "totalCharge")', function() {
-      // uncomment below and update the code to test the property totalCharge
-      //var instance = new AmazonShippingApi.OneClickShipmentResult();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('totalCharge');
+
+      // set and verify value
+      var validValue = generateMockData('Currency');
+      instance.totalCharge = validValue;
+      expect(instance.totalCharge).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = AmazonShippingApi[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

@@ -28,49 +28,86 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForSupplySources.ParkingConfiguration();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForSupplySources.ParkingConfiguration.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('ParkingConfiguration', function() {
     it('should create an instance of ParkingConfiguration', function() {
-      // uncomment below and update the code to test ParkingConfiguration
-      //var instance = new SellingPartnerApiForSupplySources.ParkingConfiguration();
-      //expect(instance).to.be.a(SellingPartnerApiForSupplySources.ParkingConfiguration);
+      expect(instance).to.be.a(SellingPartnerApiForSupplySources.ParkingConfiguration);
     });
 
     it('should have the property parkingCostType (base name: "parkingCostType")', function() {
-      // uncomment below and update the code to test the property parkingCostType
-      //var instance = new SellingPartnerApiForSupplySources.ParkingConfiguration();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('parkingCostType');
+
+      // set and verify value
+      var validValue = generateMockData('ParkingCostType');
+      instance.parkingCostType = validValue;
+      expect(instance.parkingCostType).to.equal(validValue);
     });
 
     it('should have the property parkingSpotIdentificationType (base name: "parkingSpotIdentificationType")', function() {
-      // uncomment below and update the code to test the property parkingSpotIdentificationType
-      //var instance = new SellingPartnerApiForSupplySources.ParkingConfiguration();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('parkingSpotIdentificationType');
+
+      // set and verify value
+      var validValue = generateMockData('ParkingSpotIdentificationType');
+      instance.parkingSpotIdentificationType = validValue;
+      expect(instance.parkingSpotIdentificationType).to.equal(validValue);
     });
 
     it('should have the property numberOfParkingSpots (base name: "numberOfParkingSpots")', function() {
-      // uncomment below and update the code to test the property numberOfParkingSpots
-      //var instance = new SellingPartnerApiForSupplySources.ParkingConfiguration();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('numberOfParkingSpots');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.numberOfParkingSpots = validValue;
+      expect(instance.numberOfParkingSpots).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForSupplySources[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

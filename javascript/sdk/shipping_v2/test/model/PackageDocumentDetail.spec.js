@@ -28,49 +28,86 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new AmazonShippingApi.PackageDocumentDetail();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(AmazonShippingApi.PackageDocumentDetail.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('PackageDocumentDetail', function() {
     it('should create an instance of PackageDocumentDetail', function() {
-      // uncomment below and update the code to test PackageDocumentDetail
-      //var instance = new AmazonShippingApi.PackageDocumentDetail();
-      //expect(instance).to.be.a(AmazonShippingApi.PackageDocumentDetail);
+      expect(instance).to.be.a(AmazonShippingApi.PackageDocumentDetail);
     });
 
     it('should have the property packageClientReferenceId (base name: "packageClientReferenceId")', function() {
-      // uncomment below and update the code to test the property packageClientReferenceId
-      //var instance = new AmazonShippingApi.PackageDocumentDetail();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('packageClientReferenceId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.packageClientReferenceId = validValue;
+      expect(instance.packageClientReferenceId).to.equal(validValue);
     });
 
     it('should have the property packageDocuments (base name: "packageDocuments")', function() {
-      // uncomment below and update the code to test the property packageDocuments
-      //var instance = new AmazonShippingApi.PackageDocumentDetail();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('packageDocuments');
+
+      // set and verify value
+      var validValue = generateMockData('[PackageDocument]', true);
+      instance.packageDocuments = validValue;
+      expect(instance.packageDocuments).to.equal(validValue);
     });
 
     it('should have the property trackingId (base name: "trackingId")', function() {
-      // uncomment below and update the code to test the property trackingId
-      //var instance = new AmazonShippingApi.PackageDocumentDetail();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('trackingId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.trackingId = validValue;
+      expect(instance.trackingId).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = AmazonShippingApi[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

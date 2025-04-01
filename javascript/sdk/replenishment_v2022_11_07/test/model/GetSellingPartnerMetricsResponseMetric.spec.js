@@ -28,163 +28,276 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForReplenishment.GetSellingPartnerMetricsResponseMetric();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForReplenishment.GetSellingPartnerMetricsResponseMetric.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('GetSellingPartnerMetricsResponseMetric', function() {
     it('should create an instance of GetSellingPartnerMetricsResponseMetric', function() {
-      // uncomment below and update the code to test GetSellingPartnerMetricsResponseMetric
-      //var instance = new SellingPartnerApiForReplenishment.GetSellingPartnerMetricsResponseMetric();
-      //expect(instance).to.be.a(SellingPartnerApiForReplenishment.GetSellingPartnerMetricsResponseMetric);
+      expect(instance).to.be.a(SellingPartnerApiForReplenishment.GetSellingPartnerMetricsResponseMetric);
     });
 
     it('should have the property notDeliveredDueToOOS (base name: "notDeliveredDueToOOS")', function() {
-      // uncomment below and update the code to test the property notDeliveredDueToOOS
-      //var instance = new SellingPartnerApiForReplenishment.GetSellingPartnerMetricsResponseMetric();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('notDeliveredDueToOOS');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.notDeliveredDueToOOS = validValue;
+      expect(instance.notDeliveredDueToOOS).to.equal(validValue);
     });
 
     it('should have the property totalSubscriptionsRevenue (base name: "totalSubscriptionsRevenue")', function() {
-      // uncomment below and update the code to test the property totalSubscriptionsRevenue
-      //var instance = new SellingPartnerApiForReplenishment.GetSellingPartnerMetricsResponseMetric();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('totalSubscriptionsRevenue');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.totalSubscriptionsRevenue = validValue;
+      expect(instance.totalSubscriptionsRevenue).to.equal(validValue);
     });
 
     it('should have the property shippedSubscriptionUnits (base name: "shippedSubscriptionUnits")', function() {
-      // uncomment below and update the code to test the property shippedSubscriptionUnits
-      //var instance = new SellingPartnerApiForReplenishment.GetSellingPartnerMetricsResponseMetric();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('shippedSubscriptionUnits');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.shippedSubscriptionUnits = validValue;
+      expect(instance.shippedSubscriptionUnits).to.equal(validValue);
     });
 
     it('should have the property activeSubscriptions (base name: "activeSubscriptions")', function() {
-      // uncomment below and update the code to test the property activeSubscriptions
-      //var instance = new SellingPartnerApiForReplenishment.GetSellingPartnerMetricsResponseMetric();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('activeSubscriptions');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.activeSubscriptions = validValue;
+      expect(instance.activeSubscriptions).to.equal(validValue);
     });
 
     it('should have the property subscriberAverageRevenue (base name: "subscriberAverageRevenue")', function() {
-      // uncomment below and update the code to test the property subscriberAverageRevenue
-      //var instance = new SellingPartnerApiForReplenishment.GetSellingPartnerMetricsResponseMetric();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('subscriberAverageRevenue');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.subscriberAverageRevenue = validValue;
+      expect(instance.subscriberAverageRevenue).to.equal(validValue);
     });
 
     it('should have the property nonSubscriberAverageRevenue (base name: "nonSubscriberAverageRevenue")', function() {
-      // uncomment below and update the code to test the property nonSubscriberAverageRevenue
-      //var instance = new SellingPartnerApiForReplenishment.GetSellingPartnerMetricsResponseMetric();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('nonSubscriberAverageRevenue');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.nonSubscriberAverageRevenue = validValue;
+      expect(instance.nonSubscriberAverageRevenue).to.equal(validValue);
     });
 
     it('should have the property lostRevenueDueToOOS (base name: "lostRevenueDueToOOS")', function() {
-      // uncomment below and update the code to test the property lostRevenueDueToOOS
-      //var instance = new SellingPartnerApiForReplenishment.GetSellingPartnerMetricsResponseMetric();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('lostRevenueDueToOOS');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.lostRevenueDueToOOS = validValue;
+      expect(instance.lostRevenueDueToOOS).to.equal(validValue);
     });
 
     it('should have the property subscriberAverageReorders (base name: "subscriberAverageReorders")', function() {
-      // uncomment below and update the code to test the property subscriberAverageReorders
-      //var instance = new SellingPartnerApiForReplenishment.GetSellingPartnerMetricsResponseMetric();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('subscriberAverageReorders');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.subscriberAverageReorders = validValue;
+      expect(instance.subscriberAverageReorders).to.equal(validValue);
     });
 
     it('should have the property nonSubscriberAverageReorders (base name: "nonSubscriberAverageReorders")', function() {
-      // uncomment below and update the code to test the property nonSubscriberAverageReorders
-      //var instance = new SellingPartnerApiForReplenishment.GetSellingPartnerMetricsResponseMetric();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('nonSubscriberAverageReorders');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.nonSubscriberAverageReorders = validValue;
+      expect(instance.nonSubscriberAverageReorders).to.equal(validValue);
     });
 
     it('should have the property couponsRevenuePenetration (base name: "couponsRevenuePenetration")', function() {
-      // uncomment below and update the code to test the property couponsRevenuePenetration
-      //var instance = new SellingPartnerApiForReplenishment.GetSellingPartnerMetricsResponseMetric();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('couponsRevenuePenetration');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.couponsRevenuePenetration = validValue;
+      expect(instance.couponsRevenuePenetration).to.equal(validValue);
     });
 
     it('should have the property revenueFromSubscriptionsWithMultipleDeliveries (base name: "revenueFromSubscriptionsWithMultipleDeliveries")', function() {
-      // uncomment below and update the code to test the property revenueFromSubscriptionsWithMultipleDeliveries
-      //var instance = new SellingPartnerApiForReplenishment.GetSellingPartnerMetricsResponseMetric();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('revenueFromSubscriptionsWithMultipleDeliveries');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.revenueFromSubscriptionsWithMultipleDeliveries = validValue;
+      expect(instance.revenueFromSubscriptionsWithMultipleDeliveries).to.equal(validValue);
     });
 
     it('should have the property revenueFromActiveSubscriptionsWithSingleDelivery (base name: "revenueFromActiveSubscriptionsWithSingleDelivery")', function() {
-      // uncomment below and update the code to test the property revenueFromActiveSubscriptionsWithSingleDelivery
-      //var instance = new SellingPartnerApiForReplenishment.GetSellingPartnerMetricsResponseMetric();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('revenueFromActiveSubscriptionsWithSingleDelivery');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.revenueFromActiveSubscriptionsWithSingleDelivery = validValue;
+      expect(instance.revenueFromActiveSubscriptionsWithSingleDelivery).to.equal(validValue);
     });
 
     it('should have the property revenueFromCancelledSubscriptionsAfterSingleDelivery (base name: "revenueFromCancelledSubscriptionsAfterSingleDelivery")', function() {
-      // uncomment below and update the code to test the property revenueFromCancelledSubscriptionsAfterSingleDelivery
-      //var instance = new SellingPartnerApiForReplenishment.GetSellingPartnerMetricsResponseMetric();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('revenueFromCancelledSubscriptionsAfterSingleDelivery');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.revenueFromCancelledSubscriptionsAfterSingleDelivery = validValue;
+      expect(instance.revenueFromCancelledSubscriptionsAfterSingleDelivery).to.equal(validValue);
     });
 
     it('should have the property subscriberRetentionFor30Days (base name: "subscriberRetentionFor30Days")', function() {
-      // uncomment below and update the code to test the property subscriberRetentionFor30Days
-      //var instance = new SellingPartnerApiForReplenishment.GetSellingPartnerMetricsResponseMetric();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('subscriberRetentionFor30Days');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.subscriberRetentionFor30Days = validValue;
+      expect(instance.subscriberRetentionFor30Days).to.equal(validValue);
     });
 
     it('should have the property subscriberRetentionFor90Days (base name: "subscriberRetentionFor90Days")', function() {
-      // uncomment below and update the code to test the property subscriberRetentionFor90Days
-      //var instance = new SellingPartnerApiForReplenishment.GetSellingPartnerMetricsResponseMetric();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('subscriberRetentionFor90Days');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.subscriberRetentionFor90Days = validValue;
+      expect(instance.subscriberRetentionFor90Days).to.equal(validValue);
     });
 
     it('should have the property revenuePenetrationFor0PercentSellerFunding (base name: "revenuePenetrationFor0PercentSellerFunding")', function() {
-      // uncomment below and update the code to test the property revenuePenetrationFor0PercentSellerFunding
-      //var instance = new SellingPartnerApiForReplenishment.GetSellingPartnerMetricsResponseMetric();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('revenuePenetrationFor0PercentSellerFunding');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.revenuePenetrationFor0PercentSellerFunding = validValue;
+      expect(instance.revenuePenetrationFor0PercentSellerFunding).to.equal(validValue);
     });
 
     it('should have the property revenuePenetrationFor5PercentSellerFunding (base name: "revenuePenetrationFor5PercentSellerFunding")', function() {
-      // uncomment below and update the code to test the property revenuePenetrationFor5PercentSellerFunding
-      //var instance = new SellingPartnerApiForReplenishment.GetSellingPartnerMetricsResponseMetric();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('revenuePenetrationFor5PercentSellerFunding');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.revenuePenetrationFor5PercentSellerFunding = validValue;
+      expect(instance.revenuePenetrationFor5PercentSellerFunding).to.equal(validValue);
     });
 
     it('should have the property revenuePenetrationFor10PercentSellerFunding (base name: "revenuePenetrationFor10PercentSellerFunding")', function() {
-      // uncomment below and update the code to test the property revenuePenetrationFor10PercentSellerFunding
-      //var instance = new SellingPartnerApiForReplenishment.GetSellingPartnerMetricsResponseMetric();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('revenuePenetrationFor10PercentSellerFunding');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.revenuePenetrationFor10PercentSellerFunding = validValue;
+      expect(instance.revenuePenetrationFor10PercentSellerFunding).to.equal(validValue);
     });
 
     it('should have the property revenuePenetrationFor5PlusPercentSellerFunding (base name: "revenuePenetrationFor5PlusPercentSellerFunding")', function() {
-      // uncomment below and update the code to test the property revenuePenetrationFor5PlusPercentSellerFunding
-      //var instance = new SellingPartnerApiForReplenishment.GetSellingPartnerMetricsResponseMetric();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('revenuePenetrationFor5PlusPercentSellerFunding');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.revenuePenetrationFor5PlusPercentSellerFunding = validValue;
+      expect(instance.revenuePenetrationFor5PlusPercentSellerFunding).to.equal(validValue);
     });
 
     it('should have the property shareOfCouponSubscriptions (base name: "shareOfCouponSubscriptions")', function() {
-      // uncomment below and update the code to test the property shareOfCouponSubscriptions
-      //var instance = new SellingPartnerApiForReplenishment.GetSellingPartnerMetricsResponseMetric();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('shareOfCouponSubscriptions');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.shareOfCouponSubscriptions = validValue;
+      expect(instance.shareOfCouponSubscriptions).to.equal(validValue);
     });
 
     it('should have the property timeInterval (base name: "timeInterval")', function() {
-      // uncomment below and update the code to test the property timeInterval
-      //var instance = new SellingPartnerApiForReplenishment.GetSellingPartnerMetricsResponseMetric();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('timeInterval');
+
+      // set and verify value
+      var validValue = generateMockData('TimeInterval');
+      instance.timeInterval = validValue;
+      expect(instance.timeInterval).to.equal(validValue);
     });
 
     it('should have the property currencyCode (base name: "currencyCode")', function() {
-      // uncomment below and update the code to test the property currencyCode
-      //var instance = new SellingPartnerApiForReplenishment.GetSellingPartnerMetricsResponseMetric();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('currencyCode');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.currencyCode = validValue;
+      expect(instance.currencyCode).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForReplenishment[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

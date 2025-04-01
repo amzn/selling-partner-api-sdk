@@ -28,73 +28,126 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForFbaInventory.InventoryDetails();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForFbaInventory.InventoryDetails.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('InventoryDetails', function() {
     it('should create an instance of InventoryDetails', function() {
-      // uncomment below and update the code to test InventoryDetails
-      //var instance = new SellingPartnerApiForFbaInventory.InventoryDetails();
-      //expect(instance).to.be.a(SellingPartnerApiForFbaInventory.InventoryDetails);
+      expect(instance).to.be.a(SellingPartnerApiForFbaInventory.InventoryDetails);
     });
 
     it('should have the property fulfillableQuantity (base name: "fulfillableQuantity")', function() {
-      // uncomment below and update the code to test the property fulfillableQuantity
-      //var instance = new SellingPartnerApiForFbaInventory.InventoryDetails();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('fulfillableQuantity');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.fulfillableQuantity = validValue;
+      expect(instance.fulfillableQuantity).to.equal(validValue);
     });
 
     it('should have the property inboundWorkingQuantity (base name: "inboundWorkingQuantity")', function() {
-      // uncomment below and update the code to test the property inboundWorkingQuantity
-      //var instance = new SellingPartnerApiForFbaInventory.InventoryDetails();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('inboundWorkingQuantity');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.inboundWorkingQuantity = validValue;
+      expect(instance.inboundWorkingQuantity).to.equal(validValue);
     });
 
     it('should have the property inboundShippedQuantity (base name: "inboundShippedQuantity")', function() {
-      // uncomment below and update the code to test the property inboundShippedQuantity
-      //var instance = new SellingPartnerApiForFbaInventory.InventoryDetails();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('inboundShippedQuantity');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.inboundShippedQuantity = validValue;
+      expect(instance.inboundShippedQuantity).to.equal(validValue);
     });
 
     it('should have the property inboundReceivingQuantity (base name: "inboundReceivingQuantity")', function() {
-      // uncomment below and update the code to test the property inboundReceivingQuantity
-      //var instance = new SellingPartnerApiForFbaInventory.InventoryDetails();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('inboundReceivingQuantity');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.inboundReceivingQuantity = validValue;
+      expect(instance.inboundReceivingQuantity).to.equal(validValue);
     });
 
     it('should have the property reservedQuantity (base name: "reservedQuantity")', function() {
-      // uncomment below and update the code to test the property reservedQuantity
-      //var instance = new SellingPartnerApiForFbaInventory.InventoryDetails();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('reservedQuantity');
+
+      // set and verify value
+      var validValue = generateMockData('ReservedQuantity');
+      instance.reservedQuantity = validValue;
+      expect(instance.reservedQuantity).to.equal(validValue);
     });
 
     it('should have the property researchingQuantity (base name: "researchingQuantity")', function() {
-      // uncomment below and update the code to test the property researchingQuantity
-      //var instance = new SellingPartnerApiForFbaInventory.InventoryDetails();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('researchingQuantity');
+
+      // set and verify value
+      var validValue = generateMockData('ResearchingQuantity');
+      instance.researchingQuantity = validValue;
+      expect(instance.researchingQuantity).to.equal(validValue);
     });
 
     it('should have the property unfulfillableQuantity (base name: "unfulfillableQuantity")', function() {
-      // uncomment below and update the code to test the property unfulfillableQuantity
-      //var instance = new SellingPartnerApiForFbaInventory.InventoryDetails();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('unfulfillableQuantity');
+
+      // set and verify value
+      var validValue = generateMockData('UnfulfillableQuantity');
+      instance.unfulfillableQuantity = validValue;
+      expect(instance.unfulfillableQuantity).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForFbaInventory[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

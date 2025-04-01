@@ -28,109 +28,186 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForDirectFulfillmentPayments.InvoiceDetail();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForDirectFulfillmentPayments.InvoiceDetail.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('InvoiceDetail', function() {
     it('should create an instance of InvoiceDetail', function() {
-      // uncomment below and update the code to test InvoiceDetail
-      //var instance = new SellingPartnerApiForDirectFulfillmentPayments.InvoiceDetail();
-      //expect(instance).to.be.a(SellingPartnerApiForDirectFulfillmentPayments.InvoiceDetail);
+      expect(instance).to.be.a(SellingPartnerApiForDirectFulfillmentPayments.InvoiceDetail);
     });
 
     it('should have the property invoiceNumber (base name: "invoiceNumber")', function() {
-      // uncomment below and update the code to test the property invoiceNumber
-      //var instance = new SellingPartnerApiForDirectFulfillmentPayments.InvoiceDetail();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('invoiceNumber');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.invoiceNumber = validValue;
+      expect(instance.invoiceNumber).to.equal(validValue);
     });
 
     it('should have the property invoiceDate (base name: "invoiceDate")', function() {
-      // uncomment below and update the code to test the property invoiceDate
-      //var instance = new SellingPartnerApiForDirectFulfillmentPayments.InvoiceDetail();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('invoiceDate');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.invoiceDate = validValue;
+      expect(instance.invoiceDate).to.equal(validValue);
     });
 
     it('should have the property referenceNumber (base name: "referenceNumber")', function() {
-      // uncomment below and update the code to test the property referenceNumber
-      //var instance = new SellingPartnerApiForDirectFulfillmentPayments.InvoiceDetail();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('referenceNumber');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.referenceNumber = validValue;
+      expect(instance.referenceNumber).to.equal(validValue);
     });
 
     it('should have the property remitToParty (base name: "remitToParty")', function() {
-      // uncomment below and update the code to test the property remitToParty
-      //var instance = new SellingPartnerApiForDirectFulfillmentPayments.InvoiceDetail();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('remitToParty');
+
+      // set and verify value
+      var validValue = generateMockData('PartyIdentification');
+      instance.remitToParty = validValue;
+      expect(instance.remitToParty).to.equal(validValue);
     });
 
     it('should have the property shipFromParty (base name: "shipFromParty")', function() {
-      // uncomment below and update the code to test the property shipFromParty
-      //var instance = new SellingPartnerApiForDirectFulfillmentPayments.InvoiceDetail();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('shipFromParty');
+
+      // set and verify value
+      var validValue = generateMockData('PartyIdentification');
+      instance.shipFromParty = validValue;
+      expect(instance.shipFromParty).to.equal(validValue);
     });
 
     it('should have the property billToParty (base name: "billToParty")', function() {
-      // uncomment below and update the code to test the property billToParty
-      //var instance = new SellingPartnerApiForDirectFulfillmentPayments.InvoiceDetail();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('billToParty');
+
+      // set and verify value
+      var validValue = generateMockData('PartyIdentification');
+      instance.billToParty = validValue;
+      expect(instance.billToParty).to.equal(validValue);
     });
 
     it('should have the property shipToCountryCode (base name: "shipToCountryCode")', function() {
-      // uncomment below and update the code to test the property shipToCountryCode
-      //var instance = new SellingPartnerApiForDirectFulfillmentPayments.InvoiceDetail();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('shipToCountryCode');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.shipToCountryCode = validValue;
+      expect(instance.shipToCountryCode).to.equal(validValue);
     });
 
     it('should have the property paymentTermsCode (base name: "paymentTermsCode")', function() {
-      // uncomment below and update the code to test the property paymentTermsCode
-      //var instance = new SellingPartnerApiForDirectFulfillmentPayments.InvoiceDetail();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('paymentTermsCode');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.paymentTermsCode = validValue;
+      expect(instance.paymentTermsCode).to.equal(validValue);
     });
 
     it('should have the property invoiceTotal (base name: "invoiceTotal")', function() {
-      // uncomment below and update the code to test the property invoiceTotal
-      //var instance = new SellingPartnerApiForDirectFulfillmentPayments.InvoiceDetail();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('invoiceTotal');
+
+      // set and verify value
+      var validValue = generateMockData('Money');
+      instance.invoiceTotal = validValue;
+      expect(instance.invoiceTotal).to.equal(validValue);
     });
 
     it('should have the property taxTotals (base name: "taxTotals")', function() {
-      // uncomment below and update the code to test the property taxTotals
-      //var instance = new SellingPartnerApiForDirectFulfillmentPayments.InvoiceDetail();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('taxTotals');
+
+      // set and verify value
+      var validValue = generateMockData('[TaxDetail]', true);
+      instance.taxTotals = validValue;
+      expect(instance.taxTotals).to.equal(validValue);
     });
 
     it('should have the property additionalDetails (base name: "additionalDetails")', function() {
-      // uncomment below and update the code to test the property additionalDetails
-      //var instance = new SellingPartnerApiForDirectFulfillmentPayments.InvoiceDetail();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('additionalDetails');
+
+      // set and verify value
+      var validValue = generateMockData('[AdditionalDetails]', true);
+      instance.additionalDetails = validValue;
+      expect(instance.additionalDetails).to.equal(validValue);
     });
 
     it('should have the property chargeDetails (base name: "chargeDetails")', function() {
-      // uncomment below and update the code to test the property chargeDetails
-      //var instance = new SellingPartnerApiForDirectFulfillmentPayments.InvoiceDetail();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('chargeDetails');
+
+      // set and verify value
+      var validValue = generateMockData('[ChargeDetails]', true);
+      instance.chargeDetails = validValue;
+      expect(instance.chargeDetails).to.equal(validValue);
     });
 
     it('should have the property items (base name: "items")', function() {
-      // uncomment below and update the code to test the property items
-      //var instance = new SellingPartnerApiForDirectFulfillmentPayments.InvoiceDetail();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('items');
+
+      // set and verify value
+      var validValue = generateMockData('[InvoiceItem]', true);
+      instance.items = validValue;
+      expect(instance.items).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForDirectFulfillmentPayments[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

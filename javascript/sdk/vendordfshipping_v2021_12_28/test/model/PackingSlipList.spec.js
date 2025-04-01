@@ -28,43 +28,76 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForDirectFulfillmentShipping.PackingSlipList();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForDirectFulfillmentShipping.PackingSlipList.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('PackingSlipList', function() {
     it('should create an instance of PackingSlipList', function() {
-      // uncomment below and update the code to test PackingSlipList
-      //var instance = new SellingPartnerApiForDirectFulfillmentShipping.PackingSlipList();
-      //expect(instance).to.be.a(SellingPartnerApiForDirectFulfillmentShipping.PackingSlipList);
+      expect(instance).to.be.a(SellingPartnerApiForDirectFulfillmentShipping.PackingSlipList);
     });
 
     it('should have the property pagination (base name: "pagination")', function() {
-      // uncomment below and update the code to test the property pagination
-      //var instance = new SellingPartnerApiForDirectFulfillmentShipping.PackingSlipList();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('pagination');
+
+      // set and verify value
+      var validValue = generateMockData('Pagination');
+      instance.pagination = validValue;
+      expect(instance.pagination).to.equal(validValue);
     });
 
     it('should have the property packingSlips (base name: "packingSlips")', function() {
-      // uncomment below and update the code to test the property packingSlips
-      //var instance = new SellingPartnerApiForDirectFulfillmentShipping.PackingSlipList();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('packingSlips');
+
+      // set and verify value
+      var validValue = generateMockData('[PackingSlip]', true);
+      instance.packingSlips = validValue;
+      expect(instance.packingSlips).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForDirectFulfillmentShipping[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

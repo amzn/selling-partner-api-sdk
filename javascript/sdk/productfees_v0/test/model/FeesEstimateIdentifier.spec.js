@@ -28,79 +28,136 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForProductFees.FeesEstimateIdentifier();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForProductFees.FeesEstimateIdentifier.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('FeesEstimateIdentifier', function() {
     it('should create an instance of FeesEstimateIdentifier', function() {
-      // uncomment below and update the code to test FeesEstimateIdentifier
-      //var instance = new SellingPartnerApiForProductFees.FeesEstimateIdentifier();
-      //expect(instance).to.be.a(SellingPartnerApiForProductFees.FeesEstimateIdentifier);
+      expect(instance).to.be.a(SellingPartnerApiForProductFees.FeesEstimateIdentifier);
     });
 
     it('should have the property marketplaceId (base name: "MarketplaceId")', function() {
-      // uncomment below and update the code to test the property marketplaceId
-      //var instance = new SellingPartnerApiForProductFees.FeesEstimateIdentifier();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('marketplaceId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.marketplaceId = validValue;
+      expect(instance.marketplaceId).to.equal(validValue);
     });
 
     it('should have the property sellerId (base name: "SellerId")', function() {
-      // uncomment below and update the code to test the property sellerId
-      //var instance = new SellingPartnerApiForProductFees.FeesEstimateIdentifier();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('sellerId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.sellerId = validValue;
+      expect(instance.sellerId).to.equal(validValue);
     });
 
     it('should have the property idType (base name: "IdType")', function() {
-      // uncomment below and update the code to test the property idType
-      //var instance = new SellingPartnerApiForProductFees.FeesEstimateIdentifier();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('idType');
+
+      // set and verify value
+      var validValue = generateMockData('IdType');
+      instance.idType = validValue;
+      expect(instance.idType).to.equal(validValue);
     });
 
     it('should have the property idValue (base name: "IdValue")', function() {
-      // uncomment below and update the code to test the property idValue
-      //var instance = new SellingPartnerApiForProductFees.FeesEstimateIdentifier();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('idValue');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.idValue = validValue;
+      expect(instance.idValue).to.equal(validValue);
     });
 
     it('should have the property isAmazonFulfilled (base name: "IsAmazonFulfilled")', function() {
-      // uncomment below and update the code to test the property isAmazonFulfilled
-      //var instance = new SellingPartnerApiForProductFees.FeesEstimateIdentifier();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('isAmazonFulfilled');
+
+      // set and verify value
+      var validValue = generateMockData('Boolean');
+      instance.isAmazonFulfilled = validValue;
+      expect(instance.isAmazonFulfilled).to.equal(validValue);
     });
 
     it('should have the property priceToEstimateFees (base name: "PriceToEstimateFees")', function() {
-      // uncomment below and update the code to test the property priceToEstimateFees
-      //var instance = new SellingPartnerApiForProductFees.FeesEstimateIdentifier();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('priceToEstimateFees');
+
+      // set and verify value
+      var validValue = generateMockData('PriceToEstimateFees');
+      instance.priceToEstimateFees = validValue;
+      expect(instance.priceToEstimateFees).to.equal(validValue);
     });
 
     it('should have the property sellerInputIdentifier (base name: "SellerInputIdentifier")', function() {
-      // uncomment below and update the code to test the property sellerInputIdentifier
-      //var instance = new SellingPartnerApiForProductFees.FeesEstimateIdentifier();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('sellerInputIdentifier');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.sellerInputIdentifier = validValue;
+      expect(instance.sellerInputIdentifier).to.equal(validValue);
     });
 
     it('should have the property optionalFulfillmentProgram (base name: "OptionalFulfillmentProgram")', function() {
-      // uncomment below and update the code to test the property optionalFulfillmentProgram
-      //var instance = new SellingPartnerApiForProductFees.FeesEstimateIdentifier();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('optionalFulfillmentProgram');
+
+      // set and verify value
+      var validValue = generateMockData('OptionalFulfillmentProgram');
+      instance.optionalFulfillmentProgram = validValue;
+      expect(instance.optionalFulfillmentProgram).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForProductFees[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

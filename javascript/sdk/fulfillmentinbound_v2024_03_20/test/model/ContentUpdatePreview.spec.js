@@ -28,55 +28,96 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new TheSellingPartnerApiForFbaInboundOperations.ContentUpdatePreview();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(TheSellingPartnerApiForFbaInboundOperations.ContentUpdatePreview.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('ContentUpdatePreview', function() {
     it('should create an instance of ContentUpdatePreview', function() {
-      // uncomment below and update the code to test ContentUpdatePreview
-      //var instance = new TheSellingPartnerApiForFbaInboundOperations.ContentUpdatePreview();
-      //expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.ContentUpdatePreview);
+      expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.ContentUpdatePreview);
     });
 
     it('should have the property contentUpdatePreviewId (base name: "contentUpdatePreviewId")', function() {
-      // uncomment below and update the code to test the property contentUpdatePreviewId
-      //var instance = new TheSellingPartnerApiForFbaInboundOperations.ContentUpdatePreview();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('contentUpdatePreviewId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.contentUpdatePreviewId = validValue;
+      expect(instance.contentUpdatePreviewId).to.equal(validValue);
     });
 
     it('should have the property expiration (base name: "expiration")', function() {
-      // uncomment below and update the code to test the property expiration
-      //var instance = new TheSellingPartnerApiForFbaInboundOperations.ContentUpdatePreview();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('expiration');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.expiration = validValue;
+      expect(instance.expiration).to.equal(validValue);
     });
 
     it('should have the property requestedUpdates (base name: "requestedUpdates")', function() {
-      // uncomment below and update the code to test the property requestedUpdates
-      //var instance = new TheSellingPartnerApiForFbaInboundOperations.ContentUpdatePreview();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('requestedUpdates');
+
+      // set and verify value
+      var validValue = generateMockData('RequestedUpdates');
+      instance.requestedUpdates = validValue;
+      expect(instance.requestedUpdates).to.equal(validValue);
     });
 
     it('should have the property transportationOption (base name: "transportationOption")', function() {
-      // uncomment below and update the code to test the property transportationOption
-      //var instance = new TheSellingPartnerApiForFbaInboundOperations.ContentUpdatePreview();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('transportationOption');
+
+      // set and verify value
+      var validValue = generateMockData('TransportationOption');
+      instance.transportationOption = validValue;
+      expect(instance.transportationOption).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = TheSellingPartnerApiForFbaInboundOperations[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

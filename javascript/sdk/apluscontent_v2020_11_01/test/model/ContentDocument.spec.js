@@ -28,61 +28,106 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForAContentManagement.ContentDocument();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForAContentManagement.ContentDocument.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('ContentDocument', function() {
     it('should create an instance of ContentDocument', function() {
-      // uncomment below and update the code to test ContentDocument
-      //var instance = new SellingPartnerApiForAContentManagement.ContentDocument();
-      //expect(instance).to.be.a(SellingPartnerApiForAContentManagement.ContentDocument);
+      expect(instance).to.be.a(SellingPartnerApiForAContentManagement.ContentDocument);
     });
 
     it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instance = new SellingPartnerApiForAContentManagement.ContentDocument();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('name');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.name = validValue;
+      expect(instance.name).to.equal(validValue);
     });
 
     it('should have the property contentType (base name: "contentType")', function() {
-      // uncomment below and update the code to test the property contentType
-      //var instance = new SellingPartnerApiForAContentManagement.ContentDocument();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('contentType');
+
+      // set and verify value
+      var validValue = generateMockData('ContentType');
+      instance.contentType = validValue;
+      expect(instance.contentType).to.equal(validValue);
     });
 
     it('should have the property contentSubType (base name: "contentSubType")', function() {
-      // uncomment below and update the code to test the property contentSubType
-      //var instance = new SellingPartnerApiForAContentManagement.ContentDocument();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('contentSubType');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.contentSubType = validValue;
+      expect(instance.contentSubType).to.equal(validValue);
     });
 
     it('should have the property locale (base name: "locale")', function() {
-      // uncomment below and update the code to test the property locale
-      //var instance = new SellingPartnerApiForAContentManagement.ContentDocument();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('locale');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.locale = validValue;
+      expect(instance.locale).to.equal(validValue);
     });
 
     it('should have the property contentModuleList (base name: "contentModuleList")', function() {
-      // uncomment below and update the code to test the property contentModuleList
-      //var instance = new SellingPartnerApiForAContentManagement.ContentDocument();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('contentModuleList');
+
+      // set and verify value
+      var validValue = generateMockData('[ContentModule]', true);
+      instance.contentModuleList = validValue;
+      expect(instance.contentModuleList).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForAContentManagement[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

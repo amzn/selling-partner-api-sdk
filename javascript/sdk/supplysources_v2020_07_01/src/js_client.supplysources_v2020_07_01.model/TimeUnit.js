@@ -51,4 +51,3 @@ export default class TimeUnit {
         return object;
     }
 }
-

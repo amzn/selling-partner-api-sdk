@@ -28,85 +28,146 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForFinances.AffordabilityExpenseEvent();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForFinances.AffordabilityExpenseEvent.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('AffordabilityExpenseEvent', function() {
     it('should create an instance of AffordabilityExpenseEvent', function() {
-      // uncomment below and update the code to test AffordabilityExpenseEvent
-      //var instance = new SellingPartnerApiForFinances.AffordabilityExpenseEvent();
-      //expect(instance).to.be.a(SellingPartnerApiForFinances.AffordabilityExpenseEvent);
+      expect(instance).to.be.a(SellingPartnerApiForFinances.AffordabilityExpenseEvent);
     });
 
     it('should have the property amazonOrderId (base name: "AmazonOrderId")', function() {
-      // uncomment below and update the code to test the property amazonOrderId
-      //var instance = new SellingPartnerApiForFinances.AffordabilityExpenseEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('amazonOrderId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.amazonOrderId = validValue;
+      expect(instance.amazonOrderId).to.equal(validValue);
     });
 
     it('should have the property postedDate (base name: "PostedDate")', function() {
-      // uncomment below and update the code to test the property postedDate
-      //var instance = new SellingPartnerApiForFinances.AffordabilityExpenseEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('postedDate');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.postedDate = validValue;
+      expect(instance.postedDate).to.equal(validValue);
     });
 
     it('should have the property marketplaceId (base name: "MarketplaceId")', function() {
-      // uncomment below and update the code to test the property marketplaceId
-      //var instance = new SellingPartnerApiForFinances.AffordabilityExpenseEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('marketplaceId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.marketplaceId = validValue;
+      expect(instance.marketplaceId).to.equal(validValue);
     });
 
     it('should have the property transactionType (base name: "TransactionType")', function() {
-      // uncomment below and update the code to test the property transactionType
-      //var instance = new SellingPartnerApiForFinances.AffordabilityExpenseEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('transactionType');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.transactionType = validValue;
+      expect(instance.transactionType).to.equal(validValue);
     });
 
     it('should have the property baseExpense (base name: "BaseExpense")', function() {
-      // uncomment below and update the code to test the property baseExpense
-      //var instance = new SellingPartnerApiForFinances.AffordabilityExpenseEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('baseExpense');
+
+      // set and verify value
+      var validValue = generateMockData('Currency');
+      instance.baseExpense = validValue;
+      expect(instance.baseExpense).to.equal(validValue);
     });
 
     it('should have the property taxTypeCGST (base name: "TaxTypeCGST")', function() {
-      // uncomment below and update the code to test the property taxTypeCGST
-      //var instance = new SellingPartnerApiForFinances.AffordabilityExpenseEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('taxTypeCGST');
+
+      // set and verify value
+      var validValue = generateMockData('Currency');
+      instance.taxTypeCGST = validValue;
+      expect(instance.taxTypeCGST).to.equal(validValue);
     });
 
     it('should have the property taxTypeSGST (base name: "TaxTypeSGST")', function() {
-      // uncomment below and update the code to test the property taxTypeSGST
-      //var instance = new SellingPartnerApiForFinances.AffordabilityExpenseEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('taxTypeSGST');
+
+      // set and verify value
+      var validValue = generateMockData('Currency');
+      instance.taxTypeSGST = validValue;
+      expect(instance.taxTypeSGST).to.equal(validValue);
     });
 
     it('should have the property taxTypeIGST (base name: "TaxTypeIGST")', function() {
-      // uncomment below and update the code to test the property taxTypeIGST
-      //var instance = new SellingPartnerApiForFinances.AffordabilityExpenseEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('taxTypeIGST');
+
+      // set and verify value
+      var validValue = generateMockData('Currency');
+      instance.taxTypeIGST = validValue;
+      expect(instance.taxTypeIGST).to.equal(validValue);
     });
 
     it('should have the property totalExpense (base name: "TotalExpense")', function() {
-      // uncomment below and update the code to test the property totalExpense
-      //var instance = new SellingPartnerApiForFinances.AffordabilityExpenseEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('totalExpense');
+
+      // set and verify value
+      var validValue = generateMockData('Currency');
+      instance.totalExpense = validValue;
+      expect(instance.totalExpense).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForFinances[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

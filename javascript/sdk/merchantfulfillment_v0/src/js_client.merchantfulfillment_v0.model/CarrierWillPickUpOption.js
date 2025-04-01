@@ -51,4 +51,3 @@ export default class CarrierWillPickUpOption {
         return object;
     }
 }
-

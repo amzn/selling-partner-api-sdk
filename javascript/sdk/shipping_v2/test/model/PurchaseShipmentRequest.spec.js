@@ -28,61 +28,106 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new AmazonShippingApi.PurchaseShipmentRequest();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(AmazonShippingApi.PurchaseShipmentRequest.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('PurchaseShipmentRequest', function() {
     it('should create an instance of PurchaseShipmentRequest', function() {
-      // uncomment below and update the code to test PurchaseShipmentRequest
-      //var instance = new AmazonShippingApi.PurchaseShipmentRequest();
-      //expect(instance).to.be.a(AmazonShippingApi.PurchaseShipmentRequest);
+      expect(instance).to.be.a(AmazonShippingApi.PurchaseShipmentRequest);
     });
 
     it('should have the property requestToken (base name: "requestToken")', function() {
-      // uncomment below and update the code to test the property requestToken
-      //var instance = new AmazonShippingApi.PurchaseShipmentRequest();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('requestToken');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.requestToken = validValue;
+      expect(instance.requestToken).to.equal(validValue);
     });
 
     it('should have the property rateId (base name: "rateId")', function() {
-      // uncomment below and update the code to test the property rateId
-      //var instance = new AmazonShippingApi.PurchaseShipmentRequest();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('rateId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.rateId = validValue;
+      expect(instance.rateId).to.equal(validValue);
     });
 
     it('should have the property requestedDocumentSpecification (base name: "requestedDocumentSpecification")', function() {
-      // uncomment below and update the code to test the property requestedDocumentSpecification
-      //var instance = new AmazonShippingApi.PurchaseShipmentRequest();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('requestedDocumentSpecification');
+
+      // set and verify value
+      var validValue = generateMockData('RequestedDocumentSpecification');
+      instance.requestedDocumentSpecification = validValue;
+      expect(instance.requestedDocumentSpecification).to.equal(validValue);
     });
 
     it('should have the property requestedValueAddedServices (base name: "requestedValueAddedServices")', function() {
-      // uncomment below and update the code to test the property requestedValueAddedServices
-      //var instance = new AmazonShippingApi.PurchaseShipmentRequest();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('requestedValueAddedServices');
+
+      // set and verify value
+      var validValue = generateMockData('[RequestedValueAddedService]', true);
+      instance.requestedValueAddedServices = validValue;
+      expect(instance.requestedValueAddedServices).to.equal(validValue);
     });
 
     it('should have the property additionalInputs (base name: "additionalInputs")', function() {
-      // uncomment below and update the code to test the property additionalInputs
-      //var instance = new AmazonShippingApi.PurchaseShipmentRequest();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('additionalInputs');
+
+      // set and verify value
+      var validValue = generateMockData('{String: Object}');
+      instance.additionalInputs = validValue;
+      expect(instance.additionalInputs).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = AmazonShippingApi[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

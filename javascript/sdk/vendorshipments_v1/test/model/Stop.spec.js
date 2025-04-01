@@ -28,55 +28,96 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForRetailProcurementShipments.Stop();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForRetailProcurementShipments.Stop.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('Stop', function() {
     it('should create an instance of Stop', function() {
-      // uncomment below and update the code to test Stop
-      //var instance = new SellingPartnerApiForRetailProcurementShipments.Stop();
-      //expect(instance).to.be.a(SellingPartnerApiForRetailProcurementShipments.Stop);
+      expect(instance).to.be.a(SellingPartnerApiForRetailProcurementShipments.Stop);
     });
 
     it('should have the property functionCode (base name: "functionCode")', function() {
-      // uncomment below and update the code to test the property functionCode
-      //var instance = new SellingPartnerApiForRetailProcurementShipments.Stop();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('functionCode');
+
+      // set and verify value
+      var validValue = ['PortOfDischarge', 'FreightPayableAt', 'PortOfLoading', ][0];
+      instance.functionCode = validValue;
+      expect(instance.functionCode).to.equal(validValue);
     });
 
     it('should have the property locationIdentification (base name: "locationIdentification")', function() {
-      // uncomment below and update the code to test the property locationIdentification
-      //var instance = new SellingPartnerApiForRetailProcurementShipments.Stop();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('locationIdentification');
+
+      // set and verify value
+      var validValue = generateMockData('Location');
+      instance.locationIdentification = validValue;
+      expect(instance.locationIdentification).to.equal(validValue);
     });
 
     it('should have the property arrivalTime (base name: "arrivalTime")', function() {
-      // uncomment below and update the code to test the property arrivalTime
-      //var instance = new SellingPartnerApiForRetailProcurementShipments.Stop();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('arrivalTime');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.arrivalTime = validValue;
+      expect(instance.arrivalTime).to.equal(validValue);
     });
 
     it('should have the property departureTime (base name: "departureTime")', function() {
-      // uncomment below and update the code to test the property departureTime
-      //var instance = new SellingPartnerApiForRetailProcurementShipments.Stop();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('departureTime');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.departureTime = validValue;
+      expect(instance.departureTime).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForRetailProcurementShipments[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

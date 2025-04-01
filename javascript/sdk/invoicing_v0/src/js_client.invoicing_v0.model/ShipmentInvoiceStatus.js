@@ -58,4 +58,3 @@ export default class ShipmentInvoiceStatus {
         return object;
     }
 }
-

@@ -28,49 +28,86 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForDirectFulfillmentShipping.PackingSlip();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForDirectFulfillmentShipping.PackingSlip.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('PackingSlip', function() {
     it('should create an instance of PackingSlip', function() {
-      // uncomment below and update the code to test PackingSlip
-      //var instance = new SellingPartnerApiForDirectFulfillmentShipping.PackingSlip();
-      //expect(instance).to.be.a(SellingPartnerApiForDirectFulfillmentShipping.PackingSlip);
+      expect(instance).to.be.a(SellingPartnerApiForDirectFulfillmentShipping.PackingSlip);
     });
 
     it('should have the property purchaseOrderNumber (base name: "purchaseOrderNumber")', function() {
-      // uncomment below and update the code to test the property purchaseOrderNumber
-      //var instance = new SellingPartnerApiForDirectFulfillmentShipping.PackingSlip();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('purchaseOrderNumber');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.purchaseOrderNumber = validValue;
+      expect(instance.purchaseOrderNumber).to.equal(validValue);
     });
 
     it('should have the property content (base name: "content")', function() {
-      // uncomment below and update the code to test the property content
-      //var instance = new SellingPartnerApiForDirectFulfillmentShipping.PackingSlip();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('content');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.content = validValue;
+      expect(instance.content).to.equal(validValue);
     });
 
     it('should have the property contentType (base name: "contentType")', function() {
-      // uncomment below and update the code to test the property contentType
-      //var instance = new SellingPartnerApiForDirectFulfillmentShipping.PackingSlip();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('contentType');
+
+      // set and verify value
+      var validValue = ['application/pdf', ][0];
+      instance.contentType = validValue;
+      expect(instance.contentType).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForDirectFulfillmentShipping[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

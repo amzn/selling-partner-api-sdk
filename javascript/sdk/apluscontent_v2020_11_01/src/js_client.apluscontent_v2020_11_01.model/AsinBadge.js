@@ -58,4 +58,3 @@ export default class AsinBadge {
         return object;
     }
 }
-

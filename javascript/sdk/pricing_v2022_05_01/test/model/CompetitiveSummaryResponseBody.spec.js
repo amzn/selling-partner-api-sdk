@@ -28,67 +28,116 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForPricing.CompetitiveSummaryResponseBody();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForPricing.CompetitiveSummaryResponseBody.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('CompetitiveSummaryResponseBody', function() {
     it('should create an instance of CompetitiveSummaryResponseBody', function() {
-      // uncomment below and update the code to test CompetitiveSummaryResponseBody
-      //var instance = new SellingPartnerApiForPricing.CompetitiveSummaryResponseBody();
-      //expect(instance).to.be.a(SellingPartnerApiForPricing.CompetitiveSummaryResponseBody);
+      expect(instance).to.be.a(SellingPartnerApiForPricing.CompetitiveSummaryResponseBody);
     });
 
     it('should have the property asin (base name: "asin")', function() {
-      // uncomment below and update the code to test the property asin
-      //var instance = new SellingPartnerApiForPricing.CompetitiveSummaryResponseBody();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('asin');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.asin = validValue;
+      expect(instance.asin).to.equal(validValue);
     });
 
     it('should have the property marketplaceId (base name: "marketplaceId")', function() {
-      // uncomment below and update the code to test the property marketplaceId
-      //var instance = new SellingPartnerApiForPricing.CompetitiveSummaryResponseBody();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('marketplaceId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.marketplaceId = validValue;
+      expect(instance.marketplaceId).to.equal(validValue);
     });
 
     it('should have the property featuredBuyingOptions (base name: "featuredBuyingOptions")', function() {
-      // uncomment below and update the code to test the property featuredBuyingOptions
-      //var instance = new SellingPartnerApiForPricing.CompetitiveSummaryResponseBody();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('featuredBuyingOptions');
+
+      // set and verify value
+      var validValue = generateMockData('[FeaturedBuyingOption]', true);
+      instance.featuredBuyingOptions = validValue;
+      expect(instance.featuredBuyingOptions).to.equal(validValue);
     });
 
     it('should have the property lowestPricedOffers (base name: "lowestPricedOffers")', function() {
-      // uncomment below and update the code to test the property lowestPricedOffers
-      //var instance = new SellingPartnerApiForPricing.CompetitiveSummaryResponseBody();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('lowestPricedOffers');
+
+      // set and verify value
+      var validValue = generateMockData('[LowestPricedOffer]', true);
+      instance.lowestPricedOffers = validValue;
+      expect(instance.lowestPricedOffers).to.equal(validValue);
     });
 
     it('should have the property referencePrices (base name: "referencePrices")', function() {
-      // uncomment below and update the code to test the property referencePrices
-      //var instance = new SellingPartnerApiForPricing.CompetitiveSummaryResponseBody();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('referencePrices');
+
+      // set and verify value
+      var validValue = generateMockData('[ReferencePrice]', true);
+      instance.referencePrices = validValue;
+      expect(instance.referencePrices).to.equal(validValue);
     });
 
     it('should have the property errors (base name: "errors")', function() {
-      // uncomment below and update the code to test the property errors
-      //var instance = new SellingPartnerApiForPricing.CompetitiveSummaryResponseBody();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('errors');
+
+      // set and verify value
+      var validValue = generateMockData('[Error]', true);
+      instance.errors = validValue;
+      expect(instance.errors).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForPricing[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

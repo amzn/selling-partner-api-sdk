@@ -28,67 +28,116 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new TheSellingPartnerApiForSellers.Marketplace();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(TheSellingPartnerApiForSellers.Marketplace.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('Marketplace', function() {
     it('should create an instance of Marketplace', function() {
-      // uncomment below and update the code to test Marketplace
-      //var instance = new TheSellingPartnerApiForSellers.Marketplace();
-      //expect(instance).to.be.a(TheSellingPartnerApiForSellers.Marketplace);
+      expect(instance).to.be.a(TheSellingPartnerApiForSellers.Marketplace);
     });
 
     it('should have the property id (base name: "id")', function() {
-      // uncomment below and update the code to test the property id
-      //var instance = new TheSellingPartnerApiForSellers.Marketplace();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('id');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.id = validValue;
+      expect(instance.id).to.equal(validValue);
     });
 
     it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instance = new TheSellingPartnerApiForSellers.Marketplace();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('name');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.name = validValue;
+      expect(instance.name).to.equal(validValue);
     });
 
     it('should have the property countryCode (base name: "countryCode")', function() {
-      // uncomment below and update the code to test the property countryCode
-      //var instance = new TheSellingPartnerApiForSellers.Marketplace();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('countryCode');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.countryCode = validValue;
+      expect(instance.countryCode).to.equal(validValue);
     });
 
     it('should have the property defaultCurrencyCode (base name: "defaultCurrencyCode")', function() {
-      // uncomment below and update the code to test the property defaultCurrencyCode
-      //var instance = new TheSellingPartnerApiForSellers.Marketplace();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('defaultCurrencyCode');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.defaultCurrencyCode = validValue;
+      expect(instance.defaultCurrencyCode).to.equal(validValue);
     });
 
     it('should have the property defaultLanguageCode (base name: "defaultLanguageCode")', function() {
-      // uncomment below and update the code to test the property defaultLanguageCode
-      //var instance = new TheSellingPartnerApiForSellers.Marketplace();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('defaultLanguageCode');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.defaultLanguageCode = validValue;
+      expect(instance.defaultLanguageCode).to.equal(validValue);
     });
 
     it('should have the property domainName (base name: "domainName")', function() {
-      // uncomment below and update the code to test the property domainName
-      //var instance = new TheSellingPartnerApiForSellers.Marketplace();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('domainName');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.domainName = validValue;
+      expect(instance.domainName).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = TheSellingPartnerApiForSellers[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

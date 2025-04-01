@@ -28,67 +28,116 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new TheSellingPartnerApiForFbaInboundOperations.MskuPrepDetail();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(TheSellingPartnerApiForFbaInboundOperations.MskuPrepDetail.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('MskuPrepDetail', function() {
     it('should create an instance of MskuPrepDetail', function() {
-      // uncomment below and update the code to test MskuPrepDetail
-      //var instance = new TheSellingPartnerApiForFbaInboundOperations.MskuPrepDetail();
-      //expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.MskuPrepDetail);
+      expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.MskuPrepDetail);
     });
 
     it('should have the property allOwnersConstraint (base name: "allOwnersConstraint")', function() {
-      // uncomment below and update the code to test the property allOwnersConstraint
-      //var instance = new TheSellingPartnerApiForFbaInboundOperations.MskuPrepDetail();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('allOwnersConstraint');
+
+      // set and verify value
+      var validValue = generateMockData('AllOwnersConstraint');
+      instance.allOwnersConstraint = validValue;
+      expect(instance.allOwnersConstraint).to.equal(validValue);
     });
 
     it('should have the property labelOwnerConstraint (base name: "labelOwnerConstraint")', function() {
-      // uncomment below and update the code to test the property labelOwnerConstraint
-      //var instance = new TheSellingPartnerApiForFbaInboundOperations.MskuPrepDetail();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('labelOwnerConstraint');
+
+      // set and verify value
+      var validValue = generateMockData('OwnerConstraint');
+      instance.labelOwnerConstraint = validValue;
+      expect(instance.labelOwnerConstraint).to.equal(validValue);
     });
 
     it('should have the property msku (base name: "msku")', function() {
-      // uncomment below and update the code to test the property msku
-      //var instance = new TheSellingPartnerApiForFbaInboundOperations.MskuPrepDetail();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('msku');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.msku = validValue;
+      expect(instance.msku).to.equal(validValue);
     });
 
     it('should have the property prepCategory (base name: "prepCategory")', function() {
-      // uncomment below and update the code to test the property prepCategory
-      //var instance = new TheSellingPartnerApiForFbaInboundOperations.MskuPrepDetail();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('prepCategory');
+
+      // set and verify value
+      var validValue = generateMockData('PrepCategory');
+      instance.prepCategory = validValue;
+      expect(instance.prepCategory).to.equal(validValue);
     });
 
     it('should have the property prepOwnerConstraint (base name: "prepOwnerConstraint")', function() {
-      // uncomment below and update the code to test the property prepOwnerConstraint
-      //var instance = new TheSellingPartnerApiForFbaInboundOperations.MskuPrepDetail();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('prepOwnerConstraint');
+
+      // set and verify value
+      var validValue = generateMockData('OwnerConstraint');
+      instance.prepOwnerConstraint = validValue;
+      expect(instance.prepOwnerConstraint).to.equal(validValue);
     });
 
     it('should have the property prepTypes (base name: "prepTypes")', function() {
-      // uncomment below and update the code to test the property prepTypes
-      //var instance = new TheSellingPartnerApiForFbaInboundOperations.MskuPrepDetail();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('prepTypes');
+
+      // set and verify value
+      var validValue = generateMockData('[PrepType]', true);
+      instance.prepTypes = validValue;
+      expect(instance.prepTypes).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = TheSellingPartnerApiForFbaInboundOperations[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

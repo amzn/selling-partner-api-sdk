@@ -58,4 +58,3 @@ export default class DeliveryExperienceType {
         return object;
     }
 }
-

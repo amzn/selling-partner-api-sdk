@@ -28,67 +28,116 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForFulfillmentInbound.SKUPrepInstructions();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForFulfillmentInbound.SKUPrepInstructions.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('SKUPrepInstructions', function() {
     it('should create an instance of SKUPrepInstructions', function() {
-      // uncomment below and update the code to test SKUPrepInstructions
-      //var instance = new SellingPartnerApiForFulfillmentInbound.SKUPrepInstructions();
-      //expect(instance).to.be.a(SellingPartnerApiForFulfillmentInbound.SKUPrepInstructions);
+      expect(instance).to.be.a(SellingPartnerApiForFulfillmentInbound.SKUPrepInstructions);
     });
 
     it('should have the property sellerSKU (base name: "SellerSKU")', function() {
-      // uncomment below and update the code to test the property sellerSKU
-      //var instance = new SellingPartnerApiForFulfillmentInbound.SKUPrepInstructions();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('sellerSKU');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.sellerSKU = validValue;
+      expect(instance.sellerSKU).to.equal(validValue);
     });
 
     it('should have the property ASIN (base name: "ASIN")', function() {
-      // uncomment below and update the code to test the property ASIN
-      //var instance = new SellingPartnerApiForFulfillmentInbound.SKUPrepInstructions();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('ASIN');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.ASIN = validValue;
+      expect(instance.ASIN).to.equal(validValue);
     });
 
     it('should have the property barcodeInstruction (base name: "BarcodeInstruction")', function() {
-      // uncomment below and update the code to test the property barcodeInstruction
-      //var instance = new SellingPartnerApiForFulfillmentInbound.SKUPrepInstructions();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('barcodeInstruction');
+
+      // set and verify value
+      var validValue = generateMockData('BarcodeInstruction');
+      instance.barcodeInstruction = validValue;
+      expect(instance.barcodeInstruction).to.equal(validValue);
     });
 
     it('should have the property prepGuidance (base name: "PrepGuidance")', function() {
-      // uncomment below and update the code to test the property prepGuidance
-      //var instance = new SellingPartnerApiForFulfillmentInbound.SKUPrepInstructions();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('prepGuidance');
+
+      // set and verify value
+      var validValue = generateMockData('PrepGuidance');
+      instance.prepGuidance = validValue;
+      expect(instance.prepGuidance).to.equal(validValue);
     });
 
     it('should have the property prepInstructionList (base name: "PrepInstructionList")', function() {
-      // uncomment below and update the code to test the property prepInstructionList
-      //var instance = new SellingPartnerApiForFulfillmentInbound.SKUPrepInstructions();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('prepInstructionList');
+
+      // set and verify value
+      var validValue = generateMockData('[PrepInstruction]', true);
+      instance.prepInstructionList = validValue;
+      expect(instance.prepInstructionList).to.equal(validValue);
     });
 
     it('should have the property amazonPrepFeesDetailsList (base name: "AmazonPrepFeesDetailsList")', function() {
-      // uncomment below and update the code to test the property amazonPrepFeesDetailsList
-      //var instance = new SellingPartnerApiForFulfillmentInbound.SKUPrepInstructions();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('amazonPrepFeesDetailsList');
+
+      // set and verify value
+      var validValue = generateMockData('[AmazonPrepFeesDetails]', true);
+      instance.amazonPrepFeesDetailsList = validValue;
+      expect(instance.amazonPrepFeesDetailsList).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForFulfillmentInbound[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

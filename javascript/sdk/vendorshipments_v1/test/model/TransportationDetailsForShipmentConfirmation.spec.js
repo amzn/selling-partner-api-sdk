@@ -28,55 +28,96 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForRetailProcurementShipments.TransportationDetailsForShipmentConfirmation();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForRetailProcurementShipments.TransportationDetailsForShipmentConfirmation.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('TransportationDetailsForShipmentConfirmation', function() {
     it('should create an instance of TransportationDetailsForShipmentConfirmation', function() {
-      // uncomment below and update the code to test TransportationDetailsForShipmentConfirmation
-      //var instance = new SellingPartnerApiForRetailProcurementShipments.TransportationDetailsForShipmentConfirmation();
-      //expect(instance).to.be.a(SellingPartnerApiForRetailProcurementShipments.TransportationDetailsForShipmentConfirmation);
+      expect(instance).to.be.a(SellingPartnerApiForRetailProcurementShipments.TransportationDetailsForShipmentConfirmation);
     });
 
     it('should have the property carrierScac (base name: "carrierScac")', function() {
-      // uncomment below and update the code to test the property carrierScac
-      //var instance = new SellingPartnerApiForRetailProcurementShipments.TransportationDetailsForShipmentConfirmation();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('carrierScac');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.carrierScac = validValue;
+      expect(instance.carrierScac).to.equal(validValue);
     });
 
     it('should have the property carrierShipmentReferenceNumber (base name: "carrierShipmentReferenceNumber")', function() {
-      // uncomment below and update the code to test the property carrierShipmentReferenceNumber
-      //var instance = new SellingPartnerApiForRetailProcurementShipments.TransportationDetailsForShipmentConfirmation();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('carrierShipmentReferenceNumber');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.carrierShipmentReferenceNumber = validValue;
+      expect(instance.carrierShipmentReferenceNumber).to.equal(validValue);
     });
 
     it('should have the property transportationMode (base name: "transportationMode")', function() {
-      // uncomment below and update the code to test the property transportationMode
-      //var instance = new SellingPartnerApiForRetailProcurementShipments.TransportationDetailsForShipmentConfirmation();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('transportationMode');
+
+      // set and verify value
+      var validValue = ['Road', 'Air', 'Ocean', ][0];
+      instance.transportationMode = validValue;
+      expect(instance.transportationMode).to.equal(validValue);
     });
 
     it('should have the property billOfLadingNumber (base name: "billOfLadingNumber")', function() {
-      // uncomment below and update the code to test the property billOfLadingNumber
-      //var instance = new SellingPartnerApiForRetailProcurementShipments.TransportationDetailsForShipmentConfirmation();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('billOfLadingNumber');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.billOfLadingNumber = validValue;
+      expect(instance.billOfLadingNumber).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForRetailProcurementShipments[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

@@ -28,43 +28,76 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApisForFulfillmentOutbound.LockerDetails();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApisForFulfillmentOutbound.LockerDetails.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('LockerDetails', function() {
     it('should create an instance of LockerDetails', function() {
-      // uncomment below and update the code to test LockerDetails
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.LockerDetails();
-      //expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.LockerDetails);
+      expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.LockerDetails);
     });
 
     it('should have the property lockerNumber (base name: "lockerNumber")', function() {
-      // uncomment below and update the code to test the property lockerNumber
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.LockerDetails();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('lockerNumber');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.lockerNumber = validValue;
+      expect(instance.lockerNumber).to.equal(validValue);
     });
 
     it('should have the property lockerAccessCode (base name: "lockerAccessCode")', function() {
-      // uncomment below and update the code to test the property lockerAccessCode
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.LockerDetails();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('lockerAccessCode');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.lockerAccessCode = validValue;
+      expect(instance.lockerAccessCode).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApisForFulfillmentOutbound[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

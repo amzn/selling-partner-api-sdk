@@ -28,43 +28,76 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForOrders.Measurement();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForOrders.Measurement.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('Measurement', function() {
     it('should create an instance of Measurement', function() {
-      // uncomment below and update the code to test Measurement
-      //var instance = new SellingPartnerApiForOrders.Measurement();
-      //expect(instance).to.be.a(SellingPartnerApiForOrders.Measurement);
+      expect(instance).to.be.a(SellingPartnerApiForOrders.Measurement);
     });
 
     it('should have the property unit (base name: "Unit")', function() {
-      // uncomment below and update the code to test the property unit
-      //var instance = new SellingPartnerApiForOrders.Measurement();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('unit');
+
+      // set and verify value
+      var validValue = ['OUNCES', 'POUNDS', 'KILOGRAMS', 'GRAMS', 'MILLIGRAMS', 'INCHES', 'FEET', 'METERS', 'CENTIMETERS', 'MILLIMETERS', 'SQUARE_METERS', 'SQUARE_CENTIMETERS', 'SQUARE_FEET', 'SQUARE_INCHES', 'GALLONS', 'PINTS', 'QUARTS', 'FLUID_OUNCES', 'LITERS', 'CUBIC_METERS', 'CUBIC_FEET', 'CUBIC_INCHES', 'CUBIC_CENTIMETERS', 'COUNT', ][0];
+      instance.unit = validValue;
+      expect(instance.unit).to.equal(validValue);
     });
 
     it('should have the property value (base name: "Value")', function() {
-      // uncomment below and update the code to test the property value
-      //var instance = new SellingPartnerApiForOrders.Measurement();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('value');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.value = validValue;
+      expect(instance.value).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForOrders[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

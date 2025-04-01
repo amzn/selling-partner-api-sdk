@@ -142,4 +142,3 @@ export default class PrepType {
         return object;
     }
 }
-

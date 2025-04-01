@@ -28,61 +28,106 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForRetailProcurementShipments.ItemDetails();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForRetailProcurementShipments.ItemDetails.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('ItemDetails', function() {
     it('should create an instance of ItemDetails', function() {
-      // uncomment below and update the code to test ItemDetails
-      //var instance = new SellingPartnerApiForRetailProcurementShipments.ItemDetails();
-      //expect(instance).to.be.a(SellingPartnerApiForRetailProcurementShipments.ItemDetails);
+      expect(instance).to.be.a(SellingPartnerApiForRetailProcurementShipments.ItemDetails);
     });
 
     it('should have the property purchaseOrderNumber (base name: "purchaseOrderNumber")', function() {
-      // uncomment below and update the code to test the property purchaseOrderNumber
-      //var instance = new SellingPartnerApiForRetailProcurementShipments.ItemDetails();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('purchaseOrderNumber');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.purchaseOrderNumber = validValue;
+      expect(instance.purchaseOrderNumber).to.equal(validValue);
     });
 
     it('should have the property lotNumber (base name: "lotNumber")', function() {
-      // uncomment below and update the code to test the property lotNumber
-      //var instance = new SellingPartnerApiForRetailProcurementShipments.ItemDetails();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('lotNumber');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.lotNumber = validValue;
+      expect(instance.lotNumber).to.equal(validValue);
     });
 
     it('should have the property expiry (base name: "expiry")', function() {
-      // uncomment below and update the code to test the property expiry
-      //var instance = new SellingPartnerApiForRetailProcurementShipments.ItemDetails();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('expiry');
+
+      // set and verify value
+      var validValue = generateMockData('Expiry');
+      instance.expiry = validValue;
+      expect(instance.expiry).to.equal(validValue);
     });
 
     it('should have the property maximumRetailPrice (base name: "maximumRetailPrice")', function() {
-      // uncomment below and update the code to test the property maximumRetailPrice
-      //var instance = new SellingPartnerApiForRetailProcurementShipments.ItemDetails();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('maximumRetailPrice');
+
+      // set and verify value
+      var validValue = generateMockData('Money');
+      instance.maximumRetailPrice = validValue;
+      expect(instance.maximumRetailPrice).to.equal(validValue);
     });
 
     it('should have the property handlingCode (base name: "handlingCode")', function() {
-      // uncomment below and update the code to test the property handlingCode
-      //var instance = new SellingPartnerApiForRetailProcurementShipments.ItemDetails();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('handlingCode');
+
+      // set and verify value
+      var validValue = ['Oversized', 'Fragile', 'Food', 'HandleWithCare', ][0];
+      instance.handlingCode = validValue;
+      expect(instance.handlingCode).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForRetailProcurementShipments[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

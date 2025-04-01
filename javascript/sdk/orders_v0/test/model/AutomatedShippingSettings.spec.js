@@ -28,49 +28,86 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForOrders.AutomatedShippingSettings();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForOrders.AutomatedShippingSettings.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('AutomatedShippingSettings', function() {
     it('should create an instance of AutomatedShippingSettings', function() {
-      // uncomment below and update the code to test AutomatedShippingSettings
-      //var instance = new SellingPartnerApiForOrders.AutomatedShippingSettings();
-      //expect(instance).to.be.a(SellingPartnerApiForOrders.AutomatedShippingSettings);
+      expect(instance).to.be.a(SellingPartnerApiForOrders.AutomatedShippingSettings);
     });
 
     it('should have the property hasAutomatedShippingSettings (base name: "HasAutomatedShippingSettings")', function() {
-      // uncomment below and update the code to test the property hasAutomatedShippingSettings
-      //var instance = new SellingPartnerApiForOrders.AutomatedShippingSettings();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('hasAutomatedShippingSettings');
+
+      // set and verify value
+      var validValue = generateMockData('Boolean');
+      instance.hasAutomatedShippingSettings = validValue;
+      expect(instance.hasAutomatedShippingSettings).to.equal(validValue);
     });
 
     it('should have the property automatedCarrier (base name: "AutomatedCarrier")', function() {
-      // uncomment below and update the code to test the property automatedCarrier
-      //var instance = new SellingPartnerApiForOrders.AutomatedShippingSettings();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('automatedCarrier');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.automatedCarrier = validValue;
+      expect(instance.automatedCarrier).to.equal(validValue);
     });
 
     it('should have the property automatedShipMethod (base name: "AutomatedShipMethod")', function() {
-      // uncomment below and update the code to test the property automatedShipMethod
-      //var instance = new SellingPartnerApiForOrders.AutomatedShippingSettings();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('automatedShipMethod');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.automatedShipMethod = validValue;
+      expect(instance.automatedShipMethod).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForOrders[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

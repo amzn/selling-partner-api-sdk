@@ -86,4 +86,3 @@ export default class DecoratorType {
         return object;
     }
 }
-

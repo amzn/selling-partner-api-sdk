@@ -107,4 +107,3 @@ export default class Code {
         return object;
     }
 }
-

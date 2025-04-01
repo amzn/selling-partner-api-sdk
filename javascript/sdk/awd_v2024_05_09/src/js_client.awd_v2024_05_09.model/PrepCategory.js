@@ -128,4 +128,3 @@ export default class PrepCategory {
         return object;
     }
 }
-

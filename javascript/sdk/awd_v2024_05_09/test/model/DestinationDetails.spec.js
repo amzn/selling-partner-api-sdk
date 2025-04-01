@@ -28,49 +28,86 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new TheSellingPartnerApiForAmazonWarehousingAndDistribution.DestinationDetails();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(TheSellingPartnerApiForAmazonWarehousingAndDistribution.DestinationDetails.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('DestinationDetails', function() {
     it('should create an instance of DestinationDetails', function() {
-      // uncomment below and update the code to test DestinationDetails
-      //var instance = new TheSellingPartnerApiForAmazonWarehousingAndDistribution.DestinationDetails();
-      //expect(instance).to.be.a(TheSellingPartnerApiForAmazonWarehousingAndDistribution.DestinationDetails);
+      expect(instance).to.be.a(TheSellingPartnerApiForAmazonWarehousingAndDistribution.DestinationDetails);
     });
 
     it('should have the property destinationAddress (base name: "destinationAddress")', function() {
-      // uncomment below and update the code to test the property destinationAddress
-      //var instance = new TheSellingPartnerApiForAmazonWarehousingAndDistribution.DestinationDetails();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('destinationAddress');
+
+      // set and verify value
+      var validValue = generateMockData('Address');
+      instance.destinationAddress = validValue;
+      expect(instance.destinationAddress).to.equal(validValue);
     });
 
     it('should have the property destinationRegion (base name: "destinationRegion")', function() {
-      // uncomment below and update the code to test the property destinationRegion
-      //var instance = new TheSellingPartnerApiForAmazonWarehousingAndDistribution.DestinationDetails();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('destinationRegion');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.destinationRegion = validValue;
+      expect(instance.destinationRegion).to.equal(validValue);
     });
 
     it('should have the property shipmentId (base name: "shipmentId")', function() {
-      // uncomment below and update the code to test the property shipmentId
-      //var instance = new TheSellingPartnerApiForAmazonWarehousingAndDistribution.DestinationDetails();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('shipmentId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.shipmentId = validValue;
+      expect(instance.shipmentId).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = TheSellingPartnerApiForAmazonWarehousingAndDistribution[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

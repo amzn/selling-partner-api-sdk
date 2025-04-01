@@ -28,43 +28,76 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForOrders.ExportInfo();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForOrders.ExportInfo.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('ExportInfo', function() {
     it('should create an instance of ExportInfo', function() {
-      // uncomment below and update the code to test ExportInfo
-      //var instance = new SellingPartnerApiForOrders.ExportInfo();
-      //expect(instance).to.be.a(SellingPartnerApiForOrders.ExportInfo);
+      expect(instance).to.be.a(SellingPartnerApiForOrders.ExportInfo);
     });
 
     it('should have the property exportCharge (base name: "ExportCharge")', function() {
-      // uncomment below and update the code to test the property exportCharge
-      //var instance = new SellingPartnerApiForOrders.ExportInfo();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('exportCharge');
+
+      // set and verify value
+      var validValue = generateMockData('Money');
+      instance.exportCharge = validValue;
+      expect(instance.exportCharge).to.equal(validValue);
     });
 
     it('should have the property exportChargeModel (base name: "ExportChargeModel")', function() {
-      // uncomment below and update the code to test the property exportChargeModel
-      //var instance = new SellingPartnerApiForOrders.ExportInfo();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('exportChargeModel');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.exportChargeModel = validValue;
+      expect(instance.exportChargeModel).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForOrders[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

@@ -28,91 +28,156 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new AmazonShippingApi.AccessPoint();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(AmazonShippingApi.AccessPoint.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('AccessPoint', function() {
     it('should create an instance of AccessPoint', function() {
-      // uncomment below and update the code to test AccessPoint
-      //var instance = new AmazonShippingApi.AccessPoint();
-      //expect(instance).to.be.a(AmazonShippingApi.AccessPoint);
+      expect(instance).to.be.a(AmazonShippingApi.AccessPoint);
     });
 
     it('should have the property accessPointId (base name: "accessPointId")', function() {
-      // uncomment below and update the code to test the property accessPointId
-      //var instance = new AmazonShippingApi.AccessPoint();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('accessPointId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.accessPointId = validValue;
+      expect(instance.accessPointId).to.equal(validValue);
     });
 
     it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instance = new AmazonShippingApi.AccessPoint();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('name');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.name = validValue;
+      expect(instance.name).to.equal(validValue);
     });
 
     it('should have the property timezone (base name: "timezone")', function() {
-      // uncomment below and update the code to test the property timezone
-      //var instance = new AmazonShippingApi.AccessPoint();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('timezone');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.timezone = validValue;
+      expect(instance.timezone).to.equal(validValue);
     });
 
     it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
-      //var instance = new AmazonShippingApi.AccessPoint();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('type');
+
+      // set and verify value
+      var validValue = generateMockData('AccessPointType');
+      instance.type = validValue;
+      expect(instance.type).to.equal(validValue);
     });
 
     it('should have the property accessibilityAttributes (base name: "accessibilityAttributes")', function() {
-      // uncomment below and update the code to test the property accessibilityAttributes
-      //var instance = new AmazonShippingApi.AccessPoint();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('accessibilityAttributes');
+
+      // set and verify value
+      var validValue = generateMockData('AccessibilityAttributes');
+      instance.accessibilityAttributes = validValue;
+      expect(instance.accessibilityAttributes).to.equal(validValue);
     });
 
     it('should have the property address (base name: "address")', function() {
-      // uncomment below and update the code to test the property address
-      //var instance = new AmazonShippingApi.AccessPoint();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('address');
+
+      // set and verify value
+      var validValue = generateMockData('Address');
+      instance.address = validValue;
+      expect(instance.address).to.equal(validValue);
     });
 
     it('should have the property exceptionOperatingHours (base name: "exceptionOperatingHours")', function() {
-      // uncomment below and update the code to test the property exceptionOperatingHours
-      //var instance = new AmazonShippingApi.AccessPoint();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('exceptionOperatingHours');
+
+      // set and verify value
+      var validValue = generateMockData('[ExceptionOperatingHours]', true);
+      instance.exceptionOperatingHours = validValue;
+      expect(instance.exceptionOperatingHours).to.equal(validValue);
     });
 
     it('should have the property assistanceType (base name: "assistanceType")', function() {
-      // uncomment below and update the code to test the property assistanceType
-      //var instance = new AmazonShippingApi.AccessPoint();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('assistanceType');
+
+      // set and verify value
+      var validValue = ['STAFF_ASSISTED', 'SELF_ASSISTED', ][0];
+      instance.assistanceType = validValue;
+      expect(instance.assistanceType).to.equal(validValue);
     });
 
     it('should have the property score (base name: "score")', function() {
-      // uncomment below and update the code to test the property score
-      //var instance = new AmazonShippingApi.AccessPoint();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('score');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.score = validValue;
+      expect(instance.score).to.equal(validValue);
     });
 
     it('should have the property standardOperatingHours (base name: "standardOperatingHours")', function() {
-      // uncomment below and update the code to test the property standardOperatingHours
-      //var instance = new AmazonShippingApi.AccessPoint();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('standardOperatingHours');
+
+      // set and verify value
+      var validValue = generateMockData('{String: OperatingHours}');
+      instance.standardOperatingHours = validValue;
+      expect(instance.standardOperatingHours).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = AmazonShippingApi[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

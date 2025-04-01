@@ -28,61 +28,106 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new AmazonShippingApi.CollectionFormsHistoryRecord();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(AmazonShippingApi.CollectionFormsHistoryRecord.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('CollectionFormsHistoryRecord', function() {
     it('should create an instance of CollectionFormsHistoryRecord', function() {
-      // uncomment below and update the code to test CollectionFormsHistoryRecord
-      //var instance = new AmazonShippingApi.CollectionFormsHistoryRecord();
-      //expect(instance).to.be.a(AmazonShippingApi.CollectionFormsHistoryRecord);
+      expect(instance).to.be.a(AmazonShippingApi.CollectionFormsHistoryRecord);
     });
 
     it('should have the property carrierName (base name: "carrierName")', function() {
-      // uncomment below and update the code to test the property carrierName
-      //var instance = new AmazonShippingApi.CollectionFormsHistoryRecord();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('carrierName');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.carrierName = validValue;
+      expect(instance.carrierName).to.equal(validValue);
     });
 
     it('should have the property creationDate (base name: "creationDate")', function() {
-      // uncomment below and update the code to test the property creationDate
-      //var instance = new AmazonShippingApi.CollectionFormsHistoryRecord();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('creationDate');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.creationDate = validValue;
+      expect(instance.creationDate).to.equal(validValue);
     });
 
     it('should have the property generationStatus (base name: "generationStatus")', function() {
-      // uncomment below and update the code to test the property generationStatus
-      //var instance = new AmazonShippingApi.CollectionFormsHistoryRecord();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('generationStatus');
+
+      // set and verify value
+      var validValue = generateMockData('GenerationStatus');
+      instance.generationStatus = validValue;
+      expect(instance.generationStatus).to.equal(validValue);
     });
 
     it('should have the property collectionFormId (base name: "collectionFormId")', function() {
-      // uncomment below and update the code to test the property collectionFormId
-      //var instance = new AmazonShippingApi.CollectionFormsHistoryRecord();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('collectionFormId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.collectionFormId = validValue;
+      expect(instance.collectionFormId).to.equal(validValue);
     });
 
     it('should have the property shipFromAddress (base name: "shipFromAddress")', function() {
-      // uncomment below and update the code to test the property shipFromAddress
-      //var instance = new AmazonShippingApi.CollectionFormsHistoryRecord();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('shipFromAddress');
+
+      // set and verify value
+      var validValue = generateMockData('Address');
+      instance.shipFromAddress = validValue;
+      expect(instance.shipFromAddress).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = AmazonShippingApi[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

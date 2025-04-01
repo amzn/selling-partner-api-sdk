@@ -28,49 +28,86 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForOrders.ExceptionDates();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForOrders.ExceptionDates.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('ExceptionDates', function() {
     it('should create an instance of ExceptionDates', function() {
-      // uncomment below and update the code to test ExceptionDates
-      //var instance = new SellingPartnerApiForOrders.ExceptionDates();
-      //expect(instance).to.be.a(SellingPartnerApiForOrders.ExceptionDates);
+      expect(instance).to.be.a(SellingPartnerApiForOrders.ExceptionDates);
     });
 
     it('should have the property exceptionDate (base name: "ExceptionDate")', function() {
-      // uncomment below and update the code to test the property exceptionDate
-      //var instance = new SellingPartnerApiForOrders.ExceptionDates();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('exceptionDate');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.exceptionDate = validValue;
+      expect(instance.exceptionDate).to.equal(validValue);
     });
 
     it('should have the property isOpen (base name: "IsOpen")', function() {
-      // uncomment below and update the code to test the property isOpen
-      //var instance = new SellingPartnerApiForOrders.ExceptionDates();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('isOpen');
+
+      // set and verify value
+      var validValue = generateMockData('Boolean');
+      instance.isOpen = validValue;
+      expect(instance.isOpen).to.equal(validValue);
     });
 
     it('should have the property openIntervals (base name: "OpenIntervals")', function() {
-      // uncomment below and update the code to test the property openIntervals
-      //var instance = new SellingPartnerApiForOrders.ExceptionDates();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('openIntervals');
+
+      // set and verify value
+      var validValue = generateMockData('[OpenInterval]', true);
+      instance.openIntervals = validValue;
+      expect(instance.openIntervals).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForOrders[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

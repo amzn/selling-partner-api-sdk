@@ -28,91 +28,156 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForFinances.RentalTransactionEvent();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForFinances.RentalTransactionEvent.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('RentalTransactionEvent', function() {
     it('should create an instance of RentalTransactionEvent', function() {
-      // uncomment below and update the code to test RentalTransactionEvent
-      //var instance = new SellingPartnerApiForFinances.RentalTransactionEvent();
-      //expect(instance).to.be.a(SellingPartnerApiForFinances.RentalTransactionEvent);
+      expect(instance).to.be.a(SellingPartnerApiForFinances.RentalTransactionEvent);
     });
 
     it('should have the property amazonOrderId (base name: "AmazonOrderId")', function() {
-      // uncomment below and update the code to test the property amazonOrderId
-      //var instance = new SellingPartnerApiForFinances.RentalTransactionEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('amazonOrderId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.amazonOrderId = validValue;
+      expect(instance.amazonOrderId).to.equal(validValue);
     });
 
     it('should have the property rentalEventType (base name: "RentalEventType")', function() {
-      // uncomment below and update the code to test the property rentalEventType
-      //var instance = new SellingPartnerApiForFinances.RentalTransactionEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('rentalEventType');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.rentalEventType = validValue;
+      expect(instance.rentalEventType).to.equal(validValue);
     });
 
     it('should have the property extensionLength (base name: "ExtensionLength")', function() {
-      // uncomment below and update the code to test the property extensionLength
-      //var instance = new SellingPartnerApiForFinances.RentalTransactionEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('extensionLength');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.extensionLength = validValue;
+      expect(instance.extensionLength).to.equal(validValue);
     });
 
     it('should have the property postedDate (base name: "PostedDate")', function() {
-      // uncomment below and update the code to test the property postedDate
-      //var instance = new SellingPartnerApiForFinances.RentalTransactionEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('postedDate');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.postedDate = validValue;
+      expect(instance.postedDate).to.equal(validValue);
     });
 
     it('should have the property rentalChargeList (base name: "RentalChargeList")', function() {
-      // uncomment below and update the code to test the property rentalChargeList
-      //var instance = new SellingPartnerApiForFinances.RentalTransactionEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('rentalChargeList');
+
+      // set and verify value
+      var validValue = generateMockData('[ChargeComponent]', true);
+      instance.rentalChargeList = validValue;
+      expect(instance.rentalChargeList).to.equal(validValue);
     });
 
     it('should have the property rentalFeeList (base name: "RentalFeeList")', function() {
-      // uncomment below and update the code to test the property rentalFeeList
-      //var instance = new SellingPartnerApiForFinances.RentalTransactionEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('rentalFeeList');
+
+      // set and verify value
+      var validValue = generateMockData('[FeeComponent]', true);
+      instance.rentalFeeList = validValue;
+      expect(instance.rentalFeeList).to.equal(validValue);
     });
 
     it('should have the property marketplaceName (base name: "MarketplaceName")', function() {
-      // uncomment below and update the code to test the property marketplaceName
-      //var instance = new SellingPartnerApiForFinances.RentalTransactionEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('marketplaceName');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.marketplaceName = validValue;
+      expect(instance.marketplaceName).to.equal(validValue);
     });
 
     it('should have the property rentalInitialValue (base name: "RentalInitialValue")', function() {
-      // uncomment below and update the code to test the property rentalInitialValue
-      //var instance = new SellingPartnerApiForFinances.RentalTransactionEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('rentalInitialValue');
+
+      // set and verify value
+      var validValue = generateMockData('Currency');
+      instance.rentalInitialValue = validValue;
+      expect(instance.rentalInitialValue).to.equal(validValue);
     });
 
     it('should have the property rentalReimbursement (base name: "RentalReimbursement")', function() {
-      // uncomment below and update the code to test the property rentalReimbursement
-      //var instance = new SellingPartnerApiForFinances.RentalTransactionEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('rentalReimbursement');
+
+      // set and verify value
+      var validValue = generateMockData('Currency');
+      instance.rentalReimbursement = validValue;
+      expect(instance.rentalReimbursement).to.equal(validValue);
     });
 
     it('should have the property rentalTaxWithheldList (base name: "RentalTaxWithheldList")', function() {
-      // uncomment below and update the code to test the property rentalTaxWithheldList
-      //var instance = new SellingPartnerApiForFinances.RentalTransactionEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('rentalTaxWithheldList');
+
+      // set and verify value
+      var validValue = generateMockData('[TaxWithheldComponent]', true);
+      instance.rentalTaxWithheldList = validValue;
+      expect(instance.rentalTaxWithheldList).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForFinances[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

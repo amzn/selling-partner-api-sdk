@@ -28,61 +28,106 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForFbaInboundEligibilty.ItemEligibilityPreview();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForFbaInboundEligibilty.ItemEligibilityPreview.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('ItemEligibilityPreview', function() {
     it('should create an instance of ItemEligibilityPreview', function() {
-      // uncomment below and update the code to test ItemEligibilityPreview
-      //var instance = new SellingPartnerApiForFbaInboundEligibilty.ItemEligibilityPreview();
-      //expect(instance).to.be.a(SellingPartnerApiForFbaInboundEligibilty.ItemEligibilityPreview);
+      expect(instance).to.be.a(SellingPartnerApiForFbaInboundEligibilty.ItemEligibilityPreview);
     });
 
     it('should have the property asin (base name: "asin")', function() {
-      // uncomment below and update the code to test the property asin
-      //var instance = new SellingPartnerApiForFbaInboundEligibilty.ItemEligibilityPreview();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('asin');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.asin = validValue;
+      expect(instance.asin).to.equal(validValue);
     });
 
     it('should have the property marketplaceId (base name: "marketplaceId")', function() {
-      // uncomment below and update the code to test the property marketplaceId
-      //var instance = new SellingPartnerApiForFbaInboundEligibilty.ItemEligibilityPreview();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('marketplaceId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.marketplaceId = validValue;
+      expect(instance.marketplaceId).to.equal(validValue);
     });
 
     it('should have the property program (base name: "program")', function() {
-      // uncomment below and update the code to test the property program
-      //var instance = new SellingPartnerApiForFbaInboundEligibilty.ItemEligibilityPreview();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('program');
+
+      // set and verify value
+      var validValue = ['INBOUND', 'COMMINGLING', ][0];
+      instance.program = validValue;
+      expect(instance.program).to.equal(validValue);
     });
 
     it('should have the property isEligibleForProgram (base name: "isEligibleForProgram")', function() {
-      // uncomment below and update the code to test the property isEligibleForProgram
-      //var instance = new SellingPartnerApiForFbaInboundEligibilty.ItemEligibilityPreview();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('isEligibleForProgram');
+
+      // set and verify value
+      var validValue = generateMockData('Boolean');
+      instance.isEligibleForProgram = validValue;
+      expect(instance.isEligibleForProgram).to.equal(validValue);
     });
 
     it('should have the property ineligibilityReasonList (base name: "ineligibilityReasonList")', function() {
-      // uncomment below and update the code to test the property ineligibilityReasonList
-      //var instance = new SellingPartnerApiForFbaInboundEligibilty.ItemEligibilityPreview();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('ineligibilityReasonList');
+
+      // set and verify value
+      var validValue = ['FBA_INB_0004', 'FBA_INB_0006', 'FBA_INB_0007', 'FBA_INB_0008', 'FBA_INB_0009', 'FBA_INB_0010', 'FBA_INB_0011', 'FBA_INB_0012', 'FBA_INB_0013', 'FBA_INB_0014', 'FBA_INB_0015', 'FBA_INB_0016', 'FBA_INB_0017', 'FBA_INB_0018', 'FBA_INB_0019', 'FBA_INB_0034', 'FBA_INB_0035', 'FBA_INB_0036', 'FBA_INB_0037', 'FBA_INB_0038', 'FBA_INB_0050', 'FBA_INB_0051', 'FBA_INB_0053', 'FBA_INB_0055', 'FBA_INB_0056', 'FBA_INB_0059', 'FBA_INB_0065', 'FBA_INB_0066', 'FBA_INB_0067', 'FBA_INB_0068', 'FBA_INB_0095', 'FBA_INB_0097', 'FBA_INB_0098', 'FBA_INB_0099', 'FBA_INB_0100', 'FBA_INB_0103', 'FBA_INB_0104', 'FBA_INB_0197', 'UNKNOWN_INB_ERROR_CODE', ][0];
+      instance.ineligibilityReasonList = validValue;
+      expect(instance.ineligibilityReasonList).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForFbaInboundEligibilty[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

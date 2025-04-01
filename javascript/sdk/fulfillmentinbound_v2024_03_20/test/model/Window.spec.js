@@ -28,49 +28,86 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new TheSellingPartnerApiForFbaInboundOperations.Window();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(TheSellingPartnerApiForFbaInboundOperations.Window.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('Window', function() {
     it('should create an instance of Window', function() {
-      // uncomment below and update the code to test Window
-      //var instance = new TheSellingPartnerApiForFbaInboundOperations.Window();
-      //expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.Window);
+      expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.Window);
     });
 
     it('should have the property editableUntil (base name: "editableUntil")', function() {
-      // uncomment below and update the code to test the property editableUntil
-      //var instance = new TheSellingPartnerApiForFbaInboundOperations.Window();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('editableUntil');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.editableUntil = validValue;
+      expect(instance.editableUntil).to.equal(validValue);
     });
 
     it('should have the property end (base name: "end")', function() {
-      // uncomment below and update the code to test the property end
-      //var instance = new TheSellingPartnerApiForFbaInboundOperations.Window();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('end');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.end = validValue;
+      expect(instance.end).to.equal(validValue);
     });
 
     it('should have the property start (base name: "start")', function() {
-      // uncomment below and update the code to test the property start
-      //var instance = new TheSellingPartnerApiForFbaInboundOperations.Window();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('start');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.start = validValue;
+      expect(instance.start).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = TheSellingPartnerApiForFbaInboundOperations[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

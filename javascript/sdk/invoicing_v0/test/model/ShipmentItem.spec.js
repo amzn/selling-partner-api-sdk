@@ -28,97 +28,166 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForShipmentInvoicing.ShipmentItem();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForShipmentInvoicing.ShipmentItem.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('ShipmentItem', function() {
     it('should create an instance of ShipmentItem', function() {
-      // uncomment below and update the code to test ShipmentItem
-      //var instance = new SellingPartnerApiForShipmentInvoicing.ShipmentItem();
-      //expect(instance).to.be.a(SellingPartnerApiForShipmentInvoicing.ShipmentItem);
+      expect(instance).to.be.a(SellingPartnerApiForShipmentInvoicing.ShipmentItem);
     });
 
     it('should have the property ASIN (base name: "ASIN")', function() {
-      // uncomment below and update the code to test the property ASIN
-      //var instance = new SellingPartnerApiForShipmentInvoicing.ShipmentItem();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('ASIN');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.ASIN = validValue;
+      expect(instance.ASIN).to.equal(validValue);
     });
 
     it('should have the property sellerSKU (base name: "SellerSKU")', function() {
-      // uncomment below and update the code to test the property sellerSKU
-      //var instance = new SellingPartnerApiForShipmentInvoicing.ShipmentItem();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('sellerSKU');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.sellerSKU = validValue;
+      expect(instance.sellerSKU).to.equal(validValue);
     });
 
     it('should have the property orderItemId (base name: "OrderItemId")', function() {
-      // uncomment below and update the code to test the property orderItemId
-      //var instance = new SellingPartnerApiForShipmentInvoicing.ShipmentItem();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('orderItemId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.orderItemId = validValue;
+      expect(instance.orderItemId).to.equal(validValue);
     });
 
     it('should have the property title (base name: "Title")', function() {
-      // uncomment below and update the code to test the property title
-      //var instance = new SellingPartnerApiForShipmentInvoicing.ShipmentItem();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('title');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.title = validValue;
+      expect(instance.title).to.equal(validValue);
     });
 
     it('should have the property quantityOrdered (base name: "QuantityOrdered")', function() {
-      // uncomment below and update the code to test the property quantityOrdered
-      //var instance = new SellingPartnerApiForShipmentInvoicing.ShipmentItem();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('quantityOrdered');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.quantityOrdered = validValue;
+      expect(instance.quantityOrdered).to.equal(validValue);
     });
 
     it('should have the property itemPrice (base name: "ItemPrice")', function() {
-      // uncomment below and update the code to test the property itemPrice
-      //var instance = new SellingPartnerApiForShipmentInvoicing.ShipmentItem();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('itemPrice');
+
+      // set and verify value
+      var validValue = generateMockData('Money');
+      instance.itemPrice = validValue;
+      expect(instance.itemPrice).to.equal(validValue);
     });
 
     it('should have the property shippingPrice (base name: "ShippingPrice")', function() {
-      // uncomment below and update the code to test the property shippingPrice
-      //var instance = new SellingPartnerApiForShipmentInvoicing.ShipmentItem();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('shippingPrice');
+
+      // set and verify value
+      var validValue = generateMockData('Money');
+      instance.shippingPrice = validValue;
+      expect(instance.shippingPrice).to.equal(validValue);
     });
 
     it('should have the property giftWrapPrice (base name: "GiftWrapPrice")', function() {
-      // uncomment below and update the code to test the property giftWrapPrice
-      //var instance = new SellingPartnerApiForShipmentInvoicing.ShipmentItem();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('giftWrapPrice');
+
+      // set and verify value
+      var validValue = generateMockData('Money');
+      instance.giftWrapPrice = validValue;
+      expect(instance.giftWrapPrice).to.equal(validValue);
     });
 
     it('should have the property shippingDiscount (base name: "ShippingDiscount")', function() {
-      // uncomment below and update the code to test the property shippingDiscount
-      //var instance = new SellingPartnerApiForShipmentInvoicing.ShipmentItem();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('shippingDiscount');
+
+      // set and verify value
+      var validValue = generateMockData('Money');
+      instance.shippingDiscount = validValue;
+      expect(instance.shippingDiscount).to.equal(validValue);
     });
 
     it('should have the property promotionDiscount (base name: "PromotionDiscount")', function() {
-      // uncomment below and update the code to test the property promotionDiscount
-      //var instance = new SellingPartnerApiForShipmentInvoicing.ShipmentItem();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('promotionDiscount');
+
+      // set and verify value
+      var validValue = generateMockData('Money');
+      instance.promotionDiscount = validValue;
+      expect(instance.promotionDiscount).to.equal(validValue);
     });
 
     it('should have the property serialNumbers (base name: "SerialNumbers")', function() {
-      // uncomment below and update the code to test the property serialNumbers
-      //var instance = new SellingPartnerApiForShipmentInvoicing.ShipmentItem();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('serialNumbers');
+
+      // set and verify value
+      var validValue = generateMockData('[String]', true);
+      instance.serialNumbers = validValue;
+      expect(instance.serialNumbers).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForShipmentInvoicing[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

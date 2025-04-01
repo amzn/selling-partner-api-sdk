@@ -28,43 +28,76 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForServices.CreateReservationRequest();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForServices.CreateReservationRequest.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('CreateReservationRequest', function() {
     it('should create an instance of CreateReservationRequest', function() {
-      // uncomment below and update the code to test CreateReservationRequest
-      //var instance = new SellingPartnerApiForServices.CreateReservationRequest();
-      //expect(instance).to.be.a(SellingPartnerApiForServices.CreateReservationRequest);
+      expect(instance).to.be.a(SellingPartnerApiForServices.CreateReservationRequest);
     });
 
     it('should have the property resourceId (base name: "resourceId")', function() {
-      // uncomment below and update the code to test the property resourceId
-      //var instance = new SellingPartnerApiForServices.CreateReservationRequest();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('resourceId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.resourceId = validValue;
+      expect(instance.resourceId).to.equal(validValue);
     });
 
     it('should have the property reservation (base name: "reservation")', function() {
-      // uncomment below and update the code to test the property reservation
-      //var instance = new SellingPartnerApiForServices.CreateReservationRequest();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('reservation');
+
+      // set and verify value
+      var validValue = generateMockData('Reservation');
+      instance.reservation = validValue;
+      expect(instance.reservation).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForServices[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

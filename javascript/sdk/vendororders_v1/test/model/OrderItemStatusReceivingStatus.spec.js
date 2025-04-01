@@ -28,49 +28,86 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForRetailProcurementOrders.OrderItemStatusReceivingStatus();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForRetailProcurementOrders.OrderItemStatusReceivingStatus.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('OrderItemStatusReceivingStatus', function() {
     it('should create an instance of OrderItemStatusReceivingStatus', function() {
-      // uncomment below and update the code to test OrderItemStatusReceivingStatus
-      //var instance = new SellingPartnerApiForRetailProcurementOrders.OrderItemStatusReceivingStatus();
-      //expect(instance).to.be.a(SellingPartnerApiForRetailProcurementOrders.OrderItemStatusReceivingStatus);
+      expect(instance).to.be.a(SellingPartnerApiForRetailProcurementOrders.OrderItemStatusReceivingStatus);
     });
 
     it('should have the property receiveStatus (base name: "receiveStatus")', function() {
-      // uncomment below and update the code to test the property receiveStatus
-      //var instance = new SellingPartnerApiForRetailProcurementOrders.OrderItemStatusReceivingStatus();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('receiveStatus');
+
+      // set and verify value
+      var validValue = ['NOT_RECEIVED', 'PARTIALLY_RECEIVED', 'RECEIVED', ][0];
+      instance.receiveStatus = validValue;
+      expect(instance.receiveStatus).to.equal(validValue);
     });
 
     it('should have the property receivedQuantity (base name: "receivedQuantity")', function() {
-      // uncomment below and update the code to test the property receivedQuantity
-      //var instance = new SellingPartnerApiForRetailProcurementOrders.OrderItemStatusReceivingStatus();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('receivedQuantity');
+
+      // set and verify value
+      var validValue = generateMockData('ItemQuantity');
+      instance.receivedQuantity = validValue;
+      expect(instance.receivedQuantity).to.equal(validValue);
     });
 
     it('should have the property lastReceiveDate (base name: "lastReceiveDate")', function() {
-      // uncomment below and update the code to test the property lastReceiveDate
-      //var instance = new SellingPartnerApiForRetailProcurementOrders.OrderItemStatusReceivingStatus();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('lastReceiveDate');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.lastReceiveDate = validValue;
+      expect(instance.lastReceiveDate).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForRetailProcurementOrders[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

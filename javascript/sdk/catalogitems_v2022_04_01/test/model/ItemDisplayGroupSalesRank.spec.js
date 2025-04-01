@@ -28,55 +28,96 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForCatalogItems.ItemDisplayGroupSalesRank();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForCatalogItems.ItemDisplayGroupSalesRank.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('ItemDisplayGroupSalesRank', function() {
     it('should create an instance of ItemDisplayGroupSalesRank', function() {
-      // uncomment below and update the code to test ItemDisplayGroupSalesRank
-      //var instance = new SellingPartnerApiForCatalogItems.ItemDisplayGroupSalesRank();
-      //expect(instance).to.be.a(SellingPartnerApiForCatalogItems.ItemDisplayGroupSalesRank);
+      expect(instance).to.be.a(SellingPartnerApiForCatalogItems.ItemDisplayGroupSalesRank);
     });
 
     it('should have the property websiteDisplayGroup (base name: "websiteDisplayGroup")', function() {
-      // uncomment below and update the code to test the property websiteDisplayGroup
-      //var instance = new SellingPartnerApiForCatalogItems.ItemDisplayGroupSalesRank();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('websiteDisplayGroup');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.websiteDisplayGroup = validValue;
+      expect(instance.websiteDisplayGroup).to.equal(validValue);
     });
 
     it('should have the property title (base name: "title")', function() {
-      // uncomment below and update the code to test the property title
-      //var instance = new SellingPartnerApiForCatalogItems.ItemDisplayGroupSalesRank();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('title');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.title = validValue;
+      expect(instance.title).to.equal(validValue);
     });
 
     it('should have the property link (base name: "link")', function() {
-      // uncomment below and update the code to test the property link
-      //var instance = new SellingPartnerApiForCatalogItems.ItemDisplayGroupSalesRank();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('link');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.link = validValue;
+      expect(instance.link).to.equal(validValue);
     });
 
     it('should have the property rank (base name: "rank")', function() {
-      // uncomment below and update the code to test the property rank
-      //var instance = new SellingPartnerApiForCatalogItems.ItemDisplayGroupSalesRank();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('rank');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.rank = validValue;
+      expect(instance.rank).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForCatalogItems[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

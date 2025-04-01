@@ -28,91 +28,156 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForListingsItems.ItemSummaryByMarketplace();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForListingsItems.ItemSummaryByMarketplace.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('ItemSummaryByMarketplace', function() {
     it('should create an instance of ItemSummaryByMarketplace', function() {
-      // uncomment below and update the code to test ItemSummaryByMarketplace
-      //var instance = new SellingPartnerApiForListingsItems.ItemSummaryByMarketplace();
-      //expect(instance).to.be.a(SellingPartnerApiForListingsItems.ItemSummaryByMarketplace);
+      expect(instance).to.be.a(SellingPartnerApiForListingsItems.ItemSummaryByMarketplace);
     });
 
     it('should have the property marketplaceId (base name: "marketplaceId")', function() {
-      // uncomment below and update the code to test the property marketplaceId
-      //var instance = new SellingPartnerApiForListingsItems.ItemSummaryByMarketplace();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('marketplaceId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.marketplaceId = validValue;
+      expect(instance.marketplaceId).to.equal(validValue);
     });
 
     it('should have the property asin (base name: "asin")', function() {
-      // uncomment below and update the code to test the property asin
-      //var instance = new SellingPartnerApiForListingsItems.ItemSummaryByMarketplace();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('asin');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.asin = validValue;
+      expect(instance.asin).to.equal(validValue);
     });
 
     it('should have the property productType (base name: "productType")', function() {
-      // uncomment below and update the code to test the property productType
-      //var instance = new SellingPartnerApiForListingsItems.ItemSummaryByMarketplace();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('productType');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.productType = validValue;
+      expect(instance.productType).to.equal(validValue);
     });
 
     it('should have the property conditionType (base name: "conditionType")', function() {
-      // uncomment below and update the code to test the property conditionType
-      //var instance = new SellingPartnerApiForListingsItems.ItemSummaryByMarketplace();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('conditionType');
+
+      // set and verify value
+      var validValue = ['new_new', 'new_open_box', 'new_oem', 'refurbished_refurbished', 'used_like_new', 'used_very_good', 'used_good', 'used_acceptable', 'collectible_like_new', 'collectible_very_good', 'collectible_good', 'collectible_acceptable', 'club_club', ][0];
+      instance.conditionType = validValue;
+      expect(instance.conditionType).to.equal(validValue);
     });
 
     it('should have the property status (base name: "status")', function() {
-      // uncomment below and update the code to test the property status
-      //var instance = new SellingPartnerApiForListingsItems.ItemSummaryByMarketplace();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('status');
+
+      // set and verify value
+      var validValue = ['BUYABLE', 'DISCOVERABLE', ][0];
+      instance.status = validValue;
+      expect(instance.status).to.equal(validValue);
     });
 
     it('should have the property fnSku (base name: "fnSku")', function() {
-      // uncomment below and update the code to test the property fnSku
-      //var instance = new SellingPartnerApiForListingsItems.ItemSummaryByMarketplace();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('fnSku');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.fnSku = validValue;
+      expect(instance.fnSku).to.equal(validValue);
     });
 
     it('should have the property itemName (base name: "itemName")', function() {
-      // uncomment below and update the code to test the property itemName
-      //var instance = new SellingPartnerApiForListingsItems.ItemSummaryByMarketplace();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('itemName');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.itemName = validValue;
+      expect(instance.itemName).to.equal(validValue);
     });
 
     it('should have the property createdDate (base name: "createdDate")', function() {
-      // uncomment below and update the code to test the property createdDate
-      //var instance = new SellingPartnerApiForListingsItems.ItemSummaryByMarketplace();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('createdDate');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.createdDate = validValue;
+      expect(instance.createdDate).to.equal(validValue);
     });
 
     it('should have the property lastUpdatedDate (base name: "lastUpdatedDate")', function() {
-      // uncomment below and update the code to test the property lastUpdatedDate
-      //var instance = new SellingPartnerApiForListingsItems.ItemSummaryByMarketplace();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('lastUpdatedDate');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.lastUpdatedDate = validValue;
+      expect(instance.lastUpdatedDate).to.equal(validValue);
     });
 
     it('should have the property mainImage (base name: "mainImage")', function() {
-      // uncomment below and update the code to test the property mainImage
-      //var instance = new SellingPartnerApiForListingsItems.ItemSummaryByMarketplace();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('mainImage');
+
+      // set and verify value
+      var validValue = generateMockData('ItemImage');
+      instance.mainImage = validValue;
+      expect(instance.mainImage).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForListingsItems[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

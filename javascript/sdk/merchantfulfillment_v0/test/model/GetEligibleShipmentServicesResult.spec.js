@@ -28,55 +28,96 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForMerchantFulfillment.GetEligibleShipmentServicesResult();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForMerchantFulfillment.GetEligibleShipmentServicesResult.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('GetEligibleShipmentServicesResult', function() {
     it('should create an instance of GetEligibleShipmentServicesResult', function() {
-      // uncomment below and update the code to test GetEligibleShipmentServicesResult
-      //var instance = new SellingPartnerApiForMerchantFulfillment.GetEligibleShipmentServicesResult();
-      //expect(instance).to.be.a(SellingPartnerApiForMerchantFulfillment.GetEligibleShipmentServicesResult);
+      expect(instance).to.be.a(SellingPartnerApiForMerchantFulfillment.GetEligibleShipmentServicesResult);
     });
 
     it('should have the property shippingServiceList (base name: "ShippingServiceList")', function() {
-      // uncomment below and update the code to test the property shippingServiceList
-      //var instance = new SellingPartnerApiForMerchantFulfillment.GetEligibleShipmentServicesResult();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('shippingServiceList');
+
+      // set and verify value
+      var validValue = generateMockData('[ShippingService]', true);
+      instance.shippingServiceList = validValue;
+      expect(instance.shippingServiceList).to.equal(validValue);
     });
 
     it('should have the property rejectedShippingServiceList (base name: "RejectedShippingServiceList")', function() {
-      // uncomment below and update the code to test the property rejectedShippingServiceList
-      //var instance = new SellingPartnerApiForMerchantFulfillment.GetEligibleShipmentServicesResult();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('rejectedShippingServiceList');
+
+      // set and verify value
+      var validValue = generateMockData('[RejectedShippingService]', true);
+      instance.rejectedShippingServiceList = validValue;
+      expect(instance.rejectedShippingServiceList).to.equal(validValue);
     });
 
     it('should have the property temporarilyUnavailableCarrierList (base name: "TemporarilyUnavailableCarrierList")', function() {
-      // uncomment below and update the code to test the property temporarilyUnavailableCarrierList
-      //var instance = new SellingPartnerApiForMerchantFulfillment.GetEligibleShipmentServicesResult();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('temporarilyUnavailableCarrierList');
+
+      // set and verify value
+      var validValue = generateMockData('[TemporarilyUnavailableCarrier]', true);
+      instance.temporarilyUnavailableCarrierList = validValue;
+      expect(instance.temporarilyUnavailableCarrierList).to.equal(validValue);
     });
 
     it('should have the property termsAndConditionsNotAcceptedCarrierList (base name: "TermsAndConditionsNotAcceptedCarrierList")', function() {
-      // uncomment below and update the code to test the property termsAndConditionsNotAcceptedCarrierList
-      //var instance = new SellingPartnerApiForMerchantFulfillment.GetEligibleShipmentServicesResult();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('termsAndConditionsNotAcceptedCarrierList');
+
+      // set and verify value
+      var validValue = generateMockData('[TermsAndConditionsNotAcceptedCarrier]', true);
+      instance.termsAndConditionsNotAcceptedCarrierList = validValue;
+      expect(instance.termsAndConditionsNotAcceptedCarrierList).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForMerchantFulfillment[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

@@ -28,55 +28,96 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForPricing.BatchRequest();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForPricing.BatchRequest.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('BatchRequest', function() {
     it('should create an instance of BatchRequest', function() {
-      // uncomment below and update the code to test BatchRequest
-      //var instance = new SellingPartnerApiForPricing.BatchRequest();
-      //expect(instance).to.be.a(SellingPartnerApiForPricing.BatchRequest);
+      expect(instance).to.be.a(SellingPartnerApiForPricing.BatchRequest);
     });
 
     it('should have the property uri (base name: "uri")', function() {
-      // uncomment below and update the code to test the property uri
-      //var instance = new SellingPartnerApiForPricing.BatchRequest();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('uri');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.uri = validValue;
+      expect(instance.uri).to.equal(validValue);
     });
 
     it('should have the property method (base name: "method")', function() {
-      // uncomment below and update the code to test the property method
-      //var instance = new SellingPartnerApiForPricing.BatchRequest();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('method');
+
+      // set and verify value
+      var validValue = generateMockData('HttpMethod');
+      instance.method = validValue;
+      expect(instance.method).to.equal(validValue);
     });
 
     it('should have the property body (base name: "body")', function() {
-      // uncomment below and update the code to test the property body
-      //var instance = new SellingPartnerApiForPricing.BatchRequest();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('body');
+
+      // set and verify value
+      var validValue = generateMockData('{String: Object}');
+      instance.body = validValue;
+      expect(instance.body).to.equal(validValue);
     });
 
     it('should have the property headers (base name: "headers")', function() {
-      // uncomment below and update the code to test the property headers
-      //var instance = new SellingPartnerApiForPricing.BatchRequest();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('headers');
+
+      // set and verify value
+      var validValue = generateMockData('{String: String}');
+      instance.headers = validValue;
+      expect(instance.headers).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForPricing[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

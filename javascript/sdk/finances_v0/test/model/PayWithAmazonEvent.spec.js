@@ -28,91 +28,156 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForFinances.PayWithAmazonEvent();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForFinances.PayWithAmazonEvent.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('PayWithAmazonEvent', function() {
     it('should create an instance of PayWithAmazonEvent', function() {
-      // uncomment below and update the code to test PayWithAmazonEvent
-      //var instance = new SellingPartnerApiForFinances.PayWithAmazonEvent();
-      //expect(instance).to.be.a(SellingPartnerApiForFinances.PayWithAmazonEvent);
+      expect(instance).to.be.a(SellingPartnerApiForFinances.PayWithAmazonEvent);
     });
 
     it('should have the property sellerOrderId (base name: "SellerOrderId")', function() {
-      // uncomment below and update the code to test the property sellerOrderId
-      //var instance = new SellingPartnerApiForFinances.PayWithAmazonEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('sellerOrderId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.sellerOrderId = validValue;
+      expect(instance.sellerOrderId).to.equal(validValue);
     });
 
     it('should have the property transactionPostedDate (base name: "TransactionPostedDate")', function() {
-      // uncomment below and update the code to test the property transactionPostedDate
-      //var instance = new SellingPartnerApiForFinances.PayWithAmazonEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('transactionPostedDate');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.transactionPostedDate = validValue;
+      expect(instance.transactionPostedDate).to.equal(validValue);
     });
 
     it('should have the property businessObjectType (base name: "BusinessObjectType")', function() {
-      // uncomment below and update the code to test the property businessObjectType
-      //var instance = new SellingPartnerApiForFinances.PayWithAmazonEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('businessObjectType');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.businessObjectType = validValue;
+      expect(instance.businessObjectType).to.equal(validValue);
     });
 
     it('should have the property salesChannel (base name: "SalesChannel")', function() {
-      // uncomment below and update the code to test the property salesChannel
-      //var instance = new SellingPartnerApiForFinances.PayWithAmazonEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('salesChannel');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.salesChannel = validValue;
+      expect(instance.salesChannel).to.equal(validValue);
     });
 
     it('should have the property charge (base name: "Charge")', function() {
-      // uncomment below and update the code to test the property charge
-      //var instance = new SellingPartnerApiForFinances.PayWithAmazonEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('charge');
+
+      // set and verify value
+      var validValue = generateMockData('ChargeComponent');
+      instance.charge = validValue;
+      expect(instance.charge).to.equal(validValue);
     });
 
     it('should have the property feeList (base name: "FeeList")', function() {
-      // uncomment below and update the code to test the property feeList
-      //var instance = new SellingPartnerApiForFinances.PayWithAmazonEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('feeList');
+
+      // set and verify value
+      var validValue = generateMockData('[FeeComponent]', true);
+      instance.feeList = validValue;
+      expect(instance.feeList).to.equal(validValue);
     });
 
     it('should have the property paymentAmountType (base name: "PaymentAmountType")', function() {
-      // uncomment below and update the code to test the property paymentAmountType
-      //var instance = new SellingPartnerApiForFinances.PayWithAmazonEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('paymentAmountType');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.paymentAmountType = validValue;
+      expect(instance.paymentAmountType).to.equal(validValue);
     });
 
     it('should have the property amountDescription (base name: "AmountDescription")', function() {
-      // uncomment below and update the code to test the property amountDescription
-      //var instance = new SellingPartnerApiForFinances.PayWithAmazonEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('amountDescription');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.amountDescription = validValue;
+      expect(instance.amountDescription).to.equal(validValue);
     });
 
     it('should have the property fulfillmentChannel (base name: "FulfillmentChannel")', function() {
-      // uncomment below and update the code to test the property fulfillmentChannel
-      //var instance = new SellingPartnerApiForFinances.PayWithAmazonEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('fulfillmentChannel');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.fulfillmentChannel = validValue;
+      expect(instance.fulfillmentChannel).to.equal(validValue);
     });
 
     it('should have the property storeName (base name: "StoreName")', function() {
-      // uncomment below and update the code to test the property storeName
-      //var instance = new SellingPartnerApiForFinances.PayWithAmazonEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('storeName');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.storeName = validValue;
+      expect(instance.storeName).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForFinances[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

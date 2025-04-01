@@ -107,4 +107,3 @@ export default class ItemLabelPageType {
         return object;
     }
 }
-

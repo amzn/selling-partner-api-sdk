@@ -79,4 +79,3 @@ export default class DayOfWeek {
         return object;
     }
 }
-

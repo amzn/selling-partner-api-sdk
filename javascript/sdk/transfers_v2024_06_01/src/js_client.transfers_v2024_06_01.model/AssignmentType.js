@@ -37,4 +37,3 @@ export default class AssignmentType {
         return object;
     }
 }
-

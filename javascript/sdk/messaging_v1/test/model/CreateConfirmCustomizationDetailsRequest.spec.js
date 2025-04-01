@@ -28,43 +28,76 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForMessaging.CreateConfirmCustomizationDetailsRequest();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForMessaging.CreateConfirmCustomizationDetailsRequest.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('CreateConfirmCustomizationDetailsRequest', function() {
     it('should create an instance of CreateConfirmCustomizationDetailsRequest', function() {
-      // uncomment below and update the code to test CreateConfirmCustomizationDetailsRequest
-      //var instance = new SellingPartnerApiForMessaging.CreateConfirmCustomizationDetailsRequest();
-      //expect(instance).to.be.a(SellingPartnerApiForMessaging.CreateConfirmCustomizationDetailsRequest);
+      expect(instance).to.be.a(SellingPartnerApiForMessaging.CreateConfirmCustomizationDetailsRequest);
     });
 
     it('should have the property text (base name: "text")', function() {
-      // uncomment below and update the code to test the property text
-      //var instance = new SellingPartnerApiForMessaging.CreateConfirmCustomizationDetailsRequest();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('text');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.text = validValue;
+      expect(instance.text).to.equal(validValue);
     });
 
     it('should have the property attachments (base name: "attachments")', function() {
-      // uncomment below and update the code to test the property attachments
-      //var instance = new SellingPartnerApiForMessaging.CreateConfirmCustomizationDetailsRequest();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('attachments');
+
+      // set and verify value
+      var validValue = generateMockData('[Attachment]', true);
+      instance.attachments = validValue;
+      expect(instance.attachments).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForMessaging[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

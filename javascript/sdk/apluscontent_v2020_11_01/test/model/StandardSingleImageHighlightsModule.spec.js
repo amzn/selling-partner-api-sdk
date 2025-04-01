@@ -28,67 +28,116 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForAContentManagement.StandardSingleImageHighlightsModule();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForAContentManagement.StandardSingleImageHighlightsModule.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('StandardSingleImageHighlightsModule', function() {
     it('should create an instance of StandardSingleImageHighlightsModule', function() {
-      // uncomment below and update the code to test StandardSingleImageHighlightsModule
-      //var instance = new SellingPartnerApiForAContentManagement.StandardSingleImageHighlightsModule();
-      //expect(instance).to.be.a(SellingPartnerApiForAContentManagement.StandardSingleImageHighlightsModule);
+      expect(instance).to.be.a(SellingPartnerApiForAContentManagement.StandardSingleImageHighlightsModule);
     });
 
     it('should have the property image (base name: "image")', function() {
-      // uncomment below and update the code to test the property image
-      //var instance = new SellingPartnerApiForAContentManagement.StandardSingleImageHighlightsModule();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('image');
+
+      // set and verify value
+      var validValue = generateMockData('ImageComponent');
+      instance.image = validValue;
+      expect(instance.image).to.equal(validValue);
     });
 
     it('should have the property headline (base name: "headline")', function() {
-      // uncomment below and update the code to test the property headline
-      //var instance = new SellingPartnerApiForAContentManagement.StandardSingleImageHighlightsModule();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('headline');
+
+      // set and verify value
+      var validValue = generateMockData('TextComponent');
+      instance.headline = validValue;
+      expect(instance.headline).to.equal(validValue);
     });
 
     it('should have the property textBlock1 (base name: "textBlock1")', function() {
-      // uncomment below and update the code to test the property textBlock1
-      //var instance = new SellingPartnerApiForAContentManagement.StandardSingleImageHighlightsModule();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('textBlock1');
+
+      // set and verify value
+      var validValue = generateMockData('StandardTextBlock');
+      instance.textBlock1 = validValue;
+      expect(instance.textBlock1).to.equal(validValue);
     });
 
     it('should have the property textBlock2 (base name: "textBlock2")', function() {
-      // uncomment below and update the code to test the property textBlock2
-      //var instance = new SellingPartnerApiForAContentManagement.StandardSingleImageHighlightsModule();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('textBlock2');
+
+      // set and verify value
+      var validValue = generateMockData('StandardTextBlock');
+      instance.textBlock2 = validValue;
+      expect(instance.textBlock2).to.equal(validValue);
     });
 
     it('should have the property textBlock3 (base name: "textBlock3")', function() {
-      // uncomment below and update the code to test the property textBlock3
-      //var instance = new SellingPartnerApiForAContentManagement.StandardSingleImageHighlightsModule();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('textBlock3');
+
+      // set and verify value
+      var validValue = generateMockData('StandardTextBlock');
+      instance.textBlock3 = validValue;
+      expect(instance.textBlock3).to.equal(validValue);
     });
 
     it('should have the property bulletedListBlock (base name: "bulletedListBlock")', function() {
-      // uncomment below and update the code to test the property bulletedListBlock
-      //var instance = new SellingPartnerApiForAContentManagement.StandardSingleImageHighlightsModule();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('bulletedListBlock');
+
+      // set and verify value
+      var validValue = generateMockData('StandardHeaderTextListBlock');
+      instance.bulletedListBlock = validValue;
+      expect(instance.bulletedListBlock).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForAContentManagement[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

@@ -28,61 +28,106 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForServices.Poa();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForServices.Poa.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('Poa', function() {
     it('should create an instance of Poa', function() {
-      // uncomment below and update the code to test Poa
-      //var instance = new SellingPartnerApiForServices.Poa();
-      //expect(instance).to.be.a(SellingPartnerApiForServices.Poa);
+      expect(instance).to.be.a(SellingPartnerApiForServices.Poa);
     });
 
     it('should have the property appointmentTime (base name: "appointmentTime")', function() {
-      // uncomment below and update the code to test the property appointmentTime
-      //var instance = new SellingPartnerApiForServices.Poa();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('appointmentTime');
+
+      // set and verify value
+      var validValue = generateMockData('AppointmentTime');
+      instance.appointmentTime = validValue;
+      expect(instance.appointmentTime).to.equal(validValue);
     });
 
     it('should have the property technicians (base name: "technicians")', function() {
-      // uncomment below and update the code to test the property technicians
-      //var instance = new SellingPartnerApiForServices.Poa();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('technicians');
+
+      // set and verify value
+      var validValue = generateMockData('[Technician]', true);
+      instance.technicians = validValue;
+      expect(instance.technicians).to.equal(validValue);
     });
 
     it('should have the property uploadingTechnician (base name: "uploadingTechnician")', function() {
-      // uncomment below and update the code to test the property uploadingTechnician
-      //var instance = new SellingPartnerApiForServices.Poa();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('uploadingTechnician');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.uploadingTechnician = validValue;
+      expect(instance.uploadingTechnician).to.equal(validValue);
     });
 
     it('should have the property uploadTime (base name: "uploadTime")', function() {
-      // uncomment below and update the code to test the property uploadTime
-      //var instance = new SellingPartnerApiForServices.Poa();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('uploadTime');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.uploadTime = validValue;
+      expect(instance.uploadTime).to.equal(validValue);
     });
 
     it('should have the property poaType (base name: "poaType")', function() {
-      // uncomment below and update the code to test the property poaType
-      //var instance = new SellingPartnerApiForServices.Poa();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('poaType');
+
+      // set and verify value
+      var validValue = ['NO_SIGNATURE_DUMMY_POS', 'CUSTOMER_SIGNATURE', 'DUMMY_RECEIPT', 'POA_RECEIPT', ][0];
+      instance.poaType = validValue;
+      expect(instance.poaType).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForServices[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

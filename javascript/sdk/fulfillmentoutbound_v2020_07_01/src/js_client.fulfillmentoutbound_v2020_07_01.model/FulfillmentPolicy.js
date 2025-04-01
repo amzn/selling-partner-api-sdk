@@ -51,4 +51,3 @@ export default class FulfillmentPolicy {
         return object;
     }
 }
-

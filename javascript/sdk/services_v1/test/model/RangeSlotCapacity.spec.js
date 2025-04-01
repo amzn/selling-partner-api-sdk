@@ -28,49 +28,86 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForServices.RangeSlotCapacity();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForServices.RangeSlotCapacity.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('RangeSlotCapacity', function() {
     it('should create an instance of RangeSlotCapacity', function() {
-      // uncomment below and update the code to test RangeSlotCapacity
-      //var instance = new SellingPartnerApiForServices.RangeSlotCapacity();
-      //expect(instance).to.be.a(SellingPartnerApiForServices.RangeSlotCapacity);
+      expect(instance).to.be.a(SellingPartnerApiForServices.RangeSlotCapacity);
     });
 
     it('should have the property resourceId (base name: "resourceId")', function() {
-      // uncomment below and update the code to test the property resourceId
-      //var instance = new SellingPartnerApiForServices.RangeSlotCapacity();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('resourceId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.resourceId = validValue;
+      expect(instance.resourceId).to.equal(validValue);
     });
 
     it('should have the property capacities (base name: "capacities")', function() {
-      // uncomment below and update the code to test the property capacities
-      //var instance = new SellingPartnerApiForServices.RangeSlotCapacity();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('capacities');
+
+      // set and verify value
+      var validValue = generateMockData('[RangeCapacity]', true);
+      instance.capacities = validValue;
+      expect(instance.capacities).to.equal(validValue);
     });
 
     it('should have the property nextPageToken (base name: "nextPageToken")', function() {
-      // uncomment below and update the code to test the property nextPageToken
-      //var instance = new SellingPartnerApiForServices.RangeSlotCapacity();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('nextPageToken');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.nextPageToken = validValue;
+      expect(instance.nextPageToken).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForServices[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

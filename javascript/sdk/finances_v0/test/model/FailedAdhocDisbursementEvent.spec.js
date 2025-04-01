@@ -28,73 +28,126 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForFinances.FailedAdhocDisbursementEvent();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForFinances.FailedAdhocDisbursementEvent.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('FailedAdhocDisbursementEvent', function() {
     it('should create an instance of FailedAdhocDisbursementEvent', function() {
-      // uncomment below and update the code to test FailedAdhocDisbursementEvent
-      //var instance = new SellingPartnerApiForFinances.FailedAdhocDisbursementEvent();
-      //expect(instance).to.be.a(SellingPartnerApiForFinances.FailedAdhocDisbursementEvent);
+      expect(instance).to.be.a(SellingPartnerApiForFinances.FailedAdhocDisbursementEvent);
     });
 
     it('should have the property fundsTransfersType (base name: "FundsTransfersType")', function() {
-      // uncomment below and update the code to test the property fundsTransfersType
-      //var instance = new SellingPartnerApiForFinances.FailedAdhocDisbursementEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('fundsTransfersType');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.fundsTransfersType = validValue;
+      expect(instance.fundsTransfersType).to.equal(validValue);
     });
 
     it('should have the property transferId (base name: "TransferId")', function() {
-      // uncomment below and update the code to test the property transferId
-      //var instance = new SellingPartnerApiForFinances.FailedAdhocDisbursementEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('transferId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.transferId = validValue;
+      expect(instance.transferId).to.equal(validValue);
     });
 
     it('should have the property disbursementId (base name: "DisbursementId")', function() {
-      // uncomment below and update the code to test the property disbursementId
-      //var instance = new SellingPartnerApiForFinances.FailedAdhocDisbursementEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('disbursementId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.disbursementId = validValue;
+      expect(instance.disbursementId).to.equal(validValue);
     });
 
     it('should have the property paymentDisbursementType (base name: "PaymentDisbursementType")', function() {
-      // uncomment below and update the code to test the property paymentDisbursementType
-      //var instance = new SellingPartnerApiForFinances.FailedAdhocDisbursementEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('paymentDisbursementType');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.paymentDisbursementType = validValue;
+      expect(instance.paymentDisbursementType).to.equal(validValue);
     });
 
     it('should have the property status (base name: "Status")', function() {
-      // uncomment below and update the code to test the property status
-      //var instance = new SellingPartnerApiForFinances.FailedAdhocDisbursementEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('status');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.status = validValue;
+      expect(instance.status).to.equal(validValue);
     });
 
     it('should have the property transferAmount (base name: "TransferAmount")', function() {
-      // uncomment below and update the code to test the property transferAmount
-      //var instance = new SellingPartnerApiForFinances.FailedAdhocDisbursementEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('transferAmount');
+
+      // set and verify value
+      var validValue = generateMockData('Currency');
+      instance.transferAmount = validValue;
+      expect(instance.transferAmount).to.equal(validValue);
     });
 
     it('should have the property postedDate (base name: "PostedDate")', function() {
-      // uncomment below and update the code to test the property postedDate
-      //var instance = new SellingPartnerApiForFinances.FailedAdhocDisbursementEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('postedDate');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.postedDate = validValue;
+      expect(instance.postedDate).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForFinances[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

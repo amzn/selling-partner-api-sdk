@@ -44,4 +44,3 @@ export default class AggregationTimePeriod {
         return object;
     }
 }
-

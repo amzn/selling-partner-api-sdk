@@ -28,49 +28,86 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForPricing.OfferCountType();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForPricing.OfferCountType.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('OfferCountType', function() {
     it('should create an instance of OfferCountType', function() {
-      // uncomment below and update the code to test OfferCountType
-      //var instance = new SellingPartnerApiForPricing.OfferCountType();
-      //expect(instance).to.be.a(SellingPartnerApiForPricing.OfferCountType);
+      expect(instance).to.be.a(SellingPartnerApiForPricing.OfferCountType);
     });
 
     it('should have the property condition (base name: "condition")', function() {
-      // uncomment below and update the code to test the property condition
-      //var instance = new SellingPartnerApiForPricing.OfferCountType();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('condition');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.condition = validValue;
+      expect(instance.condition).to.equal(validValue);
     });
 
     it('should have the property fulfillmentChannel (base name: "fulfillmentChannel")', function() {
-      // uncomment below and update the code to test the property fulfillmentChannel
-      //var instance = new SellingPartnerApiForPricing.OfferCountType();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('fulfillmentChannel');
+
+      // set and verify value
+      var validValue = generateMockData('FulfillmentChannelType');
+      instance.fulfillmentChannel = validValue;
+      expect(instance.fulfillmentChannel).to.equal(validValue);
     });
 
     it('should have the property offerCount (base name: "OfferCount")', function() {
-      // uncomment below and update the code to test the property offerCount
-      //var instance = new SellingPartnerApiForPricing.OfferCountType();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('offerCount');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.offerCount = validValue;
+      expect(instance.offerCount).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForPricing[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

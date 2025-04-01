@@ -28,67 +28,116 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForFinances.SellerReviewEnrollmentPaymentEvent();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForFinances.SellerReviewEnrollmentPaymentEvent.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('SellerReviewEnrollmentPaymentEvent', function() {
     it('should create an instance of SellerReviewEnrollmentPaymentEvent', function() {
-      // uncomment below and update the code to test SellerReviewEnrollmentPaymentEvent
-      //var instance = new SellingPartnerApiForFinances.SellerReviewEnrollmentPaymentEvent();
-      //expect(instance).to.be.a(SellingPartnerApiForFinances.SellerReviewEnrollmentPaymentEvent);
+      expect(instance).to.be.a(SellingPartnerApiForFinances.SellerReviewEnrollmentPaymentEvent);
     });
 
     it('should have the property postedDate (base name: "PostedDate")', function() {
-      // uncomment below and update the code to test the property postedDate
-      //var instance = new SellingPartnerApiForFinances.SellerReviewEnrollmentPaymentEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('postedDate');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.postedDate = validValue;
+      expect(instance.postedDate).to.equal(validValue);
     });
 
     it('should have the property enrollmentId (base name: "EnrollmentId")', function() {
-      // uncomment below and update the code to test the property enrollmentId
-      //var instance = new SellingPartnerApiForFinances.SellerReviewEnrollmentPaymentEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('enrollmentId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.enrollmentId = validValue;
+      expect(instance.enrollmentId).to.equal(validValue);
     });
 
     it('should have the property parentASIN (base name: "ParentASIN")', function() {
-      // uncomment below and update the code to test the property parentASIN
-      //var instance = new SellingPartnerApiForFinances.SellerReviewEnrollmentPaymentEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('parentASIN');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.parentASIN = validValue;
+      expect(instance.parentASIN).to.equal(validValue);
     });
 
     it('should have the property feeComponent (base name: "FeeComponent")', function() {
-      // uncomment below and update the code to test the property feeComponent
-      //var instance = new SellingPartnerApiForFinances.SellerReviewEnrollmentPaymentEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('feeComponent');
+
+      // set and verify value
+      var validValue = generateMockData('FeeComponent');
+      instance.feeComponent = validValue;
+      expect(instance.feeComponent).to.equal(validValue);
     });
 
     it('should have the property chargeComponent (base name: "ChargeComponent")', function() {
-      // uncomment below and update the code to test the property chargeComponent
-      //var instance = new SellingPartnerApiForFinances.SellerReviewEnrollmentPaymentEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('chargeComponent');
+
+      // set and verify value
+      var validValue = generateMockData('ChargeComponent');
+      instance.chargeComponent = validValue;
+      expect(instance.chargeComponent).to.equal(validValue);
     });
 
     it('should have the property totalAmount (base name: "TotalAmount")', function() {
-      // uncomment below and update the code to test the property totalAmount
-      //var instance = new SellingPartnerApiForFinances.SellerReviewEnrollmentPaymentEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('totalAmount');
+
+      // set and verify value
+      var validValue = generateMockData('Currency');
+      instance.totalAmount = validValue;
+      expect(instance.totalAmount).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForFinances[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

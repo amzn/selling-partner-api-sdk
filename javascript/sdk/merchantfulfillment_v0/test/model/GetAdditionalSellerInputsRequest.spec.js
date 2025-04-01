@@ -28,49 +28,86 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForMerchantFulfillment.GetAdditionalSellerInputsRequest();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForMerchantFulfillment.GetAdditionalSellerInputsRequest.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('GetAdditionalSellerInputsRequest', function() {
     it('should create an instance of GetAdditionalSellerInputsRequest', function() {
-      // uncomment below and update the code to test GetAdditionalSellerInputsRequest
-      //var instance = new SellingPartnerApiForMerchantFulfillment.GetAdditionalSellerInputsRequest();
-      //expect(instance).to.be.a(SellingPartnerApiForMerchantFulfillment.GetAdditionalSellerInputsRequest);
+      expect(instance).to.be.a(SellingPartnerApiForMerchantFulfillment.GetAdditionalSellerInputsRequest);
     });
 
     it('should have the property shippingServiceId (base name: "ShippingServiceId")', function() {
-      // uncomment below and update the code to test the property shippingServiceId
-      //var instance = new SellingPartnerApiForMerchantFulfillment.GetAdditionalSellerInputsRequest();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('shippingServiceId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.shippingServiceId = validValue;
+      expect(instance.shippingServiceId).to.equal(validValue);
     });
 
     it('should have the property shipFromAddress (base name: "ShipFromAddress")', function() {
-      // uncomment below and update the code to test the property shipFromAddress
-      //var instance = new SellingPartnerApiForMerchantFulfillment.GetAdditionalSellerInputsRequest();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('shipFromAddress');
+
+      // set and verify value
+      var validValue = generateMockData('Address');
+      instance.shipFromAddress = validValue;
+      expect(instance.shipFromAddress).to.equal(validValue);
     });
 
     it('should have the property orderId (base name: "OrderId")', function() {
-      // uncomment below and update the code to test the property orderId
-      //var instance = new SellingPartnerApiForMerchantFulfillment.GetAdditionalSellerInputsRequest();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('orderId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.orderId = validValue;
+      expect(instance.orderId).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForMerchantFulfillment[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

@@ -37,4 +37,3 @@ export default class CarrierCodeType {
         return object;
     }
 }
-

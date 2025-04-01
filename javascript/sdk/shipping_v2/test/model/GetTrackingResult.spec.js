@@ -28,61 +28,106 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new AmazonShippingApi.GetTrackingResult();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(AmazonShippingApi.GetTrackingResult.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('GetTrackingResult', function() {
     it('should create an instance of GetTrackingResult', function() {
-      // uncomment below and update the code to test GetTrackingResult
-      //var instance = new AmazonShippingApi.GetTrackingResult();
-      //expect(instance).to.be.a(AmazonShippingApi.GetTrackingResult);
+      expect(instance).to.be.a(AmazonShippingApi.GetTrackingResult);
     });
 
     it('should have the property trackingId (base name: "trackingId")', function() {
-      // uncomment below and update the code to test the property trackingId
-      //var instance = new AmazonShippingApi.GetTrackingResult();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('trackingId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.trackingId = validValue;
+      expect(instance.trackingId).to.equal(validValue);
     });
 
     it('should have the property alternateLegTrackingId (base name: "alternateLegTrackingId")', function() {
-      // uncomment below and update the code to test the property alternateLegTrackingId
-      //var instance = new AmazonShippingApi.GetTrackingResult();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('alternateLegTrackingId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.alternateLegTrackingId = validValue;
+      expect(instance.alternateLegTrackingId).to.equal(validValue);
     });
 
     it('should have the property eventHistory (base name: "eventHistory")', function() {
-      // uncomment below and update the code to test the property eventHistory
-      //var instance = new AmazonShippingApi.GetTrackingResult();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('eventHistory');
+
+      // set and verify value
+      var validValue = generateMockData('[Event]', true);
+      instance.eventHistory = validValue;
+      expect(instance.eventHistory).to.equal(validValue);
     });
 
     it('should have the property promisedDeliveryDate (base name: "promisedDeliveryDate")', function() {
-      // uncomment below and update the code to test the property promisedDeliveryDate
-      //var instance = new AmazonShippingApi.GetTrackingResult();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('promisedDeliveryDate');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.promisedDeliveryDate = validValue;
+      expect(instance.promisedDeliveryDate).to.equal(validValue);
     });
 
     it('should have the property summary (base name: "summary")', function() {
-      // uncomment below and update the code to test the property summary
-      //var instance = new AmazonShippingApi.GetTrackingResult();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('summary');
+
+      // set and verify value
+      var validValue = generateMockData('TrackingSummary');
+      instance.summary = validValue;
+      expect(instance.summary).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = AmazonShippingApi[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

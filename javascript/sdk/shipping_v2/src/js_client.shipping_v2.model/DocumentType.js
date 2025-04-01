@@ -58,4 +58,3 @@ export default class DocumentType {
         return object;
     }
 }
-

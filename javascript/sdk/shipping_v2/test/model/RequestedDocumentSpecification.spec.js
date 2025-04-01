@@ -28,73 +28,126 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new AmazonShippingApi.RequestedDocumentSpecification();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(AmazonShippingApi.RequestedDocumentSpecification.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('RequestedDocumentSpecification', function() {
     it('should create an instance of RequestedDocumentSpecification', function() {
-      // uncomment below and update the code to test RequestedDocumentSpecification
-      //var instance = new AmazonShippingApi.RequestedDocumentSpecification();
-      //expect(instance).to.be.a(AmazonShippingApi.RequestedDocumentSpecification);
+      expect(instance).to.be.a(AmazonShippingApi.RequestedDocumentSpecification);
     });
 
     it('should have the property format (base name: "format")', function() {
-      // uncomment below and update the code to test the property format
-      //var instance = new AmazonShippingApi.RequestedDocumentSpecification();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('format');
+
+      // set and verify value
+      var validValue = generateMockData('DocumentFormat');
+      instance.format = validValue;
+      expect(instance.format).to.equal(validValue);
     });
 
     it('should have the property size (base name: "size")', function() {
-      // uncomment below and update the code to test the property size
-      //var instance = new AmazonShippingApi.RequestedDocumentSpecification();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('size');
+
+      // set and verify value
+      var validValue = generateMockData('DocumentSize');
+      instance.size = validValue;
+      expect(instance.size).to.equal(validValue);
     });
 
     it('should have the property dpi (base name: "dpi")', function() {
-      // uncomment below and update the code to test the property dpi
-      //var instance = new AmazonShippingApi.RequestedDocumentSpecification();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('dpi');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.dpi = validValue;
+      expect(instance.dpi).to.equal(validValue);
     });
 
     it('should have the property pageLayout (base name: "pageLayout")', function() {
-      // uncomment below and update the code to test the property pageLayout
-      //var instance = new AmazonShippingApi.RequestedDocumentSpecification();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('pageLayout');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.pageLayout = validValue;
+      expect(instance.pageLayout).to.equal(validValue);
     });
 
     it('should have the property needFileJoining (base name: "needFileJoining")', function() {
-      // uncomment below and update the code to test the property needFileJoining
-      //var instance = new AmazonShippingApi.RequestedDocumentSpecification();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('needFileJoining');
+
+      // set and verify value
+      var validValue = generateMockData('Boolean');
+      instance.needFileJoining = validValue;
+      expect(instance.needFileJoining).to.equal(validValue);
     });
 
     it('should have the property requestedDocumentTypes (base name: "requestedDocumentTypes")', function() {
-      // uncomment below and update the code to test the property requestedDocumentTypes
-      //var instance = new AmazonShippingApi.RequestedDocumentSpecification();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('requestedDocumentTypes');
+
+      // set and verify value
+      var validValue = generateMockData('[DocumentType]', true);
+      instance.requestedDocumentTypes = validValue;
+      expect(instance.requestedDocumentTypes).to.equal(validValue);
     });
 
     it('should have the property requestedLabelCustomization (base name: "requestedLabelCustomization")', function() {
-      // uncomment below and update the code to test the property requestedLabelCustomization
-      //var instance = new AmazonShippingApi.RequestedDocumentSpecification();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('requestedLabelCustomization');
+
+      // set and verify value
+      var validValue = generateMockData('RequestedLabelCustomization');
+      instance.requestedLabelCustomization = validValue;
+      expect(instance.requestedLabelCustomization).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = AmazonShippingApi[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

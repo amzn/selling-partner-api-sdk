@@ -28,73 +28,126 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForFinances.RetrochargeEvent();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForFinances.RetrochargeEvent.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('RetrochargeEvent', function() {
     it('should create an instance of RetrochargeEvent', function() {
-      // uncomment below and update the code to test RetrochargeEvent
-      //var instance = new SellingPartnerApiForFinances.RetrochargeEvent();
-      //expect(instance).to.be.a(SellingPartnerApiForFinances.RetrochargeEvent);
+      expect(instance).to.be.a(SellingPartnerApiForFinances.RetrochargeEvent);
     });
 
     it('should have the property retrochargeEventType (base name: "RetrochargeEventType")', function() {
-      // uncomment below and update the code to test the property retrochargeEventType
-      //var instance = new SellingPartnerApiForFinances.RetrochargeEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('retrochargeEventType');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.retrochargeEventType = validValue;
+      expect(instance.retrochargeEventType).to.equal(validValue);
     });
 
     it('should have the property amazonOrderId (base name: "AmazonOrderId")', function() {
-      // uncomment below and update the code to test the property amazonOrderId
-      //var instance = new SellingPartnerApiForFinances.RetrochargeEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('amazonOrderId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.amazonOrderId = validValue;
+      expect(instance.amazonOrderId).to.equal(validValue);
     });
 
     it('should have the property postedDate (base name: "PostedDate")', function() {
-      // uncomment below and update the code to test the property postedDate
-      //var instance = new SellingPartnerApiForFinances.RetrochargeEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('postedDate');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.postedDate = validValue;
+      expect(instance.postedDate).to.equal(validValue);
     });
 
     it('should have the property baseTax (base name: "BaseTax")', function() {
-      // uncomment below and update the code to test the property baseTax
-      //var instance = new SellingPartnerApiForFinances.RetrochargeEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('baseTax');
+
+      // set and verify value
+      var validValue = generateMockData('Currency');
+      instance.baseTax = validValue;
+      expect(instance.baseTax).to.equal(validValue);
     });
 
     it('should have the property shippingTax (base name: "ShippingTax")', function() {
-      // uncomment below and update the code to test the property shippingTax
-      //var instance = new SellingPartnerApiForFinances.RetrochargeEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('shippingTax');
+
+      // set and verify value
+      var validValue = generateMockData('Currency');
+      instance.shippingTax = validValue;
+      expect(instance.shippingTax).to.equal(validValue);
     });
 
     it('should have the property marketplaceName (base name: "MarketplaceName")', function() {
-      // uncomment below and update the code to test the property marketplaceName
-      //var instance = new SellingPartnerApiForFinances.RetrochargeEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('marketplaceName');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.marketplaceName = validValue;
+      expect(instance.marketplaceName).to.equal(validValue);
     });
 
     it('should have the property retrochargeTaxWithheldList (base name: "RetrochargeTaxWithheldList")', function() {
-      // uncomment below and update the code to test the property retrochargeTaxWithheldList
-      //var instance = new SellingPartnerApiForFinances.RetrochargeEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('retrochargeTaxWithheldList');
+
+      // set and verify value
+      var validValue = generateMockData('[TaxWithheldComponent]', true);
+      instance.retrochargeTaxWithheldList = validValue;
+      expect(instance.retrochargeTaxWithheldList).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForFinances[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

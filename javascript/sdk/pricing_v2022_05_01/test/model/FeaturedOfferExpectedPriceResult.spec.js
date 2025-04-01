@@ -28,55 +28,96 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForPricing.FeaturedOfferExpectedPriceResult();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForPricing.FeaturedOfferExpectedPriceResult.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('FeaturedOfferExpectedPriceResult', function() {
     it('should create an instance of FeaturedOfferExpectedPriceResult', function() {
-      // uncomment below and update the code to test FeaturedOfferExpectedPriceResult
-      //var instance = new SellingPartnerApiForPricing.FeaturedOfferExpectedPriceResult();
-      //expect(instance).to.be.a(SellingPartnerApiForPricing.FeaturedOfferExpectedPriceResult);
+      expect(instance).to.be.a(SellingPartnerApiForPricing.FeaturedOfferExpectedPriceResult);
     });
 
     it('should have the property featuredOfferExpectedPrice (base name: "featuredOfferExpectedPrice")', function() {
-      // uncomment below and update the code to test the property featuredOfferExpectedPrice
-      //var instance = new SellingPartnerApiForPricing.FeaturedOfferExpectedPriceResult();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('featuredOfferExpectedPrice');
+
+      // set and verify value
+      var validValue = generateMockData('FeaturedOfferExpectedPrice');
+      instance.featuredOfferExpectedPrice = validValue;
+      expect(instance.featuredOfferExpectedPrice).to.equal(validValue);
     });
 
     it('should have the property resultStatus (base name: "resultStatus")', function() {
-      // uncomment below and update the code to test the property resultStatus
-      //var instance = new SellingPartnerApiForPricing.FeaturedOfferExpectedPriceResult();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('resultStatus');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.resultStatus = validValue;
+      expect(instance.resultStatus).to.equal(validValue);
     });
 
     it('should have the property competingFeaturedOffer (base name: "competingFeaturedOffer")', function() {
-      // uncomment below and update the code to test the property competingFeaturedOffer
-      //var instance = new SellingPartnerApiForPricing.FeaturedOfferExpectedPriceResult();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('competingFeaturedOffer');
+
+      // set and verify value
+      var validValue = generateMockData('FeaturedOffer');
+      instance.competingFeaturedOffer = validValue;
+      expect(instance.competingFeaturedOffer).to.equal(validValue);
     });
 
     it('should have the property currentFeaturedOffer (base name: "currentFeaturedOffer")', function() {
-      // uncomment below and update the code to test the property currentFeaturedOffer
-      //var instance = new SellingPartnerApiForPricing.FeaturedOfferExpectedPriceResult();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('currentFeaturedOffer');
+
+      // set and verify value
+      var validValue = generateMockData('FeaturedOffer');
+      instance.currentFeaturedOffer = validValue;
+      expect(instance.currentFeaturedOffer).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForPricing[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

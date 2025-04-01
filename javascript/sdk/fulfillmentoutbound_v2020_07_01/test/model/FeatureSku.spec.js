@@ -28,61 +28,106 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApisForFulfillmentOutbound.FeatureSku();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApisForFulfillmentOutbound.FeatureSku.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('FeatureSku', function() {
     it('should create an instance of FeatureSku', function() {
-      // uncomment below and update the code to test FeatureSku
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.FeatureSku();
-      //expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.FeatureSku);
+      expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.FeatureSku);
     });
 
     it('should have the property sellerSku (base name: "sellerSku")', function() {
-      // uncomment below and update the code to test the property sellerSku
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.FeatureSku();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('sellerSku');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.sellerSku = validValue;
+      expect(instance.sellerSku).to.equal(validValue);
     });
 
     it('should have the property fnSku (base name: "fnSku")', function() {
-      // uncomment below and update the code to test the property fnSku
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.FeatureSku();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('fnSku');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.fnSku = validValue;
+      expect(instance.fnSku).to.equal(validValue);
     });
 
     it('should have the property asin (base name: "asin")', function() {
-      // uncomment below and update the code to test the property asin
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.FeatureSku();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('asin');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.asin = validValue;
+      expect(instance.asin).to.equal(validValue);
     });
 
     it('should have the property skuCount (base name: "skuCount")', function() {
-      // uncomment below and update the code to test the property skuCount
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.FeatureSku();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('skuCount');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.skuCount = validValue;
+      expect(instance.skuCount).to.equal(validValue);
     });
 
     it('should have the property overlappingSkus (base name: "overlappingSkus")', function() {
-      // uncomment below and update the code to test the property overlappingSkus
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.FeatureSku();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('overlappingSkus');
+
+      // set and verify value
+      var validValue = generateMockData('[String]', true);
+      instance.overlappingSkus = validValue;
+      expect(instance.overlappingSkus).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApisForFulfillmentOutbound[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

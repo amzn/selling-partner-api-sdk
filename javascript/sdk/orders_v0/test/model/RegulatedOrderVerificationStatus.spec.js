@@ -28,73 +28,126 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForOrders.RegulatedOrderVerificationStatus();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForOrders.RegulatedOrderVerificationStatus.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('RegulatedOrderVerificationStatus', function() {
     it('should create an instance of RegulatedOrderVerificationStatus', function() {
-      // uncomment below and update the code to test RegulatedOrderVerificationStatus
-      //var instance = new SellingPartnerApiForOrders.RegulatedOrderVerificationStatus();
-      //expect(instance).to.be.a(SellingPartnerApiForOrders.RegulatedOrderVerificationStatus);
+      expect(instance).to.be.a(SellingPartnerApiForOrders.RegulatedOrderVerificationStatus);
     });
 
     it('should have the property status (base name: "Status")', function() {
-      // uncomment below and update the code to test the property status
-      //var instance = new SellingPartnerApiForOrders.RegulatedOrderVerificationStatus();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('status');
+
+      // set and verify value
+      var validValue = generateMockData('VerificationStatus');
+      instance.status = validValue;
+      expect(instance.status).to.equal(validValue);
     });
 
     it('should have the property requiresMerchantAction (base name: "RequiresMerchantAction")', function() {
-      // uncomment below and update the code to test the property requiresMerchantAction
-      //var instance = new SellingPartnerApiForOrders.RegulatedOrderVerificationStatus();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('requiresMerchantAction');
+
+      // set and verify value
+      var validValue = generateMockData('Boolean');
+      instance.requiresMerchantAction = validValue;
+      expect(instance.requiresMerchantAction).to.equal(validValue);
     });
 
     it('should have the property validRejectionReasons (base name: "ValidRejectionReasons")', function() {
-      // uncomment below and update the code to test the property validRejectionReasons
-      //var instance = new SellingPartnerApiForOrders.RegulatedOrderVerificationStatus();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('validRejectionReasons');
+
+      // set and verify value
+      var validValue = generateMockData('[RejectionReason]', true);
+      instance.validRejectionReasons = validValue;
+      expect(instance.validRejectionReasons).to.equal(validValue);
     });
 
     it('should have the property rejectionReason (base name: "RejectionReason")', function() {
-      // uncomment below and update the code to test the property rejectionReason
-      //var instance = new SellingPartnerApiForOrders.RegulatedOrderVerificationStatus();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('rejectionReason');
+
+      // set and verify value
+      var validValue = generateMockData('RejectionReason');
+      instance.rejectionReason = validValue;
+      expect(instance.rejectionReason).to.equal(validValue);
     });
 
     it('should have the property reviewDate (base name: "ReviewDate")', function() {
-      // uncomment below and update the code to test the property reviewDate
-      //var instance = new SellingPartnerApiForOrders.RegulatedOrderVerificationStatus();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('reviewDate');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.reviewDate = validValue;
+      expect(instance.reviewDate).to.equal(validValue);
     });
 
     it('should have the property externalReviewerId (base name: "ExternalReviewerId")', function() {
-      // uncomment below and update the code to test the property externalReviewerId
-      //var instance = new SellingPartnerApiForOrders.RegulatedOrderVerificationStatus();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('externalReviewerId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.externalReviewerId = validValue;
+      expect(instance.externalReviewerId).to.equal(validValue);
     });
 
     it('should have the property validVerificationDetails (base name: "ValidVerificationDetails")', function() {
-      // uncomment below and update the code to test the property validVerificationDetails
-      //var instance = new SellingPartnerApiForOrders.RegulatedOrderVerificationStatus();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('validVerificationDetails');
+
+      // set and verify value
+      var validValue = generateMockData('[ValidVerificationDetail]', true);
+      instance.validVerificationDetails = validValue;
+      expect(instance.validVerificationDetails).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForOrders[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

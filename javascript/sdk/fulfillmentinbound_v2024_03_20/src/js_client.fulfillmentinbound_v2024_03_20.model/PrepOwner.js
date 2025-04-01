@@ -51,4 +51,3 @@ export default class PrepOwner {
         return object;
     }
 }
-

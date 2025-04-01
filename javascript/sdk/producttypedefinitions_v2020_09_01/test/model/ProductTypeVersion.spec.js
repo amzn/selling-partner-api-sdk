@@ -28,49 +28,86 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForProductTypeDefinitions.ProductTypeVersion();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForProductTypeDefinitions.ProductTypeVersion.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('ProductTypeVersion', function() {
     it('should create an instance of ProductTypeVersion', function() {
-      // uncomment below and update the code to test ProductTypeVersion
-      //var instance = new SellingPartnerApiForProductTypeDefinitions.ProductTypeVersion();
-      //expect(instance).to.be.a(SellingPartnerApiForProductTypeDefinitions.ProductTypeVersion);
+      expect(instance).to.be.a(SellingPartnerApiForProductTypeDefinitions.ProductTypeVersion);
     });
 
     it('should have the property version (base name: "version")', function() {
-      // uncomment below and update the code to test the property version
-      //var instance = new SellingPartnerApiForProductTypeDefinitions.ProductTypeVersion();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('version');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.version = validValue;
+      expect(instance.version).to.equal(validValue);
     });
 
     it('should have the property latest (base name: "latest")', function() {
-      // uncomment below and update the code to test the property latest
-      //var instance = new SellingPartnerApiForProductTypeDefinitions.ProductTypeVersion();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('latest');
+
+      // set and verify value
+      var validValue = generateMockData('Boolean');
+      instance.latest = validValue;
+      expect(instance.latest).to.equal(validValue);
     });
 
     it('should have the property releaseCandidate (base name: "releaseCandidate")', function() {
-      // uncomment below and update the code to test the property releaseCandidate
-      //var instance = new SellingPartnerApiForProductTypeDefinitions.ProductTypeVersion();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('releaseCandidate');
+
+      // set and verify value
+      var validValue = generateMockData('Boolean');
+      instance.releaseCandidate = validValue;
+      expect(instance.releaseCandidate).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForProductTypeDefinitions[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

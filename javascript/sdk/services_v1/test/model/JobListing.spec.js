@@ -28,55 +28,96 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForServices.JobListing();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForServices.JobListing.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('JobListing', function() {
     it('should create an instance of JobListing', function() {
-      // uncomment below and update the code to test JobListing
-      //var instance = new SellingPartnerApiForServices.JobListing();
-      //expect(instance).to.be.a(SellingPartnerApiForServices.JobListing);
+      expect(instance).to.be.a(SellingPartnerApiForServices.JobListing);
     });
 
     it('should have the property totalResultSize (base name: "totalResultSize")', function() {
-      // uncomment below and update the code to test the property totalResultSize
-      //var instance = new SellingPartnerApiForServices.JobListing();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('totalResultSize');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.totalResultSize = validValue;
+      expect(instance.totalResultSize).to.equal(validValue);
     });
 
     it('should have the property nextPageToken (base name: "nextPageToken")', function() {
-      // uncomment below and update the code to test the property nextPageToken
-      //var instance = new SellingPartnerApiForServices.JobListing();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('nextPageToken');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.nextPageToken = validValue;
+      expect(instance.nextPageToken).to.equal(validValue);
     });
 
     it('should have the property previousPageToken (base name: "previousPageToken")', function() {
-      // uncomment below and update the code to test the property previousPageToken
-      //var instance = new SellingPartnerApiForServices.JobListing();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('previousPageToken');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.previousPageToken = validValue;
+      expect(instance.previousPageToken).to.equal(validValue);
     });
 
     it('should have the property jobs (base name: "jobs")', function() {
-      // uncomment below and update the code to test the property jobs
-      //var instance = new SellingPartnerApiForServices.JobListing();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('jobs');
+
+      // set and verify value
+      var validValue = generateMockData('[ServiceJob]', true);
+      instance.jobs = validValue;
+      expect(instance.jobs).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForServices[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

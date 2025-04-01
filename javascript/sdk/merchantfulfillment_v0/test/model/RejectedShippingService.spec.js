@@ -28,61 +28,106 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForMerchantFulfillment.RejectedShippingService();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForMerchantFulfillment.RejectedShippingService.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('RejectedShippingService', function() {
     it('should create an instance of RejectedShippingService', function() {
-      // uncomment below and update the code to test RejectedShippingService
-      //var instance = new SellingPartnerApiForMerchantFulfillment.RejectedShippingService();
-      //expect(instance).to.be.a(SellingPartnerApiForMerchantFulfillment.RejectedShippingService);
+      expect(instance).to.be.a(SellingPartnerApiForMerchantFulfillment.RejectedShippingService);
     });
 
     it('should have the property carrierName (base name: "CarrierName")', function() {
-      // uncomment below and update the code to test the property carrierName
-      //var instance = new SellingPartnerApiForMerchantFulfillment.RejectedShippingService();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('carrierName');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.carrierName = validValue;
+      expect(instance.carrierName).to.equal(validValue);
     });
 
     it('should have the property shippingServiceName (base name: "ShippingServiceName")', function() {
-      // uncomment below and update the code to test the property shippingServiceName
-      //var instance = new SellingPartnerApiForMerchantFulfillment.RejectedShippingService();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('shippingServiceName');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.shippingServiceName = validValue;
+      expect(instance.shippingServiceName).to.equal(validValue);
     });
 
     it('should have the property shippingServiceId (base name: "ShippingServiceId")', function() {
-      // uncomment below and update the code to test the property shippingServiceId
-      //var instance = new SellingPartnerApiForMerchantFulfillment.RejectedShippingService();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('shippingServiceId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.shippingServiceId = validValue;
+      expect(instance.shippingServiceId).to.equal(validValue);
     });
 
     it('should have the property rejectionReasonCode (base name: "RejectionReasonCode")', function() {
-      // uncomment below and update the code to test the property rejectionReasonCode
-      //var instance = new SellingPartnerApiForMerchantFulfillment.RejectedShippingService();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('rejectionReasonCode');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.rejectionReasonCode = validValue;
+      expect(instance.rejectionReasonCode).to.equal(validValue);
     });
 
     it('should have the property rejectionReasonMessage (base name: "RejectionReasonMessage")', function() {
-      // uncomment below and update the code to test the property rejectionReasonMessage
-      //var instance = new SellingPartnerApiForMerchantFulfillment.RejectedShippingService();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('rejectionReasonMessage');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.rejectionReasonMessage = validValue;
+      expect(instance.rejectionReasonMessage).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForMerchantFulfillment[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

@@ -44,4 +44,3 @@ export default class PositionType {
         return object;
     }
 }
-

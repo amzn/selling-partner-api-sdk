@@ -28,67 +28,116 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForServices.Appointment();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForServices.Appointment.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('Appointment', function() {
     it('should create an instance of Appointment', function() {
-      // uncomment below and update the code to test Appointment
-      //var instance = new SellingPartnerApiForServices.Appointment();
-      //expect(instance).to.be.a(SellingPartnerApiForServices.Appointment);
+      expect(instance).to.be.a(SellingPartnerApiForServices.Appointment);
     });
 
     it('should have the property appointmentId (base name: "appointmentId")', function() {
-      // uncomment below and update the code to test the property appointmentId
-      //var instance = new SellingPartnerApiForServices.Appointment();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('appointmentId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.appointmentId = validValue;
+      expect(instance.appointmentId).to.equal(validValue);
     });
 
     it('should have the property appointmentStatus (base name: "appointmentStatus")', function() {
-      // uncomment below and update the code to test the property appointmentStatus
-      //var instance = new SellingPartnerApiForServices.Appointment();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('appointmentStatus');
+
+      // set and verify value
+      var validValue = ['ACTIVE', 'CANCELLED', 'COMPLETED', ][0];
+      instance.appointmentStatus = validValue;
+      expect(instance.appointmentStatus).to.equal(validValue);
     });
 
     it('should have the property appointmentTime (base name: "appointmentTime")', function() {
-      // uncomment below and update the code to test the property appointmentTime
-      //var instance = new SellingPartnerApiForServices.Appointment();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('appointmentTime');
+
+      // set and verify value
+      var validValue = generateMockData('AppointmentTime');
+      instance.appointmentTime = validValue;
+      expect(instance.appointmentTime).to.equal(validValue);
     });
 
     it('should have the property assignedTechnicians (base name: "assignedTechnicians")', function() {
-      // uncomment below and update the code to test the property assignedTechnicians
-      //var instance = new SellingPartnerApiForServices.Appointment();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('assignedTechnicians');
+
+      // set and verify value
+      var validValue = generateMockData('[Technician]', true);
+      instance.assignedTechnicians = validValue;
+      expect(instance.assignedTechnicians).to.equal(validValue);
     });
 
     it('should have the property rescheduledAppointmentId (base name: "rescheduledAppointmentId")', function() {
-      // uncomment below and update the code to test the property rescheduledAppointmentId
-      //var instance = new SellingPartnerApiForServices.Appointment();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('rescheduledAppointmentId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.rescheduledAppointmentId = validValue;
+      expect(instance.rescheduledAppointmentId).to.equal(validValue);
     });
 
     it('should have the property poa (base name: "poa")', function() {
-      // uncomment below and update the code to test the property poa
-      //var instance = new SellingPartnerApiForServices.Appointment();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('poa');
+
+      // set and verify value
+      var validValue = generateMockData('Poa');
+      instance.poa = validValue;
+      expect(instance.poa).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForServices[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

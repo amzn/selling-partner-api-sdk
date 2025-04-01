@@ -28,67 +28,116 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForDirectFulfillmentShipping.StatusUpdateDetails();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForDirectFulfillmentShipping.StatusUpdateDetails.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('StatusUpdateDetails', function() {
     it('should create an instance of StatusUpdateDetails', function() {
-      // uncomment below and update the code to test StatusUpdateDetails
-      //var instance = new SellingPartnerApiForDirectFulfillmentShipping.StatusUpdateDetails();
-      //expect(instance).to.be.a(SellingPartnerApiForDirectFulfillmentShipping.StatusUpdateDetails);
+      expect(instance).to.be.a(SellingPartnerApiForDirectFulfillmentShipping.StatusUpdateDetails);
     });
 
     it('should have the property trackingNumber (base name: "trackingNumber")', function() {
-      // uncomment below and update the code to test the property trackingNumber
-      //var instance = new SellingPartnerApiForDirectFulfillmentShipping.StatusUpdateDetails();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('trackingNumber');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.trackingNumber = validValue;
+      expect(instance.trackingNumber).to.equal(validValue);
     });
 
     it('should have the property statusCode (base name: "statusCode")', function() {
-      // uncomment below and update the code to test the property statusCode
-      //var instance = new SellingPartnerApiForDirectFulfillmentShipping.StatusUpdateDetails();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('statusCode');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.statusCode = validValue;
+      expect(instance.statusCode).to.equal(validValue);
     });
 
     it('should have the property reasonCode (base name: "reasonCode")', function() {
-      // uncomment below and update the code to test the property reasonCode
-      //var instance = new SellingPartnerApiForDirectFulfillmentShipping.StatusUpdateDetails();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('reasonCode');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.reasonCode = validValue;
+      expect(instance.reasonCode).to.equal(validValue);
     });
 
     it('should have the property statusDateTime (base name: "statusDateTime")', function() {
-      // uncomment below and update the code to test the property statusDateTime
-      //var instance = new SellingPartnerApiForDirectFulfillmentShipping.StatusUpdateDetails();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('statusDateTime');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.statusDateTime = validValue;
+      expect(instance.statusDateTime).to.equal(validValue);
     });
 
     it('should have the property statusLocationAddress (base name: "statusLocationAddress")', function() {
-      // uncomment below and update the code to test the property statusLocationAddress
-      //var instance = new SellingPartnerApiForDirectFulfillmentShipping.StatusUpdateDetails();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('statusLocationAddress');
+
+      // set and verify value
+      var validValue = generateMockData('Address');
+      instance.statusLocationAddress = validValue;
+      expect(instance.statusLocationAddress).to.equal(validValue);
     });
 
     it('should have the property shipmentSchedule (base name: "shipmentSchedule")', function() {
-      // uncomment below and update the code to test the property shipmentSchedule
-      //var instance = new SellingPartnerApiForDirectFulfillmentShipping.StatusUpdateDetails();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('shipmentSchedule');
+
+      // set and verify value
+      var validValue = generateMockData('ShipmentSchedule');
+      instance.shipmentSchedule = validValue;
+      expect(instance.shipmentSchedule).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForDirectFulfillmentShipping[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

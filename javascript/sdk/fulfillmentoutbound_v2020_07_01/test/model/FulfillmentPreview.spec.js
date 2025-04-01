@@ -28,97 +28,166 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApisForFulfillmentOutbound.FulfillmentPreview();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApisForFulfillmentOutbound.FulfillmentPreview.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('FulfillmentPreview', function() {
     it('should create an instance of FulfillmentPreview', function() {
-      // uncomment below and update the code to test FulfillmentPreview
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.FulfillmentPreview();
-      //expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.FulfillmentPreview);
+      expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.FulfillmentPreview);
     });
 
     it('should have the property shippingSpeedCategory (base name: "shippingSpeedCategory")', function() {
-      // uncomment below and update the code to test the property shippingSpeedCategory
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.FulfillmentPreview();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('shippingSpeedCategory');
+
+      // set and verify value
+      var validValue = generateMockData('ShippingSpeedCategory');
+      instance.shippingSpeedCategory = validValue;
+      expect(instance.shippingSpeedCategory).to.equal(validValue);
     });
 
     it('should have the property scheduledDeliveryInfo (base name: "scheduledDeliveryInfo")', function() {
-      // uncomment below and update the code to test the property scheduledDeliveryInfo
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.FulfillmentPreview();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('scheduledDeliveryInfo');
+
+      // set and verify value
+      var validValue = generateMockData('ScheduledDeliveryInfo');
+      instance.scheduledDeliveryInfo = validValue;
+      expect(instance.scheduledDeliveryInfo).to.equal(validValue);
     });
 
     it('should have the property isFulfillable (base name: "isFulfillable")', function() {
-      // uncomment below and update the code to test the property isFulfillable
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.FulfillmentPreview();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('isFulfillable');
+
+      // set and verify value
+      var validValue = generateMockData('Boolean');
+      instance.isFulfillable = validValue;
+      expect(instance.isFulfillable).to.equal(validValue);
     });
 
     it('should have the property isCODCapable (base name: "isCODCapable")', function() {
-      // uncomment below and update the code to test the property isCODCapable
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.FulfillmentPreview();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('isCODCapable');
+
+      // set and verify value
+      var validValue = generateMockData('Boolean');
+      instance.isCODCapable = validValue;
+      expect(instance.isCODCapable).to.equal(validValue);
     });
 
     it('should have the property estimatedShippingWeight (base name: "estimatedShippingWeight")', function() {
-      // uncomment below and update the code to test the property estimatedShippingWeight
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.FulfillmentPreview();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('estimatedShippingWeight');
+
+      // set and verify value
+      var validValue = generateMockData('Weight');
+      instance.estimatedShippingWeight = validValue;
+      expect(instance.estimatedShippingWeight).to.equal(validValue);
     });
 
     it('should have the property estimatedFees (base name: "estimatedFees")', function() {
-      // uncomment below and update the code to test the property estimatedFees
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.FulfillmentPreview();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('estimatedFees');
+
+      // set and verify value
+      var validValue = generateMockData('[Fee]', true);
+      instance.estimatedFees = validValue;
+      expect(instance.estimatedFees).to.equal(validValue);
     });
 
     it('should have the property fulfillmentPreviewShipments (base name: "fulfillmentPreviewShipments")', function() {
-      // uncomment below and update the code to test the property fulfillmentPreviewShipments
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.FulfillmentPreview();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('fulfillmentPreviewShipments');
+
+      // set and verify value
+      var validValue = generateMockData('[FulfillmentPreviewShipment]', true);
+      instance.fulfillmentPreviewShipments = validValue;
+      expect(instance.fulfillmentPreviewShipments).to.equal(validValue);
     });
 
     it('should have the property unfulfillablePreviewItems (base name: "unfulfillablePreviewItems")', function() {
-      // uncomment below and update the code to test the property unfulfillablePreviewItems
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.FulfillmentPreview();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('unfulfillablePreviewItems');
+
+      // set and verify value
+      var validValue = generateMockData('[UnfulfillablePreviewItem]', true);
+      instance.unfulfillablePreviewItems = validValue;
+      expect(instance.unfulfillablePreviewItems).to.equal(validValue);
     });
 
     it('should have the property orderUnfulfillableReasons (base name: "orderUnfulfillableReasons")', function() {
-      // uncomment below and update the code to test the property orderUnfulfillableReasons
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.FulfillmentPreview();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('orderUnfulfillableReasons');
+
+      // set and verify value
+      var validValue = generateMockData('[String]', true);
+      instance.orderUnfulfillableReasons = validValue;
+      expect(instance.orderUnfulfillableReasons).to.equal(validValue);
     });
 
     it('should have the property marketplaceId (base name: "marketplaceId")', function() {
-      // uncomment below and update the code to test the property marketplaceId
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.FulfillmentPreview();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('marketplaceId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.marketplaceId = validValue;
+      expect(instance.marketplaceId).to.equal(validValue);
     });
 
     it('should have the property featureConstraints (base name: "featureConstraints")', function() {
-      // uncomment below and update the code to test the property featureConstraints
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.FulfillmentPreview();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('featureConstraints');
+
+      // set and verify value
+      var validValue = generateMockData('[FeatureSettings]', true);
+      instance.featureConstraints = validValue;
+      expect(instance.featureConstraints).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApisForFulfillmentOutbound[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

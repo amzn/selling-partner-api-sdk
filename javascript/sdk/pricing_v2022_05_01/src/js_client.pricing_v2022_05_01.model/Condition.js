@@ -65,4 +65,3 @@ export default class Condition {
         return object;
     }
 }
-

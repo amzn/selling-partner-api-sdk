@@ -28,73 +28,126 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForSupplySources.OperatingHoursByDay();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForSupplySources.OperatingHoursByDay.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('OperatingHoursByDay', function() {
     it('should create an instance of OperatingHoursByDay', function() {
-      // uncomment below and update the code to test OperatingHoursByDay
-      //var instance = new SellingPartnerApiForSupplySources.OperatingHoursByDay();
-      //expect(instance).to.be.a(SellingPartnerApiForSupplySources.OperatingHoursByDay);
+      expect(instance).to.be.a(SellingPartnerApiForSupplySources.OperatingHoursByDay);
     });
 
     it('should have the property monday (base name: "monday")', function() {
-      // uncomment below and update the code to test the property monday
-      //var instance = new SellingPartnerApiForSupplySources.OperatingHoursByDay();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('monday');
+
+      // set and verify value
+      var validValue = generateMockData('[OperatingHour]', true);
+      instance.monday = validValue;
+      expect(instance.monday).to.equal(validValue);
     });
 
     it('should have the property tuesday (base name: "tuesday")', function() {
-      // uncomment below and update the code to test the property tuesday
-      //var instance = new SellingPartnerApiForSupplySources.OperatingHoursByDay();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('tuesday');
+
+      // set and verify value
+      var validValue = generateMockData('[OperatingHour]', true);
+      instance.tuesday = validValue;
+      expect(instance.tuesday).to.equal(validValue);
     });
 
     it('should have the property wednesday (base name: "wednesday")', function() {
-      // uncomment below and update the code to test the property wednesday
-      //var instance = new SellingPartnerApiForSupplySources.OperatingHoursByDay();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('wednesday');
+
+      // set and verify value
+      var validValue = generateMockData('[OperatingHour]', true);
+      instance.wednesday = validValue;
+      expect(instance.wednesday).to.equal(validValue);
     });
 
     it('should have the property thursday (base name: "thursday")', function() {
-      // uncomment below and update the code to test the property thursday
-      //var instance = new SellingPartnerApiForSupplySources.OperatingHoursByDay();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('thursday');
+
+      // set and verify value
+      var validValue = generateMockData('[OperatingHour]', true);
+      instance.thursday = validValue;
+      expect(instance.thursday).to.equal(validValue);
     });
 
     it('should have the property friday (base name: "friday")', function() {
-      // uncomment below and update the code to test the property friday
-      //var instance = new SellingPartnerApiForSupplySources.OperatingHoursByDay();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('friday');
+
+      // set and verify value
+      var validValue = generateMockData('[OperatingHour]', true);
+      instance.friday = validValue;
+      expect(instance.friday).to.equal(validValue);
     });
 
     it('should have the property saturday (base name: "saturday")', function() {
-      // uncomment below and update the code to test the property saturday
-      //var instance = new SellingPartnerApiForSupplySources.OperatingHoursByDay();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('saturday');
+
+      // set and verify value
+      var validValue = generateMockData('[OperatingHour]', true);
+      instance.saturday = validValue;
+      expect(instance.saturday).to.equal(validValue);
     });
 
     it('should have the property sunday (base name: "sunday")', function() {
-      // uncomment below and update the code to test the property sunday
-      //var instance = new SellingPartnerApiForSupplySources.OperatingHoursByDay();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('sunday');
+
+      // set and verify value
+      var validValue = generateMockData('[OperatingHour]', true);
+      instance.sunday = validValue;
+      expect(instance.sunday).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForSupplySources[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

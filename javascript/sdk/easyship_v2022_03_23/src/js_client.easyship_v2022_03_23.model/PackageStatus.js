@@ -114,4 +114,3 @@ export default class PackageStatus {
         return object;
     }
 }
-

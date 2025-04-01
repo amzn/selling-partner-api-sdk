@@ -28,103 +28,176 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new AmazonShippingApi.Address();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(AmazonShippingApi.Address.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('Address', function() {
     it('should create an instance of Address', function() {
-      // uncomment below and update the code to test Address
-      //var instance = new AmazonShippingApi.Address();
-      //expect(instance).to.be.a(AmazonShippingApi.Address);
+      expect(instance).to.be.a(AmazonShippingApi.Address);
     });
 
     it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instance = new AmazonShippingApi.Address();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('name');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.name = validValue;
+      expect(instance.name).to.equal(validValue);
     });
 
     it('should have the property addressLine1 (base name: "addressLine1")', function() {
-      // uncomment below and update the code to test the property addressLine1
-      //var instance = new AmazonShippingApi.Address();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('addressLine1');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.addressLine1 = validValue;
+      expect(instance.addressLine1).to.equal(validValue);
     });
 
     it('should have the property addressLine2 (base name: "addressLine2")', function() {
-      // uncomment below and update the code to test the property addressLine2
-      //var instance = new AmazonShippingApi.Address();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('addressLine2');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.addressLine2 = validValue;
+      expect(instance.addressLine2).to.equal(validValue);
     });
 
     it('should have the property addressLine3 (base name: "addressLine3")', function() {
-      // uncomment below and update the code to test the property addressLine3
-      //var instance = new AmazonShippingApi.Address();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('addressLine3');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.addressLine3 = validValue;
+      expect(instance.addressLine3).to.equal(validValue);
     });
 
     it('should have the property companyName (base name: "companyName")', function() {
-      // uncomment below and update the code to test the property companyName
-      //var instance = new AmazonShippingApi.Address();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('companyName');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.companyName = validValue;
+      expect(instance.companyName).to.equal(validValue);
     });
 
     it('should have the property stateOrRegion (base name: "stateOrRegion")', function() {
-      // uncomment below and update the code to test the property stateOrRegion
-      //var instance = new AmazonShippingApi.Address();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('stateOrRegion');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.stateOrRegion = validValue;
+      expect(instance.stateOrRegion).to.equal(validValue);
     });
 
     it('should have the property city (base name: "city")', function() {
-      // uncomment below and update the code to test the property city
-      //var instance = new AmazonShippingApi.Address();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('city');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.city = validValue;
+      expect(instance.city).to.equal(validValue);
     });
 
     it('should have the property countryCode (base name: "countryCode")', function() {
-      // uncomment below and update the code to test the property countryCode
-      //var instance = new AmazonShippingApi.Address();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('countryCode');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.countryCode = validValue;
+      expect(instance.countryCode).to.equal(validValue);
     });
 
     it('should have the property postalCode (base name: "postalCode")', function() {
-      // uncomment below and update the code to test the property postalCode
-      //var instance = new AmazonShippingApi.Address();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('postalCode');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.postalCode = validValue;
+      expect(instance.postalCode).to.equal(validValue);
     });
 
     it('should have the property email (base name: "email")', function() {
-      // uncomment below and update the code to test the property email
-      //var instance = new AmazonShippingApi.Address();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('email');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.email = validValue;
+      expect(instance.email).to.equal(validValue);
     });
 
     it('should have the property phoneNumber (base name: "phoneNumber")', function() {
-      // uncomment below and update the code to test the property phoneNumber
-      //var instance = new AmazonShippingApi.Address();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('phoneNumber');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.phoneNumber = validValue;
+      expect(instance.phoneNumber).to.equal(validValue);
     });
 
     it('should have the property geocode (base name: "geocode")', function() {
-      // uncomment below and update the code to test the property geocode
-      //var instance = new AmazonShippingApi.Address();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('geocode');
+
+      // set and verify value
+      var validValue = generateMockData('Geocode');
+      instance.geocode = validValue;
+      expect(instance.geocode).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = AmazonShippingApi[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

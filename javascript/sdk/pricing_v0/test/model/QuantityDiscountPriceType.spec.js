@@ -28,49 +28,86 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForPricing.QuantityDiscountPriceType();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForPricing.QuantityDiscountPriceType.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('QuantityDiscountPriceType', function() {
     it('should create an instance of QuantityDiscountPriceType', function() {
-      // uncomment below and update the code to test QuantityDiscountPriceType
-      //var instance = new SellingPartnerApiForPricing.QuantityDiscountPriceType();
-      //expect(instance).to.be.a(SellingPartnerApiForPricing.QuantityDiscountPriceType);
+      expect(instance).to.be.a(SellingPartnerApiForPricing.QuantityDiscountPriceType);
     });
 
     it('should have the property quantityTier (base name: "quantityTier")', function() {
-      // uncomment below and update the code to test the property quantityTier
-      //var instance = new SellingPartnerApiForPricing.QuantityDiscountPriceType();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('quantityTier');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.quantityTier = validValue;
+      expect(instance.quantityTier).to.equal(validValue);
     });
 
     it('should have the property quantityDiscountType (base name: "quantityDiscountType")', function() {
-      // uncomment below and update the code to test the property quantityDiscountType
-      //var instance = new SellingPartnerApiForPricing.QuantityDiscountPriceType();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('quantityDiscountType');
+
+      // set and verify value
+      var validValue = generateMockData('QuantityDiscountType');
+      instance.quantityDiscountType = validValue;
+      expect(instance.quantityDiscountType).to.equal(validValue);
     });
 
     it('should have the property listingPrice (base name: "listingPrice")', function() {
-      // uncomment below and update the code to test the property listingPrice
-      //var instance = new SellingPartnerApiForPricing.QuantityDiscountPriceType();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('listingPrice');
+
+      // set and verify value
+      var validValue = generateMockData('MoneyType');
+      instance.listingPrice = validValue;
+      expect(instance.listingPrice).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForPricing[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

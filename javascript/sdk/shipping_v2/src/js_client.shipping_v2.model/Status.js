@@ -100,4 +100,3 @@ export default class Status {
         return object;
     }
 }
-

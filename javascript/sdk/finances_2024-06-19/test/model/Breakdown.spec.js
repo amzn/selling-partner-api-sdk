@@ -28,49 +28,86 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new TheSellingPartnerApiForFinances.Breakdown();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(TheSellingPartnerApiForFinances.Breakdown.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('Breakdown', function() {
     it('should create an instance of Breakdown', function() {
-      // uncomment below and update the code to test Breakdown
-      //var instance = new TheSellingPartnerApiForFinances.Breakdown();
-      //expect(instance).to.be.a(TheSellingPartnerApiForFinances.Breakdown);
+      expect(instance).to.be.a(TheSellingPartnerApiForFinances.Breakdown);
     });
 
     it('should have the property breakdownType (base name: "breakdownType")', function() {
-      // uncomment below and update the code to test the property breakdownType
-      //var instance = new TheSellingPartnerApiForFinances.Breakdown();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('breakdownType');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.breakdownType = validValue;
+      expect(instance.breakdownType).to.equal(validValue);
     });
 
     it('should have the property breakdownAmount (base name: "breakdownAmount")', function() {
-      // uncomment below and update the code to test the property breakdownAmount
-      //var instance = new TheSellingPartnerApiForFinances.Breakdown();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('breakdownAmount');
+
+      // set and verify value
+      var validValue = generateMockData('Currency');
+      instance.breakdownAmount = validValue;
+      expect(instance.breakdownAmount).to.equal(validValue);
     });
 
     it('should have the property breakdowns (base name: "breakdowns")', function() {
-      // uncomment below and update the code to test the property breakdowns
-      //var instance = new TheSellingPartnerApiForFinances.Breakdown();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('breakdowns');
+
+      // set and verify value
+      var validValue = generateMockData('Breakdown');
+      instance.breakdowns = validValue;
+      expect(instance.breakdowns).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = TheSellingPartnerApiForFinances[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

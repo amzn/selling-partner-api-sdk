@@ -86,4 +86,3 @@ export default class AccessPointType {
         return object;
     }
 }
-

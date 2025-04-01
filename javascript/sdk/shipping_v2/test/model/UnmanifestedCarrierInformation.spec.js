@@ -28,49 +28,86 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new AmazonShippingApi.UnmanifestedCarrierInformation();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(AmazonShippingApi.UnmanifestedCarrierInformation.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('UnmanifestedCarrierInformation', function() {
     it('should create an instance of UnmanifestedCarrierInformation', function() {
-      // uncomment below and update the code to test UnmanifestedCarrierInformation
-      //var instance = new AmazonShippingApi.UnmanifestedCarrierInformation();
-      //expect(instance).to.be.a(AmazonShippingApi.UnmanifestedCarrierInformation);
+      expect(instance).to.be.a(AmazonShippingApi.UnmanifestedCarrierInformation);
     });
 
     it('should have the property carrierId (base name: "carrierId")', function() {
-      // uncomment below and update the code to test the property carrierId
-      //var instance = new AmazonShippingApi.UnmanifestedCarrierInformation();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('carrierId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.carrierId = validValue;
+      expect(instance.carrierId).to.equal(validValue);
     });
 
     it('should have the property carrierName (base name: "carrierName")', function() {
-      // uncomment below and update the code to test the property carrierName
-      //var instance = new AmazonShippingApi.UnmanifestedCarrierInformation();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('carrierName');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.carrierName = validValue;
+      expect(instance.carrierName).to.equal(validValue);
     });
 
     it('should have the property unmanifestedShipmentLocationList (base name: "unmanifestedShipmentLocationList")', function() {
-      // uncomment below and update the code to test the property unmanifestedShipmentLocationList
-      //var instance = new AmazonShippingApi.UnmanifestedCarrierInformation();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('unmanifestedShipmentLocationList');
+
+      // set and verify value
+      var validValue = generateMockData('[UnmanifestedShipmentLocation]', true);
+      instance.unmanifestedShipmentLocationList = validValue;
+      expect(instance.unmanifestedShipmentLocationList).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = AmazonShippingApi[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

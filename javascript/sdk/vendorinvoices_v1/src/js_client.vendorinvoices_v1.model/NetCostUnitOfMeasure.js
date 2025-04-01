@@ -58,4 +58,3 @@ export default class NetCostUnitOfMeasure {
         return object;
     }
 }
-

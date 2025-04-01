@@ -28,55 +28,96 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForAContentManagement.StandardFourImageTextQuadrantModule();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForAContentManagement.StandardFourImageTextQuadrantModule.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('StandardFourImageTextQuadrantModule', function() {
     it('should create an instance of StandardFourImageTextQuadrantModule', function() {
-      // uncomment below and update the code to test StandardFourImageTextQuadrantModule
-      //var instance = new SellingPartnerApiForAContentManagement.StandardFourImageTextQuadrantModule();
-      //expect(instance).to.be.a(SellingPartnerApiForAContentManagement.StandardFourImageTextQuadrantModule);
+      expect(instance).to.be.a(SellingPartnerApiForAContentManagement.StandardFourImageTextQuadrantModule);
     });
 
     it('should have the property block1 (base name: "block1")', function() {
-      // uncomment below and update the code to test the property block1
-      //var instance = new SellingPartnerApiForAContentManagement.StandardFourImageTextQuadrantModule();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('block1');
+
+      // set and verify value
+      var validValue = generateMockData('StandardImageTextBlock');
+      instance.block1 = validValue;
+      expect(instance.block1).to.equal(validValue);
     });
 
     it('should have the property block2 (base name: "block2")', function() {
-      // uncomment below and update the code to test the property block2
-      //var instance = new SellingPartnerApiForAContentManagement.StandardFourImageTextQuadrantModule();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('block2');
+
+      // set and verify value
+      var validValue = generateMockData('StandardImageTextBlock');
+      instance.block2 = validValue;
+      expect(instance.block2).to.equal(validValue);
     });
 
     it('should have the property block3 (base name: "block3")', function() {
-      // uncomment below and update the code to test the property block3
-      //var instance = new SellingPartnerApiForAContentManagement.StandardFourImageTextQuadrantModule();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('block3');
+
+      // set and verify value
+      var validValue = generateMockData('StandardImageTextBlock');
+      instance.block3 = validValue;
+      expect(instance.block3).to.equal(validValue);
     });
 
     it('should have the property block4 (base name: "block4")', function() {
-      // uncomment below and update the code to test the property block4
-      //var instance = new SellingPartnerApiForAContentManagement.StandardFourImageTextQuadrantModule();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('block4');
+
+      // set and verify value
+      var validValue = generateMockData('StandardImageTextBlock');
+      instance.block4 = validValue;
+      expect(instance.block4).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForAContentManagement[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

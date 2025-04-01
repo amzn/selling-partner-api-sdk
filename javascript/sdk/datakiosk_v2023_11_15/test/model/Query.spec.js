@@ -28,85 +28,146 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForDataKiosk.Query();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForDataKiosk.Query.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('Query', function() {
     it('should create an instance of Query', function() {
-      // uncomment below and update the code to test Query
-      //var instance = new SellingPartnerApiForDataKiosk.Query();
-      //expect(instance).to.be.a(SellingPartnerApiForDataKiosk.Query);
+      expect(instance).to.be.a(SellingPartnerApiForDataKiosk.Query);
     });
 
     it('should have the property queryId (base name: "queryId")', function() {
-      // uncomment below and update the code to test the property queryId
-      //var instance = new SellingPartnerApiForDataKiosk.Query();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('queryId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.queryId = validValue;
+      expect(instance.queryId).to.equal(validValue);
     });
 
     it('should have the property query (base name: "query")', function() {
-      // uncomment below and update the code to test the property query
-      //var instance = new SellingPartnerApiForDataKiosk.Query();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('query');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.query = validValue;
+      expect(instance.query).to.equal(validValue);
     });
 
     it('should have the property createdTime (base name: "createdTime")', function() {
-      // uncomment below and update the code to test the property createdTime
-      //var instance = new SellingPartnerApiForDataKiosk.Query();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('createdTime');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.createdTime = validValue;
+      expect(instance.createdTime).to.equal(validValue);
     });
 
     it('should have the property processingStatus (base name: "processingStatus")', function() {
-      // uncomment below and update the code to test the property processingStatus
-      //var instance = new SellingPartnerApiForDataKiosk.Query();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('processingStatus');
+
+      // set and verify value
+      var validValue = ['CANCELLED', 'DONE', 'FATAL', 'IN_PROGRESS', 'IN_QUEUE', ][0];
+      instance.processingStatus = validValue;
+      expect(instance.processingStatus).to.equal(validValue);
     });
 
     it('should have the property processingStartTime (base name: "processingStartTime")', function() {
-      // uncomment below and update the code to test the property processingStartTime
-      //var instance = new SellingPartnerApiForDataKiosk.Query();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('processingStartTime');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.processingStartTime = validValue;
+      expect(instance.processingStartTime).to.equal(validValue);
     });
 
     it('should have the property processingEndTime (base name: "processingEndTime")', function() {
-      // uncomment below and update the code to test the property processingEndTime
-      //var instance = new SellingPartnerApiForDataKiosk.Query();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('processingEndTime');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.processingEndTime = validValue;
+      expect(instance.processingEndTime).to.equal(validValue);
     });
 
     it('should have the property dataDocumentId (base name: "dataDocumentId")', function() {
-      // uncomment below and update the code to test the property dataDocumentId
-      //var instance = new SellingPartnerApiForDataKiosk.Query();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('dataDocumentId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.dataDocumentId = validValue;
+      expect(instance.dataDocumentId).to.equal(validValue);
     });
 
     it('should have the property errorDocumentId (base name: "errorDocumentId")', function() {
-      // uncomment below and update the code to test the property errorDocumentId
-      //var instance = new SellingPartnerApiForDataKiosk.Query();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('errorDocumentId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.errorDocumentId = validValue;
+      expect(instance.errorDocumentId).to.equal(validValue);
     });
 
     it('should have the property pagination (base name: "pagination")', function() {
-      // uncomment below and update the code to test the property pagination
-      //var instance = new SellingPartnerApiForDataKiosk.Query();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('pagination');
+
+      // set and verify value
+      var validValue = generateMockData('QueryPagination');
+      instance.pagination = validValue;
+      expect(instance.pagination).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForDataKiosk[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

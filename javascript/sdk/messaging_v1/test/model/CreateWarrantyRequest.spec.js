@@ -28,49 +28,86 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForMessaging.CreateWarrantyRequest();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForMessaging.CreateWarrantyRequest.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('CreateWarrantyRequest', function() {
     it('should create an instance of CreateWarrantyRequest', function() {
-      // uncomment below and update the code to test CreateWarrantyRequest
-      //var instance = new SellingPartnerApiForMessaging.CreateWarrantyRequest();
-      //expect(instance).to.be.a(SellingPartnerApiForMessaging.CreateWarrantyRequest);
+      expect(instance).to.be.a(SellingPartnerApiForMessaging.CreateWarrantyRequest);
     });
 
     it('should have the property attachments (base name: "attachments")', function() {
-      // uncomment below and update the code to test the property attachments
-      //var instance = new SellingPartnerApiForMessaging.CreateWarrantyRequest();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('attachments');
+
+      // set and verify value
+      var validValue = generateMockData('[Attachment]', true);
+      instance.attachments = validValue;
+      expect(instance.attachments).to.equal(validValue);
     });
 
     it('should have the property coverageStartDate (base name: "coverageStartDate")', function() {
-      // uncomment below and update the code to test the property coverageStartDate
-      //var instance = new SellingPartnerApiForMessaging.CreateWarrantyRequest();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('coverageStartDate');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.coverageStartDate = validValue;
+      expect(instance.coverageStartDate).to.equal(validValue);
     });
 
     it('should have the property coverageEndDate (base name: "coverageEndDate")', function() {
-      // uncomment below and update the code to test the property coverageEndDate
-      //var instance = new SellingPartnerApiForMessaging.CreateWarrantyRequest();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('coverageEndDate');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.coverageEndDate = validValue;
+      expect(instance.coverageEndDate).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForMessaging[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

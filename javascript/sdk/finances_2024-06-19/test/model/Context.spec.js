@@ -28,133 +28,226 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new TheSellingPartnerApiForFinances.Context();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(TheSellingPartnerApiForFinances.Context.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('Context', function() {
     it('should create an instance of Context', function() {
-      // uncomment below and update the code to test Context
-      //var instance = new TheSellingPartnerApiForFinances.Context();
-      //expect(instance).to.be.a(TheSellingPartnerApiForFinances.Context);
+      expect(instance).to.be.a(TheSellingPartnerApiForFinances.Context);
     });
 
     it('should have the property storeName (base name: "storeName")', function() {
-      // uncomment below and update the code to test the property storeName
-      //var instance = new TheSellingPartnerApiForFinances.Context();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('storeName');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.storeName = validValue;
+      expect(instance.storeName).to.equal(validValue);
     });
 
     it('should have the property orderType (base name: "orderType")', function() {
-      // uncomment below and update the code to test the property orderType
-      //var instance = new TheSellingPartnerApiForFinances.Context();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('orderType');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.orderType = validValue;
+      expect(instance.orderType).to.equal(validValue);
     });
 
     it('should have the property channel (base name: "channel")', function() {
-      // uncomment below and update the code to test the property channel
-      //var instance = new TheSellingPartnerApiForFinances.Context();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('channel');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.channel = validValue;
+      expect(instance.channel).to.equal(validValue);
     });
 
     it('should have the property asin (base name: "asin")', function() {
-      // uncomment below and update the code to test the property asin
-      //var instance = new TheSellingPartnerApiForFinances.Context();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('asin');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.asin = validValue;
+      expect(instance.asin).to.equal(validValue);
     });
 
     it('should have the property sku (base name: "sku")', function() {
-      // uncomment below and update the code to test the property sku
-      //var instance = new TheSellingPartnerApiForFinances.Context();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('sku');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.sku = validValue;
+      expect(instance.sku).to.equal(validValue);
     });
 
     it('should have the property quantityShipped (base name: "quantityShipped")', function() {
-      // uncomment below and update the code to test the property quantityShipped
-      //var instance = new TheSellingPartnerApiForFinances.Context();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('quantityShipped');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.quantityShipped = validValue;
+      expect(instance.quantityShipped).to.equal(validValue);
     });
 
     it('should have the property fulfillmentNetwork (base name: "fulfillmentNetwork")', function() {
-      // uncomment below and update the code to test the property fulfillmentNetwork
-      //var instance = new TheSellingPartnerApiForFinances.Context();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('fulfillmentNetwork');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.fulfillmentNetwork = validValue;
+      expect(instance.fulfillmentNetwork).to.equal(validValue);
     });
 
     it('should have the property paymentType (base name: "paymentType")', function() {
-      // uncomment below and update the code to test the property paymentType
-      //var instance = new TheSellingPartnerApiForFinances.Context();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('paymentType');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.paymentType = validValue;
+      expect(instance.paymentType).to.equal(validValue);
     });
 
     it('should have the property paymentMethod (base name: "paymentMethod")', function() {
-      // uncomment below and update the code to test the property paymentMethod
-      //var instance = new TheSellingPartnerApiForFinances.Context();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('paymentMethod');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.paymentMethod = validValue;
+      expect(instance.paymentMethod).to.equal(validValue);
     });
 
     it('should have the property paymentReference (base name: "paymentReference")', function() {
-      // uncomment below and update the code to test the property paymentReference
-      //var instance = new TheSellingPartnerApiForFinances.Context();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('paymentReference');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.paymentReference = validValue;
+      expect(instance.paymentReference).to.equal(validValue);
     });
 
     it('should have the property paymentDate (base name: "paymentDate")', function() {
-      // uncomment below and update the code to test the property paymentDate
-      //var instance = new TheSellingPartnerApiForFinances.Context();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('paymentDate');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.paymentDate = validValue;
+      expect(instance.paymentDate).to.equal(validValue);
     });
 
     it('should have the property deferralReason (base name: "deferralReason")', function() {
-      // uncomment below and update the code to test the property deferralReason
-      //var instance = new TheSellingPartnerApiForFinances.Context();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('deferralReason');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.deferralReason = validValue;
+      expect(instance.deferralReason).to.equal(validValue);
     });
 
     it('should have the property maturityDate (base name: "maturityDate")', function() {
-      // uncomment below and update the code to test the property maturityDate
-      //var instance = new TheSellingPartnerApiForFinances.Context();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('maturityDate');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.maturityDate = validValue;
+      expect(instance.maturityDate).to.equal(validValue);
     });
 
     it('should have the property deferralStatus (base name: "deferralStatus")', function() {
-      // uncomment below and update the code to test the property deferralStatus
-      //var instance = new TheSellingPartnerApiForFinances.Context();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('deferralStatus');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.deferralStatus = validValue;
+      expect(instance.deferralStatus).to.equal(validValue);
     });
 
     it('should have the property startTime (base name: "startTime")', function() {
-      // uncomment below and update the code to test the property startTime
-      //var instance = new TheSellingPartnerApiForFinances.Context();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('startTime');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.startTime = validValue;
+      expect(instance.startTime).to.equal(validValue);
     });
 
     it('should have the property endTime (base name: "endTime")', function() {
-      // uncomment below and update the code to test the property endTime
-      //var instance = new TheSellingPartnerApiForFinances.Context();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('endTime');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.endTime = validValue;
+      expect(instance.endTime).to.equal(validValue);
     });
 
     it('should have the property contextType (base name: "contextType")', function() {
-      // uncomment below and update the code to test the property contextType
-      //var instance = new TheSellingPartnerApiForFinances.Context();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('contextType');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.contextType = validValue;
+      expect(instance.contextType).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = TheSellingPartnerApiForFinances[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

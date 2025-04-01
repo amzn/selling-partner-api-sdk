@@ -28,49 +28,86 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new AmazonShippingApi.GetRatesResult();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(AmazonShippingApi.GetRatesResult.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('GetRatesResult', function() {
     it('should create an instance of GetRatesResult', function() {
-      // uncomment below and update the code to test GetRatesResult
-      //var instance = new AmazonShippingApi.GetRatesResult();
-      //expect(instance).to.be.a(AmazonShippingApi.GetRatesResult);
+      expect(instance).to.be.a(AmazonShippingApi.GetRatesResult);
     });
 
     it('should have the property requestToken (base name: "requestToken")', function() {
-      // uncomment below and update the code to test the property requestToken
-      //var instance = new AmazonShippingApi.GetRatesResult();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('requestToken');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.requestToken = validValue;
+      expect(instance.requestToken).to.equal(validValue);
     });
 
     it('should have the property rates (base name: "rates")', function() {
-      // uncomment below and update the code to test the property rates
-      //var instance = new AmazonShippingApi.GetRatesResult();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('rates');
+
+      // set and verify value
+      var validValue = generateMockData('[Rate]', true);
+      instance.rates = validValue;
+      expect(instance.rates).to.equal(validValue);
     });
 
     it('should have the property ineligibleRates (base name: "ineligibleRates")', function() {
-      // uncomment below and update the code to test the property ineligibleRates
-      //var instance = new AmazonShippingApi.GetRatesResult();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('ineligibleRates');
+
+      // set and verify value
+      var validValue = generateMockData('[IneligibleRate]', true);
+      instance.ineligibleRates = validValue;
+      expect(instance.ineligibleRates).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = AmazonShippingApi[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

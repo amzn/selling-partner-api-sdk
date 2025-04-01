@@ -28,55 +28,96 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForDirectFulfillmentInventoryUpdates.ItemDetails();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForDirectFulfillmentInventoryUpdates.ItemDetails.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('ItemDetails', function() {
     it('should create an instance of ItemDetails', function() {
-      // uncomment below and update the code to test ItemDetails
-      //var instance = new SellingPartnerApiForDirectFulfillmentInventoryUpdates.ItemDetails();
-      //expect(instance).to.be.a(SellingPartnerApiForDirectFulfillmentInventoryUpdates.ItemDetails);
+      expect(instance).to.be.a(SellingPartnerApiForDirectFulfillmentInventoryUpdates.ItemDetails);
     });
 
     it('should have the property buyerProductIdentifier (base name: "buyerProductIdentifier")', function() {
-      // uncomment below and update the code to test the property buyerProductIdentifier
-      //var instance = new SellingPartnerApiForDirectFulfillmentInventoryUpdates.ItemDetails();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('buyerProductIdentifier');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.buyerProductIdentifier = validValue;
+      expect(instance.buyerProductIdentifier).to.equal(validValue);
     });
 
     it('should have the property vendorProductIdentifier (base name: "vendorProductIdentifier")', function() {
-      // uncomment below and update the code to test the property vendorProductIdentifier
-      //var instance = new SellingPartnerApiForDirectFulfillmentInventoryUpdates.ItemDetails();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('vendorProductIdentifier');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.vendorProductIdentifier = validValue;
+      expect(instance.vendorProductIdentifier).to.equal(validValue);
     });
 
     it('should have the property availableQuantity (base name: "availableQuantity")', function() {
-      // uncomment below and update the code to test the property availableQuantity
-      //var instance = new SellingPartnerApiForDirectFulfillmentInventoryUpdates.ItemDetails();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('availableQuantity');
+
+      // set and verify value
+      var validValue = generateMockData('ItemQuantity');
+      instance.availableQuantity = validValue;
+      expect(instance.availableQuantity).to.equal(validValue);
     });
 
     it('should have the property isObsolete (base name: "isObsolete")', function() {
-      // uncomment below and update the code to test the property isObsolete
-      //var instance = new SellingPartnerApiForDirectFulfillmentInventoryUpdates.ItemDetails();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('isObsolete');
+
+      // set and verify value
+      var validValue = generateMockData('Boolean');
+      instance.isObsolete = validValue;
+      expect(instance.isObsolete).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForDirectFulfillmentInventoryUpdates[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

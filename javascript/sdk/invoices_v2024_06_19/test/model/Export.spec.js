@@ -28,67 +28,116 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new TheSellingPartnerApiForInvoices.Export();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(TheSellingPartnerApiForInvoices.Export.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('Export', function() {
     it('should create an instance of Export', function() {
-      // uncomment below and update the code to test Export
-      //var instance = new TheSellingPartnerApiForInvoices.Export();
-      //expect(instance).to.be.a(TheSellingPartnerApiForInvoices.Export);
+      expect(instance).to.be.a(TheSellingPartnerApiForInvoices.Export);
     });
 
     it('should have the property errorMessage (base name: "errorMessage")', function() {
-      // uncomment below and update the code to test the property errorMessage
-      //var instance = new TheSellingPartnerApiForInvoices.Export();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('errorMessage');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.errorMessage = validValue;
+      expect(instance.errorMessage).to.equal(validValue);
     });
 
     it('should have the property exportId (base name: "exportId")', function() {
-      // uncomment below and update the code to test the property exportId
-      //var instance = new TheSellingPartnerApiForInvoices.Export();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('exportId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.exportId = validValue;
+      expect(instance.exportId).to.equal(validValue);
     });
 
     it('should have the property generateExportFinishedAt (base name: "generateExportFinishedAt")', function() {
-      // uncomment below and update the code to test the property generateExportFinishedAt
-      //var instance = new TheSellingPartnerApiForInvoices.Export();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('generateExportFinishedAt');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.generateExportFinishedAt = validValue;
+      expect(instance.generateExportFinishedAt).to.equal(validValue);
     });
 
     it('should have the property generateExportStartedAt (base name: "generateExportStartedAt")', function() {
-      // uncomment below and update the code to test the property generateExportStartedAt
-      //var instance = new TheSellingPartnerApiForInvoices.Export();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('generateExportStartedAt');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.generateExportStartedAt = validValue;
+      expect(instance.generateExportStartedAt).to.equal(validValue);
     });
 
     it('should have the property invoicesDocumentIds (base name: "invoicesDocumentIds")', function() {
-      // uncomment below and update the code to test the property invoicesDocumentIds
-      //var instance = new TheSellingPartnerApiForInvoices.Export();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('invoicesDocumentIds');
+
+      // set and verify value
+      var validValue = generateMockData('[String]', true);
+      instance.invoicesDocumentIds = validValue;
+      expect(instance.invoicesDocumentIds).to.equal(validValue);
     });
 
     it('should have the property status (base name: "status")', function() {
-      // uncomment below and update the code to test the property status
-      //var instance = new TheSellingPartnerApiForInvoices.Export();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('status');
+
+      // set and verify value
+      var validValue = generateMockData('ExportStatus');
+      instance.status = validValue;
+      expect(instance.status).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = TheSellingPartnerApiForInvoices[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

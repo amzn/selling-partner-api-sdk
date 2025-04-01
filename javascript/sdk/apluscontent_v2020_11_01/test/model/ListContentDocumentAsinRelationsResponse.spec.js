@@ -28,49 +28,86 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForAContentManagement.ListContentDocumentAsinRelationsResponse();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForAContentManagement.ListContentDocumentAsinRelationsResponse.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('ListContentDocumentAsinRelationsResponse', function() {
     it('should create an instance of ListContentDocumentAsinRelationsResponse', function() {
-      // uncomment below and update the code to test ListContentDocumentAsinRelationsResponse
-      //var instance = new SellingPartnerApiForAContentManagement.ListContentDocumentAsinRelationsResponse();
-      //expect(instance).to.be.a(SellingPartnerApiForAContentManagement.ListContentDocumentAsinRelationsResponse);
+      expect(instance).to.be.a(SellingPartnerApiForAContentManagement.ListContentDocumentAsinRelationsResponse);
     });
 
     it('should have the property warnings (base name: "warnings")', function() {
-      // uncomment below and update the code to test the property warnings
-      //var instance = new SellingPartnerApiForAContentManagement.ListContentDocumentAsinRelationsResponse();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('warnings');
+
+      // set and verify value
+      var validValue = generateMockData('[Error]', true);
+      instance.warnings = validValue;
+      expect(instance.warnings).to.equal(validValue);
     });
 
     it('should have the property nextPageToken (base name: "nextPageToken")', function() {
-      // uncomment below and update the code to test the property nextPageToken
-      //var instance = new SellingPartnerApiForAContentManagement.ListContentDocumentAsinRelationsResponse();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('nextPageToken');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.nextPageToken = validValue;
+      expect(instance.nextPageToken).to.equal(validValue);
     });
 
     it('should have the property asinMetadataSet (base name: "asinMetadataSet")', function() {
-      // uncomment below and update the code to test the property asinMetadataSet
-      //var instance = new SellingPartnerApiForAContentManagement.ListContentDocumentAsinRelationsResponse();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('asinMetadataSet');
+
+      // set and verify value
+      var validValue = generateMockData('[AsinMetadata]', true);
+      instance.asinMetadataSet = validValue;
+      expect(instance.asinMetadataSet).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForAContentManagement[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

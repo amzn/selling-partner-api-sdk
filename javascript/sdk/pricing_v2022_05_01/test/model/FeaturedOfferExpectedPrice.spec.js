@@ -28,43 +28,76 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForPricing.FeaturedOfferExpectedPrice();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForPricing.FeaturedOfferExpectedPrice.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('FeaturedOfferExpectedPrice', function() {
     it('should create an instance of FeaturedOfferExpectedPrice', function() {
-      // uncomment below and update the code to test FeaturedOfferExpectedPrice
-      //var instance = new SellingPartnerApiForPricing.FeaturedOfferExpectedPrice();
-      //expect(instance).to.be.a(SellingPartnerApiForPricing.FeaturedOfferExpectedPrice);
+      expect(instance).to.be.a(SellingPartnerApiForPricing.FeaturedOfferExpectedPrice);
     });
 
     it('should have the property listingPrice (base name: "listingPrice")', function() {
-      // uncomment below and update the code to test the property listingPrice
-      //var instance = new SellingPartnerApiForPricing.FeaturedOfferExpectedPrice();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('listingPrice');
+
+      // set and verify value
+      var validValue = generateMockData('MoneyType');
+      instance.listingPrice = validValue;
+      expect(instance.listingPrice).to.equal(validValue);
     });
 
     it('should have the property points (base name: "points")', function() {
-      // uncomment below and update the code to test the property points
-      //var instance = new SellingPartnerApiForPricing.FeaturedOfferExpectedPrice();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('points');
+
+      // set and verify value
+      var validValue = generateMockData('Points');
+      instance.points = validValue;
+      expect(instance.points).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForPricing[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

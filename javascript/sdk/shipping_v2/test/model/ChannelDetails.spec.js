@@ -28,49 +28,86 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new AmazonShippingApi.ChannelDetails();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(AmazonShippingApi.ChannelDetails.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('ChannelDetails', function() {
     it('should create an instance of ChannelDetails', function() {
-      // uncomment below and update the code to test ChannelDetails
-      //var instance = new AmazonShippingApi.ChannelDetails();
-      //expect(instance).to.be.a(AmazonShippingApi.ChannelDetails);
+      expect(instance).to.be.a(AmazonShippingApi.ChannelDetails);
     });
 
     it('should have the property channelType (base name: "channelType")', function() {
-      // uncomment below and update the code to test the property channelType
-      //var instance = new AmazonShippingApi.ChannelDetails();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('channelType');
+
+      // set and verify value
+      var validValue = generateMockData('ChannelType');
+      instance.channelType = validValue;
+      expect(instance.channelType).to.equal(validValue);
     });
 
     it('should have the property amazonOrderDetails (base name: "amazonOrderDetails")', function() {
-      // uncomment below and update the code to test the property amazonOrderDetails
-      //var instance = new AmazonShippingApi.ChannelDetails();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('amazonOrderDetails');
+
+      // set and verify value
+      var validValue = generateMockData('AmazonOrderDetails');
+      instance.amazonOrderDetails = validValue;
+      expect(instance.amazonOrderDetails).to.equal(validValue);
     });
 
     it('should have the property amazonShipmentDetails (base name: "amazonShipmentDetails")', function() {
-      // uncomment below and update the code to test the property amazonShipmentDetails
-      //var instance = new AmazonShippingApi.ChannelDetails();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('amazonShipmentDetails');
+
+      // set and verify value
+      var validValue = generateMockData('AmazonShipmentDetails');
+      instance.amazonShipmentDetails = validValue;
+      expect(instance.amazonShipmentDetails).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = AmazonShippingApi[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

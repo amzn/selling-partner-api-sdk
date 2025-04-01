@@ -37,4 +37,3 @@ export default class ProgramType {
         return object;
     }
 }
-

@@ -28,49 +28,86 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForDirectFulfillmentOrders.ScheduledDeliveryShipment();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForDirectFulfillmentOrders.ScheduledDeliveryShipment.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('ScheduledDeliveryShipment', function() {
     it('should create an instance of ScheduledDeliveryShipment', function() {
-      // uncomment below and update the code to test ScheduledDeliveryShipment
-      //var instance = new SellingPartnerApiForDirectFulfillmentOrders.ScheduledDeliveryShipment();
-      //expect(instance).to.be.a(SellingPartnerApiForDirectFulfillmentOrders.ScheduledDeliveryShipment);
+      expect(instance).to.be.a(SellingPartnerApiForDirectFulfillmentOrders.ScheduledDeliveryShipment);
     });
 
     it('should have the property scheduledDeliveryServiceType (base name: "scheduledDeliveryServiceType")', function() {
-      // uncomment below and update the code to test the property scheduledDeliveryServiceType
-      //var instance = new SellingPartnerApiForDirectFulfillmentOrders.ScheduledDeliveryShipment();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('scheduledDeliveryServiceType');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.scheduledDeliveryServiceType = validValue;
+      expect(instance.scheduledDeliveryServiceType).to.equal(validValue);
     });
 
     it('should have the property earliestNominatedDeliveryDate (base name: "earliestNominatedDeliveryDate")', function() {
-      // uncomment below and update the code to test the property earliestNominatedDeliveryDate
-      //var instance = new SellingPartnerApiForDirectFulfillmentOrders.ScheduledDeliveryShipment();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('earliestNominatedDeliveryDate');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.earliestNominatedDeliveryDate = validValue;
+      expect(instance.earliestNominatedDeliveryDate).to.equal(validValue);
     });
 
     it('should have the property latestNominatedDeliveryDate (base name: "latestNominatedDeliveryDate")', function() {
-      // uncomment below and update the code to test the property latestNominatedDeliveryDate
-      //var instance = new SellingPartnerApiForDirectFulfillmentOrders.ScheduledDeliveryShipment();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('latestNominatedDeliveryDate');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.latestNominatedDeliveryDate = validValue;
+      expect(instance.latestNominatedDeliveryDate).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForDirectFulfillmentOrders[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

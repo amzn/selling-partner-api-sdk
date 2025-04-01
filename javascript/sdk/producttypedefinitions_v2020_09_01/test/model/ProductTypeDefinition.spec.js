@@ -28,91 +28,156 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForProductTypeDefinitions.ProductTypeDefinition();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForProductTypeDefinitions.ProductTypeDefinition.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('ProductTypeDefinition', function() {
     it('should create an instance of ProductTypeDefinition', function() {
-      // uncomment below and update the code to test ProductTypeDefinition
-      //var instance = new SellingPartnerApiForProductTypeDefinitions.ProductTypeDefinition();
-      //expect(instance).to.be.a(SellingPartnerApiForProductTypeDefinitions.ProductTypeDefinition);
+      expect(instance).to.be.a(SellingPartnerApiForProductTypeDefinitions.ProductTypeDefinition);
     });
 
     it('should have the property metaSchema (base name: "metaSchema")', function() {
-      // uncomment below and update the code to test the property metaSchema
-      //var instance = new SellingPartnerApiForProductTypeDefinitions.ProductTypeDefinition();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('metaSchema');
+
+      // set and verify value
+      var validValue = generateMockData('SchemaLink');
+      instance.metaSchema = validValue;
+      expect(instance.metaSchema).to.equal(validValue);
     });
 
     it('should have the property schema (base name: "schema")', function() {
-      // uncomment below and update the code to test the property schema
-      //var instance = new SellingPartnerApiForProductTypeDefinitions.ProductTypeDefinition();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('schema');
+
+      // set and verify value
+      var validValue = generateMockData('SchemaLink');
+      instance.schema = validValue;
+      expect(instance.schema).to.equal(validValue);
     });
 
     it('should have the property requirements (base name: "requirements")', function() {
-      // uncomment below and update the code to test the property requirements
-      //var instance = new SellingPartnerApiForProductTypeDefinitions.ProductTypeDefinition();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('requirements');
+
+      // set and verify value
+      var validValue = ['LISTING', 'LISTING_PRODUCT_ONLY', 'LISTING_OFFER_ONLY', ][0];
+      instance.requirements = validValue;
+      expect(instance.requirements).to.equal(validValue);
     });
 
     it('should have the property requirementsEnforced (base name: "requirementsEnforced")', function() {
-      // uncomment below and update the code to test the property requirementsEnforced
-      //var instance = new SellingPartnerApiForProductTypeDefinitions.ProductTypeDefinition();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('requirementsEnforced');
+
+      // set and verify value
+      var validValue = ['ENFORCED', 'NOT_ENFORCED', ][0];
+      instance.requirementsEnforced = validValue;
+      expect(instance.requirementsEnforced).to.equal(validValue);
     });
 
     it('should have the property propertyGroups (base name: "propertyGroups")', function() {
-      // uncomment below and update the code to test the property propertyGroups
-      //var instance = new SellingPartnerApiForProductTypeDefinitions.ProductTypeDefinition();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('propertyGroups');
+
+      // set and verify value
+      var validValue = generateMockData('{String: PropertyGroup}');
+      instance.propertyGroups = validValue;
+      expect(instance.propertyGroups).to.equal(validValue);
     });
 
     it('should have the property locale (base name: "locale")', function() {
-      // uncomment below and update the code to test the property locale
-      //var instance = new SellingPartnerApiForProductTypeDefinitions.ProductTypeDefinition();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('locale');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.locale = validValue;
+      expect(instance.locale).to.equal(validValue);
     });
 
     it('should have the property marketplaceIds (base name: "marketplaceIds")', function() {
-      // uncomment below and update the code to test the property marketplaceIds
-      //var instance = new SellingPartnerApiForProductTypeDefinitions.ProductTypeDefinition();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('marketplaceIds');
+
+      // set and verify value
+      var validValue = generateMockData('[String]', true);
+      instance.marketplaceIds = validValue;
+      expect(instance.marketplaceIds).to.equal(validValue);
     });
 
     it('should have the property productType (base name: "productType")', function() {
-      // uncomment below and update the code to test the property productType
-      //var instance = new SellingPartnerApiForProductTypeDefinitions.ProductTypeDefinition();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('productType');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.productType = validValue;
+      expect(instance.productType).to.equal(validValue);
     });
 
     it('should have the property displayName (base name: "displayName")', function() {
-      // uncomment below and update the code to test the property displayName
-      //var instance = new SellingPartnerApiForProductTypeDefinitions.ProductTypeDefinition();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('displayName');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.displayName = validValue;
+      expect(instance.displayName).to.equal(validValue);
     });
 
     it('should have the property productTypeVersion (base name: "productTypeVersion")', function() {
-      // uncomment below and update the code to test the property productTypeVersion
-      //var instance = new SellingPartnerApiForProductTypeDefinitions.ProductTypeDefinition();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('productTypeVersion');
+
+      // set and verify value
+      var validValue = generateMockData('ProductTypeVersion');
+      instance.productTypeVersion = validValue;
+      expect(instance.productTypeVersion).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForProductTypeDefinitions[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

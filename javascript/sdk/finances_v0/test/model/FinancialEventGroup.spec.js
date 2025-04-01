@@ -28,97 +28,166 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForFinances.FinancialEventGroup();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForFinances.FinancialEventGroup.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('FinancialEventGroup', function() {
     it('should create an instance of FinancialEventGroup', function() {
-      // uncomment below and update the code to test FinancialEventGroup
-      //var instance = new SellingPartnerApiForFinances.FinancialEventGroup();
-      //expect(instance).to.be.a(SellingPartnerApiForFinances.FinancialEventGroup);
+      expect(instance).to.be.a(SellingPartnerApiForFinances.FinancialEventGroup);
     });
 
     it('should have the property financialEventGroupId (base name: "FinancialEventGroupId")', function() {
-      // uncomment below and update the code to test the property financialEventGroupId
-      //var instance = new SellingPartnerApiForFinances.FinancialEventGroup();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('financialEventGroupId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.financialEventGroupId = validValue;
+      expect(instance.financialEventGroupId).to.equal(validValue);
     });
 
     it('should have the property processingStatus (base name: "ProcessingStatus")', function() {
-      // uncomment below and update the code to test the property processingStatus
-      //var instance = new SellingPartnerApiForFinances.FinancialEventGroup();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('processingStatus');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.processingStatus = validValue;
+      expect(instance.processingStatus).to.equal(validValue);
     });
 
     it('should have the property fundTransferStatus (base name: "FundTransferStatus")', function() {
-      // uncomment below and update the code to test the property fundTransferStatus
-      //var instance = new SellingPartnerApiForFinances.FinancialEventGroup();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('fundTransferStatus');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.fundTransferStatus = validValue;
+      expect(instance.fundTransferStatus).to.equal(validValue);
     });
 
     it('should have the property originalTotal (base name: "OriginalTotal")', function() {
-      // uncomment below and update the code to test the property originalTotal
-      //var instance = new SellingPartnerApiForFinances.FinancialEventGroup();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('originalTotal');
+
+      // set and verify value
+      var validValue = generateMockData('Currency');
+      instance.originalTotal = validValue;
+      expect(instance.originalTotal).to.equal(validValue);
     });
 
     it('should have the property convertedTotal (base name: "ConvertedTotal")', function() {
-      // uncomment below and update the code to test the property convertedTotal
-      //var instance = new SellingPartnerApiForFinances.FinancialEventGroup();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('convertedTotal');
+
+      // set and verify value
+      var validValue = generateMockData('Currency');
+      instance.convertedTotal = validValue;
+      expect(instance.convertedTotal).to.equal(validValue);
     });
 
     it('should have the property fundTransferDate (base name: "FundTransferDate")', function() {
-      // uncomment below and update the code to test the property fundTransferDate
-      //var instance = new SellingPartnerApiForFinances.FinancialEventGroup();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('fundTransferDate');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.fundTransferDate = validValue;
+      expect(instance.fundTransferDate).to.equal(validValue);
     });
 
     it('should have the property traceId (base name: "TraceId")', function() {
-      // uncomment below and update the code to test the property traceId
-      //var instance = new SellingPartnerApiForFinances.FinancialEventGroup();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('traceId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.traceId = validValue;
+      expect(instance.traceId).to.equal(validValue);
     });
 
     it('should have the property accountTail (base name: "AccountTail")', function() {
-      // uncomment below and update the code to test the property accountTail
-      //var instance = new SellingPartnerApiForFinances.FinancialEventGroup();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('accountTail');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.accountTail = validValue;
+      expect(instance.accountTail).to.equal(validValue);
     });
 
     it('should have the property beginningBalance (base name: "BeginningBalance")', function() {
-      // uncomment below and update the code to test the property beginningBalance
-      //var instance = new SellingPartnerApiForFinances.FinancialEventGroup();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('beginningBalance');
+
+      // set and verify value
+      var validValue = generateMockData('Currency');
+      instance.beginningBalance = validValue;
+      expect(instance.beginningBalance).to.equal(validValue);
     });
 
     it('should have the property financialEventGroupStart (base name: "FinancialEventGroupStart")', function() {
-      // uncomment below and update the code to test the property financialEventGroupStart
-      //var instance = new SellingPartnerApiForFinances.FinancialEventGroup();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('financialEventGroupStart');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.financialEventGroupStart = validValue;
+      expect(instance.financialEventGroupStart).to.equal(validValue);
     });
 
     it('should have the property financialEventGroupEnd (base name: "FinancialEventGroupEnd")', function() {
-      // uncomment below and update the code to test the property financialEventGroupEnd
-      //var instance = new SellingPartnerApiForFinances.FinancialEventGroup();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('financialEventGroupEnd');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.financialEventGroupEnd = validValue;
+      expect(instance.financialEventGroupEnd).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForFinances[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

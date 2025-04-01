@@ -28,229 +28,386 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForFinances.FinancialEvents();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForFinances.FinancialEvents.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('FinancialEvents', function() {
     it('should create an instance of FinancialEvents', function() {
-      // uncomment below and update the code to test FinancialEvents
-      //var instance = new SellingPartnerApiForFinances.FinancialEvents();
-      //expect(instance).to.be.a(SellingPartnerApiForFinances.FinancialEvents);
+      expect(instance).to.be.a(SellingPartnerApiForFinances.FinancialEvents);
     });
 
     it('should have the property shipmentEventList (base name: "ShipmentEventList")', function() {
-      // uncomment below and update the code to test the property shipmentEventList
-      //var instance = new SellingPartnerApiForFinances.FinancialEvents();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('shipmentEventList');
+
+      // set and verify value
+      var validValue = generateMockData('[ShipmentEvent]', true);
+      instance.shipmentEventList = validValue;
+      expect(instance.shipmentEventList).to.equal(validValue);
     });
 
     it('should have the property shipmentSettleEventList (base name: "ShipmentSettleEventList")', function() {
-      // uncomment below and update the code to test the property shipmentSettleEventList
-      //var instance = new SellingPartnerApiForFinances.FinancialEvents();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('shipmentSettleEventList');
+
+      // set and verify value
+      var validValue = generateMockData('[ShipmentEvent]', true);
+      instance.shipmentSettleEventList = validValue;
+      expect(instance.shipmentSettleEventList).to.equal(validValue);
     });
 
     it('should have the property refundEventList (base name: "RefundEventList")', function() {
-      // uncomment below and update the code to test the property refundEventList
-      //var instance = new SellingPartnerApiForFinances.FinancialEvents();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('refundEventList');
+
+      // set and verify value
+      var validValue = generateMockData('[ShipmentEvent]', true);
+      instance.refundEventList = validValue;
+      expect(instance.refundEventList).to.equal(validValue);
     });
 
     it('should have the property guaranteeClaimEventList (base name: "GuaranteeClaimEventList")', function() {
-      // uncomment below and update the code to test the property guaranteeClaimEventList
-      //var instance = new SellingPartnerApiForFinances.FinancialEvents();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('guaranteeClaimEventList');
+
+      // set and verify value
+      var validValue = generateMockData('[ShipmentEvent]', true);
+      instance.guaranteeClaimEventList = validValue;
+      expect(instance.guaranteeClaimEventList).to.equal(validValue);
     });
 
     it('should have the property chargebackEventList (base name: "ChargebackEventList")', function() {
-      // uncomment below and update the code to test the property chargebackEventList
-      //var instance = new SellingPartnerApiForFinances.FinancialEvents();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('chargebackEventList');
+
+      // set and verify value
+      var validValue = generateMockData('[ShipmentEvent]', true);
+      instance.chargebackEventList = validValue;
+      expect(instance.chargebackEventList).to.equal(validValue);
     });
 
     it('should have the property payWithAmazonEventList (base name: "PayWithAmazonEventList")', function() {
-      // uncomment below and update the code to test the property payWithAmazonEventList
-      //var instance = new SellingPartnerApiForFinances.FinancialEvents();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('payWithAmazonEventList');
+
+      // set and verify value
+      var validValue = generateMockData('[PayWithAmazonEvent]', true);
+      instance.payWithAmazonEventList = validValue;
+      expect(instance.payWithAmazonEventList).to.equal(validValue);
     });
 
     it('should have the property serviceProviderCreditEventList (base name: "ServiceProviderCreditEventList")', function() {
-      // uncomment below and update the code to test the property serviceProviderCreditEventList
-      //var instance = new SellingPartnerApiForFinances.FinancialEvents();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('serviceProviderCreditEventList');
+
+      // set and verify value
+      var validValue = generateMockData('[SolutionProviderCreditEvent]', true);
+      instance.serviceProviderCreditEventList = validValue;
+      expect(instance.serviceProviderCreditEventList).to.equal(validValue);
     });
 
     it('should have the property retrochargeEventList (base name: "RetrochargeEventList")', function() {
-      // uncomment below and update the code to test the property retrochargeEventList
-      //var instance = new SellingPartnerApiForFinances.FinancialEvents();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('retrochargeEventList');
+
+      // set and verify value
+      var validValue = generateMockData('[RetrochargeEvent]', true);
+      instance.retrochargeEventList = validValue;
+      expect(instance.retrochargeEventList).to.equal(validValue);
     });
 
     it('should have the property rentalTransactionEventList (base name: "RentalTransactionEventList")', function() {
-      // uncomment below and update the code to test the property rentalTransactionEventList
-      //var instance = new SellingPartnerApiForFinances.FinancialEvents();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('rentalTransactionEventList');
+
+      // set and verify value
+      var validValue = generateMockData('[RentalTransactionEvent]', true);
+      instance.rentalTransactionEventList = validValue;
+      expect(instance.rentalTransactionEventList).to.equal(validValue);
     });
 
     it('should have the property productAdsPaymentEventList (base name: "ProductAdsPaymentEventList")', function() {
-      // uncomment below and update the code to test the property productAdsPaymentEventList
-      //var instance = new SellingPartnerApiForFinances.FinancialEvents();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('productAdsPaymentEventList');
+
+      // set and verify value
+      var validValue = generateMockData('[ProductAdsPaymentEvent]', true);
+      instance.productAdsPaymentEventList = validValue;
+      expect(instance.productAdsPaymentEventList).to.equal(validValue);
     });
 
     it('should have the property serviceFeeEventList (base name: "ServiceFeeEventList")', function() {
-      // uncomment below and update the code to test the property serviceFeeEventList
-      //var instance = new SellingPartnerApiForFinances.FinancialEvents();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('serviceFeeEventList');
+
+      // set and verify value
+      var validValue = generateMockData('[ServiceFeeEvent]', true);
+      instance.serviceFeeEventList = validValue;
+      expect(instance.serviceFeeEventList).to.equal(validValue);
     });
 
     it('should have the property sellerDealPaymentEventList (base name: "SellerDealPaymentEventList")', function() {
-      // uncomment below and update the code to test the property sellerDealPaymentEventList
-      //var instance = new SellingPartnerApiForFinances.FinancialEvents();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('sellerDealPaymentEventList');
+
+      // set and verify value
+      var validValue = generateMockData('[SellerDealPaymentEvent]', true);
+      instance.sellerDealPaymentEventList = validValue;
+      expect(instance.sellerDealPaymentEventList).to.equal(validValue);
     });
 
     it('should have the property debtRecoveryEventList (base name: "DebtRecoveryEventList")', function() {
-      // uncomment below and update the code to test the property debtRecoveryEventList
-      //var instance = new SellingPartnerApiForFinances.FinancialEvents();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('debtRecoveryEventList');
+
+      // set and verify value
+      var validValue = generateMockData('[DebtRecoveryEvent]', true);
+      instance.debtRecoveryEventList = validValue;
+      expect(instance.debtRecoveryEventList).to.equal(validValue);
     });
 
     it('should have the property loanServicingEventList (base name: "LoanServicingEventList")', function() {
-      // uncomment below and update the code to test the property loanServicingEventList
-      //var instance = new SellingPartnerApiForFinances.FinancialEvents();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('loanServicingEventList');
+
+      // set and verify value
+      var validValue = generateMockData('[LoanServicingEvent]', true);
+      instance.loanServicingEventList = validValue;
+      expect(instance.loanServicingEventList).to.equal(validValue);
     });
 
     it('should have the property adjustmentEventList (base name: "AdjustmentEventList")', function() {
-      // uncomment below and update the code to test the property adjustmentEventList
-      //var instance = new SellingPartnerApiForFinances.FinancialEvents();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('adjustmentEventList');
+
+      // set and verify value
+      var validValue = generateMockData('[AdjustmentEvent]', true);
+      instance.adjustmentEventList = validValue;
+      expect(instance.adjustmentEventList).to.equal(validValue);
     });
 
     it('should have the property sAFETReimbursementEventList (base name: "SAFETReimbursementEventList")', function() {
-      // uncomment below and update the code to test the property sAFETReimbursementEventList
-      //var instance = new SellingPartnerApiForFinances.FinancialEvents();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('sAFETReimbursementEventList');
+
+      // set and verify value
+      var validValue = generateMockData('[SAFETReimbursementEvent]', true);
+      instance.sAFETReimbursementEventList = validValue;
+      expect(instance.sAFETReimbursementEventList).to.equal(validValue);
     });
 
     it('should have the property sellerReviewEnrollmentPaymentEventList (base name: "SellerReviewEnrollmentPaymentEventList")', function() {
-      // uncomment below and update the code to test the property sellerReviewEnrollmentPaymentEventList
-      //var instance = new SellingPartnerApiForFinances.FinancialEvents();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('sellerReviewEnrollmentPaymentEventList');
+
+      // set and verify value
+      var validValue = generateMockData('[SellerReviewEnrollmentPaymentEvent]', true);
+      instance.sellerReviewEnrollmentPaymentEventList = validValue;
+      expect(instance.sellerReviewEnrollmentPaymentEventList).to.equal(validValue);
     });
 
     it('should have the property fBALiquidationEventList (base name: "FBALiquidationEventList")', function() {
-      // uncomment below and update the code to test the property fBALiquidationEventList
-      //var instance = new SellingPartnerApiForFinances.FinancialEvents();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('fBALiquidationEventList');
+
+      // set and verify value
+      var validValue = generateMockData('[FBALiquidationEvent]', true);
+      instance.fBALiquidationEventList = validValue;
+      expect(instance.fBALiquidationEventList).to.equal(validValue);
     });
 
     it('should have the property couponPaymentEventList (base name: "CouponPaymentEventList")', function() {
-      // uncomment below and update the code to test the property couponPaymentEventList
-      //var instance = new SellingPartnerApiForFinances.FinancialEvents();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('couponPaymentEventList');
+
+      // set and verify value
+      var validValue = generateMockData('[CouponPaymentEvent]', true);
+      instance.couponPaymentEventList = validValue;
+      expect(instance.couponPaymentEventList).to.equal(validValue);
     });
 
     it('should have the property imagingServicesFeeEventList (base name: "ImagingServicesFeeEventList")', function() {
-      // uncomment below and update the code to test the property imagingServicesFeeEventList
-      //var instance = new SellingPartnerApiForFinances.FinancialEvents();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('imagingServicesFeeEventList');
+
+      // set and verify value
+      var validValue = generateMockData('[ImagingServicesFeeEvent]', true);
+      instance.imagingServicesFeeEventList = validValue;
+      expect(instance.imagingServicesFeeEventList).to.equal(validValue);
     });
 
     it('should have the property networkComminglingTransactionEventList (base name: "NetworkComminglingTransactionEventList")', function() {
-      // uncomment below and update the code to test the property networkComminglingTransactionEventList
-      //var instance = new SellingPartnerApiForFinances.FinancialEvents();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('networkComminglingTransactionEventList');
+
+      // set and verify value
+      var validValue = generateMockData('[NetworkComminglingTransactionEvent]', true);
+      instance.networkComminglingTransactionEventList = validValue;
+      expect(instance.networkComminglingTransactionEventList).to.equal(validValue);
     });
 
     it('should have the property affordabilityExpenseEventList (base name: "AffordabilityExpenseEventList")', function() {
-      // uncomment below and update the code to test the property affordabilityExpenseEventList
-      //var instance = new SellingPartnerApiForFinances.FinancialEvents();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('affordabilityExpenseEventList');
+
+      // set and verify value
+      var validValue = generateMockData('[AffordabilityExpenseEvent]', true);
+      instance.affordabilityExpenseEventList = validValue;
+      expect(instance.affordabilityExpenseEventList).to.equal(validValue);
     });
 
     it('should have the property affordabilityExpenseReversalEventList (base name: "AffordabilityExpenseReversalEventList")', function() {
-      // uncomment below and update the code to test the property affordabilityExpenseReversalEventList
-      //var instance = new SellingPartnerApiForFinances.FinancialEvents();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('affordabilityExpenseReversalEventList');
+
+      // set and verify value
+      var validValue = generateMockData('[AffordabilityExpenseEvent]', true);
+      instance.affordabilityExpenseReversalEventList = validValue;
+      expect(instance.affordabilityExpenseReversalEventList).to.equal(validValue);
     });
 
     it('should have the property removalShipmentEventList (base name: "RemovalShipmentEventList")', function() {
-      // uncomment below and update the code to test the property removalShipmentEventList
-      //var instance = new SellingPartnerApiForFinances.FinancialEvents();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('removalShipmentEventList');
+
+      // set and verify value
+      var validValue = generateMockData('[RemovalShipmentEvent]', true);
+      instance.removalShipmentEventList = validValue;
+      expect(instance.removalShipmentEventList).to.equal(validValue);
     });
 
     it('should have the property removalShipmentAdjustmentEventList (base name: "RemovalShipmentAdjustmentEventList")', function() {
-      // uncomment below and update the code to test the property removalShipmentAdjustmentEventList
-      //var instance = new SellingPartnerApiForFinances.FinancialEvents();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('removalShipmentAdjustmentEventList');
+
+      // set and verify value
+      var validValue = generateMockData('[RemovalShipmentAdjustmentEvent]', true);
+      instance.removalShipmentAdjustmentEventList = validValue;
+      expect(instance.removalShipmentAdjustmentEventList).to.equal(validValue);
     });
 
     it('should have the property trialShipmentEventList (base name: "TrialShipmentEventList")', function() {
-      // uncomment below and update the code to test the property trialShipmentEventList
-      //var instance = new SellingPartnerApiForFinances.FinancialEvents();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('trialShipmentEventList');
+
+      // set and verify value
+      var validValue = generateMockData('[TrialShipmentEvent]', true);
+      instance.trialShipmentEventList = validValue;
+      expect(instance.trialShipmentEventList).to.equal(validValue);
     });
 
     it('should have the property tDSReimbursementEventList (base name: "TDSReimbursementEventList")', function() {
-      // uncomment below and update the code to test the property tDSReimbursementEventList
-      //var instance = new SellingPartnerApiForFinances.FinancialEvents();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('tDSReimbursementEventList');
+
+      // set and verify value
+      var validValue = generateMockData('[TDSReimbursementEvent]', true);
+      instance.tDSReimbursementEventList = validValue;
+      expect(instance.tDSReimbursementEventList).to.equal(validValue);
     });
 
     it('should have the property adhocDisbursementEventList (base name: "AdhocDisbursementEventList")', function() {
-      // uncomment below and update the code to test the property adhocDisbursementEventList
-      //var instance = new SellingPartnerApiForFinances.FinancialEvents();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('adhocDisbursementEventList');
+
+      // set and verify value
+      var validValue = generateMockData('[AdhocDisbursementEvent]', true);
+      instance.adhocDisbursementEventList = validValue;
+      expect(instance.adhocDisbursementEventList).to.equal(validValue);
     });
 
     it('should have the property taxWithholdingEventList (base name: "TaxWithholdingEventList")', function() {
-      // uncomment below and update the code to test the property taxWithholdingEventList
-      //var instance = new SellingPartnerApiForFinances.FinancialEvents();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('taxWithholdingEventList');
+
+      // set and verify value
+      var validValue = generateMockData('[TaxWithholdingEvent]', true);
+      instance.taxWithholdingEventList = validValue;
+      expect(instance.taxWithholdingEventList).to.equal(validValue);
     });
 
     it('should have the property chargeRefundEventList (base name: "ChargeRefundEventList")', function() {
-      // uncomment below and update the code to test the property chargeRefundEventList
-      //var instance = new SellingPartnerApiForFinances.FinancialEvents();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('chargeRefundEventList');
+
+      // set and verify value
+      var validValue = generateMockData('[ChargeRefundEvent]', true);
+      instance.chargeRefundEventList = validValue;
+      expect(instance.chargeRefundEventList).to.equal(validValue);
     });
 
     it('should have the property failedAdhocDisbursementEventList (base name: "FailedAdhocDisbursementEventList")', function() {
-      // uncomment below and update the code to test the property failedAdhocDisbursementEventList
-      //var instance = new SellingPartnerApiForFinances.FinancialEvents();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('failedAdhocDisbursementEventList');
+
+      // set and verify value
+      var validValue = generateMockData('[FailedAdhocDisbursementEvent]', true);
+      instance.failedAdhocDisbursementEventList = validValue;
+      expect(instance.failedAdhocDisbursementEventList).to.equal(validValue);
     });
 
     it('should have the property valueAddedServiceChargeEventList (base name: "ValueAddedServiceChargeEventList")', function() {
-      // uncomment below and update the code to test the property valueAddedServiceChargeEventList
-      //var instance = new SellingPartnerApiForFinances.FinancialEvents();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('valueAddedServiceChargeEventList');
+
+      // set and verify value
+      var validValue = generateMockData('[ValueAddedServiceChargeEvent]', true);
+      instance.valueAddedServiceChargeEventList = validValue;
+      expect(instance.valueAddedServiceChargeEventList).to.equal(validValue);
     });
 
     it('should have the property capacityReservationBillingEventList (base name: "CapacityReservationBillingEventList")', function() {
-      // uncomment below and update the code to test the property capacityReservationBillingEventList
-      //var instance = new SellingPartnerApiForFinances.FinancialEvents();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('capacityReservationBillingEventList');
+
+      // set and verify value
+      var validValue = generateMockData('[CapacityReservationBillingEvent]', true);
+      instance.capacityReservationBillingEventList = validValue;
+      expect(instance.capacityReservationBillingEventList).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForFinances[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

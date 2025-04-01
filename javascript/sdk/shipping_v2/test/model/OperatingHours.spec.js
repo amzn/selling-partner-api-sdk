@@ -28,49 +28,86 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new AmazonShippingApi.OperatingHours();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(AmazonShippingApi.OperatingHours.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('OperatingHours', function() {
     it('should create an instance of OperatingHours', function() {
-      // uncomment below and update the code to test OperatingHours
-      //var instance = new AmazonShippingApi.OperatingHours();
-      //expect(instance).to.be.a(AmazonShippingApi.OperatingHours);
+      expect(instance).to.be.a(AmazonShippingApi.OperatingHours);
     });
 
     it('should have the property closingTime (base name: "closingTime")', function() {
-      // uncomment below and update the code to test the property closingTime
-      //var instance = new AmazonShippingApi.OperatingHours();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('closingTime');
+
+      // set and verify value
+      var validValue = generateMockData('TimeOfDay');
+      instance.closingTime = validValue;
+      expect(instance.closingTime).to.equal(validValue);
     });
 
     it('should have the property openingTime (base name: "openingTime")', function() {
-      // uncomment below and update the code to test the property openingTime
-      //var instance = new AmazonShippingApi.OperatingHours();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('openingTime');
+
+      // set and verify value
+      var validValue = generateMockData('TimeOfDay');
+      instance.openingTime = validValue;
+      expect(instance.openingTime).to.equal(validValue);
     });
 
     it('should have the property midDayClosures (base name: "midDayClosures")', function() {
-      // uncomment below and update the code to test the property midDayClosures
-      //var instance = new AmazonShippingApi.OperatingHours();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('midDayClosures');
+
+      // set and verify value
+      var validValue = generateMockData('[TimeOfDay]', true);
+      instance.midDayClosures = validValue;
+      expect(instance.midDayClosures).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = AmazonShippingApi[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

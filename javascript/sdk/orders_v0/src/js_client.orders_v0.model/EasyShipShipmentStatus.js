@@ -142,4 +142,3 @@ export default class EasyShipShipmentStatus {
         return object;
     }
 }
-

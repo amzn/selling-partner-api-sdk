@@ -28,73 +28,126 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new TheSellingPartnerApiForFbaInboundOperations.CreateMarketplaceItemLabelsRequest();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(TheSellingPartnerApiForFbaInboundOperations.CreateMarketplaceItemLabelsRequest.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('CreateMarketplaceItemLabelsRequest', function() {
     it('should create an instance of CreateMarketplaceItemLabelsRequest', function() {
-      // uncomment below and update the code to test CreateMarketplaceItemLabelsRequest
-      //var instance = new TheSellingPartnerApiForFbaInboundOperations.CreateMarketplaceItemLabelsRequest();
-      //expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.CreateMarketplaceItemLabelsRequest);
+      expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.CreateMarketplaceItemLabelsRequest);
     });
 
     it('should have the property height (base name: "height")', function() {
-      // uncomment below and update the code to test the property height
-      //var instance = new TheSellingPartnerApiForFbaInboundOperations.CreateMarketplaceItemLabelsRequest();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('height');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.height = validValue;
+      expect(instance.height).to.equal(validValue);
     });
 
     it('should have the property labelType (base name: "labelType")', function() {
-      // uncomment below and update the code to test the property labelType
-      //var instance = new TheSellingPartnerApiForFbaInboundOperations.CreateMarketplaceItemLabelsRequest();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('labelType');
+
+      // set and verify value
+      var validValue = generateMockData('LabelPrintType');
+      instance.labelType = validValue;
+      expect(instance.labelType).to.equal(validValue);
     });
 
     it('should have the property localeCode (base name: "localeCode")', function() {
-      // uncomment below and update the code to test the property localeCode
-      //var instance = new TheSellingPartnerApiForFbaInboundOperations.CreateMarketplaceItemLabelsRequest();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('localeCode');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.localeCode = validValue;
+      expect(instance.localeCode).to.equal(validValue);
     });
 
     it('should have the property marketplaceId (base name: "marketplaceId")', function() {
-      // uncomment below and update the code to test the property marketplaceId
-      //var instance = new TheSellingPartnerApiForFbaInboundOperations.CreateMarketplaceItemLabelsRequest();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('marketplaceId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.marketplaceId = validValue;
+      expect(instance.marketplaceId).to.equal(validValue);
     });
 
     it('should have the property mskuQuantities (base name: "mskuQuantities")', function() {
-      // uncomment below and update the code to test the property mskuQuantities
-      //var instance = new TheSellingPartnerApiForFbaInboundOperations.CreateMarketplaceItemLabelsRequest();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('mskuQuantities');
+
+      // set and verify value
+      var validValue = generateMockData('[MskuQuantity]', true);
+      instance.mskuQuantities = validValue;
+      expect(instance.mskuQuantities).to.equal(validValue);
     });
 
     it('should have the property pageType (base name: "pageType")', function() {
-      // uncomment below and update the code to test the property pageType
-      //var instance = new TheSellingPartnerApiForFbaInboundOperations.CreateMarketplaceItemLabelsRequest();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('pageType');
+
+      // set and verify value
+      var validValue = generateMockData('ItemLabelPageType');
+      instance.pageType = validValue;
+      expect(instance.pageType).to.equal(validValue);
     });
 
     it('should have the property width (base name: "width")', function() {
-      // uncomment below and update the code to test the property width
-      //var instance = new TheSellingPartnerApiForFbaInboundOperations.CreateMarketplaceItemLabelsRequest();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('width');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.width = validValue;
+      expect(instance.width).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = TheSellingPartnerApiForFbaInboundOperations[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

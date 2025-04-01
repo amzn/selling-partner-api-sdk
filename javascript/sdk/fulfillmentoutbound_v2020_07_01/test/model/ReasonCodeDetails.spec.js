@@ -28,49 +28,86 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApisForFulfillmentOutbound.ReasonCodeDetails();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApisForFulfillmentOutbound.ReasonCodeDetails.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('ReasonCodeDetails', function() {
     it('should create an instance of ReasonCodeDetails', function() {
-      // uncomment below and update the code to test ReasonCodeDetails
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.ReasonCodeDetails();
-      //expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.ReasonCodeDetails);
+      expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.ReasonCodeDetails);
     });
 
     it('should have the property returnReasonCode (base name: "returnReasonCode")', function() {
-      // uncomment below and update the code to test the property returnReasonCode
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.ReasonCodeDetails();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('returnReasonCode');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.returnReasonCode = validValue;
+      expect(instance.returnReasonCode).to.equal(validValue);
     });
 
     it('should have the property description (base name: "description")', function() {
-      // uncomment below and update the code to test the property description
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.ReasonCodeDetails();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('description');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.description = validValue;
+      expect(instance.description).to.equal(validValue);
     });
 
     it('should have the property translatedDescription (base name: "translatedDescription")', function() {
-      // uncomment below and update the code to test the property translatedDescription
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.ReasonCodeDetails();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('translatedDescription');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.translatedDescription = validValue;
+      expect(instance.translatedDescription).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApisForFulfillmentOutbound[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

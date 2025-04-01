@@ -28,55 +28,96 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new AmazonShippingApi.PrintOption();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(AmazonShippingApi.PrintOption.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('PrintOption', function() {
     it('should create an instance of PrintOption', function() {
-      // uncomment below and update the code to test PrintOption
-      //var instance = new AmazonShippingApi.PrintOption();
-      //expect(instance).to.be.a(AmazonShippingApi.PrintOption);
+      expect(instance).to.be.a(AmazonShippingApi.PrintOption);
     });
 
     it('should have the property supportedDPIs (base name: "supportedDPIs")', function() {
-      // uncomment below and update the code to test the property supportedDPIs
-      //var instance = new AmazonShippingApi.PrintOption();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('supportedDPIs');
+
+      // set and verify value
+      var validValue = generateMockData('[Number]', true);
+      instance.supportedDPIs = validValue;
+      expect(instance.supportedDPIs).to.equal(validValue);
     });
 
     it('should have the property supportedPageLayouts (base name: "supportedPageLayouts")', function() {
-      // uncomment below and update the code to test the property supportedPageLayouts
-      //var instance = new AmazonShippingApi.PrintOption();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('supportedPageLayouts');
+
+      // set and verify value
+      var validValue = generateMockData('[String]', true);
+      instance.supportedPageLayouts = validValue;
+      expect(instance.supportedPageLayouts).to.equal(validValue);
     });
 
     it('should have the property supportedFileJoiningOptions (base name: "supportedFileJoiningOptions")', function() {
-      // uncomment below and update the code to test the property supportedFileJoiningOptions
-      //var instance = new AmazonShippingApi.PrintOption();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('supportedFileJoiningOptions');
+
+      // set and verify value
+      var validValue = generateMockData('[Boolean]', true);
+      instance.supportedFileJoiningOptions = validValue;
+      expect(instance.supportedFileJoiningOptions).to.equal(validValue);
     });
 
     it('should have the property supportedDocumentDetails (base name: "supportedDocumentDetails")', function() {
-      // uncomment below and update the code to test the property supportedDocumentDetails
-      //var instance = new AmazonShippingApi.PrintOption();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('supportedDocumentDetails');
+
+      // set and verify value
+      var validValue = generateMockData('[SupportedDocumentDetail]', true);
+      instance.supportedDocumentDetails = validValue;
+      expect(instance.supportedDocumentDetails).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = AmazonShippingApi[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

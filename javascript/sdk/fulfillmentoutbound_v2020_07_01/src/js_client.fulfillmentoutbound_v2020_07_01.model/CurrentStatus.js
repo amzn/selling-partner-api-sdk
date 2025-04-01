@@ -156,4 +156,3 @@ export default class CurrentStatus {
         return object;
     }
 }
-

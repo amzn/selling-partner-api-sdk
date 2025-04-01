@@ -28,55 +28,96 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForFinances.TaxWithholdingEvent();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForFinances.TaxWithholdingEvent.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('TaxWithholdingEvent', function() {
     it('should create an instance of TaxWithholdingEvent', function() {
-      // uncomment below and update the code to test TaxWithholdingEvent
-      //var instance = new SellingPartnerApiForFinances.TaxWithholdingEvent();
-      //expect(instance).to.be.a(SellingPartnerApiForFinances.TaxWithholdingEvent);
+      expect(instance).to.be.a(SellingPartnerApiForFinances.TaxWithholdingEvent);
     });
 
     it('should have the property postedDate (base name: "PostedDate")', function() {
-      // uncomment below and update the code to test the property postedDate
-      //var instance = new SellingPartnerApiForFinances.TaxWithholdingEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('postedDate');
+
+      // set and verify value
+      var validValue = generateMockData('Date');
+      instance.postedDate = validValue;
+      expect(instance.postedDate).to.equal(validValue);
     });
 
     it('should have the property baseAmount (base name: "BaseAmount")', function() {
-      // uncomment below and update the code to test the property baseAmount
-      //var instance = new SellingPartnerApiForFinances.TaxWithholdingEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('baseAmount');
+
+      // set and verify value
+      var validValue = generateMockData('Currency');
+      instance.baseAmount = validValue;
+      expect(instance.baseAmount).to.equal(validValue);
     });
 
     it('should have the property withheldAmount (base name: "WithheldAmount")', function() {
-      // uncomment below and update the code to test the property withheldAmount
-      //var instance = new SellingPartnerApiForFinances.TaxWithholdingEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('withheldAmount');
+
+      // set and verify value
+      var validValue = generateMockData('Currency');
+      instance.withheldAmount = validValue;
+      expect(instance.withheldAmount).to.equal(validValue);
     });
 
     it('should have the property taxWithholdingPeriod (base name: "TaxWithholdingPeriod")', function() {
-      // uncomment below and update the code to test the property taxWithholdingPeriod
-      //var instance = new SellingPartnerApiForFinances.TaxWithholdingEvent();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('taxWithholdingPeriod');
+
+      // set and verify value
+      var validValue = generateMockData('TaxWithholdingPeriod');
+      instance.taxWithholdingPeriod = validValue;
+      expect(instance.taxWithholdingPeriod).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForFinances[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

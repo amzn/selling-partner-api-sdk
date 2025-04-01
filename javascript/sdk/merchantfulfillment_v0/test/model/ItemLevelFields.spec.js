@@ -28,43 +28,76 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForMerchantFulfillment.ItemLevelFields();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForMerchantFulfillment.ItemLevelFields.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('ItemLevelFields', function() {
     it('should create an instance of ItemLevelFields', function() {
-      // uncomment below and update the code to test ItemLevelFields
-      //var instance = new SellingPartnerApiForMerchantFulfillment.ItemLevelFields();
-      //expect(instance).to.be.a(SellingPartnerApiForMerchantFulfillment.ItemLevelFields);
+      expect(instance).to.be.a(SellingPartnerApiForMerchantFulfillment.ItemLevelFields);
     });
 
     it('should have the property asin (base name: "Asin")', function() {
-      // uncomment below and update the code to test the property asin
-      //var instance = new SellingPartnerApiForMerchantFulfillment.ItemLevelFields();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('asin');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.asin = validValue;
+      expect(instance.asin).to.equal(validValue);
     });
 
     it('should have the property additionalInputs (base name: "AdditionalInputs")', function() {
-      // uncomment below and update the code to test the property additionalInputs
-      //var instance = new SellingPartnerApiForMerchantFulfillment.ItemLevelFields();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('additionalInputs');
+
+      // set and verify value
+      var validValue = generateMockData('[AdditionalInputs]', true);
+      instance.additionalInputs = validValue;
+      expect(instance.additionalInputs).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForMerchantFulfillment[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

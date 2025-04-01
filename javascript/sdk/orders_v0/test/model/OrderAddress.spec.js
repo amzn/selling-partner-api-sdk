@@ -28,55 +28,96 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForOrders.OrderAddress();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForOrders.OrderAddress.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('OrderAddress', function() {
     it('should create an instance of OrderAddress', function() {
-      // uncomment below and update the code to test OrderAddress
-      //var instance = new SellingPartnerApiForOrders.OrderAddress();
-      //expect(instance).to.be.a(SellingPartnerApiForOrders.OrderAddress);
+      expect(instance).to.be.a(SellingPartnerApiForOrders.OrderAddress);
     });
 
     it('should have the property amazonOrderId (base name: "AmazonOrderId")', function() {
-      // uncomment below and update the code to test the property amazonOrderId
-      //var instance = new SellingPartnerApiForOrders.OrderAddress();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('amazonOrderId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.amazonOrderId = validValue;
+      expect(instance.amazonOrderId).to.equal(validValue);
     });
 
     it('should have the property buyerCompanyName (base name: "BuyerCompanyName")', function() {
-      // uncomment below and update the code to test the property buyerCompanyName
-      //var instance = new SellingPartnerApiForOrders.OrderAddress();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('buyerCompanyName');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.buyerCompanyName = validValue;
+      expect(instance.buyerCompanyName).to.equal(validValue);
     });
 
     it('should have the property shippingAddress (base name: "ShippingAddress")', function() {
-      // uncomment below and update the code to test the property shippingAddress
-      //var instance = new SellingPartnerApiForOrders.OrderAddress();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('shippingAddress');
+
+      // set and verify value
+      var validValue = generateMockData('Address');
+      instance.shippingAddress = validValue;
+      expect(instance.shippingAddress).to.equal(validValue);
     });
 
     it('should have the property deliveryPreferences (base name: "DeliveryPreferences")', function() {
-      // uncomment below and update the code to test the property deliveryPreferences
-      //var instance = new SellingPartnerApiForOrders.OrderAddress();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('deliveryPreferences');
+
+      // set and verify value
+      var validValue = generateMockData('DeliveryPreferences');
+      instance.deliveryPreferences = validValue;
+      expect(instance.deliveryPreferences).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForOrders[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

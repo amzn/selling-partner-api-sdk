@@ -51,4 +51,3 @@ export default class ShipmentStatus {
         return object;
     }
 }
-

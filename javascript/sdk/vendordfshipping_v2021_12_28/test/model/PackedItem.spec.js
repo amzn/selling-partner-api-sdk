@@ -28,61 +28,106 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForDirectFulfillmentShipping.PackedItem();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForDirectFulfillmentShipping.PackedItem.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('PackedItem', function() {
     it('should create an instance of PackedItem', function() {
-      // uncomment below and update the code to test PackedItem
-      //var instance = new SellingPartnerApiForDirectFulfillmentShipping.PackedItem();
-      //expect(instance).to.be.a(SellingPartnerApiForDirectFulfillmentShipping.PackedItem);
+      expect(instance).to.be.a(SellingPartnerApiForDirectFulfillmentShipping.PackedItem);
     });
 
     it('should have the property itemSequenceNumber (base name: "itemSequenceNumber")', function() {
-      // uncomment below and update the code to test the property itemSequenceNumber
-      //var instance = new SellingPartnerApiForDirectFulfillmentShipping.PackedItem();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('itemSequenceNumber');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.itemSequenceNumber = validValue;
+      expect(instance.itemSequenceNumber).to.equal(validValue);
     });
 
     it('should have the property buyerProductIdentifier (base name: "buyerProductIdentifier")', function() {
-      // uncomment below and update the code to test the property buyerProductIdentifier
-      //var instance = new SellingPartnerApiForDirectFulfillmentShipping.PackedItem();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('buyerProductIdentifier');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.buyerProductIdentifier = validValue;
+      expect(instance.buyerProductIdentifier).to.equal(validValue);
     });
 
     it('should have the property pieceNumber (base name: "pieceNumber")', function() {
-      // uncomment below and update the code to test the property pieceNumber
-      //var instance = new SellingPartnerApiForDirectFulfillmentShipping.PackedItem();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('pieceNumber');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.pieceNumber = validValue;
+      expect(instance.pieceNumber).to.equal(validValue);
     });
 
     it('should have the property vendorProductIdentifier (base name: "vendorProductIdentifier")', function() {
-      // uncomment below and update the code to test the property vendorProductIdentifier
-      //var instance = new SellingPartnerApiForDirectFulfillmentShipping.PackedItem();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('vendorProductIdentifier');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.vendorProductIdentifier = validValue;
+      expect(instance.vendorProductIdentifier).to.equal(validValue);
     });
 
     it('should have the property packedQuantity (base name: "packedQuantity")', function() {
-      // uncomment below and update the code to test the property packedQuantity
-      //var instance = new SellingPartnerApiForDirectFulfillmentShipping.PackedItem();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('packedQuantity');
+
+      // set and verify value
+      var validValue = generateMockData('ItemQuantity');
+      instance.packedQuantity = validValue;
+      expect(instance.packedQuantity).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForDirectFulfillmentShipping[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

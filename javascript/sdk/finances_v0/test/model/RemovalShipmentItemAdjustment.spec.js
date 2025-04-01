@@ -28,73 +28,126 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForFinances.RemovalShipmentItemAdjustment();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForFinances.RemovalShipmentItemAdjustment.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('RemovalShipmentItemAdjustment', function() {
     it('should create an instance of RemovalShipmentItemAdjustment', function() {
-      // uncomment below and update the code to test RemovalShipmentItemAdjustment
-      //var instance = new SellingPartnerApiForFinances.RemovalShipmentItemAdjustment();
-      //expect(instance).to.be.a(SellingPartnerApiForFinances.RemovalShipmentItemAdjustment);
+      expect(instance).to.be.a(SellingPartnerApiForFinances.RemovalShipmentItemAdjustment);
     });
 
     it('should have the property removalShipmentItemId (base name: "RemovalShipmentItemId")', function() {
-      // uncomment below and update the code to test the property removalShipmentItemId
-      //var instance = new SellingPartnerApiForFinances.RemovalShipmentItemAdjustment();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('removalShipmentItemId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.removalShipmentItemId = validValue;
+      expect(instance.removalShipmentItemId).to.equal(validValue);
     });
 
     it('should have the property taxCollectionModel (base name: "TaxCollectionModel")', function() {
-      // uncomment below and update the code to test the property taxCollectionModel
-      //var instance = new SellingPartnerApiForFinances.RemovalShipmentItemAdjustment();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('taxCollectionModel');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.taxCollectionModel = validValue;
+      expect(instance.taxCollectionModel).to.equal(validValue);
     });
 
     it('should have the property fulfillmentNetworkSKU (base name: "FulfillmentNetworkSKU")', function() {
-      // uncomment below and update the code to test the property fulfillmentNetworkSKU
-      //var instance = new SellingPartnerApiForFinances.RemovalShipmentItemAdjustment();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('fulfillmentNetworkSKU');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.fulfillmentNetworkSKU = validValue;
+      expect(instance.fulfillmentNetworkSKU).to.equal(validValue);
     });
 
     it('should have the property adjustedQuantity (base name: "AdjustedQuantity")', function() {
-      // uncomment below and update the code to test the property adjustedQuantity
-      //var instance = new SellingPartnerApiForFinances.RemovalShipmentItemAdjustment();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('adjustedQuantity');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.adjustedQuantity = validValue;
+      expect(instance.adjustedQuantity).to.equal(validValue);
     });
 
     it('should have the property revenueAdjustment (base name: "RevenueAdjustment")', function() {
-      // uncomment below and update the code to test the property revenueAdjustment
-      //var instance = new SellingPartnerApiForFinances.RemovalShipmentItemAdjustment();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('revenueAdjustment');
+
+      // set and verify value
+      var validValue = generateMockData('Currency');
+      instance.revenueAdjustment = validValue;
+      expect(instance.revenueAdjustment).to.equal(validValue);
     });
 
     it('should have the property taxAmountAdjustment (base name: "TaxAmountAdjustment")', function() {
-      // uncomment below and update the code to test the property taxAmountAdjustment
-      //var instance = new SellingPartnerApiForFinances.RemovalShipmentItemAdjustment();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('taxAmountAdjustment');
+
+      // set and verify value
+      var validValue = generateMockData('Currency');
+      instance.taxAmountAdjustment = validValue;
+      expect(instance.taxAmountAdjustment).to.equal(validValue);
     });
 
     it('should have the property taxWithheldAdjustment (base name: "TaxWithheldAdjustment")', function() {
-      // uncomment below and update the code to test the property taxWithheldAdjustment
-      //var instance = new SellingPartnerApiForFinances.RemovalShipmentItemAdjustment();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('taxWithheldAdjustment');
+
+      // set and verify value
+      var validValue = generateMockData('Currency');
+      instance.taxWithheldAdjustment = validValue;
+      expect(instance.taxWithheldAdjustment).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForFinances[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

@@ -28,67 +28,116 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForOrders.OrderItemBuyerInfo();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForOrders.OrderItemBuyerInfo.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('OrderItemBuyerInfo', function() {
     it('should create an instance of OrderItemBuyerInfo', function() {
-      // uncomment below and update the code to test OrderItemBuyerInfo
-      //var instance = new SellingPartnerApiForOrders.OrderItemBuyerInfo();
-      //expect(instance).to.be.a(SellingPartnerApiForOrders.OrderItemBuyerInfo);
+      expect(instance).to.be.a(SellingPartnerApiForOrders.OrderItemBuyerInfo);
     });
 
     it('should have the property orderItemId (base name: "OrderItemId")', function() {
-      // uncomment below and update the code to test the property orderItemId
-      //var instance = new SellingPartnerApiForOrders.OrderItemBuyerInfo();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('orderItemId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.orderItemId = validValue;
+      expect(instance.orderItemId).to.equal(validValue);
     });
 
     it('should have the property buyerCustomizedInfo (base name: "BuyerCustomizedInfo")', function() {
-      // uncomment below and update the code to test the property buyerCustomizedInfo
-      //var instance = new SellingPartnerApiForOrders.OrderItemBuyerInfo();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('buyerCustomizedInfo');
+
+      // set and verify value
+      var validValue = generateMockData('BuyerCustomizedInfoDetail');
+      instance.buyerCustomizedInfo = validValue;
+      expect(instance.buyerCustomizedInfo).to.equal(validValue);
     });
 
     it('should have the property giftWrapPrice (base name: "GiftWrapPrice")', function() {
-      // uncomment below and update the code to test the property giftWrapPrice
-      //var instance = new SellingPartnerApiForOrders.OrderItemBuyerInfo();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('giftWrapPrice');
+
+      // set and verify value
+      var validValue = generateMockData('Money');
+      instance.giftWrapPrice = validValue;
+      expect(instance.giftWrapPrice).to.equal(validValue);
     });
 
     it('should have the property giftWrapTax (base name: "GiftWrapTax")', function() {
-      // uncomment below and update the code to test the property giftWrapTax
-      //var instance = new SellingPartnerApiForOrders.OrderItemBuyerInfo();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('giftWrapTax');
+
+      // set and verify value
+      var validValue = generateMockData('Money');
+      instance.giftWrapTax = validValue;
+      expect(instance.giftWrapTax).to.equal(validValue);
     });
 
     it('should have the property giftMessageText (base name: "GiftMessageText")', function() {
-      // uncomment below and update the code to test the property giftMessageText
-      //var instance = new SellingPartnerApiForOrders.OrderItemBuyerInfo();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('giftMessageText');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.giftMessageText = validValue;
+      expect(instance.giftMessageText).to.equal(validValue);
     });
 
     it('should have the property giftWrapLevel (base name: "GiftWrapLevel")', function() {
-      // uncomment below and update the code to test the property giftWrapLevel
-      //var instance = new SellingPartnerApiForOrders.OrderItemBuyerInfo();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('giftWrapLevel');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.giftWrapLevel = validValue;
+      expect(instance.giftWrapLevel).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForOrders[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

@@ -58,4 +58,3 @@ export default class LabelStatus {
         return object;
     }
 }
-

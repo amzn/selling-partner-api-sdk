@@ -28,61 +28,106 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApisForFulfillmentOutbound.CODSettings();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApisForFulfillmentOutbound.CODSettings.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('CODSettings', function() {
     it('should create an instance of CODSettings', function() {
-      // uncomment below and update the code to test CODSettings
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.CODSettings();
-      //expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.CODSettings);
+      expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.CODSettings);
     });
 
     it('should have the property isCodRequired (base name: "isCodRequired")', function() {
-      // uncomment below and update the code to test the property isCodRequired
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.CODSettings();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('isCodRequired');
+
+      // set and verify value
+      var validValue = generateMockData('Boolean');
+      instance.isCodRequired = validValue;
+      expect(instance.isCodRequired).to.equal(validValue);
     });
 
     it('should have the property codCharge (base name: "codCharge")', function() {
-      // uncomment below and update the code to test the property codCharge
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.CODSettings();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('codCharge');
+
+      // set and verify value
+      var validValue = generateMockData('Money');
+      instance.codCharge = validValue;
+      expect(instance.codCharge).to.equal(validValue);
     });
 
     it('should have the property codChargeTax (base name: "codChargeTax")', function() {
-      // uncomment below and update the code to test the property codChargeTax
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.CODSettings();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('codChargeTax');
+
+      // set and verify value
+      var validValue = generateMockData('Money');
+      instance.codChargeTax = validValue;
+      expect(instance.codChargeTax).to.equal(validValue);
     });
 
     it('should have the property shippingCharge (base name: "shippingCharge")', function() {
-      // uncomment below and update the code to test the property shippingCharge
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.CODSettings();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('shippingCharge');
+
+      // set and verify value
+      var validValue = generateMockData('Money');
+      instance.shippingCharge = validValue;
+      expect(instance.shippingCharge).to.equal(validValue);
     });
 
     it('should have the property shippingChargeTax (base name: "shippingChargeTax")', function() {
-      // uncomment below and update the code to test the property shippingChargeTax
-      //var instance = new SellingPartnerApisForFulfillmentOutbound.CODSettings();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('shippingChargeTax');
+
+      // set and verify value
+      var validValue = generateMockData('Money');
+      instance.shippingChargeTax = validValue;
+      expect(instance.shippingChargeTax).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApisForFulfillmentOutbound[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

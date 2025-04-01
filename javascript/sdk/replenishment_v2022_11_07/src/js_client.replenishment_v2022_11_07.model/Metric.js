@@ -114,4 +114,3 @@ export default class Metric {
         return object;
     }
 }
-

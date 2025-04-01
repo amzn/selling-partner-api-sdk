@@ -65,4 +65,3 @@ export default class ReturnItemDisposition {
         return object;
     }
 }
-

@@ -28,79 +28,136 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForRetailProcurementOrders.OrderAcknowledgementItem();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForRetailProcurementOrders.OrderAcknowledgementItem.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('OrderAcknowledgementItem', function() {
     it('should create an instance of OrderAcknowledgementItem', function() {
-      // uncomment below and update the code to test OrderAcknowledgementItem
-      //var instance = new SellingPartnerApiForRetailProcurementOrders.OrderAcknowledgementItem();
-      //expect(instance).to.be.a(SellingPartnerApiForRetailProcurementOrders.OrderAcknowledgementItem);
+      expect(instance).to.be.a(SellingPartnerApiForRetailProcurementOrders.OrderAcknowledgementItem);
     });
 
     it('should have the property itemSequenceNumber (base name: "itemSequenceNumber")', function() {
-      // uncomment below and update the code to test the property itemSequenceNumber
-      //var instance = new SellingPartnerApiForRetailProcurementOrders.OrderAcknowledgementItem();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('itemSequenceNumber');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.itemSequenceNumber = validValue;
+      expect(instance.itemSequenceNumber).to.equal(validValue);
     });
 
     it('should have the property amazonProductIdentifier (base name: "amazonProductIdentifier")', function() {
-      // uncomment below and update the code to test the property amazonProductIdentifier
-      //var instance = new SellingPartnerApiForRetailProcurementOrders.OrderAcknowledgementItem();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('amazonProductIdentifier');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.amazonProductIdentifier = validValue;
+      expect(instance.amazonProductIdentifier).to.equal(validValue);
     });
 
     it('should have the property vendorProductIdentifier (base name: "vendorProductIdentifier")', function() {
-      // uncomment below and update the code to test the property vendorProductIdentifier
-      //var instance = new SellingPartnerApiForRetailProcurementOrders.OrderAcknowledgementItem();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('vendorProductIdentifier');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.vendorProductIdentifier = validValue;
+      expect(instance.vendorProductIdentifier).to.equal(validValue);
     });
 
     it('should have the property orderedQuantity (base name: "orderedQuantity")', function() {
-      // uncomment below and update the code to test the property orderedQuantity
-      //var instance = new SellingPartnerApiForRetailProcurementOrders.OrderAcknowledgementItem();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('orderedQuantity');
+
+      // set and verify value
+      var validValue = generateMockData('ItemQuantity');
+      instance.orderedQuantity = validValue;
+      expect(instance.orderedQuantity).to.equal(validValue);
     });
 
     it('should have the property netCost (base name: "netCost")', function() {
-      // uncomment below and update the code to test the property netCost
-      //var instance = new SellingPartnerApiForRetailProcurementOrders.OrderAcknowledgementItem();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('netCost');
+
+      // set and verify value
+      var validValue = generateMockData('Money');
+      instance.netCost = validValue;
+      expect(instance.netCost).to.equal(validValue);
     });
 
     it('should have the property listPrice (base name: "listPrice")', function() {
-      // uncomment below and update the code to test the property listPrice
-      //var instance = new SellingPartnerApiForRetailProcurementOrders.OrderAcknowledgementItem();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('listPrice');
+
+      // set and verify value
+      var validValue = generateMockData('Money');
+      instance.listPrice = validValue;
+      expect(instance.listPrice).to.equal(validValue);
     });
 
     it('should have the property discountMultiplier (base name: "discountMultiplier")', function() {
-      // uncomment below and update the code to test the property discountMultiplier
-      //var instance = new SellingPartnerApiForRetailProcurementOrders.OrderAcknowledgementItem();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('discountMultiplier');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.discountMultiplier = validValue;
+      expect(instance.discountMultiplier).to.equal(validValue);
     });
 
     it('should have the property itemAcknowledgements (base name: "itemAcknowledgements")', function() {
-      // uncomment below and update the code to test the property itemAcknowledgements
-      //var instance = new SellingPartnerApiForRetailProcurementOrders.OrderAcknowledgementItem();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('itemAcknowledgements');
+
+      // set and verify value
+      var validValue = generateMockData('[OrderItemAcknowledgement]', true);
+      instance.itemAcknowledgements = validValue;
+      expect(instance.itemAcknowledgements).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForRetailProcurementOrders[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

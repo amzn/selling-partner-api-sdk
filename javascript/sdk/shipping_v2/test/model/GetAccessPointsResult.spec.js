@@ -28,37 +28,66 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new AmazonShippingApi.GetAccessPointsResult();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(AmazonShippingApi.GetAccessPointsResult.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('GetAccessPointsResult', function() {
     it('should create an instance of GetAccessPointsResult', function() {
-      // uncomment below and update the code to test GetAccessPointsResult
-      //var instance = new AmazonShippingApi.GetAccessPointsResult();
-      //expect(instance).to.be.a(AmazonShippingApi.GetAccessPointsResult);
+      expect(instance).to.be.a(AmazonShippingApi.GetAccessPointsResult);
     });
 
     it('should have the property accessPointsMap (base name: "accessPointsMap")', function() {
-      // uncomment below and update the code to test the property accessPointsMap
-      //var instance = new AmazonShippingApi.GetAccessPointsResult();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('accessPointsMap');
+
+      // set and verify value
+      var validValue = generateMockData('{String: Array}');
+      instance.accessPointsMap = validValue;
+      expect(instance.accessPointsMap).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = AmazonShippingApi[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

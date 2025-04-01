@@ -28,67 +28,116 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForAContentManagement.AsinMetadata();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForAContentManagement.AsinMetadata.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('AsinMetadata', function() {
     it('should create an instance of AsinMetadata', function() {
-      // uncomment below and update the code to test AsinMetadata
-      //var instance = new SellingPartnerApiForAContentManagement.AsinMetadata();
-      //expect(instance).to.be.a(SellingPartnerApiForAContentManagement.AsinMetadata);
+      expect(instance).to.be.a(SellingPartnerApiForAContentManagement.AsinMetadata);
     });
 
     it('should have the property asin (base name: "asin")', function() {
-      // uncomment below and update the code to test the property asin
-      //var instance = new SellingPartnerApiForAContentManagement.AsinMetadata();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('asin');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.asin = validValue;
+      expect(instance.asin).to.equal(validValue);
     });
 
     it('should have the property badgeSet (base name: "badgeSet")', function() {
-      // uncomment below and update the code to test the property badgeSet
-      //var instance = new SellingPartnerApiForAContentManagement.AsinMetadata();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('badgeSet');
+
+      // set and verify value
+      var validValue = generateMockData('[AsinBadge]', true);
+      instance.badgeSet = validValue;
+      expect(instance.badgeSet).to.equal(validValue);
     });
 
     it('should have the property parent (base name: "parent")', function() {
-      // uncomment below and update the code to test the property parent
-      //var instance = new SellingPartnerApiForAContentManagement.AsinMetadata();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('parent');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.parent = validValue;
+      expect(instance.parent).to.equal(validValue);
     });
 
     it('should have the property title (base name: "title")', function() {
-      // uncomment below and update the code to test the property title
-      //var instance = new SellingPartnerApiForAContentManagement.AsinMetadata();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('title');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.title = validValue;
+      expect(instance.title).to.equal(validValue);
     });
 
     it('should have the property imageUrl (base name: "imageUrl")', function() {
-      // uncomment below and update the code to test the property imageUrl
-      //var instance = new SellingPartnerApiForAContentManagement.AsinMetadata();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('imageUrl');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.imageUrl = validValue;
+      expect(instance.imageUrl).to.equal(validValue);
     });
 
     it('should have the property contentReferenceKeySet (base name: "contentReferenceKeySet")', function() {
-      // uncomment below and update the code to test the property contentReferenceKeySet
-      //var instance = new SellingPartnerApiForAContentManagement.AsinMetadata();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('contentReferenceKeySet');
+
+      // set and verify value
+      var validValue = generateMockData('[String]', true);
+      instance.contentReferenceKeySet = validValue;
+      expect(instance.contentReferenceKeySet).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForAContentManagement[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

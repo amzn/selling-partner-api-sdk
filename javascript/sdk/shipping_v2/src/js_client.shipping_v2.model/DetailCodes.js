@@ -240,4 +240,3 @@ export default class DetailCodes {
         return object;
     }
 }
-

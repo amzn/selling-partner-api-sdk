@@ -51,4 +51,3 @@ export default class LabelAttribute {
         return object;
     }
 }
-

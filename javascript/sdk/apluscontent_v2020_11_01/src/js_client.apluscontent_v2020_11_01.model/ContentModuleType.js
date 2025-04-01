@@ -135,4 +135,3 @@ export default class ContentModuleType {
         return object;
     }
 }
-

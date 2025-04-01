@@ -28,61 +28,106 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForRetailProcurementShipments.TransportShipmentMeasurements();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForRetailProcurementShipments.TransportShipmentMeasurements.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('TransportShipmentMeasurements', function() {
     it('should create an instance of TransportShipmentMeasurements', function() {
-      // uncomment below and update the code to test TransportShipmentMeasurements
-      //var instance = new SellingPartnerApiForRetailProcurementShipments.TransportShipmentMeasurements();
-      //expect(instance).to.be.a(SellingPartnerApiForRetailProcurementShipments.TransportShipmentMeasurements);
+      expect(instance).to.be.a(SellingPartnerApiForRetailProcurementShipments.TransportShipmentMeasurements);
     });
 
     it('should have the property totalCartonCount (base name: "totalCartonCount")', function() {
-      // uncomment below and update the code to test the property totalCartonCount
-      //var instance = new SellingPartnerApiForRetailProcurementShipments.TransportShipmentMeasurements();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('totalCartonCount');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.totalCartonCount = validValue;
+      expect(instance.totalCartonCount).to.equal(validValue);
     });
 
     it('should have the property totalPalletStackable (base name: "totalPalletStackable")', function() {
-      // uncomment below and update the code to test the property totalPalletStackable
-      //var instance = new SellingPartnerApiForRetailProcurementShipments.TransportShipmentMeasurements();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('totalPalletStackable');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.totalPalletStackable = validValue;
+      expect(instance.totalPalletStackable).to.equal(validValue);
     });
 
     it('should have the property totalPalletNonStackable (base name: "totalPalletNonStackable")', function() {
-      // uncomment below and update the code to test the property totalPalletNonStackable
-      //var instance = new SellingPartnerApiForRetailProcurementShipments.TransportShipmentMeasurements();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('totalPalletNonStackable');
+
+      // set and verify value
+      var validValue = generateMockData('Number');
+      instance.totalPalletNonStackable = validValue;
+      expect(instance.totalPalletNonStackable).to.equal(validValue);
     });
 
     it('should have the property shipmentWeight (base name: "shipmentWeight")', function() {
-      // uncomment below and update the code to test the property shipmentWeight
-      //var instance = new SellingPartnerApiForRetailProcurementShipments.TransportShipmentMeasurements();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('shipmentWeight');
+
+      // set and verify value
+      var validValue = generateMockData('Weight');
+      instance.shipmentWeight = validValue;
+      expect(instance.shipmentWeight).to.equal(validValue);
     });
 
     it('should have the property shipmentVolume (base name: "shipmentVolume")', function() {
-      // uncomment below and update the code to test the property shipmentVolume
-      //var instance = new SellingPartnerApiForRetailProcurementShipments.TransportShipmentMeasurements();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('shipmentVolume');
+
+      // set and verify value
+      var validValue = generateMockData('Volume');
+      instance.shipmentVolume = validValue;
+      expect(instance.shipmentVolume).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForRetailProcurementShipments[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

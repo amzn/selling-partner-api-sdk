@@ -65,4 +65,3 @@ export default class HttpMethod {
         return object;
     }
 }
-

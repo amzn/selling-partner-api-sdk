@@ -28,43 +28,76 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForServices.RangeCapacity();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForServices.RangeCapacity.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('RangeCapacity', function() {
     it('should create an instance of RangeCapacity', function() {
-      // uncomment below and update the code to test RangeCapacity
-      //var instance = new SellingPartnerApiForServices.RangeCapacity();
-      //expect(instance).to.be.a(SellingPartnerApiForServices.RangeCapacity);
+      expect(instance).to.be.a(SellingPartnerApiForServices.RangeCapacity);
     });
 
     it('should have the property capacityType (base name: "capacityType")', function() {
-      // uncomment below and update the code to test the property capacityType
-      //var instance = new SellingPartnerApiForServices.RangeCapacity();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('capacityType');
+
+      // set and verify value
+      var validValue = generateMockData('CapacityType');
+      instance.capacityType = validValue;
+      expect(instance.capacityType).to.equal(validValue);
     });
 
     it('should have the property slots (base name: "slots")', function() {
-      // uncomment below and update the code to test the property slots
-      //var instance = new SellingPartnerApiForServices.RangeCapacity();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('slots');
+
+      // set and verify value
+      var validValue = generateMockData('[RangeSlot]', true);
+      instance.slots = validValue;
+      expect(instance.slots).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForServices[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

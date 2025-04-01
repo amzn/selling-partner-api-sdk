@@ -212,4 +212,3 @@ export default class AdditionalLocationInfo {
         return object;
     }
 }
-

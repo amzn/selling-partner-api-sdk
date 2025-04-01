@@ -142,4 +142,3 @@ export default class PrepInstruction {
         return object;
     }
 }
-

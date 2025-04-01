@@ -28,49 +28,86 @@
   var instance;
 
   beforeEach(function() {
+    try{
+     instance = new SellingPartnerApiForUploads.UploadDestination();
+    } catch (e) {
+     //Handle the cases when this model extends another model by using Model.call(this);
+     instance = Object.create(SellingPartnerApiForUploads.UploadDestination.prototype);
+    }
   });
 
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
+  afterEach(function() {
+    instance = null;
+  })
 
   describe('UploadDestination', function() {
     it('should create an instance of UploadDestination', function() {
-      // uncomment below and update the code to test UploadDestination
-      //var instance = new SellingPartnerApiForUploads.UploadDestination();
-      //expect(instance).to.be.a(SellingPartnerApiForUploads.UploadDestination);
+      expect(instance).to.be.a(SellingPartnerApiForUploads.UploadDestination);
     });
 
     it('should have the property uploadDestinationId (base name: "uploadDestinationId")', function() {
-      // uncomment below and update the code to test the property uploadDestinationId
-      //var instance = new SellingPartnerApiForUploads.UploadDestination();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('uploadDestinationId');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.uploadDestinationId = validValue;
+      expect(instance.uploadDestinationId).to.equal(validValue);
     });
 
     it('should have the property url (base name: "url")', function() {
-      // uncomment below and update the code to test the property url
-      //var instance = new SellingPartnerApiForUploads.UploadDestination();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('url');
+
+      // set and verify value
+      var validValue = generateMockData('String');
+      instance.url = validValue;
+      expect(instance.url).to.equal(validValue);
     });
 
     it('should have the property headers (base name: "headers")', function() {
-      // uncomment below and update the code to test the property headers
-      //var instance = new SellingPartnerApiForUploads.UploadDestination();
-      //expect(instance).to.be();
+      // verify property exists
+      expect(instance).to.have.property('headers');
+
+      // set and verify value
+      var validValue = generateMockData('Object');
+      instance.headers = validValue;
+      expect(instance.headers).to.equal(validValue);
     });
 
   });
+
+  // Helper function to generate random test data
+  function generateMockData(dataType, isArray = false) {
+    if (!dataType) return {};
+
+    // Handle array types
+    if (isArray) {
+      return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch(dataType) {
+      case 'String':
+        return 'mock-' + Math.random().toString(36).substring(2, 10);
+      case 'Number':
+        return Math.floor(Math.random() * 1000);
+      case 'Boolean':
+        return Math.random() > 0.5;
+      case 'Date':
+        return new Date().toISOString();
+      default:
+        try {
+          const ModelClass = SellingPartnerApiForUploads[dataType];
+          if (ModelClass) {
+            const instance = Object.create(ModelClass.prototype);
+            return instance;
+          }
+        } catch (e) {
+          console.error("Error creating instance of", dataType);
+          return {};
+        }
+        return {};
+    }
+  }
 
 }));

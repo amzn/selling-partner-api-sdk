@@ -58,4 +58,3 @@ export default class ShippingSpeedCategory {
         return object;
     }
 }
-
