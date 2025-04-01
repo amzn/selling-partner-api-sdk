@@ -51,23 +51,6 @@ jobs:
           gh pr merge --auto --merge "$URL"
         env:
           GH_TOKEN: ${{ secrets.TOMLIKED_PAT }}
-      - name: Create tag
-        uses: actions/github-script@v5
-        with:
-          github-token: ${{ secrets.TOMLIKED_PAT }}
-          script: |
-            github.rest.git.createRef({
-              owner: context.repo.owner,
-              repo: 'selling-partner-api-php-release',
-              ref: "refs/tags/${{ github.event.inputs.newVersionNumber }}",
-              sha: context.sha
-            })
-      - name: Create Release
-        uses: softprops/action-gh-release@v2
-        with:
-          token: ${{ secrets.TOMLIKED_PAT }}
-          repository: amzn/selling-partner-api-php-release
-          tag_name: ${{ github.event.inputs.newVersionNumber }}
 
   tag_and_release:
     needs: [release_java, release_php]
@@ -88,4 +71,34 @@ jobs:
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ github.event.inputs.newVersionNumber }}
+
+  tag_and_release_php_repo:
+    needs: [ release_java, release_php ]
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: amzn/selling-partner-api-php-release
+          token: ${{ secrets.TOMLIKED_PAT }}
+      - name: Get SHA
+        id: sha
+        run: echo "sha=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
+      - name: Create tag
+        uses: actions/github-script@v5
+        with:
+          github-token: ${{ secrets.TOMLIKED_PAT }}
+          script: |
+            github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: 'selling-partner-api-php-release',
+              ref: "refs/tags/${{ github.event.inputs.newVersionNumber }}",
+              sha: ${{ steps.sha.outputs.sha }}
+            })
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          token: ${{ secrets.TOMLIKED_PAT }}
+          repository: amzn/selling-partner-api-php-release
           tag_name: ${{ github.event.inputs.newVersionNumber }}
