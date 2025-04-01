@@ -54,6 +54,7 @@ jobs:
       - name: Create tag
         uses: actions/github-script@v5
         with:
+          github-token: ${{ secrets.TOMLIKED_PAT }}
           script: |
             github.rest.git.createRef({
               owner: context.repo.owner,
@@ -64,6 +65,7 @@ jobs:
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
+          token: ${{ secrets.TOMLIKED_PAT }}
           repository: amzn/selling-partner-api-php-release
           tag_name: ${{ github.event.inputs.newVersionNumber }}
 
