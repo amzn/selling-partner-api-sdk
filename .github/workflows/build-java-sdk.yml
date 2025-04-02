@@ -3,7 +3,7 @@ name: Build Java SDK
 on:
   workflow_dispatch:
   repository_dispatch:
-    types: [trigger-build]
+    types: [ trigger-build ]
 
 jobs:
   build:
@@ -100,4 +100,4 @@ jobs:
           branch: feature/update-java-sdk
           assignees: mafge
           path: ./selling-partner-api-sdk
-          # token: ${{ secrets.MAFGE_PAT }}
+          token: ${{ secrets.MAFGE_PAT }}

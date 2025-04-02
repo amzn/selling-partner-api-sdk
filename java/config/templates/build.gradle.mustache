@@ -132,8 +132,7 @@ spotless {
 
 	java {
 		target 'src/*/java/**/*.java'
-		googleJavaFormat('1.17.0').reflowLongStrings()
-		// palantirJavaFormat().formatJavadoc(true)
+		palantirJavaFormat('2.39.0').formatJavadoc(true)
 		formatAnnotations()
 		importOrder()
 		removeUnusedImports()
