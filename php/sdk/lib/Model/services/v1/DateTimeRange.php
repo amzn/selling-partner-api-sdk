@@ -1,6 +1,6 @@
 <?php
 /**
- * SetAppointmentFulfillmentDataRequest
+ * DateTimeRange
  *
  * PHP version 8.3
  *
@@ -34,16 +34,16 @@ use SpApi\ObjectSerializer;
 use SpApi\Model\ModelInterface;
 
 /**
- * SetAppointmentFulfillmentDataRequest Class Doc Comment
+ * DateTimeRange Class Doc Comment
  *
  * @category Class
- * @description Input for set appointment fulfillment data operation.
+ * @description A range of time.
  * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SetAppointmentFulfillmentDataRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class DateTimeRange implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class SetAppointmentFulfillmentDataRequest implements ModelInterface, ArrayAcces
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'SetAppointmentFulfillmentDataRequest';
+    protected static string $openAPIModelName = 'DateTimeRange';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,10 +60,8 @@ class SetAppointmentFulfillmentDataRequest implements ModelInterface, ArrayAcces
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'estimated_arrival_time' => '\SpApi\Model\services\v1\DateTimeRange',
-             'fulfillment_time' => '\SpApi\Model\services\v1\FulfillmentTime',
-             'appointment_resources' => '\SpApi\Model\services\v1\AppointmentResource[]',
-             'fulfillment_documents' => '\SpApi\Model\services\v1\FulfillmentDocument[]'    ];
+             'start_time' => '\DateTime',
+             'end_time' => '\DateTime'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -73,10 +71,8 @@ class SetAppointmentFulfillmentDataRequest implements ModelInterface, ArrayAcces
       * @psalm-var array<string, string|null>
       */
     protected static array $openAPIFormats = [
-            'estimated_arrival_time' => null,
-            'fulfillment_time' => null,
-            'appointment_resources' => null,
-            'fulfillment_documents' => null    ];
+            'start_time' => 'date-time',
+            'end_time' => 'date-time'    ];
 
     /**
       * Array of nullable properties. Used for (de)serialization
@@ -84,10 +80,8 @@ class SetAppointmentFulfillmentDataRequest implements ModelInterface, ArrayAcces
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'estimated_arrival_time' => true,
-        'fulfillment_time' => true,
-        'appointment_resources' => true,
-        'fulfillment_documents' => true
+        'start_time' => false,
+        'end_time' => false
     ];
 
     /**
@@ -176,10 +170,8 @@ class SetAppointmentFulfillmentDataRequest implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static array $attributeMap = [
-        'estimated_arrival_time' => 'estimatedArrivalTime',
-                'fulfillment_time' => 'fulfillmentTime',
-                'appointment_resources' => 'appointmentResources',
-                'fulfillment_documents' => 'fulfillmentDocuments'
+        'start_time' => 'startTime',
+                'end_time' => 'endTime'
         
     ];
 
@@ -189,10 +181,8 @@ class SetAppointmentFulfillmentDataRequest implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static array $setters = [
-        'estimated_arrival_time' => 'setEstimatedArrivalTime',
-        'fulfillment_time' => 'setFulfillmentTime',
-        'appointment_resources' => 'setAppointmentResources',
-        'fulfillment_documents' => 'setFulfillmentDocuments'
+        'start_time' => 'setStartTime',
+        'end_time' => 'setEndTime'
     ];
 
     /**
@@ -201,10 +191,8 @@ class SetAppointmentFulfillmentDataRequest implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static array $getters = [
-        'estimated_arrival_time' => 'getEstimatedArrivalTime',
-        'fulfillment_time' => 'getFulfillmentTime',
-        'appointment_resources' => 'getAppointmentResources',
-        'fulfillment_documents' => 'getFulfillmentDocuments'
+        'start_time' => 'getStartTime',
+        'end_time' => 'getEndTime'
     ];
 
     /**
@@ -264,10 +252,8 @@ class SetAppointmentFulfillmentDataRequest implements ModelInterface, ArrayAcces
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('estimated_arrival_time', $data ?? [], null);
-        $this->setIfExists('fulfillment_time', $data ?? [], null);
-        $this->setIfExists('appointment_resources', $data ?? [], null);
-        $this->setIfExists('fulfillment_documents', $data ?? [], null);
+        $this->setIfExists('start_time', $data ?? [], null);
+        $this->setIfExists('end_time', $data ?? [], null);
     }
 
     /**
@@ -297,6 +283,12 @@ class SetAppointmentFulfillmentDataRequest implements ModelInterface, ArrayAcces
     {
         $invalidProperties = [];
 
+        if ($this->container['start_time'] === null) {
+            $invalidProperties[] = "'start_time' can't be null";
+        }
+        if ($this->container['end_time'] === null) {
+            $invalidProperties[] = "'end_time' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -313,137 +305,55 @@ class SetAppointmentFulfillmentDataRequest implements ModelInterface, ArrayAcces
 
 
     /**
-     * Gets estimated_arrival_time
+     * Gets start_time
      *
-     * @return \SpApi\Model\services\v1\DateTimeRange|null
+     * @return \DateTime
      */
-    public function getEstimatedArrivalTime(): ?\SpApi\Model\services\v1\DateTimeRange
+    public function getStartTime(): \DateTime
     {
-        return $this->container['estimated_arrival_time'];
+        return $this->container['start_time'];
     }
 
     /**
-     * Sets estimated_arrival_time
+     * Sets start_time
      *
-     * @param \SpApi\Model\services\v1\DateTimeRange|null $estimated_arrival_time estimated_arrival_time
+     * @param \DateTime $start_time The beginning of the time range. Must be in UTC in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
      *
      * @return self
      */
-    public function setEstimatedArrivalTime(?\SpApi\Model\services\v1\DateTimeRange $estimated_arrival_time): self
+    public function setStartTime(\DateTime $start_time): self
     {
-        if (is_null($estimated_arrival_time)) {
-            array_push($this->openAPINullablesSetToNull, 'estimated_arrival_time');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('estimated_arrival_time', $nullablesSetToNull);
-            if ($index !== false) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($start_time)) {
+            throw new \InvalidArgumentException('non-nullable start_time cannot be null');
         }
-        $this->container['estimated_arrival_time'] = $estimated_arrival_time;
+        $this->container['start_time'] = $start_time;
 
         return $this;
     }
 
     /**
-     * Gets fulfillment_time
+     * Gets end_time
      *
-     * @return \SpApi\Model\services\v1\FulfillmentTime|null
+     * @return \DateTime
      */
-    public function getFulfillmentTime(): ?\SpApi\Model\services\v1\FulfillmentTime
+    public function getEndTime(): \DateTime
     {
-        return $this->container['fulfillment_time'];
+        return $this->container['end_time'];
     }
 
     /**
-     * Sets fulfillment_time
+     * Sets end_time
      *
-     * @param \SpApi\Model\services\v1\FulfillmentTime|null $fulfillment_time fulfillment_time
+     * @param \DateTime $end_time The end of the time range. Must be in UTC in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
      *
      * @return self
      */
-    public function setFulfillmentTime(?\SpApi\Model\services\v1\FulfillmentTime $fulfillment_time): self
+    public function setEndTime(\DateTime $end_time): self
     {
-        if (is_null($fulfillment_time)) {
-            array_push($this->openAPINullablesSetToNull, 'fulfillment_time');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('fulfillment_time', $nullablesSetToNull);
-            if ($index !== false) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($end_time)) {
+            throw new \InvalidArgumentException('non-nullable end_time cannot be null');
         }
-        $this->container['fulfillment_time'] = $fulfillment_time;
-
-        return $this;
-    }
-
-    /**
-     * Gets appointment_resources
-     *
-     * @return array|null
-     */
-    public function getAppointmentResources(): ?array
-    {
-        return $this->container['appointment_resources'];
-    }
-
-    /**
-     * Sets appointment_resources
-     *
-     * @param array|null $appointment_resources List of resources that performs or performed job appointment fulfillment.
-     *
-     * @return self
-     */
-    public function setAppointmentResources(?array $appointment_resources): self
-    {
-        if (is_null($appointment_resources)) {
-            array_push($this->openAPINullablesSetToNull, 'appointment_resources');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('appointment_resources', $nullablesSetToNull);
-            if ($index !== false) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['appointment_resources'] = $appointment_resources;
-
-        return $this;
-    }
-
-    /**
-     * Gets fulfillment_documents
-     *
-     * @return array|null
-     */
-    public function getFulfillmentDocuments(): ?array
-    {
-        return $this->container['fulfillment_documents'];
-    }
-
-    /**
-     * Sets fulfillment_documents
-     *
-     * @param array|null $fulfillment_documents List of documents captured during service appointment fulfillment.
-     *
-     * @return self
-     */
-    public function setFulfillmentDocuments(?array $fulfillment_documents): self
-    {
-        if (is_null($fulfillment_documents)) {
-            array_push($this->openAPINullablesSetToNull, 'fulfillment_documents');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('fulfillment_documents', $nullablesSetToNull);
-            if ($index !== false) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['fulfillment_documents'] = $fulfillment_documents;
+        $this->container['end_time'] = $end_time;
 
         return $this;
     }

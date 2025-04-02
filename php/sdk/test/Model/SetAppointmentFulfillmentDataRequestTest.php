@@ -52,6 +52,18 @@ class SetAppointmentFulfillmentDataRequestTest extends TestCase
     }
 
     /**
+     * Test attribute "estimated_arrival_time"
+     */
+    public function testPropertyEstimatedArrivalTime()
+    {
+        
+        $testValue = new \SpApi\Model\services\v1\DateTimeRange();
+        
+        $this->model->setEstimatedArrivalTime($testValue);
+        $this->assertEquals($testValue, $this->model->getEstimatedArrivalTime());
+    }
+
+    /**
      * Test attribute "fulfillment_time"
      */
     public function testPropertyFulfillmentTime()
