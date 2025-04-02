@@ -1,141 +1,160 @@
 plugins {
-    id "com.github.node-gradle.node" version "7.1.0"
-    id 'maven-publish'
-    id "signing"
+	id "com.github.node-gradle.node" version "7.1.0"
+	id 'maven-publish'
+	id "signing"
+	id "com.diffplug.spotless" version "7.0.2"
 }
 
 apply plugin: 'java'
 
 java {
-    withJavadocJar()
-    withSourcesJar()
+	withJavadocJar()
+	withSourcesJar()
 }
 
 group = 'software.amazon.spapi'
 version = findProperty("sdkVersion") ?: System.getenv("SDK_VERSION")
 
 publishing {
-    repositories {
-        maven {
-            if(version.endsWith('-SNAPSHOT')) {
-                url "https://aws.oss.sonatype.org/content/repositories/snapshots/"
-            } else {
-                url "https://aws.oss.sonatype.org/service/local/staging/deploy/maven2/"
-            }
+	repositories {
+		maven {
+			if(version.endsWith('-SNAPSHOT')) {
+				url "https://aws.oss.sonatype.org/content/repositories/snapshots/"
+			} else {
+				url "https://aws.oss.sonatype.org/service/local/staging/deploy/maven2/"
+			}
 
-            name = "OSSRH"
-            credentials {
-                username = findProperty("ossrhUsername")
-                password = findProperty("ossrhPassword")
-            }
-        }
-    }
+			name = "OSSRH"
+			credentials {
+				username = findProperty("ossrhUsername")
+				password = findProperty("ossrhPassword")
+			}
+		}
+	}
 
-    publications {
-        mavenJava(MavenPublication) {
-            from components.java
+	publications {
+		mavenJava(MavenPublication) {
+			from components.java
 
-            pom {
-                groupId = 'software.amazon.spapi'
-                name = 'spapi-sdk'
-                description = 'The Selling Partner API SDK enables you to easily connect to and work with Amazon\'s REST-based SP-API.'
-                url = 'https://github.com/amzn/selling-partner-api-sdk'
-                packaging = 'jar'
+			pom {
+				groupId = 'software.amazon.spapi'
+				name = 'spapi-sdk'
+				description = 'The Selling Partner API SDK enables you to easily connect to and work with Amazon\'s REST-based SP-API.'
+				url = 'https://github.com/amzn/selling-partner-api-sdk'
+				packaging = 'jar'
 
-                licenses {
-                    license {
-                        name = 'Apache-2.0'
-                        url = 'https://opensource.org/licenses/Apache-2.0'
-                    }
-                }
+				licenses {
+					license {
+						name = 'Apache-2.0'
+						url = 'https://opensource.org/licenses/Apache-2.0'
+					}
+				}
 
-                scm {
-                    url = 'https://github.com/amzn/selling-partner-api-sdk.git'
-                    connection = 'scm:git://github.com/amzn/selling-partner-api-sdk.git'
-                    developerConnection = 'scm:git://github.com/amzn/selling-partner-api-sdk.git'
-                }
+				scm {
+					url = 'https://github.com/amzn/selling-partner-api-sdk.git'
+					connection = 'scm:git://github.com/amzn/selling-partner-api-sdk.git'
+					developerConnection = 'scm:git://github.com/amzn/selling-partner-api-sdk.git'
+				}
 
-                developers {
-                    developer {
-                        id = 'spapi'
-                        name = 'Amazon Selling Partner Developer Services'
-                        email = 'mws-dx-support@amazon.com'
-                        organizationUrl = 'https://developer.amazonservices.com/'
-                    }
-                }
-            }
-        }
-    }
+				developers {
+					developer {
+						id = 'spapi'
+						name = 'Amazon Selling Partner Developer Services'
+						email = 'mws-dx-support@amazon.com'
+						organizationUrl = 'https://developer.amazonservices.com/'
+					}
+				}
+			}
+		}
+	}
 }
 
 signing {
-    def signingKey = findProperty("signingKey")
-    def signingPassword = findProperty("signingPassword")
-    useInMemoryPgpKeys(signingKey, signingPassword)
-    sign publishing.publications.mavenJava
+	def signingKey = findProperty("signingKey")
+	def signingPassword = findProperty("signingPassword")
+	useInMemoryPgpKeys(signingKey, signingPassword)
+	sign publishing.publications.mavenJava
 }
 
 repositories {
-    mavenCentral()
+	mavenCentral()
 }
 
 sourceSets {
-    test {
-        resources {
-            srcDir '../../test'
-        }
-    }
+	test {
+		resources {
+			srcDir '../../test'
+		}
+	}
 }
 
 node {
-    download = true
-    version = "18.20.2"
-    nodeProjectDir = file("${buildDir}/resources/test")
+	download = true
+	version = "18.20.2"
+	nodeProjectDir = file("${buildDir}/resources/test")
 }
 
 sourceCompatibility = JavaVersion.VERSION_11
 targetCompatibility = JavaVersion.VERSION_11
 
 task fatJar(type: Jar) {
-    duplicatesStrategy = DuplicatesStrategy.INCLUDE
-    from sourceSets.main.output
-    dependsOn configurations.runtimeClasspath
-    from {
-        configurations.runtimeClasspath.findAll { it.name.endsWith('jar') }.collect { zipTree(it) }
-    }
+	duplicatesStrategy = DuplicatesStrategy.INCLUDE
+	from sourceSets.main.output
+	dependsOn configurations.runtimeClasspath
+	from {
+		configurations.runtimeClasspath.findAll { it.name.endsWith('jar') }.collect { zipTree(it) }
+	}
 }
 
 task startMockBackend(type: NpmTask) {
-    args=["start"]
+	args=["start"]
 }
 
 task stopMockBackend(type: NpmTask) {
-    args=["stop"]
+	args=["stop"]
 }
 
 test {
-    dependsOn npmInstall
-    dependsOn startMockBackend
-    useJUnitPlatform()
-    finalizedBy stopMockBackend
+	dependsOn npmInstall
+	dependsOn startMockBackend
+	useJUnitPlatform()
+	finalizedBy stopMockBackend
+}
+
+spotless {
+	format 'misc', {
+		target '*.gradle', '.gitignore'
+
+		trimTrailingWhitespace()
+		leadingSpacesToTabs()
+		endWithNewline()
+	}
+
+	java {
+		target 'src/*/java/**/*.java'
+		palantirJavaFormat('2.39.0').formatJavadoc(true)
+		formatAnnotations()
+		importOrder()
+		removeUnusedImports()
+	}
 }
 
 npmInstall.dependsOn("processTestResources")
 
 dependencies {
-    implementation 'io.swagger:swagger-annotations:1.6.9'
-    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:4.12.0'
-    implementation 'com.google.code.gson:gson:2.10.1'
-    implementation 'io.gsonfire:gson-fire:1.8.5'
-    implementation 'org.threeten:threetenbp:1.6.5'
-    implementation 'com.google.guava:guava:33.3.1-jre'
-    implementation 'io.swagger.core.v3:swagger-annotations:2.2.16'
-    implementation 'com.squareup.okio:okio:3.9.1'
-    implementation 'org.apache.commons:commons-lang3:3.17.0'
-    compileOnly 'org.projectlombok:lombok:1.18.34'
-    annotationProcessor 'org.projectlombok:lombok:1.18.34'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.11.3'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.11.3'
-    testImplementation 'org.jeasy:easy-random-core:5.0.0'
+	implementation 'io.swagger:swagger-annotations:1.6.9'
+	implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+	implementation 'com.squareup.okhttp3:logging-interceptor:4.12.0'
+	implementation 'com.google.code.gson:gson:2.10.1'
+	implementation 'io.gsonfire:gson-fire:1.8.5'
+	implementation 'org.threeten:threetenbp:1.6.5'
+	implementation 'com.google.guava:guava:33.3.1-jre'
+	implementation 'io.swagger.core.v3:swagger-annotations:2.2.16'
+	implementation 'com.squareup.okio:okio:3.9.1'
+	implementation 'org.apache.commons:commons-lang3:3.17.0'
+	compileOnly 'org.projectlombok:lombok:1.18.34'
+	annotationProcessor 'org.projectlombok:lombok:1.18.34'
+	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.11.3'
+	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.11.3'
+	testImplementation 'org.jeasy:easy-random-core:5.0.0'
 }

@@ -12,82 +12,67 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.io.IOException;
-import software.amazon.spapi.models.shipping.v2.CancelShipmentResult;
-/**
- * Response schema for the cancelShipment operation.
- */
+import java.util.Objects;
+
+/** Response schema for the cancelShipment operation. */
 @Schema(description = "Response schema for the cancelShipment operation.")
-
-
 public class CancelShipmentResponse {
-  @SerializedName("payload")
-  private CancelShipmentResult payload = null;
+    @SerializedName("payload")
+    private CancelShipmentResult payload = null;
 
-  public CancelShipmentResponse payload(CancelShipmentResult payload) {
-    this.payload = payload;
-    return this;
-  }
-
-   /**
-   * Get payload
-   * @return payload
-  **/
-  @Schema(description = "")
-  public CancelShipmentResult getPayload() {
-    return payload;
-  }
-
-  public void setPayload(CancelShipmentResult payload) {
-    this.payload = payload;
-  }
-
-
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
+    public CancelShipmentResponse payload(CancelShipmentResult payload) {
+        this.payload = payload;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * Get payload
+     *
+     * @return payload
+     */
+    @Schema(description = "")
+    public CancelShipmentResult getPayload() {
+        return payload;
     }
-    CancelShipmentResponse cancelShipmentResponse = (CancelShipmentResponse) o;
-    return Objects.equals(this.payload, cancelShipmentResponse.payload);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(payload);
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class CancelShipmentResponse {\n");
-    
-    sb.append("    payload: ").append(toIndentedString(payload)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    public void setPayload(CancelShipmentResult payload) {
+        this.payload = payload;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    @Override
+    public boolean equals(java.lang.Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        CancelShipmentResponse cancelShipmentResponse = (CancelShipmentResponse) o;
+        return Objects.equals(this.payload, cancelShipmentResponse.payload);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(payload);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class CancelShipmentResponse {\n");
+
+        sb.append("    payload: ").append(toIndentedString(payload)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
+    private String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }

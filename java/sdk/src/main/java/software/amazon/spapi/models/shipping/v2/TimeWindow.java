@@ -12,105 +12,91 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.io.IOException;
+import java.util.Objects;
 import org.threeten.bp.OffsetDateTime;
-/**
- * The start and end time that specifies the time interval of an event.
- */
+
+/** The start and end time that specifies the time interval of an event. */
 @Schema(description = "The start and end time that specifies the time interval of an event.")
-
-
 public class TimeWindow {
-  @SerializedName("start")
-  private OffsetDateTime start = null;
+    @SerializedName("start")
+    private OffsetDateTime start = null;
 
-  @SerializedName("end")
-  private OffsetDateTime end = null;
+    @SerializedName("end")
+    private OffsetDateTime end = null;
 
-  public TimeWindow start(OffsetDateTime start) {
-    this.start = start;
-    return this;
-  }
-
-   /**
-   * The start time of the time window.
-   * @return start
-  **/
-  @Schema(description = "The start time of the time window.")
-  public OffsetDateTime getStart() {
-    return start;
-  }
-
-  public void setStart(OffsetDateTime start) {
-    this.start = start;
-  }
-
-  public TimeWindow end(OffsetDateTime end) {
-    this.end = end;
-    return this;
-  }
-
-   /**
-   * The end time of the time window.
-   * @return end
-  **/
-  @Schema(description = "The end time of the time window.")
-  public OffsetDateTime getEnd() {
-    return end;
-  }
-
-  public void setEnd(OffsetDateTime end) {
-    this.end = end;
-  }
-
-
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
+    public TimeWindow start(OffsetDateTime start) {
+        this.start = start;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * The start time of the time window.
+     *
+     * @return start
+     */
+    @Schema(description = "The start time of the time window.")
+    public OffsetDateTime getStart() {
+        return start;
     }
-    TimeWindow timeWindow = (TimeWindow) o;
-    return Objects.equals(this.start, timeWindow.start) &&
-        Objects.equals(this.end, timeWindow.end);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(start, end);
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class TimeWindow {\n");
-    
-    sb.append("    start: ").append(toIndentedString(start)).append("\n");
-    sb.append("    end: ").append(toIndentedString(end)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    public void setStart(OffsetDateTime start) {
+        this.start = start;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    public TimeWindow end(OffsetDateTime end) {
+        this.end = end;
+        return this;
+    }
+
+    /**
+     * The end time of the time window.
+     *
+     * @return end
+     */
+    @Schema(description = "The end time of the time window.")
+    public OffsetDateTime getEnd() {
+        return end;
+    }
+
+    public void setEnd(OffsetDateTime end) {
+        this.end = end;
+    }
+
+    @Override
+    public boolean equals(java.lang.Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        TimeWindow timeWindow = (TimeWindow) o;
+        return Objects.equals(this.start, timeWindow.start) && Objects.equals(this.end, timeWindow.end);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(start, end);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class TimeWindow {\n");
+
+        sb.append("    start: ").append(toIndentedString(start)).append("\n");
+        sb.append("    end: ").append(toIndentedString(end)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
+    private String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }

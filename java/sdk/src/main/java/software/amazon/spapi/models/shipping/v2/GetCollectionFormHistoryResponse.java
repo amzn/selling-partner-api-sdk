@@ -12,105 +12,98 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.io.IOException;
-import software.amazon.spapi.models.shipping.v2.CollectionFormsHistoryRecordList;
-/**
- * The Response  for the GetCollectionFormHistoryResponse operation.
- */
+import java.util.Objects;
+
+/** The Response for the GetCollectionFormHistoryResponse operation. */
 @Schema(description = "The Response  for the GetCollectionFormHistoryResponse operation.")
-
-
 public class GetCollectionFormHistoryResponse {
-  @SerializedName("collectionFormsHistoryRecordList")
-  private CollectionFormsHistoryRecordList collectionFormsHistoryRecordList = null;
+    @SerializedName("collectionFormsHistoryRecordList")
+    private CollectionFormsHistoryRecordList collectionFormsHistoryRecordList = null;
 
-  @SerializedName("lastRefreshedDate")
-  private String lastRefreshedDate = null;
+    @SerializedName("lastRefreshedDate")
+    private String lastRefreshedDate = null;
 
-  public GetCollectionFormHistoryResponse collectionFormsHistoryRecordList(CollectionFormsHistoryRecordList collectionFormsHistoryRecordList) {
-    this.collectionFormsHistoryRecordList = collectionFormsHistoryRecordList;
-    return this;
-  }
-
-   /**
-   * Get collectionFormsHistoryRecordList
-   * @return collectionFormsHistoryRecordList
-  **/
-  @Schema(description = "")
-  public CollectionFormsHistoryRecordList getCollectionFormsHistoryRecordList() {
-    return collectionFormsHistoryRecordList;
-  }
-
-  public void setCollectionFormsHistoryRecordList(CollectionFormsHistoryRecordList collectionFormsHistoryRecordList) {
-    this.collectionFormsHistoryRecordList = collectionFormsHistoryRecordList;
-  }
-
-  public GetCollectionFormHistoryResponse lastRefreshedDate(String lastRefreshedDate) {
-    this.lastRefreshedDate = lastRefreshedDate;
-    return this;
-  }
-
-   /**
-   * Last Refereshed Date of collection
-   * @return lastRefreshedDate
-  **/
-  @Schema(description = "Last Refereshed Date of collection")
-  public String getLastRefreshedDate() {
-    return lastRefreshedDate;
-  }
-
-  public void setLastRefreshedDate(String lastRefreshedDate) {
-    this.lastRefreshedDate = lastRefreshedDate;
-  }
-
-
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
+    public GetCollectionFormHistoryResponse collectionFormsHistoryRecordList(
+            CollectionFormsHistoryRecordList collectionFormsHistoryRecordList) {
+        this.collectionFormsHistoryRecordList = collectionFormsHistoryRecordList;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * Get collectionFormsHistoryRecordList
+     *
+     * @return collectionFormsHistoryRecordList
+     */
+    @Schema(description = "")
+    public CollectionFormsHistoryRecordList getCollectionFormsHistoryRecordList() {
+        return collectionFormsHistoryRecordList;
     }
-    GetCollectionFormHistoryResponse getCollectionFormHistoryResponse = (GetCollectionFormHistoryResponse) o;
-    return Objects.equals(this.collectionFormsHistoryRecordList, getCollectionFormHistoryResponse.collectionFormsHistoryRecordList) &&
-        Objects.equals(this.lastRefreshedDate, getCollectionFormHistoryResponse.lastRefreshedDate);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(collectionFormsHistoryRecordList, lastRefreshedDate);
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class GetCollectionFormHistoryResponse {\n");
-    
-    sb.append("    collectionFormsHistoryRecordList: ").append(toIndentedString(collectionFormsHistoryRecordList)).append("\n");
-    sb.append("    lastRefreshedDate: ").append(toIndentedString(lastRefreshedDate)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    public void setCollectionFormsHistoryRecordList(CollectionFormsHistoryRecordList collectionFormsHistoryRecordList) {
+        this.collectionFormsHistoryRecordList = collectionFormsHistoryRecordList;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    public GetCollectionFormHistoryResponse lastRefreshedDate(String lastRefreshedDate) {
+        this.lastRefreshedDate = lastRefreshedDate;
+        return this;
+    }
+
+    /**
+     * Last Refereshed Date of collection
+     *
+     * @return lastRefreshedDate
+     */
+    @Schema(description = "Last Refereshed Date of collection")
+    public String getLastRefreshedDate() {
+        return lastRefreshedDate;
+    }
+
+    public void setLastRefreshedDate(String lastRefreshedDate) {
+        this.lastRefreshedDate = lastRefreshedDate;
+    }
+
+    @Override
+    public boolean equals(java.lang.Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        GetCollectionFormHistoryResponse getCollectionFormHistoryResponse = (GetCollectionFormHistoryResponse) o;
+        return Objects.equals(
+                        this.collectionFormsHistoryRecordList,
+                        getCollectionFormHistoryResponse.collectionFormsHistoryRecordList)
+                && Objects.equals(this.lastRefreshedDate, getCollectionFormHistoryResponse.lastRefreshedDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(collectionFormsHistoryRecordList, lastRefreshedDate);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class GetCollectionFormHistoryResponse {\n");
+
+        sb.append("    collectionFormsHistoryRecordList: ")
+                .append(toIndentedString(collectionFormsHistoryRecordList))
+                .append("\n");
+        sb.append("    lastRefreshedDate: ")
+                .append(toIndentedString(lastRefreshedDate))
+                .append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
+    private String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }

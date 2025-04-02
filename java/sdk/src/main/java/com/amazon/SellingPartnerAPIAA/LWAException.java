@@ -41,5 +41,4 @@ public class LWAException extends Exception {
     public String getErrorMessage() {
         return this.errorMessage;
     }
-
 }

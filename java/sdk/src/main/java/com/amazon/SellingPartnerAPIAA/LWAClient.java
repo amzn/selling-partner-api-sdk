@@ -18,16 +18,16 @@ class LWAClient {
     private static final String ACCESS_TOKEN_KEY = "access_token";
     private static final String ACCESS_TOKEN_EXPIRES_IN = "expires_in";
     private static final MediaType JSON_MEDIA_TYPE = MediaType.parse("application/json; charset=utf-8");
+
     @Getter
     private String endpoint;
 
     @Setter(AccessLevel.PACKAGE)
     private OkHttpClient okHttpClient;
+
     private LWAAccessTokenCache lwaAccessTokenCache;
 
-    /**
-     * Sets cache to store access token until token is expired
-     */
+    /** Sets cache to store access token until token is expired */
     public void setLWAAccessTokenCache(LWAAccessTokenCache tokenCache) {
         this.lwaAccessTokenCache = tokenCache;
     }
@@ -56,29 +56,36 @@ class LWAClient {
 
     String getAccessTokenFromEndpoint(LWAAccessTokenRequestMeta lwaAccessTokenRequestMeta) throws LWAException {
         RequestBody requestBody = RequestBody.create(JSON_MEDIA_TYPE, new Gson().toJson(lwaAccessTokenRequestMeta));
-        Request accessTokenRequest = new Request.Builder().url(endpoint).post(requestBody).build();
+        Request accessTokenRequest =
+                new Request.Builder().url(endpoint).post(requestBody).build();
         LWAExceptionErrorCode lwaErrorCode = null;
         String accessToken;
         try {
             Response response = okHttpClient.newCall(accessTokenRequest).execute();
             ResponseBody body = response.body();
-            if (body == null) throw new LWAException(LWAExceptionErrorCode.other.toString(),
-                    "Error getting LWA Token", "Response body missing");
+            if (body == null)
+                throw new LWAException(
+                        LWAExceptionErrorCode.other.toString(), "Error getting LWA Token", "Response body missing");
             JsonObject responseJson = JsonParser.parseString(body.string()).getAsJsonObject();
             if (!response.isSuccessful()) {
                 // Check if response has element error and is a known LWA error code
-                if (responseJson.has("error") &&
-                        EnumUtils.isValidEnum(LWAExceptionErrorCode.class, responseJson.get("error").getAsString())) {
-                    throw new LWAException(responseJson.get("error").getAsString(),
-                            responseJson.get("error_description").getAsString(), "Error getting LWA Token");
-                } else { // else throw other LWA error
-                    throw new LWAException(LWAExceptionErrorCode.other.toString(), "Other LWA Exception",
+                if (responseJson.has("error")
+                        && EnumUtils.isValidEnum(
+                                LWAExceptionErrorCode.class,
+                                responseJson.get("error").getAsString())) {
+                    throw new LWAException(
+                            responseJson.get("error").getAsString(),
+                            responseJson.get("error_description").getAsString(),
                             "Error getting LWA Token");
+                } else { // else throw other LWA error
+                    throw new LWAException(
+                            LWAExceptionErrorCode.other.toString(), "Other LWA Exception", "Error getting LWA Token");
                 }
             }
             accessToken = responseJson.get(ACCESS_TOKEN_KEY).getAsString();
             if (lwaAccessTokenCache != null) {
-                long timeToTokenexpiry = responseJson.get(ACCESS_TOKEN_EXPIRES_IN).getAsLong();
+                long timeToTokenexpiry =
+                        responseJson.get(ACCESS_TOKEN_EXPIRES_IN).getAsLong();
                 lwaAccessTokenCache.put(lwaAccessTokenRequestMeta, accessToken, timeToTokenexpiry);
             }
         } catch (LWAException e) { // throw LWA exception

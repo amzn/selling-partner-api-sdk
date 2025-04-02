@@ -12,81 +12,67 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.io.IOException;
-/**
- * AccessPointDetails object
- */
+import java.util.Objects;
+
+/** AccessPointDetails object */
 @Schema(description = "AccessPointDetails object")
-
-
 public class AccessPointDetails {
-  @SerializedName("accessPointId")
-  private String accessPointId = null;
+    @SerializedName("accessPointId")
+    private String accessPointId = null;
 
-  public AccessPointDetails accessPointId(String accessPointId) {
-    this.accessPointId = accessPointId;
-    return this;
-  }
-
-   /**
-   * Get accessPointId
-   * @return accessPointId
-  **/
-  @Schema(description = "")
-  public String getAccessPointId() {
-    return accessPointId;
-  }
-
-  public void setAccessPointId(String accessPointId) {
-    this.accessPointId = accessPointId;
-  }
-
-
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
+    public AccessPointDetails accessPointId(String accessPointId) {
+        this.accessPointId = accessPointId;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * Get accessPointId
+     *
+     * @return accessPointId
+     */
+    @Schema(description = "")
+    public String getAccessPointId() {
+        return accessPointId;
     }
-    AccessPointDetails accessPointDetails = (AccessPointDetails) o;
-    return Objects.equals(this.accessPointId, accessPointDetails.accessPointId);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(accessPointId);
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class AccessPointDetails {\n");
-    
-    sb.append("    accessPointId: ").append(toIndentedString(accessPointId)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    public void setAccessPointId(String accessPointId) {
+        this.accessPointId = accessPointId;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    @Override
+    public boolean equals(java.lang.Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        AccessPointDetails accessPointDetails = (AccessPointDetails) o;
+        return Objects.equals(this.accessPointId, accessPointDetails.accessPointId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(accessPointId);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class AccessPointDetails {\n");
+
+        sb.append("    accessPointId: ").append(toIndentedString(accessPointId)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
+    private String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }

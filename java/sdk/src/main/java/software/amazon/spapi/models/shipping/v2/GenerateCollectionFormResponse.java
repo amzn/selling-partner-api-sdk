@@ -12,82 +12,69 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.io.IOException;
-import software.amazon.spapi.models.shipping.v2.CollectionsFormDocument;
-/**
- * The Response  for the GenerateCollectionFormResponse operation.
- */
+import java.util.Objects;
+
+/** The Response for the GenerateCollectionFormResponse operation. */
 @Schema(description = "The Response  for the GenerateCollectionFormResponse operation.")
-
-
 public class GenerateCollectionFormResponse {
-  @SerializedName("collectionsFormDocument")
-  private CollectionsFormDocument collectionsFormDocument = null;
+    @SerializedName("collectionsFormDocument")
+    private CollectionsFormDocument collectionsFormDocument = null;
 
-  public GenerateCollectionFormResponse collectionsFormDocument(CollectionsFormDocument collectionsFormDocument) {
-    this.collectionsFormDocument = collectionsFormDocument;
-    return this;
-  }
-
-   /**
-   * Get collectionsFormDocument
-   * @return collectionsFormDocument
-  **/
-  @Schema(description = "")
-  public CollectionsFormDocument getCollectionsFormDocument() {
-    return collectionsFormDocument;
-  }
-
-  public void setCollectionsFormDocument(CollectionsFormDocument collectionsFormDocument) {
-    this.collectionsFormDocument = collectionsFormDocument;
-  }
-
-
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
+    public GenerateCollectionFormResponse collectionsFormDocument(CollectionsFormDocument collectionsFormDocument) {
+        this.collectionsFormDocument = collectionsFormDocument;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * Get collectionsFormDocument
+     *
+     * @return collectionsFormDocument
+     */
+    @Schema(description = "")
+    public CollectionsFormDocument getCollectionsFormDocument() {
+        return collectionsFormDocument;
     }
-    GenerateCollectionFormResponse generateCollectionFormResponse = (GenerateCollectionFormResponse) o;
-    return Objects.equals(this.collectionsFormDocument, generateCollectionFormResponse.collectionsFormDocument);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(collectionsFormDocument);
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class GenerateCollectionFormResponse {\n");
-    
-    sb.append("    collectionsFormDocument: ").append(toIndentedString(collectionsFormDocument)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    public void setCollectionsFormDocument(CollectionsFormDocument collectionsFormDocument) {
+        this.collectionsFormDocument = collectionsFormDocument;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    @Override
+    public boolean equals(java.lang.Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        GenerateCollectionFormResponse generateCollectionFormResponse = (GenerateCollectionFormResponse) o;
+        return Objects.equals(this.collectionsFormDocument, generateCollectionFormResponse.collectionsFormDocument);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(collectionsFormDocument);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class GenerateCollectionFormResponse {\n");
+
+        sb.append("    collectionsFormDocument: ")
+                .append(toIndentedString(collectionsFormDocument))
+                .append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
+    private String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }

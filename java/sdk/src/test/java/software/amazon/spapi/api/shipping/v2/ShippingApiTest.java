@@ -12,19 +12,26 @@
 
 package software.amazon.spapi.api.shipping.v2;
 
-import software.amazon.spapi.ApiResponse;
+import static org.junit.jupiter.api.Assertions.*;
+
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse.BodyHandlers;
+import java.util.*;
+import java.util.stream.Collectors;
 import org.jeasy.random.EasyRandom;
 import org.jeasy.random.EasyRandomParameters;
+import org.junit.jupiter.api.Test;
 import org.threeten.bp.LocalDate;
 import org.threeten.bp.OffsetDateTime;
-import java.math.BigDecimal;
+import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.models.shipping.v2.CancelShipmentResponse;
 import software.amazon.spapi.models.shipping.v2.CreateClaimRequest;
 import software.amazon.spapi.models.shipping.v2.CreateClaimResponse;
 import software.amazon.spapi.models.shipping.v2.DirectPurchaseRequest;
 import software.amazon.spapi.models.shipping.v2.DirectPurchaseResponse;
-import software.amazon.spapi.models.shipping.v2.ErrorList;
 import software.amazon.spapi.models.shipping.v2.GenerateCollectionFormRequest;
 import software.amazon.spapi.models.shipping.v2.GenerateCollectionFormResponse;
 import software.amazon.spapi.models.shipping.v2.GetAccessPointsResponse;
@@ -50,38 +57,27 @@ import software.amazon.spapi.models.shipping.v2.PurchaseShipmentResponse;
 import software.amazon.spapi.models.shipping.v2.SubmitNdrFeedbackRequest;
 import software.amazon.spapi.models.shipping.v2.UnlinkCarrierAccountRequest;
 import software.amazon.spapi.models.shipping.v2.UnlinkCarrierAccountResponse;
-import org.junit.jupiter.api.Test;
-
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse.BodyHandlers;
-import java.util.*;
-import java.util.stream.Collectors;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class ShippingApiTest {
 
     private static String endpoint = "http://localhost:3000";
     private static String authEndpoint = "http://localhost:3000/auth/o2/token";
     private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
-        .clientId("clientId")
-        .clientSecret("clientSecret")
-        .refreshToken("refreshToken")
-        .endpoint(authEndpoint)
-        .build();
+            .clientId("clientId")
+            .clientSecret("clientSecret")
+            .refreshToken("refreshToken")
+            .endpoint(authEndpoint)
+            .build();
 
     private final ShippingApi api = new ShippingApi.Builder()
-        .lwaAuthorizationCredentials(credentials)
-        .endpoint(endpoint)
-        .build();
+            .lwaAuthorizationCredentials(credentials)
+            .endpoint(endpoint)
+            .build();
 
-    private final EasyRandom easyRandom = new EasyRandom(
-        new EasyRandomParameters().randomize(OffsetDateTime.class, OffsetDateTime::now)
-                .randomize(LocalDate.class, LocalDate::now)
-                .collectionSizeRange(1, 2)
-    );
+    private final EasyRandom easyRandom = new EasyRandom(new EasyRandomParameters()
+            .randomize(OffsetDateTime.class, OffsetDateTime::now)
+            .randomize(LocalDate.class, LocalDate::now)
+            .collectionSizeRange(1, 2));
 
     @Test
     public void cancelShipmentTest() throws Exception {
@@ -134,7 +130,8 @@ public class ShippingApiTest {
         String countryCode = easyRandom.nextObject(String.class);
         String postalCode = easyRandom.nextObject(String.class);
 
-        ApiResponse<GetAccessPointsResponse> response = api.getAccessPointsWithHttpInfo(accessPointTypes, countryCode, postalCode, null);
+        ApiResponse<GetAccessPointsResponse> response =
+                api.getAccessPointsWithHttpInfo(accessPointTypes, countryCode, postalCode, null);
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());
@@ -146,7 +143,8 @@ public class ShippingApiTest {
         String requestToken = easyRandom.nextObject(String.class);
         String rateId = easyRandom.nextObject(String.class);
 
-        ApiResponse<GetAdditionalInputsResponse> response = api.getAdditionalInputsWithHttpInfo(requestToken, rateId, null);
+        ApiResponse<GetAdditionalInputsResponse> response =
+                api.getAdditionalInputsWithHttpInfo(requestToken, rateId, null);
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());
@@ -212,7 +210,8 @@ public class ShippingApiTest {
         String shipmentId = easyRandom.nextObject(String.class);
         String packageClientReferenceId = easyRandom.nextObject(String.class);
 
-        ApiResponse<GetShipmentDocumentsResponse> response = api.getShipmentDocumentsWithHttpInfo(shipmentId, packageClientReferenceId, null, null, null);
+        ApiResponse<GetShipmentDocumentsResponse> response =
+                api.getShipmentDocumentsWithHttpInfo(shipmentId, packageClientReferenceId, null, null, null);
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());
@@ -293,7 +292,6 @@ public class ShippingApiTest {
         SubmitNdrFeedbackRequest body = easyRandom.nextObject(SubmitNdrFeedbackRequest.class);
 
         api.submitNdrFeedbackWithHttpInfo(body, null);
-
     }
 
     @Test
@@ -302,23 +300,23 @@ public class ShippingApiTest {
         UnlinkCarrierAccountRequest body = easyRandom.nextObject(UnlinkCarrierAccountRequest.class);
         String carrierId = easyRandom.nextObject(String.class);
 
-        ApiResponse<UnlinkCarrierAccountResponse> response = api.unlinkCarrierAccountWithHttpInfo(body, carrierId, null);
+        ApiResponse<UnlinkCarrierAccountResponse> response =
+                api.unlinkCarrierAccountWithHttpInfo(body, carrierId, null);
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());
     }
 
-
     private void instructBackendMock(String response, String code) throws Exception {
         HttpRequest request = HttpRequest.newBuilder()
-              .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
-              .POST(HttpRequest.BodyPublishers.noBody())
-              .build();
+                .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+                .POST(HttpRequest.BodyPublishers.noBody())
+                .build();
 
         HttpClient.newHttpClient().send(request, BodyHandlers.discarding());
     }
 
     private static void assertValidResponsePayload(int statusCode, Object body) {
-        if(statusCode != 204) assertNotNull(body);
+        if (statusCode != 204) assertNotNull(body);
     }
 }

@@ -12,81 +12,67 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.io.IOException;
-/**
- * The response schema for the createClaim operation.
- */
+import java.util.Objects;
+
+/** The response schema for the createClaim operation. */
 @Schema(description = "The response schema for the createClaim operation.")
-
-
 public class CreateClaimResponse {
-  @SerializedName("claimId")
-  private String claimId = null;
+    @SerializedName("claimId")
+    private String claimId = null;
 
-  public CreateClaimResponse claimId(String claimId) {
-    this.claimId = claimId;
-    return this;
-  }
-
-   /**
-   * Get claimId
-   * @return claimId
-  **/
-  @Schema(description = "")
-  public String getClaimId() {
-    return claimId;
-  }
-
-  public void setClaimId(String claimId) {
-    this.claimId = claimId;
-  }
-
-
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
+    public CreateClaimResponse claimId(String claimId) {
+        this.claimId = claimId;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * Get claimId
+     *
+     * @return claimId
+     */
+    @Schema(description = "")
+    public String getClaimId() {
+        return claimId;
     }
-    CreateClaimResponse createClaimResponse = (CreateClaimResponse) o;
-    return Objects.equals(this.claimId, createClaimResponse.claimId);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(claimId);
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class CreateClaimResponse {\n");
-    
-    sb.append("    claimId: ").append(toIndentedString(claimId)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    public void setClaimId(String claimId) {
+        this.claimId = claimId;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    @Override
+    public boolean equals(java.lang.Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        CreateClaimResponse createClaimResponse = (CreateClaimResponse) o;
+        return Objects.equals(this.claimId, createClaimResponse.claimId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(claimId);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class CreateClaimResponse {\n");
+
+        sb.append("    claimId: ").append(toIndentedString(claimId)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
+    private String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }

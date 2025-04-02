@@ -12,62 +12,57 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
-import java.util.Objects;
-import java.util.Arrays;
-import io.swagger.v3.oas.annotations.media.Schema;
-import com.google.gson.annotations.SerializedName;
-import java.io.IOException;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
-/**
- * The file format of the document.
- */
+/** The file format of the document. */
 @JsonAdapter(DocumentFormat.Adapter.class)
 public enum DocumentFormat {
-  @SerializedName("PDF")
-  PDF("PDF"),
-  @SerializedName("PNG")
-  PNG("PNG"),
-  @SerializedName("ZPL")
-  ZPL("ZPL");
+    @SerializedName("PDF")
+    PDF("PDF"),
+    @SerializedName("PNG")
+    PNG("PNG"),
+    @SerializedName("ZPL")
+    ZPL("ZPL");
 
-  private String value;
+    private String value;
 
-  DocumentFormat(String value) {
-    this.value = value;
-  }
-
-  public String getValue() {
-    return value;
-  }
-
-  @Override
-  public String toString() {
-    return String.valueOf(value);
-  }
-
-  public static DocumentFormat fromValue(String input) {
-    for (DocumentFormat b : DocumentFormat.values()) {
-      if (b.value.equals(input)) {
-        return b;
-      }
+    DocumentFormat(String value) {
+        this.value = value;
     }
-    return null;
-  }
 
-  public static class Adapter extends TypeAdapter<DocumentFormat> {
-    @Override
-    public void write(final JsonWriter jsonWriter, final DocumentFormat enumeration) throws IOException {
-      jsonWriter.value(String.valueOf(enumeration.getValue()));
+    public String getValue() {
+        return value;
     }
 
     @Override
-    public DocumentFormat read(final JsonReader jsonReader) throws IOException {
-      Object value = jsonReader.nextString();
-      return DocumentFormat.fromValue((String)(value));
+    public String toString() {
+        return String.valueOf(value);
     }
-  }
+
+    public static DocumentFormat fromValue(String input) {
+        for (DocumentFormat b : DocumentFormat.values()) {
+            if (b.value.equals(input)) {
+                return b;
+            }
+        }
+        return null;
+    }
+
+    public static class Adapter extends TypeAdapter<DocumentFormat> {
+        @Override
+        public void write(final JsonWriter jsonWriter, final DocumentFormat enumeration) throws IOException {
+            jsonWriter.value(String.valueOf(enumeration.getValue()));
+        }
+
+        @Override
+        public DocumentFormat read(final JsonReader jsonReader) throws IOException {
+            Object value = jsonReader.nextString();
+            return DocumentFormat.fromValue((String) (value));
+        }
+    }
 }

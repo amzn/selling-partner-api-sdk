@@ -12,106 +12,93 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.io.IOException;
-import software.amazon.spapi.models.shipping.v2.Status;
-import software.amazon.spapi.models.shipping.v2.TrackingDetailCodes;
-/**
- * A package status summary.
- */
+import java.util.Objects;
+
+/** A package status summary. */
 @Schema(description = "A package status summary.")
-
-
 public class TrackingSummary {
-  @SerializedName("status")
-  private Status status = null;
+    @SerializedName("status")
+    private Status status = null;
 
-  @SerializedName("trackingDetailCodes")
-  private TrackingDetailCodes trackingDetailCodes = null;
+    @SerializedName("trackingDetailCodes")
+    private TrackingDetailCodes trackingDetailCodes = null;
 
-  public TrackingSummary status(Status status) {
-    this.status = status;
-    return this;
-  }
-
-   /**
-   * Get status
-   * @return status
-  **/
-  @Schema(description = "")
-  public Status getStatus() {
-    return status;
-  }
-
-  public void setStatus(Status status) {
-    this.status = status;
-  }
-
-  public TrackingSummary trackingDetailCodes(TrackingDetailCodes trackingDetailCodes) {
-    this.trackingDetailCodes = trackingDetailCodes;
-    return this;
-  }
-
-   /**
-   * Get trackingDetailCodes
-   * @return trackingDetailCodes
-  **/
-  @Schema(description = "")
-  public TrackingDetailCodes getTrackingDetailCodes() {
-    return trackingDetailCodes;
-  }
-
-  public void setTrackingDetailCodes(TrackingDetailCodes trackingDetailCodes) {
-    this.trackingDetailCodes = trackingDetailCodes;
-  }
-
-
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
+    public TrackingSummary status(Status status) {
+        this.status = status;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * Get status
+     *
+     * @return status
+     */
+    @Schema(description = "")
+    public Status getStatus() {
+        return status;
     }
-    TrackingSummary trackingSummary = (TrackingSummary) o;
-    return Objects.equals(this.status, trackingSummary.status) &&
-        Objects.equals(this.trackingDetailCodes, trackingSummary.trackingDetailCodes);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(status, trackingDetailCodes);
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class TrackingSummary {\n");
-    
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    trackingDetailCodes: ").append(toIndentedString(trackingDetailCodes)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    public void setStatus(Status status) {
+        this.status = status;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    public TrackingSummary trackingDetailCodes(TrackingDetailCodes trackingDetailCodes) {
+        this.trackingDetailCodes = trackingDetailCodes;
+        return this;
+    }
+
+    /**
+     * Get trackingDetailCodes
+     *
+     * @return trackingDetailCodes
+     */
+    @Schema(description = "")
+    public TrackingDetailCodes getTrackingDetailCodes() {
+        return trackingDetailCodes;
+    }
+
+    public void setTrackingDetailCodes(TrackingDetailCodes trackingDetailCodes) {
+        this.trackingDetailCodes = trackingDetailCodes;
+    }
+
+    @Override
+    public boolean equals(java.lang.Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        TrackingSummary trackingSummary = (TrackingSummary) o;
+        return Objects.equals(this.status, trackingSummary.status)
+                && Objects.equals(this.trackingDetailCodes, trackingSummary.trackingDetailCodes);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(status, trackingDetailCodes);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class TrackingSummary {\n");
+
+        sb.append("    status: ").append(toIndentedString(status)).append("\n");
+        sb.append("    trackingDetailCodes: ")
+                .append(toIndentedString(trackingDetailCodes))
+                .append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
+    private String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }

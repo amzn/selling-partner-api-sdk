@@ -12,62 +12,60 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
-import java.util.Objects;
-import java.util.Arrays;
-import io.swagger.v3.oas.annotations.media.Schema;
-import com.google.gson.annotations.SerializedName;
-import java.io.IOException;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 /**
- * Enumerates the attributes supported to be printed on a shipping label. The values for these attributes are retrieved from GetRates/OneClickShipment request
+ * Enumerates the attributes supported to be printed on a shipping label. The values for these attributes are retrieved
+ * from GetRates/OneClickShipment request
  */
 @JsonAdapter(LabelAttribute.Adapter.class)
 public enum LabelAttribute {
-  @SerializedName("PACKAGE_CLIENT_REFERENCE_ID")
-  PACKAGE_CLIENT_REFERENCE_ID("PACKAGE_CLIENT_REFERENCE_ID"),
-  @SerializedName("SELLER_DISPLAY_NAME")
-  SELLER_DISPLAY_NAME("SELLER_DISPLAY_NAME"),
-  @SerializedName("COLLECT_ON_DELIVERY_AMOUNT")
-  COLLECT_ON_DELIVERY_AMOUNT("COLLECT_ON_DELIVERY_AMOUNT");
+    @SerializedName("PACKAGE_CLIENT_REFERENCE_ID")
+    PACKAGE_CLIENT_REFERENCE_ID("PACKAGE_CLIENT_REFERENCE_ID"),
+    @SerializedName("SELLER_DISPLAY_NAME")
+    SELLER_DISPLAY_NAME("SELLER_DISPLAY_NAME"),
+    @SerializedName("COLLECT_ON_DELIVERY_AMOUNT")
+    COLLECT_ON_DELIVERY_AMOUNT("COLLECT_ON_DELIVERY_AMOUNT");
 
-  private String value;
+    private String value;
 
-  LabelAttribute(String value) {
-    this.value = value;
-  }
-
-  public String getValue() {
-    return value;
-  }
-
-  @Override
-  public String toString() {
-    return String.valueOf(value);
-  }
-
-  public static LabelAttribute fromValue(String input) {
-    for (LabelAttribute b : LabelAttribute.values()) {
-      if (b.value.equals(input)) {
-        return b;
-      }
+    LabelAttribute(String value) {
+        this.value = value;
     }
-    return null;
-  }
 
-  public static class Adapter extends TypeAdapter<LabelAttribute> {
-    @Override
-    public void write(final JsonWriter jsonWriter, final LabelAttribute enumeration) throws IOException {
-      jsonWriter.value(String.valueOf(enumeration.getValue()));
+    public String getValue() {
+        return value;
     }
 
     @Override
-    public LabelAttribute read(final JsonReader jsonReader) throws IOException {
-      Object value = jsonReader.nextString();
-      return LabelAttribute.fromValue((String)(value));
+    public String toString() {
+        return String.valueOf(value);
     }
-  }
+
+    public static LabelAttribute fromValue(String input) {
+        for (LabelAttribute b : LabelAttribute.values()) {
+            if (b.value.equals(input)) {
+                return b;
+            }
+        }
+        return null;
+    }
+
+    public static class Adapter extends TypeAdapter<LabelAttribute> {
+        @Override
+        public void write(final JsonWriter jsonWriter, final LabelAttribute enumeration) throws IOException {
+            jsonWriter.value(String.valueOf(enumeration.getValue()));
+        }
+
+        @Override
+        public LabelAttribute read(final JsonReader jsonReader) throws IOException {
+            Object value = jsonReader.nextString();
+            return LabelAttribute.fromValue((String) (value));
+        }
+    }
 }

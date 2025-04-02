@@ -12,129 +12,117 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.io.IOException;
-import software.amazon.spapi.models.shipping.v2.Benefits;
-import software.amazon.spapi.models.shipping.v2.PackageDocumentDetail;
-/**
- * The payload for the getShipmentDocuments operation.
- */
+import java.util.Objects;
+
+/** The payload for the getShipmentDocuments operation. */
 @Schema(description = "The payload for the getShipmentDocuments operation.")
-
-
 public class GetShipmentDocumentsResult {
-  @SerializedName("shipmentId")
-  private String shipmentId = null;
+    @SerializedName("shipmentId")
+    private String shipmentId = null;
 
-  @SerializedName("packageDocumentDetail")
-  private PackageDocumentDetail packageDocumentDetail = null;
+    @SerializedName("packageDocumentDetail")
+    private PackageDocumentDetail packageDocumentDetail = null;
 
-  @SerializedName("benefits")
-  private Benefits benefits = null;
+    @SerializedName("benefits")
+    private Benefits benefits = null;
 
-  public GetShipmentDocumentsResult shipmentId(String shipmentId) {
-    this.shipmentId = shipmentId;
-    return this;
-  }
-
-   /**
-   * Get shipmentId
-   * @return shipmentId
-  **/
-  @Schema(required = true, description = "")
-  public String getShipmentId() {
-    return shipmentId;
-  }
-
-  public void setShipmentId(String shipmentId) {
-    this.shipmentId = shipmentId;
-  }
-
-  public GetShipmentDocumentsResult packageDocumentDetail(PackageDocumentDetail packageDocumentDetail) {
-    this.packageDocumentDetail = packageDocumentDetail;
-    return this;
-  }
-
-   /**
-   * Get packageDocumentDetail
-   * @return packageDocumentDetail
-  **/
-  @Schema(required = true, description = "")
-  public PackageDocumentDetail getPackageDocumentDetail() {
-    return packageDocumentDetail;
-  }
-
-  public void setPackageDocumentDetail(PackageDocumentDetail packageDocumentDetail) {
-    this.packageDocumentDetail = packageDocumentDetail;
-  }
-
-  public GetShipmentDocumentsResult benefits(Benefits benefits) {
-    this.benefits = benefits;
-    return this;
-  }
-
-   /**
-   * Get benefits
-   * @return benefits
-  **/
-  @Schema(description = "")
-  public Benefits getBenefits() {
-    return benefits;
-  }
-
-  public void setBenefits(Benefits benefits) {
-    this.benefits = benefits;
-  }
-
-
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
+    public GetShipmentDocumentsResult shipmentId(String shipmentId) {
+        this.shipmentId = shipmentId;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * Get shipmentId
+     *
+     * @return shipmentId
+     */
+    @Schema(required = true, description = "")
+    public String getShipmentId() {
+        return shipmentId;
     }
-    GetShipmentDocumentsResult getShipmentDocumentsResult = (GetShipmentDocumentsResult) o;
-    return Objects.equals(this.shipmentId, getShipmentDocumentsResult.shipmentId) &&
-        Objects.equals(this.packageDocumentDetail, getShipmentDocumentsResult.packageDocumentDetail) &&
-        Objects.equals(this.benefits, getShipmentDocumentsResult.benefits);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(shipmentId, packageDocumentDetail, benefits);
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class GetShipmentDocumentsResult {\n");
-    
-    sb.append("    shipmentId: ").append(toIndentedString(shipmentId)).append("\n");
-    sb.append("    packageDocumentDetail: ").append(toIndentedString(packageDocumentDetail)).append("\n");
-    sb.append("    benefits: ").append(toIndentedString(benefits)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    public void setShipmentId(String shipmentId) {
+        this.shipmentId = shipmentId;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    public GetShipmentDocumentsResult packageDocumentDetail(PackageDocumentDetail packageDocumentDetail) {
+        this.packageDocumentDetail = packageDocumentDetail;
+        return this;
+    }
+
+    /**
+     * Get packageDocumentDetail
+     *
+     * @return packageDocumentDetail
+     */
+    @Schema(required = true, description = "")
+    public PackageDocumentDetail getPackageDocumentDetail() {
+        return packageDocumentDetail;
+    }
+
+    public void setPackageDocumentDetail(PackageDocumentDetail packageDocumentDetail) {
+        this.packageDocumentDetail = packageDocumentDetail;
+    }
+
+    public GetShipmentDocumentsResult benefits(Benefits benefits) {
+        this.benefits = benefits;
+        return this;
+    }
+
+    /**
+     * Get benefits
+     *
+     * @return benefits
+     */
+    @Schema(description = "")
+    public Benefits getBenefits() {
+        return benefits;
+    }
+
+    public void setBenefits(Benefits benefits) {
+        this.benefits = benefits;
+    }
+
+    @Override
+    public boolean equals(java.lang.Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        GetShipmentDocumentsResult getShipmentDocumentsResult = (GetShipmentDocumentsResult) o;
+        return Objects.equals(this.shipmentId, getShipmentDocumentsResult.shipmentId)
+                && Objects.equals(this.packageDocumentDetail, getShipmentDocumentsResult.packageDocumentDetail)
+                && Objects.equals(this.benefits, getShipmentDocumentsResult.benefits);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(shipmentId, packageDocumentDetail, benefits);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class GetShipmentDocumentsResult {\n");
+
+        sb.append("    shipmentId: ").append(toIndentedString(shipmentId)).append("\n");
+        sb.append("    packageDocumentDetail: ")
+                .append(toIndentedString(packageDocumentDetail))
+                .append("\n");
+        sb.append("    benefits: ").append(toIndentedString(benefits)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
+    private String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }

@@ -12,64 +12,59 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
-import java.util.Objects;
-import java.util.Arrays;
-import io.swagger.v3.oas.annotations.media.Schema;
-import com.google.gson.annotations.SerializedName;
-import java.io.IOException;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
-/**
- * The type of shipping document.
- */
+/** The type of shipping document. */
 @JsonAdapter(DocumentType.Adapter.class)
 public enum DocumentType {
-  @SerializedName("PACKSLIP")
-  PACKSLIP("PACKSLIP"),
-  @SerializedName("LABEL")
-  LABEL("LABEL"),
-  @SerializedName("RECEIPT")
-  RECEIPT("RECEIPT"),
-  @SerializedName("CUSTOM_FORM")
-  CUSTOM_FORM("CUSTOM_FORM");
+    @SerializedName("PACKSLIP")
+    PACKSLIP("PACKSLIP"),
+    @SerializedName("LABEL")
+    LABEL("LABEL"),
+    @SerializedName("RECEIPT")
+    RECEIPT("RECEIPT"),
+    @SerializedName("CUSTOM_FORM")
+    CUSTOM_FORM("CUSTOM_FORM");
 
-  private String value;
+    private String value;
 
-  DocumentType(String value) {
-    this.value = value;
-  }
-
-  public String getValue() {
-    return value;
-  }
-
-  @Override
-  public String toString() {
-    return String.valueOf(value);
-  }
-
-  public static DocumentType fromValue(String input) {
-    for (DocumentType b : DocumentType.values()) {
-      if (b.value.equals(input)) {
-        return b;
-      }
+    DocumentType(String value) {
+        this.value = value;
     }
-    return null;
-  }
 
-  public static class Adapter extends TypeAdapter<DocumentType> {
-    @Override
-    public void write(final JsonWriter jsonWriter, final DocumentType enumeration) throws IOException {
-      jsonWriter.value(String.valueOf(enumeration.getValue()));
+    public String getValue() {
+        return value;
     }
 
     @Override
-    public DocumentType read(final JsonReader jsonReader) throws IOException {
-      Object value = jsonReader.nextString();
-      return DocumentType.fromValue((String)(value));
+    public String toString() {
+        return String.valueOf(value);
     }
-  }
+
+    public static DocumentType fromValue(String input) {
+        for (DocumentType b : DocumentType.values()) {
+            if (b.value.equals(input)) {
+                return b;
+            }
+        }
+        return null;
+    }
+
+    public static class Adapter extends TypeAdapter<DocumentType> {
+        @Override
+        public void write(final JsonWriter jsonWriter, final DocumentType enumeration) throws IOException {
+            jsonWriter.value(String.valueOf(enumeration.getValue()));
+        }
+
+        @Override
+        public DocumentType read(final JsonReader jsonReader) throws IOException {
+            Object value = jsonReader.nextString();
+            return DocumentType.fromValue((String) (value));
+        }
+    }
 }

@@ -12,62 +12,57 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
-import java.util.Objects;
-import java.util.Arrays;
-import io.swagger.v3.oas.annotations.media.Schema;
-import com.google.gson.annotations.SerializedName;
-import java.io.IOException;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
-/**
- * The type of NDR action shipper wants to take for a particular shipment.
- */
+/** The type of NDR action shipper wants to take for a particular shipment. */
 @JsonAdapter(NdrAction.Adapter.class)
 public enum NdrAction {
-  @SerializedName("RESCHEDULE")
-  RESCHEDULE("RESCHEDULE"),
-  @SerializedName("REATTEMPT")
-  REATTEMPT("REATTEMPT"),
-  @SerializedName("RTO")
-  RTO("RTO");
+    @SerializedName("RESCHEDULE")
+    RESCHEDULE("RESCHEDULE"),
+    @SerializedName("REATTEMPT")
+    REATTEMPT("REATTEMPT"),
+    @SerializedName("RTO")
+    RTO("RTO");
 
-  private String value;
+    private String value;
 
-  NdrAction(String value) {
-    this.value = value;
-  }
-
-  public String getValue() {
-    return value;
-  }
-
-  @Override
-  public String toString() {
-    return String.valueOf(value);
-  }
-
-  public static NdrAction fromValue(String input) {
-    for (NdrAction b : NdrAction.values()) {
-      if (b.value.equals(input)) {
-        return b;
-      }
+    NdrAction(String value) {
+        this.value = value;
     }
-    return null;
-  }
 
-  public static class Adapter extends TypeAdapter<NdrAction> {
-    @Override
-    public void write(final JsonWriter jsonWriter, final NdrAction enumeration) throws IOException {
-      jsonWriter.value(String.valueOf(enumeration.getValue()));
+    public String getValue() {
+        return value;
     }
 
     @Override
-    public NdrAction read(final JsonReader jsonReader) throws IOException {
-      Object value = jsonReader.nextString();
-      return NdrAction.fromValue((String)(value));
+    public String toString() {
+        return String.valueOf(value);
     }
-  }
+
+    public static NdrAction fromValue(String input) {
+        for (NdrAction b : NdrAction.values()) {
+            if (b.value.equals(input)) {
+                return b;
+            }
+        }
+        return null;
+    }
+
+    public static class Adapter extends TypeAdapter<NdrAction> {
+        @Override
+        public void write(final JsonWriter jsonWriter, final NdrAction enumeration) throws IOException {
+            jsonWriter.value(String.valueOf(enumeration.getValue()));
+        }
+
+        @Override
+        public NdrAction read(final JsonReader jsonReader) throws IOException {
+            Object value = jsonReader.nextString();
+            return NdrAction.fromValue((String) (value));
+        }
+    }
 }

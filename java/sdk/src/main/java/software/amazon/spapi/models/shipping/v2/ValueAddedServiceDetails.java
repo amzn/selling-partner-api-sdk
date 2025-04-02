@@ -12,82 +12,69 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.io.IOException;
-import software.amazon.spapi.models.shipping.v2.CollectOnDelivery;
-/**
- * A collection of supported value-added services.
- */
+import java.util.Objects;
+
+/** A collection of supported value-added services. */
 @Schema(description = "A collection of supported value-added services.")
-
-
 public class ValueAddedServiceDetails {
-  @SerializedName("collectOnDelivery")
-  private CollectOnDelivery collectOnDelivery = null;
+    @SerializedName("collectOnDelivery")
+    private CollectOnDelivery collectOnDelivery = null;
 
-  public ValueAddedServiceDetails collectOnDelivery(CollectOnDelivery collectOnDelivery) {
-    this.collectOnDelivery = collectOnDelivery;
-    return this;
-  }
-
-   /**
-   * Get collectOnDelivery
-   * @return collectOnDelivery
-  **/
-  @Schema(description = "")
-  public CollectOnDelivery getCollectOnDelivery() {
-    return collectOnDelivery;
-  }
-
-  public void setCollectOnDelivery(CollectOnDelivery collectOnDelivery) {
-    this.collectOnDelivery = collectOnDelivery;
-  }
-
-
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
+    public ValueAddedServiceDetails collectOnDelivery(CollectOnDelivery collectOnDelivery) {
+        this.collectOnDelivery = collectOnDelivery;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * Get collectOnDelivery
+     *
+     * @return collectOnDelivery
+     */
+    @Schema(description = "")
+    public CollectOnDelivery getCollectOnDelivery() {
+        return collectOnDelivery;
     }
-    ValueAddedServiceDetails valueAddedServiceDetails = (ValueAddedServiceDetails) o;
-    return Objects.equals(this.collectOnDelivery, valueAddedServiceDetails.collectOnDelivery);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(collectOnDelivery);
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ValueAddedServiceDetails {\n");
-    
-    sb.append("    collectOnDelivery: ").append(toIndentedString(collectOnDelivery)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    public void setCollectOnDelivery(CollectOnDelivery collectOnDelivery) {
+        this.collectOnDelivery = collectOnDelivery;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    @Override
+    public boolean equals(java.lang.Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ValueAddedServiceDetails valueAddedServiceDetails = (ValueAddedServiceDetails) o;
+        return Objects.equals(this.collectOnDelivery, valueAddedServiceDetails.collectOnDelivery);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(collectOnDelivery);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class ValueAddedServiceDetails {\n");
+
+        sb.append("    collectOnDelivery: ")
+                .append(toIndentedString(collectOnDelivery))
+                .append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
+    private String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }

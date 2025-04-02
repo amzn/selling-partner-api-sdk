@@ -12,60 +12,55 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
-import java.util.Objects;
-import java.util.Arrays;
-import io.swagger.v3.oas.annotations.media.Schema;
-import com.google.gson.annotations.SerializedName;
-import java.io.IOException;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
-/**
- * Payment type of the purchase.
- */
+/** Payment type of the purchase. */
 @JsonAdapter(PaymentType.Adapter.class)
 public enum PaymentType {
-  @SerializedName("PAY_THROUGH_AMAZON")
-  THROUGH_AMAZON("PAY_THROUGH_AMAZON"),
-  @SerializedName("PAY_DIRECT_TO_CARRIER")
-  DIRECT_TO_CARRIER("PAY_DIRECT_TO_CARRIER");
+    @SerializedName("PAY_THROUGH_AMAZON")
+    THROUGH_AMAZON("PAY_THROUGH_AMAZON"),
+    @SerializedName("PAY_DIRECT_TO_CARRIER")
+    DIRECT_TO_CARRIER("PAY_DIRECT_TO_CARRIER");
 
-  private String value;
+    private String value;
 
-  PaymentType(String value) {
-    this.value = value;
-  }
-
-  public String getValue() {
-    return value;
-  }
-
-  @Override
-  public String toString() {
-    return String.valueOf(value);
-  }
-
-  public static PaymentType fromValue(String input) {
-    for (PaymentType b : PaymentType.values()) {
-      if (b.value.equals(input)) {
-        return b;
-      }
+    PaymentType(String value) {
+        this.value = value;
     }
-    return null;
-  }
 
-  public static class Adapter extends TypeAdapter<PaymentType> {
-    @Override
-    public void write(final JsonWriter jsonWriter, final PaymentType enumeration) throws IOException {
-      jsonWriter.value(String.valueOf(enumeration.getValue()));
+    public String getValue() {
+        return value;
     }
 
     @Override
-    public PaymentType read(final JsonReader jsonReader) throws IOException {
-      Object value = jsonReader.nextString();
-      return PaymentType.fromValue((String)(value));
+    public String toString() {
+        return String.valueOf(value);
     }
-  }
+
+    public static PaymentType fromValue(String input) {
+        for (PaymentType b : PaymentType.values()) {
+            if (b.value.equals(input)) {
+                return b;
+            }
+        }
+        return null;
+    }
+
+    public static class Adapter extends TypeAdapter<PaymentType> {
+        @Override
+        public void write(final JsonWriter jsonWriter, final PaymentType enumeration) throws IOException {
+            jsonWriter.value(String.valueOf(enumeration.getValue()));
+        }
+
+        @Override
+        public PaymentType read(final JsonReader jsonReader) throws IOException {
+            Object value = jsonReader.nextString();
+            return PaymentType.fromValue((String) (value));
+        }
+    }
 }
