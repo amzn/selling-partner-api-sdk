@@ -90,6 +90,9 @@ jobs:
         working-directory: ./selling-partner-api-sdk/php/sdk
         run: |
           sed -i "s/?bool \$include_details = 'true'/?bool \$include_details = true/g" lib/Api/vendor/df/orders/v2021_12_28/VendorOrdersApi.php
+      - name: Run linter
+        working-directory: ./selling-partner-api-sdk/php/sdk
+        run: PHP_CS_FIXER_IGNORE_ENV=1 ./vendor/bin/php-cs-fixer fix
       - name: Create PR
         uses: peter-evans/create-pull-request@v7
         with:
