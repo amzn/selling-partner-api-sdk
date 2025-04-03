@@ -11,26 +11,10 @@ import {{invokerPackage}}.Pair;
 import {{invokerPackage}}.ProgressRequestBody;
 import {{invokerPackage}}.ProgressResponseBody;
 import {{invokerPackage}}.StringUtil;
-{{#performBeanValidation}}
-import {{invokerPackage}}.BeanValidationException;
-{{/performBeanValidation}}
 
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
-
-{{#useBeanValidation}}
-import javax.validation.constraints.*;
-{{/useBeanValidation}}
-{{#performBeanValidation}}
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.ValidatorFactory;
-import javax.validation.executable.ExecutableValidator;
-import java.util.Set;
-import java.lang.reflect.Method;
-import java.lang.reflect.Type;
-{{/performBeanValidation}}
 
 {{#imports}}import {{import}};
 {{/imports}}
@@ -54,19 +38,7 @@ import com.amazon.SellingPartnerAPIAA.LWAException;
 public class {{classname}} {
     private ApiClient {{localVariablePrefix}}apiClient;
 
-    {{classname}}() {
-        this(Configuration.getDefaultApiClient());
-    }
-
     public {{classname}}(ApiClient apiClient) {
-        this.{{localVariablePrefix}}apiClient = apiClient;
-    }
-
-    public ApiClient getApiClient() {
-        return {{localVariablePrefix}}apiClient;
-    }
-
-    public void setApiClient(ApiClient apiClient) {
         this.{{localVariablePrefix}}apiClient = apiClient;
     }
 
@@ -123,14 +95,11 @@ public class {{classname}} {
         {{localVariablePrefix}}localVarHeaderParams.put("Content-Type", {{localVariablePrefix}}localVarContentType);
 
         if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
-                @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
                     okhttp3.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
                     .body(new ProgressResponseBody(originalResponse.body(), progressListener))
                     .build();
-                }
             });
         }
 
@@ -141,9 +110,7 @@ public class {{classname}} {
     {{#isDeprecated}}
     @Deprecated
     {{/isDeprecated}}
-    @SuppressWarnings("rawtypes")
     private okhttp3.Call {{operationId}}ValidateBeforeCall({{#allParams}}{{{dataType}}} {{paramName}}, {{/allParams}}final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException, LWAException {
-        {{^performBeanValidation}}
         {{#allParams}}{{#required}}
         // verify the required parameter '{{paramName}}' is set
         if ({{paramName}} == null) {
@@ -151,36 +118,7 @@ public class {{classname}} {
         }
         {{/required}}{{/allParams}}
 
-        okhttp3.Call {{localVariablePrefix}}call = {{operationId}}Call({{#allParams}}{{paramName}}, {{/allParams}}progressListener, progressRequestListener);
-        return {{localVariablePrefix}}call;
-
-        {{/performBeanValidation}}
-        {{#performBeanValidation}}
-        try {
-            ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-            ExecutableValidator executableValidator = factory.getValidator().forExecutables();
-
-            Object[] parameterValues = { {{#allParams}}{{paramName}}{{#hasMore}}, {{/hasMore}}{{/allParams}} };
-            Method method = this.getClass().getMethod("{{operationId}}WithHttpInfo"{{#allParams}}, {{#isListContainer}}java.util.List{{/isListContainer}}{{#isMapContainer}}java.util.Map{{/isMapContainer}}{{^isListContainer}}{{^isMapContainer}}{{{dataType}}}{{/isMapContainer}}{{/isListContainer}}.class{{/allParams}});
-            Set<ConstraintViolation<{{classname}}>> violations = executableValidator.validateParameters(this, method,
-                    parameterValues);
-
-            if (violations.size() == 0) {
-                okhttp3.Call {{localVariablePrefix}}call = {{operationId}}Call({{#allParams}}{{paramName}}, {{/allParams}}progressListener, progressRequestListener);
-                return {{localVariablePrefix}}call;
-
-            } else {
-                throw new BeanValidationException((Set) violations);
-            }
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-            throw new ApiException(e.getMessage());
-        } catch (SecurityException e) {
-            e.printStackTrace();
-            throw new ApiException(e.getMessage());
-        }
-
-        {{/performBeanValidation}}
+        return {{operationId}}Call({{#allParams}}{{paramName}}, {{/allParams}}progressListener, progressRequestListener);
     }
 
     /**
@@ -255,19 +193,8 @@ public class {{classname}} {
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
+            progressListener = callback::onDownloadProgress;
+            progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call {{localVariablePrefix}}call = {{operationId}}ValidateBeforeCall({{#allParams}}{{paramName}}, {{/allParams}}progressListener, progressRequestListener);
