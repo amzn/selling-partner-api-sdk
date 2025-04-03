@@ -2,6 +2,7 @@ plugins {
     id "com.github.node-gradle.node" version "7.1.0"
     id 'maven-publish'
     id "signing"
+    id "com.diffplug.spotless" version "7.0.2"
 }
 
 apply plugin: 'java'
@@ -118,6 +119,24 @@ test {
     dependsOn startMockBackend
     useJUnitPlatform()
     finalizedBy stopMockBackend
+}
+
+spotless {
+	format 'misc', {
+		target '*.gradle', '.gitignore'
+
+		trimTrailingWhitespace()
+		leadingSpacesToTabs()
+		endWithNewline()
+	}
+
+	java {
+		target 'src/*/java/**/*.java'
+		palantirJavaFormat('2.39.0').formatJavadoc(true)
+		formatAnnotations()
+		importOrder()
+		removeUnusedImports()
+	}
 }
 
 npmInstall.dependsOn("processTestResources")

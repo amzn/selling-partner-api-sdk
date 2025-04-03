@@ -83,6 +83,8 @@ jobs:
           java -jar openapi-generator-cli-7.9.0.jar generate -i ../../selling-partner-api-models/models/vendor-shipments-api-model/vendorShipments.json -g php -t config/templates -o sdk -c config/config.json --additional-properties=modelPackage=Model\\vendor\\shipments\\v1,apiPackage=Api\\vendor\\shipments\\v1 && \
           java -jar openapi-generator-cli-7.9.0.jar generate -i ../../selling-partner-api-models/models/vendor-transaction-status-api-model/vendorTransactionStatus.json -g php -t config/templates -o sdk -c config/config.json --additional-properties=modelPackage=Model\\vendor\\transactionStatus\\v1,apiPackage=Api\\vendor\\transactionStatus\\v1 && \
           java -jar openapi-generator-cli-7.9.0.jar generate -i ../../selling-partner-api-models/models/vehicles-api-model/vehicles_2024-11-01.json -g php -t config/templates -o sdk -c config/config.json --additional-properties=modelPackage=Model\\vehicles\\v2024_11_01,apiPackage=Api\\vehicles\\v2024_11_01
+      - name: Copy README
+        run: cp ./selling-partner-api-sdk/php/README.md ./selling-partner-api-sdk/php/sdk/README.md
       # This operation should be removed when vendorDirectFulfillmentOrders_2021-12-28.json is fixed
       - name: Fix PHP vendorDirectFulfillmentOrders bool default value
         working-directory: ./selling-partner-api-sdk/php/sdk
