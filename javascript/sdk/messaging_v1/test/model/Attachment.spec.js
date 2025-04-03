@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForMessaging.Attachment);
     });
 
-    it('should have the property uploadDestinationId (base name: "uploadDestinationId")', function() {
+    it('should have the property uploadDestinationId', function() {
       // verify property exists
       expect(instance).to.have.property('uploadDestinationId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.uploadDestinationId = validValue;
-      expect(instance.uploadDestinationId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.uploadDestinationId = expectedValue;
+      expect(instance.uploadDestinationId).to.equal(expectedValue);
     });
 
-    it('should have the property fileName (base name: "fileName")', function() {
+    it('should have the property fileName', function() {
       // verify property exists
       expect(instance).to.have.property('fileName');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.fileName = validValue;
-      expect(instance.fileName).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.fileName = expectedValue;
+      expect(instance.fileName).to.equal(expectedValue);
     });
 
   });

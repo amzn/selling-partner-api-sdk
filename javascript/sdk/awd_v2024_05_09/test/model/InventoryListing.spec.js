@@ -45,24 +45,24 @@
       expect(instance).to.be.a(TheSellingPartnerApiForAmazonWarehousingAndDistribution.InventoryListing);
     });
 
-    it('should have the property inventory (base name: "inventory")', function() {
+    it('should have the property inventory', function() {
       // verify property exists
       expect(instance).to.have.property('inventory');
 
       // set and verify value
-      var validValue = generateMockData('[InventorySummary]', true);
-      instance.inventory = validValue;
-      expect(instance.inventory).to.equal(validValue);
+      var expectedValue = generateMockData('InventorySummary', true);
+      instance.inventory = expectedValue;
+      expect(instance.inventory).to.equal(expectedValue);
     });
 
-    it('should have the property nextToken (base name: "nextToken")', function() {
+    it('should have the property nextToken', function() {
       // verify property exists
       expect(instance).to.have.property('nextToken');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.nextToken = validValue;
-      expect(instance.nextToken).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.nextToken = expectedValue;
+      expect(instance.nextToken).to.equal(expectedValue);
     });
 
   });

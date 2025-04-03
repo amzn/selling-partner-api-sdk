@@ -45,14 +45,14 @@
       expect(instance).to.be.a(AmazonShippingApi.ValueAddedServiceDetails);
     });
 
-    it('should have the property collectOnDelivery (base name: "collectOnDelivery")', function() {
+    it('should have the property collectOnDelivery', function() {
       // verify property exists
       expect(instance).to.have.property('collectOnDelivery');
 
       // set and verify value
-      var validValue = generateMockData('CollectOnDelivery');
-      instance.collectOnDelivery = validValue;
-      expect(instance.collectOnDelivery).to.equal(validValue);
+      var expectedValue = generateMockData('CollectOnDelivery');
+      instance.collectOnDelivery = expectedValue;
+      expect(instance.collectOnDelivery).to.equal(expectedValue);
     });
 
   });

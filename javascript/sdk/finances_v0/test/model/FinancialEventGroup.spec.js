@@ -45,114 +45,114 @@
       expect(instance).to.be.a(SellingPartnerApiForFinances.FinancialEventGroup);
     });
 
-    it('should have the property financialEventGroupId (base name: "FinancialEventGroupId")', function() {
+    it('should have the property financialEventGroupId', function() {
       // verify property exists
       expect(instance).to.have.property('financialEventGroupId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.financialEventGroupId = validValue;
-      expect(instance.financialEventGroupId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.financialEventGroupId = expectedValue;
+      expect(instance.financialEventGroupId).to.equal(expectedValue);
     });
 
-    it('should have the property processingStatus (base name: "ProcessingStatus")', function() {
+    it('should have the property processingStatus', function() {
       // verify property exists
       expect(instance).to.have.property('processingStatus');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.processingStatus = validValue;
-      expect(instance.processingStatus).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.processingStatus = expectedValue;
+      expect(instance.processingStatus).to.equal(expectedValue);
     });
 
-    it('should have the property fundTransferStatus (base name: "FundTransferStatus")', function() {
+    it('should have the property fundTransferStatus', function() {
       // verify property exists
       expect(instance).to.have.property('fundTransferStatus');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.fundTransferStatus = validValue;
-      expect(instance.fundTransferStatus).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.fundTransferStatus = expectedValue;
+      expect(instance.fundTransferStatus).to.equal(expectedValue);
     });
 
-    it('should have the property originalTotal (base name: "OriginalTotal")', function() {
+    it('should have the property originalTotal', function() {
       // verify property exists
       expect(instance).to.have.property('originalTotal');
 
       // set and verify value
-      var validValue = generateMockData('Currency');
-      instance.originalTotal = validValue;
-      expect(instance.originalTotal).to.equal(validValue);
+      var expectedValue = generateMockData('Currency');
+      instance.originalTotal = expectedValue;
+      expect(instance.originalTotal).to.equal(expectedValue);
     });
 
-    it('should have the property convertedTotal (base name: "ConvertedTotal")', function() {
+    it('should have the property convertedTotal', function() {
       // verify property exists
       expect(instance).to.have.property('convertedTotal');
 
       // set and verify value
-      var validValue = generateMockData('Currency');
-      instance.convertedTotal = validValue;
-      expect(instance.convertedTotal).to.equal(validValue);
+      var expectedValue = generateMockData('Currency');
+      instance.convertedTotal = expectedValue;
+      expect(instance.convertedTotal).to.equal(expectedValue);
     });
 
-    it('should have the property fundTransferDate (base name: "FundTransferDate")', function() {
+    it('should have the property fundTransferDate', function() {
       // verify property exists
       expect(instance).to.have.property('fundTransferDate');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.fundTransferDate = validValue;
-      expect(instance.fundTransferDate).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.fundTransferDate = expectedValue;
+      expect(instance.fundTransferDate).to.equal(expectedValue);
     });
 
-    it('should have the property traceId (base name: "TraceId")', function() {
+    it('should have the property traceId', function() {
       // verify property exists
       expect(instance).to.have.property('traceId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.traceId = validValue;
-      expect(instance.traceId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.traceId = expectedValue;
+      expect(instance.traceId).to.equal(expectedValue);
     });
 
-    it('should have the property accountTail (base name: "AccountTail")', function() {
+    it('should have the property accountTail', function() {
       // verify property exists
       expect(instance).to.have.property('accountTail');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.accountTail = validValue;
-      expect(instance.accountTail).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.accountTail = expectedValue;
+      expect(instance.accountTail).to.equal(expectedValue);
     });
 
-    it('should have the property beginningBalance (base name: "BeginningBalance")', function() {
+    it('should have the property beginningBalance', function() {
       // verify property exists
       expect(instance).to.have.property('beginningBalance');
 
       // set and verify value
-      var validValue = generateMockData('Currency');
-      instance.beginningBalance = validValue;
-      expect(instance.beginningBalance).to.equal(validValue);
+      var expectedValue = generateMockData('Currency');
+      instance.beginningBalance = expectedValue;
+      expect(instance.beginningBalance).to.equal(expectedValue);
     });
 
-    it('should have the property financialEventGroupStart (base name: "FinancialEventGroupStart")', function() {
+    it('should have the property financialEventGroupStart', function() {
       // verify property exists
       expect(instance).to.have.property('financialEventGroupStart');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.financialEventGroupStart = validValue;
-      expect(instance.financialEventGroupStart).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.financialEventGroupStart = expectedValue;
+      expect(instance.financialEventGroupStart).to.equal(expectedValue);
     });
 
-    it('should have the property financialEventGroupEnd (base name: "FinancialEventGroupEnd")', function() {
+    it('should have the property financialEventGroupEnd', function() {
       // verify property exists
       expect(instance).to.have.property('financialEventGroupEnd');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.financialEventGroupEnd = validValue;
-      expect(instance.financialEventGroupEnd).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.financialEventGroupEnd = expectedValue;
+      expect(instance.financialEventGroupEnd).to.equal(expectedValue);
     });
 
   });

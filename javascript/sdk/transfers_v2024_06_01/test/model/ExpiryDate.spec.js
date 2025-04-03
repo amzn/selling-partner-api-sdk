@@ -45,24 +45,24 @@
       expect(instance).to.be.a(TheSellingPartnerApiForTransfers.ExpiryDate);
     });
 
-    it('should have the property month (base name: "month")', function() {
+    it('should have the property month', function() {
       // verify property exists
       expect(instance).to.have.property('month');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.month = validValue;
-      expect(instance.month).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.month = expectedValue;
+      expect(instance.month).to.equal(expectedValue);
     });
 
-    it('should have the property year (base name: "year")', function() {
+    it('should have the property year', function() {
       // verify property exists
       expect(instance).to.have.property('year');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.year = validValue;
-      expect(instance.year).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.year = expectedValue;
+      expect(instance.year).to.equal(expectedValue);
     });
 
   });

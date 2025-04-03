@@ -45,24 +45,24 @@
       expect(instance).to.be.a(TheSellingPartnerApiForThirdPartyApplicationIntegrations.DeleteNotificationsRequest);
     });
 
-    it('should have the property templateId (base name: "templateId")', function() {
+    it('should have the property templateId', function() {
       // verify property exists
       expect(instance).to.have.property('templateId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.templateId = validValue;
-      expect(instance.templateId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.templateId = expectedValue;
+      expect(instance.templateId).to.equal(expectedValue);
     });
 
-    it('should have the property deletionReason (base name: "deletionReason")', function() {
+    it('should have the property deletionReason', function() {
       // verify property exists
       expect(instance).to.have.property('deletionReason');
 
       // set and verify value
-      var validValue = ['INCORRECT_CONTENT', 'INCORRECT_RECIPIENT', ][0];
-      instance.deletionReason = validValue;
-      expect(instance.deletionReason).to.equal(validValue);
+      var expectedValue = ['INCORRECT_CONTENT', 'INCORRECT_RECIPIENT', ][0];
+      instance.deletionReason = expectedValue;
+      expect(instance.deletionReason).to.equal(expectedValue);
     });
 
   });

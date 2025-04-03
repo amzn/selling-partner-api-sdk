@@ -45,34 +45,34 @@
       expect(instance).to.be.a(AmazonShippingApi.GetRatesResult);
     });
 
-    it('should have the property requestToken (base name: "requestToken")', function() {
+    it('should have the property requestToken', function() {
       // verify property exists
       expect(instance).to.have.property('requestToken');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.requestToken = validValue;
-      expect(instance.requestToken).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.requestToken = expectedValue;
+      expect(instance.requestToken).to.equal(expectedValue);
     });
 
-    it('should have the property rates (base name: "rates")', function() {
+    it('should have the property rates', function() {
       // verify property exists
       expect(instance).to.have.property('rates');
 
       // set and verify value
-      var validValue = generateMockData('[Rate]', true);
-      instance.rates = validValue;
-      expect(instance.rates).to.equal(validValue);
+      var expectedValue = generateMockData('Rate', true);
+      instance.rates = expectedValue;
+      expect(instance.rates).to.equal(expectedValue);
     });
 
-    it('should have the property ineligibleRates (base name: "ineligibleRates")', function() {
+    it('should have the property ineligibleRates', function() {
       // verify property exists
       expect(instance).to.have.property('ineligibleRates');
 
       // set and verify value
-      var validValue = generateMockData('[IneligibleRate]', true);
-      instance.ineligibleRates = validValue;
-      expect(instance.ineligibleRates).to.equal(validValue);
+      var expectedValue = generateMockData('IneligibleRate', true);
+      instance.ineligibleRates = expectedValue;
+      expect(instance.ineligibleRates).to.equal(expectedValue);
     });
 
   });

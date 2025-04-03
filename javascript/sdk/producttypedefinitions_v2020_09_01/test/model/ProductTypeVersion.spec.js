@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForProductTypeDefinitions.ProductTypeVersion);
     });
 
-    it('should have the property version (base name: "version")', function() {
+    it('should have the property version', function() {
       // verify property exists
       expect(instance).to.have.property('version');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.version = validValue;
-      expect(instance.version).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.version = expectedValue;
+      expect(instance.version).to.equal(expectedValue);
     });
 
-    it('should have the property latest (base name: "latest")', function() {
+    it('should have the property latest', function() {
       // verify property exists
       expect(instance).to.have.property('latest');
 
       // set and verify value
-      var validValue = generateMockData('Boolean');
-      instance.latest = validValue;
-      expect(instance.latest).to.equal(validValue);
+      var expectedValue = generateMockData('Boolean');
+      instance.latest = expectedValue;
+      expect(instance.latest).to.equal(expectedValue);
     });
 
-    it('should have the property releaseCandidate (base name: "releaseCandidate")', function() {
+    it('should have the property releaseCandidate', function() {
       // verify property exists
       expect(instance).to.have.property('releaseCandidate');
 
       // set and verify value
-      var validValue = generateMockData('Boolean');
-      instance.releaseCandidate = validValue;
-      expect(instance.releaseCandidate).to.equal(validValue);
+      var expectedValue = generateMockData('Boolean');
+      instance.releaseCandidate = expectedValue;
+      expect(instance.releaseCandidate).to.equal(expectedValue);
     });
 
   });

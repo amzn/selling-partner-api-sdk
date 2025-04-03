@@ -45,64 +45,64 @@
       expect(instance).to.be.a(SellingPartnerApiForFinances.RemovalShipmentAdjustmentEvent);
     });
 
-    it('should have the property postedDate (base name: "PostedDate")', function() {
+    it('should have the property postedDate', function() {
       // verify property exists
       expect(instance).to.have.property('postedDate');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.postedDate = validValue;
-      expect(instance.postedDate).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.postedDate = expectedValue;
+      expect(instance.postedDate).to.equal(expectedValue);
     });
 
-    it('should have the property adjustmentEventId (base name: "AdjustmentEventId")', function() {
+    it('should have the property adjustmentEventId', function() {
       // verify property exists
       expect(instance).to.have.property('adjustmentEventId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.adjustmentEventId = validValue;
-      expect(instance.adjustmentEventId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.adjustmentEventId = expectedValue;
+      expect(instance.adjustmentEventId).to.equal(expectedValue);
     });
 
-    it('should have the property merchantOrderId (base name: "MerchantOrderId")', function() {
+    it('should have the property merchantOrderId', function() {
       // verify property exists
       expect(instance).to.have.property('merchantOrderId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.merchantOrderId = validValue;
-      expect(instance.merchantOrderId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.merchantOrderId = expectedValue;
+      expect(instance.merchantOrderId).to.equal(expectedValue);
     });
 
-    it('should have the property orderId (base name: "OrderId")', function() {
+    it('should have the property orderId', function() {
       // verify property exists
       expect(instance).to.have.property('orderId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.orderId = validValue;
-      expect(instance.orderId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.orderId = expectedValue;
+      expect(instance.orderId).to.equal(expectedValue);
     });
 
-    it('should have the property transactionType (base name: "TransactionType")', function() {
+    it('should have the property transactionType', function() {
       // verify property exists
       expect(instance).to.have.property('transactionType');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.transactionType = validValue;
-      expect(instance.transactionType).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.transactionType = expectedValue;
+      expect(instance.transactionType).to.equal(expectedValue);
     });
 
-    it('should have the property removalShipmentItemAdjustmentList (base name: "RemovalShipmentItemAdjustmentList")', function() {
+    it('should have the property removalShipmentItemAdjustmentList', function() {
       // verify property exists
       expect(instance).to.have.property('removalShipmentItemAdjustmentList');
 
       // set and verify value
-      var validValue = generateMockData('[RemovalShipmentItemAdjustment]', true);
-      instance.removalShipmentItemAdjustmentList = validValue;
-      expect(instance.removalShipmentItemAdjustmentList).to.equal(validValue);
+      var expectedValue = generateMockData('RemovalShipmentItemAdjustment', true);
+      instance.removalShipmentItemAdjustmentList = expectedValue;
+      expect(instance.removalShipmentItemAdjustmentList).to.equal(expectedValue);
     });
 
   });

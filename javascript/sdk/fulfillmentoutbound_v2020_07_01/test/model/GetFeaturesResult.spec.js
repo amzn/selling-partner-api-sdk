@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.GetFeaturesResult);
     });
 
-    it('should have the property features (base name: "features")', function() {
+    it('should have the property features', function() {
       // verify property exists
       expect(instance).to.have.property('features');
 
       // set and verify value
-      var validValue = generateMockData('[Feature]', true);
-      instance.features = validValue;
-      expect(instance.features).to.equal(validValue);
+      var expectedValue = generateMockData('Feature', true);
+      instance.features = expectedValue;
+      expect(instance.features).to.equal(expectedValue);
     });
 
   });

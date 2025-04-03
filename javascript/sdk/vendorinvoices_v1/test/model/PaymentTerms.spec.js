@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForRetailProcurementPayments.PaymentTerms);
     });
 
-    it('should have the property type (base name: "type")', function() {
+    it('should have the property type', function() {
       // verify property exists
       expect(instance).to.have.property('type');
 
       // set and verify value
-      var validValue = ['Basic', 'EndOfMonth', 'FixedDate', 'Proximo', 'PaymentDueUponReceiptOfInvoice', 'LetterofCredit', ][0];
-      instance.type = validValue;
-      expect(instance.type).to.equal(validValue);
+      var expectedValue = ['Basic', 'EndOfMonth', 'FixedDate', 'Proximo', 'PaymentDueUponReceiptOfInvoice', 'LetterofCredit', ][0];
+      instance.type = expectedValue;
+      expect(instance.type).to.equal(expectedValue);
     });
 
-    it('should have the property discountPercent (base name: "discountPercent")', function() {
+    it('should have the property discountPercent', function() {
       // verify property exists
       expect(instance).to.have.property('discountPercent');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.discountPercent = validValue;
-      expect(instance.discountPercent).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.discountPercent = expectedValue;
+      expect(instance.discountPercent).to.equal(expectedValue);
     });
 
-    it('should have the property discountDueDays (base name: "discountDueDays")', function() {
+    it('should have the property discountDueDays', function() {
       // verify property exists
       expect(instance).to.have.property('discountDueDays');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.discountDueDays = validValue;
-      expect(instance.discountDueDays).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.discountDueDays = expectedValue;
+      expect(instance.discountDueDays).to.equal(expectedValue);
     });
 
-    it('should have the property netDueDays (base name: "netDueDays")', function() {
+    it('should have the property netDueDays', function() {
       // verify property exists
       expect(instance).to.have.property('netDueDays');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.netDueDays = validValue;
-      expect(instance.netDueDays).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.netDueDays = expectedValue;
+      expect(instance.netDueDays).to.equal(expectedValue);
     });
 
   });

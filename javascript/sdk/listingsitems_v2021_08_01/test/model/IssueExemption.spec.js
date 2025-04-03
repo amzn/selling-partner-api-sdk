@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForListingsItems.IssueExemption);
     });
 
-    it('should have the property status (base name: "status")', function() {
+    it('should have the property status', function() {
       // verify property exists
       expect(instance).to.have.property('status');
 
       // set and verify value
-      var validValue = ['EXEMPT', 'EXEMPT_UNTIL_EXPIRY_DATE', 'NOT_EXEMPT', ][0];
-      instance.status = validValue;
-      expect(instance.status).to.equal(validValue);
+      var expectedValue = ['EXEMPT', 'EXEMPT_UNTIL_EXPIRY_DATE', 'NOT_EXEMPT', ][0];
+      instance.status = expectedValue;
+      expect(instance.status).to.equal(expectedValue);
     });
 
-    it('should have the property expiryDate (base name: "expiryDate")', function() {
+    it('should have the property expiryDate', function() {
       // verify property exists
       expect(instance).to.have.property('expiryDate');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.expiryDate = validValue;
-      expect(instance.expiryDate).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.expiryDate = expectedValue;
+      expect(instance.expiryDate).to.equal(expectedValue);
     });
 
   });

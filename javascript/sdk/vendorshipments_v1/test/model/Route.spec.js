@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForRetailProcurementShipments.Route);
     });
 
-    it('should have the property stops (base name: "stops")', function() {
+    it('should have the property stops', function() {
       // verify property exists
       expect(instance).to.have.property('stops');
 
       // set and verify value
-      var validValue = generateMockData('[Stop]', true);
-      instance.stops = validValue;
-      expect(instance.stops).to.equal(validValue);
+      var expectedValue = generateMockData('Stop', true);
+      instance.stops = expectedValue;
+      expect(instance.stops).to.equal(expectedValue);
     });
 
   });

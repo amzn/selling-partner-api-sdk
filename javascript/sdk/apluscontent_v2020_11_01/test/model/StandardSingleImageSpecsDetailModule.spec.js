@@ -45,84 +45,84 @@
       expect(instance).to.be.a(SellingPartnerApiForAContentManagement.StandardSingleImageSpecsDetailModule);
     });
 
-    it('should have the property headline (base name: "headline")', function() {
+    it('should have the property headline', function() {
       // verify property exists
       expect(instance).to.have.property('headline');
 
       // set and verify value
-      var validValue = generateMockData('TextComponent');
-      instance.headline = validValue;
-      expect(instance.headline).to.equal(validValue);
+      var expectedValue = generateMockData('TextComponent');
+      instance.headline = expectedValue;
+      expect(instance.headline).to.equal(expectedValue);
     });
 
-    it('should have the property image (base name: "image")', function() {
+    it('should have the property image', function() {
       // verify property exists
       expect(instance).to.have.property('image');
 
       // set and verify value
-      var validValue = generateMockData('ImageComponent');
-      instance.image = validValue;
-      expect(instance.image).to.equal(validValue);
+      var expectedValue = generateMockData('ImageComponent');
+      instance.image = expectedValue;
+      expect(instance.image).to.equal(expectedValue);
     });
 
-    it('should have the property descriptionHeadline (base name: "descriptionHeadline")', function() {
+    it('should have the property descriptionHeadline', function() {
       // verify property exists
       expect(instance).to.have.property('descriptionHeadline');
 
       // set and verify value
-      var validValue = generateMockData('TextComponent');
-      instance.descriptionHeadline = validValue;
-      expect(instance.descriptionHeadline).to.equal(validValue);
+      var expectedValue = generateMockData('TextComponent');
+      instance.descriptionHeadline = expectedValue;
+      expect(instance.descriptionHeadline).to.equal(expectedValue);
     });
 
-    it('should have the property descriptionBlock1 (base name: "descriptionBlock1")', function() {
+    it('should have the property descriptionBlock1', function() {
       // verify property exists
       expect(instance).to.have.property('descriptionBlock1');
 
       // set and verify value
-      var validValue = generateMockData('StandardTextBlock');
-      instance.descriptionBlock1 = validValue;
-      expect(instance.descriptionBlock1).to.equal(validValue);
+      var expectedValue = generateMockData('StandardTextBlock');
+      instance.descriptionBlock1 = expectedValue;
+      expect(instance.descriptionBlock1).to.equal(expectedValue);
     });
 
-    it('should have the property descriptionBlock2 (base name: "descriptionBlock2")', function() {
+    it('should have the property descriptionBlock2', function() {
       // verify property exists
       expect(instance).to.have.property('descriptionBlock2');
 
       // set and verify value
-      var validValue = generateMockData('StandardTextBlock');
-      instance.descriptionBlock2 = validValue;
-      expect(instance.descriptionBlock2).to.equal(validValue);
+      var expectedValue = generateMockData('StandardTextBlock');
+      instance.descriptionBlock2 = expectedValue;
+      expect(instance.descriptionBlock2).to.equal(expectedValue);
     });
 
-    it('should have the property specificationHeadline (base name: "specificationHeadline")', function() {
+    it('should have the property specificationHeadline', function() {
       // verify property exists
       expect(instance).to.have.property('specificationHeadline');
 
       // set and verify value
-      var validValue = generateMockData('TextComponent');
-      instance.specificationHeadline = validValue;
-      expect(instance.specificationHeadline).to.equal(validValue);
+      var expectedValue = generateMockData('TextComponent');
+      instance.specificationHeadline = expectedValue;
+      expect(instance.specificationHeadline).to.equal(expectedValue);
     });
 
-    it('should have the property specificationListBlock (base name: "specificationListBlock")', function() {
+    it('should have the property specificationListBlock', function() {
       // verify property exists
       expect(instance).to.have.property('specificationListBlock');
 
       // set and verify value
-      var validValue = generateMockData('StandardHeaderTextListBlock');
-      instance.specificationListBlock = validValue;
-      expect(instance.specificationListBlock).to.equal(validValue);
+      var expectedValue = generateMockData('StandardHeaderTextListBlock');
+      instance.specificationListBlock = expectedValue;
+      expect(instance.specificationListBlock).to.equal(expectedValue);
     });
 
-    it('should have the property specificationTextBlock (base name: "specificationTextBlock")', function() {
+    it('should have the property specificationTextBlock', function() {
       // verify property exists
       expect(instance).to.have.property('specificationTextBlock');
 
       // set and verify value
-      var validValue = generateMockData('StandardTextBlock');
-      instance.specificationTextBlock = validValue;
-      expect(instance.specificationTextBlock).to.equal(validValue);
+      var expectedValue = generateMockData('StandardTextBlock');
+      instance.specificationTextBlock = expectedValue;
+      expect(instance.specificationTextBlock).to.equal(expectedValue);
     });
 
   });

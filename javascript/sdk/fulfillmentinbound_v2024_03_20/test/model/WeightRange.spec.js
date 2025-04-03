@@ -45,34 +45,34 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.WeightRange);
     });
 
-    it('should have the property maximum (base name: "maximum")', function() {
+    it('should have the property maximum', function() {
       // verify property exists
       expect(instance).to.have.property('maximum');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.maximum = validValue;
-      expect(instance.maximum).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.maximum = expectedValue;
+      expect(instance.maximum).to.equal(expectedValue);
     });
 
-    it('should have the property minimum (base name: "minimum")', function() {
+    it('should have the property minimum', function() {
       // verify property exists
       expect(instance).to.have.property('minimum');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.minimum = validValue;
-      expect(instance.minimum).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.minimum = expectedValue;
+      expect(instance.minimum).to.equal(expectedValue);
     });
 
-    it('should have the property unit (base name: "unit")', function() {
+    it('should have the property unit', function() {
       // verify property exists
       expect(instance).to.have.property('unit');
 
       // set and verify value
-      var validValue = generateMockData('UnitOfWeight');
-      instance.unit = validValue;
-      expect(instance.unit).to.equal(validValue);
+      var expectedValue = generateMockData('UnitOfWeight');
+      instance.unit = expectedValue;
+      expect(instance.unit).to.equal(expectedValue);
     });
 
   });

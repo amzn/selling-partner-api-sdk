@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForOrders.BuyerTaxInformation);
     });
 
-    it('should have the property buyerLegalCompanyName (base name: "BuyerLegalCompanyName")', function() {
+    it('should have the property buyerLegalCompanyName', function() {
       // verify property exists
       expect(instance).to.have.property('buyerLegalCompanyName');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.buyerLegalCompanyName = validValue;
-      expect(instance.buyerLegalCompanyName).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.buyerLegalCompanyName = expectedValue;
+      expect(instance.buyerLegalCompanyName).to.equal(expectedValue);
     });
 
-    it('should have the property buyerBusinessAddress (base name: "BuyerBusinessAddress")', function() {
+    it('should have the property buyerBusinessAddress', function() {
       // verify property exists
       expect(instance).to.have.property('buyerBusinessAddress');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.buyerBusinessAddress = validValue;
-      expect(instance.buyerBusinessAddress).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.buyerBusinessAddress = expectedValue;
+      expect(instance.buyerBusinessAddress).to.equal(expectedValue);
     });
 
-    it('should have the property buyerTaxRegistrationId (base name: "BuyerTaxRegistrationId")', function() {
+    it('should have the property buyerTaxRegistrationId', function() {
       // verify property exists
       expect(instance).to.have.property('buyerTaxRegistrationId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.buyerTaxRegistrationId = validValue;
-      expect(instance.buyerTaxRegistrationId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.buyerTaxRegistrationId = expectedValue;
+      expect(instance.buyerTaxRegistrationId).to.equal(expectedValue);
     });
 
-    it('should have the property buyerTaxOffice (base name: "BuyerTaxOffice")', function() {
+    it('should have the property buyerTaxOffice', function() {
       // verify property exists
       expect(instance).to.have.property('buyerTaxOffice');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.buyerTaxOffice = validValue;
-      expect(instance.buyerTaxOffice).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.buyerTaxOffice = expectedValue;
+      expect(instance.buyerTaxOffice).to.equal(expectedValue);
     });
 
   });

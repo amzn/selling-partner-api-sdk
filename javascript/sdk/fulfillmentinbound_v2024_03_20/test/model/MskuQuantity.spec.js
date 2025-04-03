@@ -45,24 +45,24 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.MskuQuantity);
     });
 
-    it('should have the property msku (base name: "msku")', function() {
+    it('should have the property msku', function() {
       // verify property exists
       expect(instance).to.have.property('msku');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.msku = validValue;
-      expect(instance.msku).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.msku = expectedValue;
+      expect(instance.msku).to.equal(expectedValue);
     });
 
-    it('should have the property quantity (base name: "quantity")', function() {
+    it('should have the property quantity', function() {
       // verify property exists
       expect(instance).to.have.property('quantity');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.quantity = validValue;
-      expect(instance.quantity).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.quantity = expectedValue;
+      expect(instance.quantity).to.equal(expectedValue);
     });
 
   });

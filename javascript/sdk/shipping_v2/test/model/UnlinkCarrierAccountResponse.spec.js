@@ -45,14 +45,14 @@
       expect(instance).to.be.a(AmazonShippingApi.UnlinkCarrierAccountResponse);
     });
 
-    it('should have the property isUnlinked (base name: "isUnlinked")', function() {
+    it('should have the property isUnlinked', function() {
       // verify property exists
       expect(instance).to.have.property('isUnlinked');
 
       // set and verify value
-      var validValue = generateMockData('Boolean');
-      instance.isUnlinked = validValue;
-      expect(instance.isUnlinked).to.equal(validValue);
+      var expectedValue = generateMockData('Boolean');
+      instance.isUnlinked = expectedValue;
+      expect(instance.isUnlinked).to.equal(expectedValue);
     });
 
   });

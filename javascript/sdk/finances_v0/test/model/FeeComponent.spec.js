@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForFinances.FeeComponent);
     });
 
-    it('should have the property feeType (base name: "FeeType")', function() {
+    it('should have the property feeType', function() {
       // verify property exists
       expect(instance).to.have.property('feeType');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.feeType = validValue;
-      expect(instance.feeType).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.feeType = expectedValue;
+      expect(instance.feeType).to.equal(expectedValue);
     });
 
-    it('should have the property feeAmount (base name: "FeeAmount")', function() {
+    it('should have the property feeAmount', function() {
       // verify property exists
       expect(instance).to.have.property('feeAmount');
 
       // set and verify value
-      var validValue = generateMockData('Currency');
-      instance.feeAmount = validValue;
-      expect(instance.feeAmount).to.equal(validValue);
+      var expectedValue = generateMockData('Currency');
+      instance.feeAmount = expectedValue;
+      expect(instance.feeAmount).to.equal(expectedValue);
     });
 
   });

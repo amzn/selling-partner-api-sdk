@@ -45,34 +45,34 @@
       expect(instance).to.be.a(TheSellingPartnerApiForSellers.MarketplaceParticipation);
     });
 
-    it('should have the property marketplace (base name: "marketplace")', function() {
+    it('should have the property marketplace', function() {
       // verify property exists
       expect(instance).to.have.property('marketplace');
 
       // set and verify value
-      var validValue = generateMockData('Marketplace');
-      instance.marketplace = validValue;
-      expect(instance.marketplace).to.equal(validValue);
+      var expectedValue = generateMockData('Marketplace');
+      instance.marketplace = expectedValue;
+      expect(instance.marketplace).to.equal(expectedValue);
     });
 
-    it('should have the property participation (base name: "participation")', function() {
+    it('should have the property participation', function() {
       // verify property exists
       expect(instance).to.have.property('participation');
 
       // set and verify value
-      var validValue = generateMockData('Participation');
-      instance.participation = validValue;
-      expect(instance.participation).to.equal(validValue);
+      var expectedValue = generateMockData('Participation');
+      instance.participation = expectedValue;
+      expect(instance.participation).to.equal(expectedValue);
     });
 
-    it('should have the property storeName (base name: "storeName")', function() {
+    it('should have the property storeName', function() {
       // verify property exists
       expect(instance).to.have.property('storeName');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.storeName = validValue;
-      expect(instance.storeName).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.storeName = expectedValue;
+      expect(instance.storeName).to.equal(expectedValue);
     });
 
   });

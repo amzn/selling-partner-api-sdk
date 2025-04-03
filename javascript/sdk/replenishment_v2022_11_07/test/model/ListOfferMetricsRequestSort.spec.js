@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForReplenishment.ListOfferMetricsRequestSort);
     });
 
-    it('should have the property order (base name: "order")', function() {
+    it('should have the property order', function() {
       // verify property exists
       expect(instance).to.have.property('order');
 
       // set and verify value
-      var validValue = generateMockData('SortOrder');
-      instance.order = validValue;
-      expect(instance.order).to.equal(validValue);
+      var expectedValue = generateMockData('SortOrder');
+      instance.order = expectedValue;
+      expect(instance.order).to.equal(expectedValue);
     });
 
-    it('should have the property key (base name: "key")', function() {
+    it('should have the property key', function() {
       // verify property exists
       expect(instance).to.have.property('key');
 
       // set and verify value
-      var validValue = generateMockData('ListOfferMetricsSortKey');
-      instance.key = validValue;
-      expect(instance.key).to.equal(validValue);
+      var expectedValue = generateMockData('ListOfferMetricsSortKey');
+      instance.key = expectedValue;
+      expect(instance.key).to.equal(expectedValue);
     });
 
   });

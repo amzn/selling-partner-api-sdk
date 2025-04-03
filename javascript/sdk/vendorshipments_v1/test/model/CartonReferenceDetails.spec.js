@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForRetailProcurementShipments.CartonReferenceDetails);
     });
 
-    it('should have the property cartonCount (base name: "cartonCount")', function() {
+    it('should have the property cartonCount', function() {
       // verify property exists
       expect(instance).to.have.property('cartonCount');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.cartonCount = validValue;
-      expect(instance.cartonCount).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.cartonCount = expectedValue;
+      expect(instance.cartonCount).to.equal(expectedValue);
     });
 
-    it('should have the property cartonReferenceNumbers (base name: "cartonReferenceNumbers")', function() {
+    it('should have the property cartonReferenceNumbers', function() {
       // verify property exists
       expect(instance).to.have.property('cartonReferenceNumbers');
 
       // set and verify value
-      var validValue = generateMockData('[String]', true);
-      instance.cartonReferenceNumbers = validValue;
-      expect(instance.cartonReferenceNumbers).to.equal(validValue);
+      var expectedValue = generateMockData('String', true);
+      instance.cartonReferenceNumbers = expectedValue;
+      expect(instance.cartonReferenceNumbers).to.equal(expectedValue);
     });
 
   });

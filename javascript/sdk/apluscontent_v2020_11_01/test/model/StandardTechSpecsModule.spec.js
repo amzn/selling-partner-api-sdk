@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForAContentManagement.StandardTechSpecsModule);
     });
 
-    it('should have the property headline (base name: "headline")', function() {
+    it('should have the property headline', function() {
       // verify property exists
       expect(instance).to.have.property('headline');
 
       // set and verify value
-      var validValue = generateMockData('TextComponent');
-      instance.headline = validValue;
-      expect(instance.headline).to.equal(validValue);
+      var expectedValue = generateMockData('TextComponent');
+      instance.headline = expectedValue;
+      expect(instance.headline).to.equal(expectedValue);
     });
 
-    it('should have the property specificationList (base name: "specificationList")', function() {
+    it('should have the property specificationList', function() {
       // verify property exists
       expect(instance).to.have.property('specificationList');
 
       // set and verify value
-      var validValue = generateMockData('[StandardTextPairBlock]', true);
-      instance.specificationList = validValue;
-      expect(instance.specificationList).to.equal(validValue);
+      var expectedValue = generateMockData('StandardTextPairBlock', true);
+      instance.specificationList = expectedValue;
+      expect(instance.specificationList).to.equal(expectedValue);
     });
 
-    it('should have the property tableCount (base name: "tableCount")', function() {
+    it('should have the property tableCount', function() {
       // verify property exists
       expect(instance).to.have.property('tableCount');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.tableCount = validValue;
-      expect(instance.tableCount).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.tableCount = expectedValue;
+      expect(instance.tableCount).to.equal(expectedValue);
     });
 
   });

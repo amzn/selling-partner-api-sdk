@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForEasyShip.RejectedOrder);
     });
 
-    it('should have the property amazonOrderId (base name: "amazonOrderId")', function() {
+    it('should have the property amazonOrderId', function() {
       // verify property exists
       expect(instance).to.have.property('amazonOrderId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.amazonOrderId = validValue;
-      expect(instance.amazonOrderId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.amazonOrderId = expectedValue;
+      expect(instance.amazonOrderId).to.equal(expectedValue);
     });
 
-    it('should have the property error (base name: "error")', function() {
+    it('should have the property error', function() {
       // verify property exists
       expect(instance).to.have.property('error');
 
       // set and verify value
-      var validValue = generateMockData('Error');
-      instance.error = validValue;
-      expect(instance.error).to.equal(validValue);
+      var expectedValue = generateMockData('Error');
+      instance.error = expectedValue;
+      expect(instance.error).to.equal(expectedValue);
     });
 
   });

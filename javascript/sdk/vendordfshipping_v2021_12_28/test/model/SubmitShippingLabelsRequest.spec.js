@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForDirectFulfillmentShipping.SubmitShippingLabelsRequest);
     });
 
-    it('should have the property shippingLabelRequests (base name: "shippingLabelRequests")', function() {
+    it('should have the property shippingLabelRequests', function() {
       // verify property exists
       expect(instance).to.have.property('shippingLabelRequests');
 
       // set and verify value
-      var validValue = generateMockData('[ShippingLabelRequest]', true);
-      instance.shippingLabelRequests = validValue;
-      expect(instance.shippingLabelRequests).to.equal(validValue);
+      var expectedValue = generateMockData('ShippingLabelRequest', true);
+      instance.shippingLabelRequests = expectedValue;
+      expect(instance.shippingLabelRequests).to.equal(expectedValue);
     });
 
   });

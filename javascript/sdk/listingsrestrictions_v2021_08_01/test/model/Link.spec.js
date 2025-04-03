@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForListingsRestrictions.Link);
     });
 
-    it('should have the property resource (base name: "resource")', function() {
+    it('should have the property resource', function() {
       // verify property exists
       expect(instance).to.have.property('resource');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.resource = validValue;
-      expect(instance.resource).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.resource = expectedValue;
+      expect(instance.resource).to.equal(expectedValue);
     });
 
-    it('should have the property verb (base name: "verb")', function() {
+    it('should have the property verb', function() {
       // verify property exists
       expect(instance).to.have.property('verb');
 
       // set and verify value
-      var validValue = ['GET', ][0];
-      instance.verb = validValue;
-      expect(instance.verb).to.equal(validValue);
+      var expectedValue = ['GET', ][0];
+      instance.verb = expectedValue;
+      expect(instance.verb).to.equal(expectedValue);
     });
 
-    it('should have the property title (base name: "title")', function() {
+    it('should have the property title', function() {
       // verify property exists
       expect(instance).to.have.property('title');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.title = validValue;
-      expect(instance.title).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.title = expectedValue;
+      expect(instance.title).to.equal(expectedValue);
     });
 
-    it('should have the property type (base name: "type")', function() {
+    it('should have the property type', function() {
       // verify property exists
       expect(instance).to.have.property('type');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.type = validValue;
-      expect(instance.type).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.type = expectedValue;
+      expect(instance.type).to.equal(expectedValue);
     });
 
   });

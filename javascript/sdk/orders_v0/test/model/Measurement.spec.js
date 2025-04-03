@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForOrders.Measurement);
     });
 
-    it('should have the property unit (base name: "Unit")', function() {
+    it('should have the property unit', function() {
       // verify property exists
       expect(instance).to.have.property('unit');
 
       // set and verify value
-      var validValue = ['OUNCES', 'POUNDS', 'KILOGRAMS', 'GRAMS', 'MILLIGRAMS', 'INCHES', 'FEET', 'METERS', 'CENTIMETERS', 'MILLIMETERS', 'SQUARE_METERS', 'SQUARE_CENTIMETERS', 'SQUARE_FEET', 'SQUARE_INCHES', 'GALLONS', 'PINTS', 'QUARTS', 'FLUID_OUNCES', 'LITERS', 'CUBIC_METERS', 'CUBIC_FEET', 'CUBIC_INCHES', 'CUBIC_CENTIMETERS', 'COUNT', ][0];
-      instance.unit = validValue;
-      expect(instance.unit).to.equal(validValue);
+      var expectedValue = ['OUNCES', 'POUNDS', 'KILOGRAMS', 'GRAMS', 'MILLIGRAMS', 'INCHES', 'FEET', 'METERS', 'CENTIMETERS', 'MILLIMETERS', 'SQUARE_METERS', 'SQUARE_CENTIMETERS', 'SQUARE_FEET', 'SQUARE_INCHES', 'GALLONS', 'PINTS', 'QUARTS', 'FLUID_OUNCES', 'LITERS', 'CUBIC_METERS', 'CUBIC_FEET', 'CUBIC_INCHES', 'CUBIC_CENTIMETERS', 'COUNT', ][0];
+      instance.unit = expectedValue;
+      expect(instance.unit).to.equal(expectedValue);
     });
 
-    it('should have the property value (base name: "Value")', function() {
+    it('should have the property value', function() {
       // verify property exists
       expect(instance).to.have.property('value');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.value = validValue;
-      expect(instance.value).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.value = expectedValue;
+      expect(instance.value).to.equal(expectedValue);
     });
 
   });

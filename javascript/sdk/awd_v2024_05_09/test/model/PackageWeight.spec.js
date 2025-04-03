@@ -45,24 +45,24 @@
       expect(instance).to.be.a(TheSellingPartnerApiForAmazonWarehousingAndDistribution.PackageWeight);
     });
 
-    it('should have the property unitOfMeasurement (base name: "unitOfMeasurement")', function() {
+    it('should have the property unitOfMeasurement', function() {
       // verify property exists
       expect(instance).to.have.property('unitOfMeasurement');
 
       // set and verify value
-      var validValue = generateMockData('WeightUnitOfMeasurement');
-      instance.unitOfMeasurement = validValue;
-      expect(instance.unitOfMeasurement).to.equal(validValue);
+      var expectedValue = generateMockData('WeightUnitOfMeasurement');
+      instance.unitOfMeasurement = expectedValue;
+      expect(instance.unitOfMeasurement).to.equal(expectedValue);
     });
 
-    it('should have the property weight (base name: "weight")', function() {
+    it('should have the property weight', function() {
       // verify property exists
       expect(instance).to.have.property('weight');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.weight = validValue;
-      expect(instance.weight).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.weight = expectedValue;
+      expect(instance.weight).to.equal(expectedValue);
     });
 
   });

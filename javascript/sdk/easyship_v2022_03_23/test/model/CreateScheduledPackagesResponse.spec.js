@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForEasyShip.CreateScheduledPackagesResponse);
     });
 
-    it('should have the property scheduledPackages (base name: "scheduledPackages")', function() {
+    it('should have the property scheduledPackages', function() {
       // verify property exists
       expect(instance).to.have.property('scheduledPackages');
 
       // set and verify value
-      var validValue = generateMockData('[Package]', true);
-      instance.scheduledPackages = validValue;
-      expect(instance.scheduledPackages).to.equal(validValue);
+      var expectedValue = generateMockData('Package', true);
+      instance.scheduledPackages = expectedValue;
+      expect(instance.scheduledPackages).to.equal(expectedValue);
     });
 
-    it('should have the property rejectedOrders (base name: "rejectedOrders")', function() {
+    it('should have the property rejectedOrders', function() {
       // verify property exists
       expect(instance).to.have.property('rejectedOrders');
 
       // set and verify value
-      var validValue = generateMockData('[RejectedOrder]', true);
-      instance.rejectedOrders = validValue;
-      expect(instance.rejectedOrders).to.equal(validValue);
+      var expectedValue = generateMockData('RejectedOrder', true);
+      instance.rejectedOrders = expectedValue;
+      expect(instance.rejectedOrders).to.equal(expectedValue);
     });
 
-    it('should have the property printableDocumentsUrl (base name: "printableDocumentsUrl")', function() {
+    it('should have the property printableDocumentsUrl', function() {
       // verify property exists
       expect(instance).to.have.property('printableDocumentsUrl');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.printableDocumentsUrl = validValue;
-      expect(instance.printableDocumentsUrl).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.printableDocumentsUrl = expectedValue;
+      expect(instance.printableDocumentsUrl).to.equal(expectedValue);
     });
 
   });

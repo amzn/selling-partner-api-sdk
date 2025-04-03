@@ -45,74 +45,74 @@
       expect(instance).to.be.a(SellingPartnerApiForDirectFulfillmentOrders.ShipmentDetails);
     });
 
-    it('should have the property isPriorityShipment (base name: "isPriorityShipment")', function() {
+    it('should have the property isPriorityShipment', function() {
       // verify property exists
       expect(instance).to.have.property('isPriorityShipment');
 
       // set and verify value
-      var validValue = generateMockData('Boolean');
-      instance.isPriorityShipment = validValue;
-      expect(instance.isPriorityShipment).to.equal(validValue);
+      var expectedValue = generateMockData('Boolean');
+      instance.isPriorityShipment = expectedValue;
+      expect(instance.isPriorityShipment).to.equal(expectedValue);
     });
 
-    it('should have the property isScheduledDeliveryShipment (base name: "isScheduledDeliveryShipment")', function() {
+    it('should have the property isScheduledDeliveryShipment', function() {
       // verify property exists
       expect(instance).to.have.property('isScheduledDeliveryShipment');
 
       // set and verify value
-      var validValue = generateMockData('Boolean');
-      instance.isScheduledDeliveryShipment = validValue;
-      expect(instance.isScheduledDeliveryShipment).to.equal(validValue);
+      var expectedValue = generateMockData('Boolean');
+      instance.isScheduledDeliveryShipment = expectedValue;
+      expect(instance.isScheduledDeliveryShipment).to.equal(expectedValue);
     });
 
-    it('should have the property isPslipRequired (base name: "isPslipRequired")', function() {
+    it('should have the property isPslipRequired', function() {
       // verify property exists
       expect(instance).to.have.property('isPslipRequired');
 
       // set and verify value
-      var validValue = generateMockData('Boolean');
-      instance.isPslipRequired = validValue;
-      expect(instance.isPslipRequired).to.equal(validValue);
+      var expectedValue = generateMockData('Boolean');
+      instance.isPslipRequired = expectedValue;
+      expect(instance.isPslipRequired).to.equal(expectedValue);
     });
 
-    it('should have the property isGift (base name: "isGift")', function() {
+    it('should have the property isGift', function() {
       // verify property exists
       expect(instance).to.have.property('isGift');
 
       // set and verify value
-      var validValue = generateMockData('Boolean');
-      instance.isGift = validValue;
-      expect(instance.isGift).to.equal(validValue);
+      var expectedValue = generateMockData('Boolean');
+      instance.isGift = expectedValue;
+      expect(instance.isGift).to.equal(expectedValue);
     });
 
-    it('should have the property shipMethod (base name: "shipMethod")', function() {
+    it('should have the property shipMethod', function() {
       // verify property exists
       expect(instance).to.have.property('shipMethod');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.shipMethod = validValue;
-      expect(instance.shipMethod).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.shipMethod = expectedValue;
+      expect(instance.shipMethod).to.equal(expectedValue);
     });
 
-    it('should have the property shipmentDates (base name: "shipmentDates")', function() {
+    it('should have the property shipmentDates', function() {
       // verify property exists
       expect(instance).to.have.property('shipmentDates');
 
       // set and verify value
-      var validValue = generateMockData('ShipmentDates');
-      instance.shipmentDates = validValue;
-      expect(instance.shipmentDates).to.equal(validValue);
+      var expectedValue = generateMockData('ShipmentDates');
+      instance.shipmentDates = expectedValue;
+      expect(instance.shipmentDates).to.equal(expectedValue);
     });
 
-    it('should have the property messageToCustomer (base name: "messageToCustomer")', function() {
+    it('should have the property messageToCustomer', function() {
       // verify property exists
       expect(instance).to.have.property('messageToCustomer');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.messageToCustomer = validValue;
-      expect(instance.messageToCustomer).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.messageToCustomer = expectedValue;
+      expect(instance.messageToCustomer).to.equal(expectedValue);
     });
 
   });

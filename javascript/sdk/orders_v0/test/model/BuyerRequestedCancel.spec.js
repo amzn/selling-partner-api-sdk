@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForOrders.BuyerRequestedCancel);
     });
 
-    it('should have the property isBuyerRequestedCancel (base name: "IsBuyerRequestedCancel")', function() {
+    it('should have the property isBuyerRequestedCancel', function() {
       // verify property exists
       expect(instance).to.have.property('isBuyerRequestedCancel');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.isBuyerRequestedCancel = validValue;
-      expect(instance.isBuyerRequestedCancel).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.isBuyerRequestedCancel = expectedValue;
+      expect(instance.isBuyerRequestedCancel).to.equal(expectedValue);
     });
 
-    it('should have the property buyerCancelReason (base name: "BuyerCancelReason")', function() {
+    it('should have the property buyerCancelReason', function() {
       // verify property exists
       expect(instance).to.have.property('buyerCancelReason');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.buyerCancelReason = validValue;
-      expect(instance.buyerCancelReason).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.buyerCancelReason = expectedValue;
+      expect(instance.buyerCancelReason).to.equal(expectedValue);
     });
 
   });

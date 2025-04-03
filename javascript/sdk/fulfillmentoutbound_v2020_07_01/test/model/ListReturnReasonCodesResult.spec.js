@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.ListReturnReasonCodesResult);
     });
 
-    it('should have the property reasonCodeDetails (base name: "reasonCodeDetails")', function() {
+    it('should have the property reasonCodeDetails', function() {
       // verify property exists
       expect(instance).to.have.property('reasonCodeDetails');
 
       // set and verify value
-      var validValue = generateMockData('[ReasonCodeDetails]', true);
-      instance.reasonCodeDetails = validValue;
-      expect(instance.reasonCodeDetails).to.equal(validValue);
+      var expectedValue = generateMockData('ReasonCodeDetails', true);
+      instance.reasonCodeDetails = expectedValue;
+      expect(instance.reasonCodeDetails).to.equal(expectedValue);
     });
 
   });

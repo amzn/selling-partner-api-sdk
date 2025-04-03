@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForMerchantFulfillment.GetAdditionalSellerInputsResult);
     });
 
-    it('should have the property shipmentLevelFields (base name: "ShipmentLevelFields")', function() {
+    it('should have the property shipmentLevelFields', function() {
       // verify property exists
       expect(instance).to.have.property('shipmentLevelFields');
 
       // set and verify value
-      var validValue = generateMockData('[AdditionalInputs]', true);
-      instance.shipmentLevelFields = validValue;
-      expect(instance.shipmentLevelFields).to.equal(validValue);
+      var expectedValue = generateMockData('AdditionalInputs', true);
+      instance.shipmentLevelFields = expectedValue;
+      expect(instance.shipmentLevelFields).to.equal(expectedValue);
     });
 
-    it('should have the property itemLevelFieldsList (base name: "ItemLevelFieldsList")', function() {
+    it('should have the property itemLevelFieldsList', function() {
       // verify property exists
       expect(instance).to.have.property('itemLevelFieldsList');
 
       // set and verify value
-      var validValue = generateMockData('[ItemLevelFields]', true);
-      instance.itemLevelFieldsList = validValue;
-      expect(instance.itemLevelFieldsList).to.equal(validValue);
+      var expectedValue = generateMockData('ItemLevelFields', true);
+      instance.itemLevelFieldsList = expectedValue;
+      expect(instance.itemLevelFieldsList).to.equal(expectedValue);
     });
 
   });

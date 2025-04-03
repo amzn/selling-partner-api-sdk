@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.InvalidItemReason);
     });
 
-    it('should have the property invalidItemReasonCode (base name: "invalidItemReasonCode")', function() {
+    it('should have the property invalidItemReasonCode', function() {
       // verify property exists
       expect(instance).to.have.property('invalidItemReasonCode');
 
       // set and verify value
-      var validValue = generateMockData('InvalidItemReasonCode');
-      instance.invalidItemReasonCode = validValue;
-      expect(instance.invalidItemReasonCode).to.equal(validValue);
+      var expectedValue = generateMockData('InvalidItemReasonCode');
+      instance.invalidItemReasonCode = expectedValue;
+      expect(instance.invalidItemReasonCode).to.equal(expectedValue);
     });
 
-    it('should have the property description (base name: "description")', function() {
+    it('should have the property description', function() {
       // verify property exists
       expect(instance).to.have.property('description');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.description = validValue;
-      expect(instance.description).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.description = expectedValue;
+      expect(instance.description).to.equal(expectedValue);
     });
 
   });

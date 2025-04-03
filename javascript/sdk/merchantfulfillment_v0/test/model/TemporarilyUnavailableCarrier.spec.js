@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForMerchantFulfillment.TemporarilyUnavailableCarrier);
     });
 
-    it('should have the property carrierName (base name: "CarrierName")', function() {
+    it('should have the property carrierName', function() {
       // verify property exists
       expect(instance).to.have.property('carrierName');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.carrierName = validValue;
-      expect(instance.carrierName).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.carrierName = expectedValue;
+      expect(instance.carrierName).to.equal(expectedValue);
     });
 
   });

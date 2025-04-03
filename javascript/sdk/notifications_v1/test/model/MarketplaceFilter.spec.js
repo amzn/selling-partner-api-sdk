@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForNotifications.MarketplaceFilter);
     });
 
-    it('should have the property marketplaceIds (base name: "marketplaceIds")', function() {
+    it('should have the property marketplaceIds', function() {
       // verify property exists
       expect(instance).to.have.property('marketplaceIds');
 
       // set and verify value
-      var validValue = generateMockData('[String]', true);
-      instance.marketplaceIds = validValue;
-      expect(instance.marketplaceIds).to.equal(validValue);
+      var expectedValue = generateMockData('String', true);
+      instance.marketplaceIds = expectedValue;
+      expect(instance.marketplaceIds).to.equal(expectedValue);
     });
 
   });

@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForMerchantFulfillment.GetEligibleShipmentServicesRequest);
     });
 
-    it('should have the property shipmentRequestDetails (base name: "ShipmentRequestDetails")', function() {
+    it('should have the property shipmentRequestDetails', function() {
       // verify property exists
       expect(instance).to.have.property('shipmentRequestDetails');
 
       // set and verify value
-      var validValue = generateMockData('ShipmentRequestDetails');
-      instance.shipmentRequestDetails = validValue;
-      expect(instance.shipmentRequestDetails).to.equal(validValue);
+      var expectedValue = generateMockData('ShipmentRequestDetails');
+      instance.shipmentRequestDetails = expectedValue;
+      expect(instance.shipmentRequestDetails).to.equal(expectedValue);
     });
 
-    it('should have the property shippingOfferingFilter (base name: "ShippingOfferingFilter")', function() {
+    it('should have the property shippingOfferingFilter', function() {
       // verify property exists
       expect(instance).to.have.property('shippingOfferingFilter');
 
       // set and verify value
-      var validValue = generateMockData('ShippingOfferingFilter');
-      instance.shippingOfferingFilter = validValue;
-      expect(instance.shippingOfferingFilter).to.equal(validValue);
+      var expectedValue = generateMockData('ShippingOfferingFilter');
+      instance.shippingOfferingFilter = expectedValue;
+      expect(instance.shippingOfferingFilter).to.equal(expectedValue);
     });
 
   });

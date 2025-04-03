@@ -45,74 +45,74 @@
       expect(instance).to.be.a(SellingPartnerApiForSupplySources.OperatingHoursByDay);
     });
 
-    it('should have the property monday (base name: "monday")', function() {
+    it('should have the property monday', function() {
       // verify property exists
       expect(instance).to.have.property('monday');
 
       // set and verify value
-      var validValue = generateMockData('[OperatingHour]', true);
-      instance.monday = validValue;
-      expect(instance.monday).to.equal(validValue);
+      var expectedValue = generateMockData('OperatingHour', true);
+      instance.monday = expectedValue;
+      expect(instance.monday).to.equal(expectedValue);
     });
 
-    it('should have the property tuesday (base name: "tuesday")', function() {
+    it('should have the property tuesday', function() {
       // verify property exists
       expect(instance).to.have.property('tuesday');
 
       // set and verify value
-      var validValue = generateMockData('[OperatingHour]', true);
-      instance.tuesday = validValue;
-      expect(instance.tuesday).to.equal(validValue);
+      var expectedValue = generateMockData('OperatingHour', true);
+      instance.tuesday = expectedValue;
+      expect(instance.tuesday).to.equal(expectedValue);
     });
 
-    it('should have the property wednesday (base name: "wednesday")', function() {
+    it('should have the property wednesday', function() {
       // verify property exists
       expect(instance).to.have.property('wednesday');
 
       // set and verify value
-      var validValue = generateMockData('[OperatingHour]', true);
-      instance.wednesday = validValue;
-      expect(instance.wednesday).to.equal(validValue);
+      var expectedValue = generateMockData('OperatingHour', true);
+      instance.wednesday = expectedValue;
+      expect(instance.wednesday).to.equal(expectedValue);
     });
 
-    it('should have the property thursday (base name: "thursday")', function() {
+    it('should have the property thursday', function() {
       // verify property exists
       expect(instance).to.have.property('thursday');
 
       // set and verify value
-      var validValue = generateMockData('[OperatingHour]', true);
-      instance.thursday = validValue;
-      expect(instance.thursday).to.equal(validValue);
+      var expectedValue = generateMockData('OperatingHour', true);
+      instance.thursday = expectedValue;
+      expect(instance.thursday).to.equal(expectedValue);
     });
 
-    it('should have the property friday (base name: "friday")', function() {
+    it('should have the property friday', function() {
       // verify property exists
       expect(instance).to.have.property('friday');
 
       // set and verify value
-      var validValue = generateMockData('[OperatingHour]', true);
-      instance.friday = validValue;
-      expect(instance.friday).to.equal(validValue);
+      var expectedValue = generateMockData('OperatingHour', true);
+      instance.friday = expectedValue;
+      expect(instance.friday).to.equal(expectedValue);
     });
 
-    it('should have the property saturday (base name: "saturday")', function() {
+    it('should have the property saturday', function() {
       // verify property exists
       expect(instance).to.have.property('saturday');
 
       // set and verify value
-      var validValue = generateMockData('[OperatingHour]', true);
-      instance.saturday = validValue;
-      expect(instance.saturday).to.equal(validValue);
+      var expectedValue = generateMockData('OperatingHour', true);
+      instance.saturday = expectedValue;
+      expect(instance.saturday).to.equal(expectedValue);
     });
 
-    it('should have the property sunday (base name: "sunday")', function() {
+    it('should have the property sunday', function() {
       // verify property exists
       expect(instance).to.have.property('sunday');
 
       // set and verify value
-      var validValue = generateMockData('[OperatingHour]', true);
-      instance.sunday = validValue;
-      expect(instance.sunday).to.equal(validValue);
+      var expectedValue = generateMockData('OperatingHour', true);
+      instance.sunday = expectedValue;
+      expect(instance.sunday).to.equal(expectedValue);
     });
 
   });

@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForNotifications.EventBridgeResourceSpecification);
     });
 
-    it('should have the property region (base name: "region")', function() {
+    it('should have the property region', function() {
       // verify property exists
       expect(instance).to.have.property('region');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.region = validValue;
-      expect(instance.region).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.region = expectedValue;
+      expect(instance.region).to.equal(expectedValue);
     });
 
-    it('should have the property accountId (base name: "accountId")', function() {
+    it('should have the property accountId', function() {
       // verify property exists
       expect(instance).to.have.property('accountId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.accountId = validValue;
-      expect(instance.accountId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.accountId = expectedValue;
+      expect(instance.accountId).to.equal(expectedValue);
     });
 
   });

@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForServices.RangeSlotCapacity);
     });
 
-    it('should have the property resourceId (base name: "resourceId")', function() {
+    it('should have the property resourceId', function() {
       // verify property exists
       expect(instance).to.have.property('resourceId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.resourceId = validValue;
-      expect(instance.resourceId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.resourceId = expectedValue;
+      expect(instance.resourceId).to.equal(expectedValue);
     });
 
-    it('should have the property capacities (base name: "capacities")', function() {
+    it('should have the property capacities', function() {
       // verify property exists
       expect(instance).to.have.property('capacities');
 
       // set and verify value
-      var validValue = generateMockData('[RangeCapacity]', true);
-      instance.capacities = validValue;
-      expect(instance.capacities).to.equal(validValue);
+      var expectedValue = generateMockData('RangeCapacity', true);
+      instance.capacities = expectedValue;
+      expect(instance.capacities).to.equal(expectedValue);
     });
 
-    it('should have the property nextPageToken (base name: "nextPageToken")', function() {
+    it('should have the property nextPageToken', function() {
       // verify property exists
       expect(instance).to.have.property('nextPageToken');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.nextPageToken = validValue;
-      expect(instance.nextPageToken).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.nextPageToken = expectedValue;
+      expect(instance.nextPageToken).to.equal(expectedValue);
     });
 
   });

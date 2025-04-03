@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForServices.FixedSlotCapacityQuery);
     });
 
-    it('should have the property capacityTypes (base name: "capacityTypes")', function() {
+    it('should have the property capacityTypes', function() {
       // verify property exists
       expect(instance).to.have.property('capacityTypes');
 
       // set and verify value
-      var validValue = generateMockData('[CapacityType]', true);
-      instance.capacityTypes = validValue;
-      expect(instance.capacityTypes).to.equal(validValue);
+      var expectedValue = generateMockData('CapacityType', true);
+      instance.capacityTypes = expectedValue;
+      expect(instance.capacityTypes).to.equal(expectedValue);
     });
 
-    it('should have the property slotDuration (base name: "slotDuration")', function() {
+    it('should have the property slotDuration', function() {
       // verify property exists
       expect(instance).to.have.property('slotDuration');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.slotDuration = validValue;
-      expect(instance.slotDuration).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.slotDuration = expectedValue;
+      expect(instance.slotDuration).to.equal(expectedValue);
     });
 
-    it('should have the property startDateTime (base name: "startDateTime")', function() {
+    it('should have the property startDateTime', function() {
       // verify property exists
       expect(instance).to.have.property('startDateTime');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.startDateTime = validValue;
-      expect(instance.startDateTime).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.startDateTime = expectedValue;
+      expect(instance.startDateTime).to.equal(expectedValue);
     });
 
-    it('should have the property endDateTime (base name: "endDateTime")', function() {
+    it('should have the property endDateTime', function() {
       // verify property exists
       expect(instance).to.have.property('endDateTime');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.endDateTime = validValue;
-      expect(instance.endDateTime).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.endDateTime = expectedValue;
+      expect(instance.endDateTime).to.equal(expectedValue);
     });
 
   });

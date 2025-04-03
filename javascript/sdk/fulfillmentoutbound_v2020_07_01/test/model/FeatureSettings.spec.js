@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.FeatureSettings);
     });
 
-    it('should have the property featureName (base name: "featureName")', function() {
+    it('should have the property featureName', function() {
       // verify property exists
       expect(instance).to.have.property('featureName');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.featureName = validValue;
-      expect(instance.featureName).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.featureName = expectedValue;
+      expect(instance.featureName).to.equal(expectedValue);
     });
 
-    it('should have the property featureFulfillmentPolicy (base name: "featureFulfillmentPolicy")', function() {
+    it('should have the property featureFulfillmentPolicy', function() {
       // verify property exists
       expect(instance).to.have.property('featureFulfillmentPolicy');
 
       // set and verify value
-      var validValue = ['Required', 'NotRequired', ][0];
-      instance.featureFulfillmentPolicy = validValue;
-      expect(instance.featureFulfillmentPolicy).to.equal(validValue);
+      var expectedValue = ['Required', 'NotRequired', ][0];
+      instance.featureFulfillmentPolicy = expectedValue;
+      expect(instance.featureFulfillmentPolicy).to.equal(expectedValue);
     });
 
   });

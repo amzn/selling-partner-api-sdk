@@ -45,64 +45,64 @@
       expect(instance).to.be.a(SellingPartnerApiForReplenishment.GetSellingPartnerMetricsRequest);
     });
 
-    it('should have the property aggregationFrequency (base name: "aggregationFrequency")', function() {
+    it('should have the property aggregationFrequency', function() {
       // verify property exists
       expect(instance).to.have.property('aggregationFrequency');
 
       // set and verify value
-      var validValue = generateMockData('AggregationFrequency');
-      instance.aggregationFrequency = validValue;
-      expect(instance.aggregationFrequency).to.equal(validValue);
+      var expectedValue = generateMockData('AggregationFrequency');
+      instance.aggregationFrequency = expectedValue;
+      expect(instance.aggregationFrequency).to.equal(expectedValue);
     });
 
-    it('should have the property timeInterval (base name: "timeInterval")', function() {
+    it('should have the property timeInterval', function() {
       // verify property exists
       expect(instance).to.have.property('timeInterval');
 
       // set and verify value
-      var validValue = generateMockData('TimeInterval');
-      instance.timeInterval = validValue;
-      expect(instance.timeInterval).to.equal(validValue);
+      var expectedValue = generateMockData('TimeInterval');
+      instance.timeInterval = expectedValue;
+      expect(instance.timeInterval).to.equal(expectedValue);
     });
 
-    it('should have the property metrics (base name: "metrics")', function() {
+    it('should have the property metrics', function() {
       // verify property exists
       expect(instance).to.have.property('metrics');
 
       // set and verify value
-      var validValue = generateMockData('[Metric]', true);
-      instance.metrics = validValue;
-      expect(instance.metrics).to.equal(validValue);
+      var expectedValue = generateMockData('Metric', true);
+      instance.metrics = expectedValue;
+      expect(instance.metrics).to.equal(expectedValue);
     });
 
-    it('should have the property timePeriodType (base name: "timePeriodType")', function() {
+    it('should have the property timePeriodType', function() {
       // verify property exists
       expect(instance).to.have.property('timePeriodType');
 
       // set and verify value
-      var validValue = generateMockData('TimePeriodType');
-      instance.timePeriodType = validValue;
-      expect(instance.timePeriodType).to.equal(validValue);
+      var expectedValue = generateMockData('TimePeriodType');
+      instance.timePeriodType = expectedValue;
+      expect(instance.timePeriodType).to.equal(expectedValue);
     });
 
-    it('should have the property marketplaceId (base name: "marketplaceId")', function() {
+    it('should have the property marketplaceId', function() {
       // verify property exists
       expect(instance).to.have.property('marketplaceId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.marketplaceId = validValue;
-      expect(instance.marketplaceId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.marketplaceId = expectedValue;
+      expect(instance.marketplaceId).to.equal(expectedValue);
     });
 
-    it('should have the property programTypes (base name: "programTypes")', function() {
+    it('should have the property programTypes', function() {
       // verify property exists
       expect(instance).to.have.property('programTypes');
 
       // set and verify value
-      var validValue = generateMockData('[ProgramType]', true);
-      instance.programTypes = validValue;
-      expect(instance.programTypes).to.equal(validValue);
+      var expectedValue = generateMockData('ProgramType', true);
+      instance.programTypes = expectedValue;
+      expect(instance.programTypes).to.equal(expectedValue);
     });
 
   });

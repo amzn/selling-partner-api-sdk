@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForPricing.PriceType);
     });
 
-    it('should have the property landedPrice (base name: "LandedPrice")', function() {
+    it('should have the property landedPrice', function() {
       // verify property exists
       expect(instance).to.have.property('landedPrice');
 
       // set and verify value
-      var validValue = generateMockData('MoneyType');
-      instance.landedPrice = validValue;
-      expect(instance.landedPrice).to.equal(validValue);
+      var expectedValue = generateMockData('MoneyType');
+      instance.landedPrice = expectedValue;
+      expect(instance.landedPrice).to.equal(expectedValue);
     });
 
-    it('should have the property listingPrice (base name: "ListingPrice")', function() {
+    it('should have the property listingPrice', function() {
       // verify property exists
       expect(instance).to.have.property('listingPrice');
 
       // set and verify value
-      var validValue = generateMockData('MoneyType');
-      instance.listingPrice = validValue;
-      expect(instance.listingPrice).to.equal(validValue);
+      var expectedValue = generateMockData('MoneyType');
+      instance.listingPrice = expectedValue;
+      expect(instance.listingPrice).to.equal(expectedValue);
     });
 
-    it('should have the property shipping (base name: "Shipping")', function() {
+    it('should have the property shipping', function() {
       // verify property exists
       expect(instance).to.have.property('shipping');
 
       // set and verify value
-      var validValue = generateMockData('MoneyType');
-      instance.shipping = validValue;
-      expect(instance.shipping).to.equal(validValue);
+      var expectedValue = generateMockData('MoneyType');
+      instance.shipping = expectedValue;
+      expect(instance.shipping).to.equal(expectedValue);
     });
 
-    it('should have the property points (base name: "Points")', function() {
+    it('should have the property points', function() {
       // verify property exists
       expect(instance).to.have.property('points');
 
       // set and verify value
-      var validValue = generateMockData('Points');
-      instance.points = validValue;
-      expect(instance.points).to.equal(validValue);
+      var expectedValue = generateMockData('Points');
+      instance.points = expectedValue;
+      expect(instance.points).to.equal(expectedValue);
     });
 
   });

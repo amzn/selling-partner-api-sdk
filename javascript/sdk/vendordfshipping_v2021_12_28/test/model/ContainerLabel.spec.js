@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForDirectFulfillmentShipping.ContainerLabel);
     });
 
-    it('should have the property containerTrackingNumber (base name: "containerTrackingNumber")', function() {
+    it('should have the property containerTrackingNumber', function() {
       // verify property exists
       expect(instance).to.have.property('containerTrackingNumber');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.containerTrackingNumber = validValue;
-      expect(instance.containerTrackingNumber).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.containerTrackingNumber = expectedValue;
+      expect(instance.containerTrackingNumber).to.equal(expectedValue);
     });
 
-    it('should have the property content (base name: "content")', function() {
+    it('should have the property content', function() {
       // verify property exists
       expect(instance).to.have.property('content');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.content = validValue;
-      expect(instance.content).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.content = expectedValue;
+      expect(instance.content).to.equal(expectedValue);
     });
 
-    it('should have the property format (base name: "format")', function() {
+    it('should have the property format', function() {
       // verify property exists
       expect(instance).to.have.property('format');
 
       // set and verify value
-      var validValue = generateMockData('ContainerLabelFormat');
-      instance.format = validValue;
-      expect(instance.format).to.equal(validValue);
+      var expectedValue = generateMockData('ContainerLabelFormat');
+      instance.format = expectedValue;
+      expect(instance.format).to.equal(expectedValue);
     });
 
   });

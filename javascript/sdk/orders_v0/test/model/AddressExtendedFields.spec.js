@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForOrders.AddressExtendedFields);
     });
 
-    it('should have the property streetName (base name: "StreetName")', function() {
+    it('should have the property streetName', function() {
       // verify property exists
       expect(instance).to.have.property('streetName');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.streetName = validValue;
-      expect(instance.streetName).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.streetName = expectedValue;
+      expect(instance.streetName).to.equal(expectedValue);
     });
 
-    it('should have the property streetNumber (base name: "StreetNumber")', function() {
+    it('should have the property streetNumber', function() {
       // verify property exists
       expect(instance).to.have.property('streetNumber');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.streetNumber = validValue;
-      expect(instance.streetNumber).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.streetNumber = expectedValue;
+      expect(instance.streetNumber).to.equal(expectedValue);
     });
 
-    it('should have the property complement (base name: "Complement")', function() {
+    it('should have the property complement', function() {
       // verify property exists
       expect(instance).to.have.property('complement');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.complement = validValue;
-      expect(instance.complement).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.complement = expectedValue;
+      expect(instance.complement).to.equal(expectedValue);
     });
 
-    it('should have the property neighborhood (base name: "Neighborhood")', function() {
+    it('should have the property neighborhood', function() {
       // verify property exists
       expect(instance).to.have.property('neighborhood');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.neighborhood = validValue;
-      expect(instance.neighborhood).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.neighborhood = expectedValue;
+      expect(instance.neighborhood).to.equal(expectedValue);
     });
 
   });

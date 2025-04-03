@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForOrders.ProductInfoDetail);
     });
 
-    it('should have the property numberOfItems (base name: "NumberOfItems")', function() {
+    it('should have the property numberOfItems', function() {
       // verify property exists
       expect(instance).to.have.property('numberOfItems');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.numberOfItems = validValue;
-      expect(instance.numberOfItems).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.numberOfItems = expectedValue;
+      expect(instance.numberOfItems).to.equal(expectedValue);
     });
 
   });

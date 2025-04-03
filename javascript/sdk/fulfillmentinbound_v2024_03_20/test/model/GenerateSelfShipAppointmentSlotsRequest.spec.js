@@ -45,24 +45,24 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.GenerateSelfShipAppointmentSlotsRequest);
     });
 
-    it('should have the property desiredEndDate (base name: "desiredEndDate")', function() {
+    it('should have the property desiredEndDate', function() {
       // verify property exists
       expect(instance).to.have.property('desiredEndDate');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.desiredEndDate = validValue;
-      expect(instance.desiredEndDate).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.desiredEndDate = expectedValue;
+      expect(instance.desiredEndDate).to.equal(expectedValue);
     });
 
-    it('should have the property desiredStartDate (base name: "desiredStartDate")', function() {
+    it('should have the property desiredStartDate', function() {
       // verify property exists
       expect(instance).to.have.property('desiredStartDate');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.desiredStartDate = validValue;
-      expect(instance.desiredStartDate).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.desiredStartDate = expectedValue;
+      expect(instance.desiredStartDate).to.equal(expectedValue);
     });
 
   });

@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForPricing.CompetitiveSummaryBatchResponse);
     });
 
-    it('should have the property responses (base name: "responses")', function() {
+    it('should have the property responses', function() {
       // verify property exists
       expect(instance).to.have.property('responses');
 
       // set and verify value
-      var validValue = generateMockData('[CompetitiveSummaryResponse]', true);
-      instance.responses = validValue;
-      expect(instance.responses).to.equal(validValue);
+      var expectedValue = generateMockData('CompetitiveSummaryResponse', true);
+      instance.responses = expectedValue;
+      expect(instance.responses).to.equal(expectedValue);
     });
 
   });

@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForProductFees.FeesEstimateError);
     });
 
-    it('should have the property type (base name: "Type")', function() {
+    it('should have the property type', function() {
       // verify property exists
       expect(instance).to.have.property('type');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.type = validValue;
-      expect(instance.type).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.type = expectedValue;
+      expect(instance.type).to.equal(expectedValue);
     });
 
-    it('should have the property code (base name: "Code")', function() {
+    it('should have the property code', function() {
       // verify property exists
       expect(instance).to.have.property('code');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.code = validValue;
-      expect(instance.code).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.code = expectedValue;
+      expect(instance.code).to.equal(expectedValue);
     });
 
-    it('should have the property message (base name: "Message")', function() {
+    it('should have the property message', function() {
       // verify property exists
       expect(instance).to.have.property('message');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.message = validValue;
-      expect(instance.message).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.message = expectedValue;
+      expect(instance.message).to.equal(expectedValue);
     });
 
-    it('should have the property detail (base name: "Detail")', function() {
+    it('should have the property detail', function() {
       // verify property exists
       expect(instance).to.have.property('detail');
 
       // set and verify value
-      var validValue = generateMockData('[Object]', true);
-      instance.detail = validValue;
-      expect(instance.detail).to.equal(validValue);
+      var expectedValue = generateMockData('Object', true);
+      instance.detail = expectedValue;
+      expect(instance.detail).to.equal(expectedValue);
     });
 
   });

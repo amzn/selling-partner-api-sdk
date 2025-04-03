@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForRetailProcurementShipments.TransportLabel);
     });
 
-    it('should have the property labelCreateDateTime (base name: "labelCreateDateTime")', function() {
+    it('should have the property labelCreateDateTime', function() {
       // verify property exists
       expect(instance).to.have.property('labelCreateDateTime');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.labelCreateDateTime = validValue;
-      expect(instance.labelCreateDateTime).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.labelCreateDateTime = expectedValue;
+      expect(instance.labelCreateDateTime).to.equal(expectedValue);
     });
 
-    it('should have the property shipmentInformation (base name: "shipmentInformation")', function() {
+    it('should have the property shipmentInformation', function() {
       // verify property exists
       expect(instance).to.have.property('shipmentInformation');
 
       // set and verify value
-      var validValue = generateMockData('ShipmentInformation');
-      instance.shipmentInformation = validValue;
-      expect(instance.shipmentInformation).to.equal(validValue);
+      var expectedValue = generateMockData('ShipmentInformation');
+      instance.shipmentInformation = expectedValue;
+      expect(instance.shipmentInformation).to.equal(expectedValue);
     });
 
-    it('should have the property labelData (base name: "labelData")', function() {
+    it('should have the property labelData', function() {
       // verify property exists
       expect(instance).to.have.property('labelData');
 
       // set and verify value
-      var validValue = generateMockData('[LabelData]', true);
-      instance.labelData = validValue;
-      expect(instance.labelData).to.equal(validValue);
+      var expectedValue = generateMockData('LabelData', true);
+      instance.labelData = expectedValue;
+      expect(instance.labelData).to.equal(expectedValue);
     });
 
   });

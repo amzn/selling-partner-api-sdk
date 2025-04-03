@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForAContentManagement.StandardTextModule);
     });
 
-    it('should have the property headline (base name: "headline")', function() {
+    it('should have the property headline', function() {
       // verify property exists
       expect(instance).to.have.property('headline');
 
       // set and verify value
-      var validValue = generateMockData('TextComponent');
-      instance.headline = validValue;
-      expect(instance.headline).to.equal(validValue);
+      var expectedValue = generateMockData('TextComponent');
+      instance.headline = expectedValue;
+      expect(instance.headline).to.equal(expectedValue);
     });
 
-    it('should have the property body (base name: "body")', function() {
+    it('should have the property body', function() {
       // verify property exists
       expect(instance).to.have.property('body');
 
       // set and verify value
-      var validValue = generateMockData('ParagraphComponent');
-      instance.body = validValue;
-      expect(instance.body).to.equal(validValue);
+      var expectedValue = generateMockData('ParagraphComponent');
+      instance.body = expectedValue;
+      expect(instance.body).to.equal(expectedValue);
     });
 
   });

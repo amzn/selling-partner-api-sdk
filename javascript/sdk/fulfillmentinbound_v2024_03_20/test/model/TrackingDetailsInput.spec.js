@@ -45,24 +45,24 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.TrackingDetailsInput);
     });
 
-    it('should have the property ltlTrackingDetail (base name: "ltlTrackingDetail")', function() {
+    it('should have the property ltlTrackingDetail', function() {
       // verify property exists
       expect(instance).to.have.property('ltlTrackingDetail');
 
       // set and verify value
-      var validValue = generateMockData('LtlTrackingDetailInput');
-      instance.ltlTrackingDetail = validValue;
-      expect(instance.ltlTrackingDetail).to.equal(validValue);
+      var expectedValue = generateMockData('LtlTrackingDetailInput');
+      instance.ltlTrackingDetail = expectedValue;
+      expect(instance.ltlTrackingDetail).to.equal(expectedValue);
     });
 
-    it('should have the property spdTrackingDetail (base name: "spdTrackingDetail")', function() {
+    it('should have the property spdTrackingDetail', function() {
       // verify property exists
       expect(instance).to.have.property('spdTrackingDetail');
 
       // set and verify value
-      var validValue = generateMockData('SpdTrackingDetailInput');
-      instance.spdTrackingDetail = validValue;
-      expect(instance.spdTrackingDetail).to.equal(validValue);
+      var expectedValue = generateMockData('SpdTrackingDetailInput');
+      instance.spdTrackingDetail = expectedValue;
+      expect(instance.spdTrackingDetail).to.equal(expectedValue);
     });
 
   });

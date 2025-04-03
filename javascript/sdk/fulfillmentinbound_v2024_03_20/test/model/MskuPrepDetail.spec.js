@@ -45,64 +45,64 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.MskuPrepDetail);
     });
 
-    it('should have the property allOwnersConstraint (base name: "allOwnersConstraint")', function() {
+    it('should have the property allOwnersConstraint', function() {
       // verify property exists
       expect(instance).to.have.property('allOwnersConstraint');
 
       // set and verify value
-      var validValue = generateMockData('AllOwnersConstraint');
-      instance.allOwnersConstraint = validValue;
-      expect(instance.allOwnersConstraint).to.equal(validValue);
+      var expectedValue = generateMockData('AllOwnersConstraint');
+      instance.allOwnersConstraint = expectedValue;
+      expect(instance.allOwnersConstraint).to.equal(expectedValue);
     });
 
-    it('should have the property labelOwnerConstraint (base name: "labelOwnerConstraint")', function() {
+    it('should have the property labelOwnerConstraint', function() {
       // verify property exists
       expect(instance).to.have.property('labelOwnerConstraint');
 
       // set and verify value
-      var validValue = generateMockData('OwnerConstraint');
-      instance.labelOwnerConstraint = validValue;
-      expect(instance.labelOwnerConstraint).to.equal(validValue);
+      var expectedValue = generateMockData('OwnerConstraint');
+      instance.labelOwnerConstraint = expectedValue;
+      expect(instance.labelOwnerConstraint).to.equal(expectedValue);
     });
 
-    it('should have the property msku (base name: "msku")', function() {
+    it('should have the property msku', function() {
       // verify property exists
       expect(instance).to.have.property('msku');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.msku = validValue;
-      expect(instance.msku).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.msku = expectedValue;
+      expect(instance.msku).to.equal(expectedValue);
     });
 
-    it('should have the property prepCategory (base name: "prepCategory")', function() {
+    it('should have the property prepCategory', function() {
       // verify property exists
       expect(instance).to.have.property('prepCategory');
 
       // set and verify value
-      var validValue = generateMockData('PrepCategory');
-      instance.prepCategory = validValue;
-      expect(instance.prepCategory).to.equal(validValue);
+      var expectedValue = generateMockData('PrepCategory');
+      instance.prepCategory = expectedValue;
+      expect(instance.prepCategory).to.equal(expectedValue);
     });
 
-    it('should have the property prepOwnerConstraint (base name: "prepOwnerConstraint")', function() {
+    it('should have the property prepOwnerConstraint', function() {
       // verify property exists
       expect(instance).to.have.property('prepOwnerConstraint');
 
       // set and verify value
-      var validValue = generateMockData('OwnerConstraint');
-      instance.prepOwnerConstraint = validValue;
-      expect(instance.prepOwnerConstraint).to.equal(validValue);
+      var expectedValue = generateMockData('OwnerConstraint');
+      instance.prepOwnerConstraint = expectedValue;
+      expect(instance.prepOwnerConstraint).to.equal(expectedValue);
     });
 
-    it('should have the property prepTypes (base name: "prepTypes")', function() {
+    it('should have the property prepTypes', function() {
       // verify property exists
       expect(instance).to.have.property('prepTypes');
 
       // set and verify value
-      var validValue = generateMockData('[PrepType]', true);
-      instance.prepTypes = validValue;
-      expect(instance.prepTypes).to.equal(validValue);
+      var expectedValue = generateMockData('PrepType', true);
+      instance.prepTypes = expectedValue;
+      expect(instance.prepTypes).to.equal(expectedValue);
     });
 
   });

@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.DropOffLocation);
     });
 
-    it('should have the property type (base name: "type")', function() {
+    it('should have the property type', function() {
       // verify property exists
       expect(instance).to.have.property('type');
 
       // set and verify value
-      var validValue = ['FRONT_DOOR', 'DELIVERY_BOX', 'GAS_METER_BOX', 'BICYCLE_BASKET', 'GARAGE', 'RECEPTIONIST', 'FALLBACK_NEIGHBOR_DELIVERY', 'DO_NOT_LEAVE_UNATTENDED', ][0];
-      instance.type = validValue;
-      expect(instance.type).to.equal(validValue);
+      var expectedValue = ['FRONT_DOOR', 'DELIVERY_BOX', 'GAS_METER_BOX', 'BICYCLE_BASKET', 'GARAGE', 'RECEPTIONIST', 'FALLBACK_NEIGHBOR_DELIVERY', 'DO_NOT_LEAVE_UNATTENDED', ][0];
+      instance.type = expectedValue;
+      expect(instance.type).to.equal(expectedValue);
     });
 
-    it('should have the property attributes (base name: "attributes")', function() {
+    it('should have the property attributes', function() {
       // verify property exists
       expect(instance).to.have.property('attributes');
 
       // set and verify value
-      var validValue = generateMockData('{String: String}');
-      instance.attributes = validValue;
-      expect(instance.attributes).to.equal(validValue);
+      var expectedValue = generateMockData('{String: String}');
+      instance.attributes = expectedValue;
+      expect(instance.attributes).to.equal(expectedValue);
     });
 
   });

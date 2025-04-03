@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForListingsItems.ItemProcurement);
     });
 
-    it('should have the property costPrice (base name: "costPrice")', function() {
+    it('should have the property costPrice', function() {
       // verify property exists
       expect(instance).to.have.property('costPrice');
 
       // set and verify value
-      var validValue = generateMockData('Money');
-      instance.costPrice = validValue;
-      expect(instance.costPrice).to.equal(validValue);
+      var expectedValue = generateMockData('Money');
+      instance.costPrice = expectedValue;
+      expect(instance.costPrice).to.equal(expectedValue);
     });
 
   });

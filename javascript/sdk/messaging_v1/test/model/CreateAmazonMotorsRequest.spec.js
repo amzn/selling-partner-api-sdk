@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForMessaging.CreateAmazonMotorsRequest);
     });
 
-    it('should have the property attachments (base name: "attachments")', function() {
+    it('should have the property attachments', function() {
       // verify property exists
       expect(instance).to.have.property('attachments');
 
       // set and verify value
-      var validValue = generateMockData('[Attachment]', true);
-      instance.attachments = validValue;
-      expect(instance.attachments).to.equal(validValue);
+      var expectedValue = generateMockData('Attachment', true);
+      instance.attachments = expectedValue;
+      expect(instance.attachments).to.equal(expectedValue);
     });
 
   });

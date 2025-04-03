@@ -45,24 +45,24 @@
       expect(instance).to.be.a(AmazonShippingApi.ExceptionOperatingHours);
     });
 
-    it('should have the property dateRange (base name: "dateRange")', function() {
+    it('should have the property dateRange', function() {
       // verify property exists
       expect(instance).to.have.property('dateRange');
 
       // set and verify value
-      var validValue = generateMockData('DateRange');
-      instance.dateRange = validValue;
-      expect(instance.dateRange).to.equal(validValue);
+      var expectedValue = generateMockData('DateRange');
+      instance.dateRange = expectedValue;
+      expect(instance.dateRange).to.equal(expectedValue);
     });
 
-    it('should have the property operatingHours (base name: "operatingHours")', function() {
+    it('should have the property operatingHours', function() {
       // verify property exists
       expect(instance).to.have.property('operatingHours');
 
       // set and verify value
-      var validValue = generateMockData('OperatingHours');
-      instance.operatingHours = validValue;
-      expect(instance.operatingHours).to.equal(validValue);
+      var expectedValue = generateMockData('OperatingHours');
+      instance.operatingHours = expectedValue;
+      expect(instance.operatingHours).to.equal(expectedValue);
     });
 
   });

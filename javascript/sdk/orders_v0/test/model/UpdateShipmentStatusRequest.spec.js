@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForOrders.UpdateShipmentStatusRequest);
     });
 
-    it('should have the property marketplaceId (base name: "marketplaceId")', function() {
+    it('should have the property marketplaceId', function() {
       // verify property exists
       expect(instance).to.have.property('marketplaceId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.marketplaceId = validValue;
-      expect(instance.marketplaceId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.marketplaceId = expectedValue;
+      expect(instance.marketplaceId).to.equal(expectedValue);
     });
 
-    it('should have the property shipmentStatus (base name: "shipmentStatus")', function() {
+    it('should have the property shipmentStatus', function() {
       // verify property exists
       expect(instance).to.have.property('shipmentStatus');
 
       // set and verify value
-      var validValue = generateMockData('ShipmentStatus');
-      instance.shipmentStatus = validValue;
-      expect(instance.shipmentStatus).to.equal(validValue);
+      var expectedValue = generateMockData('ShipmentStatus');
+      instance.shipmentStatus = expectedValue;
+      expect(instance.shipmentStatus).to.equal(expectedValue);
     });
 
-    it('should have the property orderItems (base name: "orderItems")', function() {
+    it('should have the property orderItems', function() {
       // verify property exists
       expect(instance).to.have.property('orderItems');
 
       // set and verify value
-      var validValue = generateMockData('[OrderItemsInner]', true);
-      instance.orderItems = validValue;
-      expect(instance.orderItems).to.equal(validValue);
+      var expectedValue = generateMockData('OrderItemsInner', true);
+      instance.orderItems = expectedValue;
+      expect(instance.orderItems).to.equal(expectedValue);
     });
 
   });

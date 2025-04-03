@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForListingsItems.FulfillmentAvailability);
     });
 
-    it('should have the property fulfillmentChannelCode (base name: "fulfillmentChannelCode")', function() {
+    it('should have the property fulfillmentChannelCode', function() {
       // verify property exists
       expect(instance).to.have.property('fulfillmentChannelCode');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.fulfillmentChannelCode = validValue;
-      expect(instance.fulfillmentChannelCode).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.fulfillmentChannelCode = expectedValue;
+      expect(instance.fulfillmentChannelCode).to.equal(expectedValue);
     });
 
-    it('should have the property quantity (base name: "quantity")', function() {
+    it('should have the property quantity', function() {
       // verify property exists
       expect(instance).to.have.property('quantity');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.quantity = validValue;
-      expect(instance.quantity).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.quantity = expectedValue;
+      expect(instance.quantity).to.equal(expectedValue);
     });
 
   });

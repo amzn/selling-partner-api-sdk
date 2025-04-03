@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.Origin);
     });
 
-    it('should have the property countryCode (base name: "countryCode")', function() {
+    it('should have the property countryCode', function() {
       // verify property exists
       expect(instance).to.have.property('countryCode');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.countryCode = validValue;
-      expect(instance.countryCode).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.countryCode = expectedValue;
+      expect(instance.countryCode).to.equal(expectedValue);
     });
 
   });

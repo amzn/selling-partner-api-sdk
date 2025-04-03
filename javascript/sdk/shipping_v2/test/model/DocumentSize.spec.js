@@ -45,34 +45,34 @@
       expect(instance).to.be.a(AmazonShippingApi.DocumentSize);
     });
 
-    it('should have the property width (base name: "width")', function() {
+    it('should have the property width', function() {
       // verify property exists
       expect(instance).to.have.property('width');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.width = validValue;
-      expect(instance.width).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.width = expectedValue;
+      expect(instance.width).to.equal(expectedValue);
     });
 
-    it('should have the property length (base name: "length")', function() {
+    it('should have the property length', function() {
       // verify property exists
       expect(instance).to.have.property('length');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.length = validValue;
-      expect(instance.length).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.length = expectedValue;
+      expect(instance.length).to.equal(expectedValue);
     });
 
-    it('should have the property unit (base name: "unit")', function() {
+    it('should have the property unit', function() {
       // verify property exists
       expect(instance).to.have.property('unit');
 
       // set and verify value
-      var validValue = ['INCH', 'CENTIMETER', ][0];
-      instance.unit = validValue;
-      expect(instance.unit).to.equal(validValue);
+      var expectedValue = ['INCH', 'CENTIMETER', ][0];
+      instance.unit = expectedValue;
+      expect(instance.unit).to.equal(expectedValue);
     });
 
   });

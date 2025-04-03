@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForServices.AppointmentSlot);
     });
 
-    it('should have the property startTime (base name: "startTime")', function() {
+    it('should have the property startTime', function() {
       // verify property exists
       expect(instance).to.have.property('startTime');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.startTime = validValue;
-      expect(instance.startTime).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.startTime = expectedValue;
+      expect(instance.startTime).to.equal(expectedValue);
     });
 
-    it('should have the property endTime (base name: "endTime")', function() {
+    it('should have the property endTime', function() {
       // verify property exists
       expect(instance).to.have.property('endTime');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.endTime = validValue;
-      expect(instance.endTime).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.endTime = expectedValue;
+      expect(instance.endTime).to.equal(expectedValue);
     });
 
-    it('should have the property capacity (base name: "capacity")', function() {
+    it('should have the property capacity', function() {
       // verify property exists
       expect(instance).to.have.property('capacity');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.capacity = validValue;
-      expect(instance.capacity).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.capacity = expectedValue;
+      expect(instance.capacity).to.equal(expectedValue);
     });
 
   });

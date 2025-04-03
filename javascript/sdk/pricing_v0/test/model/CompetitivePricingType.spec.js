@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForPricing.CompetitivePricingType);
     });
 
-    it('should have the property competitivePrices (base name: "CompetitivePrices")', function() {
+    it('should have the property competitivePrices', function() {
       // verify property exists
       expect(instance).to.have.property('competitivePrices');
 
       // set and verify value
-      var validValue = generateMockData('[CompetitivePriceType]', true);
-      instance.competitivePrices = validValue;
-      expect(instance.competitivePrices).to.equal(validValue);
+      var expectedValue = generateMockData('CompetitivePriceType', true);
+      instance.competitivePrices = expectedValue;
+      expect(instance.competitivePrices).to.equal(expectedValue);
     });
 
-    it('should have the property numberOfOfferListings (base name: "NumberOfOfferListings")', function() {
+    it('should have the property numberOfOfferListings', function() {
       // verify property exists
       expect(instance).to.have.property('numberOfOfferListings');
 
       // set and verify value
-      var validValue = generateMockData('[OfferListingCountType]', true);
-      instance.numberOfOfferListings = validValue;
-      expect(instance.numberOfOfferListings).to.equal(validValue);
+      var expectedValue = generateMockData('OfferListingCountType', true);
+      instance.numberOfOfferListings = expectedValue;
+      expect(instance.numberOfOfferListings).to.equal(expectedValue);
     });
 
-    it('should have the property tradeInValue (base name: "TradeInValue")', function() {
+    it('should have the property tradeInValue', function() {
       // verify property exists
       expect(instance).to.have.property('tradeInValue');
 
       // set and verify value
-      var validValue = generateMockData('MoneyType');
-      instance.tradeInValue = validValue;
-      expect(instance.tradeInValue).to.equal(validValue);
+      var expectedValue = generateMockData('MoneyType');
+      instance.tradeInValue = expectedValue;
+      expect(instance.tradeInValue).to.equal(expectedValue);
     });
 
   });

@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForServices.AppointmentTime);
     });
 
-    it('should have the property startTime (base name: "startTime")', function() {
+    it('should have the property startTime', function() {
       // verify property exists
       expect(instance).to.have.property('startTime');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.startTime = validValue;
-      expect(instance.startTime).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.startTime = expectedValue;
+      expect(instance.startTime).to.equal(expectedValue);
     });
 
-    it('should have the property durationInMinutes (base name: "durationInMinutes")', function() {
+    it('should have the property durationInMinutes', function() {
       // verify property exists
       expect(instance).to.have.property('durationInMinutes');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.durationInMinutes = validValue;
-      expect(instance.durationInMinutes).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.durationInMinutes = expectedValue;
+      expect(instance.durationInMinutes).to.equal(expectedValue);
     });
 
   });

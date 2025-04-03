@@ -45,54 +45,54 @@
       expect(instance).to.be.a(SellingPartnerApiForEasyShip.Dimensions);
     });
 
-    it('should have the property length (base name: "length")', function() {
+    it('should have the property length', function() {
       // verify property exists
       expect(instance).to.have.property('length');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.length = validValue;
-      expect(instance.length).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.length = expectedValue;
+      expect(instance.length).to.equal(expectedValue);
     });
 
-    it('should have the property width (base name: "width")', function() {
+    it('should have the property width', function() {
       // verify property exists
       expect(instance).to.have.property('width');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.width = validValue;
-      expect(instance.width).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.width = expectedValue;
+      expect(instance.width).to.equal(expectedValue);
     });
 
-    it('should have the property height (base name: "height")', function() {
+    it('should have the property height', function() {
       // verify property exists
       expect(instance).to.have.property('height');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.height = validValue;
-      expect(instance.height).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.height = expectedValue;
+      expect(instance.height).to.equal(expectedValue);
     });
 
-    it('should have the property unit (base name: "unit")', function() {
+    it('should have the property unit', function() {
       // verify property exists
       expect(instance).to.have.property('unit');
 
       // set and verify value
-      var validValue = generateMockData('UnitOfLength');
-      instance.unit = validValue;
-      expect(instance.unit).to.equal(validValue);
+      var expectedValue = generateMockData('UnitOfLength');
+      instance.unit = expectedValue;
+      expect(instance.unit).to.equal(expectedValue);
     });
 
-    it('should have the property identifier (base name: "identifier")', function() {
+    it('should have the property identifier', function() {
       // verify property exists
       expect(instance).to.have.property('identifier');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.identifier = validValue;
-      expect(instance.identifier).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.identifier = expectedValue;
+      expect(instance.identifier).to.equal(expectedValue);
     });
 
   });

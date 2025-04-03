@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForRetailProcurementOrders.Money);
     });
 
-    it('should have the property currencyCode (base name: "currencyCode")', function() {
+    it('should have the property currencyCode', function() {
       // verify property exists
       expect(instance).to.have.property('currencyCode');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.currencyCode = validValue;
-      expect(instance.currencyCode).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.currencyCode = expectedValue;
+      expect(instance.currencyCode).to.equal(expectedValue);
     });
 
-    it('should have the property amount (base name: "amount")', function() {
+    it('should have the property amount', function() {
       // verify property exists
       expect(instance).to.have.property('amount');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.amount = validValue;
-      expect(instance.amount).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.amount = expectedValue;
+      expect(instance.amount).to.equal(expectedValue);
     });
 
-    it('should have the property unitOfMeasure (base name: "unitOfMeasure")', function() {
+    it('should have the property unitOfMeasure', function() {
       // verify property exists
       expect(instance).to.have.property('unitOfMeasure');
 
       // set and verify value
-      var validValue = ['POUNDS', 'OUNCES', 'GRAMS', 'KILOGRAMS', ][0];
-      instance.unitOfMeasure = validValue;
-      expect(instance.unitOfMeasure).to.equal(validValue);
+      var expectedValue = ['POUNDS', 'OUNCES', 'GRAMS', 'KILOGRAMS', ][0];
+      instance.unitOfMeasure = expectedValue;
+      expect(instance.unitOfMeasure).to.equal(expectedValue);
     });
 
   });

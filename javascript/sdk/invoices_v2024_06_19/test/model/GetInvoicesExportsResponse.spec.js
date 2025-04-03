@@ -45,24 +45,24 @@
       expect(instance).to.be.a(TheSellingPartnerApiForInvoices.GetInvoicesExportsResponse);
     });
 
-    it('should have the property exports (base name: "exports")', function() {
+    it('should have the property exports', function() {
       // verify property exists
       expect(instance).to.have.property('exports');
 
       // set and verify value
-      var validValue = generateMockData('[Export]', true);
-      instance.exports = validValue;
-      expect(instance.exports).to.equal(validValue);
+      var expectedValue = generateMockData('Export', true);
+      instance.exports = expectedValue;
+      expect(instance.exports).to.equal(expectedValue);
     });
 
-    it('should have the property nextToken (base name: "nextToken")', function() {
+    it('should have the property nextToken', function() {
       // verify property exists
       expect(instance).to.have.property('nextToken');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.nextToken = validValue;
-      expect(instance.nextToken).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.nextToken = expectedValue;
+      expect(instance.nextToken).to.equal(expectedValue);
     });
 
   });

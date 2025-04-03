@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForServices.AppointmentResource);
     });
 
-    it('should have the property resourceId (base name: "resourceId")', function() {
+    it('should have the property resourceId', function() {
       // verify property exists
       expect(instance).to.have.property('resourceId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.resourceId = validValue;
-      expect(instance.resourceId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.resourceId = expectedValue;
+      expect(instance.resourceId).to.equal(expectedValue);
     });
 
   });

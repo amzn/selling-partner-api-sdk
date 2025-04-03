@@ -45,24 +45,24 @@
       expect(instance).to.be.a(TheSellingPartnerApiForInvoices.AttributeOption);
     });
 
-    it('should have the property description (base name: "description")', function() {
+    it('should have the property description', function() {
       // verify property exists
       expect(instance).to.have.property('description');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.description = validValue;
-      expect(instance.description).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.description = expectedValue;
+      expect(instance.description).to.equal(expectedValue);
     });
 
-    it('should have the property value (base name: "value")', function() {
+    it('should have the property value', function() {
       // verify property exists
       expect(instance).to.have.property('value');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.value = validValue;
-      expect(instance.value).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.value = expectedValue;
+      expect(instance.value).to.equal(expectedValue);
     });
 
   });

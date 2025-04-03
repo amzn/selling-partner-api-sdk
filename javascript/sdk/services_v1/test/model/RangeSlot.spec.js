@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForServices.RangeSlot);
     });
 
-    it('should have the property startDateTime (base name: "startDateTime")', function() {
+    it('should have the property startDateTime', function() {
       // verify property exists
       expect(instance).to.have.property('startDateTime');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.startDateTime = validValue;
-      expect(instance.startDateTime).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.startDateTime = expectedValue;
+      expect(instance.startDateTime).to.equal(expectedValue);
     });
 
-    it('should have the property endDateTime (base name: "endDateTime")', function() {
+    it('should have the property endDateTime', function() {
       // verify property exists
       expect(instance).to.have.property('endDateTime');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.endDateTime = validValue;
-      expect(instance.endDateTime).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.endDateTime = expectedValue;
+      expect(instance.endDateTime).to.equal(expectedValue);
     });
 
-    it('should have the property capacity (base name: "capacity")', function() {
+    it('should have the property capacity', function() {
       // verify property exists
       expect(instance).to.have.property('capacity');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.capacity = validValue;
-      expect(instance.capacity).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.capacity = expectedValue;
+      expect(instance.capacity).to.equal(expectedValue);
     });
 
   });

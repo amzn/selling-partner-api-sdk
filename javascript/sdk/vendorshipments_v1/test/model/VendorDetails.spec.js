@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForRetailProcurementShipments.VendorDetails);
     });
 
-    it('should have the property sellingParty (base name: "sellingParty")', function() {
+    it('should have the property sellingParty', function() {
       // verify property exists
       expect(instance).to.have.property('sellingParty');
 
       // set and verify value
-      var validValue = generateMockData('PartyIdentification');
-      instance.sellingParty = validValue;
-      expect(instance.sellingParty).to.equal(validValue);
+      var expectedValue = generateMockData('PartyIdentification');
+      instance.sellingParty = expectedValue;
+      expect(instance.sellingParty).to.equal(expectedValue);
     });
 
-    it('should have the property vendorShipmentIdentifier (base name: "vendorShipmentIdentifier")', function() {
+    it('should have the property vendorShipmentIdentifier', function() {
       // verify property exists
       expect(instance).to.have.property('vendorShipmentIdentifier');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.vendorShipmentIdentifier = validValue;
-      expect(instance.vendorShipmentIdentifier).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.vendorShipmentIdentifier = expectedValue;
+      expect(instance.vendorShipmentIdentifier).to.equal(expectedValue);
     });
 
   });

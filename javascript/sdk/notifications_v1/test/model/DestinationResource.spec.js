@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForNotifications.DestinationResource);
     });
 
-    it('should have the property sqs (base name: "sqs")', function() {
+    it('should have the property sqs', function() {
       // verify property exists
       expect(instance).to.have.property('sqs');
 
       // set and verify value
-      var validValue = generateMockData('SqsResource');
-      instance.sqs = validValue;
-      expect(instance.sqs).to.equal(validValue);
+      var expectedValue = generateMockData('SqsResource');
+      instance.sqs = expectedValue;
+      expect(instance.sqs).to.equal(expectedValue);
     });
 
-    it('should have the property eventBridge (base name: "eventBridge")', function() {
+    it('should have the property eventBridge', function() {
       // verify property exists
       expect(instance).to.have.property('eventBridge');
 
       // set and verify value
-      var validValue = generateMockData('EventBridgeResource');
-      instance.eventBridge = validValue;
-      expect(instance.eventBridge).to.equal(validValue);
+      var expectedValue = generateMockData('EventBridgeResource');
+      instance.eventBridge = expectedValue;
+      expect(instance.eventBridge).to.equal(expectedValue);
     });
 
   });

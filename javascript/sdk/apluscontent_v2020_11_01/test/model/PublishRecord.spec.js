@@ -45,64 +45,64 @@
       expect(instance).to.be.a(SellingPartnerApiForAContentManagement.PublishRecord);
     });
 
-    it('should have the property marketplaceId (base name: "marketplaceId")', function() {
+    it('should have the property marketplaceId', function() {
       // verify property exists
       expect(instance).to.have.property('marketplaceId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.marketplaceId = validValue;
-      expect(instance.marketplaceId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.marketplaceId = expectedValue;
+      expect(instance.marketplaceId).to.equal(expectedValue);
     });
 
-    it('should have the property locale (base name: "locale")', function() {
+    it('should have the property locale', function() {
       // verify property exists
       expect(instance).to.have.property('locale');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.locale = validValue;
-      expect(instance.locale).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.locale = expectedValue;
+      expect(instance.locale).to.equal(expectedValue);
     });
 
-    it('should have the property asin (base name: "asin")', function() {
+    it('should have the property asin', function() {
       // verify property exists
       expect(instance).to.have.property('asin');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.asin = validValue;
-      expect(instance.asin).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.asin = expectedValue;
+      expect(instance.asin).to.equal(expectedValue);
     });
 
-    it('should have the property contentType (base name: "contentType")', function() {
+    it('should have the property contentType', function() {
       // verify property exists
       expect(instance).to.have.property('contentType');
 
       // set and verify value
-      var validValue = generateMockData('ContentType');
-      instance.contentType = validValue;
-      expect(instance.contentType).to.equal(validValue);
+      var expectedValue = generateMockData('ContentType');
+      instance.contentType = expectedValue;
+      expect(instance.contentType).to.equal(expectedValue);
     });
 
-    it('should have the property contentSubType (base name: "contentSubType")', function() {
+    it('should have the property contentSubType', function() {
       // verify property exists
       expect(instance).to.have.property('contentSubType');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.contentSubType = validValue;
-      expect(instance.contentSubType).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.contentSubType = expectedValue;
+      expect(instance.contentSubType).to.equal(expectedValue);
     });
 
-    it('should have the property contentReferenceKey (base name: "contentReferenceKey")', function() {
+    it('should have the property contentReferenceKey', function() {
       // verify property exists
       expect(instance).to.have.property('contentReferenceKey');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.contentReferenceKey = validValue;
-      expect(instance.contentReferenceKey).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.contentReferenceKey = expectedValue;
+      expect(instance.contentReferenceKey).to.equal(expectedValue);
     });
 
   });

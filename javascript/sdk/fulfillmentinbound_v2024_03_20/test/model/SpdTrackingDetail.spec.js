@@ -45,14 +45,14 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.SpdTrackingDetail);
     });
 
-    it('should have the property spdTrackingItems (base name: "spdTrackingItems")', function() {
+    it('should have the property spdTrackingItems', function() {
       // verify property exists
       expect(instance).to.have.property('spdTrackingItems');
 
       // set and verify value
-      var validValue = generateMockData('[SpdTrackingItem]', true);
-      instance.spdTrackingItems = validValue;
-      expect(instance.spdTrackingItems).to.equal(validValue);
+      var expectedValue = generateMockData('SpdTrackingItem', true);
+      instance.spdTrackingItems = expectedValue;
+      expect(instance.spdTrackingItems).to.equal(expectedValue);
     });
 
   });

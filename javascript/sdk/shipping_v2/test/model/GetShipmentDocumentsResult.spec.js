@@ -45,34 +45,34 @@
       expect(instance).to.be.a(AmazonShippingApi.GetShipmentDocumentsResult);
     });
 
-    it('should have the property shipmentId (base name: "shipmentId")', function() {
+    it('should have the property shipmentId', function() {
       // verify property exists
       expect(instance).to.have.property('shipmentId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.shipmentId = validValue;
-      expect(instance.shipmentId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.shipmentId = expectedValue;
+      expect(instance.shipmentId).to.equal(expectedValue);
     });
 
-    it('should have the property packageDocumentDetail (base name: "packageDocumentDetail")', function() {
+    it('should have the property packageDocumentDetail', function() {
       // verify property exists
       expect(instance).to.have.property('packageDocumentDetail');
 
       // set and verify value
-      var validValue = generateMockData('PackageDocumentDetail');
-      instance.packageDocumentDetail = validValue;
-      expect(instance.packageDocumentDetail).to.equal(validValue);
+      var expectedValue = generateMockData('PackageDocumentDetail');
+      instance.packageDocumentDetail = expectedValue;
+      expect(instance.packageDocumentDetail).to.equal(expectedValue);
     });
 
-    it('should have the property benefits (base name: "benefits")', function() {
+    it('should have the property benefits', function() {
       // verify property exists
       expect(instance).to.have.property('benefits');
 
       // set and verify value
-      var validValue = generateMockData('Benefits');
-      instance.benefits = validValue;
-      expect(instance.benefits).to.equal(validValue);
+      var expectedValue = generateMockData('Benefits');
+      instance.benefits = expectedValue;
+      expect(instance.benefits).to.equal(expectedValue);
     });
 
   });

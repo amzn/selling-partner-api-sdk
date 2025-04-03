@@ -45,54 +45,54 @@
       expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.CODSettings);
     });
 
-    it('should have the property isCodRequired (base name: "isCodRequired")', function() {
+    it('should have the property isCodRequired', function() {
       // verify property exists
       expect(instance).to.have.property('isCodRequired');
 
       // set and verify value
-      var validValue = generateMockData('Boolean');
-      instance.isCodRequired = validValue;
-      expect(instance.isCodRequired).to.equal(validValue);
+      var expectedValue = generateMockData('Boolean');
+      instance.isCodRequired = expectedValue;
+      expect(instance.isCodRequired).to.equal(expectedValue);
     });
 
-    it('should have the property codCharge (base name: "codCharge")', function() {
+    it('should have the property codCharge', function() {
       // verify property exists
       expect(instance).to.have.property('codCharge');
 
       // set and verify value
-      var validValue = generateMockData('Money');
-      instance.codCharge = validValue;
-      expect(instance.codCharge).to.equal(validValue);
+      var expectedValue = generateMockData('Money');
+      instance.codCharge = expectedValue;
+      expect(instance.codCharge).to.equal(expectedValue);
     });
 
-    it('should have the property codChargeTax (base name: "codChargeTax")', function() {
+    it('should have the property codChargeTax', function() {
       // verify property exists
       expect(instance).to.have.property('codChargeTax');
 
       // set and verify value
-      var validValue = generateMockData('Money');
-      instance.codChargeTax = validValue;
-      expect(instance.codChargeTax).to.equal(validValue);
+      var expectedValue = generateMockData('Money');
+      instance.codChargeTax = expectedValue;
+      expect(instance.codChargeTax).to.equal(expectedValue);
     });
 
-    it('should have the property shippingCharge (base name: "shippingCharge")', function() {
+    it('should have the property shippingCharge', function() {
       // verify property exists
       expect(instance).to.have.property('shippingCharge');
 
       // set and verify value
-      var validValue = generateMockData('Money');
-      instance.shippingCharge = validValue;
-      expect(instance.shippingCharge).to.equal(validValue);
+      var expectedValue = generateMockData('Money');
+      instance.shippingCharge = expectedValue;
+      expect(instance.shippingCharge).to.equal(expectedValue);
     });
 
-    it('should have the property shippingChargeTax (base name: "shippingChargeTax")', function() {
+    it('should have the property shippingChargeTax', function() {
       // verify property exists
       expect(instance).to.have.property('shippingChargeTax');
 
       // set and verify value
-      var validValue = generateMockData('Money');
-      instance.shippingChargeTax = validValue;
-      expect(instance.shippingChargeTax).to.equal(validValue);
+      var expectedValue = generateMockData('Money');
+      instance.shippingChargeTax = expectedValue;
+      expect(instance.shippingChargeTax).to.equal(expectedValue);
     });
 
   });

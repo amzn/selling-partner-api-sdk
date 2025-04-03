@@ -45,54 +45,54 @@
       expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.ReturnAuthorization);
     });
 
-    it('should have the property returnAuthorizationId (base name: "returnAuthorizationId")', function() {
+    it('should have the property returnAuthorizationId', function() {
       // verify property exists
       expect(instance).to.have.property('returnAuthorizationId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.returnAuthorizationId = validValue;
-      expect(instance.returnAuthorizationId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.returnAuthorizationId = expectedValue;
+      expect(instance.returnAuthorizationId).to.equal(expectedValue);
     });
 
-    it('should have the property fulfillmentCenterId (base name: "fulfillmentCenterId")', function() {
+    it('should have the property fulfillmentCenterId', function() {
       // verify property exists
       expect(instance).to.have.property('fulfillmentCenterId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.fulfillmentCenterId = validValue;
-      expect(instance.fulfillmentCenterId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.fulfillmentCenterId = expectedValue;
+      expect(instance.fulfillmentCenterId).to.equal(expectedValue);
     });
 
-    it('should have the property returnToAddress (base name: "returnToAddress")', function() {
+    it('should have the property returnToAddress', function() {
       // verify property exists
       expect(instance).to.have.property('returnToAddress');
 
       // set and verify value
-      var validValue = generateMockData('Address');
-      instance.returnToAddress = validValue;
-      expect(instance.returnToAddress).to.equal(validValue);
+      var expectedValue = generateMockData('Address');
+      instance.returnToAddress = expectedValue;
+      expect(instance.returnToAddress).to.equal(expectedValue);
     });
 
-    it('should have the property amazonRmaId (base name: "amazonRmaId")', function() {
+    it('should have the property amazonRmaId', function() {
       // verify property exists
       expect(instance).to.have.property('amazonRmaId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.amazonRmaId = validValue;
-      expect(instance.amazonRmaId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.amazonRmaId = expectedValue;
+      expect(instance.amazonRmaId).to.equal(expectedValue);
     });
 
-    it('should have the property rmaPageURL (base name: "rmaPageURL")', function() {
+    it('should have the property rmaPageURL', function() {
       // verify property exists
       expect(instance).to.have.property('rmaPageURL');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.rmaPageURL = validValue;
-      expect(instance.rmaPageURL).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.rmaPageURL = expectedValue;
+      expect(instance.rmaPageURL).to.equal(expectedValue);
     });
 
   });

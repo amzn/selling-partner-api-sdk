@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForDirectFulfillmentOrders.ShipmentDates);
     });
 
-    it('should have the property requiredShipDate (base name: "requiredShipDate")', function() {
+    it('should have the property requiredShipDate', function() {
       // verify property exists
       expect(instance).to.have.property('requiredShipDate');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.requiredShipDate = validValue;
-      expect(instance.requiredShipDate).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.requiredShipDate = expectedValue;
+      expect(instance.requiredShipDate).to.equal(expectedValue);
     });
 
-    it('should have the property promisedDeliveryDate (base name: "promisedDeliveryDate")', function() {
+    it('should have the property promisedDeliveryDate', function() {
       // verify property exists
       expect(instance).to.have.property('promisedDeliveryDate');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.promisedDeliveryDate = validValue;
-      expect(instance.promisedDeliveryDate).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.promisedDeliveryDate = expectedValue;
+      expect(instance.promisedDeliveryDate).to.equal(expectedValue);
     });
 
   });

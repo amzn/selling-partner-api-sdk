@@ -45,74 +45,74 @@
       expect(instance).to.be.a(SellingPartnerApiForFinances.RetrochargeEvent);
     });
 
-    it('should have the property retrochargeEventType (base name: "RetrochargeEventType")', function() {
+    it('should have the property retrochargeEventType', function() {
       // verify property exists
       expect(instance).to.have.property('retrochargeEventType');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.retrochargeEventType = validValue;
-      expect(instance.retrochargeEventType).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.retrochargeEventType = expectedValue;
+      expect(instance.retrochargeEventType).to.equal(expectedValue);
     });
 
-    it('should have the property amazonOrderId (base name: "AmazonOrderId")', function() {
+    it('should have the property amazonOrderId', function() {
       // verify property exists
       expect(instance).to.have.property('amazonOrderId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.amazonOrderId = validValue;
-      expect(instance.amazonOrderId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.amazonOrderId = expectedValue;
+      expect(instance.amazonOrderId).to.equal(expectedValue);
     });
 
-    it('should have the property postedDate (base name: "PostedDate")', function() {
+    it('should have the property postedDate', function() {
       // verify property exists
       expect(instance).to.have.property('postedDate');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.postedDate = validValue;
-      expect(instance.postedDate).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.postedDate = expectedValue;
+      expect(instance.postedDate).to.equal(expectedValue);
     });
 
-    it('should have the property baseTax (base name: "BaseTax")', function() {
+    it('should have the property baseTax', function() {
       // verify property exists
       expect(instance).to.have.property('baseTax');
 
       // set and verify value
-      var validValue = generateMockData('Currency');
-      instance.baseTax = validValue;
-      expect(instance.baseTax).to.equal(validValue);
+      var expectedValue = generateMockData('Currency');
+      instance.baseTax = expectedValue;
+      expect(instance.baseTax).to.equal(expectedValue);
     });
 
-    it('should have the property shippingTax (base name: "ShippingTax")', function() {
+    it('should have the property shippingTax', function() {
       // verify property exists
       expect(instance).to.have.property('shippingTax');
 
       // set and verify value
-      var validValue = generateMockData('Currency');
-      instance.shippingTax = validValue;
-      expect(instance.shippingTax).to.equal(validValue);
+      var expectedValue = generateMockData('Currency');
+      instance.shippingTax = expectedValue;
+      expect(instance.shippingTax).to.equal(expectedValue);
     });
 
-    it('should have the property marketplaceName (base name: "MarketplaceName")', function() {
+    it('should have the property marketplaceName', function() {
       // verify property exists
       expect(instance).to.have.property('marketplaceName');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.marketplaceName = validValue;
-      expect(instance.marketplaceName).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.marketplaceName = expectedValue;
+      expect(instance.marketplaceName).to.equal(expectedValue);
     });
 
-    it('should have the property retrochargeTaxWithheldList (base name: "RetrochargeTaxWithheldList")', function() {
+    it('should have the property retrochargeTaxWithheldList', function() {
       // verify property exists
       expect(instance).to.have.property('retrochargeTaxWithheldList');
 
       // set and verify value
-      var validValue = generateMockData('[TaxWithheldComponent]', true);
-      instance.retrochargeTaxWithheldList = validValue;
-      expect(instance.retrochargeTaxWithheldList).to.equal(validValue);
+      var expectedValue = generateMockData('TaxWithheldComponent', true);
+      instance.retrochargeTaxWithheldList = expectedValue;
+      expect(instance.retrochargeTaxWithheldList).to.equal(expectedValue);
     });
 
   });

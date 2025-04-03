@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForDirectFulfillmentShipping.CustomerInvoiceList);
     });
 
-    it('should have the property pagination (base name: "pagination")', function() {
+    it('should have the property pagination', function() {
       // verify property exists
       expect(instance).to.have.property('pagination');
 
       // set and verify value
-      var validValue = generateMockData('Pagination');
-      instance.pagination = validValue;
-      expect(instance.pagination).to.equal(validValue);
+      var expectedValue = generateMockData('Pagination');
+      instance.pagination = expectedValue;
+      expect(instance.pagination).to.equal(expectedValue);
     });
 
-    it('should have the property customerInvoices (base name: "customerInvoices")', function() {
+    it('should have the property customerInvoices', function() {
       // verify property exists
       expect(instance).to.have.property('customerInvoices');
 
       // set and verify value
-      var validValue = generateMockData('[CustomerInvoice]', true);
-      instance.customerInvoices = validValue;
-      expect(instance.customerInvoices).to.equal(validValue);
+      var expectedValue = generateMockData('CustomerInvoice', true);
+      instance.customerInvoices = expectedValue;
+      expect(instance.customerInvoices).to.equal(expectedValue);
     });
 
   });

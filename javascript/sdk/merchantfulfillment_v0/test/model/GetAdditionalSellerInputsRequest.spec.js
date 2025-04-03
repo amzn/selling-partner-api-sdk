@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForMerchantFulfillment.GetAdditionalSellerInputsRequest);
     });
 
-    it('should have the property shippingServiceId (base name: "ShippingServiceId")', function() {
+    it('should have the property shippingServiceId', function() {
       // verify property exists
       expect(instance).to.have.property('shippingServiceId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.shippingServiceId = validValue;
-      expect(instance.shippingServiceId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.shippingServiceId = expectedValue;
+      expect(instance.shippingServiceId).to.equal(expectedValue);
     });
 
-    it('should have the property shipFromAddress (base name: "ShipFromAddress")', function() {
+    it('should have the property shipFromAddress', function() {
       // verify property exists
       expect(instance).to.have.property('shipFromAddress');
 
       // set and verify value
-      var validValue = generateMockData('Address');
-      instance.shipFromAddress = validValue;
-      expect(instance.shipFromAddress).to.equal(validValue);
+      var expectedValue = generateMockData('Address');
+      instance.shipFromAddress = expectedValue;
+      expect(instance.shipFromAddress).to.equal(expectedValue);
     });
 
-    it('should have the property orderId (base name: "OrderId")', function() {
+    it('should have the property orderId', function() {
       // verify property exists
       expect(instance).to.have.property('orderId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.orderId = validValue;
-      expect(instance.orderId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.orderId = expectedValue;
+      expect(instance.orderId).to.equal(expectedValue);
     });
 
   });

@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForDirectFulfillmentInventoryUpdates.InventoryUpdate);
     });
 
-    it('should have the property sellingParty (base name: "sellingParty")', function() {
+    it('should have the property sellingParty', function() {
       // verify property exists
       expect(instance).to.have.property('sellingParty');
 
       // set and verify value
-      var validValue = generateMockData('PartyIdentification');
-      instance.sellingParty = validValue;
-      expect(instance.sellingParty).to.equal(validValue);
+      var expectedValue = generateMockData('PartyIdentification');
+      instance.sellingParty = expectedValue;
+      expect(instance.sellingParty).to.equal(expectedValue);
     });
 
-    it('should have the property isFullUpdate (base name: "isFullUpdate")', function() {
+    it('should have the property isFullUpdate', function() {
       // verify property exists
       expect(instance).to.have.property('isFullUpdate');
 
       // set and verify value
-      var validValue = generateMockData('Boolean');
-      instance.isFullUpdate = validValue;
-      expect(instance.isFullUpdate).to.equal(validValue);
+      var expectedValue = generateMockData('Boolean');
+      instance.isFullUpdate = expectedValue;
+      expect(instance.isFullUpdate).to.equal(expectedValue);
     });
 
-    it('should have the property items (base name: "items")', function() {
+    it('should have the property items', function() {
       // verify property exists
       expect(instance).to.have.property('items');
 
       // set and verify value
-      var validValue = generateMockData('[ItemDetails]', true);
-      instance.items = validValue;
-      expect(instance.items).to.equal(validValue);
+      var expectedValue = generateMockData('ItemDetails', true);
+      instance.items = expectedValue;
+      expect(instance.items).to.equal(expectedValue);
     });
 
   });

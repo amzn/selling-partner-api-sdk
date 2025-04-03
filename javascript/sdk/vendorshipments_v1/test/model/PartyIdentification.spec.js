@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForRetailProcurementShipments.PartyIdentification);
     });
 
-    it('should have the property address (base name: "address")', function() {
+    it('should have the property address', function() {
       // verify property exists
       expect(instance).to.have.property('address');
 
       // set and verify value
-      var validValue = generateMockData('Address');
-      instance.address = validValue;
-      expect(instance.address).to.equal(validValue);
+      var expectedValue = generateMockData('Address');
+      instance.address = expectedValue;
+      expect(instance.address).to.equal(expectedValue);
     });
 
-    it('should have the property partyId (base name: "partyId")', function() {
+    it('should have the property partyId', function() {
       // verify property exists
       expect(instance).to.have.property('partyId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.partyId = validValue;
-      expect(instance.partyId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.partyId = expectedValue;
+      expect(instance.partyId).to.equal(expectedValue);
     });
 
-    it('should have the property taxRegistrationDetails (base name: "taxRegistrationDetails")', function() {
+    it('should have the property taxRegistrationDetails', function() {
       // verify property exists
       expect(instance).to.have.property('taxRegistrationDetails');
 
       // set and verify value
-      var validValue = generateMockData('[TaxRegistrationDetails]', true);
-      instance.taxRegistrationDetails = validValue;
-      expect(instance.taxRegistrationDetails).to.equal(validValue);
+      var expectedValue = generateMockData('TaxRegistrationDetails', true);
+      instance.taxRegistrationDetails = expectedValue;
+      expect(instance.taxRegistrationDetails).to.equal(expectedValue);
     });
 
   });

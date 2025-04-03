@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForSupplySources.Duration);
     });
 
-    it('should have the property value (base name: "value")', function() {
+    it('should have the property value', function() {
       // verify property exists
       expect(instance).to.have.property('value');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.value = validValue;
-      expect(instance.value).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.value = expectedValue;
+      expect(instance.value).to.equal(expectedValue);
     });
 
-    it('should have the property timeUnit (base name: "timeUnit")', function() {
+    it('should have the property timeUnit', function() {
       // verify property exists
       expect(instance).to.have.property('timeUnit');
 
       // set and verify value
-      var validValue = generateMockData('TimeUnit');
-      instance.timeUnit = validValue;
-      expect(instance.timeUnit).to.equal(validValue);
+      var expectedValue = generateMockData('TimeUnit');
+      instance.timeUnit = expectedValue;
+      expect(instance.timeUnit).to.equal(expectedValue);
     });
 
   });

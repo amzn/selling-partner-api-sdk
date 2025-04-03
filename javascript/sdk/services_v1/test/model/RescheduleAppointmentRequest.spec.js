@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForServices.RescheduleAppointmentRequest);
     });
 
-    it('should have the property appointmentTime (base name: "appointmentTime")', function() {
+    it('should have the property appointmentTime', function() {
       // verify property exists
       expect(instance).to.have.property('appointmentTime');
 
       // set and verify value
-      var validValue = generateMockData('AppointmentTimeInput');
-      instance.appointmentTime = validValue;
-      expect(instance.appointmentTime).to.equal(validValue);
+      var expectedValue = generateMockData('AppointmentTimeInput');
+      instance.appointmentTime = expectedValue;
+      expect(instance.appointmentTime).to.equal(expectedValue);
     });
 
-    it('should have the property rescheduleReasonCode (base name: "rescheduleReasonCode")', function() {
+    it('should have the property rescheduleReasonCode', function() {
       // verify property exists
       expect(instance).to.have.property('rescheduleReasonCode');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.rescheduleReasonCode = validValue;
-      expect(instance.rescheduleReasonCode).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.rescheduleReasonCode = expectedValue;
+      expect(instance.rescheduleReasonCode).to.equal(expectedValue);
     });
 
   });

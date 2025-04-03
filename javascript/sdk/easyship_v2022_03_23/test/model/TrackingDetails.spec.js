@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForEasyShip.TrackingDetails);
     });
 
-    it('should have the property trackingId (base name: "trackingId")', function() {
+    it('should have the property trackingId', function() {
       // verify property exists
       expect(instance).to.have.property('trackingId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.trackingId = validValue;
-      expect(instance.trackingId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.trackingId = expectedValue;
+      expect(instance.trackingId).to.equal(expectedValue);
     });
 
   });

@@ -45,64 +45,64 @@
       expect(instance).to.be.a(SellingPartnerApiForReports.ReportSchedule);
     });
 
-    it('should have the property reportScheduleId (base name: "reportScheduleId")', function() {
+    it('should have the property reportScheduleId', function() {
       // verify property exists
       expect(instance).to.have.property('reportScheduleId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.reportScheduleId = validValue;
-      expect(instance.reportScheduleId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.reportScheduleId = expectedValue;
+      expect(instance.reportScheduleId).to.equal(expectedValue);
     });
 
-    it('should have the property reportType (base name: "reportType")', function() {
+    it('should have the property reportType', function() {
       // verify property exists
       expect(instance).to.have.property('reportType');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.reportType = validValue;
-      expect(instance.reportType).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.reportType = expectedValue;
+      expect(instance.reportType).to.equal(expectedValue);
     });
 
-    it('should have the property marketplaceIds (base name: "marketplaceIds")', function() {
+    it('should have the property marketplaceIds', function() {
       // verify property exists
       expect(instance).to.have.property('marketplaceIds');
 
       // set and verify value
-      var validValue = generateMockData('[String]', true);
-      instance.marketplaceIds = validValue;
-      expect(instance.marketplaceIds).to.equal(validValue);
+      var expectedValue = generateMockData('String', true);
+      instance.marketplaceIds = expectedValue;
+      expect(instance.marketplaceIds).to.equal(expectedValue);
     });
 
-    it('should have the property reportOptions (base name: "reportOptions")', function() {
+    it('should have the property reportOptions', function() {
       // verify property exists
       expect(instance).to.have.property('reportOptions');
 
       // set and verify value
-      var validValue = generateMockData('{String: String}');
-      instance.reportOptions = validValue;
-      expect(instance.reportOptions).to.equal(validValue);
+      var expectedValue = generateMockData('{String: String}');
+      instance.reportOptions = expectedValue;
+      expect(instance.reportOptions).to.equal(expectedValue);
     });
 
-    it('should have the property period (base name: "period")', function() {
+    it('should have the property period', function() {
       // verify property exists
       expect(instance).to.have.property('period');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.period = validValue;
-      expect(instance.period).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.period = expectedValue;
+      expect(instance.period).to.equal(expectedValue);
     });
 
-    it('should have the property nextReportCreationTime (base name: "nextReportCreationTime")', function() {
+    it('should have the property nextReportCreationTime', function() {
       // verify property exists
       expect(instance).to.have.property('nextReportCreationTime');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.nextReportCreationTime = validValue;
-      expect(instance.nextReportCreationTime).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.nextReportCreationTime = expectedValue;
+      expect(instance.nextReportCreationTime).to.equal(expectedValue);
     });
 
   });

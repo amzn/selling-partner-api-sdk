@@ -45,14 +45,14 @@
       expect(instance).to.be.a(TheSellingPartnerApiForTransfers.GetPaymentMethodsResponse);
     });
 
-    it('should have the property paymentMethods (base name: "paymentMethods")', function() {
+    it('should have the property paymentMethods', function() {
       // verify property exists
       expect(instance).to.have.property('paymentMethods');
 
       // set and verify value
-      var validValue = generateMockData('[PaymentMethodDetails]', true);
-      instance.paymentMethods = validValue;
-      expect(instance.paymentMethods).to.equal(validValue);
+      var expectedValue = generateMockData('PaymentMethodDetails', true);
+      instance.paymentMethods = expectedValue;
+      expect(instance.paymentMethods).to.equal(expectedValue);
     });
 
   });

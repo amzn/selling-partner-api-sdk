@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForSupplySources.SupplySourceConfiguration);
     });
 
-    it('should have the property operationalConfiguration (base name: "operationalConfiguration")', function() {
+    it('should have the property operationalConfiguration', function() {
       // verify property exists
       expect(instance).to.have.property('operationalConfiguration');
 
       // set and verify value
-      var validValue = generateMockData('OperationalConfiguration');
-      instance.operationalConfiguration = validValue;
-      expect(instance.operationalConfiguration).to.equal(validValue);
+      var expectedValue = generateMockData('OperationalConfiguration');
+      instance.operationalConfiguration = expectedValue;
+      expect(instance.operationalConfiguration).to.equal(expectedValue);
     });
 
-    it('should have the property timezone (base name: "timezone")', function() {
+    it('should have the property timezone', function() {
       // verify property exists
       expect(instance).to.have.property('timezone');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.timezone = validValue;
-      expect(instance.timezone).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.timezone = expectedValue;
+      expect(instance.timezone).to.equal(expectedValue);
     });
 
   });

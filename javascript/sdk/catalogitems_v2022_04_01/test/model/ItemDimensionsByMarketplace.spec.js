@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForCatalogItems.ItemDimensionsByMarketplace);
     });
 
-    it('should have the property marketplaceId (base name: "marketplaceId")', function() {
+    it('should have the property marketplaceId', function() {
       // verify property exists
       expect(instance).to.have.property('marketplaceId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.marketplaceId = validValue;
-      expect(instance.marketplaceId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.marketplaceId = expectedValue;
+      expect(instance.marketplaceId).to.equal(expectedValue);
     });
 
-    it('should have the property item (base name: "item")', function() {
+    it('should have the property item', function() {
       // verify property exists
       expect(instance).to.have.property('item');
 
       // set and verify value
-      var validValue = generateMockData('Dimensions');
-      instance.item = validValue;
-      expect(instance.item).to.equal(validValue);
+      var expectedValue = generateMockData('Dimensions');
+      instance.item = expectedValue;
+      expect(instance.item).to.equal(expectedValue);
     });
 
-    it('should have the property _package (base name: "package")', function() {
+    it('should have the property _package', function() {
       // verify property exists
       expect(instance).to.have.property('_package');
 
       // set and verify value
-      var validValue = generateMockData('Dimensions');
-      instance._package = validValue;
-      expect(instance._package).to.equal(validValue);
+      var expectedValue = generateMockData('Dimensions');
+      instance._package = expectedValue;
+      expect(instance._package).to.equal(expectedValue);
     });
 
   });

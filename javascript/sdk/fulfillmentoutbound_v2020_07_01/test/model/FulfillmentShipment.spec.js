@@ -45,84 +45,84 @@
       expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.FulfillmentShipment);
     });
 
-    it('should have the property amazonShipmentId (base name: "amazonShipmentId")', function() {
+    it('should have the property amazonShipmentId', function() {
       // verify property exists
       expect(instance).to.have.property('amazonShipmentId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.amazonShipmentId = validValue;
-      expect(instance.amazonShipmentId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.amazonShipmentId = expectedValue;
+      expect(instance.amazonShipmentId).to.equal(expectedValue);
     });
 
-    it('should have the property fulfillmentCenterId (base name: "fulfillmentCenterId")', function() {
+    it('should have the property fulfillmentCenterId', function() {
       // verify property exists
       expect(instance).to.have.property('fulfillmentCenterId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.fulfillmentCenterId = validValue;
-      expect(instance.fulfillmentCenterId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.fulfillmentCenterId = expectedValue;
+      expect(instance.fulfillmentCenterId).to.equal(expectedValue);
     });
 
-    it('should have the property fulfillmentShipmentStatus (base name: "fulfillmentShipmentStatus")', function() {
+    it('should have the property fulfillmentShipmentStatus', function() {
       // verify property exists
       expect(instance).to.have.property('fulfillmentShipmentStatus');
 
       // set and verify value
-      var validValue = ['PENDING', 'SHIPPED', 'CANCELLED_BY_FULFILLER', 'CANCELLED_BY_SELLER', ][0];
-      instance.fulfillmentShipmentStatus = validValue;
-      expect(instance.fulfillmentShipmentStatus).to.equal(validValue);
+      var expectedValue = ['PENDING', 'SHIPPED', 'CANCELLED_BY_FULFILLER', 'CANCELLED_BY_SELLER', ][0];
+      instance.fulfillmentShipmentStatus = expectedValue;
+      expect(instance.fulfillmentShipmentStatus).to.equal(expectedValue);
     });
 
-    it('should have the property shippingDate (base name: "shippingDate")', function() {
+    it('should have the property shippingDate', function() {
       // verify property exists
       expect(instance).to.have.property('shippingDate');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.shippingDate = validValue;
-      expect(instance.shippingDate).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.shippingDate = expectedValue;
+      expect(instance.shippingDate).to.equal(expectedValue);
     });
 
-    it('should have the property estimatedArrivalDate (base name: "estimatedArrivalDate")', function() {
+    it('should have the property estimatedArrivalDate', function() {
       // verify property exists
       expect(instance).to.have.property('estimatedArrivalDate');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.estimatedArrivalDate = validValue;
-      expect(instance.estimatedArrivalDate).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.estimatedArrivalDate = expectedValue;
+      expect(instance.estimatedArrivalDate).to.equal(expectedValue);
     });
 
-    it('should have the property shippingNotes (base name: "shippingNotes")', function() {
+    it('should have the property shippingNotes', function() {
       // verify property exists
       expect(instance).to.have.property('shippingNotes');
 
       // set and verify value
-      var validValue = generateMockData('[String]', true);
-      instance.shippingNotes = validValue;
-      expect(instance.shippingNotes).to.equal(validValue);
+      var expectedValue = generateMockData('String', true);
+      instance.shippingNotes = expectedValue;
+      expect(instance.shippingNotes).to.equal(expectedValue);
     });
 
-    it('should have the property fulfillmentShipmentItem (base name: "fulfillmentShipmentItem")', function() {
+    it('should have the property fulfillmentShipmentItem', function() {
       // verify property exists
       expect(instance).to.have.property('fulfillmentShipmentItem');
 
       // set and verify value
-      var validValue = generateMockData('[FulfillmentShipmentItem]', true);
-      instance.fulfillmentShipmentItem = validValue;
-      expect(instance.fulfillmentShipmentItem).to.equal(validValue);
+      var expectedValue = generateMockData('FulfillmentShipmentItem', true);
+      instance.fulfillmentShipmentItem = expectedValue;
+      expect(instance.fulfillmentShipmentItem).to.equal(expectedValue);
     });
 
-    it('should have the property fulfillmentShipmentPackage (base name: "fulfillmentShipmentPackage")', function() {
+    it('should have the property fulfillmentShipmentPackage', function() {
       // verify property exists
       expect(instance).to.have.property('fulfillmentShipmentPackage');
 
       // set and verify value
-      var validValue = generateMockData('[FulfillmentShipmentPackage]', true);
-      instance.fulfillmentShipmentPackage = validValue;
-      expect(instance.fulfillmentShipmentPackage).to.equal(validValue);
+      var expectedValue = generateMockData('FulfillmentShipmentPackage', true);
+      instance.fulfillmentShipmentPackage = expectedValue;
+      expect(instance.fulfillmentShipmentPackage).to.equal(expectedValue);
     });
 
   });

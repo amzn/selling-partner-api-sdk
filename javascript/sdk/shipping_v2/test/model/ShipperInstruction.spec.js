@@ -45,14 +45,14 @@
       expect(instance).to.be.a(AmazonShippingApi.ShipperInstruction);
     });
 
-    it('should have the property deliveryNotes (base name: "deliveryNotes")', function() {
+    it('should have the property deliveryNotes', function() {
       // verify property exists
       expect(instance).to.have.property('deliveryNotes');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.deliveryNotes = validValue;
-      expect(instance.deliveryNotes).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.deliveryNotes = expectedValue;
+      expect(instance.deliveryNotes).to.equal(expectedValue);
     });
 
   });

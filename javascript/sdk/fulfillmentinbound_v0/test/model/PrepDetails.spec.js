@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForFulfillmentInbound.PrepDetails);
     });
 
-    it('should have the property prepInstruction (base name: "PrepInstruction")', function() {
+    it('should have the property prepInstruction', function() {
       // verify property exists
       expect(instance).to.have.property('prepInstruction');
 
       // set and verify value
-      var validValue = generateMockData('PrepInstruction');
-      instance.prepInstruction = validValue;
-      expect(instance.prepInstruction).to.equal(validValue);
+      var expectedValue = generateMockData('PrepInstruction');
+      instance.prepInstruction = expectedValue;
+      expect(instance.prepInstruction).to.equal(expectedValue);
     });
 
-    it('should have the property prepOwner (base name: "PrepOwner")', function() {
+    it('should have the property prepOwner', function() {
       // verify property exists
       expect(instance).to.have.property('prepOwner');
 
       // set and verify value
-      var validValue = generateMockData('PrepOwner');
-      instance.prepOwner = validValue;
-      expect(instance.prepOwner).to.equal(validValue);
+      var expectedValue = generateMockData('PrepOwner');
+      instance.prepOwner = expectedValue;
+      expect(instance.prepOwner).to.equal(expectedValue);
     });
 
   });

@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForOrders.RejectionReason);
     });
 
-    it('should have the property rejectionReasonId (base name: "RejectionReasonId")', function() {
+    it('should have the property rejectionReasonId', function() {
       // verify property exists
       expect(instance).to.have.property('rejectionReasonId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.rejectionReasonId = validValue;
-      expect(instance.rejectionReasonId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.rejectionReasonId = expectedValue;
+      expect(instance.rejectionReasonId).to.equal(expectedValue);
     });
 
-    it('should have the property rejectionReasonDescription (base name: "RejectionReasonDescription")', function() {
+    it('should have the property rejectionReasonDescription', function() {
       // verify property exists
       expect(instance).to.have.property('rejectionReasonDescription');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.rejectionReasonDescription = validValue;
-      expect(instance.rejectionReasonDescription).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.rejectionReasonDescription = expectedValue;
+      expect(instance.rejectionReasonDescription).to.equal(expectedValue);
     });
 
   });

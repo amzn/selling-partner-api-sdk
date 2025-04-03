@@ -45,44 +45,44 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.CreateInboundPlanRequest);
     });
 
-    it('should have the property destinationMarketplaces (base name: "destinationMarketplaces")', function() {
+    it('should have the property destinationMarketplaces', function() {
       // verify property exists
       expect(instance).to.have.property('destinationMarketplaces');
 
       // set and verify value
-      var validValue = generateMockData('[String]', true);
-      instance.destinationMarketplaces = validValue;
-      expect(instance.destinationMarketplaces).to.equal(validValue);
+      var expectedValue = generateMockData('String', true);
+      instance.destinationMarketplaces = expectedValue;
+      expect(instance.destinationMarketplaces).to.equal(expectedValue);
     });
 
-    it('should have the property items (base name: "items")', function() {
+    it('should have the property items', function() {
       // verify property exists
       expect(instance).to.have.property('items');
 
       // set and verify value
-      var validValue = generateMockData('[ItemInput]', true);
-      instance.items = validValue;
-      expect(instance.items).to.equal(validValue);
+      var expectedValue = generateMockData('ItemInput', true);
+      instance.items = expectedValue;
+      expect(instance.items).to.equal(expectedValue);
     });
 
-    it('should have the property name (base name: "name")', function() {
+    it('should have the property name', function() {
       // verify property exists
       expect(instance).to.have.property('name');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.name = validValue;
-      expect(instance.name).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.name = expectedValue;
+      expect(instance.name).to.equal(expectedValue);
     });
 
-    it('should have the property sourceAddress (base name: "sourceAddress")', function() {
+    it('should have the property sourceAddress', function() {
       // verify property exists
       expect(instance).to.have.property('sourceAddress');
 
       // set and verify value
-      var validValue = generateMockData('AddressInput');
-      instance.sourceAddress = validValue;
-      expect(instance.sourceAddress).to.equal(validValue);
+      var expectedValue = generateMockData('AddressInput');
+      instance.sourceAddress = expectedValue;
+      expect(instance.sourceAddress).to.equal(expectedValue);
     });
 
   });

@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForOrders.AssociatedItem);
     });
 
-    it('should have the property orderId (base name: "OrderId")', function() {
+    it('should have the property orderId', function() {
       // verify property exists
       expect(instance).to.have.property('orderId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.orderId = validValue;
-      expect(instance.orderId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.orderId = expectedValue;
+      expect(instance.orderId).to.equal(expectedValue);
     });
 
-    it('should have the property orderItemId (base name: "OrderItemId")', function() {
+    it('should have the property orderItemId', function() {
       // verify property exists
       expect(instance).to.have.property('orderItemId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.orderItemId = validValue;
-      expect(instance.orderItemId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.orderItemId = expectedValue;
+      expect(instance.orderItemId).to.equal(expectedValue);
     });
 
-    it('should have the property associationType (base name: "AssociationType")', function() {
+    it('should have the property associationType', function() {
       // verify property exists
       expect(instance).to.have.property('associationType');
 
       // set and verify value
-      var validValue = generateMockData('AssociationType');
-      instance.associationType = validValue;
-      expect(instance.associationType).to.equal(validValue);
+      var expectedValue = generateMockData('AssociationType');
+      instance.associationType = expectedValue;
+      expect(instance.associationType).to.equal(expectedValue);
     });
 
   });

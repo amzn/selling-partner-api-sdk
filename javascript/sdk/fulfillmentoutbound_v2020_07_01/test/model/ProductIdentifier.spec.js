@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.ProductIdentifier);
     });
 
-    it('should have the property merchantSku (base name: "merchantSku")', function() {
+    it('should have the property merchantSku', function() {
       // verify property exists
       expect(instance).to.have.property('merchantSku');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.merchantSku = validValue;
-      expect(instance.merchantSku).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.merchantSku = expectedValue;
+      expect(instance.merchantSku).to.equal(expectedValue);
     });
 
   });

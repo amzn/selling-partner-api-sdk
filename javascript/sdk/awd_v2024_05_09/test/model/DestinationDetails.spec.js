@@ -45,34 +45,34 @@
       expect(instance).to.be.a(TheSellingPartnerApiForAmazonWarehousingAndDistribution.DestinationDetails);
     });
 
-    it('should have the property destinationAddress (base name: "destinationAddress")', function() {
+    it('should have the property destinationAddress', function() {
       // verify property exists
       expect(instance).to.have.property('destinationAddress');
 
       // set and verify value
-      var validValue = generateMockData('Address');
-      instance.destinationAddress = validValue;
-      expect(instance.destinationAddress).to.equal(validValue);
+      var expectedValue = generateMockData('Address');
+      instance.destinationAddress = expectedValue;
+      expect(instance.destinationAddress).to.equal(expectedValue);
     });
 
-    it('should have the property destinationRegion (base name: "destinationRegion")', function() {
+    it('should have the property destinationRegion', function() {
       // verify property exists
       expect(instance).to.have.property('destinationRegion');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.destinationRegion = validValue;
-      expect(instance.destinationRegion).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.destinationRegion = expectedValue;
+      expect(instance.destinationRegion).to.equal(expectedValue);
     });
 
-    it('should have the property shipmentId (base name: "shipmentId")', function() {
+    it('should have the property shipmentId', function() {
       // verify property exists
       expect(instance).to.have.property('shipmentId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.shipmentId = validValue;
-      expect(instance.shipmentId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.shipmentId = expectedValue;
+      expect(instance.shipmentId).to.equal(expectedValue);
     });
 
   });

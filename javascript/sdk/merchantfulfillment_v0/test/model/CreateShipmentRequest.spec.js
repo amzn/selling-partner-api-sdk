@@ -45,64 +45,64 @@
       expect(instance).to.be.a(SellingPartnerApiForMerchantFulfillment.CreateShipmentRequest);
     });
 
-    it('should have the property shipmentRequestDetails (base name: "ShipmentRequestDetails")', function() {
+    it('should have the property shipmentRequestDetails', function() {
       // verify property exists
       expect(instance).to.have.property('shipmentRequestDetails');
 
       // set and verify value
-      var validValue = generateMockData('ShipmentRequestDetails');
-      instance.shipmentRequestDetails = validValue;
-      expect(instance.shipmentRequestDetails).to.equal(validValue);
+      var expectedValue = generateMockData('ShipmentRequestDetails');
+      instance.shipmentRequestDetails = expectedValue;
+      expect(instance.shipmentRequestDetails).to.equal(expectedValue);
     });
 
-    it('should have the property shippingServiceId (base name: "ShippingServiceId")', function() {
+    it('should have the property shippingServiceId', function() {
       // verify property exists
       expect(instance).to.have.property('shippingServiceId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.shippingServiceId = validValue;
-      expect(instance.shippingServiceId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.shippingServiceId = expectedValue;
+      expect(instance.shippingServiceId).to.equal(expectedValue);
     });
 
-    it('should have the property shippingServiceOfferId (base name: "ShippingServiceOfferId")', function() {
+    it('should have the property shippingServiceOfferId', function() {
       // verify property exists
       expect(instance).to.have.property('shippingServiceOfferId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.shippingServiceOfferId = validValue;
-      expect(instance.shippingServiceOfferId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.shippingServiceOfferId = expectedValue;
+      expect(instance.shippingServiceOfferId).to.equal(expectedValue);
     });
 
-    it('should have the property hazmatType (base name: "HazmatType")', function() {
+    it('should have the property hazmatType', function() {
       // verify property exists
       expect(instance).to.have.property('hazmatType');
 
       // set and verify value
-      var validValue = generateMockData('HazmatType');
-      instance.hazmatType = validValue;
-      expect(instance.hazmatType).to.equal(validValue);
+      var expectedValue = generateMockData('HazmatType');
+      instance.hazmatType = expectedValue;
+      expect(instance.hazmatType).to.equal(expectedValue);
     });
 
-    it('should have the property labelFormatOption (base name: "LabelFormatOption")', function() {
+    it('should have the property labelFormatOption', function() {
       // verify property exists
       expect(instance).to.have.property('labelFormatOption');
 
       // set and verify value
-      var validValue = generateMockData('LabelFormatOptionRequest');
-      instance.labelFormatOption = validValue;
-      expect(instance.labelFormatOption).to.equal(validValue);
+      var expectedValue = generateMockData('LabelFormatOptionRequest');
+      instance.labelFormatOption = expectedValue;
+      expect(instance.labelFormatOption).to.equal(expectedValue);
     });
 
-    it('should have the property shipmentLevelSellerInputsList (base name: "ShipmentLevelSellerInputsList")', function() {
+    it('should have the property shipmentLevelSellerInputsList', function() {
       // verify property exists
       expect(instance).to.have.property('shipmentLevelSellerInputsList');
 
       // set and verify value
-      var validValue = generateMockData('[AdditionalSellerInputs]', true);
-      instance.shipmentLevelSellerInputsList = validValue;
-      expect(instance.shipmentLevelSellerInputsList).to.equal(validValue);
+      var expectedValue = generateMockData('AdditionalSellerInputs', true);
+      instance.shipmentLevelSellerInputsList = expectedValue;
+      expect(instance.shipmentLevelSellerInputsList).to.equal(expectedValue);
     });
 
   });

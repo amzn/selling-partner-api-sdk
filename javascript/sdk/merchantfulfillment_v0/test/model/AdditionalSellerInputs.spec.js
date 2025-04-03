@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForMerchantFulfillment.AdditionalSellerInputs);
     });
 
-    it('should have the property additionalInputFieldName (base name: "AdditionalInputFieldName")', function() {
+    it('should have the property additionalInputFieldName', function() {
       // verify property exists
       expect(instance).to.have.property('additionalInputFieldName');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.additionalInputFieldName = validValue;
-      expect(instance.additionalInputFieldName).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.additionalInputFieldName = expectedValue;
+      expect(instance.additionalInputFieldName).to.equal(expectedValue);
     });
 
-    it('should have the property additionalSellerInput (base name: "AdditionalSellerInput")', function() {
+    it('should have the property additionalSellerInput', function() {
       // verify property exists
       expect(instance).to.have.property('additionalSellerInput');
 
       // set and verify value
-      var validValue = generateMockData('AdditionalSellerInput');
-      instance.additionalSellerInput = validValue;
-      expect(instance.additionalSellerInput).to.equal(validValue);
+      var expectedValue = generateMockData('AdditionalSellerInput');
+      instance.additionalSellerInput = expectedValue;
+      expect(instance.additionalSellerInput).to.equal(expectedValue);
     });
 
   });

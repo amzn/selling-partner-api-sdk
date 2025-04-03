@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForOrders.FulfillmentInstruction);
     });
 
-    it('should have the property fulfillmentSupplySourceId (base name: "FulfillmentSupplySourceId")', function() {
+    it('should have the property fulfillmentSupplySourceId', function() {
       // verify property exists
       expect(instance).to.have.property('fulfillmentSupplySourceId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.fulfillmentSupplySourceId = validValue;
-      expect(instance.fulfillmentSupplySourceId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.fulfillmentSupplySourceId = expectedValue;
+      expect(instance.fulfillmentSupplySourceId).to.equal(expectedValue);
     });
 
   });

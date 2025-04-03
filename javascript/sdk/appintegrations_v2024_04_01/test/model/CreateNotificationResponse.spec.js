@@ -45,14 +45,14 @@
       expect(instance).to.be.a(TheSellingPartnerApiForThirdPartyApplicationIntegrations.CreateNotificationResponse);
     });
 
-    it('should have the property notificationId (base name: "notificationId")', function() {
+    it('should have the property notificationId', function() {
       // verify property exists
       expect(instance).to.have.property('notificationId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.notificationId = validValue;
-      expect(instance.notificationId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.notificationId = expectedValue;
+      expect(instance.notificationId).to.equal(expectedValue);
     });
 
   });

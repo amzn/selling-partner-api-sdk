@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForRetailProcurementShipments.Duration);
     });
 
-    it('should have the property durationUnit (base name: "durationUnit")', function() {
+    it('should have the property durationUnit', function() {
       // verify property exists
       expect(instance).to.have.property('durationUnit');
 
       // set and verify value
-      var validValue = ['Days', 'Months', ][0];
-      instance.durationUnit = validValue;
-      expect(instance.durationUnit).to.equal(validValue);
+      var expectedValue = ['Days', 'Months', ][0];
+      instance.durationUnit = expectedValue;
+      expect(instance.durationUnit).to.equal(expectedValue);
     });
 
-    it('should have the property durationValue (base name: "durationValue")', function() {
+    it('should have the property durationValue', function() {
       // verify property exists
       expect(instance).to.have.property('durationValue');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.durationValue = validValue;
-      expect(instance.durationValue).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.durationValue = expectedValue;
+      expect(instance.durationValue).to.equal(expectedValue);
     });
 
   });

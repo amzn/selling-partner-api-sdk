@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForEasyShip.PackageDetails);
     });
 
-    it('should have the property packageItems (base name: "packageItems")', function() {
+    it('should have the property packageItems', function() {
       // verify property exists
       expect(instance).to.have.property('packageItems');
 
       // set and verify value
-      var validValue = generateMockData('[Item]', true);
-      instance.packageItems = validValue;
-      expect(instance.packageItems).to.equal(validValue);
+      var expectedValue = generateMockData('Item', true);
+      instance.packageItems = expectedValue;
+      expect(instance.packageItems).to.equal(expectedValue);
     });
 
-    it('should have the property packageTimeSlot (base name: "packageTimeSlot")', function() {
+    it('should have the property packageTimeSlot', function() {
       // verify property exists
       expect(instance).to.have.property('packageTimeSlot');
 
       // set and verify value
-      var validValue = generateMockData('TimeSlot');
-      instance.packageTimeSlot = validValue;
-      expect(instance.packageTimeSlot).to.equal(validValue);
+      var expectedValue = generateMockData('TimeSlot');
+      instance.packageTimeSlot = expectedValue;
+      expect(instance.packageTimeSlot).to.equal(expectedValue);
     });
 
-    it('should have the property packageIdentifier (base name: "packageIdentifier")', function() {
+    it('should have the property packageIdentifier', function() {
       // verify property exists
       expect(instance).to.have.property('packageIdentifier');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.packageIdentifier = validValue;
-      expect(instance.packageIdentifier).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.packageIdentifier = expectedValue;
+      expect(instance.packageIdentifier).to.equal(expectedValue);
     });
 
   });

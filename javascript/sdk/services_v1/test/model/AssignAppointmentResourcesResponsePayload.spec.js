@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForServices.AssignAppointmentResourcesResponsePayload);
     });
 
-    it('should have the property warnings (base name: "warnings")', function() {
+    it('should have the property warnings', function() {
       // verify property exists
       expect(instance).to.have.property('warnings');
 
       // set and verify value
-      var validValue = generateMockData('[Warning]', true);
-      instance.warnings = validValue;
-      expect(instance.warnings).to.equal(validValue);
+      var expectedValue = generateMockData('Warning', true);
+      instance.warnings = expectedValue;
+      expect(instance.warnings).to.equal(expectedValue);
     });
 
   });

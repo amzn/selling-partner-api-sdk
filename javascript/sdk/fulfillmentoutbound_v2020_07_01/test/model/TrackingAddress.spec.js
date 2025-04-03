@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.TrackingAddress);
     });
 
-    it('should have the property city (base name: "city")', function() {
+    it('should have the property city', function() {
       // verify property exists
       expect(instance).to.have.property('city');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.city = validValue;
-      expect(instance.city).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.city = expectedValue;
+      expect(instance.city).to.equal(expectedValue);
     });
 
-    it('should have the property state (base name: "state")', function() {
+    it('should have the property state', function() {
       // verify property exists
       expect(instance).to.have.property('state');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.state = validValue;
-      expect(instance.state).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.state = expectedValue;
+      expect(instance.state).to.equal(expectedValue);
     });
 
-    it('should have the property country (base name: "country")', function() {
+    it('should have the property country', function() {
       // verify property exists
       expect(instance).to.have.property('country');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.country = validValue;
-      expect(instance.country).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.country = expectedValue;
+      expect(instance.country).to.equal(expectedValue);
     });
 
   });

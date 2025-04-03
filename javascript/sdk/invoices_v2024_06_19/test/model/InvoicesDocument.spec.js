@@ -45,24 +45,24 @@
       expect(instance).to.be.a(TheSellingPartnerApiForInvoices.InvoicesDocument);
     });
 
-    it('should have the property invoicesDocumentId (base name: "invoicesDocumentId")', function() {
+    it('should have the property invoicesDocumentId', function() {
       // verify property exists
       expect(instance).to.have.property('invoicesDocumentId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.invoicesDocumentId = validValue;
-      expect(instance.invoicesDocumentId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.invoicesDocumentId = expectedValue;
+      expect(instance.invoicesDocumentId).to.equal(expectedValue);
     });
 
-    it('should have the property invoicesDocumentUrl (base name: "invoicesDocumentUrl")', function() {
+    it('should have the property invoicesDocumentUrl', function() {
       // verify property exists
       expect(instance).to.have.property('invoicesDocumentUrl');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.invoicesDocumentUrl = validValue;
-      expect(instance.invoicesDocumentUrl).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.invoicesDocumentUrl = expectedValue;
+      expect(instance.invoicesDocumentUrl).to.equal(expectedValue);
     });
 
   });

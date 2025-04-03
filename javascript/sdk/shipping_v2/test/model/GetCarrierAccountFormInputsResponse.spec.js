@@ -45,14 +45,14 @@
       expect(instance).to.be.a(AmazonShippingApi.GetCarrierAccountFormInputsResponse);
     });
 
-    it('should have the property linkableCarriersList (base name: "linkableCarriersList")', function() {
+    it('should have the property linkableCarriersList', function() {
       // verify property exists
       expect(instance).to.have.property('linkableCarriersList');
 
       // set and verify value
-      var validValue = generateMockData('[LinkableCarrier]', true);
-      instance.linkableCarriersList = validValue;
-      expect(instance.linkableCarriersList).to.equal(validValue);
+      var expectedValue = generateMockData('LinkableCarrier', true);
+      instance.linkableCarriersList = expectedValue;
+      expect(instance.linkableCarriersList).to.equal(expectedValue);
     });
 
   });

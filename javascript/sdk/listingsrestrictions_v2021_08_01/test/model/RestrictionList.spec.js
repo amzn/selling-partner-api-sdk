@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForListingsRestrictions.RestrictionList);
     });
 
-    it('should have the property restrictions (base name: "restrictions")', function() {
+    it('should have the property restrictions', function() {
       // verify property exists
       expect(instance).to.have.property('restrictions');
 
       // set and verify value
-      var validValue = generateMockData('[Restriction]', true);
-      instance.restrictions = validValue;
-      expect(instance.restrictions).to.equal(validValue);
+      var expectedValue = generateMockData('Restriction', true);
+      instance.restrictions = expectedValue;
+      expect(instance.restrictions).to.equal(expectedValue);
     });
 
   });

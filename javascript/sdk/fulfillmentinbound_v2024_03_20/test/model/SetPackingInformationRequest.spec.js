@@ -45,14 +45,14 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.SetPackingInformationRequest);
     });
 
-    it('should have the property packageGroupings (base name: "packageGroupings")', function() {
+    it('should have the property packageGroupings', function() {
       // verify property exists
       expect(instance).to.have.property('packageGroupings');
 
       // set and verify value
-      var validValue = generateMockData('[PackageGroupingInput]', true);
-      instance.packageGroupings = validValue;
-      expect(instance.packageGroupings).to.equal(validValue);
+      var expectedValue = generateMockData('PackageGroupingInput', true);
+      instance.packageGroupings = expectedValue;
+      expect(instance.packageGroupings).to.equal(expectedValue);
     });
 
   });

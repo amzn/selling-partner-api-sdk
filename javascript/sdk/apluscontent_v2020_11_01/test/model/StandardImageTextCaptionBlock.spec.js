@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForAContentManagement.StandardImageTextCaptionBlock);
     });
 
-    it('should have the property block (base name: "block")', function() {
+    it('should have the property block', function() {
       // verify property exists
       expect(instance).to.have.property('block');
 
       // set and verify value
-      var validValue = generateMockData('StandardImageTextBlock');
-      instance.block = validValue;
-      expect(instance.block).to.equal(validValue);
+      var expectedValue = generateMockData('StandardImageTextBlock');
+      instance.block = expectedValue;
+      expect(instance.block).to.equal(expectedValue);
     });
 
-    it('should have the property caption (base name: "caption")', function() {
+    it('should have the property caption', function() {
       // verify property exists
       expect(instance).to.have.property('caption');
 
       // set and verify value
-      var validValue = generateMockData('TextComponent');
-      instance.caption = validValue;
-      expect(instance.caption).to.equal(validValue);
+      var expectedValue = generateMockData('TextComponent');
+      instance.caption = expectedValue;
+      expect(instance.caption).to.equal(expectedValue);
     });
 
   });

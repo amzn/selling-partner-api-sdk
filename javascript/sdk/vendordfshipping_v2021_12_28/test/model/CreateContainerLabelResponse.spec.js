@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForDirectFulfillmentShipping.CreateContainerLabelResponse);
     });
 
-    it('should have the property containerLabel (base name: "containerLabel")', function() {
+    it('should have the property containerLabel', function() {
       // verify property exists
       expect(instance).to.have.property('containerLabel');
 
       // set and verify value
-      var validValue = generateMockData('ContainerLabel');
-      instance.containerLabel = validValue;
-      expect(instance.containerLabel).to.equal(validValue);
+      var expectedValue = generateMockData('ContainerLabel');
+      instance.containerLabel = expectedValue;
+      expect(instance.containerLabel).to.equal(expectedValue);
     });
 
   });

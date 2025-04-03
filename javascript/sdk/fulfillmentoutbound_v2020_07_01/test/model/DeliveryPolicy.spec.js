@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.DeliveryPolicy);
     });
 
-    it('should have the property message (base name: "message")', function() {
+    it('should have the property message', function() {
       // verify property exists
       expect(instance).to.have.property('message');
 
       // set and verify value
-      var validValue = generateMockData('DeliveryMessage');
-      instance.message = validValue;
-      expect(instance.message).to.equal(validValue);
+      var expectedValue = generateMockData('DeliveryMessage');
+      instance.message = expectedValue;
+      expect(instance.message).to.equal(expectedValue);
     });
 
   });

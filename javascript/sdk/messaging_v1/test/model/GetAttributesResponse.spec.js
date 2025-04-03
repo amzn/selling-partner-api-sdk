@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForMessaging.GetAttributesResponse);
     });
 
-    it('should have the property buyer (base name: "buyer")', function() {
+    it('should have the property buyer', function() {
       // verify property exists
       expect(instance).to.have.property('buyer');
 
       // set and verify value
-      var validValue = generateMockData('GetAttributesResponseBuyer');
-      instance.buyer = validValue;
-      expect(instance.buyer).to.equal(validValue);
+      var expectedValue = generateMockData('GetAttributesResponseBuyer');
+      instance.buyer = expectedValue;
+      expect(instance.buyer).to.equal(expectedValue);
     });
 
-    it('should have the property errors (base name: "errors")', function() {
+    it('should have the property errors', function() {
       // verify property exists
       expect(instance).to.have.property('errors');
 
       // set and verify value
-      var validValue = generateMockData('[Error]', true);
-      instance.errors = validValue;
-      expect(instance.errors).to.equal(validValue);
+      var expectedValue = generateMockData('Error', true);
+      instance.errors = expectedValue;
+      expect(instance.errors).to.equal(expectedValue);
     });
 
   });

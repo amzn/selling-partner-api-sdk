@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForShipmentInvoicing.SubmitInvoiceRequest);
     });
 
-    it('should have the property invoiceContent (base name: "InvoiceContent")', function() {
+    it('should have the property invoiceContent', function() {
       // verify property exists
       expect(instance).to.have.property('invoiceContent');
 
       // set and verify value
-      var validValue = generateMockData('Blob');
-      instance.invoiceContent = validValue;
-      expect(instance.invoiceContent).to.equal(validValue);
+      var expectedValue = generateMockData('Blob');
+      instance.invoiceContent = expectedValue;
+      expect(instance.invoiceContent).to.equal(expectedValue);
     });
 
-    it('should have the property marketplaceId (base name: "MarketplaceId")', function() {
+    it('should have the property marketplaceId', function() {
       // verify property exists
       expect(instance).to.have.property('marketplaceId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.marketplaceId = validValue;
-      expect(instance.marketplaceId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.marketplaceId = expectedValue;
+      expect(instance.marketplaceId).to.equal(expectedValue);
     });
 
-    it('should have the property contentMD5Value (base name: "ContentMD5Value")', function() {
+    it('should have the property contentMD5Value', function() {
       // verify property exists
       expect(instance).to.have.property('contentMD5Value');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.contentMD5Value = validValue;
-      expect(instance.contentMD5Value).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.contentMD5Value = expectedValue;
+      expect(instance.contentMD5Value).to.equal(expectedValue);
     });
 
   });

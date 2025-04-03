@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForServices.AddAppointmentRequest);
     });
 
-    it('should have the property appointmentTime (base name: "appointmentTime")', function() {
+    it('should have the property appointmentTime', function() {
       // verify property exists
       expect(instance).to.have.property('appointmentTime');
 
       // set and verify value
-      var validValue = generateMockData('AppointmentTimeInput');
-      instance.appointmentTime = validValue;
-      expect(instance.appointmentTime).to.equal(validValue);
+      var expectedValue = generateMockData('AppointmentTimeInput');
+      instance.appointmentTime = expectedValue;
+      expect(instance.appointmentTime).to.equal(expectedValue);
     });
 
   });

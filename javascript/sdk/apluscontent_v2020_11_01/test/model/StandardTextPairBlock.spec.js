@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForAContentManagement.StandardTextPairBlock);
     });
 
-    it('should have the property label (base name: "label")', function() {
+    it('should have the property label', function() {
       // verify property exists
       expect(instance).to.have.property('label');
 
       // set and verify value
-      var validValue = generateMockData('TextComponent');
-      instance.label = validValue;
-      expect(instance.label).to.equal(validValue);
+      var expectedValue = generateMockData('TextComponent');
+      instance.label = expectedValue;
+      expect(instance.label).to.equal(expectedValue);
     });
 
-    it('should have the property description (base name: "description")', function() {
+    it('should have the property description', function() {
       // verify property exists
       expect(instance).to.have.property('description');
 
       // set and verify value
-      var validValue = generateMockData('TextComponent');
-      instance.description = validValue;
-      expect(instance.description).to.equal(validValue);
+      var expectedValue = generateMockData('TextComponent');
+      instance.description = expectedValue;
+      expect(instance.description).to.equal(expectedValue);
     });
 
   });

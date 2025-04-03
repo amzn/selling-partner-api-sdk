@@ -45,34 +45,34 @@
       expect(instance).to.be.a(AmazonShippingApi.CarrierAccountAttribute);
     });
 
-    it('should have the property attributeName (base name: "attributeName")', function() {
+    it('should have the property attributeName', function() {
       // verify property exists
       expect(instance).to.have.property('attributeName');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.attributeName = validValue;
-      expect(instance.attributeName).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.attributeName = expectedValue;
+      expect(instance.attributeName).to.equal(expectedValue);
     });
 
-    it('should have the property propertyGroup (base name: "propertyGroup")', function() {
+    it('should have the property propertyGroup', function() {
       // verify property exists
       expect(instance).to.have.property('propertyGroup');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.propertyGroup = validValue;
-      expect(instance.propertyGroup).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.propertyGroup = expectedValue;
+      expect(instance.propertyGroup).to.equal(expectedValue);
     });
 
-    it('should have the property value (base name: "value")', function() {
+    it('should have the property value', function() {
       // verify property exists
       expect(instance).to.have.property('value');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.value = validValue;
-      expect(instance.value).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.value = expectedValue;
+      expect(instance.value).to.equal(expectedValue);
     });
 
   });

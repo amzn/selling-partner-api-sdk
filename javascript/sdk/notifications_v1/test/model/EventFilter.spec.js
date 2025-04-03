@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForNotifications.EventFilter);
     });
 
-    it('should have the property aggregationSettings (base name: "aggregationSettings")', function() {
+    it('should have the property aggregationSettings', function() {
       // verify property exists
       expect(instance).to.have.property('aggregationSettings');
 
       // set and verify value
-      var validValue = generateMockData('AggregationSettings');
-      instance.aggregationSettings = validValue;
-      expect(instance.aggregationSettings).to.equal(validValue);
+      var expectedValue = generateMockData('AggregationSettings');
+      instance.aggregationSettings = expectedValue;
+      expect(instance.aggregationSettings).to.equal(expectedValue);
     });
 
-    it('should have the property marketplaceIds (base name: "marketplaceIds")', function() {
+    it('should have the property marketplaceIds', function() {
       // verify property exists
       expect(instance).to.have.property('marketplaceIds');
 
       // set and verify value
-      var validValue = generateMockData('[String]', true);
-      instance.marketplaceIds = validValue;
-      expect(instance.marketplaceIds).to.equal(validValue);
+      var expectedValue = generateMockData('String', true);
+      instance.marketplaceIds = expectedValue;
+      expect(instance.marketplaceIds).to.equal(expectedValue);
     });
 
-    it('should have the property orderChangeTypes (base name: "orderChangeTypes")', function() {
+    it('should have the property orderChangeTypes', function() {
       // verify property exists
       expect(instance).to.have.property('orderChangeTypes');
 
       // set and verify value
-      var validValue = generateMockData('[OrderChangeTypeEnum]', true);
-      instance.orderChangeTypes = validValue;
-      expect(instance.orderChangeTypes).to.equal(validValue);
+      var expectedValue = generateMockData('OrderChangeTypeEnum', true);
+      instance.orderChangeTypes = expectedValue;
+      expect(instance.orderChangeTypes).to.equal(expectedValue);
     });
 
-    it('should have the property eventFilterType (base name: "eventFilterType")', function() {
+    it('should have the property eventFilterType', function() {
       // verify property exists
       expect(instance).to.have.property('eventFilterType');
 
       // set and verify value
-      var validValue = ['ANY_OFFER_CHANGED', 'ORDER_CHANGE', ][0];
-      instance.eventFilterType = validValue;
-      expect(instance.eventFilterType).to.equal(validValue);
+      var expectedValue = ['ANY_OFFER_CHANGED', 'ORDER_CHANGE', ][0];
+      instance.eventFilterType = expectedValue;
+      expect(instance.eventFilterType).to.equal(expectedValue);
     });
 
   });

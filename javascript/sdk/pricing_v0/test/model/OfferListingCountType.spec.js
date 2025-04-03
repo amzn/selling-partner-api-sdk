@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForPricing.OfferListingCountType);
     });
 
-    it('should have the property count (base name: "Count")', function() {
+    it('should have the property count', function() {
       // verify property exists
       expect(instance).to.have.property('count');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.count = validValue;
-      expect(instance.count).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.count = expectedValue;
+      expect(instance.count).to.equal(expectedValue);
     });
 
-    it('should have the property condition (base name: "condition")', function() {
+    it('should have the property condition', function() {
       // verify property exists
       expect(instance).to.have.property('condition');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.condition = validValue;
-      expect(instance.condition).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.condition = expectedValue;
+      expect(instance.condition).to.equal(expectedValue);
     });
 
   });

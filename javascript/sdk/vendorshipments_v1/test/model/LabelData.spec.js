@@ -45,54 +45,54 @@
       expect(instance).to.be.a(SellingPartnerApiForRetailProcurementShipments.LabelData);
     });
 
-    it('should have the property labelSequenceNumber (base name: "labelSequenceNumber")', function() {
+    it('should have the property labelSequenceNumber', function() {
       // verify property exists
       expect(instance).to.have.property('labelSequenceNumber');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.labelSequenceNumber = validValue;
-      expect(instance.labelSequenceNumber).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.labelSequenceNumber = expectedValue;
+      expect(instance.labelSequenceNumber).to.equal(expectedValue);
     });
 
-    it('should have the property labelFormat (base name: "labelFormat")', function() {
+    it('should have the property labelFormat', function() {
       // verify property exists
       expect(instance).to.have.property('labelFormat');
 
       // set and verify value
-      var validValue = ['PDF', ][0];
-      instance.labelFormat = validValue;
-      expect(instance.labelFormat).to.equal(validValue);
+      var expectedValue = ['PDF', ][0];
+      instance.labelFormat = expectedValue;
+      expect(instance.labelFormat).to.equal(expectedValue);
     });
 
-    it('should have the property carrierCode (base name: "carrierCode")', function() {
+    it('should have the property carrierCode', function() {
       // verify property exists
       expect(instance).to.have.property('carrierCode');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.carrierCode = validValue;
-      expect(instance.carrierCode).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.carrierCode = expectedValue;
+      expect(instance.carrierCode).to.equal(expectedValue);
     });
 
-    it('should have the property trackingId (base name: "trackingId")', function() {
+    it('should have the property trackingId', function() {
       // verify property exists
       expect(instance).to.have.property('trackingId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.trackingId = validValue;
-      expect(instance.trackingId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.trackingId = expectedValue;
+      expect(instance.trackingId).to.equal(expectedValue);
     });
 
-    it('should have the property label (base name: "label")', function() {
+    it('should have the property label', function() {
       // verify property exists
       expect(instance).to.have.property('label');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.label = validValue;
-      expect(instance.label).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.label = expectedValue;
+      expect(instance.label).to.equal(expectedValue);
     });
 
   });

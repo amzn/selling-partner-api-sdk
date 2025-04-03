@@ -45,24 +45,24 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFinances.ItemRelatedIdentifier);
     });
 
-    it('should have the property itemRelatedIdentifierName (base name: "itemRelatedIdentifierName")', function() {
+    it('should have the property itemRelatedIdentifierName', function() {
       // verify property exists
       expect(instance).to.have.property('itemRelatedIdentifierName');
 
       // set and verify value
-      var validValue = ['ORDER_ADJUSTMENT_ITEM_ID', 'COUPON_ID', 'REMOVAL_SHIPMENT_ITEM_ID', 'TRANSACTION_ID', ][0];
-      instance.itemRelatedIdentifierName = validValue;
-      expect(instance.itemRelatedIdentifierName).to.equal(validValue);
+      var expectedValue = ['ORDER_ADJUSTMENT_ITEM_ID', 'COUPON_ID', 'REMOVAL_SHIPMENT_ITEM_ID', 'TRANSACTION_ID', ][0];
+      instance.itemRelatedIdentifierName = expectedValue;
+      expect(instance.itemRelatedIdentifierName).to.equal(expectedValue);
     });
 
-    it('should have the property itemRelatedIdentifierValue (base name: "itemRelatedIdentifierValue")', function() {
+    it('should have the property itemRelatedIdentifierValue', function() {
       // verify property exists
       expect(instance).to.have.property('itemRelatedIdentifierValue');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.itemRelatedIdentifierValue = validValue;
-      expect(instance.itemRelatedIdentifierValue).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.itemRelatedIdentifierValue = expectedValue;
+      expect(instance.itemRelatedIdentifierValue).to.equal(expectedValue);
     });
 
   });

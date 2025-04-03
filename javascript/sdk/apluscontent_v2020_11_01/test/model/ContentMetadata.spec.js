@@ -45,54 +45,54 @@
       expect(instance).to.be.a(SellingPartnerApiForAContentManagement.ContentMetadata);
     });
 
-    it('should have the property name (base name: "name")', function() {
+    it('should have the property name', function() {
       // verify property exists
       expect(instance).to.have.property('name');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.name = validValue;
-      expect(instance.name).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.name = expectedValue;
+      expect(instance.name).to.equal(expectedValue);
     });
 
-    it('should have the property marketplaceId (base name: "marketplaceId")', function() {
+    it('should have the property marketplaceId', function() {
       // verify property exists
       expect(instance).to.have.property('marketplaceId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.marketplaceId = validValue;
-      expect(instance.marketplaceId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.marketplaceId = expectedValue;
+      expect(instance.marketplaceId).to.equal(expectedValue);
     });
 
-    it('should have the property status (base name: "status")', function() {
+    it('should have the property status', function() {
       // verify property exists
       expect(instance).to.have.property('status');
 
       // set and verify value
-      var validValue = generateMockData('ContentStatus');
-      instance.status = validValue;
-      expect(instance.status).to.equal(validValue);
+      var expectedValue = generateMockData('ContentStatus');
+      instance.status = expectedValue;
+      expect(instance.status).to.equal(expectedValue);
     });
 
-    it('should have the property badgeSet (base name: "badgeSet")', function() {
+    it('should have the property badgeSet', function() {
       // verify property exists
       expect(instance).to.have.property('badgeSet');
 
       // set and verify value
-      var validValue = generateMockData('[ContentBadge]', true);
-      instance.badgeSet = validValue;
-      expect(instance.badgeSet).to.equal(validValue);
+      var expectedValue = generateMockData('ContentBadge', true);
+      instance.badgeSet = expectedValue;
+      expect(instance.badgeSet).to.equal(expectedValue);
     });
 
-    it('should have the property updateTime (base name: "updateTime")', function() {
+    it('should have the property updateTime', function() {
       // verify property exists
       expect(instance).to.have.property('updateTime');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.updateTime = validValue;
-      expect(instance.updateTime).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.updateTime = expectedValue;
+      expect(instance.updateTime).to.equal(expectedValue);
     });
 
   });

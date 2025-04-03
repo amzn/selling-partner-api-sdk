@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForFbaInventory.ResearchingQuantity);
     });
 
-    it('should have the property totalResearchingQuantity (base name: "totalResearchingQuantity")', function() {
+    it('should have the property totalResearchingQuantity', function() {
       // verify property exists
       expect(instance).to.have.property('totalResearchingQuantity');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.totalResearchingQuantity = validValue;
-      expect(instance.totalResearchingQuantity).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.totalResearchingQuantity = expectedValue;
+      expect(instance.totalResearchingQuantity).to.equal(expectedValue);
     });
 
-    it('should have the property researchingQuantityBreakdown (base name: "researchingQuantityBreakdown")', function() {
+    it('should have the property researchingQuantityBreakdown', function() {
       // verify property exists
       expect(instance).to.have.property('researchingQuantityBreakdown');
 
       // set and verify value
-      var validValue = generateMockData('[ResearchingQuantityEntry]', true);
-      instance.researchingQuantityBreakdown = validValue;
-      expect(instance.researchingQuantityBreakdown).to.equal(validValue);
+      var expectedValue = generateMockData('ResearchingQuantityEntry', true);
+      instance.researchingQuantityBreakdown = expectedValue;
+      expect(instance.researchingQuantityBreakdown).to.equal(expectedValue);
     });
 
   });

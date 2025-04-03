@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForFbaInventory.Granularity);
     });
 
-    it('should have the property granularityType (base name: "granularityType")', function() {
+    it('should have the property granularityType', function() {
       // verify property exists
       expect(instance).to.have.property('granularityType');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.granularityType = validValue;
-      expect(instance.granularityType).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.granularityType = expectedValue;
+      expect(instance.granularityType).to.equal(expectedValue);
     });
 
-    it('should have the property granularityId (base name: "granularityId")', function() {
+    it('should have the property granularityId', function() {
       // verify property exists
       expect(instance).to.have.property('granularityId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.granularityId = validValue;
-      expect(instance.granularityId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.granularityId = expectedValue;
+      expect(instance.granularityId).to.equal(expectedValue);
     });
 
   });

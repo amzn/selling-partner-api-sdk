@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForOrders.VerificationDetails);
     });
 
-    it('should have the property prescriptionDetail (base name: "prescriptionDetail")', function() {
+    it('should have the property prescriptionDetail', function() {
       // verify property exists
       expect(instance).to.have.property('prescriptionDetail');
 
       // set and verify value
-      var validValue = generateMockData('PrescriptionDetail');
-      instance.prescriptionDetail = validValue;
-      expect(instance.prescriptionDetail).to.equal(validValue);
+      var expectedValue = generateMockData('PrescriptionDetail');
+      instance.prescriptionDetail = expectedValue;
+      expect(instance.prescriptionDetail).to.equal(expectedValue);
     });
 
   });

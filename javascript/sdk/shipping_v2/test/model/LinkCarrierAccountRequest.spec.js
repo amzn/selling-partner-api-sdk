@@ -45,44 +45,44 @@
       expect(instance).to.be.a(AmazonShippingApi.LinkCarrierAccountRequest);
     });
 
-    it('should have the property clientReferenceDetails (base name: "clientReferenceDetails")', function() {
+    it('should have the property clientReferenceDetails', function() {
       // verify property exists
       expect(instance).to.have.property('clientReferenceDetails');
 
       // set and verify value
-      var validValue = generateMockData('[ClientReferenceDetail]', true);
-      instance.clientReferenceDetails = validValue;
-      expect(instance.clientReferenceDetails).to.equal(validValue);
+      var expectedValue = generateMockData('ClientReferenceDetail', true);
+      instance.clientReferenceDetails = expectedValue;
+      expect(instance.clientReferenceDetails).to.equal(expectedValue);
     });
 
-    it('should have the property carrierAccountType (base name: "carrierAccountType")', function() {
+    it('should have the property carrierAccountType', function() {
       // verify property exists
       expect(instance).to.have.property('carrierAccountType');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.carrierAccountType = validValue;
-      expect(instance.carrierAccountType).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.carrierAccountType = expectedValue;
+      expect(instance.carrierAccountType).to.equal(expectedValue);
     });
 
-    it('should have the property carrierAccountAttributes (base name: "carrierAccountAttributes")', function() {
+    it('should have the property carrierAccountAttributes', function() {
       // verify property exists
       expect(instance).to.have.property('carrierAccountAttributes');
 
       // set and verify value
-      var validValue = generateMockData('[CarrierAccountAttribute]', true);
-      instance.carrierAccountAttributes = validValue;
-      expect(instance.carrierAccountAttributes).to.equal(validValue);
+      var expectedValue = generateMockData('CarrierAccountAttribute', true);
+      instance.carrierAccountAttributes = expectedValue;
+      expect(instance.carrierAccountAttributes).to.equal(expectedValue);
     });
 
-    it('should have the property encryptedCarrierAccountAttributes (base name: "encryptedCarrierAccountAttributes")', function() {
+    it('should have the property encryptedCarrierAccountAttributes', function() {
       // verify property exists
       expect(instance).to.have.property('encryptedCarrierAccountAttributes');
 
       // set and verify value
-      var validValue = generateMockData('[CarrierAccountAttribute]', true);
-      instance.encryptedCarrierAccountAttributes = validValue;
-      expect(instance.encryptedCarrierAccountAttributes).to.equal(validValue);
+      var expectedValue = generateMockData('CarrierAccountAttribute', true);
+      instance.encryptedCarrierAccountAttributes = expectedValue;
+      expect(instance.encryptedCarrierAccountAttributes).to.equal(expectedValue);
     });
 
   });

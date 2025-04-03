@@ -45,54 +45,54 @@
       expect(instance).to.be.a(SellingPartnerApiForFbaInboundEligibilty.ItemEligibilityPreview);
     });
 
-    it('should have the property asin (base name: "asin")', function() {
+    it('should have the property asin', function() {
       // verify property exists
       expect(instance).to.have.property('asin');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.asin = validValue;
-      expect(instance.asin).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.asin = expectedValue;
+      expect(instance.asin).to.equal(expectedValue);
     });
 
-    it('should have the property marketplaceId (base name: "marketplaceId")', function() {
+    it('should have the property marketplaceId', function() {
       // verify property exists
       expect(instance).to.have.property('marketplaceId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.marketplaceId = validValue;
-      expect(instance.marketplaceId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.marketplaceId = expectedValue;
+      expect(instance.marketplaceId).to.equal(expectedValue);
     });
 
-    it('should have the property program (base name: "program")', function() {
+    it('should have the property program', function() {
       // verify property exists
       expect(instance).to.have.property('program');
 
       // set and verify value
-      var validValue = ['INBOUND', 'COMMINGLING', ][0];
-      instance.program = validValue;
-      expect(instance.program).to.equal(validValue);
+      var expectedValue = ['INBOUND', 'COMMINGLING', ][0];
+      instance.program = expectedValue;
+      expect(instance.program).to.equal(expectedValue);
     });
 
-    it('should have the property isEligibleForProgram (base name: "isEligibleForProgram")', function() {
+    it('should have the property isEligibleForProgram', function() {
       // verify property exists
       expect(instance).to.have.property('isEligibleForProgram');
 
       // set and verify value
-      var validValue = generateMockData('Boolean');
-      instance.isEligibleForProgram = validValue;
-      expect(instance.isEligibleForProgram).to.equal(validValue);
+      var expectedValue = generateMockData('Boolean');
+      instance.isEligibleForProgram = expectedValue;
+      expect(instance.isEligibleForProgram).to.equal(expectedValue);
     });
 
-    it('should have the property ineligibilityReasonList (base name: "ineligibilityReasonList")', function() {
+    it('should have the property ineligibilityReasonList', function() {
       // verify property exists
       expect(instance).to.have.property('ineligibilityReasonList');
 
       // set and verify value
-      var validValue = ['FBA_INB_0004', 'FBA_INB_0006', 'FBA_INB_0007', 'FBA_INB_0008', 'FBA_INB_0009', 'FBA_INB_0010', 'FBA_INB_0011', 'FBA_INB_0012', 'FBA_INB_0013', 'FBA_INB_0014', 'FBA_INB_0015', 'FBA_INB_0016', 'FBA_INB_0017', 'FBA_INB_0018', 'FBA_INB_0019', 'FBA_INB_0034', 'FBA_INB_0035', 'FBA_INB_0036', 'FBA_INB_0037', 'FBA_INB_0038', 'FBA_INB_0050', 'FBA_INB_0051', 'FBA_INB_0053', 'FBA_INB_0055', 'FBA_INB_0056', 'FBA_INB_0059', 'FBA_INB_0065', 'FBA_INB_0066', 'FBA_INB_0067', 'FBA_INB_0068', 'FBA_INB_0095', 'FBA_INB_0097', 'FBA_INB_0098', 'FBA_INB_0099', 'FBA_INB_0100', 'FBA_INB_0103', 'FBA_INB_0104', 'FBA_INB_0197', 'UNKNOWN_INB_ERROR_CODE', ][0];
-      instance.ineligibilityReasonList = validValue;
-      expect(instance.ineligibilityReasonList).to.equal(validValue);
+      var expectedValue = ['FBA_INB_0004', 'FBA_INB_0006', 'FBA_INB_0007', 'FBA_INB_0008', 'FBA_INB_0009', 'FBA_INB_0010', 'FBA_INB_0011', 'FBA_INB_0012', 'FBA_INB_0013', 'FBA_INB_0014', 'FBA_INB_0015', 'FBA_INB_0016', 'FBA_INB_0017', 'FBA_INB_0018', 'FBA_INB_0019', 'FBA_INB_0034', 'FBA_INB_0035', 'FBA_INB_0036', 'FBA_INB_0037', 'FBA_INB_0038', 'FBA_INB_0050', 'FBA_INB_0051', 'FBA_INB_0053', 'FBA_INB_0055', 'FBA_INB_0056', 'FBA_INB_0059', 'FBA_INB_0065', 'FBA_INB_0066', 'FBA_INB_0067', 'FBA_INB_0068', 'FBA_INB_0095', 'FBA_INB_0097', 'FBA_INB_0098', 'FBA_INB_0099', 'FBA_INB_0100', 'FBA_INB_0103', 'FBA_INB_0104', 'FBA_INB_0197', 'UNKNOWN_INB_ERROR_CODE', ][0];
+      instance.ineligibilityReasonList = expectedValue;
+      expect(instance.ineligibilityReasonList).to.equal(expectedValue);
     });
 
   });

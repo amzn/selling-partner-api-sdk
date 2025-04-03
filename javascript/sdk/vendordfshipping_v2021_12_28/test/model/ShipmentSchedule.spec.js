@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForDirectFulfillmentShipping.ShipmentSchedule);
     });
 
-    it('should have the property estimatedDeliveryDateTime (base name: "estimatedDeliveryDateTime")', function() {
+    it('should have the property estimatedDeliveryDateTime', function() {
       // verify property exists
       expect(instance).to.have.property('estimatedDeliveryDateTime');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.estimatedDeliveryDateTime = validValue;
-      expect(instance.estimatedDeliveryDateTime).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.estimatedDeliveryDateTime = expectedValue;
+      expect(instance.estimatedDeliveryDateTime).to.equal(expectedValue);
     });
 
-    it('should have the property apptWindowStartDateTime (base name: "apptWindowStartDateTime")', function() {
+    it('should have the property apptWindowStartDateTime', function() {
       // verify property exists
       expect(instance).to.have.property('apptWindowStartDateTime');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.apptWindowStartDateTime = validValue;
-      expect(instance.apptWindowStartDateTime).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.apptWindowStartDateTime = expectedValue;
+      expect(instance.apptWindowStartDateTime).to.equal(expectedValue);
     });
 
-    it('should have the property apptWindowEndDateTime (base name: "apptWindowEndDateTime")', function() {
+    it('should have the property apptWindowEndDateTime', function() {
       // verify property exists
       expect(instance).to.have.property('apptWindowEndDateTime');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.apptWindowEndDateTime = validValue;
-      expect(instance.apptWindowEndDateTime).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.apptWindowEndDateTime = expectedValue;
+      expect(instance.apptWindowEndDateTime).to.equal(expectedValue);
     });
 
   });

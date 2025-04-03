@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForEasyShip.ListHandoverSlotsRequest);
     });
 
-    it('should have the property marketplaceId (base name: "marketplaceId")', function() {
+    it('should have the property marketplaceId', function() {
       // verify property exists
       expect(instance).to.have.property('marketplaceId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.marketplaceId = validValue;
-      expect(instance.marketplaceId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.marketplaceId = expectedValue;
+      expect(instance.marketplaceId).to.equal(expectedValue);
     });
 
-    it('should have the property amazonOrderId (base name: "amazonOrderId")', function() {
+    it('should have the property amazonOrderId', function() {
       // verify property exists
       expect(instance).to.have.property('amazonOrderId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.amazonOrderId = validValue;
-      expect(instance.amazonOrderId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.amazonOrderId = expectedValue;
+      expect(instance.amazonOrderId).to.equal(expectedValue);
     });
 
-    it('should have the property packageDimensions (base name: "packageDimensions")', function() {
+    it('should have the property packageDimensions', function() {
       // verify property exists
       expect(instance).to.have.property('packageDimensions');
 
       // set and verify value
-      var validValue = generateMockData('Dimensions');
-      instance.packageDimensions = validValue;
-      expect(instance.packageDimensions).to.equal(validValue);
+      var expectedValue = generateMockData('Dimensions');
+      instance.packageDimensions = expectedValue;
+      expect(instance.packageDimensions).to.equal(expectedValue);
     });
 
-    it('should have the property packageWeight (base name: "packageWeight")', function() {
+    it('should have the property packageWeight', function() {
       // verify property exists
       expect(instance).to.have.property('packageWeight');
 
       // set and verify value
-      var validValue = generateMockData('Weight');
-      instance.packageWeight = validValue;
-      expect(instance.packageWeight).to.equal(validValue);
+      var expectedValue = generateMockData('Weight');
+      instance.packageWeight = expectedValue;
+      expect(instance.packageWeight).to.equal(expectedValue);
     });
 
   });

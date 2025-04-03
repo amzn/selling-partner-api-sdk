@@ -45,14 +45,14 @@
       expect(instance).to.be.a(AmazonShippingApi.GetAccessPointsResult);
     });
 
-    it('should have the property accessPointsMap (base name: "accessPointsMap")', function() {
+    it('should have the property accessPointsMap', function() {
       // verify property exists
       expect(instance).to.have.property('accessPointsMap');
 
       // set and verify value
-      var validValue = generateMockData('{String: Array}');
-      instance.accessPointsMap = validValue;
-      expect(instance.accessPointsMap).to.equal(validValue);
+      var expectedValue = generateMockData('{String: Array}');
+      instance.accessPointsMap = expectedValue;
+      expect(instance.accessPointsMap).to.equal(expectedValue);
     });
 
   });

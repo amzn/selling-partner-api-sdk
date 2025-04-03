@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForFinances.ChargeRefundEvent);
     });
 
-    it('should have the property postedDate (base name: "PostedDate")', function() {
+    it('should have the property postedDate', function() {
       // verify property exists
       expect(instance).to.have.property('postedDate');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.postedDate = validValue;
-      expect(instance.postedDate).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.postedDate = expectedValue;
+      expect(instance.postedDate).to.equal(expectedValue);
     });
 
-    it('should have the property reasonCode (base name: "ReasonCode")', function() {
+    it('should have the property reasonCode', function() {
       // verify property exists
       expect(instance).to.have.property('reasonCode');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.reasonCode = validValue;
-      expect(instance.reasonCode).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.reasonCode = expectedValue;
+      expect(instance.reasonCode).to.equal(expectedValue);
     });
 
-    it('should have the property reasonCodeDescription (base name: "ReasonCodeDescription")', function() {
+    it('should have the property reasonCodeDescription', function() {
       // verify property exists
       expect(instance).to.have.property('reasonCodeDescription');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.reasonCodeDescription = validValue;
-      expect(instance.reasonCodeDescription).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.reasonCodeDescription = expectedValue;
+      expect(instance.reasonCodeDescription).to.equal(expectedValue);
     });
 
-    it('should have the property chargeRefundTransactions (base name: "ChargeRefundTransactions")', function() {
+    it('should have the property chargeRefundTransactions', function() {
       // verify property exists
       expect(instance).to.have.property('chargeRefundTransactions');
 
       // set and verify value
-      var validValue = generateMockData('[ChargeRefundTransaction]', true);
-      instance.chargeRefundTransactions = validValue;
-      expect(instance.chargeRefundTransactions).to.equal(validValue);
+      var expectedValue = generateMockData('ChargeRefundTransaction', true);
+      instance.chargeRefundTransactions = expectedValue;
+      expect(instance.chargeRefundTransactions).to.equal(expectedValue);
     });
 
   });

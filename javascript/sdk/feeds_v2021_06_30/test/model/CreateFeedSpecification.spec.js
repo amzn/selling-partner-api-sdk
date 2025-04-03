@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForFeeds.CreateFeedSpecification);
     });
 
-    it('should have the property feedType (base name: "feedType")', function() {
+    it('should have the property feedType', function() {
       // verify property exists
       expect(instance).to.have.property('feedType');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.feedType = validValue;
-      expect(instance.feedType).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.feedType = expectedValue;
+      expect(instance.feedType).to.equal(expectedValue);
     });
 
-    it('should have the property marketplaceIds (base name: "marketplaceIds")', function() {
+    it('should have the property marketplaceIds', function() {
       // verify property exists
       expect(instance).to.have.property('marketplaceIds');
 
       // set and verify value
-      var validValue = generateMockData('[String]', true);
-      instance.marketplaceIds = validValue;
-      expect(instance.marketplaceIds).to.equal(validValue);
+      var expectedValue = generateMockData('String', true);
+      instance.marketplaceIds = expectedValue;
+      expect(instance.marketplaceIds).to.equal(expectedValue);
     });
 
-    it('should have the property inputFeedDocumentId (base name: "inputFeedDocumentId")', function() {
+    it('should have the property inputFeedDocumentId', function() {
       // verify property exists
       expect(instance).to.have.property('inputFeedDocumentId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.inputFeedDocumentId = validValue;
-      expect(instance.inputFeedDocumentId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.inputFeedDocumentId = expectedValue;
+      expect(instance.inputFeedDocumentId).to.equal(expectedValue);
     });
 
-    it('should have the property feedOptions (base name: "feedOptions")', function() {
+    it('should have the property feedOptions', function() {
       // verify property exists
       expect(instance).to.have.property('feedOptions');
 
       // set and verify value
-      var validValue = generateMockData('{String: String}');
-      instance.feedOptions = validValue;
-      expect(instance.feedOptions).to.equal(validValue);
+      var expectedValue = generateMockData('{String: String}');
+      instance.feedOptions = expectedValue;
+      expect(instance.feedOptions).to.equal(expectedValue);
     });
 
   });

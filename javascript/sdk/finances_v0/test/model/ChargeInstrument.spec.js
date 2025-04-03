@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForFinances.ChargeInstrument);
     });
 
-    it('should have the property description (base name: "Description")', function() {
+    it('should have the property description', function() {
       // verify property exists
       expect(instance).to.have.property('description');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.description = validValue;
-      expect(instance.description).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.description = expectedValue;
+      expect(instance.description).to.equal(expectedValue);
     });
 
-    it('should have the property tail (base name: "Tail")', function() {
+    it('should have the property tail', function() {
       // verify property exists
       expect(instance).to.have.property('tail');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.tail = validValue;
-      expect(instance.tail).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.tail = expectedValue;
+      expect(instance.tail).to.equal(expectedValue);
     });
 
-    it('should have the property amount (base name: "Amount")', function() {
+    it('should have the property amount', function() {
       // verify property exists
       expect(instance).to.have.property('amount');
 
       // set and verify value
-      var validValue = generateMockData('Currency');
-      instance.amount = validValue;
-      expect(instance.amount).to.equal(validValue);
+      var expectedValue = generateMockData('Currency');
+      instance.amount = expectedValue;
+      expect(instance.amount).to.equal(expectedValue);
     });
 
   });

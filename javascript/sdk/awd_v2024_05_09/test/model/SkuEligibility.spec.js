@@ -45,34 +45,34 @@
       expect(instance).to.be.a(TheSellingPartnerApiForAmazonWarehousingAndDistribution.SkuEligibility);
     });
 
-    it('should have the property ineligibilityReasons (base name: "ineligibilityReasons")', function() {
+    it('should have the property ineligibilityReasons', function() {
       // verify property exists
       expect(instance).to.have.property('ineligibilityReasons');
 
       // set and verify value
-      var validValue = generateMockData('[SkuIneligibilityReason]', true);
-      instance.ineligibilityReasons = validValue;
-      expect(instance.ineligibilityReasons).to.equal(validValue);
+      var expectedValue = generateMockData('SkuIneligibilityReason', true);
+      instance.ineligibilityReasons = expectedValue;
+      expect(instance.ineligibilityReasons).to.equal(expectedValue);
     });
 
-    it('should have the property packageQuantity (base name: "packageQuantity")', function() {
+    it('should have the property packageQuantity', function() {
       // verify property exists
       expect(instance).to.have.property('packageQuantity');
 
       // set and verify value
-      var validValue = generateMockData('DistributionPackageQuantity');
-      instance.packageQuantity = validValue;
-      expect(instance.packageQuantity).to.equal(validValue);
+      var expectedValue = generateMockData('DistributionPackageQuantity');
+      instance.packageQuantity = expectedValue;
+      expect(instance.packageQuantity).to.equal(expectedValue);
     });
 
-    it('should have the property status (base name: "status")', function() {
+    it('should have the property status', function() {
       // verify property exists
       expect(instance).to.have.property('status');
 
       // set and verify value
-      var validValue = generateMockData('InboundEligibilityStatus');
-      instance.status = validValue;
-      expect(instance.status).to.equal(validValue);
+      var expectedValue = generateMockData('InboundEligibilityStatus');
+      instance.status = expectedValue;
+      expect(instance.status).to.equal(expectedValue);
     });
 
   });

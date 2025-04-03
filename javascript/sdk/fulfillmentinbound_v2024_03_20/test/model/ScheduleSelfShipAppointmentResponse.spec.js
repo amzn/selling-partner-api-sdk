@@ -45,14 +45,14 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.ScheduleSelfShipAppointmentResponse);
     });
 
-    it('should have the property selfShipAppointmentDetails (base name: "selfShipAppointmentDetails")', function() {
+    it('should have the property selfShipAppointmentDetails', function() {
       // verify property exists
       expect(instance).to.have.property('selfShipAppointmentDetails');
 
       // set and verify value
-      var validValue = generateMockData('SelfShipAppointmentDetails');
-      instance.selfShipAppointmentDetails = validValue;
-      expect(instance.selfShipAppointmentDetails).to.equal(validValue);
+      var expectedValue = generateMockData('SelfShipAppointmentDetails');
+      instance.selfShipAppointmentDetails = expectedValue;
+      expect(instance.selfShipAppointmentDetails).to.equal(expectedValue);
     });
 
   });

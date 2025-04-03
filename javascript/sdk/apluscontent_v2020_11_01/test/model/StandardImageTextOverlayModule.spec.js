@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForAContentManagement.StandardImageTextOverlayModule);
     });
 
-    it('should have the property overlayColorType (base name: "overlayColorType")', function() {
+    it('should have the property overlayColorType', function() {
       // verify property exists
       expect(instance).to.have.property('overlayColorType');
 
       // set and verify value
-      var validValue = generateMockData('ColorType');
-      instance.overlayColorType = validValue;
-      expect(instance.overlayColorType).to.equal(validValue);
+      var expectedValue = generateMockData('ColorType');
+      instance.overlayColorType = expectedValue;
+      expect(instance.overlayColorType).to.equal(expectedValue);
     });
 
-    it('should have the property block (base name: "block")', function() {
+    it('should have the property block', function() {
       // verify property exists
       expect(instance).to.have.property('block');
 
       // set and verify value
-      var validValue = generateMockData('StandardImageTextBlock');
-      instance.block = validValue;
-      expect(instance.block).to.equal(validValue);
+      var expectedValue = generateMockData('StandardImageTextBlock');
+      instance.block = expectedValue;
+      expect(instance.block).to.equal(expectedValue);
     });
 
   });

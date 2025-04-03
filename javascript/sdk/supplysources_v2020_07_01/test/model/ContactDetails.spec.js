@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForSupplySources.ContactDetails);
     });
 
-    it('should have the property primary (base name: "primary")', function() {
+    it('should have the property primary', function() {
       // verify property exists
       expect(instance).to.have.property('primary');
 
       // set and verify value
-      var validValue = generateMockData('ContactDetailsPrimary');
-      instance.primary = validValue;
-      expect(instance.primary).to.equal(validValue);
+      var expectedValue = generateMockData('ContactDetailsPrimary');
+      instance.primary = expectedValue;
+      expect(instance.primary).to.equal(expectedValue);
     });
 
   });

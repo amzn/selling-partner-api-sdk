@@ -45,94 +45,94 @@
       expect(instance).to.be.a(SellingPartnerApiForDataKiosk.Query);
     });
 
-    it('should have the property queryId (base name: "queryId")', function() {
+    it('should have the property queryId', function() {
       // verify property exists
       expect(instance).to.have.property('queryId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.queryId = validValue;
-      expect(instance.queryId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.queryId = expectedValue;
+      expect(instance.queryId).to.equal(expectedValue);
     });
 
-    it('should have the property query (base name: "query")', function() {
+    it('should have the property query', function() {
       // verify property exists
       expect(instance).to.have.property('query');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.query = validValue;
-      expect(instance.query).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.query = expectedValue;
+      expect(instance.query).to.equal(expectedValue);
     });
 
-    it('should have the property createdTime (base name: "createdTime")', function() {
+    it('should have the property createdTime', function() {
       // verify property exists
       expect(instance).to.have.property('createdTime');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.createdTime = validValue;
-      expect(instance.createdTime).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.createdTime = expectedValue;
+      expect(instance.createdTime).to.equal(expectedValue);
     });
 
-    it('should have the property processingStatus (base name: "processingStatus")', function() {
+    it('should have the property processingStatus', function() {
       // verify property exists
       expect(instance).to.have.property('processingStatus');
 
       // set and verify value
-      var validValue = ['CANCELLED', 'DONE', 'FATAL', 'IN_PROGRESS', 'IN_QUEUE', ][0];
-      instance.processingStatus = validValue;
-      expect(instance.processingStatus).to.equal(validValue);
+      var expectedValue = ['CANCELLED', 'DONE', 'FATAL', 'IN_PROGRESS', 'IN_QUEUE', ][0];
+      instance.processingStatus = expectedValue;
+      expect(instance.processingStatus).to.equal(expectedValue);
     });
 
-    it('should have the property processingStartTime (base name: "processingStartTime")', function() {
+    it('should have the property processingStartTime', function() {
       // verify property exists
       expect(instance).to.have.property('processingStartTime');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.processingStartTime = validValue;
-      expect(instance.processingStartTime).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.processingStartTime = expectedValue;
+      expect(instance.processingStartTime).to.equal(expectedValue);
     });
 
-    it('should have the property processingEndTime (base name: "processingEndTime")', function() {
+    it('should have the property processingEndTime', function() {
       // verify property exists
       expect(instance).to.have.property('processingEndTime');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.processingEndTime = validValue;
-      expect(instance.processingEndTime).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.processingEndTime = expectedValue;
+      expect(instance.processingEndTime).to.equal(expectedValue);
     });
 
-    it('should have the property dataDocumentId (base name: "dataDocumentId")', function() {
+    it('should have the property dataDocumentId', function() {
       // verify property exists
       expect(instance).to.have.property('dataDocumentId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.dataDocumentId = validValue;
-      expect(instance.dataDocumentId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.dataDocumentId = expectedValue;
+      expect(instance.dataDocumentId).to.equal(expectedValue);
     });
 
-    it('should have the property errorDocumentId (base name: "errorDocumentId")', function() {
+    it('should have the property errorDocumentId', function() {
       // verify property exists
       expect(instance).to.have.property('errorDocumentId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.errorDocumentId = validValue;
-      expect(instance.errorDocumentId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.errorDocumentId = expectedValue;
+      expect(instance.errorDocumentId).to.equal(expectedValue);
     });
 
-    it('should have the property pagination (base name: "pagination")', function() {
+    it('should have the property pagination', function() {
       // verify property exists
       expect(instance).to.have.property('pagination');
 
       // set and verify value
-      var validValue = generateMockData('QueryPagination');
-      instance.pagination = validValue;
-      expect(instance.pagination).to.equal(validValue);
+      var expectedValue = generateMockData('QueryPagination');
+      instance.pagination = expectedValue;
+      expect(instance.pagination).to.equal(expectedValue);
     });
 
   });

@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForOrders.PreferredDeliveryTime);
     });
 
-    it('should have the property businessHours (base name: "BusinessHours")', function() {
+    it('should have the property businessHours', function() {
       // verify property exists
       expect(instance).to.have.property('businessHours');
 
       // set and verify value
-      var validValue = generateMockData('[BusinessHours]', true);
-      instance.businessHours = validValue;
-      expect(instance.businessHours).to.equal(validValue);
+      var expectedValue = generateMockData('BusinessHours', true);
+      instance.businessHours = expectedValue;
+      expect(instance.businessHours).to.equal(expectedValue);
     });
 
-    it('should have the property exceptionDates (base name: "ExceptionDates")', function() {
+    it('should have the property exceptionDates', function() {
       // verify property exists
       expect(instance).to.have.property('exceptionDates');
 
       // set and verify value
-      var validValue = generateMockData('[ExceptionDates]', true);
-      instance.exceptionDates = validValue;
-      expect(instance.exceptionDates).to.equal(validValue);
+      var expectedValue = generateMockData('ExceptionDates', true);
+      instance.exceptionDates = expectedValue;
+      expect(instance.exceptionDates).to.equal(expectedValue);
     });
 
   });

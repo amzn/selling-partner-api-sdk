@@ -45,24 +45,24 @@
       expect(instance).to.be.a(AmazonShippingApi.Geocode);
     });
 
-    it('should have the property latitude (base name: "latitude")', function() {
+    it('should have the property latitude', function() {
       // verify property exists
       expect(instance).to.have.property('latitude');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.latitude = validValue;
-      expect(instance.latitude).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.latitude = expectedValue;
+      expect(instance.latitude).to.equal(expectedValue);
     });
 
-    it('should have the property longitude (base name: "longitude")', function() {
+    it('should have the property longitude', function() {
       // verify property exists
       expect(instance).to.have.property('longitude');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.longitude = validValue;
-      expect(instance.longitude).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.longitude = expectedValue;
+      expect(instance.longitude).to.equal(expectedValue);
     });
 
   });

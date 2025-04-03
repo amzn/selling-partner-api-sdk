@@ -45,64 +45,64 @@
       expect(instance).to.be.a(SellingPartnerApiForListingsItems.Issue);
     });
 
-    it('should have the property code (base name: "code")', function() {
+    it('should have the property code', function() {
       // verify property exists
       expect(instance).to.have.property('code');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.code = validValue;
-      expect(instance.code).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.code = expectedValue;
+      expect(instance.code).to.equal(expectedValue);
     });
 
-    it('should have the property message (base name: "message")', function() {
+    it('should have the property message', function() {
       // verify property exists
       expect(instance).to.have.property('message');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.message = validValue;
-      expect(instance.message).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.message = expectedValue;
+      expect(instance.message).to.equal(expectedValue);
     });
 
-    it('should have the property severity (base name: "severity")', function() {
+    it('should have the property severity', function() {
       // verify property exists
       expect(instance).to.have.property('severity');
 
       // set and verify value
-      var validValue = ['ERROR', 'WARNING', 'INFO', ][0];
-      instance.severity = validValue;
-      expect(instance.severity).to.equal(validValue);
+      var expectedValue = ['ERROR', 'WARNING', 'INFO', ][0];
+      instance.severity = expectedValue;
+      expect(instance.severity).to.equal(expectedValue);
     });
 
-    it('should have the property attributeNames (base name: "attributeNames")', function() {
+    it('should have the property attributeNames', function() {
       // verify property exists
       expect(instance).to.have.property('attributeNames');
 
       // set and verify value
-      var validValue = generateMockData('[String]', true);
-      instance.attributeNames = validValue;
-      expect(instance.attributeNames).to.equal(validValue);
+      var expectedValue = generateMockData('String', true);
+      instance.attributeNames = expectedValue;
+      expect(instance.attributeNames).to.equal(expectedValue);
     });
 
-    it('should have the property categories (base name: "categories")', function() {
+    it('should have the property categories', function() {
       // verify property exists
       expect(instance).to.have.property('categories');
 
       // set and verify value
-      var validValue = generateMockData('[String]', true);
-      instance.categories = validValue;
-      expect(instance.categories).to.equal(validValue);
+      var expectedValue = generateMockData('String', true);
+      instance.categories = expectedValue;
+      expect(instance.categories).to.equal(expectedValue);
     });
 
-    it('should have the property enforcements (base name: "enforcements")', function() {
+    it('should have the property enforcements', function() {
       // verify property exists
       expect(instance).to.have.property('enforcements');
 
       // set and verify value
-      var validValue = generateMockData('IssueEnforcements');
-      instance.enforcements = validValue;
-      expect(instance.enforcements).to.equal(validValue);
+      var expectedValue = generateMockData('IssueEnforcements');
+      instance.enforcements = expectedValue;
+      expect(instance.enforcements).to.equal(expectedValue);
     });
 
   });

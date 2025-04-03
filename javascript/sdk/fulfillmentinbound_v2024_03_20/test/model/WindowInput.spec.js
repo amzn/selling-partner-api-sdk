@@ -45,14 +45,14 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.WindowInput);
     });
 
-    it('should have the property start (base name: "start")', function() {
+    it('should have the property start', function() {
       // verify property exists
       expect(instance).to.have.property('start');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.start = validValue;
-      expect(instance.start).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.start = expectedValue;
+      expect(instance.start).to.equal(expectedValue);
     });
 
   });

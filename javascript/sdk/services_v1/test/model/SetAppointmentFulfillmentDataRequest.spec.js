@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForServices.SetAppointmentFulfillmentDataRequest);
     });
 
-    it('should have the property fulfillmentTime (base name: "fulfillmentTime")', function() {
+    it('should have the property fulfillmentTime', function() {
       // verify property exists
       expect(instance).to.have.property('fulfillmentTime');
 
       // set and verify value
-      var validValue = generateMockData('FulfillmentTime');
-      instance.fulfillmentTime = validValue;
-      expect(instance.fulfillmentTime).to.equal(validValue);
+      var expectedValue = generateMockData('FulfillmentTime');
+      instance.fulfillmentTime = expectedValue;
+      expect(instance.fulfillmentTime).to.equal(expectedValue);
     });
 
-    it('should have the property appointmentResources (base name: "appointmentResources")', function() {
+    it('should have the property appointmentResources', function() {
       // verify property exists
       expect(instance).to.have.property('appointmentResources');
 
       // set and verify value
-      var validValue = generateMockData('[AppointmentResource]', true);
-      instance.appointmentResources = validValue;
-      expect(instance.appointmentResources).to.equal(validValue);
+      var expectedValue = generateMockData('AppointmentResource', true);
+      instance.appointmentResources = expectedValue;
+      expect(instance.appointmentResources).to.equal(expectedValue);
     });
 
-    it('should have the property fulfillmentDocuments (base name: "fulfillmentDocuments")', function() {
+    it('should have the property fulfillmentDocuments', function() {
       // verify property exists
       expect(instance).to.have.property('fulfillmentDocuments');
 
       // set and verify value
-      var validValue = generateMockData('[FulfillmentDocument]', true);
-      instance.fulfillmentDocuments = validValue;
-      expect(instance.fulfillmentDocuments).to.equal(validValue);
+      var expectedValue = generateMockData('FulfillmentDocument', true);
+      instance.fulfillmentDocuments = expectedValue;
+      expect(instance.fulfillmentDocuments).to.equal(expectedValue);
     });
 
   });

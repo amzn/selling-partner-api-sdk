@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForShipmentInvoicing.ShipmentInvoiceStatusInfo);
     });
 
-    it('should have the property amazonShipmentId (base name: "AmazonShipmentId")', function() {
+    it('should have the property amazonShipmentId', function() {
       // verify property exists
       expect(instance).to.have.property('amazonShipmentId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.amazonShipmentId = validValue;
-      expect(instance.amazonShipmentId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.amazonShipmentId = expectedValue;
+      expect(instance.amazonShipmentId).to.equal(expectedValue);
     });
 
-    it('should have the property invoiceStatus (base name: "InvoiceStatus")', function() {
+    it('should have the property invoiceStatus', function() {
       // verify property exists
       expect(instance).to.have.property('invoiceStatus');
 
       // set and verify value
-      var validValue = generateMockData('ShipmentInvoiceStatus');
-      instance.invoiceStatus = validValue;
-      expect(instance.invoiceStatus).to.equal(validValue);
+      var expectedValue = generateMockData('ShipmentInvoiceStatus');
+      instance.invoiceStatus = expectedValue;
+      expect(instance.invoiceStatus).to.equal(expectedValue);
     });
 
   });

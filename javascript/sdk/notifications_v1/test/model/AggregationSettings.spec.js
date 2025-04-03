@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForNotifications.AggregationSettings);
     });
 
-    it('should have the property aggregationTimePeriod (base name: "aggregationTimePeriod")', function() {
+    it('should have the property aggregationTimePeriod', function() {
       // verify property exists
       expect(instance).to.have.property('aggregationTimePeriod');
 
       // set and verify value
-      var validValue = generateMockData('AggregationTimePeriod');
-      instance.aggregationTimePeriod = validValue;
-      expect(instance.aggregationTimePeriod).to.equal(validValue);
+      var expectedValue = generateMockData('AggregationTimePeriod');
+      instance.aggregationTimePeriod = expectedValue;
+      expect(instance.aggregationTimePeriod).to.equal(expectedValue);
     });
 
   });

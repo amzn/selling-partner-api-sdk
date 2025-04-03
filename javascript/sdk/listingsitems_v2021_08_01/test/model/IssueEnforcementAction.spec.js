@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForListingsItems.IssueEnforcementAction);
     });
 
-    it('should have the property action (base name: "action")', function() {
+    it('should have the property action', function() {
       // verify property exists
       expect(instance).to.have.property('action');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.action = validValue;
-      expect(instance.action).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.action = expectedValue;
+      expect(instance.action).to.equal(expectedValue);
     });
 
   });

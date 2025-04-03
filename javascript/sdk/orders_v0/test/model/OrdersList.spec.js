@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForOrders.OrdersList);
     });
 
-    it('should have the property orders (base name: "Orders")', function() {
+    it('should have the property orders', function() {
       // verify property exists
       expect(instance).to.have.property('orders');
 
       // set and verify value
-      var validValue = generateMockData('[Order]', true);
-      instance.orders = validValue;
-      expect(instance.orders).to.equal(validValue);
+      var expectedValue = generateMockData('Order', true);
+      instance.orders = expectedValue;
+      expect(instance.orders).to.equal(expectedValue);
     });
 
-    it('should have the property nextToken (base name: "NextToken")', function() {
+    it('should have the property nextToken', function() {
       // verify property exists
       expect(instance).to.have.property('nextToken');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.nextToken = validValue;
-      expect(instance.nextToken).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.nextToken = expectedValue;
+      expect(instance.nextToken).to.equal(expectedValue);
     });
 
-    it('should have the property lastUpdatedBefore (base name: "LastUpdatedBefore")', function() {
+    it('should have the property lastUpdatedBefore', function() {
       // verify property exists
       expect(instance).to.have.property('lastUpdatedBefore');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.lastUpdatedBefore = validValue;
-      expect(instance.lastUpdatedBefore).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.lastUpdatedBefore = expectedValue;
+      expect(instance.lastUpdatedBefore).to.equal(expectedValue);
     });
 
-    it('should have the property createdBefore (base name: "CreatedBefore")', function() {
+    it('should have the property createdBefore', function() {
       // verify property exists
       expect(instance).to.have.property('createdBefore');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.createdBefore = validValue;
-      expect(instance.createdBefore).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.createdBefore = expectedValue;
+      expect(instance.createdBefore).to.equal(expectedValue);
     });
 
   });

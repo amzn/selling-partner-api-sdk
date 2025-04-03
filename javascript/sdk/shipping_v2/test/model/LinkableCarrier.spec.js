@@ -45,24 +45,24 @@
       expect(instance).to.be.a(AmazonShippingApi.LinkableCarrier);
     });
 
-    it('should have the property carrierId (base name: "carrierId")', function() {
+    it('should have the property carrierId', function() {
       // verify property exists
       expect(instance).to.have.property('carrierId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.carrierId = validValue;
-      expect(instance.carrierId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.carrierId = expectedValue;
+      expect(instance.carrierId).to.equal(expectedValue);
     });
 
-    it('should have the property linkableAccountTypes (base name: "linkableAccountTypes")', function() {
+    it('should have the property linkableAccountTypes', function() {
       // verify property exists
       expect(instance).to.have.property('linkableAccountTypes');
 
       // set and verify value
-      var validValue = generateMockData('[LinkableAccountType]', true);
-      instance.linkableAccountTypes = validValue;
-      expect(instance.linkableAccountTypes).to.equal(validValue);
+      var expectedValue = generateMockData('LinkableAccountType', true);
+      instance.linkableAccountTypes = expectedValue;
+      expect(instance.linkableAccountTypes).to.equal(expectedValue);
     });
 
   });

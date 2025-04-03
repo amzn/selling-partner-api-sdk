@@ -45,24 +45,24 @@
       expect(instance).to.be.a(AmazonShippingApi.DirectFulfillmentItemIdentifiers);
     });
 
-    it('should have the property lineItemID (base name: "lineItemID")', function() {
+    it('should have the property lineItemID', function() {
       // verify property exists
       expect(instance).to.have.property('lineItemID');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.lineItemID = validValue;
-      expect(instance.lineItemID).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.lineItemID = expectedValue;
+      expect(instance.lineItemID).to.equal(expectedValue);
     });
 
-    it('should have the property pieceNumber (base name: "pieceNumber")', function() {
+    it('should have the property pieceNumber', function() {
       // verify property exists
       expect(instance).to.have.property('pieceNumber');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.pieceNumber = validValue;
-      expect(instance.pieceNumber).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.pieceNumber = expectedValue;
+      expect(instance.pieceNumber).to.equal(expectedValue);
     });
 
   });

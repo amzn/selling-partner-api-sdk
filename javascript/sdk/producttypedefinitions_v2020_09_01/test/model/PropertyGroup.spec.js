@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForProductTypeDefinitions.PropertyGroup);
     });
 
-    it('should have the property title (base name: "title")', function() {
+    it('should have the property title', function() {
       // verify property exists
       expect(instance).to.have.property('title');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.title = validValue;
-      expect(instance.title).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.title = expectedValue;
+      expect(instance.title).to.equal(expectedValue);
     });
 
-    it('should have the property description (base name: "description")', function() {
+    it('should have the property description', function() {
       // verify property exists
       expect(instance).to.have.property('description');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.description = validValue;
-      expect(instance.description).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.description = expectedValue;
+      expect(instance.description).to.equal(expectedValue);
     });
 
-    it('should have the property propertyNames (base name: "propertyNames")', function() {
+    it('should have the property propertyNames', function() {
       // verify property exists
       expect(instance).to.have.property('propertyNames');
 
       // set and verify value
-      var validValue = generateMockData('[String]', true);
-      instance.propertyNames = validValue;
-      expect(instance.propertyNames).to.equal(validValue);
+      var expectedValue = generateMockData('String', true);
+      instance.propertyNames = expectedValue;
+      expect(instance.propertyNames).to.equal(expectedValue);
     });
 
   });

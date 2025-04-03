@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForDirectFulfillmentOrders.ScheduledDeliveryShipment);
     });
 
-    it('should have the property scheduledDeliveryServiceType (base name: "scheduledDeliveryServiceType")', function() {
+    it('should have the property scheduledDeliveryServiceType', function() {
       // verify property exists
       expect(instance).to.have.property('scheduledDeliveryServiceType');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.scheduledDeliveryServiceType = validValue;
-      expect(instance.scheduledDeliveryServiceType).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.scheduledDeliveryServiceType = expectedValue;
+      expect(instance.scheduledDeliveryServiceType).to.equal(expectedValue);
     });
 
-    it('should have the property earliestNominatedDeliveryDate (base name: "earliestNominatedDeliveryDate")', function() {
+    it('should have the property earliestNominatedDeliveryDate', function() {
       // verify property exists
       expect(instance).to.have.property('earliestNominatedDeliveryDate');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.earliestNominatedDeliveryDate = validValue;
-      expect(instance.earliestNominatedDeliveryDate).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.earliestNominatedDeliveryDate = expectedValue;
+      expect(instance.earliestNominatedDeliveryDate).to.equal(expectedValue);
     });
 
-    it('should have the property latestNominatedDeliveryDate (base name: "latestNominatedDeliveryDate")', function() {
+    it('should have the property latestNominatedDeliveryDate', function() {
       // verify property exists
       expect(instance).to.have.property('latestNominatedDeliveryDate');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.latestNominatedDeliveryDate = validValue;
-      expect(instance.latestNominatedDeliveryDate).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.latestNominatedDeliveryDate = expectedValue;
+      expect(instance.latestNominatedDeliveryDate).to.equal(expectedValue);
     });
 
   });

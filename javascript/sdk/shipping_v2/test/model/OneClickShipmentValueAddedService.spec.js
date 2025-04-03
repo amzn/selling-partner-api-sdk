@@ -45,24 +45,24 @@
       expect(instance).to.be.a(AmazonShippingApi.OneClickShipmentValueAddedService);
     });
 
-    it('should have the property id (base name: "id")', function() {
+    it('should have the property id', function() {
       // verify property exists
       expect(instance).to.have.property('id');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.id = validValue;
-      expect(instance.id).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.id = expectedValue;
+      expect(instance.id).to.equal(expectedValue);
     });
 
-    it('should have the property amount (base name: "amount")', function() {
+    it('should have the property amount', function() {
       // verify property exists
       expect(instance).to.have.property('amount');
 
       // set and verify value
-      var validValue = generateMockData('Currency');
-      instance.amount = validValue;
-      expect(instance.amount).to.equal(validValue);
+      var expectedValue = generateMockData('Currency');
+      instance.amount = expectedValue;
+      expect(instance.amount).to.equal(expectedValue);
     });
 
   });

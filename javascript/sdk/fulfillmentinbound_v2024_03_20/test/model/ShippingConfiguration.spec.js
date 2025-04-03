@@ -45,24 +45,24 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.ShippingConfiguration);
     });
 
-    it('should have the property shippingMode (base name: "shippingMode")', function() {
+    it('should have the property shippingMode', function() {
       // verify property exists
       expect(instance).to.have.property('shippingMode');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.shippingMode = validValue;
-      expect(instance.shippingMode).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.shippingMode = expectedValue;
+      expect(instance.shippingMode).to.equal(expectedValue);
     });
 
-    it('should have the property shippingSolution (base name: "shippingSolution")', function() {
+    it('should have the property shippingSolution', function() {
       // verify property exists
       expect(instance).to.have.property('shippingSolution');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.shippingSolution = validValue;
-      expect(instance.shippingSolution).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.shippingSolution = expectedValue;
+      expect(instance.shippingSolution).to.equal(expectedValue);
     });
 
   });

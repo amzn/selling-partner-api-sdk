@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForEasyShip.UpdatePackageDetails);
     });
 
-    it('should have the property scheduledPackageId (base name: "scheduledPackageId")', function() {
+    it('should have the property scheduledPackageId', function() {
       // verify property exists
       expect(instance).to.have.property('scheduledPackageId');
 
       // set and verify value
-      var validValue = generateMockData('ScheduledPackageId');
-      instance.scheduledPackageId = validValue;
-      expect(instance.scheduledPackageId).to.equal(validValue);
+      var expectedValue = generateMockData('ScheduledPackageId');
+      instance.scheduledPackageId = expectedValue;
+      expect(instance.scheduledPackageId).to.equal(expectedValue);
     });
 
-    it('should have the property packageTimeSlot (base name: "packageTimeSlot")', function() {
+    it('should have the property packageTimeSlot', function() {
       // verify property exists
       expect(instance).to.have.property('packageTimeSlot');
 
       // set and verify value
-      var validValue = generateMockData('TimeSlot');
-      instance.packageTimeSlot = validValue;
-      expect(instance.packageTimeSlot).to.equal(validValue);
+      var expectedValue = generateMockData('TimeSlot');
+      instance.packageTimeSlot = expectedValue;
+      expect(instance.packageTimeSlot).to.equal(expectedValue);
     });
 
   });

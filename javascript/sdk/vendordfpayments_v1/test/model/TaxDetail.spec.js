@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForDirectFulfillmentPayments.TaxDetail);
     });
 
-    it('should have the property taxType (base name: "taxType")', function() {
+    it('should have the property taxType', function() {
       // verify property exists
       expect(instance).to.have.property('taxType');
 
       // set and verify value
-      var validValue = ['CGST', 'SGST', 'CESS', 'UTGST', 'IGST', 'MwSt.', 'PST', 'TVA', 'VAT', 'GST', 'ST', 'Consumption', 'MutuallyDefined', 'DomesticVAT', ][0];
-      instance.taxType = validValue;
-      expect(instance.taxType).to.equal(validValue);
+      var expectedValue = ['CGST', 'SGST', 'CESS', 'UTGST', 'IGST', 'MwSt.', 'PST', 'TVA', 'VAT', 'GST', 'ST', 'Consumption', 'MutuallyDefined', 'DomesticVAT', ][0];
+      instance.taxType = expectedValue;
+      expect(instance.taxType).to.equal(expectedValue);
     });
 
-    it('should have the property taxRate (base name: "taxRate")', function() {
+    it('should have the property taxRate', function() {
       // verify property exists
       expect(instance).to.have.property('taxRate');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.taxRate = validValue;
-      expect(instance.taxRate).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.taxRate = expectedValue;
+      expect(instance.taxRate).to.equal(expectedValue);
     });
 
-    it('should have the property taxAmount (base name: "taxAmount")', function() {
+    it('should have the property taxAmount', function() {
       // verify property exists
       expect(instance).to.have.property('taxAmount');
 
       // set and verify value
-      var validValue = generateMockData('Money');
-      instance.taxAmount = validValue;
-      expect(instance.taxAmount).to.equal(validValue);
+      var expectedValue = generateMockData('Money');
+      instance.taxAmount = expectedValue;
+      expect(instance.taxAmount).to.equal(expectedValue);
     });
 
-    it('should have the property taxableAmount (base name: "taxableAmount")', function() {
+    it('should have the property taxableAmount', function() {
       // verify property exists
       expect(instance).to.have.property('taxableAmount');
 
       // set and verify value
-      var validValue = generateMockData('Money');
-      instance.taxableAmount = validValue;
-      expect(instance.taxableAmount).to.equal(validValue);
+      var expectedValue = generateMockData('Money');
+      instance.taxableAmount = expectedValue;
+      expect(instance.taxableAmount).to.equal(expectedValue);
     });
 
   });

@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForMerchantFulfillment.LabelFormatOption);
     });
 
-    it('should have the property includePackingSlipWithLabel (base name: "IncludePackingSlipWithLabel")', function() {
+    it('should have the property includePackingSlipWithLabel', function() {
       // verify property exists
       expect(instance).to.have.property('includePackingSlipWithLabel');
 
       // set and verify value
-      var validValue = generateMockData('Boolean');
-      instance.includePackingSlipWithLabel = validValue;
-      expect(instance.includePackingSlipWithLabel).to.equal(validValue);
+      var expectedValue = generateMockData('Boolean');
+      instance.includePackingSlipWithLabel = expectedValue;
+      expect(instance.includePackingSlipWithLabel).to.equal(expectedValue);
     });
 
-    it('should have the property labelFormat (base name: "LabelFormat")', function() {
+    it('should have the property labelFormat', function() {
       // verify property exists
       expect(instance).to.have.property('labelFormat');
 
       // set and verify value
-      var validValue = generateMockData('LabelFormat');
-      instance.labelFormat = validValue;
-      expect(instance.labelFormat).to.equal(validValue);
+      var expectedValue = generateMockData('LabelFormat');
+      instance.labelFormat = expectedValue;
+      expect(instance.labelFormat).to.equal(expectedValue);
     });
 
   });

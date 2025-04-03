@@ -45,64 +45,64 @@
       expect(instance).to.be.a(SellingPartnerApiForOrders.OrderBuyerInfo);
     });
 
-    it('should have the property amazonOrderId (base name: "AmazonOrderId")', function() {
+    it('should have the property amazonOrderId', function() {
       // verify property exists
       expect(instance).to.have.property('amazonOrderId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.amazonOrderId = validValue;
-      expect(instance.amazonOrderId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.amazonOrderId = expectedValue;
+      expect(instance.amazonOrderId).to.equal(expectedValue);
     });
 
-    it('should have the property buyerEmail (base name: "BuyerEmail")', function() {
+    it('should have the property buyerEmail', function() {
       // verify property exists
       expect(instance).to.have.property('buyerEmail');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.buyerEmail = validValue;
-      expect(instance.buyerEmail).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.buyerEmail = expectedValue;
+      expect(instance.buyerEmail).to.equal(expectedValue);
     });
 
-    it('should have the property buyerName (base name: "BuyerName")', function() {
+    it('should have the property buyerName', function() {
       // verify property exists
       expect(instance).to.have.property('buyerName');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.buyerName = validValue;
-      expect(instance.buyerName).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.buyerName = expectedValue;
+      expect(instance.buyerName).to.equal(expectedValue);
     });
 
-    it('should have the property buyerCounty (base name: "BuyerCounty")', function() {
+    it('should have the property buyerCounty', function() {
       // verify property exists
       expect(instance).to.have.property('buyerCounty');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.buyerCounty = validValue;
-      expect(instance.buyerCounty).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.buyerCounty = expectedValue;
+      expect(instance.buyerCounty).to.equal(expectedValue);
     });
 
-    it('should have the property buyerTaxInfo (base name: "BuyerTaxInfo")', function() {
+    it('should have the property buyerTaxInfo', function() {
       // verify property exists
       expect(instance).to.have.property('buyerTaxInfo');
 
       // set and verify value
-      var validValue = generateMockData('BuyerTaxInfo');
-      instance.buyerTaxInfo = validValue;
-      expect(instance.buyerTaxInfo).to.equal(validValue);
+      var expectedValue = generateMockData('BuyerTaxInfo');
+      instance.buyerTaxInfo = expectedValue;
+      expect(instance.buyerTaxInfo).to.equal(expectedValue);
     });
 
-    it('should have the property purchaseOrderNumber (base name: "PurchaseOrderNumber")', function() {
+    it('should have the property purchaseOrderNumber', function() {
       // verify property exists
       expect(instance).to.have.property('purchaseOrderNumber');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.purchaseOrderNumber = validValue;
-      expect(instance.purchaseOrderNumber).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.purchaseOrderNumber = expectedValue;
+      expect(instance.purchaseOrderNumber).to.equal(expectedValue);
     });
 
   });

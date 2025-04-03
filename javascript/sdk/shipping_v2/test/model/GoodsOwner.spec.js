@@ -45,14 +45,14 @@
       expect(instance).to.be.a(AmazonShippingApi.GoodsOwner);
     });
 
-    it('should have the property merchantId (base name: "merchantId")', function() {
+    it('should have the property merchantId', function() {
       // verify property exists
       expect(instance).to.have.property('merchantId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.merchantId = validValue;
-      expect(instance.merchantId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.merchantId = expectedValue;
+      expect(instance.merchantId).to.equal(expectedValue);
     });
 
   });

@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForFinances.Promotion);
     });
 
-    it('should have the property promotionType (base name: "PromotionType")', function() {
+    it('should have the property promotionType', function() {
       // verify property exists
       expect(instance).to.have.property('promotionType');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.promotionType = validValue;
-      expect(instance.promotionType).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.promotionType = expectedValue;
+      expect(instance.promotionType).to.equal(expectedValue);
     });
 
-    it('should have the property promotionId (base name: "PromotionId")', function() {
+    it('should have the property promotionId', function() {
       // verify property exists
       expect(instance).to.have.property('promotionId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.promotionId = validValue;
-      expect(instance.promotionId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.promotionId = expectedValue;
+      expect(instance.promotionId).to.equal(expectedValue);
     });
 
-    it('should have the property promotionAmount (base name: "PromotionAmount")', function() {
+    it('should have the property promotionAmount', function() {
       // verify property exists
       expect(instance).to.have.property('promotionAmount');
 
       // set and verify value
-      var validValue = generateMockData('Currency');
-      instance.promotionAmount = validValue;
-      expect(instance.promotionAmount).to.equal(validValue);
+      var expectedValue = generateMockData('Currency');
+      instance.promotionAmount = expectedValue;
+      expect(instance.promotionAmount).to.equal(expectedValue);
     });
 
   });

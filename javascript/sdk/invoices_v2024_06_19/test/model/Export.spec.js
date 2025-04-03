@@ -45,64 +45,64 @@
       expect(instance).to.be.a(TheSellingPartnerApiForInvoices.Export);
     });
 
-    it('should have the property errorMessage (base name: "errorMessage")', function() {
+    it('should have the property errorMessage', function() {
       // verify property exists
       expect(instance).to.have.property('errorMessage');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.errorMessage = validValue;
-      expect(instance.errorMessage).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.errorMessage = expectedValue;
+      expect(instance.errorMessage).to.equal(expectedValue);
     });
 
-    it('should have the property exportId (base name: "exportId")', function() {
+    it('should have the property exportId', function() {
       // verify property exists
       expect(instance).to.have.property('exportId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.exportId = validValue;
-      expect(instance.exportId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.exportId = expectedValue;
+      expect(instance.exportId).to.equal(expectedValue);
     });
 
-    it('should have the property generateExportFinishedAt (base name: "generateExportFinishedAt")', function() {
+    it('should have the property generateExportFinishedAt', function() {
       // verify property exists
       expect(instance).to.have.property('generateExportFinishedAt');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.generateExportFinishedAt = validValue;
-      expect(instance.generateExportFinishedAt).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.generateExportFinishedAt = expectedValue;
+      expect(instance.generateExportFinishedAt).to.equal(expectedValue);
     });
 
-    it('should have the property generateExportStartedAt (base name: "generateExportStartedAt")', function() {
+    it('should have the property generateExportStartedAt', function() {
       // verify property exists
       expect(instance).to.have.property('generateExportStartedAt');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.generateExportStartedAt = validValue;
-      expect(instance.generateExportStartedAt).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.generateExportStartedAt = expectedValue;
+      expect(instance.generateExportStartedAt).to.equal(expectedValue);
     });
 
-    it('should have the property invoicesDocumentIds (base name: "invoicesDocumentIds")', function() {
+    it('should have the property invoicesDocumentIds', function() {
       // verify property exists
       expect(instance).to.have.property('invoicesDocumentIds');
 
       // set and verify value
-      var validValue = generateMockData('[String]', true);
-      instance.invoicesDocumentIds = validValue;
-      expect(instance.invoicesDocumentIds).to.equal(validValue);
+      var expectedValue = generateMockData('String', true);
+      instance.invoicesDocumentIds = expectedValue;
+      expect(instance.invoicesDocumentIds).to.equal(expectedValue);
     });
 
-    it('should have the property status (base name: "status")', function() {
+    it('should have the property status', function() {
       // verify property exists
       expect(instance).to.have.property('status');
 
       // set and verify value
-      var validValue = generateMockData('ExportStatus');
-      instance.status = validValue;
-      expect(instance.status).to.equal(validValue);
+      var expectedValue = generateMockData('ExportStatus');
+      instance.status = expectedValue;
+      expect(instance.status).to.equal(expectedValue);
     });
 
   });

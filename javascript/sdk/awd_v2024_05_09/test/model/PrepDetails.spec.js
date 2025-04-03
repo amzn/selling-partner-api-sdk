@@ -45,44 +45,44 @@
       expect(instance).to.be.a(TheSellingPartnerApiForAmazonWarehousingAndDistribution.PrepDetails);
     });
 
-    it('should have the property labelOwner (base name: "labelOwner")', function() {
+    it('should have the property labelOwner', function() {
       // verify property exists
       expect(instance).to.have.property('labelOwner');
 
       // set and verify value
-      var validValue = generateMockData('LabelOwner');
-      instance.labelOwner = validValue;
-      expect(instance.labelOwner).to.equal(validValue);
+      var expectedValue = generateMockData('LabelOwner');
+      instance.labelOwner = expectedValue;
+      expect(instance.labelOwner).to.equal(expectedValue);
     });
 
-    it('should have the property prepCategory (base name: "prepCategory")', function() {
+    it('should have the property prepCategory', function() {
       // verify property exists
       expect(instance).to.have.property('prepCategory');
 
       // set and verify value
-      var validValue = generateMockData('PrepCategory');
-      instance.prepCategory = validValue;
-      expect(instance.prepCategory).to.equal(validValue);
+      var expectedValue = generateMockData('PrepCategory');
+      instance.prepCategory = expectedValue;
+      expect(instance.prepCategory).to.equal(expectedValue);
     });
 
-    it('should have the property prepInstructions (base name: "prepInstructions")', function() {
+    it('should have the property prepInstructions', function() {
       // verify property exists
       expect(instance).to.have.property('prepInstructions');
 
       // set and verify value
-      var validValue = generateMockData('[PrepInstruction]', true);
-      instance.prepInstructions = validValue;
-      expect(instance.prepInstructions).to.equal(validValue);
+      var expectedValue = generateMockData('PrepInstruction', true);
+      instance.prepInstructions = expectedValue;
+      expect(instance.prepInstructions).to.equal(expectedValue);
     });
 
-    it('should have the property prepOwner (base name: "prepOwner")', function() {
+    it('should have the property prepOwner', function() {
       // verify property exists
       expect(instance).to.have.property('prepOwner');
 
       // set and verify value
-      var validValue = generateMockData('PrepOwner');
-      instance.prepOwner = validValue;
-      expect(instance.prepOwner).to.equal(validValue);
+      var expectedValue = generateMockData('PrepOwner');
+      instance.prepOwner = expectedValue;
+      expect(instance.prepOwner).to.equal(expectedValue);
     });
 
   });

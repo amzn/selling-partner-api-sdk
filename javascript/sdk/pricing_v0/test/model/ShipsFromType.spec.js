@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForPricing.ShipsFromType);
     });
 
-    it('should have the property state (base name: "State")', function() {
+    it('should have the property state', function() {
       // verify property exists
       expect(instance).to.have.property('state');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.state = validValue;
-      expect(instance.state).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.state = expectedValue;
+      expect(instance.state).to.equal(expectedValue);
     });
 
-    it('should have the property country (base name: "Country")', function() {
+    it('should have the property country', function() {
       // verify property exists
       expect(instance).to.have.property('country');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.country = validValue;
-      expect(instance.country).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.country = expectedValue;
+      expect(instance.country).to.equal(expectedValue);
     });
 
   });

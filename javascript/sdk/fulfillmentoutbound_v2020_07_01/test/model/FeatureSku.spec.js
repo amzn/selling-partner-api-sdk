@@ -45,54 +45,54 @@
       expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.FeatureSku);
     });
 
-    it('should have the property sellerSku (base name: "sellerSku")', function() {
+    it('should have the property sellerSku', function() {
       // verify property exists
       expect(instance).to.have.property('sellerSku');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.sellerSku = validValue;
-      expect(instance.sellerSku).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.sellerSku = expectedValue;
+      expect(instance.sellerSku).to.equal(expectedValue);
     });
 
-    it('should have the property fnSku (base name: "fnSku")', function() {
+    it('should have the property fnSku', function() {
       // verify property exists
       expect(instance).to.have.property('fnSku');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.fnSku = validValue;
-      expect(instance.fnSku).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.fnSku = expectedValue;
+      expect(instance.fnSku).to.equal(expectedValue);
     });
 
-    it('should have the property asin (base name: "asin")', function() {
+    it('should have the property asin', function() {
       // verify property exists
       expect(instance).to.have.property('asin');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.asin = validValue;
-      expect(instance.asin).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.asin = expectedValue;
+      expect(instance.asin).to.equal(expectedValue);
     });
 
-    it('should have the property skuCount (base name: "skuCount")', function() {
+    it('should have the property skuCount', function() {
       // verify property exists
       expect(instance).to.have.property('skuCount');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.skuCount = validValue;
-      expect(instance.skuCount).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.skuCount = expectedValue;
+      expect(instance.skuCount).to.equal(expectedValue);
     });
 
-    it('should have the property overlappingSkus (base name: "overlappingSkus")', function() {
+    it('should have the property overlappingSkus', function() {
       // verify property exists
       expect(instance).to.have.property('overlappingSkus');
 
       // set and verify value
-      var validValue = generateMockData('[String]', true);
-      instance.overlappingSkus = validValue;
-      expect(instance.overlappingSkus).to.equal(validValue);
+      var expectedValue = generateMockData('String', true);
+      instance.overlappingSkus = expectedValue;
+      expect(instance.overlappingSkus).to.equal(expectedValue);
     });
 
   });

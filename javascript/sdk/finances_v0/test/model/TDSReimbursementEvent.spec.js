@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForFinances.TDSReimbursementEvent);
     });
 
-    it('should have the property postedDate (base name: "PostedDate")', function() {
+    it('should have the property postedDate', function() {
       // verify property exists
       expect(instance).to.have.property('postedDate');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.postedDate = validValue;
-      expect(instance.postedDate).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.postedDate = expectedValue;
+      expect(instance.postedDate).to.equal(expectedValue);
     });
 
-    it('should have the property tDSOrderId (base name: "TDSOrderId")', function() {
+    it('should have the property tDSOrderId', function() {
       // verify property exists
       expect(instance).to.have.property('tDSOrderId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.tDSOrderId = validValue;
-      expect(instance.tDSOrderId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.tDSOrderId = expectedValue;
+      expect(instance.tDSOrderId).to.equal(expectedValue);
     });
 
-    it('should have the property reimbursedAmount (base name: "ReimbursedAmount")', function() {
+    it('should have the property reimbursedAmount', function() {
       // verify property exists
       expect(instance).to.have.property('reimbursedAmount');
 
       // set and verify value
-      var validValue = generateMockData('Currency');
-      instance.reimbursedAmount = validValue;
-      expect(instance.reimbursedAmount).to.equal(validValue);
+      var expectedValue = generateMockData('Currency');
+      instance.reimbursedAmount = expectedValue;
+      expect(instance.reimbursedAmount).to.equal(expectedValue);
     });
 
   });

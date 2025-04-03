@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForAContentManagement.PostContentDocumentRequest);
     });
 
-    it('should have the property contentDocument (base name: "contentDocument")', function() {
+    it('should have the property contentDocument', function() {
       // verify property exists
       expect(instance).to.have.property('contentDocument');
 
       // set and verify value
-      var validValue = generateMockData('ContentDocument');
-      instance.contentDocument = validValue;
-      expect(instance.contentDocument).to.equal(validValue);
+      var expectedValue = generateMockData('ContentDocument');
+      instance.contentDocument = expectedValue;
+      expect(instance.contentDocument).to.equal(expectedValue);
     });
 
   });

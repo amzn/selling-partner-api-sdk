@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForMessaging.GetAttributesResponseBuyer);
     });
 
-    it('should have the property locale (base name: "locale")', function() {
+    it('should have the property locale', function() {
       // verify property exists
       expect(instance).to.have.property('locale');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.locale = validValue;
-      expect(instance.locale).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.locale = expectedValue;
+      expect(instance.locale).to.equal(expectedValue);
     });
 
   });

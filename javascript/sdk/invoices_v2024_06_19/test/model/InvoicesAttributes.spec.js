@@ -45,44 +45,44 @@
       expect(instance).to.be.a(TheSellingPartnerApiForInvoices.InvoicesAttributes);
     });
 
-    it('should have the property invoiceStatusOptions (base name: "invoiceStatusOptions")', function() {
+    it('should have the property invoiceStatusOptions', function() {
       // verify property exists
       expect(instance).to.have.property('invoiceStatusOptions');
 
       // set and verify value
-      var validValue = generateMockData('[AttributeOption]', true);
-      instance.invoiceStatusOptions = validValue;
-      expect(instance.invoiceStatusOptions).to.equal(validValue);
+      var expectedValue = generateMockData('AttributeOption', true);
+      instance.invoiceStatusOptions = expectedValue;
+      expect(instance.invoiceStatusOptions).to.equal(expectedValue);
     });
 
-    it('should have the property invoiceTypeOptions (base name: "invoiceTypeOptions")', function() {
+    it('should have the property invoiceTypeOptions', function() {
       // verify property exists
       expect(instance).to.have.property('invoiceTypeOptions');
 
       // set and verify value
-      var validValue = generateMockData('[AttributeOption]', true);
-      instance.invoiceTypeOptions = validValue;
-      expect(instance.invoiceTypeOptions).to.equal(validValue);
+      var expectedValue = generateMockData('AttributeOption', true);
+      instance.invoiceTypeOptions = expectedValue;
+      expect(instance.invoiceTypeOptions).to.equal(expectedValue);
     });
 
-    it('should have the property transactionIdentifierNameOptions (base name: "transactionIdentifierNameOptions")', function() {
+    it('should have the property transactionIdentifierNameOptions', function() {
       // verify property exists
       expect(instance).to.have.property('transactionIdentifierNameOptions');
 
       // set and verify value
-      var validValue = generateMockData('[AttributeOption]', true);
-      instance.transactionIdentifierNameOptions = validValue;
-      expect(instance.transactionIdentifierNameOptions).to.equal(validValue);
+      var expectedValue = generateMockData('AttributeOption', true);
+      instance.transactionIdentifierNameOptions = expectedValue;
+      expect(instance.transactionIdentifierNameOptions).to.equal(expectedValue);
     });
 
-    it('should have the property transactionTypeOptions (base name: "transactionTypeOptions")', function() {
+    it('should have the property transactionTypeOptions', function() {
       // verify property exists
       expect(instance).to.have.property('transactionTypeOptions');
 
       // set and verify value
-      var validValue = generateMockData('[AttributeOption]', true);
-      instance.transactionTypeOptions = validValue;
-      expect(instance.transactionTypeOptions).to.equal(validValue);
+      var expectedValue = generateMockData('AttributeOption', true);
+      instance.transactionTypeOptions = expectedValue;
+      expect(instance.transactionTypeOptions).to.equal(expectedValue);
     });
 
   });

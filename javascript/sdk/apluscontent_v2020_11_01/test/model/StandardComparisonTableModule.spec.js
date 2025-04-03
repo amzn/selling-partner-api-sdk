@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForAContentManagement.StandardComparisonTableModule);
     });
 
-    it('should have the property productColumns (base name: "productColumns")', function() {
+    it('should have the property productColumns', function() {
       // verify property exists
       expect(instance).to.have.property('productColumns');
 
       // set and verify value
-      var validValue = generateMockData('[StandardComparisonProductBlock]', true);
-      instance.productColumns = validValue;
-      expect(instance.productColumns).to.equal(validValue);
+      var expectedValue = generateMockData('StandardComparisonProductBlock', true);
+      instance.productColumns = expectedValue;
+      expect(instance.productColumns).to.equal(expectedValue);
     });
 
-    it('should have the property metricRowLabels (base name: "metricRowLabels")', function() {
+    it('should have the property metricRowLabels', function() {
       // verify property exists
       expect(instance).to.have.property('metricRowLabels');
 
       // set and verify value
-      var validValue = generateMockData('[PlainTextItem]', true);
-      instance.metricRowLabels = validValue;
-      expect(instance.metricRowLabels).to.equal(validValue);
+      var expectedValue = generateMockData('PlainTextItem', true);
+      instance.metricRowLabels = expectedValue;
+      expect(instance.metricRowLabels).to.equal(expectedValue);
     });
 
   });

@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForMerchantFulfillment.AvailableShippingServiceOptions);
     });
 
-    it('should have the property availableCarrierWillPickUpOptions (base name: "AvailableCarrierWillPickUpOptions")', function() {
+    it('should have the property availableCarrierWillPickUpOptions', function() {
       // verify property exists
       expect(instance).to.have.property('availableCarrierWillPickUpOptions');
 
       // set and verify value
-      var validValue = generateMockData('[AvailableCarrierWillPickUpOption]', true);
-      instance.availableCarrierWillPickUpOptions = validValue;
-      expect(instance.availableCarrierWillPickUpOptions).to.equal(validValue);
+      var expectedValue = generateMockData('AvailableCarrierWillPickUpOption', true);
+      instance.availableCarrierWillPickUpOptions = expectedValue;
+      expect(instance.availableCarrierWillPickUpOptions).to.equal(expectedValue);
     });
 
-    it('should have the property availableDeliveryExperienceOptions (base name: "AvailableDeliveryExperienceOptions")', function() {
+    it('should have the property availableDeliveryExperienceOptions', function() {
       // verify property exists
       expect(instance).to.have.property('availableDeliveryExperienceOptions');
 
       // set and verify value
-      var validValue = generateMockData('[AvailableDeliveryExperienceOption]', true);
-      instance.availableDeliveryExperienceOptions = validValue;
-      expect(instance.availableDeliveryExperienceOptions).to.equal(validValue);
+      var expectedValue = generateMockData('AvailableDeliveryExperienceOption', true);
+      instance.availableDeliveryExperienceOptions = expectedValue;
+      expect(instance.availableDeliveryExperienceOptions).to.equal(expectedValue);
     });
 
   });

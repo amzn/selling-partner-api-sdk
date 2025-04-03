@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForFinances.DebtRecoveryItem);
     });
 
-    it('should have the property recoveryAmount (base name: "RecoveryAmount")', function() {
+    it('should have the property recoveryAmount', function() {
       // verify property exists
       expect(instance).to.have.property('recoveryAmount');
 
       // set and verify value
-      var validValue = generateMockData('Currency');
-      instance.recoveryAmount = validValue;
-      expect(instance.recoveryAmount).to.equal(validValue);
+      var expectedValue = generateMockData('Currency');
+      instance.recoveryAmount = expectedValue;
+      expect(instance.recoveryAmount).to.equal(expectedValue);
     });
 
-    it('should have the property originalAmount (base name: "OriginalAmount")', function() {
+    it('should have the property originalAmount', function() {
       // verify property exists
       expect(instance).to.have.property('originalAmount');
 
       // set and verify value
-      var validValue = generateMockData('Currency');
-      instance.originalAmount = validValue;
-      expect(instance.originalAmount).to.equal(validValue);
+      var expectedValue = generateMockData('Currency');
+      instance.originalAmount = expectedValue;
+      expect(instance.originalAmount).to.equal(expectedValue);
     });
 
-    it('should have the property groupBeginDate (base name: "GroupBeginDate")', function() {
+    it('should have the property groupBeginDate', function() {
       // verify property exists
       expect(instance).to.have.property('groupBeginDate');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.groupBeginDate = validValue;
-      expect(instance.groupBeginDate).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.groupBeginDate = expectedValue;
+      expect(instance.groupBeginDate).to.equal(expectedValue);
     });
 
-    it('should have the property groupEndDate (base name: "GroupEndDate")', function() {
+    it('should have the property groupEndDate', function() {
       // verify property exists
       expect(instance).to.have.property('groupEndDate');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.groupEndDate = validValue;
-      expect(instance.groupEndDate).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.groupEndDate = expectedValue;
+      expect(instance.groupEndDate).to.equal(expectedValue);
     });
 
   });

@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForDirectFulfillmentOrders.SubmitAcknowledgementResponse);
     });
 
-    it('should have the property payload (base name: "payload")', function() {
+    it('should have the property payload', function() {
       // verify property exists
       expect(instance).to.have.property('payload');
 
       // set and verify value
-      var validValue = generateMockData('TransactionId');
-      instance.payload = validValue;
-      expect(instance.payload).to.equal(validValue);
+      var expectedValue = generateMockData('TransactionId');
+      instance.payload = expectedValue;
+      expect(instance.payload).to.equal(expectedValue);
     });
 
-    it('should have the property errors (base name: "errors")', function() {
+    it('should have the property errors', function() {
       // verify property exists
       expect(instance).to.have.property('errors');
 
       // set and verify value
-      var validValue = generateMockData('ErrorList');
-      instance.errors = validValue;
-      expect(instance.errors).to.equal(validValue);
+      var expectedValue = generateMockData('ErrorList');
+      instance.errors = expectedValue;
+      expect(instance.errors).to.equal(expectedValue);
     });
 
   });

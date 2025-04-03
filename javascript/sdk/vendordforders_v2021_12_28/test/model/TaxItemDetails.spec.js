@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForDirectFulfillmentOrders.TaxItemDetails);
     });
 
-    it('should have the property taxLineItem (base name: "taxLineItem")', function() {
+    it('should have the property taxLineItem', function() {
       // verify property exists
       expect(instance).to.have.property('taxLineItem');
 
       // set and verify value
-      var validValue = generateMockData('[TaxDetails]', true);
-      instance.taxLineItem = validValue;
-      expect(instance.taxLineItem).to.equal(validValue);
+      var expectedValue = generateMockData('TaxDetails', true);
+      instance.taxLineItem = expectedValue;
+      expect(instance.taxLineItem).to.equal(expectedValue);
     });
 
   });

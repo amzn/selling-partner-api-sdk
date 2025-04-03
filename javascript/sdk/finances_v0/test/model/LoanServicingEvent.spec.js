@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForFinances.LoanServicingEvent);
     });
 
-    it('should have the property loanAmount (base name: "LoanAmount")', function() {
+    it('should have the property loanAmount', function() {
       // verify property exists
       expect(instance).to.have.property('loanAmount');
 
       // set and verify value
-      var validValue = generateMockData('Currency');
-      instance.loanAmount = validValue;
-      expect(instance.loanAmount).to.equal(validValue);
+      var expectedValue = generateMockData('Currency');
+      instance.loanAmount = expectedValue;
+      expect(instance.loanAmount).to.equal(expectedValue);
     });
 
-    it('should have the property sourceBusinessEventType (base name: "SourceBusinessEventType")', function() {
+    it('should have the property sourceBusinessEventType', function() {
       // verify property exists
       expect(instance).to.have.property('sourceBusinessEventType');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.sourceBusinessEventType = validValue;
-      expect(instance.sourceBusinessEventType).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.sourceBusinessEventType = expectedValue;
+      expect(instance.sourceBusinessEventType).to.equal(expectedValue);
     });
 
   });

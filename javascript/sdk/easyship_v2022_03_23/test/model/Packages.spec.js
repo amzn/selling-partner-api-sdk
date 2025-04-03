@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForEasyShip.Packages);
     });
 
-    it('should have the property packages (base name: "packages")', function() {
+    it('should have the property packages', function() {
       // verify property exists
       expect(instance).to.have.property('packages');
 
       // set and verify value
-      var validValue = generateMockData('[Package]', true);
-      instance.packages = validValue;
-      expect(instance.packages).to.equal(validValue);
+      var expectedValue = generateMockData('Package', true);
+      instance.packages = expectedValue;
+      expect(instance.packages).to.equal(expectedValue);
     });
 
   });

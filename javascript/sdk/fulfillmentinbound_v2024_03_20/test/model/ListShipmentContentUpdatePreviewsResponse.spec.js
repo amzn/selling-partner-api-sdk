@@ -45,24 +45,24 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.ListShipmentContentUpdatePreviewsResponse);
     });
 
-    it('should have the property contentUpdatePreviews (base name: "contentUpdatePreviews")', function() {
+    it('should have the property contentUpdatePreviews', function() {
       // verify property exists
       expect(instance).to.have.property('contentUpdatePreviews');
 
       // set and verify value
-      var validValue = generateMockData('[ContentUpdatePreview]', true);
-      instance.contentUpdatePreviews = validValue;
-      expect(instance.contentUpdatePreviews).to.equal(validValue);
+      var expectedValue = generateMockData('ContentUpdatePreview', true);
+      instance.contentUpdatePreviews = expectedValue;
+      expect(instance.contentUpdatePreviews).to.equal(expectedValue);
     });
 
-    it('should have the property pagination (base name: "pagination")', function() {
+    it('should have the property pagination', function() {
       // verify property exists
       expect(instance).to.have.property('pagination');
 
       // set and verify value
-      var validValue = generateMockData('Pagination');
-      instance.pagination = validValue;
-      expect(instance.pagination).to.equal(validValue);
+      var expectedValue = generateMockData('Pagination');
+      instance.pagination = expectedValue;
+      expect(instance.pagination).to.equal(expectedValue);
     });
 
   });

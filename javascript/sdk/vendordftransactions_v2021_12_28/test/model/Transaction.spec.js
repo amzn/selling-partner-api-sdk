@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForDirectFulfillmentTransactionStatus.Transaction);
     });
 
-    it('should have the property transactionId (base name: "transactionId")', function() {
+    it('should have the property transactionId', function() {
       // verify property exists
       expect(instance).to.have.property('transactionId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.transactionId = validValue;
-      expect(instance.transactionId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.transactionId = expectedValue;
+      expect(instance.transactionId).to.equal(expectedValue);
     });
 
-    it('should have the property status (base name: "status")', function() {
+    it('should have the property status', function() {
       // verify property exists
       expect(instance).to.have.property('status');
 
       // set and verify value
-      var validValue = ['Failure', 'Processing', 'Success', ][0];
-      instance.status = validValue;
-      expect(instance.status).to.equal(validValue);
+      var expectedValue = ['Failure', 'Processing', 'Success', ][0];
+      instance.status = expectedValue;
+      expect(instance.status).to.equal(expectedValue);
     });
 
-    it('should have the property errors (base name: "errors")', function() {
+    it('should have the property errors', function() {
       // verify property exists
       expect(instance).to.have.property('errors');
 
       // set and verify value
-      var validValue = generateMockData('ErrorList');
-      instance.errors = validValue;
-      expect(instance.errors).to.equal(validValue);
+      var expectedValue = generateMockData('ErrorList');
+      instance.errors = expectedValue;
+      expect(instance.errors).to.equal(expectedValue);
     });
 
   });

@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForAContentManagement.ImageComponent);
     });
 
-    it('should have the property uploadDestinationId (base name: "uploadDestinationId")', function() {
+    it('should have the property uploadDestinationId', function() {
       // verify property exists
       expect(instance).to.have.property('uploadDestinationId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.uploadDestinationId = validValue;
-      expect(instance.uploadDestinationId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.uploadDestinationId = expectedValue;
+      expect(instance.uploadDestinationId).to.equal(expectedValue);
     });
 
-    it('should have the property imageCropSpecification (base name: "imageCropSpecification")', function() {
+    it('should have the property imageCropSpecification', function() {
       // verify property exists
       expect(instance).to.have.property('imageCropSpecification');
 
       // set and verify value
-      var validValue = generateMockData('ImageCropSpecification');
-      instance.imageCropSpecification = validValue;
-      expect(instance.imageCropSpecification).to.equal(validValue);
+      var expectedValue = generateMockData('ImageCropSpecification');
+      instance.imageCropSpecification = expectedValue;
+      expect(instance.imageCropSpecification).to.equal(expectedValue);
     });
 
-    it('should have the property altText (base name: "altText")', function() {
+    it('should have the property altText', function() {
       // verify property exists
       expect(instance).to.have.property('altText');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.altText = validValue;
-      expect(instance.altText).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.altText = expectedValue;
+      expect(instance.altText).to.equal(expectedValue);
     });
 
   });

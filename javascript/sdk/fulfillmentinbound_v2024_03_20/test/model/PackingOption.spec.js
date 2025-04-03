@@ -45,84 +45,84 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.PackingOption);
     });
 
-    it('should have the property discounts (base name: "discounts")', function() {
+    it('should have the property discounts', function() {
       // verify property exists
       expect(instance).to.have.property('discounts');
 
       // set and verify value
-      var validValue = generateMockData('[Incentive]', true);
-      instance.discounts = validValue;
-      expect(instance.discounts).to.equal(validValue);
+      var expectedValue = generateMockData('Incentive', true);
+      instance.discounts = expectedValue;
+      expect(instance.discounts).to.equal(expectedValue);
     });
 
-    it('should have the property expiration (base name: "expiration")', function() {
+    it('should have the property expiration', function() {
       // verify property exists
       expect(instance).to.have.property('expiration');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.expiration = validValue;
-      expect(instance.expiration).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.expiration = expectedValue;
+      expect(instance.expiration).to.equal(expectedValue);
     });
 
-    it('should have the property fees (base name: "fees")', function() {
+    it('should have the property fees', function() {
       // verify property exists
       expect(instance).to.have.property('fees');
 
       // set and verify value
-      var validValue = generateMockData('[Incentive]', true);
-      instance.fees = validValue;
-      expect(instance.fees).to.equal(validValue);
+      var expectedValue = generateMockData('Incentive', true);
+      instance.fees = expectedValue;
+      expect(instance.fees).to.equal(expectedValue);
     });
 
-    it('should have the property packingGroups (base name: "packingGroups")', function() {
+    it('should have the property packingGroups', function() {
       // verify property exists
       expect(instance).to.have.property('packingGroups');
 
       // set and verify value
-      var validValue = generateMockData('[String]', true);
-      instance.packingGroups = validValue;
-      expect(instance.packingGroups).to.equal(validValue);
+      var expectedValue = generateMockData('String', true);
+      instance.packingGroups = expectedValue;
+      expect(instance.packingGroups).to.equal(expectedValue);
     });
 
-    it('should have the property packingOptionId (base name: "packingOptionId")', function() {
+    it('should have the property packingOptionId', function() {
       // verify property exists
       expect(instance).to.have.property('packingOptionId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.packingOptionId = validValue;
-      expect(instance.packingOptionId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.packingOptionId = expectedValue;
+      expect(instance.packingOptionId).to.equal(expectedValue);
     });
 
-    it('should have the property status (base name: "status")', function() {
+    it('should have the property status', function() {
       // verify property exists
       expect(instance).to.have.property('status');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.status = validValue;
-      expect(instance.status).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.status = expectedValue;
+      expect(instance.status).to.equal(expectedValue);
     });
 
-    it('should have the property supportedConfigurations (base name: "supportedConfigurations")', function() {
+    it('should have the property supportedConfigurations', function() {
       // verify property exists
       expect(instance).to.have.property('supportedConfigurations');
 
       // set and verify value
-      var validValue = generateMockData('[PackingConfiguration]', true);
-      instance.supportedConfigurations = validValue;
-      expect(instance.supportedConfigurations).to.equal(validValue);
+      var expectedValue = generateMockData('PackingConfiguration', true);
+      instance.supportedConfigurations = expectedValue;
+      expect(instance.supportedConfigurations).to.equal(expectedValue);
     });
 
-    it('should have the property supportedShippingConfigurations (base name: "supportedShippingConfigurations")', function() {
+    it('should have the property supportedShippingConfigurations', function() {
       // verify property exists
       expect(instance).to.have.property('supportedShippingConfigurations');
 
       // set and verify value
-      var validValue = generateMockData('[ShippingConfiguration]', true);
-      instance.supportedShippingConfigurations = validValue;
-      expect(instance.supportedShippingConfigurations).to.equal(validValue);
+      var expectedValue = generateMockData('ShippingConfiguration', true);
+      instance.supportedShippingConfigurations = expectedValue;
+      expect(instance.supportedShippingConfigurations).to.equal(expectedValue);
     });
 
   });

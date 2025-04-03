@@ -45,74 +45,74 @@
       expect(instance).to.be.a(SellingPartnerApiForRetailProcurementPayments.CreditNoteDetails);
     });
 
-    it('should have the property referenceInvoiceNumber (base name: "referenceInvoiceNumber")', function() {
+    it('should have the property referenceInvoiceNumber', function() {
       // verify property exists
       expect(instance).to.have.property('referenceInvoiceNumber');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.referenceInvoiceNumber = validValue;
-      expect(instance.referenceInvoiceNumber).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.referenceInvoiceNumber = expectedValue;
+      expect(instance.referenceInvoiceNumber).to.equal(expectedValue);
     });
 
-    it('should have the property debitNoteNumber (base name: "debitNoteNumber")', function() {
+    it('should have the property debitNoteNumber', function() {
       // verify property exists
       expect(instance).to.have.property('debitNoteNumber');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.debitNoteNumber = validValue;
-      expect(instance.debitNoteNumber).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.debitNoteNumber = expectedValue;
+      expect(instance.debitNoteNumber).to.equal(expectedValue);
     });
 
-    it('should have the property returnsReferenceNumber (base name: "returnsReferenceNumber")', function() {
+    it('should have the property returnsReferenceNumber', function() {
       // verify property exists
       expect(instance).to.have.property('returnsReferenceNumber');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.returnsReferenceNumber = validValue;
-      expect(instance.returnsReferenceNumber).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.returnsReferenceNumber = expectedValue;
+      expect(instance.returnsReferenceNumber).to.equal(expectedValue);
     });
 
-    it('should have the property goodsReturnDate (base name: "goodsReturnDate")', function() {
+    it('should have the property goodsReturnDate', function() {
       // verify property exists
       expect(instance).to.have.property('goodsReturnDate');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.goodsReturnDate = validValue;
-      expect(instance.goodsReturnDate).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.goodsReturnDate = expectedValue;
+      expect(instance.goodsReturnDate).to.equal(expectedValue);
     });
 
-    it('should have the property rmaId (base name: "rmaId")', function() {
+    it('should have the property rmaId', function() {
       // verify property exists
       expect(instance).to.have.property('rmaId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.rmaId = validValue;
-      expect(instance.rmaId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.rmaId = expectedValue;
+      expect(instance.rmaId).to.equal(expectedValue);
     });
 
-    it('should have the property coopReferenceNumber (base name: "coopReferenceNumber")', function() {
+    it('should have the property coopReferenceNumber', function() {
       // verify property exists
       expect(instance).to.have.property('coopReferenceNumber');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.coopReferenceNumber = validValue;
-      expect(instance.coopReferenceNumber).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.coopReferenceNumber = expectedValue;
+      expect(instance.coopReferenceNumber).to.equal(expectedValue);
     });
 
-    it('should have the property consignorsReferenceNumber (base name: "consignorsReferenceNumber")', function() {
+    it('should have the property consignorsReferenceNumber', function() {
       // verify property exists
       expect(instance).to.have.property('consignorsReferenceNumber');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.consignorsReferenceNumber = validValue;
-      expect(instance.consignorsReferenceNumber).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.consignorsReferenceNumber = expectedValue;
+      expect(instance.consignorsReferenceNumber).to.equal(expectedValue);
     });
 
   });

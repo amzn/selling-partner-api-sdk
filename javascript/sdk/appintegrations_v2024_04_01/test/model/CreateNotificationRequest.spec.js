@@ -45,34 +45,34 @@
       expect(instance).to.be.a(TheSellingPartnerApiForThirdPartyApplicationIntegrations.CreateNotificationRequest);
     });
 
-    it('should have the property templateId (base name: "templateId")', function() {
+    it('should have the property templateId', function() {
       // verify property exists
       expect(instance).to.have.property('templateId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.templateId = validValue;
-      expect(instance.templateId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.templateId = expectedValue;
+      expect(instance.templateId).to.equal(expectedValue);
     });
 
-    it('should have the property notificationParameters (base name: "notificationParameters")', function() {
+    it('should have the property notificationParameters', function() {
       // verify property exists
       expect(instance).to.have.property('notificationParameters');
 
       // set and verify value
-      var validValue = generateMockData('{String: Object}');
-      instance.notificationParameters = validValue;
-      expect(instance.notificationParameters).to.equal(validValue);
+      var expectedValue = generateMockData('{String: Object}');
+      instance.notificationParameters = expectedValue;
+      expect(instance.notificationParameters).to.equal(expectedValue);
     });
 
-    it('should have the property marketplaceId (base name: "marketplaceId")', function() {
+    it('should have the property marketplaceId', function() {
       // verify property exists
       expect(instance).to.have.property('marketplaceId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.marketplaceId = validValue;
-      expect(instance.marketplaceId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.marketplaceId = expectedValue;
+      expect(instance.marketplaceId).to.equal(expectedValue);
     });
 
   });

@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForFinances.AdhocDisbursementEvent);
     });
 
-    it('should have the property transactionType (base name: "TransactionType")', function() {
+    it('should have the property transactionType', function() {
       // verify property exists
       expect(instance).to.have.property('transactionType');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.transactionType = validValue;
-      expect(instance.transactionType).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.transactionType = expectedValue;
+      expect(instance.transactionType).to.equal(expectedValue);
     });
 
-    it('should have the property postedDate (base name: "PostedDate")', function() {
+    it('should have the property postedDate', function() {
       // verify property exists
       expect(instance).to.have.property('postedDate');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.postedDate = validValue;
-      expect(instance.postedDate).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.postedDate = expectedValue;
+      expect(instance.postedDate).to.equal(expectedValue);
     });
 
-    it('should have the property transactionId (base name: "TransactionId")', function() {
+    it('should have the property transactionId', function() {
       // verify property exists
       expect(instance).to.have.property('transactionId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.transactionId = validValue;
-      expect(instance.transactionId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.transactionId = expectedValue;
+      expect(instance.transactionId).to.equal(expectedValue);
     });
 
-    it('should have the property transactionAmount (base name: "TransactionAmount")', function() {
+    it('should have the property transactionAmount', function() {
       // verify property exists
       expect(instance).to.have.property('transactionAmount');
 
       // set and verify value
-      var validValue = generateMockData('Currency');
-      instance.transactionAmount = validValue;
-      expect(instance.transactionAmount).to.equal(validValue);
+      var expectedValue = generateMockData('Currency');
+      instance.transactionAmount = expectedValue;
+      expect(instance.transactionAmount).to.equal(expectedValue);
     });
 
   });

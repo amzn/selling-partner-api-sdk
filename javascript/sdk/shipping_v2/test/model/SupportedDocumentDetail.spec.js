@@ -45,24 +45,24 @@
       expect(instance).to.be.a(AmazonShippingApi.SupportedDocumentDetail);
     });
 
-    it('should have the property name (base name: "name")', function() {
+    it('should have the property name', function() {
       // verify property exists
       expect(instance).to.have.property('name');
 
       // set and verify value
-      var validValue = generateMockData('DocumentType');
-      instance.name = validValue;
-      expect(instance.name).to.equal(validValue);
+      var expectedValue = generateMockData('DocumentType');
+      instance.name = expectedValue;
+      expect(instance.name).to.equal(expectedValue);
     });
 
-    it('should have the property isMandatory (base name: "isMandatory")', function() {
+    it('should have the property isMandatory', function() {
       // verify property exists
       expect(instance).to.have.property('isMandatory');
 
       // set and verify value
-      var validValue = generateMockData('Boolean');
-      instance.isMandatory = validValue;
-      expect(instance.isMandatory).to.equal(validValue);
+      var expectedValue = generateMockData('Boolean');
+      instance.isMandatory = expectedValue;
+      expect(instance.isMandatory).to.equal(expectedValue);
     });
 
   });

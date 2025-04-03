@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForOrders.ShippingConstraints);
     });
 
-    it('should have the property palletDelivery (base name: "PalletDelivery")', function() {
+    it('should have the property palletDelivery', function() {
       // verify property exists
       expect(instance).to.have.property('palletDelivery');
 
       // set and verify value
-      var validValue = generateMockData('ConstraintType');
-      instance.palletDelivery = validValue;
-      expect(instance.palletDelivery).to.equal(validValue);
+      var expectedValue = generateMockData('ConstraintType');
+      instance.palletDelivery = expectedValue;
+      expect(instance.palletDelivery).to.equal(expectedValue);
     });
 
-    it('should have the property signatureConfirmation (base name: "SignatureConfirmation")', function() {
+    it('should have the property signatureConfirmation', function() {
       // verify property exists
       expect(instance).to.have.property('signatureConfirmation');
 
       // set and verify value
-      var validValue = generateMockData('ConstraintType');
-      instance.signatureConfirmation = validValue;
-      expect(instance.signatureConfirmation).to.equal(validValue);
+      var expectedValue = generateMockData('ConstraintType');
+      instance.signatureConfirmation = expectedValue;
+      expect(instance.signatureConfirmation).to.equal(expectedValue);
     });
 
-    it('should have the property recipientIdentityVerification (base name: "RecipientIdentityVerification")', function() {
+    it('should have the property recipientIdentityVerification', function() {
       // verify property exists
       expect(instance).to.have.property('recipientIdentityVerification');
 
       // set and verify value
-      var validValue = generateMockData('ConstraintType');
-      instance.recipientIdentityVerification = validValue;
-      expect(instance.recipientIdentityVerification).to.equal(validValue);
+      var expectedValue = generateMockData('ConstraintType');
+      instance.recipientIdentityVerification = expectedValue;
+      expect(instance.recipientIdentityVerification).to.equal(expectedValue);
     });
 
-    it('should have the property recipientAgeVerification (base name: "RecipientAgeVerification")', function() {
+    it('should have the property recipientAgeVerification', function() {
       // verify property exists
       expect(instance).to.have.property('recipientAgeVerification');
 
       // set and verify value
-      var validValue = generateMockData('ConstraintType');
-      instance.recipientAgeVerification = validValue;
-      expect(instance.recipientAgeVerification).to.equal(validValue);
+      var expectedValue = generateMockData('ConstraintType');
+      instance.recipientAgeVerification = expectedValue;
+      expect(instance.recipientAgeVerification).to.equal(expectedValue);
     });
 
   });

@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForListingsItems.Points);
     });
 
-    it('should have the property pointsNumber (base name: "pointsNumber")', function() {
+    it('should have the property pointsNumber', function() {
       // verify property exists
       expect(instance).to.have.property('pointsNumber');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.pointsNumber = validValue;
-      expect(instance.pointsNumber).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.pointsNumber = expectedValue;
+      expect(instance.pointsNumber).to.equal(expectedValue);
     });
 
   });

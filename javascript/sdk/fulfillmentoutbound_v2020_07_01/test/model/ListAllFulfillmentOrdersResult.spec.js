@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.ListAllFulfillmentOrdersResult);
     });
 
-    it('should have the property nextToken (base name: "nextToken")', function() {
+    it('should have the property nextToken', function() {
       // verify property exists
       expect(instance).to.have.property('nextToken');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.nextToken = validValue;
-      expect(instance.nextToken).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.nextToken = expectedValue;
+      expect(instance.nextToken).to.equal(expectedValue);
     });
 
-    it('should have the property fulfillmentOrders (base name: "fulfillmentOrders")', function() {
+    it('should have the property fulfillmentOrders', function() {
       // verify property exists
       expect(instance).to.have.property('fulfillmentOrders');
 
       // set and verify value
-      var validValue = generateMockData('[FulfillmentOrder]', true);
-      instance.fulfillmentOrders = validValue;
-      expect(instance.fulfillmentOrders).to.equal(validValue);
+      var expectedValue = generateMockData('FulfillmentOrder', true);
+      instance.fulfillmentOrders = expectedValue;
+      expect(instance.fulfillmentOrders).to.equal(expectedValue);
     });
 
   });

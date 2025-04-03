@@ -45,54 +45,54 @@
       expect(instance).to.be.a(SellingPartnerApiForRetailProcurementOrders.ImportDetails);
     });
 
-    it('should have the property methodOfPayment (base name: "methodOfPayment")', function() {
+    it('should have the property methodOfPayment', function() {
       // verify property exists
       expect(instance).to.have.property('methodOfPayment');
 
       // set and verify value
-      var validValue = ['PaidByBuyer', 'CollectOnDelivery', 'DefinedByBuyerAndSeller', 'FOBPortOfCall', 'PrepaidBySeller', 'PaidBySeller', ][0];
-      instance.methodOfPayment = validValue;
-      expect(instance.methodOfPayment).to.equal(validValue);
+      var expectedValue = ['PaidByBuyer', 'CollectOnDelivery', 'DefinedByBuyerAndSeller', 'FOBPortOfCall', 'PrepaidBySeller', 'PaidBySeller', ][0];
+      instance.methodOfPayment = expectedValue;
+      expect(instance.methodOfPayment).to.equal(expectedValue);
     });
 
-    it('should have the property internationalCommercialTerms (base name: "internationalCommercialTerms")', function() {
+    it('should have the property internationalCommercialTerms', function() {
       // verify property exists
       expect(instance).to.have.property('internationalCommercialTerms');
 
       // set and verify value
-      var validValue = ['ExWorks', 'FreeCarrier', 'FreeOnBoard', 'FreeAlongSideShip', 'CarriagePaidTo', 'CostAndFreight', 'CarriageAndInsurancePaidTo', 'CostInsuranceAndFreight', 'DeliveredAtTerminal', 'DeliveredAtPlace', 'DeliverDutyPaid', ][0];
-      instance.internationalCommercialTerms = validValue;
-      expect(instance.internationalCommercialTerms).to.equal(validValue);
+      var expectedValue = ['ExWorks', 'FreeCarrier', 'FreeOnBoard', 'FreeAlongSideShip', 'CarriagePaidTo', 'CostAndFreight', 'CarriageAndInsurancePaidTo', 'CostInsuranceAndFreight', 'DeliveredAtTerminal', 'DeliveredAtPlace', 'DeliverDutyPaid', ][0];
+      instance.internationalCommercialTerms = expectedValue;
+      expect(instance.internationalCommercialTerms).to.equal(expectedValue);
     });
 
-    it('should have the property portOfDelivery (base name: "portOfDelivery")', function() {
+    it('should have the property portOfDelivery', function() {
       // verify property exists
       expect(instance).to.have.property('portOfDelivery');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.portOfDelivery = validValue;
-      expect(instance.portOfDelivery).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.portOfDelivery = expectedValue;
+      expect(instance.portOfDelivery).to.equal(expectedValue);
     });
 
-    it('should have the property importContainers (base name: "importContainers")', function() {
+    it('should have the property importContainers', function() {
       // verify property exists
       expect(instance).to.have.property('importContainers');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.importContainers = validValue;
-      expect(instance.importContainers).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.importContainers = expectedValue;
+      expect(instance.importContainers).to.equal(expectedValue);
     });
 
-    it('should have the property shippingInstructions (base name: "shippingInstructions")', function() {
+    it('should have the property shippingInstructions', function() {
       // verify property exists
       expect(instance).to.have.property('shippingInstructions');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.shippingInstructions = validValue;
-      expect(instance.shippingInstructions).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.shippingInstructions = expectedValue;
+      expect(instance.shippingInstructions).to.equal(expectedValue);
     });
 
   });

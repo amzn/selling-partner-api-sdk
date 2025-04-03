@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForOrders.AmazonPrograms);
     });
 
-    it('should have the property programs (base name: "Programs")', function() {
+    it('should have the property programs', function() {
       // verify property exists
       expect(instance).to.have.property('programs');
 
       // set and verify value
-      var validValue = generateMockData('[String]', true);
-      instance.programs = validValue;
-      expect(instance.programs).to.equal(validValue);
+      var expectedValue = generateMockData('String', true);
+      instance.programs = expectedValue;
+      expect(instance.programs).to.equal(expectedValue);
     });
 
   });

@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.DateRange);
     });
 
-    it('should have the property earliest (base name: "earliest")', function() {
+    it('should have the property earliest', function() {
       // verify property exists
       expect(instance).to.have.property('earliest');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.earliest = validValue;
-      expect(instance.earliest).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.earliest = expectedValue;
+      expect(instance.earliest).to.equal(expectedValue);
     });
 
-    it('should have the property latest (base name: "latest")', function() {
+    it('should have the property latest', function() {
       // verify property exists
       expect(instance).to.have.property('latest');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.latest = validValue;
-      expect(instance.latest).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.latest = expectedValue;
+      expect(instance.latest).to.equal(expectedValue);
     });
 
   });

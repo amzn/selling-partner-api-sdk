@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForMerchantFulfillment.AvailableDeliveryExperienceOption);
     });
 
-    it('should have the property deliveryExperienceOption (base name: "DeliveryExperienceOption")', function() {
+    it('should have the property deliveryExperienceOption', function() {
       // verify property exists
       expect(instance).to.have.property('deliveryExperienceOption');
 
       // set and verify value
-      var validValue = generateMockData('DeliveryExperienceOption');
-      instance.deliveryExperienceOption = validValue;
-      expect(instance.deliveryExperienceOption).to.equal(validValue);
+      var expectedValue = generateMockData('DeliveryExperienceOption');
+      instance.deliveryExperienceOption = expectedValue;
+      expect(instance.deliveryExperienceOption).to.equal(expectedValue);
     });
 
-    it('should have the property charge (base name: "Charge")', function() {
+    it('should have the property charge', function() {
       // verify property exists
       expect(instance).to.have.property('charge');
 
       // set and verify value
-      var validValue = generateMockData('CurrencyAmount');
-      instance.charge = validValue;
-      expect(instance.charge).to.equal(validValue);
+      var expectedValue = generateMockData('CurrencyAmount');
+      instance.charge = expectedValue;
+      expect(instance.charge).to.equal(expectedValue);
     });
 
   });

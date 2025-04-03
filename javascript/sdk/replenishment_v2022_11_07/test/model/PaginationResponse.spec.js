@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForReplenishment.PaginationResponse);
     });
 
-    it('should have the property totalResults (base name: "totalResults")', function() {
+    it('should have the property totalResults', function() {
       // verify property exists
       expect(instance).to.have.property('totalResults');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.totalResults = validValue;
-      expect(instance.totalResults).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.totalResults = expectedValue;
+      expect(instance.totalResults).to.equal(expectedValue);
     });
 
   });

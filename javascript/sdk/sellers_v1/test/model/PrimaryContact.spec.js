@@ -45,34 +45,34 @@
       expect(instance).to.be.a(TheSellingPartnerApiForSellers.PrimaryContact);
     });
 
-    it('should have the property name (base name: "name")', function() {
+    it('should have the property name', function() {
       // verify property exists
       expect(instance).to.have.property('name');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.name = validValue;
-      expect(instance.name).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.name = expectedValue;
+      expect(instance.name).to.equal(expectedValue);
     });
 
-    it('should have the property address (base name: "address")', function() {
+    it('should have the property address', function() {
       // verify property exists
       expect(instance).to.have.property('address');
 
       // set and verify value
-      var validValue = generateMockData('Address');
-      instance.address = validValue;
-      expect(instance.address).to.equal(validValue);
+      var expectedValue = generateMockData('Address');
+      instance.address = expectedValue;
+      expect(instance.address).to.equal(expectedValue);
     });
 
-    it('should have the property nonLatinName (base name: "nonLatinName")', function() {
+    it('should have the property nonLatinName', function() {
       // verify property exists
       expect(instance).to.have.property('nonLatinName');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.nonLatinName = validValue;
-      expect(instance.nonLatinName).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.nonLatinName = expectedValue;
+      expect(instance.nonLatinName).to.equal(expectedValue);
     });
 
   });

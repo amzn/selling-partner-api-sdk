@@ -45,24 +45,24 @@
       expect(instance).to.be.a(AmazonShippingApi.UnmanifestedShipmentLocation);
     });
 
-    it('should have the property address (base name: "address")', function() {
+    it('should have the property address', function() {
       // verify property exists
       expect(instance).to.have.property('address');
 
       // set and verify value
-      var validValue = generateMockData('Address');
-      instance.address = validValue;
-      expect(instance.address).to.equal(validValue);
+      var expectedValue = generateMockData('Address');
+      instance.address = expectedValue;
+      expect(instance.address).to.equal(expectedValue);
     });
 
-    it('should have the property lastManifestDate (base name: "lastManifestDate")', function() {
+    it('should have the property lastManifestDate', function() {
       // verify property exists
       expect(instance).to.have.property('lastManifestDate');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.lastManifestDate = validValue;
-      expect(instance.lastManifestDate).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.lastManifestDate = expectedValue;
+      expect(instance.lastManifestDate).to.equal(expectedValue);
     });
 
   });

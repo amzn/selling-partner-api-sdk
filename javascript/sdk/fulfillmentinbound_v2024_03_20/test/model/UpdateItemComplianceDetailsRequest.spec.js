@@ -45,24 +45,24 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.UpdateItemComplianceDetailsRequest);
     });
 
-    it('should have the property msku (base name: "msku")', function() {
+    it('should have the property msku', function() {
       // verify property exists
       expect(instance).to.have.property('msku');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.msku = validValue;
-      expect(instance.msku).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.msku = expectedValue;
+      expect(instance.msku).to.equal(expectedValue);
     });
 
-    it('should have the property taxDetails (base name: "taxDetails")', function() {
+    it('should have the property taxDetails', function() {
       // verify property exists
       expect(instance).to.have.property('taxDetails');
 
       // set and verify value
-      var validValue = generateMockData('TaxDetails');
-      instance.taxDetails = validValue;
-      expect(instance.taxDetails).to.equal(validValue);
+      var expectedValue = generateMockData('TaxDetails');
+      instance.taxDetails = expectedValue;
+      expect(instance.taxDetails).to.equal(expectedValue);
     });
 
   });

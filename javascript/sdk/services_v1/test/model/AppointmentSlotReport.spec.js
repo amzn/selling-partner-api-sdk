@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForServices.AppointmentSlotReport);
     });
 
-    it('should have the property schedulingType (base name: "schedulingType")', function() {
+    it('should have the property schedulingType', function() {
       // verify property exists
       expect(instance).to.have.property('schedulingType');
 
       // set and verify value
-      var validValue = ['REAL_TIME_SCHEDULING', 'NON_REAL_TIME_SCHEDULING', ][0];
-      instance.schedulingType = validValue;
-      expect(instance.schedulingType).to.equal(validValue);
+      var expectedValue = ['REAL_TIME_SCHEDULING', 'NON_REAL_TIME_SCHEDULING', ][0];
+      instance.schedulingType = expectedValue;
+      expect(instance.schedulingType).to.equal(expectedValue);
     });
 
-    it('should have the property startTime (base name: "startTime")', function() {
+    it('should have the property startTime', function() {
       // verify property exists
       expect(instance).to.have.property('startTime');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.startTime = validValue;
-      expect(instance.startTime).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.startTime = expectedValue;
+      expect(instance.startTime).to.equal(expectedValue);
     });
 
-    it('should have the property endTime (base name: "endTime")', function() {
+    it('should have the property endTime', function() {
       // verify property exists
       expect(instance).to.have.property('endTime');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.endTime = validValue;
-      expect(instance.endTime).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.endTime = expectedValue;
+      expect(instance.endTime).to.equal(expectedValue);
     });
 
-    it('should have the property appointmentSlots (base name: "appointmentSlots")', function() {
+    it('should have the property appointmentSlots', function() {
       // verify property exists
       expect(instance).to.have.property('appointmentSlots');
 
       // set and verify value
-      var validValue = generateMockData('[AppointmentSlot]', true);
-      instance.appointmentSlots = validValue;
-      expect(instance.appointmentSlots).to.equal(validValue);
+      var expectedValue = generateMockData('AppointmentSlot', true);
+      instance.appointmentSlots = expectedValue;
+      expect(instance.appointmentSlots).to.equal(expectedValue);
     });
 
   });

@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForPricing.SampleLocation);
     });
 
-    it('should have the property postalCode (base name: "postalCode")', function() {
+    it('should have the property postalCode', function() {
       // verify property exists
       expect(instance).to.have.property('postalCode');
 
       // set and verify value
-      var validValue = generateMockData('PostalCode');
-      instance.postalCode = validValue;
-      expect(instance.postalCode).to.equal(validValue);
+      var expectedValue = generateMockData('PostalCode');
+      instance.postalCode = expectedValue;
+      expect(instance.postalCode).to.equal(expectedValue);
     });
 
   });

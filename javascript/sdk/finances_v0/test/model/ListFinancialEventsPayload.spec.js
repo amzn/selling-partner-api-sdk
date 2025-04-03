@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForFinances.ListFinancialEventsPayload);
     });
 
-    it('should have the property nextToken (base name: "NextToken")', function() {
+    it('should have the property nextToken', function() {
       // verify property exists
       expect(instance).to.have.property('nextToken');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.nextToken = validValue;
-      expect(instance.nextToken).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.nextToken = expectedValue;
+      expect(instance.nextToken).to.equal(expectedValue);
     });
 
-    it('should have the property financialEvents (base name: "FinancialEvents")', function() {
+    it('should have the property financialEvents', function() {
       // verify property exists
       expect(instance).to.have.property('financialEvents');
 
       // set and verify value
-      var validValue = generateMockData('FinancialEvents');
-      instance.financialEvents = validValue;
-      expect(instance.financialEvents).to.equal(validValue);
+      var expectedValue = generateMockData('FinancialEvents');
+      instance.financialEvents = expectedValue;
+      expect(instance.financialEvents).to.equal(expectedValue);
     });
 
   });

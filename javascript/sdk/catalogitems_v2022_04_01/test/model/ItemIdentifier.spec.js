@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForCatalogItems.ItemIdentifier);
     });
 
-    it('should have the property identifierType (base name: "identifierType")', function() {
+    it('should have the property identifierType', function() {
       // verify property exists
       expect(instance).to.have.property('identifierType');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.identifierType = validValue;
-      expect(instance.identifierType).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.identifierType = expectedValue;
+      expect(instance.identifierType).to.equal(expectedValue);
     });
 
-    it('should have the property identifier (base name: "identifier")', function() {
+    it('should have the property identifier', function() {
       // verify property exists
       expect(instance).to.have.property('identifier');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.identifier = validValue;
-      expect(instance.identifier).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.identifier = expectedValue;
+      expect(instance.identifier).to.equal(expectedValue);
     });
 
   });

@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForFeeds.GetFeedsResponse);
     });
 
-    it('should have the property feeds (base name: "feeds")', function() {
+    it('should have the property feeds', function() {
       // verify property exists
       expect(instance).to.have.property('feeds');
 
       // set and verify value
-      var validValue = generateMockData('[Feed]', true);
-      instance.feeds = validValue;
-      expect(instance.feeds).to.equal(validValue);
+      var expectedValue = generateMockData('Feed', true);
+      instance.feeds = expectedValue;
+      expect(instance.feeds).to.equal(expectedValue);
     });
 
-    it('should have the property nextToken (base name: "nextToken")', function() {
+    it('should have the property nextToken', function() {
       // verify property exists
       expect(instance).to.have.property('nextToken');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.nextToken = validValue;
-      expect(instance.nextToken).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.nextToken = expectedValue;
+      expect(instance.nextToken).to.equal(expectedValue);
     });
 
   });

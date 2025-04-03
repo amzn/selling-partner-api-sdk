@@ -45,24 +45,24 @@
       expect(instance).to.be.a(AmazonShippingApi.GetCollectionFormHistoryResponse);
     });
 
-    it('should have the property collectionFormsHistoryRecordList (base name: "collectionFormsHistoryRecordList")', function() {
+    it('should have the property collectionFormsHistoryRecordList', function() {
       // verify property exists
       expect(instance).to.have.property('collectionFormsHistoryRecordList');
 
       // set and verify value
-      var validValue = generateMockData('[CollectionFormsHistoryRecord]', true);
-      instance.collectionFormsHistoryRecordList = validValue;
-      expect(instance.collectionFormsHistoryRecordList).to.equal(validValue);
+      var expectedValue = generateMockData('CollectionFormsHistoryRecord', true);
+      instance.collectionFormsHistoryRecordList = expectedValue;
+      expect(instance.collectionFormsHistoryRecordList).to.equal(expectedValue);
     });
 
-    it('should have the property lastRefreshedDate (base name: "lastRefreshedDate")', function() {
+    it('should have the property lastRefreshedDate', function() {
       // verify property exists
       expect(instance).to.have.property('lastRefreshedDate');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.lastRefreshedDate = validValue;
-      expect(instance.lastRefreshedDate).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.lastRefreshedDate = expectedValue;
+      expect(instance.lastRefreshedDate).to.equal(expectedValue);
     });
 
   });

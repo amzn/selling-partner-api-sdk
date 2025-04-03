@@ -45,64 +45,64 @@
       expect(instance).to.be.a(TheSellingPartnerApiForSellers.Marketplace);
     });
 
-    it('should have the property id (base name: "id")', function() {
+    it('should have the property id', function() {
       // verify property exists
       expect(instance).to.have.property('id');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.id = validValue;
-      expect(instance.id).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.id = expectedValue;
+      expect(instance.id).to.equal(expectedValue);
     });
 
-    it('should have the property name (base name: "name")', function() {
+    it('should have the property name', function() {
       // verify property exists
       expect(instance).to.have.property('name');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.name = validValue;
-      expect(instance.name).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.name = expectedValue;
+      expect(instance.name).to.equal(expectedValue);
     });
 
-    it('should have the property countryCode (base name: "countryCode")', function() {
+    it('should have the property countryCode', function() {
       // verify property exists
       expect(instance).to.have.property('countryCode');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.countryCode = validValue;
-      expect(instance.countryCode).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.countryCode = expectedValue;
+      expect(instance.countryCode).to.equal(expectedValue);
     });
 
-    it('should have the property defaultCurrencyCode (base name: "defaultCurrencyCode")', function() {
+    it('should have the property defaultCurrencyCode', function() {
       // verify property exists
       expect(instance).to.have.property('defaultCurrencyCode');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.defaultCurrencyCode = validValue;
-      expect(instance.defaultCurrencyCode).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.defaultCurrencyCode = expectedValue;
+      expect(instance.defaultCurrencyCode).to.equal(expectedValue);
     });
 
-    it('should have the property defaultLanguageCode (base name: "defaultLanguageCode")', function() {
+    it('should have the property defaultLanguageCode', function() {
       // verify property exists
       expect(instance).to.have.property('defaultLanguageCode');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.defaultLanguageCode = validValue;
-      expect(instance.defaultLanguageCode).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.defaultLanguageCode = expectedValue;
+      expect(instance.defaultLanguageCode).to.equal(expectedValue);
     });
 
-    it('should have the property domainName (base name: "domainName")', function() {
+    it('should have the property domainName', function() {
       // verify property exists
       expect(instance).to.have.property('domainName');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.domainName = validValue;
-      expect(instance.domainName).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.domainName = expectedValue;
+      expect(instance.domainName).to.equal(expectedValue);
     });
 
   });

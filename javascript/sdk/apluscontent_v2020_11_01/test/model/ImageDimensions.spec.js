@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForAContentManagement.ImageDimensions);
     });
 
-    it('should have the property width (base name: "width")', function() {
+    it('should have the property width', function() {
       // verify property exists
       expect(instance).to.have.property('width');
 
       // set and verify value
-      var validValue = generateMockData('IntegerWithUnits');
-      instance.width = validValue;
-      expect(instance.width).to.equal(validValue);
+      var expectedValue = generateMockData('IntegerWithUnits');
+      instance.width = expectedValue;
+      expect(instance.width).to.equal(expectedValue);
     });
 
-    it('should have the property height (base name: "height")', function() {
+    it('should have the property height', function() {
       // verify property exists
       expect(instance).to.have.property('height');
 
       // set and verify value
-      var validValue = generateMockData('IntegerWithUnits');
-      instance.height = validValue;
-      expect(instance.height).to.equal(validValue);
+      var expectedValue = generateMockData('IntegerWithUnits');
+      instance.height = expectedValue;
+      expect(instance.height).to.equal(expectedValue);
     });
 
   });

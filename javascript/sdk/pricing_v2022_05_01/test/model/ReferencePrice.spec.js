@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForPricing.ReferencePrice);
     });
 
-    it('should have the property name (base name: "name")', function() {
+    it('should have the property name', function() {
       // verify property exists
       expect(instance).to.have.property('name');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.name = validValue;
-      expect(instance.name).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.name = expectedValue;
+      expect(instance.name).to.equal(expectedValue);
     });
 
-    it('should have the property price (base name: "price")', function() {
+    it('should have the property price', function() {
       // verify property exists
       expect(instance).to.have.property('price');
 
       // set and verify value
-      var validValue = generateMockData('MoneyType');
-      instance.price = validValue;
-      expect(instance.price).to.equal(validValue);
+      var expectedValue = generateMockData('MoneyType');
+      instance.price = expectedValue;
+      expect(instance.price).to.equal(expectedValue);
     });
 
   });

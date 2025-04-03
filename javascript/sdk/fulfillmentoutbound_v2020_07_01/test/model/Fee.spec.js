@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.Fee);
     });
 
-    it('should have the property name (base name: "name")', function() {
+    it('should have the property name', function() {
       // verify property exists
       expect(instance).to.have.property('name');
 
       // set and verify value
-      var validValue = ['FBAPerUnitFulfillmentFee', 'FBAPerOrderFulfillmentFee', 'FBATransportationFee', 'FBAFulfillmentCODFee', ][0];
-      instance.name = validValue;
-      expect(instance.name).to.equal(validValue);
+      var expectedValue = ['FBAPerUnitFulfillmentFee', 'FBAPerOrderFulfillmentFee', 'FBATransportationFee', 'FBAFulfillmentCODFee', ][0];
+      instance.name = expectedValue;
+      expect(instance.name).to.equal(expectedValue);
     });
 
-    it('should have the property amount (base name: "amount")', function() {
+    it('should have the property amount', function() {
       // verify property exists
       expect(instance).to.have.property('amount');
 
       // set and verify value
-      var validValue = generateMockData('Money');
-      instance.amount = validValue;
-      expect(instance.amount).to.equal(validValue);
+      var expectedValue = generateMockData('Money');
+      instance.amount = expectedValue;
+      expect(instance.amount).to.equal(expectedValue);
     });
 
   });

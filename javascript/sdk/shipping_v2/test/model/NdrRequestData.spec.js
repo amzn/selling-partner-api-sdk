@@ -45,24 +45,24 @@
       expect(instance).to.be.a(AmazonShippingApi.NdrRequestData);
     });
 
-    it('should have the property rescheduleDate (base name: "rescheduleDate")', function() {
+    it('should have the property rescheduleDate', function() {
       // verify property exists
       expect(instance).to.have.property('rescheduleDate');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.rescheduleDate = validValue;
-      expect(instance.rescheduleDate).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.rescheduleDate = expectedValue;
+      expect(instance.rescheduleDate).to.equal(expectedValue);
     });
 
-    it('should have the property additionalAddressNotes (base name: "additionalAddressNotes")', function() {
+    it('should have the property additionalAddressNotes', function() {
       // verify property exists
       expect(instance).to.have.property('additionalAddressNotes');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.additionalAddressNotes = validValue;
-      expect(instance.additionalAddressNotes).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.additionalAddressNotes = expectedValue;
+      expect(instance.additionalAddressNotes).to.equal(expectedValue);
     });
 
   });

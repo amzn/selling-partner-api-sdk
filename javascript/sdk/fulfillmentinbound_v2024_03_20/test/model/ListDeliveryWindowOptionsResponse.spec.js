@@ -45,24 +45,24 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.ListDeliveryWindowOptionsResponse);
     });
 
-    it('should have the property deliveryWindowOptions (base name: "deliveryWindowOptions")', function() {
+    it('should have the property deliveryWindowOptions', function() {
       // verify property exists
       expect(instance).to.have.property('deliveryWindowOptions');
 
       // set and verify value
-      var validValue = generateMockData('[DeliveryWindowOption]', true);
-      instance.deliveryWindowOptions = validValue;
-      expect(instance.deliveryWindowOptions).to.equal(validValue);
+      var expectedValue = generateMockData('DeliveryWindowOption', true);
+      instance.deliveryWindowOptions = expectedValue;
+      expect(instance.deliveryWindowOptions).to.equal(expectedValue);
     });
 
-    it('should have the property pagination (base name: "pagination")', function() {
+    it('should have the property pagination', function() {
       // verify property exists
       expect(instance).to.have.property('pagination');
 
       // set and verify value
-      var validValue = generateMockData('Pagination');
-      instance.pagination = validValue;
-      expect(instance.pagination).to.equal(validValue);
+      var expectedValue = generateMockData('Pagination');
+      instance.pagination = expectedValue;
+      expect(instance.pagination).to.equal(expectedValue);
     });
 
   });

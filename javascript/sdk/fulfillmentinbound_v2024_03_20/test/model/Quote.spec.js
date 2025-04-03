@@ -45,34 +45,34 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.Quote);
     });
 
-    it('should have the property cost (base name: "cost")', function() {
+    it('should have the property cost', function() {
       // verify property exists
       expect(instance).to.have.property('cost');
 
       // set and verify value
-      var validValue = generateMockData('Currency');
-      instance.cost = validValue;
-      expect(instance.cost).to.equal(validValue);
+      var expectedValue = generateMockData('Currency');
+      instance.cost = expectedValue;
+      expect(instance.cost).to.equal(expectedValue);
     });
 
-    it('should have the property expiration (base name: "expiration")', function() {
+    it('should have the property expiration', function() {
       // verify property exists
       expect(instance).to.have.property('expiration');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.expiration = validValue;
-      expect(instance.expiration).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.expiration = expectedValue;
+      expect(instance.expiration).to.equal(expectedValue);
     });
 
-    it('should have the property voidableUntil (base name: "voidableUntil")', function() {
+    it('should have the property voidableUntil', function() {
       // verify property exists
       expect(instance).to.have.property('voidableUntil');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.voidableUntil = validValue;
-      expect(instance.voidableUntil).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.voidableUntil = expectedValue;
+      expect(instance.voidableUntil).to.equal(expectedValue);
     });
 
   });

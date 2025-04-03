@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.Weight);
     });
 
-    it('should have the property unit (base name: "unit")', function() {
+    it('should have the property unit', function() {
       // verify property exists
       expect(instance).to.have.property('unit');
 
       // set and verify value
-      var validValue = ['KG', 'KILOGRAMS', 'LB', 'POUNDS', ][0];
-      instance.unit = validValue;
-      expect(instance.unit).to.equal(validValue);
+      var expectedValue = ['KG', 'KILOGRAMS', 'LB', 'POUNDS', ][0];
+      instance.unit = expectedValue;
+      expect(instance.unit).to.equal(expectedValue);
     });
 
-    it('should have the property value (base name: "value")', function() {
+    it('should have the property value', function() {
       // verify property exists
       expect(instance).to.have.property('value');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.value = validValue;
-      expect(instance.value).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.value = expectedValue;
+      expect(instance.value).to.equal(expectedValue);
     });
 
   });

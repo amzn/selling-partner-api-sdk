@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForReplenishment.ListOfferMetricsRequest);
     });
 
-    it('should have the property pagination (base name: "pagination")', function() {
+    it('should have the property pagination', function() {
       // verify property exists
       expect(instance).to.have.property('pagination');
 
       // set and verify value
-      var validValue = generateMockData('ListOfferMetricsRequestPagination');
-      instance.pagination = validValue;
-      expect(instance.pagination).to.equal(validValue);
+      var expectedValue = generateMockData('ListOfferMetricsRequestPagination');
+      instance.pagination = expectedValue;
+      expect(instance.pagination).to.equal(expectedValue);
     });
 
-    it('should have the property sort (base name: "sort")', function() {
+    it('should have the property sort', function() {
       // verify property exists
       expect(instance).to.have.property('sort');
 
       // set and verify value
-      var validValue = generateMockData('ListOfferMetricsRequestSort');
-      instance.sort = validValue;
-      expect(instance.sort).to.equal(validValue);
+      var expectedValue = generateMockData('ListOfferMetricsRequestSort');
+      instance.sort = expectedValue;
+      expect(instance.sort).to.equal(expectedValue);
     });
 
-    it('should have the property filters (base name: "filters")', function() {
+    it('should have the property filters', function() {
       // verify property exists
       expect(instance).to.have.property('filters');
 
       // set and verify value
-      var validValue = generateMockData('ListOfferMetricsRequestFilters');
-      instance.filters = validValue;
-      expect(instance.filters).to.equal(validValue);
+      var expectedValue = generateMockData('ListOfferMetricsRequestFilters');
+      instance.filters = expectedValue;
+      expect(instance.filters).to.equal(expectedValue);
     });
 
   });

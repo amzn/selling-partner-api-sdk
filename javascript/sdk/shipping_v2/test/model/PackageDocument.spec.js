@@ -45,34 +45,34 @@
       expect(instance).to.be.a(AmazonShippingApi.PackageDocument);
     });
 
-    it('should have the property type (base name: "type")', function() {
+    it('should have the property type', function() {
       // verify property exists
       expect(instance).to.have.property('type');
 
       // set and verify value
-      var validValue = generateMockData('DocumentType');
-      instance.type = validValue;
-      expect(instance.type).to.equal(validValue);
+      var expectedValue = generateMockData('DocumentType');
+      instance.type = expectedValue;
+      expect(instance.type).to.equal(expectedValue);
     });
 
-    it('should have the property format (base name: "format")', function() {
+    it('should have the property format', function() {
       // verify property exists
       expect(instance).to.have.property('format');
 
       // set and verify value
-      var validValue = generateMockData('DocumentFormat');
-      instance.format = validValue;
-      expect(instance.format).to.equal(validValue);
+      var expectedValue = generateMockData('DocumentFormat');
+      instance.format = expectedValue;
+      expect(instance.format).to.equal(expectedValue);
     });
 
-    it('should have the property contents (base name: "contents")', function() {
+    it('should have the property contents', function() {
       // verify property exists
       expect(instance).to.have.property('contents');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.contents = validValue;
-      expect(instance.contents).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.contents = expectedValue;
+      expect(instance.contents).to.equal(expectedValue);
     });
 
   });

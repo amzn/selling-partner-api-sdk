@@ -45,14 +45,14 @@
       expect(instance).to.be.a(AmazonShippingApi.GetUnmanifestedShipmentsResponse);
     });
 
-    it('should have the property unmanifestedCarrierInformationList (base name: "unmanifestedCarrierInformationList")', function() {
+    it('should have the property unmanifestedCarrierInformationList', function() {
       // verify property exists
       expect(instance).to.have.property('unmanifestedCarrierInformationList');
 
       // set and verify value
-      var validValue = generateMockData('[UnmanifestedCarrierInformation]', true);
-      instance.unmanifestedCarrierInformationList = validValue;
-      expect(instance.unmanifestedCarrierInformationList).to.equal(validValue);
+      var expectedValue = generateMockData('UnmanifestedCarrierInformation', true);
+      instance.unmanifestedCarrierInformationList = expectedValue;
+      expect(instance.unmanifestedCarrierInformationList).to.equal(expectedValue);
     });
 
   });

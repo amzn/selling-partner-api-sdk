@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForAContentManagement.StandardHeaderImageTextModule);
     });
 
-    it('should have the property headline (base name: "headline")', function() {
+    it('should have the property headline', function() {
       // verify property exists
       expect(instance).to.have.property('headline');
 
       // set and verify value
-      var validValue = generateMockData('TextComponent');
-      instance.headline = validValue;
-      expect(instance.headline).to.equal(validValue);
+      var expectedValue = generateMockData('TextComponent');
+      instance.headline = expectedValue;
+      expect(instance.headline).to.equal(expectedValue);
     });
 
-    it('should have the property block (base name: "block")', function() {
+    it('should have the property block', function() {
       // verify property exists
       expect(instance).to.have.property('block');
 
       // set and verify value
-      var validValue = generateMockData('StandardImageTextBlock');
-      instance.block = validValue;
-      expect(instance.block).to.equal(validValue);
+      var expectedValue = generateMockData('StandardImageTextBlock');
+      instance.block = expectedValue;
+      expect(instance.block).to.equal(expectedValue);
     });
 
   });

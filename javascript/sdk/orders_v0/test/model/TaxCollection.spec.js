@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForOrders.TaxCollection);
     });
 
-    it('should have the property model (base name: "Model")', function() {
+    it('should have the property model', function() {
       // verify property exists
       expect(instance).to.have.property('model');
 
       // set and verify value
-      var validValue = ['MarketplaceFacilitator', ][0];
-      instance.model = validValue;
-      expect(instance.model).to.equal(validValue);
+      var expectedValue = ['MarketplaceFacilitator', ][0];
+      instance.model = expectedValue;
+      expect(instance.model).to.equal(expectedValue);
     });
 
-    it('should have the property responsibleParty (base name: "ResponsibleParty")', function() {
+    it('should have the property responsibleParty', function() {
       // verify property exists
       expect(instance).to.have.property('responsibleParty');
 
       // set and verify value
-      var validValue = ['Amazon Services, Inc.', ][0];
-      instance.responsibleParty = validValue;
-      expect(instance.responsibleParty).to.equal(validValue);
+      var expectedValue = ['Amazon Services, Inc.', ][0];
+      instance.responsibleParty = expectedValue;
+      expect(instance.responsibleParty).to.equal(expectedValue);
     });
 
   });

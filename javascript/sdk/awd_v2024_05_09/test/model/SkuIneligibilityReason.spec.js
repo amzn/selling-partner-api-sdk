@@ -45,24 +45,24 @@
       expect(instance).to.be.a(TheSellingPartnerApiForAmazonWarehousingAndDistribution.SkuIneligibilityReason);
     });
 
-    it('should have the property code (base name: "code")', function() {
+    it('should have the property code', function() {
       // verify property exists
       expect(instance).to.have.property('code');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.code = validValue;
-      expect(instance.code).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.code = expectedValue;
+      expect(instance.code).to.equal(expectedValue);
     });
 
-    it('should have the property description (base name: "description")', function() {
+    it('should have the property description', function() {
       // verify property exists
       expect(instance).to.have.property('description');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.description = validValue;
-      expect(instance.description).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.description = expectedValue;
+      expect(instance.description).to.equal(expectedValue);
     });
 
   });

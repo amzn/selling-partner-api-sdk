@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForListingsRestrictions.Restriction);
     });
 
-    it('should have the property marketplaceId (base name: "marketplaceId")', function() {
+    it('should have the property marketplaceId', function() {
       // verify property exists
       expect(instance).to.have.property('marketplaceId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.marketplaceId = validValue;
-      expect(instance.marketplaceId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.marketplaceId = expectedValue;
+      expect(instance.marketplaceId).to.equal(expectedValue);
     });
 
-    it('should have the property conditionType (base name: "conditionType")', function() {
+    it('should have the property conditionType', function() {
       // verify property exists
       expect(instance).to.have.property('conditionType');
 
       // set and verify value
-      var validValue = ['new_new', 'new_open_box', 'new_oem', 'refurbished_refurbished', 'used_like_new', 'used_very_good', 'used_good', 'used_acceptable', 'collectible_like_new', 'collectible_very_good', 'collectible_good', 'collectible_acceptable', 'club_club', ][0];
-      instance.conditionType = validValue;
-      expect(instance.conditionType).to.equal(validValue);
+      var expectedValue = ['new_new', 'new_open_box', 'new_oem', 'refurbished_refurbished', 'used_like_new', 'used_very_good', 'used_good', 'used_acceptable', 'collectible_like_new', 'collectible_very_good', 'collectible_good', 'collectible_acceptable', 'club_club', ][0];
+      instance.conditionType = expectedValue;
+      expect(instance.conditionType).to.equal(expectedValue);
     });
 
-    it('should have the property reasons (base name: "reasons")', function() {
+    it('should have the property reasons', function() {
       // verify property exists
       expect(instance).to.have.property('reasons');
 
       // set and verify value
-      var validValue = generateMockData('[Reason]', true);
-      instance.reasons = validValue;
-      expect(instance.reasons).to.equal(validValue);
+      var expectedValue = generateMockData('Reason', true);
+      instance.reasons = expectedValue;
+      expect(instance.reasons).to.equal(expectedValue);
     });
 
   });

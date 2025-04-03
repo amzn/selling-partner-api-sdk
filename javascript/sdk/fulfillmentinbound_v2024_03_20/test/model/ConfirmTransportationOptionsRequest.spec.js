@@ -45,14 +45,14 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.ConfirmTransportationOptionsRequest);
     });
 
-    it('should have the property transportationSelections (base name: "transportationSelections")', function() {
+    it('should have the property transportationSelections', function() {
       // verify property exists
       expect(instance).to.have.property('transportationSelections');
 
       // set and verify value
-      var validValue = generateMockData('[TransportationSelection]', true);
-      instance.transportationSelections = validValue;
-      expect(instance.transportationSelections).to.equal(validValue);
+      var expectedValue = generateMockData('TransportationSelection', true);
+      instance.transportationSelections = expectedValue;
+      expect(instance.transportationSelections).to.equal(expectedValue);
     });
 
   });

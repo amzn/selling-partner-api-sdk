@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForOrders.OpenTimeInterval);
     });
 
-    it('should have the property hour (base name: "Hour")', function() {
+    it('should have the property hour', function() {
       // verify property exists
       expect(instance).to.have.property('hour');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.hour = validValue;
-      expect(instance.hour).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.hour = expectedValue;
+      expect(instance.hour).to.equal(expectedValue);
     });
 
-    it('should have the property minute (base name: "Minute")', function() {
+    it('should have the property minute', function() {
       // verify property exists
       expect(instance).to.have.property('minute');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.minute = validValue;
-      expect(instance.minute).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.minute = expectedValue;
+      expect(instance.minute).to.equal(expectedValue);
     });
 
   });

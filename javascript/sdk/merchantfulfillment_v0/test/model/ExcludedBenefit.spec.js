@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForMerchantFulfillment.ExcludedBenefit);
     });
 
-    it('should have the property benefit (base name: "Benefit")', function() {
+    it('should have the property benefit', function() {
       // verify property exists
       expect(instance).to.have.property('benefit');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.benefit = validValue;
-      expect(instance.benefit).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.benefit = expectedValue;
+      expect(instance.benefit).to.equal(expectedValue);
     });
 
-    it('should have the property reasonCodes (base name: "ReasonCodes")', function() {
+    it('should have the property reasonCodes', function() {
       // verify property exists
       expect(instance).to.have.property('reasonCodes');
 
       // set and verify value
-      var validValue = generateMockData('[String]', true);
-      instance.reasonCodes = validValue;
-      expect(instance.reasonCodes).to.equal(validValue);
+      var expectedValue = generateMockData('String', true);
+      instance.reasonCodes = expectedValue;
+      expect(instance.reasonCodes).to.equal(expectedValue);
     });
 
   });

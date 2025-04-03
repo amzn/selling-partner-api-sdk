@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForProductTypeDefinitions.SchemaLink);
     });
 
-    it('should have the property link (base name: "link")', function() {
+    it('should have the property link', function() {
       // verify property exists
       expect(instance).to.have.property('link');
 
       // set and verify value
-      var validValue = generateMockData('SchemaLinkLink');
-      instance.link = validValue;
-      expect(instance.link).to.equal(validValue);
+      var expectedValue = generateMockData('SchemaLinkLink');
+      instance.link = expectedValue;
+      expect(instance.link).to.equal(expectedValue);
     });
 
-    it('should have the property checksum (base name: "checksum")', function() {
+    it('should have the property checksum', function() {
       // verify property exists
       expect(instance).to.have.property('checksum');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.checksum = validValue;
-      expect(instance.checksum).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.checksum = expectedValue;
+      expect(instance.checksum).to.equal(expectedValue);
     });
 
   });

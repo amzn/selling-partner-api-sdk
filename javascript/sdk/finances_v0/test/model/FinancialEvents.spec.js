@@ -45,334 +45,334 @@
       expect(instance).to.be.a(SellingPartnerApiForFinances.FinancialEvents);
     });
 
-    it('should have the property shipmentEventList (base name: "ShipmentEventList")', function() {
+    it('should have the property shipmentEventList', function() {
       // verify property exists
       expect(instance).to.have.property('shipmentEventList');
 
       // set and verify value
-      var validValue = generateMockData('[ShipmentEvent]', true);
-      instance.shipmentEventList = validValue;
-      expect(instance.shipmentEventList).to.equal(validValue);
+      var expectedValue = generateMockData('ShipmentEvent', true);
+      instance.shipmentEventList = expectedValue;
+      expect(instance.shipmentEventList).to.equal(expectedValue);
     });
 
-    it('should have the property shipmentSettleEventList (base name: "ShipmentSettleEventList")', function() {
+    it('should have the property shipmentSettleEventList', function() {
       // verify property exists
       expect(instance).to.have.property('shipmentSettleEventList');
 
       // set and verify value
-      var validValue = generateMockData('[ShipmentEvent]', true);
-      instance.shipmentSettleEventList = validValue;
-      expect(instance.shipmentSettleEventList).to.equal(validValue);
+      var expectedValue = generateMockData('ShipmentEvent', true);
+      instance.shipmentSettleEventList = expectedValue;
+      expect(instance.shipmentSettleEventList).to.equal(expectedValue);
     });
 
-    it('should have the property refundEventList (base name: "RefundEventList")', function() {
+    it('should have the property refundEventList', function() {
       // verify property exists
       expect(instance).to.have.property('refundEventList');
 
       // set and verify value
-      var validValue = generateMockData('[ShipmentEvent]', true);
-      instance.refundEventList = validValue;
-      expect(instance.refundEventList).to.equal(validValue);
+      var expectedValue = generateMockData('ShipmentEvent', true);
+      instance.refundEventList = expectedValue;
+      expect(instance.refundEventList).to.equal(expectedValue);
     });
 
-    it('should have the property guaranteeClaimEventList (base name: "GuaranteeClaimEventList")', function() {
+    it('should have the property guaranteeClaimEventList', function() {
       // verify property exists
       expect(instance).to.have.property('guaranteeClaimEventList');
 
       // set and verify value
-      var validValue = generateMockData('[ShipmentEvent]', true);
-      instance.guaranteeClaimEventList = validValue;
-      expect(instance.guaranteeClaimEventList).to.equal(validValue);
+      var expectedValue = generateMockData('ShipmentEvent', true);
+      instance.guaranteeClaimEventList = expectedValue;
+      expect(instance.guaranteeClaimEventList).to.equal(expectedValue);
     });
 
-    it('should have the property chargebackEventList (base name: "ChargebackEventList")', function() {
+    it('should have the property chargebackEventList', function() {
       // verify property exists
       expect(instance).to.have.property('chargebackEventList');
 
       // set and verify value
-      var validValue = generateMockData('[ShipmentEvent]', true);
-      instance.chargebackEventList = validValue;
-      expect(instance.chargebackEventList).to.equal(validValue);
+      var expectedValue = generateMockData('ShipmentEvent', true);
+      instance.chargebackEventList = expectedValue;
+      expect(instance.chargebackEventList).to.equal(expectedValue);
     });
 
-    it('should have the property payWithAmazonEventList (base name: "PayWithAmazonEventList")', function() {
+    it('should have the property payWithAmazonEventList', function() {
       // verify property exists
       expect(instance).to.have.property('payWithAmazonEventList');
 
       // set and verify value
-      var validValue = generateMockData('[PayWithAmazonEvent]', true);
-      instance.payWithAmazonEventList = validValue;
-      expect(instance.payWithAmazonEventList).to.equal(validValue);
+      var expectedValue = generateMockData('PayWithAmazonEvent', true);
+      instance.payWithAmazonEventList = expectedValue;
+      expect(instance.payWithAmazonEventList).to.equal(expectedValue);
     });
 
-    it('should have the property serviceProviderCreditEventList (base name: "ServiceProviderCreditEventList")', function() {
+    it('should have the property serviceProviderCreditEventList', function() {
       // verify property exists
       expect(instance).to.have.property('serviceProviderCreditEventList');
 
       // set and verify value
-      var validValue = generateMockData('[SolutionProviderCreditEvent]', true);
-      instance.serviceProviderCreditEventList = validValue;
-      expect(instance.serviceProviderCreditEventList).to.equal(validValue);
+      var expectedValue = generateMockData('SolutionProviderCreditEvent', true);
+      instance.serviceProviderCreditEventList = expectedValue;
+      expect(instance.serviceProviderCreditEventList).to.equal(expectedValue);
     });
 
-    it('should have the property retrochargeEventList (base name: "RetrochargeEventList")', function() {
+    it('should have the property retrochargeEventList', function() {
       // verify property exists
       expect(instance).to.have.property('retrochargeEventList');
 
       // set and verify value
-      var validValue = generateMockData('[RetrochargeEvent]', true);
-      instance.retrochargeEventList = validValue;
-      expect(instance.retrochargeEventList).to.equal(validValue);
+      var expectedValue = generateMockData('RetrochargeEvent', true);
+      instance.retrochargeEventList = expectedValue;
+      expect(instance.retrochargeEventList).to.equal(expectedValue);
     });
 
-    it('should have the property rentalTransactionEventList (base name: "RentalTransactionEventList")', function() {
+    it('should have the property rentalTransactionEventList', function() {
       // verify property exists
       expect(instance).to.have.property('rentalTransactionEventList');
 
       // set and verify value
-      var validValue = generateMockData('[RentalTransactionEvent]', true);
-      instance.rentalTransactionEventList = validValue;
-      expect(instance.rentalTransactionEventList).to.equal(validValue);
+      var expectedValue = generateMockData('RentalTransactionEvent', true);
+      instance.rentalTransactionEventList = expectedValue;
+      expect(instance.rentalTransactionEventList).to.equal(expectedValue);
     });
 
-    it('should have the property productAdsPaymentEventList (base name: "ProductAdsPaymentEventList")', function() {
+    it('should have the property productAdsPaymentEventList', function() {
       // verify property exists
       expect(instance).to.have.property('productAdsPaymentEventList');
 
       // set and verify value
-      var validValue = generateMockData('[ProductAdsPaymentEvent]', true);
-      instance.productAdsPaymentEventList = validValue;
-      expect(instance.productAdsPaymentEventList).to.equal(validValue);
+      var expectedValue = generateMockData('ProductAdsPaymentEvent', true);
+      instance.productAdsPaymentEventList = expectedValue;
+      expect(instance.productAdsPaymentEventList).to.equal(expectedValue);
     });
 
-    it('should have the property serviceFeeEventList (base name: "ServiceFeeEventList")', function() {
+    it('should have the property serviceFeeEventList', function() {
       // verify property exists
       expect(instance).to.have.property('serviceFeeEventList');
 
       // set and verify value
-      var validValue = generateMockData('[ServiceFeeEvent]', true);
-      instance.serviceFeeEventList = validValue;
-      expect(instance.serviceFeeEventList).to.equal(validValue);
+      var expectedValue = generateMockData('ServiceFeeEvent', true);
+      instance.serviceFeeEventList = expectedValue;
+      expect(instance.serviceFeeEventList).to.equal(expectedValue);
     });
 
-    it('should have the property sellerDealPaymentEventList (base name: "SellerDealPaymentEventList")', function() {
+    it('should have the property sellerDealPaymentEventList', function() {
       // verify property exists
       expect(instance).to.have.property('sellerDealPaymentEventList');
 
       // set and verify value
-      var validValue = generateMockData('[SellerDealPaymentEvent]', true);
-      instance.sellerDealPaymentEventList = validValue;
-      expect(instance.sellerDealPaymentEventList).to.equal(validValue);
+      var expectedValue = generateMockData('SellerDealPaymentEvent', true);
+      instance.sellerDealPaymentEventList = expectedValue;
+      expect(instance.sellerDealPaymentEventList).to.equal(expectedValue);
     });
 
-    it('should have the property debtRecoveryEventList (base name: "DebtRecoveryEventList")', function() {
+    it('should have the property debtRecoveryEventList', function() {
       // verify property exists
       expect(instance).to.have.property('debtRecoveryEventList');
 
       // set and verify value
-      var validValue = generateMockData('[DebtRecoveryEvent]', true);
-      instance.debtRecoveryEventList = validValue;
-      expect(instance.debtRecoveryEventList).to.equal(validValue);
+      var expectedValue = generateMockData('DebtRecoveryEvent', true);
+      instance.debtRecoveryEventList = expectedValue;
+      expect(instance.debtRecoveryEventList).to.equal(expectedValue);
     });
 
-    it('should have the property loanServicingEventList (base name: "LoanServicingEventList")', function() {
+    it('should have the property loanServicingEventList', function() {
       // verify property exists
       expect(instance).to.have.property('loanServicingEventList');
 
       // set and verify value
-      var validValue = generateMockData('[LoanServicingEvent]', true);
-      instance.loanServicingEventList = validValue;
-      expect(instance.loanServicingEventList).to.equal(validValue);
+      var expectedValue = generateMockData('LoanServicingEvent', true);
+      instance.loanServicingEventList = expectedValue;
+      expect(instance.loanServicingEventList).to.equal(expectedValue);
     });
 
-    it('should have the property adjustmentEventList (base name: "AdjustmentEventList")', function() {
+    it('should have the property adjustmentEventList', function() {
       // verify property exists
       expect(instance).to.have.property('adjustmentEventList');
 
       // set and verify value
-      var validValue = generateMockData('[AdjustmentEvent]', true);
-      instance.adjustmentEventList = validValue;
-      expect(instance.adjustmentEventList).to.equal(validValue);
+      var expectedValue = generateMockData('AdjustmentEvent', true);
+      instance.adjustmentEventList = expectedValue;
+      expect(instance.adjustmentEventList).to.equal(expectedValue);
     });
 
-    it('should have the property sAFETReimbursementEventList (base name: "SAFETReimbursementEventList")', function() {
+    it('should have the property sAFETReimbursementEventList', function() {
       // verify property exists
       expect(instance).to.have.property('sAFETReimbursementEventList');
 
       // set and verify value
-      var validValue = generateMockData('[SAFETReimbursementEvent]', true);
-      instance.sAFETReimbursementEventList = validValue;
-      expect(instance.sAFETReimbursementEventList).to.equal(validValue);
+      var expectedValue = generateMockData('SAFETReimbursementEvent', true);
+      instance.sAFETReimbursementEventList = expectedValue;
+      expect(instance.sAFETReimbursementEventList).to.equal(expectedValue);
     });
 
-    it('should have the property sellerReviewEnrollmentPaymentEventList (base name: "SellerReviewEnrollmentPaymentEventList")', function() {
+    it('should have the property sellerReviewEnrollmentPaymentEventList', function() {
       // verify property exists
       expect(instance).to.have.property('sellerReviewEnrollmentPaymentEventList');
 
       // set and verify value
-      var validValue = generateMockData('[SellerReviewEnrollmentPaymentEvent]', true);
-      instance.sellerReviewEnrollmentPaymentEventList = validValue;
-      expect(instance.sellerReviewEnrollmentPaymentEventList).to.equal(validValue);
+      var expectedValue = generateMockData('SellerReviewEnrollmentPaymentEvent', true);
+      instance.sellerReviewEnrollmentPaymentEventList = expectedValue;
+      expect(instance.sellerReviewEnrollmentPaymentEventList).to.equal(expectedValue);
     });
 
-    it('should have the property fBALiquidationEventList (base name: "FBALiquidationEventList")', function() {
+    it('should have the property fBALiquidationEventList', function() {
       // verify property exists
       expect(instance).to.have.property('fBALiquidationEventList');
 
       // set and verify value
-      var validValue = generateMockData('[FBALiquidationEvent]', true);
-      instance.fBALiquidationEventList = validValue;
-      expect(instance.fBALiquidationEventList).to.equal(validValue);
+      var expectedValue = generateMockData('FBALiquidationEvent', true);
+      instance.fBALiquidationEventList = expectedValue;
+      expect(instance.fBALiquidationEventList).to.equal(expectedValue);
     });
 
-    it('should have the property couponPaymentEventList (base name: "CouponPaymentEventList")', function() {
+    it('should have the property couponPaymentEventList', function() {
       // verify property exists
       expect(instance).to.have.property('couponPaymentEventList');
 
       // set and verify value
-      var validValue = generateMockData('[CouponPaymentEvent]', true);
-      instance.couponPaymentEventList = validValue;
-      expect(instance.couponPaymentEventList).to.equal(validValue);
+      var expectedValue = generateMockData('CouponPaymentEvent', true);
+      instance.couponPaymentEventList = expectedValue;
+      expect(instance.couponPaymentEventList).to.equal(expectedValue);
     });
 
-    it('should have the property imagingServicesFeeEventList (base name: "ImagingServicesFeeEventList")', function() {
+    it('should have the property imagingServicesFeeEventList', function() {
       // verify property exists
       expect(instance).to.have.property('imagingServicesFeeEventList');
 
       // set and verify value
-      var validValue = generateMockData('[ImagingServicesFeeEvent]', true);
-      instance.imagingServicesFeeEventList = validValue;
-      expect(instance.imagingServicesFeeEventList).to.equal(validValue);
+      var expectedValue = generateMockData('ImagingServicesFeeEvent', true);
+      instance.imagingServicesFeeEventList = expectedValue;
+      expect(instance.imagingServicesFeeEventList).to.equal(expectedValue);
     });
 
-    it('should have the property networkComminglingTransactionEventList (base name: "NetworkComminglingTransactionEventList")', function() {
+    it('should have the property networkComminglingTransactionEventList', function() {
       // verify property exists
       expect(instance).to.have.property('networkComminglingTransactionEventList');
 
       // set and verify value
-      var validValue = generateMockData('[NetworkComminglingTransactionEvent]', true);
-      instance.networkComminglingTransactionEventList = validValue;
-      expect(instance.networkComminglingTransactionEventList).to.equal(validValue);
+      var expectedValue = generateMockData('NetworkComminglingTransactionEvent', true);
+      instance.networkComminglingTransactionEventList = expectedValue;
+      expect(instance.networkComminglingTransactionEventList).to.equal(expectedValue);
     });
 
-    it('should have the property affordabilityExpenseEventList (base name: "AffordabilityExpenseEventList")', function() {
+    it('should have the property affordabilityExpenseEventList', function() {
       // verify property exists
       expect(instance).to.have.property('affordabilityExpenseEventList');
 
       // set and verify value
-      var validValue = generateMockData('[AffordabilityExpenseEvent]', true);
-      instance.affordabilityExpenseEventList = validValue;
-      expect(instance.affordabilityExpenseEventList).to.equal(validValue);
+      var expectedValue = generateMockData('AffordabilityExpenseEvent', true);
+      instance.affordabilityExpenseEventList = expectedValue;
+      expect(instance.affordabilityExpenseEventList).to.equal(expectedValue);
     });
 
-    it('should have the property affordabilityExpenseReversalEventList (base name: "AffordabilityExpenseReversalEventList")', function() {
+    it('should have the property affordabilityExpenseReversalEventList', function() {
       // verify property exists
       expect(instance).to.have.property('affordabilityExpenseReversalEventList');
 
       // set and verify value
-      var validValue = generateMockData('[AffordabilityExpenseEvent]', true);
-      instance.affordabilityExpenseReversalEventList = validValue;
-      expect(instance.affordabilityExpenseReversalEventList).to.equal(validValue);
+      var expectedValue = generateMockData('AffordabilityExpenseEvent', true);
+      instance.affordabilityExpenseReversalEventList = expectedValue;
+      expect(instance.affordabilityExpenseReversalEventList).to.equal(expectedValue);
     });
 
-    it('should have the property removalShipmentEventList (base name: "RemovalShipmentEventList")', function() {
+    it('should have the property removalShipmentEventList', function() {
       // verify property exists
       expect(instance).to.have.property('removalShipmentEventList');
 
       // set and verify value
-      var validValue = generateMockData('[RemovalShipmentEvent]', true);
-      instance.removalShipmentEventList = validValue;
-      expect(instance.removalShipmentEventList).to.equal(validValue);
+      var expectedValue = generateMockData('RemovalShipmentEvent', true);
+      instance.removalShipmentEventList = expectedValue;
+      expect(instance.removalShipmentEventList).to.equal(expectedValue);
     });
 
-    it('should have the property removalShipmentAdjustmentEventList (base name: "RemovalShipmentAdjustmentEventList")', function() {
+    it('should have the property removalShipmentAdjustmentEventList', function() {
       // verify property exists
       expect(instance).to.have.property('removalShipmentAdjustmentEventList');
 
       // set and verify value
-      var validValue = generateMockData('[RemovalShipmentAdjustmentEvent]', true);
-      instance.removalShipmentAdjustmentEventList = validValue;
-      expect(instance.removalShipmentAdjustmentEventList).to.equal(validValue);
+      var expectedValue = generateMockData('RemovalShipmentAdjustmentEvent', true);
+      instance.removalShipmentAdjustmentEventList = expectedValue;
+      expect(instance.removalShipmentAdjustmentEventList).to.equal(expectedValue);
     });
 
-    it('should have the property trialShipmentEventList (base name: "TrialShipmentEventList")', function() {
+    it('should have the property trialShipmentEventList', function() {
       // verify property exists
       expect(instance).to.have.property('trialShipmentEventList');
 
       // set and verify value
-      var validValue = generateMockData('[TrialShipmentEvent]', true);
-      instance.trialShipmentEventList = validValue;
-      expect(instance.trialShipmentEventList).to.equal(validValue);
+      var expectedValue = generateMockData('TrialShipmentEvent', true);
+      instance.trialShipmentEventList = expectedValue;
+      expect(instance.trialShipmentEventList).to.equal(expectedValue);
     });
 
-    it('should have the property tDSReimbursementEventList (base name: "TDSReimbursementEventList")', function() {
+    it('should have the property tDSReimbursementEventList', function() {
       // verify property exists
       expect(instance).to.have.property('tDSReimbursementEventList');
 
       // set and verify value
-      var validValue = generateMockData('[TDSReimbursementEvent]', true);
-      instance.tDSReimbursementEventList = validValue;
-      expect(instance.tDSReimbursementEventList).to.equal(validValue);
+      var expectedValue = generateMockData('TDSReimbursementEvent', true);
+      instance.tDSReimbursementEventList = expectedValue;
+      expect(instance.tDSReimbursementEventList).to.equal(expectedValue);
     });
 
-    it('should have the property adhocDisbursementEventList (base name: "AdhocDisbursementEventList")', function() {
+    it('should have the property adhocDisbursementEventList', function() {
       // verify property exists
       expect(instance).to.have.property('adhocDisbursementEventList');
 
       // set and verify value
-      var validValue = generateMockData('[AdhocDisbursementEvent]', true);
-      instance.adhocDisbursementEventList = validValue;
-      expect(instance.adhocDisbursementEventList).to.equal(validValue);
+      var expectedValue = generateMockData('AdhocDisbursementEvent', true);
+      instance.adhocDisbursementEventList = expectedValue;
+      expect(instance.adhocDisbursementEventList).to.equal(expectedValue);
     });
 
-    it('should have the property taxWithholdingEventList (base name: "TaxWithholdingEventList")', function() {
+    it('should have the property taxWithholdingEventList', function() {
       // verify property exists
       expect(instance).to.have.property('taxWithholdingEventList');
 
       // set and verify value
-      var validValue = generateMockData('[TaxWithholdingEvent]', true);
-      instance.taxWithholdingEventList = validValue;
-      expect(instance.taxWithholdingEventList).to.equal(validValue);
+      var expectedValue = generateMockData('TaxWithholdingEvent', true);
+      instance.taxWithholdingEventList = expectedValue;
+      expect(instance.taxWithholdingEventList).to.equal(expectedValue);
     });
 
-    it('should have the property chargeRefundEventList (base name: "ChargeRefundEventList")', function() {
+    it('should have the property chargeRefundEventList', function() {
       // verify property exists
       expect(instance).to.have.property('chargeRefundEventList');
 
       // set and verify value
-      var validValue = generateMockData('[ChargeRefundEvent]', true);
-      instance.chargeRefundEventList = validValue;
-      expect(instance.chargeRefundEventList).to.equal(validValue);
+      var expectedValue = generateMockData('ChargeRefundEvent', true);
+      instance.chargeRefundEventList = expectedValue;
+      expect(instance.chargeRefundEventList).to.equal(expectedValue);
     });
 
-    it('should have the property failedAdhocDisbursementEventList (base name: "FailedAdhocDisbursementEventList")', function() {
+    it('should have the property failedAdhocDisbursementEventList', function() {
       // verify property exists
       expect(instance).to.have.property('failedAdhocDisbursementEventList');
 
       // set and verify value
-      var validValue = generateMockData('[FailedAdhocDisbursementEvent]', true);
-      instance.failedAdhocDisbursementEventList = validValue;
-      expect(instance.failedAdhocDisbursementEventList).to.equal(validValue);
+      var expectedValue = generateMockData('FailedAdhocDisbursementEvent', true);
+      instance.failedAdhocDisbursementEventList = expectedValue;
+      expect(instance.failedAdhocDisbursementEventList).to.equal(expectedValue);
     });
 
-    it('should have the property valueAddedServiceChargeEventList (base name: "ValueAddedServiceChargeEventList")', function() {
+    it('should have the property valueAddedServiceChargeEventList', function() {
       // verify property exists
       expect(instance).to.have.property('valueAddedServiceChargeEventList');
 
       // set and verify value
-      var validValue = generateMockData('[ValueAddedServiceChargeEvent]', true);
-      instance.valueAddedServiceChargeEventList = validValue;
-      expect(instance.valueAddedServiceChargeEventList).to.equal(validValue);
+      var expectedValue = generateMockData('ValueAddedServiceChargeEvent', true);
+      instance.valueAddedServiceChargeEventList = expectedValue;
+      expect(instance.valueAddedServiceChargeEventList).to.equal(expectedValue);
     });
 
-    it('should have the property capacityReservationBillingEventList (base name: "CapacityReservationBillingEventList")', function() {
+    it('should have the property capacityReservationBillingEventList', function() {
       // verify property exists
       expect(instance).to.have.property('capacityReservationBillingEventList');
 
       // set and verify value
-      var validValue = generateMockData('[CapacityReservationBillingEvent]', true);
-      instance.capacityReservationBillingEventList = validValue;
-      expect(instance.capacityReservationBillingEventList).to.equal(validValue);
+      var expectedValue = generateMockData('CapacityReservationBillingEvent', true);
+      instance.capacityReservationBillingEventList = expectedValue;
+      expect(instance.capacityReservationBillingEventList).to.equal(expectedValue);
     });
 
   });

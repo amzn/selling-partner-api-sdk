@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForProductTypeDefinitions.ProductTypeList);
     });
 
-    it('should have the property productTypes (base name: "productTypes")', function() {
+    it('should have the property productTypes', function() {
       // verify property exists
       expect(instance).to.have.property('productTypes');
 
       // set and verify value
-      var validValue = generateMockData('[ProductType]', true);
-      instance.productTypes = validValue;
-      expect(instance.productTypes).to.equal(validValue);
+      var expectedValue = generateMockData('ProductType', true);
+      instance.productTypes = expectedValue;
+      expect(instance.productTypes).to.equal(expectedValue);
     });
 
-    it('should have the property productTypeVersion (base name: "productTypeVersion")', function() {
+    it('should have the property productTypeVersion', function() {
       // verify property exists
       expect(instance).to.have.property('productTypeVersion');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.productTypeVersion = validValue;
-      expect(instance.productTypeVersion).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.productTypeVersion = expectedValue;
+      expect(instance.productTypeVersion).to.equal(expectedValue);
     });
 
   });

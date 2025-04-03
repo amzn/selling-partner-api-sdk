@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForSolicitations.GetSchemaResponseLinks);
     });
 
-    it('should have the property self (base name: "self")', function() {
+    it('should have the property self', function() {
       // verify property exists
       expect(instance).to.have.property('self');
 
       // set and verify value
-      var validValue = generateMockData('LinkObject');
-      instance.self = validValue;
-      expect(instance.self).to.equal(validValue);
+      var expectedValue = generateMockData('LinkObject');
+      instance.self = expectedValue;
+      expect(instance.self).to.equal(expectedValue);
     });
 
   });

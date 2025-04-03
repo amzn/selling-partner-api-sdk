@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForPricing.PrimeDetails);
     });
 
-    it('should have the property eligibility (base name: "eligibility")', function() {
+    it('should have the property eligibility', function() {
       // verify property exists
       expect(instance).to.have.property('eligibility');
 
       // set and verify value
-      var validValue = ['NATIONAL', 'REGIONAL', 'NONE', ][0];
-      instance.eligibility = validValue;
-      expect(instance.eligibility).to.equal(validValue);
+      var expectedValue = ['NATIONAL', 'REGIONAL', 'NONE', ][0];
+      instance.eligibility = expectedValue;
+      expect(instance.eligibility).to.equal(expectedValue);
     });
 
   });

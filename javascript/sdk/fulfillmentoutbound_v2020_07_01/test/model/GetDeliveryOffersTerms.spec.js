@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.GetDeliveryOffersTerms);
     });
 
-    it('should have the property origin (base name: "origin")', function() {
+    it('should have the property origin', function() {
       // verify property exists
       expect(instance).to.have.property('origin');
 
       // set and verify value
-      var validValue = generateMockData('Origin');
-      instance.origin = validValue;
-      expect(instance.origin).to.equal(validValue);
+      var expectedValue = generateMockData('Origin');
+      instance.origin = expectedValue;
+      expect(instance.origin).to.equal(expectedValue);
     });
 
-    it('should have the property destination (base name: "destination")', function() {
+    it('should have the property destination', function() {
       // verify property exists
       expect(instance).to.have.property('destination');
 
       // set and verify value
-      var validValue = generateMockData('Destination');
-      instance.destination = validValue;
-      expect(instance.destination).to.equal(validValue);
+      var expectedValue = generateMockData('Destination');
+      instance.destination = expectedValue;
+      expect(instance.destination).to.equal(expectedValue);
     });
 
   });

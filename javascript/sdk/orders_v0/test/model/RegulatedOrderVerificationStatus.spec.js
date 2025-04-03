@@ -45,74 +45,74 @@
       expect(instance).to.be.a(SellingPartnerApiForOrders.RegulatedOrderVerificationStatus);
     });
 
-    it('should have the property status (base name: "Status")', function() {
+    it('should have the property status', function() {
       // verify property exists
       expect(instance).to.have.property('status');
 
       // set and verify value
-      var validValue = generateMockData('VerificationStatus');
-      instance.status = validValue;
-      expect(instance.status).to.equal(validValue);
+      var expectedValue = generateMockData('VerificationStatus');
+      instance.status = expectedValue;
+      expect(instance.status).to.equal(expectedValue);
     });
 
-    it('should have the property requiresMerchantAction (base name: "RequiresMerchantAction")', function() {
+    it('should have the property requiresMerchantAction', function() {
       // verify property exists
       expect(instance).to.have.property('requiresMerchantAction');
 
       // set and verify value
-      var validValue = generateMockData('Boolean');
-      instance.requiresMerchantAction = validValue;
-      expect(instance.requiresMerchantAction).to.equal(validValue);
+      var expectedValue = generateMockData('Boolean');
+      instance.requiresMerchantAction = expectedValue;
+      expect(instance.requiresMerchantAction).to.equal(expectedValue);
     });
 
-    it('should have the property validRejectionReasons (base name: "ValidRejectionReasons")', function() {
+    it('should have the property validRejectionReasons', function() {
       // verify property exists
       expect(instance).to.have.property('validRejectionReasons');
 
       // set and verify value
-      var validValue = generateMockData('[RejectionReason]', true);
-      instance.validRejectionReasons = validValue;
-      expect(instance.validRejectionReasons).to.equal(validValue);
+      var expectedValue = generateMockData('RejectionReason', true);
+      instance.validRejectionReasons = expectedValue;
+      expect(instance.validRejectionReasons).to.equal(expectedValue);
     });
 
-    it('should have the property rejectionReason (base name: "RejectionReason")', function() {
+    it('should have the property rejectionReason', function() {
       // verify property exists
       expect(instance).to.have.property('rejectionReason');
 
       // set and verify value
-      var validValue = generateMockData('RejectionReason');
-      instance.rejectionReason = validValue;
-      expect(instance.rejectionReason).to.equal(validValue);
+      var expectedValue = generateMockData('RejectionReason');
+      instance.rejectionReason = expectedValue;
+      expect(instance.rejectionReason).to.equal(expectedValue);
     });
 
-    it('should have the property reviewDate (base name: "ReviewDate")', function() {
+    it('should have the property reviewDate', function() {
       // verify property exists
       expect(instance).to.have.property('reviewDate');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.reviewDate = validValue;
-      expect(instance.reviewDate).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.reviewDate = expectedValue;
+      expect(instance.reviewDate).to.equal(expectedValue);
     });
 
-    it('should have the property externalReviewerId (base name: "ExternalReviewerId")', function() {
+    it('should have the property externalReviewerId', function() {
       // verify property exists
       expect(instance).to.have.property('externalReviewerId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.externalReviewerId = validValue;
-      expect(instance.externalReviewerId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.externalReviewerId = expectedValue;
+      expect(instance.externalReviewerId).to.equal(expectedValue);
     });
 
-    it('should have the property validVerificationDetails (base name: "ValidVerificationDetails")', function() {
+    it('should have the property validVerificationDetails', function() {
       // verify property exists
       expect(instance).to.have.property('validVerificationDetails');
 
       // set and verify value
-      var validValue = generateMockData('[ValidVerificationDetail]', true);
-      instance.validVerificationDetails = validValue;
-      expect(instance.validVerificationDetails).to.equal(validValue);
+      var expectedValue = generateMockData('ValidVerificationDetail', true);
+      instance.validVerificationDetails = expectedValue;
+      expect(instance.validVerificationDetails).to.equal(expectedValue);
     });
 
   });

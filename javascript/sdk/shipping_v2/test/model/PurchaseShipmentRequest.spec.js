@@ -45,54 +45,54 @@
       expect(instance).to.be.a(AmazonShippingApi.PurchaseShipmentRequest);
     });
 
-    it('should have the property requestToken (base name: "requestToken")', function() {
+    it('should have the property requestToken', function() {
       // verify property exists
       expect(instance).to.have.property('requestToken');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.requestToken = validValue;
-      expect(instance.requestToken).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.requestToken = expectedValue;
+      expect(instance.requestToken).to.equal(expectedValue);
     });
 
-    it('should have the property rateId (base name: "rateId")', function() {
+    it('should have the property rateId', function() {
       // verify property exists
       expect(instance).to.have.property('rateId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.rateId = validValue;
-      expect(instance.rateId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.rateId = expectedValue;
+      expect(instance.rateId).to.equal(expectedValue);
     });
 
-    it('should have the property requestedDocumentSpecification (base name: "requestedDocumentSpecification")', function() {
+    it('should have the property requestedDocumentSpecification', function() {
       // verify property exists
       expect(instance).to.have.property('requestedDocumentSpecification');
 
       // set and verify value
-      var validValue = generateMockData('RequestedDocumentSpecification');
-      instance.requestedDocumentSpecification = validValue;
-      expect(instance.requestedDocumentSpecification).to.equal(validValue);
+      var expectedValue = generateMockData('RequestedDocumentSpecification');
+      instance.requestedDocumentSpecification = expectedValue;
+      expect(instance.requestedDocumentSpecification).to.equal(expectedValue);
     });
 
-    it('should have the property requestedValueAddedServices (base name: "requestedValueAddedServices")', function() {
+    it('should have the property requestedValueAddedServices', function() {
       // verify property exists
       expect(instance).to.have.property('requestedValueAddedServices');
 
       // set and verify value
-      var validValue = generateMockData('[RequestedValueAddedService]', true);
-      instance.requestedValueAddedServices = validValue;
-      expect(instance.requestedValueAddedServices).to.equal(validValue);
+      var expectedValue = generateMockData('RequestedValueAddedService', true);
+      instance.requestedValueAddedServices = expectedValue;
+      expect(instance.requestedValueAddedServices).to.equal(expectedValue);
     });
 
-    it('should have the property additionalInputs (base name: "additionalInputs")', function() {
+    it('should have the property additionalInputs', function() {
       // verify property exists
       expect(instance).to.have.property('additionalInputs');
 
       // set and verify value
-      var validValue = generateMockData('{String: Object}');
-      instance.additionalInputs = validValue;
-      expect(instance.additionalInputs).to.equal(validValue);
+      var expectedValue = generateMockData('{String: Object}');
+      instance.additionalInputs = expectedValue;
+      expect(instance.additionalInputs).to.equal(expectedValue);
     });
 
   });

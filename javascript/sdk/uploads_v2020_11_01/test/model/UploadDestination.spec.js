@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForUploads.UploadDestination);
     });
 
-    it('should have the property uploadDestinationId (base name: "uploadDestinationId")', function() {
+    it('should have the property uploadDestinationId', function() {
       // verify property exists
       expect(instance).to.have.property('uploadDestinationId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.uploadDestinationId = validValue;
-      expect(instance.uploadDestinationId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.uploadDestinationId = expectedValue;
+      expect(instance.uploadDestinationId).to.equal(expectedValue);
     });
 
-    it('should have the property url (base name: "url")', function() {
+    it('should have the property url', function() {
       // verify property exists
       expect(instance).to.have.property('url');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.url = validValue;
-      expect(instance.url).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.url = expectedValue;
+      expect(instance.url).to.equal(expectedValue);
     });
 
-    it('should have the property headers (base name: "headers")', function() {
+    it('should have the property headers', function() {
       // verify property exists
       expect(instance).to.have.property('headers');
 
       // set and verify value
-      var validValue = generateMockData('Object');
-      instance.headers = validValue;
-      expect(instance.headers).to.equal(validValue);
+      var expectedValue = generateMockData('Object');
+      instance.headers = expectedValue;
+      expect(instance.headers).to.equal(expectedValue);
     });
 
   });

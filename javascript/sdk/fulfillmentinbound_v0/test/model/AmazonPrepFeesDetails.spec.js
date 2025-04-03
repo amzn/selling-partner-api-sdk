@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForFulfillmentInbound.AmazonPrepFeesDetails);
     });
 
-    it('should have the property prepInstruction (base name: "PrepInstruction")', function() {
+    it('should have the property prepInstruction', function() {
       // verify property exists
       expect(instance).to.have.property('prepInstruction');
 
       // set and verify value
-      var validValue = generateMockData('PrepInstruction');
-      instance.prepInstruction = validValue;
-      expect(instance.prepInstruction).to.equal(validValue);
+      var expectedValue = generateMockData('PrepInstruction');
+      instance.prepInstruction = expectedValue;
+      expect(instance.prepInstruction).to.equal(expectedValue);
     });
 
-    it('should have the property feePerUnit (base name: "FeePerUnit")', function() {
+    it('should have the property feePerUnit', function() {
       // verify property exists
       expect(instance).to.have.property('feePerUnit');
 
       // set and verify value
-      var validValue = generateMockData('Amount');
-      instance.feePerUnit = validValue;
-      expect(instance.feePerUnit).to.equal(validValue);
+      var expectedValue = generateMockData('Amount');
+      instance.feePerUnit = expectedValue;
+      expect(instance.feePerUnit).to.equal(expectedValue);
     });
 
   });

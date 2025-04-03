@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForEasyShip.CreateScheduledPackagesRequest);
     });
 
-    it('should have the property marketplaceId (base name: "marketplaceId")', function() {
+    it('should have the property marketplaceId', function() {
       // verify property exists
       expect(instance).to.have.property('marketplaceId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.marketplaceId = validValue;
-      expect(instance.marketplaceId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.marketplaceId = expectedValue;
+      expect(instance.marketplaceId).to.equal(expectedValue);
     });
 
-    it('should have the property orderScheduleDetailsList (base name: "orderScheduleDetailsList")', function() {
+    it('should have the property orderScheduleDetailsList', function() {
       // verify property exists
       expect(instance).to.have.property('orderScheduleDetailsList');
 
       // set and verify value
-      var validValue = generateMockData('[OrderScheduleDetails]', true);
-      instance.orderScheduleDetailsList = validValue;
-      expect(instance.orderScheduleDetailsList).to.equal(validValue);
+      var expectedValue = generateMockData('OrderScheduleDetails', true);
+      instance.orderScheduleDetailsList = expectedValue;
+      expect(instance.orderScheduleDetailsList).to.equal(expectedValue);
     });
 
-    it('should have the property labelFormat (base name: "labelFormat")', function() {
+    it('should have the property labelFormat', function() {
       // verify property exists
       expect(instance).to.have.property('labelFormat');
 
       // set and verify value
-      var validValue = generateMockData('LabelFormat');
-      instance.labelFormat = validValue;
-      expect(instance.labelFormat).to.equal(validValue);
+      var expectedValue = generateMockData('LabelFormat');
+      instance.labelFormat = expectedValue;
+      expect(instance.labelFormat).to.equal(expectedValue);
     });
 
   });

@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForNotifications.Subscription);
     });
 
-    it('should have the property subscriptionId (base name: "subscriptionId")', function() {
+    it('should have the property subscriptionId', function() {
       // verify property exists
       expect(instance).to.have.property('subscriptionId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.subscriptionId = validValue;
-      expect(instance.subscriptionId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.subscriptionId = expectedValue;
+      expect(instance.subscriptionId).to.equal(expectedValue);
     });
 
-    it('should have the property payloadVersion (base name: "payloadVersion")', function() {
+    it('should have the property payloadVersion', function() {
       // verify property exists
       expect(instance).to.have.property('payloadVersion');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.payloadVersion = validValue;
-      expect(instance.payloadVersion).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.payloadVersion = expectedValue;
+      expect(instance.payloadVersion).to.equal(expectedValue);
     });
 
-    it('should have the property destinationId (base name: "destinationId")', function() {
+    it('should have the property destinationId', function() {
       // verify property exists
       expect(instance).to.have.property('destinationId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.destinationId = validValue;
-      expect(instance.destinationId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.destinationId = expectedValue;
+      expect(instance.destinationId).to.equal(expectedValue);
     });
 
-    it('should have the property processingDirective (base name: "processingDirective")', function() {
+    it('should have the property processingDirective', function() {
       // verify property exists
       expect(instance).to.have.property('processingDirective');
 
       // set and verify value
-      var validValue = generateMockData('ProcessingDirective');
-      instance.processingDirective = validValue;
-      expect(instance.processingDirective).to.equal(validValue);
+      var expectedValue = generateMockData('ProcessingDirective');
+      instance.processingDirective = expectedValue;
+      expect(instance.processingDirective).to.equal(expectedValue);
     });
 
   });

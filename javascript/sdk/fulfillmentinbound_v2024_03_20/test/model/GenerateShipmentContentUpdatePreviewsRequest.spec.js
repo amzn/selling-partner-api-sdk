@@ -45,24 +45,24 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.GenerateShipmentContentUpdatePreviewsRequest);
     });
 
-    it('should have the property boxes (base name: "boxes")', function() {
+    it('should have the property boxes', function() {
       // verify property exists
       expect(instance).to.have.property('boxes');
 
       // set and verify value
-      var validValue = generateMockData('[BoxUpdateInput]', true);
-      instance.boxes = validValue;
-      expect(instance.boxes).to.equal(validValue);
+      var expectedValue = generateMockData('BoxUpdateInput', true);
+      instance.boxes = expectedValue;
+      expect(instance.boxes).to.equal(expectedValue);
     });
 
-    it('should have the property items (base name: "items")', function() {
+    it('should have the property items', function() {
       // verify property exists
       expect(instance).to.have.property('items');
 
       // set and verify value
-      var validValue = generateMockData('[ItemInput]', true);
-      instance.items = validValue;
-      expect(instance.items).to.equal(validValue);
+      var expectedValue = generateMockData('ItemInput', true);
+      instance.items = expectedValue;
+      expect(instance.items).to.equal(expectedValue);
     });
 
   });

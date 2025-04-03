@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForDirectFulfillmentShipping.PackingSlipList);
     });
 
-    it('should have the property pagination (base name: "pagination")', function() {
+    it('should have the property pagination', function() {
       // verify property exists
       expect(instance).to.have.property('pagination');
 
       // set and verify value
-      var validValue = generateMockData('Pagination');
-      instance.pagination = validValue;
-      expect(instance.pagination).to.equal(validValue);
+      var expectedValue = generateMockData('Pagination');
+      instance.pagination = expectedValue;
+      expect(instance.pagination).to.equal(expectedValue);
     });
 
-    it('should have the property packingSlips (base name: "packingSlips")', function() {
+    it('should have the property packingSlips', function() {
       // verify property exists
       expect(instance).to.have.property('packingSlips');
 
       // set and verify value
-      var validValue = generateMockData('[PackingSlip]', true);
-      instance.packingSlips = validValue;
-      expect(instance.packingSlips).to.equal(validValue);
+      var expectedValue = generateMockData('PackingSlip', true);
+      instance.packingSlips = expectedValue;
+      expect(instance.packingSlips).to.equal(expectedValue);
     });
 
   });

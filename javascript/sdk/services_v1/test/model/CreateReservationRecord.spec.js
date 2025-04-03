@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForServices.CreateReservationRecord);
     });
 
-    it('should have the property reservation (base name: "reservation")', function() {
+    it('should have the property reservation', function() {
       // verify property exists
       expect(instance).to.have.property('reservation');
 
       // set and verify value
-      var validValue = generateMockData('Reservation');
-      instance.reservation = validValue;
-      expect(instance.reservation).to.equal(validValue);
+      var expectedValue = generateMockData('Reservation');
+      instance.reservation = expectedValue;
+      expect(instance.reservation).to.equal(expectedValue);
     });
 
-    it('should have the property warnings (base name: "warnings")', function() {
+    it('should have the property warnings', function() {
       // verify property exists
       expect(instance).to.have.property('warnings');
 
       // set and verify value
-      var validValue = generateMockData('[Warning]', true);
-      instance.warnings = validValue;
-      expect(instance.warnings).to.equal(validValue);
+      var expectedValue = generateMockData('Warning', true);
+      instance.warnings = expectedValue;
+      expect(instance.warnings).to.equal(expectedValue);
     });
 
-    it('should have the property errors (base name: "errors")', function() {
+    it('should have the property errors', function() {
       // verify property exists
       expect(instance).to.have.property('errors');
 
       // set and verify value
-      var validValue = generateMockData('[Error]', true);
-      instance.errors = validValue;
-      expect(instance.errors).to.equal(validValue);
+      var expectedValue = generateMockData('Error', true);
+      instance.errors = expectedValue;
+      expect(instance.errors).to.equal(expectedValue);
     });
 
   });

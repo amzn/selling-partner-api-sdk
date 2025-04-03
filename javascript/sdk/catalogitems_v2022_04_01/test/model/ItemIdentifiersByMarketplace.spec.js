@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForCatalogItems.ItemIdentifiersByMarketplace);
     });
 
-    it('should have the property marketplaceId (base name: "marketplaceId")', function() {
+    it('should have the property marketplaceId', function() {
       // verify property exists
       expect(instance).to.have.property('marketplaceId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.marketplaceId = validValue;
-      expect(instance.marketplaceId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.marketplaceId = expectedValue;
+      expect(instance.marketplaceId).to.equal(expectedValue);
     });
 
-    it('should have the property identifiers (base name: "identifiers")', function() {
+    it('should have the property identifiers', function() {
       // verify property exists
       expect(instance).to.have.property('identifiers');
 
       // set and verify value
-      var validValue = generateMockData('[ItemIdentifier]', true);
-      instance.identifiers = validValue;
-      expect(instance.identifiers).to.equal(validValue);
+      var expectedValue = generateMockData('ItemIdentifier', true);
+      instance.identifiers = expectedValue;
+      expect(instance.identifiers).to.equal(expectedValue);
     });
 
   });

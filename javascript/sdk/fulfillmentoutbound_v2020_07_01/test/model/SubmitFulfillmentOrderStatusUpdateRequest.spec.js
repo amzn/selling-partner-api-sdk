@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.SubmitFulfillmentOrderStatusUpdateRequest);
     });
 
-    it('should have the property fulfillmentOrderStatus (base name: "fulfillmentOrderStatus")', function() {
+    it('should have the property fulfillmentOrderStatus', function() {
       // verify property exists
       expect(instance).to.have.property('fulfillmentOrderStatus');
 
       // set and verify value
-      var validValue = generateMockData('FulfillmentOrderStatus');
-      instance.fulfillmentOrderStatus = validValue;
-      expect(instance.fulfillmentOrderStatus).to.equal(validValue);
+      var expectedValue = generateMockData('FulfillmentOrderStatus');
+      instance.fulfillmentOrderStatus = expectedValue;
+      expect(instance.fulfillmentOrderStatus).to.equal(expectedValue);
     });
 
   });

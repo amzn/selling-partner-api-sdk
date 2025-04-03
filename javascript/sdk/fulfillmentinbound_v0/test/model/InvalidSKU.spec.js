@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForFulfillmentInbound.InvalidSKU);
     });
 
-    it('should have the property sellerSKU (base name: "SellerSKU")', function() {
+    it('should have the property sellerSKU', function() {
       // verify property exists
       expect(instance).to.have.property('sellerSKU');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.sellerSKU = validValue;
-      expect(instance.sellerSKU).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.sellerSKU = expectedValue;
+      expect(instance.sellerSKU).to.equal(expectedValue);
     });
 
-    it('should have the property errorReason (base name: "ErrorReason")', function() {
+    it('should have the property errorReason', function() {
       // verify property exists
       expect(instance).to.have.property('errorReason');
 
       // set and verify value
-      var validValue = generateMockData('ErrorReason');
-      instance.errorReason = validValue;
-      expect(instance.errorReason).to.equal(validValue);
+      var expectedValue = generateMockData('ErrorReason');
+      instance.errorReason = expectedValue;
+      expect(instance.errorReason).to.equal(expectedValue);
     });
 
   });

@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForMessaging.GetMessagingActionResponseLinks);
     });
 
-    it('should have the property self (base name: "self")', function() {
+    it('should have the property self', function() {
       // verify property exists
       expect(instance).to.have.property('self');
 
       // set and verify value
-      var validValue = generateMockData('LinkObject');
-      instance.self = validValue;
-      expect(instance.self).to.equal(validValue);
+      var expectedValue = generateMockData('LinkObject');
+      instance.self = expectedValue;
+      expect(instance.self).to.equal(expectedValue);
     });
 
-    it('should have the property schema (base name: "schema")', function() {
+    it('should have the property schema', function() {
       // verify property exists
       expect(instance).to.have.property('schema');
 
       // set and verify value
-      var validValue = generateMockData('LinkObject');
-      instance.schema = validValue;
-      expect(instance.schema).to.equal(validValue);
+      var expectedValue = generateMockData('LinkObject');
+      instance.schema = expectedValue;
+      expect(instance.schema).to.equal(expectedValue);
     });
 
   });

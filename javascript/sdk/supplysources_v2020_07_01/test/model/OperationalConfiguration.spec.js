@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForSupplySources.OperationalConfiguration);
     });
 
-    it('should have the property contactDetails (base name: "contactDetails")', function() {
+    it('should have the property contactDetails', function() {
       // verify property exists
       expect(instance).to.have.property('contactDetails');
 
       // set and verify value
-      var validValue = generateMockData('ContactDetails');
-      instance.contactDetails = validValue;
-      expect(instance.contactDetails).to.equal(validValue);
+      var expectedValue = generateMockData('ContactDetails');
+      instance.contactDetails = expectedValue;
+      expect(instance.contactDetails).to.equal(expectedValue);
     });
 
-    it('should have the property throughputConfig (base name: "throughputConfig")', function() {
+    it('should have the property throughputConfig', function() {
       // verify property exists
       expect(instance).to.have.property('throughputConfig');
 
       // set and verify value
-      var validValue = generateMockData('ThroughputConfig');
-      instance.throughputConfig = validValue;
-      expect(instance.throughputConfig).to.equal(validValue);
+      var expectedValue = generateMockData('ThroughputConfig');
+      instance.throughputConfig = expectedValue;
+      expect(instance.throughputConfig).to.equal(expectedValue);
     });
 
-    it('should have the property operatingHoursByDay (base name: "operatingHoursByDay")', function() {
+    it('should have the property operatingHoursByDay', function() {
       // verify property exists
       expect(instance).to.have.property('operatingHoursByDay');
 
       // set and verify value
-      var validValue = generateMockData('OperatingHoursByDay');
-      instance.operatingHoursByDay = validValue;
-      expect(instance.operatingHoursByDay).to.equal(validValue);
+      var expectedValue = generateMockData('OperatingHoursByDay');
+      instance.operatingHoursByDay = expectedValue;
+      expect(instance.operatingHoursByDay).to.equal(expectedValue);
     });
 
-    it('should have the property handlingTime (base name: "handlingTime")', function() {
+    it('should have the property handlingTime', function() {
       // verify property exists
       expect(instance).to.have.property('handlingTime');
 
       // set and verify value
-      var validValue = generateMockData('Duration');
-      instance.handlingTime = validValue;
-      expect(instance.handlingTime).to.equal(validValue);
+      var expectedValue = generateMockData('Duration');
+      instance.handlingTime = expectedValue;
+      expect(instance.handlingTime).to.equal(expectedValue);
     });
 
   });

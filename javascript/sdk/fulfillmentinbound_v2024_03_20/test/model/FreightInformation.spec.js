@@ -45,24 +45,24 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.FreightInformation);
     });
 
-    it('should have the property declaredValue (base name: "declaredValue")', function() {
+    it('should have the property declaredValue', function() {
       // verify property exists
       expect(instance).to.have.property('declaredValue');
 
       // set and verify value
-      var validValue = generateMockData('Currency');
-      instance.declaredValue = validValue;
-      expect(instance.declaredValue).to.equal(validValue);
+      var expectedValue = generateMockData('Currency');
+      instance.declaredValue = expectedValue;
+      expect(instance.declaredValue).to.equal(expectedValue);
     });
 
-    it('should have the property freightClass (base name: "freightClass")', function() {
+    it('should have the property freightClass', function() {
       // verify property exists
       expect(instance).to.have.property('freightClass');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.freightClass = validValue;
-      expect(instance.freightClass).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.freightClass = expectedValue;
+      expect(instance.freightClass).to.equal(expectedValue);
     });
 
   });

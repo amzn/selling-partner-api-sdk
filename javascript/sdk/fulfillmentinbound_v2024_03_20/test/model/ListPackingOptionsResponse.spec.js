@@ -45,24 +45,24 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.ListPackingOptionsResponse);
     });
 
-    it('should have the property packingOptions (base name: "packingOptions")', function() {
+    it('should have the property packingOptions', function() {
       // verify property exists
       expect(instance).to.have.property('packingOptions');
 
       // set and verify value
-      var validValue = generateMockData('[PackingOption]', true);
-      instance.packingOptions = validValue;
-      expect(instance.packingOptions).to.equal(validValue);
+      var expectedValue = generateMockData('PackingOption', true);
+      instance.packingOptions = expectedValue;
+      expect(instance.packingOptions).to.equal(expectedValue);
     });
 
-    it('should have the property pagination (base name: "pagination")', function() {
+    it('should have the property pagination', function() {
       // verify property exists
       expect(instance).to.have.property('pagination');
 
       // set and verify value
-      var validValue = generateMockData('Pagination');
-      instance.pagination = validValue;
-      expect(instance.pagination).to.equal(validValue);
+      var expectedValue = generateMockData('Pagination');
+      instance.pagination = expectedValue;
+      expect(instance.pagination).to.equal(expectedValue);
     });
 
   });

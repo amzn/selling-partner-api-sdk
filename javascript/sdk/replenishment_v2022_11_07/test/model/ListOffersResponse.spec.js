@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForReplenishment.ListOffersResponse);
     });
 
-    it('should have the property offers (base name: "offers")', function() {
+    it('should have the property offers', function() {
       // verify property exists
       expect(instance).to.have.property('offers');
 
       // set and verify value
-      var validValue = generateMockData('[ListOffersResponseOffer]', true);
-      instance.offers = validValue;
-      expect(instance.offers).to.equal(validValue);
+      var expectedValue = generateMockData('ListOffersResponseOffer', true);
+      instance.offers = expectedValue;
+      expect(instance.offers).to.equal(expectedValue);
     });
 
-    it('should have the property pagination (base name: "pagination")', function() {
+    it('should have the property pagination', function() {
       // verify property exists
       expect(instance).to.have.property('pagination');
 
       // set and verify value
-      var validValue = generateMockData('PaginationResponse');
-      instance.pagination = validValue;
-      expect(instance.pagination).to.equal(validValue);
+      var expectedValue = generateMockData('PaginationResponse');
+      instance.pagination = expectedValue;
+      expect(instance.pagination).to.equal(expectedValue);
     });
 
   });

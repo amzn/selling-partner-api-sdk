@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForRetailProcurementShipments.Expiry);
     });
 
-    it('should have the property manufacturerDate (base name: "manufacturerDate")', function() {
+    it('should have the property manufacturerDate', function() {
       // verify property exists
       expect(instance).to.have.property('manufacturerDate');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.manufacturerDate = validValue;
-      expect(instance.manufacturerDate).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.manufacturerDate = expectedValue;
+      expect(instance.manufacturerDate).to.equal(expectedValue);
     });
 
-    it('should have the property expiryDate (base name: "expiryDate")', function() {
+    it('should have the property expiryDate', function() {
       // verify property exists
       expect(instance).to.have.property('expiryDate');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.expiryDate = validValue;
-      expect(instance.expiryDate).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.expiryDate = expectedValue;
+      expect(instance.expiryDate).to.equal(expectedValue);
     });
 
-    it('should have the property expiryAfterDuration (base name: "expiryAfterDuration")', function() {
+    it('should have the property expiryAfterDuration', function() {
       // verify property exists
       expect(instance).to.have.property('expiryAfterDuration');
 
       // set and verify value
-      var validValue = generateMockData('Duration');
-      instance.expiryAfterDuration = validValue;
-      expect(instance.expiryAfterDuration).to.equal(validValue);
+      var expectedValue = generateMockData('Duration');
+      instance.expiryAfterDuration = expectedValue;
+      expect(instance.expiryAfterDuration).to.equal(expectedValue);
     });
 
   });

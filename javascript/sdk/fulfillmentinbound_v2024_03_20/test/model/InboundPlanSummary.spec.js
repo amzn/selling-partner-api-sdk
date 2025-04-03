@@ -45,74 +45,74 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.InboundPlanSummary);
     });
 
-    it('should have the property createdAt (base name: "createdAt")', function() {
+    it('should have the property createdAt', function() {
       // verify property exists
       expect(instance).to.have.property('createdAt');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.createdAt = validValue;
-      expect(instance.createdAt).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.createdAt = expectedValue;
+      expect(instance.createdAt).to.equal(expectedValue);
     });
 
-    it('should have the property inboundPlanId (base name: "inboundPlanId")', function() {
+    it('should have the property inboundPlanId', function() {
       // verify property exists
       expect(instance).to.have.property('inboundPlanId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.inboundPlanId = validValue;
-      expect(instance.inboundPlanId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.inboundPlanId = expectedValue;
+      expect(instance.inboundPlanId).to.equal(expectedValue);
     });
 
-    it('should have the property lastUpdatedAt (base name: "lastUpdatedAt")', function() {
+    it('should have the property lastUpdatedAt', function() {
       // verify property exists
       expect(instance).to.have.property('lastUpdatedAt');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.lastUpdatedAt = validValue;
-      expect(instance.lastUpdatedAt).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.lastUpdatedAt = expectedValue;
+      expect(instance.lastUpdatedAt).to.equal(expectedValue);
     });
 
-    it('should have the property marketplaceIds (base name: "marketplaceIds")', function() {
+    it('should have the property marketplaceIds', function() {
       // verify property exists
       expect(instance).to.have.property('marketplaceIds');
 
       // set and verify value
-      var validValue = generateMockData('[String]', true);
-      instance.marketplaceIds = validValue;
-      expect(instance.marketplaceIds).to.equal(validValue);
+      var expectedValue = generateMockData('String', true);
+      instance.marketplaceIds = expectedValue;
+      expect(instance.marketplaceIds).to.equal(expectedValue);
     });
 
-    it('should have the property name (base name: "name")', function() {
+    it('should have the property name', function() {
       // verify property exists
       expect(instance).to.have.property('name');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.name = validValue;
-      expect(instance.name).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.name = expectedValue;
+      expect(instance.name).to.equal(expectedValue);
     });
 
-    it('should have the property sourceAddress (base name: "sourceAddress")', function() {
+    it('should have the property sourceAddress', function() {
       // verify property exists
       expect(instance).to.have.property('sourceAddress');
 
       // set and verify value
-      var validValue = generateMockData('Address');
-      instance.sourceAddress = validValue;
-      expect(instance.sourceAddress).to.equal(validValue);
+      var expectedValue = generateMockData('Address');
+      instance.sourceAddress = expectedValue;
+      expect(instance.sourceAddress).to.equal(expectedValue);
     });
 
-    it('should have the property status (base name: "status")', function() {
+    it('should have the property status', function() {
       // verify property exists
       expect(instance).to.have.property('status');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.status = validValue;
-      expect(instance.status).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.status = expectedValue;
+      expect(instance.status).to.equal(expectedValue);
     });
 
   });

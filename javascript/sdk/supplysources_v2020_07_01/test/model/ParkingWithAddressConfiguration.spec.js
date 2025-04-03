@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForSupplySources.ParkingWithAddressConfiguration);
     });
 
-    it('should have the property parkingCostType (base name: "parkingCostType")', function() {
+    it('should have the property parkingCostType', function() {
       // verify property exists
       expect(instance).to.have.property('parkingCostType');
 
       // set and verify value
-      var validValue = generateMockData('ParkingCostType');
-      instance.parkingCostType = validValue;
-      expect(instance.parkingCostType).to.equal(validValue);
+      var expectedValue = generateMockData('ParkingCostType');
+      instance.parkingCostType = expectedValue;
+      expect(instance.parkingCostType).to.equal(expectedValue);
     });
 
-    it('should have the property parkingSpotIdentificationType (base name: "parkingSpotIdentificationType")', function() {
+    it('should have the property parkingSpotIdentificationType', function() {
       // verify property exists
       expect(instance).to.have.property('parkingSpotIdentificationType');
 
       // set and verify value
-      var validValue = generateMockData('ParkingSpotIdentificationType');
-      instance.parkingSpotIdentificationType = validValue;
-      expect(instance.parkingSpotIdentificationType).to.equal(validValue);
+      var expectedValue = generateMockData('ParkingSpotIdentificationType');
+      instance.parkingSpotIdentificationType = expectedValue;
+      expect(instance.parkingSpotIdentificationType).to.equal(expectedValue);
     });
 
-    it('should have the property numberOfParkingSpots (base name: "numberOfParkingSpots")', function() {
+    it('should have the property numberOfParkingSpots', function() {
       // verify property exists
       expect(instance).to.have.property('numberOfParkingSpots');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.numberOfParkingSpots = validValue;
-      expect(instance.numberOfParkingSpots).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.numberOfParkingSpots = expectedValue;
+      expect(instance.numberOfParkingSpots).to.equal(expectedValue);
     });
 
-    it('should have the property address (base name: "address")', function() {
+    it('should have the property address', function() {
       // verify property exists
       expect(instance).to.have.property('address');
 
       // set and verify value
-      var validValue = generateMockData('Address');
-      instance.address = validValue;
-      expect(instance.address).to.equal(validValue);
+      var expectedValue = generateMockData('Address');
+      instance.address = expectedValue;
+      expect(instance.address).to.equal(expectedValue);
     });
 
   });

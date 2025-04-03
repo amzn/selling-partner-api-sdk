@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForReports.GetReportsResponse);
     });
 
-    it('should have the property reports (base name: "reports")', function() {
+    it('should have the property reports', function() {
       // verify property exists
       expect(instance).to.have.property('reports');
 
       // set and verify value
-      var validValue = generateMockData('[Report]', true);
-      instance.reports = validValue;
-      expect(instance.reports).to.equal(validValue);
+      var expectedValue = generateMockData('Report', true);
+      instance.reports = expectedValue;
+      expect(instance.reports).to.equal(expectedValue);
     });
 
-    it('should have the property nextToken (base name: "nextToken")', function() {
+    it('should have the property nextToken', function() {
       // verify property exists
       expect(instance).to.have.property('nextToken');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.nextToken = validValue;
-      expect(instance.nextToken).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.nextToken = expectedValue;
+      expect(instance.nextToken).to.equal(expectedValue);
     });
 
   });

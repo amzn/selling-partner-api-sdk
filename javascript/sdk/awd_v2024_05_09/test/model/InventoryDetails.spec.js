@@ -45,34 +45,34 @@
       expect(instance).to.be.a(TheSellingPartnerApiForAmazonWarehousingAndDistribution.InventoryDetails);
     });
 
-    it('should have the property availableDistributableQuantity (base name: "availableDistributableQuantity")', function() {
+    it('should have the property availableDistributableQuantity', function() {
       // verify property exists
       expect(instance).to.have.property('availableDistributableQuantity');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.availableDistributableQuantity = validValue;
-      expect(instance.availableDistributableQuantity).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.availableDistributableQuantity = expectedValue;
+      expect(instance.availableDistributableQuantity).to.equal(expectedValue);
     });
 
-    it('should have the property replenishmentQuantity (base name: "replenishmentQuantity")', function() {
+    it('should have the property replenishmentQuantity', function() {
       // verify property exists
       expect(instance).to.have.property('replenishmentQuantity');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.replenishmentQuantity = validValue;
-      expect(instance.replenishmentQuantity).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.replenishmentQuantity = expectedValue;
+      expect(instance.replenishmentQuantity).to.equal(expectedValue);
     });
 
-    it('should have the property reservedDistributableQuantity (base name: "reservedDistributableQuantity")', function() {
+    it('should have the property reservedDistributableQuantity', function() {
       // verify property exists
       expect(instance).to.have.property('reservedDistributableQuantity');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.reservedDistributableQuantity = validValue;
-      expect(instance.reservedDistributableQuantity).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.reservedDistributableQuantity = expectedValue;
+      expect(instance.reservedDistributableQuantity).to.equal(expectedValue);
     });
 
   });

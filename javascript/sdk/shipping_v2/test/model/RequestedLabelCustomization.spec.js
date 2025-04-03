@@ -45,14 +45,14 @@
       expect(instance).to.be.a(AmazonShippingApi.RequestedLabelCustomization);
     });
 
-    it('should have the property requestAttributes (base name: "requestAttributes")', function() {
+    it('should have the property requestAttributes', function() {
       // verify property exists
       expect(instance).to.have.property('requestAttributes');
 
       // set and verify value
-      var validValue = generateMockData('[LabelAttribute]', true);
-      instance.requestAttributes = validValue;
-      expect(instance.requestAttributes).to.equal(validValue);
+      var expectedValue = generateMockData('LabelAttribute', true);
+      instance.requestAttributes = expectedValue;
+      expect(instance.requestAttributes).to.equal(expectedValue);
     });
 
   });

@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForServices.ServiceLocation);
     });
 
-    it('should have the property serviceLocationType (base name: "serviceLocationType")', function() {
+    it('should have the property serviceLocationType', function() {
       // verify property exists
       expect(instance).to.have.property('serviceLocationType');
 
       // set and verify value
-      var validValue = ['IN_HOME', 'IN_STORE', 'ONLINE', ][0];
-      instance.serviceLocationType = validValue;
-      expect(instance.serviceLocationType).to.equal(validValue);
+      var expectedValue = ['IN_HOME', 'IN_STORE', 'ONLINE', ][0];
+      instance.serviceLocationType = expectedValue;
+      expect(instance.serviceLocationType).to.equal(expectedValue);
     });
 
-    it('should have the property address (base name: "address")', function() {
+    it('should have the property address', function() {
       // verify property exists
       expect(instance).to.have.property('address');
 
       // set and verify value
-      var validValue = generateMockData('Address');
-      instance.address = validValue;
-      expect(instance.address).to.equal(validValue);
+      var expectedValue = generateMockData('Address');
+      instance.address = expectedValue;
+      expect(instance.address).to.equal(expectedValue);
     });
 
   });

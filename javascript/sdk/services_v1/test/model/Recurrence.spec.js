@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForServices.Recurrence);
     });
 
-    it('should have the property endTime (base name: "endTime")', function() {
+    it('should have the property endTime', function() {
       // verify property exists
       expect(instance).to.have.property('endTime');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.endTime = validValue;
-      expect(instance.endTime).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.endTime = expectedValue;
+      expect(instance.endTime).to.equal(expectedValue);
     });
 
-    it('should have the property daysOfWeek (base name: "daysOfWeek")', function() {
+    it('should have the property daysOfWeek', function() {
       // verify property exists
       expect(instance).to.have.property('daysOfWeek');
 
       // set and verify value
-      var validValue = generateMockData('[DayOfWeek]', true);
-      instance.daysOfWeek = validValue;
-      expect(instance.daysOfWeek).to.equal(validValue);
+      var expectedValue = generateMockData('DayOfWeek', true);
+      instance.daysOfWeek = expectedValue;
+      expect(instance.daysOfWeek).to.equal(expectedValue);
     });
 
-    it('should have the property daysOfMonth (base name: "daysOfMonth")', function() {
+    it('should have the property daysOfMonth', function() {
       // verify property exists
       expect(instance).to.have.property('daysOfMonth');
 
       // set and verify value
-      var validValue = generateMockData('[Number]', true);
-      instance.daysOfMonth = validValue;
-      expect(instance.daysOfMonth).to.equal(validValue);
+      var expectedValue = generateMockData('Number', true);
+      instance.daysOfMonth = expectedValue;
+      expect(instance.daysOfMonth).to.equal(expectedValue);
     });
 
   });

@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForEasyShip.Item);
     });
 
-    it('should have the property orderItemId (base name: "orderItemId")', function() {
+    it('should have the property orderItemId', function() {
       // verify property exists
       expect(instance).to.have.property('orderItemId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.orderItemId = validValue;
-      expect(instance.orderItemId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.orderItemId = expectedValue;
+      expect(instance.orderItemId).to.equal(expectedValue);
     });
 
-    it('should have the property orderItemSerialNumbers (base name: "orderItemSerialNumbers")', function() {
+    it('should have the property orderItemSerialNumbers', function() {
       // verify property exists
       expect(instance).to.have.property('orderItemSerialNumbers');
 
       // set and verify value
-      var validValue = generateMockData('[String]', true);
-      instance.orderItemSerialNumbers = validValue;
-      expect(instance.orderItemSerialNumbers).to.equal(validValue);
+      var expectedValue = generateMockData('String', true);
+      instance.orderItemSerialNumbers = expectedValue;
+      expect(instance.orderItemSerialNumbers).to.equal(expectedValue);
     });
 
   });

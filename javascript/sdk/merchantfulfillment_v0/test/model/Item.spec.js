@@ -45,94 +45,94 @@
       expect(instance).to.be.a(SellingPartnerApiForMerchantFulfillment.Item);
     });
 
-    it('should have the property orderItemId (base name: "OrderItemId")', function() {
+    it('should have the property orderItemId', function() {
       // verify property exists
       expect(instance).to.have.property('orderItemId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.orderItemId = validValue;
-      expect(instance.orderItemId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.orderItemId = expectedValue;
+      expect(instance.orderItemId).to.equal(expectedValue);
     });
 
-    it('should have the property quantity (base name: "Quantity")', function() {
+    it('should have the property quantity', function() {
       // verify property exists
       expect(instance).to.have.property('quantity');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.quantity = validValue;
-      expect(instance.quantity).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.quantity = expectedValue;
+      expect(instance.quantity).to.equal(expectedValue);
     });
 
-    it('should have the property itemWeight (base name: "ItemWeight")', function() {
+    it('should have the property itemWeight', function() {
       // verify property exists
       expect(instance).to.have.property('itemWeight');
 
       // set and verify value
-      var validValue = generateMockData('Weight');
-      instance.itemWeight = validValue;
-      expect(instance.itemWeight).to.equal(validValue);
+      var expectedValue = generateMockData('Weight');
+      instance.itemWeight = expectedValue;
+      expect(instance.itemWeight).to.equal(expectedValue);
     });
 
-    it('should have the property itemDescription (base name: "ItemDescription")', function() {
+    it('should have the property itemDescription', function() {
       // verify property exists
       expect(instance).to.have.property('itemDescription');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.itemDescription = validValue;
-      expect(instance.itemDescription).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.itemDescription = expectedValue;
+      expect(instance.itemDescription).to.equal(expectedValue);
     });
 
-    it('should have the property transparencyCodeList (base name: "TransparencyCodeList")', function() {
+    it('should have the property transparencyCodeList', function() {
       // verify property exists
       expect(instance).to.have.property('transparencyCodeList');
 
       // set and verify value
-      var validValue = generateMockData('[String]', true);
-      instance.transparencyCodeList = validValue;
-      expect(instance.transparencyCodeList).to.equal(validValue);
+      var expectedValue = generateMockData('String', true);
+      instance.transparencyCodeList = expectedValue;
+      expect(instance.transparencyCodeList).to.equal(expectedValue);
     });
 
-    it('should have the property itemLevelSellerInputsList (base name: "ItemLevelSellerInputsList")', function() {
+    it('should have the property itemLevelSellerInputsList', function() {
       // verify property exists
       expect(instance).to.have.property('itemLevelSellerInputsList');
 
       // set and verify value
-      var validValue = generateMockData('[AdditionalSellerInputs]', true);
-      instance.itemLevelSellerInputsList = validValue;
-      expect(instance.itemLevelSellerInputsList).to.equal(validValue);
+      var expectedValue = generateMockData('AdditionalSellerInputs', true);
+      instance.itemLevelSellerInputsList = expectedValue;
+      expect(instance.itemLevelSellerInputsList).to.equal(expectedValue);
     });
 
-    it('should have the property liquidVolume (base name: "LiquidVolume")', function() {
+    it('should have the property liquidVolume', function() {
       // verify property exists
       expect(instance).to.have.property('liquidVolume');
 
       // set and verify value
-      var validValue = generateMockData('LiquidVolume');
-      instance.liquidVolume = validValue;
-      expect(instance.liquidVolume).to.equal(validValue);
+      var expectedValue = generateMockData('LiquidVolume');
+      instance.liquidVolume = expectedValue;
+      expect(instance.liquidVolume).to.equal(expectedValue);
     });
 
-    it('should have the property isHazmat (base name: "IsHazmat")', function() {
+    it('should have the property isHazmat', function() {
       // verify property exists
       expect(instance).to.have.property('isHazmat');
 
       // set and verify value
-      var validValue = generateMockData('Boolean');
-      instance.isHazmat = validValue;
-      expect(instance.isHazmat).to.equal(validValue);
+      var expectedValue = generateMockData('Boolean');
+      instance.isHazmat = expectedValue;
+      expect(instance.isHazmat).to.equal(expectedValue);
     });
 
-    it('should have the property dangerousGoodsDetails (base name: "DangerousGoodsDetails")', function() {
+    it('should have the property dangerousGoodsDetails', function() {
       // verify property exists
       expect(instance).to.have.property('dangerousGoodsDetails');
 
       // set and verify value
-      var validValue = generateMockData('DangerousGoodsDetails');
-      instance.dangerousGoodsDetails = validValue;
-      expect(instance.dangerousGoodsDetails).to.equal(validValue);
+      var expectedValue = generateMockData('DangerousGoodsDetails');
+      instance.dangerousGoodsDetails = expectedValue;
+      expect(instance.dangerousGoodsDetails).to.equal(expectedValue);
     });
 
   });

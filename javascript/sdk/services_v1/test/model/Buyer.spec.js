@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForServices.Buyer);
     });
 
-    it('should have the property buyerId (base name: "buyerId")', function() {
+    it('should have the property buyerId', function() {
       // verify property exists
       expect(instance).to.have.property('buyerId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.buyerId = validValue;
-      expect(instance.buyerId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.buyerId = expectedValue;
+      expect(instance.buyerId).to.equal(expectedValue);
     });
 
-    it('should have the property name (base name: "name")', function() {
+    it('should have the property name', function() {
       // verify property exists
       expect(instance).to.have.property('name');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.name = validValue;
-      expect(instance.name).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.name = expectedValue;
+      expect(instance.name).to.equal(expectedValue);
     });
 
-    it('should have the property phone (base name: "phone")', function() {
+    it('should have the property phone', function() {
       // verify property exists
       expect(instance).to.have.property('phone');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.phone = validValue;
-      expect(instance.phone).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.phone = expectedValue;
+      expect(instance.phone).to.equal(expectedValue);
     });
 
-    it('should have the property isPrimeMember (base name: "isPrimeMember")', function() {
+    it('should have the property isPrimeMember', function() {
       // verify property exists
       expect(instance).to.have.property('isPrimeMember');
 
       // set and verify value
-      var validValue = generateMockData('Boolean');
-      instance.isPrimeMember = validValue;
-      expect(instance.isPrimeMember).to.equal(validValue);
+      var expectedValue = generateMockData('Boolean');
+      instance.isPrimeMember = expectedValue;
+      expect(instance.isPrimeMember).to.equal(expectedValue);
     });
 
   });

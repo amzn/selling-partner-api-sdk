@@ -45,14 +45,14 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.GetDeliveryChallanDocumentResponse);
     });
 
-    it('should have the property documentDownload (base name: "documentDownload")', function() {
+    it('should have the property documentDownload', function() {
       // verify property exists
       expect(instance).to.have.property('documentDownload');
 
       // set and verify value
-      var validValue = generateMockData('DocumentDownload');
-      instance.documentDownload = validValue;
-      expect(instance.documentDownload).to.equal(validValue);
+      var expectedValue = generateMockData('DocumentDownload');
+      instance.documentDownload = expectedValue;
+      expect(instance.documentDownload).to.equal(expectedValue);
     });
 
   });

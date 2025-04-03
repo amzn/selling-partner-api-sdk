@@ -45,24 +45,24 @@
       expect(instance).to.be.a(AmazonShippingApi.Promise);
     });
 
-    it('should have the property deliveryWindow (base name: "deliveryWindow")', function() {
+    it('should have the property deliveryWindow', function() {
       // verify property exists
       expect(instance).to.have.property('deliveryWindow');
 
       // set and verify value
-      var validValue = generateMockData('TimeWindow');
-      instance.deliveryWindow = validValue;
-      expect(instance.deliveryWindow).to.equal(validValue);
+      var expectedValue = generateMockData('TimeWindow');
+      instance.deliveryWindow = expectedValue;
+      expect(instance.deliveryWindow).to.equal(expectedValue);
     });
 
-    it('should have the property pickupWindow (base name: "pickupWindow")', function() {
+    it('should have the property pickupWindow', function() {
       // verify property exists
       expect(instance).to.have.property('pickupWindow');
 
       // set and verify value
-      var validValue = generateMockData('TimeWindow');
-      instance.pickupWindow = validValue;
-      expect(instance.pickupWindow).to.equal(validValue);
+      var expectedValue = generateMockData('TimeWindow');
+      instance.pickupWindow = expectedValue;
+      expect(instance.pickupWindow).to.equal(expectedValue);
     });
 
   });

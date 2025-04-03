@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForAContentManagement.StandardTextListBlock);
     });
 
-    it('should have the property textList (base name: "textList")', function() {
+    it('should have the property textList', function() {
       // verify property exists
       expect(instance).to.have.property('textList');
 
       // set and verify value
-      var validValue = generateMockData('[TextItem]', true);
-      instance.textList = validValue;
-      expect(instance.textList).to.equal(validValue);
+      var expectedValue = generateMockData('TextItem', true);
+      instance.textList = expectedValue;
+      expect(instance.textList).to.equal(expectedValue);
     });
 
   });

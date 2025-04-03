@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForCatalogItems.BrandRefinement);
     });
 
-    it('should have the property numberOfResults (base name: "numberOfResults")', function() {
+    it('should have the property numberOfResults', function() {
       // verify property exists
       expect(instance).to.have.property('numberOfResults');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.numberOfResults = validValue;
-      expect(instance.numberOfResults).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.numberOfResults = expectedValue;
+      expect(instance.numberOfResults).to.equal(expectedValue);
     });
 
-    it('should have the property brandName (base name: "brandName")', function() {
+    it('should have the property brandName', function() {
       // verify property exists
       expect(instance).to.have.property('brandName');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.brandName = validValue;
-      expect(instance.brandName).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.brandName = expectedValue;
+      expect(instance.brandName).to.equal(expectedValue);
     });
 
   });

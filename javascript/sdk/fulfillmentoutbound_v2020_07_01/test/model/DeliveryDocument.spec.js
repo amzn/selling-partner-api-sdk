@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.DeliveryDocument);
     });
 
-    it('should have the property documentType (base name: "documentType")', function() {
+    it('should have the property documentType', function() {
       // verify property exists
       expect(instance).to.have.property('documentType');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.documentType = validValue;
-      expect(instance.documentType).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.documentType = expectedValue;
+      expect(instance.documentType).to.equal(expectedValue);
     });
 
-    it('should have the property url (base name: "url")', function() {
+    it('should have the property url', function() {
       // verify property exists
       expect(instance).to.have.property('url');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.url = validValue;
-      expect(instance.url).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.url = expectedValue;
+      expect(instance.url).to.equal(expectedValue);
     });
 
   });

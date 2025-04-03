@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForPricing.MoneyType);
     });
 
-    it('should have the property currencyCode (base name: "CurrencyCode")', function() {
+    it('should have the property currencyCode', function() {
       // verify property exists
       expect(instance).to.have.property('currencyCode');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.currencyCode = validValue;
-      expect(instance.currencyCode).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.currencyCode = expectedValue;
+      expect(instance.currencyCode).to.equal(expectedValue);
     });
 
-    it('should have the property amount (base name: "Amount")', function() {
+    it('should have the property amount', function() {
       // verify property exists
       expect(instance).to.have.property('amount');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.amount = validValue;
-      expect(instance.amount).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.amount = expectedValue;
+      expect(instance.amount).to.equal(expectedValue);
     });
 
   });

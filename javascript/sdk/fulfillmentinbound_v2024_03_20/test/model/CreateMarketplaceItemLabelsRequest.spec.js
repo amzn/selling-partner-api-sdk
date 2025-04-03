@@ -45,74 +45,74 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.CreateMarketplaceItemLabelsRequest);
     });
 
-    it('should have the property height (base name: "height")', function() {
+    it('should have the property height', function() {
       // verify property exists
       expect(instance).to.have.property('height');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.height = validValue;
-      expect(instance.height).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.height = expectedValue;
+      expect(instance.height).to.equal(expectedValue);
     });
 
-    it('should have the property labelType (base name: "labelType")', function() {
+    it('should have the property labelType', function() {
       // verify property exists
       expect(instance).to.have.property('labelType');
 
       // set and verify value
-      var validValue = generateMockData('LabelPrintType');
-      instance.labelType = validValue;
-      expect(instance.labelType).to.equal(validValue);
+      var expectedValue = generateMockData('LabelPrintType');
+      instance.labelType = expectedValue;
+      expect(instance.labelType).to.equal(expectedValue);
     });
 
-    it('should have the property localeCode (base name: "localeCode")', function() {
+    it('should have the property localeCode', function() {
       // verify property exists
       expect(instance).to.have.property('localeCode');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.localeCode = validValue;
-      expect(instance.localeCode).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.localeCode = expectedValue;
+      expect(instance.localeCode).to.equal(expectedValue);
     });
 
-    it('should have the property marketplaceId (base name: "marketplaceId")', function() {
+    it('should have the property marketplaceId', function() {
       // verify property exists
       expect(instance).to.have.property('marketplaceId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.marketplaceId = validValue;
-      expect(instance.marketplaceId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.marketplaceId = expectedValue;
+      expect(instance.marketplaceId).to.equal(expectedValue);
     });
 
-    it('should have the property mskuQuantities (base name: "mskuQuantities")', function() {
+    it('should have the property mskuQuantities', function() {
       // verify property exists
       expect(instance).to.have.property('mskuQuantities');
 
       // set and verify value
-      var validValue = generateMockData('[MskuQuantity]', true);
-      instance.mskuQuantities = validValue;
-      expect(instance.mskuQuantities).to.equal(validValue);
+      var expectedValue = generateMockData('MskuQuantity', true);
+      instance.mskuQuantities = expectedValue;
+      expect(instance.mskuQuantities).to.equal(expectedValue);
     });
 
-    it('should have the property pageType (base name: "pageType")', function() {
+    it('should have the property pageType', function() {
       // verify property exists
       expect(instance).to.have.property('pageType');
 
       // set and verify value
-      var validValue = generateMockData('ItemLabelPageType');
-      instance.pageType = validValue;
-      expect(instance.pageType).to.equal(validValue);
+      var expectedValue = generateMockData('ItemLabelPageType');
+      instance.pageType = expectedValue;
+      expect(instance.pageType).to.equal(expectedValue);
     });
 
-    it('should have the property width (base name: "width")', function() {
+    it('should have the property width', function() {
       // verify property exists
       expect(instance).to.have.property('width');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.width = validValue;
-      expect(instance.width).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.width = expectedValue;
+      expect(instance.width).to.equal(expectedValue);
     });
 
   });

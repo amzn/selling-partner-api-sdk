@@ -45,44 +45,44 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.ComplianceDetail);
     });
 
-    it('should have the property asin (base name: "asin")', function() {
+    it('should have the property asin', function() {
       // verify property exists
       expect(instance).to.have.property('asin');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.asin = validValue;
-      expect(instance.asin).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.asin = expectedValue;
+      expect(instance.asin).to.equal(expectedValue);
     });
 
-    it('should have the property fnsku (base name: "fnsku")', function() {
+    it('should have the property fnsku', function() {
       // verify property exists
       expect(instance).to.have.property('fnsku');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.fnsku = validValue;
-      expect(instance.fnsku).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.fnsku = expectedValue;
+      expect(instance.fnsku).to.equal(expectedValue);
     });
 
-    it('should have the property msku (base name: "msku")', function() {
+    it('should have the property msku', function() {
       // verify property exists
       expect(instance).to.have.property('msku');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.msku = validValue;
-      expect(instance.msku).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.msku = expectedValue;
+      expect(instance.msku).to.equal(expectedValue);
     });
 
-    it('should have the property taxDetails (base name: "taxDetails")', function() {
+    it('should have the property taxDetails', function() {
       // verify property exists
       expect(instance).to.have.property('taxDetails');
 
       // set and verify value
-      var validValue = generateMockData('TaxDetails');
-      instance.taxDetails = validValue;
-      expect(instance.taxDetails).to.equal(validValue);
+      var expectedValue = generateMockData('TaxDetails');
+      instance.taxDetails = expectedValue;
+      expect(instance.taxDetails).to.equal(expectedValue);
     });
 
   });

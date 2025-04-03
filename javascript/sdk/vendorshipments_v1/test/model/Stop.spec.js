@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForRetailProcurementShipments.Stop);
     });
 
-    it('should have the property functionCode (base name: "functionCode")', function() {
+    it('should have the property functionCode', function() {
       // verify property exists
       expect(instance).to.have.property('functionCode');
 
       // set and verify value
-      var validValue = ['PortOfDischarge', 'FreightPayableAt', 'PortOfLoading', ][0];
-      instance.functionCode = validValue;
-      expect(instance.functionCode).to.equal(validValue);
+      var expectedValue = ['PortOfDischarge', 'FreightPayableAt', 'PortOfLoading', ][0];
+      instance.functionCode = expectedValue;
+      expect(instance.functionCode).to.equal(expectedValue);
     });
 
-    it('should have the property locationIdentification (base name: "locationIdentification")', function() {
+    it('should have the property locationIdentification', function() {
       // verify property exists
       expect(instance).to.have.property('locationIdentification');
 
       // set and verify value
-      var validValue = generateMockData('Location');
-      instance.locationIdentification = validValue;
-      expect(instance.locationIdentification).to.equal(validValue);
+      var expectedValue = generateMockData('Location');
+      instance.locationIdentification = expectedValue;
+      expect(instance.locationIdentification).to.equal(expectedValue);
     });
 
-    it('should have the property arrivalTime (base name: "arrivalTime")', function() {
+    it('should have the property arrivalTime', function() {
       // verify property exists
       expect(instance).to.have.property('arrivalTime');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.arrivalTime = validValue;
-      expect(instance.arrivalTime).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.arrivalTime = expectedValue;
+      expect(instance.arrivalTime).to.equal(expectedValue);
     });
 
-    it('should have the property departureTime (base name: "departureTime")', function() {
+    it('should have the property departureTime', function() {
       // verify property exists
       expect(instance).to.have.property('departureTime');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.departureTime = validValue;
-      expect(instance.departureTime).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.departureTime = expectedValue;
+      expect(instance.departureTime).to.equal(expectedValue);
     });
 
   });

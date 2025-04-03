@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForRetailProcurementTransactionStatus.TransactionStatus);
     });
 
-    it('should have the property transactionStatus (base name: "transactionStatus")', function() {
+    it('should have the property transactionStatus', function() {
       // verify property exists
       expect(instance).to.have.property('transactionStatus');
 
       // set and verify value
-      var validValue = generateMockData('Transaction');
-      instance.transactionStatus = validValue;
-      expect(instance.transactionStatus).to.equal(validValue);
+      var expectedValue = generateMockData('Transaction');
+      instance.transactionStatus = expectedValue;
+      expect(instance.transactionStatus).to.equal(expectedValue);
     });
 
   });

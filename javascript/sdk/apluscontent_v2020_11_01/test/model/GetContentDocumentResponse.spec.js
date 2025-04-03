@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForAContentManagement.GetContentDocumentResponse);
     });
 
-    it('should have the property warnings (base name: "warnings")', function() {
+    it('should have the property warnings', function() {
       // verify property exists
       expect(instance).to.have.property('warnings');
 
       // set and verify value
-      var validValue = generateMockData('[Error]', true);
-      instance.warnings = validValue;
-      expect(instance.warnings).to.equal(validValue);
+      var expectedValue = generateMockData('Error', true);
+      instance.warnings = expectedValue;
+      expect(instance.warnings).to.equal(expectedValue);
     });
 
-    it('should have the property contentRecord (base name: "contentRecord")', function() {
+    it('should have the property contentRecord', function() {
       // verify property exists
       expect(instance).to.have.property('contentRecord');
 
       // set and verify value
-      var validValue = generateMockData('ContentRecord');
-      instance.contentRecord = validValue;
-      expect(instance.contentRecord).to.equal(validValue);
+      var expectedValue = generateMockData('ContentRecord');
+      instance.contentRecord = expectedValue;
+      expect(instance.contentRecord).to.equal(expectedValue);
     });
 
   });

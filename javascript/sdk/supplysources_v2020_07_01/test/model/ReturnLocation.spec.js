@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForSupplySources.ReturnLocation);
     });
 
-    it('should have the property supplySourceId (base name: "supplySourceId")', function() {
+    it('should have the property supplySourceId', function() {
       // verify property exists
       expect(instance).to.have.property('supplySourceId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.supplySourceId = validValue;
-      expect(instance.supplySourceId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.supplySourceId = expectedValue;
+      expect(instance.supplySourceId).to.equal(expectedValue);
     });
 
-    it('should have the property addressWithContact (base name: "addressWithContact")', function() {
+    it('should have the property addressWithContact', function() {
       // verify property exists
       expect(instance).to.have.property('addressWithContact');
 
       // set and verify value
-      var validValue = generateMockData('AddressWithContact');
-      instance.addressWithContact = validValue;
-      expect(instance.addressWithContact).to.equal(validValue);
+      var expectedValue = generateMockData('AddressWithContact');
+      instance.addressWithContact = expectedValue;
+      expect(instance.addressWithContact).to.equal(expectedValue);
     });
 
   });

@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForOrders.BusinessHours);
     });
 
-    it('should have the property dayOfWeek (base name: "DayOfWeek")', function() {
+    it('should have the property dayOfWeek', function() {
       // verify property exists
       expect(instance).to.have.property('dayOfWeek');
 
       // set and verify value
-      var validValue = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', ][0];
-      instance.dayOfWeek = validValue;
-      expect(instance.dayOfWeek).to.equal(validValue);
+      var expectedValue = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', ][0];
+      instance.dayOfWeek = expectedValue;
+      expect(instance.dayOfWeek).to.equal(expectedValue);
     });
 
-    it('should have the property openIntervals (base name: "OpenIntervals")', function() {
+    it('should have the property openIntervals', function() {
       // verify property exists
       expect(instance).to.have.property('openIntervals');
 
       // set and verify value
-      var validValue = generateMockData('[OpenInterval]', true);
-      instance.openIntervals = validValue;
-      expect(instance.openIntervals).to.equal(validValue);
+      var expectedValue = generateMockData('OpenInterval', true);
+      instance.openIntervals = expectedValue;
+      expect(instance.openIntervals).to.equal(expectedValue);
     });
 
   });

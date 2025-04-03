@@ -45,14 +45,14 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.GeneratePlacementOptionsRequest);
     });
 
-    it('should have the property customPlacement (base name: "customPlacement")', function() {
+    it('should have the property customPlacement', function() {
       // verify property exists
       expect(instance).to.have.property('customPlacement');
 
       // set and verify value
-      var validValue = generateMockData('[CustomPlacementInput]', true);
-      instance.customPlacement = validValue;
-      expect(instance.customPlacement).to.equal(validValue);
+      var expectedValue = generateMockData('CustomPlacementInput', true);
+      instance.customPlacement = expectedValue;
+      expect(instance.customPlacement).to.equal(expectedValue);
     });
 
   });

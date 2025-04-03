@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.PaymentInformation);
     });
 
-    it('should have the property paymentTransactionId (base name: "paymentTransactionId")', function() {
+    it('should have the property paymentTransactionId', function() {
       // verify property exists
       expect(instance).to.have.property('paymentTransactionId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.paymentTransactionId = validValue;
-      expect(instance.paymentTransactionId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.paymentTransactionId = expectedValue;
+      expect(instance.paymentTransactionId).to.equal(expectedValue);
     });
 
-    it('should have the property paymentMode (base name: "paymentMode")', function() {
+    it('should have the property paymentMode', function() {
       // verify property exists
       expect(instance).to.have.property('paymentMode');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.paymentMode = validValue;
-      expect(instance.paymentMode).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.paymentMode = expectedValue;
+      expect(instance.paymentMode).to.equal(expectedValue);
     });
 
-    it('should have the property paymentDate (base name: "paymentDate")', function() {
+    it('should have the property paymentDate', function() {
       // verify property exists
       expect(instance).to.have.property('paymentDate');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.paymentDate = validValue;
-      expect(instance.paymentDate).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.paymentDate = expectedValue;
+      expect(instance.paymentDate).to.equal(expectedValue);
     });
 
   });

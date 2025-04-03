@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.GetFeatureInventoryResult);
     });
 
-    it('should have the property marketplaceId (base name: "marketplaceId")', function() {
+    it('should have the property marketplaceId', function() {
       // verify property exists
       expect(instance).to.have.property('marketplaceId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.marketplaceId = validValue;
-      expect(instance.marketplaceId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.marketplaceId = expectedValue;
+      expect(instance.marketplaceId).to.equal(expectedValue);
     });
 
-    it('should have the property featureName (base name: "featureName")', function() {
+    it('should have the property featureName', function() {
       // verify property exists
       expect(instance).to.have.property('featureName');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.featureName = validValue;
-      expect(instance.featureName).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.featureName = expectedValue;
+      expect(instance.featureName).to.equal(expectedValue);
     });
 
-    it('should have the property nextToken (base name: "nextToken")', function() {
+    it('should have the property nextToken', function() {
       // verify property exists
       expect(instance).to.have.property('nextToken');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.nextToken = validValue;
-      expect(instance.nextToken).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.nextToken = expectedValue;
+      expect(instance.nextToken).to.equal(expectedValue);
     });
 
-    it('should have the property featureSkus (base name: "featureSkus")', function() {
+    it('should have the property featureSkus', function() {
       // verify property exists
       expect(instance).to.have.property('featureSkus');
 
       // set and verify value
-      var validValue = generateMockData('[FeatureSku]', true);
-      instance.featureSkus = validValue;
-      expect(instance.featureSkus).to.equal(validValue);
+      var expectedValue = generateMockData('FeatureSku', true);
+      instance.featureSkus = expectedValue;
+      expect(instance.featureSkus).to.equal(expectedValue);
     });
 
   });

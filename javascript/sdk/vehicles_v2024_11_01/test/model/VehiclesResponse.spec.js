@@ -45,24 +45,24 @@
       expect(instance).to.be.a(TheSellingPartnerApiForAutomotive.VehiclesResponse);
     });
 
-    it('should have the property pagination (base name: "pagination")', function() {
+    it('should have the property pagination', function() {
       // verify property exists
       expect(instance).to.have.property('pagination');
 
       // set and verify value
-      var validValue = generateMockData('Pagination');
-      instance.pagination = validValue;
-      expect(instance.pagination).to.equal(validValue);
+      var expectedValue = generateMockData('Pagination');
+      instance.pagination = expectedValue;
+      expect(instance.pagination).to.equal(expectedValue);
     });
 
-    it('should have the property vehicles (base name: "vehicles")', function() {
+    it('should have the property vehicles', function() {
       // verify property exists
       expect(instance).to.have.property('vehicles');
 
       // set and verify value
-      var validValue = generateMockData('[Vehicle]', true);
-      instance.vehicles = validValue;
-      expect(instance.vehicles).to.equal(validValue);
+      var expectedValue = generateMockData('Vehicle', true);
+      instance.vehicles = expectedValue;
+      expect(instance.vehicles).to.equal(expectedValue);
     });
 
   });

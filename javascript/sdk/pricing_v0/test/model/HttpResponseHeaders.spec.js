@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForPricing.HttpResponseHeaders);
     });
 
-    it('should have the property date (base name: "Date")', function() {
+    it('should have the property date', function() {
       // verify property exists
       expect(instance).to.have.property('date');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.date = validValue;
-      expect(instance.date).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.date = expectedValue;
+      expect(instance.date).to.equal(expectedValue);
     });
 
-    it('should have the property xAmznRequestId (base name: "x-amzn-RequestId")', function() {
+    it('should have the property xAmznRequestId', function() {
       // verify property exists
       expect(instance).to.have.property('xAmznRequestId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.xAmznRequestId = validValue;
-      expect(instance.xAmznRequestId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.xAmznRequestId = expectedValue;
+      expect(instance.xAmznRequestId).to.equal(expectedValue);
     });
 
   });

@@ -45,34 +45,34 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.TaxRate);
     });
 
-    it('should have the property cessRate (base name: "cessRate")', function() {
+    it('should have the property cessRate', function() {
       // verify property exists
       expect(instance).to.have.property('cessRate');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.cessRate = validValue;
-      expect(instance.cessRate).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.cessRate = expectedValue;
+      expect(instance.cessRate).to.equal(expectedValue);
     });
 
-    it('should have the property gstRate (base name: "gstRate")', function() {
+    it('should have the property gstRate', function() {
       // verify property exists
       expect(instance).to.have.property('gstRate');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.gstRate = validValue;
-      expect(instance.gstRate).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.gstRate = expectedValue;
+      expect(instance.gstRate).to.equal(expectedValue);
     });
 
-    it('should have the property taxType (base name: "taxType")', function() {
+    it('should have the property taxType', function() {
       // verify property exists
       expect(instance).to.have.property('taxType');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.taxType = validValue;
-      expect(instance.taxType).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.taxType = expectedValue;
+      expect(instance.taxType).to.equal(expectedValue);
     });
 
   });

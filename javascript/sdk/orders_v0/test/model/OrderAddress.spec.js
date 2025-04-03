@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForOrders.OrderAddress);
     });
 
-    it('should have the property amazonOrderId (base name: "AmazonOrderId")', function() {
+    it('should have the property amazonOrderId', function() {
       // verify property exists
       expect(instance).to.have.property('amazonOrderId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.amazonOrderId = validValue;
-      expect(instance.amazonOrderId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.amazonOrderId = expectedValue;
+      expect(instance.amazonOrderId).to.equal(expectedValue);
     });
 
-    it('should have the property buyerCompanyName (base name: "BuyerCompanyName")', function() {
+    it('should have the property buyerCompanyName', function() {
       // verify property exists
       expect(instance).to.have.property('buyerCompanyName');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.buyerCompanyName = validValue;
-      expect(instance.buyerCompanyName).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.buyerCompanyName = expectedValue;
+      expect(instance.buyerCompanyName).to.equal(expectedValue);
     });
 
-    it('should have the property shippingAddress (base name: "ShippingAddress")', function() {
+    it('should have the property shippingAddress', function() {
       // verify property exists
       expect(instance).to.have.property('shippingAddress');
 
       // set and verify value
-      var validValue = generateMockData('Address');
-      instance.shippingAddress = validValue;
-      expect(instance.shippingAddress).to.equal(validValue);
+      var expectedValue = generateMockData('Address');
+      instance.shippingAddress = expectedValue;
+      expect(instance.shippingAddress).to.equal(expectedValue);
     });
 
-    it('should have the property deliveryPreferences (base name: "DeliveryPreferences")', function() {
+    it('should have the property deliveryPreferences', function() {
       // verify property exists
       expect(instance).to.have.property('deliveryPreferences');
 
       // set and verify value
-      var validValue = generateMockData('DeliveryPreferences');
-      instance.deliveryPreferences = validValue;
-      expect(instance.deliveryPreferences).to.equal(validValue);
+      var expectedValue = generateMockData('DeliveryPreferences');
+      instance.deliveryPreferences = expectedValue;
+      expect(instance.deliveryPreferences).to.equal(expectedValue);
     });
 
   });

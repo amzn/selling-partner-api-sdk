@@ -45,24 +45,24 @@
       expect(instance).to.be.a(AmazonShippingApi.TrackingSummary);
     });
 
-    it('should have the property status (base name: "status")', function() {
+    it('should have the property status', function() {
       // verify property exists
       expect(instance).to.have.property('status');
 
       // set and verify value
-      var validValue = generateMockData('Status');
-      instance.status = validValue;
-      expect(instance.status).to.equal(validValue);
+      var expectedValue = generateMockData('Status');
+      instance.status = expectedValue;
+      expect(instance.status).to.equal(expectedValue);
     });
 
-    it('should have the property trackingDetailCodes (base name: "trackingDetailCodes")', function() {
+    it('should have the property trackingDetailCodes', function() {
       // verify property exists
       expect(instance).to.have.property('trackingDetailCodes');
 
       // set and verify value
-      var validValue = generateMockData('TrackingDetailCodes');
-      instance.trackingDetailCodes = validValue;
-      expect(instance.trackingDetailCodes).to.equal(validValue);
+      var expectedValue = generateMockData('TrackingDetailCodes');
+      instance.trackingDetailCodes = expectedValue;
+      expect(instance.trackingDetailCodes).to.equal(expectedValue);
     });
 
   });

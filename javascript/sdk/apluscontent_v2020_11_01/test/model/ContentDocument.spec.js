@@ -45,54 +45,54 @@
       expect(instance).to.be.a(SellingPartnerApiForAContentManagement.ContentDocument);
     });
 
-    it('should have the property name (base name: "name")', function() {
+    it('should have the property name', function() {
       // verify property exists
       expect(instance).to.have.property('name');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.name = validValue;
-      expect(instance.name).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.name = expectedValue;
+      expect(instance.name).to.equal(expectedValue);
     });
 
-    it('should have the property contentType (base name: "contentType")', function() {
+    it('should have the property contentType', function() {
       // verify property exists
       expect(instance).to.have.property('contentType');
 
       // set and verify value
-      var validValue = generateMockData('ContentType');
-      instance.contentType = validValue;
-      expect(instance.contentType).to.equal(validValue);
+      var expectedValue = generateMockData('ContentType');
+      instance.contentType = expectedValue;
+      expect(instance.contentType).to.equal(expectedValue);
     });
 
-    it('should have the property contentSubType (base name: "contentSubType")', function() {
+    it('should have the property contentSubType', function() {
       // verify property exists
       expect(instance).to.have.property('contentSubType');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.contentSubType = validValue;
-      expect(instance.contentSubType).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.contentSubType = expectedValue;
+      expect(instance.contentSubType).to.equal(expectedValue);
     });
 
-    it('should have the property locale (base name: "locale")', function() {
+    it('should have the property locale', function() {
       // verify property exists
       expect(instance).to.have.property('locale');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.locale = validValue;
-      expect(instance.locale).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.locale = expectedValue;
+      expect(instance.locale).to.equal(expectedValue);
     });
 
-    it('should have the property contentModuleList (base name: "contentModuleList")', function() {
+    it('should have the property contentModuleList', function() {
       // verify property exists
       expect(instance).to.have.property('contentModuleList');
 
       // set and verify value
-      var validValue = generateMockData('[ContentModule]', true);
-      instance.contentModuleList = validValue;
-      expect(instance.contentModuleList).to.equal(validValue);
+      var expectedValue = generateMockData('ContentModule', true);
+      instance.contentModuleList = expectedValue;
+      expect(instance.contentModuleList).to.equal(expectedValue);
     });
 
   });

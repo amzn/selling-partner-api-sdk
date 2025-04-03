@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForListingsItems.IssueEnforcements);
     });
 
-    it('should have the property actions (base name: "actions")', function() {
+    it('should have the property actions', function() {
       // verify property exists
       expect(instance).to.have.property('actions');
 
       // set and verify value
-      var validValue = generateMockData('[IssueEnforcementAction]', true);
-      instance.actions = validValue;
-      expect(instance.actions).to.equal(validValue);
+      var expectedValue = generateMockData('IssueEnforcementAction', true);
+      instance.actions = expectedValue;
+      expect(instance.actions).to.equal(expectedValue);
     });
 
-    it('should have the property exemption (base name: "exemption")', function() {
+    it('should have the property exemption', function() {
       // verify property exists
       expect(instance).to.have.property('exemption');
 
       // set and verify value
-      var validValue = generateMockData('IssueExemption');
-      instance.exemption = validValue;
-      expect(instance.exemption).to.equal(validValue);
+      var expectedValue = generateMockData('IssueExemption');
+      instance.exemption = expectedValue;
+      expect(instance.exemption).to.equal(expectedValue);
     });
 
   });

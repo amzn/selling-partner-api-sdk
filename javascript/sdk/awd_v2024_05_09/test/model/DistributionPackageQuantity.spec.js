@@ -45,24 +45,24 @@
       expect(instance).to.be.a(TheSellingPartnerApiForAmazonWarehousingAndDistribution.DistributionPackageQuantity);
     });
 
-    it('should have the property count (base name: "count")', function() {
+    it('should have the property count', function() {
       // verify property exists
       expect(instance).to.have.property('count');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.count = validValue;
-      expect(instance.count).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.count = expectedValue;
+      expect(instance.count).to.equal(expectedValue);
     });
 
-    it('should have the property distributionPackage (base name: "distributionPackage")', function() {
+    it('should have the property distributionPackage', function() {
       // verify property exists
       expect(instance).to.have.property('distributionPackage');
 
       // set and verify value
-      var validValue = generateMockData('DistributionPackage');
-      instance.distributionPackage = validValue;
-      expect(instance.distributionPackage).to.equal(validValue);
+      var expectedValue = generateMockData('DistributionPackage');
+      instance.distributionPackage = expectedValue;
+      expect(instance.distributionPackage).to.equal(expectedValue);
     });
 
   });

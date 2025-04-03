@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForFinances.TaxWithholdingPeriod);
     });
 
-    it('should have the property startDate (base name: "StartDate")', function() {
+    it('should have the property startDate', function() {
       // verify property exists
       expect(instance).to.have.property('startDate');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.startDate = validValue;
-      expect(instance.startDate).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.startDate = expectedValue;
+      expect(instance.startDate).to.equal(expectedValue);
     });
 
-    it('should have the property endDate (base name: "EndDate")', function() {
+    it('should have the property endDate', function() {
       // verify property exists
       expect(instance).to.have.property('endDate');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.endDate = validValue;
-      expect(instance.endDate).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.endDate = expectedValue;
+      expect(instance.endDate).to.equal(expectedValue);
     });
 
   });

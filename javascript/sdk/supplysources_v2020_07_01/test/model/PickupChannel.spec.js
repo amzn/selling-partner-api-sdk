@@ -45,54 +45,54 @@
       expect(instance).to.be.a(SellingPartnerApiForSupplySources.PickupChannel);
     });
 
-    it('should have the property inventoryHoldPeriod (base name: "inventoryHoldPeriod")', function() {
+    it('should have the property inventoryHoldPeriod', function() {
       // verify property exists
       expect(instance).to.have.property('inventoryHoldPeriod');
 
       // set and verify value
-      var validValue = generateMockData('Duration');
-      instance.inventoryHoldPeriod = validValue;
-      expect(instance.inventoryHoldPeriod).to.equal(validValue);
+      var expectedValue = generateMockData('Duration');
+      instance.inventoryHoldPeriod = expectedValue;
+      expect(instance.inventoryHoldPeriod).to.equal(expectedValue);
     });
 
-    it('should have the property isSupported (base name: "isSupported")', function() {
+    it('should have the property isSupported', function() {
       // verify property exists
       expect(instance).to.have.property('isSupported');
 
       // set and verify value
-      var validValue = generateMockData('Boolean');
-      instance.isSupported = validValue;
-      expect(instance.isSupported).to.equal(validValue);
+      var expectedValue = generateMockData('Boolean');
+      instance.isSupported = expectedValue;
+      expect(instance.isSupported).to.equal(expectedValue);
     });
 
-    it('should have the property operationalConfiguration (base name: "operationalConfiguration")', function() {
+    it('should have the property operationalConfiguration', function() {
       // verify property exists
       expect(instance).to.have.property('operationalConfiguration');
 
       // set and verify value
-      var validValue = generateMockData('OperationalConfiguration');
-      instance.operationalConfiguration = validValue;
-      expect(instance.operationalConfiguration).to.equal(validValue);
+      var expectedValue = generateMockData('OperationalConfiguration');
+      instance.operationalConfiguration = expectedValue;
+      expect(instance.operationalConfiguration).to.equal(expectedValue);
     });
 
-    it('should have the property inStorePickupConfiguration (base name: "inStorePickupConfiguration")', function() {
+    it('should have the property inStorePickupConfiguration', function() {
       // verify property exists
       expect(instance).to.have.property('inStorePickupConfiguration');
 
       // set and verify value
-      var validValue = generateMockData('InStorePickupConfiguration');
-      instance.inStorePickupConfiguration = validValue;
-      expect(instance.inStorePickupConfiguration).to.equal(validValue);
+      var expectedValue = generateMockData('InStorePickupConfiguration');
+      instance.inStorePickupConfiguration = expectedValue;
+      expect(instance.inStorePickupConfiguration).to.equal(expectedValue);
     });
 
-    it('should have the property curbsidePickupConfiguration (base name: "curbsidePickupConfiguration")', function() {
+    it('should have the property curbsidePickupConfiguration', function() {
       // verify property exists
       expect(instance).to.have.property('curbsidePickupConfiguration');
 
       // set and verify value
-      var validValue = generateMockData('CurbsidePickupConfiguration');
-      instance.curbsidePickupConfiguration = validValue;
-      expect(instance.curbsidePickupConfiguration).to.equal(validValue);
+      var expectedValue = generateMockData('CurbsidePickupConfiguration');
+      instance.curbsidePickupConfiguration = expectedValue;
+      expect(instance.curbsidePickupConfiguration).to.equal(expectedValue);
     });
 
   });

@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForFinances.FBALiquidationEvent);
     });
 
-    it('should have the property postedDate (base name: "PostedDate")', function() {
+    it('should have the property postedDate', function() {
       // verify property exists
       expect(instance).to.have.property('postedDate');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.postedDate = validValue;
-      expect(instance.postedDate).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.postedDate = expectedValue;
+      expect(instance.postedDate).to.equal(expectedValue);
     });
 
-    it('should have the property originalRemovalOrderId (base name: "OriginalRemovalOrderId")', function() {
+    it('should have the property originalRemovalOrderId', function() {
       // verify property exists
       expect(instance).to.have.property('originalRemovalOrderId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.originalRemovalOrderId = validValue;
-      expect(instance.originalRemovalOrderId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.originalRemovalOrderId = expectedValue;
+      expect(instance.originalRemovalOrderId).to.equal(expectedValue);
     });
 
-    it('should have the property liquidationProceedsAmount (base name: "LiquidationProceedsAmount")', function() {
+    it('should have the property liquidationProceedsAmount', function() {
       // verify property exists
       expect(instance).to.have.property('liquidationProceedsAmount');
 
       // set and verify value
-      var validValue = generateMockData('Currency');
-      instance.liquidationProceedsAmount = validValue;
-      expect(instance.liquidationProceedsAmount).to.equal(validValue);
+      var expectedValue = generateMockData('Currency');
+      instance.liquidationProceedsAmount = expectedValue;
+      expect(instance.liquidationProceedsAmount).to.equal(expectedValue);
     });
 
-    it('should have the property liquidationFeeAmount (base name: "LiquidationFeeAmount")', function() {
+    it('should have the property liquidationFeeAmount', function() {
       // verify property exists
       expect(instance).to.have.property('liquidationFeeAmount');
 
       // set and verify value
-      var validValue = generateMockData('Currency');
-      instance.liquidationFeeAmount = validValue;
-      expect(instance.liquidationFeeAmount).to.equal(validValue);
+      var expectedValue = generateMockData('Currency');
+      instance.liquidationFeeAmount = expectedValue;
+      expect(instance.liquidationFeeAmount).to.equal(expectedValue);
     });
 
   });

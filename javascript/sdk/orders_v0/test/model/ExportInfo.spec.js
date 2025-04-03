@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForOrders.ExportInfo);
     });
 
-    it('should have the property exportCharge (base name: "ExportCharge")', function() {
+    it('should have the property exportCharge', function() {
       // verify property exists
       expect(instance).to.have.property('exportCharge');
 
       // set and verify value
-      var validValue = generateMockData('Money');
-      instance.exportCharge = validValue;
-      expect(instance.exportCharge).to.equal(validValue);
+      var expectedValue = generateMockData('Money');
+      instance.exportCharge = expectedValue;
+      expect(instance.exportCharge).to.equal(expectedValue);
     });
 
-    it('should have the property exportChargeModel (base name: "ExportChargeModel")', function() {
+    it('should have the property exportChargeModel', function() {
       // verify property exists
       expect(instance).to.have.property('exportChargeModel');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.exportChargeModel = validValue;
-      expect(instance.exportChargeModel).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.exportChargeModel = expectedValue;
+      expect(instance.exportChargeModel).to.equal(expectedValue);
     });
 
   });

@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForPricing.LowestPricedOffer);
     });
 
-    it('should have the property lowestPricedOffersInput (base name: "lowestPricedOffersInput")', function() {
+    it('should have the property lowestPricedOffersInput', function() {
       // verify property exists
       expect(instance).to.have.property('lowestPricedOffersInput');
 
       // set and verify value
-      var validValue = generateMockData('LowestPricedOffersInput');
-      instance.lowestPricedOffersInput = validValue;
-      expect(instance.lowestPricedOffersInput).to.equal(validValue);
+      var expectedValue = generateMockData('LowestPricedOffersInput');
+      instance.lowestPricedOffersInput = expectedValue;
+      expect(instance.lowestPricedOffersInput).to.equal(expectedValue);
     });
 
-    it('should have the property offers (base name: "offers")', function() {
+    it('should have the property offers', function() {
       // verify property exists
       expect(instance).to.have.property('offers');
 
       // set and verify value
-      var validValue = generateMockData('[Offer]', true);
-      instance.offers = validValue;
-      expect(instance.offers).to.equal(validValue);
+      var expectedValue = generateMockData('Offer', true);
+      instance.offers = expectedValue;
+      expect(instance.offers).to.equal(expectedValue);
     });
 
   });

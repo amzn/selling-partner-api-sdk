@@ -48,19 +48,19 @@
 {{/isEnum}}
 
 {{#vars}}
-    it('should have the property {{name}} (base name: "{{baseName}}")', function() {
+    it('should have the property {{name}}', function() {
       // verify property exists
       expect(instance).to.have.property('{{name}}');
 
       // set and verify value
       {{#isEnum}}
-      var validValue = [{{#allowableValues}}{{#values}}'{{{.}}}'{{^@last}}, {{/@last}}{{/values}}{{/allowableValues}}][0];
+      var expectedValue = [{{#allowableValues}}{{#values}}'{{{.}}}'{{^@last}}, {{/@last}}{{/values}}{{/allowableValues}}][0];
       {{/isEnum}}
       {{^isEnum}}
-      var validValue = generateMockData('{{datatype}}'{{#isArray}}, true{{/isArray}});
+      var expectedValue = {{#isBodyParam}}generateMockData('{{dataType}}'{{#isArray}}, true{{/isArray}}){{/isBodyParam}}{{^isBodyParam}}{{#isArray}}generateMockData('{{items.dataType}}', true){{/isArray}}{{^isArray}}generateMockData('{{dataType}}'){{/isArray}}{{/isBodyParam}};
       {{/isEnum}}
-      instance.{{name}} = validValue;
-      expect(instance.{{name}}).to.equal(validValue);
+      instance.{{name}} = expectedValue;
+      expect(instance.{{name}}).to.equal(expectedValue);
     });
 
 {{/vars}}

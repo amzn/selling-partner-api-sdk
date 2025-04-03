@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForPricing.SalesRankType);
     });
 
-    it('should have the property productCategoryId (base name: "ProductCategoryId")', function() {
+    it('should have the property productCategoryId', function() {
       // verify property exists
       expect(instance).to.have.property('productCategoryId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.productCategoryId = validValue;
-      expect(instance.productCategoryId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.productCategoryId = expectedValue;
+      expect(instance.productCategoryId).to.equal(expectedValue);
     });
 
-    it('should have the property rank (base name: "Rank")', function() {
+    it('should have the property rank', function() {
       // verify property exists
       expect(instance).to.have.property('rank');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.rank = validValue;
-      expect(instance.rank).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.rank = expectedValue;
+      expect(instance.rank).to.equal(expectedValue);
     });
 
   });

@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForOrders.MarketplaceTaxInfo);
     });
 
-    it('should have the property taxClassifications (base name: "TaxClassifications")', function() {
+    it('should have the property taxClassifications', function() {
       // verify property exists
       expect(instance).to.have.property('taxClassifications');
 
       // set and verify value
-      var validValue = generateMockData('[TaxClassification]', true);
-      instance.taxClassifications = validValue;
-      expect(instance.taxClassifications).to.equal(validValue);
+      var expectedValue = generateMockData('TaxClassification', true);
+      instance.taxClassifications = expectedValue;
+      expect(instance.taxClassifications).to.equal(expectedValue);
     });
 
   });

@@ -45,14 +45,14 @@
       expect(instance).to.be.a(AmazonShippingApi.CreateClaimResponse);
     });
 
-    it('should have the property claimId (base name: "claimId")', function() {
+    it('should have the property claimId', function() {
       // verify property exists
       expect(instance).to.have.property('claimId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.claimId = validValue;
-      expect(instance.claimId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.claimId = expectedValue;
+      expect(instance.claimId).to.equal(expectedValue);
     });
 
   });

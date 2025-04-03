@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForFbaInventory.GetInventorySummariesResponse);
     });
 
-    it('should have the property payload (base name: "payload")', function() {
+    it('should have the property payload', function() {
       // verify property exists
       expect(instance).to.have.property('payload');
 
       // set and verify value
-      var validValue = generateMockData('GetInventorySummariesResult');
-      instance.payload = validValue;
-      expect(instance.payload).to.equal(validValue);
+      var expectedValue = generateMockData('GetInventorySummariesResult');
+      instance.payload = expectedValue;
+      expect(instance.payload).to.equal(expectedValue);
     });
 
-    it('should have the property pagination (base name: "pagination")', function() {
+    it('should have the property pagination', function() {
       // verify property exists
       expect(instance).to.have.property('pagination');
 
       // set and verify value
-      var validValue = generateMockData('Pagination');
-      instance.pagination = validValue;
-      expect(instance.pagination).to.equal(validValue);
+      var expectedValue = generateMockData('Pagination');
+      instance.pagination = expectedValue;
+      expect(instance.pagination).to.equal(expectedValue);
     });
 
-    it('should have the property errors (base name: "errors")', function() {
+    it('should have the property errors', function() {
       // verify property exists
       expect(instance).to.have.property('errors');
 
       // set and verify value
-      var validValue = generateMockData('[Error]', true);
-      instance.errors = validValue;
-      expect(instance.errors).to.equal(validValue);
+      var expectedValue = generateMockData('Error', true);
+      instance.errors = expectedValue;
+      expect(instance.errors).to.equal(expectedValue);
     });
 
   });

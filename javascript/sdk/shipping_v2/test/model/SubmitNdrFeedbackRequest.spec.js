@@ -45,34 +45,34 @@
       expect(instance).to.be.a(AmazonShippingApi.SubmitNdrFeedbackRequest);
     });
 
-    it('should have the property trackingId (base name: "trackingId")', function() {
+    it('should have the property trackingId', function() {
       // verify property exists
       expect(instance).to.have.property('trackingId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.trackingId = validValue;
-      expect(instance.trackingId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.trackingId = expectedValue;
+      expect(instance.trackingId).to.equal(expectedValue);
     });
 
-    it('should have the property ndrAction (base name: "ndrAction")', function() {
+    it('should have the property ndrAction', function() {
       // verify property exists
       expect(instance).to.have.property('ndrAction');
 
       // set and verify value
-      var validValue = generateMockData('NdrAction');
-      instance.ndrAction = validValue;
-      expect(instance.ndrAction).to.equal(validValue);
+      var expectedValue = generateMockData('NdrAction');
+      instance.ndrAction = expectedValue;
+      expect(instance.ndrAction).to.equal(expectedValue);
     });
 
-    it('should have the property ndrRequestData (base name: "ndrRequestData")', function() {
+    it('should have the property ndrRequestData', function() {
       // verify property exists
       expect(instance).to.have.property('ndrRequestData');
 
       // set and verify value
-      var validValue = generateMockData('NdrRequestData');
-      instance.ndrRequestData = validValue;
-      expect(instance.ndrRequestData).to.equal(validValue);
+      var expectedValue = generateMockData('NdrRequestData');
+      instance.ndrRequestData = expectedValue;
+      expect(instance.ndrRequestData).to.equal(expectedValue);
     });
 
   });

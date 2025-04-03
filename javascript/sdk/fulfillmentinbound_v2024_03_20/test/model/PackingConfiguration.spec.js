@@ -45,34 +45,34 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.PackingConfiguration);
     });
 
-    it('should have the property boxPackingMethods (base name: "boxPackingMethods")', function() {
+    it('should have the property boxPackingMethods', function() {
       // verify property exists
       expect(instance).to.have.property('boxPackingMethods');
 
       // set and verify value
-      var validValue = generateMockData('[BoxContentInformationSource]', true);
-      instance.boxPackingMethods = validValue;
-      expect(instance.boxPackingMethods).to.equal(validValue);
+      var expectedValue = generateMockData('BoxContentInformationSource', true);
+      instance.boxPackingMethods = expectedValue;
+      expect(instance.boxPackingMethods).to.equal(expectedValue);
     });
 
-    it('should have the property boxRequirements (base name: "boxRequirements")', function() {
+    it('should have the property boxRequirements', function() {
       // verify property exists
       expect(instance).to.have.property('boxRequirements');
 
       // set and verify value
-      var validValue = generateMockData('BoxRequirements');
-      instance.boxRequirements = validValue;
-      expect(instance.boxRequirements).to.equal(validValue);
+      var expectedValue = generateMockData('BoxRequirements');
+      instance.boxRequirements = expectedValue;
+      expect(instance.boxRequirements).to.equal(expectedValue);
     });
 
-    it('should have the property shippingRequirements (base name: "shippingRequirements")', function() {
+    it('should have the property shippingRequirements', function() {
       // verify property exists
       expect(instance).to.have.property('shippingRequirements');
 
       // set and verify value
-      var validValue = generateMockData('[ShippingRequirements]', true);
-      instance.shippingRequirements = validValue;
-      expect(instance.shippingRequirements).to.equal(validValue);
+      var expectedValue = generateMockData('ShippingRequirements', true);
+      instance.shippingRequirements = expectedValue;
+      expect(instance.shippingRequirements).to.equal(expectedValue);
     });
 
   });

@@ -45,44 +45,44 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.Incentive);
     });
 
-    it('should have the property description (base name: "description")', function() {
+    it('should have the property description', function() {
       // verify property exists
       expect(instance).to.have.property('description');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.description = validValue;
-      expect(instance.description).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.description = expectedValue;
+      expect(instance.description).to.equal(expectedValue);
     });
 
-    it('should have the property target (base name: "target")', function() {
+    it('should have the property target', function() {
       // verify property exists
       expect(instance).to.have.property('target');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.target = validValue;
-      expect(instance.target).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.target = expectedValue;
+      expect(instance.target).to.equal(expectedValue);
     });
 
-    it('should have the property type (base name: "type")', function() {
+    it('should have the property type', function() {
       // verify property exists
       expect(instance).to.have.property('type');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.type = validValue;
-      expect(instance.type).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.type = expectedValue;
+      expect(instance.type).to.equal(expectedValue);
     });
 
-    it('should have the property value (base name: "value")', function() {
+    it('should have the property value', function() {
       // verify property exists
       expect(instance).to.have.property('value');
 
       // set and verify value
-      var validValue = generateMockData('Currency');
-      instance.value = validValue;
-      expect(instance.value).to.equal(validValue);
+      var expectedValue = generateMockData('Currency');
+      instance.value = expectedValue;
+      expect(instance.value).to.equal(expectedValue);
     });
 
   });

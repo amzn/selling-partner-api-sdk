@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForPricing.ASINIdentifier);
     });
 
-    it('should have the property marketplaceId (base name: "MarketplaceId")', function() {
+    it('should have the property marketplaceId', function() {
       // verify property exists
       expect(instance).to.have.property('marketplaceId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.marketplaceId = validValue;
-      expect(instance.marketplaceId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.marketplaceId = expectedValue;
+      expect(instance.marketplaceId).to.equal(expectedValue);
     });
 
-    it('should have the property ASIN (base name: "ASIN")', function() {
+    it('should have the property ASIN', function() {
       // verify property exists
       expect(instance).to.have.property('ASIN');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.ASIN = validValue;
-      expect(instance.ASIN).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.ASIN = expectedValue;
+      expect(instance.ASIN).to.equal(expectedValue);
     });
 
   });

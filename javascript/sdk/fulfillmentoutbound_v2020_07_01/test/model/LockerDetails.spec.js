@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.LockerDetails);
     });
 
-    it('should have the property lockerNumber (base name: "lockerNumber")', function() {
+    it('should have the property lockerNumber', function() {
       // verify property exists
       expect(instance).to.have.property('lockerNumber');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.lockerNumber = validValue;
-      expect(instance.lockerNumber).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.lockerNumber = expectedValue;
+      expect(instance.lockerNumber).to.equal(expectedValue);
     });
 
-    it('should have the property lockerAccessCode (base name: "lockerAccessCode")', function() {
+    it('should have the property lockerAccessCode', function() {
       // verify property exists
       expect(instance).to.have.property('lockerAccessCode');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.lockerAccessCode = validValue;
-      expect(instance.lockerAccessCode).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.lockerAccessCode = expectedValue;
+      expect(instance.lockerAccessCode).to.equal(expectedValue);
     });
 
   });

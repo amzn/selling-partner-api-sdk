@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForRetailProcurementShipments.ShipmentStatusDetails);
     });
 
-    it('should have the property shipmentStatus (base name: "shipmentStatus")', function() {
+    it('should have the property shipmentStatus', function() {
       // verify property exists
       expect(instance).to.have.property('shipmentStatus');
 
       // set and verify value
-      var validValue = ['Created', 'TransportationRequested', 'CarrierAssigned', 'Shipped', ][0];
-      instance.shipmentStatus = validValue;
-      expect(instance.shipmentStatus).to.equal(validValue);
+      var expectedValue = ['Created', 'TransportationRequested', 'CarrierAssigned', 'Shipped', ][0];
+      instance.shipmentStatus = expectedValue;
+      expect(instance.shipmentStatus).to.equal(expectedValue);
     });
 
-    it('should have the property shipmentStatusDate (base name: "shipmentStatusDate")', function() {
+    it('should have the property shipmentStatusDate', function() {
       // verify property exists
       expect(instance).to.have.property('shipmentStatusDate');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.shipmentStatusDate = validValue;
-      expect(instance.shipmentStatusDate).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.shipmentStatusDate = expectedValue;
+      expect(instance.shipmentStatusDate).to.equal(expectedValue);
     });
 
   });

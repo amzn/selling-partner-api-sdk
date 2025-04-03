@@ -45,34 +45,34 @@
       expect(instance).to.be.a(AmazonShippingApi.UnmanifestedCarrierInformation);
     });
 
-    it('should have the property carrierId (base name: "carrierId")', function() {
+    it('should have the property carrierId', function() {
       // verify property exists
       expect(instance).to.have.property('carrierId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.carrierId = validValue;
-      expect(instance.carrierId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.carrierId = expectedValue;
+      expect(instance.carrierId).to.equal(expectedValue);
     });
 
-    it('should have the property carrierName (base name: "carrierName")', function() {
+    it('should have the property carrierName', function() {
       // verify property exists
       expect(instance).to.have.property('carrierName');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.carrierName = validValue;
-      expect(instance.carrierName).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.carrierName = expectedValue;
+      expect(instance.carrierName).to.equal(expectedValue);
     });
 
-    it('should have the property unmanifestedShipmentLocationList (base name: "unmanifestedShipmentLocationList")', function() {
+    it('should have the property unmanifestedShipmentLocationList', function() {
       // verify property exists
       expect(instance).to.have.property('unmanifestedShipmentLocationList');
 
       // set and verify value
-      var validValue = generateMockData('[UnmanifestedShipmentLocation]', true);
-      instance.unmanifestedShipmentLocationList = validValue;
-      expect(instance.unmanifestedShipmentLocationList).to.equal(validValue);
+      var expectedValue = generateMockData('UnmanifestedShipmentLocation', true);
+      instance.unmanifestedShipmentLocationList = expectedValue;
+      expect(instance.unmanifestedShipmentLocationList).to.equal(expectedValue);
     });
 
   });

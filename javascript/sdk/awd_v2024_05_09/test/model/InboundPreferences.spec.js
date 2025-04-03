@@ -45,14 +45,14 @@
       expect(instance).to.be.a(TheSellingPartnerApiForAmazonWarehousingAndDistribution.InboundPreferences);
     });
 
-    it('should have the property destinationRegion (base name: "destinationRegion")', function() {
+    it('should have the property destinationRegion', function() {
       // verify property exists
       expect(instance).to.have.property('destinationRegion');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.destinationRegion = validValue;
-      expect(instance.destinationRegion).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.destinationRegion = expectedValue;
+      expect(instance.destinationRegion).to.equal(expectedValue);
     });
 
   });

@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForServices.ServiceUploadDocument);
     });
 
-    it('should have the property contentType (base name: "contentType")', function() {
+    it('should have the property contentType', function() {
       // verify property exists
       expect(instance).to.have.property('contentType');
 
       // set and verify value
-      var validValue = ['TIFF', 'JPG', 'PNG', 'JPEG', 'GIF', 'PDF', ][0];
-      instance.contentType = validValue;
-      expect(instance.contentType).to.equal(validValue);
+      var expectedValue = ['TIFF', 'JPG', 'PNG', 'JPEG', 'GIF', 'PDF', ][0];
+      instance.contentType = expectedValue;
+      expect(instance.contentType).to.equal(expectedValue);
     });
 
-    it('should have the property contentLength (base name: "contentLength")', function() {
+    it('should have the property contentLength', function() {
       // verify property exists
       expect(instance).to.have.property('contentLength');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.contentLength = validValue;
-      expect(instance.contentLength).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.contentLength = expectedValue;
+      expect(instance.contentLength).to.equal(expectedValue);
     });
 
-    it('should have the property contentMD5 (base name: "contentMD5")', function() {
+    it('should have the property contentMD5', function() {
       // verify property exists
       expect(instance).to.have.property('contentMD5');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.contentMD5 = validValue;
-      expect(instance.contentMD5).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.contentMD5 = expectedValue;
+      expect(instance.contentMD5).to.equal(expectedValue);
     });
 
   });

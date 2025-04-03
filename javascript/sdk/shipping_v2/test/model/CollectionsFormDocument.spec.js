@@ -45,24 +45,24 @@
       expect(instance).to.be.a(AmazonShippingApi.CollectionsFormDocument);
     });
 
-    it('should have the property base64EncodedContent (base name: "base64EncodedContent")', function() {
+    it('should have the property base64EncodedContent', function() {
       // verify property exists
       expect(instance).to.have.property('base64EncodedContent');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.base64EncodedContent = validValue;
-      expect(instance.base64EncodedContent).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.base64EncodedContent = expectedValue;
+      expect(instance.base64EncodedContent).to.equal(expectedValue);
     });
 
-    it('should have the property documentFormat (base name: "documentFormat")', function() {
+    it('should have the property documentFormat', function() {
       // verify property exists
       expect(instance).to.have.property('documentFormat');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.documentFormat = validValue;
-      expect(instance.documentFormat).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.documentFormat = expectedValue;
+      expect(instance.documentFormat).to.equal(expectedValue);
     });
 
   });

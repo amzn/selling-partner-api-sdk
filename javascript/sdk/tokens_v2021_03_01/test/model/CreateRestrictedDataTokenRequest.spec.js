@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForTokens.CreateRestrictedDataTokenRequest);
     });
 
-    it('should have the property targetApplication (base name: "targetApplication")', function() {
+    it('should have the property targetApplication', function() {
       // verify property exists
       expect(instance).to.have.property('targetApplication');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.targetApplication = validValue;
-      expect(instance.targetApplication).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.targetApplication = expectedValue;
+      expect(instance.targetApplication).to.equal(expectedValue);
     });
 
-    it('should have the property restrictedResources (base name: "restrictedResources")', function() {
+    it('should have the property restrictedResources', function() {
       // verify property exists
       expect(instance).to.have.property('restrictedResources');
 
       // set and verify value
-      var validValue = generateMockData('[RestrictedResource]', true);
-      instance.restrictedResources = validValue;
-      expect(instance.restrictedResources).to.equal(validValue);
+      var expectedValue = generateMockData('RestrictedResource', true);
+      instance.restrictedResources = expectedValue;
+      expect(instance.restrictedResources).to.equal(expectedValue);
     });
 
   });

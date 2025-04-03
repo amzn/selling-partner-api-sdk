@@ -45,24 +45,24 @@
       expect(instance).to.be.a(TheSellingPartnerApiForAutomotive.VehicleIdentifiers);
     });
 
-    it('should have the property standard (base name: "standard")', function() {
+    it('should have the property standard', function() {
       // verify property exists
       expect(instance).to.have.property('standard');
 
       // set and verify value
-      var validValue = generateMockData('VehicleStandard');
-      instance.standard = validValue;
-      expect(instance.standard).to.equal(validValue);
+      var expectedValue = generateMockData('VehicleStandard');
+      instance.standard = expectedValue;
+      expect(instance.standard).to.equal(expectedValue);
     });
 
-    it('should have the property value (base name: "value")', function() {
+    it('should have the property value', function() {
       // verify property exists
       expect(instance).to.have.property('value');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.value = validValue;
-      expect(instance.value).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.value = expectedValue;
+      expect(instance.value).to.equal(expectedValue);
     });
 
   });

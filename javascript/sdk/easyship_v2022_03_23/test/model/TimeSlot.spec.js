@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForEasyShip.TimeSlot);
     });
 
-    it('should have the property slotId (base name: "slotId")', function() {
+    it('should have the property slotId', function() {
       // verify property exists
       expect(instance).to.have.property('slotId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.slotId = validValue;
-      expect(instance.slotId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.slotId = expectedValue;
+      expect(instance.slotId).to.equal(expectedValue);
     });
 
-    it('should have the property startTime (base name: "startTime")', function() {
+    it('should have the property startTime', function() {
       // verify property exists
       expect(instance).to.have.property('startTime');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.startTime = validValue;
-      expect(instance.startTime).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.startTime = expectedValue;
+      expect(instance.startTime).to.equal(expectedValue);
     });
 
-    it('should have the property endTime (base name: "endTime")', function() {
+    it('should have the property endTime', function() {
       // verify property exists
       expect(instance).to.have.property('endTime');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.endTime = validValue;
-      expect(instance.endTime).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.endTime = expectedValue;
+      expect(instance.endTime).to.equal(expectedValue);
     });
 
-    it('should have the property handoverMethod (base name: "handoverMethod")', function() {
+    it('should have the property handoverMethod', function() {
       // verify property exists
       expect(instance).to.have.property('handoverMethod');
 
       // set and verify value
-      var validValue = generateMockData('HandoverMethod');
-      instance.handoverMethod = validValue;
-      expect(instance.handoverMethod).to.equal(validValue);
+      var expectedValue = generateMockData('HandoverMethod');
+      instance.handoverMethod = expectedValue;
+      expect(instance.handoverMethod).to.equal(expectedValue);
     });
 
   });

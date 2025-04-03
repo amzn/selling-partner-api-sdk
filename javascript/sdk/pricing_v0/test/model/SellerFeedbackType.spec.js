@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForPricing.SellerFeedbackType);
     });
 
-    it('should have the property sellerPositiveFeedbackRating (base name: "SellerPositiveFeedbackRating")', function() {
+    it('should have the property sellerPositiveFeedbackRating', function() {
       // verify property exists
       expect(instance).to.have.property('sellerPositiveFeedbackRating');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.sellerPositiveFeedbackRating = validValue;
-      expect(instance.sellerPositiveFeedbackRating).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.sellerPositiveFeedbackRating = expectedValue;
+      expect(instance.sellerPositiveFeedbackRating).to.equal(expectedValue);
     });
 
-    it('should have the property feedbackCount (base name: "FeedbackCount")', function() {
+    it('should have the property feedbackCount', function() {
       // verify property exists
       expect(instance).to.have.property('feedbackCount');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.feedbackCount = validValue;
-      expect(instance.feedbackCount).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.feedbackCount = expectedValue;
+      expect(instance.feedbackCount).to.equal(expectedValue);
     });
 
   });

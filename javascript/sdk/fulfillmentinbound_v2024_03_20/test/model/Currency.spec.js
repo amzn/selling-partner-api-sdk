@@ -45,24 +45,24 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.Currency);
     });
 
-    it('should have the property amount (base name: "amount")', function() {
+    it('should have the property amount', function() {
       // verify property exists
       expect(instance).to.have.property('amount');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.amount = validValue;
-      expect(instance.amount).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.amount = expectedValue;
+      expect(instance.amount).to.equal(expectedValue);
     });
 
-    it('should have the property code (base name: "code")', function() {
+    it('should have the property code', function() {
       // verify property exists
       expect(instance).to.have.property('code');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.code = validValue;
-      expect(instance.code).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.code = expectedValue;
+      expect(instance.code).to.equal(expectedValue);
     });
 
   });

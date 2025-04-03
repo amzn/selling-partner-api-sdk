@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForAContentManagement.PostContentDocumentAsinRelationsRequest);
     });
 
-    it('should have the property asinSet (base name: "asinSet")', function() {
+    it('should have the property asinSet', function() {
       // verify property exists
       expect(instance).to.have.property('asinSet');
 
       // set and verify value
-      var validValue = generateMockData('[String]', true);
-      instance.asinSet = validValue;
-      expect(instance.asinSet).to.equal(validValue);
+      var expectedValue = generateMockData('String', true);
+      instance.asinSet = expectedValue;
+      expect(instance.asinSet).to.equal(expectedValue);
     });
 
   });

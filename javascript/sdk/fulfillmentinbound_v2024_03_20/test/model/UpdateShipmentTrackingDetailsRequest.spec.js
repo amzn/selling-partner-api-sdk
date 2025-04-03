@@ -45,14 +45,14 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.UpdateShipmentTrackingDetailsRequest);
     });
 
-    it('should have the property trackingDetails (base name: "trackingDetails")', function() {
+    it('should have the property trackingDetails', function() {
       // verify property exists
       expect(instance).to.have.property('trackingDetails');
 
       // set and verify value
-      var validValue = generateMockData('TrackingDetailsInput');
-      instance.trackingDetails = validValue;
-      expect(instance.trackingDetails).to.equal(validValue);
+      var expectedValue = generateMockData('TrackingDetailsInput');
+      instance.trackingDetails = expectedValue;
+      expect(instance.trackingDetails).to.equal(expectedValue);
     });
 
   });

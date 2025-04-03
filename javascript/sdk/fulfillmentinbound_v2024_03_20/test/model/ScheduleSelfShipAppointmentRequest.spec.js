@@ -45,14 +45,14 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.ScheduleSelfShipAppointmentRequest);
     });
 
-    it('should have the property reasonComment (base name: "reasonComment")', function() {
+    it('should have the property reasonComment', function() {
       // verify property exists
       expect(instance).to.have.property('reasonComment');
 
       // set and verify value
-      var validValue = generateMockData('ReasonComment');
-      instance.reasonComment = validValue;
-      expect(instance.reasonComment).to.equal(validValue);
+      var expectedValue = generateMockData('ReasonComment');
+      instance.reasonComment = expectedValue;
+      expect(instance.reasonComment).to.equal(expectedValue);
     });
 
   });

@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForRetailProcurementShipments.PurchaseOrderItemDetails);
     });
 
-    it('should have the property maximumRetailPrice (base name: "maximumRetailPrice")', function() {
+    it('should have the property maximumRetailPrice', function() {
       // verify property exists
       expect(instance).to.have.property('maximumRetailPrice');
 
       // set and verify value
-      var validValue = generateMockData('Money');
-      instance.maximumRetailPrice = validValue;
-      expect(instance.maximumRetailPrice).to.equal(validValue);
+      var expectedValue = generateMockData('Money');
+      instance.maximumRetailPrice = expectedValue;
+      expect(instance.maximumRetailPrice).to.equal(expectedValue);
     });
 
   });

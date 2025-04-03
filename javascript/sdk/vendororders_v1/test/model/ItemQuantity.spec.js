@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForRetailProcurementOrders.ItemQuantity);
     });
 
-    it('should have the property amount (base name: "amount")', function() {
+    it('should have the property amount', function() {
       // verify property exists
       expect(instance).to.have.property('amount');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.amount = validValue;
-      expect(instance.amount).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.amount = expectedValue;
+      expect(instance.amount).to.equal(expectedValue);
     });
 
-    it('should have the property unitOfMeasure (base name: "unitOfMeasure")', function() {
+    it('should have the property unitOfMeasure', function() {
       // verify property exists
       expect(instance).to.have.property('unitOfMeasure');
 
       // set and verify value
-      var validValue = ['Cases', 'Eaches', ][0];
-      instance.unitOfMeasure = validValue;
-      expect(instance.unitOfMeasure).to.equal(validValue);
+      var expectedValue = ['Cases', 'Eaches', ][0];
+      instance.unitOfMeasure = expectedValue;
+      expect(instance.unitOfMeasure).to.equal(expectedValue);
     });
 
-    it('should have the property unitSize (base name: "unitSize")', function() {
+    it('should have the property unitSize', function() {
       // verify property exists
       expect(instance).to.have.property('unitSize');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.unitSize = validValue;
-      expect(instance.unitSize).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.unitSize = expectedValue;
+      expect(instance.unitSize).to.equal(expectedValue);
     });
 
   });

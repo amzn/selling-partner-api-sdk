@@ -45,34 +45,34 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.ShipmentDestination);
     });
 
-    it('should have the property address (base name: "address")', function() {
+    it('should have the property address', function() {
       // verify property exists
       expect(instance).to.have.property('address');
 
       // set and verify value
-      var validValue = generateMockData('Address');
-      instance.address = validValue;
-      expect(instance.address).to.equal(validValue);
+      var expectedValue = generateMockData('Address');
+      instance.address = expectedValue;
+      expect(instance.address).to.equal(expectedValue);
     });
 
-    it('should have the property destinationType (base name: "destinationType")', function() {
+    it('should have the property destinationType', function() {
       // verify property exists
       expect(instance).to.have.property('destinationType');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.destinationType = validValue;
-      expect(instance.destinationType).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.destinationType = expectedValue;
+      expect(instance.destinationType).to.equal(expectedValue);
     });
 
-    it('should have the property warehouseId (base name: "warehouseId")', function() {
+    it('should have the property warehouseId', function() {
       // verify property exists
       expect(instance).to.have.property('warehouseId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.warehouseId = validValue;
-      expect(instance.warehouseId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.warehouseId = expectedValue;
+      expect(instance.warehouseId).to.equal(expectedValue);
     });
 
   });

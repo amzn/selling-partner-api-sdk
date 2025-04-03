@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForMerchantFulfillment.GetEligibleShipmentServicesResult);
     });
 
-    it('should have the property shippingServiceList (base name: "ShippingServiceList")', function() {
+    it('should have the property shippingServiceList', function() {
       // verify property exists
       expect(instance).to.have.property('shippingServiceList');
 
       // set and verify value
-      var validValue = generateMockData('[ShippingService]', true);
-      instance.shippingServiceList = validValue;
-      expect(instance.shippingServiceList).to.equal(validValue);
+      var expectedValue = generateMockData('ShippingService', true);
+      instance.shippingServiceList = expectedValue;
+      expect(instance.shippingServiceList).to.equal(expectedValue);
     });
 
-    it('should have the property rejectedShippingServiceList (base name: "RejectedShippingServiceList")', function() {
+    it('should have the property rejectedShippingServiceList', function() {
       // verify property exists
       expect(instance).to.have.property('rejectedShippingServiceList');
 
       // set and verify value
-      var validValue = generateMockData('[RejectedShippingService]', true);
-      instance.rejectedShippingServiceList = validValue;
-      expect(instance.rejectedShippingServiceList).to.equal(validValue);
+      var expectedValue = generateMockData('RejectedShippingService', true);
+      instance.rejectedShippingServiceList = expectedValue;
+      expect(instance.rejectedShippingServiceList).to.equal(expectedValue);
     });
 
-    it('should have the property temporarilyUnavailableCarrierList (base name: "TemporarilyUnavailableCarrierList")', function() {
+    it('should have the property temporarilyUnavailableCarrierList', function() {
       // verify property exists
       expect(instance).to.have.property('temporarilyUnavailableCarrierList');
 
       // set and verify value
-      var validValue = generateMockData('[TemporarilyUnavailableCarrier]', true);
-      instance.temporarilyUnavailableCarrierList = validValue;
-      expect(instance.temporarilyUnavailableCarrierList).to.equal(validValue);
+      var expectedValue = generateMockData('TemporarilyUnavailableCarrier', true);
+      instance.temporarilyUnavailableCarrierList = expectedValue;
+      expect(instance.temporarilyUnavailableCarrierList).to.equal(expectedValue);
     });
 
-    it('should have the property termsAndConditionsNotAcceptedCarrierList (base name: "TermsAndConditionsNotAcceptedCarrierList")', function() {
+    it('should have the property termsAndConditionsNotAcceptedCarrierList', function() {
       // verify property exists
       expect(instance).to.have.property('termsAndConditionsNotAcceptedCarrierList');
 
       // set and verify value
-      var validValue = generateMockData('[TermsAndConditionsNotAcceptedCarrier]', true);
-      instance.termsAndConditionsNotAcceptedCarrierList = validValue;
-      expect(instance.termsAndConditionsNotAcceptedCarrierList).to.equal(validValue);
+      var expectedValue = generateMockData('TermsAndConditionsNotAcceptedCarrier', true);
+      instance.termsAndConditionsNotAcceptedCarrierList = expectedValue;
+      expect(instance.termsAndConditionsNotAcceptedCarrierList).to.equal(expectedValue);
     });
 
   });

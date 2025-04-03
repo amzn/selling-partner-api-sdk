@@ -45,24 +45,24 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.GenerateTransportationOptionsRequest);
     });
 
-    it('should have the property placementOptionId (base name: "placementOptionId")', function() {
+    it('should have the property placementOptionId', function() {
       // verify property exists
       expect(instance).to.have.property('placementOptionId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.placementOptionId = validValue;
-      expect(instance.placementOptionId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.placementOptionId = expectedValue;
+      expect(instance.placementOptionId).to.equal(expectedValue);
     });
 
-    it('should have the property shipmentTransportationConfigurations (base name: "shipmentTransportationConfigurations")', function() {
+    it('should have the property shipmentTransportationConfigurations', function() {
       // verify property exists
       expect(instance).to.have.property('shipmentTransportationConfigurations');
 
       // set and verify value
-      var validValue = generateMockData('[ShipmentTransportationConfiguration]', true);
-      instance.shipmentTransportationConfigurations = validValue;
-      expect(instance.shipmentTransportationConfigurations).to.equal(validValue);
+      var expectedValue = generateMockData('ShipmentTransportationConfiguration', true);
+      instance.shipmentTransportationConfigurations = expectedValue;
+      expect(instance.shipmentTransportationConfigurations).to.equal(expectedValue);
     });
 
   });

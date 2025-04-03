@@ -45,24 +45,24 @@
       expect(instance).to.be.a(AmazonShippingApi.ChargeComponent);
     });
 
-    it('should have the property amount (base name: "amount")', function() {
+    it('should have the property amount', function() {
       // verify property exists
       expect(instance).to.have.property('amount');
 
       // set and verify value
-      var validValue = generateMockData('Currency');
-      instance.amount = validValue;
-      expect(instance.amount).to.equal(validValue);
+      var expectedValue = generateMockData('Currency');
+      instance.amount = expectedValue;
+      expect(instance.amount).to.equal(expectedValue);
     });
 
-    it('should have the property chargeType (base name: "chargeType")', function() {
+    it('should have the property chargeType', function() {
       // verify property exists
       expect(instance).to.have.property('chargeType');
 
       // set and verify value
-      var validValue = ['TAX', 'DISCOUNT', ][0];
-      instance.chargeType = validValue;
-      expect(instance.chargeType).to.equal(validValue);
+      var expectedValue = ['TAX', 'DISCOUNT', ][0];
+      instance.chargeType = expectedValue;
+      expect(instance.chargeType).to.equal(expectedValue);
     });
 
   });

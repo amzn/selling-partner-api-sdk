@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForCatalogItems.ItemClassificationSalesRank);
     });
 
-    it('should have the property classificationId (base name: "classificationId")', function() {
+    it('should have the property classificationId', function() {
       // verify property exists
       expect(instance).to.have.property('classificationId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.classificationId = validValue;
-      expect(instance.classificationId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.classificationId = expectedValue;
+      expect(instance.classificationId).to.equal(expectedValue);
     });
 
-    it('should have the property title (base name: "title")', function() {
+    it('should have the property title', function() {
       // verify property exists
       expect(instance).to.have.property('title');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.title = validValue;
-      expect(instance.title).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.title = expectedValue;
+      expect(instance.title).to.equal(expectedValue);
     });
 
-    it('should have the property link (base name: "link")', function() {
+    it('should have the property link', function() {
       // verify property exists
       expect(instance).to.have.property('link');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.link = validValue;
-      expect(instance.link).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.link = expectedValue;
+      expect(instance.link).to.equal(expectedValue);
     });
 
-    it('should have the property rank (base name: "rank")', function() {
+    it('should have the property rank', function() {
       // verify property exists
       expect(instance).to.have.property('rank');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.rank = validValue;
-      expect(instance.rank).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.rank = expectedValue;
+      expect(instance.rank).to.equal(expectedValue);
     });
 
   });

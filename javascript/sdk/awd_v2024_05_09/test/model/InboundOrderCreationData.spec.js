@@ -45,44 +45,44 @@
       expect(instance).to.be.a(TheSellingPartnerApiForAmazonWarehousingAndDistribution.InboundOrderCreationData);
     });
 
-    it('should have the property externalReferenceId (base name: "externalReferenceId")', function() {
+    it('should have the property externalReferenceId', function() {
       // verify property exists
       expect(instance).to.have.property('externalReferenceId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.externalReferenceId = validValue;
-      expect(instance.externalReferenceId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.externalReferenceId = expectedValue;
+      expect(instance.externalReferenceId).to.equal(expectedValue);
     });
 
-    it('should have the property originAddress (base name: "originAddress")', function() {
+    it('should have the property originAddress', function() {
       // verify property exists
       expect(instance).to.have.property('originAddress');
 
       // set and verify value
-      var validValue = generateMockData('Address');
-      instance.originAddress = validValue;
-      expect(instance.originAddress).to.equal(validValue);
+      var expectedValue = generateMockData('Address');
+      instance.originAddress = expectedValue;
+      expect(instance.originAddress).to.equal(expectedValue);
     });
 
-    it('should have the property packagesToInbound (base name: "packagesToInbound")', function() {
+    it('should have the property packagesToInbound', function() {
       // verify property exists
       expect(instance).to.have.property('packagesToInbound');
 
       // set and verify value
-      var validValue = generateMockData('[DistributionPackageQuantity]', true);
-      instance.packagesToInbound = validValue;
-      expect(instance.packagesToInbound).to.equal(validValue);
+      var expectedValue = generateMockData('DistributionPackageQuantity', true);
+      instance.packagesToInbound = expectedValue;
+      expect(instance.packagesToInbound).to.equal(expectedValue);
     });
 
-    it('should have the property preferences (base name: "preferences")', function() {
+    it('should have the property preferences', function() {
       // verify property exists
       expect(instance).to.have.property('preferences');
 
       // set and verify value
-      var validValue = generateMockData('InboundPreferences');
-      instance.preferences = validValue;
-      expect(instance.preferences).to.equal(validValue);
+      var expectedValue = generateMockData('InboundPreferences');
+      instance.preferences = expectedValue;
+      expect(instance.preferences).to.equal(expectedValue);
     });
 
   });

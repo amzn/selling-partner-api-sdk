@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.InvalidReturnItem);
     });
 
-    it('should have the property sellerReturnItemId (base name: "sellerReturnItemId")', function() {
+    it('should have the property sellerReturnItemId', function() {
       // verify property exists
       expect(instance).to.have.property('sellerReturnItemId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.sellerReturnItemId = validValue;
-      expect(instance.sellerReturnItemId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.sellerReturnItemId = expectedValue;
+      expect(instance.sellerReturnItemId).to.equal(expectedValue);
     });
 
-    it('should have the property sellerFulfillmentOrderItemId (base name: "sellerFulfillmentOrderItemId")', function() {
+    it('should have the property sellerFulfillmentOrderItemId', function() {
       // verify property exists
       expect(instance).to.have.property('sellerFulfillmentOrderItemId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.sellerFulfillmentOrderItemId = validValue;
-      expect(instance.sellerFulfillmentOrderItemId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.sellerFulfillmentOrderItemId = expectedValue;
+      expect(instance.sellerFulfillmentOrderItemId).to.equal(expectedValue);
     });
 
-    it('should have the property invalidItemReason (base name: "invalidItemReason")', function() {
+    it('should have the property invalidItemReason', function() {
       // verify property exists
       expect(instance).to.have.property('invalidItemReason');
 
       // set and verify value
-      var validValue = generateMockData('InvalidItemReason');
-      instance.invalidItemReason = validValue;
-      expect(instance.invalidItemReason).to.equal(validValue);
+      var expectedValue = generateMockData('InvalidItemReason');
+      instance.invalidItemReason = expectedValue;
+      expect(instance.invalidItemReason).to.equal(expectedValue);
     });
 
   });

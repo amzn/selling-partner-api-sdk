@@ -45,64 +45,64 @@
       expect(instance).to.be.a(SellingPartnerApiForSales.OrderMetricsInterval);
     });
 
-    it('should have the property interval (base name: "interval")', function() {
+    it('should have the property interval', function() {
       // verify property exists
       expect(instance).to.have.property('interval');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.interval = validValue;
-      expect(instance.interval).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.interval = expectedValue;
+      expect(instance.interval).to.equal(expectedValue);
     });
 
-    it('should have the property unitCount (base name: "unitCount")', function() {
+    it('should have the property unitCount', function() {
       // verify property exists
       expect(instance).to.have.property('unitCount');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.unitCount = validValue;
-      expect(instance.unitCount).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.unitCount = expectedValue;
+      expect(instance.unitCount).to.equal(expectedValue);
     });
 
-    it('should have the property orderItemCount (base name: "orderItemCount")', function() {
+    it('should have the property orderItemCount', function() {
       // verify property exists
       expect(instance).to.have.property('orderItemCount');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.orderItemCount = validValue;
-      expect(instance.orderItemCount).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.orderItemCount = expectedValue;
+      expect(instance.orderItemCount).to.equal(expectedValue);
     });
 
-    it('should have the property orderCount (base name: "orderCount")', function() {
+    it('should have the property orderCount', function() {
       // verify property exists
       expect(instance).to.have.property('orderCount');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.orderCount = validValue;
-      expect(instance.orderCount).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.orderCount = expectedValue;
+      expect(instance.orderCount).to.equal(expectedValue);
     });
 
-    it('should have the property averageUnitPrice (base name: "averageUnitPrice")', function() {
+    it('should have the property averageUnitPrice', function() {
       // verify property exists
       expect(instance).to.have.property('averageUnitPrice');
 
       // set and verify value
-      var validValue = generateMockData('Money');
-      instance.averageUnitPrice = validValue;
-      expect(instance.averageUnitPrice).to.equal(validValue);
+      var expectedValue = generateMockData('Money');
+      instance.averageUnitPrice = expectedValue;
+      expect(instance.averageUnitPrice).to.equal(expectedValue);
     });
 
-    it('should have the property totalSales (base name: "totalSales")', function() {
+    it('should have the property totalSales', function() {
       // verify property exists
       expect(instance).to.have.property('totalSales');
 
       // set and verify value
-      var validValue = generateMockData('Money');
-      instance.totalSales = validValue;
-      expect(instance.totalSales).to.equal(validValue);
+      var expectedValue = generateMockData('Money');
+      instance.totalSales = expectedValue;
+      expect(instance.totalSales).to.equal(expectedValue);
     });
 
   });

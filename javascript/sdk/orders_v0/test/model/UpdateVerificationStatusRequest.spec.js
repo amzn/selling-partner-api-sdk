@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForOrders.UpdateVerificationStatusRequest);
     });
 
-    it('should have the property regulatedOrderVerificationStatus (base name: "regulatedOrderVerificationStatus")', function() {
+    it('should have the property regulatedOrderVerificationStatus', function() {
       // verify property exists
       expect(instance).to.have.property('regulatedOrderVerificationStatus');
 
       // set and verify value
-      var validValue = generateMockData('UpdateVerificationStatusRequestBody');
-      instance.regulatedOrderVerificationStatus = validValue;
-      expect(instance.regulatedOrderVerificationStatus).to.equal(validValue);
+      var expectedValue = generateMockData('UpdateVerificationStatusRequestBody');
+      instance.regulatedOrderVerificationStatus = expectedValue;
+      expect(instance.regulatedOrderVerificationStatus).to.equal(expectedValue);
     });
 
   });

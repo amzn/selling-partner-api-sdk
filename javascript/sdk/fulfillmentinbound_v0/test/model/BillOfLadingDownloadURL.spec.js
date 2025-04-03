@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForFulfillmentInbound.BillOfLadingDownloadURL);
     });
 
-    it('should have the property downloadURL (base name: "DownloadURL")', function() {
+    it('should have the property downloadURL', function() {
       // verify property exists
       expect(instance).to.have.property('downloadURL');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.downloadURL = validValue;
-      expect(instance.downloadURL).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.downloadURL = expectedValue;
+      expect(instance.downloadURL).to.equal(expectedValue);
     });
 
   });

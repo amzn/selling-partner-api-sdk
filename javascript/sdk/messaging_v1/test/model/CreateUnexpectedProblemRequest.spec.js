@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForMessaging.CreateUnexpectedProblemRequest);
     });
 
-    it('should have the property text (base name: "text")', function() {
+    it('should have the property text', function() {
       // verify property exists
       expect(instance).to.have.property('text');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.text = validValue;
-      expect(instance.text).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.text = expectedValue;
+      expect(instance.text).to.equal(expectedValue);
     });
 
   });

@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForAContentManagement.Decorator);
     });
 
-    it('should have the property type (base name: "type")', function() {
+    it('should have the property type', function() {
       // verify property exists
       expect(instance).to.have.property('type');
 
       // set and verify value
-      var validValue = generateMockData('DecoratorType');
-      instance.type = validValue;
-      expect(instance.type).to.equal(validValue);
+      var expectedValue = generateMockData('DecoratorType');
+      instance.type = expectedValue;
+      expect(instance.type).to.equal(expectedValue);
     });
 
-    it('should have the property offset (base name: "offset")', function() {
+    it('should have the property offset', function() {
       // verify property exists
       expect(instance).to.have.property('offset');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.offset = validValue;
-      expect(instance.offset).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.offset = expectedValue;
+      expect(instance.offset).to.equal(expectedValue);
     });
 
-    it('should have the property length (base name: "length")', function() {
+    it('should have the property length', function() {
       // verify property exists
       expect(instance).to.have.property('length');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.length = validValue;
-      expect(instance.length).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.length = expectedValue;
+      expect(instance.length).to.equal(expectedValue);
     });
 
-    it('should have the property depth (base name: "depth")', function() {
+    it('should have the property depth', function() {
       // verify property exists
       expect(instance).to.have.property('depth');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.depth = validValue;
-      expect(instance.depth).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.depth = expectedValue;
+      expect(instance.depth).to.equal(expectedValue);
     });
 
   });

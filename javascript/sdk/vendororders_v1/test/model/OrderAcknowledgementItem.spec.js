@@ -45,84 +45,84 @@
       expect(instance).to.be.a(SellingPartnerApiForRetailProcurementOrders.OrderAcknowledgementItem);
     });
 
-    it('should have the property itemSequenceNumber (base name: "itemSequenceNumber")', function() {
+    it('should have the property itemSequenceNumber', function() {
       // verify property exists
       expect(instance).to.have.property('itemSequenceNumber');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.itemSequenceNumber = validValue;
-      expect(instance.itemSequenceNumber).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.itemSequenceNumber = expectedValue;
+      expect(instance.itemSequenceNumber).to.equal(expectedValue);
     });
 
-    it('should have the property amazonProductIdentifier (base name: "amazonProductIdentifier")', function() {
+    it('should have the property amazonProductIdentifier', function() {
       // verify property exists
       expect(instance).to.have.property('amazonProductIdentifier');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.amazonProductIdentifier = validValue;
-      expect(instance.amazonProductIdentifier).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.amazonProductIdentifier = expectedValue;
+      expect(instance.amazonProductIdentifier).to.equal(expectedValue);
     });
 
-    it('should have the property vendorProductIdentifier (base name: "vendorProductIdentifier")', function() {
+    it('should have the property vendorProductIdentifier', function() {
       // verify property exists
       expect(instance).to.have.property('vendorProductIdentifier');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.vendorProductIdentifier = validValue;
-      expect(instance.vendorProductIdentifier).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.vendorProductIdentifier = expectedValue;
+      expect(instance.vendorProductIdentifier).to.equal(expectedValue);
     });
 
-    it('should have the property orderedQuantity (base name: "orderedQuantity")', function() {
+    it('should have the property orderedQuantity', function() {
       // verify property exists
       expect(instance).to.have.property('orderedQuantity');
 
       // set and verify value
-      var validValue = generateMockData('ItemQuantity');
-      instance.orderedQuantity = validValue;
-      expect(instance.orderedQuantity).to.equal(validValue);
+      var expectedValue = generateMockData('ItemQuantity');
+      instance.orderedQuantity = expectedValue;
+      expect(instance.orderedQuantity).to.equal(expectedValue);
     });
 
-    it('should have the property netCost (base name: "netCost")', function() {
+    it('should have the property netCost', function() {
       // verify property exists
       expect(instance).to.have.property('netCost');
 
       // set and verify value
-      var validValue = generateMockData('Money');
-      instance.netCost = validValue;
-      expect(instance.netCost).to.equal(validValue);
+      var expectedValue = generateMockData('Money');
+      instance.netCost = expectedValue;
+      expect(instance.netCost).to.equal(expectedValue);
     });
 
-    it('should have the property listPrice (base name: "listPrice")', function() {
+    it('should have the property listPrice', function() {
       // verify property exists
       expect(instance).to.have.property('listPrice');
 
       // set and verify value
-      var validValue = generateMockData('Money');
-      instance.listPrice = validValue;
-      expect(instance.listPrice).to.equal(validValue);
+      var expectedValue = generateMockData('Money');
+      instance.listPrice = expectedValue;
+      expect(instance.listPrice).to.equal(expectedValue);
     });
 
-    it('should have the property discountMultiplier (base name: "discountMultiplier")', function() {
+    it('should have the property discountMultiplier', function() {
       // verify property exists
       expect(instance).to.have.property('discountMultiplier');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.discountMultiplier = validValue;
-      expect(instance.discountMultiplier).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.discountMultiplier = expectedValue;
+      expect(instance.discountMultiplier).to.equal(expectedValue);
     });
 
-    it('should have the property itemAcknowledgements (base name: "itemAcknowledgements")', function() {
+    it('should have the property itemAcknowledgements', function() {
       // verify property exists
       expect(instance).to.have.property('itemAcknowledgements');
 
       // set and verify value
-      var validValue = generateMockData('[OrderItemAcknowledgement]', true);
-      instance.itemAcknowledgements = validValue;
-      expect(instance.itemAcknowledgements).to.equal(validValue);
+      var expectedValue = generateMockData('OrderItemAcknowledgement', true);
+      instance.itemAcknowledgements = expectedValue;
+      expect(instance.itemAcknowledgements).to.equal(expectedValue);
     });
 
   });

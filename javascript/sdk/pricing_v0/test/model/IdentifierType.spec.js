@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForPricing.IdentifierType);
     });
 
-    it('should have the property marketplaceASIN (base name: "MarketplaceASIN")', function() {
+    it('should have the property marketplaceASIN', function() {
       // verify property exists
       expect(instance).to.have.property('marketplaceASIN');
 
       // set and verify value
-      var validValue = generateMockData('ASINIdentifier');
-      instance.marketplaceASIN = validValue;
-      expect(instance.marketplaceASIN).to.equal(validValue);
+      var expectedValue = generateMockData('ASINIdentifier');
+      instance.marketplaceASIN = expectedValue;
+      expect(instance.marketplaceASIN).to.equal(expectedValue);
     });
 
-    it('should have the property sKUIdentifier (base name: "SKUIdentifier")', function() {
+    it('should have the property sKUIdentifier', function() {
       // verify property exists
       expect(instance).to.have.property('sKUIdentifier');
 
       // set and verify value
-      var validValue = generateMockData('SellerSKUIdentifier');
-      instance.sKUIdentifier = validValue;
-      expect(instance.sKUIdentifier).to.equal(validValue);
+      var expectedValue = generateMockData('SellerSKUIdentifier');
+      instance.sKUIdentifier = expectedValue;
+      expect(instance.sKUIdentifier).to.equal(expectedValue);
     });
 
   });

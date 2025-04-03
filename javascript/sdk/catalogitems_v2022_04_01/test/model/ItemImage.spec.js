@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForCatalogItems.ItemImage);
     });
 
-    it('should have the property variant (base name: "variant")', function() {
+    it('should have the property variant', function() {
       // verify property exists
       expect(instance).to.have.property('variant');
 
       // set and verify value
-      var validValue = ['MAIN', 'PT01', 'PT02', 'PT03', 'PT04', 'PT05', 'PT06', 'PT07', 'PT08', 'SWCH', ][0];
-      instance.variant = validValue;
-      expect(instance.variant).to.equal(validValue);
+      var expectedValue = ['MAIN', 'PT01', 'PT02', 'PT03', 'PT04', 'PT05', 'PT06', 'PT07', 'PT08', 'SWCH', ][0];
+      instance.variant = expectedValue;
+      expect(instance.variant).to.equal(expectedValue);
     });
 
-    it('should have the property link (base name: "link")', function() {
+    it('should have the property link', function() {
       // verify property exists
       expect(instance).to.have.property('link');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.link = validValue;
-      expect(instance.link).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.link = expectedValue;
+      expect(instance.link).to.equal(expectedValue);
     });
 
-    it('should have the property height (base name: "height")', function() {
+    it('should have the property height', function() {
       // verify property exists
       expect(instance).to.have.property('height');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.height = validValue;
-      expect(instance.height).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.height = expectedValue;
+      expect(instance.height).to.equal(expectedValue);
     });
 
-    it('should have the property width (base name: "width")', function() {
+    it('should have the property width', function() {
       // verify property exists
       expect(instance).to.have.property('width');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.width = validValue;
-      expect(instance.width).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.width = expectedValue;
+      expect(instance.width).to.equal(expectedValue);
     });
 
   });

@@ -45,54 +45,54 @@
       expect(instance).to.be.a(SellingPartnerApiForMerchantFulfillment.ShippingServiceOptions);
     });
 
-    it('should have the property deliveryExperience (base name: "DeliveryExperience")', function() {
+    it('should have the property deliveryExperience', function() {
       // verify property exists
       expect(instance).to.have.property('deliveryExperience');
 
       // set and verify value
-      var validValue = generateMockData('DeliveryExperienceType');
-      instance.deliveryExperience = validValue;
-      expect(instance.deliveryExperience).to.equal(validValue);
+      var expectedValue = generateMockData('DeliveryExperienceType');
+      instance.deliveryExperience = expectedValue;
+      expect(instance.deliveryExperience).to.equal(expectedValue);
     });
 
-    it('should have the property declaredValue (base name: "DeclaredValue")', function() {
+    it('should have the property declaredValue', function() {
       // verify property exists
       expect(instance).to.have.property('declaredValue');
 
       // set and verify value
-      var validValue = generateMockData('CurrencyAmount');
-      instance.declaredValue = validValue;
-      expect(instance.declaredValue).to.equal(validValue);
+      var expectedValue = generateMockData('CurrencyAmount');
+      instance.declaredValue = expectedValue;
+      expect(instance.declaredValue).to.equal(expectedValue);
     });
 
-    it('should have the property carrierWillPickUp (base name: "CarrierWillPickUp")', function() {
+    it('should have the property carrierWillPickUp', function() {
       // verify property exists
       expect(instance).to.have.property('carrierWillPickUp');
 
       // set and verify value
-      var validValue = generateMockData('Boolean');
-      instance.carrierWillPickUp = validValue;
-      expect(instance.carrierWillPickUp).to.equal(validValue);
+      var expectedValue = generateMockData('Boolean');
+      instance.carrierWillPickUp = expectedValue;
+      expect(instance.carrierWillPickUp).to.equal(expectedValue);
     });
 
-    it('should have the property carrierWillPickUpOption (base name: "CarrierWillPickUpOption")', function() {
+    it('should have the property carrierWillPickUpOption', function() {
       // verify property exists
       expect(instance).to.have.property('carrierWillPickUpOption');
 
       // set and verify value
-      var validValue = generateMockData('CarrierWillPickUpOption');
-      instance.carrierWillPickUpOption = validValue;
-      expect(instance.carrierWillPickUpOption).to.equal(validValue);
+      var expectedValue = generateMockData('CarrierWillPickUpOption');
+      instance.carrierWillPickUpOption = expectedValue;
+      expect(instance.carrierWillPickUpOption).to.equal(expectedValue);
     });
 
-    it('should have the property labelFormat (base name: "LabelFormat")', function() {
+    it('should have the property labelFormat', function() {
       // verify property exists
       expect(instance).to.have.property('labelFormat');
 
       // set and verify value
-      var validValue = generateMockData('LabelFormat');
-      instance.labelFormat = validValue;
-      expect(instance.labelFormat).to.equal(validValue);
+      var expectedValue = generateMockData('LabelFormat');
+      instance.labelFormat = expectedValue;
+      expect(instance.labelFormat).to.equal(expectedValue);
     });
 
   });

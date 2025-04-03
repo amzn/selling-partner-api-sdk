@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForRetailProcurementOrders.OrderItemStatusAcknowledgementStatus);
     });
 
-    it('should have the property confirmationStatus (base name: "confirmationStatus")', function() {
+    it('should have the property confirmationStatus', function() {
       // verify property exists
       expect(instance).to.have.property('confirmationStatus');
 
       // set and verify value
-      var validValue = ['ACCEPTED', 'PARTIALLY_ACCEPTED', 'REJECTED', 'UNCONFIRMED', ][0];
-      instance.confirmationStatus = validValue;
-      expect(instance.confirmationStatus).to.equal(validValue);
+      var expectedValue = ['ACCEPTED', 'PARTIALLY_ACCEPTED', 'REJECTED', 'UNCONFIRMED', ][0];
+      instance.confirmationStatus = expectedValue;
+      expect(instance.confirmationStatus).to.equal(expectedValue);
     });
 
-    it('should have the property acceptedQuantity (base name: "acceptedQuantity")', function() {
+    it('should have the property acceptedQuantity', function() {
       // verify property exists
       expect(instance).to.have.property('acceptedQuantity');
 
       // set and verify value
-      var validValue = generateMockData('ItemQuantity');
-      instance.acceptedQuantity = validValue;
-      expect(instance.acceptedQuantity).to.equal(validValue);
+      var expectedValue = generateMockData('ItemQuantity');
+      instance.acceptedQuantity = expectedValue;
+      expect(instance.acceptedQuantity).to.equal(expectedValue);
     });
 
-    it('should have the property rejectedQuantity (base name: "rejectedQuantity")', function() {
+    it('should have the property rejectedQuantity', function() {
       // verify property exists
       expect(instance).to.have.property('rejectedQuantity');
 
       // set and verify value
-      var validValue = generateMockData('ItemQuantity');
-      instance.rejectedQuantity = validValue;
-      expect(instance.rejectedQuantity).to.equal(validValue);
+      var expectedValue = generateMockData('ItemQuantity');
+      instance.rejectedQuantity = expectedValue;
+      expect(instance.rejectedQuantity).to.equal(expectedValue);
     });
 
-    it('should have the property acknowledgementStatusDetails (base name: "acknowledgementStatusDetails")', function() {
+    it('should have the property acknowledgementStatusDetails', function() {
       // verify property exists
       expect(instance).to.have.property('acknowledgementStatusDetails');
 
       // set and verify value
-      var validValue = generateMockData('[AcknowledgementStatusDetails]', true);
-      instance.acknowledgementStatusDetails = validValue;
-      expect(instance.acknowledgementStatusDetails).to.equal(validValue);
+      var expectedValue = generateMockData('AcknowledgementStatusDetails', true);
+      instance.acknowledgementStatusDetails = expectedValue;
+      expect(instance.acknowledgementStatusDetails).to.equal(expectedValue);
     });
 
   });

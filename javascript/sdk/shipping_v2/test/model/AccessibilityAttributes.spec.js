@@ -45,24 +45,24 @@
       expect(instance).to.be.a(AmazonShippingApi.AccessibilityAttributes);
     });
 
-    it('should have the property distance (base name: "distance")', function() {
+    it('should have the property distance', function() {
       // verify property exists
       expect(instance).to.have.property('distance');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.distance = validValue;
-      expect(instance.distance).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.distance = expectedValue;
+      expect(instance.distance).to.equal(expectedValue);
     });
 
-    it('should have the property driveTime (base name: "driveTime")', function() {
+    it('should have the property driveTime', function() {
       // verify property exists
       expect(instance).to.have.property('driveTime');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.driveTime = validValue;
-      expect(instance.driveTime).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.driveTime = expectedValue;
+      expect(instance.driveTime).to.equal(expectedValue);
     });
 
   });

@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForSolicitations.LinkObject);
     });
 
-    it('should have the property href (base name: "href")', function() {
+    it('should have the property href', function() {
       // verify property exists
       expect(instance).to.have.property('href');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.href = validValue;
-      expect(instance.href).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.href = expectedValue;
+      expect(instance.href).to.equal(expectedValue);
     });
 
-    it('should have the property name (base name: "name")', function() {
+    it('should have the property name', function() {
       // verify property exists
       expect(instance).to.have.property('name');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.name = validValue;
-      expect(instance.name).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.name = expectedValue;
+      expect(instance.name).to.equal(expectedValue);
     });
 
   });

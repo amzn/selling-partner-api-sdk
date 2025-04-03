@@ -45,14 +45,14 @@
       expect(instance).to.be.a(TheSellingPartnerApiForInvoices.GetInvoicesAttributesResponse);
     });
 
-    it('should have the property invoicesAttributes (base name: "invoicesAttributes")', function() {
+    it('should have the property invoicesAttributes', function() {
       // verify property exists
       expect(instance).to.have.property('invoicesAttributes');
 
       // set and verify value
-      var validValue = generateMockData('InvoicesAttributes');
-      instance.invoicesAttributes = validValue;
-      expect(instance.invoicesAttributes).to.equal(validValue);
+      var expectedValue = generateMockData('InvoicesAttributes');
+      instance.invoicesAttributes = expectedValue;
+      expect(instance.invoicesAttributes).to.equal(expectedValue);
     });
 
   });

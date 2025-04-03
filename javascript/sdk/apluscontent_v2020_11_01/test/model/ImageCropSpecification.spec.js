@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForAContentManagement.ImageCropSpecification);
     });
 
-    it('should have the property size (base name: "size")', function() {
+    it('should have the property size', function() {
       // verify property exists
       expect(instance).to.have.property('size');
 
       // set and verify value
-      var validValue = generateMockData('ImageDimensions');
-      instance.size = validValue;
-      expect(instance.size).to.equal(validValue);
+      var expectedValue = generateMockData('ImageDimensions');
+      instance.size = expectedValue;
+      expect(instance.size).to.equal(expectedValue);
     });
 
-    it('should have the property offset (base name: "offset")', function() {
+    it('should have the property offset', function() {
       // verify property exists
       expect(instance).to.have.property('offset');
 
       // set and verify value
-      var validValue = generateMockData('ImageOffsets');
-      instance.offset = validValue;
-      expect(instance.offset).to.equal(validValue);
+      var expectedValue = generateMockData('ImageOffsets');
+      instance.offset = expectedValue;
+      expect(instance.offset).to.equal(expectedValue);
     });
 
   });

@@ -45,34 +45,34 @@
       expect(instance).to.be.a(TheSellingPartnerApiForAmazonWarehousingAndDistribution.DistributionPackage);
     });
 
-    it('should have the property contents (base name: "contents")', function() {
+    it('should have the property contents', function() {
       // verify property exists
       expect(instance).to.have.property('contents');
 
       // set and verify value
-      var validValue = generateMockData('DistributionPackageContents');
-      instance.contents = validValue;
-      expect(instance.contents).to.equal(validValue);
+      var expectedValue = generateMockData('DistributionPackageContents');
+      instance.contents = expectedValue;
+      expect(instance.contents).to.equal(expectedValue);
     });
 
-    it('should have the property measurements (base name: "measurements")', function() {
+    it('should have the property measurements', function() {
       // verify property exists
       expect(instance).to.have.property('measurements');
 
       // set and verify value
-      var validValue = generateMockData('MeasurementData');
-      instance.measurements = validValue;
-      expect(instance.measurements).to.equal(validValue);
+      var expectedValue = generateMockData('MeasurementData');
+      instance.measurements = expectedValue;
+      expect(instance.measurements).to.equal(expectedValue);
     });
 
-    it('should have the property type (base name: "type")', function() {
+    it('should have the property type', function() {
       // verify property exists
       expect(instance).to.have.property('type');
 
       // set and verify value
-      var validValue = generateMockData('DistributionPackageType');
-      instance.type = validValue;
-      expect(instance.type).to.equal(validValue);
+      var expectedValue = generateMockData('DistributionPackageType');
+      instance.type = expectedValue;
+      expect(instance.type).to.equal(expectedValue);
     });
 
   });

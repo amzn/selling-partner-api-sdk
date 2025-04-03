@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.ScheduledDeliveryInfo);
     });
 
-    it('should have the property deliveryTimeZone (base name: "deliveryTimeZone")', function() {
+    it('should have the property deliveryTimeZone', function() {
       // verify property exists
       expect(instance).to.have.property('deliveryTimeZone');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.deliveryTimeZone = validValue;
-      expect(instance.deliveryTimeZone).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.deliveryTimeZone = expectedValue;
+      expect(instance.deliveryTimeZone).to.equal(expectedValue);
     });
 
-    it('should have the property deliveryWindows (base name: "deliveryWindows")', function() {
+    it('should have the property deliveryWindows', function() {
       // verify property exists
       expect(instance).to.have.property('deliveryWindows');
 
       // set and verify value
-      var validValue = generateMockData('[DeliveryWindow]', true);
-      instance.deliveryWindows = validValue;
-      expect(instance.deliveryWindows).to.equal(validValue);
+      var expectedValue = generateMockData('DeliveryWindow', true);
+      instance.deliveryWindows = expectedValue;
+      expect(instance.deliveryWindows).to.equal(expectedValue);
     });
 
   });

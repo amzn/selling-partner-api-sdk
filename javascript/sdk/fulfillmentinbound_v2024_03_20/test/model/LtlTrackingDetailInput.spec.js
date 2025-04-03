@@ -45,24 +45,24 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.LtlTrackingDetailInput);
     });
 
-    it('should have the property billOfLadingNumber (base name: "billOfLadingNumber")', function() {
+    it('should have the property billOfLadingNumber', function() {
       // verify property exists
       expect(instance).to.have.property('billOfLadingNumber');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.billOfLadingNumber = validValue;
-      expect(instance.billOfLadingNumber).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.billOfLadingNumber = expectedValue;
+      expect(instance.billOfLadingNumber).to.equal(expectedValue);
     });
 
-    it('should have the property freightBillNumber (base name: "freightBillNumber")', function() {
+    it('should have the property freightBillNumber', function() {
       // verify property exists
       expect(instance).to.have.property('freightBillNumber');
 
       // set and verify value
-      var validValue = generateMockData('[String]', true);
-      instance.freightBillNumber = validValue;
-      expect(instance.freightBillNumber).to.equal(validValue);
+      var expectedValue = generateMockData('String', true);
+      instance.freightBillNumber = expectedValue;
+      expect(instance.freightBillNumber).to.equal(expectedValue);
     });
 
   });

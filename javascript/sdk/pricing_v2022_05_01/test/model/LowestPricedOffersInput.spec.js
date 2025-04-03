@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForPricing.LowestPricedOffersInput);
     });
 
-    it('should have the property itemCondition (base name: "itemCondition")', function() {
+    it('should have the property itemCondition', function() {
       // verify property exists
       expect(instance).to.have.property('itemCondition');
 
       // set and verify value
-      var validValue = generateMockData('Condition');
-      instance.itemCondition = validValue;
-      expect(instance.itemCondition).to.equal(validValue);
+      var expectedValue = generateMockData('Condition');
+      instance.itemCondition = expectedValue;
+      expect(instance.itemCondition).to.equal(expectedValue);
     });
 
-    it('should have the property offerType (base name: "offerType")', function() {
+    it('should have the property offerType', function() {
       // verify property exists
       expect(instance).to.have.property('offerType');
 
       // set and verify value
-      var validValue = ['CONSUMER', ][0];
-      instance.offerType = validValue;
-      expect(instance.offerType).to.equal(validValue);
+      var expectedValue = ['CONSUMER', ][0];
+      instance.offerType = expectedValue;
+      expect(instance.offerType).to.equal(expectedValue);
     });
 
   });

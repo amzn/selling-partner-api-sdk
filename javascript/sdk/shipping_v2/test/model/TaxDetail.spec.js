@@ -45,24 +45,24 @@
       expect(instance).to.be.a(AmazonShippingApi.TaxDetail);
     });
 
-    it('should have the property taxType (base name: "taxType")', function() {
+    it('should have the property taxType', function() {
       // verify property exists
       expect(instance).to.have.property('taxType');
 
       // set and verify value
-      var validValue = generateMockData('TaxType');
-      instance.taxType = validValue;
-      expect(instance.taxType).to.equal(validValue);
+      var expectedValue = generateMockData('TaxType');
+      instance.taxType = expectedValue;
+      expect(instance.taxType).to.equal(expectedValue);
     });
 
-    it('should have the property taxRegistrationNumber (base name: "taxRegistrationNumber")', function() {
+    it('should have the property taxRegistrationNumber', function() {
       // verify property exists
       expect(instance).to.have.property('taxRegistrationNumber');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.taxRegistrationNumber = validValue;
-      expect(instance.taxRegistrationNumber).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.taxRegistrationNumber = expectedValue;
+      expect(instance.taxRegistrationNumber).to.equal(expectedValue);
     });
 
   });

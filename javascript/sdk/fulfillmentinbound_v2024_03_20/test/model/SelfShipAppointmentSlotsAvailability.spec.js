@@ -45,24 +45,24 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.SelfShipAppointmentSlotsAvailability);
     });
 
-    it('should have the property expiresAt (base name: "expiresAt")', function() {
+    it('should have the property expiresAt', function() {
       // verify property exists
       expect(instance).to.have.property('expiresAt');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.expiresAt = validValue;
-      expect(instance.expiresAt).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.expiresAt = expectedValue;
+      expect(instance.expiresAt).to.equal(expectedValue);
     });
 
-    it('should have the property slots (base name: "slots")', function() {
+    it('should have the property slots', function() {
       // verify property exists
       expect(instance).to.have.property('slots');
 
       // set and verify value
-      var validValue = generateMockData('[AppointmentSlot]', true);
-      instance.slots = validValue;
-      expect(instance.slots).to.equal(validValue);
+      var expectedValue = generateMockData('AppointmentSlot', true);
+      instance.slots = expectedValue;
+      expect(instance.slots).to.equal(expectedValue);
     });
 
   });

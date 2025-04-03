@@ -45,64 +45,64 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.PlacementOption);
     });
 
-    it('should have the property discounts (base name: "discounts")', function() {
+    it('should have the property discounts', function() {
       // verify property exists
       expect(instance).to.have.property('discounts');
 
       // set and verify value
-      var validValue = generateMockData('[Incentive]', true);
-      instance.discounts = validValue;
-      expect(instance.discounts).to.equal(validValue);
+      var expectedValue = generateMockData('Incentive', true);
+      instance.discounts = expectedValue;
+      expect(instance.discounts).to.equal(expectedValue);
     });
 
-    it('should have the property expiration (base name: "expiration")', function() {
+    it('should have the property expiration', function() {
       // verify property exists
       expect(instance).to.have.property('expiration');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.expiration = validValue;
-      expect(instance.expiration).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.expiration = expectedValue;
+      expect(instance.expiration).to.equal(expectedValue);
     });
 
-    it('should have the property fees (base name: "fees")', function() {
+    it('should have the property fees', function() {
       // verify property exists
       expect(instance).to.have.property('fees');
 
       // set and verify value
-      var validValue = generateMockData('[Incentive]', true);
-      instance.fees = validValue;
-      expect(instance.fees).to.equal(validValue);
+      var expectedValue = generateMockData('Incentive', true);
+      instance.fees = expectedValue;
+      expect(instance.fees).to.equal(expectedValue);
     });
 
-    it('should have the property placementOptionId (base name: "placementOptionId")', function() {
+    it('should have the property placementOptionId', function() {
       // verify property exists
       expect(instance).to.have.property('placementOptionId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.placementOptionId = validValue;
-      expect(instance.placementOptionId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.placementOptionId = expectedValue;
+      expect(instance.placementOptionId).to.equal(expectedValue);
     });
 
-    it('should have the property shipmentIds (base name: "shipmentIds")', function() {
+    it('should have the property shipmentIds', function() {
       // verify property exists
       expect(instance).to.have.property('shipmentIds');
 
       // set and verify value
-      var validValue = generateMockData('[String]', true);
-      instance.shipmentIds = validValue;
-      expect(instance.shipmentIds).to.equal(validValue);
+      var expectedValue = generateMockData('String', true);
+      instance.shipmentIds = expectedValue;
+      expect(instance.shipmentIds).to.equal(expectedValue);
     });
 
-    it('should have the property status (base name: "status")', function() {
+    it('should have the property status', function() {
       // verify property exists
       expect(instance).to.have.property('status');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.status = validValue;
-      expect(instance.status).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.status = expectedValue;
+      expect(instance.status).to.equal(expectedValue);
     });
 
   });

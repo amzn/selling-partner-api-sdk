@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForShipmentInvoicing.ShipmentInvoiceStatusResponse);
     });
 
-    it('should have the property shipments (base name: "Shipments")', function() {
+    it('should have the property shipments', function() {
       // verify property exists
       expect(instance).to.have.property('shipments');
 
       // set and verify value
-      var validValue = generateMockData('ShipmentInvoiceStatusInfo');
-      instance.shipments = validValue;
-      expect(instance.shipments).to.equal(validValue);
+      var expectedValue = generateMockData('ShipmentInvoiceStatusInfo');
+      instance.shipments = expectedValue;
+      expect(instance.shipments).to.equal(expectedValue);
     });
 
   });

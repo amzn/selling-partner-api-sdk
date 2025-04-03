@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForAContentManagement.TextItem);
     });
 
-    it('should have the property position (base name: "position")', function() {
+    it('should have the property position', function() {
       // verify property exists
       expect(instance).to.have.property('position');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.position = validValue;
-      expect(instance.position).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.position = expectedValue;
+      expect(instance.position).to.equal(expectedValue);
     });
 
-    it('should have the property text (base name: "text")', function() {
+    it('should have the property text', function() {
       // verify property exists
       expect(instance).to.have.property('text');
 
       // set and verify value
-      var validValue = generateMockData('TextComponent');
-      instance.text = validValue;
-      expect(instance.text).to.equal(validValue);
+      var expectedValue = generateMockData('TextComponent');
+      instance.text = expectedValue;
+      expect(instance.text).to.equal(expectedValue);
     });
 
   });

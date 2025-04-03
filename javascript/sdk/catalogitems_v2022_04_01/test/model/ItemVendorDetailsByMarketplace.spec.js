@@ -45,84 +45,84 @@
       expect(instance).to.be.a(SellingPartnerApiForCatalogItems.ItemVendorDetailsByMarketplace);
     });
 
-    it('should have the property marketplaceId (base name: "marketplaceId")', function() {
+    it('should have the property marketplaceId', function() {
       // verify property exists
       expect(instance).to.have.property('marketplaceId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.marketplaceId = validValue;
-      expect(instance.marketplaceId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.marketplaceId = expectedValue;
+      expect(instance.marketplaceId).to.equal(expectedValue);
     });
 
-    it('should have the property brandCode (base name: "brandCode")', function() {
+    it('should have the property brandCode', function() {
       // verify property exists
       expect(instance).to.have.property('brandCode');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.brandCode = validValue;
-      expect(instance.brandCode).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.brandCode = expectedValue;
+      expect(instance.brandCode).to.equal(expectedValue);
     });
 
-    it('should have the property manufacturerCode (base name: "manufacturerCode")', function() {
+    it('should have the property manufacturerCode', function() {
       // verify property exists
       expect(instance).to.have.property('manufacturerCode');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.manufacturerCode = validValue;
-      expect(instance.manufacturerCode).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.manufacturerCode = expectedValue;
+      expect(instance.manufacturerCode).to.equal(expectedValue);
     });
 
-    it('should have the property manufacturerCodeParent (base name: "manufacturerCodeParent")', function() {
+    it('should have the property manufacturerCodeParent', function() {
       // verify property exists
       expect(instance).to.have.property('manufacturerCodeParent');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.manufacturerCodeParent = validValue;
-      expect(instance.manufacturerCodeParent).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.manufacturerCodeParent = expectedValue;
+      expect(instance.manufacturerCodeParent).to.equal(expectedValue);
     });
 
-    it('should have the property productCategory (base name: "productCategory")', function() {
+    it('should have the property productCategory', function() {
       // verify property exists
       expect(instance).to.have.property('productCategory');
 
       // set and verify value
-      var validValue = generateMockData('ItemVendorDetailsCategory');
-      instance.productCategory = validValue;
-      expect(instance.productCategory).to.equal(validValue);
+      var expectedValue = generateMockData('ItemVendorDetailsCategory');
+      instance.productCategory = expectedValue;
+      expect(instance.productCategory).to.equal(expectedValue);
     });
 
-    it('should have the property productGroup (base name: "productGroup")', function() {
+    it('should have the property productGroup', function() {
       // verify property exists
       expect(instance).to.have.property('productGroup');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.productGroup = validValue;
-      expect(instance.productGroup).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.productGroup = expectedValue;
+      expect(instance.productGroup).to.equal(expectedValue);
     });
 
-    it('should have the property productSubcategory (base name: "productSubcategory")', function() {
+    it('should have the property productSubcategory', function() {
       // verify property exists
       expect(instance).to.have.property('productSubcategory');
 
       // set and verify value
-      var validValue = generateMockData('ItemVendorDetailsCategory');
-      instance.productSubcategory = validValue;
-      expect(instance.productSubcategory).to.equal(validValue);
+      var expectedValue = generateMockData('ItemVendorDetailsCategory');
+      instance.productSubcategory = expectedValue;
+      expect(instance.productSubcategory).to.equal(expectedValue);
     });
 
-    it('should have the property replenishmentCategory (base name: "replenishmentCategory")', function() {
+    it('should have the property replenishmentCategory', function() {
       // verify property exists
       expect(instance).to.have.property('replenishmentCategory');
 
       // set and verify value
-      var validValue = ['ALLOCATED', 'BASIC_REPLENISHMENT', 'IN_SEASON', 'LIMITED_REPLENISHMENT', 'MANUFACTURER_OUT_OF_STOCK', 'NEW_PRODUCT', 'NON_REPLENISHABLE', 'NON_STOCKUPABLE', 'OBSOLETE', 'PLANNED_REPLENISHMENT', ][0];
-      instance.replenishmentCategory = validValue;
-      expect(instance.replenishmentCategory).to.equal(validValue);
+      var expectedValue = ['ALLOCATED', 'BASIC_REPLENISHMENT', 'IN_SEASON', 'LIMITED_REPLENISHMENT', 'MANUFACTURER_OUT_OF_STOCK', 'NEW_PRODUCT', 'NON_REPLENISHABLE', 'NON_STOCKUPABLE', 'OBSOLETE', 'PLANNED_REPLENISHMENT', ][0];
+      instance.replenishmentCategory = expectedValue;
+      expect(instance.replenishmentCategory).to.equal(expectedValue);
     });
 
   });

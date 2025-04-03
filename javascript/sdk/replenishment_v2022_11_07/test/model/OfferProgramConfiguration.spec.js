@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForReplenishment.OfferProgramConfiguration);
     });
 
-    it('should have the property preferences (base name: "preferences")', function() {
+    it('should have the property preferences', function() {
       // verify property exists
       expect(instance).to.have.property('preferences');
 
       // set and verify value
-      var validValue = generateMockData('OfferProgramConfigurationPreferences');
-      instance.preferences = validValue;
-      expect(instance.preferences).to.equal(validValue);
+      var expectedValue = generateMockData('OfferProgramConfigurationPreferences');
+      instance.preferences = expectedValue;
+      expect(instance.preferences).to.equal(expectedValue);
     });
 
-    it('should have the property promotions (base name: "promotions")', function() {
+    it('should have the property promotions', function() {
       // verify property exists
       expect(instance).to.have.property('promotions');
 
       // set and verify value
-      var validValue = generateMockData('OfferProgramConfigurationPromotions');
-      instance.promotions = validValue;
-      expect(instance.promotions).to.equal(validValue);
+      var expectedValue = generateMockData('OfferProgramConfigurationPromotions');
+      instance.promotions = expectedValue;
+      expect(instance.promotions).to.equal(expectedValue);
     });
 
-    it('should have the property enrollmentMethod (base name: "enrollmentMethod")', function() {
+    it('should have the property enrollmentMethod', function() {
       // verify property exists
       expect(instance).to.have.property('enrollmentMethod');
 
       // set and verify value
-      var validValue = generateMockData('EnrollmentMethod');
-      instance.enrollmentMethod = validValue;
-      expect(instance.enrollmentMethod).to.equal(validValue);
+      var expectedValue = generateMockData('EnrollmentMethod');
+      instance.enrollmentMethod = expectedValue;
+      expect(instance.enrollmentMethod).to.equal(expectedValue);
     });
 
   });

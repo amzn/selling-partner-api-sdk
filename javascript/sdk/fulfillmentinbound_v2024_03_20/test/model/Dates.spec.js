@@ -45,14 +45,14 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.Dates);
     });
 
-    it('should have the property readyToShipWindow (base name: "readyToShipWindow")', function() {
+    it('should have the property readyToShipWindow', function() {
       // verify property exists
       expect(instance).to.have.property('readyToShipWindow');
 
       // set and verify value
-      var validValue = generateMockData('Window');
-      instance.readyToShipWindow = validValue;
-      expect(instance.readyToShipWindow).to.equal(validValue);
+      var expectedValue = generateMockData('Window');
+      instance.readyToShipWindow = expectedValue;
+      expect(instance.readyToShipWindow).to.equal(expectedValue);
     });
 
   });

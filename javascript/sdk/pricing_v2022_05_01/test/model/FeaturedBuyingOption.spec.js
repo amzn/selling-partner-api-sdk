@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForPricing.FeaturedBuyingOption);
     });
 
-    it('should have the property buyingOptionType (base name: "buyingOptionType")', function() {
+    it('should have the property buyingOptionType', function() {
       // verify property exists
       expect(instance).to.have.property('buyingOptionType');
 
       // set and verify value
-      var validValue = ['New', ][0];
-      instance.buyingOptionType = validValue;
-      expect(instance.buyingOptionType).to.equal(validValue);
+      var expectedValue = ['New', ][0];
+      instance.buyingOptionType = expectedValue;
+      expect(instance.buyingOptionType).to.equal(expectedValue);
     });
 
-    it('should have the property segmentedFeaturedOffers (base name: "segmentedFeaturedOffers")', function() {
+    it('should have the property segmentedFeaturedOffers', function() {
       // verify property exists
       expect(instance).to.have.property('segmentedFeaturedOffers');
 
       // set and verify value
-      var validValue = generateMockData('[SegmentedFeaturedOffer]', true);
-      instance.segmentedFeaturedOffers = validValue;
-      expect(instance.segmentedFeaturedOffers).to.equal(validValue);
+      var expectedValue = generateMockData('SegmentedFeaturedOffer', true);
+      instance.segmentedFeaturedOffers = expectedValue;
+      expect(instance.segmentedFeaturedOffers).to.equal(expectedValue);
     });
 
   });

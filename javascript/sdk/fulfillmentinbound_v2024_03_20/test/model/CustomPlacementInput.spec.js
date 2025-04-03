@@ -45,24 +45,24 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.CustomPlacementInput);
     });
 
-    it('should have the property items (base name: "items")', function() {
+    it('should have the property items', function() {
       // verify property exists
       expect(instance).to.have.property('items');
 
       // set and verify value
-      var validValue = generateMockData('[ItemInput]', true);
-      instance.items = validValue;
-      expect(instance.items).to.equal(validValue);
+      var expectedValue = generateMockData('ItemInput', true);
+      instance.items = expectedValue;
+      expect(instance.items).to.equal(expectedValue);
     });
 
-    it('should have the property warehouseId (base name: "warehouseId")', function() {
+    it('should have the property warehouseId', function() {
       // verify property exists
       expect(instance).to.have.property('warehouseId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.warehouseId = validValue;
-      expect(instance.warehouseId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.warehouseId = expectedValue;
+      expect(instance.warehouseId).to.equal(expectedValue);
     });
 
   });

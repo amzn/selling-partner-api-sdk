@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForFinances.ChargeRefundTransaction);
     });
 
-    it('should have the property chargeAmount (base name: "ChargeAmount")', function() {
+    it('should have the property chargeAmount', function() {
       // verify property exists
       expect(instance).to.have.property('chargeAmount');
 
       // set and verify value
-      var validValue = generateMockData('Currency');
-      instance.chargeAmount = validValue;
-      expect(instance.chargeAmount).to.equal(validValue);
+      var expectedValue = generateMockData('Currency');
+      instance.chargeAmount = expectedValue;
+      expect(instance.chargeAmount).to.equal(expectedValue);
     });
 
-    it('should have the property chargeType (base name: "ChargeType")', function() {
+    it('should have the property chargeType', function() {
       // verify property exists
       expect(instance).to.have.property('chargeType');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.chargeType = validValue;
-      expect(instance.chargeType).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.chargeType = expectedValue;
+      expect(instance.chargeType).to.equal(expectedValue);
     });
 
   });

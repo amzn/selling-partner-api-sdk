@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForRetailProcurementShipments.Dimensions);
     });
 
-    it('should have the property length (base name: "length")', function() {
+    it('should have the property length', function() {
       // verify property exists
       expect(instance).to.have.property('length');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.length = validValue;
-      expect(instance.length).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.length = expectedValue;
+      expect(instance.length).to.equal(expectedValue);
     });
 
-    it('should have the property width (base name: "width")', function() {
+    it('should have the property width', function() {
       // verify property exists
       expect(instance).to.have.property('width');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.width = validValue;
-      expect(instance.width).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.width = expectedValue;
+      expect(instance.width).to.equal(expectedValue);
     });
 
-    it('should have the property height (base name: "height")', function() {
+    it('should have the property height', function() {
       // verify property exists
       expect(instance).to.have.property('height');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.height = validValue;
-      expect(instance.height).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.height = expectedValue;
+      expect(instance.height).to.equal(expectedValue);
     });
 
-    it('should have the property unitOfMeasure (base name: "unitOfMeasure")', function() {
+    it('should have the property unitOfMeasure', function() {
       // verify property exists
       expect(instance).to.have.property('unitOfMeasure');
 
       // set and verify value
-      var validValue = ['In', 'Ft', 'Meter', 'Yard', ][0];
-      instance.unitOfMeasure = validValue;
-      expect(instance.unitOfMeasure).to.equal(validValue);
+      var expectedValue = ['In', 'Ft', 'Meter', 'Yard', ][0];
+      instance.unitOfMeasure = expectedValue;
+      expect(instance.unitOfMeasure).to.equal(expectedValue);
     });
 
   });

@@ -45,24 +45,24 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.ListTransportationOptionsResponse);
     });
 
-    it('should have the property pagination (base name: "pagination")', function() {
+    it('should have the property pagination', function() {
       // verify property exists
       expect(instance).to.have.property('pagination');
 
       // set and verify value
-      var validValue = generateMockData('Pagination');
-      instance.pagination = validValue;
-      expect(instance.pagination).to.equal(validValue);
+      var expectedValue = generateMockData('Pagination');
+      instance.pagination = expectedValue;
+      expect(instance.pagination).to.equal(expectedValue);
     });
 
-    it('should have the property transportationOptions (base name: "transportationOptions")', function() {
+    it('should have the property transportationOptions', function() {
       // verify property exists
       expect(instance).to.have.property('transportationOptions');
 
       // set and verify value
-      var validValue = generateMockData('[TransportationOption]', true);
-      instance.transportationOptions = validValue;
-      expect(instance.transportationOptions).to.equal(validValue);
+      var expectedValue = generateMockData('TransportationOption', true);
+      instance.transportationOptions = expectedValue;
+      expect(instance.transportationOptions).to.equal(expectedValue);
     });
 
   });

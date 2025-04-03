@@ -45,24 +45,24 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.SetPrepDetailsRequest);
     });
 
-    it('should have the property marketplaceId (base name: "marketplaceId")', function() {
+    it('should have the property marketplaceId', function() {
       // verify property exists
       expect(instance).to.have.property('marketplaceId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.marketplaceId = validValue;
-      expect(instance.marketplaceId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.marketplaceId = expectedValue;
+      expect(instance.marketplaceId).to.equal(expectedValue);
     });
 
-    it('should have the property mskuPrepDetails (base name: "mskuPrepDetails")', function() {
+    it('should have the property mskuPrepDetails', function() {
       // verify property exists
       expect(instance).to.have.property('mskuPrepDetails');
 
       // set and verify value
-      var validValue = generateMockData('[MskuPrepDetailInput]', true);
-      instance.mskuPrepDetails = validValue;
-      expect(instance.mskuPrepDetails).to.equal(validValue);
+      var expectedValue = generateMockData('MskuPrepDetailInput', true);
+      instance.mskuPrepDetails = expectedValue;
+      expect(instance.mskuPrepDetails).to.equal(expectedValue);
     });
 
   });

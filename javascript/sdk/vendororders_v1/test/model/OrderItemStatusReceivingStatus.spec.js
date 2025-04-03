@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForRetailProcurementOrders.OrderItemStatusReceivingStatus);
     });
 
-    it('should have the property receiveStatus (base name: "receiveStatus")', function() {
+    it('should have the property receiveStatus', function() {
       // verify property exists
       expect(instance).to.have.property('receiveStatus');
 
       // set and verify value
-      var validValue = ['NOT_RECEIVED', 'PARTIALLY_RECEIVED', 'RECEIVED', ][0];
-      instance.receiveStatus = validValue;
-      expect(instance.receiveStatus).to.equal(validValue);
+      var expectedValue = ['NOT_RECEIVED', 'PARTIALLY_RECEIVED', 'RECEIVED', ][0];
+      instance.receiveStatus = expectedValue;
+      expect(instance.receiveStatus).to.equal(expectedValue);
     });
 
-    it('should have the property receivedQuantity (base name: "receivedQuantity")', function() {
+    it('should have the property receivedQuantity', function() {
       // verify property exists
       expect(instance).to.have.property('receivedQuantity');
 
       // set and verify value
-      var validValue = generateMockData('ItemQuantity');
-      instance.receivedQuantity = validValue;
-      expect(instance.receivedQuantity).to.equal(validValue);
+      var expectedValue = generateMockData('ItemQuantity');
+      instance.receivedQuantity = expectedValue;
+      expect(instance.receivedQuantity).to.equal(expectedValue);
     });
 
-    it('should have the property lastReceiveDate (base name: "lastReceiveDate")', function() {
+    it('should have the property lastReceiveDate', function() {
       // verify property exists
       expect(instance).to.have.property('lastReceiveDate');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.lastReceiveDate = validValue;
-      expect(instance.lastReceiveDate).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.lastReceiveDate = expectedValue;
+      expect(instance.lastReceiveDate).to.equal(expectedValue);
     });
 
   });

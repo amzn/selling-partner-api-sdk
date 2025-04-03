@@ -45,24 +45,24 @@
       expect(instance).to.be.a(AmazonShippingApi.CarrierAccount);
     });
 
-    it('should have the property carrierAccountId (base name: "carrierAccountId")', function() {
+    it('should have the property carrierAccountId', function() {
       // verify property exists
       expect(instance).to.have.property('carrierAccountId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.carrierAccountId = validValue;
-      expect(instance.carrierAccountId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.carrierAccountId = expectedValue;
+      expect(instance.carrierAccountId).to.equal(expectedValue);
     });
 
-    it('should have the property carrierId (base name: "carrierId")', function() {
+    it('should have the property carrierId', function() {
       // verify property exists
       expect(instance).to.have.property('carrierId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.carrierId = validValue;
-      expect(instance.carrierId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.carrierId = expectedValue;
+      expect(instance.carrierId).to.equal(expectedValue);
     });
 
   });

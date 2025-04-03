@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForServices.ItemDelivery);
     });
 
-    it('should have the property estimatedDeliveryDate (base name: "estimatedDeliveryDate")', function() {
+    it('should have the property estimatedDeliveryDate', function() {
       // verify property exists
       expect(instance).to.have.property('estimatedDeliveryDate');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.estimatedDeliveryDate = validValue;
-      expect(instance.estimatedDeliveryDate).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.estimatedDeliveryDate = expectedValue;
+      expect(instance.estimatedDeliveryDate).to.equal(expectedValue);
     });
 
-    it('should have the property itemDeliveryPromise (base name: "itemDeliveryPromise")', function() {
+    it('should have the property itemDeliveryPromise', function() {
       // verify property exists
       expect(instance).to.have.property('itemDeliveryPromise');
 
       // set and verify value
-      var validValue = generateMockData('ItemDeliveryPromise');
-      instance.itemDeliveryPromise = validValue;
-      expect(instance.itemDeliveryPromise).to.equal(validValue);
+      var expectedValue = generateMockData('ItemDeliveryPromise');
+      instance.itemDeliveryPromise = expectedValue;
+      expect(instance.itemDeliveryPromise).to.equal(expectedValue);
     });
 
   });

@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForRetailProcurementShipments.TaxRegistrationDetails);
     });
 
-    it('should have the property taxRegistrationType (base name: "taxRegistrationType")', function() {
+    it('should have the property taxRegistrationType', function() {
       // verify property exists
       expect(instance).to.have.property('taxRegistrationType');
 
       // set and verify value
-      var validValue = ['VAT', 'GST', ][0];
-      instance.taxRegistrationType = validValue;
-      expect(instance.taxRegistrationType).to.equal(validValue);
+      var expectedValue = ['VAT', 'GST', ][0];
+      instance.taxRegistrationType = expectedValue;
+      expect(instance.taxRegistrationType).to.equal(expectedValue);
     });
 
-    it('should have the property taxRegistrationNumber (base name: "taxRegistrationNumber")', function() {
+    it('should have the property taxRegistrationNumber', function() {
       // verify property exists
       expect(instance).to.have.property('taxRegistrationNumber');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.taxRegistrationNumber = validValue;
-      expect(instance.taxRegistrationNumber).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.taxRegistrationNumber = expectedValue;
+      expect(instance.taxRegistrationNumber).to.equal(expectedValue);
     });
 
   });

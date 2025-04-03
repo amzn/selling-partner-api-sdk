@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForAContentManagement.IntegerWithUnits);
     });
 
-    it('should have the property value (base name: "value")', function() {
+    it('should have the property value', function() {
       // verify property exists
       expect(instance).to.have.property('value');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.value = validValue;
-      expect(instance.value).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.value = expectedValue;
+      expect(instance.value).to.equal(expectedValue);
     });
 
-    it('should have the property units (base name: "units")', function() {
+    it('should have the property units', function() {
       // verify property exists
       expect(instance).to.have.property('units');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.units = validValue;
-      expect(instance.units).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.units = expectedValue;
+      expect(instance.units).to.equal(expectedValue);
     });
 
   });

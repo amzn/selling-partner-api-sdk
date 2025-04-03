@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForOrders.RegulatedInformationField);
     });
 
-    it('should have the property fieldId (base name: "FieldId")', function() {
+    it('should have the property fieldId', function() {
       // verify property exists
       expect(instance).to.have.property('fieldId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.fieldId = validValue;
-      expect(instance.fieldId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.fieldId = expectedValue;
+      expect(instance.fieldId).to.equal(expectedValue);
     });
 
-    it('should have the property fieldLabel (base name: "FieldLabel")', function() {
+    it('should have the property fieldLabel', function() {
       // verify property exists
       expect(instance).to.have.property('fieldLabel');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.fieldLabel = validValue;
-      expect(instance.fieldLabel).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.fieldLabel = expectedValue;
+      expect(instance.fieldLabel).to.equal(expectedValue);
     });
 
-    it('should have the property fieldType (base name: "FieldType")', function() {
+    it('should have the property fieldType', function() {
       // verify property exists
       expect(instance).to.have.property('fieldType');
 
       // set and verify value
-      var validValue = ['Text', 'FileAttachment', ][0];
-      instance.fieldType = validValue;
-      expect(instance.fieldType).to.equal(validValue);
+      var expectedValue = ['Text', 'FileAttachment', ][0];
+      instance.fieldType = expectedValue;
+      expect(instance.fieldType).to.equal(expectedValue);
     });
 
-    it('should have the property fieldValue (base name: "FieldValue")', function() {
+    it('should have the property fieldValue', function() {
       // verify property exists
       expect(instance).to.have.property('fieldValue');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.fieldValue = validValue;
-      expect(instance.fieldValue).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.fieldValue = expectedValue;
+      expect(instance.fieldValue).to.equal(expectedValue);
     });
 
   });

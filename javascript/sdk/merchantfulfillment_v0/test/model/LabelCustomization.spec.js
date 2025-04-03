@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForMerchantFulfillment.LabelCustomization);
     });
 
-    it('should have the property customTextForLabel (base name: "CustomTextForLabel")', function() {
+    it('should have the property customTextForLabel', function() {
       // verify property exists
       expect(instance).to.have.property('customTextForLabel');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.customTextForLabel = validValue;
-      expect(instance.customTextForLabel).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.customTextForLabel = expectedValue;
+      expect(instance.customTextForLabel).to.equal(expectedValue);
     });
 
-    it('should have the property standardIdForLabel (base name: "StandardIdForLabel")', function() {
+    it('should have the property standardIdForLabel', function() {
       // verify property exists
       expect(instance).to.have.property('standardIdForLabel');
 
       // set and verify value
-      var validValue = generateMockData('StandardIdForLabel');
-      instance.standardIdForLabel = validValue;
-      expect(instance.standardIdForLabel).to.equal(validValue);
+      var expectedValue = generateMockData('StandardIdForLabel');
+      instance.standardIdForLabel = expectedValue;
+      expect(instance.standardIdForLabel).to.equal(expectedValue);
     });
 
   });

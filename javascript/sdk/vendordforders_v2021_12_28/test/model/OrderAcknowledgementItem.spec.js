@@ -45,74 +45,74 @@
       expect(instance).to.be.a(SellingPartnerApiForDirectFulfillmentOrders.OrderAcknowledgementItem);
     });
 
-    it('should have the property purchaseOrderNumber (base name: "purchaseOrderNumber")', function() {
+    it('should have the property purchaseOrderNumber', function() {
       // verify property exists
       expect(instance).to.have.property('purchaseOrderNumber');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.purchaseOrderNumber = validValue;
-      expect(instance.purchaseOrderNumber).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.purchaseOrderNumber = expectedValue;
+      expect(instance.purchaseOrderNumber).to.equal(expectedValue);
     });
 
-    it('should have the property vendorOrderNumber (base name: "vendorOrderNumber")', function() {
+    it('should have the property vendorOrderNumber', function() {
       // verify property exists
       expect(instance).to.have.property('vendorOrderNumber');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.vendorOrderNumber = validValue;
-      expect(instance.vendorOrderNumber).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.vendorOrderNumber = expectedValue;
+      expect(instance.vendorOrderNumber).to.equal(expectedValue);
     });
 
-    it('should have the property acknowledgementDate (base name: "acknowledgementDate")', function() {
+    it('should have the property acknowledgementDate', function() {
       // verify property exists
       expect(instance).to.have.property('acknowledgementDate');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.acknowledgementDate = validValue;
-      expect(instance.acknowledgementDate).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.acknowledgementDate = expectedValue;
+      expect(instance.acknowledgementDate).to.equal(expectedValue);
     });
 
-    it('should have the property acknowledgementStatus (base name: "acknowledgementStatus")', function() {
+    it('should have the property acknowledgementStatus', function() {
       // verify property exists
       expect(instance).to.have.property('acknowledgementStatus');
 
       // set and verify value
-      var validValue = generateMockData('AcknowledgementStatus');
-      instance.acknowledgementStatus = validValue;
-      expect(instance.acknowledgementStatus).to.equal(validValue);
+      var expectedValue = generateMockData('AcknowledgementStatus');
+      instance.acknowledgementStatus = expectedValue;
+      expect(instance.acknowledgementStatus).to.equal(expectedValue);
     });
 
-    it('should have the property sellingParty (base name: "sellingParty")', function() {
+    it('should have the property sellingParty', function() {
       // verify property exists
       expect(instance).to.have.property('sellingParty');
 
       // set and verify value
-      var validValue = generateMockData('PartyIdentification');
-      instance.sellingParty = validValue;
-      expect(instance.sellingParty).to.equal(validValue);
+      var expectedValue = generateMockData('PartyIdentification');
+      instance.sellingParty = expectedValue;
+      expect(instance.sellingParty).to.equal(expectedValue);
     });
 
-    it('should have the property shipFromParty (base name: "shipFromParty")', function() {
+    it('should have the property shipFromParty', function() {
       // verify property exists
       expect(instance).to.have.property('shipFromParty');
 
       // set and verify value
-      var validValue = generateMockData('PartyIdentification');
-      instance.shipFromParty = validValue;
-      expect(instance.shipFromParty).to.equal(validValue);
+      var expectedValue = generateMockData('PartyIdentification');
+      instance.shipFromParty = expectedValue;
+      expect(instance.shipFromParty).to.equal(expectedValue);
     });
 
-    it('should have the property itemAcknowledgements (base name: "itemAcknowledgements")', function() {
+    it('should have the property itemAcknowledgements', function() {
       // verify property exists
       expect(instance).to.have.property('itemAcknowledgements');
 
       // set and verify value
-      var validValue = generateMockData('[OrderItemAcknowledgement]', true);
-      instance.itemAcknowledgements = validValue;
-      expect(instance.itemAcknowledgements).to.equal(validValue);
+      var expectedValue = generateMockData('OrderItemAcknowledgement', true);
+      instance.itemAcknowledgements = expectedValue;
+      expect(instance.itemAcknowledgements).to.equal(expectedValue);
     });
 
   });

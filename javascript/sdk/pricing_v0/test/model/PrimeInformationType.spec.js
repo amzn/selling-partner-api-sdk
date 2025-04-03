@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForPricing.PrimeInformationType);
     });
 
-    it('should have the property isPrime (base name: "IsPrime")', function() {
+    it('should have the property isPrime', function() {
       // verify property exists
       expect(instance).to.have.property('isPrime');
 
       // set and verify value
-      var validValue = generateMockData('Boolean');
-      instance.isPrime = validValue;
-      expect(instance.isPrime).to.equal(validValue);
+      var expectedValue = generateMockData('Boolean');
+      instance.isPrime = expectedValue;
+      expect(instance.isPrime).to.equal(expectedValue);
     });
 
-    it('should have the property isNationalPrime (base name: "IsNationalPrime")', function() {
+    it('should have the property isNationalPrime', function() {
       // verify property exists
       expect(instance).to.have.property('isNationalPrime');
 
       // set and verify value
-      var validValue = generateMockData('Boolean');
-      instance.isNationalPrime = validValue;
-      expect(instance.isNationalPrime).to.equal(validValue);
+      var expectedValue = generateMockData('Boolean');
+      instance.isNationalPrime = expectedValue;
+      expect(instance.isNationalPrime).to.equal(expectedValue);
     });
 
   });

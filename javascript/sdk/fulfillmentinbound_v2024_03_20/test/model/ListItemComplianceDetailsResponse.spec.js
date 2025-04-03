@@ -45,14 +45,14 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.ListItemComplianceDetailsResponse);
     });
 
-    it('should have the property complianceDetails (base name: "complianceDetails")', function() {
+    it('should have the property complianceDetails', function() {
       // verify property exists
       expect(instance).to.have.property('complianceDetails');
 
       // set and verify value
-      var validValue = generateMockData('[ComplianceDetail]', true);
-      instance.complianceDetails = validValue;
-      expect(instance.complianceDetails).to.equal(validValue);
+      var expectedValue = generateMockData('ComplianceDetail', true);
+      instance.complianceDetails = expectedValue;
+      expect(instance.complianceDetails).to.equal(expectedValue);
     });
 
   });

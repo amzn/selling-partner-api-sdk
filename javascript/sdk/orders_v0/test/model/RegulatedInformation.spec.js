@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForOrders.RegulatedInformation);
     });
 
-    it('should have the property fields (base name: "Fields")', function() {
+    it('should have the property fields', function() {
       // verify property exists
       expect(instance).to.have.property('fields');
 
       // set and verify value
-      var validValue = generateMockData('[RegulatedInformationField]', true);
-      instance.fields = validValue;
-      expect(instance.fields).to.equal(validValue);
+      var expectedValue = generateMockData('RegulatedInformationField', true);
+      instance.fields = expectedValue;
+      expect(instance.fields).to.equal(expectedValue);
     });
 
   });

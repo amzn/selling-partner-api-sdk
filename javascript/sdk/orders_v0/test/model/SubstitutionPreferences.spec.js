@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForOrders.SubstitutionPreferences);
     });
 
-    it('should have the property substitutionType (base name: "SubstitutionType")', function() {
+    it('should have the property substitutionType', function() {
       // verify property exists
       expect(instance).to.have.property('substitutionType');
 
       // set and verify value
-      var validValue = ['CUSTOMER_PREFERENCE', 'AMAZON_RECOMMENDED', 'DO_NOT_SUBSTITUTE', ][0];
-      instance.substitutionType = validValue;
-      expect(instance.substitutionType).to.equal(validValue);
+      var expectedValue = ['CUSTOMER_PREFERENCE', 'AMAZON_RECOMMENDED', 'DO_NOT_SUBSTITUTE', ][0];
+      instance.substitutionType = expectedValue;
+      expect(instance.substitutionType).to.equal(expectedValue);
     });
 
-    it('should have the property substitutionOptions (base name: "SubstitutionOptions")', function() {
+    it('should have the property substitutionOptions', function() {
       // verify property exists
       expect(instance).to.have.property('substitutionOptions');
 
       // set and verify value
-      var validValue = generateMockData('[SubstitutionOption]', true);
-      instance.substitutionOptions = validValue;
-      expect(instance.substitutionOptions).to.equal(validValue);
+      var expectedValue = generateMockData('SubstitutionOption', true);
+      instance.substitutionOptions = expectedValue;
+      expect(instance.substitutionOptions).to.equal(expectedValue);
     });
 
   });

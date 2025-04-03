@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForEasyShip.ListHandoverSlotsResponse);
     });
 
-    it('should have the property amazonOrderId (base name: "amazonOrderId")', function() {
+    it('should have the property amazonOrderId', function() {
       // verify property exists
       expect(instance).to.have.property('amazonOrderId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.amazonOrderId = validValue;
-      expect(instance.amazonOrderId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.amazonOrderId = expectedValue;
+      expect(instance.amazonOrderId).to.equal(expectedValue);
     });
 
-    it('should have the property timeSlots (base name: "timeSlots")', function() {
+    it('should have the property timeSlots', function() {
       // verify property exists
       expect(instance).to.have.property('timeSlots');
 
       // set and verify value
-      var validValue = generateMockData('[TimeSlot]', true);
-      instance.timeSlots = validValue;
-      expect(instance.timeSlots).to.equal(validValue);
+      var expectedValue = generateMockData('TimeSlot', true);
+      instance.timeSlots = expectedValue;
+      expect(instance.timeSlots).to.equal(expectedValue);
     });
 
   });

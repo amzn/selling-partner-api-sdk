@@ -45,54 +45,54 @@
       expect(instance).to.be.a(SellingPartnerApiForMerchantFulfillment.RejectedShippingService);
     });
 
-    it('should have the property carrierName (base name: "CarrierName")', function() {
+    it('should have the property carrierName', function() {
       // verify property exists
       expect(instance).to.have.property('carrierName');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.carrierName = validValue;
-      expect(instance.carrierName).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.carrierName = expectedValue;
+      expect(instance.carrierName).to.equal(expectedValue);
     });
 
-    it('should have the property shippingServiceName (base name: "ShippingServiceName")', function() {
+    it('should have the property shippingServiceName', function() {
       // verify property exists
       expect(instance).to.have.property('shippingServiceName');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.shippingServiceName = validValue;
-      expect(instance.shippingServiceName).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.shippingServiceName = expectedValue;
+      expect(instance.shippingServiceName).to.equal(expectedValue);
     });
 
-    it('should have the property shippingServiceId (base name: "ShippingServiceId")', function() {
+    it('should have the property shippingServiceId', function() {
       // verify property exists
       expect(instance).to.have.property('shippingServiceId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.shippingServiceId = validValue;
-      expect(instance.shippingServiceId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.shippingServiceId = expectedValue;
+      expect(instance.shippingServiceId).to.equal(expectedValue);
     });
 
-    it('should have the property rejectionReasonCode (base name: "RejectionReasonCode")', function() {
+    it('should have the property rejectionReasonCode', function() {
       // verify property exists
       expect(instance).to.have.property('rejectionReasonCode');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.rejectionReasonCode = validValue;
-      expect(instance.rejectionReasonCode).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.rejectionReasonCode = expectedValue;
+      expect(instance.rejectionReasonCode).to.equal(expectedValue);
     });
 
-    it('should have the property rejectionReasonMessage (base name: "RejectionReasonMessage")', function() {
+    it('should have the property rejectionReasonMessage', function() {
       // verify property exists
       expect(instance).to.have.property('rejectionReasonMessage');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.rejectionReasonMessage = validValue;
-      expect(instance.rejectionReasonMessage).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.rejectionReasonMessage = expectedValue;
+      expect(instance.rejectionReasonMessage).to.equal(expectedValue);
     });
 
   });

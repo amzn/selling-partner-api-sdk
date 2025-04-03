@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForServices.RangeCapacity);
     });
 
-    it('should have the property capacityType (base name: "capacityType")', function() {
+    it('should have the property capacityType', function() {
       // verify property exists
       expect(instance).to.have.property('capacityType');
 
       // set and verify value
-      var validValue = generateMockData('CapacityType');
-      instance.capacityType = validValue;
-      expect(instance.capacityType).to.equal(validValue);
+      var expectedValue = generateMockData('CapacityType');
+      instance.capacityType = expectedValue;
+      expect(instance.capacityType).to.equal(expectedValue);
     });
 
-    it('should have the property slots (base name: "slots")', function() {
+    it('should have the property slots', function() {
       // verify property exists
       expect(instance).to.have.property('slots');
 
       // set and verify value
-      var validValue = generateMockData('[RangeSlot]', true);
-      instance.slots = validValue;
-      expect(instance.slots).to.equal(validValue);
+      var expectedValue = generateMockData('RangeSlot', true);
+      instance.slots = expectedValue;
+      expect(instance.slots).to.equal(expectedValue);
     });
 
   });

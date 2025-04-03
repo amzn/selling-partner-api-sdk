@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForNotifications.ProcessingDirective);
     });
 
-    it('should have the property eventFilter (base name: "eventFilter")', function() {
+    it('should have the property eventFilter', function() {
       // verify property exists
       expect(instance).to.have.property('eventFilter');
 
       // set and verify value
-      var validValue = generateMockData('EventFilter');
-      instance.eventFilter = validValue;
-      expect(instance.eventFilter).to.equal(validValue);
+      var expectedValue = generateMockData('EventFilter');
+      instance.eventFilter = expectedValue;
+      expect(instance.eventFilter).to.equal(expectedValue);
     });
 
   });

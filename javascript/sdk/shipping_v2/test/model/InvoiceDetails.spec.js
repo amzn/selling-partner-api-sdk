@@ -45,24 +45,24 @@
       expect(instance).to.be.a(AmazonShippingApi.InvoiceDetails);
     });
 
-    it('should have the property invoiceNumber (base name: "invoiceNumber")', function() {
+    it('should have the property invoiceNumber', function() {
       // verify property exists
       expect(instance).to.have.property('invoiceNumber');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.invoiceNumber = validValue;
-      expect(instance.invoiceNumber).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.invoiceNumber = expectedValue;
+      expect(instance.invoiceNumber).to.equal(expectedValue);
     });
 
-    it('should have the property invoiceDate (base name: "invoiceDate")', function() {
+    it('should have the property invoiceDate', function() {
       // verify property exists
       expect(instance).to.have.property('invoiceDate');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.invoiceDate = validValue;
-      expect(instance.invoiceDate).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.invoiceDate = expectedValue;
+      expect(instance.invoiceDate).to.equal(expectedValue);
     });
 
   });

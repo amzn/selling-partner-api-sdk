@@ -45,34 +45,34 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.DocumentDownload);
     });
 
-    it('should have the property downloadType (base name: "downloadType")', function() {
+    it('should have the property downloadType', function() {
       // verify property exists
       expect(instance).to.have.property('downloadType');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.downloadType = validValue;
-      expect(instance.downloadType).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.downloadType = expectedValue;
+      expect(instance.downloadType).to.equal(expectedValue);
     });
 
-    it('should have the property expiration (base name: "expiration")', function() {
+    it('should have the property expiration', function() {
       // verify property exists
       expect(instance).to.have.property('expiration');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.expiration = validValue;
-      expect(instance.expiration).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.expiration = expectedValue;
+      expect(instance.expiration).to.equal(expectedValue);
     });
 
-    it('should have the property uri (base name: "uri")', function() {
+    it('should have the property uri', function() {
       // verify property exists
       expect(instance).to.have.property('uri');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.uri = validValue;
-      expect(instance.uri).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.uri = expectedValue;
+      expect(instance.uri).to.equal(expectedValue);
     });
 
   });

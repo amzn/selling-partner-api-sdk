@@ -45,34 +45,34 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFinances.AmazonPayContext);
     });
 
-    it('should have the property storeName (base name: "storeName")', function() {
+    it('should have the property storeName', function() {
       // verify property exists
       expect(instance).to.have.property('storeName');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.storeName = validValue;
-      expect(instance.storeName).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.storeName = expectedValue;
+      expect(instance.storeName).to.equal(expectedValue);
     });
 
-    it('should have the property orderType (base name: "orderType")', function() {
+    it('should have the property orderType', function() {
       // verify property exists
       expect(instance).to.have.property('orderType');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.orderType = validValue;
-      expect(instance.orderType).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.orderType = expectedValue;
+      expect(instance.orderType).to.equal(expectedValue);
     });
 
-    it('should have the property channel (base name: "channel")', function() {
+    it('should have the property channel', function() {
       // verify property exists
       expect(instance).to.have.property('channel');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.channel = validValue;
-      expect(instance.channel).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.channel = expectedValue;
+      expect(instance.channel).to.equal(expectedValue);
     });
 
   });

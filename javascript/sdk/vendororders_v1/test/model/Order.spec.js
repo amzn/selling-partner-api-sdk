@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForRetailProcurementOrders.Order);
     });
 
-    it('should have the property purchaseOrderNumber (base name: "purchaseOrderNumber")', function() {
+    it('should have the property purchaseOrderNumber', function() {
       // verify property exists
       expect(instance).to.have.property('purchaseOrderNumber');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.purchaseOrderNumber = validValue;
-      expect(instance.purchaseOrderNumber).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.purchaseOrderNumber = expectedValue;
+      expect(instance.purchaseOrderNumber).to.equal(expectedValue);
     });
 
-    it('should have the property purchaseOrderState (base name: "purchaseOrderState")', function() {
+    it('should have the property purchaseOrderState', function() {
       // verify property exists
       expect(instance).to.have.property('purchaseOrderState');
 
       // set and verify value
-      var validValue = ['New', 'Acknowledged', 'Closed', ][0];
-      instance.purchaseOrderState = validValue;
-      expect(instance.purchaseOrderState).to.equal(validValue);
+      var expectedValue = ['New', 'Acknowledged', 'Closed', ][0];
+      instance.purchaseOrderState = expectedValue;
+      expect(instance.purchaseOrderState).to.equal(expectedValue);
     });
 
-    it('should have the property orderDetails (base name: "orderDetails")', function() {
+    it('should have the property orderDetails', function() {
       // verify property exists
       expect(instance).to.have.property('orderDetails');
 
       // set and verify value
-      var validValue = generateMockData('OrderDetails');
-      instance.orderDetails = validValue;
-      expect(instance.orderDetails).to.equal(validValue);
+      var expectedValue = generateMockData('OrderDetails');
+      instance.orderDetails = expectedValue;
+      expect(instance.orderDetails).to.equal(expectedValue);
     });
 
   });

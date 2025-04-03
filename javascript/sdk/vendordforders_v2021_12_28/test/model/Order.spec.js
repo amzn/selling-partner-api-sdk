@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForDirectFulfillmentOrders.Order);
     });
 
-    it('should have the property purchaseOrderNumber (base name: "purchaseOrderNumber")', function() {
+    it('should have the property purchaseOrderNumber', function() {
       // verify property exists
       expect(instance).to.have.property('purchaseOrderNumber');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.purchaseOrderNumber = validValue;
-      expect(instance.purchaseOrderNumber).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.purchaseOrderNumber = expectedValue;
+      expect(instance.purchaseOrderNumber).to.equal(expectedValue);
     });
 
-    it('should have the property orderDetails (base name: "orderDetails")', function() {
+    it('should have the property orderDetails', function() {
       // verify property exists
       expect(instance).to.have.property('orderDetails');
 
       // set and verify value
-      var validValue = generateMockData('OrderDetails');
-      instance.orderDetails = validValue;
-      expect(instance.orderDetails).to.equal(validValue);
+      var expectedValue = generateMockData('OrderDetails');
+      instance.orderDetails = expectedValue;
+      expect(instance.orderDetails).to.equal(expectedValue);
     });
 
   });

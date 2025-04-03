@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForReports.ReportDocument);
     });
 
-    it('should have the property reportDocumentId (base name: "reportDocumentId")', function() {
+    it('should have the property reportDocumentId', function() {
       // verify property exists
       expect(instance).to.have.property('reportDocumentId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.reportDocumentId = validValue;
-      expect(instance.reportDocumentId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.reportDocumentId = expectedValue;
+      expect(instance.reportDocumentId).to.equal(expectedValue);
     });
 
-    it('should have the property url (base name: "url")', function() {
+    it('should have the property url', function() {
       // verify property exists
       expect(instance).to.have.property('url');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.url = validValue;
-      expect(instance.url).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.url = expectedValue;
+      expect(instance.url).to.equal(expectedValue);
     });
 
-    it('should have the property compressionAlgorithm (base name: "compressionAlgorithm")', function() {
+    it('should have the property compressionAlgorithm', function() {
       // verify property exists
       expect(instance).to.have.property('compressionAlgorithm');
 
       // set and verify value
-      var validValue = ['GZIP', ][0];
-      instance.compressionAlgorithm = validValue;
-      expect(instance.compressionAlgorithm).to.equal(validValue);
+      var expectedValue = ['GZIP', ][0];
+      instance.compressionAlgorithm = expectedValue;
+      expect(instance.compressionAlgorithm).to.equal(expectedValue);
     });
 
   });

@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForProductFees.FeesEstimate);
     });
 
-    it('should have the property timeOfFeesEstimation (base name: "TimeOfFeesEstimation")', function() {
+    it('should have the property timeOfFeesEstimation', function() {
       // verify property exists
       expect(instance).to.have.property('timeOfFeesEstimation');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.timeOfFeesEstimation = validValue;
-      expect(instance.timeOfFeesEstimation).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.timeOfFeesEstimation = expectedValue;
+      expect(instance.timeOfFeesEstimation).to.equal(expectedValue);
     });
 
-    it('should have the property totalFeesEstimate (base name: "TotalFeesEstimate")', function() {
+    it('should have the property totalFeesEstimate', function() {
       // verify property exists
       expect(instance).to.have.property('totalFeesEstimate');
 
       // set and verify value
-      var validValue = generateMockData('MoneyType');
-      instance.totalFeesEstimate = validValue;
-      expect(instance.totalFeesEstimate).to.equal(validValue);
+      var expectedValue = generateMockData('MoneyType');
+      instance.totalFeesEstimate = expectedValue;
+      expect(instance.totalFeesEstimate).to.equal(expectedValue);
     });
 
-    it('should have the property feeDetailList (base name: "FeeDetailList")', function() {
+    it('should have the property feeDetailList', function() {
       // verify property exists
       expect(instance).to.have.property('feeDetailList');
 
       // set and verify value
-      var validValue = generateMockData('[FeeDetail]', true);
-      instance.feeDetailList = validValue;
-      expect(instance.feeDetailList).to.equal(validValue);
+      var expectedValue = generateMockData('FeeDetail', true);
+      instance.feeDetailList = expectedValue;
+      expect(instance.feeDetailList).to.equal(expectedValue);
     });
 
   });

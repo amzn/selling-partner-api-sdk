@@ -45,34 +45,34 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.TransportationSelection);
     });
 
-    it('should have the property contactInformation (base name: "contactInformation")', function() {
+    it('should have the property contactInformation', function() {
       // verify property exists
       expect(instance).to.have.property('contactInformation');
 
       // set and verify value
-      var validValue = generateMockData('ContactInformation');
-      instance.contactInformation = validValue;
-      expect(instance.contactInformation).to.equal(validValue);
+      var expectedValue = generateMockData('ContactInformation');
+      instance.contactInformation = expectedValue;
+      expect(instance.contactInformation).to.equal(expectedValue);
     });
 
-    it('should have the property shipmentId (base name: "shipmentId")', function() {
+    it('should have the property shipmentId', function() {
       // verify property exists
       expect(instance).to.have.property('shipmentId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.shipmentId = validValue;
-      expect(instance.shipmentId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.shipmentId = expectedValue;
+      expect(instance.shipmentId).to.equal(expectedValue);
     });
 
-    it('should have the property transportationOptionId (base name: "transportationOptionId")', function() {
+    it('should have the property transportationOptionId', function() {
       // verify property exists
       expect(instance).to.have.property('transportationOptionId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.transportationOptionId = validValue;
-      expect(instance.transportationOptionId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.transportationOptionId = expectedValue;
+      expect(instance.transportationOptionId).to.equal(expectedValue);
     });
 
   });

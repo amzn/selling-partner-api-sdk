@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForNotifications.CreateDestinationRequest);
     });
 
-    it('should have the property resourceSpecification (base name: "resourceSpecification")', function() {
+    it('should have the property resourceSpecification', function() {
       // verify property exists
       expect(instance).to.have.property('resourceSpecification');
 
       // set and verify value
-      var validValue = generateMockData('DestinationResourceSpecification');
-      instance.resourceSpecification = validValue;
-      expect(instance.resourceSpecification).to.equal(validValue);
+      var expectedValue = generateMockData('DestinationResourceSpecification');
+      instance.resourceSpecification = expectedValue;
+      expect(instance.resourceSpecification).to.equal(expectedValue);
     });
 
-    it('should have the property name (base name: "name")', function() {
+    it('should have the property name', function() {
       // verify property exists
       expect(instance).to.have.property('name');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.name = validValue;
-      expect(instance.name).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.name = expectedValue;
+      expect(instance.name).to.equal(expectedValue);
     });
 
   });

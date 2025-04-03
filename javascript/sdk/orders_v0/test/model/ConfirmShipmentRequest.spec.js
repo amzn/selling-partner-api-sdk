@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForOrders.ConfirmShipmentRequest);
     });
 
-    it('should have the property packageDetail (base name: "packageDetail")', function() {
+    it('should have the property packageDetail', function() {
       // verify property exists
       expect(instance).to.have.property('packageDetail');
 
       // set and verify value
-      var validValue = generateMockData('PackageDetail');
-      instance.packageDetail = validValue;
-      expect(instance.packageDetail).to.equal(validValue);
+      var expectedValue = generateMockData('PackageDetail');
+      instance.packageDetail = expectedValue;
+      expect(instance.packageDetail).to.equal(expectedValue);
     });
 
-    it('should have the property codCollectionMethod (base name: "codCollectionMethod")', function() {
+    it('should have the property codCollectionMethod', function() {
       // verify property exists
       expect(instance).to.have.property('codCollectionMethod');
 
       // set and verify value
-      var validValue = ['DirectPayment', ][0];
-      instance.codCollectionMethod = validValue;
-      expect(instance.codCollectionMethod).to.equal(validValue);
+      var expectedValue = ['DirectPayment', ][0];
+      instance.codCollectionMethod = expectedValue;
+      expect(instance.codCollectionMethod).to.equal(expectedValue);
     });
 
-    it('should have the property marketplaceId (base name: "marketplaceId")', function() {
+    it('should have the property marketplaceId', function() {
       // verify property exists
       expect(instance).to.have.property('marketplaceId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.marketplaceId = validValue;
-      expect(instance.marketplaceId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.marketplaceId = expectedValue;
+      expect(instance.marketplaceId).to.equal(expectedValue);
     });
 
   });

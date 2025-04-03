@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForMerchantFulfillment.DangerousGoodsDetails);
     });
 
-    it('should have the property unitedNationsRegulatoryId (base name: "UnitedNationsRegulatoryId")', function() {
+    it('should have the property unitedNationsRegulatoryId', function() {
       // verify property exists
       expect(instance).to.have.property('unitedNationsRegulatoryId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.unitedNationsRegulatoryId = validValue;
-      expect(instance.unitedNationsRegulatoryId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.unitedNationsRegulatoryId = expectedValue;
+      expect(instance.unitedNationsRegulatoryId).to.equal(expectedValue);
     });
 
-    it('should have the property transportationRegulatoryClass (base name: "TransportationRegulatoryClass")', function() {
+    it('should have the property transportationRegulatoryClass', function() {
       // verify property exists
       expect(instance).to.have.property('transportationRegulatoryClass');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.transportationRegulatoryClass = validValue;
-      expect(instance.transportationRegulatoryClass).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.transportationRegulatoryClass = expectedValue;
+      expect(instance.transportationRegulatoryClass).to.equal(expectedValue);
     });
 
-    it('should have the property packingGroup (base name: "PackingGroup")', function() {
+    it('should have the property packingGroup', function() {
       // verify property exists
       expect(instance).to.have.property('packingGroup');
 
       // set and verify value
-      var validValue = ['I', 'II', 'III', ][0];
-      instance.packingGroup = validValue;
-      expect(instance.packingGroup).to.equal(validValue);
+      var expectedValue = ['I', 'II', 'III', ][0];
+      instance.packingGroup = expectedValue;
+      expect(instance.packingGroup).to.equal(expectedValue);
     });
 
-    it('should have the property packingInstruction (base name: "PackingInstruction")', function() {
+    it('should have the property packingInstruction', function() {
       // verify property exists
       expect(instance).to.have.property('packingInstruction');
 
       // set and verify value
-      var validValue = ['PI965_SECTION_IA', 'PI965_SECTION_IB', 'PI965_SECTION_II', 'PI966_SECTION_I', 'PI966_SECTION_II', 'PI967_SECTION_I', 'PI967_SECTION_II', 'PI968_SECTION_IA', 'PI968_SECTION_IB', 'PI969_SECTION_I', 'PI969_SECTION_II', 'PI970_SECTION_I', 'PI970_SECTION_II', ][0];
-      instance.packingInstruction = validValue;
-      expect(instance.packingInstruction).to.equal(validValue);
+      var expectedValue = ['PI965_SECTION_IA', 'PI965_SECTION_IB', 'PI965_SECTION_II', 'PI966_SECTION_I', 'PI966_SECTION_II', 'PI967_SECTION_I', 'PI967_SECTION_II', 'PI968_SECTION_IA', 'PI968_SECTION_IB', 'PI969_SECTION_I', 'PI969_SECTION_II', 'PI970_SECTION_I', 'PI970_SECTION_II', ][0];
+      instance.packingInstruction = expectedValue;
+      expect(instance.packingInstruction).to.equal(expectedValue);
     });
 
   });

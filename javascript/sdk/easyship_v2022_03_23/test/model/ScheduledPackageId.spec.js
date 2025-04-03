@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForEasyShip.ScheduledPackageId);
     });
 
-    it('should have the property amazonOrderId (base name: "amazonOrderId")', function() {
+    it('should have the property amazonOrderId', function() {
       // verify property exists
       expect(instance).to.have.property('amazonOrderId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.amazonOrderId = validValue;
-      expect(instance.amazonOrderId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.amazonOrderId = expectedValue;
+      expect(instance.amazonOrderId).to.equal(expectedValue);
     });
 
-    it('should have the property packageId (base name: "packageId")', function() {
+    it('should have the property packageId', function() {
       // verify property exists
       expect(instance).to.have.property('packageId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.packageId = validValue;
-      expect(instance.packageId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.packageId = expectedValue;
+      expect(instance.packageId).to.equal(expectedValue);
     });
 
   });

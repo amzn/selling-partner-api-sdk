@@ -45,24 +45,24 @@
       expect(instance).to.be.a(TheSellingPartnerApiForSellers.Participation);
     });
 
-    it('should have the property isParticipating (base name: "isParticipating")', function() {
+    it('should have the property isParticipating', function() {
       // verify property exists
       expect(instance).to.have.property('isParticipating');
 
       // set and verify value
-      var validValue = generateMockData('Boolean');
-      instance.isParticipating = validValue;
-      expect(instance.isParticipating).to.equal(validValue);
+      var expectedValue = generateMockData('Boolean');
+      instance.isParticipating = expectedValue;
+      expect(instance.isParticipating).to.equal(expectedValue);
     });
 
-    it('should have the property hasSuspendedListings (base name: "hasSuspendedListings")', function() {
+    it('should have the property hasSuspendedListings', function() {
       // verify property exists
       expect(instance).to.have.property('hasSuspendedListings');
 
       // set and verify value
-      var validValue = generateMockData('Boolean');
-      instance.hasSuspendedListings = validValue;
-      expect(instance.hasSuspendedListings).to.equal(validValue);
+      var expectedValue = generateMockData('Boolean');
+      instance.hasSuspendedListings = expectedValue;
+      expect(instance.hasSuspendedListings).to.equal(expectedValue);
     });
 
   });

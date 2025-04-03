@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.GetFulfillmentPreviewResult);
     });
 
-    it('should have the property fulfillmentPreviews (base name: "fulfillmentPreviews")', function() {
+    it('should have the property fulfillmentPreviews', function() {
       // verify property exists
       expect(instance).to.have.property('fulfillmentPreviews');
 
       // set and verify value
-      var validValue = generateMockData('[FulfillmentPreview]', true);
-      instance.fulfillmentPreviews = validValue;
-      expect(instance.fulfillmentPreviews).to.equal(validValue);
+      var expectedValue = generateMockData('FulfillmentPreview', true);
+      instance.fulfillmentPreviews = expectedValue;
+      expect(instance.fulfillmentPreviews).to.equal(expectedValue);
     });
 
   });

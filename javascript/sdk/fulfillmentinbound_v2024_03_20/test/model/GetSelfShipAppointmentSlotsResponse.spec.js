@@ -45,24 +45,24 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.GetSelfShipAppointmentSlotsResponse);
     });
 
-    it('should have the property pagination (base name: "pagination")', function() {
+    it('should have the property pagination', function() {
       // verify property exists
       expect(instance).to.have.property('pagination');
 
       // set and verify value
-      var validValue = generateMockData('Pagination');
-      instance.pagination = validValue;
-      expect(instance.pagination).to.equal(validValue);
+      var expectedValue = generateMockData('Pagination');
+      instance.pagination = expectedValue;
+      expect(instance.pagination).to.equal(expectedValue);
     });
 
-    it('should have the property selfShipAppointmentSlotsAvailability (base name: "selfShipAppointmentSlotsAvailability")', function() {
+    it('should have the property selfShipAppointmentSlotsAvailability', function() {
       // verify property exists
       expect(instance).to.have.property('selfShipAppointmentSlotsAvailability');
 
       // set and verify value
-      var validValue = generateMockData('SelfShipAppointmentSlotsAvailability');
-      instance.selfShipAppointmentSlotsAvailability = validValue;
-      expect(instance.selfShipAppointmentSlotsAvailability).to.equal(validValue);
+      var expectedValue = generateMockData('SelfShipAppointmentSlotsAvailability');
+      instance.selfShipAppointmentSlotsAvailability = expectedValue;
+      expect(instance.selfShipAppointmentSlotsAvailability).to.equal(expectedValue);
     });
 
   });

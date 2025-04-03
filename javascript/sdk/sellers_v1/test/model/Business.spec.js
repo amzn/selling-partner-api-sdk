@@ -45,54 +45,54 @@
       expect(instance).to.be.a(TheSellingPartnerApiForSellers.Business);
     });
 
-    it('should have the property name (base name: "name")', function() {
+    it('should have the property name', function() {
       // verify property exists
       expect(instance).to.have.property('name');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.name = validValue;
-      expect(instance.name).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.name = expectedValue;
+      expect(instance.name).to.equal(expectedValue);
     });
 
-    it('should have the property registeredBusinessAddress (base name: "registeredBusinessAddress")', function() {
+    it('should have the property registeredBusinessAddress', function() {
       // verify property exists
       expect(instance).to.have.property('registeredBusinessAddress');
 
       // set and verify value
-      var validValue = generateMockData('Address');
-      instance.registeredBusinessAddress = validValue;
-      expect(instance.registeredBusinessAddress).to.equal(validValue);
+      var expectedValue = generateMockData('Address');
+      instance.registeredBusinessAddress = expectedValue;
+      expect(instance.registeredBusinessAddress).to.equal(expectedValue);
     });
 
-    it('should have the property companyRegistrationNumber (base name: "companyRegistrationNumber")', function() {
+    it('should have the property companyRegistrationNumber', function() {
       // verify property exists
       expect(instance).to.have.property('companyRegistrationNumber');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.companyRegistrationNumber = validValue;
-      expect(instance.companyRegistrationNumber).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.companyRegistrationNumber = expectedValue;
+      expect(instance.companyRegistrationNumber).to.equal(expectedValue);
     });
 
-    it('should have the property companyTaxIdentificationNumber (base name: "companyTaxIdentificationNumber")', function() {
+    it('should have the property companyTaxIdentificationNumber', function() {
       // verify property exists
       expect(instance).to.have.property('companyTaxIdentificationNumber');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.companyTaxIdentificationNumber = validValue;
-      expect(instance.companyTaxIdentificationNumber).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.companyTaxIdentificationNumber = expectedValue;
+      expect(instance.companyTaxIdentificationNumber).to.equal(expectedValue);
     });
 
-    it('should have the property nonLatinName (base name: "nonLatinName")', function() {
+    it('should have the property nonLatinName', function() {
       // verify property exists
       expect(instance).to.have.property('nonLatinName');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.nonLatinName = validValue;
-      expect(instance.nonLatinName).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.nonLatinName = expectedValue;
+      expect(instance.nonLatinName).to.equal(expectedValue);
     });
 
   });

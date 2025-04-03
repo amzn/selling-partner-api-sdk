@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForNotifications.OrderChangeTypeFilter);
     });
 
-    it('should have the property orderChangeTypes (base name: "orderChangeTypes")', function() {
+    it('should have the property orderChangeTypes', function() {
       // verify property exists
       expect(instance).to.have.property('orderChangeTypes');
 
       // set and verify value
-      var validValue = generateMockData('[OrderChangeTypeEnum]', true);
-      instance.orderChangeTypes = validValue;
-      expect(instance.orderChangeTypes).to.equal(validValue);
+      var expectedValue = generateMockData('OrderChangeTypeEnum', true);
+      instance.orderChangeTypes = expectedValue;
+      expect(instance.orderChangeTypes).to.equal(expectedValue);
     });
 
   });

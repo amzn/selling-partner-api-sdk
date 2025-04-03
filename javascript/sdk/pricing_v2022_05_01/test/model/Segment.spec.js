@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForPricing.Segment);
     });
 
-    it('should have the property segmentDetails (base name: "segmentDetails")', function() {
+    it('should have the property segmentDetails', function() {
       // verify property exists
       expect(instance).to.have.property('segmentDetails');
 
       // set and verify value
-      var validValue = generateMockData('SegmentDetails');
-      instance.segmentDetails = validValue;
-      expect(instance.segmentDetails).to.equal(validValue);
+      var expectedValue = generateMockData('SegmentDetails');
+      instance.segmentDetails = expectedValue;
+      expect(instance.segmentDetails).to.equal(expectedValue);
     });
 
   });

@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForPricing.GetItemOffersBatchRequest);
     });
 
-    it('should have the property requests (base name: "requests")', function() {
+    it('should have the property requests', function() {
       // verify property exists
       expect(instance).to.have.property('requests');
 
       // set and verify value
-      var validValue = generateMockData('[ItemOffersRequest]', true);
-      instance.requests = validValue;
-      expect(instance.requests).to.equal(validValue);
+      var expectedValue = generateMockData('ItemOffersRequest', true);
+      instance.requests = expectedValue;
+      expect(instance.requests).to.equal(expectedValue);
     });
 
   });

@@ -45,14 +45,14 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.CreateMarketplaceItemLabelsResponse);
     });
 
-    it('should have the property documentDownloads (base name: "documentDownloads")', function() {
+    it('should have the property documentDownloads', function() {
       // verify property exists
       expect(instance).to.have.property('documentDownloads');
 
       // set and verify value
-      var validValue = generateMockData('[DocumentDownload]', true);
-      instance.documentDownloads = validValue;
-      expect(instance.documentDownloads).to.equal(validValue);
+      var expectedValue = generateMockData('DocumentDownload', true);
+      instance.documentDownloads = expectedValue;
+      expect(instance.documentDownloads).to.equal(expectedValue);
     });
 
   });

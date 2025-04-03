@@ -45,24 +45,24 @@
       expect(instance).to.be.a(TheSellingPartnerApiForTransfers.InitiatePayoutRequest);
     });
 
-    it('should have the property marketplaceId (base name: "marketplaceId")', function() {
+    it('should have the property marketplaceId', function() {
       // verify property exists
       expect(instance).to.have.property('marketplaceId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.marketplaceId = validValue;
-      expect(instance.marketplaceId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.marketplaceId = expectedValue;
+      expect(instance.marketplaceId).to.equal(expectedValue);
     });
 
-    it('should have the property accountType (base name: "accountType")', function() {
+    it('should have the property accountType', function() {
       // verify property exists
       expect(instance).to.have.property('accountType');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.accountType = validValue;
-      expect(instance.accountType).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.accountType = expectedValue;
+      expect(instance.accountType).to.equal(expectedValue);
     });
 
   });

@@ -45,14 +45,14 @@
       expect(instance).to.be.a(AmazonShippingApi.GenerateCollectionFormResponse);
     });
 
-    it('should have the property collectionsFormDocument (base name: "collectionsFormDocument")', function() {
+    it('should have the property collectionsFormDocument', function() {
       // verify property exists
       expect(instance).to.have.property('collectionsFormDocument');
 
       // set and verify value
-      var validValue = generateMockData('CollectionsFormDocument');
-      instance.collectionsFormDocument = validValue;
-      expect(instance.collectionsFormDocument).to.equal(validValue);
+      var expectedValue = generateMockData('CollectionsFormDocument');
+      instance.collectionsFormDocument = expectedValue;
+      expect(instance.collectionsFormDocument).to.equal(expectedValue);
     });
 
   });

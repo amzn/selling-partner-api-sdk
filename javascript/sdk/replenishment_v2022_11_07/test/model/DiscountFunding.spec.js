@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForReplenishment.DiscountFunding);
     });
 
-    it('should have the property percentage (base name: "percentage")', function() {
+    it('should have the property percentage', function() {
       // verify property exists
       expect(instance).to.have.property('percentage');
 
       // set and verify value
-      var validValue = generateMockData('[Number]', true);
-      instance.percentage = validValue;
-      expect(instance.percentage).to.equal(validValue);
+      var expectedValue = generateMockData('Number', true);
+      instance.percentage = expectedValue;
+      expect(instance.percentage).to.equal(expectedValue);
     });
 
   });

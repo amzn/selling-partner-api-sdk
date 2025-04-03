@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForAContentManagement.StandardCompanyLogoModule);
     });
 
-    it('should have the property companyLogo (base name: "companyLogo")', function() {
+    it('should have the property companyLogo', function() {
       // verify property exists
       expect(instance).to.have.property('companyLogo');
 
       // set and verify value
-      var validValue = generateMockData('ImageComponent');
-      instance.companyLogo = validValue;
-      expect(instance.companyLogo).to.equal(validValue);
+      var expectedValue = generateMockData('ImageComponent');
+      instance.companyLogo = expectedValue;
+      expect(instance.companyLogo).to.equal(expectedValue);
     });
 
   });

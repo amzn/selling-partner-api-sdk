@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForCatalogItems.ItemRelationship);
     });
 
-    it('should have the property childAsins (base name: "childAsins")', function() {
+    it('should have the property childAsins', function() {
       // verify property exists
       expect(instance).to.have.property('childAsins');
 
       // set and verify value
-      var validValue = generateMockData('[String]', true);
-      instance.childAsins = validValue;
-      expect(instance.childAsins).to.equal(validValue);
+      var expectedValue = generateMockData('String', true);
+      instance.childAsins = expectedValue;
+      expect(instance.childAsins).to.equal(expectedValue);
     });
 
-    it('should have the property parentAsins (base name: "parentAsins")', function() {
+    it('should have the property parentAsins', function() {
       // verify property exists
       expect(instance).to.have.property('parentAsins');
 
       // set and verify value
-      var validValue = generateMockData('[String]', true);
-      instance.parentAsins = validValue;
-      expect(instance.parentAsins).to.equal(validValue);
+      var expectedValue = generateMockData('String', true);
+      instance.parentAsins = expectedValue;
+      expect(instance.parentAsins).to.equal(expectedValue);
     });
 
-    it('should have the property variationTheme (base name: "variationTheme")', function() {
+    it('should have the property variationTheme', function() {
       // verify property exists
       expect(instance).to.have.property('variationTheme');
 
       // set and verify value
-      var validValue = generateMockData('ItemVariationTheme');
-      instance.variationTheme = validValue;
-      expect(instance.variationTheme).to.equal(validValue);
+      var expectedValue = generateMockData('ItemVariationTheme');
+      instance.variationTheme = expectedValue;
+      expect(instance.variationTheme).to.equal(expectedValue);
     });
 
-    it('should have the property type (base name: "type")', function() {
+    it('should have the property type', function() {
       // verify property exists
       expect(instance).to.have.property('type');
 
       // set and verify value
-      var validValue = ['VARIATION', 'PACKAGE_HIERARCHY', ][0];
-      instance.type = validValue;
-      expect(instance.type).to.equal(validValue);
+      var expectedValue = ['VARIATION', 'PACKAGE_HIERARCHY', ][0];
+      instance.type = expectedValue;
+      expect(instance.type).to.equal(expectedValue);
     });
 
   });

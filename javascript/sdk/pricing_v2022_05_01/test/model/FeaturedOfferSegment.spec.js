@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForPricing.FeaturedOfferSegment);
     });
 
-    it('should have the property customerMembership (base name: "customerMembership")', function() {
+    it('should have the property customerMembership', function() {
       // verify property exists
       expect(instance).to.have.property('customerMembership');
 
       // set and verify value
-      var validValue = ['PRIME', 'NON_PRIME', ][0];
-      instance.customerMembership = validValue;
-      expect(instance.customerMembership).to.equal(validValue);
+      var expectedValue = ['PRIME', 'NON_PRIME', ][0];
+      instance.customerMembership = expectedValue;
+      expect(instance.customerMembership).to.equal(expectedValue);
     });
 
-    it('should have the property segmentDetails (base name: "segmentDetails")', function() {
+    it('should have the property segmentDetails', function() {
       // verify property exists
       expect(instance).to.have.property('segmentDetails');
 
       // set and verify value
-      var validValue = generateMockData('SegmentDetails');
-      instance.segmentDetails = validValue;
-      expect(instance.segmentDetails).to.equal(validValue);
+      var expectedValue = generateMockData('SegmentDetails');
+      instance.segmentDetails = expectedValue;
+      expect(instance.segmentDetails).to.equal(expectedValue);
     });
 
   });

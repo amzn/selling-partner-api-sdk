@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForAContentManagement.PlainTextItem);
     });
 
-    it('should have the property position (base name: "position")', function() {
+    it('should have the property position', function() {
       // verify property exists
       expect(instance).to.have.property('position');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.position = validValue;
-      expect(instance.position).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.position = expectedValue;
+      expect(instance.position).to.equal(expectedValue);
     });
 
-    it('should have the property value (base name: "value")', function() {
+    it('should have the property value', function() {
       // verify property exists
       expect(instance).to.have.property('value');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.value = validValue;
-      expect(instance.value).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.value = expectedValue;
+      expect(instance.value).to.equal(expectedValue);
     });
 
   });

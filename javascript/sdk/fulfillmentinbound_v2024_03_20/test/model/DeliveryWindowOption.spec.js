@@ -45,54 +45,54 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.DeliveryWindowOption);
     });
 
-    it('should have the property availabilityType (base name: "availabilityType")', function() {
+    it('should have the property availabilityType', function() {
       // verify property exists
       expect(instance).to.have.property('availabilityType');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.availabilityType = validValue;
-      expect(instance.availabilityType).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.availabilityType = expectedValue;
+      expect(instance.availabilityType).to.equal(expectedValue);
     });
 
-    it('should have the property deliveryWindowOptionId (base name: "deliveryWindowOptionId")', function() {
+    it('should have the property deliveryWindowOptionId', function() {
       // verify property exists
       expect(instance).to.have.property('deliveryWindowOptionId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.deliveryWindowOptionId = validValue;
-      expect(instance.deliveryWindowOptionId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.deliveryWindowOptionId = expectedValue;
+      expect(instance.deliveryWindowOptionId).to.equal(expectedValue);
     });
 
-    it('should have the property endDate (base name: "endDate")', function() {
+    it('should have the property endDate', function() {
       // verify property exists
       expect(instance).to.have.property('endDate');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.endDate = validValue;
-      expect(instance.endDate).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.endDate = expectedValue;
+      expect(instance.endDate).to.equal(expectedValue);
     });
 
-    it('should have the property startDate (base name: "startDate")', function() {
+    it('should have the property startDate', function() {
       // verify property exists
       expect(instance).to.have.property('startDate');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.startDate = validValue;
-      expect(instance.startDate).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.startDate = expectedValue;
+      expect(instance.startDate).to.equal(expectedValue);
     });
 
-    it('should have the property validUntil (base name: "validUntil")', function() {
+    it('should have the property validUntil', function() {
       // verify property exists
       expect(instance).to.have.property('validUntil');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.validUntil = validValue;
-      expect(instance.validUntil).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.validUntil = expectedValue;
+      expect(instance.validUntil).to.equal(expectedValue);
     });
 
   });

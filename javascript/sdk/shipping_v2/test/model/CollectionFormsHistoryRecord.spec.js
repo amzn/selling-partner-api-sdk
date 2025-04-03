@@ -45,54 +45,54 @@
       expect(instance).to.be.a(AmazonShippingApi.CollectionFormsHistoryRecord);
     });
 
-    it('should have the property carrierName (base name: "carrierName")', function() {
+    it('should have the property carrierName', function() {
       // verify property exists
       expect(instance).to.have.property('carrierName');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.carrierName = validValue;
-      expect(instance.carrierName).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.carrierName = expectedValue;
+      expect(instance.carrierName).to.equal(expectedValue);
     });
 
-    it('should have the property creationDate (base name: "creationDate")', function() {
+    it('should have the property creationDate', function() {
       // verify property exists
       expect(instance).to.have.property('creationDate');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.creationDate = validValue;
-      expect(instance.creationDate).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.creationDate = expectedValue;
+      expect(instance.creationDate).to.equal(expectedValue);
     });
 
-    it('should have the property generationStatus (base name: "generationStatus")', function() {
+    it('should have the property generationStatus', function() {
       // verify property exists
       expect(instance).to.have.property('generationStatus');
 
       // set and verify value
-      var validValue = generateMockData('GenerationStatus');
-      instance.generationStatus = validValue;
-      expect(instance.generationStatus).to.equal(validValue);
+      var expectedValue = generateMockData('GenerationStatus');
+      instance.generationStatus = expectedValue;
+      expect(instance.generationStatus).to.equal(expectedValue);
     });
 
-    it('should have the property collectionFormId (base name: "collectionFormId")', function() {
+    it('should have the property collectionFormId', function() {
       // verify property exists
       expect(instance).to.have.property('collectionFormId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.collectionFormId = validValue;
-      expect(instance.collectionFormId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.collectionFormId = expectedValue;
+      expect(instance.collectionFormId).to.equal(expectedValue);
     });
 
-    it('should have the property shipFromAddress (base name: "shipFromAddress")', function() {
+    it('should have the property shipFromAddress', function() {
       // verify property exists
       expect(instance).to.have.property('shipFromAddress');
 
       // set and verify value
-      var validValue = generateMockData('Address');
-      instance.shipFromAddress = validValue;
-      expect(instance.shipFromAddress).to.equal(validValue);
+      var expectedValue = generateMockData('Address');
+      instance.shipFromAddress = expectedValue;
+      expect(instance.shipFromAddress).to.equal(expectedValue);
     });
 
   });

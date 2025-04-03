@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForSupplySources.GetSupplySourcesResponse);
     });
 
-    it('should have the property supplySources (base name: "supplySources")', function() {
+    it('should have the property supplySources', function() {
       // verify property exists
       expect(instance).to.have.property('supplySources');
 
       // set and verify value
-      var validValue = generateMockData('[SupplySourceListInner]', true);
-      instance.supplySources = validValue;
-      expect(instance.supplySources).to.equal(validValue);
+      var expectedValue = generateMockData('SupplySourceListInner', true);
+      instance.supplySources = expectedValue;
+      expect(instance.supplySources).to.equal(expectedValue);
     });
 
-    it('should have the property nextPageToken (base name: "nextPageToken")', function() {
+    it('should have the property nextPageToken', function() {
       // verify property exists
       expect(instance).to.have.property('nextPageToken');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.nextPageToken = validValue;
-      expect(instance.nextPageToken).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.nextPageToken = expectedValue;
+      expect(instance.nextPageToken).to.equal(expectedValue);
     });
 
   });

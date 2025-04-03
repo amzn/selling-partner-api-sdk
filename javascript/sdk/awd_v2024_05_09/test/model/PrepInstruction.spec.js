@@ -45,24 +45,24 @@
       expect(instance).to.be.a(TheSellingPartnerApiForAmazonWarehousingAndDistribution.PrepInstruction);
     });
 
-    it('should have the property prepOwner (base name: "prepOwner")', function() {
+    it('should have the property prepOwner', function() {
       // verify property exists
       expect(instance).to.have.property('prepOwner');
 
       // set and verify value
-      var validValue = generateMockData('PrepOwner');
-      instance.prepOwner = validValue;
-      expect(instance.prepOwner).to.equal(validValue);
+      var expectedValue = generateMockData('PrepOwner');
+      instance.prepOwner = expectedValue;
+      expect(instance.prepOwner).to.equal(expectedValue);
     });
 
-    it('should have the property prepType (base name: "prepType")', function() {
+    it('should have the property prepType', function() {
       // verify property exists
       expect(instance).to.have.property('prepType');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.prepType = validValue;
-      expect(instance.prepType).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.prepType = expectedValue;
+      expect(instance.prepType).to.equal(expectedValue);
     });
 
   });

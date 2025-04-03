@@ -45,14 +45,14 @@
       expect(instance).to.be.a(AmazonShippingApi.AccessPointDetails);
     });
 
-    it('should have the property accessPointId (base name: "accessPointId")', function() {
+    it('should have the property accessPointId', function() {
       // verify property exists
       expect(instance).to.have.property('accessPointId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.accessPointId = validValue;
-      expect(instance.accessPointId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.accessPointId = expectedValue;
+      expect(instance.accessPointId).to.equal(expectedValue);
     });
 
   });

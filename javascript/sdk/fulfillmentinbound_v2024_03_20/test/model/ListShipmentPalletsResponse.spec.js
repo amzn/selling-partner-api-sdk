@@ -45,24 +45,24 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.ListShipmentPalletsResponse);
     });
 
-    it('should have the property pagination (base name: "pagination")', function() {
+    it('should have the property pagination', function() {
       // verify property exists
       expect(instance).to.have.property('pagination');
 
       // set and verify value
-      var validValue = generateMockData('Pagination');
-      instance.pagination = validValue;
-      expect(instance.pagination).to.equal(validValue);
+      var expectedValue = generateMockData('Pagination');
+      instance.pagination = expectedValue;
+      expect(instance.pagination).to.equal(expectedValue);
     });
 
-    it('should have the property pallets (base name: "pallets")', function() {
+    it('should have the property pallets', function() {
       // verify property exists
       expect(instance).to.have.property('pallets');
 
       // set and verify value
-      var validValue = generateMockData('[Pallet]', true);
-      instance.pallets = validValue;
-      expect(instance.pallets).to.equal(validValue);
+      var expectedValue = generateMockData('Pallet', true);
+      instance.pallets = expectedValue;
+      expect(instance.pallets).to.equal(expectedValue);
     });
 
   });

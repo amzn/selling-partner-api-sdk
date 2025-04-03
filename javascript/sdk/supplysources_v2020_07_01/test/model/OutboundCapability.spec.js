@@ -45,54 +45,54 @@
       expect(instance).to.be.a(SellingPartnerApiForSupplySources.OutboundCapability);
     });
 
-    it('should have the property isSupported (base name: "isSupported")', function() {
+    it('should have the property isSupported', function() {
       // verify property exists
       expect(instance).to.have.property('isSupported');
 
       // set and verify value
-      var validValue = generateMockData('Boolean');
-      instance.isSupported = validValue;
-      expect(instance.isSupported).to.equal(validValue);
+      var expectedValue = generateMockData('Boolean');
+      instance.isSupported = expectedValue;
+      expect(instance.isSupported).to.equal(expectedValue);
     });
 
-    it('should have the property operationalConfiguration (base name: "operationalConfiguration")', function() {
+    it('should have the property operationalConfiguration', function() {
       // verify property exists
       expect(instance).to.have.property('operationalConfiguration');
 
       // set and verify value
-      var validValue = generateMockData('OperationalConfiguration');
-      instance.operationalConfiguration = validValue;
-      expect(instance.operationalConfiguration).to.equal(validValue);
+      var expectedValue = generateMockData('OperationalConfiguration');
+      instance.operationalConfiguration = expectedValue;
+      expect(instance.operationalConfiguration).to.equal(expectedValue);
     });
 
-    it('should have the property returnLocation (base name: "returnLocation")', function() {
+    it('should have the property returnLocation', function() {
       // verify property exists
       expect(instance).to.have.property('returnLocation');
 
       // set and verify value
-      var validValue = generateMockData('ReturnLocation');
-      instance.returnLocation = validValue;
-      expect(instance.returnLocation).to.equal(validValue);
+      var expectedValue = generateMockData('ReturnLocation');
+      instance.returnLocation = expectedValue;
+      expect(instance.returnLocation).to.equal(expectedValue);
     });
 
-    it('should have the property deliveryChannel (base name: "deliveryChannel")', function() {
+    it('should have the property deliveryChannel', function() {
       // verify property exists
       expect(instance).to.have.property('deliveryChannel');
 
       // set and verify value
-      var validValue = generateMockData('DeliveryChannel');
-      instance.deliveryChannel = validValue;
-      expect(instance.deliveryChannel).to.equal(validValue);
+      var expectedValue = generateMockData('DeliveryChannel');
+      instance.deliveryChannel = expectedValue;
+      expect(instance.deliveryChannel).to.equal(expectedValue);
     });
 
-    it('should have the property pickupChannel (base name: "pickupChannel")', function() {
+    it('should have the property pickupChannel', function() {
       // verify property exists
       expect(instance).to.have.property('pickupChannel');
 
       // set and verify value
-      var validValue = generateMockData('PickupChannel');
-      instance.pickupChannel = validValue;
-      expect(instance.pickupChannel).to.equal(validValue);
+      var expectedValue = generateMockData('PickupChannel');
+      instance.pickupChannel = expectedValue;
+      expect(instance.pickupChannel).to.equal(expectedValue);
     });
 
   });

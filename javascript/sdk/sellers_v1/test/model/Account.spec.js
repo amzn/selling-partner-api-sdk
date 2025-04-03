@@ -45,54 +45,54 @@
       expect(instance).to.be.a(TheSellingPartnerApiForSellers.Account);
     });
 
-    it('should have the property marketplaceParticipationList (base name: "marketplaceParticipationList")', function() {
+    it('should have the property marketplaceParticipationList', function() {
       // verify property exists
       expect(instance).to.have.property('marketplaceParticipationList');
 
       // set and verify value
-      var validValue = generateMockData('[MarketplaceParticipation]', true);
-      instance.marketplaceParticipationList = validValue;
-      expect(instance.marketplaceParticipationList).to.equal(validValue);
+      var expectedValue = generateMockData('MarketplaceParticipation', true);
+      instance.marketplaceParticipationList = expectedValue;
+      expect(instance.marketplaceParticipationList).to.equal(expectedValue);
     });
 
-    it('should have the property businessType (base name: "businessType")', function() {
+    it('should have the property businessType', function() {
       // verify property exists
       expect(instance).to.have.property('businessType');
 
       // set and verify value
-      var validValue = ['CHARITY', 'CRAFTSMAN', 'NATURAL_PERSON_COMPANY', 'PUBLIC_LISTED', 'PRIVATE_LIMITED', 'SOLE_PROPRIETORSHIP', 'STATE_OWNED', 'INDIVIDUAL', ][0];
-      instance.businessType = validValue;
-      expect(instance.businessType).to.equal(validValue);
+      var expectedValue = ['CHARITY', 'CRAFTSMAN', 'NATURAL_PERSON_COMPANY', 'PUBLIC_LISTED', 'PRIVATE_LIMITED', 'SOLE_PROPRIETORSHIP', 'STATE_OWNED', 'INDIVIDUAL', ][0];
+      instance.businessType = expectedValue;
+      expect(instance.businessType).to.equal(expectedValue);
     });
 
-    it('should have the property sellingPlan (base name: "sellingPlan")', function() {
+    it('should have the property sellingPlan', function() {
       // verify property exists
       expect(instance).to.have.property('sellingPlan');
 
       // set and verify value
-      var validValue = ['PROFESSIONAL', 'INDIVIDUAL', ][0];
-      instance.sellingPlan = validValue;
-      expect(instance.sellingPlan).to.equal(validValue);
+      var expectedValue = ['PROFESSIONAL', 'INDIVIDUAL', ][0];
+      instance.sellingPlan = expectedValue;
+      expect(instance.sellingPlan).to.equal(expectedValue);
     });
 
-    it('should have the property business (base name: "business")', function() {
+    it('should have the property business', function() {
       // verify property exists
       expect(instance).to.have.property('business');
 
       // set and verify value
-      var validValue = generateMockData('Business');
-      instance.business = validValue;
-      expect(instance.business).to.equal(validValue);
+      var expectedValue = generateMockData('Business');
+      instance.business = expectedValue;
+      expect(instance.business).to.equal(expectedValue);
     });
 
-    it('should have the property primaryContact (base name: "primaryContact")', function() {
+    it('should have the property primaryContact', function() {
       // verify property exists
       expect(instance).to.have.property('primaryContact');
 
       // set and verify value
-      var validValue = generateMockData('PrimaryContact');
-      instance.primaryContact = validValue;
-      expect(instance.primaryContact).to.equal(validValue);
+      var expectedValue = generateMockData('PrimaryContact');
+      instance.primaryContact = expectedValue;
+      expect(instance.primaryContact).to.equal(expectedValue);
     });
 
   });

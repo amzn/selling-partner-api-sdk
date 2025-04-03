@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForPricing.QuantityDiscountPriceType);
     });
 
-    it('should have the property quantityTier (base name: "quantityTier")', function() {
+    it('should have the property quantityTier', function() {
       // verify property exists
       expect(instance).to.have.property('quantityTier');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.quantityTier = validValue;
-      expect(instance.quantityTier).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.quantityTier = expectedValue;
+      expect(instance.quantityTier).to.equal(expectedValue);
     });
 
-    it('should have the property quantityDiscountType (base name: "quantityDiscountType")', function() {
+    it('should have the property quantityDiscountType', function() {
       // verify property exists
       expect(instance).to.have.property('quantityDiscountType');
 
       // set and verify value
-      var validValue = generateMockData('QuantityDiscountType');
-      instance.quantityDiscountType = validValue;
-      expect(instance.quantityDiscountType).to.equal(validValue);
+      var expectedValue = generateMockData('QuantityDiscountType');
+      instance.quantityDiscountType = expectedValue;
+      expect(instance.quantityDiscountType).to.equal(expectedValue);
     });
 
-    it('should have the property listingPrice (base name: "listingPrice")', function() {
+    it('should have the property listingPrice', function() {
       // verify property exists
       expect(instance).to.have.property('listingPrice');
 
       // set and verify value
-      var validValue = generateMockData('MoneyType');
-      instance.listingPrice = validValue;
-      expect(instance.listingPrice).to.equal(validValue);
+      var expectedValue = generateMockData('MoneyType');
+      instance.listingPrice = expectedValue;
+      expect(instance.listingPrice).to.equal(expectedValue);
     });
 
   });

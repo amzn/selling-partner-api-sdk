@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.ReasonCodeDetails);
     });
 
-    it('should have the property returnReasonCode (base name: "returnReasonCode")', function() {
+    it('should have the property returnReasonCode', function() {
       // verify property exists
       expect(instance).to.have.property('returnReasonCode');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.returnReasonCode = validValue;
-      expect(instance.returnReasonCode).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.returnReasonCode = expectedValue;
+      expect(instance.returnReasonCode).to.equal(expectedValue);
     });
 
-    it('should have the property description (base name: "description")', function() {
+    it('should have the property description', function() {
       // verify property exists
       expect(instance).to.have.property('description');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.description = validValue;
-      expect(instance.description).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.description = expectedValue;
+      expect(instance.description).to.equal(expectedValue);
     });
 
-    it('should have the property translatedDescription (base name: "translatedDescription")', function() {
+    it('should have the property translatedDescription', function() {
       // verify property exists
       expect(instance).to.have.property('translatedDescription');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.translatedDescription = validValue;
-      expect(instance.translatedDescription).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.translatedDescription = expectedValue;
+      expect(instance.translatedDescription).to.equal(expectedValue);
     });
 
   });

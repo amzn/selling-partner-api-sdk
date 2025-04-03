@@ -45,34 +45,34 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.PrepInstruction);
     });
 
-    it('should have the property fee (base name: "fee")', function() {
+    it('should have the property fee', function() {
       // verify property exists
       expect(instance).to.have.property('fee');
 
       // set and verify value
-      var validValue = generateMockData('Currency');
-      instance.fee = validValue;
-      expect(instance.fee).to.equal(validValue);
+      var expectedValue = generateMockData('Currency');
+      instance.fee = expectedValue;
+      expect(instance.fee).to.equal(expectedValue);
     });
 
-    it('should have the property prepOwner (base name: "prepOwner")', function() {
+    it('should have the property prepOwner', function() {
       // verify property exists
       expect(instance).to.have.property('prepOwner');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.prepOwner = validValue;
-      expect(instance.prepOwner).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.prepOwner = expectedValue;
+      expect(instance.prepOwner).to.equal(expectedValue);
     });
 
-    it('should have the property prepType (base name: "prepType")', function() {
+    it('should have the property prepType', function() {
       // verify property exists
       expect(instance).to.have.property('prepType');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.prepType = validValue;
-      expect(instance.prepType).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.prepType = expectedValue;
+      expect(instance.prepType).to.equal(expectedValue);
     });
 
   });

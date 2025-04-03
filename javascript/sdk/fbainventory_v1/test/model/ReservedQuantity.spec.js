@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForFbaInventory.ReservedQuantity);
     });
 
-    it('should have the property totalReservedQuantity (base name: "totalReservedQuantity")', function() {
+    it('should have the property totalReservedQuantity', function() {
       // verify property exists
       expect(instance).to.have.property('totalReservedQuantity');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.totalReservedQuantity = validValue;
-      expect(instance.totalReservedQuantity).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.totalReservedQuantity = expectedValue;
+      expect(instance.totalReservedQuantity).to.equal(expectedValue);
     });
 
-    it('should have the property pendingCustomerOrderQuantity (base name: "pendingCustomerOrderQuantity")', function() {
+    it('should have the property pendingCustomerOrderQuantity', function() {
       // verify property exists
       expect(instance).to.have.property('pendingCustomerOrderQuantity');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.pendingCustomerOrderQuantity = validValue;
-      expect(instance.pendingCustomerOrderQuantity).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.pendingCustomerOrderQuantity = expectedValue;
+      expect(instance.pendingCustomerOrderQuantity).to.equal(expectedValue);
     });
 
-    it('should have the property pendingTransshipmentQuantity (base name: "pendingTransshipmentQuantity")', function() {
+    it('should have the property pendingTransshipmentQuantity', function() {
       // verify property exists
       expect(instance).to.have.property('pendingTransshipmentQuantity');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.pendingTransshipmentQuantity = validValue;
-      expect(instance.pendingTransshipmentQuantity).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.pendingTransshipmentQuantity = expectedValue;
+      expect(instance.pendingTransshipmentQuantity).to.equal(expectedValue);
     });
 
-    it('should have the property fcProcessingQuantity (base name: "fcProcessingQuantity")', function() {
+    it('should have the property fcProcessingQuantity', function() {
       // verify property exists
       expect(instance).to.have.property('fcProcessingQuantity');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.fcProcessingQuantity = validValue;
-      expect(instance.fcProcessingQuantity).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.fcProcessingQuantity = expectedValue;
+      expect(instance.fcProcessingQuantity).to.equal(expectedValue);
     });
 
   });

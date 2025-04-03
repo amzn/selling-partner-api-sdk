@@ -45,74 +45,74 @@
       expect(instance).to.be.a(SellingPartnerApiForReplenishment.ListOffersRequestFilters);
     });
 
-    it('should have the property marketplaceId (base name: "marketplaceId")', function() {
+    it('should have the property marketplaceId', function() {
       // verify property exists
       expect(instance).to.have.property('marketplaceId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.marketplaceId = validValue;
-      expect(instance.marketplaceId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.marketplaceId = expectedValue;
+      expect(instance.marketplaceId).to.equal(expectedValue);
     });
 
-    it('should have the property skus (base name: "skus")', function() {
+    it('should have the property skus', function() {
       // verify property exists
       expect(instance).to.have.property('skus');
 
       // set and verify value
-      var validValue = generateMockData('[String]', true);
-      instance.skus = validValue;
-      expect(instance.skus).to.equal(validValue);
+      var expectedValue = generateMockData('String', true);
+      instance.skus = expectedValue;
+      expect(instance.skus).to.equal(expectedValue);
     });
 
-    it('should have the property asins (base name: "asins")', function() {
+    it('should have the property asins', function() {
       // verify property exists
       expect(instance).to.have.property('asins');
 
       // set and verify value
-      var validValue = generateMockData('[String]', true);
-      instance.asins = validValue;
-      expect(instance.asins).to.equal(validValue);
+      var expectedValue = generateMockData('String', true);
+      instance.asins = expectedValue;
+      expect(instance.asins).to.equal(expectedValue);
     });
 
-    it('should have the property eligibilities (base name: "eligibilities")', function() {
+    it('should have the property eligibilities', function() {
       // verify property exists
       expect(instance).to.have.property('eligibilities');
 
       // set and verify value
-      var validValue = generateMockData('[EligibilityStatus]', true);
-      instance.eligibilities = validValue;
-      expect(instance.eligibilities).to.equal(validValue);
+      var expectedValue = generateMockData('EligibilityStatus', true);
+      instance.eligibilities = expectedValue;
+      expect(instance.eligibilities).to.equal(expectedValue);
     });
 
-    it('should have the property preferences (base name: "preferences")', function() {
+    it('should have the property preferences', function() {
       // verify property exists
       expect(instance).to.have.property('preferences');
 
       // set and verify value
-      var validValue = generateMockData('Preference');
-      instance.preferences = validValue;
-      expect(instance.preferences).to.equal(validValue);
+      var expectedValue = generateMockData('Preference');
+      instance.preferences = expectedValue;
+      expect(instance.preferences).to.equal(expectedValue);
     });
 
-    it('should have the property promotions (base name: "promotions")', function() {
+    it('should have the property promotions', function() {
       // verify property exists
       expect(instance).to.have.property('promotions');
 
       // set and verify value
-      var validValue = generateMockData('Promotion');
-      instance.promotions = validValue;
-      expect(instance.promotions).to.equal(validValue);
+      var expectedValue = generateMockData('Promotion');
+      instance.promotions = expectedValue;
+      expect(instance.promotions).to.equal(expectedValue);
     });
 
-    it('should have the property programTypes (base name: "programTypes")', function() {
+    it('should have the property programTypes', function() {
       // verify property exists
       expect(instance).to.have.property('programTypes');
 
       // set and verify value
-      var validValue = generateMockData('[ProgramType]', true);
-      instance.programTypes = validValue;
-      expect(instance.programTypes).to.equal(validValue);
+      var expectedValue = generateMockData('ProgramType', true);
+      instance.programTypes = expectedValue;
+      expect(instance.programTypes).to.equal(expectedValue);
     });
 
   });

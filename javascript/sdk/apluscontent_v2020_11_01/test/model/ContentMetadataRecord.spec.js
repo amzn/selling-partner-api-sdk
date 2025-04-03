@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForAContentManagement.ContentMetadataRecord);
     });
 
-    it('should have the property contentReferenceKey (base name: "contentReferenceKey")', function() {
+    it('should have the property contentReferenceKey', function() {
       // verify property exists
       expect(instance).to.have.property('contentReferenceKey');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.contentReferenceKey = validValue;
-      expect(instance.contentReferenceKey).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.contentReferenceKey = expectedValue;
+      expect(instance.contentReferenceKey).to.equal(expectedValue);
     });
 
-    it('should have the property contentMetadata (base name: "contentMetadata")', function() {
+    it('should have the property contentMetadata', function() {
       // verify property exists
       expect(instance).to.have.property('contentMetadata');
 
       // set and verify value
-      var validValue = generateMockData('ContentMetadata');
-      instance.contentMetadata = validValue;
-      expect(instance.contentMetadata).to.equal(validValue);
+      var expectedValue = generateMockData('ContentMetadata');
+      instance.contentMetadata = expectedValue;
+      expect(instance.contentMetadata).to.equal(expectedValue);
     });
 
   });

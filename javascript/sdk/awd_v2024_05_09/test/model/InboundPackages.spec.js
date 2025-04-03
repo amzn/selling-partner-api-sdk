@@ -45,14 +45,14 @@
       expect(instance).to.be.a(TheSellingPartnerApiForAmazonWarehousingAndDistribution.InboundPackages);
     });
 
-    it('should have the property packagesToInbound (base name: "packagesToInbound")', function() {
+    it('should have the property packagesToInbound', function() {
       // verify property exists
       expect(instance).to.have.property('packagesToInbound');
 
       // set and verify value
-      var validValue = generateMockData('[DistributionPackageQuantity]', true);
-      instance.packagesToInbound = validValue;
-      expect(instance.packagesToInbound).to.equal(validValue);
+      var expectedValue = generateMockData('DistributionPackageQuantity', true);
+      instance.packagesToInbound = expectedValue;
+      expect(instance.packagesToInbound).to.equal(expectedValue);
     });
 
   });

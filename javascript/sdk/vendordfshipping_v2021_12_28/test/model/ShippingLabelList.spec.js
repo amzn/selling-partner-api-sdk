@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForDirectFulfillmentShipping.ShippingLabelList);
     });
 
-    it('should have the property pagination (base name: "pagination")', function() {
+    it('should have the property pagination', function() {
       // verify property exists
       expect(instance).to.have.property('pagination');
 
       // set and verify value
-      var validValue = generateMockData('Pagination');
-      instance.pagination = validValue;
-      expect(instance.pagination).to.equal(validValue);
+      var expectedValue = generateMockData('Pagination');
+      instance.pagination = expectedValue;
+      expect(instance.pagination).to.equal(expectedValue);
     });
 
-    it('should have the property shippingLabels (base name: "shippingLabels")', function() {
+    it('should have the property shippingLabels', function() {
       // verify property exists
       expect(instance).to.have.property('shippingLabels');
 
       // set and verify value
-      var validValue = generateMockData('[ShippingLabel]', true);
-      instance.shippingLabels = validValue;
-      expect(instance.shippingLabels).to.equal(validValue);
+      var expectedValue = generateMockData('ShippingLabel', true);
+      instance.shippingLabels = expectedValue;
+      expect(instance.shippingLabels).to.equal(expectedValue);
     });
 
   });

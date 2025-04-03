@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForMerchantFulfillment.ShippingOfferingFilter);
     });
 
-    it('should have the property includePackingSlipWithLabel (base name: "IncludePackingSlipWithLabel")', function() {
+    it('should have the property includePackingSlipWithLabel', function() {
       // verify property exists
       expect(instance).to.have.property('includePackingSlipWithLabel');
 
       // set and verify value
-      var validValue = generateMockData('Boolean');
-      instance.includePackingSlipWithLabel = validValue;
-      expect(instance.includePackingSlipWithLabel).to.equal(validValue);
+      var expectedValue = generateMockData('Boolean');
+      instance.includePackingSlipWithLabel = expectedValue;
+      expect(instance.includePackingSlipWithLabel).to.equal(expectedValue);
     });
 
-    it('should have the property includeComplexShippingOptions (base name: "IncludeComplexShippingOptions")', function() {
+    it('should have the property includeComplexShippingOptions', function() {
       // verify property exists
       expect(instance).to.have.property('includeComplexShippingOptions');
 
       // set and verify value
-      var validValue = generateMockData('Boolean');
-      instance.includeComplexShippingOptions = validValue;
-      expect(instance.includeComplexShippingOptions).to.equal(validValue);
+      var expectedValue = generateMockData('Boolean');
+      instance.includeComplexShippingOptions = expectedValue;
+      expect(instance.includeComplexShippingOptions).to.equal(expectedValue);
     });
 
-    it('should have the property carrierWillPickUp (base name: "CarrierWillPickUp")', function() {
+    it('should have the property carrierWillPickUp', function() {
       // verify property exists
       expect(instance).to.have.property('carrierWillPickUp');
 
       // set and verify value
-      var validValue = generateMockData('CarrierWillPickUpOption');
-      instance.carrierWillPickUp = validValue;
-      expect(instance.carrierWillPickUp).to.equal(validValue);
+      var expectedValue = generateMockData('CarrierWillPickUpOption');
+      instance.carrierWillPickUp = expectedValue;
+      expect(instance.carrierWillPickUp).to.equal(expectedValue);
     });
 
-    it('should have the property deliveryExperience (base name: "DeliveryExperience")', function() {
+    it('should have the property deliveryExperience', function() {
       // verify property exists
       expect(instance).to.have.property('deliveryExperience');
 
       // set and verify value
-      var validValue = generateMockData('DeliveryExperienceOption');
-      instance.deliveryExperience = validValue;
-      expect(instance.deliveryExperience).to.equal(validValue);
+      var expectedValue = generateMockData('DeliveryExperienceOption');
+      instance.deliveryExperience = expectedValue;
+      expect(instance.deliveryExperience).to.equal(expectedValue);
     });
 
   });

@@ -45,34 +45,34 @@
       expect(instance).to.be.a(AmazonShippingApi.TimeOfDay);
     });
 
-    it('should have the property hourOfDay (base name: "hourOfDay")', function() {
+    it('should have the property hourOfDay', function() {
       // verify property exists
       expect(instance).to.have.property('hourOfDay');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.hourOfDay = validValue;
-      expect(instance.hourOfDay).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.hourOfDay = expectedValue;
+      expect(instance.hourOfDay).to.equal(expectedValue);
     });
 
-    it('should have the property minuteOfHour (base name: "minuteOfHour")', function() {
+    it('should have the property minuteOfHour', function() {
       // verify property exists
       expect(instance).to.have.property('minuteOfHour');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.minuteOfHour = validValue;
-      expect(instance.minuteOfHour).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.minuteOfHour = expectedValue;
+      expect(instance.minuteOfHour).to.equal(expectedValue);
     });
 
-    it('should have the property secondOfMinute (base name: "secondOfMinute")', function() {
+    it('should have the property secondOfMinute', function() {
       // verify property exists
       expect(instance).to.have.property('secondOfMinute');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.secondOfMinute = validValue;
-      expect(instance.secondOfMinute).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.secondOfMinute = expectedValue;
+      expect(instance.secondOfMinute).to.equal(expectedValue);
     });
 
   });

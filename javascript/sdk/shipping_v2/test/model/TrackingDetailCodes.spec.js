@@ -45,24 +45,24 @@
       expect(instance).to.be.a(AmazonShippingApi.TrackingDetailCodes);
     });
 
-    it('should have the property forward (base name: "forward")', function() {
+    it('should have the property forward', function() {
       // verify property exists
       expect(instance).to.have.property('forward');
 
       // set and verify value
-      var validValue = generateMockData('[DetailCodes]', true);
-      instance.forward = validValue;
-      expect(instance.forward).to.equal(validValue);
+      var expectedValue = generateMockData('DetailCodes', true);
+      instance.forward = expectedValue;
+      expect(instance.forward).to.equal(expectedValue);
     });
 
-    it('should have the property returns (base name: "returns")', function() {
+    it('should have the property returns', function() {
       // verify property exists
       expect(instance).to.have.property('returns');
 
       // set and verify value
-      var validValue = generateMockData('[DetailCodes]', true);
-      instance.returns = validValue;
-      expect(instance.returns).to.equal(validValue);
+      var expectedValue = generateMockData('DetailCodes', true);
+      instance.returns = expectedValue;
+      expect(instance.returns).to.equal(expectedValue);
     });
 
   });

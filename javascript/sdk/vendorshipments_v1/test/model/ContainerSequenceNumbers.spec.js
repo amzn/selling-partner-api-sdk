@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForRetailProcurementShipments.ContainerSequenceNumbers);
     });
 
-    it('should have the property containerSequenceNumber (base name: "containerSequenceNumber")', function() {
+    it('should have the property containerSequenceNumber', function() {
       // verify property exists
       expect(instance).to.have.property('containerSequenceNumber');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.containerSequenceNumber = validValue;
-      expect(instance.containerSequenceNumber).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.containerSequenceNumber = expectedValue;
+      expect(instance.containerSequenceNumber).to.equal(expectedValue);
     });
 
   });

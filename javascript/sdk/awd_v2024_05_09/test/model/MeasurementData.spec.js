@@ -45,34 +45,34 @@
       expect(instance).to.be.a(TheSellingPartnerApiForAmazonWarehousingAndDistribution.MeasurementData);
     });
 
-    it('should have the property dimensions (base name: "dimensions")', function() {
+    it('should have the property dimensions', function() {
       // verify property exists
       expect(instance).to.have.property('dimensions');
 
       // set and verify value
-      var validValue = generateMockData('PackageDimensions');
-      instance.dimensions = validValue;
-      expect(instance.dimensions).to.equal(validValue);
+      var expectedValue = generateMockData('PackageDimensions');
+      instance.dimensions = expectedValue;
+      expect(instance.dimensions).to.equal(expectedValue);
     });
 
-    it('should have the property volume (base name: "volume")', function() {
+    it('should have the property volume', function() {
       // verify property exists
       expect(instance).to.have.property('volume');
 
       // set and verify value
-      var validValue = generateMockData('PackageVolume');
-      instance.volume = validValue;
-      expect(instance.volume).to.equal(validValue);
+      var expectedValue = generateMockData('PackageVolume');
+      instance.volume = expectedValue;
+      expect(instance.volume).to.equal(expectedValue);
     });
 
-    it('should have the property weight (base name: "weight")', function() {
+    it('should have the property weight', function() {
       // verify property exists
       expect(instance).to.have.property('weight');
 
       // set and verify value
-      var validValue = generateMockData('PackageWeight');
-      instance.weight = validValue;
-      expect(instance.weight).to.equal(validValue);
+      var expectedValue = generateMockData('PackageWeight');
+      instance.weight = expectedValue;
+      expect(instance.weight).to.equal(expectedValue);
     });
 
   });

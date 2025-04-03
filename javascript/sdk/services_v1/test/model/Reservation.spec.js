@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForServices.Reservation);
     });
 
-    it('should have the property reservationId (base name: "reservationId")', function() {
+    it('should have the property reservationId', function() {
       // verify property exists
       expect(instance).to.have.property('reservationId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.reservationId = validValue;
-      expect(instance.reservationId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.reservationId = expectedValue;
+      expect(instance.reservationId).to.equal(expectedValue);
     });
 
-    it('should have the property type (base name: "type")', function() {
+    it('should have the property type', function() {
       // verify property exists
       expect(instance).to.have.property('type');
 
       // set and verify value
-      var validValue = ['APPOINTMENT', 'TRAVEL', 'VACATION', 'BREAK', 'TRAINING', ][0];
-      instance.type = validValue;
-      expect(instance.type).to.equal(validValue);
+      var expectedValue = ['APPOINTMENT', 'TRAVEL', 'VACATION', 'BREAK', 'TRAINING', ][0];
+      instance.type = expectedValue;
+      expect(instance.type).to.equal(expectedValue);
     });
 
-    it('should have the property availability (base name: "availability")', function() {
+    it('should have the property availability', function() {
       // verify property exists
       expect(instance).to.have.property('availability');
 
       // set and verify value
-      var validValue = generateMockData('AvailabilityRecord');
-      instance.availability = validValue;
-      expect(instance.availability).to.equal(validValue);
+      var expectedValue = generateMockData('AvailabilityRecord');
+      instance.availability = expectedValue;
+      expect(instance.availability).to.equal(expectedValue);
     });
 
   });

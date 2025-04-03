@@ -45,44 +45,44 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFinances.ProductContext);
     });
 
-    it('should have the property asin (base name: "asin")', function() {
+    it('should have the property asin', function() {
       // verify property exists
       expect(instance).to.have.property('asin');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.asin = validValue;
-      expect(instance.asin).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.asin = expectedValue;
+      expect(instance.asin).to.equal(expectedValue);
     });
 
-    it('should have the property sku (base name: "sku")', function() {
+    it('should have the property sku', function() {
       // verify property exists
       expect(instance).to.have.property('sku');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.sku = validValue;
-      expect(instance.sku).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.sku = expectedValue;
+      expect(instance.sku).to.equal(expectedValue);
     });
 
-    it('should have the property quantityShipped (base name: "quantityShipped")', function() {
+    it('should have the property quantityShipped', function() {
       // verify property exists
       expect(instance).to.have.property('quantityShipped');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.quantityShipped = validValue;
-      expect(instance.quantityShipped).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.quantityShipped = expectedValue;
+      expect(instance.quantityShipped).to.equal(expectedValue);
     });
 
-    it('should have the property fulfillmentNetwork (base name: "fulfillmentNetwork")', function() {
+    it('should have the property fulfillmentNetwork', function() {
       // verify property exists
       expect(instance).to.have.property('fulfillmentNetwork');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.fulfillmentNetwork = validValue;
-      expect(instance.fulfillmentNetwork).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.fulfillmentNetwork = expectedValue;
+      expect(instance.fulfillmentNetwork).to.equal(expectedValue);
     });
 
   });

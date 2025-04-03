@@ -45,24 +45,24 @@
       expect(instance).to.be.a(TheSellingPartnerApiForAmazonWarehousingAndDistribution.InventoryQuantity);
     });
 
-    it('should have the property quantity (base name: "quantity")', function() {
+    it('should have the property quantity', function() {
       // verify property exists
       expect(instance).to.have.property('quantity');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.quantity = validValue;
-      expect(instance.quantity).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.quantity = expectedValue;
+      expect(instance.quantity).to.equal(expectedValue);
     });
 
-    it('should have the property unitOfMeasurement (base name: "unitOfMeasurement")', function() {
+    it('should have the property unitOfMeasurement', function() {
       // verify property exists
       expect(instance).to.have.property('unitOfMeasurement');
 
       // set and verify value
-      var validValue = generateMockData('InventoryUnitOfMeasurement');
-      instance.unitOfMeasurement = validValue;
-      expect(instance.unitOfMeasurement).to.equal(validValue);
+      var expectedValue = generateMockData('InventoryUnitOfMeasurement');
+      instance.unitOfMeasurement = expectedValue;
+      expect(instance.unitOfMeasurement).to.equal(expectedValue);
     });
 
   });

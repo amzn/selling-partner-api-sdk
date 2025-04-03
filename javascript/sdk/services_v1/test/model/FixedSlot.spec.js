@@ -45,54 +45,54 @@
       expect(instance).to.be.a(SellingPartnerApiForServices.FixedSlot);
     });
 
-    it('should have the property startDateTime (base name: "startDateTime")', function() {
+    it('should have the property startDateTime', function() {
       // verify property exists
       expect(instance).to.have.property('startDateTime');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.startDateTime = validValue;
-      expect(instance.startDateTime).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.startDateTime = expectedValue;
+      expect(instance.startDateTime).to.equal(expectedValue);
     });
 
-    it('should have the property scheduledCapacity (base name: "scheduledCapacity")', function() {
+    it('should have the property scheduledCapacity', function() {
       // verify property exists
       expect(instance).to.have.property('scheduledCapacity');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.scheduledCapacity = validValue;
-      expect(instance.scheduledCapacity).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.scheduledCapacity = expectedValue;
+      expect(instance.scheduledCapacity).to.equal(expectedValue);
     });
 
-    it('should have the property availableCapacity (base name: "availableCapacity")', function() {
+    it('should have the property availableCapacity', function() {
       // verify property exists
       expect(instance).to.have.property('availableCapacity');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.availableCapacity = validValue;
-      expect(instance.availableCapacity).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.availableCapacity = expectedValue;
+      expect(instance.availableCapacity).to.equal(expectedValue);
     });
 
-    it('should have the property encumberedCapacity (base name: "encumberedCapacity")', function() {
+    it('should have the property encumberedCapacity', function() {
       // verify property exists
       expect(instance).to.have.property('encumberedCapacity');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.encumberedCapacity = validValue;
-      expect(instance.encumberedCapacity).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.encumberedCapacity = expectedValue;
+      expect(instance.encumberedCapacity).to.equal(expectedValue);
     });
 
-    it('should have the property reservedCapacity (base name: "reservedCapacity")', function() {
+    it('should have the property reservedCapacity', function() {
       // verify property exists
       expect(instance).to.have.property('reservedCapacity');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.reservedCapacity = validValue;
-      expect(instance.reservedCapacity).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.reservedCapacity = expectedValue;
+      expect(instance.reservedCapacity).to.equal(expectedValue);
     });
 
   });

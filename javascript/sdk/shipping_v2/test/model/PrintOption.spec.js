@@ -45,44 +45,44 @@
       expect(instance).to.be.a(AmazonShippingApi.PrintOption);
     });
 
-    it('should have the property supportedDPIs (base name: "supportedDPIs")', function() {
+    it('should have the property supportedDPIs', function() {
       // verify property exists
       expect(instance).to.have.property('supportedDPIs');
 
       // set and verify value
-      var validValue = generateMockData('[Number]', true);
-      instance.supportedDPIs = validValue;
-      expect(instance.supportedDPIs).to.equal(validValue);
+      var expectedValue = generateMockData('Number', true);
+      instance.supportedDPIs = expectedValue;
+      expect(instance.supportedDPIs).to.equal(expectedValue);
     });
 
-    it('should have the property supportedPageLayouts (base name: "supportedPageLayouts")', function() {
+    it('should have the property supportedPageLayouts', function() {
       // verify property exists
       expect(instance).to.have.property('supportedPageLayouts');
 
       // set and verify value
-      var validValue = generateMockData('[String]', true);
-      instance.supportedPageLayouts = validValue;
-      expect(instance.supportedPageLayouts).to.equal(validValue);
+      var expectedValue = generateMockData('String', true);
+      instance.supportedPageLayouts = expectedValue;
+      expect(instance.supportedPageLayouts).to.equal(expectedValue);
     });
 
-    it('should have the property supportedFileJoiningOptions (base name: "supportedFileJoiningOptions")', function() {
+    it('should have the property supportedFileJoiningOptions', function() {
       // verify property exists
       expect(instance).to.have.property('supportedFileJoiningOptions');
 
       // set and verify value
-      var validValue = generateMockData('[Boolean]', true);
-      instance.supportedFileJoiningOptions = validValue;
-      expect(instance.supportedFileJoiningOptions).to.equal(validValue);
+      var expectedValue = generateMockData('Boolean', true);
+      instance.supportedFileJoiningOptions = expectedValue;
+      expect(instance.supportedFileJoiningOptions).to.equal(expectedValue);
     });
 
-    it('should have the property supportedDocumentDetails (base name: "supportedDocumentDetails")', function() {
+    it('should have the property supportedDocumentDetails', function() {
       // verify property exists
       expect(instance).to.have.property('supportedDocumentDetails');
 
       // set and verify value
-      var validValue = generateMockData('[SupportedDocumentDetail]', true);
-      instance.supportedDocumentDetails = validValue;
-      expect(instance.supportedDocumentDetails).to.equal(validValue);
+      var expectedValue = generateMockData('SupportedDocumentDetail', true);
+      instance.supportedDocumentDetails = expectedValue;
+      expect(instance.supportedDocumentDetails).to.equal(expectedValue);
     });
 
   });

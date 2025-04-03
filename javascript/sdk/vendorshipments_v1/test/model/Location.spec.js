@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForRetailProcurementShipments.Location);
     });
 
-    it('should have the property type (base name: "type")', function() {
+    it('should have the property type', function() {
       // verify property exists
       expect(instance).to.have.property('type');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.type = validValue;
-      expect(instance.type).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.type = expectedValue;
+      expect(instance.type).to.equal(expectedValue);
     });
 
-    it('should have the property locationCode (base name: "locationCode")', function() {
+    it('should have the property locationCode', function() {
       // verify property exists
       expect(instance).to.have.property('locationCode');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.locationCode = validValue;
-      expect(instance.locationCode).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.locationCode = expectedValue;
+      expect(instance.locationCode).to.equal(expectedValue);
     });
 
-    it('should have the property countryCode (base name: "countryCode")', function() {
+    it('should have the property countryCode', function() {
       // verify property exists
       expect(instance).to.have.property('countryCode');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.countryCode = validValue;
-      expect(instance.countryCode).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.countryCode = expectedValue;
+      expect(instance.countryCode).to.equal(expectedValue);
     });
 
   });

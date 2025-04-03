@@ -45,44 +45,44 @@
       expect(instance).to.be.a(AmazonShippingApi.Location);
     });
 
-    it('should have the property stateOrRegion (base name: "stateOrRegion")', function() {
+    it('should have the property stateOrRegion', function() {
       // verify property exists
       expect(instance).to.have.property('stateOrRegion');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.stateOrRegion = validValue;
-      expect(instance.stateOrRegion).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.stateOrRegion = expectedValue;
+      expect(instance.stateOrRegion).to.equal(expectedValue);
     });
 
-    it('should have the property city (base name: "city")', function() {
+    it('should have the property city', function() {
       // verify property exists
       expect(instance).to.have.property('city');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.city = validValue;
-      expect(instance.city).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.city = expectedValue;
+      expect(instance.city).to.equal(expectedValue);
     });
 
-    it('should have the property countryCode (base name: "countryCode")', function() {
+    it('should have the property countryCode', function() {
       // verify property exists
       expect(instance).to.have.property('countryCode');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.countryCode = validValue;
-      expect(instance.countryCode).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.countryCode = expectedValue;
+      expect(instance.countryCode).to.equal(expectedValue);
     });
 
-    it('should have the property postalCode (base name: "postalCode")', function() {
+    it('should have the property postalCode', function() {
       // verify property exists
       expect(instance).to.have.property('postalCode');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.postalCode = validValue;
-      expect(instance.postalCode).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.postalCode = expectedValue;
+      expect(instance.postalCode).to.equal(expectedValue);
     });
 
   });

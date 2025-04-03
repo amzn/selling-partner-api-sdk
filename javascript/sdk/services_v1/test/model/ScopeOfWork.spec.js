@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForServices.ScopeOfWork);
     });
 
-    it('should have the property asin (base name: "asin")', function() {
+    it('should have the property asin', function() {
       // verify property exists
       expect(instance).to.have.property('asin');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.asin = validValue;
-      expect(instance.asin).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.asin = expectedValue;
+      expect(instance.asin).to.equal(expectedValue);
     });
 
-    it('should have the property title (base name: "title")', function() {
+    it('should have the property title', function() {
       // verify property exists
       expect(instance).to.have.property('title');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.title = validValue;
-      expect(instance.title).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.title = expectedValue;
+      expect(instance.title).to.equal(expectedValue);
     });
 
-    it('should have the property quantity (base name: "quantity")', function() {
+    it('should have the property quantity', function() {
       // verify property exists
       expect(instance).to.have.property('quantity');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.quantity = validValue;
-      expect(instance.quantity).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.quantity = expectedValue;
+      expect(instance.quantity).to.equal(expectedValue);
     });
 
-    it('should have the property requiredSkills (base name: "requiredSkills")', function() {
+    it('should have the property requiredSkills', function() {
       // verify property exists
       expect(instance).to.have.property('requiredSkills');
 
       // set and verify value
-      var validValue = generateMockData('[String]', true);
-      instance.requiredSkills = validValue;
-      expect(instance.requiredSkills).to.equal(validValue);
+      var expectedValue = generateMockData('String', true);
+      instance.requiredSkills = expectedValue;
+      expect(instance.requiredSkills).to.equal(expectedValue);
     });
 
   });

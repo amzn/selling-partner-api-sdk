@@ -45,34 +45,34 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.Window);
     });
 
-    it('should have the property editableUntil (base name: "editableUntil")', function() {
+    it('should have the property editableUntil', function() {
       // verify property exists
       expect(instance).to.have.property('editableUntil');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.editableUntil = validValue;
-      expect(instance.editableUntil).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.editableUntil = expectedValue;
+      expect(instance.editableUntil).to.equal(expectedValue);
     });
 
-    it('should have the property end (base name: "end")', function() {
+    it('should have the property end', function() {
       // verify property exists
       expect(instance).to.have.property('end');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.end = validValue;
-      expect(instance.end).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.end = expectedValue;
+      expect(instance.end).to.equal(expectedValue);
     });
 
-    it('should have the property start (base name: "start")', function() {
+    it('should have the property start', function() {
       // verify property exists
       expect(instance).to.have.property('start');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.start = validValue;
-      expect(instance.start).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.start = expectedValue;
+      expect(instance.start).to.equal(expectedValue);
     });
 
   });

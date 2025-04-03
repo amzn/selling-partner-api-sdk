@@ -45,54 +45,54 @@
       expect(instance).to.be.a(SellingPartnerApiForFinances.SAFETReimbursementEvent);
     });
 
-    it('should have the property postedDate (base name: "PostedDate")', function() {
+    it('should have the property postedDate', function() {
       // verify property exists
       expect(instance).to.have.property('postedDate');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.postedDate = validValue;
-      expect(instance.postedDate).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.postedDate = expectedValue;
+      expect(instance.postedDate).to.equal(expectedValue);
     });
 
-    it('should have the property sAFETClaimId (base name: "SAFETClaimId")', function() {
+    it('should have the property sAFETClaimId', function() {
       // verify property exists
       expect(instance).to.have.property('sAFETClaimId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.sAFETClaimId = validValue;
-      expect(instance.sAFETClaimId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.sAFETClaimId = expectedValue;
+      expect(instance.sAFETClaimId).to.equal(expectedValue);
     });
 
-    it('should have the property reimbursedAmount (base name: "ReimbursedAmount")', function() {
+    it('should have the property reimbursedAmount', function() {
       // verify property exists
       expect(instance).to.have.property('reimbursedAmount');
 
       // set and verify value
-      var validValue = generateMockData('Currency');
-      instance.reimbursedAmount = validValue;
-      expect(instance.reimbursedAmount).to.equal(validValue);
+      var expectedValue = generateMockData('Currency');
+      instance.reimbursedAmount = expectedValue;
+      expect(instance.reimbursedAmount).to.equal(expectedValue);
     });
 
-    it('should have the property reasonCode (base name: "ReasonCode")', function() {
+    it('should have the property reasonCode', function() {
       // verify property exists
       expect(instance).to.have.property('reasonCode');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.reasonCode = validValue;
-      expect(instance.reasonCode).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.reasonCode = expectedValue;
+      expect(instance.reasonCode).to.equal(expectedValue);
     });
 
-    it('should have the property sAFETReimbursementItemList (base name: "SAFETReimbursementItemList")', function() {
+    it('should have the property sAFETReimbursementItemList', function() {
       // verify property exists
       expect(instance).to.have.property('sAFETReimbursementItemList');
 
       // set and verify value
-      var validValue = generateMockData('[SAFETReimbursementItem]', true);
-      instance.sAFETReimbursementItemList = validValue;
-      expect(instance.sAFETReimbursementItemList).to.equal(validValue);
+      var expectedValue = generateMockData('SAFETReimbursementItem', true);
+      instance.sAFETReimbursementItemList = expectedValue;
+      expect(instance.sAFETReimbursementItemList).to.equal(expectedValue);
     });
 
   });

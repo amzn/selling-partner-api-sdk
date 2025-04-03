@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForListingsItems.ListingsItemPatchRequest);
     });
 
-    it('should have the property productType (base name: "productType")', function() {
+    it('should have the property productType', function() {
       // verify property exists
       expect(instance).to.have.property('productType');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.productType = validValue;
-      expect(instance.productType).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.productType = expectedValue;
+      expect(instance.productType).to.equal(expectedValue);
     });
 
-    it('should have the property patches (base name: "patches")', function() {
+    it('should have the property patches', function() {
       // verify property exists
       expect(instance).to.have.property('patches');
 
       // set and verify value
-      var validValue = generateMockData('[PatchOperation]', true);
-      instance.patches = validValue;
-      expect(instance.patches).to.equal(validValue);
+      var expectedValue = generateMockData('PatchOperation', true);
+      instance.patches = expectedValue;
+      expect(instance.patches).to.equal(expectedValue);
     });
 
   });

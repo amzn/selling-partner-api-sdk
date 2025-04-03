@@ -45,34 +45,34 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.ContactInformation);
     });
 
-    it('should have the property email (base name: "email")', function() {
+    it('should have the property email', function() {
       // verify property exists
       expect(instance).to.have.property('email');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.email = validValue;
-      expect(instance.email).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.email = expectedValue;
+      expect(instance.email).to.equal(expectedValue);
     });
 
-    it('should have the property name (base name: "name")', function() {
+    it('should have the property name', function() {
       // verify property exists
       expect(instance).to.have.property('name');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.name = validValue;
-      expect(instance.name).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.name = expectedValue;
+      expect(instance.name).to.equal(expectedValue);
     });
 
-    it('should have the property phoneNumber (base name: "phoneNumber")', function() {
+    it('should have the property phoneNumber', function() {
       // verify property exists
       expect(instance).to.have.property('phoneNumber');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.phoneNumber = validValue;
-      expect(instance.phoneNumber).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.phoneNumber = expectedValue;
+      expect(instance.phoneNumber).to.equal(expectedValue);
     });
 
   });

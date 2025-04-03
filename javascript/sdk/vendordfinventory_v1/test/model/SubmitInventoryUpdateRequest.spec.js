@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForDirectFulfillmentInventoryUpdates.SubmitInventoryUpdateRequest);
     });
 
-    it('should have the property inventory (base name: "inventory")', function() {
+    it('should have the property inventory', function() {
       // verify property exists
       expect(instance).to.have.property('inventory');
 
       // set and verify value
-      var validValue = generateMockData('InventoryUpdate');
-      instance.inventory = validValue;
-      expect(instance.inventory).to.equal(validValue);
+      var expectedValue = generateMockData('InventoryUpdate');
+      instance.inventory = expectedValue;
+      expect(instance.inventory).to.equal(expectedValue);
     });
 
   });

@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForMessaging.CreateConfirmCustomizationDetailsRequest);
     });
 
-    it('should have the property text (base name: "text")', function() {
+    it('should have the property text', function() {
       // verify property exists
       expect(instance).to.have.property('text');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.text = validValue;
-      expect(instance.text).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.text = expectedValue;
+      expect(instance.text).to.equal(expectedValue);
     });
 
-    it('should have the property attachments (base name: "attachments")', function() {
+    it('should have the property attachments', function() {
       // verify property exists
       expect(instance).to.have.property('attachments');
 
       // set and verify value
-      var validValue = generateMockData('[Attachment]', true);
-      instance.attachments = validValue;
-      expect(instance.attachments).to.equal(validValue);
+      var expectedValue = generateMockData('Attachment', true);
+      instance.attachments = expectedValue;
+      expect(instance.attachments).to.equal(expectedValue);
     });
 
   });

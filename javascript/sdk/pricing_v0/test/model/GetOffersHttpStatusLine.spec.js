@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForPricing.GetOffersHttpStatusLine);
     });
 
-    it('should have the property statusCode (base name: "statusCode")', function() {
+    it('should have the property statusCode', function() {
       // verify property exists
       expect(instance).to.have.property('statusCode');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.statusCode = validValue;
-      expect(instance.statusCode).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.statusCode = expectedValue;
+      expect(instance.statusCode).to.equal(expectedValue);
     });
 
-    it('should have the property reasonPhrase (base name: "reasonPhrase")', function() {
+    it('should have the property reasonPhrase', function() {
       // verify property exists
       expect(instance).to.have.property('reasonPhrase');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.reasonPhrase = validValue;
-      expect(instance.reasonPhrase).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.reasonPhrase = expectedValue;
+      expect(instance.reasonPhrase).to.equal(expectedValue);
     });
 
   });

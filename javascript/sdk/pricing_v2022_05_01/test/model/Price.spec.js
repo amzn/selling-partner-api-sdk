@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForPricing.Price);
     });
 
-    it('should have the property listingPrice (base name: "listingPrice")', function() {
+    it('should have the property listingPrice', function() {
       // verify property exists
       expect(instance).to.have.property('listingPrice');
 
       // set and verify value
-      var validValue = generateMockData('MoneyType');
-      instance.listingPrice = validValue;
-      expect(instance.listingPrice).to.equal(validValue);
+      var expectedValue = generateMockData('MoneyType');
+      instance.listingPrice = expectedValue;
+      expect(instance.listingPrice).to.equal(expectedValue);
     });
 
-    it('should have the property shippingPrice (base name: "shippingPrice")', function() {
+    it('should have the property shippingPrice', function() {
       // verify property exists
       expect(instance).to.have.property('shippingPrice');
 
       // set and verify value
-      var validValue = generateMockData('MoneyType');
-      instance.shippingPrice = validValue;
-      expect(instance.shippingPrice).to.equal(validValue);
+      var expectedValue = generateMockData('MoneyType');
+      instance.shippingPrice = expectedValue;
+      expect(instance.shippingPrice).to.equal(expectedValue);
     });
 
-    it('should have the property points (base name: "points")', function() {
+    it('should have the property points', function() {
       // verify property exists
       expect(instance).to.have.property('points');
 
       // set and verify value
-      var validValue = generateMockData('Points');
-      instance.points = validValue;
-      expect(instance.points).to.equal(validValue);
+      var expectedValue = generateMockData('Points');
+      instance.points = expectedValue;
+      expect(instance.points).to.equal(expectedValue);
     });
 
   });

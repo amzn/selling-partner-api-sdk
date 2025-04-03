@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForOrders.ExceptionDates);
     });
 
-    it('should have the property exceptionDate (base name: "ExceptionDate")', function() {
+    it('should have the property exceptionDate', function() {
       // verify property exists
       expect(instance).to.have.property('exceptionDate');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.exceptionDate = validValue;
-      expect(instance.exceptionDate).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.exceptionDate = expectedValue;
+      expect(instance.exceptionDate).to.equal(expectedValue);
     });
 
-    it('should have the property isOpen (base name: "IsOpen")', function() {
+    it('should have the property isOpen', function() {
       // verify property exists
       expect(instance).to.have.property('isOpen');
 
       // set and verify value
-      var validValue = generateMockData('Boolean');
-      instance.isOpen = validValue;
-      expect(instance.isOpen).to.equal(validValue);
+      var expectedValue = generateMockData('Boolean');
+      instance.isOpen = expectedValue;
+      expect(instance.isOpen).to.equal(expectedValue);
     });
 
-    it('should have the property openIntervals (base name: "OpenIntervals")', function() {
+    it('should have the property openIntervals', function() {
       // verify property exists
       expect(instance).to.have.property('openIntervals');
 
       // set and verify value
-      var validValue = generateMockData('[OpenInterval]', true);
-      instance.openIntervals = validValue;
-      expect(instance.openIntervals).to.equal(validValue);
+      var expectedValue = generateMockData('OpenInterval', true);
+      instance.openIntervals = expectedValue;
+      expect(instance.openIntervals).to.equal(expectedValue);
     });
 
   });

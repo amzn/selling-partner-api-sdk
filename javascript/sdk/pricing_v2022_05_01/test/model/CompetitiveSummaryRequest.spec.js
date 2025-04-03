@@ -45,64 +45,64 @@
       expect(instance).to.be.a(SellingPartnerApiForPricing.CompetitiveSummaryRequest);
     });
 
-    it('should have the property asin (base name: "asin")', function() {
+    it('should have the property asin', function() {
       // verify property exists
       expect(instance).to.have.property('asin');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.asin = validValue;
-      expect(instance.asin).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.asin = expectedValue;
+      expect(instance.asin).to.equal(expectedValue);
     });
 
-    it('should have the property marketplaceId (base name: "marketplaceId")', function() {
+    it('should have the property marketplaceId', function() {
       // verify property exists
       expect(instance).to.have.property('marketplaceId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.marketplaceId = validValue;
-      expect(instance.marketplaceId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.marketplaceId = expectedValue;
+      expect(instance.marketplaceId).to.equal(expectedValue);
     });
 
-    it('should have the property includedData (base name: "includedData")', function() {
+    it('should have the property includedData', function() {
       // verify property exists
       expect(instance).to.have.property('includedData');
 
       // set and verify value
-      var validValue = generateMockData('[CompetitiveSummaryIncludedData]', true);
-      instance.includedData = validValue;
-      expect(instance.includedData).to.equal(validValue);
+      var expectedValue = generateMockData('CompetitiveSummaryIncludedData', true);
+      instance.includedData = expectedValue;
+      expect(instance.includedData).to.equal(expectedValue);
     });
 
-    it('should have the property lowestPricedOffersInputs (base name: "lowestPricedOffersInputs")', function() {
+    it('should have the property lowestPricedOffersInputs', function() {
       // verify property exists
       expect(instance).to.have.property('lowestPricedOffersInputs');
 
       // set and verify value
-      var validValue = generateMockData('[LowestPricedOffersInput]', true);
-      instance.lowestPricedOffersInputs = validValue;
-      expect(instance.lowestPricedOffersInputs).to.equal(validValue);
+      var expectedValue = generateMockData('LowestPricedOffersInput', true);
+      instance.lowestPricedOffersInputs = expectedValue;
+      expect(instance.lowestPricedOffersInputs).to.equal(expectedValue);
     });
 
-    it('should have the property method (base name: "method")', function() {
+    it('should have the property method', function() {
       // verify property exists
       expect(instance).to.have.property('method');
 
       // set and verify value
-      var validValue = generateMockData('HttpMethod');
-      instance.method = validValue;
-      expect(instance.method).to.equal(validValue);
+      var expectedValue = generateMockData('HttpMethod');
+      instance.method = expectedValue;
+      expect(instance.method).to.equal(expectedValue);
     });
 
-    it('should have the property uri (base name: "uri")', function() {
+    it('should have the property uri', function() {
       // verify property exists
       expect(instance).to.have.property('uri');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.uri = validValue;
-      expect(instance.uri).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.uri = expectedValue;
+      expect(instance.uri).to.equal(expectedValue);
     });
 
   });

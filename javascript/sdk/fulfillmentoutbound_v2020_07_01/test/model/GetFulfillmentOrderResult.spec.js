@@ -45,64 +45,64 @@
       expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.GetFulfillmentOrderResult);
     });
 
-    it('should have the property fulfillmentOrder (base name: "fulfillmentOrder")', function() {
+    it('should have the property fulfillmentOrder', function() {
       // verify property exists
       expect(instance).to.have.property('fulfillmentOrder');
 
       // set and verify value
-      var validValue = generateMockData('FulfillmentOrder');
-      instance.fulfillmentOrder = validValue;
-      expect(instance.fulfillmentOrder).to.equal(validValue);
+      var expectedValue = generateMockData('FulfillmentOrder');
+      instance.fulfillmentOrder = expectedValue;
+      expect(instance.fulfillmentOrder).to.equal(expectedValue);
     });
 
-    it('should have the property fulfillmentOrderItems (base name: "fulfillmentOrderItems")', function() {
+    it('should have the property fulfillmentOrderItems', function() {
       // verify property exists
       expect(instance).to.have.property('fulfillmentOrderItems');
 
       // set and verify value
-      var validValue = generateMockData('[FulfillmentOrderItem]', true);
-      instance.fulfillmentOrderItems = validValue;
-      expect(instance.fulfillmentOrderItems).to.equal(validValue);
+      var expectedValue = generateMockData('FulfillmentOrderItem', true);
+      instance.fulfillmentOrderItems = expectedValue;
+      expect(instance.fulfillmentOrderItems).to.equal(expectedValue);
     });
 
-    it('should have the property fulfillmentShipments (base name: "fulfillmentShipments")', function() {
+    it('should have the property fulfillmentShipments', function() {
       // verify property exists
       expect(instance).to.have.property('fulfillmentShipments');
 
       // set and verify value
-      var validValue = generateMockData('[FulfillmentShipment]', true);
-      instance.fulfillmentShipments = validValue;
-      expect(instance.fulfillmentShipments).to.equal(validValue);
+      var expectedValue = generateMockData('FulfillmentShipment', true);
+      instance.fulfillmentShipments = expectedValue;
+      expect(instance.fulfillmentShipments).to.equal(expectedValue);
     });
 
-    it('should have the property returnItems (base name: "returnItems")', function() {
+    it('should have the property returnItems', function() {
       // verify property exists
       expect(instance).to.have.property('returnItems');
 
       // set and verify value
-      var validValue = generateMockData('[ReturnItem]', true);
-      instance.returnItems = validValue;
-      expect(instance.returnItems).to.equal(validValue);
+      var expectedValue = generateMockData('ReturnItem', true);
+      instance.returnItems = expectedValue;
+      expect(instance.returnItems).to.equal(expectedValue);
     });
 
-    it('should have the property returnAuthorizations (base name: "returnAuthorizations")', function() {
+    it('should have the property returnAuthorizations', function() {
       // verify property exists
       expect(instance).to.have.property('returnAuthorizations');
 
       // set and verify value
-      var validValue = generateMockData('[ReturnAuthorization]', true);
-      instance.returnAuthorizations = validValue;
-      expect(instance.returnAuthorizations).to.equal(validValue);
+      var expectedValue = generateMockData('ReturnAuthorization', true);
+      instance.returnAuthorizations = expectedValue;
+      expect(instance.returnAuthorizations).to.equal(expectedValue);
     });
 
-    it('should have the property paymentInformation (base name: "paymentInformation")', function() {
+    it('should have the property paymentInformation', function() {
       // verify property exists
       expect(instance).to.have.property('paymentInformation');
 
       // set and verify value
-      var validValue = generateMockData('[PaymentInformation]', true);
-      instance.paymentInformation = validValue;
-      expect(instance.paymentInformation).to.equal(validValue);
+      var expectedValue = generateMockData('PaymentInformation', true);
+      instance.paymentInformation = expectedValue;
+      expect(instance.paymentInformation).to.equal(expectedValue);
     });
 
   });

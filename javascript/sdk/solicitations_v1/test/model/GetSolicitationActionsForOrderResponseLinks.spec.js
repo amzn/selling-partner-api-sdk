@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForSolicitations.GetSolicitationActionsForOrderResponseLinks);
     });
 
-    it('should have the property self (base name: "self")', function() {
+    it('should have the property self', function() {
       // verify property exists
       expect(instance).to.have.property('self');
 
       // set and verify value
-      var validValue = generateMockData('LinkObject');
-      instance.self = validValue;
-      expect(instance.self).to.equal(validValue);
+      var expectedValue = generateMockData('LinkObject');
+      instance.self = expectedValue;
+      expect(instance.self).to.equal(expectedValue);
     });
 
-    it('should have the property actions (base name: "actions")', function() {
+    it('should have the property actions', function() {
       // verify property exists
       expect(instance).to.have.property('actions');
 
       // set and verify value
-      var validValue = generateMockData('[LinkObject]', true);
-      instance.actions = validValue;
-      expect(instance.actions).to.equal(validValue);
+      var expectedValue = generateMockData('LinkObject', true);
+      instance.actions = expectedValue;
+      expect(instance.actions).to.equal(expectedValue);
     });
 
   });

@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForFinances.TaxWithheldComponent);
     });
 
-    it('should have the property taxCollectionModel (base name: "TaxCollectionModel")', function() {
+    it('should have the property taxCollectionModel', function() {
       // verify property exists
       expect(instance).to.have.property('taxCollectionModel');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.taxCollectionModel = validValue;
-      expect(instance.taxCollectionModel).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.taxCollectionModel = expectedValue;
+      expect(instance.taxCollectionModel).to.equal(expectedValue);
     });
 
-    it('should have the property taxesWithheld (base name: "TaxesWithheld")', function() {
+    it('should have the property taxesWithheld', function() {
       // verify property exists
       expect(instance).to.have.property('taxesWithheld');
 
       // set and verify value
-      var validValue = generateMockData('[ChargeComponent]', true);
-      instance.taxesWithheld = validValue;
-      expect(instance.taxesWithheld).to.equal(validValue);
+      var expectedValue = generateMockData('ChargeComponent', true);
+      instance.taxesWithheld = expectedValue;
+      expect(instance.taxesWithheld).to.equal(expectedValue);
     });
 
   });

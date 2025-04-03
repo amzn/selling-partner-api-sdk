@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForOrders.ValidVerificationDetail);
     });
 
-    it('should have the property verificationDetailType (base name: "VerificationDetailType")', function() {
+    it('should have the property verificationDetailType', function() {
       // verify property exists
       expect(instance).to.have.property('verificationDetailType');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.verificationDetailType = validValue;
-      expect(instance.verificationDetailType).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.verificationDetailType = expectedValue;
+      expect(instance.verificationDetailType).to.equal(expectedValue);
     });
 
-    it('should have the property validVerificationStatuses (base name: "ValidVerificationStatuses")', function() {
+    it('should have the property validVerificationStatuses', function() {
       // verify property exists
       expect(instance).to.have.property('validVerificationStatuses');
 
       // set and verify value
-      var validValue = generateMockData('[VerificationStatus]', true);
-      instance.validVerificationStatuses = validValue;
-      expect(instance.validVerificationStatuses).to.equal(validValue);
+      var expectedValue = generateMockData('VerificationStatus', true);
+      instance.validVerificationStatuses = expectedValue;
+      expect(instance.validVerificationStatuses).to.equal(expectedValue);
     });
 
   });

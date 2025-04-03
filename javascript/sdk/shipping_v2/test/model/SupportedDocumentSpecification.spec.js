@@ -45,34 +45,34 @@
       expect(instance).to.be.a(AmazonShippingApi.SupportedDocumentSpecification);
     });
 
-    it('should have the property format (base name: "format")', function() {
+    it('should have the property format', function() {
       // verify property exists
       expect(instance).to.have.property('format');
 
       // set and verify value
-      var validValue = generateMockData('DocumentFormat');
-      instance.format = validValue;
-      expect(instance.format).to.equal(validValue);
+      var expectedValue = generateMockData('DocumentFormat');
+      instance.format = expectedValue;
+      expect(instance.format).to.equal(expectedValue);
     });
 
-    it('should have the property size (base name: "size")', function() {
+    it('should have the property size', function() {
       // verify property exists
       expect(instance).to.have.property('size');
 
       // set and verify value
-      var validValue = generateMockData('DocumentSize');
-      instance.size = validValue;
-      expect(instance.size).to.equal(validValue);
+      var expectedValue = generateMockData('DocumentSize');
+      instance.size = expectedValue;
+      expect(instance.size).to.equal(expectedValue);
     });
 
-    it('should have the property printOptions (base name: "printOptions")', function() {
+    it('should have the property printOptions', function() {
       // verify property exists
       expect(instance).to.have.property('printOptions');
 
       // set and verify value
-      var validValue = generateMockData('[PrintOption]', true);
-      instance.printOptions = validValue;
-      expect(instance.printOptions).to.equal(validValue);
+      var expectedValue = generateMockData('PrintOption', true);
+      instance.printOptions = expectedValue;
+      expect(instance.printOptions).to.equal(expectedValue);
     });
 
   });

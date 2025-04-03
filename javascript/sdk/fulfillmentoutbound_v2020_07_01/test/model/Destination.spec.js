@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.Destination);
     });
 
-    it('should have the property deliveryAddress (base name: "deliveryAddress")', function() {
+    it('should have the property deliveryAddress', function() {
       // verify property exists
       expect(instance).to.have.property('deliveryAddress');
 
       // set and verify value
-      var validValue = generateMockData('VariablePrecisionAddress');
-      instance.deliveryAddress = validValue;
-      expect(instance.deliveryAddress).to.equal(validValue);
+      var expectedValue = generateMockData('VariablePrecisionAddress');
+      instance.deliveryAddress = expectedValue;
+      expect(instance.deliveryAddress).to.equal(expectedValue);
     });
 
-    it('should have the property ipAddress (base name: "ipAddress")', function() {
+    it('should have the property ipAddress', function() {
       // verify property exists
       expect(instance).to.have.property('ipAddress');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.ipAddress = validValue;
-      expect(instance.ipAddress).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.ipAddress = expectedValue;
+      expect(instance.ipAddress).to.equal(expectedValue);
     });
 
   });

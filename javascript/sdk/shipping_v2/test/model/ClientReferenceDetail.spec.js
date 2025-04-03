@@ -45,24 +45,24 @@
       expect(instance).to.be.a(AmazonShippingApi.ClientReferenceDetail);
     });
 
-    it('should have the property clientReferenceType (base name: "clientReferenceType")', function() {
+    it('should have the property clientReferenceType', function() {
       // verify property exists
       expect(instance).to.have.property('clientReferenceType');
 
       // set and verify value
-      var validValue = ['IntegratorShipperId', 'IntegratorMerchantId', ][0];
-      instance.clientReferenceType = validValue;
-      expect(instance.clientReferenceType).to.equal(validValue);
+      var expectedValue = ['IntegratorShipperId', 'IntegratorMerchantId', ][0];
+      instance.clientReferenceType = expectedValue;
+      expect(instance.clientReferenceType).to.equal(expectedValue);
     });
 
-    it('should have the property clientReferenceId (base name: "clientReferenceId")', function() {
+    it('should have the property clientReferenceId', function() {
       // verify property exists
       expect(instance).to.have.property('clientReferenceId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.clientReferenceId = validValue;
-      expect(instance.clientReferenceId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.clientReferenceId = expectedValue;
+      expect(instance.clientReferenceId).to.equal(expectedValue);
     });
 
   });

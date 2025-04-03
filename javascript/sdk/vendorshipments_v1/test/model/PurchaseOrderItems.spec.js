@@ -45,54 +45,54 @@
       expect(instance).to.be.a(SellingPartnerApiForRetailProcurementShipments.PurchaseOrderItems);
     });
 
-    it('should have the property itemSequenceNumber (base name: "itemSequenceNumber")', function() {
+    it('should have the property itemSequenceNumber', function() {
       // verify property exists
       expect(instance).to.have.property('itemSequenceNumber');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.itemSequenceNumber = validValue;
-      expect(instance.itemSequenceNumber).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.itemSequenceNumber = expectedValue;
+      expect(instance.itemSequenceNumber).to.equal(expectedValue);
     });
 
-    it('should have the property buyerProductIdentifier (base name: "buyerProductIdentifier")', function() {
+    it('should have the property buyerProductIdentifier', function() {
       // verify property exists
       expect(instance).to.have.property('buyerProductIdentifier');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.buyerProductIdentifier = validValue;
-      expect(instance.buyerProductIdentifier).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.buyerProductIdentifier = expectedValue;
+      expect(instance.buyerProductIdentifier).to.equal(expectedValue);
     });
 
-    it('should have the property vendorProductIdentifier (base name: "vendorProductIdentifier")', function() {
+    it('should have the property vendorProductIdentifier', function() {
       // verify property exists
       expect(instance).to.have.property('vendorProductIdentifier');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.vendorProductIdentifier = validValue;
-      expect(instance.vendorProductIdentifier).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.vendorProductIdentifier = expectedValue;
+      expect(instance.vendorProductIdentifier).to.equal(expectedValue);
     });
 
-    it('should have the property shippedQuantity (base name: "shippedQuantity")', function() {
+    it('should have the property shippedQuantity', function() {
       // verify property exists
       expect(instance).to.have.property('shippedQuantity');
 
       // set and verify value
-      var validValue = generateMockData('ItemQuantity');
-      instance.shippedQuantity = validValue;
-      expect(instance.shippedQuantity).to.equal(validValue);
+      var expectedValue = generateMockData('ItemQuantity');
+      instance.shippedQuantity = expectedValue;
+      expect(instance.shippedQuantity).to.equal(expectedValue);
     });
 
-    it('should have the property maximumRetailPrice (base name: "maximumRetailPrice")', function() {
+    it('should have the property maximumRetailPrice', function() {
       // verify property exists
       expect(instance).to.have.property('maximumRetailPrice');
 
       // set and verify value
-      var validValue = generateMockData('Money');
-      instance.maximumRetailPrice = validValue;
-      expect(instance.maximumRetailPrice).to.equal(validValue);
+      var expectedValue = generateMockData('Money');
+      instance.maximumRetailPrice = expectedValue;
+      expect(instance.maximumRetailPrice).to.equal(expectedValue);
     });
 
   });

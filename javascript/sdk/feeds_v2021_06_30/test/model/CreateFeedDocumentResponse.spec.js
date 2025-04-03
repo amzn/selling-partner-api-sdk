@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForFeeds.CreateFeedDocumentResponse);
     });
 
-    it('should have the property feedDocumentId (base name: "feedDocumentId")', function() {
+    it('should have the property feedDocumentId', function() {
       // verify property exists
       expect(instance).to.have.property('feedDocumentId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.feedDocumentId = validValue;
-      expect(instance.feedDocumentId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.feedDocumentId = expectedValue;
+      expect(instance.feedDocumentId).to.equal(expectedValue);
     });
 
-    it('should have the property url (base name: "url")', function() {
+    it('should have the property url', function() {
       // verify property exists
       expect(instance).to.have.property('url');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.url = validValue;
-      expect(instance.url).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.url = expectedValue;
+      expect(instance.url).to.equal(expectedValue);
     });
 
   });

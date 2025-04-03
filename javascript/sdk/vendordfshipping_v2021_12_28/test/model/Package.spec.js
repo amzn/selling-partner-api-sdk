@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForDirectFulfillmentShipping.Package);
     });
 
-    it('should have the property packageTrackingNumber (base name: "packageTrackingNumber")', function() {
+    it('should have the property packageTrackingNumber', function() {
       // verify property exists
       expect(instance).to.have.property('packageTrackingNumber');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.packageTrackingNumber = validValue;
-      expect(instance.packageTrackingNumber).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.packageTrackingNumber = expectedValue;
+      expect(instance.packageTrackingNumber).to.equal(expectedValue);
     });
 
   });

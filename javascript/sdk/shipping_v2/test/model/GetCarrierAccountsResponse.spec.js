@@ -45,14 +45,14 @@
       expect(instance).to.be.a(AmazonShippingApi.GetCarrierAccountsResponse);
     });
 
-    it('should have the property activeAccounts (base name: "activeAccounts")', function() {
+    it('should have the property activeAccounts', function() {
       // verify property exists
       expect(instance).to.have.property('activeAccounts');
 
       // set and verify value
-      var validValue = generateMockData('[ActiveAccount]', true);
-      instance.activeAccounts = validValue;
-      expect(instance.activeAccounts).to.equal(validValue);
+      var expectedValue = generateMockData('ActiveAccount', true);
+      instance.activeAccounts = expectedValue;
+      expect(instance.activeAccounts).to.equal(expectedValue);
     });
 
   });

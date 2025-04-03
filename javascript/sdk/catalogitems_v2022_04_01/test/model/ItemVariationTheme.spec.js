@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForCatalogItems.ItemVariationTheme);
     });
 
-    it('should have the property attributes (base name: "attributes")', function() {
+    it('should have the property attributes', function() {
       // verify property exists
       expect(instance).to.have.property('attributes');
 
       // set and verify value
-      var validValue = generateMockData('[String]', true);
-      instance.attributes = validValue;
-      expect(instance.attributes).to.equal(validValue);
+      var expectedValue = generateMockData('String', true);
+      instance.attributes = expectedValue;
+      expect(instance.attributes).to.equal(expectedValue);
     });
 
-    it('should have the property theme (base name: "theme")', function() {
+    it('should have the property theme', function() {
       // verify property exists
       expect(instance).to.have.property('theme');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.theme = validValue;
-      expect(instance.theme).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.theme = expectedValue;
+      expect(instance.theme).to.equal(expectedValue);
     });
 
   });

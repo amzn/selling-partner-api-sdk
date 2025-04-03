@@ -45,44 +45,44 @@
       expect(instance).to.be.a(AmazonShippingApi.Event);
     });
 
-    it('should have the property eventCode (base name: "eventCode")', function() {
+    it('should have the property eventCode', function() {
       // verify property exists
       expect(instance).to.have.property('eventCode');
 
       // set and verify value
-      var validValue = generateMockData('EventCode');
-      instance.eventCode = validValue;
-      expect(instance.eventCode).to.equal(validValue);
+      var expectedValue = generateMockData('EventCode');
+      instance.eventCode = expectedValue;
+      expect(instance.eventCode).to.equal(expectedValue);
     });
 
-    it('should have the property location (base name: "location")', function() {
+    it('should have the property location', function() {
       // verify property exists
       expect(instance).to.have.property('location');
 
       // set and verify value
-      var validValue = generateMockData('Location');
-      instance.location = validValue;
-      expect(instance.location).to.equal(validValue);
+      var expectedValue = generateMockData('Location');
+      instance.location = expectedValue;
+      expect(instance.location).to.equal(expectedValue);
     });
 
-    it('should have the property eventTime (base name: "eventTime")', function() {
+    it('should have the property eventTime', function() {
       // verify property exists
       expect(instance).to.have.property('eventTime');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.eventTime = validValue;
-      expect(instance.eventTime).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.eventTime = expectedValue;
+      expect(instance.eventTime).to.equal(expectedValue);
     });
 
-    it('should have the property shipmentType (base name: "shipmentType")', function() {
+    it('should have the property shipmentType', function() {
       // verify property exists
       expect(instance).to.have.property('shipmentType');
 
       // set and verify value
-      var validValue = generateMockData('ShipmentType');
-      instance.shipmentType = validValue;
-      expect(instance.shipmentType).to.equal(validValue);
+      var expectedValue = generateMockData('ShipmentType');
+      instance.shipmentType = expectedValue;
+      expect(instance.shipmentType).to.equal(expectedValue);
     });
 
   });

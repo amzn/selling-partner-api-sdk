@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForSupplySources.ThroughputConfig);
     });
 
-    it('should have the property throughputCap (base name: "throughputCap")', function() {
+    it('should have the property throughputCap', function() {
       // verify property exists
       expect(instance).to.have.property('throughputCap');
 
       // set and verify value
-      var validValue = generateMockData('ThroughputCap');
-      instance.throughputCap = validValue;
-      expect(instance.throughputCap).to.equal(validValue);
+      var expectedValue = generateMockData('ThroughputCap');
+      instance.throughputCap = expectedValue;
+      expect(instance.throughputCap).to.equal(expectedValue);
     });
 
-    it('should have the property throughputUnit (base name: "throughputUnit")', function() {
+    it('should have the property throughputUnit', function() {
       // verify property exists
       expect(instance).to.have.property('throughputUnit');
 
       // set and verify value
-      var validValue = generateMockData('ThroughputUnit');
-      instance.throughputUnit = validValue;
-      expect(instance.throughputUnit).to.equal(validValue);
+      var expectedValue = generateMockData('ThroughputUnit');
+      instance.throughputUnit = expectedValue;
+      expect(instance.throughputUnit).to.equal(expectedValue);
     });
 
   });

@@ -45,34 +45,34 @@
       expect(instance).to.be.a(AmazonShippingApi.OperatingHours);
     });
 
-    it('should have the property closingTime (base name: "closingTime")', function() {
+    it('should have the property closingTime', function() {
       // verify property exists
       expect(instance).to.have.property('closingTime');
 
       // set and verify value
-      var validValue = generateMockData('TimeOfDay');
-      instance.closingTime = validValue;
-      expect(instance.closingTime).to.equal(validValue);
+      var expectedValue = generateMockData('TimeOfDay');
+      instance.closingTime = expectedValue;
+      expect(instance.closingTime).to.equal(expectedValue);
     });
 
-    it('should have the property openingTime (base name: "openingTime")', function() {
+    it('should have the property openingTime', function() {
       // verify property exists
       expect(instance).to.have.property('openingTime');
 
       // set and verify value
-      var validValue = generateMockData('TimeOfDay');
-      instance.openingTime = validValue;
-      expect(instance.openingTime).to.equal(validValue);
+      var expectedValue = generateMockData('TimeOfDay');
+      instance.openingTime = expectedValue;
+      expect(instance.openingTime).to.equal(expectedValue);
     });
 
-    it('should have the property midDayClosures (base name: "midDayClosures")', function() {
+    it('should have the property midDayClosures', function() {
       // verify property exists
       expect(instance).to.have.property('midDayClosures');
 
       // set and verify value
-      var validValue = generateMockData('[TimeOfDay]', true);
-      instance.midDayClosures = validValue;
-      expect(instance.midDayClosures).to.equal(validValue);
+      var expectedValue = generateMockData('TimeOfDay', true);
+      instance.midDayClosures = expectedValue;
+      expect(instance.midDayClosures).to.equal(expectedValue);
     });
 
   });

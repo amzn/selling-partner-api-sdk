@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForAContentManagement.AplusPaginatedResponse);
     });
 
-    it('should have the property warnings (base name: "warnings")', function() {
+    it('should have the property warnings', function() {
       // verify property exists
       expect(instance).to.have.property('warnings');
 
       // set and verify value
-      var validValue = generateMockData('[Error]', true);
-      instance.warnings = validValue;
-      expect(instance.warnings).to.equal(validValue);
+      var expectedValue = generateMockData('Error', true);
+      instance.warnings = expectedValue;
+      expect(instance.warnings).to.equal(expectedValue);
     });
 
-    it('should have the property nextPageToken (base name: "nextPageToken")', function() {
+    it('should have the property nextPageToken', function() {
       // verify property exists
       expect(instance).to.have.property('nextPageToken');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.nextPageToken = validValue;
-      expect(instance.nextPageToken).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.nextPageToken = expectedValue;
+      expect(instance.nextPageToken).to.equal(expectedValue);
     });
 
   });

@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForSupplySources.InStorePickupConfiguration);
     });
 
-    it('should have the property isSupported (base name: "isSupported")', function() {
+    it('should have the property isSupported', function() {
       // verify property exists
       expect(instance).to.have.property('isSupported');
 
       // set and verify value
-      var validValue = generateMockData('Boolean');
-      instance.isSupported = validValue;
-      expect(instance.isSupported).to.equal(validValue);
+      var expectedValue = generateMockData('Boolean');
+      instance.isSupported = expectedValue;
+      expect(instance.isSupported).to.equal(expectedValue);
     });
 
-    it('should have the property parkingConfiguration (base name: "parkingConfiguration")', function() {
+    it('should have the property parkingConfiguration', function() {
       // verify property exists
       expect(instance).to.have.property('parkingConfiguration');
 
       // set and verify value
-      var validValue = generateMockData('ParkingConfiguration');
-      instance.parkingConfiguration = validValue;
-      expect(instance.parkingConfiguration).to.equal(validValue);
+      var expectedValue = generateMockData('ParkingConfiguration');
+      instance.parkingConfiguration = expectedValue;
+      expect(instance.parkingConfiguration).to.equal(expectedValue);
     });
 
   });

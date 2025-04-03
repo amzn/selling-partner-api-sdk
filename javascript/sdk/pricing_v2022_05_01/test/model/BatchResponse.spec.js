@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForPricing.BatchResponse);
     });
 
-    it('should have the property headers (base name: "headers")', function() {
+    it('should have the property headers', function() {
       // verify property exists
       expect(instance).to.have.property('headers');
 
       // set and verify value
-      var validValue = generateMockData('{String: String}');
-      instance.headers = validValue;
-      expect(instance.headers).to.equal(validValue);
+      var expectedValue = generateMockData('{String: String}');
+      instance.headers = expectedValue;
+      expect(instance.headers).to.equal(expectedValue);
     });
 
-    it('should have the property status (base name: "status")', function() {
+    it('should have the property status', function() {
       // verify property exists
       expect(instance).to.have.property('status');
 
       // set and verify value
-      var validValue = generateMockData('HttpStatusLine');
-      instance.status = validValue;
-      expect(instance.status).to.equal(validValue);
+      var expectedValue = generateMockData('HttpStatusLine');
+      instance.status = expectedValue;
+      expect(instance.status).to.equal(expectedValue);
     });
 
   });

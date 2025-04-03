@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.DeliveryOffer);
     });
 
-    it('should have the property expiresAt (base name: "expiresAt")', function() {
+    it('should have the property expiresAt', function() {
       // verify property exists
       expect(instance).to.have.property('expiresAt');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.expiresAt = validValue;
-      expect(instance.expiresAt).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.expiresAt = expectedValue;
+      expect(instance.expiresAt).to.equal(expectedValue);
     });
 
-    it('should have the property dateRange (base name: "dateRange")', function() {
+    it('should have the property dateRange', function() {
       // verify property exists
       expect(instance).to.have.property('dateRange');
 
       // set and verify value
-      var validValue = generateMockData('DateRange');
-      instance.dateRange = validValue;
-      expect(instance.dateRange).to.equal(validValue);
+      var expectedValue = generateMockData('DateRange');
+      instance.dateRange = expectedValue;
+      expect(instance.dateRange).to.equal(expectedValue);
     });
 
-    it('should have the property policy (base name: "policy")', function() {
+    it('should have the property policy', function() {
       // verify property exists
       expect(instance).to.have.property('policy');
 
       // set and verify value
-      var validValue = generateMockData('DeliveryPolicy');
-      instance.policy = validValue;
-      expect(instance.policy).to.equal(validValue);
+      var expectedValue = generateMockData('DeliveryPolicy');
+      instance.policy = expectedValue;
+      expect(instance.policy).to.equal(expectedValue);
     });
 
   });

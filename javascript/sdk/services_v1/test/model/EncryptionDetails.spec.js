@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForServices.EncryptionDetails);
     });
 
-    it('should have the property standard (base name: "standard")', function() {
+    it('should have the property standard', function() {
       // verify property exists
       expect(instance).to.have.property('standard');
 
       // set and verify value
-      var validValue = ['AES', ][0];
-      instance.standard = validValue;
-      expect(instance.standard).to.equal(validValue);
+      var expectedValue = ['AES', ][0];
+      instance.standard = expectedValue;
+      expect(instance.standard).to.equal(expectedValue);
     });
 
-    it('should have the property initializationVector (base name: "initializationVector")', function() {
+    it('should have the property initializationVector', function() {
       // verify property exists
       expect(instance).to.have.property('initializationVector');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.initializationVector = validValue;
-      expect(instance.initializationVector).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.initializationVector = expectedValue;
+      expect(instance.initializationVector).to.equal(expectedValue);
     });
 
-    it('should have the property key (base name: "key")', function() {
+    it('should have the property key', function() {
       // verify property exists
       expect(instance).to.have.property('key');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.key = validValue;
-      expect(instance.key).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.key = expectedValue;
+      expect(instance.key).to.equal(expectedValue);
     });
 
   });

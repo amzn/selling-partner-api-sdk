@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForAContentManagement.StandardSingleSideImageModule);
     });
 
-    it('should have the property imagePositionType (base name: "imagePositionType")', function() {
+    it('should have the property imagePositionType', function() {
       // verify property exists
       expect(instance).to.have.property('imagePositionType');
 
       // set and verify value
-      var validValue = generateMockData('PositionType');
-      instance.imagePositionType = validValue;
-      expect(instance.imagePositionType).to.equal(validValue);
+      var expectedValue = generateMockData('PositionType');
+      instance.imagePositionType = expectedValue;
+      expect(instance.imagePositionType).to.equal(expectedValue);
     });
 
-    it('should have the property block (base name: "block")', function() {
+    it('should have the property block', function() {
       // verify property exists
       expect(instance).to.have.property('block');
 
       // set and verify value
-      var validValue = generateMockData('StandardImageTextBlock');
-      instance.block = validValue;
-      expect(instance.block).to.equal(validValue);
+      var expectedValue = generateMockData('StandardImageTextBlock');
+      instance.block = expectedValue;
+      expect(instance.block).to.equal(expectedValue);
     });
 
   });

@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForRetailProcurementShipments.SubmitShipmentConfirmationsRequest);
     });
 
-    it('should have the property shipmentConfirmations (base name: "shipmentConfirmations")', function() {
+    it('should have the property shipmentConfirmations', function() {
       // verify property exists
       expect(instance).to.have.property('shipmentConfirmations');
 
       // set and verify value
-      var validValue = generateMockData('[ShipmentConfirmation]', true);
-      instance.shipmentConfirmations = validValue;
-      expect(instance.shipmentConfirmations).to.equal(validValue);
+      var expectedValue = generateMockData('ShipmentConfirmation', true);
+      instance.shipmentConfirmations = expectedValue;
+      expect(instance.shipmentConfirmations).to.equal(expectedValue);
     });
 
   });

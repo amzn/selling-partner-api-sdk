@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForListingsRestrictions.Reason);
     });
 
-    it('should have the property message (base name: "message")', function() {
+    it('should have the property message', function() {
       // verify property exists
       expect(instance).to.have.property('message');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.message = validValue;
-      expect(instance.message).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.message = expectedValue;
+      expect(instance.message).to.equal(expectedValue);
     });
 
-    it('should have the property reasonCode (base name: "reasonCode")', function() {
+    it('should have the property reasonCode', function() {
       // verify property exists
       expect(instance).to.have.property('reasonCode');
 
       // set and verify value
-      var validValue = ['APPROVAL_REQUIRED', 'ASIN_NOT_FOUND', 'NOT_ELIGIBLE', ][0];
-      instance.reasonCode = validValue;
-      expect(instance.reasonCode).to.equal(validValue);
+      var expectedValue = ['APPROVAL_REQUIRED', 'ASIN_NOT_FOUND', 'NOT_ELIGIBLE', ][0];
+      instance.reasonCode = expectedValue;
+      expect(instance.reasonCode).to.equal(expectedValue);
     });
 
-    it('should have the property links (base name: "links")', function() {
+    it('should have the property links', function() {
       // verify property exists
       expect(instance).to.have.property('links');
 
       // set and verify value
-      var validValue = generateMockData('[Link]', true);
-      instance.links = validValue;
-      expect(instance.links).to.equal(validValue);
+      var expectedValue = generateMockData('Link', true);
+      instance.links = expectedValue;
+      expect(instance.links).to.equal(expectedValue);
     });
 
   });

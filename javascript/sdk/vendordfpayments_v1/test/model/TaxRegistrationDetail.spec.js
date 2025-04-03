@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForDirectFulfillmentPayments.TaxRegistrationDetail);
     });
 
-    it('should have the property taxRegistrationType (base name: "taxRegistrationType")', function() {
+    it('should have the property taxRegistrationType', function() {
       // verify property exists
       expect(instance).to.have.property('taxRegistrationType');
 
       // set and verify value
-      var validValue = ['VAT', 'GST', ][0];
-      instance.taxRegistrationType = validValue;
-      expect(instance.taxRegistrationType).to.equal(validValue);
+      var expectedValue = ['VAT', 'GST', ][0];
+      instance.taxRegistrationType = expectedValue;
+      expect(instance.taxRegistrationType).to.equal(expectedValue);
     });
 
-    it('should have the property taxRegistrationNumber (base name: "taxRegistrationNumber")', function() {
+    it('should have the property taxRegistrationNumber', function() {
       // verify property exists
       expect(instance).to.have.property('taxRegistrationNumber');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.taxRegistrationNumber = validValue;
-      expect(instance.taxRegistrationNumber).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.taxRegistrationNumber = expectedValue;
+      expect(instance.taxRegistrationNumber).to.equal(expectedValue);
     });
 
-    it('should have the property taxRegistrationAddress (base name: "taxRegistrationAddress")', function() {
+    it('should have the property taxRegistrationAddress', function() {
       // verify property exists
       expect(instance).to.have.property('taxRegistrationAddress');
 
       // set and verify value
-      var validValue = generateMockData('Address');
-      instance.taxRegistrationAddress = validValue;
-      expect(instance.taxRegistrationAddress).to.equal(validValue);
+      var expectedValue = generateMockData('Address');
+      instance.taxRegistrationAddress = expectedValue;
+      expect(instance.taxRegistrationAddress).to.equal(expectedValue);
     });
 
-    it('should have the property taxRegistrationMessage (base name: "taxRegistrationMessage")', function() {
+    it('should have the property taxRegistrationMessage', function() {
       // verify property exists
       expect(instance).to.have.property('taxRegistrationMessage');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.taxRegistrationMessage = validValue;
-      expect(instance.taxRegistrationMessage).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.taxRegistrationMessage = expectedValue;
+      expect(instance.taxRegistrationMessage).to.equal(expectedValue);
     });
 
   });

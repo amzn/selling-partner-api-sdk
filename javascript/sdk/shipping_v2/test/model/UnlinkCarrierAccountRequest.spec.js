@@ -45,24 +45,24 @@
       expect(instance).to.be.a(AmazonShippingApi.UnlinkCarrierAccountRequest);
     });
 
-    it('should have the property clientReferenceDetails (base name: "clientReferenceDetails")', function() {
+    it('should have the property clientReferenceDetails', function() {
       // verify property exists
       expect(instance).to.have.property('clientReferenceDetails');
 
       // set and verify value
-      var validValue = generateMockData('[ClientReferenceDetail]', true);
-      instance.clientReferenceDetails = validValue;
-      expect(instance.clientReferenceDetails).to.equal(validValue);
+      var expectedValue = generateMockData('ClientReferenceDetail', true);
+      instance.clientReferenceDetails = expectedValue;
+      expect(instance.clientReferenceDetails).to.equal(expectedValue);
     });
 
-    it('should have the property accountId (base name: "accountId")', function() {
+    it('should have the property accountId', function() {
       // verify property exists
       expect(instance).to.have.property('accountId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.accountId = validValue;
-      expect(instance.accountId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.accountId = expectedValue;
+      expect(instance.accountId).to.equal(expectedValue);
     });
 
   });

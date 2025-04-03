@@ -45,44 +45,44 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.InboundOperationStatus);
     });
 
-    it('should have the property operation (base name: "operation")', function() {
+    it('should have the property operation', function() {
       // verify property exists
       expect(instance).to.have.property('operation');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.operation = validValue;
-      expect(instance.operation).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.operation = expectedValue;
+      expect(instance.operation).to.equal(expectedValue);
     });
 
-    it('should have the property operationId (base name: "operationId")', function() {
+    it('should have the property operationId', function() {
       // verify property exists
       expect(instance).to.have.property('operationId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.operationId = validValue;
-      expect(instance.operationId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.operationId = expectedValue;
+      expect(instance.operationId).to.equal(expectedValue);
     });
 
-    it('should have the property operationProblems (base name: "operationProblems")', function() {
+    it('should have the property operationProblems', function() {
       // verify property exists
       expect(instance).to.have.property('operationProblems');
 
       // set and verify value
-      var validValue = generateMockData('[OperationProblem]', true);
-      instance.operationProblems = validValue;
-      expect(instance.operationProblems).to.equal(validValue);
+      var expectedValue = generateMockData('OperationProblem', true);
+      instance.operationProblems = expectedValue;
+      expect(instance.operationProblems).to.equal(expectedValue);
     });
 
-    it('should have the property operationStatus (base name: "operationStatus")', function() {
+    it('should have the property operationStatus', function() {
       // verify property exists
       expect(instance).to.have.property('operationStatus');
 
       // set and verify value
-      var validValue = generateMockData('OperationStatus');
-      instance.operationStatus = validValue;
-      expect(instance.operationStatus).to.equal(validValue);
+      var expectedValue = generateMockData('OperationStatus');
+      instance.operationStatus = expectedValue;
+      expect(instance.operationStatus).to.equal(expectedValue);
     });
 
   });

@@ -45,24 +45,24 @@
       expect(instance).to.be.a(TheSellingPartnerApiForAmazonWarehousingAndDistribution.PackageVolume);
     });
 
-    it('should have the property unitOfMeasurement (base name: "unitOfMeasurement")', function() {
+    it('should have the property unitOfMeasurement', function() {
       // verify property exists
       expect(instance).to.have.property('unitOfMeasurement');
 
       // set and verify value
-      var validValue = generateMockData('VolumeUnitOfMeasurement');
-      instance.unitOfMeasurement = validValue;
-      expect(instance.unitOfMeasurement).to.equal(validValue);
+      var expectedValue = generateMockData('VolumeUnitOfMeasurement');
+      instance.unitOfMeasurement = expectedValue;
+      expect(instance.unitOfMeasurement).to.equal(expectedValue);
     });
 
-    it('should have the property volume (base name: "volume")', function() {
+    it('should have the property volume', function() {
       // verify property exists
       expect(instance).to.have.property('volume');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.volume = validValue;
-      expect(instance.volume).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.volume = expectedValue;
+      expect(instance.volume).to.equal(expectedValue);
     });
 
   });

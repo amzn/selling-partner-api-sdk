@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForProductFees.Points);
     });
 
-    it('should have the property pointsNumber (base name: "PointsNumber")', function() {
+    it('should have the property pointsNumber', function() {
       // verify property exists
       expect(instance).to.have.property('pointsNumber');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.pointsNumber = validValue;
-      expect(instance.pointsNumber).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.pointsNumber = expectedValue;
+      expect(instance.pointsNumber).to.equal(expectedValue);
     });
 
-    it('should have the property pointsMonetaryValue (base name: "PointsMonetaryValue")', function() {
+    it('should have the property pointsMonetaryValue', function() {
       // verify property exists
       expect(instance).to.have.property('pointsMonetaryValue');
 
       // set and verify value
-      var validValue = generateMockData('MoneyType');
-      instance.pointsMonetaryValue = validValue;
-      expect(instance.pointsMonetaryValue).to.equal(validValue);
+      var expectedValue = generateMockData('MoneyType');
+      instance.pointsMonetaryValue = expectedValue;
+      expect(instance.pointsMonetaryValue).to.equal(expectedValue);
     });
 
   });

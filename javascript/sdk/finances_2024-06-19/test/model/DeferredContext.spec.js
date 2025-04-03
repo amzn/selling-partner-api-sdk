@@ -45,34 +45,34 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFinances.DeferredContext);
     });
 
-    it('should have the property deferralReason (base name: "deferralReason")', function() {
+    it('should have the property deferralReason', function() {
       // verify property exists
       expect(instance).to.have.property('deferralReason');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.deferralReason = validValue;
-      expect(instance.deferralReason).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.deferralReason = expectedValue;
+      expect(instance.deferralReason).to.equal(expectedValue);
     });
 
-    it('should have the property maturityDate (base name: "maturityDate")', function() {
+    it('should have the property maturityDate', function() {
       // verify property exists
       expect(instance).to.have.property('maturityDate');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.maturityDate = validValue;
-      expect(instance.maturityDate).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.maturityDate = expectedValue;
+      expect(instance.maturityDate).to.equal(expectedValue);
     });
 
-    it('should have the property deferralStatus (base name: "deferralStatus")', function() {
+    it('should have the property deferralStatus', function() {
       // verify property exists
       expect(instance).to.have.property('deferralStatus');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.deferralStatus = validValue;
-      expect(instance.deferralStatus).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.deferralStatus = expectedValue;
+      expect(instance.deferralStatus).to.equal(expectedValue);
     });
 
   });

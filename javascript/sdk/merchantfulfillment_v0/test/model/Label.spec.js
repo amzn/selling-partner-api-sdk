@@ -45,54 +45,54 @@
       expect(instance).to.be.a(SellingPartnerApiForMerchantFulfillment.Label);
     });
 
-    it('should have the property customTextForLabel (base name: "CustomTextForLabel")', function() {
+    it('should have the property customTextForLabel', function() {
       // verify property exists
       expect(instance).to.have.property('customTextForLabel');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.customTextForLabel = validValue;
-      expect(instance.customTextForLabel).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.customTextForLabel = expectedValue;
+      expect(instance.customTextForLabel).to.equal(expectedValue);
     });
 
-    it('should have the property dimensions (base name: "Dimensions")', function() {
+    it('should have the property dimensions', function() {
       // verify property exists
       expect(instance).to.have.property('dimensions');
 
       // set and verify value
-      var validValue = generateMockData('LabelDimensions');
-      instance.dimensions = validValue;
-      expect(instance.dimensions).to.equal(validValue);
+      var expectedValue = generateMockData('LabelDimensions');
+      instance.dimensions = expectedValue;
+      expect(instance.dimensions).to.equal(expectedValue);
     });
 
-    it('should have the property fileContents (base name: "FileContents")', function() {
+    it('should have the property fileContents', function() {
       // verify property exists
       expect(instance).to.have.property('fileContents');
 
       // set and verify value
-      var validValue = generateMockData('FileContents');
-      instance.fileContents = validValue;
-      expect(instance.fileContents).to.equal(validValue);
+      var expectedValue = generateMockData('FileContents');
+      instance.fileContents = expectedValue;
+      expect(instance.fileContents).to.equal(expectedValue);
     });
 
-    it('should have the property labelFormat (base name: "LabelFormat")', function() {
+    it('should have the property labelFormat', function() {
       // verify property exists
       expect(instance).to.have.property('labelFormat');
 
       // set and verify value
-      var validValue = generateMockData('LabelFormat');
-      instance.labelFormat = validValue;
-      expect(instance.labelFormat).to.equal(validValue);
+      var expectedValue = generateMockData('LabelFormat');
+      instance.labelFormat = expectedValue;
+      expect(instance.labelFormat).to.equal(expectedValue);
     });
 
-    it('should have the property standardIdForLabel (base name: "StandardIdForLabel")', function() {
+    it('should have the property standardIdForLabel', function() {
       // verify property exists
       expect(instance).to.have.property('standardIdForLabel');
 
       // set and verify value
-      var validValue = generateMockData('StandardIdForLabel');
-      instance.standardIdForLabel = validValue;
-      expect(instance.standardIdForLabel).to.equal(validValue);
+      var expectedValue = generateMockData('StandardIdForLabel');
+      instance.standardIdForLabel = expectedValue;
+      expect(instance.standardIdForLabel).to.equal(expectedValue);
     });
 
   });

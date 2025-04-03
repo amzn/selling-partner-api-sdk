@@ -45,24 +45,24 @@
       expect(instance).to.be.a(AmazonShippingApi.DateRange);
     });
 
-    it('should have the property startDate (base name: "startDate")', function() {
+    it('should have the property startDate', function() {
       // verify property exists
       expect(instance).to.have.property('startDate');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.startDate = validValue;
-      expect(instance.startDate).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.startDate = expectedValue;
+      expect(instance.startDate).to.equal(expectedValue);
     });
 
-    it('should have the property endDate (base name: "endDate")', function() {
+    it('should have the property endDate', function() {
       // verify property exists
       expect(instance).to.have.property('endDate');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.endDate = validValue;
-      expect(instance.endDate).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.endDate = expectedValue;
+      expect(instance.endDate).to.equal(expectedValue);
     });
 
   });

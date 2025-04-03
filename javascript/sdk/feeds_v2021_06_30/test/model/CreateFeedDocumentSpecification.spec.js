@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForFeeds.CreateFeedDocumentSpecification);
     });
 
-    it('should have the property contentType (base name: "contentType")', function() {
+    it('should have the property contentType', function() {
       // verify property exists
       expect(instance).to.have.property('contentType');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.contentType = validValue;
-      expect(instance.contentType).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.contentType = expectedValue;
+      expect(instance.contentType).to.equal(expectedValue);
     });
 
   });

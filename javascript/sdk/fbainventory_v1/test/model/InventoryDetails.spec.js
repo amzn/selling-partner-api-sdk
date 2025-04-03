@@ -45,74 +45,74 @@
       expect(instance).to.be.a(SellingPartnerApiForFbaInventory.InventoryDetails);
     });
 
-    it('should have the property fulfillableQuantity (base name: "fulfillableQuantity")', function() {
+    it('should have the property fulfillableQuantity', function() {
       // verify property exists
       expect(instance).to.have.property('fulfillableQuantity');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.fulfillableQuantity = validValue;
-      expect(instance.fulfillableQuantity).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.fulfillableQuantity = expectedValue;
+      expect(instance.fulfillableQuantity).to.equal(expectedValue);
     });
 
-    it('should have the property inboundWorkingQuantity (base name: "inboundWorkingQuantity")', function() {
+    it('should have the property inboundWorkingQuantity', function() {
       // verify property exists
       expect(instance).to.have.property('inboundWorkingQuantity');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.inboundWorkingQuantity = validValue;
-      expect(instance.inboundWorkingQuantity).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.inboundWorkingQuantity = expectedValue;
+      expect(instance.inboundWorkingQuantity).to.equal(expectedValue);
     });
 
-    it('should have the property inboundShippedQuantity (base name: "inboundShippedQuantity")', function() {
+    it('should have the property inboundShippedQuantity', function() {
       // verify property exists
       expect(instance).to.have.property('inboundShippedQuantity');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.inboundShippedQuantity = validValue;
-      expect(instance.inboundShippedQuantity).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.inboundShippedQuantity = expectedValue;
+      expect(instance.inboundShippedQuantity).to.equal(expectedValue);
     });
 
-    it('should have the property inboundReceivingQuantity (base name: "inboundReceivingQuantity")', function() {
+    it('should have the property inboundReceivingQuantity', function() {
       // verify property exists
       expect(instance).to.have.property('inboundReceivingQuantity');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.inboundReceivingQuantity = validValue;
-      expect(instance.inboundReceivingQuantity).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.inboundReceivingQuantity = expectedValue;
+      expect(instance.inboundReceivingQuantity).to.equal(expectedValue);
     });
 
-    it('should have the property reservedQuantity (base name: "reservedQuantity")', function() {
+    it('should have the property reservedQuantity', function() {
       // verify property exists
       expect(instance).to.have.property('reservedQuantity');
 
       // set and verify value
-      var validValue = generateMockData('ReservedQuantity');
-      instance.reservedQuantity = validValue;
-      expect(instance.reservedQuantity).to.equal(validValue);
+      var expectedValue = generateMockData('ReservedQuantity');
+      instance.reservedQuantity = expectedValue;
+      expect(instance.reservedQuantity).to.equal(expectedValue);
     });
 
-    it('should have the property researchingQuantity (base name: "researchingQuantity")', function() {
+    it('should have the property researchingQuantity', function() {
       // verify property exists
       expect(instance).to.have.property('researchingQuantity');
 
       // set and verify value
-      var validValue = generateMockData('ResearchingQuantity');
-      instance.researchingQuantity = validValue;
-      expect(instance.researchingQuantity).to.equal(validValue);
+      var expectedValue = generateMockData('ResearchingQuantity');
+      instance.researchingQuantity = expectedValue;
+      expect(instance.researchingQuantity).to.equal(expectedValue);
     });
 
-    it('should have the property unfulfillableQuantity (base name: "unfulfillableQuantity")', function() {
+    it('should have the property unfulfillableQuantity', function() {
       // verify property exists
       expect(instance).to.have.property('unfulfillableQuantity');
 
       // set and verify value
-      var validValue = generateMockData('UnfulfillableQuantity');
-      instance.unfulfillableQuantity = validValue;
-      expect(instance.unfulfillableQuantity).to.equal(validValue);
+      var expectedValue = generateMockData('UnfulfillableQuantity');
+      instance.unfulfillableQuantity = expectedValue;
+      expect(instance.unfulfillableQuantity).to.equal(expectedValue);
     });
 
   });

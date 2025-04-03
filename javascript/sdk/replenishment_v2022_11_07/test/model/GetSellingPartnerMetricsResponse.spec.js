@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForReplenishment.GetSellingPartnerMetricsResponse);
     });
 
-    it('should have the property metrics (base name: "metrics")', function() {
+    it('should have the property metrics', function() {
       // verify property exists
       expect(instance).to.have.property('metrics');
 
       // set and verify value
-      var validValue = generateMockData('[GetSellingPartnerMetricsResponseMetric]', true);
-      instance.metrics = validValue;
-      expect(instance.metrics).to.equal(validValue);
+      var expectedValue = generateMockData('GetSellingPartnerMetricsResponseMetric', true);
+      instance.metrics = expectedValue;
+      expect(instance.metrics).to.equal(expectedValue);
     });
 
   });

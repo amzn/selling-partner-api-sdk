@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForOrders.OrderRegulatedInfo);
     });
 
-    it('should have the property amazonOrderId (base name: "AmazonOrderId")', function() {
+    it('should have the property amazonOrderId', function() {
       // verify property exists
       expect(instance).to.have.property('amazonOrderId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.amazonOrderId = validValue;
-      expect(instance.amazonOrderId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.amazonOrderId = expectedValue;
+      expect(instance.amazonOrderId).to.equal(expectedValue);
     });
 
-    it('should have the property regulatedInformation (base name: "RegulatedInformation")', function() {
+    it('should have the property regulatedInformation', function() {
       // verify property exists
       expect(instance).to.have.property('regulatedInformation');
 
       // set and verify value
-      var validValue = generateMockData('RegulatedInformation');
-      instance.regulatedInformation = validValue;
-      expect(instance.regulatedInformation).to.equal(validValue);
+      var expectedValue = generateMockData('RegulatedInformation');
+      instance.regulatedInformation = expectedValue;
+      expect(instance.regulatedInformation).to.equal(expectedValue);
     });
 
-    it('should have the property requiresDosageLabel (base name: "RequiresDosageLabel")', function() {
+    it('should have the property requiresDosageLabel', function() {
       // verify property exists
       expect(instance).to.have.property('requiresDosageLabel');
 
       // set and verify value
-      var validValue = generateMockData('Boolean');
-      instance.requiresDosageLabel = validValue;
-      expect(instance.requiresDosageLabel).to.equal(validValue);
+      var expectedValue = generateMockData('Boolean');
+      instance.requiresDosageLabel = expectedValue;
+      expect(instance.requiresDosageLabel).to.equal(expectedValue);
     });
 
-    it('should have the property regulatedOrderVerificationStatus (base name: "RegulatedOrderVerificationStatus")', function() {
+    it('should have the property regulatedOrderVerificationStatus', function() {
       // verify property exists
       expect(instance).to.have.property('regulatedOrderVerificationStatus');
 
       // set and verify value
-      var validValue = generateMockData('RegulatedOrderVerificationStatus');
-      instance.regulatedOrderVerificationStatus = validValue;
-      expect(instance.regulatedOrderVerificationStatus).to.equal(validValue);
+      var expectedValue = generateMockData('RegulatedOrderVerificationStatus');
+      instance.regulatedOrderVerificationStatus = expectedValue;
+      expect(instance.regulatedOrderVerificationStatus).to.equal(expectedValue);
     });
 
   });

@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForRetailProcurementShipments.ShipmentDetails);
     });
 
-    it('should have the property pagination (base name: "pagination")', function() {
+    it('should have the property pagination', function() {
       // verify property exists
       expect(instance).to.have.property('pagination');
 
       // set and verify value
-      var validValue = generateMockData('Pagination');
-      instance.pagination = validValue;
-      expect(instance.pagination).to.equal(validValue);
+      var expectedValue = generateMockData('Pagination');
+      instance.pagination = expectedValue;
+      expect(instance.pagination).to.equal(expectedValue);
     });
 
-    it('should have the property shipments (base name: "shipments")', function() {
+    it('should have the property shipments', function() {
       // verify property exists
       expect(instance).to.have.property('shipments');
 
       // set and verify value
-      var validValue = generateMockData('[Shipment]', true);
-      instance.shipments = validValue;
-      expect(instance.shipments).to.equal(validValue);
+      var expectedValue = generateMockData('Shipment', true);
+      instance.shipments = expectedValue;
+      expect(instance.shipments).to.equal(expectedValue);
     });
 
   });

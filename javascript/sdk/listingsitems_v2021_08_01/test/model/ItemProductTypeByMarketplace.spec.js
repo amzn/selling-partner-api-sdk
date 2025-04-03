@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForListingsItems.ItemProductTypeByMarketplace);
     });
 
-    it('should have the property marketplaceId (base name: "marketplaceId")', function() {
+    it('should have the property marketplaceId', function() {
       // verify property exists
       expect(instance).to.have.property('marketplaceId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.marketplaceId = validValue;
-      expect(instance.marketplaceId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.marketplaceId = expectedValue;
+      expect(instance.marketplaceId).to.equal(expectedValue);
     });
 
-    it('should have the property productType (base name: "productType")', function() {
+    it('should have the property productType', function() {
       // verify property exists
       expect(instance).to.have.property('productType');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.productType = validValue;
-      expect(instance.productType).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.productType = expectedValue;
+      expect(instance.productType).to.equal(expectedValue);
     });
 
   });

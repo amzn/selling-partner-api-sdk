@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForServices.CreateReservationRequest);
     });
 
-    it('should have the property resourceId (base name: "resourceId")', function() {
+    it('should have the property resourceId', function() {
       // verify property exists
       expect(instance).to.have.property('resourceId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.resourceId = validValue;
-      expect(instance.resourceId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.resourceId = expectedValue;
+      expect(instance.resourceId).to.equal(expectedValue);
     });
 
-    it('should have the property reservation (base name: "reservation")', function() {
+    it('should have the property reservation', function() {
       // verify property exists
       expect(instance).to.have.property('reservation');
 
       // set and verify value
-      var validValue = generateMockData('Reservation');
-      instance.reservation = validValue;
-      expect(instance.reservation).to.equal(validValue);
+      var expectedValue = generateMockData('Reservation');
+      instance.reservation = expectedValue;
+      expect(instance.reservation).to.equal(expectedValue);
     });
 
   });

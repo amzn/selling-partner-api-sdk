@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForPricing.FeaturedOfferExpectedPriceRequestParams);
     });
 
-    it('should have the property marketplaceId (base name: "marketplaceId")', function() {
+    it('should have the property marketplaceId', function() {
       // verify property exists
       expect(instance).to.have.property('marketplaceId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.marketplaceId = validValue;
-      expect(instance.marketplaceId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.marketplaceId = expectedValue;
+      expect(instance.marketplaceId).to.equal(expectedValue);
     });
 
-    it('should have the property sku (base name: "sku")', function() {
+    it('should have the property sku', function() {
       // verify property exists
       expect(instance).to.have.property('sku');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.sku = validValue;
-      expect(instance.sku).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.sku = expectedValue;
+      expect(instance.sku).to.equal(expectedValue);
     });
 
-    it('should have the property segment (base name: "segment")', function() {
+    it('should have the property segment', function() {
       // verify property exists
       expect(instance).to.have.property('segment');
 
       // set and verify value
-      var validValue = generateMockData('Segment');
-      instance.segment = validValue;
-      expect(instance.segment).to.equal(validValue);
+      var expectedValue = generateMockData('Segment');
+      instance.segment = expectedValue;
+      expect(instance.segment).to.equal(expectedValue);
     });
 
   });

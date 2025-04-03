@@ -45,24 +45,24 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFinances.MarketplaceDetails);
     });
 
-    it('should have the property marketplaceId (base name: "marketplaceId")', function() {
+    it('should have the property marketplaceId', function() {
       // verify property exists
       expect(instance).to.have.property('marketplaceId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.marketplaceId = validValue;
-      expect(instance.marketplaceId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.marketplaceId = expectedValue;
+      expect(instance.marketplaceId).to.equal(expectedValue);
     });
 
-    it('should have the property marketplaceName (base name: "marketplaceName")', function() {
+    it('should have the property marketplaceName', function() {
       // verify property exists
       expect(instance).to.have.property('marketplaceName');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.marketplaceName = validValue;
-      expect(instance.marketplaceName).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.marketplaceName = expectedValue;
+      expect(instance.marketplaceName).to.equal(expectedValue);
     });
 
   });

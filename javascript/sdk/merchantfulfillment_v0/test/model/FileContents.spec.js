@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForMerchantFulfillment.FileContents);
     });
 
-    it('should have the property contents (base name: "Contents")', function() {
+    it('should have the property contents', function() {
       // verify property exists
       expect(instance).to.have.property('contents');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.contents = validValue;
-      expect(instance.contents).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.contents = expectedValue;
+      expect(instance.contents).to.equal(expectedValue);
     });
 
-    it('should have the property fileType (base name: "FileType")', function() {
+    it('should have the property fileType', function() {
       // verify property exists
       expect(instance).to.have.property('fileType');
 
       // set and verify value
-      var validValue = generateMockData('FileType');
-      instance.fileType = validValue;
-      expect(instance.fileType).to.equal(validValue);
+      var expectedValue = generateMockData('FileType');
+      instance.fileType = expectedValue;
+      expect(instance.fileType).to.equal(expectedValue);
     });
 
-    it('should have the property checksum (base name: "Checksum")', function() {
+    it('should have the property checksum', function() {
       // verify property exists
       expect(instance).to.have.property('checksum');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.checksum = validValue;
-      expect(instance.checksum).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.checksum = expectedValue;
+      expect(instance.checksum).to.equal(expectedValue);
     });
 
   });

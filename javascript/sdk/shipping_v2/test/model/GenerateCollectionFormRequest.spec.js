@@ -45,34 +45,34 @@
       expect(instance).to.be.a(AmazonShippingApi.GenerateCollectionFormRequest);
     });
 
-    it('should have the property clientReferenceDetails (base name: "clientReferenceDetails")', function() {
+    it('should have the property clientReferenceDetails', function() {
       // verify property exists
       expect(instance).to.have.property('clientReferenceDetails');
 
       // set and verify value
-      var validValue = generateMockData('[ClientReferenceDetail]', true);
-      instance.clientReferenceDetails = validValue;
-      expect(instance.clientReferenceDetails).to.equal(validValue);
+      var expectedValue = generateMockData('ClientReferenceDetail', true);
+      instance.clientReferenceDetails = expectedValue;
+      expect(instance.clientReferenceDetails).to.equal(expectedValue);
     });
 
-    it('should have the property carrierId (base name: "carrierId")', function() {
+    it('should have the property carrierId', function() {
       // verify property exists
       expect(instance).to.have.property('carrierId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.carrierId = validValue;
-      expect(instance.carrierId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.carrierId = expectedValue;
+      expect(instance.carrierId).to.equal(expectedValue);
     });
 
-    it('should have the property shipFromAddress (base name: "shipFromAddress")', function() {
+    it('should have the property shipFromAddress', function() {
       // verify property exists
       expect(instance).to.have.property('shipFromAddress');
 
       // set and verify value
-      var validValue = generateMockData('Address');
-      instance.shipFromAddress = validValue;
-      expect(instance.shipFromAddress).to.equal(validValue);
+      var expectedValue = generateMockData('Address');
+      instance.shipFromAddress = expectedValue;
+      expect(instance.shipFromAddress).to.equal(expectedValue);
     });
 
   });

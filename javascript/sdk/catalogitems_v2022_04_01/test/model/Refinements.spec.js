@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForCatalogItems.Refinements);
     });
 
-    it('should have the property brands (base name: "brands")', function() {
+    it('should have the property brands', function() {
       // verify property exists
       expect(instance).to.have.property('brands');
 
       // set and verify value
-      var validValue = generateMockData('[BrandRefinement]', true);
-      instance.brands = validValue;
-      expect(instance.brands).to.equal(validValue);
+      var expectedValue = generateMockData('BrandRefinement', true);
+      instance.brands = expectedValue;
+      expect(instance.brands).to.equal(expectedValue);
     });
 
-    it('should have the property classifications (base name: "classifications")', function() {
+    it('should have the property classifications', function() {
       // verify property exists
       expect(instance).to.have.property('classifications');
 
       // set and verify value
-      var validValue = generateMockData('[ClassificationRefinement]', true);
-      instance.classifications = validValue;
-      expect(instance.classifications).to.equal(validValue);
+      var expectedValue = generateMockData('ClassificationRefinement', true);
+      instance.classifications = expectedValue;
+      expect(instance.classifications).to.equal(expectedValue);
     });
 
   });

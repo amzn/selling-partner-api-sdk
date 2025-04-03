@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForReplenishment.Preference);
     });
 
-    it('should have the property autoEnrollment (base name: "autoEnrollment")', function() {
+    it('should have the property autoEnrollment', function() {
       // verify property exists
       expect(instance).to.have.property('autoEnrollment');
 
       // set and verify value
-      var validValue = generateMockData('[AutoEnrollmentPreference]', true);
-      instance.autoEnrollment = validValue;
-      expect(instance.autoEnrollment).to.equal(validValue);
+      var expectedValue = generateMockData('AutoEnrollmentPreference', true);
+      instance.autoEnrollment = expectedValue;
+      expect(instance.autoEnrollment).to.equal(expectedValue);
     });
 
   });

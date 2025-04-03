@@ -45,24 +45,24 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFinances.ListTransactionsResponse);
     });
 
-    it('should have the property nextToken (base name: "nextToken")', function() {
+    it('should have the property nextToken', function() {
       // verify property exists
       expect(instance).to.have.property('nextToken');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.nextToken = validValue;
-      expect(instance.nextToken).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.nextToken = expectedValue;
+      expect(instance.nextToken).to.equal(expectedValue);
     });
 
-    it('should have the property transactions (base name: "transactions")', function() {
+    it('should have the property transactions', function() {
       // verify property exists
       expect(instance).to.have.property('transactions');
 
       // set and verify value
-      var validValue = generateMockData('[Transaction]', true);
-      instance.transactions = validValue;
-      expect(instance.transactions).to.equal(validValue);
+      var expectedValue = generateMockData('Transaction', true);
+      instance.transactions = expectedValue;
+      expect(instance.transactions).to.equal(expectedValue);
     });
 
   });

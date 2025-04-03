@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForDataKiosk.CreateQueryResponse);
     });
 
-    it('should have the property queryId (base name: "queryId")', function() {
+    it('should have the property queryId', function() {
       // verify property exists
       expect(instance).to.have.property('queryId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.queryId = validValue;
-      expect(instance.queryId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.queryId = expectedValue;
+      expect(instance.queryId).to.equal(expectedValue);
     });
 
   });

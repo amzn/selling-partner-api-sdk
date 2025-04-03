@@ -45,74 +45,74 @@
       expect(instance).to.be.a(SellingPartnerApiForMerchantFulfillment.SellerInputDefinition);
     });
 
-    it('should have the property isRequired (base name: "IsRequired")', function() {
+    it('should have the property isRequired', function() {
       // verify property exists
       expect(instance).to.have.property('isRequired');
 
       // set and verify value
-      var validValue = generateMockData('Boolean');
-      instance.isRequired = validValue;
-      expect(instance.isRequired).to.equal(validValue);
+      var expectedValue = generateMockData('Boolean');
+      instance.isRequired = expectedValue;
+      expect(instance.isRequired).to.equal(expectedValue);
     });
 
-    it('should have the property dataType (base name: "DataType")', function() {
+    it('should have the property dataType', function() {
       // verify property exists
       expect(instance).to.have.property('dataType');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.dataType = validValue;
-      expect(instance.dataType).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.dataType = expectedValue;
+      expect(instance.dataType).to.equal(expectedValue);
     });
 
-    it('should have the property constraints (base name: "Constraints")', function() {
+    it('should have the property constraints', function() {
       // verify property exists
       expect(instance).to.have.property('constraints');
 
       // set and verify value
-      var validValue = generateMockData('[Constraint]', true);
-      instance.constraints = validValue;
-      expect(instance.constraints).to.equal(validValue);
+      var expectedValue = generateMockData('Constraint', true);
+      instance.constraints = expectedValue;
+      expect(instance.constraints).to.equal(expectedValue);
     });
 
-    it('should have the property inputDisplayText (base name: "InputDisplayText")', function() {
+    it('should have the property inputDisplayText', function() {
       // verify property exists
       expect(instance).to.have.property('inputDisplayText');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.inputDisplayText = validValue;
-      expect(instance.inputDisplayText).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.inputDisplayText = expectedValue;
+      expect(instance.inputDisplayText).to.equal(expectedValue);
     });
 
-    it('should have the property inputTarget (base name: "InputTarget")', function() {
+    it('should have the property inputTarget', function() {
       // verify property exists
       expect(instance).to.have.property('inputTarget');
 
       // set and verify value
-      var validValue = generateMockData('InputTargetType');
-      instance.inputTarget = validValue;
-      expect(instance.inputTarget).to.equal(validValue);
+      var expectedValue = generateMockData('InputTargetType');
+      instance.inputTarget = expectedValue;
+      expect(instance.inputTarget).to.equal(expectedValue);
     });
 
-    it('should have the property storedValue (base name: "StoredValue")', function() {
+    it('should have the property storedValue', function() {
       // verify property exists
       expect(instance).to.have.property('storedValue');
 
       // set and verify value
-      var validValue = generateMockData('AdditionalSellerInput');
-      instance.storedValue = validValue;
-      expect(instance.storedValue).to.equal(validValue);
+      var expectedValue = generateMockData('AdditionalSellerInput');
+      instance.storedValue = expectedValue;
+      expect(instance.storedValue).to.equal(expectedValue);
     });
 
-    it('should have the property restrictedSetValues (base name: "RestrictedSetValues")', function() {
+    it('should have the property restrictedSetValues', function() {
       // verify property exists
       expect(instance).to.have.property('restrictedSetValues');
 
       // set and verify value
-      var validValue = generateMockData('[String]', true);
-      instance.restrictedSetValues = validValue;
-      expect(instance.restrictedSetValues).to.equal(validValue);
+      var expectedValue = generateMockData('String', true);
+      instance.restrictedSetValues = expectedValue;
+      expect(instance.restrictedSetValues).to.equal(expectedValue);
     });
 
   });

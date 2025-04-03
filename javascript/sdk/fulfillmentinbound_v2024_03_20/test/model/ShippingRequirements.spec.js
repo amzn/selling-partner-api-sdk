@@ -45,24 +45,24 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.ShippingRequirements);
     });
 
-    it('should have the property modes (base name: "modes")', function() {
+    it('should have the property modes', function() {
       // verify property exists
       expect(instance).to.have.property('modes');
 
       // set and verify value
-      var validValue = generateMockData('[String]', true);
-      instance.modes = validValue;
-      expect(instance.modes).to.equal(validValue);
+      var expectedValue = generateMockData('String', true);
+      instance.modes = expectedValue;
+      expect(instance.modes).to.equal(expectedValue);
     });
 
-    it('should have the property solution (base name: "solution")', function() {
+    it('should have the property solution', function() {
       // verify property exists
       expect(instance).to.have.property('solution');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.solution = validValue;
-      expect(instance.solution).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.solution = expectedValue;
+      expect(instance.solution).to.equal(expectedValue);
     });
 
   });

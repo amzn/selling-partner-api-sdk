@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForSupplySources.CreateSupplySourceRequest);
     });
 
-    it('should have the property supplySourceCode (base name: "supplySourceCode")', function() {
+    it('should have the property supplySourceCode', function() {
       // verify property exists
       expect(instance).to.have.property('supplySourceCode');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.supplySourceCode = validValue;
-      expect(instance.supplySourceCode).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.supplySourceCode = expectedValue;
+      expect(instance.supplySourceCode).to.equal(expectedValue);
     });
 
-    it('should have the property alias (base name: "alias")', function() {
+    it('should have the property alias', function() {
       // verify property exists
       expect(instance).to.have.property('alias');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.alias = validValue;
-      expect(instance.alias).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.alias = expectedValue;
+      expect(instance.alias).to.equal(expectedValue);
     });
 
-    it('should have the property address (base name: "address")', function() {
+    it('should have the property address', function() {
       // verify property exists
       expect(instance).to.have.property('address');
 
       // set and verify value
-      var validValue = generateMockData('Address');
-      instance.address = validValue;
-      expect(instance.address).to.equal(validValue);
+      var expectedValue = generateMockData('Address');
+      instance.address = expectedValue;
+      expect(instance.address).to.equal(expectedValue);
     });
 
   });

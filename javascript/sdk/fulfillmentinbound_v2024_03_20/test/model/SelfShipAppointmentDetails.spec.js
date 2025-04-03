@@ -45,34 +45,34 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.SelfShipAppointmentDetails);
     });
 
-    it('should have the property appointmentId (base name: "appointmentId")', function() {
+    it('should have the property appointmentId', function() {
       // verify property exists
       expect(instance).to.have.property('appointmentId');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.appointmentId = validValue;
-      expect(instance.appointmentId).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.appointmentId = expectedValue;
+      expect(instance.appointmentId).to.equal(expectedValue);
     });
 
-    it('should have the property appointmentSlotTime (base name: "appointmentSlotTime")', function() {
+    it('should have the property appointmentSlotTime', function() {
       // verify property exists
       expect(instance).to.have.property('appointmentSlotTime');
 
       // set and verify value
-      var validValue = generateMockData('AppointmentSlotTime');
-      instance.appointmentSlotTime = validValue;
-      expect(instance.appointmentSlotTime).to.equal(validValue);
+      var expectedValue = generateMockData('AppointmentSlotTime');
+      instance.appointmentSlotTime = expectedValue;
+      expect(instance.appointmentSlotTime).to.equal(expectedValue);
     });
 
-    it('should have the property appointmentStatus (base name: "appointmentStatus")', function() {
+    it('should have the property appointmentStatus', function() {
       // verify property exists
       expect(instance).to.have.property('appointmentStatus');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.appointmentStatus = validValue;
-      expect(instance.appointmentStatus).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.appointmentStatus = expectedValue;
+      expect(instance.appointmentStatus).to.equal(expectedValue);
     });
 
   });

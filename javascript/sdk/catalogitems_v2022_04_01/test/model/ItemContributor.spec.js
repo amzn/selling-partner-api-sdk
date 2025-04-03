@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForCatalogItems.ItemContributor);
     });
 
-    it('should have the property role (base name: "role")', function() {
+    it('should have the property role', function() {
       // verify property exists
       expect(instance).to.have.property('role');
 
       // set and verify value
-      var validValue = generateMockData('ItemContributorRole');
-      instance.role = validValue;
-      expect(instance.role).to.equal(validValue);
+      var expectedValue = generateMockData('ItemContributorRole');
+      instance.role = expectedValue;
+      expect(instance.role).to.equal(expectedValue);
     });
 
-    it('should have the property value (base name: "value")', function() {
+    it('should have the property value', function() {
       // verify property exists
       expect(instance).to.have.property('value');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.value = validValue;
-      expect(instance.value).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.value = expectedValue;
+      expect(instance.value).to.equal(expectedValue);
     });
 
   });

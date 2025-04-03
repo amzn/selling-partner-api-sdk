@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForProductFees.FeesEstimateResult);
     });
 
-    it('should have the property status (base name: "Status")', function() {
+    it('should have the property status', function() {
       // verify property exists
       expect(instance).to.have.property('status');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.status = validValue;
-      expect(instance.status).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.status = expectedValue;
+      expect(instance.status).to.equal(expectedValue);
     });
 
-    it('should have the property feesEstimateIdentifier (base name: "FeesEstimateIdentifier")', function() {
+    it('should have the property feesEstimateIdentifier', function() {
       // verify property exists
       expect(instance).to.have.property('feesEstimateIdentifier');
 
       // set and verify value
-      var validValue = generateMockData('FeesEstimateIdentifier');
-      instance.feesEstimateIdentifier = validValue;
-      expect(instance.feesEstimateIdentifier).to.equal(validValue);
+      var expectedValue = generateMockData('FeesEstimateIdentifier');
+      instance.feesEstimateIdentifier = expectedValue;
+      expect(instance.feesEstimateIdentifier).to.equal(expectedValue);
     });
 
-    it('should have the property feesEstimate (base name: "FeesEstimate")', function() {
+    it('should have the property feesEstimate', function() {
       // verify property exists
       expect(instance).to.have.property('feesEstimate');
 
       // set and verify value
-      var validValue = generateMockData('FeesEstimate');
-      instance.feesEstimate = validValue;
-      expect(instance.feesEstimate).to.equal(validValue);
+      var expectedValue = generateMockData('FeesEstimate');
+      instance.feesEstimate = expectedValue;
+      expect(instance.feesEstimate).to.equal(expectedValue);
     });
 
-    it('should have the property error (base name: "Error")', function() {
+    it('should have the property error', function() {
       // verify property exists
       expect(instance).to.have.property('error');
 
       // set and verify value
-      var validValue = generateMockData('FeesEstimateError');
-      instance.error = validValue;
-      expect(instance.error).to.equal(validValue);
+      var expectedValue = generateMockData('FeesEstimateError');
+      instance.error = expectedValue;
+      expect(instance.error).to.equal(expectedValue);
     });
 
   });

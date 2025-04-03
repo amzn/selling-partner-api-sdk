@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForCatalogItems.ItemBrowseClassification);
     });
 
-    it('should have the property displayName (base name: "displayName")', function() {
+    it('should have the property displayName', function() {
       // verify property exists
       expect(instance).to.have.property('displayName');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.displayName = validValue;
-      expect(instance.displayName).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.displayName = expectedValue;
+      expect(instance.displayName).to.equal(expectedValue);
     });
 
-    it('should have the property classificationId (base name: "classificationId")', function() {
+    it('should have the property classificationId', function() {
       // verify property exists
       expect(instance).to.have.property('classificationId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.classificationId = validValue;
-      expect(instance.classificationId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.classificationId = expectedValue;
+      expect(instance.classificationId).to.equal(expectedValue);
     });
 
-    it('should have the property parent (base name: "parent")', function() {
+    it('should have the property parent', function() {
       // verify property exists
       expect(instance).to.have.property('parent');
 
       // set and verify value
-      var validValue = generateMockData('ItemBrowseClassification');
-      instance.parent = validValue;
-      expect(instance.parent).to.equal(validValue);
+      var expectedValue = generateMockData('ItemBrowseClassification');
+      instance.parent = expectedValue;
+      expect(instance.parent).to.equal(expectedValue);
     });
 
   });

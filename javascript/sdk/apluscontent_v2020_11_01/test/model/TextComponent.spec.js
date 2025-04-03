@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForAContentManagement.TextComponent);
     });
 
-    it('should have the property value (base name: "value")', function() {
+    it('should have the property value', function() {
       // verify property exists
       expect(instance).to.have.property('value');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.value = validValue;
-      expect(instance.value).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.value = expectedValue;
+      expect(instance.value).to.equal(expectedValue);
     });
 
-    it('should have the property decoratorSet (base name: "decoratorSet")', function() {
+    it('should have the property decoratorSet', function() {
       // verify property exists
       expect(instance).to.have.property('decoratorSet');
 
       // set and verify value
-      var validValue = generateMockData('[Decorator]', true);
-      instance.decoratorSet = validValue;
-      expect(instance.decoratorSet).to.equal(validValue);
+      var expectedValue = generateMockData('Decorator', true);
+      instance.decoratorSet = expectedValue;
+      expect(instance.decoratorSet).to.equal(expectedValue);
     });
 
   });

@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForMerchantFulfillment.Constraint);
     });
 
-    it('should have the property validationRegEx (base name: "ValidationRegEx")', function() {
+    it('should have the property validationRegEx', function() {
       // verify property exists
       expect(instance).to.have.property('validationRegEx');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.validationRegEx = validValue;
-      expect(instance.validationRegEx).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.validationRegEx = expectedValue;
+      expect(instance.validationRegEx).to.equal(expectedValue);
     });
 
-    it('should have the property validationString (base name: "ValidationString")', function() {
+    it('should have the property validationString', function() {
       // verify property exists
       expect(instance).to.have.property('validationString');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.validationString = validValue;
-      expect(instance.validationString).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.validationString = expectedValue;
+      expect(instance.validationString).to.equal(expectedValue);
     });
 
   });

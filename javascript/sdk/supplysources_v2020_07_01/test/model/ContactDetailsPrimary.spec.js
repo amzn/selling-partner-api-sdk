@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForSupplySources.ContactDetailsPrimary);
     });
 
-    it('should have the property email (base name: "email")', function() {
+    it('should have the property email', function() {
       // verify property exists
       expect(instance).to.have.property('email');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.email = validValue;
-      expect(instance.email).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.email = expectedValue;
+      expect(instance.email).to.equal(expectedValue);
     });
 
-    it('should have the property phone (base name: "phone")', function() {
+    it('should have the property phone', function() {
       // verify property exists
       expect(instance).to.have.property('phone');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.phone = validValue;
-      expect(instance.phone).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.phone = expectedValue;
+      expect(instance.phone).to.equal(expectedValue);
     });
 
   });

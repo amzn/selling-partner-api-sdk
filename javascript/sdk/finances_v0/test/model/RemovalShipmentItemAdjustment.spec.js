@@ -45,74 +45,74 @@
       expect(instance).to.be.a(SellingPartnerApiForFinances.RemovalShipmentItemAdjustment);
     });
 
-    it('should have the property removalShipmentItemId (base name: "RemovalShipmentItemId")', function() {
+    it('should have the property removalShipmentItemId', function() {
       // verify property exists
       expect(instance).to.have.property('removalShipmentItemId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.removalShipmentItemId = validValue;
-      expect(instance.removalShipmentItemId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.removalShipmentItemId = expectedValue;
+      expect(instance.removalShipmentItemId).to.equal(expectedValue);
     });
 
-    it('should have the property taxCollectionModel (base name: "TaxCollectionModel")', function() {
+    it('should have the property taxCollectionModel', function() {
       // verify property exists
       expect(instance).to.have.property('taxCollectionModel');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.taxCollectionModel = validValue;
-      expect(instance.taxCollectionModel).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.taxCollectionModel = expectedValue;
+      expect(instance.taxCollectionModel).to.equal(expectedValue);
     });
 
-    it('should have the property fulfillmentNetworkSKU (base name: "FulfillmentNetworkSKU")', function() {
+    it('should have the property fulfillmentNetworkSKU', function() {
       // verify property exists
       expect(instance).to.have.property('fulfillmentNetworkSKU');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.fulfillmentNetworkSKU = validValue;
-      expect(instance.fulfillmentNetworkSKU).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.fulfillmentNetworkSKU = expectedValue;
+      expect(instance.fulfillmentNetworkSKU).to.equal(expectedValue);
     });
 
-    it('should have the property adjustedQuantity (base name: "AdjustedQuantity")', function() {
+    it('should have the property adjustedQuantity', function() {
       // verify property exists
       expect(instance).to.have.property('adjustedQuantity');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.adjustedQuantity = validValue;
-      expect(instance.adjustedQuantity).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.adjustedQuantity = expectedValue;
+      expect(instance.adjustedQuantity).to.equal(expectedValue);
     });
 
-    it('should have the property revenueAdjustment (base name: "RevenueAdjustment")', function() {
+    it('should have the property revenueAdjustment', function() {
       // verify property exists
       expect(instance).to.have.property('revenueAdjustment');
 
       // set and verify value
-      var validValue = generateMockData('Currency');
-      instance.revenueAdjustment = validValue;
-      expect(instance.revenueAdjustment).to.equal(validValue);
+      var expectedValue = generateMockData('Currency');
+      instance.revenueAdjustment = expectedValue;
+      expect(instance.revenueAdjustment).to.equal(expectedValue);
     });
 
-    it('should have the property taxAmountAdjustment (base name: "TaxAmountAdjustment")', function() {
+    it('should have the property taxAmountAdjustment', function() {
       // verify property exists
       expect(instance).to.have.property('taxAmountAdjustment');
 
       // set and verify value
-      var validValue = generateMockData('Currency');
-      instance.taxAmountAdjustment = validValue;
-      expect(instance.taxAmountAdjustment).to.equal(validValue);
+      var expectedValue = generateMockData('Currency');
+      instance.taxAmountAdjustment = expectedValue;
+      expect(instance.taxAmountAdjustment).to.equal(expectedValue);
     });
 
-    it('should have the property taxWithheldAdjustment (base name: "TaxWithheldAdjustment")', function() {
+    it('should have the property taxWithheldAdjustment', function() {
       // verify property exists
       expect(instance).to.have.property('taxWithheldAdjustment');
 
       // set and verify value
-      var validValue = generateMockData('Currency');
-      instance.taxWithheldAdjustment = validValue;
-      expect(instance.taxWithheldAdjustment).to.equal(validValue);
+      var expectedValue = generateMockData('Currency');
+      instance.taxWithheldAdjustment = expectedValue;
+      expect(instance.taxWithheldAdjustment).to.equal(expectedValue);
     });
 
   });

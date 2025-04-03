@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForReplenishment.ListOfferMetricsRequestPagination);
     });
 
-    it('should have the property limit (base name: "limit")', function() {
+    it('should have the property limit', function() {
       // verify property exists
       expect(instance).to.have.property('limit');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.limit = validValue;
-      expect(instance.limit).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.limit = expectedValue;
+      expect(instance.limit).to.equal(expectedValue);
     });
 
-    it('should have the property offset (base name: "offset")', function() {
+    it('should have the property offset', function() {
       // verify property exists
       expect(instance).to.have.property('offset');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.offset = validValue;
-      expect(instance.offset).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.offset = expectedValue;
+      expect(instance.offset).to.equal(expectedValue);
     });
 
   });

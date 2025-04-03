@@ -45,164 +45,164 @@
       expect(instance).to.be.a(SellingPartnerApiForAContentManagement.ContentModule);
     });
 
-    it('should have the property contentModuleType (base name: "contentModuleType")', function() {
+    it('should have the property contentModuleType', function() {
       // verify property exists
       expect(instance).to.have.property('contentModuleType');
 
       // set and verify value
-      var validValue = generateMockData('ContentModuleType');
-      instance.contentModuleType = validValue;
-      expect(instance.contentModuleType).to.equal(validValue);
+      var expectedValue = generateMockData('ContentModuleType');
+      instance.contentModuleType = expectedValue;
+      expect(instance.contentModuleType).to.equal(expectedValue);
     });
 
-    it('should have the property standardCompanyLogo (base name: "standardCompanyLogo")', function() {
+    it('should have the property standardCompanyLogo', function() {
       // verify property exists
       expect(instance).to.have.property('standardCompanyLogo');
 
       // set and verify value
-      var validValue = generateMockData('StandardCompanyLogoModule');
-      instance.standardCompanyLogo = validValue;
-      expect(instance.standardCompanyLogo).to.equal(validValue);
+      var expectedValue = generateMockData('StandardCompanyLogoModule');
+      instance.standardCompanyLogo = expectedValue;
+      expect(instance.standardCompanyLogo).to.equal(expectedValue);
     });
 
-    it('should have the property standardComparisonTable (base name: "standardComparisonTable")', function() {
+    it('should have the property standardComparisonTable', function() {
       // verify property exists
       expect(instance).to.have.property('standardComparisonTable');
 
       // set and verify value
-      var validValue = generateMockData('StandardComparisonTableModule');
-      instance.standardComparisonTable = validValue;
-      expect(instance.standardComparisonTable).to.equal(validValue);
+      var expectedValue = generateMockData('StandardComparisonTableModule');
+      instance.standardComparisonTable = expectedValue;
+      expect(instance.standardComparisonTable).to.equal(expectedValue);
     });
 
-    it('should have the property standardFourImageText (base name: "standardFourImageText")', function() {
+    it('should have the property standardFourImageText', function() {
       // verify property exists
       expect(instance).to.have.property('standardFourImageText');
 
       // set and verify value
-      var validValue = generateMockData('StandardFourImageTextModule');
-      instance.standardFourImageText = validValue;
-      expect(instance.standardFourImageText).to.equal(validValue);
+      var expectedValue = generateMockData('StandardFourImageTextModule');
+      instance.standardFourImageText = expectedValue;
+      expect(instance.standardFourImageText).to.equal(expectedValue);
     });
 
-    it('should have the property standardFourImageTextQuadrant (base name: "standardFourImageTextQuadrant")', function() {
+    it('should have the property standardFourImageTextQuadrant', function() {
       // verify property exists
       expect(instance).to.have.property('standardFourImageTextQuadrant');
 
       // set and verify value
-      var validValue = generateMockData('StandardFourImageTextQuadrantModule');
-      instance.standardFourImageTextQuadrant = validValue;
-      expect(instance.standardFourImageTextQuadrant).to.equal(validValue);
+      var expectedValue = generateMockData('StandardFourImageTextQuadrantModule');
+      instance.standardFourImageTextQuadrant = expectedValue;
+      expect(instance.standardFourImageTextQuadrant).to.equal(expectedValue);
     });
 
-    it('should have the property standardHeaderImageText (base name: "standardHeaderImageText")', function() {
+    it('should have the property standardHeaderImageText', function() {
       // verify property exists
       expect(instance).to.have.property('standardHeaderImageText');
 
       // set and verify value
-      var validValue = generateMockData('StandardHeaderImageTextModule');
-      instance.standardHeaderImageText = validValue;
-      expect(instance.standardHeaderImageText).to.equal(validValue);
+      var expectedValue = generateMockData('StandardHeaderImageTextModule');
+      instance.standardHeaderImageText = expectedValue;
+      expect(instance.standardHeaderImageText).to.equal(expectedValue);
     });
 
-    it('should have the property standardImageSidebar (base name: "standardImageSidebar")', function() {
+    it('should have the property standardImageSidebar', function() {
       // verify property exists
       expect(instance).to.have.property('standardImageSidebar');
 
       // set and verify value
-      var validValue = generateMockData('StandardImageSidebarModule');
-      instance.standardImageSidebar = validValue;
-      expect(instance.standardImageSidebar).to.equal(validValue);
+      var expectedValue = generateMockData('StandardImageSidebarModule');
+      instance.standardImageSidebar = expectedValue;
+      expect(instance.standardImageSidebar).to.equal(expectedValue);
     });
 
-    it('should have the property standardImageTextOverlay (base name: "standardImageTextOverlay")', function() {
+    it('should have the property standardImageTextOverlay', function() {
       // verify property exists
       expect(instance).to.have.property('standardImageTextOverlay');
 
       // set and verify value
-      var validValue = generateMockData('StandardImageTextOverlayModule');
-      instance.standardImageTextOverlay = validValue;
-      expect(instance.standardImageTextOverlay).to.equal(validValue);
+      var expectedValue = generateMockData('StandardImageTextOverlayModule');
+      instance.standardImageTextOverlay = expectedValue;
+      expect(instance.standardImageTextOverlay).to.equal(expectedValue);
     });
 
-    it('should have the property standardMultipleImageText (base name: "standardMultipleImageText")', function() {
+    it('should have the property standardMultipleImageText', function() {
       // verify property exists
       expect(instance).to.have.property('standardMultipleImageText');
 
       // set and verify value
-      var validValue = generateMockData('StandardMultipleImageTextModule');
-      instance.standardMultipleImageText = validValue;
-      expect(instance.standardMultipleImageText).to.equal(validValue);
+      var expectedValue = generateMockData('StandardMultipleImageTextModule');
+      instance.standardMultipleImageText = expectedValue;
+      expect(instance.standardMultipleImageText).to.equal(expectedValue);
     });
 
-    it('should have the property standardProductDescription (base name: "standardProductDescription")', function() {
+    it('should have the property standardProductDescription', function() {
       // verify property exists
       expect(instance).to.have.property('standardProductDescription');
 
       // set and verify value
-      var validValue = generateMockData('StandardProductDescriptionModule');
-      instance.standardProductDescription = validValue;
-      expect(instance.standardProductDescription).to.equal(validValue);
+      var expectedValue = generateMockData('StandardProductDescriptionModule');
+      instance.standardProductDescription = expectedValue;
+      expect(instance.standardProductDescription).to.equal(expectedValue);
     });
 
-    it('should have the property standardSingleImageHighlights (base name: "standardSingleImageHighlights")', function() {
+    it('should have the property standardSingleImageHighlights', function() {
       // verify property exists
       expect(instance).to.have.property('standardSingleImageHighlights');
 
       // set and verify value
-      var validValue = generateMockData('StandardSingleImageHighlightsModule');
-      instance.standardSingleImageHighlights = validValue;
-      expect(instance.standardSingleImageHighlights).to.equal(validValue);
+      var expectedValue = generateMockData('StandardSingleImageHighlightsModule');
+      instance.standardSingleImageHighlights = expectedValue;
+      expect(instance.standardSingleImageHighlights).to.equal(expectedValue);
     });
 
-    it('should have the property standardSingleImageSpecsDetail (base name: "standardSingleImageSpecsDetail")', function() {
+    it('should have the property standardSingleImageSpecsDetail', function() {
       // verify property exists
       expect(instance).to.have.property('standardSingleImageSpecsDetail');
 
       // set and verify value
-      var validValue = generateMockData('StandardSingleImageSpecsDetailModule');
-      instance.standardSingleImageSpecsDetail = validValue;
-      expect(instance.standardSingleImageSpecsDetail).to.equal(validValue);
+      var expectedValue = generateMockData('StandardSingleImageSpecsDetailModule');
+      instance.standardSingleImageSpecsDetail = expectedValue;
+      expect(instance.standardSingleImageSpecsDetail).to.equal(expectedValue);
     });
 
-    it('should have the property standardSingleSideImage (base name: "standardSingleSideImage")', function() {
+    it('should have the property standardSingleSideImage', function() {
       // verify property exists
       expect(instance).to.have.property('standardSingleSideImage');
 
       // set and verify value
-      var validValue = generateMockData('StandardSingleSideImageModule');
-      instance.standardSingleSideImage = validValue;
-      expect(instance.standardSingleSideImage).to.equal(validValue);
+      var expectedValue = generateMockData('StandardSingleSideImageModule');
+      instance.standardSingleSideImage = expectedValue;
+      expect(instance.standardSingleSideImage).to.equal(expectedValue);
     });
 
-    it('should have the property standardTechSpecs (base name: "standardTechSpecs")', function() {
+    it('should have the property standardTechSpecs', function() {
       // verify property exists
       expect(instance).to.have.property('standardTechSpecs');
 
       // set and verify value
-      var validValue = generateMockData('StandardTechSpecsModule');
-      instance.standardTechSpecs = validValue;
-      expect(instance.standardTechSpecs).to.equal(validValue);
+      var expectedValue = generateMockData('StandardTechSpecsModule');
+      instance.standardTechSpecs = expectedValue;
+      expect(instance.standardTechSpecs).to.equal(expectedValue);
     });
 
-    it('should have the property standardText (base name: "standardText")', function() {
+    it('should have the property standardText', function() {
       // verify property exists
       expect(instance).to.have.property('standardText');
 
       // set and verify value
-      var validValue = generateMockData('StandardTextModule');
-      instance.standardText = validValue;
-      expect(instance.standardText).to.equal(validValue);
+      var expectedValue = generateMockData('StandardTextModule');
+      instance.standardText = expectedValue;
+      expect(instance.standardText).to.equal(expectedValue);
     });
 
-    it('should have the property standardThreeImageText (base name: "standardThreeImageText")', function() {
+    it('should have the property standardThreeImageText', function() {
       // verify property exists
       expect(instance).to.have.property('standardThreeImageText');
 
       // set and verify value
-      var validValue = generateMockData('StandardThreeImageTextModule');
-      instance.standardThreeImageText = validValue;
-      expect(instance.standardThreeImageText).to.equal(validValue);
+      var expectedValue = generateMockData('StandardThreeImageTextModule');
+      instance.standardThreeImageText = expectedValue;
+      expect(instance.standardThreeImageText).to.equal(expectedValue);
     });
 
   });

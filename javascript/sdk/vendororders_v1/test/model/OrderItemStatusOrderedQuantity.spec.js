@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForRetailProcurementOrders.OrderItemStatusOrderedQuantity);
     });
 
-    it('should have the property orderedQuantity (base name: "orderedQuantity")', function() {
+    it('should have the property orderedQuantity', function() {
       // verify property exists
       expect(instance).to.have.property('orderedQuantity');
 
       // set and verify value
-      var validValue = generateMockData('ItemQuantity');
-      instance.orderedQuantity = validValue;
-      expect(instance.orderedQuantity).to.equal(validValue);
+      var expectedValue = generateMockData('ItemQuantity');
+      instance.orderedQuantity = expectedValue;
+      expect(instance.orderedQuantity).to.equal(expectedValue);
     });
 
-    it('should have the property orderedQuantityDetails (base name: "orderedQuantityDetails")', function() {
+    it('should have the property orderedQuantityDetails', function() {
       // verify property exists
       expect(instance).to.have.property('orderedQuantityDetails');
 
       // set and verify value
-      var validValue = generateMockData('[OrderedQuantityDetails]', true);
-      instance.orderedQuantityDetails = validValue;
-      expect(instance.orderedQuantityDetails).to.equal(validValue);
+      var expectedValue = generateMockData('OrderedQuantityDetails', true);
+      instance.orderedQuantityDetails = expectedValue;
+      expect(instance.orderedQuantityDetails).to.equal(expectedValue);
     });
 
   });

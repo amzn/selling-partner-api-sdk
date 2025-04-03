@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForRetailProcurementOrders.OrderedQuantityDetails);
     });
 
-    it('should have the property updatedDate (base name: "updatedDate")', function() {
+    it('should have the property updatedDate', function() {
       // verify property exists
       expect(instance).to.have.property('updatedDate');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.updatedDate = validValue;
-      expect(instance.updatedDate).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.updatedDate = expectedValue;
+      expect(instance.updatedDate).to.equal(expectedValue);
     });
 
-    it('should have the property orderedQuantity (base name: "orderedQuantity")', function() {
+    it('should have the property orderedQuantity', function() {
       // verify property exists
       expect(instance).to.have.property('orderedQuantity');
 
       // set and verify value
-      var validValue = generateMockData('ItemQuantity');
-      instance.orderedQuantity = validValue;
-      expect(instance.orderedQuantity).to.equal(validValue);
+      var expectedValue = generateMockData('ItemQuantity');
+      instance.orderedQuantity = expectedValue;
+      expect(instance.orderedQuantity).to.equal(expectedValue);
     });
 
-    it('should have the property cancelledQuantity (base name: "cancelledQuantity")', function() {
+    it('should have the property cancelledQuantity', function() {
       // verify property exists
       expect(instance).to.have.property('cancelledQuantity');
 
       // set and verify value
-      var validValue = generateMockData('ItemQuantity');
-      instance.cancelledQuantity = validValue;
-      expect(instance.cancelledQuantity).to.equal(validValue);
+      var expectedValue = generateMockData('ItemQuantity');
+      instance.cancelledQuantity = expectedValue;
+      expect(instance.cancelledQuantity).to.equal(expectedValue);
     });
 
   });

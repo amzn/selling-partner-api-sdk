@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForDirectFulfillmentOrders.ItemQuantity);
     });
 
-    it('should have the property amount (base name: "amount")', function() {
+    it('should have the property amount', function() {
       // verify property exists
       expect(instance).to.have.property('amount');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.amount = validValue;
-      expect(instance.amount).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.amount = expectedValue;
+      expect(instance.amount).to.equal(expectedValue);
     });
 
-    it('should have the property unitOfMeasure (base name: "unitOfMeasure")', function() {
+    it('should have the property unitOfMeasure', function() {
       // verify property exists
       expect(instance).to.have.property('unitOfMeasure');
 
       // set and verify value
-      var validValue = ['Each', ][0];
-      instance.unitOfMeasure = validValue;
-      expect(instance.unitOfMeasure).to.equal(validValue);
+      var expectedValue = ['Each', ][0];
+      instance.unitOfMeasure = expectedValue;
+      expect(instance.unitOfMeasure).to.equal(expectedValue);
     });
 
   });

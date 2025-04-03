@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForFulfillmentInbound.BoxContentsFeeDetails);
     });
 
-    it('should have the property totalUnits (base name: "TotalUnits")', function() {
+    it('should have the property totalUnits', function() {
       // verify property exists
       expect(instance).to.have.property('totalUnits');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.totalUnits = validValue;
-      expect(instance.totalUnits).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.totalUnits = expectedValue;
+      expect(instance.totalUnits).to.equal(expectedValue);
     });
 
-    it('should have the property feePerUnit (base name: "FeePerUnit")', function() {
+    it('should have the property feePerUnit', function() {
       // verify property exists
       expect(instance).to.have.property('feePerUnit');
 
       // set and verify value
-      var validValue = generateMockData('Amount');
-      instance.feePerUnit = validValue;
-      expect(instance.feePerUnit).to.equal(validValue);
+      var expectedValue = generateMockData('Amount');
+      instance.feePerUnit = expectedValue;
+      expect(instance.feePerUnit).to.equal(expectedValue);
     });
 
-    it('should have the property totalFee (base name: "TotalFee")', function() {
+    it('should have the property totalFee', function() {
       // verify property exists
       expect(instance).to.have.property('totalFee');
 
       // set and verify value
-      var validValue = generateMockData('Amount');
-      instance.totalFee = validValue;
-      expect(instance.totalFee).to.equal(validValue);
+      var expectedValue = generateMockData('Amount');
+      instance.totalFee = expectedValue;
+      expect(instance.totalFee).to.equal(expectedValue);
     });
 
   });

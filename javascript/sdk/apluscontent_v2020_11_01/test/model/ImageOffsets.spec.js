@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForAContentManagement.ImageOffsets);
     });
 
-    it('should have the property x (base name: "x")', function() {
+    it('should have the property x', function() {
       // verify property exists
       expect(instance).to.have.property('x');
 
       // set and verify value
-      var validValue = generateMockData('IntegerWithUnits');
-      instance.x = validValue;
-      expect(instance.x).to.equal(validValue);
+      var expectedValue = generateMockData('IntegerWithUnits');
+      instance.x = expectedValue;
+      expect(instance.x).to.equal(expectedValue);
     });
 
-    it('should have the property y (base name: "y")', function() {
+    it('should have the property y', function() {
       // verify property exists
       expect(instance).to.have.property('y');
 
       // set and verify value
-      var validValue = generateMockData('IntegerWithUnits');
-      instance.y = validValue;
-      expect(instance.y).to.equal(validValue);
+      var expectedValue = generateMockData('IntegerWithUnits');
+      instance.y = expectedValue;
+      expect(instance.y).to.equal(expectedValue);
     });
 
   });

@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForNotifications.SqsResource);
     });
 
-    it('should have the property arn (base name: "arn")', function() {
+    it('should have the property arn', function() {
       // verify property exists
       expect(instance).to.have.property('arn');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.arn = validValue;
-      expect(instance.arn).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.arn = expectedValue;
+      expect(instance.arn).to.equal(expectedValue);
     });
 
   });

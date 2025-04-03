@@ -42,10 +42,15 @@ jobs:
               echo "🧪 Running tests in $dir"
               cd "$dir"
               
-              npx mocha --require @babel/register --recursive \
+              if npx mocha --require @babel/register --recursive \
                 --reporter mocha-junit-reporter \
-                --reporter-options mochaFile="../../testreports/junit-${dir%/}.xml" || exit 1
-              
+                --reporter-options mochaFile="../../testreports/junit-${dir%/}.xml"; then
+                echo "✅ All tests in ${dir%/} are passing"
+              else
+                echo "❌ Tests in ${dir%/} failed"
+                cd ..
+                exit 1
+              fi
               cd ..
             fi
           done

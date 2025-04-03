@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForRetailProcurementShipments.InnerContainersDetails);
     });
 
-    it('should have the property containerCount (base name: "containerCount")', function() {
+    it('should have the property containerCount', function() {
       // verify property exists
       expect(instance).to.have.property('containerCount');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.containerCount = validValue;
-      expect(instance.containerCount).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.containerCount = expectedValue;
+      expect(instance.containerCount).to.equal(expectedValue);
     });
 
-    it('should have the property containerSequenceNumbers (base name: "containerSequenceNumbers")', function() {
+    it('should have the property containerSequenceNumbers', function() {
       // verify property exists
       expect(instance).to.have.property('containerSequenceNumbers');
 
       // set and verify value
-      var validValue = generateMockData('[ContainerSequenceNumbers]', true);
-      instance.containerSequenceNumbers = validValue;
-      expect(instance.containerSequenceNumbers).to.equal(validValue);
+      var expectedValue = generateMockData('ContainerSequenceNumbers', true);
+      instance.containerSequenceNumbers = expectedValue;
+      expect(instance.containerSequenceNumbers).to.equal(expectedValue);
     });
 
   });

@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForFinances.ImagingServicesFeeEvent);
     });
 
-    it('should have the property imagingRequestBillingItemID (base name: "ImagingRequestBillingItemID")', function() {
+    it('should have the property imagingRequestBillingItemID', function() {
       // verify property exists
       expect(instance).to.have.property('imagingRequestBillingItemID');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.imagingRequestBillingItemID = validValue;
-      expect(instance.imagingRequestBillingItemID).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.imagingRequestBillingItemID = expectedValue;
+      expect(instance.imagingRequestBillingItemID).to.equal(expectedValue);
     });
 
-    it('should have the property ASIN (base name: "ASIN")', function() {
+    it('should have the property ASIN', function() {
       // verify property exists
       expect(instance).to.have.property('ASIN');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.ASIN = validValue;
-      expect(instance.ASIN).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.ASIN = expectedValue;
+      expect(instance.ASIN).to.equal(expectedValue);
     });
 
-    it('should have the property postedDate (base name: "PostedDate")', function() {
+    it('should have the property postedDate', function() {
       // verify property exists
       expect(instance).to.have.property('postedDate');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.postedDate = validValue;
-      expect(instance.postedDate).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.postedDate = expectedValue;
+      expect(instance.postedDate).to.equal(expectedValue);
     });
 
-    it('should have the property feeList (base name: "FeeList")', function() {
+    it('should have the property feeList', function() {
       // verify property exists
       expect(instance).to.have.property('feeList');
 
       // set and verify value
-      var validValue = generateMockData('[FeeComponent]', true);
-      instance.feeList = validValue;
-      expect(instance.feeList).to.equal(validValue);
+      var expectedValue = generateMockData('FeeComponent', true);
+      instance.feeList = expectedValue;
+      expect(instance.feeList).to.equal(expectedValue);
     });
 
   });

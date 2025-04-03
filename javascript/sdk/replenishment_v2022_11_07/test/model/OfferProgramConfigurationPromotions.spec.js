@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForReplenishment.OfferProgramConfigurationPromotions);
     });
 
-    it('should have the property sellingPartnerFundedBaseDiscount (base name: "sellingPartnerFundedBaseDiscount")', function() {
+    it('should have the property sellingPartnerFundedBaseDiscount', function() {
       // verify property exists
       expect(instance).to.have.property('sellingPartnerFundedBaseDiscount');
 
       // set and verify value
-      var validValue = generateMockData('OfferProgramConfigurationPromotionsDiscountFunding');
-      instance.sellingPartnerFundedBaseDiscount = validValue;
-      expect(instance.sellingPartnerFundedBaseDiscount).to.equal(validValue);
+      var expectedValue = generateMockData('OfferProgramConfigurationPromotionsDiscountFunding');
+      instance.sellingPartnerFundedBaseDiscount = expectedValue;
+      expect(instance.sellingPartnerFundedBaseDiscount).to.equal(expectedValue);
     });
 
-    it('should have the property sellingPartnerFundedTieredDiscount (base name: "sellingPartnerFundedTieredDiscount")', function() {
+    it('should have the property sellingPartnerFundedTieredDiscount', function() {
       // verify property exists
       expect(instance).to.have.property('sellingPartnerFundedTieredDiscount');
 
       // set and verify value
-      var validValue = generateMockData('OfferProgramConfigurationPromotionsDiscountFunding');
-      instance.sellingPartnerFundedTieredDiscount = validValue;
-      expect(instance.sellingPartnerFundedTieredDiscount).to.equal(validValue);
+      var expectedValue = generateMockData('OfferProgramConfigurationPromotionsDiscountFunding');
+      instance.sellingPartnerFundedTieredDiscount = expectedValue;
+      expect(instance.sellingPartnerFundedTieredDiscount).to.equal(expectedValue);
     });
 
-    it('should have the property amazonFundedBaseDiscount (base name: "amazonFundedBaseDiscount")', function() {
+    it('should have the property amazonFundedBaseDiscount', function() {
       // verify property exists
       expect(instance).to.have.property('amazonFundedBaseDiscount');
 
       // set and verify value
-      var validValue = generateMockData('OfferProgramConfigurationPromotionsDiscountFunding');
-      instance.amazonFundedBaseDiscount = validValue;
-      expect(instance.amazonFundedBaseDiscount).to.equal(validValue);
+      var expectedValue = generateMockData('OfferProgramConfigurationPromotionsDiscountFunding');
+      instance.amazonFundedBaseDiscount = expectedValue;
+      expect(instance.amazonFundedBaseDiscount).to.equal(expectedValue);
     });
 
-    it('should have the property amazonFundedTieredDiscount (base name: "amazonFundedTieredDiscount")', function() {
+    it('should have the property amazonFundedTieredDiscount', function() {
       // verify property exists
       expect(instance).to.have.property('amazonFundedTieredDiscount');
 
       // set and verify value
-      var validValue = generateMockData('OfferProgramConfigurationPromotionsDiscountFunding');
-      instance.amazonFundedTieredDiscount = validValue;
-      expect(instance.amazonFundedTieredDiscount).to.equal(validValue);
+      var expectedValue = generateMockData('OfferProgramConfigurationPromotionsDiscountFunding');
+      instance.amazonFundedTieredDiscount = expectedValue;
+      expect(instance.amazonFundedTieredDiscount).to.equal(expectedValue);
     });
 
   });

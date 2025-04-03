@@ -45,74 +45,74 @@
       expect(instance).to.be.a(AmazonShippingApi.RequestedDocumentSpecification);
     });
 
-    it('should have the property format (base name: "format")', function() {
+    it('should have the property format', function() {
       // verify property exists
       expect(instance).to.have.property('format');
 
       // set and verify value
-      var validValue = generateMockData('DocumentFormat');
-      instance.format = validValue;
-      expect(instance.format).to.equal(validValue);
+      var expectedValue = generateMockData('DocumentFormat');
+      instance.format = expectedValue;
+      expect(instance.format).to.equal(expectedValue);
     });
 
-    it('should have the property size (base name: "size")', function() {
+    it('should have the property size', function() {
       // verify property exists
       expect(instance).to.have.property('size');
 
       // set and verify value
-      var validValue = generateMockData('DocumentSize');
-      instance.size = validValue;
-      expect(instance.size).to.equal(validValue);
+      var expectedValue = generateMockData('DocumentSize');
+      instance.size = expectedValue;
+      expect(instance.size).to.equal(expectedValue);
     });
 
-    it('should have the property dpi (base name: "dpi")', function() {
+    it('should have the property dpi', function() {
       // verify property exists
       expect(instance).to.have.property('dpi');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.dpi = validValue;
-      expect(instance.dpi).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.dpi = expectedValue;
+      expect(instance.dpi).to.equal(expectedValue);
     });
 
-    it('should have the property pageLayout (base name: "pageLayout")', function() {
+    it('should have the property pageLayout', function() {
       // verify property exists
       expect(instance).to.have.property('pageLayout');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.pageLayout = validValue;
-      expect(instance.pageLayout).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.pageLayout = expectedValue;
+      expect(instance.pageLayout).to.equal(expectedValue);
     });
 
-    it('should have the property needFileJoining (base name: "needFileJoining")', function() {
+    it('should have the property needFileJoining', function() {
       // verify property exists
       expect(instance).to.have.property('needFileJoining');
 
       // set and verify value
-      var validValue = generateMockData('Boolean');
-      instance.needFileJoining = validValue;
-      expect(instance.needFileJoining).to.equal(validValue);
+      var expectedValue = generateMockData('Boolean');
+      instance.needFileJoining = expectedValue;
+      expect(instance.needFileJoining).to.equal(expectedValue);
     });
 
-    it('should have the property requestedDocumentTypes (base name: "requestedDocumentTypes")', function() {
+    it('should have the property requestedDocumentTypes', function() {
       // verify property exists
       expect(instance).to.have.property('requestedDocumentTypes');
 
       // set and verify value
-      var validValue = generateMockData('[DocumentType]', true);
-      instance.requestedDocumentTypes = validValue;
-      expect(instance.requestedDocumentTypes).to.equal(validValue);
+      var expectedValue = generateMockData('DocumentType', true);
+      instance.requestedDocumentTypes = expectedValue;
+      expect(instance.requestedDocumentTypes).to.equal(expectedValue);
     });
 
-    it('should have the property requestedLabelCustomization (base name: "requestedLabelCustomization")', function() {
+    it('should have the property requestedLabelCustomization', function() {
       // verify property exists
       expect(instance).to.have.property('requestedLabelCustomization');
 
       // set and verify value
-      var validValue = generateMockData('RequestedLabelCustomization');
-      instance.requestedLabelCustomization = validValue;
-      expect(instance.requestedLabelCustomization).to.equal(validValue);
+      var expectedValue = generateMockData('RequestedLabelCustomization');
+      instance.requestedLabelCustomization = expectedValue;
+      expect(instance.requestedLabelCustomization).to.equal(expectedValue);
     });
 
   });

@@ -45,64 +45,64 @@
       expect(instance).to.be.a(TheSellingPartnerApiForSellers.Address);
     });
 
-    it('should have the property addressLine1 (base name: "addressLine1")', function() {
+    it('should have the property addressLine1', function() {
       // verify property exists
       expect(instance).to.have.property('addressLine1');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.addressLine1 = validValue;
-      expect(instance.addressLine1).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.addressLine1 = expectedValue;
+      expect(instance.addressLine1).to.equal(expectedValue);
     });
 
-    it('should have the property addressLine2 (base name: "addressLine2")', function() {
+    it('should have the property addressLine2', function() {
       // verify property exists
       expect(instance).to.have.property('addressLine2');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.addressLine2 = validValue;
-      expect(instance.addressLine2).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.addressLine2 = expectedValue;
+      expect(instance.addressLine2).to.equal(expectedValue);
     });
 
-    it('should have the property countryCode (base name: "countryCode")', function() {
+    it('should have the property countryCode', function() {
       // verify property exists
       expect(instance).to.have.property('countryCode');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.countryCode = validValue;
-      expect(instance.countryCode).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.countryCode = expectedValue;
+      expect(instance.countryCode).to.equal(expectedValue);
     });
 
-    it('should have the property stateOrProvinceCode (base name: "stateOrProvinceCode")', function() {
+    it('should have the property stateOrProvinceCode', function() {
       // verify property exists
       expect(instance).to.have.property('stateOrProvinceCode');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.stateOrProvinceCode = validValue;
-      expect(instance.stateOrProvinceCode).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.stateOrProvinceCode = expectedValue;
+      expect(instance.stateOrProvinceCode).to.equal(expectedValue);
     });
 
-    it('should have the property city (base name: "city")', function() {
+    it('should have the property city', function() {
       // verify property exists
       expect(instance).to.have.property('city');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.city = validValue;
-      expect(instance.city).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.city = expectedValue;
+      expect(instance.city).to.equal(expectedValue);
     });
 
-    it('should have the property postalCode (base name: "postalCode")', function() {
+    it('should have the property postalCode', function() {
       // verify property exists
       expect(instance).to.have.property('postalCode');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.postalCode = validValue;
-      expect(instance.postalCode).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.postalCode = expectedValue;
+      expect(instance.postalCode).to.equal(expectedValue);
     });
 
   });

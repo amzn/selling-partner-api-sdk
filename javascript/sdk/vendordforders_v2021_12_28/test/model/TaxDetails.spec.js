@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForDirectFulfillmentOrders.TaxDetails);
     });
 
-    it('should have the property taxRate (base name: "taxRate")', function() {
+    it('should have the property taxRate', function() {
       // verify property exists
       expect(instance).to.have.property('taxRate');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.taxRate = validValue;
-      expect(instance.taxRate).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.taxRate = expectedValue;
+      expect(instance.taxRate).to.equal(expectedValue);
     });
 
-    it('should have the property taxAmount (base name: "taxAmount")', function() {
+    it('should have the property taxAmount', function() {
       // verify property exists
       expect(instance).to.have.property('taxAmount');
 
       // set and verify value
-      var validValue = generateMockData('Money');
-      instance.taxAmount = validValue;
-      expect(instance.taxAmount).to.equal(validValue);
+      var expectedValue = generateMockData('Money');
+      instance.taxAmount = expectedValue;
+      expect(instance.taxAmount).to.equal(expectedValue);
     });
 
-    it('should have the property taxableAmount (base name: "taxableAmount")', function() {
+    it('should have the property taxableAmount', function() {
       // verify property exists
       expect(instance).to.have.property('taxableAmount');
 
       // set and verify value
-      var validValue = generateMockData('Money');
-      instance.taxableAmount = validValue;
-      expect(instance.taxableAmount).to.equal(validValue);
+      var expectedValue = generateMockData('Money');
+      instance.taxableAmount = expectedValue;
+      expect(instance.taxableAmount).to.equal(expectedValue);
     });
 
-    it('should have the property type (base name: "type")', function() {
+    it('should have the property type', function() {
       // verify property exists
       expect(instance).to.have.property('type');
 
       // set and verify value
-      var validValue = ['CONSUMPTION', 'GST', 'MwSt.', 'PST', 'TOTAL', 'TVA', 'VAT', ][0];
-      instance.type = validValue;
-      expect(instance.type).to.equal(validValue);
+      var expectedValue = ['CONSUMPTION', 'GST', 'MwSt.', 'PST', 'TOTAL', 'TVA', 'VAT', ][0];
+      instance.type = expectedValue;
+      expect(instance.type).to.equal(expectedValue);
     });
 
   });

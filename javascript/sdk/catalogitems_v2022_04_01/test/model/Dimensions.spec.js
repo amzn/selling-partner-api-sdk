@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForCatalogItems.Dimensions);
     });
 
-    it('should have the property height (base name: "height")', function() {
+    it('should have the property height', function() {
       // verify property exists
       expect(instance).to.have.property('height');
 
       // set and verify value
-      var validValue = generateMockData('Dimension');
-      instance.height = validValue;
-      expect(instance.height).to.equal(validValue);
+      var expectedValue = generateMockData('Dimension');
+      instance.height = expectedValue;
+      expect(instance.height).to.equal(expectedValue);
     });
 
-    it('should have the property length (base name: "length")', function() {
+    it('should have the property length', function() {
       // verify property exists
       expect(instance).to.have.property('length');
 
       // set and verify value
-      var validValue = generateMockData('Dimension');
-      instance.length = validValue;
-      expect(instance.length).to.equal(validValue);
+      var expectedValue = generateMockData('Dimension');
+      instance.length = expectedValue;
+      expect(instance.length).to.equal(expectedValue);
     });
 
-    it('should have the property weight (base name: "weight")', function() {
+    it('should have the property weight', function() {
       // verify property exists
       expect(instance).to.have.property('weight');
 
       // set and verify value
-      var validValue = generateMockData('Dimension');
-      instance.weight = validValue;
-      expect(instance.weight).to.equal(validValue);
+      var expectedValue = generateMockData('Dimension');
+      instance.weight = expectedValue;
+      expect(instance.weight).to.equal(expectedValue);
     });
 
-    it('should have the property width (base name: "width")', function() {
+    it('should have the property width', function() {
       // verify property exists
       expect(instance).to.have.property('width');
 
       // set and verify value
-      var validValue = generateMockData('Dimension');
-      instance.width = validValue;
-      expect(instance.width).to.equal(validValue);
+      var expectedValue = generateMockData('Dimension');
+      instance.width = expectedValue;
+      expect(instance.width).to.equal(expectedValue);
     });
 
   });

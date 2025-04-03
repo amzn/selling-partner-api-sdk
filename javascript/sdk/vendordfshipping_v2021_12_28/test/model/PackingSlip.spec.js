@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForDirectFulfillmentShipping.PackingSlip);
     });
 
-    it('should have the property purchaseOrderNumber (base name: "purchaseOrderNumber")', function() {
+    it('should have the property purchaseOrderNumber', function() {
       // verify property exists
       expect(instance).to.have.property('purchaseOrderNumber');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.purchaseOrderNumber = validValue;
-      expect(instance.purchaseOrderNumber).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.purchaseOrderNumber = expectedValue;
+      expect(instance.purchaseOrderNumber).to.equal(expectedValue);
     });
 
-    it('should have the property content (base name: "content")', function() {
+    it('should have the property content', function() {
       // verify property exists
       expect(instance).to.have.property('content');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.content = validValue;
-      expect(instance.content).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.content = expectedValue;
+      expect(instance.content).to.equal(expectedValue);
     });
 
-    it('should have the property contentType (base name: "contentType")', function() {
+    it('should have the property contentType', function() {
       // verify property exists
       expect(instance).to.have.property('contentType');
 
       // set and verify value
-      var validValue = ['application/pdf', ][0];
-      instance.contentType = validValue;
-      expect(instance.contentType).to.equal(validValue);
+      var expectedValue = ['application/pdf', ][0];
+      instance.contentType = expectedValue;
+      expect(instance.contentType).to.equal(expectedValue);
     });
 
   });

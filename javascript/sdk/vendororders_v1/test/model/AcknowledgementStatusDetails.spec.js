@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForRetailProcurementOrders.AcknowledgementStatusDetails);
     });
 
-    it('should have the property acknowledgementDate (base name: "acknowledgementDate")', function() {
+    it('should have the property acknowledgementDate', function() {
       // verify property exists
       expect(instance).to.have.property('acknowledgementDate');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.acknowledgementDate = validValue;
-      expect(instance.acknowledgementDate).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.acknowledgementDate = expectedValue;
+      expect(instance.acknowledgementDate).to.equal(expectedValue);
     });
 
-    it('should have the property acceptedQuantity (base name: "acceptedQuantity")', function() {
+    it('should have the property acceptedQuantity', function() {
       // verify property exists
       expect(instance).to.have.property('acceptedQuantity');
 
       // set and verify value
-      var validValue = generateMockData('ItemQuantity');
-      instance.acceptedQuantity = validValue;
-      expect(instance.acceptedQuantity).to.equal(validValue);
+      var expectedValue = generateMockData('ItemQuantity');
+      instance.acceptedQuantity = expectedValue;
+      expect(instance.acceptedQuantity).to.equal(expectedValue);
     });
 
-    it('should have the property rejectedQuantity (base name: "rejectedQuantity")', function() {
+    it('should have the property rejectedQuantity', function() {
       // verify property exists
       expect(instance).to.have.property('rejectedQuantity');
 
       // set and verify value
-      var validValue = generateMockData('ItemQuantity');
-      instance.rejectedQuantity = validValue;
-      expect(instance.rejectedQuantity).to.equal(validValue);
+      var expectedValue = generateMockData('ItemQuantity');
+      instance.rejectedQuantity = expectedValue;
+      expect(instance.rejectedQuantity).to.equal(expectedValue);
     });
 
   });

@@ -45,14 +45,14 @@
       expect(instance).to.be.a(AmazonShippingApi.GetAdditionalInputsResponse);
     });
 
-    it('should have the property payload (base name: "payload")', function() {
+    it('should have the property payload', function() {
       // verify property exists
       expect(instance).to.have.property('payload');
 
       // set and verify value
-      var validValue = generateMockData('{String: Object}');
-      instance.payload = validValue;
-      expect(instance.payload).to.equal(validValue);
+      var expectedValue = generateMockData('{String: Object}');
+      instance.payload = expectedValue;
+      expect(instance.payload).to.equal(expectedValue);
     });
 
   });

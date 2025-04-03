@@ -45,34 +45,34 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFinances.Breakdown);
     });
 
-    it('should have the property breakdownType (base name: "breakdownType")', function() {
+    it('should have the property breakdownType', function() {
       // verify property exists
       expect(instance).to.have.property('breakdownType');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.breakdownType = validValue;
-      expect(instance.breakdownType).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.breakdownType = expectedValue;
+      expect(instance.breakdownType).to.equal(expectedValue);
     });
 
-    it('should have the property breakdownAmount (base name: "breakdownAmount")', function() {
+    it('should have the property breakdownAmount', function() {
       // verify property exists
       expect(instance).to.have.property('breakdownAmount');
 
       // set and verify value
-      var validValue = generateMockData('Currency');
-      instance.breakdownAmount = validValue;
-      expect(instance.breakdownAmount).to.equal(validValue);
+      var expectedValue = generateMockData('Currency');
+      instance.breakdownAmount = expectedValue;
+      expect(instance.breakdownAmount).to.equal(expectedValue);
     });
 
-    it('should have the property breakdowns (base name: "breakdowns")', function() {
+    it('should have the property breakdowns', function() {
       // verify property exists
       expect(instance).to.have.property('breakdowns');
 
       // set and verify value
-      var validValue = generateMockData('Breakdown');
-      instance.breakdowns = validValue;
-      expect(instance.breakdowns).to.equal(validValue);
+      var expectedValue = generateMockData('Breakdown');
+      instance.breakdowns = expectedValue;
+      expect(instance.breakdowns).to.equal(expectedValue);
     });
 
   });

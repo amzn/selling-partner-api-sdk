@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForCatalogItems.ItemSearchResults);
     });
 
-    it('should have the property numberOfResults (base name: "numberOfResults")', function() {
+    it('should have the property numberOfResults', function() {
       // verify property exists
       expect(instance).to.have.property('numberOfResults');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.numberOfResults = validValue;
-      expect(instance.numberOfResults).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.numberOfResults = expectedValue;
+      expect(instance.numberOfResults).to.equal(expectedValue);
     });
 
-    it('should have the property pagination (base name: "pagination")', function() {
+    it('should have the property pagination', function() {
       // verify property exists
       expect(instance).to.have.property('pagination');
 
       // set and verify value
-      var validValue = generateMockData('Pagination');
-      instance.pagination = validValue;
-      expect(instance.pagination).to.equal(validValue);
+      var expectedValue = generateMockData('Pagination');
+      instance.pagination = expectedValue;
+      expect(instance.pagination).to.equal(expectedValue);
     });
 
-    it('should have the property refinements (base name: "refinements")', function() {
+    it('should have the property refinements', function() {
       // verify property exists
       expect(instance).to.have.property('refinements');
 
       // set and verify value
-      var validValue = generateMockData('Refinements');
-      instance.refinements = validValue;
-      expect(instance.refinements).to.equal(validValue);
+      var expectedValue = generateMockData('Refinements');
+      instance.refinements = expectedValue;
+      expect(instance.refinements).to.equal(expectedValue);
     });
 
-    it('should have the property items (base name: "items")', function() {
+    it('should have the property items', function() {
       // verify property exists
       expect(instance).to.have.property('items');
 
       // set and verify value
-      var validValue = generateMockData('[Item]', true);
-      instance.items = validValue;
-      expect(instance.items).to.equal(validValue);
+      var expectedValue = generateMockData('Item', true);
+      instance.items = expectedValue;
+      expect(instance.items).to.equal(expectedValue);
     });
 
   });

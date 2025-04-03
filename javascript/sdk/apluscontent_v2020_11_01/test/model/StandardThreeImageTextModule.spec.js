@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForAContentManagement.StandardThreeImageTextModule);
     });
 
-    it('should have the property headline (base name: "headline")', function() {
+    it('should have the property headline', function() {
       // verify property exists
       expect(instance).to.have.property('headline');
 
       // set and verify value
-      var validValue = generateMockData('TextComponent');
-      instance.headline = validValue;
-      expect(instance.headline).to.equal(validValue);
+      var expectedValue = generateMockData('TextComponent');
+      instance.headline = expectedValue;
+      expect(instance.headline).to.equal(expectedValue);
     });
 
-    it('should have the property block1 (base name: "block1")', function() {
+    it('should have the property block1', function() {
       // verify property exists
       expect(instance).to.have.property('block1');
 
       // set and verify value
-      var validValue = generateMockData('StandardImageTextBlock');
-      instance.block1 = validValue;
-      expect(instance.block1).to.equal(validValue);
+      var expectedValue = generateMockData('StandardImageTextBlock');
+      instance.block1 = expectedValue;
+      expect(instance.block1).to.equal(expectedValue);
     });
 
-    it('should have the property block2 (base name: "block2")', function() {
+    it('should have the property block2', function() {
       // verify property exists
       expect(instance).to.have.property('block2');
 
       // set and verify value
-      var validValue = generateMockData('StandardImageTextBlock');
-      instance.block2 = validValue;
-      expect(instance.block2).to.equal(validValue);
+      var expectedValue = generateMockData('StandardImageTextBlock');
+      instance.block2 = expectedValue;
+      expect(instance.block2).to.equal(expectedValue);
     });
 
-    it('should have the property block3 (base name: "block3")', function() {
+    it('should have the property block3', function() {
       // verify property exists
       expect(instance).to.have.property('block3');
 
       // set and verify value
-      var validValue = generateMockData('StandardImageTextBlock');
-      instance.block3 = validValue;
-      expect(instance.block3).to.equal(validValue);
+      var expectedValue = generateMockData('StandardImageTextBlock');
+      instance.block3 = expectedValue;
+      expect(instance.block3).to.equal(expectedValue);
     });
 
   });

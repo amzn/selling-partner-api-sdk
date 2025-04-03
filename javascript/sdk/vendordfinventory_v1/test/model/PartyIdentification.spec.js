@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForDirectFulfillmentInventoryUpdates.PartyIdentification);
     });
 
-    it('should have the property partyId (base name: "partyId")', function() {
+    it('should have the property partyId', function() {
       // verify property exists
       expect(instance).to.have.property('partyId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.partyId = validValue;
-      expect(instance.partyId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.partyId = expectedValue;
+      expect(instance.partyId).to.equal(expectedValue);
     });
 
   });

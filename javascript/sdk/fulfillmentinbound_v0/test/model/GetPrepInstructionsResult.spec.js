@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForFulfillmentInbound.GetPrepInstructionsResult);
     });
 
-    it('should have the property sKUPrepInstructionsList (base name: "SKUPrepInstructionsList")', function() {
+    it('should have the property sKUPrepInstructionsList', function() {
       // verify property exists
       expect(instance).to.have.property('sKUPrepInstructionsList');
 
       // set and verify value
-      var validValue = generateMockData('[SKUPrepInstructions]', true);
-      instance.sKUPrepInstructionsList = validValue;
-      expect(instance.sKUPrepInstructionsList).to.equal(validValue);
+      var expectedValue = generateMockData('SKUPrepInstructions', true);
+      instance.sKUPrepInstructionsList = expectedValue;
+      expect(instance.sKUPrepInstructionsList).to.equal(expectedValue);
     });
 
-    it('should have the property invalidSKUList (base name: "InvalidSKUList")', function() {
+    it('should have the property invalidSKUList', function() {
       // verify property exists
       expect(instance).to.have.property('invalidSKUList');
 
       // set and verify value
-      var validValue = generateMockData('[InvalidSKU]', true);
-      instance.invalidSKUList = validValue;
-      expect(instance.invalidSKUList).to.equal(validValue);
+      var expectedValue = generateMockData('InvalidSKU', true);
+      instance.invalidSKUList = expectedValue;
+      expect(instance.invalidSKUList).to.equal(expectedValue);
     });
 
-    it('should have the property aSINPrepInstructionsList (base name: "ASINPrepInstructionsList")', function() {
+    it('should have the property aSINPrepInstructionsList', function() {
       // verify property exists
       expect(instance).to.have.property('aSINPrepInstructionsList');
 
       // set and verify value
-      var validValue = generateMockData('[ASINPrepInstructions]', true);
-      instance.aSINPrepInstructionsList = validValue;
-      expect(instance.aSINPrepInstructionsList).to.equal(validValue);
+      var expectedValue = generateMockData('ASINPrepInstructions', true);
+      instance.aSINPrepInstructionsList = expectedValue;
+      expect(instance.aSINPrepInstructionsList).to.equal(expectedValue);
     });
 
-    it('should have the property invalidASINList (base name: "InvalidASINList")', function() {
+    it('should have the property invalidASINList', function() {
       // verify property exists
       expect(instance).to.have.property('invalidASINList');
 
       // set and verify value
-      var validValue = generateMockData('[InvalidASIN]', true);
-      instance.invalidASINList = validValue;
-      expect(instance.invalidASINList).to.equal(validValue);
+      var expectedValue = generateMockData('InvalidASIN', true);
+      instance.invalidASINList = expectedValue;
+      expect(instance.invalidASINList).to.equal(expectedValue);
     });
 
   });

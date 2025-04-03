@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForPricing.SegmentDetails);
     });
 
-    it('should have the property glanceViewWeightPercentage (base name: "glanceViewWeightPercentage")', function() {
+    it('should have the property glanceViewWeightPercentage', function() {
       // verify property exists
       expect(instance).to.have.property('glanceViewWeightPercentage');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.glanceViewWeightPercentage = validValue;
-      expect(instance.glanceViewWeightPercentage).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.glanceViewWeightPercentage = expectedValue;
+      expect(instance.glanceViewWeightPercentage).to.equal(expectedValue);
     });
 
-    it('should have the property sampleLocation (base name: "sampleLocation")', function() {
+    it('should have the property sampleLocation', function() {
       // verify property exists
       expect(instance).to.have.property('sampleLocation');
 
       // set and verify value
-      var validValue = generateMockData('SampleLocation');
-      instance.sampleLocation = validValue;
-      expect(instance.sampleLocation).to.equal(validValue);
+      var expectedValue = generateMockData('SampleLocation');
+      instance.sampleLocation = expectedValue;
+      expect(instance.sampleLocation).to.equal(expectedValue);
     });
 
   });

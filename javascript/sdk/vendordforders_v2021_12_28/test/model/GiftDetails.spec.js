@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForDirectFulfillmentOrders.GiftDetails);
     });
 
-    it('should have the property giftMessage (base name: "giftMessage")', function() {
+    it('should have the property giftMessage', function() {
       // verify property exists
       expect(instance).to.have.property('giftMessage');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.giftMessage = validValue;
-      expect(instance.giftMessage).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.giftMessage = expectedValue;
+      expect(instance.giftMessage).to.equal(expectedValue);
     });
 
-    it('should have the property giftWrapId (base name: "giftWrapId")', function() {
+    it('should have the property giftWrapId', function() {
       // verify property exists
       expect(instance).to.have.property('giftWrapId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.giftWrapId = validValue;
-      expect(instance.giftWrapId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.giftWrapId = expectedValue;
+      expect(instance.giftWrapId).to.equal(expectedValue);
     });
 
   });

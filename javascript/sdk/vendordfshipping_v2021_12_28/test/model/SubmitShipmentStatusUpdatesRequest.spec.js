@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForDirectFulfillmentShipping.SubmitShipmentStatusUpdatesRequest);
     });
 
-    it('should have the property shipmentStatusUpdates (base name: "shipmentStatusUpdates")', function() {
+    it('should have the property shipmentStatusUpdates', function() {
       // verify property exists
       expect(instance).to.have.property('shipmentStatusUpdates');
 
       // set and verify value
-      var validValue = generateMockData('[ShipmentStatusUpdate]', true);
-      instance.shipmentStatusUpdates = validValue;
-      expect(instance.shipmentStatusUpdates).to.equal(validValue);
+      var expectedValue = generateMockData('ShipmentStatusUpdate', true);
+      instance.shipmentStatusUpdates = expectedValue;
+      expect(instance.shipmentStatusUpdates).to.equal(expectedValue);
     });
 
   });

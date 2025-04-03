@@ -45,24 +45,24 @@
       expect(instance).to.be.a(TheSellingPartnerApiForAmazonWarehousingAndDistribution.ExpirationDetails);
     });
 
-    it('should have the property expiration (base name: "expiration")', function() {
+    it('should have the property expiration', function() {
       // verify property exists
       expect(instance).to.have.property('expiration');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.expiration = validValue;
-      expect(instance.expiration).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.expiration = expectedValue;
+      expect(instance.expiration).to.equal(expectedValue);
     });
 
-    it('should have the property onhandQuantity (base name: "onhandQuantity")', function() {
+    it('should have the property onhandQuantity', function() {
       // verify property exists
       expect(instance).to.have.property('onhandQuantity');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.onhandQuantity = validValue;
-      expect(instance.onhandQuantity).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.onhandQuantity = expectedValue;
+      expect(instance.onhandQuantity).to.equal(expectedValue);
     });
 
   });

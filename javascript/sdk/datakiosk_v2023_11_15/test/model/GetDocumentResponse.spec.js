@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForDataKiosk.GetDocumentResponse);
     });
 
-    it('should have the property documentId (base name: "documentId")', function() {
+    it('should have the property documentId', function() {
       // verify property exists
       expect(instance).to.have.property('documentId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.documentId = validValue;
-      expect(instance.documentId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.documentId = expectedValue;
+      expect(instance.documentId).to.equal(expectedValue);
     });
 
-    it('should have the property documentUrl (base name: "documentUrl")', function() {
+    it('should have the property documentUrl', function() {
       // verify property exists
       expect(instance).to.have.property('documentUrl');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.documentUrl = validValue;
-      expect(instance.documentUrl).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.documentUrl = expectedValue;
+      expect(instance.documentUrl).to.equal(expectedValue);
     });
 
   });

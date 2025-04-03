@@ -45,74 +45,74 @@
       expect(instance).to.be.a(SellingPartnerApiForFbaInventory.UnfulfillableQuantity);
     });
 
-    it('should have the property totalUnfulfillableQuantity (base name: "totalUnfulfillableQuantity")', function() {
+    it('should have the property totalUnfulfillableQuantity', function() {
       // verify property exists
       expect(instance).to.have.property('totalUnfulfillableQuantity');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.totalUnfulfillableQuantity = validValue;
-      expect(instance.totalUnfulfillableQuantity).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.totalUnfulfillableQuantity = expectedValue;
+      expect(instance.totalUnfulfillableQuantity).to.equal(expectedValue);
     });
 
-    it('should have the property customerDamagedQuantity (base name: "customerDamagedQuantity")', function() {
+    it('should have the property customerDamagedQuantity', function() {
       // verify property exists
       expect(instance).to.have.property('customerDamagedQuantity');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.customerDamagedQuantity = validValue;
-      expect(instance.customerDamagedQuantity).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.customerDamagedQuantity = expectedValue;
+      expect(instance.customerDamagedQuantity).to.equal(expectedValue);
     });
 
-    it('should have the property warehouseDamagedQuantity (base name: "warehouseDamagedQuantity")', function() {
+    it('should have the property warehouseDamagedQuantity', function() {
       // verify property exists
       expect(instance).to.have.property('warehouseDamagedQuantity');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.warehouseDamagedQuantity = validValue;
-      expect(instance.warehouseDamagedQuantity).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.warehouseDamagedQuantity = expectedValue;
+      expect(instance.warehouseDamagedQuantity).to.equal(expectedValue);
     });
 
-    it('should have the property distributorDamagedQuantity (base name: "distributorDamagedQuantity")', function() {
+    it('should have the property distributorDamagedQuantity', function() {
       // verify property exists
       expect(instance).to.have.property('distributorDamagedQuantity');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.distributorDamagedQuantity = validValue;
-      expect(instance.distributorDamagedQuantity).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.distributorDamagedQuantity = expectedValue;
+      expect(instance.distributorDamagedQuantity).to.equal(expectedValue);
     });
 
-    it('should have the property carrierDamagedQuantity (base name: "carrierDamagedQuantity")', function() {
+    it('should have the property carrierDamagedQuantity', function() {
       // verify property exists
       expect(instance).to.have.property('carrierDamagedQuantity');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.carrierDamagedQuantity = validValue;
-      expect(instance.carrierDamagedQuantity).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.carrierDamagedQuantity = expectedValue;
+      expect(instance.carrierDamagedQuantity).to.equal(expectedValue);
     });
 
-    it('should have the property defectiveQuantity (base name: "defectiveQuantity")', function() {
+    it('should have the property defectiveQuantity', function() {
       // verify property exists
       expect(instance).to.have.property('defectiveQuantity');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.defectiveQuantity = validValue;
-      expect(instance.defectiveQuantity).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.defectiveQuantity = expectedValue;
+      expect(instance.defectiveQuantity).to.equal(expectedValue);
     });
 
-    it('should have the property expiredQuantity (base name: "expiredQuantity")', function() {
+    it('should have the property expiredQuantity', function() {
       // verify property exists
       expect(instance).to.have.property('expiredQuantity');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.expiredQuantity = validValue;
-      expect(instance.expiredQuantity).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.expiredQuantity = expectedValue;
+      expect(instance.expiredQuantity).to.equal(expectedValue);
     });
 
   });

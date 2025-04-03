@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForDirectFulfillmentOrders.SubmitAcknowledgementRequest);
     });
 
-    it('should have the property orderAcknowledgements (base name: "orderAcknowledgements")', function() {
+    it('should have the property orderAcknowledgements', function() {
       // verify property exists
       expect(instance).to.have.property('orderAcknowledgements');
 
       // set and verify value
-      var validValue = generateMockData('[OrderAcknowledgementItem]', true);
-      instance.orderAcknowledgements = validValue;
-      expect(instance.orderAcknowledgements).to.equal(validValue);
+      var expectedValue = generateMockData('OrderAcknowledgementItem', true);
+      instance.orderAcknowledgements = expectedValue;
+      expect(instance.orderAcknowledgements).to.equal(expectedValue);
     });
 
   });

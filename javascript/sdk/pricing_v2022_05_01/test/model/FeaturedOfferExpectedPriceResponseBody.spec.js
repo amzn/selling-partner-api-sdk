@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForPricing.FeaturedOfferExpectedPriceResponseBody);
     });
 
-    it('should have the property offerIdentifier (base name: "offerIdentifier")', function() {
+    it('should have the property offerIdentifier', function() {
       // verify property exists
       expect(instance).to.have.property('offerIdentifier');
 
       // set and verify value
-      var validValue = generateMockData('OfferIdentifier');
-      instance.offerIdentifier = validValue;
-      expect(instance.offerIdentifier).to.equal(validValue);
+      var expectedValue = generateMockData('OfferIdentifier');
+      instance.offerIdentifier = expectedValue;
+      expect(instance.offerIdentifier).to.equal(expectedValue);
     });
 
-    it('should have the property featuredOfferExpectedPriceResults (base name: "featuredOfferExpectedPriceResults")', function() {
+    it('should have the property featuredOfferExpectedPriceResults', function() {
       // verify property exists
       expect(instance).to.have.property('featuredOfferExpectedPriceResults');
 
       // set and verify value
-      var validValue = generateMockData('[FeaturedOfferExpectedPriceResult]', true);
-      instance.featuredOfferExpectedPriceResults = validValue;
-      expect(instance.featuredOfferExpectedPriceResults).to.equal(validValue);
+      var expectedValue = generateMockData('FeaturedOfferExpectedPriceResult', true);
+      instance.featuredOfferExpectedPriceResults = expectedValue;
+      expect(instance.featuredOfferExpectedPriceResults).to.equal(expectedValue);
     });
 
-    it('should have the property errors (base name: "errors")', function() {
+    it('should have the property errors', function() {
       // verify property exists
       expect(instance).to.have.property('errors');
 
       // set and verify value
-      var validValue = generateMockData('[Error]', true);
-      instance.errors = validValue;
-      expect(instance.errors).to.equal(validValue);
+      var expectedValue = generateMockData('Error', true);
+      instance.errors = expectedValue;
+      expect(instance.errors).to.equal(expectedValue);
     });
 
   });

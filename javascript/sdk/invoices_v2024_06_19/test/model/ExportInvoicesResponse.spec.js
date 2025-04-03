@@ -45,14 +45,14 @@
       expect(instance).to.be.a(TheSellingPartnerApiForInvoices.ExportInvoicesResponse);
     });
 
-    it('should have the property exportId (base name: "exportId")', function() {
+    it('should have the property exportId', function() {
       // verify property exists
       expect(instance).to.have.property('exportId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.exportId = validValue;
-      expect(instance.exportId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.exportId = expectedValue;
+      expect(instance.exportId).to.equal(expectedValue);
     });
 
   });

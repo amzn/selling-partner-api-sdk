@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForMerchantFulfillment.Length);
     });
 
-    it('should have the property value (base name: "value")', function() {
+    it('should have the property value', function() {
       // verify property exists
       expect(instance).to.have.property('value');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.value = validValue;
-      expect(instance.value).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.value = expectedValue;
+      expect(instance.value).to.equal(expectedValue);
     });
 
-    it('should have the property unit (base name: "unit")', function() {
+    it('should have the property unit', function() {
       // verify property exists
       expect(instance).to.have.property('unit');
 
       // set and verify value
-      var validValue = generateMockData('UnitOfLength');
-      instance.unit = validValue;
-      expect(instance.unit).to.equal(validValue);
+      var expectedValue = generateMockData('UnitOfLength');
+      instance.unit = expectedValue;
+      expect(instance.unit).to.equal(expectedValue);
     });
 
   });

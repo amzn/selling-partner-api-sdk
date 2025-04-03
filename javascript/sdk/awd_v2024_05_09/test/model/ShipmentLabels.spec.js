@@ -45,24 +45,24 @@
       expect(instance).to.be.a(TheSellingPartnerApiForAmazonWarehousingAndDistribution.ShipmentLabels);
     });
 
-    it('should have the property labelDownloadURL (base name: "labelDownloadURL")', function() {
+    it('should have the property labelDownloadURL', function() {
       // verify property exists
       expect(instance).to.have.property('labelDownloadURL');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.labelDownloadURL = validValue;
-      expect(instance.labelDownloadURL).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.labelDownloadURL = expectedValue;
+      expect(instance.labelDownloadURL).to.equal(expectedValue);
     });
 
-    it('should have the property labelStatus (base name: "labelStatus")', function() {
+    it('should have the property labelStatus', function() {
       // verify property exists
       expect(instance).to.have.property('labelStatus');
 
       // set and verify value
-      var validValue = generateMockData('LabelStatus');
-      instance.labelStatus = validValue;
-      expect(instance.labelStatus).to.equal(validValue);
+      var expectedValue = generateMockData('LabelStatus');
+      instance.labelStatus = expectedValue;
+      expect(instance.labelStatus).to.equal(expectedValue);
     });
 
   });

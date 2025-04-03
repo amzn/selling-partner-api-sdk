@@ -45,64 +45,64 @@
       expect(instance).to.be.a(SellingPartnerApiForAContentManagement.AsinMetadata);
     });
 
-    it('should have the property asin (base name: "asin")', function() {
+    it('should have the property asin', function() {
       // verify property exists
       expect(instance).to.have.property('asin');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.asin = validValue;
-      expect(instance.asin).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.asin = expectedValue;
+      expect(instance.asin).to.equal(expectedValue);
     });
 
-    it('should have the property badgeSet (base name: "badgeSet")', function() {
+    it('should have the property badgeSet', function() {
       // verify property exists
       expect(instance).to.have.property('badgeSet');
 
       // set and verify value
-      var validValue = generateMockData('[AsinBadge]', true);
-      instance.badgeSet = validValue;
-      expect(instance.badgeSet).to.equal(validValue);
+      var expectedValue = generateMockData('AsinBadge', true);
+      instance.badgeSet = expectedValue;
+      expect(instance.badgeSet).to.equal(expectedValue);
     });
 
-    it('should have the property parent (base name: "parent")', function() {
+    it('should have the property parent', function() {
       // verify property exists
       expect(instance).to.have.property('parent');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.parent = validValue;
-      expect(instance.parent).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.parent = expectedValue;
+      expect(instance.parent).to.equal(expectedValue);
     });
 
-    it('should have the property title (base name: "title")', function() {
+    it('should have the property title', function() {
       // verify property exists
       expect(instance).to.have.property('title');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.title = validValue;
-      expect(instance.title).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.title = expectedValue;
+      expect(instance.title).to.equal(expectedValue);
     });
 
-    it('should have the property imageUrl (base name: "imageUrl")', function() {
+    it('should have the property imageUrl', function() {
       // verify property exists
       expect(instance).to.have.property('imageUrl');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.imageUrl = validValue;
-      expect(instance.imageUrl).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.imageUrl = expectedValue;
+      expect(instance.imageUrl).to.equal(expectedValue);
     });
 
-    it('should have the property contentReferenceKeySet (base name: "contentReferenceKeySet")', function() {
+    it('should have the property contentReferenceKeySet', function() {
       // verify property exists
       expect(instance).to.have.property('contentReferenceKeySet');
 
       // set and verify value
-      var validValue = generateMockData('[String]', true);
-      instance.contentReferenceKeySet = validValue;
-      expect(instance.contentReferenceKeySet).to.equal(validValue);
+      var expectedValue = generateMockData('String', true);
+      instance.contentReferenceKeySet = expectedValue;
+      expect(instance.contentReferenceKeySet).to.equal(expectedValue);
     });
 
   });

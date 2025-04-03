@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForMerchantFulfillment.AvailableCarrierWillPickUpOption);
     });
 
-    it('should have the property carrierWillPickUpOption (base name: "CarrierWillPickUpOption")', function() {
+    it('should have the property carrierWillPickUpOption', function() {
       // verify property exists
       expect(instance).to.have.property('carrierWillPickUpOption');
 
       // set and verify value
-      var validValue = generateMockData('CarrierWillPickUpOption');
-      instance.carrierWillPickUpOption = validValue;
-      expect(instance.carrierWillPickUpOption).to.equal(validValue);
+      var expectedValue = generateMockData('CarrierWillPickUpOption');
+      instance.carrierWillPickUpOption = expectedValue;
+      expect(instance.carrierWillPickUpOption).to.equal(expectedValue);
     });
 
-    it('should have the property charge (base name: "Charge")', function() {
+    it('should have the property charge', function() {
       // verify property exists
       expect(instance).to.have.property('charge');
 
       // set and verify value
-      var validValue = generateMockData('CurrencyAmount');
-      instance.charge = validValue;
-      expect(instance.charge).to.equal(validValue);
+      var expectedValue = generateMockData('CurrencyAmount');
+      instance.charge = expectedValue;
+      expect(instance.charge).to.equal(expectedValue);
     });
 
   });

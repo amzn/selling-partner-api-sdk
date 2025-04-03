@@ -45,24 +45,24 @@
       expect(instance).to.be.a(TheSellingPartnerApiForAmazonWarehousingAndDistribution.TrackingDetails);
     });
 
-    it('should have the property carrierCode (base name: "carrierCode")', function() {
+    it('should have the property carrierCode', function() {
       // verify property exists
       expect(instance).to.have.property('carrierCode');
 
       // set and verify value
-      var validValue = generateMockData('CarrierCode');
-      instance.carrierCode = validValue;
-      expect(instance.carrierCode).to.equal(validValue);
+      var expectedValue = generateMockData('CarrierCode');
+      instance.carrierCode = expectedValue;
+      expect(instance.carrierCode).to.equal(expectedValue);
     });
 
-    it('should have the property bookingId (base name: "bookingId")', function() {
+    it('should have the property bookingId', function() {
       // verify property exists
       expect(instance).to.have.property('bookingId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.bookingId = validValue;
-      expect(instance.bookingId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.bookingId = expectedValue;
+      expect(instance.bookingId).to.equal(expectedValue);
     });
 
   });

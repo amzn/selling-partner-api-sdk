@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForMerchantFulfillment.ItemLevelFields);
     });
 
-    it('should have the property asin (base name: "Asin")', function() {
+    it('should have the property asin', function() {
       // verify property exists
       expect(instance).to.have.property('asin');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.asin = validValue;
-      expect(instance.asin).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.asin = expectedValue;
+      expect(instance.asin).to.equal(expectedValue);
     });
 
-    it('should have the property additionalInputs (base name: "AdditionalInputs")', function() {
+    it('should have the property additionalInputs', function() {
       // verify property exists
       expect(instance).to.have.property('additionalInputs');
 
       // set and verify value
-      var validValue = generateMockData('[AdditionalInputs]', true);
-      instance.additionalInputs = validValue;
-      expect(instance.additionalInputs).to.equal(validValue);
+      var expectedValue = generateMockData('AdditionalInputs', true);
+      instance.additionalInputs = expectedValue;
+      expect(instance.additionalInputs).to.equal(expectedValue);
     });
 
   });

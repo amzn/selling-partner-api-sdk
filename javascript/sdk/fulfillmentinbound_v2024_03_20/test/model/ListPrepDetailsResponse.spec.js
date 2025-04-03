@@ -45,14 +45,14 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.ListPrepDetailsResponse);
     });
 
-    it('should have the property mskuPrepDetails (base name: "mskuPrepDetails")', function() {
+    it('should have the property mskuPrepDetails', function() {
       // verify property exists
       expect(instance).to.have.property('mskuPrepDetails');
 
       // set and verify value
-      var validValue = generateMockData('[MskuPrepDetail]', true);
-      instance.mskuPrepDetails = validValue;
-      expect(instance.mskuPrepDetails).to.equal(validValue);
+      var expectedValue = generateMockData('MskuPrepDetail', true);
+      instance.mskuPrepDetails = expectedValue;
+      expect(instance.mskuPrepDetails).to.equal(expectedValue);
     });
 
   });

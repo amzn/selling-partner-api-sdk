@@ -45,14 +45,14 @@
       expect(instance).to.be.a(AmazonShippingApi.GetCarrierAccountsRequest);
     });
 
-    it('should have the property clientReferenceDetails (base name: "clientReferenceDetails")', function() {
+    it('should have the property clientReferenceDetails', function() {
       // verify property exists
       expect(instance).to.have.property('clientReferenceDetails');
 
       // set and verify value
-      var validValue = generateMockData('[ClientReferenceDetail]', true);
-      instance.clientReferenceDetails = validValue;
-      expect(instance.clientReferenceDetails).to.equal(validValue);
+      var expectedValue = generateMockData('ClientReferenceDetail', true);
+      instance.clientReferenceDetails = expectedValue;
+      expect(instance.clientReferenceDetails).to.equal(expectedValue);
     });
 
   });

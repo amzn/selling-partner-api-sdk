@@ -45,54 +45,54 @@
       expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.GetFeatureSkuResult);
     });
 
-    it('should have the property marketplaceId (base name: "marketplaceId")', function() {
+    it('should have the property marketplaceId', function() {
       // verify property exists
       expect(instance).to.have.property('marketplaceId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.marketplaceId = validValue;
-      expect(instance.marketplaceId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.marketplaceId = expectedValue;
+      expect(instance.marketplaceId).to.equal(expectedValue);
     });
 
-    it('should have the property featureName (base name: "featureName")', function() {
+    it('should have the property featureName', function() {
       // verify property exists
       expect(instance).to.have.property('featureName');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.featureName = validValue;
-      expect(instance.featureName).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.featureName = expectedValue;
+      expect(instance.featureName).to.equal(expectedValue);
     });
 
-    it('should have the property isEligible (base name: "isEligible")', function() {
+    it('should have the property isEligible', function() {
       // verify property exists
       expect(instance).to.have.property('isEligible');
 
       // set and verify value
-      var validValue = generateMockData('Boolean');
-      instance.isEligible = validValue;
-      expect(instance.isEligible).to.equal(validValue);
+      var expectedValue = generateMockData('Boolean');
+      instance.isEligible = expectedValue;
+      expect(instance.isEligible).to.equal(expectedValue);
     });
 
-    it('should have the property ineligibleReasons (base name: "ineligibleReasons")', function() {
+    it('should have the property ineligibleReasons', function() {
       // verify property exists
       expect(instance).to.have.property('ineligibleReasons');
 
       // set and verify value
-      var validValue = generateMockData('[String]', true);
-      instance.ineligibleReasons = validValue;
-      expect(instance.ineligibleReasons).to.equal(validValue);
+      var expectedValue = generateMockData('String', true);
+      instance.ineligibleReasons = expectedValue;
+      expect(instance.ineligibleReasons).to.equal(expectedValue);
     });
 
-    it('should have the property skuInfo (base name: "skuInfo")', function() {
+    it('should have the property skuInfo', function() {
       // verify property exists
       expect(instance).to.have.property('skuInfo');
 
       // set and verify value
-      var validValue = generateMockData('FeatureSku');
-      instance.skuInfo = validValue;
-      expect(instance.skuInfo).to.equal(validValue);
+      var expectedValue = generateMockData('FeatureSku');
+      instance.skuInfo = expectedValue;
+      expect(instance.skuInfo).to.equal(expectedValue);
     });
 
   });

@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForRetailProcurementPayments.AdditionalDetails);
     });
 
-    it('should have the property type (base name: "type")', function() {
+    it('should have the property type', function() {
       // verify property exists
       expect(instance).to.have.property('type');
 
       // set and verify value
-      var validValue = ['SUR', 'OCR', 'CartonCount', ][0];
-      instance.type = validValue;
-      expect(instance.type).to.equal(validValue);
+      var expectedValue = ['SUR', 'OCR', 'CartonCount', ][0];
+      instance.type = expectedValue;
+      expect(instance.type).to.equal(expectedValue);
     });
 
-    it('should have the property detail (base name: "detail")', function() {
+    it('should have the property detail', function() {
       // verify property exists
       expect(instance).to.have.property('detail');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.detail = validValue;
-      expect(instance.detail).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.detail = expectedValue;
+      expect(instance.detail).to.equal(expectedValue);
     });
 
-    it('should have the property languageCode (base name: "languageCode")', function() {
+    it('should have the property languageCode', function() {
       // verify property exists
       expect(instance).to.have.property('languageCode');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.languageCode = validValue;
-      expect(instance.languageCode).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.languageCode = expectedValue;
+      expect(instance.languageCode).to.equal(expectedValue);
     });
 
   });

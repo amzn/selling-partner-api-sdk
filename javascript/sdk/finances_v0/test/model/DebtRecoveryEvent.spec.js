@@ -45,54 +45,54 @@
       expect(instance).to.be.a(SellingPartnerApiForFinances.DebtRecoveryEvent);
     });
 
-    it('should have the property debtRecoveryType (base name: "DebtRecoveryType")', function() {
+    it('should have the property debtRecoveryType', function() {
       // verify property exists
       expect(instance).to.have.property('debtRecoveryType');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.debtRecoveryType = validValue;
-      expect(instance.debtRecoveryType).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.debtRecoveryType = expectedValue;
+      expect(instance.debtRecoveryType).to.equal(expectedValue);
     });
 
-    it('should have the property recoveryAmount (base name: "RecoveryAmount")', function() {
+    it('should have the property recoveryAmount', function() {
       // verify property exists
       expect(instance).to.have.property('recoveryAmount');
 
       // set and verify value
-      var validValue = generateMockData('Currency');
-      instance.recoveryAmount = validValue;
-      expect(instance.recoveryAmount).to.equal(validValue);
+      var expectedValue = generateMockData('Currency');
+      instance.recoveryAmount = expectedValue;
+      expect(instance.recoveryAmount).to.equal(expectedValue);
     });
 
-    it('should have the property overPaymentCredit (base name: "OverPaymentCredit")', function() {
+    it('should have the property overPaymentCredit', function() {
       // verify property exists
       expect(instance).to.have.property('overPaymentCredit');
 
       // set and verify value
-      var validValue = generateMockData('Currency');
-      instance.overPaymentCredit = validValue;
-      expect(instance.overPaymentCredit).to.equal(validValue);
+      var expectedValue = generateMockData('Currency');
+      instance.overPaymentCredit = expectedValue;
+      expect(instance.overPaymentCredit).to.equal(expectedValue);
     });
 
-    it('should have the property debtRecoveryItemList (base name: "DebtRecoveryItemList")', function() {
+    it('should have the property debtRecoveryItemList', function() {
       // verify property exists
       expect(instance).to.have.property('debtRecoveryItemList');
 
       // set and verify value
-      var validValue = generateMockData('[DebtRecoveryItem]', true);
-      instance.debtRecoveryItemList = validValue;
-      expect(instance.debtRecoveryItemList).to.equal(validValue);
+      var expectedValue = generateMockData('DebtRecoveryItem', true);
+      instance.debtRecoveryItemList = expectedValue;
+      expect(instance.debtRecoveryItemList).to.equal(expectedValue);
     });
 
-    it('should have the property chargeInstrumentList (base name: "ChargeInstrumentList")', function() {
+    it('should have the property chargeInstrumentList', function() {
       // verify property exists
       expect(instance).to.have.property('chargeInstrumentList');
 
       // set and verify value
-      var validValue = generateMockData('[ChargeInstrument]', true);
-      instance.chargeInstrumentList = validValue;
-      expect(instance.chargeInstrumentList).to.equal(validValue);
+      var expectedValue = generateMockData('ChargeInstrument', true);
+      instance.chargeInstrumentList = expectedValue;
+      expect(instance.chargeInstrumentList).to.equal(expectedValue);
     });
 
   });

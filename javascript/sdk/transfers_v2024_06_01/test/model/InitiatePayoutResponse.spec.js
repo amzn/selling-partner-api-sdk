@@ -45,14 +45,14 @@
       expect(instance).to.be.a(TheSellingPartnerApiForTransfers.InitiatePayoutResponse);
     });
 
-    it('should have the property payoutReferenceId (base name: "payoutReferenceId")', function() {
+    it('should have the property payoutReferenceId', function() {
       // verify property exists
       expect(instance).to.have.property('payoutReferenceId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.payoutReferenceId = validValue;
-      expect(instance.payoutReferenceId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.payoutReferenceId = expectedValue;
+      expect(instance.payoutReferenceId).to.equal(expectedValue);
     });
 
   });

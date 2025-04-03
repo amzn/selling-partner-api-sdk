@@ -45,44 +45,44 @@
       expect(instance).to.be.a(AmazonShippingApi.RateItem);
     });
 
-    it('should have the property rateItemID (base name: "rateItemID")', function() {
+    it('should have the property rateItemID', function() {
       // verify property exists
       expect(instance).to.have.property('rateItemID');
 
       // set and verify value
-      var validValue = generateMockData('RateItemID');
-      instance.rateItemID = validValue;
-      expect(instance.rateItemID).to.equal(validValue);
+      var expectedValue = generateMockData('RateItemID');
+      instance.rateItemID = expectedValue;
+      expect(instance.rateItemID).to.equal(expectedValue);
     });
 
-    it('should have the property rateItemType (base name: "rateItemType")', function() {
+    it('should have the property rateItemType', function() {
       // verify property exists
       expect(instance).to.have.property('rateItemType');
 
       // set and verify value
-      var validValue = generateMockData('RateItemType');
-      instance.rateItemType = validValue;
-      expect(instance.rateItemType).to.equal(validValue);
+      var expectedValue = generateMockData('RateItemType');
+      instance.rateItemType = expectedValue;
+      expect(instance.rateItemType).to.equal(expectedValue);
     });
 
-    it('should have the property rateItemCharge (base name: "rateItemCharge")', function() {
+    it('should have the property rateItemCharge', function() {
       // verify property exists
       expect(instance).to.have.property('rateItemCharge');
 
       // set and verify value
-      var validValue = generateMockData('Currency');
-      instance.rateItemCharge = validValue;
-      expect(instance.rateItemCharge).to.equal(validValue);
+      var expectedValue = generateMockData('Currency');
+      instance.rateItemCharge = expectedValue;
+      expect(instance.rateItemCharge).to.equal(expectedValue);
     });
 
-    it('should have the property rateItemNameLocalization (base name: "rateItemNameLocalization")', function() {
+    it('should have the property rateItemNameLocalization', function() {
       // verify property exists
       expect(instance).to.have.property('rateItemNameLocalization');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.rateItemNameLocalization = validValue;
-      expect(instance.rateItemNameLocalization).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.rateItemNameLocalization = expectedValue;
+      expect(instance.rateItemNameLocalization).to.equal(expectedValue);
     });
 
   });

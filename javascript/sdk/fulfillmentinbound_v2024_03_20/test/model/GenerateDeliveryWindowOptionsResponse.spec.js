@@ -45,14 +45,14 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.GenerateDeliveryWindowOptionsResponse);
     });
 
-    it('should have the property operationId (base name: "operationId")', function() {
+    it('should have the property operationId', function() {
       // verify property exists
       expect(instance).to.have.property('operationId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.operationId = validValue;
-      expect(instance.operationId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.operationId = expectedValue;
+      expect(instance.operationId).to.equal(expectedValue);
     });
 
   });

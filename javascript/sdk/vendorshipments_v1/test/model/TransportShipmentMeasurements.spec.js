@@ -45,54 +45,54 @@
       expect(instance).to.be.a(SellingPartnerApiForRetailProcurementShipments.TransportShipmentMeasurements);
     });
 
-    it('should have the property totalCartonCount (base name: "totalCartonCount")', function() {
+    it('should have the property totalCartonCount', function() {
       // verify property exists
       expect(instance).to.have.property('totalCartonCount');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.totalCartonCount = validValue;
-      expect(instance.totalCartonCount).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.totalCartonCount = expectedValue;
+      expect(instance.totalCartonCount).to.equal(expectedValue);
     });
 
-    it('should have the property totalPalletStackable (base name: "totalPalletStackable")', function() {
+    it('should have the property totalPalletStackable', function() {
       // verify property exists
       expect(instance).to.have.property('totalPalletStackable');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.totalPalletStackable = validValue;
-      expect(instance.totalPalletStackable).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.totalPalletStackable = expectedValue;
+      expect(instance.totalPalletStackable).to.equal(expectedValue);
     });
 
-    it('should have the property totalPalletNonStackable (base name: "totalPalletNonStackable")', function() {
+    it('should have the property totalPalletNonStackable', function() {
       // verify property exists
       expect(instance).to.have.property('totalPalletNonStackable');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.totalPalletNonStackable = validValue;
-      expect(instance.totalPalletNonStackable).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.totalPalletNonStackable = expectedValue;
+      expect(instance.totalPalletNonStackable).to.equal(expectedValue);
     });
 
-    it('should have the property shipmentWeight (base name: "shipmentWeight")', function() {
+    it('should have the property shipmentWeight', function() {
       // verify property exists
       expect(instance).to.have.property('shipmentWeight');
 
       // set and verify value
-      var validValue = generateMockData('Weight');
-      instance.shipmentWeight = validValue;
-      expect(instance.shipmentWeight).to.equal(validValue);
+      var expectedValue = generateMockData('Weight');
+      instance.shipmentWeight = expectedValue;
+      expect(instance.shipmentWeight).to.equal(expectedValue);
     });
 
-    it('should have the property shipmentVolume (base name: "shipmentVolume")', function() {
+    it('should have the property shipmentVolume', function() {
       // verify property exists
       expect(instance).to.have.property('shipmentVolume');
 
       // set and verify value
-      var validValue = generateMockData('Volume');
-      instance.shipmentVolume = validValue;
-      expect(instance.shipmentVolume).to.equal(validValue);
+      var expectedValue = generateMockData('Volume');
+      instance.shipmentVolume = expectedValue;
+      expect(instance.shipmentVolume).to.equal(expectedValue);
     });
 
   });

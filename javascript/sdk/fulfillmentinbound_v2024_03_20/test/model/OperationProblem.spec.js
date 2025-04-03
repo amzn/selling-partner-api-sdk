@@ -45,44 +45,44 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.OperationProblem);
     });
 
-    it('should have the property code (base name: "code")', function() {
+    it('should have the property code', function() {
       // verify property exists
       expect(instance).to.have.property('code');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.code = validValue;
-      expect(instance.code).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.code = expectedValue;
+      expect(instance.code).to.equal(expectedValue);
     });
 
-    it('should have the property details (base name: "details")', function() {
+    it('should have the property details', function() {
       // verify property exists
       expect(instance).to.have.property('details');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.details = validValue;
-      expect(instance.details).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.details = expectedValue;
+      expect(instance.details).to.equal(expectedValue);
     });
 
-    it('should have the property message (base name: "message")', function() {
+    it('should have the property message', function() {
       // verify property exists
       expect(instance).to.have.property('message');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.message = validValue;
-      expect(instance.message).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.message = expectedValue;
+      expect(instance.message).to.equal(expectedValue);
     });
 
-    it('should have the property severity (base name: "severity")', function() {
+    it('should have the property severity', function() {
       // verify property exists
       expect(instance).to.have.property('severity');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.severity = validValue;
-      expect(instance.severity).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.severity = expectedValue;
+      expect(instance.severity).to.equal(expectedValue);
     });
 
   });

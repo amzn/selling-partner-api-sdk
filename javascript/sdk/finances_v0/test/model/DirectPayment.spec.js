@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForFinances.DirectPayment);
     });
 
-    it('should have the property directPaymentType (base name: "DirectPaymentType")', function() {
+    it('should have the property directPaymentType', function() {
       // verify property exists
       expect(instance).to.have.property('directPaymentType');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.directPaymentType = validValue;
-      expect(instance.directPaymentType).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.directPaymentType = expectedValue;
+      expect(instance.directPaymentType).to.equal(expectedValue);
     });
 
-    it('should have the property directPaymentAmount (base name: "DirectPaymentAmount")', function() {
+    it('should have the property directPaymentAmount', function() {
       // verify property exists
       expect(instance).to.have.property('directPaymentAmount');
 
       // set and verify value
-      var validValue = generateMockData('Currency');
-      instance.directPaymentAmount = validValue;
-      expect(instance.directPaymentAmount).to.equal(validValue);
+      var expectedValue = generateMockData('Currency');
+      instance.directPaymentAmount = expectedValue;
+      expect(instance.directPaymentAmount).to.equal(expectedValue);
     });
 
   });

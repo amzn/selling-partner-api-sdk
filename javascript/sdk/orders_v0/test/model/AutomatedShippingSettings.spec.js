@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForOrders.AutomatedShippingSettings);
     });
 
-    it('should have the property hasAutomatedShippingSettings (base name: "HasAutomatedShippingSettings")', function() {
+    it('should have the property hasAutomatedShippingSettings', function() {
       // verify property exists
       expect(instance).to.have.property('hasAutomatedShippingSettings');
 
       // set and verify value
-      var validValue = generateMockData('Boolean');
-      instance.hasAutomatedShippingSettings = validValue;
-      expect(instance.hasAutomatedShippingSettings).to.equal(validValue);
+      var expectedValue = generateMockData('Boolean');
+      instance.hasAutomatedShippingSettings = expectedValue;
+      expect(instance.hasAutomatedShippingSettings).to.equal(expectedValue);
     });
 
-    it('should have the property automatedCarrier (base name: "AutomatedCarrier")', function() {
+    it('should have the property automatedCarrier', function() {
       // verify property exists
       expect(instance).to.have.property('automatedCarrier');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.automatedCarrier = validValue;
-      expect(instance.automatedCarrier).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.automatedCarrier = expectedValue;
+      expect(instance.automatedCarrier).to.equal(expectedValue);
     });
 
-    it('should have the property automatedShipMethod (base name: "AutomatedShipMethod")', function() {
+    it('should have the property automatedShipMethod', function() {
       // verify property exists
       expect(instance).to.have.property('automatedShipMethod');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.automatedShipMethod = validValue;
-      expect(instance.automatedShipMethod).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.automatedShipMethod = expectedValue;
+      expect(instance.automatedShipMethod).to.equal(expectedValue);
     });
 
   });

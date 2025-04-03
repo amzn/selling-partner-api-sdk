@@ -45,54 +45,54 @@
       expect(instance).to.be.a(SellingPartnerApiForOrders.ItemBuyerInfo);
     });
 
-    it('should have the property buyerCustomizedInfo (base name: "BuyerCustomizedInfo")', function() {
+    it('should have the property buyerCustomizedInfo', function() {
       // verify property exists
       expect(instance).to.have.property('buyerCustomizedInfo');
 
       // set and verify value
-      var validValue = generateMockData('BuyerCustomizedInfoDetail');
-      instance.buyerCustomizedInfo = validValue;
-      expect(instance.buyerCustomizedInfo).to.equal(validValue);
+      var expectedValue = generateMockData('BuyerCustomizedInfoDetail');
+      instance.buyerCustomizedInfo = expectedValue;
+      expect(instance.buyerCustomizedInfo).to.equal(expectedValue);
     });
 
-    it('should have the property giftWrapPrice (base name: "GiftWrapPrice")', function() {
+    it('should have the property giftWrapPrice', function() {
       // verify property exists
       expect(instance).to.have.property('giftWrapPrice');
 
       // set and verify value
-      var validValue = generateMockData('Money');
-      instance.giftWrapPrice = validValue;
-      expect(instance.giftWrapPrice).to.equal(validValue);
+      var expectedValue = generateMockData('Money');
+      instance.giftWrapPrice = expectedValue;
+      expect(instance.giftWrapPrice).to.equal(expectedValue);
     });
 
-    it('should have the property giftWrapTax (base name: "GiftWrapTax")', function() {
+    it('should have the property giftWrapTax', function() {
       // verify property exists
       expect(instance).to.have.property('giftWrapTax');
 
       // set and verify value
-      var validValue = generateMockData('Money');
-      instance.giftWrapTax = validValue;
-      expect(instance.giftWrapTax).to.equal(validValue);
+      var expectedValue = generateMockData('Money');
+      instance.giftWrapTax = expectedValue;
+      expect(instance.giftWrapTax).to.equal(expectedValue);
     });
 
-    it('should have the property giftMessageText (base name: "GiftMessageText")', function() {
+    it('should have the property giftMessageText', function() {
       // verify property exists
       expect(instance).to.have.property('giftMessageText');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.giftMessageText = validValue;
-      expect(instance.giftMessageText).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.giftMessageText = expectedValue;
+      expect(instance.giftMessageText).to.equal(expectedValue);
     });
 
-    it('should have the property giftWrapLevel (base name: "GiftWrapLevel")', function() {
+    it('should have the property giftWrapLevel', function() {
       // verify property exists
       expect(instance).to.have.property('giftWrapLevel');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.giftWrapLevel = validValue;
-      expect(instance.giftWrapLevel).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.giftWrapLevel = expectedValue;
+      expect(instance.giftWrapLevel).to.equal(expectedValue);
     });
 
   });

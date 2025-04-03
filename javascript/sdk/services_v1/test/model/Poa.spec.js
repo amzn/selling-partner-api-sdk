@@ -45,54 +45,54 @@
       expect(instance).to.be.a(SellingPartnerApiForServices.Poa);
     });
 
-    it('should have the property appointmentTime (base name: "appointmentTime")', function() {
+    it('should have the property appointmentTime', function() {
       // verify property exists
       expect(instance).to.have.property('appointmentTime');
 
       // set and verify value
-      var validValue = generateMockData('AppointmentTime');
-      instance.appointmentTime = validValue;
-      expect(instance.appointmentTime).to.equal(validValue);
+      var expectedValue = generateMockData('AppointmentTime');
+      instance.appointmentTime = expectedValue;
+      expect(instance.appointmentTime).to.equal(expectedValue);
     });
 
-    it('should have the property technicians (base name: "technicians")', function() {
+    it('should have the property technicians', function() {
       // verify property exists
       expect(instance).to.have.property('technicians');
 
       // set and verify value
-      var validValue = generateMockData('[Technician]', true);
-      instance.technicians = validValue;
-      expect(instance.technicians).to.equal(validValue);
+      var expectedValue = generateMockData('Technician', true);
+      instance.technicians = expectedValue;
+      expect(instance.technicians).to.equal(expectedValue);
     });
 
-    it('should have the property uploadingTechnician (base name: "uploadingTechnician")', function() {
+    it('should have the property uploadingTechnician', function() {
       // verify property exists
       expect(instance).to.have.property('uploadingTechnician');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.uploadingTechnician = validValue;
-      expect(instance.uploadingTechnician).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.uploadingTechnician = expectedValue;
+      expect(instance.uploadingTechnician).to.equal(expectedValue);
     });
 
-    it('should have the property uploadTime (base name: "uploadTime")', function() {
+    it('should have the property uploadTime', function() {
       // verify property exists
       expect(instance).to.have.property('uploadTime');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.uploadTime = validValue;
-      expect(instance.uploadTime).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.uploadTime = expectedValue;
+      expect(instance.uploadTime).to.equal(expectedValue);
     });
 
-    it('should have the property poaType (base name: "poaType")', function() {
+    it('should have the property poaType', function() {
       // verify property exists
       expect(instance).to.have.property('poaType');
 
       // set and verify value
-      var validValue = ['NO_SIGNATURE_DUMMY_POS', 'CUSTOMER_SIGNATURE', 'DUMMY_RECEIPT', 'POA_RECEIPT', ][0];
-      instance.poaType = validValue;
-      expect(instance.poaType).to.equal(validValue);
+      var expectedValue = ['NO_SIGNATURE_DUMMY_POS', 'CUSTOMER_SIGNATURE', 'DUMMY_RECEIPT', 'POA_RECEIPT', ][0];
+      instance.poaType = expectedValue;
+      expect(instance.poaType).to.equal(expectedValue);
     });
 
   });

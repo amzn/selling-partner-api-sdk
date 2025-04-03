@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForAContentManagement.StandardMultipleImageTextModule);
     });
 
-    it('should have the property blocks (base name: "blocks")', function() {
+    it('should have the property blocks', function() {
       // verify property exists
       expect(instance).to.have.property('blocks');
 
       // set and verify value
-      var validValue = generateMockData('[StandardImageTextCaptionBlock]', true);
-      instance.blocks = validValue;
-      expect(instance.blocks).to.equal(validValue);
+      var expectedValue = generateMockData('StandardImageTextCaptionBlock', true);
+      instance.blocks = expectedValue;
+      expect(instance.blocks).to.equal(expectedValue);
     });
 
   });

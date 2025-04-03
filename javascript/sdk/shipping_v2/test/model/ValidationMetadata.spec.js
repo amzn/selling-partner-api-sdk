@@ -45,34 +45,34 @@
       expect(instance).to.be.a(AmazonShippingApi.ValidationMetadata);
     });
 
-    it('should have the property errorMessage (base name: "errorMessage")', function() {
+    it('should have the property errorMessage', function() {
       // verify property exists
       expect(instance).to.have.property('errorMessage');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.errorMessage = validValue;
-      expect(instance.errorMessage).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.errorMessage = expectedValue;
+      expect(instance.errorMessage).to.equal(expectedValue);
     });
 
-    it('should have the property validationStrategy (base name: "validationStrategy")', function() {
+    it('should have the property validationStrategy', function() {
       // verify property exists
       expect(instance).to.have.property('validationStrategy');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.validationStrategy = validValue;
-      expect(instance.validationStrategy).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.validationStrategy = expectedValue;
+      expect(instance.validationStrategy).to.equal(expectedValue);
     });
 
-    it('should have the property value (base name: "value")', function() {
+    it('should have the property value', function() {
       // verify property exists
       expect(instance).to.have.property('value');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.value = validValue;
-      expect(instance.value).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.value = expectedValue;
+      expect(instance.value).to.equal(expectedValue);
     });
 
   });

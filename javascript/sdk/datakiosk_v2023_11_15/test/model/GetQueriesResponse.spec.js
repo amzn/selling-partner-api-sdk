@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForDataKiosk.GetQueriesResponse);
     });
 
-    it('should have the property queries (base name: "queries")', function() {
+    it('should have the property queries', function() {
       // verify property exists
       expect(instance).to.have.property('queries');
 
       // set and verify value
-      var validValue = generateMockData('[Query]', true);
-      instance.queries = validValue;
-      expect(instance.queries).to.equal(validValue);
+      var expectedValue = generateMockData('Query', true);
+      instance.queries = expectedValue;
+      expect(instance.queries).to.equal(expectedValue);
     });
 
-    it('should have the property pagination (base name: "pagination")', function() {
+    it('should have the property pagination', function() {
       // verify property exists
       expect(instance).to.have.property('pagination');
 
       // set and verify value
-      var validValue = generateMockData('GetQueriesResponsePagination');
-      instance.pagination = validValue;
-      expect(instance.pagination).to.equal(validValue);
+      var expectedValue = generateMockData('GetQueriesResponsePagination');
+      instance.pagination = expectedValue;
+      expect(instance.pagination).to.equal(expectedValue);
     });
 
   });

@@ -45,24 +45,24 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.ShipmentSource);
     });
 
-    it('should have the property address (base name: "address")', function() {
+    it('should have the property address', function() {
       // verify property exists
       expect(instance).to.have.property('address');
 
       // set and verify value
-      var validValue = generateMockData('Address');
-      instance.address = validValue;
-      expect(instance.address).to.equal(validValue);
+      var expectedValue = generateMockData('Address');
+      instance.address = expectedValue;
+      expect(instance.address).to.equal(expectedValue);
     });
 
-    it('should have the property sourceType (base name: "sourceType")', function() {
+    it('should have the property sourceType', function() {
       // verify property exists
       expect(instance).to.have.property('sourceType');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.sourceType = validValue;
-      expect(instance.sourceType).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.sourceType = expectedValue;
+      expect(instance.sourceType).to.equal(expectedValue);
     });
 
   });

@@ -45,14 +45,14 @@
       expect(instance).to.be.a(AmazonShippingApi.ServiceSelection);
     });
 
-    it('should have the property serviceId (base name: "serviceId")', function() {
+    it('should have the property serviceId', function() {
       // verify property exists
       expect(instance).to.have.property('serviceId');
 
       // set and verify value
-      var validValue = generateMockData('[String]', true);
-      instance.serviceId = validValue;
-      expect(instance.serviceId).to.equal(validValue);
+      var expectedValue = generateMockData('String', true);
+      instance.serviceId = expectedValue;
+      expect(instance.serviceId).to.equal(expectedValue);
     });
 
   });

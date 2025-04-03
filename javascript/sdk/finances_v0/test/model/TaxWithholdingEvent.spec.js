@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForFinances.TaxWithholdingEvent);
     });
 
-    it('should have the property postedDate (base name: "PostedDate")', function() {
+    it('should have the property postedDate', function() {
       // verify property exists
       expect(instance).to.have.property('postedDate');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.postedDate = validValue;
-      expect(instance.postedDate).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.postedDate = expectedValue;
+      expect(instance.postedDate).to.equal(expectedValue);
     });
 
-    it('should have the property baseAmount (base name: "BaseAmount")', function() {
+    it('should have the property baseAmount', function() {
       // verify property exists
       expect(instance).to.have.property('baseAmount');
 
       // set and verify value
-      var validValue = generateMockData('Currency');
-      instance.baseAmount = validValue;
-      expect(instance.baseAmount).to.equal(validValue);
+      var expectedValue = generateMockData('Currency');
+      instance.baseAmount = expectedValue;
+      expect(instance.baseAmount).to.equal(expectedValue);
     });
 
-    it('should have the property withheldAmount (base name: "WithheldAmount")', function() {
+    it('should have the property withheldAmount', function() {
       // verify property exists
       expect(instance).to.have.property('withheldAmount');
 
       // set and verify value
-      var validValue = generateMockData('Currency');
-      instance.withheldAmount = validValue;
-      expect(instance.withheldAmount).to.equal(validValue);
+      var expectedValue = generateMockData('Currency');
+      instance.withheldAmount = expectedValue;
+      expect(instance.withheldAmount).to.equal(expectedValue);
     });
 
-    it('should have the property taxWithholdingPeriod (base name: "TaxWithholdingPeriod")', function() {
+    it('should have the property taxWithholdingPeriod', function() {
       // verify property exists
       expect(instance).to.have.property('taxWithholdingPeriod');
 
       // set and verify value
-      var validValue = generateMockData('TaxWithholdingPeriod');
-      instance.taxWithholdingPeriod = validValue;
-      expect(instance.taxWithholdingPeriod).to.equal(validValue);
+      var expectedValue = generateMockData('TaxWithholdingPeriod');
+      instance.taxWithholdingPeriod = expectedValue;
+      expect(instance.taxWithholdingPeriod).to.equal(expectedValue);
     });
 
   });

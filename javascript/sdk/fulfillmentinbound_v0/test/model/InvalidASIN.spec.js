@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForFulfillmentInbound.InvalidASIN);
     });
 
-    it('should have the property ASIN (base name: "ASIN")', function() {
+    it('should have the property ASIN', function() {
       // verify property exists
       expect(instance).to.have.property('ASIN');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.ASIN = validValue;
-      expect(instance.ASIN).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.ASIN = expectedValue;
+      expect(instance.ASIN).to.equal(expectedValue);
     });
 
-    it('should have the property errorReason (base name: "ErrorReason")', function() {
+    it('should have the property errorReason', function() {
       // verify property exists
       expect(instance).to.have.property('errorReason');
 
       // set and verify value
-      var validValue = generateMockData('ErrorReason');
-      instance.errorReason = validValue;
-      expect(instance.errorReason).to.equal(validValue);
+      var expectedValue = generateMockData('ErrorReason');
+      instance.errorReason = expectedValue;
+      expect(instance.errorReason).to.equal(expectedValue);
     });
 
   });

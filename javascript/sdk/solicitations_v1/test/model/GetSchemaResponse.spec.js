@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForSolicitations.GetSchemaResponse);
     });
 
-    it('should have the property links (base name: "_links")', function() {
+    it('should have the property links', function() {
       // verify property exists
       expect(instance).to.have.property('links');
 
       // set and verify value
-      var validValue = generateMockData('GetSchemaResponseLinks');
-      instance.links = validValue;
-      expect(instance.links).to.equal(validValue);
+      var expectedValue = generateMockData('GetSchemaResponseLinks');
+      instance.links = expectedValue;
+      expect(instance.links).to.equal(expectedValue);
     });
 
-    it('should have the property payload (base name: "payload")', function() {
+    it('should have the property payload', function() {
       // verify property exists
       expect(instance).to.have.property('payload');
 
       // set and verify value
-      var validValue = generateMockData('{String: Object}');
-      instance.payload = validValue;
-      expect(instance.payload).to.equal(validValue);
+      var expectedValue = generateMockData('{String: Object}');
+      instance.payload = expectedValue;
+      expect(instance.payload).to.equal(expectedValue);
     });
 
-    it('should have the property errors (base name: "errors")', function() {
+    it('should have the property errors', function() {
       // verify property exists
       expect(instance).to.have.property('errors');
 
       // set and verify value
-      var validValue = generateMockData('[Error]', true);
-      instance.errors = validValue;
-      expect(instance.errors).to.equal(validValue);
+      var expectedValue = generateMockData('Error', true);
+      instance.errors = expectedValue;
+      expect(instance.errors).to.equal(expectedValue);
     });
 
   });

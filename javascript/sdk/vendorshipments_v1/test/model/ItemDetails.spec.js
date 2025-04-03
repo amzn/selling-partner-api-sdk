@@ -45,54 +45,54 @@
       expect(instance).to.be.a(SellingPartnerApiForRetailProcurementShipments.ItemDetails);
     });
 
-    it('should have the property purchaseOrderNumber (base name: "purchaseOrderNumber")', function() {
+    it('should have the property purchaseOrderNumber', function() {
       // verify property exists
       expect(instance).to.have.property('purchaseOrderNumber');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.purchaseOrderNumber = validValue;
-      expect(instance.purchaseOrderNumber).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.purchaseOrderNumber = expectedValue;
+      expect(instance.purchaseOrderNumber).to.equal(expectedValue);
     });
 
-    it('should have the property lotNumber (base name: "lotNumber")', function() {
+    it('should have the property lotNumber', function() {
       // verify property exists
       expect(instance).to.have.property('lotNumber');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.lotNumber = validValue;
-      expect(instance.lotNumber).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.lotNumber = expectedValue;
+      expect(instance.lotNumber).to.equal(expectedValue);
     });
 
-    it('should have the property expiry (base name: "expiry")', function() {
+    it('should have the property expiry', function() {
       // verify property exists
       expect(instance).to.have.property('expiry');
 
       // set and verify value
-      var validValue = generateMockData('Expiry');
-      instance.expiry = validValue;
-      expect(instance.expiry).to.equal(validValue);
+      var expectedValue = generateMockData('Expiry');
+      instance.expiry = expectedValue;
+      expect(instance.expiry).to.equal(expectedValue);
     });
 
-    it('should have the property maximumRetailPrice (base name: "maximumRetailPrice")', function() {
+    it('should have the property maximumRetailPrice', function() {
       // verify property exists
       expect(instance).to.have.property('maximumRetailPrice');
 
       // set and verify value
-      var validValue = generateMockData('Money');
-      instance.maximumRetailPrice = validValue;
-      expect(instance.maximumRetailPrice).to.equal(validValue);
+      var expectedValue = generateMockData('Money');
+      instance.maximumRetailPrice = expectedValue;
+      expect(instance.maximumRetailPrice).to.equal(expectedValue);
     });
 
-    it('should have the property handlingCode (base name: "handlingCode")', function() {
+    it('should have the property handlingCode', function() {
       // verify property exists
       expect(instance).to.have.property('handlingCode');
 
       // set and verify value
-      var validValue = ['Oversized', 'Fragile', 'Food', 'HandleWithCare', ][0];
-      instance.handlingCode = validValue;
-      expect(instance.handlingCode).to.equal(validValue);
+      var expectedValue = ['Oversized', 'Fragile', 'Food', 'HandleWithCare', ][0];
+      instance.handlingCode = expectedValue;
+      expect(instance.handlingCode).to.equal(expectedValue);
     });
 
   });

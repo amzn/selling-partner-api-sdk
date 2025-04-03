@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForOrders.BuyerTaxInfo);
     });
 
-    it('should have the property companyLegalName (base name: "CompanyLegalName")', function() {
+    it('should have the property companyLegalName', function() {
       // verify property exists
       expect(instance).to.have.property('companyLegalName');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.companyLegalName = validValue;
-      expect(instance.companyLegalName).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.companyLegalName = expectedValue;
+      expect(instance.companyLegalName).to.equal(expectedValue);
     });
 
-    it('should have the property taxingRegion (base name: "TaxingRegion")', function() {
+    it('should have the property taxingRegion', function() {
       // verify property exists
       expect(instance).to.have.property('taxingRegion');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.taxingRegion = validValue;
-      expect(instance.taxingRegion).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.taxingRegion = expectedValue;
+      expect(instance.taxingRegion).to.equal(expectedValue);
     });
 
-    it('should have the property taxClassifications (base name: "TaxClassifications")', function() {
+    it('should have the property taxClassifications', function() {
       // verify property exists
       expect(instance).to.have.property('taxClassifications');
 
       // set and verify value
-      var validValue = generateMockData('[TaxClassification]', true);
-      instance.taxClassifications = validValue;
-      expect(instance.taxClassifications).to.equal(validValue);
+      var expectedValue = generateMockData('TaxClassification', true);
+      instance.taxClassifications = expectedValue;
+      expect(instance.taxClassifications).to.equal(expectedValue);
     });
 
   });

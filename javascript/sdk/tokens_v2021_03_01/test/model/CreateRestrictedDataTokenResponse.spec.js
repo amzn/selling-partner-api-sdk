@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForTokens.CreateRestrictedDataTokenResponse);
     });
 
-    it('should have the property restrictedDataToken (base name: "restrictedDataToken")', function() {
+    it('should have the property restrictedDataToken', function() {
       // verify property exists
       expect(instance).to.have.property('restrictedDataToken');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.restrictedDataToken = validValue;
-      expect(instance.restrictedDataToken).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.restrictedDataToken = expectedValue;
+      expect(instance.restrictedDataToken).to.equal(expectedValue);
     });
 
-    it('should have the property expiresIn (base name: "expiresIn")', function() {
+    it('should have the property expiresIn', function() {
       // verify property exists
       expect(instance).to.have.property('expiresIn');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.expiresIn = validValue;
-      expect(instance.expiresIn).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.expiresIn = expectedValue;
+      expect(instance.expiresIn).to.equal(expectedValue);
     });
 
   });

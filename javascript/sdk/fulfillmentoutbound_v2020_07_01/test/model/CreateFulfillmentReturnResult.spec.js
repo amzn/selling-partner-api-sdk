@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.CreateFulfillmentReturnResult);
     });
 
-    it('should have the property returnItems (base name: "returnItems")', function() {
+    it('should have the property returnItems', function() {
       // verify property exists
       expect(instance).to.have.property('returnItems');
 
       // set and verify value
-      var validValue = generateMockData('[ReturnItem]', true);
-      instance.returnItems = validValue;
-      expect(instance.returnItems).to.equal(validValue);
+      var expectedValue = generateMockData('ReturnItem', true);
+      instance.returnItems = expectedValue;
+      expect(instance.returnItems).to.equal(expectedValue);
     });
 
-    it('should have the property invalidReturnItems (base name: "invalidReturnItems")', function() {
+    it('should have the property invalidReturnItems', function() {
       // verify property exists
       expect(instance).to.have.property('invalidReturnItems');
 
       // set and verify value
-      var validValue = generateMockData('[InvalidReturnItem]', true);
-      instance.invalidReturnItems = validValue;
-      expect(instance.invalidReturnItems).to.equal(validValue);
+      var expectedValue = generateMockData('InvalidReturnItem', true);
+      instance.invalidReturnItems = expectedValue;
+      expect(instance.invalidReturnItems).to.equal(expectedValue);
     });
 
-    it('should have the property returnAuthorizations (base name: "returnAuthorizations")', function() {
+    it('should have the property returnAuthorizations', function() {
       // verify property exists
       expect(instance).to.have.property('returnAuthorizations');
 
       // set and verify value
-      var validValue = generateMockData('[ReturnAuthorization]', true);
-      instance.returnAuthorizations = validValue;
-      expect(instance.returnAuthorizations).to.equal(validValue);
+      var expectedValue = generateMockData('ReturnAuthorization', true);
+      instance.returnAuthorizations = expectedValue;
+      expect(instance.returnAuthorizations).to.equal(expectedValue);
     });
 
   });

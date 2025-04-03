@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForPricing.CompetitiveSummaryResponse);
     });
 
-    it('should have the property status (base name: "status")', function() {
+    it('should have the property status', function() {
       // verify property exists
       expect(instance).to.have.property('status');
 
       // set and verify value
-      var validValue = generateMockData('HttpStatusLine');
-      instance.status = validValue;
-      expect(instance.status).to.equal(validValue);
+      var expectedValue = generateMockData('HttpStatusLine');
+      instance.status = expectedValue;
+      expect(instance.status).to.equal(expectedValue);
     });
 
-    it('should have the property body (base name: "body")', function() {
+    it('should have the property body', function() {
       // verify property exists
       expect(instance).to.have.property('body');
 
       // set and verify value
-      var validValue = generateMockData('CompetitiveSummaryResponseBody');
-      instance.body = validValue;
-      expect(instance.body).to.equal(validValue);
+      var expectedValue = generateMockData('CompetitiveSummaryResponseBody');
+      instance.body = expectedValue;
+      expect(instance.body).to.equal(expectedValue);
     });
 
   });

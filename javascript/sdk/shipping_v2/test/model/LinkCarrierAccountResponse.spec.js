@@ -45,24 +45,24 @@
       expect(instance).to.be.a(AmazonShippingApi.LinkCarrierAccountResponse);
     });
 
-    it('should have the property registrationStatus (base name: "registrationStatus")', function() {
+    it('should have the property registrationStatus', function() {
       // verify property exists
       expect(instance).to.have.property('registrationStatus');
 
       // set and verify value
-      var validValue = generateMockData('AccountStatus');
-      instance.registrationStatus = validValue;
-      expect(instance.registrationStatus).to.equal(validValue);
+      var expectedValue = generateMockData('AccountStatus');
+      instance.registrationStatus = expectedValue;
+      expect(instance.registrationStatus).to.equal(expectedValue);
     });
 
-    it('should have the property accountId (base name: "accountId")', function() {
+    it('should have the property accountId', function() {
       // verify property exists
       expect(instance).to.have.property('accountId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.accountId = validValue;
-      expect(instance.accountId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.accountId = expectedValue;
+      expect(instance.accountId).to.equal(expectedValue);
     });
 
   });

@@ -45,34 +45,34 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.Region);
     });
 
-    it('should have the property countryCode (base name: "countryCode")', function() {
+    it('should have the property countryCode', function() {
       // verify property exists
       expect(instance).to.have.property('countryCode');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.countryCode = validValue;
-      expect(instance.countryCode).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.countryCode = expectedValue;
+      expect(instance.countryCode).to.equal(expectedValue);
     });
 
-    it('should have the property state (base name: "state")', function() {
+    it('should have the property state', function() {
       // verify property exists
       expect(instance).to.have.property('state');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.state = validValue;
-      expect(instance.state).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.state = expectedValue;
+      expect(instance.state).to.equal(expectedValue);
     });
 
-    it('should have the property warehouseId (base name: "warehouseId")', function() {
+    it('should have the property warehouseId', function() {
       // verify property exists
       expect(instance).to.have.property('warehouseId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.warehouseId = validValue;
-      expect(instance.warehouseId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.warehouseId = expectedValue;
+      expect(instance.warehouseId).to.equal(expectedValue);
     });
 
   });

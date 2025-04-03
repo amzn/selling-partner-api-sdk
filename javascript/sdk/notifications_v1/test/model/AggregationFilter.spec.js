@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForNotifications.AggregationFilter);
     });
 
-    it('should have the property aggregationSettings (base name: "aggregationSettings")', function() {
+    it('should have the property aggregationSettings', function() {
       // verify property exists
       expect(instance).to.have.property('aggregationSettings');
 
       // set and verify value
-      var validValue = generateMockData('AggregationSettings');
-      instance.aggregationSettings = validValue;
-      expect(instance.aggregationSettings).to.equal(validValue);
+      var expectedValue = generateMockData('AggregationSettings');
+      instance.aggregationSettings = expectedValue;
+      expect(instance.aggregationSettings).to.equal(expectedValue);
     });
 
   });

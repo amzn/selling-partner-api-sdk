@@ -45,14 +45,14 @@
       expect(instance).to.be.a(AmazonShippingApi.DirectPurchaseResponse);
     });
 
-    it('should have the property payload (base name: "payload")', function() {
+    it('should have the property payload', function() {
       // verify property exists
       expect(instance).to.have.property('payload');
 
       // set and verify value
-      var validValue = generateMockData('DirectPurchaseResult');
-      instance.payload = validValue;
-      expect(instance.payload).to.equal(validValue);
+      var expectedValue = generateMockData('DirectPurchaseResult');
+      instance.payload = expectedValue;
+      expect(instance.payload).to.equal(expectedValue);
     });
 
   });

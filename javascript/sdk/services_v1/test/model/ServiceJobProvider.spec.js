@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForServices.ServiceJobProvider);
     });
 
-    it('should have the property serviceJobProviderId (base name: "serviceJobProviderId")', function() {
+    it('should have the property serviceJobProviderId', function() {
       // verify property exists
       expect(instance).to.have.property('serviceJobProviderId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.serviceJobProviderId = validValue;
-      expect(instance.serviceJobProviderId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.serviceJobProviderId = expectedValue;
+      expect(instance.serviceJobProviderId).to.equal(expectedValue);
     });
 
   });

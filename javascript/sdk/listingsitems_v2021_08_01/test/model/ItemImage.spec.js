@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForListingsItems.ItemImage);
     });
 
-    it('should have the property link (base name: "link")', function() {
+    it('should have the property link', function() {
       // verify property exists
       expect(instance).to.have.property('link');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.link = validValue;
-      expect(instance.link).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.link = expectedValue;
+      expect(instance.link).to.equal(expectedValue);
     });
 
-    it('should have the property height (base name: "height")', function() {
+    it('should have the property height', function() {
       // verify property exists
       expect(instance).to.have.property('height');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.height = validValue;
-      expect(instance.height).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.height = expectedValue;
+      expect(instance.height).to.equal(expectedValue);
     });
 
-    it('should have the property width (base name: "width")', function() {
+    it('should have the property width', function() {
       // verify property exists
       expect(instance).to.have.property('width');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.width = validValue;
-      expect(instance.width).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.width = expectedValue;
+      expect(instance.width).to.equal(expectedValue);
     });
 
   });

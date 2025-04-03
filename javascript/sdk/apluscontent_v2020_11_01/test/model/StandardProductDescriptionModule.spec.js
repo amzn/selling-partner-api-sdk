@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForAContentManagement.StandardProductDescriptionModule);
     });
 
-    it('should have the property body (base name: "body")', function() {
+    it('should have the property body', function() {
       // verify property exists
       expect(instance).to.have.property('body');
 
       // set and verify value
-      var validValue = generateMockData('ParagraphComponent');
-      instance.body = validValue;
-      expect(instance.body).to.equal(validValue);
+      var expectedValue = generateMockData('ParagraphComponent');
+      instance.body = expectedValue;
+      expect(instance.body).to.equal(expectedValue);
     });
 
   });

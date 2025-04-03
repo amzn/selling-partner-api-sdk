@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForSupplySources.SupplySourceCapabilities);
     });
 
-    it('should have the property outbound (base name: "outbound")', function() {
+    it('should have the property outbound', function() {
       // verify property exists
       expect(instance).to.have.property('outbound');
 
       // set and verify value
-      var validValue = generateMockData('OutboundCapability');
-      instance.outbound = validValue;
-      expect(instance.outbound).to.equal(validValue);
+      var expectedValue = generateMockData('OutboundCapability');
+      instance.outbound = expectedValue;
+      expect(instance.outbound).to.equal(expectedValue);
     });
 
-    it('should have the property services (base name: "services")', function() {
+    it('should have the property services', function() {
       // verify property exists
       expect(instance).to.have.property('services');
 
       // set and verify value
-      var validValue = generateMockData('ServicesCapability');
-      instance.services = validValue;
-      expect(instance.services).to.equal(validValue);
+      var expectedValue = generateMockData('ServicesCapability');
+      instance.services = expectedValue;
+      expect(instance.services).to.equal(expectedValue);
     });
 
   });

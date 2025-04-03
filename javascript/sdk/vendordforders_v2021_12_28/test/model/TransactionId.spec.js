@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForDirectFulfillmentOrders.TransactionId);
     });
 
-    it('should have the property transactionId (base name: "transactionId")', function() {
+    it('should have the property transactionId', function() {
       // verify property exists
       expect(instance).to.have.property('transactionId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.transactionId = validValue;
-      expect(instance.transactionId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.transactionId = expectedValue;
+      expect(instance.transactionId).to.equal(expectedValue);
     });
 
   });

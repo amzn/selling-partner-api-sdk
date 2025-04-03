@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForAContentManagement.SearchContentDocumentsResponse);
     });
 
-    it('should have the property warnings (base name: "warnings")', function() {
+    it('should have the property warnings', function() {
       // verify property exists
       expect(instance).to.have.property('warnings');
 
       // set and verify value
-      var validValue = generateMockData('[Error]', true);
-      instance.warnings = validValue;
-      expect(instance.warnings).to.equal(validValue);
+      var expectedValue = generateMockData('Error', true);
+      instance.warnings = expectedValue;
+      expect(instance.warnings).to.equal(expectedValue);
     });
 
-    it('should have the property nextPageToken (base name: "nextPageToken")', function() {
+    it('should have the property nextPageToken', function() {
       // verify property exists
       expect(instance).to.have.property('nextPageToken');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.nextPageToken = validValue;
-      expect(instance.nextPageToken).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.nextPageToken = expectedValue;
+      expect(instance.nextPageToken).to.equal(expectedValue);
     });
 
-    it('should have the property contentMetadataRecords (base name: "contentMetadataRecords")', function() {
+    it('should have the property contentMetadataRecords', function() {
       // verify property exists
       expect(instance).to.have.property('contentMetadataRecords');
 
       // set and verify value
-      var validValue = generateMockData('[ContentMetadataRecord]', true);
-      instance.contentMetadataRecords = validValue;
-      expect(instance.contentMetadataRecords).to.equal(validValue);
+      var expectedValue = generateMockData('ContentMetadataRecord', true);
+      instance.contentMetadataRecords = expectedValue;
+      expect(instance.contentMetadataRecords).to.equal(expectedValue);
     });
 
   });

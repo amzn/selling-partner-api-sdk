@@ -45,104 +45,104 @@
       expect(instance).to.be.a(AmazonShippingApi.AccessPoint);
     });
 
-    it('should have the property accessPointId (base name: "accessPointId")', function() {
+    it('should have the property accessPointId', function() {
       // verify property exists
       expect(instance).to.have.property('accessPointId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.accessPointId = validValue;
-      expect(instance.accessPointId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.accessPointId = expectedValue;
+      expect(instance.accessPointId).to.equal(expectedValue);
     });
 
-    it('should have the property name (base name: "name")', function() {
+    it('should have the property name', function() {
       // verify property exists
       expect(instance).to.have.property('name');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.name = validValue;
-      expect(instance.name).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.name = expectedValue;
+      expect(instance.name).to.equal(expectedValue);
     });
 
-    it('should have the property timezone (base name: "timezone")', function() {
+    it('should have the property timezone', function() {
       // verify property exists
       expect(instance).to.have.property('timezone');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.timezone = validValue;
-      expect(instance.timezone).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.timezone = expectedValue;
+      expect(instance.timezone).to.equal(expectedValue);
     });
 
-    it('should have the property type (base name: "type")', function() {
+    it('should have the property type', function() {
       // verify property exists
       expect(instance).to.have.property('type');
 
       // set and verify value
-      var validValue = generateMockData('AccessPointType');
-      instance.type = validValue;
-      expect(instance.type).to.equal(validValue);
+      var expectedValue = generateMockData('AccessPointType');
+      instance.type = expectedValue;
+      expect(instance.type).to.equal(expectedValue);
     });
 
-    it('should have the property accessibilityAttributes (base name: "accessibilityAttributes")', function() {
+    it('should have the property accessibilityAttributes', function() {
       // verify property exists
       expect(instance).to.have.property('accessibilityAttributes');
 
       // set and verify value
-      var validValue = generateMockData('AccessibilityAttributes');
-      instance.accessibilityAttributes = validValue;
-      expect(instance.accessibilityAttributes).to.equal(validValue);
+      var expectedValue = generateMockData('AccessibilityAttributes');
+      instance.accessibilityAttributes = expectedValue;
+      expect(instance.accessibilityAttributes).to.equal(expectedValue);
     });
 
-    it('should have the property address (base name: "address")', function() {
+    it('should have the property address', function() {
       // verify property exists
       expect(instance).to.have.property('address');
 
       // set and verify value
-      var validValue = generateMockData('Address');
-      instance.address = validValue;
-      expect(instance.address).to.equal(validValue);
+      var expectedValue = generateMockData('Address');
+      instance.address = expectedValue;
+      expect(instance.address).to.equal(expectedValue);
     });
 
-    it('should have the property exceptionOperatingHours (base name: "exceptionOperatingHours")', function() {
+    it('should have the property exceptionOperatingHours', function() {
       // verify property exists
       expect(instance).to.have.property('exceptionOperatingHours');
 
       // set and verify value
-      var validValue = generateMockData('[ExceptionOperatingHours]', true);
-      instance.exceptionOperatingHours = validValue;
-      expect(instance.exceptionOperatingHours).to.equal(validValue);
+      var expectedValue = generateMockData('ExceptionOperatingHours', true);
+      instance.exceptionOperatingHours = expectedValue;
+      expect(instance.exceptionOperatingHours).to.equal(expectedValue);
     });
 
-    it('should have the property assistanceType (base name: "assistanceType")', function() {
+    it('should have the property assistanceType', function() {
       // verify property exists
       expect(instance).to.have.property('assistanceType');
 
       // set and verify value
-      var validValue = ['STAFF_ASSISTED', 'SELF_ASSISTED', ][0];
-      instance.assistanceType = validValue;
-      expect(instance.assistanceType).to.equal(validValue);
+      var expectedValue = ['STAFF_ASSISTED', 'SELF_ASSISTED', ][0];
+      instance.assistanceType = expectedValue;
+      expect(instance.assistanceType).to.equal(expectedValue);
     });
 
-    it('should have the property score (base name: "score")', function() {
+    it('should have the property score', function() {
       // verify property exists
       expect(instance).to.have.property('score');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.score = validValue;
-      expect(instance.score).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.score = expectedValue;
+      expect(instance.score).to.equal(expectedValue);
     });
 
-    it('should have the property standardOperatingHours (base name: "standardOperatingHours")', function() {
+    it('should have the property standardOperatingHours', function() {
       // verify property exists
       expect(instance).to.have.property('standardOperatingHours');
 
       // set and verify value
-      var validValue = generateMockData('{String: OperatingHours}');
-      instance.standardOperatingHours = validValue;
-      expect(instance.standardOperatingHours).to.equal(validValue);
+      var expectedValue = generateMockData('{String: OperatingHours}');
+      instance.standardOperatingHours = expectedValue;
+      expect(instance.standardOperatingHours).to.equal(expectedValue);
     });
 
   });

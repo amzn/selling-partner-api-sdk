@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForMessaging.CreateWarrantyRequest);
     });
 
-    it('should have the property attachments (base name: "attachments")', function() {
+    it('should have the property attachments', function() {
       // verify property exists
       expect(instance).to.have.property('attachments');
 
       // set and verify value
-      var validValue = generateMockData('[Attachment]', true);
-      instance.attachments = validValue;
-      expect(instance.attachments).to.equal(validValue);
+      var expectedValue = generateMockData('Attachment', true);
+      instance.attachments = expectedValue;
+      expect(instance.attachments).to.equal(expectedValue);
     });
 
-    it('should have the property coverageStartDate (base name: "coverageStartDate")', function() {
+    it('should have the property coverageStartDate', function() {
       // verify property exists
       expect(instance).to.have.property('coverageStartDate');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.coverageStartDate = validValue;
-      expect(instance.coverageStartDate).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.coverageStartDate = expectedValue;
+      expect(instance.coverageStartDate).to.equal(expectedValue);
     });
 
-    it('should have the property coverageEndDate (base name: "coverageEndDate")', function() {
+    it('should have the property coverageEndDate', function() {
       // verify property exists
       expect(instance).to.have.property('coverageEndDate');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.coverageEndDate = validValue;
-      expect(instance.coverageEndDate).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.coverageEndDate = expectedValue;
+      expect(instance.coverageEndDate).to.equal(expectedValue);
     });
 
   });

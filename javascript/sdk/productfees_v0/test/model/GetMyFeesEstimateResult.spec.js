@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForProductFees.GetMyFeesEstimateResult);
     });
 
-    it('should have the property feesEstimateResult (base name: "FeesEstimateResult")', function() {
+    it('should have the property feesEstimateResult', function() {
       // verify property exists
       expect(instance).to.have.property('feesEstimateResult');
 
       // set and verify value
-      var validValue = generateMockData('FeesEstimateResult');
-      instance.feesEstimateResult = validValue;
-      expect(instance.feesEstimateResult).to.equal(validValue);
+      var expectedValue = generateMockData('FeesEstimateResult');
+      instance.feesEstimateResult = expectedValue;
+      expect(instance.feesEstimateResult).to.equal(expectedValue);
     });
 
   });

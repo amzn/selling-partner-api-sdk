@@ -45,24 +45,24 @@
       expect(instance).to.be.a(AmazonShippingApi.Benefits);
     });
 
-    it('should have the property includedBenefits (base name: "includedBenefits")', function() {
+    it('should have the property includedBenefits', function() {
       // verify property exists
       expect(instance).to.have.property('includedBenefits');
 
       // set and verify value
-      var validValue = generateMockData('[String]', true);
-      instance.includedBenefits = validValue;
-      expect(instance.includedBenefits).to.equal(validValue);
+      var expectedValue = generateMockData('String', true);
+      instance.includedBenefits = expectedValue;
+      expect(instance.includedBenefits).to.equal(expectedValue);
     });
 
-    it('should have the property excludedBenefits (base name: "excludedBenefits")', function() {
+    it('should have the property excludedBenefits', function() {
       // verify property exists
       expect(instance).to.have.property('excludedBenefits');
 
       // set and verify value
-      var validValue = generateMockData('[ExcludedBenefit]', true);
-      instance.excludedBenefits = validValue;
-      expect(instance.excludedBenefits).to.equal(validValue);
+      var expectedValue = generateMockData('ExcludedBenefit', true);
+      instance.excludedBenefits = expectedValue;
+      expect(instance.excludedBenefits).to.equal(expectedValue);
     });
 
   });

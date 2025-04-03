@@ -45,24 +45,24 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.AppointmentSlot);
     });
 
-    it('should have the property slotId (base name: "slotId")', function() {
+    it('should have the property slotId', function() {
       // verify property exists
       expect(instance).to.have.property('slotId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.slotId = validValue;
-      expect(instance.slotId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.slotId = expectedValue;
+      expect(instance.slotId).to.equal(expectedValue);
     });
 
-    it('should have the property slotTime (base name: "slotTime")', function() {
+    it('should have the property slotTime', function() {
       // verify property exists
       expect(instance).to.have.property('slotTime');
 
       // set and verify value
-      var validValue = generateMockData('AppointmentSlotTime');
-      instance.slotTime = validValue;
-      expect(instance.slotTime).to.equal(validValue);
+      var expectedValue = generateMockData('AppointmentSlotTime');
+      instance.slotTime = expectedValue;
+      expect(instance.slotTime).to.equal(expectedValue);
     });
 
   });

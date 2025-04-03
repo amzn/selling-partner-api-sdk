@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForServices.JobListing);
     });
 
-    it('should have the property totalResultSize (base name: "totalResultSize")', function() {
+    it('should have the property totalResultSize', function() {
       // verify property exists
       expect(instance).to.have.property('totalResultSize');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.totalResultSize = validValue;
-      expect(instance.totalResultSize).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.totalResultSize = expectedValue;
+      expect(instance.totalResultSize).to.equal(expectedValue);
     });
 
-    it('should have the property nextPageToken (base name: "nextPageToken")', function() {
+    it('should have the property nextPageToken', function() {
       // verify property exists
       expect(instance).to.have.property('nextPageToken');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.nextPageToken = validValue;
-      expect(instance.nextPageToken).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.nextPageToken = expectedValue;
+      expect(instance.nextPageToken).to.equal(expectedValue);
     });
 
-    it('should have the property previousPageToken (base name: "previousPageToken")', function() {
+    it('should have the property previousPageToken', function() {
       // verify property exists
       expect(instance).to.have.property('previousPageToken');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.previousPageToken = validValue;
-      expect(instance.previousPageToken).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.previousPageToken = expectedValue;
+      expect(instance.previousPageToken).to.equal(expectedValue);
     });
 
-    it('should have the property jobs (base name: "jobs")', function() {
+    it('should have the property jobs', function() {
       // verify property exists
       expect(instance).to.have.property('jobs');
 
       // set and verify value
-      var validValue = generateMockData('[ServiceJob]', true);
-      instance.jobs = validValue;
-      expect(instance.jobs).to.equal(validValue);
+      var expectedValue = generateMockData('ServiceJob', true);
+      instance.jobs = expectedValue;
+      expect(instance.jobs).to.equal(expectedValue);
     });
 
   });

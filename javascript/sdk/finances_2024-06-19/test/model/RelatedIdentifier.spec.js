@@ -45,24 +45,24 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFinances.RelatedIdentifier);
     });
 
-    it('should have the property relatedIdentifierName (base name: "relatedIdentifierName")', function() {
+    it('should have the property relatedIdentifierName', function() {
       // verify property exists
       expect(instance).to.have.property('relatedIdentifierName');
 
       // set and verify value
-      var validValue = ['ORDER_ID', 'SHIPMENT_ID', 'EVENT_GROUP_ID', 'REFUND_ID', 'INVOICE_ID', 'DISBURSEMENT_ID', 'TRANSFER_ID', ][0];
-      instance.relatedIdentifierName = validValue;
-      expect(instance.relatedIdentifierName).to.equal(validValue);
+      var expectedValue = ['ORDER_ID', 'SHIPMENT_ID', 'EVENT_GROUP_ID', 'REFUND_ID', 'INVOICE_ID', 'DISBURSEMENT_ID', 'TRANSFER_ID', ][0];
+      instance.relatedIdentifierName = expectedValue;
+      expect(instance.relatedIdentifierName).to.equal(expectedValue);
     });
 
-    it('should have the property relatedIdentifierValue (base name: "relatedIdentifierValue")', function() {
+    it('should have the property relatedIdentifierValue', function() {
       // verify property exists
       expect(instance).to.have.property('relatedIdentifierValue');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.relatedIdentifierValue = validValue;
-      expect(instance.relatedIdentifierValue).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.relatedIdentifierValue = expectedValue;
+      expect(instance.relatedIdentifierValue).to.equal(expectedValue);
     });
 
   });

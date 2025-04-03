@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForFbaInventory.AddInventoryRequest);
     });
 
-    it('should have the property inventoryItems (base name: "inventoryItems")', function() {
+    it('should have the property inventoryItems', function() {
       // verify property exists
       expect(instance).to.have.property('inventoryItems');
 
       // set and verify value
-      var validValue = generateMockData('[InventoryItem]', true);
-      instance.inventoryItems = validValue;
-      expect(instance.inventoryItems).to.equal(validValue);
+      var expectedValue = generateMockData('InventoryItem', true);
+      instance.inventoryItems = expectedValue;
+      expect(instance.inventoryItems).to.equal(expectedValue);
     });
 
   });

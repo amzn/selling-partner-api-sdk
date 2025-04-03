@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.TrackingEvent);
     });
 
-    it('should have the property eventDate (base name: "eventDate")', function() {
+    it('should have the property eventDate', function() {
       // verify property exists
       expect(instance).to.have.property('eventDate');
 
       // set and verify value
-      var validValue = generateMockData('Date');
-      instance.eventDate = validValue;
-      expect(instance.eventDate).to.equal(validValue);
+      var expectedValue = generateMockData('Date');
+      instance.eventDate = expectedValue;
+      expect(instance.eventDate).to.equal(expectedValue);
     });
 
-    it('should have the property eventAddress (base name: "eventAddress")', function() {
+    it('should have the property eventAddress', function() {
       // verify property exists
       expect(instance).to.have.property('eventAddress');
 
       // set and verify value
-      var validValue = generateMockData('TrackingAddress');
-      instance.eventAddress = validValue;
-      expect(instance.eventAddress).to.equal(validValue);
+      var expectedValue = generateMockData('TrackingAddress');
+      instance.eventAddress = expectedValue;
+      expect(instance.eventAddress).to.equal(expectedValue);
     });
 
-    it('should have the property eventCode (base name: "eventCode")', function() {
+    it('should have the property eventCode', function() {
       // verify property exists
       expect(instance).to.have.property('eventCode');
 
       // set and verify value
-      var validValue = generateMockData('EventCode');
-      instance.eventCode = validValue;
-      expect(instance.eventCode).to.equal(validValue);
+      var expectedValue = generateMockData('EventCode');
+      instance.eventCode = expectedValue;
+      expect(instance.eventCode).to.equal(expectedValue);
     });
 
-    it('should have the property eventDescription (base name: "eventDescription")', function() {
+    it('should have the property eventDescription', function() {
       // verify property exists
       expect(instance).to.have.property('eventDescription');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.eventDescription = validValue;
-      expect(instance.eventDescription).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.eventDescription = expectedValue;
+      expect(instance.eventDescription).to.equal(expectedValue);
     });
 
   });

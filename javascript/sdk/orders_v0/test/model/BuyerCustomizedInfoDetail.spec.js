@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForOrders.BuyerCustomizedInfoDetail);
     });
 
-    it('should have the property customizedURL (base name: "CustomizedURL")', function() {
+    it('should have the property customizedURL', function() {
       // verify property exists
       expect(instance).to.have.property('customizedURL');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.customizedURL = validValue;
-      expect(instance.customizedURL).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.customizedURL = expectedValue;
+      expect(instance.customizedURL).to.equal(expectedValue);
     });
 
   });

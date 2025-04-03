@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForRetailProcurementShipments.ContainerIdentification);
     });
 
-    it('should have the property containerIdentificationType (base name: "containerIdentificationType")', function() {
+    it('should have the property containerIdentificationType', function() {
       // verify property exists
       expect(instance).to.have.property('containerIdentificationType');
 
       // set and verify value
-      var validValue = ['SSCC', 'AMZNCC', 'GTIN', 'BPS', 'CID', ][0];
-      instance.containerIdentificationType = validValue;
-      expect(instance.containerIdentificationType).to.equal(validValue);
+      var expectedValue = ['SSCC', 'AMZNCC', 'GTIN', 'BPS', 'CID', ][0];
+      instance.containerIdentificationType = expectedValue;
+      expect(instance.containerIdentificationType).to.equal(expectedValue);
     });
 
-    it('should have the property containerIdentificationNumber (base name: "containerIdentificationNumber")', function() {
+    it('should have the property containerIdentificationNumber', function() {
       // verify property exists
       expect(instance).to.have.property('containerIdentificationNumber');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.containerIdentificationNumber = validValue;
-      expect(instance.containerIdentificationNumber).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.containerIdentificationNumber = expectedValue;
+      expect(instance.containerIdentificationNumber).to.equal(expectedValue);
     });
 
   });

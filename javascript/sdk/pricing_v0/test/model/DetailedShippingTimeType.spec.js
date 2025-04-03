@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForPricing.DetailedShippingTimeType);
     });
 
-    it('should have the property minimumHours (base name: "minimumHours")', function() {
+    it('should have the property minimumHours', function() {
       // verify property exists
       expect(instance).to.have.property('minimumHours');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.minimumHours = validValue;
-      expect(instance.minimumHours).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.minimumHours = expectedValue;
+      expect(instance.minimumHours).to.equal(expectedValue);
     });
 
-    it('should have the property maximumHours (base name: "maximumHours")', function() {
+    it('should have the property maximumHours', function() {
       // verify property exists
       expect(instance).to.have.property('maximumHours');
 
       // set and verify value
-      var validValue = generateMockData('Number');
-      instance.maximumHours = validValue;
-      expect(instance.maximumHours).to.equal(validValue);
+      var expectedValue = generateMockData('Number');
+      instance.maximumHours = expectedValue;
+      expect(instance.maximumHours).to.equal(expectedValue);
     });
 
-    it('should have the property availableDate (base name: "availableDate")', function() {
+    it('should have the property availableDate', function() {
       // verify property exists
       expect(instance).to.have.property('availableDate');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.availableDate = validValue;
-      expect(instance.availableDate).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.availableDate = expectedValue;
+      expect(instance.availableDate).to.equal(expectedValue);
     });
 
-    it('should have the property availabilityType (base name: "availabilityType")', function() {
+    it('should have the property availabilityType', function() {
       // verify property exists
       expect(instance).to.have.property('availabilityType');
 
       // set and verify value
-      var validValue = ['NOW', 'FUTURE_WITHOUT_DATE', 'FUTURE_WITH_DATE', ][0];
-      instance.availabilityType = validValue;
-      expect(instance.availabilityType).to.equal(validValue);
+      var expectedValue = ['NOW', 'FUTURE_WITHOUT_DATE', 'FUTURE_WITH_DATE', ][0];
+      instance.availabilityType = expectedValue;
+      expect(instance.availabilityType).to.equal(expectedValue);
     });
 
   });

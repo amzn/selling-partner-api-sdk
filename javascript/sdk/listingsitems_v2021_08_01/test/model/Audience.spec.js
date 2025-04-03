@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForListingsItems.Audience);
     });
 
-    it('should have the property value (base name: "value")', function() {
+    it('should have the property value', function() {
       // verify property exists
       expect(instance).to.have.property('value');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.value = validValue;
-      expect(instance.value).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.value = expectedValue;
+      expect(instance.value).to.equal(expectedValue);
     });
 
-    it('should have the property displayName (base name: "displayName")', function() {
+    it('should have the property displayName', function() {
       // verify property exists
       expect(instance).to.have.property('displayName');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.displayName = validValue;
-      expect(instance.displayName).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.displayName = expectedValue;
+      expect(instance.displayName).to.equal(expectedValue);
     });
 
   });

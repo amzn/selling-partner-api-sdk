@@ -45,64 +45,64 @@
       expect(instance).to.be.a(SellingPartnerApiForAContentManagement.StandardImageSidebarModule);
     });
 
-    it('should have the property headline (base name: "headline")', function() {
+    it('should have the property headline', function() {
       // verify property exists
       expect(instance).to.have.property('headline');
 
       // set and verify value
-      var validValue = generateMockData('TextComponent');
-      instance.headline = validValue;
-      expect(instance.headline).to.equal(validValue);
+      var expectedValue = generateMockData('TextComponent');
+      instance.headline = expectedValue;
+      expect(instance.headline).to.equal(expectedValue);
     });
 
-    it('should have the property imageCaptionBlock (base name: "imageCaptionBlock")', function() {
+    it('should have the property imageCaptionBlock', function() {
       // verify property exists
       expect(instance).to.have.property('imageCaptionBlock');
 
       // set and verify value
-      var validValue = generateMockData('StandardImageCaptionBlock');
-      instance.imageCaptionBlock = validValue;
-      expect(instance.imageCaptionBlock).to.equal(validValue);
+      var expectedValue = generateMockData('StandardImageCaptionBlock');
+      instance.imageCaptionBlock = expectedValue;
+      expect(instance.imageCaptionBlock).to.equal(expectedValue);
     });
 
-    it('should have the property descriptionTextBlock (base name: "descriptionTextBlock")', function() {
+    it('should have the property descriptionTextBlock', function() {
       // verify property exists
       expect(instance).to.have.property('descriptionTextBlock');
 
       // set and verify value
-      var validValue = generateMockData('StandardTextBlock');
-      instance.descriptionTextBlock = validValue;
-      expect(instance.descriptionTextBlock).to.equal(validValue);
+      var expectedValue = generateMockData('StandardTextBlock');
+      instance.descriptionTextBlock = expectedValue;
+      expect(instance.descriptionTextBlock).to.equal(expectedValue);
     });
 
-    it('should have the property descriptionListBlock (base name: "descriptionListBlock")', function() {
+    it('should have the property descriptionListBlock', function() {
       // verify property exists
       expect(instance).to.have.property('descriptionListBlock');
 
       // set and verify value
-      var validValue = generateMockData('StandardTextListBlock');
-      instance.descriptionListBlock = validValue;
-      expect(instance.descriptionListBlock).to.equal(validValue);
+      var expectedValue = generateMockData('StandardTextListBlock');
+      instance.descriptionListBlock = expectedValue;
+      expect(instance.descriptionListBlock).to.equal(expectedValue);
     });
 
-    it('should have the property sidebarImageTextBlock (base name: "sidebarImageTextBlock")', function() {
+    it('should have the property sidebarImageTextBlock', function() {
       // verify property exists
       expect(instance).to.have.property('sidebarImageTextBlock');
 
       // set and verify value
-      var validValue = generateMockData('StandardImageTextBlock');
-      instance.sidebarImageTextBlock = validValue;
-      expect(instance.sidebarImageTextBlock).to.equal(validValue);
+      var expectedValue = generateMockData('StandardImageTextBlock');
+      instance.sidebarImageTextBlock = expectedValue;
+      expect(instance.sidebarImageTextBlock).to.equal(expectedValue);
     });
 
-    it('should have the property sidebarListBlock (base name: "sidebarListBlock")', function() {
+    it('should have the property sidebarListBlock', function() {
       // verify property exists
       expect(instance).to.have.property('sidebarListBlock');
 
       // set and verify value
-      var validValue = generateMockData('StandardTextListBlock');
-      instance.sidebarListBlock = validValue;
-      expect(instance.sidebarListBlock).to.equal(validValue);
+      var expectedValue = generateMockData('StandardTextListBlock');
+      instance.sidebarListBlock = expectedValue;
+      expect(instance.sidebarListBlock).to.equal(expectedValue);
     });
 
   });

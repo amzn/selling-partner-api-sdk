@@ -45,74 +45,74 @@
       expect(instance).to.be.a(TheSellingPartnerApiForTransfers.PaymentMethodDetails);
     });
 
-    it('should have the property accountHolderName (base name: "accountHolderName")', function() {
+    it('should have the property accountHolderName', function() {
       // verify property exists
       expect(instance).to.have.property('accountHolderName');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.accountHolderName = validValue;
-      expect(instance.accountHolderName).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.accountHolderName = expectedValue;
+      expect(instance.accountHolderName).to.equal(expectedValue);
     });
 
-    it('should have the property paymentMethodId (base name: "paymentMethodId")', function() {
+    it('should have the property paymentMethodId', function() {
       // verify property exists
       expect(instance).to.have.property('paymentMethodId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.paymentMethodId = validValue;
-      expect(instance.paymentMethodId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.paymentMethodId = expectedValue;
+      expect(instance.paymentMethodId).to.equal(expectedValue);
     });
 
-    it('should have the property tail (base name: "tail")', function() {
+    it('should have the property tail', function() {
       // verify property exists
       expect(instance).to.have.property('tail');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.tail = validValue;
-      expect(instance.tail).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.tail = expectedValue;
+      expect(instance.tail).to.equal(expectedValue);
     });
 
-    it('should have the property expiryDate (base name: "expiryDate")', function() {
+    it('should have the property expiryDate', function() {
       // verify property exists
       expect(instance).to.have.property('expiryDate');
 
       // set and verify value
-      var validValue = generateMockData('ExpiryDate');
-      instance.expiryDate = validValue;
-      expect(instance.expiryDate).to.equal(validValue);
+      var expectedValue = generateMockData('ExpiryDate');
+      instance.expiryDate = expectedValue;
+      expect(instance.expiryDate).to.equal(expectedValue);
     });
 
-    it('should have the property countryCode (base name: "countryCode")', function() {
+    it('should have the property countryCode', function() {
       // verify property exists
       expect(instance).to.have.property('countryCode');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.countryCode = validValue;
-      expect(instance.countryCode).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.countryCode = expectedValue;
+      expect(instance.countryCode).to.equal(expectedValue);
     });
 
-    it('should have the property paymentMethodType (base name: "paymentMethodType")', function() {
+    it('should have the property paymentMethodType', function() {
       // verify property exists
       expect(instance).to.have.property('paymentMethodType');
 
       // set and verify value
-      var validValue = generateMockData('PaymentMethodType');
-      instance.paymentMethodType = validValue;
-      expect(instance.paymentMethodType).to.equal(validValue);
+      var expectedValue = generateMockData('PaymentMethodType');
+      instance.paymentMethodType = expectedValue;
+      expect(instance.paymentMethodType).to.equal(expectedValue);
     });
 
-    it('should have the property assignmentType (base name: "assignmentType")', function() {
+    it('should have the property assignmentType', function() {
       // verify property exists
       expect(instance).to.have.property('assignmentType');
 
       // set and verify value
-      var validValue = generateMockData('AssignmentType');
-      instance.assignmentType = validValue;
-      expect(instance.assignmentType).to.equal(validValue);
+      var expectedValue = generateMockData('AssignmentType');
+      instance.assignmentType = expectedValue;
+      expect(instance.assignmentType).to.equal(expectedValue);
     });
 
   });

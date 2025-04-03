@@ -45,14 +45,14 @@
       expect(instance).to.be.a(TheSellingPartnerApiForThirdPartyApplicationIntegrations.RecordActionFeedbackRequest);
     });
 
-    it('should have the property feedbackActionCode (base name: "feedbackActionCode")', function() {
+    it('should have the property feedbackActionCode', function() {
       // verify property exists
       expect(instance).to.have.property('feedbackActionCode');
 
       // set and verify value
-      var validValue = ['SELLER_ACTION_COMPLETED', ][0];
-      instance.feedbackActionCode = validValue;
-      expect(instance.feedbackActionCode).to.equal(validValue);
+      var expectedValue = ['SELLER_ACTION_COMPLETED', ][0];
+      instance.feedbackActionCode = expectedValue;
+      expect(instance.feedbackActionCode).to.equal(expectedValue);
     });
 
   });

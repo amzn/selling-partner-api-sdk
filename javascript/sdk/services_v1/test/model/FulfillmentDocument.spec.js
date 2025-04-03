@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForServices.FulfillmentDocument);
     });
 
-    it('should have the property uploadDestinationId (base name: "uploadDestinationId")', function() {
+    it('should have the property uploadDestinationId', function() {
       // verify property exists
       expect(instance).to.have.property('uploadDestinationId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.uploadDestinationId = validValue;
-      expect(instance.uploadDestinationId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.uploadDestinationId = expectedValue;
+      expect(instance.uploadDestinationId).to.equal(expectedValue);
     });
 
-    it('should have the property contentSha256 (base name: "contentSha256")', function() {
+    it('should have the property contentSha256', function() {
       // verify property exists
       expect(instance).to.have.property('contentSha256');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.contentSha256 = validValue;
-      expect(instance.contentSha256).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.contentSha256 = expectedValue;
+      expect(instance.contentSha256).to.equal(expectedValue);
     });
 
   });

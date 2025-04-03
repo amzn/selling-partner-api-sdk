@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForPricing.ShippingOption);
     });
 
-    it('should have the property shippingOptionType (base name: "shippingOptionType")', function() {
+    it('should have the property shippingOptionType', function() {
       // verify property exists
       expect(instance).to.have.property('shippingOptionType');
 
       // set and verify value
-      var validValue = ['DEFAULT', ][0];
-      instance.shippingOptionType = validValue;
-      expect(instance.shippingOptionType).to.equal(validValue);
+      var expectedValue = ['DEFAULT', ][0];
+      instance.shippingOptionType = expectedValue;
+      expect(instance.shippingOptionType).to.equal(expectedValue);
     });
 
-    it('should have the property price (base name: "price")', function() {
+    it('should have the property price', function() {
       // verify property exists
       expect(instance).to.have.property('price');
 
       // set and verify value
-      var validValue = generateMockData('MoneyType');
-      instance.price = validValue;
-      expect(instance.price).to.equal(validValue);
+      var expectedValue = generateMockData('MoneyType');
+      instance.price = expectedValue;
+      expect(instance.price).to.equal(expectedValue);
     });
 
   });

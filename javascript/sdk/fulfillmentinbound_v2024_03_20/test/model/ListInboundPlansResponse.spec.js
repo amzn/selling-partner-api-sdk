@@ -45,24 +45,24 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.ListInboundPlansResponse);
     });
 
-    it('should have the property inboundPlans (base name: "inboundPlans")', function() {
+    it('should have the property inboundPlans', function() {
       // verify property exists
       expect(instance).to.have.property('inboundPlans');
 
       // set and verify value
-      var validValue = generateMockData('[InboundPlanSummary]', true);
-      instance.inboundPlans = validValue;
-      expect(instance.inboundPlans).to.equal(validValue);
+      var expectedValue = generateMockData('InboundPlanSummary', true);
+      instance.inboundPlans = expectedValue;
+      expect(instance.inboundPlans).to.equal(expectedValue);
     });
 
-    it('should have the property pagination (base name: "pagination")', function() {
+    it('should have the property pagination', function() {
       // verify property exists
       expect(instance).to.have.property('pagination');
 
       // set and verify value
-      var validValue = generateMockData('Pagination');
-      instance.pagination = validValue;
-      expect(instance.pagination).to.equal(validValue);
+      var expectedValue = generateMockData('Pagination');
+      instance.pagination = expectedValue;
+      expect(instance.pagination).to.equal(expectedValue);
     });
 
   });

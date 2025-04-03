@@ -45,34 +45,34 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFinances.SellingPartnerMetadata);
     });
 
-    it('should have the property sellingPartnerId (base name: "sellingPartnerId")', function() {
+    it('should have the property sellingPartnerId', function() {
       // verify property exists
       expect(instance).to.have.property('sellingPartnerId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.sellingPartnerId = validValue;
-      expect(instance.sellingPartnerId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.sellingPartnerId = expectedValue;
+      expect(instance.sellingPartnerId).to.equal(expectedValue);
     });
 
-    it('should have the property accountType (base name: "accountType")', function() {
+    it('should have the property accountType', function() {
       // verify property exists
       expect(instance).to.have.property('accountType');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.accountType = validValue;
-      expect(instance.accountType).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.accountType = expectedValue;
+      expect(instance.accountType).to.equal(expectedValue);
     });
 
-    it('should have the property marketplaceId (base name: "marketplaceId")', function() {
+    it('should have the property marketplaceId', function() {
       // verify property exists
       expect(instance).to.have.property('marketplaceId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.marketplaceId = validValue;
-      expect(instance.marketplaceId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.marketplaceId = expectedValue;
+      expect(instance.marketplaceId).to.equal(expectedValue);
     });
 
   });

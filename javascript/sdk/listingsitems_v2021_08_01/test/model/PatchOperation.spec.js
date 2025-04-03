@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForListingsItems.PatchOperation);
     });
 
-    it('should have the property op (base name: "op")', function() {
+    it('should have the property op', function() {
       // verify property exists
       expect(instance).to.have.property('op');
 
       // set and verify value
-      var validValue = ['add', 'replace', 'delete', ][0];
-      instance.op = validValue;
-      expect(instance.op).to.equal(validValue);
+      var expectedValue = ['add', 'replace', 'delete', ][0];
+      instance.op = expectedValue;
+      expect(instance.op).to.equal(expectedValue);
     });
 
-    it('should have the property path (base name: "path")', function() {
+    it('should have the property path', function() {
       // verify property exists
       expect(instance).to.have.property('path');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.path = validValue;
-      expect(instance.path).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.path = expectedValue;
+      expect(instance.path).to.equal(expectedValue);
     });
 
-    it('should have the property value (base name: "value")', function() {
+    it('should have the property value', function() {
       // verify property exists
       expect(instance).to.have.property('value');
 
       // set and verify value
-      var validValue = generateMockData('[{String: Object}]', true);
-      instance.value = validValue;
-      expect(instance.value).to.equal(validValue);
+      var expectedValue = generateMockData('{String: Object}', true);
+      instance.value = expectedValue;
+      expect(instance.value).to.equal(expectedValue);
     });
 
   });

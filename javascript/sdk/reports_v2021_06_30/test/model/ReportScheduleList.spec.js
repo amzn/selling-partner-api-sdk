@@ -45,14 +45,14 @@
       expect(instance).to.be.a(SellingPartnerApiForReports.ReportScheduleList);
     });
 
-    it('should have the property reportSchedules (base name: "reportSchedules")', function() {
+    it('should have the property reportSchedules', function() {
       // verify property exists
       expect(instance).to.have.property('reportSchedules');
 
       // set and verify value
-      var validValue = generateMockData('[ReportSchedule]', true);
-      instance.reportSchedules = validValue;
-      expect(instance.reportSchedules).to.equal(validValue);
+      var expectedValue = generateMockData('ReportSchedule', true);
+      instance.reportSchedules = expectedValue;
+      expect(instance.reportSchedules).to.equal(expectedValue);
     });
 
   });

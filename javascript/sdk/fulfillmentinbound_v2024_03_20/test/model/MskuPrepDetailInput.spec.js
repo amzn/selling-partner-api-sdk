@@ -45,34 +45,34 @@
       expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.MskuPrepDetailInput);
     });
 
-    it('should have the property msku (base name: "msku")', function() {
+    it('should have the property msku', function() {
       // verify property exists
       expect(instance).to.have.property('msku');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.msku = validValue;
-      expect(instance.msku).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.msku = expectedValue;
+      expect(instance.msku).to.equal(expectedValue);
     });
 
-    it('should have the property prepCategory (base name: "prepCategory")', function() {
+    it('should have the property prepCategory', function() {
       // verify property exists
       expect(instance).to.have.property('prepCategory');
 
       // set and verify value
-      var validValue = generateMockData('PrepCategory');
-      instance.prepCategory = validValue;
-      expect(instance.prepCategory).to.equal(validValue);
+      var expectedValue = generateMockData('PrepCategory');
+      instance.prepCategory = expectedValue;
+      expect(instance.prepCategory).to.equal(expectedValue);
     });
 
-    it('should have the property prepTypes (base name: "prepTypes")', function() {
+    it('should have the property prepTypes', function() {
       // verify property exists
       expect(instance).to.have.property('prepTypes');
 
       // set and verify value
-      var validValue = generateMockData('[PrepType]', true);
-      instance.prepTypes = validValue;
-      expect(instance.prepTypes).to.equal(validValue);
+      var expectedValue = generateMockData('PrepType', true);
+      instance.prepTypes = expectedValue;
+      expect(instance.prepTypes).to.equal(expectedValue);
     });
 
   });

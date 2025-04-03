@@ -45,24 +45,24 @@
       expect(instance).to.be.a(SellingPartnerApiForFbaInventory.GetInventorySummariesResult);
     });
 
-    it('should have the property granularity (base name: "granularity")', function() {
+    it('should have the property granularity', function() {
       // verify property exists
       expect(instance).to.have.property('granularity');
 
       // set and verify value
-      var validValue = generateMockData('Granularity');
-      instance.granularity = validValue;
-      expect(instance.granularity).to.equal(validValue);
+      var expectedValue = generateMockData('Granularity');
+      instance.granularity = expectedValue;
+      expect(instance.granularity).to.equal(expectedValue);
     });
 
-    it('should have the property inventorySummaries (base name: "inventorySummaries")', function() {
+    it('should have the property inventorySummaries', function() {
       // verify property exists
       expect(instance).to.have.property('inventorySummaries');
 
       // set and verify value
-      var validValue = generateMockData('[InventorySummary]', true);
-      instance.inventorySummaries = validValue;
-      expect(instance.inventorySummaries).to.equal(validValue);
+      var expectedValue = generateMockData('InventorySummary', true);
+      instance.inventorySummaries = expectedValue;
+      expect(instance.inventorySummaries).to.equal(expectedValue);
     });
 
   });

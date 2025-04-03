@@ -45,44 +45,44 @@
       expect(instance).to.be.a(SellingPartnerApiForPricing.FeaturedOfferExpectedPriceResult);
     });
 
-    it('should have the property featuredOfferExpectedPrice (base name: "featuredOfferExpectedPrice")', function() {
+    it('should have the property featuredOfferExpectedPrice', function() {
       // verify property exists
       expect(instance).to.have.property('featuredOfferExpectedPrice');
 
       // set and verify value
-      var validValue = generateMockData('FeaturedOfferExpectedPrice');
-      instance.featuredOfferExpectedPrice = validValue;
-      expect(instance.featuredOfferExpectedPrice).to.equal(validValue);
+      var expectedValue = generateMockData('FeaturedOfferExpectedPrice');
+      instance.featuredOfferExpectedPrice = expectedValue;
+      expect(instance.featuredOfferExpectedPrice).to.equal(expectedValue);
     });
 
-    it('should have the property resultStatus (base name: "resultStatus")', function() {
+    it('should have the property resultStatus', function() {
       // verify property exists
       expect(instance).to.have.property('resultStatus');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.resultStatus = validValue;
-      expect(instance.resultStatus).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.resultStatus = expectedValue;
+      expect(instance.resultStatus).to.equal(expectedValue);
     });
 
-    it('should have the property competingFeaturedOffer (base name: "competingFeaturedOffer")', function() {
+    it('should have the property competingFeaturedOffer', function() {
       // verify property exists
       expect(instance).to.have.property('competingFeaturedOffer');
 
       // set and verify value
-      var validValue = generateMockData('FeaturedOffer');
-      instance.competingFeaturedOffer = validValue;
-      expect(instance.competingFeaturedOffer).to.equal(validValue);
+      var expectedValue = generateMockData('FeaturedOffer');
+      instance.competingFeaturedOffer = expectedValue;
+      expect(instance.competingFeaturedOffer).to.equal(expectedValue);
     });
 
-    it('should have the property currentFeaturedOffer (base name: "currentFeaturedOffer")', function() {
+    it('should have the property currentFeaturedOffer', function() {
       // verify property exists
       expect(instance).to.have.property('currentFeaturedOffer');
 
       // set and verify value
-      var validValue = generateMockData('FeaturedOffer');
-      instance.currentFeaturedOffer = validValue;
-      expect(instance.currentFeaturedOffer).to.equal(validValue);
+      var expectedValue = generateMockData('FeaturedOffer');
+      instance.currentFeaturedOffer = expectedValue;
+      expect(instance.currentFeaturedOffer).to.equal(expectedValue);
     });
 
   });

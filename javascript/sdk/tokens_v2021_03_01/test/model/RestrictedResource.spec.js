@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForTokens.RestrictedResource);
     });
 
-    it('should have the property method (base name: "method")', function() {
+    it('should have the property method', function() {
       // verify property exists
       expect(instance).to.have.property('method');
 
       // set and verify value
-      var validValue = ['GET', 'PUT', 'POST', 'DELETE', ][0];
-      instance.method = validValue;
-      expect(instance.method).to.equal(validValue);
+      var expectedValue = ['GET', 'PUT', 'POST', 'DELETE', ][0];
+      instance.method = expectedValue;
+      expect(instance.method).to.equal(expectedValue);
     });
 
-    it('should have the property path (base name: "path")', function() {
+    it('should have the property path', function() {
       // verify property exists
       expect(instance).to.have.property('path');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.path = validValue;
-      expect(instance.path).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.path = expectedValue;
+      expect(instance.path).to.equal(expectedValue);
     });
 
-    it('should have the property dataElements (base name: "dataElements")', function() {
+    it('should have the property dataElements', function() {
       // verify property exists
       expect(instance).to.have.property('dataElements');
 
       // set and verify value
-      var validValue = generateMockData('[String]', true);
-      instance.dataElements = validValue;
-      expect(instance.dataElements).to.equal(validValue);
+      var expectedValue = generateMockData('String', true);
+      instance.dataElements = expectedValue;
+      expect(instance.dataElements).to.equal(expectedValue);
     });
 
   });

@@ -45,34 +45,34 @@
       expect(instance).to.be.a(SellingPartnerApiForCatalogItems.ItemSalesRanksByMarketplace);
     });
 
-    it('should have the property marketplaceId (base name: "marketplaceId")', function() {
+    it('should have the property marketplaceId', function() {
       // verify property exists
       expect(instance).to.have.property('marketplaceId');
 
       // set and verify value
-      var validValue = generateMockData('String');
-      instance.marketplaceId = validValue;
-      expect(instance.marketplaceId).to.equal(validValue);
+      var expectedValue = generateMockData('String');
+      instance.marketplaceId = expectedValue;
+      expect(instance.marketplaceId).to.equal(expectedValue);
     });
 
-    it('should have the property classificationRanks (base name: "classificationRanks")', function() {
+    it('should have the property classificationRanks', function() {
       // verify property exists
       expect(instance).to.have.property('classificationRanks');
 
       // set and verify value
-      var validValue = generateMockData('[ItemClassificationSalesRank]', true);
-      instance.classificationRanks = validValue;
-      expect(instance.classificationRanks).to.equal(validValue);
+      var expectedValue = generateMockData('ItemClassificationSalesRank', true);
+      instance.classificationRanks = expectedValue;
+      expect(instance.classificationRanks).to.equal(expectedValue);
     });
 
-    it('should have the property displayGroupRanks (base name: "displayGroupRanks")', function() {
+    it('should have the property displayGroupRanks', function() {
       // verify property exists
       expect(instance).to.have.property('displayGroupRanks');
 
       // set and verify value
-      var validValue = generateMockData('[ItemDisplayGroupSalesRank]', true);
-      instance.displayGroupRanks = validValue;
-      expect(instance.displayGroupRanks).to.equal(validValue);
+      var expectedValue = generateMockData('ItemDisplayGroupSalesRank', true);
+      instance.displayGroupRanks = expectedValue;
+      expect(instance.displayGroupRanks).to.equal(expectedValue);
     });
 
   });
