@@ -1,13 +1,15 @@
 <?php
+
 /**
- * ItemLabelPageType
+ * ItemLabelPageType.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
@@ -27,22 +29,22 @@
  */
 
 namespace SpApi\Model\fulfillment\inbound\v2024_03_20;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * ItemLabelPageType Class Doc Comment
+ * ItemLabelPageType Class Doc Comment.
  *
  * @category Class
+ *
  * @description The page type to use to print the labels. Possible values: &#39;A4_21&#39;, &#39;A4_24&#39;, &#39;A4_24_64x33&#39;, &#39;A4_24_66x35&#39;, &#39;A4_24_70x36&#39;, &#39;A4_24_70x37&#39;, &#39;A4_24i&#39;, &#39;A4_27&#39;, &#39;A4_40_52x29&#39;, &#39;A4_44_48x25&#39;, &#39;Letter_30&#39;.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class ItemLabelPageType
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const A4_21 = 'A4_21';
 
@@ -67,7 +69,8 @@ class ItemLabelPageType
     public const LETTER_30 = 'Letter_30';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
@@ -83,9 +86,7 @@ class ItemLabelPageType
             self::A4_27,
             self::A4_40_52X29,
             self::A4_44_48X25,
-            self::LETTER_30
+            self::LETTER_30,
         ];
     }
 }
-
-

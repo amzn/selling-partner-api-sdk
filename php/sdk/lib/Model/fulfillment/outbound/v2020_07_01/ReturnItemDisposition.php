@@ -1,17 +1,19 @@
 <?php
+
 /**
- * ReturnItemDisposition
+ * ReturnItemDisposition.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner APIs for Fulfillment Outbound
+ * Selling Partner APIs for Fulfillment Outbound.
  *
  * The Selling Partner API for Fulfillment Outbound lets you create applications that help a seller fulfill Multi-Channel Fulfillment orders using their inventory in Amazon's fulfillment network. You can get information on both potential and existing fulfillment orders.
  *
@@ -27,22 +29,22 @@
  */
 
 namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * ReturnItemDisposition Class Doc Comment
+ * ReturnItemDisposition Class Doc Comment.
  *
  * @category Class
+ *
  * @description The condition of the return item when received by an Amazon fulfillment center.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class ReturnItemDisposition
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const SELLABLE = 'Sellable';
 
@@ -55,7 +57,8 @@ class ReturnItemDisposition
     public const FULFILLER_DAMAGED = 'FulfillerDamaged';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
@@ -65,9 +68,7 @@ class ReturnItemDisposition
             self::DEFECTIVE,
             self::CUSTOMER_DAMAGED,
             self::CARRIER_DAMAGED,
-            self::FULFILLER_DAMAGED
+            self::FULFILLER_DAMAGED,
         ];
     }
 }
-
-

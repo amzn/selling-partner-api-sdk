@@ -1,16 +1,18 @@
 <?php
+
 /**
  * SupplySourcesApi
- * PHP version 8.3
+ * PHP version 8.3.
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Supply Sources
+ * Selling Partner API for Supply Sources.
  *
  * Manage configurations and capabilities of seller supply sources.
  *
@@ -35,38 +37,37 @@ use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use SpApi\AuthAndAuth\RateLimitConfiguration;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RateLimitConfiguration;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
+use SpApi\Model\supplySources\v2020_07_01\CreateSupplySourceRequest;
+use SpApi\Model\supplySources\v2020_07_01\CreateSupplySourceResponse;
+use SpApi\Model\supplySources\v2020_07_01\ErrorList;
+use SpApi\Model\supplySources\v2020_07_01\GetSupplySourcesResponse;
+use SpApi\Model\supplySources\v2020_07_01\SupplySource;
+use SpApi\Model\supplySources\v2020_07_01\UpdateSupplySourceRequest;
+use SpApi\Model\supplySources\v2020_07_01\UpdateSupplySourceStatusRequest;
 use SpApi\ObjectSerializer;
+use Symfony\Component\RateLimiter\LimiterInterface;
+use Symfony\Component\RateLimiter\RateLimiterFactory;
+use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
- * SupplySourcesApi Class Doc Comment
+ * SupplySourcesApi Class Doc Comment.
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class SupplySourcesApi
 {
-    /**
-     * @var ClientInterface
-     */
     protected ClientInterface $client;
 
-    /**
-     * @var Configuration
-     */
     protected Configuration $config;
 
-    /**
-     * @var HeaderSelector
-     */
     protected HeaderSelector $headerSelector;
 
     /**
@@ -74,21 +75,11 @@ class SupplySourcesApi
      */
     protected int $hostIndex;
 
-    /**
-     * @var ?RateLimitConfiguration
-     */
     private ?RateLimitConfiguration $rateLimitConfig = null;
 
-    /**
-     * @var ?LimiterInterface
-     */
     private ?LimiterInterface $rateLimiter = null;
 
     /**
-     * @param Configuration   $config
-     * @param RateLimitConfiguration|null $rateLimitConfig
-     * @param ClientInterface|null $client
-     * @param HeaderSelector|null $selector
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
@@ -107,10 +98,10 @@ class SupplySourcesApi
                 'policy' => $type,
                 'limit' => $rateLimitConfig->getRateLimitTokenLimit(),
             ];
-            if ($type === "fixed_window" || $type === "sliding_window") {
-                $rateLimitOptions['interval'] = $rateLimitConfig->getRateLimitToken() . 'seconds';
+            if ('fixed_window' === $type || 'sliding_window' === $type) {
+                $rateLimitOptions['interval'] = $rateLimitConfig->getRateLimitToken().'seconds';
             } else {
-                $rateLimitOptions['rate'] = ['interval' => $rateLimitConfig->getRateLimitToken() . 'seconds'];
+                $rateLimitOptions['rate'] = ['interval' => $rateLimitConfig->getRateLimitToken().'seconds'];
             }
             $factory = new RateLimiterFactory($rateLimitOptions, new InMemoryStorage());
             $this->rateLimiter = $factory->create();
@@ -122,7 +113,7 @@ class SupplySourcesApi
     }
 
     /**
-     * Set the host index
+     * Set the host index.
      *
      * @param int $hostIndex Host index (required)
      */
@@ -132,7 +123,7 @@ class SupplySourcesApi
     }
 
     /**
-     * Get the host index
+     * Get the host index.
      *
      * @return int Host index
      */
@@ -141,40 +132,38 @@ class SupplySourcesApi
         return $this->hostIndex;
     }
 
-    /**
-     * @return Configuration
-     */
     public function getConfig(): Configuration
     {
         return $this->config;
     }
 
     /**
-     * Operation archiveSupplySource
+     * Operation archiveSupplySource.
      *
-     * @param  string $supply_source_id
-     *  The unique identifier of a supply source. (required)
+     * @param string $supply_source_id
+     *                                 The unique identifier of a supply source. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\supplySources\v2020_07_01\ErrorList
      */
     public function archiveSupplySource(
         string $supply_source_id
-    ): \SpApi\Model\supplySources\v2020_07_01\ErrorList {
+    ): ErrorList {
         list($response) = $this->archiveSupplySourceWithHttpInfo($supply_source_id);
+
         return $response;
     }
 
     /**
-     * Operation archiveSupplySourceWithHttpInfo
+     * Operation archiveSupplySourceWithHttpInfo.
      *
-     * @param  string $supply_source_id
-     *  The unique identifier of a supply source. (required)
+     * @param string $supply_source_id
+     *                                 The unique identifier of a supply source. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\supplySources\v2020_07_01\ErrorList, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function archiveSupplySourceWithHttpInfo(
         string $supply_source_id
@@ -184,6 +173,7 @@ class SupplySourcesApi
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -218,10 +208,10 @@ class SupplySourcesApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 204:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -232,11 +222,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 400:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -247,11 +238,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 403:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -262,11 +254,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 404:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -277,11 +270,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 413:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -292,11 +286,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 415:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -307,11 +302,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 429:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -322,11 +318,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 500:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -337,11 +334,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 503:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -352,16 +350,16 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
             $returnType = '\SpApi\Model\supplySources\v2020_07_01\ErrorList';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+            if ('\SplFileObject' === $returnType) {
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
+                if ('string' !== $returnType) {
                     $content = json_decode($content);
                 }
             }
@@ -369,9 +367,8 @@ class SupplySourcesApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 204:
@@ -381,7 +378,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -389,7 +388,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -397,7 +398,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -405,7 +408,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -413,7 +418,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -421,7 +428,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -429,7 +438,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -437,7 +448,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -445,20 +458,21 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation archiveSupplySourceAsync
+     * Operation archiveSupplySourceAsync.
      *
-     * @param  string $supply_source_id
-     *  The unique identifier of a supply source. (required)
+     * @param string $supply_source_id
+     *                                 The unique identifier of a supply source. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function archiveSupplySourceAsync(
         string $supply_source_id
@@ -468,17 +482,17 @@ class SupplySourcesApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation archiveSupplySourceAsyncWithHttpInfo
+     * Operation archiveSupplySourceAsyncWithHttpInfo.
      *
-     * @param  string $supply_source_id
-     *  The unique identifier of a supply source. (required)
+     * @param string $supply_source_id
+     *                                 The unique identifier of a supply source. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function archiveSupplySourceAsyncWithHttpInfo(
         string $supply_source_id
@@ -492,11 +506,11 @@ class SupplySourcesApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -504,12 +518,13 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -521,23 +536,23 @@ class SupplySourcesApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'archiveSupplySource'
+     * Create request for operation 'archiveSupplySource'.
      *
-     * @param  string $supply_source_id
-     *  The unique identifier of a supply source. (required)
+     * @param string $supply_source_id
+     *                                 The unique identifier of a supply source. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function archiveSupplySourceRequest(
         string $supply_source_id
     ): Request {
         // verify the required parameter 'supply_source_id' is set
-        if ($supply_source_id === null || (is_array($supply_source_id) && count($supply_source_id) === 0)) {
+        if (null === $supply_source_id || (is_array($supply_source_id) && 0 === count($supply_source_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $supply_source_id when calling archiveSupplySource'
             );
@@ -550,17 +565,14 @@ class SupplySourcesApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($supply_source_id !== null) {
+        if (null !== $supply_source_id) {
             $resourcePath = str_replace(
-                '{' . 'supplySourceId' . '}',
+                '{supplySourceId}',
                 ObjectSerializer::toPathValue($supply_source_id),
                 $resourcePath
             );
         }
-
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -569,7 +581,6 @@ class SupplySourcesApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                
                 '',
                 false
             );
@@ -584,22 +595,19 @@ class SupplySourcesApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -613,49 +621,52 @@ class SupplySourcesApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'DELETE',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation createSupplySource
+     * Operation createSupplySource.
      *
-     * @param  \SpApi\Model\supplySources\v2020_07_01\CreateSupplySourceRequest $payload
-     *  A request to create a supply source. (required)
+     * @param CreateSupplySourceRequest $payload
+     *                                           A request to create a supply source. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\supplySources\v2020_07_01\CreateSupplySourceResponse
      */
     public function createSupplySource(
-        \SpApi\Model\supplySources\v2020_07_01\CreateSupplySourceRequest $payload
-    ): \SpApi\Model\supplySources\v2020_07_01\CreateSupplySourceResponse {
+        CreateSupplySourceRequest $payload
+    ): CreateSupplySourceResponse {
         list($response) = $this->createSupplySourceWithHttpInfo($payload);
+
         return $response;
     }
 
     /**
-     * Operation createSupplySourceWithHttpInfo
+     * Operation createSupplySourceWithHttpInfo.
      *
-     * @param  \SpApi\Model\supplySources\v2020_07_01\CreateSupplySourceRequest $payload
-     *  A request to create a supply source. (required)
+     * @param CreateSupplySourceRequest $payload
+     *                                           A request to create a supply source. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\supplySources\v2020_07_01\CreateSupplySourceResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function createSupplySourceWithHttpInfo(
-        \SpApi\Model\supplySources\v2020_07_01\CreateSupplySourceRequest $payload
+        CreateSupplySourceRequest $payload
     ): array {
         $request = $this->createSupplySourceRequest($payload);
         $request = $this->config->sign($request);
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -690,10 +701,10 @@ class SupplySourcesApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\SpApi\Model\supplySources\v2020_07_01\CreateSupplySourceResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\CreateSupplySourceResponse' !== 'string') {
@@ -704,11 +715,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\CreateSupplySourceResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 400:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -719,11 +731,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 403:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -734,11 +747,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 404:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -749,11 +763,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 413:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -764,11 +779,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 415:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -779,11 +795,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 429:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -794,11 +811,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 500:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -809,11 +827,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 503:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -824,16 +843,16 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
             $returnType = '\SpApi\Model\supplySources\v2020_07_01\CreateSupplySourceResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+            if ('\SplFileObject' === $returnType) {
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
+                if ('string' !== $returnType) {
                     $content = json_decode($content);
                 }
             }
@@ -841,9 +860,8 @@ class SupplySourcesApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -853,7 +871,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -861,7 +881,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -869,7 +891,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -877,7 +901,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -885,7 +911,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -893,7 +921,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -901,7 +931,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -909,7 +941,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -917,43 +951,44 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation createSupplySourceAsync
+     * Operation createSupplySourceAsync.
      *
-     * @param  \SpApi\Model\supplySources\v2020_07_01\CreateSupplySourceRequest $payload
-     *  A request to create a supply source. (required)
+     * @param CreateSupplySourceRequest $payload
+     *                                           A request to create a supply source. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function createSupplySourceAsync(
-        \SpApi\Model\supplySources\v2020_07_01\CreateSupplySourceRequest $payload
+        CreateSupplySourceRequest $payload
     ): PromiseInterface {
         return $this->createSupplySourceAsyncWithHttpInfo($payload)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation createSupplySourceAsyncWithHttpInfo
+     * Operation createSupplySourceAsyncWithHttpInfo.
      *
-     * @param  \SpApi\Model\supplySources\v2020_07_01\CreateSupplySourceRequest $payload
-     *  A request to create a supply source. (required)
+     * @param CreateSupplySourceRequest $payload
+     *                                           A request to create a supply source. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function createSupplySourceAsyncWithHttpInfo(
-        \SpApi\Model\supplySources\v2020_07_01\CreateSupplySourceRequest $payload
+        CreateSupplySourceRequest $payload
     ): PromiseInterface {
         $returnType = '\SpApi\Model\supplySources\v2020_07_01\CreateSupplySourceResponse';
         $request = $this->createSupplySourceRequest($payload);
@@ -964,11 +999,11 @@ class SupplySourcesApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -976,12 +1011,13 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -993,23 +1029,23 @@ class SupplySourcesApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'createSupplySource'
+     * Create request for operation 'createSupplySource'.
      *
-     * @param  \SpApi\Model\supplySources\v2020_07_01\CreateSupplySourceRequest $payload
-     *  A request to create a supply source. (required)
+     * @param CreateSupplySourceRequest $payload
+     *                                           A request to create a supply source. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function createSupplySourceRequest(
-        \SpApi\Model\supplySources\v2020_07_01\CreateSupplySourceRequest $payload
+        CreateSupplySourceRequest $payload
     ): Request {
         // verify the required parameter 'payload' is set
-        if ($payload === null || (is_array($payload) && count($payload) === 0)) {
+        if (null === $payload || (is_array($payload) && 0 === count($payload))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $payload when calling createSupplySource'
             );
@@ -1022,10 +1058,6 @@ class SupplySourcesApi
         $httpBody = '';
         $multipart = false;
 
-
-
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -1033,15 +1065,14 @@ class SupplySourcesApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                'application/json'
-                ,
+                'application/json',
                 false
             );
         }
 
         // for model (json/xml)
         if (isset($payload)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($payload));
             } else {
                 $httpBody = $payload;
@@ -1054,22 +1085,19 @@ class SupplySourcesApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1083,40 +1111,42 @@ class SupplySourcesApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getSupplySource
+     * Operation getSupplySource.
      *
-     * @param  string $supply_source_id
-     *  The unique identifier of a supply source. (required)
+     * @param string $supply_source_id
+     *                                 The unique identifier of a supply source. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\supplySources\v2020_07_01\SupplySource
      */
     public function getSupplySource(
         string $supply_source_id
-    ): \SpApi\Model\supplySources\v2020_07_01\SupplySource {
+    ): SupplySource {
         list($response) = $this->getSupplySourceWithHttpInfo($supply_source_id);
+
         return $response;
     }
 
     /**
-     * Operation getSupplySourceWithHttpInfo
+     * Operation getSupplySourceWithHttpInfo.
      *
-     * @param  string $supply_source_id
-     *  The unique identifier of a supply source. (required)
+     * @param string $supply_source_id
+     *                                 The unique identifier of a supply source. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\supplySources\v2020_07_01\SupplySource, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getSupplySourceWithHttpInfo(
         string $supply_source_id
@@ -1126,6 +1156,7 @@ class SupplySourcesApi
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -1160,10 +1191,10 @@ class SupplySourcesApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\SpApi\Model\supplySources\v2020_07_01\SupplySource' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\SupplySource' !== 'string') {
@@ -1174,11 +1205,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\SupplySource', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 400:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -1189,11 +1221,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 403:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -1204,11 +1237,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 404:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -1219,11 +1253,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 413:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -1234,11 +1269,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 415:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -1249,11 +1285,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 429:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -1264,11 +1301,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 500:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -1279,11 +1317,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 503:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -1294,16 +1333,16 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
             $returnType = '\SpApi\Model\supplySources\v2020_07_01\SupplySource';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+            if ('\SplFileObject' === $returnType) {
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
+                if ('string' !== $returnType) {
                     $content = json_decode($content);
                 }
             }
@@ -1311,9 +1350,8 @@ class SupplySourcesApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -1323,7 +1361,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1331,7 +1371,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1339,7 +1381,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1347,7 +1391,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1355,7 +1401,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1363,7 +1411,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1371,7 +1421,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1379,7 +1431,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1387,20 +1441,21 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation getSupplySourceAsync
+     * Operation getSupplySourceAsync.
      *
-     * @param  string $supply_source_id
-     *  The unique identifier of a supply source. (required)
+     * @param string $supply_source_id
+     *                                 The unique identifier of a supply source. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getSupplySourceAsync(
         string $supply_source_id
@@ -1410,17 +1465,17 @@ class SupplySourcesApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getSupplySourceAsyncWithHttpInfo
+     * Operation getSupplySourceAsyncWithHttpInfo.
      *
-     * @param  string $supply_source_id
-     *  The unique identifier of a supply source. (required)
+     * @param string $supply_source_id
+     *                                 The unique identifier of a supply source. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getSupplySourceAsyncWithHttpInfo(
         string $supply_source_id
@@ -1434,11 +1489,11 @@ class SupplySourcesApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -1446,12 +1501,13 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -1463,23 +1519,23 @@ class SupplySourcesApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getSupplySource'
+     * Create request for operation 'getSupplySource'.
      *
-     * @param  string $supply_source_id
-     *  The unique identifier of a supply source. (required)
+     * @param string $supply_source_id
+     *                                 The unique identifier of a supply source. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getSupplySourceRequest(
         string $supply_source_id
     ): Request {
         // verify the required parameter 'supply_source_id' is set
-        if ($supply_source_id === null || (is_array($supply_source_id) && count($supply_source_id) === 0)) {
+        if (null === $supply_source_id || (is_array($supply_source_id) && 0 === count($supply_source_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $supply_source_id when calling getSupplySource'
             );
@@ -1492,17 +1548,14 @@ class SupplySourcesApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($supply_source_id !== null) {
+        if (null !== $supply_source_id) {
             $resourcePath = str_replace(
-                '{' . 'supplySourceId' . '}',
+                '{supplySourceId}',
                 ObjectSerializer::toPathValue($supply_source_id),
                 $resourcePath
             );
         }
-
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -1511,7 +1564,6 @@ class SupplySourcesApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                
                 '',
                 false
             );
@@ -1526,22 +1578,19 @@ class SupplySourcesApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1555,45 +1604,47 @@ class SupplySourcesApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getSupplySources
+     * Operation getSupplySources.
      *
-     * @param  string|null $next_page_token
-     *  The pagination token to retrieve a specific page of results. (optional)
-     * @param  float|null $page_size
-     *  The number of supply sources to return per paginated request. (optional, default to 10.0)
+     * @param null|string $next_page_token
+     *                                     The pagination token to retrieve a specific page of results. (optional)
+     * @param null|float  $page_size
+     *                                     The number of supply sources to return per paginated request. (optional, default to 10.0)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\supplySources\v2020_07_01\GetSupplySourcesResponse
      */
     public function getSupplySources(
         ?string $next_page_token = null,
         ?float $page_size = 10.0
-    ): \SpApi\Model\supplySources\v2020_07_01\GetSupplySourcesResponse {
+    ): GetSupplySourcesResponse {
         list($response) = $this->getSupplySourcesWithHttpInfo($next_page_token, $page_size);
+
         return $response;
     }
 
     /**
-     * Operation getSupplySourcesWithHttpInfo
+     * Operation getSupplySourcesWithHttpInfo.
      *
-     * @param  string|null $next_page_token
-     *  The pagination token to retrieve a specific page of results. (optional)
-     * @param  float|null $page_size
-     *  The number of supply sources to return per paginated request. (optional, default to 10.0)
+     * @param null|string $next_page_token
+     *                                     The pagination token to retrieve a specific page of results. (optional)
+     * @param null|float  $page_size
+     *                                     The number of supply sources to return per paginated request. (optional, default to 10.0)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\supplySources\v2020_07_01\GetSupplySourcesResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getSupplySourcesWithHttpInfo(
         ?string $next_page_token = null,
@@ -1604,6 +1655,7 @@ class SupplySourcesApi
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -1638,10 +1690,10 @@ class SupplySourcesApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\SpApi\Model\supplySources\v2020_07_01\GetSupplySourcesResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\GetSupplySourcesResponse' !== 'string') {
@@ -1652,11 +1704,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\GetSupplySourcesResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 400:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -1667,11 +1720,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 403:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -1682,11 +1736,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 404:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -1697,11 +1752,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 413:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -1712,11 +1768,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 415:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -1727,11 +1784,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 429:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -1742,11 +1800,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 500:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -1757,11 +1816,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 503:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -1772,16 +1832,16 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
             $returnType = '\SpApi\Model\supplySources\v2020_07_01\GetSupplySourcesResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+            if ('\SplFileObject' === $returnType) {
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
+                if ('string' !== $returnType) {
                     $content = json_decode($content);
                 }
             }
@@ -1789,9 +1849,8 @@ class SupplySourcesApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -1801,7 +1860,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1809,7 +1870,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1817,7 +1880,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1825,7 +1890,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1833,7 +1900,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1841,7 +1910,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1849,7 +1920,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1857,7 +1930,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1865,22 +1940,23 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation getSupplySourcesAsync
+     * Operation getSupplySourcesAsync.
      *
-     * @param  string|null $next_page_token
-     *  The pagination token to retrieve a specific page of results. (optional)
-     * @param  float|null $page_size
-     *  The number of supply sources to return per paginated request. (optional, default to 10.0)
+     * @param null|string $next_page_token
+     *                                     The pagination token to retrieve a specific page of results. (optional)
+     * @param null|float  $page_size
+     *                                     The number of supply sources to return per paginated request. (optional, default to 10.0)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getSupplySourcesAsync(
         ?string $next_page_token = null,
@@ -1891,19 +1967,19 @@ class SupplySourcesApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getSupplySourcesAsyncWithHttpInfo
+     * Operation getSupplySourcesAsyncWithHttpInfo.
      *
-     * @param  string|null $next_page_token
-     *  The pagination token to retrieve a specific page of results. (optional)
-     * @param  float|null $page_size
-     *  The number of supply sources to return per paginated request. (optional, default to 10.0)
+     * @param null|string $next_page_token
+     *                                     The pagination token to retrieve a specific page of results. (optional)
+     * @param null|float  $page_size
+     *                                     The number of supply sources to return per paginated request. (optional, default to 10.0)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getSupplySourcesAsyncWithHttpInfo(
         ?string $next_page_token = null,
@@ -1918,11 +1994,11 @@ class SupplySourcesApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -1930,12 +2006,13 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -1947,25 +2024,24 @@ class SupplySourcesApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getSupplySources'
+     * Create request for operation 'getSupplySources'.
      *
-     * @param  string|null $next_page_token
-     *  The pagination token to retrieve a specific page of results. (optional)
-     * @param  float|null $page_size
-     *  The number of supply sources to return per paginated request. (optional, default to 10.0)
+     * @param null|string $next_page_token
+     *                                     The pagination token to retrieve a specific page of results. (optional)
+     * @param null|float  $page_size
+     *                                     The number of supply sources to return per paginated request. (optional, default to 10.0)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getSupplySourcesRequest(
         ?string $next_page_token = null,
         ?float $page_size = 10.0
     ): Request {
-
         $resourcePath = '/supplySources/2020-07-01/supplySources';
         $formParams = [];
         $queryParams = [];
@@ -1992,9 +2068,6 @@ class SupplySourcesApi
             false // required
         ) ?? []);
 
-
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -2002,7 +2075,6 @@ class SupplySourcesApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                
                 '',
                 false
             );
@@ -2017,22 +2089,19 @@ class SupplySourcesApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -2046,55 +2115,58 @@ class SupplySourcesApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation updateSupplySource
+     * Operation updateSupplySource.
      *
-     * @param  string $supply_source_id
-     *  The unique identitier of a supply source. (required)
-     * @param  \SpApi\Model\supplySources\v2020_07_01\UpdateSupplySourceRequest|null $payload
-     *  payload (optional)
+     * @param string                         $supply_source_id
+     *                                                         The unique identitier of a supply source. (required)
+     * @param null|UpdateSupplySourceRequest $payload
+     *                                                         payload (optional)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\supplySources\v2020_07_01\ErrorList
      */
     public function updateSupplySource(
         string $supply_source_id,
-        ?\SpApi\Model\supplySources\v2020_07_01\UpdateSupplySourceRequest $payload = null
-    ): \SpApi\Model\supplySources\v2020_07_01\ErrorList {
+        ?UpdateSupplySourceRequest $payload = null
+    ): ErrorList {
         list($response) = $this->updateSupplySourceWithHttpInfo($supply_source_id, $payload);
+
         return $response;
     }
 
     /**
-     * Operation updateSupplySourceWithHttpInfo
+     * Operation updateSupplySourceWithHttpInfo.
      *
-     * @param  string $supply_source_id
-     *  The unique identitier of a supply source. (required)
-     * @param  \SpApi\Model\supplySources\v2020_07_01\UpdateSupplySourceRequest|null $payload
-     *  (optional)
+     * @param string                         $supply_source_id
+     *                                                         The unique identitier of a supply source. (required)
+     * @param null|UpdateSupplySourceRequest $payload
+     *                                                         (optional)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\supplySources\v2020_07_01\ErrorList, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function updateSupplySourceWithHttpInfo(
         string $supply_source_id,
-        ?\SpApi\Model\supplySources\v2020_07_01\UpdateSupplySourceRequest $payload = null
+        ?UpdateSupplySourceRequest $payload = null
     ): array {
         $request = $this->updateSupplySourceRequest($supply_source_id, $payload);
         $request = $this->config->sign($request);
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -2129,10 +2201,10 @@ class SupplySourcesApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 204:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -2143,11 +2215,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 400:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -2158,11 +2231,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 403:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -2173,11 +2247,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 404:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -2188,11 +2263,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 413:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -2203,11 +2279,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 415:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -2218,11 +2295,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 429:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -2233,11 +2311,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 500:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -2248,11 +2327,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 503:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -2263,16 +2343,16 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
             $returnType = '\SpApi\Model\supplySources\v2020_07_01\ErrorList';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+            if ('\SplFileObject' === $returnType) {
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
+                if ('string' !== $returnType) {
                     $content = json_decode($content);
                 }
             }
@@ -2280,9 +2360,8 @@ class SupplySourcesApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 204:
@@ -2292,7 +2371,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2300,7 +2381,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2308,7 +2391,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2316,7 +2401,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2324,7 +2411,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2332,7 +2421,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2340,7 +2431,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2348,7 +2441,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2356,49 +2451,50 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation updateSupplySourceAsync
+     * Operation updateSupplySourceAsync.
      *
-     * @param  string $supply_source_id
-     *  The unique identitier of a supply source. (required)
-     * @param  \SpApi\Model\supplySources\v2020_07_01\UpdateSupplySourceRequest|null $payload
-     *  (optional)
+     * @param string                         $supply_source_id
+     *                                                         The unique identitier of a supply source. (required)
+     * @param null|UpdateSupplySourceRequest $payload
+     *                                                         (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function updateSupplySourceAsync(
         string $supply_source_id,
-        ?\SpApi\Model\supplySources\v2020_07_01\UpdateSupplySourceRequest $payload = null
+        ?UpdateSupplySourceRequest $payload = null
     ): PromiseInterface {
         return $this->updateSupplySourceAsyncWithHttpInfo($supply_source_id, $payload)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation updateSupplySourceAsyncWithHttpInfo
+     * Operation updateSupplySourceAsyncWithHttpInfo.
      *
-     * @param  string $supply_source_id
-     *  The unique identitier of a supply source. (required)
-     * @param  \SpApi\Model\supplySources\v2020_07_01\UpdateSupplySourceRequest|null $payload
-     *  (optional)
+     * @param string                         $supply_source_id
+     *                                                         The unique identitier of a supply source. (required)
+     * @param null|UpdateSupplySourceRequest $payload
+     *                                                         (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function updateSupplySourceAsyncWithHttpInfo(
         string $supply_source_id,
-        ?\SpApi\Model\supplySources\v2020_07_01\UpdateSupplySourceRequest $payload = null
+        ?UpdateSupplySourceRequest $payload = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\supplySources\v2020_07_01\ErrorList';
         $request = $this->updateSupplySourceRequest($supply_source_id, $payload);
@@ -2409,11 +2505,11 @@ class SupplySourcesApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -2421,12 +2517,13 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -2438,26 +2535,26 @@ class SupplySourcesApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'updateSupplySource'
+     * Create request for operation 'updateSupplySource'.
      *
-     * @param  string $supply_source_id
-     *  The unique identitier of a supply source. (required)
-     * @param  \SpApi\Model\supplySources\v2020_07_01\UpdateSupplySourceRequest|null $payload
-     *  (optional)
+     * @param string                         $supply_source_id
+     *                                                         The unique identitier of a supply source. (required)
+     * @param null|UpdateSupplySourceRequest $payload
+     *                                                         (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function updateSupplySourceRequest(
         string $supply_source_id,
-        ?\SpApi\Model\supplySources\v2020_07_01\UpdateSupplySourceRequest $payload = null
+        ?UpdateSupplySourceRequest $payload = null
     ): Request {
         // verify the required parameter 'supply_source_id' is set
-        if ($supply_source_id === null || (is_array($supply_source_id) && count($supply_source_id) === 0)) {
+        if (null === $supply_source_id || (is_array($supply_source_id) && 0 === count($supply_source_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $supply_source_id when calling updateSupplySource'
             );
@@ -2470,17 +2567,14 @@ class SupplySourcesApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($supply_source_id !== null) {
+        if (null !== $supply_source_id) {
             $resourcePath = str_replace(
-                '{' . 'supplySourceId' . '}',
+                '{supplySourceId}',
                 ObjectSerializer::toPathValue($supply_source_id),
                 $resourcePath
             );
         }
-
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -2489,15 +2583,14 @@ class SupplySourcesApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                'application/json'
-                ,
+                'application/json',
                 false
             );
         }
 
         // for model (json/xml)
         if (isset($payload)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($payload));
             } else {
                 $httpBody = $payload;
@@ -2510,22 +2603,19 @@ class SupplySourcesApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -2539,55 +2629,58 @@ class SupplySourcesApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'PUT',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation updateSupplySourceStatus
+     * Operation updateSupplySourceStatus.
      *
-     * @param  string $supply_source_id
-     *  The unique identifier of a supply source. (required)
-     * @param  \SpApi\Model\supplySources\v2020_07_01\UpdateSupplySourceStatusRequest|null $payload
-     *  payload (optional)
+     * @param string                               $supply_source_id
+     *                                                               The unique identifier of a supply source. (required)
+     * @param null|UpdateSupplySourceStatusRequest $payload
+     *                                                               payload (optional)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\supplySources\v2020_07_01\ErrorList
      */
     public function updateSupplySourceStatus(
         string $supply_source_id,
-        ?\SpApi\Model\supplySources\v2020_07_01\UpdateSupplySourceStatusRequest $payload = null
-    ): \SpApi\Model\supplySources\v2020_07_01\ErrorList {
+        ?UpdateSupplySourceStatusRequest $payload = null
+    ): ErrorList {
         list($response) = $this->updateSupplySourceStatusWithHttpInfo($supply_source_id, $payload);
+
         return $response;
     }
 
     /**
-     * Operation updateSupplySourceStatusWithHttpInfo
+     * Operation updateSupplySourceStatusWithHttpInfo.
      *
-     * @param  string $supply_source_id
-     *  The unique identifier of a supply source. (required)
-     * @param  \SpApi\Model\supplySources\v2020_07_01\UpdateSupplySourceStatusRequest|null $payload
-     *  (optional)
+     * @param string                               $supply_source_id
+     *                                                               The unique identifier of a supply source. (required)
+     * @param null|UpdateSupplySourceStatusRequest $payload
+     *                                                               (optional)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\supplySources\v2020_07_01\ErrorList, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function updateSupplySourceStatusWithHttpInfo(
         string $supply_source_id,
-        ?\SpApi\Model\supplySources\v2020_07_01\UpdateSupplySourceStatusRequest $payload = null
+        ?UpdateSupplySourceStatusRequest $payload = null
     ): array {
         $request = $this->updateSupplySourceStatusRequest($supply_source_id, $payload);
         $request = $this->config->sign($request);
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -2622,10 +2715,10 @@ class SupplySourcesApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 204:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -2636,11 +2729,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 400:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -2651,11 +2745,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 403:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -2666,11 +2761,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 404:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -2681,11 +2777,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 413:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -2696,11 +2793,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 415:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -2711,11 +2809,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 429:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -2726,11 +2825,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 500:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -2741,11 +2841,12 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 503:
                     if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\supplySources\v2020_07_01\ErrorList' !== 'string') {
@@ -2756,16 +2857,16 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\supplySources\v2020_07_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
             $returnType = '\SpApi\Model\supplySources\v2020_07_01\ErrorList';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+            if ('\SplFileObject' === $returnType) {
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
+                if ('string' !== $returnType) {
                     $content = json_decode($content);
                 }
             }
@@ -2773,9 +2874,8 @@ class SupplySourcesApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 204:
@@ -2785,7 +2885,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2793,7 +2895,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2801,7 +2905,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2809,7 +2915,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2817,7 +2925,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2825,7 +2935,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2833,7 +2945,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2841,7 +2955,9 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2849,49 +2965,50 @@ class SupplySourcesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation updateSupplySourceStatusAsync
+     * Operation updateSupplySourceStatusAsync.
      *
-     * @param  string $supply_source_id
-     *  The unique identifier of a supply source. (required)
-     * @param  \SpApi\Model\supplySources\v2020_07_01\UpdateSupplySourceStatusRequest|null $payload
-     *  (optional)
+     * @param string                               $supply_source_id
+     *                                                               The unique identifier of a supply source. (required)
+     * @param null|UpdateSupplySourceStatusRequest $payload
+     *                                                               (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function updateSupplySourceStatusAsync(
         string $supply_source_id,
-        ?\SpApi\Model\supplySources\v2020_07_01\UpdateSupplySourceStatusRequest $payload = null
+        ?UpdateSupplySourceStatusRequest $payload = null
     ): PromiseInterface {
         return $this->updateSupplySourceStatusAsyncWithHttpInfo($supply_source_id, $payload)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation updateSupplySourceStatusAsyncWithHttpInfo
+     * Operation updateSupplySourceStatusAsyncWithHttpInfo.
      *
-     * @param  string $supply_source_id
-     *  The unique identifier of a supply source. (required)
-     * @param  \SpApi\Model\supplySources\v2020_07_01\UpdateSupplySourceStatusRequest|null $payload
-     *  (optional)
+     * @param string                               $supply_source_id
+     *                                                               The unique identifier of a supply source. (required)
+     * @param null|UpdateSupplySourceStatusRequest $payload
+     *                                                               (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function updateSupplySourceStatusAsyncWithHttpInfo(
         string $supply_source_id,
-        ?\SpApi\Model\supplySources\v2020_07_01\UpdateSupplySourceStatusRequest $payload = null
+        ?UpdateSupplySourceStatusRequest $payload = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\supplySources\v2020_07_01\ErrorList';
         $request = $this->updateSupplySourceStatusRequest($supply_source_id, $payload);
@@ -2902,11 +3019,11 @@ class SupplySourcesApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -2914,12 +3031,13 @@ class SupplySourcesApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -2931,26 +3049,26 @@ class SupplySourcesApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'updateSupplySourceStatus'
+     * Create request for operation 'updateSupplySourceStatus'.
      *
-     * @param  string $supply_source_id
-     *  The unique identifier of a supply source. (required)
-     * @param  \SpApi\Model\supplySources\v2020_07_01\UpdateSupplySourceStatusRequest|null $payload
-     *  (optional)
+     * @param string                               $supply_source_id
+     *                                                               The unique identifier of a supply source. (required)
+     * @param null|UpdateSupplySourceStatusRequest $payload
+     *                                                               (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function updateSupplySourceStatusRequest(
         string $supply_source_id,
-        ?\SpApi\Model\supplySources\v2020_07_01\UpdateSupplySourceStatusRequest $payload = null
+        ?UpdateSupplySourceStatusRequest $payload = null
     ): Request {
         // verify the required parameter 'supply_source_id' is set
-        if ($supply_source_id === null || (is_array($supply_source_id) && count($supply_source_id) === 0)) {
+        if (null === $supply_source_id || (is_array($supply_source_id) && 0 === count($supply_source_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $supply_source_id when calling updateSupplySourceStatus'
             );
@@ -2963,17 +3081,14 @@ class SupplySourcesApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($supply_source_id !== null) {
+        if (null !== $supply_source_id) {
             $resourcePath = str_replace(
-                '{' . 'supplySourceId' . '}',
+                '{supplySourceId}',
                 ObjectSerializer::toPathValue($supply_source_id),
                 $resourcePath
             );
         }
-
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -2982,15 +3097,14 @@ class SupplySourcesApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                'application/json'
-                ,
+                'application/json',
                 false
             );
         }
 
         // for model (json/xml)
         if (isset($payload)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($payload));
             } else {
                 $httpBody = $payload;
@@ -3003,22 +3117,19 @@ class SupplySourcesApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -3032,19 +3143,36 @@ class SupplySourcesApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'PUT',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Create http client option
+     * Rate Limiter waits for tokens.
+     */
+    public function rateLimitWait(): void
+    {
+        if ($this->rateLimiter) {
+            $type = $this->rateLimitConfig->getRateLimitType();
+            if (0 != $this->rateLimitConfig->getTimeOut() && ('token_bucket' == $type || 'fixed_window' == $type)) {
+                $this->rateLimiter->reserve(1, $this->rateLimitConfig->getTimeOut() / 1000)->wait();
+            } else {
+                $this->rateLimiter->consume()->wait();
+            }
+        }
+    }
+
+    /**
+     * Create http client option.
+     *
+     * @return array of http client options
      *
      * @throws \RuntimeException on file opening failure
-     * @return array of http client options
      */
     protected function createHttpClientOption(): array
     {
@@ -3052,27 +3180,10 @@ class SupplySourcesApi
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
             if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+                throw new \RuntimeException('Failed to open the debug file: '.$this->config->getDebugFile());
             }
         }
 
         return $options;
-    }
-
-    /**
-     * Rate Limiter waits for tokens
-     *
-     * @return void
-     */
-    public function rateLimitWait(): void
-    {
-        if ($this->rateLimiter) {
-            $type = $this->rateLimitConfig->getRateLimitType();
-            if ($this->rateLimitConfig->getTimeOut() != 0 && ($type == "token_bucket" || $type == "fixed_window")) {
-                $this->rateLimiter->reserve(1, ($this->rateLimitConfig->getTimeOut()) / 1000)->wait();
-            } else {
-                $this->rateLimiter->consume()->wait();
-            }
-        }
     }
 }

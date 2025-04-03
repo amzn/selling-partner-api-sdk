@@ -1,17 +1,19 @@
 <?php
+
 /**
- * AssociatedItem
+ * AssociatedItem.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Services
+ * Selling Partner API for Services.
  *
  * With the Services API, you can build applications that help service providers get and modify their service orders and manage their resources.
  *
@@ -28,67 +30,73 @@
 
 namespace SpApi\Model\services\v1;
 
-use
-ArrayAccess;
-use SpApi\ObjectSerializer;
 use SpApi\Model\ModelInterface;
+use SpApi\ObjectSerializer;
 
 /**
- * AssociatedItem Class Doc Comment
+ * AssociatedItem Class Doc Comment.
  *
  * @category Class
+ *
  * @description Information about an item associated with the service job.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
+ *
  * @implements \ArrayAccess<string, mixed>
  */
-class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
+class AssociatedItem implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
+    public const ITEM_STATUS_ACTIVE = 'ACTIVE';
+    public const ITEM_STATUS_CANCELLED = 'CANCELLED';
+    public const ITEM_STATUS_SHIPPED = 'SHIPPED';
+    public const ITEM_STATUS_DELIVERED = 'DELIVERED';
+
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     */
     protected static string $openAPIModelName = 'AssociatedItem';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static array $openAPITypes = [
-             'asin' => 'string',
-             'title' => 'string',
-             'quantity' => 'int',
-             'order_id' => 'string',
-             'item_status' => 'string',
-             'brand_name' => 'string',
-             'item_delivery' => '\SpApi\Model\services\v1\ItemDelivery'    ];
+        'asin' => 'string',
+        'title' => 'string',
+        'quantity' => 'int',
+        'order_id' => 'string',
+        'item_status' => 'string',
+        'brand_name' => 'string',
+        'item_delivery' => '\SpApi\Model\services\v1\ItemDelivery'];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     *
+     * @phpstan-var array<string, string|null>
+     *
+     * @psalm-var array<string, string|null>
+     */
     protected static array $openAPIFormats = [
-            'asin' => null,
-            'title' => null,
-            'quantity' => null,
-            'order_id' => null,
-            'item_status' => null,
-            'brand_name' => null,
-            'item_delivery' => null    ];
+        'asin' => null,
+        'title' => null,
+        'quantity' => null,
+        'order_id' => null,
+        'item_status' => null,
+        'brand_name' => null,
+        'item_delivery' => null];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization.
+     *
+     * @var bool[]
+     */
     protected static array $openAPINullables = [
         'asin' => true,
         'title' => true,
@@ -96,107 +104,34 @@ class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'order_id' => true,
         'item_status' => true,
         'brand_name' => true,
-        'item_delivery' => true
+        'item_delivery' => true,
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here.
+     *
+     * @var bool[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPIFormats(): array
-    {
-        return self::$openAPIFormats;
-    }
-
-    /**
-     * Array of nullable properties
-     *
-     * @return array
-     */
-    protected static function openAPINullables(): array
-    {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * Array of nullable field names deliberately set to null
-     *
-     * @return boolean[]
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * Setter - Array of nullable field names deliberately set to null
-     *
-     * @param boolean[] $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    /**
-     * Checks if a property is nullable
-     *
-     * @param string $property
-     * @return bool
-     */
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    /**
-     * Checks if a nullable property is set to null.
-     *
-     * @param string $property
-     * @return bool
-     */
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @var string[]
      */
     protected static array $attributeMap = [
         'asin' => 'asin',
-                'title' => 'title',
-                'quantity' => 'quantity',
-                'order_id' => 'orderId',
-                'item_status' => 'itemStatus',
-                'brand_name' => 'brandName',
-                'item_delivery' => 'itemDelivery'
-        
+        'title' => 'title',
+        'quantity' => 'quantity',
+        'order_id' => 'orderId',
+        'item_status' => 'itemStatus',
+        'brand_name' => 'brandName',
+        'item_delivery' => 'itemDelivery',
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @var string[]
      */
@@ -207,11 +142,11 @@ class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'order_id' => 'setOrderId',
         'item_status' => 'setItemStatus',
         'brand_name' => 'setBrandName',
-        'item_delivery' => 'setItemDelivery'
+        'item_delivery' => 'setItemDelivery',
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @var string[]
      */
@@ -222,82 +157,19 @@ class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'order_id' => 'getOrderId',
         'item_status' => 'getItemStatus',
         'brand_name' => 'getBrandName',
-        'item_delivery' => 'getItemDelivery'
+        'item_delivery' => 'getItemDelivery',
     ];
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @return array
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @return array
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @return array
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    /**
-     * The original name of the model.
-     *
-     * @return string
-     */
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-    public const ITEM_STATUS_ACTIVE = 'ACTIVE';
-    public const ITEM_STATUS_CANCELLED = 'CANCELLED';
-    public const ITEM_STATUS_SHIPPED = 'SHIPPED';
-    public const ITEM_STATUS_DELIVERED = 'DELIVERED';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getItemStatusAllowableValues(): array
-    {
-        return [
-            self::ITEM_STATUS_ACTIVE,
-            self::ITEM_STATUS_CANCELLED,
-            self::ITEM_STATUS_SHIPPED,
-            self::ITEM_STATUS_DELIVERED,
-        ];
-    }
-
-    /**
-     * Associative array for storing property values
-     *
-     * @var array
+     * Associative array for storing property values.
      */
     protected array $container = [];
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param array|null $data Associated array of property values
-     *                      initializing the model
+     * @param null|array $data Associated array of property values
+     *                         initializing the model
      */
     public function __construct(?array $data = null)
     {
@@ -311,21 +183,96 @@ class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
-    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+     * Gets the string presentation of the object.
+     *
+     * @return string
+     */
+    public function __toString()
     {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
+        return json_encode(
+            ObjectSerializer::sanitizeForSerialization($this),
+            JSON_PRETTY_PRINT
+        );
+    }
 
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    /**
+     * Array of property to type mappings. Used for (de)serialization.
+     */
+    public static function openAPITypes(): array
+    {
+        return self::$openAPITypes;
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization.
+     */
+    public static function openAPIFormats(): array
+    {
+        return self::$openAPIFormats;
+    }
+
+    /**
+     * Checks if a property is nullable.
+     */
+    public static function isNullable(string $property): bool
+    {
+        return self::openAPINullables()[$property] ?? false;
+    }
+
+    /**
+     * Checks if a nullable property is set to null.
+     */
+    public function isNullableSetToNull(string $property): bool
+    {
+        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name.
+     */
+    public static function attributeMap(): array
+    {
+        return self::$attributeMap;
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses).
+     */
+    public static function setters(): array
+    {
+        return self::$setters;
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests).
+     */
+    public static function getters(): array
+    {
+        return self::$getters;
+    }
+
+    /**
+     * The original name of the model.
+     */
+    public function getModelName(): string
+    {
+        return self::$openAPIModelName;
+    }
+
+    /**
+     * Gets allowable values of the enum.
+     *
+     * @return string[]
+     */
+    public function getItemStatusAllowableValues(): array
+    {
+        return [
+            self::ITEM_STATUS_ACTIVE,
+            self::ITEM_STATUS_CANCELLED,
+            self::ITEM_STATUS_SHIPPED,
+            self::ITEM_STATUS_DELIVERED,
+        ];
     }
 
     /**
@@ -359,20 +306,17 @@ class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
 
     /**
      * Validate all the properties in the model
-     * return true if all passed
+     * return true if all passed.
      *
      * @return bool True if all properties are valid
      */
     public function valid(): bool
     {
-        return count($this->listInvalidProperties()) === 0;
+        return 0 === count($this->listInvalidProperties());
     }
 
-
     /**
-     * Gets asin
-     *
-     * @return string|null
+     * Gets asin.
      */
     public function getAsin(): ?string
     {
@@ -380,11 +324,9 @@ class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets asin
+     * Sets asin.
      *
-     * @param string|null $asin The Amazon Standard Identification Number (ASIN) of the item.
-     *
-     * @return self
+     * @param null|string $asin the Amazon Standard Identification Number (ASIN) of the item
      */
     public function setAsin(?string $asin): self
     {
@@ -393,7 +335,7 @@ class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('asin', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -404,9 +346,7 @@ class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets title
-     *
-     * @return string|null
+     * Gets title.
      */
     public function getTitle(): ?string
     {
@@ -414,11 +354,9 @@ class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets title
+     * Sets title.
      *
-     * @param string|null $title The title of the item.
-     *
-     * @return self
+     * @param null|string $title the title of the item
      */
     public function setTitle(?string $title): self
     {
@@ -427,7 +365,7 @@ class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('title', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -438,9 +376,7 @@ class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets quantity
-     *
-     * @return int|null
+     * Gets quantity.
      */
     public function getQuantity(): ?int
     {
@@ -448,11 +384,9 @@ class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets quantity
+     * Sets quantity.
      *
-     * @param int|null $quantity The total number of items included in the order.
-     *
-     * @return self
+     * @param null|int $quantity the total number of items included in the order
      */
     public function setQuantity(?int $quantity): self
     {
@@ -461,7 +395,7 @@ class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('quantity', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -472,9 +406,7 @@ class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets order_id
-     *
-     * @return string|null
+     * Gets order_id.
      */
     public function getOrderId(): ?string
     {
@@ -482,11 +414,9 @@ class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets order_id
+     * Sets order_id.
      *
-     * @param string|null $order_id The Amazon-defined identifier for an order placed by the buyer, in 3-7-7 format.
-     *
-     * @return self
+     * @param null|string $order_id the Amazon-defined identifier for an order placed by the buyer, in 3-7-7 format
      */
     public function setOrderId(?string $order_id): self
     {
@@ -495,7 +425,7 @@ class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('order_id', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -513,9 +443,7 @@ class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets item_status
-     *
-     * @return string|null
+     * Gets item_status.
      */
     public function getItemStatus(): ?string
     {
@@ -523,11 +451,9 @@ class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets item_status
+     * Sets item_status.
      *
-     * @param string|null $item_status The status of the item.
-     *
-     * @return self
+     * @param null|string $item_status the status of the item
      */
     public function setItemStatus(?string $item_status): self
     {
@@ -536,7 +462,7 @@ class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('item_status', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -557,9 +483,7 @@ class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets brand_name
-     *
-     * @return string|null
+     * Gets brand_name.
      */
     public function getBrandName(): ?string
     {
@@ -567,11 +491,9 @@ class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets brand_name
+     * Sets brand_name.
      *
-     * @param string|null $brand_name The brand name of the item.
-     *
-     * @return self
+     * @param null|string $brand_name the brand name of the item
      */
     public function setBrandName(?string $brand_name): self
     {
@@ -580,7 +502,7 @@ class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('brand_name', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -591,30 +513,26 @@ class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets item_delivery
-     *
-     * @return \SpApi\Model\services\v1\ItemDelivery|null
+     * Gets item_delivery.
      */
-    public function getItemDelivery(): ?\SpApi\Model\services\v1\ItemDelivery
+    public function getItemDelivery(): ?ItemDelivery
     {
         return $this->container['item_delivery'];
     }
 
     /**
-     * Sets item_delivery
+     * Sets item_delivery.
      *
-     * @param \SpApi\Model\services\v1\ItemDelivery|null $item_delivery item_delivery
-     *
-     * @return self
+     * @param null|ItemDelivery $item_delivery item_delivery
      */
-    public function setItemDelivery(?\SpApi\Model\services\v1\ItemDelivery $item_delivery): self
+    public function setItemDelivery(?ItemDelivery $item_delivery): self
     {
         if (is_null($item_delivery)) {
             array_push($this->openAPINullablesSetToNull, 'item_delivery');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('item_delivery', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -624,13 +542,10 @@ class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
         return $this;
     }
 
-
     /**
      * Returns true if offset exists. False otherwise.
      *
-     * @param integer $offset Offset
-     *
-     * @return boolean
+     * @param int $offset Offset
      */
     public function offsetExists($offset): bool
     {
@@ -640,9 +555,9 @@ class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
-     * @return mixed|null
+     * @return null|mixed
      */
     #[\ReturnTypeWillChange]
     public function offsetGet($offset): mixed
@@ -653,10 +568,8 @@ class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets value based on offset.
      *
-     * @param int|null $offset Offset
+     * @param null|int $offset Offset
      * @param mixed    $value  Value to be set
-     *
-     * @return void
      */
     public function offsetSet($offset, mixed $value): void
     {
@@ -670,9 +583,7 @@ class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Unsets offset.
      *
-     * @param integer $offset Offset
-     *
-     * @return void
+     * @param int $offset Offset
      */
     public function offsetUnset($offset): void
     {
@@ -681,39 +592,67 @@ class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
 
     /**
      * Serializes the object to a value that can be serialized natively by json_encode().
-     * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
      *
-     * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
+     * @see https://www.php.net/manual/en/jsonserializable.jsonserialize.php
+     *
+     * @return mixed returns data which can be serialized by json_encode(), which is a value
+     *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
     public function jsonSerialize(): mixed
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
-     * Gets the string presentation of the object
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    /**
-     * Gets a header-safe presentation of the object
-     *
-     * @return string
+     * Gets a header-safe presentation of the object.
      */
     public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
+
+    /**
+     * Array of nullable properties.
+     */
+    protected static function openAPINullables(): array
+    {
+        return self::$openAPINullables;
+    }
+
+    /**
+     * Array of nullable field names deliberately set to null.
+     *
+     * @return bool[]
+     */
+    private function getOpenAPINullablesSetToNull(): array
+    {
+        return $this->openAPINullablesSetToNull;
+    }
+
+    /**
+     * Setter - Array of nullable field names deliberately set to null.
+     *
+     * @param bool[] $openAPINullablesSetToNull
+     */
+    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
+    {
+        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
+    }
+
+    /**
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array.
+     *
+     * @param mixed $defaultValue
+     */
+    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+    {
+        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
+            $this->openAPINullablesSetToNull[] = $variableName;
+        }
+
+        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    }
 }
-
-

@@ -1,17 +1,19 @@
 <?php
+
 /**
- * RateItemID
+ * RateItemID.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Amazon Shipping API
+ * Amazon Shipping API.
  *
  * The Amazon Shipping API is designed to support outbound shipping use cases both for orders originating on Amazon-owned marketplaces as well as external channels/marketplaces. With these APIs, you can request shipping rates, create shipments, cancel shipments, and track shipments.
  *
@@ -28,22 +30,22 @@
  */
 
 namespace SpApi\Model\shipping\v2;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * RateItemID Class Doc Comment
+ * RateItemID Class Doc Comment.
  *
  * @category Class
+ *
  * @description Unique ID for the rateItem.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class RateItemID
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const BASE_RATE = 'BASE_RATE';
 
@@ -112,7 +114,8 @@ class RateItemID
     public const NONSTANDARD_FEE = 'NONSTANDARD_FEE';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
@@ -150,9 +153,7 @@ class RateItemID
             self::HIGH_LENGTH_SURCHARGE,
             self::HIGH_WIDTH_SURCHARGE,
             self::DEMAND_SURCHARGE,
-            self::NONSTANDARD_FEE
+            self::NONSTANDARD_FEE,
         ];
     }
 }
-
-

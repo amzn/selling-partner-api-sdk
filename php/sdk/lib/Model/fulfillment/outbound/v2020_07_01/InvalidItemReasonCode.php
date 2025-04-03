@@ -1,17 +1,19 @@
 <?php
+
 /**
- * InvalidItemReasonCode
+ * InvalidItemReasonCode.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner APIs for Fulfillment Outbound
+ * Selling Partner APIs for Fulfillment Outbound.
  *
  * The Selling Partner API for Fulfillment Outbound lets you create applications that help a seller fulfill Multi-Channel Fulfillment orders using their inventory in Amazon's fulfillment network. You can get information on both potential and existing fulfillment orders.
  *
@@ -27,22 +29,22 @@
  */
 
 namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * InvalidItemReasonCode Class Doc Comment
+ * InvalidItemReasonCode Class Doc Comment.
  *
  * @category Class
+ *
  * @description A code for why the item is invalid for return.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class InvalidItemReasonCode
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const INVALID_VALUES = 'InvalidValues';
 
@@ -53,7 +55,8 @@ class InvalidItemReasonCode
     public const NO_RETURNABLE_QUANTITY = 'NoReturnableQuantity';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
@@ -62,9 +65,7 @@ class InvalidItemReasonCode
             self::INVALID_VALUES,
             self::DUPLICATE_REQUEST,
             self::NO_COMPLETED_SHIP_ITEMS,
-            self::NO_RETURNABLE_QUANTITY
+            self::NO_RETURNABLE_QUANTITY,
         ];
     }
 }
-
-

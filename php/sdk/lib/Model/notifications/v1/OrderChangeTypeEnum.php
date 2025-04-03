@@ -1,17 +1,19 @@
 <?php
+
 /**
- * OrderChangeTypeEnum
+ * OrderChangeTypeEnum.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Notifications
+ * Selling Partner API for Notifications.
  *
  * The Selling Partner API for Notifications lets you subscribe to notifications that are relevant to a selling partner's business. Using this API you can create a destination to receive notifications, subscribe to notifications, delete notification subscriptions, and more.  For more information, refer to the [Notifications Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide).
  *
@@ -27,38 +29,37 @@
  */
 
 namespace SpApi\Model\notifications\v1;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * OrderChangeTypeEnum Class Doc Comment
+ * OrderChangeTypeEnum Class Doc Comment.
  *
  * @category Class
+ *
  * @description The supported order change type of ORDER_CHANGE notification.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class OrderChangeTypeEnum
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const ORDER_STATUS_CHANGE = 'OrderStatusChange';
 
     public const BUYER_REQUESTED_CHANGE = 'BuyerRequestedChange';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
     {
         return [
             self::ORDER_STATUS_CHANGE,
-            self::BUYER_REQUESTED_CHANGE
+            self::BUYER_REQUESTED_CHANGE,
         ];
     }
 }
-
-

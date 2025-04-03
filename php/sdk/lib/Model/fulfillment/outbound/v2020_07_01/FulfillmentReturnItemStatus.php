@@ -1,17 +1,19 @@
 <?php
+
 /**
- * FulfillmentReturnItemStatus
+ * FulfillmentReturnItemStatus.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner APIs for Fulfillment Outbound
+ * Selling Partner APIs for Fulfillment Outbound.
  *
  * The Selling Partner API for Fulfillment Outbound lets you create applications that help a seller fulfill Multi-Channel Fulfillment orders using their inventory in Amazon's fulfillment network. You can get information on both potential and existing fulfillment orders.
  *
@@ -27,38 +29,37 @@
  */
 
 namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * FulfillmentReturnItemStatus Class Doc Comment
+ * FulfillmentReturnItemStatus Class Doc Comment.
  *
  * @category Class
+ *
  * @description Indicates if the return item has been processed by a fulfillment center.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class FulfillmentReturnItemStatus
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const _NEW = 'New';
 
     public const PROCESSED = 'Processed';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
     {
         return [
             self::_NEW,
-            self::PROCESSED
+            self::PROCESSED,
         ];
     }
 }
-
-

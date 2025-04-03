@@ -1,17 +1,19 @@
 <?php
+
 /**
- * ErrorReason
+ * ErrorReason.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Fulfillment Inbound
+ * Selling Partner API for Fulfillment Inbound.
  *
  * The Selling Partner API for Fulfillment Inbound lets you create applications that create and update inbound shipments of inventory to Amazon's fulfillment network.
  *
@@ -27,38 +29,37 @@
  */
 
 namespace SpApi\Model\fulfillment\inbound\v0;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * ErrorReason Class Doc Comment
+ * ErrorReason Class Doc Comment.
  *
  * @category Class
+ *
  * @description The reason that the ASIN is invalid.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class ErrorReason
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const DOES_NOT_EXIST = 'DoesNotExist';
 
     public const INVALID_ASIN = 'InvalidASIN';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
     {
         return [
             self::DOES_NOT_EXIST,
-            self::INVALID_ASIN
+            self::INVALID_ASIN,
         ];
     }
 }
-
-

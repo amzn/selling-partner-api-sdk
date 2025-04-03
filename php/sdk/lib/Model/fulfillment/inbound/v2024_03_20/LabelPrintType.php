@@ -1,13 +1,15 @@
 <?php
+
 /**
- * LabelPrintType
+ * LabelPrintType.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
@@ -27,38 +29,37 @@
  */
 
 namespace SpApi\Model\fulfillment\inbound\v2024_03_20;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * LabelPrintType Class Doc Comment
+ * LabelPrintType Class Doc Comment.
  *
  * @category Class
+ *
  * @description Indicates the type of print type for a given label.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class LabelPrintType
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const STANDARD_FORMAT = 'STANDARD_FORMAT';
 
     public const THERMAL_PRINTING = 'THERMAL_PRINTING';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
     {
         return [
             self::STANDARD_FORMAT,
-            self::THERMAL_PRINTING
+            self::THERMAL_PRINTING,
         ];
     }
 }
-
-

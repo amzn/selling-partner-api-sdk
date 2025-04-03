@@ -1,17 +1,19 @@
 <?php
+
 /**
- * FeaturedBuyingOption
+ * FeaturedBuyingOption.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Pricing
+ * Selling Partner API for Pricing.
  *
  * The Selling Partner API for Pricing helps you programmatically retrieve product pricing and offer pricing information for Amazon Marketplace products.  For more information, refer to the [Product Pricing v2022-05-01 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/product-pricing-api-v2022-05-01-use-case-guide).
  *
@@ -28,73 +30,135 @@
 
 namespace SpApi\Model\pricing\v2022_05_01;
 
-use
-ArrayAccess;
-use SpApi\ObjectSerializer;
 use SpApi\Model\ModelInterface;
+use SpApi\ObjectSerializer;
 
 /**
- * FeaturedBuyingOption Class Doc Comment
+ * FeaturedBuyingOption Class Doc Comment.
  *
  * @category Class
+ *
  * @description Describes a featured buying option, which includes a list of segmented featured offers for a particular item condition.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
+ *
  * @implements \ArrayAccess<string, mixed>
  */
-class FeaturedBuyingOption implements ModelInterface, ArrayAccess, \JsonSerializable
+class FeaturedBuyingOption implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
+    public const BUYING_OPTION_TYPE__NEW = 'New';
+
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     */
     protected static string $openAPIModelName = 'FeaturedBuyingOption';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static array $openAPITypes = [
-             'buying_option_type' => 'string',
-             'segmented_featured_offers' => '\SpApi\Model\pricing\v2022_05_01\SegmentedFeaturedOffer[]'    ];
+        'buying_option_type' => 'string',
+        'segmented_featured_offers' => '\SpApi\Model\pricing\v2022_05_01\SegmentedFeaturedOffer[]'];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     *
+     * @phpstan-var array<string, string|null>
+     *
+     * @psalm-var array<string, string|null>
+     */
     protected static array $openAPIFormats = [
-            'buying_option_type' => null,
-            'segmented_featured_offers' => null    ];
+        'buying_option_type' => null,
+        'segmented_featured_offers' => null];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization.
+     *
+     * @var bool[]
+     */
     protected static array $openAPINullables = [
         'buying_option_type' => false,
-        'segmented_featured_offers' => false
+        'segmented_featured_offers' => false,
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here.
+     *
+     * @var bool[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
+     * Array of attributes where the key is the local name,
+     * and the value is the original name.
      *
-     * @return array
+     * @var string[]
+     */
+    protected static array $attributeMap = [
+        'buying_option_type' => 'buyingOptionType',
+        'segmented_featured_offers' => 'segmentedFeaturedOffers',
+    ];
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses).
+     *
+     * @var string[]
+     */
+    protected static array $setters = [
+        'buying_option_type' => 'setBuyingOptionType',
+        'segmented_featured_offers' => 'setSegmentedFeaturedOffers',
+    ];
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests).
+     *
+     * @var string[]
+     */
+    protected static array $getters = [
+        'buying_option_type' => 'getBuyingOptionType',
+        'segmented_featured_offers' => 'getSegmentedFeaturedOffers',
+    ];
+
+    /**
+     * Associative array for storing property values.
+     */
+    protected array $container = [];
+
+    /**
+     * Constructor.
+     *
+     * @param null|array $data Associated array of property values
+     *                         initializing the model
+     */
+    public function __construct(?array $data = null)
+    {
+        $this->setIfExists('buying_option_type', $data ?? [], null);
+        $this->setIfExists('segmented_featured_offers', $data ?? [], null);
+    }
+
+    /**
+     * Gets the string presentation of the object.
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return json_encode(
+            ObjectSerializer::sanitizeForSerialization($this),
+            JSON_PRETTY_PRINT
+        );
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization.
      */
     public static function openAPITypes(): array
     {
@@ -102,9 +166,7 @@ class FeaturedBuyingOption implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
-     * @return array
+     * Array of property to format mappings. Used for (de)serialization.
      */
     public static function openAPIFormats(): array
     {
@@ -112,40 +174,7 @@ class FeaturedBuyingOption implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Array of nullable properties
-     *
-     * @return array
-     */
-    protected static function openAPINullables(): array
-    {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * Array of nullable field names deliberately set to null
-     *
-     * @return boolean[]
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * Setter - Array of nullable field names deliberately set to null
-     *
-     * @param boolean[] $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    /**
-     * Checks if a property is nullable
-     *
-     * @param string $property
-     * @return bool
+     * Checks if a property is nullable.
      */
     public static function isNullable(string $property): bool
     {
@@ -154,9 +183,6 @@ class FeaturedBuyingOption implements ModelInterface, ArrayAccess, \JsonSerializ
 
     /**
      * Checks if a nullable property is set to null.
-     *
-     * @param string $property
-     * @return bool
      */
     public function isNullableSetToNull(string $property): bool
     {
@@ -165,41 +191,7 @@ class FeaturedBuyingOption implements ModelInterface, ArrayAccess, \JsonSerializ
 
     /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static array $attributeMap = [
-        'buying_option_type' => 'buyingOptionType',
-                'segmented_featured_offers' => 'segmentedFeaturedOffers'
-        
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static array $setters = [
-        'buying_option_type' => 'setBuyingOptionType',
-        'segmented_featured_offers' => 'setSegmentedFeaturedOffers'
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static array $getters = [
-        'buying_option_type' => 'getBuyingOptionType',
-        'segmented_featured_offers' => 'getSegmentedFeaturedOffers'
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @return array
+     * and the value is the original name.
      */
     public static function attributeMap(): array
     {
@@ -207,9 +199,7 @@ class FeaturedBuyingOption implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @return array
+     * Array of attributes to setter functions (for deserialization of responses).
      */
     public static function setters(): array
     {
@@ -217,9 +207,7 @@ class FeaturedBuyingOption implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @return array
+     * Array of attributes to getter functions (for serialization of requests).
      */
     public static function getters(): array
     {
@@ -228,18 +216,14 @@ class FeaturedBuyingOption implements ModelInterface, ArrayAccess, \JsonSerializ
 
     /**
      * The original name of the model.
-     *
-     * @return string
      */
     public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
 
-    public const BUYING_OPTION_TYPE__NEW = 'New';
-
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
      *
      * @return string[]
      */
@@ -251,43 +235,6 @@ class FeaturedBuyingOption implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Associative array for storing property values
-     *
-     * @var array
-     */
-    protected array $container = [];
-
-    /**
-     * Constructor
-     *
-     * @param array|null $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-        $this->setIfExists('buying_option_type', $data ?? [], null);
-        $this->setIfExists('segmented_featured_offers', $data ?? [], null);
-    }
-
-    /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
-    private function setIfExists(string $variableName, array $fields, $defaultValue): void
-    {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
-
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
-    }
-
-    /**
      * Show all the invalid properties with reasons.
      *
      * @return array invalid properties with reasons
@@ -296,7 +243,7 @@ class FeaturedBuyingOption implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
-        if ($this->container['buying_option_type'] === null) {
+        if (null === $this->container['buying_option_type']) {
             $invalidProperties[] = "'buying_option_type' can't be null";
         }
         $allowedValues = $this->getBuyingOptionTypeAllowableValues();
@@ -308,10 +255,10 @@ class FeaturedBuyingOption implements ModelInterface, ArrayAccess, \JsonSerializ
             );
         }
 
-        if ($this->container['segmented_featured_offers'] === null) {
+        if (null === $this->container['segmented_featured_offers']) {
             $invalidProperties[] = "'segmented_featured_offers' can't be null";
         }
-        if ((count($this->container['segmented_featured_offers']) < 1)) {
+        if (count($this->container['segmented_featured_offers']) < 1) {
             $invalidProperties[] = "invalid value for 'segmented_featured_offers', number of items must be greater than or equal to 1.";
         }
 
@@ -320,20 +267,17 @@ class FeaturedBuyingOption implements ModelInterface, ArrayAccess, \JsonSerializ
 
     /**
      * Validate all the properties in the model
-     * return true if all passed
+     * return true if all passed.
      *
      * @return bool True if all properties are valid
      */
     public function valid(): bool
     {
-        return count($this->listInvalidProperties()) === 0;
+        return 0 === count($this->listInvalidProperties());
     }
 
-
     /**
-     * Gets buying_option_type
-     *
-     * @return string
+     * Gets buying_option_type.
      */
     public function getBuyingOptionType(): string
     {
@@ -341,11 +285,9 @@ class FeaturedBuyingOption implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Sets buying_option_type
+     * Sets buying_option_type.
      *
      * @param string $buying_option_type The buying option type for the featured offer. `buyingOptionType` represents the buying options that a customer receives on the detail page, such as `B2B`, `Fresh`, and `Subscribe n Save`. `buyingOptionType` currently supports `NEW` as a value.
-     *
-     * @return self
      */
     public function setBuyingOptionType(string $buying_option_type): self
     {
@@ -368,9 +310,7 @@ class FeaturedBuyingOption implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets segmented_featured_offers
-     *
-     * @return array
+     * Gets segmented_featured_offers.
      */
     public function getSegmentedFeaturedOffers(): array
     {
@@ -378,11 +318,9 @@ class FeaturedBuyingOption implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Sets segmented_featured_offers
+     * Sets segmented_featured_offers.
      *
      * @param array $segmented_featured_offers A list of segmented featured offers for the current buying option type. A segment can be considered as a group of regional contexts that all have the same featured offer. A regional context is a combination of factors such as customer type, region, or postal code and buying option.
-     *
-     * @return self
      */
     public function setSegmentedFeaturedOffers(array $segmented_featured_offers): self
     {
@@ -390,8 +328,7 @@ class FeaturedBuyingOption implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable segmented_featured_offers cannot be null');
         }
 
-
-        if ((count($segmented_featured_offers) < 1)) {
+        if (count($segmented_featured_offers) < 1) {
             throw new \InvalidArgumentException('invalid length for $segmented_featured_offers when calling FeaturedBuyingOption., number of items must be greater than or equal to 1.');
         }
         $this->container['segmented_featured_offers'] = $segmented_featured_offers;
@@ -399,13 +336,10 @@ class FeaturedBuyingOption implements ModelInterface, ArrayAccess, \JsonSerializ
         return $this;
     }
 
-
     /**
      * Returns true if offset exists. False otherwise.
      *
-     * @param integer $offset Offset
-     *
-     * @return boolean
+     * @param int $offset Offset
      */
     public function offsetExists($offset): bool
     {
@@ -415,9 +349,9 @@ class FeaturedBuyingOption implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
-     * @return mixed|null
+     * @return null|mixed
      */
     #[\ReturnTypeWillChange]
     public function offsetGet($offset): mixed
@@ -428,10 +362,8 @@ class FeaturedBuyingOption implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets value based on offset.
      *
-     * @param int|null $offset Offset
+     * @param null|int $offset Offset
      * @param mixed    $value  Value to be set
-     *
-     * @return void
      */
     public function offsetSet($offset, mixed $value): void
     {
@@ -445,9 +377,7 @@ class FeaturedBuyingOption implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Unsets offset.
      *
-     * @param integer $offset Offset
-     *
-     * @return void
+     * @param int $offset Offset
      */
     public function offsetUnset($offset): void
     {
@@ -456,39 +386,67 @@ class FeaturedBuyingOption implements ModelInterface, ArrayAccess, \JsonSerializ
 
     /**
      * Serializes the object to a value that can be serialized natively by json_encode().
-     * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
      *
-     * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
+     * @see https://www.php.net/manual/en/jsonserializable.jsonserialize.php
+     *
+     * @return mixed returns data which can be serialized by json_encode(), which is a value
+     *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
     public function jsonSerialize(): mixed
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
-     * Gets the string presentation of the object
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    /**
-     * Gets a header-safe presentation of the object
-     *
-     * @return string
+     * Gets a header-safe presentation of the object.
      */
     public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
+
+    /**
+     * Array of nullable properties.
+     */
+    protected static function openAPINullables(): array
+    {
+        return self::$openAPINullables;
+    }
+
+    /**
+     * Array of nullable field names deliberately set to null.
+     *
+     * @return bool[]
+     */
+    private function getOpenAPINullablesSetToNull(): array
+    {
+        return $this->openAPINullablesSetToNull;
+    }
+
+    /**
+     * Setter - Array of nullable field names deliberately set to null.
+     *
+     * @param bool[] $openAPINullablesSetToNull
+     */
+    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
+    {
+        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
+    }
+
+    /**
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array.
+     *
+     * @param mixed $defaultValue
+     */
+    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+    {
+        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
+            $this->openAPINullablesSetToNull[] = $variableName;
+        }
+
+        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    }
 }
-
-

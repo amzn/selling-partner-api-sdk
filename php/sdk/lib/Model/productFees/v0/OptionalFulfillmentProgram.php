@@ -1,17 +1,19 @@
 <?php
+
 /**
- * OptionalFulfillmentProgram
+ * OptionalFulfillmentProgram.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Product Fees
+ * Selling Partner API for Product Fees.
  *
  * The Selling Partner API for Product Fees lets you programmatically retrieve estimated fees for a product. You can then account for those fees in your pricing.
  *
@@ -27,22 +29,22 @@
  */
 
 namespace SpApi\Model\productFees\v0;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * OptionalFulfillmentProgram Class Doc Comment
+ * OptionalFulfillmentProgram Class Doc Comment.
  *
  * @category Class
+ *
  * @description An optional enrollment program to return the estimated fees when the offer is fulfilled by Amazon (IsAmazonFulfilled is set to true).
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class OptionalFulfillmentProgram
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const CORE = 'FBA_CORE';
 
@@ -51,7 +53,8 @@ class OptionalFulfillmentProgram
     public const EFN = 'FBA_EFN';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
@@ -59,9 +62,7 @@ class OptionalFulfillmentProgram
         return [
             self::CORE,
             self::SNL,
-            self::EFN
+            self::EFN,
         ];
     }
 }
-
-

@@ -1,17 +1,19 @@
 <?php
+
 /**
- * Account
+ * Account.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * The Selling Partner API for Sellers
+ * The Selling Partner API for Sellers.
  *
  * The [Selling Partner API for Sellers](https://developer-docs.amazon.com/sp-api/docs/sellers-api-v1-reference) (Sellers API) provides essential information about seller accounts, such as:  - The marketplaces a seller can list in - The default language and currency of a marketplace - Whether the seller has suspended listings  Refer to the [Sellers API reference](https://developer-docs.amazon.com/sp-api/docs/sellers-api-v1-reference) for details about this API's operations, data types, and schemas.
  *
@@ -28,231 +30,25 @@
 
 namespace SpApi\Model\sellers\v1;
 
-use
-ArrayAccess;
-use SpApi\ObjectSerializer;
 use SpApi\Model\ModelInterface;
+use SpApi\ObjectSerializer;
 
 /**
- * Account Class Doc Comment
+ * Account Class Doc Comment.
  *
  * @category Class
+ *
  * @description The response schema for the &#x60;getAccount&#x60; operation.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
+ *
  * @implements \ArrayAccess<string, mixed>
  */
-class Account implements ModelInterface, ArrayAccess, \JsonSerializable
+class Account implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
-
-    /**
-      * The original name of the model.
-      *
-      * @var string
-      */
-    protected static string $openAPIModelName = 'Account';
-
-    /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
-    protected static array $openAPITypes = [
-             'marketplace_participation_list' => '\SpApi\Model\sellers\v1\MarketplaceParticipation[]',
-             'business_type' => 'string',
-             'selling_plan' => 'string',
-             'business' => '\SpApi\Model\sellers\v1\Business',
-             'primary_contact' => '\SpApi\Model\sellers\v1\PrimaryContact'    ];
-
-    /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
-    protected static array $openAPIFormats = [
-            'marketplace_participation_list' => null,
-            'business_type' => null,
-            'selling_plan' => null,
-            'business' => null,
-            'primary_contact' => null    ];
-
-    /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
-    protected static array $openAPINullables = [
-        'marketplace_participation_list' => false,
-        'business_type' => false,
-        'selling_plan' => false,
-        'business' => true,
-        'primary_contact' => true
-    ];
-
-    /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
-    protected array $openAPINullablesSetToNull = [];
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPIFormats(): array
-    {
-        return self::$openAPIFormats;
-    }
-
-    /**
-     * Array of nullable properties
-     *
-     * @return array
-     */
-    protected static function openAPINullables(): array
-    {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * Array of nullable field names deliberately set to null
-     *
-     * @return boolean[]
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * Setter - Array of nullable field names deliberately set to null
-     *
-     * @param boolean[] $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    /**
-     * Checks if a property is nullable
-     *
-     * @param string $property
-     * @return bool
-     */
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    /**
-     * Checks if a nullable property is set to null.
-     *
-     * @param string $property
-     * @return bool
-     */
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static array $attributeMap = [
-        'marketplace_participation_list' => 'marketplaceParticipationList',
-                'business_type' => 'businessType',
-                'selling_plan' => 'sellingPlan',
-                'business' => 'business',
-                'primary_contact' => 'primaryContact'
-        
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static array $setters = [
-        'marketplace_participation_list' => 'setMarketplaceParticipationList',
-        'business_type' => 'setBusinessType',
-        'selling_plan' => 'setSellingPlan',
-        'business' => 'setBusiness',
-        'primary_contact' => 'setPrimaryContact'
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static array $getters = [
-        'marketplace_participation_list' => 'getMarketplaceParticipationList',
-        'business_type' => 'getBusinessType',
-        'selling_plan' => 'getSellingPlan',
-        'business' => 'getBusiness',
-        'primary_contact' => 'getPrimaryContact'
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @return array
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @return array
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @return array
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    /**
-     * The original name of the model.
-     *
-     * @return string
-     */
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
 
     public const BUSINESS_TYPE_CHARITY = 'CHARITY';
     public const BUSINESS_TYPE_CRAFTSMAN = 'CRAFTSMAN';
@@ -266,7 +62,198 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     public const SELLING_PLAN_INDIVIDUAL = 'INDIVIDUAL';
 
     /**
-     * Gets allowable values of the enum
+     * The original name of the model.
+     */
+    protected static string $openAPIModelName = 'Account';
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
+    protected static array $openAPITypes = [
+        'marketplace_participation_list' => '\SpApi\Model\sellers\v1\MarketplaceParticipation[]',
+        'business_type' => 'string',
+        'selling_plan' => 'string',
+        'business' => '\SpApi\Model\sellers\v1\Business',
+        'primary_contact' => '\SpApi\Model\sellers\v1\PrimaryContact'];
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     *
+     * @phpstan-var array<string, string|null>
+     *
+     * @psalm-var array<string, string|null>
+     */
+    protected static array $openAPIFormats = [
+        'marketplace_participation_list' => null,
+        'business_type' => null,
+        'selling_plan' => null,
+        'business' => null,
+        'primary_contact' => null];
+
+    /**
+     * Array of nullable properties. Used for (de)serialization.
+     *
+     * @var bool[]
+     */
+    protected static array $openAPINullables = [
+        'marketplace_participation_list' => false,
+        'business_type' => false,
+        'selling_plan' => false,
+        'business' => true,
+        'primary_contact' => true,
+    ];
+
+    /**
+     * If a nullable field gets set to null, insert it here.
+     *
+     * @var bool[]
+     */
+    protected array $openAPINullablesSetToNull = [];
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name.
+     *
+     * @var string[]
+     */
+    protected static array $attributeMap = [
+        'marketplace_participation_list' => 'marketplaceParticipationList',
+        'business_type' => 'businessType',
+        'selling_plan' => 'sellingPlan',
+        'business' => 'business',
+        'primary_contact' => 'primaryContact',
+    ];
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses).
+     *
+     * @var string[]
+     */
+    protected static array $setters = [
+        'marketplace_participation_list' => 'setMarketplaceParticipationList',
+        'business_type' => 'setBusinessType',
+        'selling_plan' => 'setSellingPlan',
+        'business' => 'setBusiness',
+        'primary_contact' => 'setPrimaryContact',
+    ];
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests).
+     *
+     * @var string[]
+     */
+    protected static array $getters = [
+        'marketplace_participation_list' => 'getMarketplaceParticipationList',
+        'business_type' => 'getBusinessType',
+        'selling_plan' => 'getSellingPlan',
+        'business' => 'getBusiness',
+        'primary_contact' => 'getPrimaryContact',
+    ];
+
+    /**
+     * Associative array for storing property values.
+     */
+    protected array $container = [];
+
+    /**
+     * Constructor.
+     *
+     * @param null|array $data Associated array of property values
+     *                         initializing the model
+     */
+    public function __construct(?array $data = null)
+    {
+        $this->setIfExists('marketplace_participation_list', $data ?? [], null);
+        $this->setIfExists('business_type', $data ?? [], null);
+        $this->setIfExists('selling_plan', $data ?? [], null);
+        $this->setIfExists('business', $data ?? [], null);
+        $this->setIfExists('primary_contact', $data ?? [], null);
+    }
+
+    /**
+     * Gets the string presentation of the object.
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return json_encode(
+            ObjectSerializer::sanitizeForSerialization($this),
+            JSON_PRETTY_PRINT
+        );
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization.
+     */
+    public static function openAPITypes(): array
+    {
+        return self::$openAPITypes;
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization.
+     */
+    public static function openAPIFormats(): array
+    {
+        return self::$openAPIFormats;
+    }
+
+    /**
+     * Checks if a property is nullable.
+     */
+    public static function isNullable(string $property): bool
+    {
+        return self::openAPINullables()[$property] ?? false;
+    }
+
+    /**
+     * Checks if a nullable property is set to null.
+     */
+    public function isNullableSetToNull(string $property): bool
+    {
+        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name.
+     */
+    public static function attributeMap(): array
+    {
+        return self::$attributeMap;
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses).
+     */
+    public static function setters(): array
+    {
+        return self::$setters;
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests).
+     */
+    public static function getters(): array
+    {
+        return self::$getters;
+    }
+
+    /**
+     * The original name of the model.
+     */
+    public function getModelName(): string
+    {
+        return self::$openAPIModelName;
+    }
+
+    /**
+     * Gets allowable values of the enum.
      *
      * @return string[]
      */
@@ -285,7 +272,7 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
      *
      * @return string[]
      */
@@ -298,46 +285,6 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Associative array for storing property values
-     *
-     * @var array
-     */
-    protected array $container = [];
-
-    /**
-     * Constructor
-     *
-     * @param array|null $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-        $this->setIfExists('marketplace_participation_list', $data ?? [], null);
-        $this->setIfExists('business_type', $data ?? [], null);
-        $this->setIfExists('selling_plan', $data ?? [], null);
-        $this->setIfExists('business', $data ?? [], null);
-        $this->setIfExists('primary_contact', $data ?? [], null);
-    }
-
-    /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
-    private function setIfExists(string $variableName, array $fields, $defaultValue): void
-    {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
-
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
-    }
-
-    /**
      * Show all the invalid properties with reasons.
      *
      * @return array invalid properties with reasons
@@ -346,10 +293,10 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['marketplace_participation_list'] === null) {
+        if (null === $this->container['marketplace_participation_list']) {
             $invalidProperties[] = "'marketplace_participation_list' can't be null";
         }
-        if ($this->container['business_type'] === null) {
+        if (null === $this->container['business_type']) {
             $invalidProperties[] = "'business_type' can't be null";
         }
         $allowedValues = $this->getBusinessTypeAllowableValues();
@@ -361,7 +308,7 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
-        if ($this->container['selling_plan'] === null) {
+        if (null === $this->container['selling_plan']) {
             $invalidProperties[] = "'selling_plan' can't be null";
         }
         $allowedValues = $this->getSellingPlanAllowableValues();
@@ -378,20 +325,17 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
 
     /**
      * Validate all the properties in the model
-     * return true if all passed
+     * return true if all passed.
      *
      * @return bool True if all properties are valid
      */
     public function valid(): bool
     {
-        return count($this->listInvalidProperties()) === 0;
+        return 0 === count($this->listInvalidProperties());
     }
 
-
     /**
-     * Gets marketplace_participation_list
-     *
-     * @return array
+     * Gets marketplace_participation_list.
      */
     public function getMarketplaceParticipationList(): array
     {
@@ -399,11 +343,9 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets marketplace_participation_list
+     * Sets marketplace_participation_list.
      *
-     * @param array $marketplace_participation_list List of marketplace participations.
-     *
-     * @return self
+     * @param array $marketplace_participation_list list of marketplace participations
      */
     public function setMarketplaceParticipationList(array $marketplace_participation_list): self
     {
@@ -416,9 +358,7 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets business_type
-     *
-     * @return string
+     * Gets business_type.
      */
     public function getBusinessType(): string
     {
@@ -426,11 +366,9 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets business_type
+     * Sets business_type.
      *
-     * @param string $business_type The type of business registered for the seller account.
-     *
-     * @return self
+     * @param string $business_type the type of business registered for the seller account
      */
     public function setBusinessType(string $business_type): self
     {
@@ -453,9 +391,7 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets selling_plan
-     *
-     * @return string
+     * Gets selling_plan.
      */
     public function getSellingPlan(): string
     {
@@ -463,11 +399,9 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets selling_plan
+     * Sets selling_plan.
      *
-     * @param string $selling_plan The selling plan details.
-     *
-     * @return self
+     * @param string $selling_plan the selling plan details
      */
     public function setSellingPlan(string $selling_plan): self
     {
@@ -490,30 +424,26 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets business
-     *
-     * @return \SpApi\Model\sellers\v1\Business|null
+     * Gets business.
      */
-    public function getBusiness(): ?\SpApi\Model\sellers\v1\Business
+    public function getBusiness(): ?Business
     {
         return $this->container['business'];
     }
 
     /**
-     * Sets business
+     * Sets business.
      *
-     * @param \SpApi\Model\sellers\v1\Business|null $business business
-     *
-     * @return self
+     * @param null|Business $business business
      */
-    public function setBusiness(?\SpApi\Model\sellers\v1\Business $business): self
+    public function setBusiness(?Business $business): self
     {
         if (is_null($business)) {
             array_push($this->openAPINullablesSetToNull, 'business');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('business', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -524,30 +454,26 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets primary_contact
-     *
-     * @return \SpApi\Model\sellers\v1\PrimaryContact|null
+     * Gets primary_contact.
      */
-    public function getPrimaryContact(): ?\SpApi\Model\sellers\v1\PrimaryContact
+    public function getPrimaryContact(): ?PrimaryContact
     {
         return $this->container['primary_contact'];
     }
 
     /**
-     * Sets primary_contact
+     * Sets primary_contact.
      *
-     * @param \SpApi\Model\sellers\v1\PrimaryContact|null $primary_contact primary_contact
-     *
-     * @return self
+     * @param null|PrimaryContact $primary_contact primary_contact
      */
-    public function setPrimaryContact(?\SpApi\Model\sellers\v1\PrimaryContact $primary_contact): self
+    public function setPrimaryContact(?PrimaryContact $primary_contact): self
     {
         if (is_null($primary_contact)) {
             array_push($this->openAPINullablesSetToNull, 'primary_contact');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('primary_contact', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -557,13 +483,10 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
         return $this;
     }
 
-
     /**
      * Returns true if offset exists. False otherwise.
      *
-     * @param integer $offset Offset
-     *
-     * @return boolean
+     * @param int $offset Offset
      */
     public function offsetExists($offset): bool
     {
@@ -573,9 +496,9 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
-     * @return mixed|null
+     * @return null|mixed
      */
     #[\ReturnTypeWillChange]
     public function offsetGet($offset): mixed
@@ -586,10 +509,8 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets value based on offset.
      *
-     * @param int|null $offset Offset
+     * @param null|int $offset Offset
      * @param mixed    $value  Value to be set
-     *
-     * @return void
      */
     public function offsetSet($offset, mixed $value): void
     {
@@ -603,9 +524,7 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Unsets offset.
      *
-     * @param integer $offset Offset
-     *
-     * @return void
+     * @param int $offset Offset
      */
     public function offsetUnset($offset): void
     {
@@ -614,39 +533,67 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
 
     /**
      * Serializes the object to a value that can be serialized natively by json_encode().
-     * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
      *
-     * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
+     * @see https://www.php.net/manual/en/jsonserializable.jsonserialize.php
+     *
+     * @return mixed returns data which can be serialized by json_encode(), which is a value
+     *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
     public function jsonSerialize(): mixed
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
-     * Gets the string presentation of the object
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    /**
-     * Gets a header-safe presentation of the object
-     *
-     * @return string
+     * Gets a header-safe presentation of the object.
      */
     public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
+
+    /**
+     * Array of nullable properties.
+     */
+    protected static function openAPINullables(): array
+    {
+        return self::$openAPINullables;
+    }
+
+    /**
+     * Array of nullable field names deliberately set to null.
+     *
+     * @return bool[]
+     */
+    private function getOpenAPINullablesSetToNull(): array
+    {
+        return $this->openAPINullablesSetToNull;
+    }
+
+    /**
+     * Setter - Array of nullable field names deliberately set to null.
+     *
+     * @param bool[] $openAPINullablesSetToNull
+     */
+    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
+    {
+        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
+    }
+
+    /**
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array.
+     *
+     * @param mixed $defaultValue
+     */
+    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+    {
+        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
+            $this->openAPINullablesSetToNull[] = $variableName;
+        }
+
+        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    }
 }
-
-

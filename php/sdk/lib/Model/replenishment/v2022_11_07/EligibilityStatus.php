@@ -1,17 +1,19 @@
 <?php
+
 /**
- * EligibilityStatus
+ * EligibilityStatus.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Replenishment
+ * Selling Partner API for Replenishment.
  *
  * The Selling Partner API for Replenishment (Replenishment API) provides programmatic access to replenishment program metrics and offers. These programs provide recurring delivery of any replenishable item at a frequency chosen by the customer.  The Replenishment API is available worldwide wherever Amazon Subscribe & Save is available or is supported. The API is available to vendors and FBA selling partners.
  *
@@ -27,22 +29,22 @@
  */
 
 namespace SpApi\Model\replenishment\v2022_11_07;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * EligibilityStatus Class Doc Comment
+ * EligibilityStatus Class Doc Comment.
  *
  * @category Class
+ *
  * @description The current eligibility status of an offer.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class EligibilityStatus
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const ELIGIBLE = 'ELIGIBLE';
 
@@ -53,7 +55,8 @@ class EligibilityStatus
     public const REPLENISHMENT_ONLY_ORDERING = 'REPLENISHMENT_ONLY_ORDERING';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
@@ -62,9 +65,7 @@ class EligibilityStatus
             self::ELIGIBLE,
             self::INELIGIBLE,
             self::SUSPENDED,
-            self::REPLENISHMENT_ONLY_ORDERING
+            self::REPLENISHMENT_ONLY_ORDERING,
         ];
     }
 }
-
-

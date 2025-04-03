@@ -1,17 +1,19 @@
 <?php
+
 /**
- * ServiceJob
+ * ServiceJob.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Services
+ * Selling Partner API for Services.
  *
  * With the Services API, you can build applications that help service providers get and modify their service orders and manage their resources.
  *
@@ -28,81 +30,90 @@
 
 namespace SpApi\Model\services\v1;
 
-use
-ArrayAccess;
-use SpApi\ObjectSerializer;
 use SpApi\Model\ModelInterface;
+use SpApi\ObjectSerializer;
 
 /**
- * ServiceJob Class Doc Comment
+ * ServiceJob Class Doc Comment.
  *
  * @category Class
+ *
  * @description The job details of a service.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
+ *
  * @implements \ArrayAccess<string, mixed>
  */
-class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
+class ServiceJob implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
+    public const SERVICE_JOB_STATUS_NOT_SERVICED = 'NOT_SERVICED';
+    public const SERVICE_JOB_STATUS_CANCELLED = 'CANCELLED';
+    public const SERVICE_JOB_STATUS_COMPLETED = 'COMPLETED';
+    public const SERVICE_JOB_STATUS_PENDING_SCHEDULE = 'PENDING_SCHEDULE';
+    public const SERVICE_JOB_STATUS_NOT_FULFILLABLE = 'NOT_FULFILLABLE';
+    public const SERVICE_JOB_STATUS_HOLD = 'HOLD';
+    public const SERVICE_JOB_STATUS_PAYMENT_DECLINED = 'PAYMENT_DECLINED';
+
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     */
     protected static string $openAPIModelName = 'ServiceJob';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static array $openAPITypes = [
-             'create_time' => '\DateTime',
-             'service_job_id' => 'string',
-             'service_job_status' => 'string',
-             'scope_of_work' => '\SpApi\Model\services\v1\ScopeOfWork',
-             'seller' => '\SpApi\Model\services\v1\Seller',
-             'service_job_provider' => '\SpApi\Model\services\v1\ServiceJobProvider',
-             'preferred_appointment_times' => '\SpApi\Model\services\v1\AppointmentTime[]',
-             'appointments' => '\SpApi\Model\services\v1\Appointment[]',
-             'service_order_id' => 'string',
-             'marketplace_id' => 'string',
-             'store_id' => 'string',
-             'buyer' => '\SpApi\Model\services\v1\Buyer',
-             'associated_items' => '\SpApi\Model\services\v1\AssociatedItem[]',
-             'service_location' => '\SpApi\Model\services\v1\ServiceLocation'    ];
+        'create_time' => '\DateTime',
+        'service_job_id' => 'string',
+        'service_job_status' => 'string',
+        'scope_of_work' => '\SpApi\Model\services\v1\ScopeOfWork',
+        'seller' => '\SpApi\Model\services\v1\Seller',
+        'service_job_provider' => '\SpApi\Model\services\v1\ServiceJobProvider',
+        'preferred_appointment_times' => '\SpApi\Model\services\v1\AppointmentTime[]',
+        'appointments' => '\SpApi\Model\services\v1\Appointment[]',
+        'service_order_id' => 'string',
+        'marketplace_id' => 'string',
+        'store_id' => 'string',
+        'buyer' => '\SpApi\Model\services\v1\Buyer',
+        'associated_items' => '\SpApi\Model\services\v1\AssociatedItem[]',
+        'service_location' => '\SpApi\Model\services\v1\ServiceLocation'];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     *
+     * @phpstan-var array<string, string|null>
+     *
+     * @psalm-var array<string, string|null>
+     */
     protected static array $openAPIFormats = [
-            'create_time' => 'date-time',
-            'service_job_id' => null,
-            'service_job_status' => null,
-            'scope_of_work' => null,
-            'seller' => null,
-            'service_job_provider' => null,
-            'preferred_appointment_times' => null,
-            'appointments' => null,
-            'service_order_id' => null,
-            'marketplace_id' => null,
-            'store_id' => null,
-            'buyer' => null,
-            'associated_items' => null,
-            'service_location' => null    ];
+        'create_time' => 'date-time',
+        'service_job_id' => null,
+        'service_job_status' => null,
+        'scope_of_work' => null,
+        'seller' => null,
+        'service_job_provider' => null,
+        'preferred_appointment_times' => null,
+        'appointments' => null,
+        'service_order_id' => null,
+        'marketplace_id' => null,
+        'store_id' => null,
+        'buyer' => null,
+        'associated_items' => null,
+        'service_location' => null];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization.
+     *
+     * @var bool[]
+     */
     protected static array $openAPINullables = [
         'create_time' => true,
         'service_job_id' => true,
@@ -117,114 +128,41 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
         'store_id' => true,
         'buyer' => true,
         'associated_items' => true,
-        'service_location' => true
+        'service_location' => true,
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here.
+     *
+     * @var bool[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPIFormats(): array
-    {
-        return self::$openAPIFormats;
-    }
-
-    /**
-     * Array of nullable properties
-     *
-     * @return array
-     */
-    protected static function openAPINullables(): array
-    {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * Array of nullable field names deliberately set to null
-     *
-     * @return boolean[]
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * Setter - Array of nullable field names deliberately set to null
-     *
-     * @param boolean[] $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    /**
-     * Checks if a property is nullable
-     *
-     * @param string $property
-     * @return bool
-     */
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    /**
-     * Checks if a nullable property is set to null.
-     *
-     * @param string $property
-     * @return bool
-     */
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @var string[]
      */
     protected static array $attributeMap = [
         'create_time' => 'createTime',
-                'service_job_id' => 'serviceJobId',
-                'service_job_status' => 'serviceJobStatus',
-                'scope_of_work' => 'scopeOfWork',
-                'seller' => 'seller',
-                'service_job_provider' => 'serviceJobProvider',
-                'preferred_appointment_times' => 'preferredAppointmentTimes',
-                'appointments' => 'appointments',
-                'service_order_id' => 'serviceOrderId',
-                'marketplace_id' => 'marketplaceId',
-                'store_id' => 'storeId',
-                'buyer' => 'buyer',
-                'associated_items' => 'associatedItems',
-                'service_location' => 'serviceLocation'
-        
+        'service_job_id' => 'serviceJobId',
+        'service_job_status' => 'serviceJobStatus',
+        'scope_of_work' => 'scopeOfWork',
+        'seller' => 'seller',
+        'service_job_provider' => 'serviceJobProvider',
+        'preferred_appointment_times' => 'preferredAppointmentTimes',
+        'appointments' => 'appointments',
+        'service_order_id' => 'serviceOrderId',
+        'marketplace_id' => 'marketplaceId',
+        'store_id' => 'storeId',
+        'buyer' => 'buyer',
+        'associated_items' => 'associatedItems',
+        'service_location' => 'serviceLocation',
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @var string[]
      */
@@ -242,11 +180,11 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
         'store_id' => 'setStoreId',
         'buyer' => 'setBuyer',
         'associated_items' => 'setAssociatedItems',
-        'service_location' => 'setServiceLocation'
+        'service_location' => 'setServiceLocation',
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @var string[]
      */
@@ -264,88 +202,19 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
         'store_id' => 'getStoreId',
         'buyer' => 'getBuyer',
         'associated_items' => 'getAssociatedItems',
-        'service_location' => 'getServiceLocation'
+        'service_location' => 'getServiceLocation',
     ];
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @return array
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @return array
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @return array
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    /**
-     * The original name of the model.
-     *
-     * @return string
-     */
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-    public const SERVICE_JOB_STATUS_NOT_SERVICED = 'NOT_SERVICED';
-    public const SERVICE_JOB_STATUS_CANCELLED = 'CANCELLED';
-    public const SERVICE_JOB_STATUS_COMPLETED = 'COMPLETED';
-    public const SERVICE_JOB_STATUS_PENDING_SCHEDULE = 'PENDING_SCHEDULE';
-    public const SERVICE_JOB_STATUS_NOT_FULFILLABLE = 'NOT_FULFILLABLE';
-    public const SERVICE_JOB_STATUS_HOLD = 'HOLD';
-    public const SERVICE_JOB_STATUS_PAYMENT_DECLINED = 'PAYMENT_DECLINED';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getServiceJobStatusAllowableValues(): array
-    {
-        return [
-            self::SERVICE_JOB_STATUS_NOT_SERVICED,
-            self::SERVICE_JOB_STATUS_CANCELLED,
-            self::SERVICE_JOB_STATUS_COMPLETED,
-            self::SERVICE_JOB_STATUS_PENDING_SCHEDULE,
-            self::SERVICE_JOB_STATUS_NOT_FULFILLABLE,
-            self::SERVICE_JOB_STATUS_HOLD,
-            self::SERVICE_JOB_STATUS_PAYMENT_DECLINED,
-        ];
-    }
-
-    /**
-     * Associative array for storing property values
-     *
-     * @var array
+     * Associative array for storing property values.
      */
     protected array $container = [];
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param array|null $data Associated array of property values
-     *                      initializing the model
+     * @param null|array $data Associated array of property values
+     *                         initializing the model
      */
     public function __construct(?array $data = null)
     {
@@ -366,21 +235,99 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
-    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+     * Gets the string presentation of the object.
+     *
+     * @return string
+     */
+    public function __toString()
     {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
+        return json_encode(
+            ObjectSerializer::sanitizeForSerialization($this),
+            JSON_PRETTY_PRINT
+        );
+    }
 
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    /**
+     * Array of property to type mappings. Used for (de)serialization.
+     */
+    public static function openAPITypes(): array
+    {
+        return self::$openAPITypes;
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization.
+     */
+    public static function openAPIFormats(): array
+    {
+        return self::$openAPIFormats;
+    }
+
+    /**
+     * Checks if a property is nullable.
+     */
+    public static function isNullable(string $property): bool
+    {
+        return self::openAPINullables()[$property] ?? false;
+    }
+
+    /**
+     * Checks if a nullable property is set to null.
+     */
+    public function isNullableSetToNull(string $property): bool
+    {
+        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name.
+     */
+    public static function attributeMap(): array
+    {
+        return self::$attributeMap;
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses).
+     */
+    public static function setters(): array
+    {
+        return self::$setters;
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests).
+     */
+    public static function getters(): array
+    {
+        return self::$getters;
+    }
+
+    /**
+     * The original name of the model.
+     */
+    public function getModelName(): string
+    {
+        return self::$openAPIModelName;
+    }
+
+    /**
+     * Gets allowable values of the enum.
+     *
+     * @return string[]
+     */
+    public function getServiceJobStatusAllowableValues(): array
+    {
+        return [
+            self::SERVICE_JOB_STATUS_NOT_SERVICED,
+            self::SERVICE_JOB_STATUS_CANCELLED,
+            self::SERVICE_JOB_STATUS_COMPLETED,
+            self::SERVICE_JOB_STATUS_PENDING_SCHEDULE,
+            self::SERVICE_JOB_STATUS_NOT_FULFILLABLE,
+            self::SERVICE_JOB_STATUS_HOLD,
+            self::SERVICE_JOB_STATUS_PAYMENT_DECLINED,
+        ];
     }
 
     /**
@@ -417,7 +364,7 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'service_order_id', the character length must be bigger than or equal to 5.";
         }
 
-        if (!is_null($this->container['marketplace_id']) && !preg_match("/^[A-Z0-9]*$/", $this->container['marketplace_id'])) {
+        if (!is_null($this->container['marketplace_id']) && !preg_match('/^[A-Z0-9]*$/', $this->container['marketplace_id'])) {
             $invalidProperties[] = "invalid value for 'marketplace_id', must be conform to the pattern /^[A-Z0-9]*$/.";
         }
 
@@ -434,20 +381,17 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
 
     /**
      * Validate all the properties in the model
-     * return true if all passed
+     * return true if all passed.
      *
      * @return bool True if all properties are valid
      */
     public function valid(): bool
     {
-        return count($this->listInvalidProperties()) === 0;
+        return 0 === count($this->listInvalidProperties());
     }
 
-
     /**
-     * Gets create_time
-     *
-     * @return \DateTime|null
+     * Gets create_time.
      */
     public function getCreateTime(): ?\DateTime
     {
@@ -455,11 +399,9 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets create_time
+     * Sets create_time.
      *
-     * @param \DateTime|null $create_time The date and time of the creation of the job in ISO 8601 format.
-     *
-     * @return self
+     * @param null|\DateTime $create_time the date and time of the creation of the job in ISO 8601 format
      */
     public function setCreateTime(?\DateTime $create_time): self
     {
@@ -468,7 +410,7 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('create_time', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -479,9 +421,7 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets service_job_id
-     *
-     * @return string|null
+     * Gets service_job_id.
      */
     public function getServiceJobId(): ?string
     {
@@ -489,11 +429,9 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets service_job_id
+     * Sets service_job_id.
      *
-     * @param string|null $service_job_id Amazon identifier for the service job.
-     *
-     * @return self
+     * @param null|string $service_job_id amazon identifier for the service job
      */
     public function setServiceJobId(?string $service_job_id): self
     {
@@ -502,7 +440,7 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('service_job_id', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -520,9 +458,7 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets service_job_status
-     *
-     * @return string|null
+     * Gets service_job_status.
      */
     public function getServiceJobStatus(): ?string
     {
@@ -530,11 +466,9 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets service_job_status
+     * Sets service_job_status.
      *
-     * @param string|null $service_job_status The status of the service job.
-     *
-     * @return self
+     * @param null|string $service_job_status the status of the service job
      */
     public function setServiceJobStatus(?string $service_job_status): self
     {
@@ -543,7 +477,7 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('service_job_status', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -564,30 +498,26 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets scope_of_work
-     *
-     * @return \SpApi\Model\services\v1\ScopeOfWork|null
+     * Gets scope_of_work.
      */
-    public function getScopeOfWork(): ?\SpApi\Model\services\v1\ScopeOfWork
+    public function getScopeOfWork(): ?ScopeOfWork
     {
         return $this->container['scope_of_work'];
     }
 
     /**
-     * Sets scope_of_work
+     * Sets scope_of_work.
      *
-     * @param \SpApi\Model\services\v1\ScopeOfWork|null $scope_of_work scope_of_work
-     *
-     * @return self
+     * @param null|ScopeOfWork $scope_of_work scope_of_work
      */
-    public function setScopeOfWork(?\SpApi\Model\services\v1\ScopeOfWork $scope_of_work): self
+    public function setScopeOfWork(?ScopeOfWork $scope_of_work): self
     {
         if (is_null($scope_of_work)) {
             array_push($this->openAPINullablesSetToNull, 'scope_of_work');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('scope_of_work', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -598,30 +528,26 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets seller
-     *
-     * @return \SpApi\Model\services\v1\Seller|null
+     * Gets seller.
      */
-    public function getSeller(): ?\SpApi\Model\services\v1\Seller
+    public function getSeller(): ?Seller
     {
         return $this->container['seller'];
     }
 
     /**
-     * Sets seller
+     * Sets seller.
      *
-     * @param \SpApi\Model\services\v1\Seller|null $seller seller
-     *
-     * @return self
+     * @param null|Seller $seller seller
      */
-    public function setSeller(?\SpApi\Model\services\v1\Seller $seller): self
+    public function setSeller(?Seller $seller): self
     {
         if (is_null($seller)) {
             array_push($this->openAPINullablesSetToNull, 'seller');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('seller', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -632,30 +558,26 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets service_job_provider
-     *
-     * @return \SpApi\Model\services\v1\ServiceJobProvider|null
+     * Gets service_job_provider.
      */
-    public function getServiceJobProvider(): ?\SpApi\Model\services\v1\ServiceJobProvider
+    public function getServiceJobProvider(): ?ServiceJobProvider
     {
         return $this->container['service_job_provider'];
     }
 
     /**
-     * Sets service_job_provider
+     * Sets service_job_provider.
      *
-     * @param \SpApi\Model\services\v1\ServiceJobProvider|null $service_job_provider service_job_provider
-     *
-     * @return self
+     * @param null|ServiceJobProvider $service_job_provider service_job_provider
      */
-    public function setServiceJobProvider(?\SpApi\Model\services\v1\ServiceJobProvider $service_job_provider): self
+    public function setServiceJobProvider(?ServiceJobProvider $service_job_provider): self
     {
         if (is_null($service_job_provider)) {
             array_push($this->openAPINullablesSetToNull, 'service_job_provider');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('service_job_provider', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -666,9 +588,7 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets preferred_appointment_times
-     *
-     * @return array|null
+     * Gets preferred_appointment_times.
      */
     public function getPreferredAppointmentTimes(): ?array
     {
@@ -676,11 +596,9 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets preferred_appointment_times
+     * Sets preferred_appointment_times.
      *
-     * @param array|null $preferred_appointment_times A list of appointment windows preferred by the buyer. Included only if the buyer selected appointment windows when creating the order.
-     *
-     * @return self
+     * @param null|array $preferred_appointment_times A list of appointment windows preferred by the buyer. Included only if the buyer selected appointment windows when creating the order.
      */
     public function setPreferredAppointmentTimes(?array $preferred_appointment_times): self
     {
@@ -689,7 +607,7 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('preferred_appointment_times', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -700,9 +618,7 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets appointments
-     *
-     * @return array|null
+     * Gets appointments.
      */
     public function getAppointments(): ?array
     {
@@ -710,11 +626,9 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets appointments
+     * Sets appointments.
      *
-     * @param array|null $appointments A list of appointments.
-     *
-     * @return self
+     * @param null|array $appointments a list of appointments
      */
     public function setAppointments(?array $appointments): self
     {
@@ -723,7 +637,7 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('appointments', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -734,9 +648,7 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets service_order_id
-     *
-     * @return string|null
+     * Gets service_order_id.
      */
     public function getServiceOrderId(): ?string
     {
@@ -744,11 +656,9 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets service_order_id
+     * Sets service_order_id.
      *
-     * @param string|null $service_order_id The Amazon-defined identifier for an order placed by the buyer, in 3-7-7 format.
-     *
-     * @return self
+     * @param null|string $service_order_id the Amazon-defined identifier for an order placed by the buyer, in 3-7-7 format
      */
     public function setServiceOrderId(?string $service_order_id): self
     {
@@ -757,7 +667,7 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('service_order_id', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -775,9 +685,7 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets marketplace_id
-     *
-     * @return string|null
+     * Gets marketplace_id.
      */
     public function getMarketplaceId(): ?string
     {
@@ -785,11 +693,9 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets marketplace_id
+     * Sets marketplace_id.
      *
-     * @param string|null $marketplace_id The marketplace identifier.
-     *
-     * @return self
+     * @param null|string $marketplace_id the marketplace identifier
      */
     public function setMarketplaceId(?string $marketplace_id): self
     {
@@ -798,14 +704,14 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('marketplace_id', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
 
-        if (!is_null($marketplace_id) && (!preg_match("/^[A-Z0-9]*$/", ObjectSerializer::toString($marketplace_id)))) {
-            throw new \InvalidArgumentException("invalid value for \$marketplace_id when calling ServiceJob., must conform to the pattern /^[A-Z0-9]*$/.");
+        if (!is_null($marketplace_id) && (!preg_match('/^[A-Z0-9]*$/', ObjectSerializer::toString($marketplace_id)))) {
+            throw new \InvalidArgumentException('invalid value for $marketplace_id when calling ServiceJob., must conform to the pattern /^[A-Z0-9]*$/.');
         }
 
         $this->container['marketplace_id'] = $marketplace_id;
@@ -814,9 +720,7 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets store_id
-     *
-     * @return string|null
+     * Gets store_id.
      */
     public function getStoreId(): ?string
     {
@@ -824,11 +728,9 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets store_id
+     * Sets store_id.
      *
-     * @param string|null $store_id The Amazon-defined identifier for the region scope.
-     *
-     * @return self
+     * @param null|string $store_id the Amazon-defined identifier for the region scope
      */
     public function setStoreId(?string $store_id): self
     {
@@ -837,7 +739,7 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('store_id', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -855,30 +757,26 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets buyer
-     *
-     * @return \SpApi\Model\services\v1\Buyer|null
+     * Gets buyer.
      */
-    public function getBuyer(): ?\SpApi\Model\services\v1\Buyer
+    public function getBuyer(): ?Buyer
     {
         return $this->container['buyer'];
     }
 
     /**
-     * Sets buyer
+     * Sets buyer.
      *
-     * @param \SpApi\Model\services\v1\Buyer|null $buyer buyer
-     *
-     * @return self
+     * @param null|Buyer $buyer buyer
      */
-    public function setBuyer(?\SpApi\Model\services\v1\Buyer $buyer): self
+    public function setBuyer(?Buyer $buyer): self
     {
         if (is_null($buyer)) {
             array_push($this->openAPINullablesSetToNull, 'buyer');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('buyer', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -889,9 +787,7 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets associated_items
-     *
-     * @return array|null
+     * Gets associated_items.
      */
     public function getAssociatedItems(): ?array
     {
@@ -899,11 +795,9 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets associated_items
+     * Sets associated_items.
      *
-     * @param array|null $associated_items A list of items associated with the service job.
-     *
-     * @return self
+     * @param null|array $associated_items a list of items associated with the service job
      */
     public function setAssociatedItems(?array $associated_items): self
     {
@@ -912,7 +806,7 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('associated_items', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -923,30 +817,26 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets service_location
-     *
-     * @return \SpApi\Model\services\v1\ServiceLocation|null
+     * Gets service_location.
      */
-    public function getServiceLocation(): ?\SpApi\Model\services\v1\ServiceLocation
+    public function getServiceLocation(): ?ServiceLocation
     {
         return $this->container['service_location'];
     }
 
     /**
-     * Sets service_location
+     * Sets service_location.
      *
-     * @param \SpApi\Model\services\v1\ServiceLocation|null $service_location service_location
-     *
-     * @return self
+     * @param null|ServiceLocation $service_location service_location
      */
-    public function setServiceLocation(?\SpApi\Model\services\v1\ServiceLocation $service_location): self
+    public function setServiceLocation(?ServiceLocation $service_location): self
     {
         if (is_null($service_location)) {
             array_push($this->openAPINullablesSetToNull, 'service_location');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('service_location', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -956,13 +846,10 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
         return $this;
     }
 
-
     /**
      * Returns true if offset exists. False otherwise.
      *
-     * @param integer $offset Offset
-     *
-     * @return boolean
+     * @param int $offset Offset
      */
     public function offsetExists($offset): bool
     {
@@ -972,9 +859,9 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
-     * @return mixed|null
+     * @return null|mixed
      */
     #[\ReturnTypeWillChange]
     public function offsetGet($offset): mixed
@@ -985,10 +872,8 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets value based on offset.
      *
-     * @param int|null $offset Offset
+     * @param null|int $offset Offset
      * @param mixed    $value  Value to be set
-     *
-     * @return void
      */
     public function offsetSet($offset, mixed $value): void
     {
@@ -1002,9 +887,7 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Unsets offset.
      *
-     * @param integer $offset Offset
-     *
-     * @return void
+     * @param int $offset Offset
      */
     public function offsetUnset($offset): void
     {
@@ -1013,39 +896,67 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
 
     /**
      * Serializes the object to a value that can be serialized natively by json_encode().
-     * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
      *
-     * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
+     * @see https://www.php.net/manual/en/jsonserializable.jsonserialize.php
+     *
+     * @return mixed returns data which can be serialized by json_encode(), which is a value
+     *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
     public function jsonSerialize(): mixed
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
-     * Gets the string presentation of the object
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    /**
-     * Gets a header-safe presentation of the object
-     *
-     * @return string
+     * Gets a header-safe presentation of the object.
      */
     public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
+
+    /**
+     * Array of nullable properties.
+     */
+    protected static function openAPINullables(): array
+    {
+        return self::$openAPINullables;
+    }
+
+    /**
+     * Array of nullable field names deliberately set to null.
+     *
+     * @return bool[]
+     */
+    private function getOpenAPINullablesSetToNull(): array
+    {
+        return $this->openAPINullablesSetToNull;
+    }
+
+    /**
+     * Setter - Array of nullable field names deliberately set to null.
+     *
+     * @param bool[] $openAPINullablesSetToNull
+     */
+    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
+    {
+        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
+    }
+
+    /**
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array.
+     *
+     * @param mixed $defaultValue
+     */
+    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+    {
+        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
+            $this->openAPINullablesSetToNull[] = $variableName;
+        }
+
+        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    }
 }
-
-

@@ -1,16 +1,18 @@
 <?php
+
 /**
  * AwdApi
- * PHP version 8.3
+ * PHP version 8.3.
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * The Selling Partner API for Amazon Warehousing and Distribution
+ * The Selling Partner API for Amazon Warehousing and Distribution.
  *
  * The Selling Partner API for Amazon Warehousing and Distribution (AWD) provides programmatic access to information about AWD shipments and inventory.
  *
@@ -35,38 +37,40 @@ use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use SpApi\AuthAndAuth\RateLimitConfiguration;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RateLimitConfiguration;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
+use SpApi\Model\awd\v2024_05_09\InboundEligibility;
+use SpApi\Model\awd\v2024_05_09\InboundOrder;
+use SpApi\Model\awd\v2024_05_09\InboundOrderCreationData;
+use SpApi\Model\awd\v2024_05_09\InboundOrderReference;
+use SpApi\Model\awd\v2024_05_09\InboundPackages;
+use SpApi\Model\awd\v2024_05_09\InboundShipment;
+use SpApi\Model\awd\v2024_05_09\InventoryListing;
+use SpApi\Model\awd\v2024_05_09\ShipmentLabels;
+use SpApi\Model\awd\v2024_05_09\ShipmentListing;
+use SpApi\Model\awd\v2024_05_09\TransportationDetails;
 use SpApi\ObjectSerializer;
+use Symfony\Component\RateLimiter\LimiterInterface;
+use Symfony\Component\RateLimiter\RateLimiterFactory;
+use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
- * AwdApi Class Doc Comment
+ * AwdApi Class Doc Comment.
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class AwdApi
 {
-    /**
-     * @var ClientInterface
-     */
     protected ClientInterface $client;
 
-    /**
-     * @var Configuration
-     */
     protected Configuration $config;
 
-    /**
-     * @var HeaderSelector
-     */
     protected HeaderSelector $headerSelector;
 
     /**
@@ -74,21 +78,11 @@ class AwdApi
      */
     protected int $hostIndex;
 
-    /**
-     * @var ?RateLimitConfiguration
-     */
     private ?RateLimitConfiguration $rateLimitConfig = null;
 
-    /**
-     * @var ?LimiterInterface
-     */
     private ?LimiterInterface $rateLimiter = null;
 
     /**
-     * @param Configuration   $config
-     * @param RateLimitConfiguration|null $rateLimitConfig
-     * @param ClientInterface|null $client
-     * @param HeaderSelector|null $selector
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
@@ -107,10 +101,10 @@ class AwdApi
                 'policy' => $type,
                 'limit' => $rateLimitConfig->getRateLimitTokenLimit(),
             ];
-            if ($type === "fixed_window" || $type === "sliding_window") {
-                $rateLimitOptions['interval'] = $rateLimitConfig->getRateLimitToken() . 'seconds';
+            if ('fixed_window' === $type || 'sliding_window' === $type) {
+                $rateLimitOptions['interval'] = $rateLimitConfig->getRateLimitToken().'seconds';
             } else {
-                $rateLimitOptions['rate'] = ['interval' => $rateLimitConfig->getRateLimitToken() . 'seconds'];
+                $rateLimitOptions['rate'] = ['interval' => $rateLimitConfig->getRateLimitToken().'seconds'];
             }
             $factory = new RateLimiterFactory($rateLimitOptions, new InMemoryStorage());
             $this->rateLimiter = $factory->create();
@@ -122,7 +116,7 @@ class AwdApi
     }
 
     /**
-     * Set the host index
+     * Set the host index.
      *
      * @param int $hostIndex Host index (required)
      */
@@ -132,7 +126,7 @@ class AwdApi
     }
 
     /**
-     * Get the host index
+     * Get the host index.
      *
      * @return int Host index
      */
@@ -141,23 +135,19 @@ class AwdApi
         return $this->hostIndex;
     }
 
-    /**
-     * @return Configuration
-     */
     public function getConfig(): Configuration
     {
         return $this->config;
     }
 
     /**
-     * Operation cancelInbound
+     * Operation cancelInbound.
      *
-     * @param  string $order_id
-     *  The ID of the inbound order you want to cancel. (required)
+     * @param string $order_id
+     *                         The ID of the inbound order you want to cancel. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return 
      */
     public function cancelInbound(
         string $order_id
@@ -166,14 +156,15 @@ class AwdApi
     }
 
     /**
-     * Operation cancelInboundWithHttpInfo
+     * Operation cancelInboundWithHttpInfo.
      *
-     * @param  string $order_id
-     *  The ID of the inbound order you want to cancel. (required)
+     * @param string $order_id
+     *                         The ID of the inbound order you want to cancel. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of , HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function cancelInboundWithHttpInfo(
         string $order_id
@@ -183,6 +174,7 @@ class AwdApi
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -218,7 +210,6 @@ class AwdApi
             }
 
             return [null, $statusCode, $response->getHeaders()];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 400:
@@ -228,7 +219,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -236,7 +229,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -244,7 +239,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 409:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -252,7 +249,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -260,7 +259,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -268,7 +269,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -276,7 +279,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -284,7 +289,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -292,20 +299,21 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation cancelInboundAsync
+     * Operation cancelInboundAsync.
      *
-     * @param  string $order_id
-     *  The ID of the inbound order you want to cancel. (required)
+     * @param string $order_id
+     *                         The ID of the inbound order you want to cancel. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function cancelInboundAsync(
         string $order_id
@@ -315,17 +323,17 @@ class AwdApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation cancelInboundAsyncWithHttpInfo
+     * Operation cancelInboundAsyncWithHttpInfo.
      *
-     * @param  string $order_id
-     *  The ID of the inbound order you want to cancel. (required)
+     * @param string $order_id
+     *                         The ID of the inbound order you want to cancel. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function cancelInboundAsyncWithHttpInfo(
         string $order_id
@@ -338,12 +346,13 @@ class AwdApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) {
                     return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -355,23 +364,23 @@ class AwdApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'cancelInbound'
+     * Create request for operation 'cancelInbound'.
      *
-     * @param  string $order_id
-     *  The ID of the inbound order you want to cancel. (required)
+     * @param string $order_id
+     *                         The ID of the inbound order you want to cancel. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function cancelInboundRequest(
         string $order_id
     ): Request {
         // verify the required parameter 'order_id' is set
-        if ($order_id === null || (is_array($order_id) && count($order_id) === 0)) {
+        if (null === $order_id || (is_array($order_id) && 0 === count($order_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $order_id when calling cancelInbound'
             );
@@ -384,17 +393,14 @@ class AwdApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($order_id !== null) {
+        if (null !== $order_id) {
             $resourcePath = str_replace(
-                '{' . 'orderId' . '}',
+                '{orderId}',
                 ObjectSerializer::toPathValue($order_id),
                 $resourcePath
             );
         }
-
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -403,7 +409,6 @@ class AwdApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                
                 '',
                 false
             );
@@ -418,22 +423,19 @@ class AwdApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -447,49 +449,52 @@ class AwdApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation checkInboundEligibility
+     * Operation checkInboundEligibility.
      *
-     * @param  \SpApi\Model\awd\v2024_05_09\InboundPackages $body
-     *  Represents the packages you want to inbound. (required)
+     * @param InboundPackages $body
+     *                              Represents the packages you want to inbound. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\awd\v2024_05_09\InboundEligibility
      */
     public function checkInboundEligibility(
-        \SpApi\Model\awd\v2024_05_09\InboundPackages $body
-    ): \SpApi\Model\awd\v2024_05_09\InboundEligibility {
+        InboundPackages $body
+    ): InboundEligibility {
         list($response) = $this->checkInboundEligibilityWithHttpInfo($body);
+
         return $response;
     }
 
     /**
-     * Operation checkInboundEligibilityWithHttpInfo
+     * Operation checkInboundEligibilityWithHttpInfo.
      *
-     * @param  \SpApi\Model\awd\v2024_05_09\InboundPackages $body
-     *  Represents the packages you want to inbound. (required)
+     * @param InboundPackages $body
+     *                              Represents the packages you want to inbound. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\awd\v2024_05_09\InboundEligibility, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function checkInboundEligibilityWithHttpInfo(
-        \SpApi\Model\awd\v2024_05_09\InboundPackages $body
+        InboundPackages $body
     ): array {
         $request = $this->checkInboundEligibilityRequest($body);
         $request = $this->config->sign($request);
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -524,10 +529,10 @@ class AwdApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\SpApi\Model\awd\v2024_05_09\InboundEligibility' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\InboundEligibility' !== 'string') {
@@ -538,11 +543,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\InboundEligibility', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 400:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -553,11 +559,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 403:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -568,11 +575,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 404:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -583,11 +591,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 413:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -598,11 +607,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 415:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -613,11 +623,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 429:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -628,11 +639,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 500:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -643,11 +655,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 503:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -658,16 +671,16 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
             $returnType = '\SpApi\Model\awd\v2024_05_09\InboundEligibility';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+            if ('\SplFileObject' === $returnType) {
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
+                if ('string' !== $returnType) {
                     $content = json_decode($content);
                 }
             }
@@ -675,9 +688,8 @@ class AwdApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -687,7 +699,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -695,7 +709,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -703,7 +719,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -711,7 +729,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -719,7 +739,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -727,7 +749,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -735,7 +759,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -743,7 +769,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -751,43 +779,44 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation checkInboundEligibilityAsync
+     * Operation checkInboundEligibilityAsync.
      *
-     * @param  \SpApi\Model\awd\v2024_05_09\InboundPackages $body
-     *  Represents the packages you want to inbound. (required)
+     * @param InboundPackages $body
+     *                              Represents the packages you want to inbound. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function checkInboundEligibilityAsync(
-        \SpApi\Model\awd\v2024_05_09\InboundPackages $body
+        InboundPackages $body
     ): PromiseInterface {
         return $this->checkInboundEligibilityAsyncWithHttpInfo($body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation checkInboundEligibilityAsyncWithHttpInfo
+     * Operation checkInboundEligibilityAsyncWithHttpInfo.
      *
-     * @param  \SpApi\Model\awd\v2024_05_09\InboundPackages $body
-     *  Represents the packages you want to inbound. (required)
+     * @param InboundPackages $body
+     *                              Represents the packages you want to inbound. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function checkInboundEligibilityAsyncWithHttpInfo(
-        \SpApi\Model\awd\v2024_05_09\InboundPackages $body
+        InboundPackages $body
     ): PromiseInterface {
         $returnType = '\SpApi\Model\awd\v2024_05_09\InboundEligibility';
         $request = $this->checkInboundEligibilityRequest($body);
@@ -798,11 +827,11 @@ class AwdApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -810,12 +839,13 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -827,23 +857,23 @@ class AwdApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'checkInboundEligibility'
+     * Create request for operation 'checkInboundEligibility'.
      *
-     * @param  \SpApi\Model\awd\v2024_05_09\InboundPackages $body
-     *  Represents the packages you want to inbound. (required)
+     * @param InboundPackages $body
+     *                              Represents the packages you want to inbound. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function checkInboundEligibilityRequest(
-        \SpApi\Model\awd\v2024_05_09\InboundPackages $body
+        InboundPackages $body
     ): Request {
         // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        if (null === $body || (is_array($body) && 0 === count($body))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling checkInboundEligibility'
             );
@@ -856,10 +886,6 @@ class AwdApi
         $httpBody = '';
         $multipart = false;
 
-
-
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -867,15 +893,14 @@ class AwdApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                'application/json'
-                ,
+                'application/json',
                 false
             );
         }
 
         // for model (json/xml)
         if (isset($body)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -888,22 +913,19 @@ class AwdApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -917,23 +939,23 @@ class AwdApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation confirmInbound
+     * Operation confirmInbound.
      *
-     * @param  string $order_id
-     *  The ID of the inbound order that you want to confirm. (required)
+     * @param string $order_id
+     *                         The ID of the inbound order that you want to confirm. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return 
      */
     public function confirmInbound(
         string $order_id
@@ -942,14 +964,15 @@ class AwdApi
     }
 
     /**
-     * Operation confirmInboundWithHttpInfo
+     * Operation confirmInboundWithHttpInfo.
      *
-     * @param  string $order_id
-     *  The ID of the inbound order that you want to confirm. (required)
+     * @param string $order_id
+     *                         The ID of the inbound order that you want to confirm. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of , HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function confirmInboundWithHttpInfo(
         string $order_id
@@ -959,6 +982,7 @@ class AwdApi
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -994,7 +1018,6 @@ class AwdApi
             }
 
             return [null, $statusCode, $response->getHeaders()];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 400:
@@ -1004,7 +1027,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1012,7 +1037,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1020,7 +1047,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 409:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1028,7 +1057,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1036,7 +1067,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1044,7 +1077,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1052,7 +1087,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1060,7 +1097,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1068,20 +1107,21 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation confirmInboundAsync
+     * Operation confirmInboundAsync.
      *
-     * @param  string $order_id
-     *  The ID of the inbound order that you want to confirm. (required)
+     * @param string $order_id
+     *                         The ID of the inbound order that you want to confirm. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function confirmInboundAsync(
         string $order_id
@@ -1091,17 +1131,17 @@ class AwdApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation confirmInboundAsyncWithHttpInfo
+     * Operation confirmInboundAsyncWithHttpInfo.
      *
-     * @param  string $order_id
-     *  The ID of the inbound order that you want to confirm. (required)
+     * @param string $order_id
+     *                         The ID of the inbound order that you want to confirm. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function confirmInboundAsyncWithHttpInfo(
         string $order_id
@@ -1114,12 +1154,13 @@ class AwdApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) {
                     return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -1131,23 +1172,23 @@ class AwdApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'confirmInbound'
+     * Create request for operation 'confirmInbound'.
      *
-     * @param  string $order_id
-     *  The ID of the inbound order that you want to confirm. (required)
+     * @param string $order_id
+     *                         The ID of the inbound order that you want to confirm. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function confirmInboundRequest(
         string $order_id
     ): Request {
         // verify the required parameter 'order_id' is set
-        if ($order_id === null || (is_array($order_id) && count($order_id) === 0)) {
+        if (null === $order_id || (is_array($order_id) && 0 === count($order_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $order_id when calling confirmInbound'
             );
@@ -1160,17 +1201,14 @@ class AwdApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($order_id !== null) {
+        if (null !== $order_id) {
             $resourcePath = str_replace(
-                '{' . 'orderId' . '}',
+                '{orderId}',
                 ObjectSerializer::toPathValue($order_id),
                 $resourcePath
             );
         }
-
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -1179,7 +1217,6 @@ class AwdApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                
                 '',
                 false
             );
@@ -1194,22 +1231,19 @@ class AwdApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1223,49 +1257,52 @@ class AwdApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation createInbound
+     * Operation createInbound.
      *
-     * @param  \SpApi\Model\awd\v2024_05_09\InboundOrderCreationData $body
-     *  Payload for creating an inbound order. (required)
+     * @param InboundOrderCreationData $body
+     *                                       Payload for creating an inbound order. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\awd\v2024_05_09\InboundOrderReference
      */
     public function createInbound(
-        \SpApi\Model\awd\v2024_05_09\InboundOrderCreationData $body
-    ): \SpApi\Model\awd\v2024_05_09\InboundOrderReference {
+        InboundOrderCreationData $body
+    ): InboundOrderReference {
         list($response) = $this->createInboundWithHttpInfo($body);
+
         return $response;
     }
 
     /**
-     * Operation createInboundWithHttpInfo
+     * Operation createInboundWithHttpInfo.
      *
-     * @param  \SpApi\Model\awd\v2024_05_09\InboundOrderCreationData $body
-     *  Payload for creating an inbound order. (required)
+     * @param InboundOrderCreationData $body
+     *                                       Payload for creating an inbound order. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\awd\v2024_05_09\InboundOrderReference, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function createInboundWithHttpInfo(
-        \SpApi\Model\awd\v2024_05_09\InboundOrderCreationData $body
+        InboundOrderCreationData $body
     ): array {
         $request = $this->createInboundRequest($body);
         $request = $this->config->sign($request);
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -1300,10 +1337,10 @@ class AwdApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 201:
                     if ('\SpApi\Model\awd\v2024_05_09\InboundOrderReference' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\InboundOrderReference' !== 'string') {
@@ -1314,11 +1351,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\InboundOrderReference', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 400:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -1329,11 +1367,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 403:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -1344,11 +1383,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 404:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -1359,11 +1399,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 413:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -1374,11 +1415,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 415:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -1389,11 +1431,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 429:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -1404,11 +1447,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 500:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -1419,11 +1463,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 503:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -1434,16 +1479,16 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
             $returnType = '\SpApi\Model\awd\v2024_05_09\InboundOrderReference';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+            if ('\SplFileObject' === $returnType) {
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
+                if ('string' !== $returnType) {
                     $content = json_decode($content);
                 }
             }
@@ -1451,9 +1496,8 @@ class AwdApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 201:
@@ -1463,7 +1507,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1471,7 +1517,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1479,7 +1527,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1487,7 +1537,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1495,7 +1547,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1503,7 +1557,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1511,7 +1567,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1519,7 +1577,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1527,43 +1587,44 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation createInboundAsync
+     * Operation createInboundAsync.
      *
-     * @param  \SpApi\Model\awd\v2024_05_09\InboundOrderCreationData $body
-     *  Payload for creating an inbound order. (required)
+     * @param InboundOrderCreationData $body
+     *                                       Payload for creating an inbound order. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function createInboundAsync(
-        \SpApi\Model\awd\v2024_05_09\InboundOrderCreationData $body
+        InboundOrderCreationData $body
     ): PromiseInterface {
         return $this->createInboundAsyncWithHttpInfo($body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation createInboundAsyncWithHttpInfo
+     * Operation createInboundAsyncWithHttpInfo.
      *
-     * @param  \SpApi\Model\awd\v2024_05_09\InboundOrderCreationData $body
-     *  Payload for creating an inbound order. (required)
+     * @param InboundOrderCreationData $body
+     *                                       Payload for creating an inbound order. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function createInboundAsyncWithHttpInfo(
-        \SpApi\Model\awd\v2024_05_09\InboundOrderCreationData $body
+        InboundOrderCreationData $body
     ): PromiseInterface {
         $returnType = '\SpApi\Model\awd\v2024_05_09\InboundOrderReference';
         $request = $this->createInboundRequest($body);
@@ -1574,11 +1635,11 @@ class AwdApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -1586,12 +1647,13 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -1603,23 +1665,23 @@ class AwdApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'createInbound'
+     * Create request for operation 'createInbound'.
      *
-     * @param  \SpApi\Model\awd\v2024_05_09\InboundOrderCreationData $body
-     *  Payload for creating an inbound order. (required)
+     * @param InboundOrderCreationData $body
+     *                                       Payload for creating an inbound order. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function createInboundRequest(
-        \SpApi\Model\awd\v2024_05_09\InboundOrderCreationData $body
+        InboundOrderCreationData $body
     ): Request {
         // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        if (null === $body || (is_array($body) && 0 === count($body))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling createInbound'
             );
@@ -1632,10 +1694,6 @@ class AwdApi
         $httpBody = '';
         $multipart = false;
 
-
-
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -1643,15 +1701,14 @@ class AwdApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                'application/json'
-                ,
+                'application/json',
                 false
             );
         }
 
         // for model (json/xml)
         if (isset($body)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -1664,22 +1721,19 @@ class AwdApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1693,40 +1747,42 @@ class AwdApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getInbound
+     * Operation getInbound.
      *
-     * @param  string $order_id
-     *  The ID of the inbound order that you want to retrieve. (required)
+     * @param string $order_id
+     *                         The ID of the inbound order that you want to retrieve. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\awd\v2024_05_09\InboundOrder
      */
     public function getInbound(
         string $order_id
-    ): \SpApi\Model\awd\v2024_05_09\InboundOrder {
+    ): InboundOrder {
         list($response) = $this->getInboundWithHttpInfo($order_id);
+
         return $response;
     }
 
     /**
-     * Operation getInboundWithHttpInfo
+     * Operation getInboundWithHttpInfo.
      *
-     * @param  string $order_id
-     *  The ID of the inbound order that you want to retrieve. (required)
+     * @param string $order_id
+     *                         The ID of the inbound order that you want to retrieve. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\awd\v2024_05_09\InboundOrder, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getInboundWithHttpInfo(
         string $order_id
@@ -1736,6 +1792,7 @@ class AwdApi
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -1770,10 +1827,10 @@ class AwdApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\SpApi\Model\awd\v2024_05_09\InboundOrder' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\InboundOrder' !== 'string') {
@@ -1784,11 +1841,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\InboundOrder', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 400:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -1799,11 +1857,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 403:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -1814,11 +1873,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 404:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -1829,11 +1889,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 413:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -1844,11 +1905,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 415:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -1859,11 +1921,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 429:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -1874,11 +1937,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 500:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -1889,11 +1953,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 503:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -1904,16 +1969,16 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
             $returnType = '\SpApi\Model\awd\v2024_05_09\InboundOrder';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+            if ('\SplFileObject' === $returnType) {
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
+                if ('string' !== $returnType) {
                     $content = json_decode($content);
                 }
             }
@@ -1921,9 +1986,8 @@ class AwdApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -1933,7 +1997,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1941,7 +2007,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1949,7 +2017,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1957,7 +2027,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1965,7 +2037,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1973,7 +2047,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1981,7 +2057,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1989,7 +2067,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1997,20 +2077,21 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation getInboundAsync
+     * Operation getInboundAsync.
      *
-     * @param  string $order_id
-     *  The ID of the inbound order that you want to retrieve. (required)
+     * @param string $order_id
+     *                         The ID of the inbound order that you want to retrieve. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getInboundAsync(
         string $order_id
@@ -2020,17 +2101,17 @@ class AwdApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getInboundAsyncWithHttpInfo
+     * Operation getInboundAsyncWithHttpInfo.
      *
-     * @param  string $order_id
-     *  The ID of the inbound order that you want to retrieve. (required)
+     * @param string $order_id
+     *                         The ID of the inbound order that you want to retrieve. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getInboundAsyncWithHttpInfo(
         string $order_id
@@ -2044,11 +2125,11 @@ class AwdApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -2056,12 +2137,13 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -2073,23 +2155,23 @@ class AwdApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getInbound'
+     * Create request for operation 'getInbound'.
      *
-     * @param  string $order_id
-     *  The ID of the inbound order that you want to retrieve. (required)
+     * @param string $order_id
+     *                         The ID of the inbound order that you want to retrieve. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getInboundRequest(
         string $order_id
     ): Request {
         // verify the required parameter 'order_id' is set
-        if ($order_id === null || (is_array($order_id) && count($order_id) === 0)) {
+        if (null === $order_id || (is_array($order_id) && 0 === count($order_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $order_id when calling getInbound'
             );
@@ -2102,17 +2184,14 @@ class AwdApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($order_id !== null) {
+        if (null !== $order_id) {
             $resourcePath = str_replace(
-                '{' . 'orderId' . '}',
+                '{orderId}',
                 ObjectSerializer::toPathValue($order_id),
                 $resourcePath
             );
         }
-
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -2121,7 +2200,6 @@ class AwdApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                
                 '',
                 false
             );
@@ -2136,22 +2214,19 @@ class AwdApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -2165,45 +2240,47 @@ class AwdApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getInboundShipment
+     * Operation getInboundShipment.
      *
-     * @param  string $shipment_id
-     *  ID for the shipment. A shipment contains the cases being inbounded. (required)
-     * @param  string|null $sku_quantities
-     *  If equal to &#x60;SHOW&#x60;, the response includes the shipment SKU quantity details.  Defaults to &#x60;HIDE&#x60;, in which case the response does not contain SKU quantities (optional)
+     * @param string      $shipment_id
+     *                                    ID for the shipment. A shipment contains the cases being inbounded. (required)
+     * @param null|string $sku_quantities
+     *                                    If equal to &#x60;SHOW&#x60;, the response includes the shipment SKU quantity details.  Defaults to &#x60;HIDE&#x60;, in which case the response does not contain SKU quantities (optional)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\awd\v2024_05_09\InboundShipment
      */
     public function getInboundShipment(
         string $shipment_id,
         ?string $sku_quantities = null
-    ): \SpApi\Model\awd\v2024_05_09\InboundShipment {
+    ): InboundShipment {
         list($response) = $this->getInboundShipmentWithHttpInfo($shipment_id, $sku_quantities);
+
         return $response;
     }
 
     /**
-     * Operation getInboundShipmentWithHttpInfo
+     * Operation getInboundShipmentWithHttpInfo.
      *
-     * @param  string $shipment_id
-     *  ID for the shipment. A shipment contains the cases being inbounded. (required)
-     * @param  string|null $sku_quantities
-     *  If equal to &#x60;SHOW&#x60;, the response includes the shipment SKU quantity details.  Defaults to &#x60;HIDE&#x60;, in which case the response does not contain SKU quantities (optional)
+     * @param string      $shipment_id
+     *                                    ID for the shipment. A shipment contains the cases being inbounded. (required)
+     * @param null|string $sku_quantities
+     *                                    If equal to &#x60;SHOW&#x60;, the response includes the shipment SKU quantity details.  Defaults to &#x60;HIDE&#x60;, in which case the response does not contain SKU quantities (optional)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\awd\v2024_05_09\InboundShipment, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getInboundShipmentWithHttpInfo(
         string $shipment_id,
@@ -2214,6 +2291,7 @@ class AwdApi
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -2248,10 +2326,10 @@ class AwdApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\SpApi\Model\awd\v2024_05_09\InboundShipment' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\InboundShipment' !== 'string') {
@@ -2262,11 +2340,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\InboundShipment', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 400:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -2277,11 +2356,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 403:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -2292,11 +2372,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 404:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -2307,11 +2388,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 413:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -2322,11 +2404,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 415:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -2337,11 +2420,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 429:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -2352,11 +2436,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 500:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -2367,11 +2452,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 503:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -2382,16 +2468,16 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
             $returnType = '\SpApi\Model\awd\v2024_05_09\InboundShipment';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+            if ('\SplFileObject' === $returnType) {
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
+                if ('string' !== $returnType) {
                     $content = json_decode($content);
                 }
             }
@@ -2399,9 +2485,8 @@ class AwdApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -2411,7 +2496,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2419,7 +2506,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2427,7 +2516,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2435,7 +2526,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2443,7 +2536,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2451,7 +2546,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2459,7 +2556,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2467,7 +2566,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2475,22 +2576,23 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation getInboundShipmentAsync
+     * Operation getInboundShipmentAsync.
      *
-     * @param  string $shipment_id
-     *  ID for the shipment. A shipment contains the cases being inbounded. (required)
-     * @param  string|null $sku_quantities
-     *  If equal to &#x60;SHOW&#x60;, the response includes the shipment SKU quantity details.  Defaults to &#x60;HIDE&#x60;, in which case the response does not contain SKU quantities (optional)
+     * @param string      $shipment_id
+     *                                    ID for the shipment. A shipment contains the cases being inbounded. (required)
+     * @param null|string $sku_quantities
+     *                                    If equal to &#x60;SHOW&#x60;, the response includes the shipment SKU quantity details.  Defaults to &#x60;HIDE&#x60;, in which case the response does not contain SKU quantities (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getInboundShipmentAsync(
         string $shipment_id,
@@ -2501,19 +2603,19 @@ class AwdApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getInboundShipmentAsyncWithHttpInfo
+     * Operation getInboundShipmentAsyncWithHttpInfo.
      *
-     * @param  string $shipment_id
-     *  ID for the shipment. A shipment contains the cases being inbounded. (required)
-     * @param  string|null $sku_quantities
-     *  If equal to &#x60;SHOW&#x60;, the response includes the shipment SKU quantity details.  Defaults to &#x60;HIDE&#x60;, in which case the response does not contain SKU quantities (optional)
+     * @param string      $shipment_id
+     *                                    ID for the shipment. A shipment contains the cases being inbounded. (required)
+     * @param null|string $sku_quantities
+     *                                    If equal to &#x60;SHOW&#x60;, the response includes the shipment SKU quantity details.  Defaults to &#x60;HIDE&#x60;, in which case the response does not contain SKU quantities (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getInboundShipmentAsyncWithHttpInfo(
         string $shipment_id,
@@ -2528,11 +2630,11 @@ class AwdApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -2540,12 +2642,13 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -2557,26 +2660,26 @@ class AwdApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getInboundShipment'
+     * Create request for operation 'getInboundShipment'.
      *
-     * @param  string $shipment_id
-     *  ID for the shipment. A shipment contains the cases being inbounded. (required)
-     * @param  string|null $sku_quantities
-     *  If equal to &#x60;SHOW&#x60;, the response includes the shipment SKU quantity details.  Defaults to &#x60;HIDE&#x60;, in which case the response does not contain SKU quantities (optional)
+     * @param string      $shipment_id
+     *                                    ID for the shipment. A shipment contains the cases being inbounded. (required)
+     * @param null|string $sku_quantities
+     *                                    If equal to &#x60;SHOW&#x60;, the response includes the shipment SKU quantity details.  Defaults to &#x60;HIDE&#x60;, in which case the response does not contain SKU quantities (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getInboundShipmentRequest(
         string $shipment_id,
         ?string $sku_quantities = null
     ): Request {
         // verify the required parameter 'shipment_id' is set
-        if ($shipment_id === null || (is_array($shipment_id) && count($shipment_id) === 0)) {
+        if (null === $shipment_id || (is_array($shipment_id) && 0 === count($shipment_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $shipment_id when calling getInboundShipment'
             );
@@ -2584,7 +2687,6 @@ class AwdApi
         if (strlen($shipment_id) < 1) {
             throw new \InvalidArgumentException('invalid length for "$shipment_id" when calling AwdApi.getInboundShipment, must be bigger than or equal to 1.');
         }
-
 
         $resourcePath = '/awd/2024-05-09/inboundShipments/{shipmentId}';
         $formParams = [];
@@ -2603,16 +2705,14 @@ class AwdApi
             false // required
         ) ?? []);
 
-
         // path params
-        if ($shipment_id !== null) {
+        if (null !== $shipment_id) {
             $resourcePath = str_replace(
-                '{' . 'shipmentId' . '}',
+                '{shipmentId}',
                 ObjectSerializer::toPathValue($shipment_id),
                 $resourcePath
             );
         }
-
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -2621,7 +2721,6 @@ class AwdApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                
                 '',
                 false
             );
@@ -2636,22 +2735,19 @@ class AwdApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -2665,50 +2761,52 @@ class AwdApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getInboundShipmentLabels
+     * Operation getInboundShipmentLabels.
      *
-     * @param  string $shipment_id
-     *  ID for the shipment. (required)
-     * @param  string|null $page_type
-     *  Page type for the generated labels. The default is &#x60;PLAIN_PAPER&#x60;. (optional)
-     * @param  string|null $format_type
-     *  The format type of the output file that contains your labels. The default format type is &#x60;PDF&#x60;. (optional)
+     * @param string      $shipment_id
+     *                                 ID for the shipment. (required)
+     * @param null|string $page_type
+     *                                 Page type for the generated labels. The default is &#x60;PLAIN_PAPER&#x60;. (optional)
+     * @param null|string $format_type
+     *                                 The format type of the output file that contains your labels. The default format type is &#x60;PDF&#x60;. (optional)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\awd\v2024_05_09\ShipmentLabels
      */
     public function getInboundShipmentLabels(
         string $shipment_id,
         ?string $page_type = null,
         ?string $format_type = null
-    ): \SpApi\Model\awd\v2024_05_09\ShipmentLabels {
+    ): ShipmentLabels {
         list($response) = $this->getInboundShipmentLabelsWithHttpInfo($shipment_id, $page_type, $format_type);
+
         return $response;
     }
 
     /**
-     * Operation getInboundShipmentLabelsWithHttpInfo
+     * Operation getInboundShipmentLabelsWithHttpInfo.
      *
-     * @param  string $shipment_id
-     *  ID for the shipment. (required)
-     * @param  string|null $page_type
-     *  Page type for the generated labels. The default is &#x60;PLAIN_PAPER&#x60;. (optional)
-     * @param  string|null $format_type
-     *  The format type of the output file that contains your labels. The default format type is &#x60;PDF&#x60;. (optional)
+     * @param string      $shipment_id
+     *                                 ID for the shipment. (required)
+     * @param null|string $page_type
+     *                                 Page type for the generated labels. The default is &#x60;PLAIN_PAPER&#x60;. (optional)
+     * @param null|string $format_type
+     *                                 The format type of the output file that contains your labels. The default format type is &#x60;PDF&#x60;. (optional)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\awd\v2024_05_09\ShipmentLabels, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getInboundShipmentLabelsWithHttpInfo(
         string $shipment_id,
@@ -2720,6 +2818,7 @@ class AwdApi
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -2754,10 +2853,10 @@ class AwdApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\SpApi\Model\awd\v2024_05_09\ShipmentLabels' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ShipmentLabels' !== 'string') {
@@ -2768,11 +2867,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ShipmentLabels', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 400:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -2783,11 +2883,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 403:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -2798,11 +2899,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 404:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -2813,11 +2915,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 413:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -2828,11 +2931,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 415:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -2843,11 +2947,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 429:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -2858,11 +2963,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 500:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -2873,11 +2979,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 503:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -2888,16 +2995,16 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
             $returnType = '\SpApi\Model\awd\v2024_05_09\ShipmentLabels';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+            if ('\SplFileObject' === $returnType) {
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
+                if ('string' !== $returnType) {
                     $content = json_decode($content);
                 }
             }
@@ -2905,9 +3012,8 @@ class AwdApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -2917,7 +3023,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2925,7 +3033,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2933,7 +3043,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2941,7 +3053,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2949,7 +3063,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2957,7 +3073,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2965,7 +3083,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2973,7 +3093,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2981,24 +3103,25 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation getInboundShipmentLabelsAsync
+     * Operation getInboundShipmentLabelsAsync.
      *
-     * @param  string $shipment_id
-     *  ID for the shipment. (required)
-     * @param  string|null $page_type
-     *  Page type for the generated labels. The default is &#x60;PLAIN_PAPER&#x60;. (optional)
-     * @param  string|null $format_type
-     *  The format type of the output file that contains your labels. The default format type is &#x60;PDF&#x60;. (optional)
+     * @param string      $shipment_id
+     *                                 ID for the shipment. (required)
+     * @param null|string $page_type
+     *                                 Page type for the generated labels. The default is &#x60;PLAIN_PAPER&#x60;. (optional)
+     * @param null|string $format_type
+     *                                 The format type of the output file that contains your labels. The default format type is &#x60;PDF&#x60;. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getInboundShipmentLabelsAsync(
         string $shipment_id,
@@ -3010,21 +3133,21 @@ class AwdApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getInboundShipmentLabelsAsyncWithHttpInfo
+     * Operation getInboundShipmentLabelsAsyncWithHttpInfo.
      *
-     * @param  string $shipment_id
-     *  ID for the shipment. (required)
-     * @param  string|null $page_type
-     *  Page type for the generated labels. The default is &#x60;PLAIN_PAPER&#x60;. (optional)
-     * @param  string|null $format_type
-     *  The format type of the output file that contains your labels. The default format type is &#x60;PDF&#x60;. (optional)
+     * @param string      $shipment_id
+     *                                 ID for the shipment. (required)
+     * @param null|string $page_type
+     *                                 Page type for the generated labels. The default is &#x60;PLAIN_PAPER&#x60;. (optional)
+     * @param null|string $format_type
+     *                                 The format type of the output file that contains your labels. The default format type is &#x60;PDF&#x60;. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getInboundShipmentLabelsAsyncWithHttpInfo(
         string $shipment_id,
@@ -3040,11 +3163,11 @@ class AwdApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -3052,12 +3175,13 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -3069,21 +3193,21 @@ class AwdApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getInboundShipmentLabels'
+     * Create request for operation 'getInboundShipmentLabels'.
      *
-     * @param  string $shipment_id
-     *  ID for the shipment. (required)
-     * @param  string|null $page_type
-     *  Page type for the generated labels. The default is &#x60;PLAIN_PAPER&#x60;. (optional)
-     * @param  string|null $format_type
-     *  The format type of the output file that contains your labels. The default format type is &#x60;PDF&#x60;. (optional)
+     * @param string      $shipment_id
+     *                                 ID for the shipment. (required)
+     * @param null|string $page_type
+     *                                 Page type for the generated labels. The default is &#x60;PLAIN_PAPER&#x60;. (optional)
+     * @param null|string $format_type
+     *                                 The format type of the output file that contains your labels. The default format type is &#x60;PDF&#x60;. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getInboundShipmentLabelsRequest(
         string $shipment_id,
@@ -3091,7 +3215,7 @@ class AwdApi
         ?string $format_type = null
     ): Request {
         // verify the required parameter 'shipment_id' is set
-        if ($shipment_id === null || (is_array($shipment_id) && count($shipment_id) === 0)) {
+        if (null === $shipment_id || (is_array($shipment_id) && 0 === count($shipment_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $shipment_id when calling getInboundShipmentLabels'
             );
@@ -3099,7 +3223,6 @@ class AwdApi
         if (strlen($shipment_id) < 1) {
             throw new \InvalidArgumentException('invalid length for "$shipment_id" when calling AwdApi.getInboundShipmentLabels, must be bigger than or equal to 1.');
         }
-
 
         $resourcePath = '/awd/2024-05-09/inboundShipments/{shipmentId}/labels';
         $formParams = [];
@@ -3127,16 +3250,14 @@ class AwdApi
             false // required
         ) ?? []);
 
-
         // path params
-        if ($shipment_id !== null) {
+        if (null !== $shipment_id) {
             $resourcePath = str_replace(
-                '{' . 'shipmentId' . '}',
+                '{shipmentId}',
                 ObjectSerializer::toPathValue($shipment_id),
                 $resourcePath
             );
         }
-
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -3145,7 +3266,6 @@ class AwdApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                
                 '',
                 false
             );
@@ -3160,22 +3280,19 @@ class AwdApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -3189,35 +3306,35 @@ class AwdApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation listInboundShipments
+     * Operation listInboundShipments.
      *
-     * @param  string|null $sort_by
-     *  Field to sort results by. By default, the response will be sorted by UPDATED_AT. (optional)
-     * @param  string|null $sort_order
-     *  Sort the response in ASCENDING or DESCENDING order. By default, the response will be sorted in DESCENDING order. (optional)
-     * @param  string|null $shipment_status
-     *  Filter by inbound shipment status. (optional)
-     * @param  \DateTime|null $updated_after
-     *  List the inbound shipments that were updated after a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)
-     * @param  \DateTime|null $updated_before
-     *  List the inbound shipments that were updated before a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)
-     * @param  int|null $max_results
-     *  Maximum number of results to return. (optional, default to 25)
-     * @param  string|null $next_token
-     *  A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     * @param null|string    $sort_by
+     *                                        Field to sort results by. By default, the response will be sorted by UPDATED_AT. (optional)
+     * @param null|string    $sort_order
+     *                                        Sort the response in ASCENDING or DESCENDING order. By default, the response will be sorted in DESCENDING order. (optional)
+     * @param null|string    $shipment_status
+     *                                        Filter by inbound shipment status. (optional)
+     * @param null|\DateTime $updated_after
+     *                                        List the inbound shipments that were updated after a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)
+     * @param null|\DateTime $updated_before
+     *                                        List the inbound shipments that were updated before a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)
+     * @param null|int       $max_results
+     *                                        Maximum number of results to return. (optional, default to 25)
+     * @param null|string    $next_token
+     *                                        A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\awd\v2024_05_09\ShipmentListing
      */
     public function listInboundShipments(
         ?string $sort_by = null,
@@ -3227,32 +3344,34 @@ class AwdApi
         ?\DateTime $updated_before = null,
         ?int $max_results = 25,
         ?string $next_token = null
-    ): \SpApi\Model\awd\v2024_05_09\ShipmentListing {
+    ): ShipmentListing {
         list($response) = $this->listInboundShipmentsWithHttpInfo($sort_by, $sort_order, $shipment_status, $updated_after, $updated_before, $max_results, $next_token);
+
         return $response;
     }
 
     /**
-     * Operation listInboundShipmentsWithHttpInfo
+     * Operation listInboundShipmentsWithHttpInfo.
      *
-     * @param  string|null $sort_by
-     *  Field to sort results by. By default, the response will be sorted by UPDATED_AT. (optional)
-     * @param  string|null $sort_order
-     *  Sort the response in ASCENDING or DESCENDING order. By default, the response will be sorted in DESCENDING order. (optional)
-     * @param  string|null $shipment_status
-     *  Filter by inbound shipment status. (optional)
-     * @param  \DateTime|null $updated_after
-     *  List the inbound shipments that were updated after a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)
-     * @param  \DateTime|null $updated_before
-     *  List the inbound shipments that were updated before a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)
-     * @param  int|null $max_results
-     *  Maximum number of results to return. (optional, default to 25)
-     * @param  string|null $next_token
-     *  A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     * @param null|string    $sort_by
+     *                                        Field to sort results by. By default, the response will be sorted by UPDATED_AT. (optional)
+     * @param null|string    $sort_order
+     *                                        Sort the response in ASCENDING or DESCENDING order. By default, the response will be sorted in DESCENDING order. (optional)
+     * @param null|string    $shipment_status
+     *                                        Filter by inbound shipment status. (optional)
+     * @param null|\DateTime $updated_after
+     *                                        List the inbound shipments that were updated after a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)
+     * @param null|\DateTime $updated_before
+     *                                        List the inbound shipments that were updated before a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)
+     * @param null|int       $max_results
+     *                                        Maximum number of results to return. (optional, default to 25)
+     * @param null|string    $next_token
+     *                                        A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\awd\v2024_05_09\ShipmentListing, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function listInboundShipmentsWithHttpInfo(
         ?string $sort_by = null,
@@ -3268,6 +3387,7 @@ class AwdApi
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -3302,10 +3422,10 @@ class AwdApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\SpApi\Model\awd\v2024_05_09\ShipmentListing' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ShipmentListing' !== 'string') {
@@ -3316,11 +3436,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ShipmentListing', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 400:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -3331,11 +3452,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 403:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -3346,11 +3468,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 404:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -3361,11 +3484,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 413:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -3376,11 +3500,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 415:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -3391,11 +3516,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 429:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -3406,11 +3532,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 500:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -3421,11 +3548,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 503:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -3436,16 +3564,16 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
             $returnType = '\SpApi\Model\awd\v2024_05_09\ShipmentListing';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+            if ('\SplFileObject' === $returnType) {
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
+                if ('string' !== $returnType) {
                     $content = json_decode($content);
                 }
             }
@@ -3453,9 +3581,8 @@ class AwdApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -3465,7 +3592,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3473,7 +3602,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3481,7 +3612,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3489,7 +3622,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3497,7 +3632,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3505,7 +3642,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3513,7 +3652,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3521,7 +3662,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3529,32 +3672,33 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation listInboundShipmentsAsync
+     * Operation listInboundShipmentsAsync.
      *
-     * @param  string|null $sort_by
-     *  Field to sort results by. By default, the response will be sorted by UPDATED_AT. (optional)
-     * @param  string|null $sort_order
-     *  Sort the response in ASCENDING or DESCENDING order. By default, the response will be sorted in DESCENDING order. (optional)
-     * @param  string|null $shipment_status
-     *  Filter by inbound shipment status. (optional)
-     * @param  \DateTime|null $updated_after
-     *  List the inbound shipments that were updated after a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)
-     * @param  \DateTime|null $updated_before
-     *  List the inbound shipments that were updated before a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)
-     * @param  int|null $max_results
-     *  Maximum number of results to return. (optional, default to 25)
-     * @param  string|null $next_token
-     *  A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     * @param null|string    $sort_by
+     *                                        Field to sort results by. By default, the response will be sorted by UPDATED_AT. (optional)
+     * @param null|string    $sort_order
+     *                                        Sort the response in ASCENDING or DESCENDING order. By default, the response will be sorted in DESCENDING order. (optional)
+     * @param null|string    $shipment_status
+     *                                        Filter by inbound shipment status. (optional)
+     * @param null|\DateTime $updated_after
+     *                                        List the inbound shipments that were updated after a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)
+     * @param null|\DateTime $updated_before
+     *                                        List the inbound shipments that were updated before a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)
+     * @param null|int       $max_results
+     *                                        Maximum number of results to return. (optional, default to 25)
+     * @param null|string    $next_token
+     *                                        A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listInboundShipmentsAsync(
         ?string $sort_by = null,
@@ -3570,29 +3714,29 @@ class AwdApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation listInboundShipmentsAsyncWithHttpInfo
+     * Operation listInboundShipmentsAsyncWithHttpInfo.
      *
-     * @param  string|null $sort_by
-     *  Field to sort results by. By default, the response will be sorted by UPDATED_AT. (optional)
-     * @param  string|null $sort_order
-     *  Sort the response in ASCENDING or DESCENDING order. By default, the response will be sorted in DESCENDING order. (optional)
-     * @param  string|null $shipment_status
-     *  Filter by inbound shipment status. (optional)
-     * @param  \DateTime|null $updated_after
-     *  List the inbound shipments that were updated after a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)
-     * @param  \DateTime|null $updated_before
-     *  List the inbound shipments that were updated before a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)
-     * @param  int|null $max_results
-     *  Maximum number of results to return. (optional, default to 25)
-     * @param  string|null $next_token
-     *  A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     * @param null|string    $sort_by
+     *                                        Field to sort results by. By default, the response will be sorted by UPDATED_AT. (optional)
+     * @param null|string    $sort_order
+     *                                        Sort the response in ASCENDING or DESCENDING order. By default, the response will be sorted in DESCENDING order. (optional)
+     * @param null|string    $shipment_status
+     *                                        Filter by inbound shipment status. (optional)
+     * @param null|\DateTime $updated_after
+     *                                        List the inbound shipments that were updated after a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)
+     * @param null|\DateTime $updated_before
+     *                                        List the inbound shipments that were updated before a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)
+     * @param null|int       $max_results
+     *                                        Maximum number of results to return. (optional, default to 25)
+     * @param null|string    $next_token
+     *                                        A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listInboundShipmentsAsyncWithHttpInfo(
         ?string $sort_by = null,
@@ -3612,11 +3756,11 @@ class AwdApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -3624,12 +3768,13 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -3641,29 +3786,29 @@ class AwdApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'listInboundShipments'
+     * Create request for operation 'listInboundShipments'.
      *
-     * @param  string|null $sort_by
-     *  Field to sort results by. By default, the response will be sorted by UPDATED_AT. (optional)
-     * @param  string|null $sort_order
-     *  Sort the response in ASCENDING or DESCENDING order. By default, the response will be sorted in DESCENDING order. (optional)
-     * @param  string|null $shipment_status
-     *  Filter by inbound shipment status. (optional)
-     * @param  \DateTime|null $updated_after
-     *  List the inbound shipments that were updated after a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)
-     * @param  \DateTime|null $updated_before
-     *  List the inbound shipments that were updated before a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)
-     * @param  int|null $max_results
-     *  Maximum number of results to return. (optional, default to 25)
-     * @param  string|null $next_token
-     *  A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     * @param null|string    $sort_by
+     *                                        Field to sort results by. By default, the response will be sorted by UPDATED_AT. (optional)
+     * @param null|string    $sort_order
+     *                                        Sort the response in ASCENDING or DESCENDING order. By default, the response will be sorted in DESCENDING order. (optional)
+     * @param null|string    $shipment_status
+     *                                        Filter by inbound shipment status. (optional)
+     * @param null|\DateTime $updated_after
+     *                                        List the inbound shipments that were updated after a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)
+     * @param null|\DateTime $updated_before
+     *                                        List the inbound shipments that were updated before a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)
+     * @param null|int       $max_results
+     *                                        Maximum number of results to return. (optional, default to 25)
+     * @param null|string    $next_token
+     *                                        A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function listInboundShipmentsRequest(
         ?string $sort_by = null,
@@ -3674,13 +3819,12 @@ class AwdApi
         ?int $max_results = 25,
         ?string $next_token = null
     ): Request {
-        if ($max_results !== null && $max_results > 200) {
+        if (null !== $max_results && $max_results > 200) {
             throw new \InvalidArgumentException('invalid value for "$max_results" when calling AwdApi.listInboundShipments, must be smaller than or equal to 200.');
         }
-        if ($max_results !== null && $max_results < 1) {
+        if (null !== $max_results && $max_results < 1) {
             throw new \InvalidArgumentException('invalid value for "$max_results" when calling AwdApi.listInboundShipments, must be bigger than or equal to 1.');
         }
-
 
         $resourcePath = '/awd/2024-05-09/inboundShipments';
         $formParams = [];
@@ -3753,9 +3897,6 @@ class AwdApi
             false // required
         ) ?? []);
 
-
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -3763,7 +3904,6 @@ class AwdApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                
                 '',
                 false
             );
@@ -3778,22 +3918,19 @@ class AwdApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -3807,31 +3944,31 @@ class AwdApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation listInventory
+     * Operation listInventory.
      *
-     * @param  string|null $sku
-     *  Filter by seller or merchant SKU for the item. (optional)
-     * @param  string|null $sort_order
-     *  Sort the response in &#x60;ASCENDING&#x60; or &#x60;DESCENDING&#x60; order. (optional)
-     * @param  string|null $details
-     *  Set to &#x60;SHOW&#x60; to return summaries with additional inventory details. Defaults to &#x60;HIDE,&#x60; which returns only inventory summary totals. (optional)
-     * @param  string|null $next_token
-     *  A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
-     * @param  int|null $max_results
-     *  Maximum number of results to return. (optional, default to 25)
+     * @param null|string $sku
+     *                                 Filter by seller or merchant SKU for the item. (optional)
+     * @param null|string $sort_order
+     *                                 Sort the response in &#x60;ASCENDING&#x60; or &#x60;DESCENDING&#x60; order. (optional)
+     * @param null|string $details
+     *                                 Set to &#x60;SHOW&#x60; to return summaries with additional inventory details. Defaults to &#x60;HIDE,&#x60; which returns only inventory summary totals. (optional)
+     * @param null|string $next_token
+     *                                 A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     * @param null|int    $max_results
+     *                                 Maximum number of results to return. (optional, default to 25)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\awd\v2024_05_09\InventoryListing
      */
     public function listInventory(
         ?string $sku = null,
@@ -3839,28 +3976,30 @@ class AwdApi
         ?string $details = null,
         ?string $next_token = null,
         ?int $max_results = 25
-    ): \SpApi\Model\awd\v2024_05_09\InventoryListing {
+    ): InventoryListing {
         list($response) = $this->listInventoryWithHttpInfo($sku, $sort_order, $details, $next_token, $max_results);
+
         return $response;
     }
 
     /**
-     * Operation listInventoryWithHttpInfo
+     * Operation listInventoryWithHttpInfo.
      *
-     * @param  string|null $sku
-     *  Filter by seller or merchant SKU for the item. (optional)
-     * @param  string|null $sort_order
-     *  Sort the response in &#x60;ASCENDING&#x60; or &#x60;DESCENDING&#x60; order. (optional)
-     * @param  string|null $details
-     *  Set to &#x60;SHOW&#x60; to return summaries with additional inventory details. Defaults to &#x60;HIDE,&#x60; which returns only inventory summary totals. (optional)
-     * @param  string|null $next_token
-     *  A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
-     * @param  int|null $max_results
-     *  Maximum number of results to return. (optional, default to 25)
+     * @param null|string $sku
+     *                                 Filter by seller or merchant SKU for the item. (optional)
+     * @param null|string $sort_order
+     *                                 Sort the response in &#x60;ASCENDING&#x60; or &#x60;DESCENDING&#x60; order. (optional)
+     * @param null|string $details
+     *                                 Set to &#x60;SHOW&#x60; to return summaries with additional inventory details. Defaults to &#x60;HIDE,&#x60; which returns only inventory summary totals. (optional)
+     * @param null|string $next_token
+     *                                 A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     * @param null|int    $max_results
+     *                                 Maximum number of results to return. (optional, default to 25)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\awd\v2024_05_09\InventoryListing, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function listInventoryWithHttpInfo(
         ?string $sku = null,
@@ -3874,6 +4013,7 @@ class AwdApi
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -3908,10 +4048,10 @@ class AwdApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\SpApi\Model\awd\v2024_05_09\InventoryListing' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\InventoryListing' !== 'string') {
@@ -3922,11 +4062,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\InventoryListing', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 400:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -3937,11 +4078,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 403:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -3952,11 +4094,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 404:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -3967,11 +4110,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 413:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -3982,11 +4126,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 415:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -3997,11 +4142,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 429:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -4012,11 +4158,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 500:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -4027,11 +4174,12 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 503:
                     if ('\SpApi\Model\awd\v2024_05_09\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\awd\v2024_05_09\ErrorList' !== 'string') {
@@ -4042,16 +4190,16 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
             $returnType = '\SpApi\Model\awd\v2024_05_09\InventoryListing';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+            if ('\SplFileObject' === $returnType) {
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
+                if ('string' !== $returnType) {
                     $content = json_decode($content);
                 }
             }
@@ -4059,9 +4207,8 @@ class AwdApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -4071,7 +4218,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -4079,7 +4228,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -4087,7 +4238,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -4095,7 +4248,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -4103,7 +4258,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -4111,7 +4268,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -4119,7 +4278,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -4127,7 +4288,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -4135,28 +4298,29 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation listInventoryAsync
+     * Operation listInventoryAsync.
      *
-     * @param  string|null $sku
-     *  Filter by seller or merchant SKU for the item. (optional)
-     * @param  string|null $sort_order
-     *  Sort the response in &#x60;ASCENDING&#x60; or &#x60;DESCENDING&#x60; order. (optional)
-     * @param  string|null $details
-     *  Set to &#x60;SHOW&#x60; to return summaries with additional inventory details. Defaults to &#x60;HIDE,&#x60; which returns only inventory summary totals. (optional)
-     * @param  string|null $next_token
-     *  A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
-     * @param  int|null $max_results
-     *  Maximum number of results to return. (optional, default to 25)
+     * @param null|string $sku
+     *                                 Filter by seller or merchant SKU for the item. (optional)
+     * @param null|string $sort_order
+     *                                 Sort the response in &#x60;ASCENDING&#x60; or &#x60;DESCENDING&#x60; order. (optional)
+     * @param null|string $details
+     *                                 Set to &#x60;SHOW&#x60; to return summaries with additional inventory details. Defaults to &#x60;HIDE,&#x60; which returns only inventory summary totals. (optional)
+     * @param null|string $next_token
+     *                                 A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     * @param null|int    $max_results
+     *                                 Maximum number of results to return. (optional, default to 25)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listInventoryAsync(
         ?string $sku = null,
@@ -4170,25 +4334,25 @@ class AwdApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation listInventoryAsyncWithHttpInfo
+     * Operation listInventoryAsyncWithHttpInfo.
      *
-     * @param  string|null $sku
-     *  Filter by seller or merchant SKU for the item. (optional)
-     * @param  string|null $sort_order
-     *  Sort the response in &#x60;ASCENDING&#x60; or &#x60;DESCENDING&#x60; order. (optional)
-     * @param  string|null $details
-     *  Set to &#x60;SHOW&#x60; to return summaries with additional inventory details. Defaults to &#x60;HIDE,&#x60; which returns only inventory summary totals. (optional)
-     * @param  string|null $next_token
-     *  A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
-     * @param  int|null $max_results
-     *  Maximum number of results to return. (optional, default to 25)
+     * @param null|string $sku
+     *                                 Filter by seller or merchant SKU for the item. (optional)
+     * @param null|string $sort_order
+     *                                 Sort the response in &#x60;ASCENDING&#x60; or &#x60;DESCENDING&#x60; order. (optional)
+     * @param null|string $details
+     *                                 Set to &#x60;SHOW&#x60; to return summaries with additional inventory details. Defaults to &#x60;HIDE,&#x60; which returns only inventory summary totals. (optional)
+     * @param null|string $next_token
+     *                                 A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     * @param null|int    $max_results
+     *                                 Maximum number of results to return. (optional, default to 25)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listInventoryAsyncWithHttpInfo(
         ?string $sku = null,
@@ -4206,11 +4370,11 @@ class AwdApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -4218,12 +4382,13 @@ class AwdApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -4235,25 +4400,25 @@ class AwdApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'listInventory'
+     * Create request for operation 'listInventory'.
      *
-     * @param  string|null $sku
-     *  Filter by seller or merchant SKU for the item. (optional)
-     * @param  string|null $sort_order
-     *  Sort the response in &#x60;ASCENDING&#x60; or &#x60;DESCENDING&#x60; order. (optional)
-     * @param  string|null $details
-     *  Set to &#x60;SHOW&#x60; to return summaries with additional inventory details. Defaults to &#x60;HIDE,&#x60; which returns only inventory summary totals. (optional)
-     * @param  string|null $next_token
-     *  A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
-     * @param  int|null $max_results
-     *  Maximum number of results to return. (optional, default to 25)
+     * @param null|string $sku
+     *                                 Filter by seller or merchant SKU for the item. (optional)
+     * @param null|string $sort_order
+     *                                 Sort the response in &#x60;ASCENDING&#x60; or &#x60;DESCENDING&#x60; order. (optional)
+     * @param null|string $details
+     *                                 Set to &#x60;SHOW&#x60; to return summaries with additional inventory details. Defaults to &#x60;HIDE,&#x60; which returns only inventory summary totals. (optional)
+     * @param null|string $next_token
+     *                                 A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     * @param null|int    $max_results
+     *                                 Maximum number of results to return. (optional, default to 25)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function listInventoryRequest(
         ?string $sku = null,
@@ -4262,13 +4427,12 @@ class AwdApi
         ?string $next_token = null,
         ?int $max_results = 25
     ): Request {
-        if ($max_results !== null && $max_results > 200) {
+        if (null !== $max_results && $max_results > 200) {
             throw new \InvalidArgumentException('invalid value for "$max_results" when calling AwdApi.listInventory, must be smaller than or equal to 200.');
         }
-        if ($max_results !== null && $max_results < 1) {
+        if (null !== $max_results && $max_results < 1) {
             throw new \InvalidArgumentException('invalid value for "$max_results" when calling AwdApi.listInventory, must be bigger than or equal to 1.');
         }
-
 
         $resourcePath = '/awd/2024-05-09/inventory';
         $formParams = [];
@@ -4323,9 +4487,6 @@ class AwdApi
             false // required
         ) ?? []);
 
-
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -4333,7 +4494,6 @@ class AwdApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                
                 '',
                 false
             );
@@ -4348,22 +4508,19 @@ class AwdApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -4377,54 +4534,56 @@ class AwdApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation updateInbound
+     * Operation updateInbound.
      *
-     * @param  string $order_id
-     *  The ID of the inbound order that you want to update. (required)
-     * @param  \SpApi\Model\awd\v2024_05_09\InboundOrder $body
-     *  Represents an AWD inbound order. (required)
+     * @param string       $order_id
+     *                               The ID of the inbound order that you want to update. (required)
+     * @param InboundOrder $body
+     *                               Represents an AWD inbound order. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return 
      */
     public function updateInbound(
         string $order_id,
-        \SpApi\Model\awd\v2024_05_09\InboundOrder $body
+        InboundOrder $body
     ): void {
         $this->updateInboundWithHttpInfo($order_id, $body);
     }
 
     /**
-     * Operation updateInboundWithHttpInfo
+     * Operation updateInboundWithHttpInfo.
      *
-     * @param  string $order_id
-     *  The ID of the inbound order that you want to update. (required)
-     * @param  \SpApi\Model\awd\v2024_05_09\InboundOrder $body
-     *  Represents an AWD inbound order. (required)
+     * @param string       $order_id
+     *                               The ID of the inbound order that you want to update. (required)
+     * @param InboundOrder $body
+     *                               Represents an AWD inbound order. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of , HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function updateInboundWithHttpInfo(
         string $order_id,
-        \SpApi\Model\awd\v2024_05_09\InboundOrder $body
+        InboundOrder $body
     ): array {
         $request = $this->updateInboundRequest($order_id, $body);
         $request = $this->config->sign($request);
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -4460,7 +4619,6 @@ class AwdApi
             }
 
             return [null, $statusCode, $response->getHeaders()];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 400:
@@ -4470,7 +4628,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -4478,7 +4638,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -4486,7 +4648,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 409:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -4494,7 +4658,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -4502,7 +4668,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -4510,7 +4678,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -4518,7 +4688,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -4526,7 +4698,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -4534,49 +4708,50 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation updateInboundAsync
+     * Operation updateInboundAsync.
      *
-     * @param  string $order_id
-     *  The ID of the inbound order that you want to update. (required)
-     * @param  \SpApi\Model\awd\v2024_05_09\InboundOrder $body
-     *  Represents an AWD inbound order. (required)
+     * @param string       $order_id
+     *                               The ID of the inbound order that you want to update. (required)
+     * @param InboundOrder $body
+     *                               Represents an AWD inbound order. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function updateInboundAsync(
         string $order_id,
-        \SpApi\Model\awd\v2024_05_09\InboundOrder $body
+        InboundOrder $body
     ): PromiseInterface {
         return $this->updateInboundAsyncWithHttpInfo($order_id, $body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation updateInboundAsyncWithHttpInfo
+     * Operation updateInboundAsyncWithHttpInfo.
      *
-     * @param  string $order_id
-     *  The ID of the inbound order that you want to update. (required)
-     * @param  \SpApi\Model\awd\v2024_05_09\InboundOrder $body
-     *  Represents an AWD inbound order. (required)
+     * @param string       $order_id
+     *                               The ID of the inbound order that you want to update. (required)
+     * @param InboundOrder $body
+     *                               Represents an AWD inbound order. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function updateInboundAsyncWithHttpInfo(
         string $order_id,
-        \SpApi\Model\awd\v2024_05_09\InboundOrder $body
+        InboundOrder $body
     ): PromiseInterface {
         $returnType = '';
         $request = $this->updateInboundRequest($order_id, $body);
@@ -4586,12 +4761,13 @@ class AwdApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) {
                     return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -4603,32 +4779,32 @@ class AwdApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'updateInbound'
+     * Create request for operation 'updateInbound'.
      *
-     * @param  string $order_id
-     *  The ID of the inbound order that you want to update. (required)
-     * @param  \SpApi\Model\awd\v2024_05_09\InboundOrder $body
-     *  Represents an AWD inbound order. (required)
+     * @param string       $order_id
+     *                               The ID of the inbound order that you want to update. (required)
+     * @param InboundOrder $body
+     *                               Represents an AWD inbound order. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function updateInboundRequest(
         string $order_id,
-        \SpApi\Model\awd\v2024_05_09\InboundOrder $body
+        InboundOrder $body
     ): Request {
         // verify the required parameter 'order_id' is set
-        if ($order_id === null || (is_array($order_id) && count($order_id) === 0)) {
+        if (null === $order_id || (is_array($order_id) && 0 === count($order_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $order_id when calling updateInbound'
             );
         }
         // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        if (null === $body || (is_array($body) && 0 === count($body))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling updateInbound'
             );
@@ -4641,17 +4817,14 @@ class AwdApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($order_id !== null) {
+        if (null !== $order_id) {
             $resourcePath = str_replace(
-                '{' . 'orderId' . '}',
+                '{orderId}',
                 ObjectSerializer::toPathValue($order_id),
                 $resourcePath
             );
         }
-
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -4660,15 +4833,14 @@ class AwdApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                'application/json'
-                ,
+                'application/json',
                 false
             );
         }
 
         // for model (json/xml)
         if (isset($body)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -4681,22 +4853,19 @@ class AwdApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -4710,54 +4879,56 @@ class AwdApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'PUT',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation updateInboundShipmentTransportDetails
+     * Operation updateInboundShipmentTransportDetails.
      *
-     * @param  string $shipment_id
-     *  The shipment ID. (required)
-     * @param  \SpApi\Model\awd\v2024_05_09\TransportationDetails $body
-     *  Transportation details for the shipment. (required)
+     * @param string                $shipment_id
+     *                                           The shipment ID. (required)
+     * @param TransportationDetails $body
+     *                                           Transportation details for the shipment. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return 
      */
     public function updateInboundShipmentTransportDetails(
         string $shipment_id,
-        \SpApi\Model\awd\v2024_05_09\TransportationDetails $body
+        TransportationDetails $body
     ): void {
         $this->updateInboundShipmentTransportDetailsWithHttpInfo($shipment_id, $body);
     }
 
     /**
-     * Operation updateInboundShipmentTransportDetailsWithHttpInfo
+     * Operation updateInboundShipmentTransportDetailsWithHttpInfo.
      *
-     * @param  string $shipment_id
-     *  The shipment ID. (required)
-     * @param  \SpApi\Model\awd\v2024_05_09\TransportationDetails $body
-     *  Transportation details for the shipment. (required)
+     * @param string                $shipment_id
+     *                                           The shipment ID. (required)
+     * @param TransportationDetails $body
+     *                                           Transportation details for the shipment. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of , HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function updateInboundShipmentTransportDetailsWithHttpInfo(
         string $shipment_id,
-        \SpApi\Model\awd\v2024_05_09\TransportationDetails $body
+        TransportationDetails $body
     ): array {
         $request = $this->updateInboundShipmentTransportDetailsRequest($shipment_id, $body);
         $request = $this->config->sign($request);
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -4793,7 +4964,6 @@ class AwdApi
             }
 
             return [null, $statusCode, $response->getHeaders()];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 400:
@@ -4803,7 +4973,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -4811,7 +4983,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -4819,7 +4993,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -4827,7 +5003,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -4835,7 +5013,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -4843,7 +5023,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -4851,7 +5033,9 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -4859,49 +5043,50 @@ class AwdApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation updateInboundShipmentTransportDetailsAsync
+     * Operation updateInboundShipmentTransportDetailsAsync.
      *
-     * @param  string $shipment_id
-     *  The shipment ID. (required)
-     * @param  \SpApi\Model\awd\v2024_05_09\TransportationDetails $body
-     *  Transportation details for the shipment. (required)
+     * @param string                $shipment_id
+     *                                           The shipment ID. (required)
+     * @param TransportationDetails $body
+     *                                           Transportation details for the shipment. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function updateInboundShipmentTransportDetailsAsync(
         string $shipment_id,
-        \SpApi\Model\awd\v2024_05_09\TransportationDetails $body
+        TransportationDetails $body
     ): PromiseInterface {
         return $this->updateInboundShipmentTransportDetailsAsyncWithHttpInfo($shipment_id, $body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation updateInboundShipmentTransportDetailsAsyncWithHttpInfo
+     * Operation updateInboundShipmentTransportDetailsAsyncWithHttpInfo.
      *
-     * @param  string $shipment_id
-     *  The shipment ID. (required)
-     * @param  \SpApi\Model\awd\v2024_05_09\TransportationDetails $body
-     *  Transportation details for the shipment. (required)
+     * @param string                $shipment_id
+     *                                           The shipment ID. (required)
+     * @param TransportationDetails $body
+     *                                           Transportation details for the shipment. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function updateInboundShipmentTransportDetailsAsyncWithHttpInfo(
         string $shipment_id,
-        \SpApi\Model\awd\v2024_05_09\TransportationDetails $body
+        TransportationDetails $body
     ): PromiseInterface {
         $returnType = '';
         $request = $this->updateInboundShipmentTransportDetailsRequest($shipment_id, $body);
@@ -4911,12 +5096,13 @@ class AwdApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) {
                     return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -4928,26 +5114,26 @@ class AwdApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'updateInboundShipmentTransportDetails'
+     * Create request for operation 'updateInboundShipmentTransportDetails'.
      *
-     * @param  string $shipment_id
-     *  The shipment ID. (required)
-     * @param  \SpApi\Model\awd\v2024_05_09\TransportationDetails $body
-     *  Transportation details for the shipment. (required)
+     * @param string                $shipment_id
+     *                                           The shipment ID. (required)
+     * @param TransportationDetails $body
+     *                                           Transportation details for the shipment. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function updateInboundShipmentTransportDetailsRequest(
         string $shipment_id,
-        \SpApi\Model\awd\v2024_05_09\TransportationDetails $body
+        TransportationDetails $body
     ): Request {
         // verify the required parameter 'shipment_id' is set
-        if ($shipment_id === null || (is_array($shipment_id) && count($shipment_id) === 0)) {
+        if (null === $shipment_id || (is_array($shipment_id) && 0 === count($shipment_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $shipment_id when calling updateInboundShipmentTransportDetails'
             );
@@ -4957,7 +5143,7 @@ class AwdApi
         }
 
         // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        if (null === $body || (is_array($body) && 0 === count($body))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling updateInboundShipmentTransportDetails'
             );
@@ -4970,17 +5156,14 @@ class AwdApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($shipment_id !== null) {
+        if (null !== $shipment_id) {
             $resourcePath = str_replace(
-                '{' . 'shipmentId' . '}',
+                '{shipmentId}',
                 ObjectSerializer::toPathValue($shipment_id),
                 $resourcePath
             );
         }
-
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -4989,15 +5172,14 @@ class AwdApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                'application/json'
-                ,
+                'application/json',
                 false
             );
         }
 
         // for model (json/xml)
         if (isset($body)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -5010,22 +5192,19 @@ class AwdApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -5039,19 +5218,36 @@ class AwdApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'PUT',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Create http client option
+     * Rate Limiter waits for tokens.
+     */
+    public function rateLimitWait(): void
+    {
+        if ($this->rateLimiter) {
+            $type = $this->rateLimitConfig->getRateLimitType();
+            if (0 != $this->rateLimitConfig->getTimeOut() && ('token_bucket' == $type || 'fixed_window' == $type)) {
+                $this->rateLimiter->reserve(1, $this->rateLimitConfig->getTimeOut() / 1000)->wait();
+            } else {
+                $this->rateLimiter->consume()->wait();
+            }
+        }
+    }
+
+    /**
+     * Create http client option.
+     *
+     * @return array of http client options
      *
      * @throws \RuntimeException on file opening failure
-     * @return array of http client options
      */
     protected function createHttpClientOption(): array
     {
@@ -5059,27 +5255,10 @@ class AwdApi
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
             if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+                throw new \RuntimeException('Failed to open the debug file: '.$this->config->getDebugFile());
             }
         }
 
         return $options;
-    }
-
-    /**
-     * Rate Limiter waits for tokens
-     *
-     * @return void
-     */
-    public function rateLimitWait(): void
-    {
-        if ($this->rateLimiter) {
-            $type = $this->rateLimitConfig->getRateLimitType();
-            if ($this->rateLimitConfig->getTimeOut() != 0 && ($type == "token_bucket" || $type == "fixed_window")) {
-                $this->rateLimiter->reserve(1, ($this->rateLimitConfig->getTimeOut()) / 1000)->wait();
-            } else {
-                $this->rateLimiter->consume()->wait();
-            }
-        }
     }
 }

@@ -1,17 +1,19 @@
 <?php
+
 /**
- * SubstitutionPreferences
+ * SubstitutionPreferences.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Orders
+ * Selling Partner API for Orders.
  *
  * Use the Orders Selling Partner API to programmatically retrieve order information. With this API, you can develop fast, flexible, and custom applications to manage order synchronization, perform order research, and create demand-based decision support tools.   _Note:_ For the JP, AU, and SG marketplaces, the Orders API supports orders from 2016 onward. For all other marketplaces, the Orders API supports orders for the last two years (orders older than this don't show up in the response).
  *
@@ -28,73 +30,137 @@
 
 namespace SpApi\Model\orders\v0;
 
-use
-ArrayAccess;
-use SpApi\ObjectSerializer;
 use SpApi\Model\ModelInterface;
+use SpApi\ObjectSerializer;
 
 /**
- * SubstitutionPreferences Class Doc Comment
+ * SubstitutionPreferences Class Doc Comment.
  *
  * @category Class
+ *
  * @description Substitution preferences for an order item.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
+ *
  * @implements \ArrayAccess<string, mixed>
  */
-class SubstitutionPreferences implements ModelInterface, ArrayAccess, \JsonSerializable
+class SubstitutionPreferences implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
+    public const SUBSTITUTION_TYPE_CUSTOMER_PREFERENCE = 'CUSTOMER_PREFERENCE';
+    public const SUBSTITUTION_TYPE_AMAZON_RECOMMENDED = 'AMAZON_RECOMMENDED';
+    public const SUBSTITUTION_TYPE_DO_NOT_SUBSTITUTE = 'DO_NOT_SUBSTITUTE';
+
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     */
     protected static string $openAPIModelName = 'SubstitutionPreferences';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static array $openAPITypes = [
-             'substitution_type' => 'string',
-             'substitution_options' => '\SpApi\Model\orders\v0\SubstitutionOption[]'    ];
+        'substitution_type' => 'string',
+        'substitution_options' => '\SpApi\Model\orders\v0\SubstitutionOption[]'];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     *
+     * @phpstan-var array<string, string|null>
+     *
+     * @psalm-var array<string, string|null>
+     */
     protected static array $openAPIFormats = [
-            'substitution_type' => null,
-            'substitution_options' => null    ];
+        'substitution_type' => null,
+        'substitution_options' => null];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization.
+     *
+     * @var bool[]
+     */
     protected static array $openAPINullables = [
         'substitution_type' => false,
-        'substitution_options' => true
+        'substitution_options' => true,
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here.
+     *
+     * @var bool[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
+     * Array of attributes where the key is the local name,
+     * and the value is the original name.
      *
-     * @return array
+     * @var string[]
+     */
+    protected static array $attributeMap = [
+        'substitution_type' => 'SubstitutionType',
+        'substitution_options' => 'SubstitutionOptions',
+    ];
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses).
+     *
+     * @var string[]
+     */
+    protected static array $setters = [
+        'substitution_type' => 'setSubstitutionType',
+        'substitution_options' => 'setSubstitutionOptions',
+    ];
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests).
+     *
+     * @var string[]
+     */
+    protected static array $getters = [
+        'substitution_type' => 'getSubstitutionType',
+        'substitution_options' => 'getSubstitutionOptions',
+    ];
+
+    /**
+     * Associative array for storing property values.
+     */
+    protected array $container = [];
+
+    /**
+     * Constructor.
+     *
+     * @param null|array $data Associated array of property values
+     *                         initializing the model
+     */
+    public function __construct(?array $data = null)
+    {
+        $this->setIfExists('substitution_type', $data ?? [], null);
+        $this->setIfExists('substitution_options', $data ?? [], null);
+    }
+
+    /**
+     * Gets the string presentation of the object.
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return json_encode(
+            ObjectSerializer::sanitizeForSerialization($this),
+            JSON_PRETTY_PRINT
+        );
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization.
      */
     public static function openAPITypes(): array
     {
@@ -102,9 +168,7 @@ class SubstitutionPreferences implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
-     * @return array
+     * Array of property to format mappings. Used for (de)serialization.
      */
     public static function openAPIFormats(): array
     {
@@ -112,40 +176,7 @@ class SubstitutionPreferences implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Array of nullable properties
-     *
-     * @return array
-     */
-    protected static function openAPINullables(): array
-    {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * Array of nullable field names deliberately set to null
-     *
-     * @return boolean[]
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * Setter - Array of nullable field names deliberately set to null
-     *
-     * @param boolean[] $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    /**
-     * Checks if a property is nullable
-     *
-     * @param string $property
-     * @return bool
+     * Checks if a property is nullable.
      */
     public static function isNullable(string $property): bool
     {
@@ -154,9 +185,6 @@ class SubstitutionPreferences implements ModelInterface, ArrayAccess, \JsonSeria
 
     /**
      * Checks if a nullable property is set to null.
-     *
-     * @param string $property
-     * @return bool
      */
     public function isNullableSetToNull(string $property): bool
     {
@@ -165,41 +193,7 @@ class SubstitutionPreferences implements ModelInterface, ArrayAccess, \JsonSeria
 
     /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static array $attributeMap = [
-        'substitution_type' => 'SubstitutionType',
-                'substitution_options' => 'SubstitutionOptions'
-        
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static array $setters = [
-        'substitution_type' => 'setSubstitutionType',
-        'substitution_options' => 'setSubstitutionOptions'
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static array $getters = [
-        'substitution_type' => 'getSubstitutionType',
-        'substitution_options' => 'getSubstitutionOptions'
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @return array
+     * and the value is the original name.
      */
     public static function attributeMap(): array
     {
@@ -207,9 +201,7 @@ class SubstitutionPreferences implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @return array
+     * Array of attributes to setter functions (for deserialization of responses).
      */
     public static function setters(): array
     {
@@ -217,9 +209,7 @@ class SubstitutionPreferences implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @return array
+     * Array of attributes to getter functions (for serialization of requests).
      */
     public static function getters(): array
     {
@@ -228,20 +218,14 @@ class SubstitutionPreferences implements ModelInterface, ArrayAccess, \JsonSeria
 
     /**
      * The original name of the model.
-     *
-     * @return string
      */
     public function getModelName(): string
     {
         return self::$openAPIModelName;
     }
 
-    public const SUBSTITUTION_TYPE_CUSTOMER_PREFERENCE = 'CUSTOMER_PREFERENCE';
-    public const SUBSTITUTION_TYPE_AMAZON_RECOMMENDED = 'AMAZON_RECOMMENDED';
-    public const SUBSTITUTION_TYPE_DO_NOT_SUBSTITUTE = 'DO_NOT_SUBSTITUTE';
-
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
      *
      * @return string[]
      */
@@ -255,43 +239,6 @@ class SubstitutionPreferences implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Associative array for storing property values
-     *
-     * @var array
-     */
-    protected array $container = [];
-
-    /**
-     * Constructor
-     *
-     * @param array|null $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-        $this->setIfExists('substitution_type', $data ?? [], null);
-        $this->setIfExists('substitution_options', $data ?? [], null);
-    }
-
-    /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
-    private function setIfExists(string $variableName, array $fields, $defaultValue): void
-    {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
-
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
-    }
-
-    /**
      * Show all the invalid properties with reasons.
      *
      * @return array invalid properties with reasons
@@ -300,7 +247,7 @@ class SubstitutionPreferences implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
-        if ($this->container['substitution_type'] === null) {
+        if (null === $this->container['substitution_type']) {
             $invalidProperties[] = "'substitution_type' can't be null";
         }
         $allowedValues = $this->getSubstitutionTypeAllowableValues();
@@ -317,20 +264,17 @@ class SubstitutionPreferences implements ModelInterface, ArrayAccess, \JsonSeria
 
     /**
      * Validate all the properties in the model
-     * return true if all passed
+     * return true if all passed.
      *
      * @return bool True if all properties are valid
      */
     public function valid(): bool
     {
-        return count($this->listInvalidProperties()) === 0;
+        return 0 === count($this->listInvalidProperties());
     }
 
-
     /**
-     * Gets substitution_type
-     *
-     * @return string
+     * Gets substitution_type.
      */
     public function getSubstitutionType(): string
     {
@@ -338,11 +282,9 @@ class SubstitutionPreferences implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Sets substitution_type
+     * Sets substitution_type.
      *
-     * @param string $substitution_type The type of substitution that these preferences represent.
-     *
-     * @return self
+     * @param string $substitution_type the type of substitution that these preferences represent
      */
     public function setSubstitutionType(string $substitution_type): self
     {
@@ -365,9 +307,7 @@ class SubstitutionPreferences implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Gets substitution_options
-     *
-     * @return array|null
+     * Gets substitution_options.
      */
     public function getSubstitutionOptions(): ?array
     {
@@ -375,11 +315,9 @@ class SubstitutionPreferences implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Sets substitution_options
+     * Sets substitution_options.
      *
-     * @param array|null $substitution_options A collection of substitution options.
-     *
-     * @return self
+     * @param null|array $substitution_options a collection of substitution options
      */
     public function setSubstitutionOptions(?array $substitution_options): self
     {
@@ -388,7 +326,7 @@ class SubstitutionPreferences implements ModelInterface, ArrayAccess, \JsonSeria
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('substitution_options', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -398,13 +336,10 @@ class SubstitutionPreferences implements ModelInterface, ArrayAccess, \JsonSeria
         return $this;
     }
 
-
     /**
      * Returns true if offset exists. False otherwise.
      *
-     * @param integer $offset Offset
-     *
-     * @return boolean
+     * @param int $offset Offset
      */
     public function offsetExists($offset): bool
     {
@@ -414,9 +349,9 @@ class SubstitutionPreferences implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
-     * @return mixed|null
+     * @return null|mixed
      */
     #[\ReturnTypeWillChange]
     public function offsetGet($offset): mixed
@@ -427,10 +362,8 @@ class SubstitutionPreferences implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets value based on offset.
      *
-     * @param int|null $offset Offset
+     * @param null|int $offset Offset
      * @param mixed    $value  Value to be set
-     *
-     * @return void
      */
     public function offsetSet($offset, mixed $value): void
     {
@@ -444,9 +377,7 @@ class SubstitutionPreferences implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Unsets offset.
      *
-     * @param integer $offset Offset
-     *
-     * @return void
+     * @param int $offset Offset
      */
     public function offsetUnset($offset): void
     {
@@ -455,39 +386,67 @@ class SubstitutionPreferences implements ModelInterface, ArrayAccess, \JsonSeria
 
     /**
      * Serializes the object to a value that can be serialized natively by json_encode().
-     * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
      *
-     * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
+     * @see https://www.php.net/manual/en/jsonserializable.jsonserialize.php
+     *
+     * @return mixed returns data which can be serialized by json_encode(), which is a value
+     *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
     public function jsonSerialize(): mixed
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
-     * Gets the string presentation of the object
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    /**
-     * Gets a header-safe presentation of the object
-     *
-     * @return string
+     * Gets a header-safe presentation of the object.
      */
     public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
+
+    /**
+     * Array of nullable properties.
+     */
+    protected static function openAPINullables(): array
+    {
+        return self::$openAPINullables;
+    }
+
+    /**
+     * Array of nullable field names deliberately set to null.
+     *
+     * @return bool[]
+     */
+    private function getOpenAPINullablesSetToNull(): array
+    {
+        return $this->openAPINullablesSetToNull;
+    }
+
+    /**
+     * Setter - Array of nullable field names deliberately set to null.
+     *
+     * @param bool[] $openAPINullablesSetToNull
+     */
+    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
+    {
+        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
+    }
+
+    /**
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array.
+     *
+     * @param mixed $defaultValue
+     */
+    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+    {
+        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
+            $this->openAPINullablesSetToNull[] = $variableName;
+        }
+
+        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    }
 }
-
-

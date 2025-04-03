@@ -1,17 +1,19 @@
 <?php
+
 /**
- * HazmatType
+ * HazmatType.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Merchant Fulfillment
+ * Selling Partner API for Merchant Fulfillment.
  *
  * With the Selling Partner API for Merchant Fulfillment, you can build applications that sellers can use to purchase shipping for non-Prime and Prime orders using Amazon's Buy Shipping Services.
  *
@@ -27,38 +29,37 @@
  */
 
 namespace SpApi\Model\merchantFulfillment\v0;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * HazmatType Class Doc Comment
+ * HazmatType Class Doc Comment.
  *
  * @category Class
+ *
  * @description Hazardous materials options for a package. Consult the terms and conditions for each carrier for more information on hazardous materials.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class HazmatType
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const NONE = 'None';
 
     public const LQ_HAZMAT = 'LQHazmat';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
     {
         return [
             self::NONE,
-            self::LQ_HAZMAT
+            self::LQ_HAZMAT,
         ];
     }
 }
-
-

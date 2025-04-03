@@ -1,17 +1,19 @@
 <?php
+
 /**
- * CODSettings
+ * CODSettings.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner APIs for Fulfillment Outbound
+ * Selling Partner APIs for Fulfillment Outbound.
  *
  * The Selling Partner API for Fulfillment Outbound lets you create applications that help a seller fulfill Multi-Channel Fulfillment orders using their inventory in Amazon's fulfillment network. You can get information on both potential and existing fulfillment orders.
  *
@@ -28,167 +30,95 @@
 
 namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
 
-use
-ArrayAccess;
-use SpApi\ObjectSerializer;
 use SpApi\Model\ModelInterface;
+use SpApi\ObjectSerializer;
 
 /**
- * CODSettings Class Doc Comment
+ * CODSettings Class Doc Comment.
  *
  * @category Class
+ *
  * @description The COD (Cash On Delivery) charges that you associate with a COD fulfillment order.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
+ *
  * @implements \ArrayAccess<string, mixed>
  */
-class CODSettings implements ModelInterface, ArrayAccess, \JsonSerializable
+class CODSettings implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     */
     protected static string $openAPIModelName = 'CODSettings';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static array $openAPITypes = [
-             'is_cod_required' => 'bool',
-             'cod_charge' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\Money',
-             'cod_charge_tax' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\Money',
-             'shipping_charge' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\Money',
-             'shipping_charge_tax' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\Money'    ];
+        'is_cod_required' => 'bool',
+        'cod_charge' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\Money',
+        'cod_charge_tax' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\Money',
+        'shipping_charge' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\Money',
+        'shipping_charge_tax' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\Money'];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     *
+     * @phpstan-var array<string, string|null>
+     *
+     * @psalm-var array<string, string|null>
+     */
     protected static array $openAPIFormats = [
-            'is_cod_required' => null,
-            'cod_charge' => null,
-            'cod_charge_tax' => null,
-            'shipping_charge' => null,
-            'shipping_charge_tax' => null    ];
+        'is_cod_required' => null,
+        'cod_charge' => null,
+        'cod_charge_tax' => null,
+        'shipping_charge' => null,
+        'shipping_charge_tax' => null];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization.
+     *
+     * @var bool[]
+     */
     protected static array $openAPINullables = [
         'is_cod_required' => false,
         'cod_charge' => true,
         'cod_charge_tax' => true,
         'shipping_charge' => true,
-        'shipping_charge_tax' => true
+        'shipping_charge_tax' => true,
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here.
+     *
+     * @var bool[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPIFormats(): array
-    {
-        return self::$openAPIFormats;
-    }
-
-    /**
-     * Array of nullable properties
-     *
-     * @return array
-     */
-    protected static function openAPINullables(): array
-    {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * Array of nullable field names deliberately set to null
-     *
-     * @return boolean[]
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * Setter - Array of nullable field names deliberately set to null
-     *
-     * @param boolean[] $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    /**
-     * Checks if a property is nullable
-     *
-     * @param string $property
-     * @return bool
-     */
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    /**
-     * Checks if a nullable property is set to null.
-     *
-     * @param string $property
-     * @return bool
-     */
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @var string[]
      */
     protected static array $attributeMap = [
         'is_cod_required' => 'isCodRequired',
-                'cod_charge' => 'codCharge',
-                'cod_charge_tax' => 'codChargeTax',
-                'shipping_charge' => 'shippingCharge',
-                'shipping_charge_tax' => 'shippingChargeTax'
-        
+        'cod_charge' => 'codCharge',
+        'cod_charge_tax' => 'codChargeTax',
+        'shipping_charge' => 'shippingCharge',
+        'shipping_charge_tax' => 'shippingChargeTax',
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @var string[]
      */
@@ -197,11 +127,11 @@ class CODSettings implements ModelInterface, ArrayAccess, \JsonSerializable
         'cod_charge' => 'setCodCharge',
         'cod_charge_tax' => 'setCodChargeTax',
         'shipping_charge' => 'setShippingCharge',
-        'shipping_charge_tax' => 'setShippingChargeTax'
+        'shipping_charge_tax' => 'setShippingChargeTax',
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @var string[]
      */
@@ -210,63 +140,19 @@ class CODSettings implements ModelInterface, ArrayAccess, \JsonSerializable
         'cod_charge' => 'getCodCharge',
         'cod_charge_tax' => 'getCodChargeTax',
         'shipping_charge' => 'getShippingCharge',
-        'shipping_charge_tax' => 'getShippingChargeTax'
+        'shipping_charge_tax' => 'getShippingChargeTax',
     ];
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @return array
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @return array
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @return array
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    /**
-     * The original name of the model.
-     *
-     * @return string
-     */
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-
-    /**
-     * Associative array for storing property values
-     *
-     * @var array
+     * Associative array for storing property values.
      */
     protected array $container = [];
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param array|null $data Associated array of property values
-     *                      initializing the model
+     * @param null|array $data Associated array of property values
+     *                         initializing the model
      */
     public function __construct(?array $data = null)
     {
@@ -278,21 +164,81 @@ class CODSettings implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
-    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+     * Gets the string presentation of the object.
+     *
+     * @return string
+     */
+    public function __toString()
     {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
+        return json_encode(
+            ObjectSerializer::sanitizeForSerialization($this),
+            JSON_PRETTY_PRINT
+        );
+    }
 
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    /**
+     * Array of property to type mappings. Used for (de)serialization.
+     */
+    public static function openAPITypes(): array
+    {
+        return self::$openAPITypes;
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization.
+     */
+    public static function openAPIFormats(): array
+    {
+        return self::$openAPIFormats;
+    }
+
+    /**
+     * Checks if a property is nullable.
+     */
+    public static function isNullable(string $property): bool
+    {
+        return self::openAPINullables()[$property] ?? false;
+    }
+
+    /**
+     * Checks if a nullable property is set to null.
+     */
+    public function isNullableSetToNull(string $property): bool
+    {
+        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name.
+     */
+    public static function attributeMap(): array
+    {
+        return self::$attributeMap;
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses).
+     */
+    public static function setters(): array
+    {
+        return self::$setters;
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests).
+     */
+    public static function getters(): array
+    {
+        return self::$getters;
+    }
+
+    /**
+     * The original name of the model.
+     */
+    public function getModelName(): string
+    {
+        return self::$openAPIModelName;
     }
 
     /**
@@ -304,28 +250,26 @@ class CODSettings implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['is_cod_required'] === null) {
+        if (null === $this->container['is_cod_required']) {
             $invalidProperties[] = "'is_cod_required' can't be null";
         }
+
         return $invalidProperties;
     }
 
     /**
      * Validate all the properties in the model
-     * return true if all passed
+     * return true if all passed.
      *
      * @return bool True if all properties are valid
      */
     public function valid(): bool
     {
-        return count($this->listInvalidProperties()) === 0;
+        return 0 === count($this->listInvalidProperties());
     }
 
-
     /**
-     * Gets is_cod_required
-     *
-     * @return bool
+     * Gets is_cod_required.
      */
     public function getIsCodRequired(): bool
     {
@@ -333,11 +277,9 @@ class CODSettings implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets is_cod_required
+     * Sets is_cod_required.
      *
-     * @param bool $is_cod_required When true, this fulfillment order requires a COD (Cash On Delivery) payment.
-     *
-     * @return self
+     * @param bool $is_cod_required when true, this fulfillment order requires a COD (Cash On Delivery) payment
      */
     public function setIsCodRequired(bool $is_cod_required): self
     {
@@ -350,30 +292,26 @@ class CODSettings implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets cod_charge
-     *
-     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\Money|null
+     * Gets cod_charge.
      */
-    public function getCodCharge(): ?\SpApi\Model\fulfillment\outbound\v2020_07_01\Money
+    public function getCodCharge(): ?Money
     {
         return $this->container['cod_charge'];
     }
 
     /**
-     * Sets cod_charge
+     * Sets cod_charge.
      *
-     * @param \SpApi\Model\fulfillment\outbound\v2020_07_01\Money|null $cod_charge cod_charge
-     *
-     * @return self
+     * @param null|Money $cod_charge cod_charge
      */
-    public function setCodCharge(?\SpApi\Model\fulfillment\outbound\v2020_07_01\Money $cod_charge): self
+    public function setCodCharge(?Money $cod_charge): self
     {
         if (is_null($cod_charge)) {
             array_push($this->openAPINullablesSetToNull, 'cod_charge');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('cod_charge', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -384,30 +322,26 @@ class CODSettings implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets cod_charge_tax
-     *
-     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\Money|null
+     * Gets cod_charge_tax.
      */
-    public function getCodChargeTax(): ?\SpApi\Model\fulfillment\outbound\v2020_07_01\Money
+    public function getCodChargeTax(): ?Money
     {
         return $this->container['cod_charge_tax'];
     }
 
     /**
-     * Sets cod_charge_tax
+     * Sets cod_charge_tax.
      *
-     * @param \SpApi\Model\fulfillment\outbound\v2020_07_01\Money|null $cod_charge_tax cod_charge_tax
-     *
-     * @return self
+     * @param null|Money $cod_charge_tax cod_charge_tax
      */
-    public function setCodChargeTax(?\SpApi\Model\fulfillment\outbound\v2020_07_01\Money $cod_charge_tax): self
+    public function setCodChargeTax(?Money $cod_charge_tax): self
     {
         if (is_null($cod_charge_tax)) {
             array_push($this->openAPINullablesSetToNull, 'cod_charge_tax');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('cod_charge_tax', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -418,30 +352,26 @@ class CODSettings implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets shipping_charge
-     *
-     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\Money|null
+     * Gets shipping_charge.
      */
-    public function getShippingCharge(): ?\SpApi\Model\fulfillment\outbound\v2020_07_01\Money
+    public function getShippingCharge(): ?Money
     {
         return $this->container['shipping_charge'];
     }
 
     /**
-     * Sets shipping_charge
+     * Sets shipping_charge.
      *
-     * @param \SpApi\Model\fulfillment\outbound\v2020_07_01\Money|null $shipping_charge shipping_charge
-     *
-     * @return self
+     * @param null|Money $shipping_charge shipping_charge
      */
-    public function setShippingCharge(?\SpApi\Model\fulfillment\outbound\v2020_07_01\Money $shipping_charge): self
+    public function setShippingCharge(?Money $shipping_charge): self
     {
         if (is_null($shipping_charge)) {
             array_push($this->openAPINullablesSetToNull, 'shipping_charge');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('shipping_charge', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -452,30 +382,26 @@ class CODSettings implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets shipping_charge_tax
-     *
-     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\Money|null
+     * Gets shipping_charge_tax.
      */
-    public function getShippingChargeTax(): ?\SpApi\Model\fulfillment\outbound\v2020_07_01\Money
+    public function getShippingChargeTax(): ?Money
     {
         return $this->container['shipping_charge_tax'];
     }
 
     /**
-     * Sets shipping_charge_tax
+     * Sets shipping_charge_tax.
      *
-     * @param \SpApi\Model\fulfillment\outbound\v2020_07_01\Money|null $shipping_charge_tax shipping_charge_tax
-     *
-     * @return self
+     * @param null|Money $shipping_charge_tax shipping_charge_tax
      */
-    public function setShippingChargeTax(?\SpApi\Model\fulfillment\outbound\v2020_07_01\Money $shipping_charge_tax): self
+    public function setShippingChargeTax(?Money $shipping_charge_tax): self
     {
         if (is_null($shipping_charge_tax)) {
             array_push($this->openAPINullablesSetToNull, 'shipping_charge_tax');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('shipping_charge_tax', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -485,13 +411,10 @@ class CODSettings implements ModelInterface, ArrayAccess, \JsonSerializable
         return $this;
     }
 
-
     /**
      * Returns true if offset exists. False otherwise.
      *
-     * @param integer $offset Offset
-     *
-     * @return boolean
+     * @param int $offset Offset
      */
     public function offsetExists($offset): bool
     {
@@ -501,9 +424,9 @@ class CODSettings implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
-     * @return mixed|null
+     * @return null|mixed
      */
     #[\ReturnTypeWillChange]
     public function offsetGet($offset): mixed
@@ -514,10 +437,8 @@ class CODSettings implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets value based on offset.
      *
-     * @param int|null $offset Offset
+     * @param null|int $offset Offset
      * @param mixed    $value  Value to be set
-     *
-     * @return void
      */
     public function offsetSet($offset, mixed $value): void
     {
@@ -531,9 +452,7 @@ class CODSettings implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Unsets offset.
      *
-     * @param integer $offset Offset
-     *
-     * @return void
+     * @param int $offset Offset
      */
     public function offsetUnset($offset): void
     {
@@ -542,39 +461,67 @@ class CODSettings implements ModelInterface, ArrayAccess, \JsonSerializable
 
     /**
      * Serializes the object to a value that can be serialized natively by json_encode().
-     * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
      *
-     * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
+     * @see https://www.php.net/manual/en/jsonserializable.jsonserialize.php
+     *
+     * @return mixed returns data which can be serialized by json_encode(), which is a value
+     *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
     public function jsonSerialize(): mixed
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
-     * Gets the string presentation of the object
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    /**
-     * Gets a header-safe presentation of the object
-     *
-     * @return string
+     * Gets a header-safe presentation of the object.
      */
     public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
+
+    /**
+     * Array of nullable properties.
+     */
+    protected static function openAPINullables(): array
+    {
+        return self::$openAPINullables;
+    }
+
+    /**
+     * Array of nullable field names deliberately set to null.
+     *
+     * @return bool[]
+     */
+    private function getOpenAPINullablesSetToNull(): array
+    {
+        return $this->openAPINullablesSetToNull;
+    }
+
+    /**
+     * Setter - Array of nullable field names deliberately set to null.
+     *
+     * @param bool[] $openAPINullablesSetToNull
+     */
+    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
+    {
+        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
+    }
+
+    /**
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array.
+     *
+     * @param mixed $defaultValue
+     */
+    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+    {
+        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
+            $this->openAPINullablesSetToNull[] = $variableName;
+        }
+
+        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    }
 }
-
-

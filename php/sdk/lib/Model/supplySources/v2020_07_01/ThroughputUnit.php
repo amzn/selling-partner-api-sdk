@@ -1,17 +1,19 @@
 <?php
+
 /**
- * ThroughputUnit
+ * ThroughputUnit.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Supply Sources
+ * Selling Partner API for Supply Sources.
  *
  * Manage configurations and capabilities of seller supply sources.
  *
@@ -27,35 +29,34 @@
  */
 
 namespace SpApi\Model\supplySources\v2020_07_01;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * ThroughputUnit Class Doc Comment
+ * ThroughputUnit Class Doc Comment.
  *
  * @category Class
+ *
  * @description The throughput unit
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class ThroughputUnit
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const ORDER = 'Order';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
     {
         return [
-            self::ORDER
+            self::ORDER,
         ];
     }
 }
-
-

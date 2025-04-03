@@ -1,17 +1,19 @@
 <?php
+
 /**
- * ShippingSpeedCategory
+ * ShippingSpeedCategory.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner APIs for Fulfillment Outbound
+ * Selling Partner APIs for Fulfillment Outbound.
  *
  * The Selling Partner API for Fulfillment Outbound lets you create applications that help a seller fulfill Multi-Channel Fulfillment orders using their inventory in Amazon's fulfillment network. You can get information on both potential and existing fulfillment orders.
  *
@@ -27,22 +29,22 @@
  */
 
 namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * ShippingSpeedCategory Class Doc Comment
+ * ShippingSpeedCategory Class Doc Comment.
  *
  * @category Class
+ *
  * @description The shipping method used for the fulfillment order. When this value is &#x60;ScheduledDelivery&#x60;, choose &#x60;Ship&#x60; for the &#x60;fulfillmentAction&#x60;. &#x60;Hold&#x60; is not a valid &#x60;fulfillmentAction&#x60; value when the &#x60;shippingSpeedCategory&#x60; value is &#x60;ScheduledDelivery&#x60;. Note: Shipping method service level agreements vary by marketplace. Sellers should refer to the [Seller Central](https://developer-docs.amazon.com/sp-api/docs/seller-central-urls) website in their marketplace for shipping method service level agreements and fulfillment fees.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class ShippingSpeedCategory
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const STANDARD = 'Standard';
 
@@ -53,7 +55,8 @@ class ShippingSpeedCategory
     public const SCHEDULED_DELIVERY = 'ScheduledDelivery';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
@@ -62,9 +65,7 @@ class ShippingSpeedCategory
             self::STANDARD,
             self::EXPEDITED,
             self::PRIORITY,
-            self::SCHEDULED_DELIVERY
+            self::SCHEDULED_DELIVERY,
         ];
     }
 }
-
-

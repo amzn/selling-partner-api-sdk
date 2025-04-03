@@ -1,13 +1,15 @@
 <?php
+
 /**
- * EngineOutputUnit
+ * EngineOutputUnit.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
@@ -27,38 +29,37 @@
  */
 
 namespace SpApi\Model\vehicles\v2024_11_01;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * EngineOutputUnit Class Doc Comment
+ * EngineOutputUnit Class Doc Comment.
  *
  * @category Class
+ *
  * @description Unit for measuring engine power.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class EngineOutputUnit
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const KILOWATT = 'KILOWATT';
 
     public const HORSEPOWER = 'HORSEPOWER';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
     {
         return [
             self::KILOWATT,
-            self::HORSEPOWER
+            self::HORSEPOWER,
         ];
     }
 }
-
-

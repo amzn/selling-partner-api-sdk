@@ -1,17 +1,19 @@
 <?php
+
 /**
- * ItemSummaryByMarketplace
+ * ItemSummaryByMarketplace.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Catalog Items
+ * Selling Partner API for Catalog Items.
  *
  * Use the Selling Partner API for Catalog Items to retrieve information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/:catalog-items-api-v2022-04-01-use-case-guide).
  *
@@ -28,93 +30,99 @@
 
 namespace SpApi\Model\catalogItems\v2022_04_01;
 
-use
-ArrayAccess;
-use SpApi\ObjectSerializer;
 use SpApi\Model\ModelInterface;
+use SpApi\ObjectSerializer;
 
 /**
- * ItemSummaryByMarketplace Class Doc Comment
+ * ItemSummaryByMarketplace Class Doc Comment.
  *
  * @category Class
+ *
  * @description Information about an Amazon catalog item for the indicated &#x60;marketplaceId&#x60;.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
+ *
  * @implements \ArrayAccess<string, mixed>
  */
-class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSerializable
+class ItemSummaryByMarketplace implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
+    public const ITEM_CLASSIFICATION_BASE_PRODUCT = 'BASE_PRODUCT';
+    public const ITEM_CLASSIFICATION_OTHER = 'OTHER';
+    public const ITEM_CLASSIFICATION_PRODUCT_BUNDLE = 'PRODUCT_BUNDLE';
+    public const ITEM_CLASSIFICATION_VARIATION_PARENT = 'VARIATION_PARENT';
+
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     */
     protected static string $openAPIModelName = 'ItemSummaryByMarketplace';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static array $openAPITypes = [
-             'marketplace_id' => 'string',
-             'adult_product' => 'bool',
-             'autographed' => 'bool',
-             'brand' => 'string',
-             'browse_classification' => '\SpApi\Model\catalogItems\v2022_04_01\ItemBrowseClassification',
-             'color' => 'string',
-             'contributors' => '\SpApi\Model\catalogItems\v2022_04_01\ItemContributor[]',
-             'item_classification' => 'string',
-             'item_name' => 'string',
-             'manufacturer' => 'string',
-             'memorabilia' => 'bool',
-             'model_number' => 'string',
-             'package_quantity' => 'int',
-             'part_number' => 'string',
-             'release_date' => '\DateTime',
-             'size' => 'string',
-             'style' => 'string',
-             'trade_in_eligible' => 'bool',
-             'website_display_group' => 'string',
-             'website_display_group_name' => 'string'    ];
+        'marketplace_id' => 'string',
+        'adult_product' => 'bool',
+        'autographed' => 'bool',
+        'brand' => 'string',
+        'browse_classification' => '\SpApi\Model\catalogItems\v2022_04_01\ItemBrowseClassification',
+        'color' => 'string',
+        'contributors' => '\SpApi\Model\catalogItems\v2022_04_01\ItemContributor[]',
+        'item_classification' => 'string',
+        'item_name' => 'string',
+        'manufacturer' => 'string',
+        'memorabilia' => 'bool',
+        'model_number' => 'string',
+        'package_quantity' => 'int',
+        'part_number' => 'string',
+        'release_date' => '\DateTime',
+        'size' => 'string',
+        'style' => 'string',
+        'trade_in_eligible' => 'bool',
+        'website_display_group' => 'string',
+        'website_display_group_name' => 'string'];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     *
+     * @phpstan-var array<string, string|null>
+     *
+     * @psalm-var array<string, string|null>
+     */
     protected static array $openAPIFormats = [
-            'marketplace_id' => null,
-            'adult_product' => null,
-            'autographed' => null,
-            'brand' => null,
-            'browse_classification' => null,
-            'color' => null,
-            'contributors' => null,
-            'item_classification' => null,
-            'item_name' => null,
-            'manufacturer' => null,
-            'memorabilia' => null,
-            'model_number' => null,
-            'package_quantity' => null,
-            'part_number' => null,
-            'release_date' => 'date',
-            'size' => null,
-            'style' => null,
-            'trade_in_eligible' => null,
-            'website_display_group' => null,
-            'website_display_group_name' => null    ];
+        'marketplace_id' => null,
+        'adult_product' => null,
+        'autographed' => null,
+        'brand' => null,
+        'browse_classification' => null,
+        'color' => null,
+        'contributors' => null,
+        'item_classification' => null,
+        'item_name' => null,
+        'manufacturer' => null,
+        'memorabilia' => null,
+        'model_number' => null,
+        'package_quantity' => null,
+        'part_number' => null,
+        'release_date' => 'date',
+        'size' => null,
+        'style' => null,
+        'trade_in_eligible' => null,
+        'website_display_group' => null,
+        'website_display_group_name' => null];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization.
+     *
+     * @var bool[]
+     */
     protected static array $openAPINullables = [
         'marketplace_id' => false,
         'adult_product' => true,
@@ -135,120 +143,47 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
         'style' => true,
         'trade_in_eligible' => true,
         'website_display_group' => true,
-        'website_display_group_name' => true
+        'website_display_group_name' => true,
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here.
+     *
+     * @var bool[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPIFormats(): array
-    {
-        return self::$openAPIFormats;
-    }
-
-    /**
-     * Array of nullable properties
-     *
-     * @return array
-     */
-    protected static function openAPINullables(): array
-    {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * Array of nullable field names deliberately set to null
-     *
-     * @return boolean[]
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * Setter - Array of nullable field names deliberately set to null
-     *
-     * @param boolean[] $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    /**
-     * Checks if a property is nullable
-     *
-     * @param string $property
-     * @return bool
-     */
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    /**
-     * Checks if a nullable property is set to null.
-     *
-     * @param string $property
-     * @return bool
-     */
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @var string[]
      */
     protected static array $attributeMap = [
         'marketplace_id' => 'marketplaceId',
-                'adult_product' => 'adultProduct',
-                'autographed' => 'autographed',
-                'brand' => 'brand',
-                'browse_classification' => 'browseClassification',
-                'color' => 'color',
-                'contributors' => 'contributors',
-                'item_classification' => 'itemClassification',
-                'item_name' => 'itemName',
-                'manufacturer' => 'manufacturer',
-                'memorabilia' => 'memorabilia',
-                'model_number' => 'modelNumber',
-                'package_quantity' => 'packageQuantity',
-                'part_number' => 'partNumber',
-                'release_date' => 'releaseDate',
-                'size' => 'size',
-                'style' => 'style',
-                'trade_in_eligible' => 'tradeInEligible',
-                'website_display_group' => 'websiteDisplayGroup',
-                'website_display_group_name' => 'websiteDisplayGroupName'
-        
+        'adult_product' => 'adultProduct',
+        'autographed' => 'autographed',
+        'brand' => 'brand',
+        'browse_classification' => 'browseClassification',
+        'color' => 'color',
+        'contributors' => 'contributors',
+        'item_classification' => 'itemClassification',
+        'item_name' => 'itemName',
+        'manufacturer' => 'manufacturer',
+        'memorabilia' => 'memorabilia',
+        'model_number' => 'modelNumber',
+        'package_quantity' => 'packageQuantity',
+        'part_number' => 'partNumber',
+        'release_date' => 'releaseDate',
+        'size' => 'size',
+        'style' => 'style',
+        'trade_in_eligible' => 'tradeInEligible',
+        'website_display_group' => 'websiteDisplayGroup',
+        'website_display_group_name' => 'websiteDisplayGroupName',
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @var string[]
      */
@@ -272,11 +207,11 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
         'style' => 'setStyle',
         'trade_in_eligible' => 'setTradeInEligible',
         'website_display_group' => 'setWebsiteDisplayGroup',
-        'website_display_group_name' => 'setWebsiteDisplayGroupName'
+        'website_display_group_name' => 'setWebsiteDisplayGroupName',
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @var string[]
      */
@@ -300,82 +235,19 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
         'style' => 'getStyle',
         'trade_in_eligible' => 'getTradeInEligible',
         'website_display_group' => 'getWebsiteDisplayGroup',
-        'website_display_group_name' => 'getWebsiteDisplayGroupName'
+        'website_display_group_name' => 'getWebsiteDisplayGroupName',
     ];
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @return array
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @return array
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @return array
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    /**
-     * The original name of the model.
-     *
-     * @return string
-     */
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-    public const ITEM_CLASSIFICATION_BASE_PRODUCT = 'BASE_PRODUCT';
-    public const ITEM_CLASSIFICATION_OTHER = 'OTHER';
-    public const ITEM_CLASSIFICATION_PRODUCT_BUNDLE = 'PRODUCT_BUNDLE';
-    public const ITEM_CLASSIFICATION_VARIATION_PARENT = 'VARIATION_PARENT';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getItemClassificationAllowableValues(): array
-    {
-        return [
-            self::ITEM_CLASSIFICATION_BASE_PRODUCT,
-            self::ITEM_CLASSIFICATION_OTHER,
-            self::ITEM_CLASSIFICATION_PRODUCT_BUNDLE,
-            self::ITEM_CLASSIFICATION_VARIATION_PARENT,
-        ];
-    }
-
-    /**
-     * Associative array for storing property values
-     *
-     * @var array
+     * Associative array for storing property values.
      */
     protected array $container = [];
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param array|null $data Associated array of property values
-     *                      initializing the model
+     * @param null|array $data Associated array of property values
+     *                         initializing the model
      */
     public function __construct(?array $data = null)
     {
@@ -402,21 +274,96 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
-    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+     * Gets the string presentation of the object.
+     *
+     * @return string
+     */
+    public function __toString()
     {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
+        return json_encode(
+            ObjectSerializer::sanitizeForSerialization($this),
+            JSON_PRETTY_PRINT
+        );
+    }
 
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    /**
+     * Array of property to type mappings. Used for (de)serialization.
+     */
+    public static function openAPITypes(): array
+    {
+        return self::$openAPITypes;
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization.
+     */
+    public static function openAPIFormats(): array
+    {
+        return self::$openAPIFormats;
+    }
+
+    /**
+     * Checks if a property is nullable.
+     */
+    public static function isNullable(string $property): bool
+    {
+        return self::openAPINullables()[$property] ?? false;
+    }
+
+    /**
+     * Checks if a nullable property is set to null.
+     */
+    public function isNullableSetToNull(string $property): bool
+    {
+        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name.
+     */
+    public static function attributeMap(): array
+    {
+        return self::$attributeMap;
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses).
+     */
+    public static function setters(): array
+    {
+        return self::$setters;
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests).
+     */
+    public static function getters(): array
+    {
+        return self::$getters;
+    }
+
+    /**
+     * The original name of the model.
+     */
+    public function getModelName(): string
+    {
+        return self::$openAPIModelName;
+    }
+
+    /**
+     * Gets allowable values of the enum.
+     *
+     * @return string[]
+     */
+    public function getItemClassificationAllowableValues(): array
+    {
+        return [
+            self::ITEM_CLASSIFICATION_BASE_PRODUCT,
+            self::ITEM_CLASSIFICATION_OTHER,
+            self::ITEM_CLASSIFICATION_PRODUCT_BUNDLE,
+            self::ITEM_CLASSIFICATION_VARIATION_PARENT,
+        ];
     }
 
     /**
@@ -428,7 +375,7 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     {
         $invalidProperties = [];
 
-        if ($this->container['marketplace_id'] === null) {
+        if (null === $this->container['marketplace_id']) {
             $invalidProperties[] = "'marketplace_id' can't be null";
         }
         $allowedValues = $this->getItemClassificationAllowableValues();
@@ -445,20 +392,17 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
 
     /**
      * Validate all the properties in the model
-     * return true if all passed
+     * return true if all passed.
      *
      * @return bool True if all properties are valid
      */
     public function valid(): bool
     {
-        return count($this->listInvalidProperties()) === 0;
+        return 0 === count($this->listInvalidProperties());
     }
 
-
     /**
-     * Gets marketplace_id
-     *
-     * @return string
+     * Gets marketplace_id.
      */
     public function getMarketplaceId(): string
     {
@@ -466,11 +410,9 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Sets marketplace_id
+     * Sets marketplace_id.
      *
      * @param string $marketplace_id Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
-     *
-     * @return self
      */
     public function setMarketplaceId(string $marketplace_id): self
     {
@@ -483,9 +425,7 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Gets adult_product
-     *
-     * @return bool|null
+     * Gets adult_product.
      */
     public function getAdultProduct(): ?bool
     {
@@ -493,11 +433,9 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Sets adult_product
+     * Sets adult_product.
      *
-     * @param bool|null $adult_product When `true`, the Amazon catalog item is intended for an adult audience or is sexual in nature.
-     *
-     * @return self
+     * @param null|bool $adult_product when `true`, the Amazon catalog item is intended for an adult audience or is sexual in nature
      */
     public function setAdultProduct(?bool $adult_product): self
     {
@@ -506,7 +444,7 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('adult_product', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -517,9 +455,7 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Gets autographed
-     *
-     * @return bool|null
+     * Gets autographed.
      */
     public function getAutographed(): ?bool
     {
@@ -527,11 +463,9 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Sets autographed
+     * Sets autographed.
      *
-     * @param bool|null $autographed When `true`, the Amazon catalog item is autographed.
-     *
-     * @return self
+     * @param null|bool $autographed when `true`, the Amazon catalog item is autographed
      */
     public function setAutographed(?bool $autographed): self
     {
@@ -540,7 +474,7 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('autographed', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -551,9 +485,7 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Gets brand
-     *
-     * @return string|null
+     * Gets brand.
      */
     public function getBrand(): ?string
     {
@@ -561,11 +493,9 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Sets brand
+     * Sets brand.
      *
-     * @param string|null $brand Name of the brand that is associated with the Amazon catalog item.
-     *
-     * @return self
+     * @param null|string $brand name of the brand that is associated with the Amazon catalog item
      */
     public function setBrand(?string $brand): self
     {
@@ -574,7 +504,7 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('brand', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -585,30 +515,26 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Gets browse_classification
-     *
-     * @return \SpApi\Model\catalogItems\v2022_04_01\ItemBrowseClassification|null
+     * Gets browse_classification.
      */
-    public function getBrowseClassification(): ?\SpApi\Model\catalogItems\v2022_04_01\ItemBrowseClassification
+    public function getBrowseClassification(): ?ItemBrowseClassification
     {
         return $this->container['browse_classification'];
     }
 
     /**
-     * Sets browse_classification
+     * Sets browse_classification.
      *
-     * @param \SpApi\Model\catalogItems\v2022_04_01\ItemBrowseClassification|null $browse_classification browse_classification
-     *
-     * @return self
+     * @param null|ItemBrowseClassification $browse_classification browse_classification
      */
-    public function setBrowseClassification(?\SpApi\Model\catalogItems\v2022_04_01\ItemBrowseClassification $browse_classification): self
+    public function setBrowseClassification(?ItemBrowseClassification $browse_classification): self
     {
         if (is_null($browse_classification)) {
             array_push($this->openAPINullablesSetToNull, 'browse_classification');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('browse_classification', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -619,9 +545,7 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Gets color
-     *
-     * @return string|null
+     * Gets color.
      */
     public function getColor(): ?string
     {
@@ -629,11 +553,9 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Sets color
+     * Sets color.
      *
-     * @param string|null $color The color that is associated with the Amazon catalog item.
-     *
-     * @return self
+     * @param null|string $color the color that is associated with the Amazon catalog item
      */
     public function setColor(?string $color): self
     {
@@ -642,7 +564,7 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('color', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -653,9 +575,7 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Gets contributors
-     *
-     * @return array|null
+     * Gets contributors.
      */
     public function getContributors(): ?array
     {
@@ -663,11 +583,9 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Sets contributors
+     * Sets contributors.
      *
-     * @param array|null $contributors Individual contributors to the creation of the item, such as the authors or actors.
-     *
-     * @return self
+     * @param null|array $contributors individual contributors to the creation of the item, such as the authors or actors
      */
     public function setContributors(?array $contributors): self
     {
@@ -676,7 +594,7 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('contributors', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -687,9 +605,7 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Gets item_classification
-     *
-     * @return string|null
+     * Gets item_classification.
      */
     public function getItemClassification(): ?string
     {
@@ -697,11 +613,9 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Sets item_classification
+     * Sets item_classification.
      *
-     * @param string|null $item_classification Classification type that is associated with the Amazon catalog item.
-     *
-     * @return self
+     * @param null|string $item_classification classification type that is associated with the Amazon catalog item
      */
     public function setItemClassification(?string $item_classification): self
     {
@@ -710,7 +624,7 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('item_classification', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -731,9 +645,7 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Gets item_name
-     *
-     * @return string|null
+     * Gets item_name.
      */
     public function getItemName(): ?string
     {
@@ -741,11 +653,9 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Sets item_name
+     * Sets item_name.
      *
-     * @param string|null $item_name The name that is associated with the Amazon catalog item.
-     *
-     * @return self
+     * @param null|string $item_name the name that is associated with the Amazon catalog item
      */
     public function setItemName(?string $item_name): self
     {
@@ -754,7 +664,7 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('item_name', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -765,9 +675,7 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Gets manufacturer
-     *
-     * @return string|null
+     * Gets manufacturer.
      */
     public function getManufacturer(): ?string
     {
@@ -775,11 +683,9 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Sets manufacturer
+     * Sets manufacturer.
      *
-     * @param string|null $manufacturer The name of the manufacturer that is associated with the Amazon catalog item.
-     *
-     * @return self
+     * @param null|string $manufacturer the name of the manufacturer that is associated with the Amazon catalog item
      */
     public function setManufacturer(?string $manufacturer): self
     {
@@ -788,7 +694,7 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('manufacturer', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -799,9 +705,7 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Gets memorabilia
-     *
-     * @return bool|null
+     * Gets memorabilia.
      */
     public function getMemorabilia(): ?bool
     {
@@ -809,11 +713,9 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Sets memorabilia
+     * Sets memorabilia.
      *
-     * @param bool|null $memorabilia When true, the item is classified as memorabilia.
-     *
-     * @return self
+     * @param null|bool $memorabilia when true, the item is classified as memorabilia
      */
     public function setMemorabilia(?bool $memorabilia): self
     {
@@ -822,7 +724,7 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('memorabilia', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -833,9 +735,7 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Gets model_number
-     *
-     * @return string|null
+     * Gets model_number.
      */
     public function getModelNumber(): ?string
     {
@@ -843,11 +743,9 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Sets model_number
+     * Sets model_number.
      *
-     * @param string|null $model_number The model number that is associated with the Amazon catalog item.
-     *
-     * @return self
+     * @param null|string $model_number the model number that is associated with the Amazon catalog item
      */
     public function setModelNumber(?string $model_number): self
     {
@@ -856,7 +754,7 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('model_number', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -867,9 +765,7 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Gets package_quantity
-     *
-     * @return int|null
+     * Gets package_quantity.
      */
     public function getPackageQuantity(): ?int
     {
@@ -877,11 +773,9 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Sets package_quantity
+     * Sets package_quantity.
      *
-     * @param int|null $package_quantity The quantity of the Amazon catalog item within one package.
-     *
-     * @return self
+     * @param null|int $package_quantity the quantity of the Amazon catalog item within one package
      */
     public function setPackageQuantity(?int $package_quantity): self
     {
@@ -890,7 +784,7 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('package_quantity', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -901,9 +795,7 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Gets part_number
-     *
-     * @return string|null
+     * Gets part_number.
      */
     public function getPartNumber(): ?string
     {
@@ -911,11 +803,9 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Sets part_number
+     * Sets part_number.
      *
-     * @param string|null $part_number The part number that is associated with the Amazon catalog item.
-     *
-     * @return self
+     * @param null|string $part_number the part number that is associated with the Amazon catalog item
      */
     public function setPartNumber(?string $part_number): self
     {
@@ -924,7 +814,7 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('part_number', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -935,9 +825,7 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Gets release_date
-     *
-     * @return \DateTime|null
+     * Gets release_date.
      */
     public function getReleaseDate(): ?\DateTime
     {
@@ -945,11 +833,9 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Sets release_date
+     * Sets release_date.
      *
-     * @param \DateTime|null $release_date The earliest date on which the Amazon catalog item can be shipped to customers.
-     *
-     * @return self
+     * @param null|\DateTime $release_date the earliest date on which the Amazon catalog item can be shipped to customers
      */
     public function setReleaseDate(?\DateTime $release_date): self
     {
@@ -958,7 +844,7 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('release_date', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -969,9 +855,7 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Gets size
-     *
-     * @return string|null
+     * Gets size.
      */
     public function getSize(): ?string
     {
@@ -979,11 +863,9 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Sets size
+     * Sets size.
      *
-     * @param string|null $size The name of the size of the Amazon catalog item.
-     *
-     * @return self
+     * @param null|string $size the name of the size of the Amazon catalog item
      */
     public function setSize(?string $size): self
     {
@@ -992,7 +874,7 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('size', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -1003,9 +885,7 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Gets style
-     *
-     * @return string|null
+     * Gets style.
      */
     public function getStyle(): ?string
     {
@@ -1013,11 +893,9 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Sets style
+     * Sets style.
      *
-     * @param string|null $style The name of the style that is associated with the Amazon catalog item.
-     *
-     * @return self
+     * @param null|string $style the name of the style that is associated with the Amazon catalog item
      */
     public function setStyle(?string $style): self
     {
@@ -1026,7 +904,7 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('style', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -1037,9 +915,7 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Gets trade_in_eligible
-     *
-     * @return bool|null
+     * Gets trade_in_eligible.
      */
     public function getTradeInEligible(): ?bool
     {
@@ -1047,11 +923,9 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Sets trade_in_eligible
+     * Sets trade_in_eligible.
      *
-     * @param bool|null $trade_in_eligible When true, the Amazon catalog item is eligible for trade-in.
-     *
-     * @return self
+     * @param null|bool $trade_in_eligible when true, the Amazon catalog item is eligible for trade-in
      */
     public function setTradeInEligible(?bool $trade_in_eligible): self
     {
@@ -1060,7 +934,7 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('trade_in_eligible', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -1071,9 +945,7 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Gets website_display_group
-     *
-     * @return string|null
+     * Gets website_display_group.
      */
     public function getWebsiteDisplayGroup(): ?string
     {
@@ -1081,11 +953,9 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Sets website_display_group
+     * Sets website_display_group.
      *
-     * @param string|null $website_display_group The identifier of the website display group that is associated with the Amazon catalog item.
-     *
-     * @return self
+     * @param null|string $website_display_group the identifier of the website display group that is associated with the Amazon catalog item
      */
     public function setWebsiteDisplayGroup(?string $website_display_group): self
     {
@@ -1094,7 +964,7 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('website_display_group', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -1105,9 +975,7 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Gets website_display_group_name
-     *
-     * @return string|null
+     * Gets website_display_group_name.
      */
     public function getWebsiteDisplayGroupName(): ?string
     {
@@ -1115,11 +983,9 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Sets website_display_group_name
+     * Sets website_display_group_name.
      *
-     * @param string|null $website_display_group_name The display name of the website display group that is associated with the Amazon catalog item.
-     *
-     * @return self
+     * @param null|string $website_display_group_name the display name of the website display group that is associated with the Amazon catalog item
      */
     public function setWebsiteDisplayGroupName(?string $website_display_group_name): self
     {
@@ -1128,7 +994,7 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('website_display_group_name', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -1138,13 +1004,10 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
         return $this;
     }
 
-
     /**
      * Returns true if offset exists. False otherwise.
      *
-     * @param integer $offset Offset
-     *
-     * @return boolean
+     * @param int $offset Offset
      */
     public function offsetExists($offset): bool
     {
@@ -1154,9 +1017,9 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
-     * @return mixed|null
+     * @return null|mixed
      */
     #[\ReturnTypeWillChange]
     public function offsetGet($offset): mixed
@@ -1167,10 +1030,8 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets value based on offset.
      *
-     * @param int|null $offset Offset
+     * @param null|int $offset Offset
      * @param mixed    $value  Value to be set
-     *
-     * @return void
      */
     public function offsetSet($offset, mixed $value): void
     {
@@ -1184,9 +1045,7 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Unsets offset.
      *
-     * @param integer $offset Offset
-     *
-     * @return void
+     * @param int $offset Offset
      */
     public function offsetUnset($offset): void
     {
@@ -1195,39 +1054,67 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
 
     /**
      * Serializes the object to a value that can be serialized natively by json_encode().
-     * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
      *
-     * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
+     * @see https://www.php.net/manual/en/jsonserializable.jsonserialize.php
+     *
+     * @return mixed returns data which can be serialized by json_encode(), which is a value
+     *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
     public function jsonSerialize(): mixed
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
-     * Gets the string presentation of the object
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    /**
-     * Gets a header-safe presentation of the object
-     *
-     * @return string
+     * Gets a header-safe presentation of the object.
      */
     public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
+
+    /**
+     * Array of nullable properties.
+     */
+    protected static function openAPINullables(): array
+    {
+        return self::$openAPINullables;
+    }
+
+    /**
+     * Array of nullable field names deliberately set to null.
+     *
+     * @return bool[]
+     */
+    private function getOpenAPINullablesSetToNull(): array
+    {
+        return $this->openAPINullablesSetToNull;
+    }
+
+    /**
+     * Setter - Array of nullable field names deliberately set to null.
+     *
+     * @param bool[] $openAPINullablesSetToNull
+     */
+    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
+    {
+        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
+    }
+
+    /**
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array.
+     *
+     * @param mixed $defaultValue
+     */
+    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+    {
+        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
+            $this->openAPINullablesSetToNull[] = $variableName;
+        }
+
+        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    }
 }
-
-

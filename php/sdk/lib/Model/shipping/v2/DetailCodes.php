@@ -1,17 +1,19 @@
 <?php
+
 /**
- * DetailCodes
+ * DetailCodes.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Amazon Shipping API
+ * Amazon Shipping API.
  *
  * The Amazon Shipping API is designed to support outbound shipping use cases both for orders originating on Amazon-owned marketplaces as well as external channels/marketplaces. With these APIs, you can request shipping rates, create shipments, cancel shipments, and track shipments.
  *
@@ -28,22 +30,22 @@
  */
 
 namespace SpApi\Model\shipping\v2;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * DetailCodes Class Doc Comment
+ * DetailCodes Class Doc Comment.
  *
  * @category Class
+ *
  * @description A list of codes used to provide additional shipment information.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class DetailCodes
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const BUSINESS_CLOSED = 'BusinessClosed';
 
@@ -106,7 +108,8 @@ class DetailCodes
     public const ARRIVED_AT_LOCAL_FACILITY = 'ArrivedAtLocalFacility';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
@@ -141,9 +144,7 @@ class DetailCodes
             self::ADDRESS_NOT_FOUND,
             self::HAZMAT_SHIPMENT,
             self::UNDELIVERABLE,
-            self::ARRIVED_AT_LOCAL_FACILITY
+            self::ARRIVED_AT_LOCAL_FACILITY,
         ];
     }
 }
-
-

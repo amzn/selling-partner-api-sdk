@@ -1,13 +1,15 @@
 <?php
+
 /**
- * PrepCategory
+ * PrepCategory.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
@@ -27,22 +29,22 @@
  */
 
 namespace SpApi\Model\fulfillment\inbound\v2024_03_20;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * PrepCategory Class Doc Comment
+ * PrepCategory Class Doc Comment.
  *
  * @category Class
+ *
  * @description The preparation category for shipping an item to Amazon&#39;s fulfillment network.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class PrepCategory
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const ADULT = 'ADULT';
 
@@ -73,7 +75,8 @@ class PrepCategory
     public const NONE = 'NONE';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
@@ -92,9 +95,7 @@ class PrepCategory
             self::SMALL,
             self::TEXTILE,
             self::UNKNOWN,
-            self::NONE
+            self::NONE,
         ];
     }
 }
-
-

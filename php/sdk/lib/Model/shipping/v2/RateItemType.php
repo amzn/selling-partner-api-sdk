@@ -1,17 +1,19 @@
 <?php
+
 /**
- * RateItemType
+ * RateItemType.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Amazon Shipping API
+ * Amazon Shipping API.
  *
  * The Amazon Shipping API is designed to support outbound shipping use cases both for orders originating on Amazon-owned marketplaces as well as external channels/marketplaces. With these APIs, you can request shipping rates, create shipments, cancel shipments, and track shipments.
  *
@@ -28,22 +30,22 @@
  */
 
 namespace SpApi\Model\shipping\v2;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * RateItemType Class Doc Comment
+ * RateItemType Class Doc Comment.
  *
  * @category Class
+ *
  * @description Type of the rateItem.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class RateItemType
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const MANDATORY = 'MANDATORY';
 
@@ -52,7 +54,8 @@ class RateItemType
     public const INCLUDED = 'INCLUDED';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
@@ -60,9 +63,7 @@ class RateItemType
         return [
             self::MANDATORY,
             self::OPTIONAL,
-            self::INCLUDED
+            self::INCLUDED,
         ];
     }
 }
-
-

@@ -1,13 +1,15 @@
 <?php
+
 /**
- * OperationStatus
+ * OperationStatus.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
@@ -27,22 +29,22 @@
  */
 
 namespace SpApi\Model\fulfillment\inbound\v2024_03_20;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * OperationStatus Class Doc Comment
+ * OperationStatus Class Doc Comment.
  *
  * @category Class
+ *
  * @description The status of an operation.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class OperationStatus
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const SUCCESS = 'SUCCESS';
 
@@ -51,7 +53,8 @@ class OperationStatus
     public const IN_PROGRESS = 'IN_PROGRESS';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
@@ -59,9 +62,7 @@ class OperationStatus
         return [
             self::SUCCESS,
             self::FAILED,
-            self::IN_PROGRESS
+            self::IN_PROGRESS,
         ];
     }
 }
-
-

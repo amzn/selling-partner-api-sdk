@@ -1,17 +1,19 @@
 <?php
+
 /**
- * CapacityType
+ * CapacityType.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Services
+ * Selling Partner API for Services.
  *
  * With the Services API, you can build applications that help service providers get and modify their service orders and manage their resources.
  *
@@ -27,22 +29,22 @@
  */
 
 namespace SpApi\Model\services\v1;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * CapacityType Class Doc Comment
+ * CapacityType Class Doc Comment.
  *
  * @category Class
+ *
  * @description Type of capacity
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class CapacityType
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const SCHEDULED_CAPACITY = 'SCHEDULED_CAPACITY';
 
@@ -53,7 +55,8 @@ class CapacityType
     public const RESERVED_CAPACITY = 'RESERVED_CAPACITY';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
@@ -62,9 +65,7 @@ class CapacityType
             self::SCHEDULED_CAPACITY,
             self::AVAILABLE_CAPACITY,
             self::ENCUMBERED_CAPACITY,
-            self::RESERVED_CAPACITY
+            self::RESERVED_CAPACITY,
         ];
     }
 }
-
-

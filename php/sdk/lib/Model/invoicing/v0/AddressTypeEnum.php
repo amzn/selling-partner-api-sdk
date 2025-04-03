@@ -1,17 +1,19 @@
 <?php
+
 /**
- * AddressTypeEnum
+ * AddressTypeEnum.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Shipment Invoicing
+ * Selling Partner API for Shipment Invoicing.
  *
  * The Selling Partner API for Shipment Invoicing helps you programmatically retrieve shipment invoice information in the Brazil marketplace for a selling partner’s Fulfillment by Amazon (FBA) orders.
  *
@@ -27,38 +29,37 @@
  */
 
 namespace SpApi\Model\invoicing\v0;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * AddressTypeEnum Class Doc Comment
+ * AddressTypeEnum Class Doc Comment.
  *
  * @category Class
+ *
  * @description The shipping address type.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class AddressTypeEnum
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const RESIDENTIAL = 'Residential';
 
     public const COMMERCIAL = 'Commercial';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
     {
         return [
             self::RESIDENTIAL,
-            self::COMMERCIAL
+            self::COMMERCIAL,
         ];
     }
 }
-
-

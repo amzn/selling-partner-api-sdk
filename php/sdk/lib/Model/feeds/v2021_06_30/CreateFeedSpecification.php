@@ -1,17 +1,19 @@
 <?php
+
 /**
- * CreateFeedSpecification
+ * CreateFeedSpecification.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Feeds
+ * Selling Partner API for Feeds.
  *
  * The Selling Partner API for Feeds lets you upload data to Amazon on behalf of a selling partner.
  *
@@ -28,163 +30,91 @@
 
 namespace SpApi\Model\feeds\v2021_06_30;
 
-use
-ArrayAccess;
-use SpApi\ObjectSerializer;
 use SpApi\Model\ModelInterface;
+use SpApi\ObjectSerializer;
 
 /**
- * CreateFeedSpecification Class Doc Comment
+ * CreateFeedSpecification Class Doc Comment.
  *
  * @category Class
+ *
  * @description Information required to create the feed.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
+ *
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateFeedSpecification implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateFeedSpecification implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     */
     protected static string $openAPIModelName = 'CreateFeedSpecification';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static array $openAPITypes = [
-             'feed_type' => 'string',
-             'marketplace_ids' => 'string[]',
-             'input_feed_document_id' => 'string',
-             'feed_options' => 'array<string,string>'    ];
+        'feed_type' => 'string',
+        'marketplace_ids' => 'string[]',
+        'input_feed_document_id' => 'string',
+        'feed_options' => 'array<string,string>'];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     *
+     * @phpstan-var array<string, string|null>
+     *
+     * @psalm-var array<string, string|null>
+     */
     protected static array $openAPIFormats = [
-            'feed_type' => null,
-            'marketplace_ids' => null,
-            'input_feed_document_id' => null,
-            'feed_options' => null    ];
+        'feed_type' => null,
+        'marketplace_ids' => null,
+        'input_feed_document_id' => null,
+        'feed_options' => null];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization.
+     *
+     * @var bool[]
+     */
     protected static array $openAPINullables = [
         'feed_type' => false,
         'marketplace_ids' => false,
         'input_feed_document_id' => false,
-        'feed_options' => true
+        'feed_options' => true,
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here.
+     *
+     * @var bool[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPIFormats(): array
-    {
-        return self::$openAPIFormats;
-    }
-
-    /**
-     * Array of nullable properties
-     *
-     * @return array
-     */
-    protected static function openAPINullables(): array
-    {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * Array of nullable field names deliberately set to null
-     *
-     * @return boolean[]
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * Setter - Array of nullable field names deliberately set to null
-     *
-     * @param boolean[] $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    /**
-     * Checks if a property is nullable
-     *
-     * @param string $property
-     * @return bool
-     */
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    /**
-     * Checks if a nullable property is set to null.
-     *
-     * @param string $property
-     * @return bool
-     */
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @var string[]
      */
     protected static array $attributeMap = [
         'feed_type' => 'feedType',
-                'marketplace_ids' => 'marketplaceIds',
-                'input_feed_document_id' => 'inputFeedDocumentId',
-                'feed_options' => 'feedOptions'
-        
+        'marketplace_ids' => 'marketplaceIds',
+        'input_feed_document_id' => 'inputFeedDocumentId',
+        'feed_options' => 'feedOptions',
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @var string[]
      */
@@ -192,11 +122,11 @@ class CreateFeedSpecification implements ModelInterface, ArrayAccess, \JsonSeria
         'feed_type' => 'setFeedType',
         'marketplace_ids' => 'setMarketplaceIds',
         'input_feed_document_id' => 'setInputFeedDocumentId',
-        'feed_options' => 'setFeedOptions'
+        'feed_options' => 'setFeedOptions',
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @var string[]
      */
@@ -204,63 +134,19 @@ class CreateFeedSpecification implements ModelInterface, ArrayAccess, \JsonSeria
         'feed_type' => 'getFeedType',
         'marketplace_ids' => 'getMarketplaceIds',
         'input_feed_document_id' => 'getInputFeedDocumentId',
-        'feed_options' => 'getFeedOptions'
+        'feed_options' => 'getFeedOptions',
     ];
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @return array
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @return array
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @return array
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    /**
-     * The original name of the model.
-     *
-     * @return string
-     */
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-
-    /**
-     * Associative array for storing property values
-     *
-     * @var array
+     * Associative array for storing property values.
      */
     protected array $container = [];
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param array|null $data Associated array of property values
-     *                      initializing the model
+     * @param null|array $data Associated array of property values
+     *                         initializing the model
      */
     public function __construct(?array $data = null)
     {
@@ -271,21 +157,81 @@ class CreateFeedSpecification implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
-    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+     * Gets the string presentation of the object.
+     *
+     * @return string
+     */
+    public function __toString()
     {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
+        return json_encode(
+            ObjectSerializer::sanitizeForSerialization($this),
+            JSON_PRETTY_PRINT
+        );
+    }
 
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    /**
+     * Array of property to type mappings. Used for (de)serialization.
+     */
+    public static function openAPITypes(): array
+    {
+        return self::$openAPITypes;
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization.
+     */
+    public static function openAPIFormats(): array
+    {
+        return self::$openAPIFormats;
+    }
+
+    /**
+     * Checks if a property is nullable.
+     */
+    public static function isNullable(string $property): bool
+    {
+        return self::openAPINullables()[$property] ?? false;
+    }
+
+    /**
+     * Checks if a nullable property is set to null.
+     */
+    public function isNullableSetToNull(string $property): bool
+    {
+        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name.
+     */
+    public static function attributeMap(): array
+    {
+        return self::$attributeMap;
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses).
+     */
+    public static function setters(): array
+    {
+        return self::$setters;
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests).
+     */
+    public static function getters(): array
+    {
+        return self::$getters;
+    }
+
+    /**
+     * The original name of the model.
+     */
+    public function getModelName(): string
+    {
+        return self::$openAPIModelName;
     }
 
     /**
@@ -297,42 +243,40 @@ class CreateFeedSpecification implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
-        if ($this->container['feed_type'] === null) {
+        if (null === $this->container['feed_type']) {
             $invalidProperties[] = "'feed_type' can't be null";
         }
-        if ($this->container['marketplace_ids'] === null) {
+        if (null === $this->container['marketplace_ids']) {
             $invalidProperties[] = "'marketplace_ids' can't be null";
         }
-        if ((count($this->container['marketplace_ids']) > 25)) {
+        if (count($this->container['marketplace_ids']) > 25) {
             $invalidProperties[] = "invalid value for 'marketplace_ids', number of items must be less than or equal to 25.";
         }
 
-        if ((count($this->container['marketplace_ids']) < 1)) {
+        if (count($this->container['marketplace_ids']) < 1) {
             $invalidProperties[] = "invalid value for 'marketplace_ids', number of items must be greater than or equal to 1.";
         }
 
-        if ($this->container['input_feed_document_id'] === null) {
+        if (null === $this->container['input_feed_document_id']) {
             $invalidProperties[] = "'input_feed_document_id' can't be null";
         }
+
         return $invalidProperties;
     }
 
     /**
      * Validate all the properties in the model
-     * return true if all passed
+     * return true if all passed.
      *
      * @return bool True if all properties are valid
      */
     public function valid(): bool
     {
-        return count($this->listInvalidProperties()) === 0;
+        return 0 === count($this->listInvalidProperties());
     }
 
-
     /**
-     * Gets feed_type
-     *
-     * @return string
+     * Gets feed_type.
      */
     public function getFeedType(): string
     {
@@ -340,11 +284,9 @@ class CreateFeedSpecification implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Sets feed_type
+     * Sets feed_type.
      *
-     * @param string $feed_type The feed type.
-     *
-     * @return self
+     * @param string $feed_type the feed type
      */
     public function setFeedType(string $feed_type): self
     {
@@ -357,9 +299,7 @@ class CreateFeedSpecification implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Gets marketplace_ids
-     *
-     * @return array
+     * Gets marketplace_ids.
      */
     public function getMarketplaceIds(): array
     {
@@ -367,11 +307,9 @@ class CreateFeedSpecification implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Sets marketplace_ids
+     * Sets marketplace_ids.
      *
-     * @param array $marketplace_ids A list of identifiers for marketplaces that you want the feed to be applied to.
-     *
-     * @return self
+     * @param array $marketplace_ids a list of identifiers for marketplaces that you want the feed to be applied to
      */
     public function setMarketplaceIds(array $marketplace_ids): self
     {
@@ -379,10 +317,10 @@ class CreateFeedSpecification implements ModelInterface, ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable marketplace_ids cannot be null');
         }
 
-        if ((count($marketplace_ids) > 25)) {
+        if (count($marketplace_ids) > 25) {
             throw new \InvalidArgumentException('invalid value for $marketplace_ids when calling CreateFeedSpecification., number of items must be less than or equal to 25.');
         }
-        if ((count($marketplace_ids) < 1)) {
+        if (count($marketplace_ids) < 1) {
             throw new \InvalidArgumentException('invalid length for $marketplace_ids when calling CreateFeedSpecification., number of items must be greater than or equal to 1.');
         }
         $this->container['marketplace_ids'] = $marketplace_ids;
@@ -391,9 +329,7 @@ class CreateFeedSpecification implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Gets input_feed_document_id
-     *
-     * @return string
+     * Gets input_feed_document_id.
      */
     public function getInputFeedDocumentId(): string
     {
@@ -401,11 +337,9 @@ class CreateFeedSpecification implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Sets input_feed_document_id
+     * Sets input_feed_document_id.
      *
      * @param string $input_feed_document_id The document identifier returned by the createFeedDocument operation. Upload the feed document contents before calling the createFeed operation.
-     *
-     * @return self
      */
     public function setInputFeedDocumentId(string $input_feed_document_id): self
     {
@@ -418,9 +352,9 @@ class CreateFeedSpecification implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Gets feed_options
+     * Gets feed_options.
      *
-     * @return array<string,string>|null
+     * @return null|array<string,string>
      */
     public function getFeedOptions(): ?array
     {
@@ -428,11 +362,9 @@ class CreateFeedSpecification implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Sets feed_options
+     * Sets feed_options.
      *
-     * @param array<string,string>|null $feed_options Additional options to control the feed. These vary by feed type.
-     *
-     * @return self
+     * @param null|array<string,string> $feed_options Additional options to control the feed. These vary by feed type.
      */
     public function setFeedOptions(?array $feed_options): self
     {
@@ -441,7 +373,7 @@ class CreateFeedSpecification implements ModelInterface, ArrayAccess, \JsonSeria
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('feed_options', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -451,13 +383,10 @@ class CreateFeedSpecification implements ModelInterface, ArrayAccess, \JsonSeria
         return $this;
     }
 
-
     /**
      * Returns true if offset exists. False otherwise.
      *
-     * @param integer $offset Offset
-     *
-     * @return boolean
+     * @param int $offset Offset
      */
     public function offsetExists($offset): bool
     {
@@ -467,9 +396,9 @@ class CreateFeedSpecification implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
-     * @return mixed|null
+     * @return null|mixed
      */
     #[\ReturnTypeWillChange]
     public function offsetGet($offset): mixed
@@ -480,10 +409,8 @@ class CreateFeedSpecification implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets value based on offset.
      *
-     * @param int|null $offset Offset
+     * @param null|int $offset Offset
      * @param mixed    $value  Value to be set
-     *
-     * @return void
      */
     public function offsetSet($offset, mixed $value): void
     {
@@ -497,9 +424,7 @@ class CreateFeedSpecification implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Unsets offset.
      *
-     * @param integer $offset Offset
-     *
-     * @return void
+     * @param int $offset Offset
      */
     public function offsetUnset($offset): void
     {
@@ -508,39 +433,67 @@ class CreateFeedSpecification implements ModelInterface, ArrayAccess, \JsonSeria
 
     /**
      * Serializes the object to a value that can be serialized natively by json_encode().
-     * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
      *
-     * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
+     * @see https://www.php.net/manual/en/jsonserializable.jsonserialize.php
+     *
+     * @return mixed returns data which can be serialized by json_encode(), which is a value
+     *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
     public function jsonSerialize(): mixed
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
-     * Gets the string presentation of the object
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    /**
-     * Gets a header-safe presentation of the object
-     *
-     * @return string
+     * Gets a header-safe presentation of the object.
      */
     public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
+
+    /**
+     * Array of nullable properties.
+     */
+    protected static function openAPINullables(): array
+    {
+        return self::$openAPINullables;
+    }
+
+    /**
+     * Array of nullable field names deliberately set to null.
+     *
+     * @return bool[]
+     */
+    private function getOpenAPINullablesSetToNull(): array
+    {
+        return $this->openAPINullablesSetToNull;
+    }
+
+    /**
+     * Setter - Array of nullable field names deliberately set to null.
+     *
+     * @param bool[] $openAPINullablesSetToNull
+     */
+    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
+    {
+        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
+    }
+
+    /**
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array.
+     *
+     * @param mixed $defaultValue
+     */
+    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+    {
+        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
+            $this->openAPINullablesSetToNull[] = $variableName;
+        }
+
+        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    }
 }
-
-

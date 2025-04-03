@@ -1,17 +1,19 @@
 <?php
+
 /**
- * AutoEnrollmentPreference
+ * AutoEnrollmentPreference.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Replenishment
+ * Selling Partner API for Replenishment.
  *
  * The Selling Partner API for Replenishment (Replenishment API) provides programmatic access to replenishment program metrics and offers. These programs provide recurring delivery of any replenishable item at a frequency chosen by the customer.  The Replenishment API is available worldwide wherever Amazon Subscribe & Save is available or is supported. The API is available to vendors and FBA selling partners.
  *
@@ -27,38 +29,37 @@
  */
 
 namespace SpApi\Model\replenishment\v2022_11_07;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * AutoEnrollmentPreference Class Doc Comment
+ * AutoEnrollmentPreference Class Doc Comment.
  *
  * @category Class
+ *
  * @description The auto-enrollment preference indicates whether the offer is opted-in to or opted-out of Amazon&#39;s auto-enrollment feature.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class AutoEnrollmentPreference
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const IN = 'OPTED_IN';
 
     public const OUT = 'OPTED_OUT';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
     {
         return [
             self::IN,
-            self::OUT
+            self::OUT,
         ];
     }
 }
-
-

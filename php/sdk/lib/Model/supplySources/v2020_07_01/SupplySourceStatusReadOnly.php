@@ -1,17 +1,19 @@
 <?php
+
 /**
- * SupplySourceStatusReadOnly
+ * SupplySourceStatusReadOnly.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Supply Sources
+ * Selling Partner API for Supply Sources.
  *
  * Manage configurations and capabilities of seller supply sources.
  *
@@ -27,22 +29,22 @@
  */
 
 namespace SpApi\Model\supplySources\v2020_07_01;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * SupplySourceStatusReadOnly Class Doc Comment
+ * SupplySourceStatusReadOnly Class Doc Comment.
  *
  * @category Class
+ *
  * @description The &#x60;SupplySource&#x60; status.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class SupplySourceStatusReadOnly
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const ACTIVE = 'Active';
 
@@ -51,7 +53,8 @@ class SupplySourceStatusReadOnly
     public const ARCHIVED = 'Archived';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
@@ -59,9 +62,7 @@ class SupplySourceStatusReadOnly
         return [
             self::ACTIVE,
             self::INACTIVE,
-            self::ARCHIVED
+            self::ARCHIVED,
         ];
     }
 }
-
-

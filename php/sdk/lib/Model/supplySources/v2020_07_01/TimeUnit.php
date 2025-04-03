@@ -1,17 +1,19 @@
 <?php
+
 /**
- * TimeUnit
+ * TimeUnit.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Supply Sources
+ * Selling Partner API for Supply Sources.
  *
  * Manage configurations and capabilities of seller supply sources.
  *
@@ -27,22 +29,22 @@
  */
 
 namespace SpApi\Model\supplySources\v2020_07_01;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * TimeUnit Class Doc Comment
+ * TimeUnit Class Doc Comment.
  *
  * @category Class
+ *
  * @description The time unit
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class TimeUnit
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const HOURS = 'Hours';
 
@@ -51,7 +53,8 @@ class TimeUnit
     public const DAYS = 'Days';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
@@ -59,9 +62,7 @@ class TimeUnit
         return [
             self::HOURS,
             self::MINUTES,
-            self::DAYS
+            self::DAYS,
         ];
     }
 }
-
-

@@ -1,17 +1,19 @@
 <?php
+
 /**
- * ShipmentStatus
+ * ShipmentStatus.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Fulfillment Inbound
+ * Selling Partner API for Fulfillment Inbound.
  *
  * The Selling Partner API for Fulfillment Inbound lets you create applications that create and update inbound shipments of inventory to Amazon's fulfillment network.
  *
@@ -27,22 +29,22 @@
  */
 
 namespace SpApi\Model\fulfillment\inbound\v0;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * ShipmentStatus Class Doc Comment
+ * ShipmentStatus Class Doc Comment.
  *
  * @category Class
+ *
  * @description Indicates the status of the inbound shipment. When used with the createInboundShipment operation, WORKING is the only valid value. When used with the updateInboundShipment operation, possible values are WORKING, SHIPPED or CANCELLED.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class ShipmentStatus
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const WORKING = 'WORKING';
 
@@ -65,7 +67,8 @@ class ShipmentStatus
     public const CHECKED_IN = 'CHECKED_IN';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
@@ -80,9 +83,7 @@ class ShipmentStatus
             self::ERROR,
             self::IN_TRANSIT,
             self::DELIVERED,
-            self::CHECKED_IN
+            self::CHECKED_IN,
         ];
     }
 }
-
-
