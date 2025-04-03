@@ -1,13 +1,15 @@
 <?php
+
 /**
- * PaymentMethodType
+ * PaymentMethodType.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
@@ -27,22 +29,22 @@
  */
 
 namespace SpApi\Model\transfers\v2024_06_01;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * PaymentMethodType Class Doc Comment
+ * PaymentMethodType Class Doc Comment.
  *
  * @category Class
+ *
  * @description The type of payment method.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class PaymentMethodType
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const BANK_ACCOUNT = 'BANK_ACCOUNT';
 
@@ -51,7 +53,8 @@ class PaymentMethodType
     public const SELLER_WALLET = 'SELLER_WALLET';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
@@ -59,9 +62,7 @@ class PaymentMethodType
         return [
             self::BANK_ACCOUNT,
             self::CARD,
-            self::SELLER_WALLET
+            self::SELLER_WALLET,
         ];
     }
 }
-
-

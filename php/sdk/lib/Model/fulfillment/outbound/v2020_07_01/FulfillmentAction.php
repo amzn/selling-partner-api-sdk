@@ -1,17 +1,19 @@
 <?php
+
 /**
- * FulfillmentAction
+ * FulfillmentAction.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner APIs for Fulfillment Outbound
+ * Selling Partner APIs for Fulfillment Outbound.
  *
  * The Selling Partner API for Fulfillment Outbound lets you create applications that help a seller fulfill Multi-Channel Fulfillment orders using their inventory in Amazon's fulfillment network. You can get information on both potential and existing fulfillment orders.
  *
@@ -27,38 +29,37 @@
  */
 
 namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * FulfillmentAction Class Doc Comment
+ * FulfillmentAction Class Doc Comment.
  *
  * @category Class
+ *
  * @description Specifies whether the fulfillment order should ship now or have an order hold put on it.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class FulfillmentAction
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const SHIP = 'Ship';
 
     public const HOLD = 'Hold';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
     {
         return [
             self::SHIP,
-            self::HOLD
+            self::HOLD,
         ];
     }
 }
-
-

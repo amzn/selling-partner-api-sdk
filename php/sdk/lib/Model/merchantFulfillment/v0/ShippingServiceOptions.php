@@ -1,17 +1,19 @@
 <?php
+
 /**
- * ShippingServiceOptions
+ * ShippingServiceOptions.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Merchant Fulfillment
+ * Selling Partner API for Merchant Fulfillment.
  *
  * With the Selling Partner API for Merchant Fulfillment, you can build applications that sellers can use to purchase shipping for non-Prime and Prime orders using Amazon's Buy Shipping Services.
  *
@@ -28,167 +30,95 @@
 
 namespace SpApi\Model\merchantFulfillment\v0;
 
-use
-ArrayAccess;
-use SpApi\ObjectSerializer;
 use SpApi\Model\ModelInterface;
+use SpApi\ObjectSerializer;
 
 /**
- * ShippingServiceOptions Class Doc Comment
+ * ShippingServiceOptions Class Doc Comment.
  *
  * @category Class
+ *
  * @description Extra services provided by a carrier.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
+ *
  * @implements \ArrayAccess<string, mixed>
  */
-class ShippingServiceOptions implements ModelInterface, ArrayAccess, \JsonSerializable
+class ShippingServiceOptions implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     */
     protected static string $openAPIModelName = 'ShippingServiceOptions';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static array $openAPITypes = [
-             'delivery_experience' => '\SpApi\Model\merchantFulfillment\v0\DeliveryExperienceType',
-             'declared_value' => '\SpApi\Model\merchantFulfillment\v0\CurrencyAmount',
-             'carrier_will_pick_up' => 'bool',
-             'carrier_will_pick_up_option' => '\SpApi\Model\merchantFulfillment\v0\CarrierWillPickUpOption',
-             'label_format' => '\SpApi\Model\merchantFulfillment\v0\LabelFormat'    ];
+        'delivery_experience' => '\SpApi\Model\merchantFulfillment\v0\DeliveryExperienceType',
+        'declared_value' => '\SpApi\Model\merchantFulfillment\v0\CurrencyAmount',
+        'carrier_will_pick_up' => 'bool',
+        'carrier_will_pick_up_option' => '\SpApi\Model\merchantFulfillment\v0\CarrierWillPickUpOption',
+        'label_format' => '\SpApi\Model\merchantFulfillment\v0\LabelFormat'];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     *
+     * @phpstan-var array<string, string|null>
+     *
+     * @psalm-var array<string, string|null>
+     */
     protected static array $openAPIFormats = [
-            'delivery_experience' => null,
-            'declared_value' => null,
-            'carrier_will_pick_up' => null,
-            'carrier_will_pick_up_option' => null,
-            'label_format' => null    ];
+        'delivery_experience' => null,
+        'declared_value' => null,
+        'carrier_will_pick_up' => null,
+        'carrier_will_pick_up_option' => null,
+        'label_format' => null];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization.
+     *
+     * @var bool[]
+     */
     protected static array $openAPINullables = [
         'delivery_experience' => false,
         'declared_value' => true,
         'carrier_will_pick_up' => false,
         'carrier_will_pick_up_option' => true,
-        'label_format' => true
+        'label_format' => true,
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here.
+     *
+     * @var bool[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPIFormats(): array
-    {
-        return self::$openAPIFormats;
-    }
-
-    /**
-     * Array of nullable properties
-     *
-     * @return array
-     */
-    protected static function openAPINullables(): array
-    {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * Array of nullable field names deliberately set to null
-     *
-     * @return boolean[]
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * Setter - Array of nullable field names deliberately set to null
-     *
-     * @param boolean[] $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    /**
-     * Checks if a property is nullable
-     *
-     * @param string $property
-     * @return bool
-     */
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    /**
-     * Checks if a nullable property is set to null.
-     *
-     * @param string $property
-     * @return bool
-     */
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @var string[]
      */
     protected static array $attributeMap = [
         'delivery_experience' => 'DeliveryExperience',
-                'declared_value' => 'DeclaredValue',
-                'carrier_will_pick_up' => 'CarrierWillPickUp',
-                'carrier_will_pick_up_option' => 'CarrierWillPickUpOption',
-                'label_format' => 'LabelFormat'
-        
+        'declared_value' => 'DeclaredValue',
+        'carrier_will_pick_up' => 'CarrierWillPickUp',
+        'carrier_will_pick_up_option' => 'CarrierWillPickUpOption',
+        'label_format' => 'LabelFormat',
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @var string[]
      */
@@ -197,11 +127,11 @@ class ShippingServiceOptions implements ModelInterface, ArrayAccess, \JsonSerial
         'declared_value' => 'setDeclaredValue',
         'carrier_will_pick_up' => 'setCarrierWillPickUp',
         'carrier_will_pick_up_option' => 'setCarrierWillPickUpOption',
-        'label_format' => 'setLabelFormat'
+        'label_format' => 'setLabelFormat',
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @var string[]
      */
@@ -210,63 +140,19 @@ class ShippingServiceOptions implements ModelInterface, ArrayAccess, \JsonSerial
         'declared_value' => 'getDeclaredValue',
         'carrier_will_pick_up' => 'getCarrierWillPickUp',
         'carrier_will_pick_up_option' => 'getCarrierWillPickUpOption',
-        'label_format' => 'getLabelFormat'
+        'label_format' => 'getLabelFormat',
     ];
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @return array
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @return array
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @return array
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    /**
-     * The original name of the model.
-     *
-     * @return string
-     */
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-
-    /**
-     * Associative array for storing property values
-     *
-     * @var array
+     * Associative array for storing property values.
      */
     protected array $container = [];
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param array|null $data Associated array of property values
-     *                      initializing the model
+     * @param null|array $data Associated array of property values
+     *                         initializing the model
      */
     public function __construct(?array $data = null)
     {
@@ -278,21 +164,81 @@ class ShippingServiceOptions implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
-    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+     * Gets the string presentation of the object.
+     *
+     * @return string
+     */
+    public function __toString()
     {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
+        return json_encode(
+            ObjectSerializer::sanitizeForSerialization($this),
+            JSON_PRETTY_PRINT
+        );
+    }
 
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    /**
+     * Array of property to type mappings. Used for (de)serialization.
+     */
+    public static function openAPITypes(): array
+    {
+        return self::$openAPITypes;
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization.
+     */
+    public static function openAPIFormats(): array
+    {
+        return self::$openAPIFormats;
+    }
+
+    /**
+     * Checks if a property is nullable.
+     */
+    public static function isNullable(string $property): bool
+    {
+        return self::openAPINullables()[$property] ?? false;
+    }
+
+    /**
+     * Checks if a nullable property is set to null.
+     */
+    public function isNullableSetToNull(string $property): bool
+    {
+        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name.
+     */
+    public static function attributeMap(): array
+    {
+        return self::$attributeMap;
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses).
+     */
+    public static function setters(): array
+    {
+        return self::$setters;
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests).
+     */
+    public static function getters(): array
+    {
+        return self::$getters;
+    }
+
+    /**
+     * The original name of the model.
+     */
+    public function getModelName(): string
+    {
+        return self::$openAPIModelName;
     }
 
     /**
@@ -304,31 +250,29 @@ class ShippingServiceOptions implements ModelInterface, ArrayAccess, \JsonSerial
     {
         $invalidProperties = [];
 
-        if ($this->container['delivery_experience'] === null) {
+        if (null === $this->container['delivery_experience']) {
             $invalidProperties[] = "'delivery_experience' can't be null";
         }
-        if ($this->container['carrier_will_pick_up'] === null) {
+        if (null === $this->container['carrier_will_pick_up']) {
             $invalidProperties[] = "'carrier_will_pick_up' can't be null";
         }
+
         return $invalidProperties;
     }
 
     /**
      * Validate all the properties in the model
-     * return true if all passed
+     * return true if all passed.
      *
      * @return bool True if all properties are valid
      */
     public function valid(): bool
     {
-        return count($this->listInvalidProperties()) === 0;
+        return 0 === count($this->listInvalidProperties());
     }
 
-
     /**
-     * Gets delivery_experience
-     *
-     * @return string
+     * Gets delivery_experience.
      */
     public function getDeliveryExperience(): string
     {
@@ -336,11 +280,9 @@ class ShippingServiceOptions implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Sets delivery_experience
+     * Sets delivery_experience.
      *
      * @param string $delivery_experience delivery_experience
-     *
-     * @return self
      */
     public function setDeliveryExperience(string $delivery_experience): self
     {
@@ -353,30 +295,26 @@ class ShippingServiceOptions implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets declared_value
-     *
-     * @return \SpApi\Model\merchantFulfillment\v0\CurrencyAmount|null
+     * Gets declared_value.
      */
-    public function getDeclaredValue(): ?\SpApi\Model\merchantFulfillment\v0\CurrencyAmount
+    public function getDeclaredValue(): ?CurrencyAmount
     {
         return $this->container['declared_value'];
     }
 
     /**
-     * Sets declared_value
+     * Sets declared_value.
      *
-     * @param \SpApi\Model\merchantFulfillment\v0\CurrencyAmount|null $declared_value declared_value
-     *
-     * @return self
+     * @param null|CurrencyAmount $declared_value declared_value
      */
-    public function setDeclaredValue(?\SpApi\Model\merchantFulfillment\v0\CurrencyAmount $declared_value): self
+    public function setDeclaredValue(?CurrencyAmount $declared_value): self
     {
         if (is_null($declared_value)) {
             array_push($this->openAPINullablesSetToNull, 'declared_value');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('declared_value', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -387,9 +325,7 @@ class ShippingServiceOptions implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets carrier_will_pick_up
-     *
-     * @return bool
+     * Gets carrier_will_pick_up.
      */
     public function getCarrierWillPickUp(): bool
     {
@@ -397,11 +333,9 @@ class ShippingServiceOptions implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Sets carrier_will_pick_up
+     * Sets carrier_will_pick_up.
      *
      * @param bool $carrier_will_pick_up When true, the carrier will pick up the package. Note: Scheduled carrier pickup is available only using Dynamex (US), DPD (UK), and Royal Mail (UK).
-     *
-     * @return self
      */
     public function setCarrierWillPickUp(bool $carrier_will_pick_up): self
     {
@@ -414,9 +348,7 @@ class ShippingServiceOptions implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets carrier_will_pick_up_option
-     *
-     * @return string|null
+     * Gets carrier_will_pick_up_option.
      */
     public function getCarrierWillPickUpOption(): ?string
     {
@@ -424,11 +356,9 @@ class ShippingServiceOptions implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Sets carrier_will_pick_up_option
+     * Sets carrier_will_pick_up_option.
      *
-     * @param string|null $carrier_will_pick_up_option carrier_will_pick_up_option
-     *
-     * @return self
+     * @param null|string $carrier_will_pick_up_option carrier_will_pick_up_option
      */
     public function setCarrierWillPickUpOption(?string $carrier_will_pick_up_option): self
     {
@@ -437,7 +367,7 @@ class ShippingServiceOptions implements ModelInterface, ArrayAccess, \JsonSerial
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('carrier_will_pick_up_option', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -448,9 +378,7 @@ class ShippingServiceOptions implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets label_format
-     *
-     * @return string|null
+     * Gets label_format.
      */
     public function getLabelFormat(): ?string
     {
@@ -458,11 +386,9 @@ class ShippingServiceOptions implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Sets label_format
+     * Sets label_format.
      *
-     * @param string|null $label_format label_format
-     *
-     * @return self
+     * @param null|string $label_format label_format
      */
     public function setLabelFormat(?string $label_format): self
     {
@@ -471,7 +397,7 @@ class ShippingServiceOptions implements ModelInterface, ArrayAccess, \JsonSerial
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('label_format', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -481,13 +407,10 @@ class ShippingServiceOptions implements ModelInterface, ArrayAccess, \JsonSerial
         return $this;
     }
 
-
     /**
      * Returns true if offset exists. False otherwise.
      *
-     * @param integer $offset Offset
-     *
-     * @return boolean
+     * @param int $offset Offset
      */
     public function offsetExists($offset): bool
     {
@@ -497,9 +420,9 @@ class ShippingServiceOptions implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
-     * @return mixed|null
+     * @return null|mixed
      */
     #[\ReturnTypeWillChange]
     public function offsetGet($offset): mixed
@@ -510,10 +433,8 @@ class ShippingServiceOptions implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets value based on offset.
      *
-     * @param int|null $offset Offset
+     * @param null|int $offset Offset
      * @param mixed    $value  Value to be set
-     *
-     * @return void
      */
     public function offsetSet($offset, mixed $value): void
     {
@@ -527,9 +448,7 @@ class ShippingServiceOptions implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Unsets offset.
      *
-     * @param integer $offset Offset
-     *
-     * @return void
+     * @param int $offset Offset
      */
     public function offsetUnset($offset): void
     {
@@ -538,39 +457,67 @@ class ShippingServiceOptions implements ModelInterface, ArrayAccess, \JsonSerial
 
     /**
      * Serializes the object to a value that can be serialized natively by json_encode().
-     * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
      *
-     * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
+     * @see https://www.php.net/manual/en/jsonserializable.jsonserialize.php
+     *
+     * @return mixed returns data which can be serialized by json_encode(), which is a value
+     *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
     public function jsonSerialize(): mixed
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
-     * Gets the string presentation of the object
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    /**
-     * Gets a header-safe presentation of the object
-     *
-     * @return string
+     * Gets a header-safe presentation of the object.
      */
     public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
+
+    /**
+     * Array of nullable properties.
+     */
+    protected static function openAPINullables(): array
+    {
+        return self::$openAPINullables;
+    }
+
+    /**
+     * Array of nullable field names deliberately set to null.
+     *
+     * @return bool[]
+     */
+    private function getOpenAPINullablesSetToNull(): array
+    {
+        return $this->openAPINullablesSetToNull;
+    }
+
+    /**
+     * Setter - Array of nullable field names deliberately set to null.
+     *
+     * @param bool[] $openAPINullablesSetToNull
+     */
+    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
+    {
+        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
+    }
+
+    /**
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array.
+     *
+     * @param mixed $defaultValue
+     */
+    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+    {
+        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
+            $this->openAPINullablesSetToNull[] = $variableName;
+        }
+
+        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    }
 }
-
-

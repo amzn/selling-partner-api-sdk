@@ -1,17 +1,19 @@
 <?php
+
 /**
- * CurrentStatus
+ * CurrentStatus.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner APIs for Fulfillment Outbound
+ * Selling Partner APIs for Fulfillment Outbound.
  *
  * The Selling Partner API for Fulfillment Outbound lets you create applications that help a seller fulfill Multi-Channel Fulfillment orders using their inventory in Amazon's fulfillment network. You can get information on both potential and existing fulfillment orders.
  *
@@ -27,22 +29,22 @@
  */
 
 namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * CurrentStatus Class Doc Comment
+ * CurrentStatus Class Doc Comment.
  *
  * @category Class
+ *
  * @description The current delivery status of the package.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class CurrentStatus
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const IN_TRANSIT = 'IN_TRANSIT';
 
@@ -81,7 +83,8 @@ class CurrentStatus
     public const RETURN_RECEIVED_IN_FC = 'RETURN_RECEIVED_IN_FC';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
@@ -104,9 +107,7 @@ class CurrentStatus
             self::PICKUP_SCHEDULED,
             self::RETURN_REQUEST_ACCEPTED,
             self::REFUND_ISSUED,
-            self::RETURN_RECEIVED_IN_FC
+            self::RETURN_RECEIVED_IN_FC,
         ];
     }
 }
-
-

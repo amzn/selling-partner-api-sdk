@@ -1,17 +1,19 @@
 <?php
+
 /**
- * InboundEligibilityStatus
+ * InboundEligibilityStatus.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * The Selling Partner API for Amazon Warehousing and Distribution
+ * The Selling Partner API for Amazon Warehousing and Distribution.
  *
  * The Selling Partner API for Amazon Warehousing and Distribution (AWD) provides programmatic access to information about AWD shipments and inventory.
  *
@@ -27,38 +29,37 @@
  */
 
 namespace SpApi\Model\awd\v2024_05_09;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * InboundEligibilityStatus Class Doc Comment
+ * InboundEligibilityStatus Class Doc Comment.
  *
  * @category Class
+ *
  * @description Enum denoting the package inbound eligibility.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class InboundEligibilityStatus
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const ELIGIBLE = 'ELIGIBLE';
 
     public const INELIGIBLE = 'INELIGIBLE';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
     {
         return [
             self::ELIGIBLE,
-            self::INELIGIBLE
+            self::INELIGIBLE,
         ];
     }
 }
-
-

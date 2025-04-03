@@ -1,17 +1,19 @@
 <?php
+
 /**
- * AddressExtendedFields
+ * AddressExtendedFields.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Orders
+ * Selling Partner API for Orders.
  *
  * Use the Orders Selling Partner API to programmatically retrieve order information. With this API, you can develop fast, flexible, and custom applications to manage order synchronization, perform order research, and create demand-based decision support tools.   _Note:_ For the JP, AU, and SG marketplaces, the Orders API supports orders from 2016 onward. For all other marketplaces, the Orders API supports orders for the last two years (orders older than this don't show up in the response).
  *
@@ -28,163 +30,91 @@
 
 namespace SpApi\Model\orders\v0;
 
-use
-ArrayAccess;
-use SpApi\ObjectSerializer;
 use SpApi\Model\ModelInterface;
+use SpApi\ObjectSerializer;
 
 /**
- * AddressExtendedFields Class Doc Comment
+ * AddressExtendedFields Class Doc Comment.
  *
  * @category Class
+ *
  * @description The container for address extended fields (such as &#x60;street name&#x60; and &#x60;street number&#x60;). Currently only available with Brazil shipping addresses.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
+ *
  * @implements \ArrayAccess<string, mixed>
  */
-class AddressExtendedFields implements ModelInterface, ArrayAccess, \JsonSerializable
+class AddressExtendedFields implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     */
     protected static string $openAPIModelName = 'AddressExtendedFields';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static array $openAPITypes = [
-             'street_name' => 'string',
-             'street_number' => 'string',
-             'complement' => 'string',
-             'neighborhood' => 'string'    ];
+        'street_name' => 'string',
+        'street_number' => 'string',
+        'complement' => 'string',
+        'neighborhood' => 'string'];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     *
+     * @phpstan-var array<string, string|null>
+     *
+     * @psalm-var array<string, string|null>
+     */
     protected static array $openAPIFormats = [
-            'street_name' => null,
-            'street_number' => null,
-            'complement' => null,
-            'neighborhood' => null    ];
+        'street_name' => null,
+        'street_number' => null,
+        'complement' => null,
+        'neighborhood' => null];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization.
+     *
+     * @var bool[]
+     */
     protected static array $openAPINullables = [
         'street_name' => true,
         'street_number' => true,
         'complement' => true,
-        'neighborhood' => true
+        'neighborhood' => true,
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here.
+     *
+     * @var bool[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPIFormats(): array
-    {
-        return self::$openAPIFormats;
-    }
-
-    /**
-     * Array of nullable properties
-     *
-     * @return array
-     */
-    protected static function openAPINullables(): array
-    {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * Array of nullable field names deliberately set to null
-     *
-     * @return boolean[]
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * Setter - Array of nullable field names deliberately set to null
-     *
-     * @param boolean[] $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    /**
-     * Checks if a property is nullable
-     *
-     * @param string $property
-     * @return bool
-     */
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    /**
-     * Checks if a nullable property is set to null.
-     *
-     * @param string $property
-     * @return bool
-     */
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @var string[]
      */
     protected static array $attributeMap = [
         'street_name' => 'StreetName',
-                'street_number' => 'StreetNumber',
-                'complement' => 'Complement',
-                'neighborhood' => 'Neighborhood'
-        
+        'street_number' => 'StreetNumber',
+        'complement' => 'Complement',
+        'neighborhood' => 'Neighborhood',
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @var string[]
      */
@@ -192,11 +122,11 @@ class AddressExtendedFields implements ModelInterface, ArrayAccess, \JsonSeriali
         'street_name' => 'setStreetName',
         'street_number' => 'setStreetNumber',
         'complement' => 'setComplement',
-        'neighborhood' => 'setNeighborhood'
+        'neighborhood' => 'setNeighborhood',
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @var string[]
      */
@@ -204,63 +134,19 @@ class AddressExtendedFields implements ModelInterface, ArrayAccess, \JsonSeriali
         'street_name' => 'getStreetName',
         'street_number' => 'getStreetNumber',
         'complement' => 'getComplement',
-        'neighborhood' => 'getNeighborhood'
+        'neighborhood' => 'getNeighborhood',
     ];
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @return array
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @return array
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @return array
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    /**
-     * The original name of the model.
-     *
-     * @return string
-     */
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-
-    /**
-     * Associative array for storing property values
-     *
-     * @var array
+     * Associative array for storing property values.
      */
     protected array $container = [];
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param array|null $data Associated array of property values
-     *                      initializing the model
+     * @param null|array $data Associated array of property values
+     *                         initializing the model
      */
     public function __construct(?array $data = null)
     {
@@ -271,21 +157,81 @@ class AddressExtendedFields implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
-    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+     * Gets the string presentation of the object.
+     *
+     * @return string
+     */
+    public function __toString()
     {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
+        return json_encode(
+            ObjectSerializer::sanitizeForSerialization($this),
+            JSON_PRETTY_PRINT
+        );
+    }
 
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    /**
+     * Array of property to type mappings. Used for (de)serialization.
+     */
+    public static function openAPITypes(): array
+    {
+        return self::$openAPITypes;
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization.
+     */
+    public static function openAPIFormats(): array
+    {
+        return self::$openAPIFormats;
+    }
+
+    /**
+     * Checks if a property is nullable.
+     */
+    public static function isNullable(string $property): bool
+    {
+        return self::openAPINullables()[$property] ?? false;
+    }
+
+    /**
+     * Checks if a nullable property is set to null.
+     */
+    public function isNullableSetToNull(string $property): bool
+    {
+        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name.
+     */
+    public static function attributeMap(): array
+    {
+        return self::$attributeMap;
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses).
+     */
+    public static function setters(): array
+    {
+        return self::$setters;
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests).
+     */
+    public static function getters(): array
+    {
+        return self::$getters;
+    }
+
+    /**
+     * The original name of the model.
+     */
+    public function getModelName(): string
+    {
+        return self::$openAPIModelName;
     }
 
     /**
@@ -295,27 +241,22 @@ class AddressExtendedFields implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function listInvalidProperties(): array
     {
-        $invalidProperties = [];
-
-        return $invalidProperties;
+        return [];
     }
 
     /**
      * Validate all the properties in the model
-     * return true if all passed
+     * return true if all passed.
      *
      * @return bool True if all properties are valid
      */
     public function valid(): bool
     {
-        return count($this->listInvalidProperties()) === 0;
+        return 0 === count($this->listInvalidProperties());
     }
 
-
     /**
-     * Gets street_name
-     *
-     * @return string|null
+     * Gets street_name.
      */
     public function getStreetName(): ?string
     {
@@ -323,11 +264,9 @@ class AddressExtendedFields implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Sets street_name
+     * Sets street_name.
      *
-     * @param string|null $street_name The street name.
-     *
-     * @return self
+     * @param null|string $street_name the street name
      */
     public function setStreetName(?string $street_name): self
     {
@@ -336,7 +275,7 @@ class AddressExtendedFields implements ModelInterface, ArrayAccess, \JsonSeriali
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('street_name', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -347,9 +286,7 @@ class AddressExtendedFields implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets street_number
-     *
-     * @return string|null
+     * Gets street_number.
      */
     public function getStreetNumber(): ?string
     {
@@ -357,11 +294,9 @@ class AddressExtendedFields implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Sets street_number
+     * Sets street_number.
      *
-     * @param string|null $street_number The house, building, or property number associated with the location's street address.
-     *
-     * @return self
+     * @param null|string $street_number the house, building, or property number associated with the location's street address
      */
     public function setStreetNumber(?string $street_number): self
     {
@@ -370,7 +305,7 @@ class AddressExtendedFields implements ModelInterface, ArrayAccess, \JsonSeriali
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('street_number', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -381,9 +316,7 @@ class AddressExtendedFields implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets complement
-     *
-     * @return string|null
+     * Gets complement.
      */
     public function getComplement(): ?string
     {
@@ -391,11 +324,9 @@ class AddressExtendedFields implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Sets complement
+     * Sets complement.
      *
-     * @param string|null $complement The floor number/unit number in the building/private house number.
-     *
-     * @return self
+     * @param null|string $complement the floor number/unit number in the building/private house number
      */
     public function setComplement(?string $complement): self
     {
@@ -404,7 +335,7 @@ class AddressExtendedFields implements ModelInterface, ArrayAccess, \JsonSeriali
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('complement', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -415,9 +346,7 @@ class AddressExtendedFields implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets neighborhood
-     *
-     * @return string|null
+     * Gets neighborhood.
      */
     public function getNeighborhood(): ?string
     {
@@ -425,11 +354,9 @@ class AddressExtendedFields implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Sets neighborhood
+     * Sets neighborhood.
      *
-     * @param string|null $neighborhood The neighborhood. This value is only used in some countries (such as Brazil).
-     *
-     * @return self
+     * @param null|string $neighborhood The neighborhood. This value is only used in some countries (such as Brazil).
      */
     public function setNeighborhood(?string $neighborhood): self
     {
@@ -438,7 +365,7 @@ class AddressExtendedFields implements ModelInterface, ArrayAccess, \JsonSeriali
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('neighborhood', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -448,13 +375,10 @@ class AddressExtendedFields implements ModelInterface, ArrayAccess, \JsonSeriali
         return $this;
     }
 
-
     /**
      * Returns true if offset exists. False otherwise.
      *
-     * @param integer $offset Offset
-     *
-     * @return boolean
+     * @param int $offset Offset
      */
     public function offsetExists($offset): bool
     {
@@ -464,9 +388,9 @@ class AddressExtendedFields implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
-     * @return mixed|null
+     * @return null|mixed
      */
     #[\ReturnTypeWillChange]
     public function offsetGet($offset): mixed
@@ -477,10 +401,8 @@ class AddressExtendedFields implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets value based on offset.
      *
-     * @param int|null $offset Offset
+     * @param null|int $offset Offset
      * @param mixed    $value  Value to be set
-     *
-     * @return void
      */
     public function offsetSet($offset, mixed $value): void
     {
@@ -494,9 +416,7 @@ class AddressExtendedFields implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Unsets offset.
      *
-     * @param integer $offset Offset
-     *
-     * @return void
+     * @param int $offset Offset
      */
     public function offsetUnset($offset): void
     {
@@ -505,39 +425,67 @@ class AddressExtendedFields implements ModelInterface, ArrayAccess, \JsonSeriali
 
     /**
      * Serializes the object to a value that can be serialized natively by json_encode().
-     * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
      *
-     * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
+     * @see https://www.php.net/manual/en/jsonserializable.jsonserialize.php
+     *
+     * @return mixed returns data which can be serialized by json_encode(), which is a value
+     *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
     public function jsonSerialize(): mixed
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
-     * Gets the string presentation of the object
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    /**
-     * Gets a header-safe presentation of the object
-     *
-     * @return string
+     * Gets a header-safe presentation of the object.
      */
     public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
+
+    /**
+     * Array of nullable properties.
+     */
+    protected static function openAPINullables(): array
+    {
+        return self::$openAPINullables;
+    }
+
+    /**
+     * Array of nullable field names deliberately set to null.
+     *
+     * @return bool[]
+     */
+    private function getOpenAPINullablesSetToNull(): array
+    {
+        return $this->openAPINullablesSetToNull;
+    }
+
+    /**
+     * Setter - Array of nullable field names deliberately set to null.
+     *
+     * @param bool[] $openAPINullablesSetToNull
+     */
+    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
+    {
+        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
+    }
+
+    /**
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array.
+     *
+     * @param mixed $defaultValue
+     */
+    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+    {
+        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
+            $this->openAPINullablesSetToNull[] = $variableName;
+        }
+
+        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    }
 }
-
-

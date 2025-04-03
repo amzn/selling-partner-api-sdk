@@ -1,17 +1,19 @@
 <?php
+
 /**
- * CompetitiveSummaryRequest
+ * CompetitiveSummaryRequest.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Pricing
+ * Selling Partner API for Pricing.
  *
  * The Selling Partner API for Pricing helps you programmatically retrieve product pricing and offer pricing information for Amazon Marketplace products.  For more information, refer to the [Product Pricing v2022-05-01 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/product-pricing-api-v2022-05-01-use-case-guide).
  *
@@ -28,171 +30,99 @@
 
 namespace SpApi\Model\pricing\v2022_05_01;
 
-use
-ArrayAccess;
-use SpApi\ObjectSerializer;
 use SpApi\Model\ModelInterface;
+use SpApi\ObjectSerializer;
 
 /**
- * CompetitiveSummaryRequest Class Doc Comment
+ * CompetitiveSummaryRequest Class Doc Comment.
  *
  * @category Class
+ *
  * @description An individual &#x60;competitiveSummary&#x60; request for an ASIN and &#x60;marketplaceId&#x60;.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
+ *
  * @implements \ArrayAccess<string, mixed>
  */
-class CompetitiveSummaryRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class CompetitiveSummaryRequest implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     */
     protected static string $openAPIModelName = 'CompetitiveSummaryRequest';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static array $openAPITypes = [
-             'asin' => 'string',
-             'marketplace_id' => 'string',
-             'included_data' => '\SpApi\Model\pricing\v2022_05_01\CompetitiveSummaryIncludedData[]',
-             'lowest_priced_offers_inputs' => '\SpApi\Model\pricing\v2022_05_01\LowestPricedOffersInput[]',
-             'method' => '\SpApi\Model\pricing\v2022_05_01\HttpMethod',
-             'uri' => 'string'    ];
+        'asin' => 'string',
+        'marketplace_id' => 'string',
+        'included_data' => '\SpApi\Model\pricing\v2022_05_01\CompetitiveSummaryIncludedData[]',
+        'lowest_priced_offers_inputs' => '\SpApi\Model\pricing\v2022_05_01\LowestPricedOffersInput[]',
+        'method' => '\SpApi\Model\pricing\v2022_05_01\HttpMethod',
+        'uri' => 'string'];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     *
+     * @phpstan-var array<string, string|null>
+     *
+     * @psalm-var array<string, string|null>
+     */
     protected static array $openAPIFormats = [
-            'asin' => null,
-            'marketplace_id' => null,
-            'included_data' => null,
-            'lowest_priced_offers_inputs' => null,
-            'method' => null,
-            'uri' => null    ];
+        'asin' => null,
+        'marketplace_id' => null,
+        'included_data' => null,
+        'lowest_priced_offers_inputs' => null,
+        'method' => null,
+        'uri' => null];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization.
+     *
+     * @var bool[]
+     */
     protected static array $openAPINullables = [
         'asin' => false,
         'marketplace_id' => false,
         'included_data' => false,
         'lowest_priced_offers_inputs' => true,
         'method' => false,
-        'uri' => false
+        'uri' => false,
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here.
+     *
+     * @var bool[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPIFormats(): array
-    {
-        return self::$openAPIFormats;
-    }
-
-    /**
-     * Array of nullable properties
-     *
-     * @return array
-     */
-    protected static function openAPINullables(): array
-    {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * Array of nullable field names deliberately set to null
-     *
-     * @return boolean[]
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * Setter - Array of nullable field names deliberately set to null
-     *
-     * @param boolean[] $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    /**
-     * Checks if a property is nullable
-     *
-     * @param string $property
-     * @return bool
-     */
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    /**
-     * Checks if a nullable property is set to null.
-     *
-     * @param string $property
-     * @return bool
-     */
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @var string[]
      */
     protected static array $attributeMap = [
         'asin' => 'asin',
-                'marketplace_id' => 'marketplaceId',
-                'included_data' => 'includedData',
-                'lowest_priced_offers_inputs' => 'lowestPricedOffersInputs',
-                'method' => 'method',
-                'uri' => 'uri'
-        
+        'marketplace_id' => 'marketplaceId',
+        'included_data' => 'includedData',
+        'lowest_priced_offers_inputs' => 'lowestPricedOffersInputs',
+        'method' => 'method',
+        'uri' => 'uri',
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @var string[]
      */
@@ -202,11 +132,11 @@ class CompetitiveSummaryRequest implements ModelInterface, ArrayAccess, \JsonSer
         'included_data' => 'setIncludedData',
         'lowest_priced_offers_inputs' => 'setLowestPricedOffersInputs',
         'method' => 'setMethod',
-        'uri' => 'setUri'
+        'uri' => 'setUri',
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @var string[]
      */
@@ -216,63 +146,19 @@ class CompetitiveSummaryRequest implements ModelInterface, ArrayAccess, \JsonSer
         'included_data' => 'getIncludedData',
         'lowest_priced_offers_inputs' => 'getLowestPricedOffersInputs',
         'method' => 'getMethod',
-        'uri' => 'getUri'
+        'uri' => 'getUri',
     ];
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @return array
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @return array
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @return array
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    /**
-     * The original name of the model.
-     *
-     * @return string
-     */
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-
-    /**
-     * Associative array for storing property values
-     *
-     * @var array
+     * Associative array for storing property values.
      */
     protected array $container = [];
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param array|null $data Associated array of property values
-     *                      initializing the model
+     * @param null|array $data Associated array of property values
+     *                         initializing the model
      */
     public function __construct(?array $data = null)
     {
@@ -285,21 +171,81 @@ class CompetitiveSummaryRequest implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
-    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+     * Gets the string presentation of the object.
+     *
+     * @return string
+     */
+    public function __toString()
     {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
+        return json_encode(
+            ObjectSerializer::sanitizeForSerialization($this),
+            JSON_PRETTY_PRINT
+        );
+    }
 
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    /**
+     * Array of property to type mappings. Used for (de)serialization.
+     */
+    public static function openAPITypes(): array
+    {
+        return self::$openAPITypes;
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization.
+     */
+    public static function openAPIFormats(): array
+    {
+        return self::$openAPIFormats;
+    }
+
+    /**
+     * Checks if a property is nullable.
+     */
+    public static function isNullable(string $property): bool
+    {
+        return self::openAPINullables()[$property] ?? false;
+    }
+
+    /**
+     * Checks if a nullable property is set to null.
+     */
+    public function isNullableSetToNull(string $property): bool
+    {
+        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name.
+     */
+    public static function attributeMap(): array
+    {
+        return self::$attributeMap;
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses).
+     */
+    public static function setters(): array
+    {
+        return self::$setters;
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests).
+     */
+    public static function getters(): array
+    {
+        return self::$getters;
+    }
+
+    /**
+     * The original name of the model.
+     */
+    public function getModelName(): string
+    {
+        return self::$openAPIModelName;
     }
 
     /**
@@ -311,16 +257,16 @@ class CompetitiveSummaryRequest implements ModelInterface, ArrayAccess, \JsonSer
     {
         $invalidProperties = [];
 
-        if ($this->container['asin'] === null) {
+        if (null === $this->container['asin']) {
             $invalidProperties[] = "'asin' can't be null";
         }
-        if ($this->container['marketplace_id'] === null) {
+        if (null === $this->container['marketplace_id']) {
             $invalidProperties[] = "'marketplace_id' can't be null";
         }
-        if ($this->container['included_data'] === null) {
+        if (null === $this->container['included_data']) {
             $invalidProperties[] = "'included_data' can't be null";
         }
-        if ((count($this->container['included_data']) < 1)) {
+        if (count($this->container['included_data']) < 1) {
             $invalidProperties[] = "invalid value for 'included_data', number of items must be greater than or equal to 1.";
         }
 
@@ -332,17 +278,17 @@ class CompetitiveSummaryRequest implements ModelInterface, ArrayAccess, \JsonSer
             $invalidProperties[] = "invalid value for 'lowest_priced_offers_inputs', number of items must be greater than or equal to 0.";
         }
 
-        if ($this->container['method'] === null) {
+        if (null === $this->container['method']) {
             $invalidProperties[] = "'method' can't be null";
         }
-        if ($this->container['uri'] === null) {
+        if (null === $this->container['uri']) {
             $invalidProperties[] = "'uri' can't be null";
         }
-        if ((mb_strlen($this->container['uri']) > 512)) {
+        if (mb_strlen($this->container['uri']) > 512) {
             $invalidProperties[] = "invalid value for 'uri', the character length must be smaller than or equal to 512.";
         }
 
-        if ((mb_strlen($this->container['uri']) < 6)) {
+        if (mb_strlen($this->container['uri']) < 6) {
             $invalidProperties[] = "invalid value for 'uri', the character length must be bigger than or equal to 6.";
         }
 
@@ -351,20 +297,17 @@ class CompetitiveSummaryRequest implements ModelInterface, ArrayAccess, \JsonSer
 
     /**
      * Validate all the properties in the model
-     * return true if all passed
+     * return true if all passed.
      *
      * @return bool True if all properties are valid
      */
     public function valid(): bool
     {
-        return count($this->listInvalidProperties()) === 0;
+        return 0 === count($this->listInvalidProperties());
     }
 
-
     /**
-     * Gets asin
-     *
-     * @return string
+     * Gets asin.
      */
     public function getAsin(): string
     {
@@ -372,11 +315,9 @@ class CompetitiveSummaryRequest implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Sets asin
+     * Sets asin.
      *
-     * @param string $asin The ASIN of the item.
-     *
-     * @return self
+     * @param string $asin the ASIN of the item
      */
     public function setAsin(string $asin): self
     {
@@ -389,9 +330,7 @@ class CompetitiveSummaryRequest implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets marketplace_id
-     *
-     * @return string
+     * Gets marketplace_id.
      */
     public function getMarketplaceId(): string
     {
@@ -399,11 +338,9 @@ class CompetitiveSummaryRequest implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Sets marketplace_id
+     * Sets marketplace_id.
      *
      * @param string $marketplace_id A marketplace identifier. Specifies the marketplace for which data is returned.
-     *
-     * @return self
      */
     public function setMarketplaceId(string $marketplace_id): self
     {
@@ -416,9 +353,7 @@ class CompetitiveSummaryRequest implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets included_data
-     *
-     * @return array
+     * Gets included_data.
      */
     public function getIncludedData(): array
     {
@@ -426,11 +361,9 @@ class CompetitiveSummaryRequest implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Sets included_data
+     * Sets included_data.
      *
-     * @param array $included_data The list of requested competitive pricing data for the product.
-     *
-     * @return self
+     * @param array $included_data the list of requested competitive pricing data for the product
      */
     public function setIncludedData(array $included_data): self
     {
@@ -438,8 +371,7 @@ class CompetitiveSummaryRequest implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable included_data cannot be null');
         }
 
-
-        if ((count($included_data) < 1)) {
+        if (count($included_data) < 1) {
             throw new \InvalidArgumentException('invalid length for $included_data when calling CompetitiveSummaryRequest., number of items must be greater than or equal to 1.');
         }
         $this->container['included_data'] = $included_data;
@@ -448,9 +380,7 @@ class CompetitiveSummaryRequest implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets lowest_priced_offers_inputs
-     *
-     * @return array|null
+     * Gets lowest_priced_offers_inputs.
      */
     public function getLowestPricedOffersInputs(): ?array
     {
@@ -458,11 +388,9 @@ class CompetitiveSummaryRequest implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Sets lowest_priced_offers_inputs
+     * Sets lowest_priced_offers_inputs.
      *
-     * @param array|null $lowest_priced_offers_inputs The list of `lowestPricedOffersInput` parameters that are used to build `lowestPricedOffers` in the response. This attribute is only valid if `lowestPricedOffers` is requested in `includedData`
-     *
-     * @return self
+     * @param null|array $lowest_priced_offers_inputs The list of `lowestPricedOffersInput` parameters that are used to build `lowestPricedOffers` in the response. This attribute is only valid if `lowestPricedOffers` is requested in `includedData`
      */
     public function setLowestPricedOffersInputs(?array $lowest_priced_offers_inputs): self
     {
@@ -471,7 +399,7 @@ class CompetitiveSummaryRequest implements ModelInterface, ArrayAccess, \JsonSer
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('lowest_priced_offers_inputs', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -489,9 +417,7 @@ class CompetitiveSummaryRequest implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets method
-     *
-     * @return string
+     * Gets method.
      */
     public function getMethod(): string
     {
@@ -499,11 +425,9 @@ class CompetitiveSummaryRequest implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Sets method
+     * Sets method.
      *
      * @param string $method method
-     *
-     * @return self
      */
     public function setMethod(string $method): self
     {
@@ -516,9 +440,7 @@ class CompetitiveSummaryRequest implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets uri
-     *
-     * @return string
+     * Gets uri.
      */
     public function getUri(): string
     {
@@ -526,21 +448,19 @@ class CompetitiveSummaryRequest implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Sets uri
+     * Sets uri.
      *
-     * @param string $uri The URI associated with the individual APIs that are called as part of the batch request.
-     *
-     * @return self
+     * @param string $uri the URI associated with the individual APIs that are called as part of the batch request
      */
     public function setUri(string $uri): self
     {
         if (is_null($uri)) {
             throw new \InvalidArgumentException('non-nullable uri cannot be null');
         }
-        if ((mb_strlen($uri) > 512)) {
+        if (mb_strlen($uri) > 512) {
             throw new \InvalidArgumentException('invalid length for $uri when calling CompetitiveSummaryRequest., must be smaller than or equal to 512.');
         }
-        if ((mb_strlen($uri) < 6)) {
+        if (mb_strlen($uri) < 6) {
             throw new \InvalidArgumentException('invalid length for $uri when calling CompetitiveSummaryRequest., must be bigger than or equal to 6.');
         }
 
@@ -549,13 +469,10 @@ class CompetitiveSummaryRequest implements ModelInterface, ArrayAccess, \JsonSer
         return $this;
     }
 
-
     /**
      * Returns true if offset exists. False otherwise.
      *
-     * @param integer $offset Offset
-     *
-     * @return boolean
+     * @param int $offset Offset
      */
     public function offsetExists($offset): bool
     {
@@ -565,9 +482,9 @@ class CompetitiveSummaryRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
-     * @return mixed|null
+     * @return null|mixed
      */
     #[\ReturnTypeWillChange]
     public function offsetGet($offset): mixed
@@ -578,10 +495,8 @@ class CompetitiveSummaryRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets value based on offset.
      *
-     * @param int|null $offset Offset
+     * @param null|int $offset Offset
      * @param mixed    $value  Value to be set
-     *
-     * @return void
      */
     public function offsetSet($offset, mixed $value): void
     {
@@ -595,9 +510,7 @@ class CompetitiveSummaryRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Unsets offset.
      *
-     * @param integer $offset Offset
-     *
-     * @return void
+     * @param int $offset Offset
      */
     public function offsetUnset($offset): void
     {
@@ -606,39 +519,67 @@ class CompetitiveSummaryRequest implements ModelInterface, ArrayAccess, \JsonSer
 
     /**
      * Serializes the object to a value that can be serialized natively by json_encode().
-     * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
      *
-     * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
+     * @see https://www.php.net/manual/en/jsonserializable.jsonserialize.php
+     *
+     * @return mixed returns data which can be serialized by json_encode(), which is a value
+     *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
     public function jsonSerialize(): mixed
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
-     * Gets the string presentation of the object
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    /**
-     * Gets a header-safe presentation of the object
-     *
-     * @return string
+     * Gets a header-safe presentation of the object.
      */
     public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
+
+    /**
+     * Array of nullable properties.
+     */
+    protected static function openAPINullables(): array
+    {
+        return self::$openAPINullables;
+    }
+
+    /**
+     * Array of nullable field names deliberately set to null.
+     *
+     * @return bool[]
+     */
+    private function getOpenAPINullablesSetToNull(): array
+    {
+        return $this->openAPINullablesSetToNull;
+    }
+
+    /**
+     * Setter - Array of nullable field names deliberately set to null.
+     *
+     * @param bool[] $openAPINullablesSetToNull
+     */
+    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
+    {
+        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
+    }
+
+    /**
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array.
+     *
+     * @param mixed $defaultValue
+     */
+    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+    {
+        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
+            $this->openAPINullablesSetToNull[] = $variableName;
+        }
+
+        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    }
 }
-
-

@@ -1,12 +1,14 @@
 <?php
+
 /**
  * VehiclesApi
- * PHP version 8.3
+ * PHP version 8.3.
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
@@ -35,38 +37,31 @@ use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use SpApi\AuthAndAuth\RateLimitConfiguration;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RateLimitConfiguration;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
+use SpApi\Model\vehicles\v2024_11_01\VehiclesResponse;
 use SpApi\ObjectSerializer;
+use Symfony\Component\RateLimiter\LimiterInterface;
+use Symfony\Component\RateLimiter\RateLimiterFactory;
+use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
- * VehiclesApi Class Doc Comment
+ * VehiclesApi Class Doc Comment.
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class VehiclesApi
 {
-    /**
-     * @var ClientInterface
-     */
     protected ClientInterface $client;
 
-    /**
-     * @var Configuration
-     */
     protected Configuration $config;
 
-    /**
-     * @var HeaderSelector
-     */
     protected HeaderSelector $headerSelector;
 
     /**
@@ -74,21 +69,11 @@ class VehiclesApi
      */
     protected int $hostIndex;
 
-    /**
-     * @var ?RateLimitConfiguration
-     */
     private ?RateLimitConfiguration $rateLimitConfig = null;
 
-    /**
-     * @var ?LimiterInterface
-     */
     private ?LimiterInterface $rateLimiter = null;
 
     /**
-     * @param Configuration   $config
-     * @param RateLimitConfiguration|null $rateLimitConfig
-     * @param ClientInterface|null $client
-     * @param HeaderSelector|null $selector
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
@@ -107,10 +92,10 @@ class VehiclesApi
                 'policy' => $type,
                 'limit' => $rateLimitConfig->getRateLimitTokenLimit(),
             ];
-            if ($type === "fixed_window" || $type === "sliding_window") {
-                $rateLimitOptions['interval'] = $rateLimitConfig->getRateLimitToken() . 'seconds';
+            if ('fixed_window' === $type || 'sliding_window' === $type) {
+                $rateLimitOptions['interval'] = $rateLimitConfig->getRateLimitToken().'seconds';
             } else {
-                $rateLimitOptions['rate'] = ['interval' => $rateLimitConfig->getRateLimitToken() . 'seconds'];
+                $rateLimitOptions['rate'] = ['interval' => $rateLimitConfig->getRateLimitToken().'seconds'];
             }
             $factory = new RateLimiterFactory($rateLimitOptions, new InMemoryStorage());
             $this->rateLimiter = $factory->create();
@@ -122,7 +107,7 @@ class VehiclesApi
     }
 
     /**
-     * Set the host index
+     * Set the host index.
      *
      * @param int $hostIndex Host index (required)
      */
@@ -132,7 +117,7 @@ class VehiclesApi
     }
 
     /**
-     * Get the host index
+     * Get the host index.
      *
      * @return int Host index
      */
@@ -141,55 +126,53 @@ class VehiclesApi
         return $this->hostIndex;
     }
 
-    /**
-     * @return Configuration
-     */
     public function getConfig(): Configuration
     {
         return $this->config;
     }
 
     /**
-     * Operation getVehicles
+     * Operation getVehicles.
      *
-     * @param  string $marketplace_id
-     *  An identifier for the marketplace in which the resource operates. (required)
-     * @param  string $vehicle_type
-     *  An identifier for vehicle type. (required)
-     * @param  string|null $page_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. (optional)
-     * @param  string|null $updated_after
-     *  Date in ISO 8601 format, if provided only vehicles which are modified/added to Amazon&#39;s catalog after this date will be returned. (optional)
+     * @param string      $marketplace_id
+     *                                    An identifier for the marketplace in which the resource operates. (required)
+     * @param string      $vehicle_type
+     *                                    An identifier for vehicle type. (required)
+     * @param null|string $page_token
+     *                                    A token to fetch a certain page when there are multiple pages worth of results. (optional)
+     * @param null|string $updated_after
+     *                                    Date in ISO 8601 format, if provided only vehicles which are modified/added to Amazon&#39;s catalog after this date will be returned. (optional)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\vehicles\v2024_11_01\VehiclesResponse
      */
     public function getVehicles(
         string $marketplace_id,
         string $vehicle_type,
         ?string $page_token = null,
         ?string $updated_after = null
-    ): \SpApi\Model\vehicles\v2024_11_01\VehiclesResponse {
+    ): VehiclesResponse {
         list($response) = $this->getVehiclesWithHttpInfo($marketplace_id, $vehicle_type, $page_token, $updated_after);
+
         return $response;
     }
 
     /**
-     * Operation getVehiclesWithHttpInfo
+     * Operation getVehiclesWithHttpInfo.
      *
-     * @param  string $marketplace_id
-     *  An identifier for the marketplace in which the resource operates. (required)
-     * @param  string $vehicle_type
-     *  An identifier for vehicle type. (required)
-     * @param  string|null $page_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. (optional)
-     * @param  string|null $updated_after
-     *  Date in ISO 8601 format, if provided only vehicles which are modified/added to Amazon&#39;s catalog after this date will be returned. (optional)
+     * @param string      $marketplace_id
+     *                                    An identifier for the marketplace in which the resource operates. (required)
+     * @param string      $vehicle_type
+     *                                    An identifier for vehicle type. (required)
+     * @param null|string $page_token
+     *                                    A token to fetch a certain page when there are multiple pages worth of results. (optional)
+     * @param null|string $updated_after
+     *                                    Date in ISO 8601 format, if provided only vehicles which are modified/added to Amazon&#39;s catalog after this date will be returned. (optional)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\vehicles\v2024_11_01\VehiclesResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getVehiclesWithHttpInfo(
         string $marketplace_id,
@@ -202,6 +185,7 @@ class VehiclesApi
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -236,10 +220,10 @@ class VehiclesApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\SpApi\Model\vehicles\v2024_11_01\VehiclesResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\vehicles\v2024_11_01\VehiclesResponse' !== 'string') {
@@ -250,11 +234,12 @@ class VehiclesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\vehicles\v2024_11_01\VehiclesResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 400:
                     if ('\SpApi\Model\vehicles\v2024_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\vehicles\v2024_11_01\ErrorList' !== 'string') {
@@ -265,11 +250,12 @@ class VehiclesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\vehicles\v2024_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 403:
                     if ('\SpApi\Model\vehicles\v2024_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\vehicles\v2024_11_01\ErrorList' !== 'string') {
@@ -280,11 +266,12 @@ class VehiclesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\vehicles\v2024_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 404:
                     if ('\SpApi\Model\vehicles\v2024_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\vehicles\v2024_11_01\ErrorList' !== 'string') {
@@ -295,11 +282,12 @@ class VehiclesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\vehicles\v2024_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 413:
                     if ('\SpApi\Model\vehicles\v2024_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\vehicles\v2024_11_01\ErrorList' !== 'string') {
@@ -310,11 +298,12 @@ class VehiclesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\vehicles\v2024_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 415:
                     if ('\SpApi\Model\vehicles\v2024_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\vehicles\v2024_11_01\ErrorList' !== 'string') {
@@ -325,11 +314,12 @@ class VehiclesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\vehicles\v2024_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 429:
                     if ('\SpApi\Model\vehicles\v2024_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\vehicles\v2024_11_01\ErrorList' !== 'string') {
@@ -340,11 +330,12 @@ class VehiclesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\vehicles\v2024_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 500:
                     if ('\SpApi\Model\vehicles\v2024_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\vehicles\v2024_11_01\ErrorList' !== 'string') {
@@ -355,11 +346,12 @@ class VehiclesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\vehicles\v2024_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 503:
                     if ('\SpApi\Model\vehicles\v2024_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\vehicles\v2024_11_01\ErrorList' !== 'string') {
@@ -370,16 +362,16 @@ class VehiclesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\vehicles\v2024_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
             $returnType = '\SpApi\Model\vehicles\v2024_11_01\VehiclesResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+            if ('\SplFileObject' === $returnType) {
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
+                if ('string' !== $returnType) {
                     $content = json_decode($content);
                 }
             }
@@ -387,9 +379,8 @@ class VehiclesApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -399,7 +390,9 @@ class VehiclesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -407,7 +400,9 @@ class VehiclesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -415,7 +410,9 @@ class VehiclesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -423,7 +420,9 @@ class VehiclesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -431,7 +430,9 @@ class VehiclesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -439,7 +440,9 @@ class VehiclesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -447,7 +450,9 @@ class VehiclesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -455,7 +460,9 @@ class VehiclesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -463,26 +470,27 @@ class VehiclesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation getVehiclesAsync
+     * Operation getVehiclesAsync.
      *
-     * @param  string $marketplace_id
-     *  An identifier for the marketplace in which the resource operates. (required)
-     * @param  string $vehicle_type
-     *  An identifier for vehicle type. (required)
-     * @param  string|null $page_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. (optional)
-     * @param  string|null $updated_after
-     *  Date in ISO 8601 format, if provided only vehicles which are modified/added to Amazon&#39;s catalog after this date will be returned. (optional)
+     * @param string      $marketplace_id
+     *                                    An identifier for the marketplace in which the resource operates. (required)
+     * @param string      $vehicle_type
+     *                                    An identifier for vehicle type. (required)
+     * @param null|string $page_token
+     *                                    A token to fetch a certain page when there are multiple pages worth of results. (optional)
+     * @param null|string $updated_after
+     *                                    Date in ISO 8601 format, if provided only vehicles which are modified/added to Amazon&#39;s catalog after this date will be returned. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getVehiclesAsync(
         string $marketplace_id,
@@ -495,23 +503,23 @@ class VehiclesApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getVehiclesAsyncWithHttpInfo
+     * Operation getVehiclesAsyncWithHttpInfo.
      *
-     * @param  string $marketplace_id
-     *  An identifier for the marketplace in which the resource operates. (required)
-     * @param  string $vehicle_type
-     *  An identifier for vehicle type. (required)
-     * @param  string|null $page_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. (optional)
-     * @param  string|null $updated_after
-     *  Date in ISO 8601 format, if provided only vehicles which are modified/added to Amazon&#39;s catalog after this date will be returned. (optional)
+     * @param string      $marketplace_id
+     *                                    An identifier for the marketplace in which the resource operates. (required)
+     * @param string      $vehicle_type
+     *                                    An identifier for vehicle type. (required)
+     * @param null|string $page_token
+     *                                    A token to fetch a certain page when there are multiple pages worth of results. (optional)
+     * @param null|string $updated_after
+     *                                    Date in ISO 8601 format, if provided only vehicles which are modified/added to Amazon&#39;s catalog after this date will be returned. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getVehiclesAsyncWithHttpInfo(
         string $marketplace_id,
@@ -528,11 +536,11 @@ class VehiclesApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -540,12 +548,13 @@ class VehiclesApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -557,23 +566,23 @@ class VehiclesApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getVehicles'
+     * Create request for operation 'getVehicles'.
      *
-     * @param  string $marketplace_id
-     *  An identifier for the marketplace in which the resource operates. (required)
-     * @param  string $vehicle_type
-     *  An identifier for vehicle type. (required)
-     * @param  string|null $page_token
-     *  A token to fetch a certain page when there are multiple pages worth of results. (optional)
-     * @param  string|null $updated_after
-     *  Date in ISO 8601 format, if provided only vehicles which are modified/added to Amazon&#39;s catalog after this date will be returned. (optional)
+     * @param string      $marketplace_id
+     *                                    An identifier for the marketplace in which the resource operates. (required)
+     * @param string      $vehicle_type
+     *                                    An identifier for vehicle type. (required)
+     * @param null|string $page_token
+     *                                    A token to fetch a certain page when there are multiple pages worth of results. (optional)
+     * @param null|string $updated_after
+     *                                    Date in ISO 8601 format, if provided only vehicles which are modified/added to Amazon&#39;s catalog after this date will be returned. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getVehiclesRequest(
         string $marketplace_id,
@@ -582,13 +591,13 @@ class VehiclesApi
         ?string $updated_after = null
     ): Request {
         // verify the required parameter 'marketplace_id' is set
-        if ($marketplace_id === null || (is_array($marketplace_id) && count($marketplace_id) === 0)) {
+        if (null === $marketplace_id || (is_array($marketplace_id) && 0 === count($marketplace_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_id when calling getVehicles'
             );
         }
         // verify the required parameter 'vehicle_type' is set
-        if ($vehicle_type === null || (is_array($vehicle_type) && count($vehicle_type) === 0)) {
+        if (null === $vehicle_type || (is_array($vehicle_type) && 0 === count($vehicle_type))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $vehicle_type when calling getVehicles'
             );
@@ -638,9 +647,6 @@ class VehiclesApi
             false // required
         ) ?? []);
 
-
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -648,7 +654,6 @@ class VehiclesApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                
                 '',
                 false
             );
@@ -663,22 +668,19 @@ class VehiclesApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -692,19 +694,36 @@ class VehiclesApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Create http client option
+     * Rate Limiter waits for tokens.
+     */
+    public function rateLimitWait(): void
+    {
+        if ($this->rateLimiter) {
+            $type = $this->rateLimitConfig->getRateLimitType();
+            if (0 != $this->rateLimitConfig->getTimeOut() && ('token_bucket' == $type || 'fixed_window' == $type)) {
+                $this->rateLimiter->reserve(1, $this->rateLimitConfig->getTimeOut() / 1000)->wait();
+            } else {
+                $this->rateLimiter->consume()->wait();
+            }
+        }
+    }
+
+    /**
+     * Create http client option.
+     *
+     * @return array of http client options
      *
      * @throws \RuntimeException on file opening failure
-     * @return array of http client options
      */
     protected function createHttpClientOption(): array
     {
@@ -712,27 +731,10 @@ class VehiclesApi
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
             if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+                throw new \RuntimeException('Failed to open the debug file: '.$this->config->getDebugFile());
             }
         }
 
         return $options;
-    }
-
-    /**
-     * Rate Limiter waits for tokens
-     *
-     * @return void
-     */
-    public function rateLimitWait(): void
-    {
-        if ($this->rateLimiter) {
-            $type = $this->rateLimitConfig->getRateLimitType();
-            if ($this->rateLimitConfig->getTimeOut() != 0 && ($type == "token_bucket" || $type == "fixed_window")) {
-                $this->rateLimiter->reserve(1, ($this->rateLimitConfig->getTimeOut()) / 1000)->wait();
-            } else {
-                $this->rateLimiter->consume()->wait();
-            }
-        }
     }
 }

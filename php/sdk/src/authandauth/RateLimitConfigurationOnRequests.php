@@ -2,42 +2,40 @@
 
 namespace SpApi\AuthAndAuth;
 
-use InvalidArgumentException;
-
 class RateLimitConfigurationOnRequests implements RateLimitConfiguration
 {
     /**
-     * RateLimiter Type
+     * RateLimiter Type.
      */
     private string $rateLimitType;
 
     /**
-     * RateLimiter Token
+     * RateLimiter Token.
      */
     private int $rateLimitToken;
 
     /**
-     * RateLimiter Token Limit
+     * RateLimiter Token Limit.
      */
     private int $rateLimitTokenLimit;
 
     /**
-     * Timeout for RateLimiter
+     * Timeout for RateLimiter.
      */
     private float $waitTimeOutInMilliSeconds;
 
     public function __construct(array $config)
     {
-        if (!(isset($config["rateLimitToken"]) && isset($config["rateLimitTokenLimit"]))) {
-            throw new InvalidArgumentException("Both rateLimitToken and rateLimitTokenLimit are required");
+        if (!(isset($config['rateLimitToken'], $config['rateLimitTokenLimit']))) {
+            throw new \InvalidArgumentException('Both rateLimitToken and rateLimitTokenLimit are required');
         }
-        $this->rateLimitType = $config["rateLimitType"] ?? "token_bucket";
-        $this->rateLimitToken = $config["rateLimitToken"];
-        $this->rateLimitTokenLimit = $config["rateLimitTokenLimit"];
+        $this->rateLimitType = $config['rateLimitType'] ?? 'token_bucket';
+        $this->rateLimitToken = $config['rateLimitToken'];
+        $this->rateLimitTokenLimit = $config['rateLimitTokenLimit'];
 
-        $this->waitTimeOutInMilliSeconds = $config["waitTimeOutInMilliSeconds"] ?? 0;
-        if ($this->rateLimitType === "sliding_window" && $this->waitTimeOutInMilliSeconds != 0) {
-            throw new InvalidArgumentException("Sliding Window RateLimiter cannot reserve tokens");
+        $this->waitTimeOutInMilliSeconds = $config['waitTimeOutInMilliSeconds'] ?? 0;
+        if ('sliding_window' === $this->rateLimitType && 0 != $this->waitTimeOutInMilliSeconds) {
+            throw new \InvalidArgumentException('Sliding Window RateLimiter cannot reserve tokens');
         }
     }
 
@@ -49,6 +47,7 @@ class RateLimitConfigurationOnRequests implements RateLimitConfiguration
     public function setRateLimitType(string $rateLimitType): RateLimitConfigurationOnRequests
     {
         $this->rateLimitType = $rateLimitType;
+
         return $this;
     }
 
@@ -60,6 +59,7 @@ class RateLimitConfigurationOnRequests implements RateLimitConfiguration
     public function setRateLimitToken(int $rateLimitToken): RateLimitConfigurationOnRequests
     {
         $this->rateLimitToken = $rateLimitToken;
+
         return $this;
     }
 
@@ -71,6 +71,7 @@ class RateLimitConfigurationOnRequests implements RateLimitConfiguration
     public function setRateLimitTokenLimit(int $rateLimitTokenLimit): RateLimitConfigurationOnRequests
     {
         $this->rateLimitTokenLimit = $rateLimitTokenLimit;
+
         return $this;
     }
 
@@ -82,6 +83,7 @@ class RateLimitConfigurationOnRequests implements RateLimitConfiguration
     public function setTimeOut(float $waitTimeOutInMilliSeconds): RateLimitConfigurationOnRequests
     {
         $this->waitTimeOutInMilliSeconds = $waitTimeOutInMilliSeconds;
+
         return $this;
     }
 }

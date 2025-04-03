@@ -1,17 +1,19 @@
 <?php
+
 /**
- * CreateScheduledPackagesResponse
+ * CreateScheduledPackagesResponse.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Easy Ship
+ * Selling Partner API for Easy Ship.
  *
  * Use the Selling Partner API for Easy Ship to build applications for sellers to manage and ship Amazon Easy Ship orders. With this API, you can get available time slots, schedule and reschedule Easy Ship orders, and print shipping labels, invoices, and warranties. To review the differences in Easy Ship operations by marketplace, refer to [Marketplace support](https://developer-docs.amazon.com/sp-api/docs/easyship-api-v2022-03-23-use-case-guide#marketplace-support).
  *
@@ -28,233 +30,117 @@
 
 namespace SpApi\Model\easyship\v2022_03_23;
 
-use
-ArrayAccess;
-use SpApi\ObjectSerializer;
 use SpApi\Model\ModelInterface;
+use SpApi\ObjectSerializer;
 
 /**
- * CreateScheduledPackagesResponse Class Doc Comment
+ * CreateScheduledPackagesResponse Class Doc Comment.
  *
  * @category Class
+ *
  * @description The response schema for the bulk scheduling API. It returns by the bulk scheduling API containing an array of the scheduled packtages, an optional list of orders we couldn&#39;t schedule with the reason, and a pre-signed URL for a ZIP file containing the associated shipping labels plus the documents enabled for your marketplace.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
+ *
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateScheduledPackagesResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateScheduledPackagesResponse implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     */
     protected static string $openAPIModelName = 'CreateScheduledPackagesResponse';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static array $openAPITypes = [
-             'scheduled_packages' => '\SpApi\Model\easyship\v2022_03_23\Package[]',
-             'rejected_orders' => '\SpApi\Model\easyship\v2022_03_23\RejectedOrder[]',
-             'printable_documents_url' => 'string'    ];
+        'scheduled_packages' => '\SpApi\Model\easyship\v2022_03_23\Package[]',
+        'rejected_orders' => '\SpApi\Model\easyship\v2022_03_23\RejectedOrder[]',
+        'printable_documents_url' => 'string'];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     *
+     * @phpstan-var array<string, string|null>
+     *
+     * @psalm-var array<string, string|null>
+     */
     protected static array $openAPIFormats = [
-            'scheduled_packages' => null,
-            'rejected_orders' => null,
-            'printable_documents_url' => null    ];
+        'scheduled_packages' => null,
+        'rejected_orders' => null,
+        'printable_documents_url' => null];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization.
+     *
+     * @var bool[]
+     */
     protected static array $openAPINullables = [
         'scheduled_packages' => true,
         'rejected_orders' => true,
-        'printable_documents_url' => true
+        'printable_documents_url' => true,
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here.
+     *
+     * @var bool[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPIFormats(): array
-    {
-        return self::$openAPIFormats;
-    }
-
-    /**
-     * Array of nullable properties
-     *
-     * @return array
-     */
-    protected static function openAPINullables(): array
-    {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * Array of nullable field names deliberately set to null
-     *
-     * @return boolean[]
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * Setter - Array of nullable field names deliberately set to null
-     *
-     * @param boolean[] $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    /**
-     * Checks if a property is nullable
-     *
-     * @param string $property
-     * @return bool
-     */
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    /**
-     * Checks if a nullable property is set to null.
-     *
-     * @param string $property
-     * @return bool
-     */
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @var string[]
      */
     protected static array $attributeMap = [
         'scheduled_packages' => 'scheduledPackages',
-                'rejected_orders' => 'rejectedOrders',
-                'printable_documents_url' => 'printableDocumentsUrl'
-        
+        'rejected_orders' => 'rejectedOrders',
+        'printable_documents_url' => 'printableDocumentsUrl',
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @var string[]
      */
     protected static array $setters = [
         'scheduled_packages' => 'setScheduledPackages',
         'rejected_orders' => 'setRejectedOrders',
-        'printable_documents_url' => 'setPrintableDocumentsUrl'
+        'printable_documents_url' => 'setPrintableDocumentsUrl',
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @var string[]
      */
     protected static array $getters = [
         'scheduled_packages' => 'getScheduledPackages',
         'rejected_orders' => 'getRejectedOrders',
-        'printable_documents_url' => 'getPrintableDocumentsUrl'
+        'printable_documents_url' => 'getPrintableDocumentsUrl',
     ];
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @return array
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @return array
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @return array
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    /**
-     * The original name of the model.
-     *
-     * @return string
-     */
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-
-    /**
-     * Associative array for storing property values
-     *
-     * @var array
+     * Associative array for storing property values.
      */
     protected array $container = [];
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param array|null $data Associated array of property values
-     *                      initializing the model
+     * @param null|array $data Associated array of property values
+     *                         initializing the model
      */
     public function __construct(?array $data = null)
     {
@@ -264,21 +150,81 @@ class CreateScheduledPackagesResponse implements ModelInterface, ArrayAccess, \J
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
-    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+     * Gets the string presentation of the object.
+     *
+     * @return string
+     */
+    public function __toString()
     {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
+        return json_encode(
+            ObjectSerializer::sanitizeForSerialization($this),
+            JSON_PRETTY_PRINT
+        );
+    }
 
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    /**
+     * Array of property to type mappings. Used for (de)serialization.
+     */
+    public static function openAPITypes(): array
+    {
+        return self::$openAPITypes;
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization.
+     */
+    public static function openAPIFormats(): array
+    {
+        return self::$openAPIFormats;
+    }
+
+    /**
+     * Checks if a property is nullable.
+     */
+    public static function isNullable(string $property): bool
+    {
+        return self::openAPINullables()[$property] ?? false;
+    }
+
+    /**
+     * Checks if a nullable property is set to null.
+     */
+    public function isNullableSetToNull(string $property): bool
+    {
+        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name.
+     */
+    public static function attributeMap(): array
+    {
+        return self::$attributeMap;
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses).
+     */
+    public static function setters(): array
+    {
+        return self::$setters;
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests).
+     */
+    public static function getters(): array
+    {
+        return self::$getters;
+    }
+
+    /**
+     * The original name of the model.
+     */
+    public function getModelName(): string
+    {
+        return self::$openAPIModelName;
     }
 
     /**
@@ -299,20 +245,17 @@ class CreateScheduledPackagesResponse implements ModelInterface, ArrayAccess, \J
 
     /**
      * Validate all the properties in the model
-     * return true if all passed
+     * return true if all passed.
      *
      * @return bool True if all properties are valid
      */
     public function valid(): bool
     {
-        return count($this->listInvalidProperties()) === 0;
+        return 0 === count($this->listInvalidProperties());
     }
 
-
     /**
-     * Gets scheduled_packages
-     *
-     * @return array|null
+     * Gets scheduled_packages.
      */
     public function getScheduledPackages(): ?array
     {
@@ -320,11 +263,9 @@ class CreateScheduledPackagesResponse implements ModelInterface, ArrayAccess, \J
     }
 
     /**
-     * Sets scheduled_packages
+     * Sets scheduled_packages.
      *
-     * @param array|null $scheduled_packages A list of packages. Refer to the `Package` object.
-     *
-     * @return self
+     * @param null|array $scheduled_packages A list of packages. Refer to the `Package` object.
      */
     public function setScheduledPackages(?array $scheduled_packages): self
     {
@@ -333,7 +274,7 @@ class CreateScheduledPackagesResponse implements ModelInterface, ArrayAccess, \J
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('scheduled_packages', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -348,9 +289,7 @@ class CreateScheduledPackagesResponse implements ModelInterface, ArrayAccess, \J
     }
 
     /**
-     * Gets rejected_orders
-     *
-     * @return array|null
+     * Gets rejected_orders.
      */
     public function getRejectedOrders(): ?array
     {
@@ -358,11 +297,9 @@ class CreateScheduledPackagesResponse implements ModelInterface, ArrayAccess, \J
     }
 
     /**
-     * Sets rejected_orders
+     * Sets rejected_orders.
      *
-     * @param array|null $rejected_orders A list of orders we couldn't scheduled on your behalf. Each element contains the reason and details on the error.
-     *
-     * @return self
+     * @param null|array $rejected_orders A list of orders we couldn't scheduled on your behalf. Each element contains the reason and details on the error.
      */
     public function setRejectedOrders(?array $rejected_orders): self
     {
@@ -371,7 +308,7 @@ class CreateScheduledPackagesResponse implements ModelInterface, ArrayAccess, \J
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('rejected_orders', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -382,9 +319,7 @@ class CreateScheduledPackagesResponse implements ModelInterface, ArrayAccess, \J
     }
 
     /**
-     * Gets printable_documents_url
-     *
-     * @return string|null
+     * Gets printable_documents_url.
      */
     public function getPrintableDocumentsUrl(): ?string
     {
@@ -392,11 +327,9 @@ class CreateScheduledPackagesResponse implements ModelInterface, ArrayAccess, \J
     }
 
     /**
-     * Sets printable_documents_url
+     * Sets printable_documents_url.
      *
-     * @param string|null $printable_documents_url A pre-signed URL for the zip document containing the shipping labels and the documents enabled for your marketplace.
-     *
-     * @return self
+     * @param null|string $printable_documents_url a pre-signed URL for the zip document containing the shipping labels and the documents enabled for your marketplace
      */
     public function setPrintableDocumentsUrl(?string $printable_documents_url): self
     {
@@ -405,7 +338,7 @@ class CreateScheduledPackagesResponse implements ModelInterface, ArrayAccess, \J
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('printable_documents_url', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -415,13 +348,10 @@ class CreateScheduledPackagesResponse implements ModelInterface, ArrayAccess, \J
         return $this;
     }
 
-
     /**
      * Returns true if offset exists. False otherwise.
      *
-     * @param integer $offset Offset
-     *
-     * @return boolean
+     * @param int $offset Offset
      */
     public function offsetExists($offset): bool
     {
@@ -431,9 +361,9 @@ class CreateScheduledPackagesResponse implements ModelInterface, ArrayAccess, \J
     /**
      * Gets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
-     * @return mixed|null
+     * @return null|mixed
      */
     #[\ReturnTypeWillChange]
     public function offsetGet($offset): mixed
@@ -444,10 +374,8 @@ class CreateScheduledPackagesResponse implements ModelInterface, ArrayAccess, \J
     /**
      * Sets value based on offset.
      *
-     * @param int|null $offset Offset
+     * @param null|int $offset Offset
      * @param mixed    $value  Value to be set
-     *
-     * @return void
      */
     public function offsetSet($offset, mixed $value): void
     {
@@ -461,9 +389,7 @@ class CreateScheduledPackagesResponse implements ModelInterface, ArrayAccess, \J
     /**
      * Unsets offset.
      *
-     * @param integer $offset Offset
-     *
-     * @return void
+     * @param int $offset Offset
      */
     public function offsetUnset($offset): void
     {
@@ -472,39 +398,67 @@ class CreateScheduledPackagesResponse implements ModelInterface, ArrayAccess, \J
 
     /**
      * Serializes the object to a value that can be serialized natively by json_encode().
-     * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
      *
-     * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
+     * @see https://www.php.net/manual/en/jsonserializable.jsonserialize.php
+     *
+     * @return mixed returns data which can be serialized by json_encode(), which is a value
+     *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
     public function jsonSerialize(): mixed
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
-     * Gets the string presentation of the object
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    /**
-     * Gets a header-safe presentation of the object
-     *
-     * @return string
+     * Gets a header-safe presentation of the object.
      */
     public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
+
+    /**
+     * Array of nullable properties.
+     */
+    protected static function openAPINullables(): array
+    {
+        return self::$openAPINullables;
+    }
+
+    /**
+     * Array of nullable field names deliberately set to null.
+     *
+     * @return bool[]
+     */
+    private function getOpenAPINullablesSetToNull(): array
+    {
+        return $this->openAPINullablesSetToNull;
+    }
+
+    /**
+     * Setter - Array of nullable field names deliberately set to null.
+     *
+     * @param bool[] $openAPINullablesSetToNull
+     */
+    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
+    {
+        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
+    }
+
+    /**
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array.
+     *
+     * @param mixed $defaultValue
+     */
+    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+    {
+        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
+            $this->openAPINullablesSetToNull[] = $variableName;
+        }
+
+        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    }
 }
-
-

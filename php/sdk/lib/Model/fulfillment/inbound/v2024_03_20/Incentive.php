@@ -1,13 +1,15 @@
 <?php
+
 /**
- * Incentive
+ * Incentive.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
@@ -28,163 +30,91 @@
 
 namespace SpApi\Model\fulfillment\inbound\v2024_03_20;
 
-use
-ArrayAccess;
-use SpApi\ObjectSerializer;
 use SpApi\Model\ModelInterface;
+use SpApi\ObjectSerializer;
 
 /**
- * Incentive Class Doc Comment
+ * Incentive Class Doc Comment.
  *
  * @category Class
+ *
  * @description Contains details about cost related modifications to the placement cost.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
+ *
  * @implements \ArrayAccess<string, mixed>
  */
-class Incentive implements ModelInterface, ArrayAccess, \JsonSerializable
+class Incentive implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     */
     protected static string $openAPIModelName = 'Incentive';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static array $openAPITypes = [
-             'description' => 'string',
-             'target' => 'string',
-             'type' => 'string',
-             'value' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\Currency'    ];
+        'description' => 'string',
+        'target' => 'string',
+        'type' => 'string',
+        'value' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\Currency'];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     *
+     * @phpstan-var array<string, string|null>
+     *
+     * @psalm-var array<string, string|null>
+     */
     protected static array $openAPIFormats = [
-            'description' => null,
-            'target' => null,
-            'type' => null,
-            'value' => null    ];
+        'description' => null,
+        'target' => null,
+        'type' => null,
+        'value' => null];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization.
+     *
+     * @var bool[]
+     */
     protected static array $openAPINullables = [
         'description' => false,
         'target' => false,
         'type' => false,
-        'value' => false
+        'value' => false,
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here.
+     *
+     * @var bool[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPIFormats(): array
-    {
-        return self::$openAPIFormats;
-    }
-
-    /**
-     * Array of nullable properties
-     *
-     * @return array
-     */
-    protected static function openAPINullables(): array
-    {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * Array of nullable field names deliberately set to null
-     *
-     * @return boolean[]
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * Setter - Array of nullable field names deliberately set to null
-     *
-     * @param boolean[] $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    /**
-     * Checks if a property is nullable
-     *
-     * @param string $property
-     * @return bool
-     */
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    /**
-     * Checks if a nullable property is set to null.
-     *
-     * @param string $property
-     * @return bool
-     */
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @var string[]
      */
     protected static array $attributeMap = [
         'description' => 'description',
-                'target' => 'target',
-                'type' => 'type',
-                'value' => 'value'
-        
+        'target' => 'target',
+        'type' => 'type',
+        'value' => 'value',
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @var string[]
      */
@@ -192,11 +122,11 @@ class Incentive implements ModelInterface, ArrayAccess, \JsonSerializable
         'description' => 'setDescription',
         'target' => 'setTarget',
         'type' => 'setType',
-        'value' => 'setValue'
+        'value' => 'setValue',
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @var string[]
      */
@@ -204,63 +134,19 @@ class Incentive implements ModelInterface, ArrayAccess, \JsonSerializable
         'description' => 'getDescription',
         'target' => 'getTarget',
         'type' => 'getType',
-        'value' => 'getValue'
+        'value' => 'getValue',
     ];
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @return array
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @return array
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @return array
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    /**
-     * The original name of the model.
-     *
-     * @return string
-     */
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-
-    /**
-     * Associative array for storing property values
-     *
-     * @var array
+     * Associative array for storing property values.
      */
     protected array $container = [];
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param array|null $data Associated array of property values
-     *                      initializing the model
+     * @param null|array $data Associated array of property values
+     *                         initializing the model
      */
     public function __construct(?array $data = null)
     {
@@ -271,21 +157,81 @@ class Incentive implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
-    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+     * Gets the string presentation of the object.
+     *
+     * @return string
+     */
+    public function __toString()
     {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
+        return json_encode(
+            ObjectSerializer::sanitizeForSerialization($this),
+            JSON_PRETTY_PRINT
+        );
+    }
 
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    /**
+     * Array of property to type mappings. Used for (de)serialization.
+     */
+    public static function openAPITypes(): array
+    {
+        return self::$openAPITypes;
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization.
+     */
+    public static function openAPIFormats(): array
+    {
+        return self::$openAPIFormats;
+    }
+
+    /**
+     * Checks if a property is nullable.
+     */
+    public static function isNullable(string $property): bool
+    {
+        return self::openAPINullables()[$property] ?? false;
+    }
+
+    /**
+     * Checks if a nullable property is set to null.
+     */
+    public function isNullableSetToNull(string $property): bool
+    {
+        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name.
+     */
+    public static function attributeMap(): array
+    {
+        return self::$attributeMap;
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses).
+     */
+    public static function setters(): array
+    {
+        return self::$setters;
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests).
+     */
+    public static function getters(): array
+    {
+        return self::$getters;
+    }
+
+    /**
+     * The original name of the model.
+     */
+    public function getModelName(): string
+    {
+        return self::$openAPIModelName;
     }
 
     /**
@@ -297,61 +243,59 @@ class Incentive implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['description'] === null) {
+        if (null === $this->container['description']) {
             $invalidProperties[] = "'description' can't be null";
         }
-        if ((mb_strlen($this->container['description']) > 1024)) {
+        if (mb_strlen($this->container['description']) > 1024) {
             $invalidProperties[] = "invalid value for 'description', the character length must be smaller than or equal to 1024.";
         }
 
-        if ((mb_strlen($this->container['description']) < 1)) {
+        if (mb_strlen($this->container['description']) < 1) {
             $invalidProperties[] = "invalid value for 'description', the character length must be bigger than or equal to 1.";
         }
 
-        if ($this->container['target'] === null) {
+        if (null === $this->container['target']) {
             $invalidProperties[] = "'target' can't be null";
         }
-        if ((mb_strlen($this->container['target']) > 1024)) {
+        if (mb_strlen($this->container['target']) > 1024) {
             $invalidProperties[] = "invalid value for 'target', the character length must be smaller than or equal to 1024.";
         }
 
-        if ((mb_strlen($this->container['target']) < 1)) {
+        if (mb_strlen($this->container['target']) < 1) {
             $invalidProperties[] = "invalid value for 'target', the character length must be bigger than or equal to 1.";
         }
 
-        if ($this->container['type'] === null) {
+        if (null === $this->container['type']) {
             $invalidProperties[] = "'type' can't be null";
         }
-        if ((mb_strlen($this->container['type']) > 1024)) {
+        if (mb_strlen($this->container['type']) > 1024) {
             $invalidProperties[] = "invalid value for 'type', the character length must be smaller than or equal to 1024.";
         }
 
-        if ((mb_strlen($this->container['type']) < 1)) {
+        if (mb_strlen($this->container['type']) < 1) {
             $invalidProperties[] = "invalid value for 'type', the character length must be bigger than or equal to 1.";
         }
 
-        if ($this->container['value'] === null) {
+        if (null === $this->container['value']) {
             $invalidProperties[] = "'value' can't be null";
         }
+
         return $invalidProperties;
     }
 
     /**
      * Validate all the properties in the model
-     * return true if all passed
+     * return true if all passed.
      *
      * @return bool True if all properties are valid
      */
     public function valid(): bool
     {
-        return count($this->listInvalidProperties()) === 0;
+        return 0 === count($this->listInvalidProperties());
     }
 
-
     /**
-     * Gets description
-     *
-     * @return string
+     * Gets description.
      */
     public function getDescription(): string
     {
@@ -359,21 +303,19 @@ class Incentive implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets description
+     * Sets description.
      *
-     * @param string $description Description of the incentive.
-     *
-     * @return self
+     * @param string $description description of the incentive
      */
     public function setDescription(string $description): self
     {
         if (is_null($description)) {
             throw new \InvalidArgumentException('non-nullable description cannot be null');
         }
-        if ((mb_strlen($description) > 1024)) {
+        if (mb_strlen($description) > 1024) {
             throw new \InvalidArgumentException('invalid length for $description when calling Incentive., must be smaller than or equal to 1024.');
         }
-        if ((mb_strlen($description) < 1)) {
+        if (mb_strlen($description) < 1) {
             throw new \InvalidArgumentException('invalid length for $description when calling Incentive., must be bigger than or equal to 1.');
         }
 
@@ -383,9 +325,7 @@ class Incentive implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets target
-     *
-     * @return string
+     * Gets target.
      */
     public function getTarget(): string
     {
@@ -393,21 +333,19 @@ class Incentive implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets target
+     * Sets target.
      *
      * @param string $target Target of the incentive. Possible values: 'Placement Services', 'Fulfillment Fee Discount'.
-     *
-     * @return self
      */
     public function setTarget(string $target): self
     {
         if (is_null($target)) {
             throw new \InvalidArgumentException('non-nullable target cannot be null');
         }
-        if ((mb_strlen($target) > 1024)) {
+        if (mb_strlen($target) > 1024) {
             throw new \InvalidArgumentException('invalid length for $target when calling Incentive., must be smaller than or equal to 1024.');
         }
-        if ((mb_strlen($target) < 1)) {
+        if (mb_strlen($target) < 1) {
             throw new \InvalidArgumentException('invalid length for $target when calling Incentive., must be bigger than or equal to 1.');
         }
 
@@ -417,9 +355,7 @@ class Incentive implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets type
-     *
-     * @return string
+     * Gets type.
      */
     public function getType(): string
     {
@@ -427,21 +363,19 @@ class Incentive implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets type
+     * Sets type.
      *
      * @param string $type Type of incentive. Possible values: `FEE`, `DISCOUNT`.
-     *
-     * @return self
      */
     public function setType(string $type): self
     {
         if (is_null($type)) {
             throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
-        if ((mb_strlen($type) > 1024)) {
+        if (mb_strlen($type) > 1024) {
             throw new \InvalidArgumentException('invalid length for $type when calling Incentive., must be smaller than or equal to 1024.');
         }
-        if ((mb_strlen($type) < 1)) {
+        if (mb_strlen($type) < 1) {
             throw new \InvalidArgumentException('invalid length for $type when calling Incentive., must be bigger than or equal to 1.');
         }
 
@@ -451,23 +385,19 @@ class Incentive implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets value
-     *
-     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\Currency
+     * Gets value.
      */
-    public function getValue(): \SpApi\Model\fulfillment\inbound\v2024_03_20\Currency
+    public function getValue(): Currency
     {
         return $this->container['value'];
     }
 
     /**
-     * Sets value
+     * Sets value.
      *
-     * @param \SpApi\Model\fulfillment\inbound\v2024_03_20\Currency $value value
-     *
-     * @return self
+     * @param Currency $value value
      */
-    public function setValue(\SpApi\Model\fulfillment\inbound\v2024_03_20\Currency $value): self
+    public function setValue(Currency $value): self
     {
         if (is_null($value)) {
             throw new \InvalidArgumentException('non-nullable value cannot be null');
@@ -477,13 +407,10 @@ class Incentive implements ModelInterface, ArrayAccess, \JsonSerializable
         return $this;
     }
 
-
     /**
      * Returns true if offset exists. False otherwise.
      *
-     * @param integer $offset Offset
-     *
-     * @return boolean
+     * @param int $offset Offset
      */
     public function offsetExists($offset): bool
     {
@@ -493,9 +420,9 @@ class Incentive implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
-     * @return mixed|null
+     * @return null|mixed
      */
     #[\ReturnTypeWillChange]
     public function offsetGet($offset): mixed
@@ -506,10 +433,8 @@ class Incentive implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets value based on offset.
      *
-     * @param int|null $offset Offset
+     * @param null|int $offset Offset
      * @param mixed    $value  Value to be set
-     *
-     * @return void
      */
     public function offsetSet($offset, mixed $value): void
     {
@@ -523,9 +448,7 @@ class Incentive implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Unsets offset.
      *
-     * @param integer $offset Offset
-     *
-     * @return void
+     * @param int $offset Offset
      */
     public function offsetUnset($offset): void
     {
@@ -534,39 +457,67 @@ class Incentive implements ModelInterface, ArrayAccess, \JsonSerializable
 
     /**
      * Serializes the object to a value that can be serialized natively by json_encode().
-     * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
      *
-     * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
+     * @see https://www.php.net/manual/en/jsonserializable.jsonserialize.php
+     *
+     * @return mixed returns data which can be serialized by json_encode(), which is a value
+     *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
     public function jsonSerialize(): mixed
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
-     * Gets the string presentation of the object
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    /**
-     * Gets a header-safe presentation of the object
-     *
-     * @return string
+     * Gets a header-safe presentation of the object.
      */
     public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
+
+    /**
+     * Array of nullable properties.
+     */
+    protected static function openAPINullables(): array
+    {
+        return self::$openAPINullables;
+    }
+
+    /**
+     * Array of nullable field names deliberately set to null.
+     *
+     * @return bool[]
+     */
+    private function getOpenAPINullablesSetToNull(): array
+    {
+        return $this->openAPINullablesSetToNull;
+    }
+
+    /**
+     * Setter - Array of nullable field names deliberately set to null.
+     *
+     * @param bool[] $openAPINullablesSetToNull
+     */
+    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
+    {
+        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
+    }
+
+    /**
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array.
+     *
+     * @param mixed $defaultValue
+     */
+    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+    {
+        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
+            $this->openAPINullablesSetToNull[] = $variableName;
+        }
+
+        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    }
 }
-
-

@@ -1,16 +1,18 @@
 <?php
+
 /**
  * ShipmentInvoiceApi
- * PHP version 8.3
+ * PHP version 8.3.
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Shipment Invoicing
+ * Selling Partner API for Shipment Invoicing.
  *
  * The Selling Partner API for Shipment Invoicing helps you programmatically retrieve shipment invoice information in the Brazil marketplace for a selling partner’s Fulfillment by Amazon (FBA) orders.
  *
@@ -35,38 +37,34 @@ use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use SpApi\AuthAndAuth\RateLimitConfiguration;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RateLimitConfiguration;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
+use SpApi\Model\invoicing\v0\GetInvoiceStatusResponse;
+use SpApi\Model\invoicing\v0\GetShipmentDetailsResponse;
+use SpApi\Model\invoicing\v0\SubmitInvoiceRequest;
+use SpApi\Model\invoicing\v0\SubmitInvoiceResponse;
 use SpApi\ObjectSerializer;
+use Symfony\Component\RateLimiter\LimiterInterface;
+use Symfony\Component\RateLimiter\RateLimiterFactory;
+use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
- * ShipmentInvoiceApi Class Doc Comment
+ * ShipmentInvoiceApi Class Doc Comment.
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class ShipmentInvoiceApi
 {
-    /**
-     * @var ClientInterface
-     */
     protected ClientInterface $client;
 
-    /**
-     * @var Configuration
-     */
     protected Configuration $config;
 
-    /**
-     * @var HeaderSelector
-     */
     protected HeaderSelector $headerSelector;
 
     /**
@@ -74,21 +72,11 @@ class ShipmentInvoiceApi
      */
     protected int $hostIndex;
 
-    /**
-     * @var ?RateLimitConfiguration
-     */
     private ?RateLimitConfiguration $rateLimitConfig = null;
 
-    /**
-     * @var ?LimiterInterface
-     */
     private ?LimiterInterface $rateLimiter = null;
 
     /**
-     * @param Configuration   $config
-     * @param RateLimitConfiguration|null $rateLimitConfig
-     * @param ClientInterface|null $client
-     * @param HeaderSelector|null $selector
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
@@ -107,10 +95,10 @@ class ShipmentInvoiceApi
                 'policy' => $type,
                 'limit' => $rateLimitConfig->getRateLimitTokenLimit(),
             ];
-            if ($type === "fixed_window" || $type === "sliding_window") {
-                $rateLimitOptions['interval'] = $rateLimitConfig->getRateLimitToken() . 'seconds';
+            if ('fixed_window' === $type || 'sliding_window' === $type) {
+                $rateLimitOptions['interval'] = $rateLimitConfig->getRateLimitToken().'seconds';
             } else {
-                $rateLimitOptions['rate'] = ['interval' => $rateLimitConfig->getRateLimitToken() . 'seconds'];
+                $rateLimitOptions['rate'] = ['interval' => $rateLimitConfig->getRateLimitToken().'seconds'];
             }
             $factory = new RateLimiterFactory($rateLimitOptions, new InMemoryStorage());
             $this->rateLimiter = $factory->create();
@@ -122,7 +110,7 @@ class ShipmentInvoiceApi
     }
 
     /**
-     * Set the host index
+     * Set the host index.
      *
      * @param int $hostIndex Host index (required)
      */
@@ -132,7 +120,7 @@ class ShipmentInvoiceApi
     }
 
     /**
-     * Get the host index
+     * Get the host index.
      *
      * @return int Host index
      */
@@ -141,40 +129,38 @@ class ShipmentInvoiceApi
         return $this->hostIndex;
     }
 
-    /**
-     * @return Configuration
-     */
     public function getConfig(): Configuration
     {
         return $this->config;
     }
 
     /**
-     * Operation getInvoiceStatus
+     * Operation getInvoiceStatus.
      *
-     * @param  string $shipment_id
-     *  The shipment identifier for the shipment. (required)
+     * @param string $shipment_id
+     *                            The shipment identifier for the shipment. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\invoicing\v0\GetInvoiceStatusResponse
      */
     public function getInvoiceStatus(
         string $shipment_id
-    ): \SpApi\Model\invoicing\v0\GetInvoiceStatusResponse {
+    ): GetInvoiceStatusResponse {
         list($response) = $this->getInvoiceStatusWithHttpInfo($shipment_id);
+
         return $response;
     }
 
     /**
-     * Operation getInvoiceStatusWithHttpInfo
+     * Operation getInvoiceStatusWithHttpInfo.
      *
-     * @param  string $shipment_id
-     *  The shipment identifier for the shipment. (required)
+     * @param string $shipment_id
+     *                            The shipment identifier for the shipment. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\invoicing\v0\GetInvoiceStatusResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getInvoiceStatusWithHttpInfo(
         string $shipment_id
@@ -184,6 +170,7 @@ class ShipmentInvoiceApi
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -218,10 +205,10 @@ class ShipmentInvoiceApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\SpApi\Model\invoicing\v0\GetInvoiceStatusResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\invoicing\v0\GetInvoiceStatusResponse' !== 'string') {
@@ -232,11 +219,12 @@ class ShipmentInvoiceApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\invoicing\v0\GetInvoiceStatusResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 400:
                     if ('\SpApi\Model\invoicing\v0\GetInvoiceStatusResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\invoicing\v0\GetInvoiceStatusResponse' !== 'string') {
@@ -247,11 +235,12 @@ class ShipmentInvoiceApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\invoicing\v0\GetInvoiceStatusResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 401:
                     if ('\SpApi\Model\invoicing\v0\GetInvoiceStatusResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\invoicing\v0\GetInvoiceStatusResponse' !== 'string') {
@@ -262,11 +251,12 @@ class ShipmentInvoiceApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\invoicing\v0\GetInvoiceStatusResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 403:
                     if ('\SpApi\Model\invoicing\v0\GetInvoiceStatusResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\invoicing\v0\GetInvoiceStatusResponse' !== 'string') {
@@ -277,11 +267,12 @@ class ShipmentInvoiceApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\invoicing\v0\GetInvoiceStatusResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 404:
                     if ('\SpApi\Model\invoicing\v0\GetInvoiceStatusResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\invoicing\v0\GetInvoiceStatusResponse' !== 'string') {
@@ -292,11 +283,12 @@ class ShipmentInvoiceApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\invoicing\v0\GetInvoiceStatusResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 415:
                     if ('\SpApi\Model\invoicing\v0\GetInvoiceStatusResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\invoicing\v0\GetInvoiceStatusResponse' !== 'string') {
@@ -307,11 +299,12 @@ class ShipmentInvoiceApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\invoicing\v0\GetInvoiceStatusResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 429:
                     if ('\SpApi\Model\invoicing\v0\GetInvoiceStatusResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\invoicing\v0\GetInvoiceStatusResponse' !== 'string') {
@@ -322,11 +315,12 @@ class ShipmentInvoiceApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\invoicing\v0\GetInvoiceStatusResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 500:
                     if ('\SpApi\Model\invoicing\v0\GetInvoiceStatusResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\invoicing\v0\GetInvoiceStatusResponse' !== 'string') {
@@ -337,11 +331,12 @@ class ShipmentInvoiceApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\invoicing\v0\GetInvoiceStatusResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 503:
                     if ('\SpApi\Model\invoicing\v0\GetInvoiceStatusResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\invoicing\v0\GetInvoiceStatusResponse' !== 'string') {
@@ -352,16 +347,16 @@ class ShipmentInvoiceApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\invoicing\v0\GetInvoiceStatusResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
             $returnType = '\SpApi\Model\invoicing\v0\GetInvoiceStatusResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+            if ('\SplFileObject' === $returnType) {
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
+                if ('string' !== $returnType) {
                     $content = json_decode($content);
                 }
             }
@@ -369,9 +364,8 @@ class ShipmentInvoiceApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -381,7 +375,9 @@ class ShipmentInvoiceApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -389,7 +385,9 @@ class ShipmentInvoiceApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -397,7 +395,9 @@ class ShipmentInvoiceApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -405,7 +405,9 @@ class ShipmentInvoiceApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -413,7 +415,9 @@ class ShipmentInvoiceApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -421,7 +425,9 @@ class ShipmentInvoiceApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -429,7 +435,9 @@ class ShipmentInvoiceApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -437,7 +445,9 @@ class ShipmentInvoiceApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -445,20 +455,21 @@ class ShipmentInvoiceApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation getInvoiceStatusAsync
+     * Operation getInvoiceStatusAsync.
      *
-     * @param  string $shipment_id
-     *  The shipment identifier for the shipment. (required)
+     * @param string $shipment_id
+     *                            The shipment identifier for the shipment. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getInvoiceStatusAsync(
         string $shipment_id
@@ -468,17 +479,17 @@ class ShipmentInvoiceApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getInvoiceStatusAsyncWithHttpInfo
+     * Operation getInvoiceStatusAsyncWithHttpInfo.
      *
-     * @param  string $shipment_id
-     *  The shipment identifier for the shipment. (required)
+     * @param string $shipment_id
+     *                            The shipment identifier for the shipment. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getInvoiceStatusAsyncWithHttpInfo(
         string $shipment_id
@@ -492,11 +503,11 @@ class ShipmentInvoiceApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -504,12 +515,13 @@ class ShipmentInvoiceApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -521,23 +533,23 @@ class ShipmentInvoiceApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getInvoiceStatus'
+     * Create request for operation 'getInvoiceStatus'.
      *
-     * @param  string $shipment_id
-     *  The shipment identifier for the shipment. (required)
+     * @param string $shipment_id
+     *                            The shipment identifier for the shipment. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getInvoiceStatusRequest(
         string $shipment_id
     ): Request {
         // verify the required parameter 'shipment_id' is set
-        if ($shipment_id === null || (is_array($shipment_id) && count($shipment_id) === 0)) {
+        if (null === $shipment_id || (is_array($shipment_id) && 0 === count($shipment_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $shipment_id when calling getInvoiceStatus'
             );
@@ -550,17 +562,14 @@ class ShipmentInvoiceApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($shipment_id !== null) {
+        if (null !== $shipment_id) {
             $resourcePath = str_replace(
-                '{' . 'shipmentId' . '}',
+                '{shipmentId}',
                 ObjectSerializer::toPathValue($shipment_id),
                 $resourcePath
             );
         }
-
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -569,7 +578,6 @@ class ShipmentInvoiceApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                
                 '',
                 false
             );
@@ -584,22 +592,19 @@ class ShipmentInvoiceApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -613,40 +618,42 @@ class ShipmentInvoiceApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getShipmentDetails
+     * Operation getShipmentDetails.
      *
-     * @param  string $shipment_id
-     *  The identifier for the shipment. Get this value from the FBAOutboundShipmentStatus notification. For information about subscribing to notifications, see the [Notifications API Use Case Guide](doc:notifications-api-v1-use-case-guide). (required)
+     * @param string $shipment_id
+     *                            The identifier for the shipment. Get this value from the FBAOutboundShipmentStatus notification. For information about subscribing to notifications, see the [Notifications API Use Case Guide](doc:notifications-api-v1-use-case-guide). (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\invoicing\v0\GetShipmentDetailsResponse
      */
     public function getShipmentDetails(
         string $shipment_id
-    ): \SpApi\Model\invoicing\v0\GetShipmentDetailsResponse {
+    ): GetShipmentDetailsResponse {
         list($response) = $this->getShipmentDetailsWithHttpInfo($shipment_id);
+
         return $response;
     }
 
     /**
-     * Operation getShipmentDetailsWithHttpInfo
+     * Operation getShipmentDetailsWithHttpInfo.
      *
-     * @param  string $shipment_id
-     *  The identifier for the shipment. Get this value from the FBAOutboundShipmentStatus notification. For information about subscribing to notifications, see the [Notifications API Use Case Guide](doc:notifications-api-v1-use-case-guide). (required)
+     * @param string $shipment_id
+     *                            The identifier for the shipment. Get this value from the FBAOutboundShipmentStatus notification. For information about subscribing to notifications, see the [Notifications API Use Case Guide](doc:notifications-api-v1-use-case-guide). (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\invoicing\v0\GetShipmentDetailsResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getShipmentDetailsWithHttpInfo(
         string $shipment_id
@@ -656,6 +663,7 @@ class ShipmentInvoiceApi
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -690,10 +698,10 @@ class ShipmentInvoiceApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\SpApi\Model\invoicing\v0\GetShipmentDetailsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\invoicing\v0\GetShipmentDetailsResponse' !== 'string') {
@@ -704,11 +712,12 @@ class ShipmentInvoiceApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\invoicing\v0\GetShipmentDetailsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 400:
                     if ('\SpApi\Model\invoicing\v0\GetShipmentDetailsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\invoicing\v0\GetShipmentDetailsResponse' !== 'string') {
@@ -719,11 +728,12 @@ class ShipmentInvoiceApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\invoicing\v0\GetShipmentDetailsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 401:
                     if ('\SpApi\Model\invoicing\v0\GetShipmentDetailsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\invoicing\v0\GetShipmentDetailsResponse' !== 'string') {
@@ -734,11 +744,12 @@ class ShipmentInvoiceApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\invoicing\v0\GetShipmentDetailsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 403:
                     if ('\SpApi\Model\invoicing\v0\GetShipmentDetailsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\invoicing\v0\GetShipmentDetailsResponse' !== 'string') {
@@ -749,11 +760,12 @@ class ShipmentInvoiceApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\invoicing\v0\GetShipmentDetailsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 404:
                     if ('\SpApi\Model\invoicing\v0\GetShipmentDetailsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\invoicing\v0\GetShipmentDetailsResponse' !== 'string') {
@@ -764,11 +776,12 @@ class ShipmentInvoiceApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\invoicing\v0\GetShipmentDetailsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 415:
                     if ('\SpApi\Model\invoicing\v0\GetShipmentDetailsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\invoicing\v0\GetShipmentDetailsResponse' !== 'string') {
@@ -779,11 +792,12 @@ class ShipmentInvoiceApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\invoicing\v0\GetShipmentDetailsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 429:
                     if ('\SpApi\Model\invoicing\v0\GetShipmentDetailsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\invoicing\v0\GetShipmentDetailsResponse' !== 'string') {
@@ -794,11 +808,12 @@ class ShipmentInvoiceApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\invoicing\v0\GetShipmentDetailsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 500:
                     if ('\SpApi\Model\invoicing\v0\GetShipmentDetailsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\invoicing\v0\GetShipmentDetailsResponse' !== 'string') {
@@ -809,11 +824,12 @@ class ShipmentInvoiceApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\invoicing\v0\GetShipmentDetailsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 503:
                     if ('\SpApi\Model\invoicing\v0\GetShipmentDetailsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\invoicing\v0\GetShipmentDetailsResponse' !== 'string') {
@@ -824,16 +840,16 @@ class ShipmentInvoiceApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\invoicing\v0\GetShipmentDetailsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
             $returnType = '\SpApi\Model\invoicing\v0\GetShipmentDetailsResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+            if ('\SplFileObject' === $returnType) {
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
+                if ('string' !== $returnType) {
                     $content = json_decode($content);
                 }
             }
@@ -841,9 +857,8 @@ class ShipmentInvoiceApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -853,7 +868,9 @@ class ShipmentInvoiceApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -861,7 +878,9 @@ class ShipmentInvoiceApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -869,7 +888,9 @@ class ShipmentInvoiceApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -877,7 +898,9 @@ class ShipmentInvoiceApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -885,7 +908,9 @@ class ShipmentInvoiceApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -893,7 +918,9 @@ class ShipmentInvoiceApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -901,7 +928,9 @@ class ShipmentInvoiceApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -909,7 +938,9 @@ class ShipmentInvoiceApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -917,20 +948,21 @@ class ShipmentInvoiceApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation getShipmentDetailsAsync
+     * Operation getShipmentDetailsAsync.
      *
-     * @param  string $shipment_id
-     *  The identifier for the shipment. Get this value from the FBAOutboundShipmentStatus notification. For information about subscribing to notifications, see the [Notifications API Use Case Guide](doc:notifications-api-v1-use-case-guide). (required)
+     * @param string $shipment_id
+     *                            The identifier for the shipment. Get this value from the FBAOutboundShipmentStatus notification. For information about subscribing to notifications, see the [Notifications API Use Case Guide](doc:notifications-api-v1-use-case-guide). (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getShipmentDetailsAsync(
         string $shipment_id
@@ -940,17 +972,17 @@ class ShipmentInvoiceApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getShipmentDetailsAsyncWithHttpInfo
+     * Operation getShipmentDetailsAsyncWithHttpInfo.
      *
-     * @param  string $shipment_id
-     *  The identifier for the shipment. Get this value from the FBAOutboundShipmentStatus notification. For information about subscribing to notifications, see the [Notifications API Use Case Guide](doc:notifications-api-v1-use-case-guide). (required)
+     * @param string $shipment_id
+     *                            The identifier for the shipment. Get this value from the FBAOutboundShipmentStatus notification. For information about subscribing to notifications, see the [Notifications API Use Case Guide](doc:notifications-api-v1-use-case-guide). (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getShipmentDetailsAsyncWithHttpInfo(
         string $shipment_id
@@ -964,11 +996,11 @@ class ShipmentInvoiceApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -976,12 +1008,13 @@ class ShipmentInvoiceApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -993,23 +1026,23 @@ class ShipmentInvoiceApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getShipmentDetails'
+     * Create request for operation 'getShipmentDetails'.
      *
-     * @param  string $shipment_id
-     *  The identifier for the shipment. Get this value from the FBAOutboundShipmentStatus notification. For information about subscribing to notifications, see the [Notifications API Use Case Guide](doc:notifications-api-v1-use-case-guide). (required)
+     * @param string $shipment_id
+     *                            The identifier for the shipment. Get this value from the FBAOutboundShipmentStatus notification. For information about subscribing to notifications, see the [Notifications API Use Case Guide](doc:notifications-api-v1-use-case-guide). (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getShipmentDetailsRequest(
         string $shipment_id
     ): Request {
         // verify the required parameter 'shipment_id' is set
-        if ($shipment_id === null || (is_array($shipment_id) && count($shipment_id) === 0)) {
+        if (null === $shipment_id || (is_array($shipment_id) && 0 === count($shipment_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $shipment_id when calling getShipmentDetails'
             );
@@ -1022,17 +1055,14 @@ class ShipmentInvoiceApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($shipment_id !== null) {
+        if (null !== $shipment_id) {
             $resourcePath = str_replace(
-                '{' . 'shipmentId' . '}',
+                '{shipmentId}',
                 ObjectSerializer::toPathValue($shipment_id),
                 $resourcePath
             );
         }
-
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -1041,7 +1071,6 @@ class ShipmentInvoiceApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                
                 '',
                 false
             );
@@ -1056,22 +1085,19 @@ class ShipmentInvoiceApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1085,55 +1111,58 @@ class ShipmentInvoiceApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation submitInvoice
+     * Operation submitInvoice.
      *
-     * @param  string $shipment_id
-     *  The identifier for the shipment. (required)
-     * @param  \SpApi\Model\invoicing\v0\SubmitInvoiceRequest $body
-     *  body (required)
+     * @param string               $shipment_id
+     *                                          The identifier for the shipment. (required)
+     * @param SubmitInvoiceRequest $body
+     *                                          body (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\invoicing\v0\SubmitInvoiceResponse
      */
     public function submitInvoice(
         string $shipment_id,
-        \SpApi\Model\invoicing\v0\SubmitInvoiceRequest $body
-    ): \SpApi\Model\invoicing\v0\SubmitInvoiceResponse {
+        SubmitInvoiceRequest $body
+    ): SubmitInvoiceResponse {
         list($response) = $this->submitInvoiceWithHttpInfo($shipment_id, $body);
+
         return $response;
     }
 
     /**
-     * Operation submitInvoiceWithHttpInfo
+     * Operation submitInvoiceWithHttpInfo.
      *
-     * @param  string $shipment_id
-     *  The identifier for the shipment. (required)
-     * @param  \SpApi\Model\invoicing\v0\SubmitInvoiceRequest $body
-     *  (required)
+     * @param string               $shipment_id
+     *                                          The identifier for the shipment. (required)
+     * @param SubmitInvoiceRequest $body
+     *                                          (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\invoicing\v0\SubmitInvoiceResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function submitInvoiceWithHttpInfo(
         string $shipment_id,
-        \SpApi\Model\invoicing\v0\SubmitInvoiceRequest $body
+        SubmitInvoiceRequest $body
     ): array {
         $request = $this->submitInvoiceRequest($shipment_id, $body);
         $request = $this->config->sign($request);
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -1168,10 +1197,10 @@ class ShipmentInvoiceApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\SpApi\Model\invoicing\v0\SubmitInvoiceResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\invoicing\v0\SubmitInvoiceResponse' !== 'string') {
@@ -1182,11 +1211,12 @@ class ShipmentInvoiceApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\invoicing\v0\SubmitInvoiceResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 400:
                     if ('\SpApi\Model\invoicing\v0\SubmitInvoiceResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\invoicing\v0\SubmitInvoiceResponse' !== 'string') {
@@ -1197,11 +1227,12 @@ class ShipmentInvoiceApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\invoicing\v0\SubmitInvoiceResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 401:
                     if ('\SpApi\Model\invoicing\v0\SubmitInvoiceResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\invoicing\v0\SubmitInvoiceResponse' !== 'string') {
@@ -1212,11 +1243,12 @@ class ShipmentInvoiceApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\invoicing\v0\SubmitInvoiceResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 403:
                     if ('\SpApi\Model\invoicing\v0\SubmitInvoiceResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\invoicing\v0\SubmitInvoiceResponse' !== 'string') {
@@ -1227,11 +1259,12 @@ class ShipmentInvoiceApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\invoicing\v0\SubmitInvoiceResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 404:
                     if ('\SpApi\Model\invoicing\v0\SubmitInvoiceResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\invoicing\v0\SubmitInvoiceResponse' !== 'string') {
@@ -1242,11 +1275,12 @@ class ShipmentInvoiceApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\invoicing\v0\SubmitInvoiceResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 415:
                     if ('\SpApi\Model\invoicing\v0\SubmitInvoiceResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\invoicing\v0\SubmitInvoiceResponse' !== 'string') {
@@ -1257,11 +1291,12 @@ class ShipmentInvoiceApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\invoicing\v0\SubmitInvoiceResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 429:
                     if ('\SpApi\Model\invoicing\v0\SubmitInvoiceResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\invoicing\v0\SubmitInvoiceResponse' !== 'string') {
@@ -1272,11 +1307,12 @@ class ShipmentInvoiceApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\invoicing\v0\SubmitInvoiceResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 500:
                     if ('\SpApi\Model\invoicing\v0\SubmitInvoiceResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\invoicing\v0\SubmitInvoiceResponse' !== 'string') {
@@ -1287,11 +1323,12 @@ class ShipmentInvoiceApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\invoicing\v0\SubmitInvoiceResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 503:
                     if ('\SpApi\Model\invoicing\v0\SubmitInvoiceResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\invoicing\v0\SubmitInvoiceResponse' !== 'string') {
@@ -1302,16 +1339,16 @@ class ShipmentInvoiceApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\invoicing\v0\SubmitInvoiceResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
             $returnType = '\SpApi\Model\invoicing\v0\SubmitInvoiceResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+            if ('\SplFileObject' === $returnType) {
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
+                if ('string' !== $returnType) {
                     $content = json_decode($content);
                 }
             }
@@ -1319,9 +1356,8 @@ class ShipmentInvoiceApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -1331,7 +1367,9 @@ class ShipmentInvoiceApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1339,7 +1377,9 @@ class ShipmentInvoiceApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1347,7 +1387,9 @@ class ShipmentInvoiceApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1355,7 +1397,9 @@ class ShipmentInvoiceApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1363,7 +1407,9 @@ class ShipmentInvoiceApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1371,7 +1417,9 @@ class ShipmentInvoiceApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1379,7 +1427,9 @@ class ShipmentInvoiceApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1387,7 +1437,9 @@ class ShipmentInvoiceApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1395,49 +1447,50 @@ class ShipmentInvoiceApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation submitInvoiceAsync
+     * Operation submitInvoiceAsync.
      *
-     * @param  string $shipment_id
-     *  The identifier for the shipment. (required)
-     * @param  \SpApi\Model\invoicing\v0\SubmitInvoiceRequest $body
-     *  (required)
+     * @param string               $shipment_id
+     *                                          The identifier for the shipment. (required)
+     * @param SubmitInvoiceRequest $body
+     *                                          (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function submitInvoiceAsync(
         string $shipment_id,
-        \SpApi\Model\invoicing\v0\SubmitInvoiceRequest $body
+        SubmitInvoiceRequest $body
     ): PromiseInterface {
         return $this->submitInvoiceAsyncWithHttpInfo($shipment_id, $body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation submitInvoiceAsyncWithHttpInfo
+     * Operation submitInvoiceAsyncWithHttpInfo.
      *
-     * @param  string $shipment_id
-     *  The identifier for the shipment. (required)
-     * @param  \SpApi\Model\invoicing\v0\SubmitInvoiceRequest $body
-     *  (required)
+     * @param string               $shipment_id
+     *                                          The identifier for the shipment. (required)
+     * @param SubmitInvoiceRequest $body
+     *                                          (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function submitInvoiceAsyncWithHttpInfo(
         string $shipment_id,
-        \SpApi\Model\invoicing\v0\SubmitInvoiceRequest $body
+        SubmitInvoiceRequest $body
     ): PromiseInterface {
         $returnType = '\SpApi\Model\invoicing\v0\SubmitInvoiceResponse';
         $request = $this->submitInvoiceRequest($shipment_id, $body);
@@ -1448,11 +1501,11 @@ class ShipmentInvoiceApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -1460,12 +1513,13 @@ class ShipmentInvoiceApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -1477,32 +1531,32 @@ class ShipmentInvoiceApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'submitInvoice'
+     * Create request for operation 'submitInvoice'.
      *
-     * @param  string $shipment_id
-     *  The identifier for the shipment. (required)
-     * @param  \SpApi\Model\invoicing\v0\SubmitInvoiceRequest $body
-     *  (required)
+     * @param string               $shipment_id
+     *                                          The identifier for the shipment. (required)
+     * @param SubmitInvoiceRequest $body
+     *                                          (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function submitInvoiceRequest(
         string $shipment_id,
-        \SpApi\Model\invoicing\v0\SubmitInvoiceRequest $body
+        SubmitInvoiceRequest $body
     ): Request {
         // verify the required parameter 'shipment_id' is set
-        if ($shipment_id === null || (is_array($shipment_id) && count($shipment_id) === 0)) {
+        if (null === $shipment_id || (is_array($shipment_id) && 0 === count($shipment_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $shipment_id when calling submitInvoice'
             );
         }
         // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        if (null === $body || (is_array($body) && 0 === count($body))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling submitInvoice'
             );
@@ -1515,17 +1569,14 @@ class ShipmentInvoiceApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($shipment_id !== null) {
+        if (null !== $shipment_id) {
             $resourcePath = str_replace(
-                '{' . 'shipmentId' . '}',
+                '{shipmentId}',
                 ObjectSerializer::toPathValue($shipment_id),
                 $resourcePath
             );
         }
-
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -1534,15 +1585,14 @@ class ShipmentInvoiceApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                'application/json'
-                ,
+                'application/json',
                 false
             );
         }
 
         // for model (json/xml)
         if (isset($body)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -1555,22 +1605,19 @@ class ShipmentInvoiceApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1584,19 +1631,36 @@ class ShipmentInvoiceApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Create http client option
+     * Rate Limiter waits for tokens.
+     */
+    public function rateLimitWait(): void
+    {
+        if ($this->rateLimiter) {
+            $type = $this->rateLimitConfig->getRateLimitType();
+            if (0 != $this->rateLimitConfig->getTimeOut() && ('token_bucket' == $type || 'fixed_window' == $type)) {
+                $this->rateLimiter->reserve(1, $this->rateLimitConfig->getTimeOut() / 1000)->wait();
+            } else {
+                $this->rateLimiter->consume()->wait();
+            }
+        }
+    }
+
+    /**
+     * Create http client option.
+     *
+     * @return array of http client options
      *
      * @throws \RuntimeException on file opening failure
-     * @return array of http client options
      */
     protected function createHttpClientOption(): array
     {
@@ -1604,27 +1668,10 @@ class ShipmentInvoiceApi
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
             if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+                throw new \RuntimeException('Failed to open the debug file: '.$this->config->getDebugFile());
             }
         }
 
         return $options;
-    }
-
-    /**
-     * Rate Limiter waits for tokens
-     *
-     * @return void
-     */
-    public function rateLimitWait(): void
-    {
-        if ($this->rateLimiter) {
-            $type = $this->rateLimitConfig->getRateLimitType();
-            if ($this->rateLimitConfig->getTimeOut() != 0 && ($type == "token_bucket" || $type == "fixed_window")) {
-                $this->rateLimiter->reserve(1, ($this->rateLimitConfig->getTimeOut()) / 1000)->wait();
-            } else {
-                $this->rateLimiter->consume()->wait();
-            }
-        }
     }
 }

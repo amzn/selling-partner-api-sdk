@@ -1,16 +1,18 @@
 <?php
+
 /**
  * ReportsApi
- * PHP version 8.3
+ * PHP version 8.3.
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Reports
+ * Selling Partner API for Reports.
  *
  * The Selling Partner API for Reports lets you retrieve and manage a variety of reports that can help selling partners manage their businesses.
  *
@@ -35,38 +37,39 @@ use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use SpApi\AuthAndAuth\RateLimitConfiguration;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RateLimitConfiguration;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
+use SpApi\Model\reports\v2021_06_30\CreateReportResponse;
+use SpApi\Model\reports\v2021_06_30\CreateReportScheduleResponse;
+use SpApi\Model\reports\v2021_06_30\CreateReportScheduleSpecification;
+use SpApi\Model\reports\v2021_06_30\CreateReportSpecification;
+use SpApi\Model\reports\v2021_06_30\GetReportsResponse;
+use SpApi\Model\reports\v2021_06_30\Report;
+use SpApi\Model\reports\v2021_06_30\ReportDocument;
+use SpApi\Model\reports\v2021_06_30\ReportSchedule;
+use SpApi\Model\reports\v2021_06_30\ReportScheduleList;
 use SpApi\ObjectSerializer;
+use Symfony\Component\RateLimiter\LimiterInterface;
+use Symfony\Component\RateLimiter\RateLimiterFactory;
+use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
- * ReportsApi Class Doc Comment
+ * ReportsApi Class Doc Comment.
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class ReportsApi
 {
-    /**
-     * @var ClientInterface
-     */
     protected ClientInterface $client;
 
-    /**
-     * @var Configuration
-     */
     protected Configuration $config;
 
-    /**
-     * @var HeaderSelector
-     */
     protected HeaderSelector $headerSelector;
 
     /**
@@ -74,21 +77,11 @@ class ReportsApi
      */
     protected int $hostIndex;
 
-    /**
-     * @var ?RateLimitConfiguration
-     */
     private ?RateLimitConfiguration $rateLimitConfig = null;
 
-    /**
-     * @var ?LimiterInterface
-     */
     private ?LimiterInterface $rateLimiter = null;
 
     /**
-     * @param Configuration   $config
-     * @param RateLimitConfiguration|null $rateLimitConfig
-     * @param ClientInterface|null $client
-     * @param HeaderSelector|null $selector
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
@@ -107,10 +100,10 @@ class ReportsApi
                 'policy' => $type,
                 'limit' => $rateLimitConfig->getRateLimitTokenLimit(),
             ];
-            if ($type === "fixed_window" || $type === "sliding_window") {
-                $rateLimitOptions['interval'] = $rateLimitConfig->getRateLimitToken() . 'seconds';
+            if ('fixed_window' === $type || 'sliding_window' === $type) {
+                $rateLimitOptions['interval'] = $rateLimitConfig->getRateLimitToken().'seconds';
             } else {
-                $rateLimitOptions['rate'] = ['interval' => $rateLimitConfig->getRateLimitToken() . 'seconds'];
+                $rateLimitOptions['rate'] = ['interval' => $rateLimitConfig->getRateLimitToken().'seconds'];
             }
             $factory = new RateLimiterFactory($rateLimitOptions, new InMemoryStorage());
             $this->rateLimiter = $factory->create();
@@ -122,7 +115,7 @@ class ReportsApi
     }
 
     /**
-     * Set the host index
+     * Set the host index.
      *
      * @param int $hostIndex Host index (required)
      */
@@ -132,7 +125,7 @@ class ReportsApi
     }
 
     /**
-     * Get the host index
+     * Get the host index.
      *
      * @return int Host index
      */
@@ -141,23 +134,19 @@ class ReportsApi
         return $this->hostIndex;
     }
 
-    /**
-     * @return Configuration
-     */
     public function getConfig(): Configuration
     {
         return $this->config;
     }
 
     /**
-     * Operation cancelReport
+     * Operation cancelReport.
      *
-     * @param  string $report_id
-     *  The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
+     * @param string $report_id
+     *                          The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return 
      */
     public function cancelReport(
         string $report_id
@@ -166,14 +155,15 @@ class ReportsApi
     }
 
     /**
-     * Operation cancelReportWithHttpInfo
+     * Operation cancelReportWithHttpInfo.
      *
-     * @param  string $report_id
-     *  The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
+     * @param string $report_id
+     *                          The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of , HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function cancelReportWithHttpInfo(
         string $report_id
@@ -183,6 +173,7 @@ class ReportsApi
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -218,7 +209,6 @@ class ReportsApi
             }
 
             return [null, $statusCode, $response->getHeaders()];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 400:
@@ -228,7 +218,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -236,7 +228,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -244,7 +238,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -252,7 +248,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -260,7 +258,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -268,7 +268,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -276,7 +278,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -284,20 +288,21 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation cancelReportAsync
+     * Operation cancelReportAsync.
      *
-     * @param  string $report_id
-     *  The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
+     * @param string $report_id
+     *                          The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function cancelReportAsync(
         string $report_id
@@ -307,17 +312,17 @@ class ReportsApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation cancelReportAsyncWithHttpInfo
+     * Operation cancelReportAsyncWithHttpInfo.
      *
-     * @param  string $report_id
-     *  The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
+     * @param string $report_id
+     *                          The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function cancelReportAsyncWithHttpInfo(
         string $report_id
@@ -330,12 +335,13 @@ class ReportsApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) {
                     return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -347,23 +353,23 @@ class ReportsApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'cancelReport'
+     * Create request for operation 'cancelReport'.
      *
-     * @param  string $report_id
-     *  The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
+     * @param string $report_id
+     *                          The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function cancelReportRequest(
         string $report_id
     ): Request {
         // verify the required parameter 'report_id' is set
-        if ($report_id === null || (is_array($report_id) && count($report_id) === 0)) {
+        if (null === $report_id || (is_array($report_id) && 0 === count($report_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $report_id when calling cancelReport'
             );
@@ -376,17 +382,14 @@ class ReportsApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($report_id !== null) {
+        if (null !== $report_id) {
             $resourcePath = str_replace(
-                '{' . 'reportId' . '}',
+                '{reportId}',
                 ObjectSerializer::toPathValue($report_id),
                 $resourcePath
             );
         }
-
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -395,7 +398,6 @@ class ReportsApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                
                 '',
                 false
             );
@@ -410,22 +412,19 @@ class ReportsApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -439,23 +438,23 @@ class ReportsApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'DELETE',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation cancelReportSchedule
+     * Operation cancelReportSchedule.
      *
-     * @param  string $report_schedule_id
-     *  The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
+     * @param string $report_schedule_id
+     *                                   The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return 
      */
     public function cancelReportSchedule(
         string $report_schedule_id
@@ -464,14 +463,15 @@ class ReportsApi
     }
 
     /**
-     * Operation cancelReportScheduleWithHttpInfo
+     * Operation cancelReportScheduleWithHttpInfo.
      *
-     * @param  string $report_schedule_id
-     *  The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
+     * @param string $report_schedule_id
+     *                                   The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of , HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function cancelReportScheduleWithHttpInfo(
         string $report_schedule_id
@@ -481,6 +481,7 @@ class ReportsApi
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -516,7 +517,6 @@ class ReportsApi
             }
 
             return [null, $statusCode, $response->getHeaders()];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 400:
@@ -526,7 +526,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -534,7 +536,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -542,7 +546,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -550,7 +556,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -558,7 +566,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -566,7 +576,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -574,7 +586,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -582,20 +596,21 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation cancelReportScheduleAsync
+     * Operation cancelReportScheduleAsync.
      *
-     * @param  string $report_schedule_id
-     *  The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
+     * @param string $report_schedule_id
+     *                                   The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function cancelReportScheduleAsync(
         string $report_schedule_id
@@ -605,17 +620,17 @@ class ReportsApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation cancelReportScheduleAsyncWithHttpInfo
+     * Operation cancelReportScheduleAsyncWithHttpInfo.
      *
-     * @param  string $report_schedule_id
-     *  The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
+     * @param string $report_schedule_id
+     *                                   The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function cancelReportScheduleAsyncWithHttpInfo(
         string $report_schedule_id
@@ -628,12 +643,13 @@ class ReportsApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) {
                     return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -645,23 +661,23 @@ class ReportsApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'cancelReportSchedule'
+     * Create request for operation 'cancelReportSchedule'.
      *
-     * @param  string $report_schedule_id
-     *  The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
+     * @param string $report_schedule_id
+     *                                   The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function cancelReportScheduleRequest(
         string $report_schedule_id
     ): Request {
         // verify the required parameter 'report_schedule_id' is set
-        if ($report_schedule_id === null || (is_array($report_schedule_id) && count($report_schedule_id) === 0)) {
+        if (null === $report_schedule_id || (is_array($report_schedule_id) && 0 === count($report_schedule_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $report_schedule_id when calling cancelReportSchedule'
             );
@@ -674,17 +690,14 @@ class ReportsApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($report_schedule_id !== null) {
+        if (null !== $report_schedule_id) {
             $resourcePath = str_replace(
-                '{' . 'reportScheduleId' . '}',
+                '{reportScheduleId}',
                 ObjectSerializer::toPathValue($report_schedule_id),
                 $resourcePath
             );
         }
-
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -693,7 +706,6 @@ class ReportsApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                
                 '',
                 false
             );
@@ -708,22 +720,19 @@ class ReportsApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -737,49 +746,52 @@ class ReportsApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'DELETE',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation createReport
+     * Operation createReport.
      *
-     * @param  \SpApi\Model\reports\v2021_06_30\CreateReportSpecification $body
-     *  Information required to create the report. (required)
+     * @param CreateReportSpecification $body
+     *                                        Information required to create the report. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\reports\v2021_06_30\CreateReportResponse
      */
     public function createReport(
-        \SpApi\Model\reports\v2021_06_30\CreateReportSpecification $body
-    ): \SpApi\Model\reports\v2021_06_30\CreateReportResponse {
+        CreateReportSpecification $body
+    ): CreateReportResponse {
         list($response) = $this->createReportWithHttpInfo($body);
+
         return $response;
     }
 
     /**
-     * Operation createReportWithHttpInfo
+     * Operation createReportWithHttpInfo.
      *
-     * @param  \SpApi\Model\reports\v2021_06_30\CreateReportSpecification $body
-     *  Information required to create the report. (required)
+     * @param CreateReportSpecification $body
+     *                                        Information required to create the report. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\reports\v2021_06_30\CreateReportResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function createReportWithHttpInfo(
-        \SpApi\Model\reports\v2021_06_30\CreateReportSpecification $body
+        CreateReportSpecification $body
     ): array {
         $request = $this->createReportRequest($body);
         $request = $this->config->sign($request);
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -814,10 +826,10 @@ class ReportsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 202:
                     if ('\SpApi\Model\reports\v2021_06_30\CreateReportResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\CreateReportResponse' !== 'string') {
@@ -828,11 +840,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\CreateReportResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 400:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -843,11 +856,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 401:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -858,11 +872,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 403:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -873,11 +888,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 404:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -888,11 +904,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 415:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -903,11 +920,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 429:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -918,11 +936,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 500:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -933,11 +952,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 503:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -948,16 +968,16 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
             $returnType = '\SpApi\Model\reports\v2021_06_30\CreateReportResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+            if ('\SplFileObject' === $returnType) {
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
+                if ('string' !== $returnType) {
                     $content = json_decode($content);
                 }
             }
@@ -965,9 +985,8 @@ class ReportsApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 202:
@@ -977,7 +996,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -985,7 +1006,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -993,7 +1016,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1001,7 +1026,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1009,7 +1036,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1017,7 +1046,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1025,7 +1056,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1033,7 +1066,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1041,43 +1076,44 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation createReportAsync
+     * Operation createReportAsync.
      *
-     * @param  \SpApi\Model\reports\v2021_06_30\CreateReportSpecification $body
-     *  Information required to create the report. (required)
+     * @param CreateReportSpecification $body
+     *                                        Information required to create the report. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function createReportAsync(
-        \SpApi\Model\reports\v2021_06_30\CreateReportSpecification $body
+        CreateReportSpecification $body
     ): PromiseInterface {
         return $this->createReportAsyncWithHttpInfo($body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation createReportAsyncWithHttpInfo
+     * Operation createReportAsyncWithHttpInfo.
      *
-     * @param  \SpApi\Model\reports\v2021_06_30\CreateReportSpecification $body
-     *  Information required to create the report. (required)
+     * @param CreateReportSpecification $body
+     *                                        Information required to create the report. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function createReportAsyncWithHttpInfo(
-        \SpApi\Model\reports\v2021_06_30\CreateReportSpecification $body
+        CreateReportSpecification $body
     ): PromiseInterface {
         $returnType = '\SpApi\Model\reports\v2021_06_30\CreateReportResponse';
         $request = $this->createReportRequest($body);
@@ -1088,11 +1124,11 @@ class ReportsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -1100,12 +1136,13 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -1117,23 +1154,23 @@ class ReportsApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'createReport'
+     * Create request for operation 'createReport'.
      *
-     * @param  \SpApi\Model\reports\v2021_06_30\CreateReportSpecification $body
-     *  Information required to create the report. (required)
+     * @param CreateReportSpecification $body
+     *                                        Information required to create the report. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function createReportRequest(
-        \SpApi\Model\reports\v2021_06_30\CreateReportSpecification $body
+        CreateReportSpecification $body
     ): Request {
         // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        if (null === $body || (is_array($body) && 0 === count($body))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling createReport'
             );
@@ -1146,10 +1183,6 @@ class ReportsApi
         $httpBody = '';
         $multipart = false;
 
-
-
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -1157,15 +1190,14 @@ class ReportsApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                'application/json'
-                ,
+                'application/json',
                 false
             );
         }
 
         // for model (json/xml)
         if (isset($body)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -1178,22 +1210,19 @@ class ReportsApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1207,49 +1236,52 @@ class ReportsApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation createReportSchedule
+     * Operation createReportSchedule.
      *
-     * @param  \SpApi\Model\reports\v2021_06_30\CreateReportScheduleSpecification $body
-     *  Information required to create the report schedule. (required)
+     * @param CreateReportScheduleSpecification $body
+     *                                                Information required to create the report schedule. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\reports\v2021_06_30\CreateReportScheduleResponse
      */
     public function createReportSchedule(
-        \SpApi\Model\reports\v2021_06_30\CreateReportScheduleSpecification $body
-    ): \SpApi\Model\reports\v2021_06_30\CreateReportScheduleResponse {
+        CreateReportScheduleSpecification $body
+    ): CreateReportScheduleResponse {
         list($response) = $this->createReportScheduleWithHttpInfo($body);
+
         return $response;
     }
 
     /**
-     * Operation createReportScheduleWithHttpInfo
+     * Operation createReportScheduleWithHttpInfo.
      *
-     * @param  \SpApi\Model\reports\v2021_06_30\CreateReportScheduleSpecification $body
-     *  Information required to create the report schedule. (required)
+     * @param CreateReportScheduleSpecification $body
+     *                                                Information required to create the report schedule. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\reports\v2021_06_30\CreateReportScheduleResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function createReportScheduleWithHttpInfo(
-        \SpApi\Model\reports\v2021_06_30\CreateReportScheduleSpecification $body
+        CreateReportScheduleSpecification $body
     ): array {
         $request = $this->createReportScheduleRequest($body);
         $request = $this->config->sign($request);
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -1284,10 +1316,10 @@ class ReportsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 201:
                     if ('\SpApi\Model\reports\v2021_06_30\CreateReportScheduleResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\CreateReportScheduleResponse' !== 'string') {
@@ -1298,11 +1330,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\CreateReportScheduleResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 400:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -1313,11 +1346,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 401:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -1328,11 +1362,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 403:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -1343,11 +1378,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 404:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -1358,11 +1394,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 415:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -1373,11 +1410,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 429:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -1388,11 +1426,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 500:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -1403,11 +1442,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 503:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -1418,16 +1458,16 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
             $returnType = '\SpApi\Model\reports\v2021_06_30\CreateReportScheduleResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+            if ('\SplFileObject' === $returnType) {
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
+                if ('string' !== $returnType) {
                     $content = json_decode($content);
                 }
             }
@@ -1435,9 +1475,8 @@ class ReportsApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 201:
@@ -1447,7 +1486,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1455,7 +1496,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1463,7 +1506,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1471,7 +1516,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1479,7 +1526,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1487,7 +1536,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1495,7 +1546,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1503,7 +1556,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1511,43 +1566,44 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation createReportScheduleAsync
+     * Operation createReportScheduleAsync.
      *
-     * @param  \SpApi\Model\reports\v2021_06_30\CreateReportScheduleSpecification $body
-     *  Information required to create the report schedule. (required)
+     * @param CreateReportScheduleSpecification $body
+     *                                                Information required to create the report schedule. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function createReportScheduleAsync(
-        \SpApi\Model\reports\v2021_06_30\CreateReportScheduleSpecification $body
+        CreateReportScheduleSpecification $body
     ): PromiseInterface {
         return $this->createReportScheduleAsyncWithHttpInfo($body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation createReportScheduleAsyncWithHttpInfo
+     * Operation createReportScheduleAsyncWithHttpInfo.
      *
-     * @param  \SpApi\Model\reports\v2021_06_30\CreateReportScheduleSpecification $body
-     *  Information required to create the report schedule. (required)
+     * @param CreateReportScheduleSpecification $body
+     *                                                Information required to create the report schedule. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function createReportScheduleAsyncWithHttpInfo(
-        \SpApi\Model\reports\v2021_06_30\CreateReportScheduleSpecification $body
+        CreateReportScheduleSpecification $body
     ): PromiseInterface {
         $returnType = '\SpApi\Model\reports\v2021_06_30\CreateReportScheduleResponse';
         $request = $this->createReportScheduleRequest($body);
@@ -1558,11 +1614,11 @@ class ReportsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -1570,12 +1626,13 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -1587,23 +1644,23 @@ class ReportsApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'createReportSchedule'
+     * Create request for operation 'createReportSchedule'.
      *
-     * @param  \SpApi\Model\reports\v2021_06_30\CreateReportScheduleSpecification $body
-     *  Information required to create the report schedule. (required)
+     * @param CreateReportScheduleSpecification $body
+     *                                                Information required to create the report schedule. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function createReportScheduleRequest(
-        \SpApi\Model\reports\v2021_06_30\CreateReportScheduleSpecification $body
+        CreateReportScheduleSpecification $body
     ): Request {
         // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        if (null === $body || (is_array($body) && 0 === count($body))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling createReportSchedule'
             );
@@ -1616,10 +1673,6 @@ class ReportsApi
         $httpBody = '';
         $multipart = false;
 
-
-
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -1627,15 +1680,14 @@ class ReportsApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                'application/json'
-                ,
+                'application/json',
                 false
             );
         }
 
         // for model (json/xml)
         if (isset($body)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -1648,22 +1700,19 @@ class ReportsApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1677,40 +1726,42 @@ class ReportsApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getReport
+     * Operation getReport.
      *
-     * @param  string $report_id
-     *  The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
+     * @param string $report_id
+     *                          The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\reports\v2021_06_30\Report
      */
     public function getReport(
         string $report_id
-    ): \SpApi\Model\reports\v2021_06_30\Report {
+    ): Report {
         list($response) = $this->getReportWithHttpInfo($report_id);
+
         return $response;
     }
 
     /**
-     * Operation getReportWithHttpInfo
+     * Operation getReportWithHttpInfo.
      *
-     * @param  string $report_id
-     *  The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
+     * @param string $report_id
+     *                          The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\reports\v2021_06_30\Report, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getReportWithHttpInfo(
         string $report_id
@@ -1720,6 +1771,7 @@ class ReportsApi
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -1754,10 +1806,10 @@ class ReportsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\SpApi\Model\reports\v2021_06_30\Report' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\Report' !== 'string') {
@@ -1768,11 +1820,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\Report', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 400:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -1783,11 +1836,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 401:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -1798,11 +1852,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 403:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -1813,11 +1868,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 404:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -1828,11 +1884,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 415:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -1843,11 +1900,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 429:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -1858,11 +1916,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 500:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -1873,11 +1932,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 503:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -1888,16 +1948,16 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
             $returnType = '\SpApi\Model\reports\v2021_06_30\Report';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+            if ('\SplFileObject' === $returnType) {
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
+                if ('string' !== $returnType) {
                     $content = json_decode($content);
                 }
             }
@@ -1905,9 +1965,8 @@ class ReportsApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -1917,7 +1976,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1925,7 +1986,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1933,7 +1996,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1941,7 +2006,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1949,7 +2016,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1957,7 +2026,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1965,7 +2036,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1973,7 +2046,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1981,20 +2056,21 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation getReportAsync
+     * Operation getReportAsync.
      *
-     * @param  string $report_id
-     *  The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
+     * @param string $report_id
+     *                          The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getReportAsync(
         string $report_id
@@ -2004,17 +2080,17 @@ class ReportsApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getReportAsyncWithHttpInfo
+     * Operation getReportAsyncWithHttpInfo.
      *
-     * @param  string $report_id
-     *  The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
+     * @param string $report_id
+     *                          The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getReportAsyncWithHttpInfo(
         string $report_id
@@ -2028,11 +2104,11 @@ class ReportsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -2040,12 +2116,13 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -2057,23 +2134,23 @@ class ReportsApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getReport'
+     * Create request for operation 'getReport'.
      *
-     * @param  string $report_id
-     *  The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
+     * @param string $report_id
+     *                          The identifier for the report. This identifier is unique only in combination with a seller ID. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getReportRequest(
         string $report_id
     ): Request {
         // verify the required parameter 'report_id' is set
-        if ($report_id === null || (is_array($report_id) && count($report_id) === 0)) {
+        if (null === $report_id || (is_array($report_id) && 0 === count($report_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $report_id when calling getReport'
             );
@@ -2086,17 +2163,14 @@ class ReportsApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($report_id !== null) {
+        if (null !== $report_id) {
             $resourcePath = str_replace(
-                '{' . 'reportId' . '}',
+                '{reportId}',
                 ObjectSerializer::toPathValue($report_id),
                 $resourcePath
             );
         }
-
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -2105,7 +2179,6 @@ class ReportsApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                
                 '',
                 false
             );
@@ -2120,22 +2193,19 @@ class ReportsApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -2149,40 +2219,42 @@ class ReportsApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getReportDocument
+     * Operation getReportDocument.
      *
-     * @param  string $report_document_id
-     *  The identifier for the report document. (required)
+     * @param string $report_document_id
+     *                                   The identifier for the report document. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\reports\v2021_06_30\ReportDocument
      */
     public function getReportDocument(
         string $report_document_id
-    ): \SpApi\Model\reports\v2021_06_30\ReportDocument {
+    ): ReportDocument {
         list($response) = $this->getReportDocumentWithHttpInfo($report_document_id);
+
         return $response;
     }
 
     /**
-     * Operation getReportDocumentWithHttpInfo
+     * Operation getReportDocumentWithHttpInfo.
      *
-     * @param  string $report_document_id
-     *  The identifier for the report document. (required)
+     * @param string $report_document_id
+     *                                   The identifier for the report document. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\reports\v2021_06_30\ReportDocument, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getReportDocumentWithHttpInfo(
         string $report_document_id
@@ -2192,6 +2264,7 @@ class ReportsApi
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -2226,10 +2299,10 @@ class ReportsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\SpApi\Model\reports\v2021_06_30\ReportDocument' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ReportDocument' !== 'string') {
@@ -2240,11 +2313,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ReportDocument', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 400:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -2255,11 +2329,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 401:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -2270,11 +2345,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 403:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -2285,11 +2361,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 404:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -2300,11 +2377,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 415:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -2315,11 +2393,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 429:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -2330,11 +2409,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 500:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -2345,11 +2425,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 503:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -2360,16 +2441,16 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
             $returnType = '\SpApi\Model\reports\v2021_06_30\ReportDocument';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+            if ('\SplFileObject' === $returnType) {
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
+                if ('string' !== $returnType) {
                     $content = json_decode($content);
                 }
             }
@@ -2377,9 +2458,8 @@ class ReportsApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -2389,7 +2469,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2397,7 +2479,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2405,7 +2489,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2413,7 +2499,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2421,7 +2509,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2429,7 +2519,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2437,7 +2529,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2445,7 +2539,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2453,20 +2549,21 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation getReportDocumentAsync
+     * Operation getReportDocumentAsync.
      *
-     * @param  string $report_document_id
-     *  The identifier for the report document. (required)
+     * @param string $report_document_id
+     *                                   The identifier for the report document. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getReportDocumentAsync(
         string $report_document_id
@@ -2476,17 +2573,17 @@ class ReportsApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getReportDocumentAsyncWithHttpInfo
+     * Operation getReportDocumentAsyncWithHttpInfo.
      *
-     * @param  string $report_document_id
-     *  The identifier for the report document. (required)
+     * @param string $report_document_id
+     *                                   The identifier for the report document. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getReportDocumentAsyncWithHttpInfo(
         string $report_document_id
@@ -2500,11 +2597,11 @@ class ReportsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -2512,12 +2609,13 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -2529,23 +2627,23 @@ class ReportsApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getReportDocument'
+     * Create request for operation 'getReportDocument'.
      *
-     * @param  string $report_document_id
-     *  The identifier for the report document. (required)
+     * @param string $report_document_id
+     *                                   The identifier for the report document. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getReportDocumentRequest(
         string $report_document_id
     ): Request {
         // verify the required parameter 'report_document_id' is set
-        if ($report_document_id === null || (is_array($report_document_id) && count($report_document_id) === 0)) {
+        if (null === $report_document_id || (is_array($report_document_id) && 0 === count($report_document_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $report_document_id when calling getReportDocument'
             );
@@ -2558,17 +2656,14 @@ class ReportsApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($report_document_id !== null) {
+        if (null !== $report_document_id) {
             $resourcePath = str_replace(
-                '{' . 'reportDocumentId' . '}',
+                '{reportDocumentId}',
                 ObjectSerializer::toPathValue($report_document_id),
                 $resourcePath
             );
         }
-
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -2577,7 +2672,6 @@ class ReportsApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                
                 '',
                 false
             );
@@ -2592,22 +2686,19 @@ class ReportsApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -2621,40 +2712,42 @@ class ReportsApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getReportSchedule
+     * Operation getReportSchedule.
      *
-     * @param  string $report_schedule_id
-     *  The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
+     * @param string $report_schedule_id
+     *                                   The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\reports\v2021_06_30\ReportSchedule
      */
     public function getReportSchedule(
         string $report_schedule_id
-    ): \SpApi\Model\reports\v2021_06_30\ReportSchedule {
+    ): ReportSchedule {
         list($response) = $this->getReportScheduleWithHttpInfo($report_schedule_id);
+
         return $response;
     }
 
     /**
-     * Operation getReportScheduleWithHttpInfo
+     * Operation getReportScheduleWithHttpInfo.
      *
-     * @param  string $report_schedule_id
-     *  The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
+     * @param string $report_schedule_id
+     *                                   The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\reports\v2021_06_30\ReportSchedule, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getReportScheduleWithHttpInfo(
         string $report_schedule_id
@@ -2664,6 +2757,7 @@ class ReportsApi
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -2698,10 +2792,10 @@ class ReportsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\SpApi\Model\reports\v2021_06_30\ReportSchedule' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ReportSchedule' !== 'string') {
@@ -2712,11 +2806,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ReportSchedule', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 400:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -2727,11 +2822,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 401:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -2742,11 +2838,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 403:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -2757,11 +2854,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 404:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -2772,11 +2870,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 415:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -2787,11 +2886,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 429:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -2802,11 +2902,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 500:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -2817,11 +2918,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 503:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -2832,16 +2934,16 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
             $returnType = '\SpApi\Model\reports\v2021_06_30\ReportSchedule';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+            if ('\SplFileObject' === $returnType) {
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
+                if ('string' !== $returnType) {
                     $content = json_decode($content);
                 }
             }
@@ -2849,9 +2951,8 @@ class ReportsApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -2861,7 +2962,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2869,7 +2972,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2877,7 +2982,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2885,7 +2992,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2893,7 +3002,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2901,7 +3012,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2909,7 +3022,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2917,7 +3032,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2925,20 +3042,21 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation getReportScheduleAsync
+     * Operation getReportScheduleAsync.
      *
-     * @param  string $report_schedule_id
-     *  The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
+     * @param string $report_schedule_id
+     *                                   The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getReportScheduleAsync(
         string $report_schedule_id
@@ -2948,17 +3066,17 @@ class ReportsApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getReportScheduleAsyncWithHttpInfo
+     * Operation getReportScheduleAsyncWithHttpInfo.
      *
-     * @param  string $report_schedule_id
-     *  The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
+     * @param string $report_schedule_id
+     *                                   The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getReportScheduleAsyncWithHttpInfo(
         string $report_schedule_id
@@ -2972,11 +3090,11 @@ class ReportsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -2984,12 +3102,13 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -3001,23 +3120,23 @@ class ReportsApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getReportSchedule'
+     * Create request for operation 'getReportSchedule'.
      *
-     * @param  string $report_schedule_id
-     *  The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
+     * @param string $report_schedule_id
+     *                                   The identifier for the report schedule. This identifier is unique only in combination with a seller ID. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getReportScheduleRequest(
         string $report_schedule_id
     ): Request {
         // verify the required parameter 'report_schedule_id' is set
-        if ($report_schedule_id === null || (is_array($report_schedule_id) && count($report_schedule_id) === 0)) {
+        if (null === $report_schedule_id || (is_array($report_schedule_id) && 0 === count($report_schedule_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $report_schedule_id when calling getReportSchedule'
             );
@@ -3030,17 +3149,14 @@ class ReportsApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($report_schedule_id !== null) {
+        if (null !== $report_schedule_id) {
             $resourcePath = str_replace(
-                '{' . 'reportScheduleId' . '}',
+                '{reportScheduleId}',
                 ObjectSerializer::toPathValue($report_schedule_id),
                 $resourcePath
             );
         }
-
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -3049,7 +3165,6 @@ class ReportsApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                
                 '',
                 false
             );
@@ -3064,22 +3179,19 @@ class ReportsApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -3093,40 +3205,42 @@ class ReportsApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getReportSchedules
+     * Operation getReportSchedules.
      *
-     * @param  string[] $report_types
-     *  A list of report types used to filter report schedules. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. (required)
+     * @param string[] $report_types
+     *                               A list of report types used to filter report schedules. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\reports\v2021_06_30\ReportScheduleList
      */
     public function getReportSchedules(
         array $report_types
-    ): \SpApi\Model\reports\v2021_06_30\ReportScheduleList {
+    ): ReportScheduleList {
         list($response) = $this->getReportSchedulesWithHttpInfo($report_types);
+
         return $response;
     }
 
     /**
-     * Operation getReportSchedulesWithHttpInfo
+     * Operation getReportSchedulesWithHttpInfo.
      *
-     * @param  string[] $report_types
-     *  A list of report types used to filter report schedules. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. (required)
+     * @param string[] $report_types
+     *                               A list of report types used to filter report schedules. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\reports\v2021_06_30\ReportScheduleList, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getReportSchedulesWithHttpInfo(
         array $report_types
@@ -3136,6 +3250,7 @@ class ReportsApi
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -3170,10 +3285,10 @@ class ReportsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\SpApi\Model\reports\v2021_06_30\ReportScheduleList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ReportScheduleList' !== 'string') {
@@ -3184,11 +3299,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ReportScheduleList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 400:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -3199,11 +3315,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 401:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -3214,11 +3331,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 403:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -3229,11 +3347,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 404:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -3244,11 +3363,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 415:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -3259,11 +3379,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 429:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -3274,11 +3395,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 500:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -3289,11 +3411,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 503:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -3304,16 +3427,16 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
             $returnType = '\SpApi\Model\reports\v2021_06_30\ReportScheduleList';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+            if ('\SplFileObject' === $returnType) {
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
+                if ('string' !== $returnType) {
                     $content = json_decode($content);
                 }
             }
@@ -3321,9 +3444,8 @@ class ReportsApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -3333,7 +3455,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3341,7 +3465,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3349,7 +3475,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3357,7 +3485,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3365,7 +3495,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3373,7 +3505,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3381,7 +3515,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3389,7 +3525,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3397,20 +3535,21 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation getReportSchedulesAsync
+     * Operation getReportSchedulesAsync.
      *
-     * @param  string[] $report_types
-     *  A list of report types used to filter report schedules. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. (required)
+     * @param string[] $report_types
+     *                               A list of report types used to filter report schedules. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getReportSchedulesAsync(
         array $report_types
@@ -3420,17 +3559,17 @@ class ReportsApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getReportSchedulesAsyncWithHttpInfo
+     * Operation getReportSchedulesAsyncWithHttpInfo.
      *
-     * @param  string[] $report_types
-     *  A list of report types used to filter report schedules. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. (required)
+     * @param string[] $report_types
+     *                               A list of report types used to filter report schedules. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getReportSchedulesAsyncWithHttpInfo(
         array $report_types
@@ -3444,11 +3583,11 @@ class ReportsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -3456,12 +3595,13 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -3473,23 +3613,23 @@ class ReportsApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getReportSchedules'
+     * Create request for operation 'getReportSchedules'.
      *
-     * @param  string[] $report_types
-     *  A list of report types used to filter report schedules. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. (required)
+     * @param string[] $report_types
+     *                               A list of report types used to filter report schedules. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getReportSchedulesRequest(
         array $report_types
     ): Request {
         // verify the required parameter 'report_types' is set
-        if ($report_types === null || (is_array($report_types) && count($report_types) === 0)) {
+        if (null === $report_types || (is_array($report_types) && 0 === count($report_types))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $report_types when calling getReportSchedules'
             );
@@ -3500,7 +3640,6 @@ class ReportsApi
         if (count($report_types) < 1) {
             throw new \InvalidArgumentException('invalid value for "$report_types" when calling ReportsApi.getReportSchedules, number of items must be greater than or equal to 1.');
         }
-
 
         $resourcePath = '/reports/2021-06-30/schedules';
         $formParams = [];
@@ -3519,9 +3658,6 @@ class ReportsApi
             true // required
         ) ?? []);
 
-
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -3529,7 +3665,6 @@ class ReportsApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                
                 '',
                 false
             );
@@ -3544,22 +3679,19 @@ class ReportsApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -3573,35 +3705,35 @@ class ReportsApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getReports
+     * Operation getReports.
      *
-     * @param  string[]|null $report_types
-     *  A list of report types used to filter reports. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. When reportTypes is provided, the other filter parameters (processingStatuses, marketplaceIds, createdSince, createdUntil) and pageSize may also be provided. Either reportTypes or nextToken is required. (optional)
-     * @param  string[]|null $processing_statuses
-     *  A list of processing statuses used to filter reports. (optional)
-     * @param  string[]|null $marketplace_ids
-     *  A list of marketplace identifiers used to filter reports. The reports returned will match at least one of the marketplaces that you specify. (optional)
-     * @param  int|null $page_size
-     *  The maximum number of reports to return in a single call. (optional, default to 10)
-     * @param  \DateTime|null $created_since
-     *  The earliest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is 90 days ago. Reports are retained for a maximum of 90 days. (optional)
-     * @param  \DateTime|null $created_until
-     *  The latest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is now. (optional)
-     * @param  string|null $next_token
-     *  A string token returned in the response to your previous request. &#x60;nextToken&#x60; is returned when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the &#x60;getReports&#x60; operation and include this token as the only parameter. Specifying &#x60;nextToken&#x60; with any other parameters will cause the request to fail. (optional)
+     * @param null|string[]  $report_types
+     *                                            A list of report types used to filter reports. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. When reportTypes is provided, the other filter parameters (processingStatuses, marketplaceIds, createdSince, createdUntil) and pageSize may also be provided. Either reportTypes or nextToken is required. (optional)
+     * @param null|string[]  $processing_statuses
+     *                                            A list of processing statuses used to filter reports. (optional)
+     * @param null|string[]  $marketplace_ids
+     *                                            A list of marketplace identifiers used to filter reports. The reports returned will match at least one of the marketplaces that you specify. (optional)
+     * @param null|int       $page_size
+     *                                            The maximum number of reports to return in a single call. (optional, default to 10)
+     * @param null|\DateTime $created_since
+     *                                            The earliest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is 90 days ago. Reports are retained for a maximum of 90 days. (optional)
+     * @param null|\DateTime $created_until
+     *                                            The latest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is now. (optional)
+     * @param null|string    $next_token
+     *                                            A string token returned in the response to your previous request. &#x60;nextToken&#x60; is returned when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the &#x60;getReports&#x60; operation and include this token as the only parameter. Specifying &#x60;nextToken&#x60; with any other parameters will cause the request to fail. (optional)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\reports\v2021_06_30\GetReportsResponse
      */
     public function getReports(
         ?array $report_types = null,
@@ -3611,32 +3743,34 @@ class ReportsApi
         ?\DateTime $created_since = null,
         ?\DateTime $created_until = null,
         ?string $next_token = null
-    ): \SpApi\Model\reports\v2021_06_30\GetReportsResponse {
+    ): GetReportsResponse {
         list($response) = $this->getReportsWithHttpInfo($report_types, $processing_statuses, $marketplace_ids, $page_size, $created_since, $created_until, $next_token);
+
         return $response;
     }
 
     /**
-     * Operation getReportsWithHttpInfo
+     * Operation getReportsWithHttpInfo.
      *
-     * @param  string[]|null $report_types
-     *  A list of report types used to filter reports. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. When reportTypes is provided, the other filter parameters (processingStatuses, marketplaceIds, createdSince, createdUntil) and pageSize may also be provided. Either reportTypes or nextToken is required. (optional)
-     * @param  string[]|null $processing_statuses
-     *  A list of processing statuses used to filter reports. (optional)
-     * @param  string[]|null $marketplace_ids
-     *  A list of marketplace identifiers used to filter reports. The reports returned will match at least one of the marketplaces that you specify. (optional)
-     * @param  int|null $page_size
-     *  The maximum number of reports to return in a single call. (optional, default to 10)
-     * @param  \DateTime|null $created_since
-     *  The earliest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is 90 days ago. Reports are retained for a maximum of 90 days. (optional)
-     * @param  \DateTime|null $created_until
-     *  The latest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is now. (optional)
-     * @param  string|null $next_token
-     *  A string token returned in the response to your previous request. &#x60;nextToken&#x60; is returned when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the &#x60;getReports&#x60; operation and include this token as the only parameter. Specifying &#x60;nextToken&#x60; with any other parameters will cause the request to fail. (optional)
+     * @param null|string[]  $report_types
+     *                                            A list of report types used to filter reports. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. When reportTypes is provided, the other filter parameters (processingStatuses, marketplaceIds, createdSince, createdUntil) and pageSize may also be provided. Either reportTypes or nextToken is required. (optional)
+     * @param null|string[]  $processing_statuses
+     *                                            A list of processing statuses used to filter reports. (optional)
+     * @param null|string[]  $marketplace_ids
+     *                                            A list of marketplace identifiers used to filter reports. The reports returned will match at least one of the marketplaces that you specify. (optional)
+     * @param null|int       $page_size
+     *                                            The maximum number of reports to return in a single call. (optional, default to 10)
+     * @param null|\DateTime $created_since
+     *                                            The earliest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is 90 days ago. Reports are retained for a maximum of 90 days. (optional)
+     * @param null|\DateTime $created_until
+     *                                            The latest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is now. (optional)
+     * @param null|string    $next_token
+     *                                            A string token returned in the response to your previous request. &#x60;nextToken&#x60; is returned when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the &#x60;getReports&#x60; operation and include this token as the only parameter. Specifying &#x60;nextToken&#x60; with any other parameters will cause the request to fail. (optional)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\reports\v2021_06_30\GetReportsResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getReportsWithHttpInfo(
         ?array $report_types = null,
@@ -3652,6 +3786,7 @@ class ReportsApi
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -3686,10 +3821,10 @@ class ReportsApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\SpApi\Model\reports\v2021_06_30\GetReportsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\GetReportsResponse' !== 'string') {
@@ -3700,11 +3835,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\GetReportsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 400:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -3715,11 +3851,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 401:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -3730,11 +3867,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 403:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -3745,11 +3883,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 404:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -3760,11 +3899,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 415:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -3775,11 +3915,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 429:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -3790,11 +3931,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 500:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -3805,11 +3947,12 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 503:
                     if ('\SpApi\Model\reports\v2021_06_30\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\reports\v2021_06_30\ErrorList' !== 'string') {
@@ -3820,16 +3963,16 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\reports\v2021_06_30\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
             $returnType = '\SpApi\Model\reports\v2021_06_30\GetReportsResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+            if ('\SplFileObject' === $returnType) {
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
+                if ('string' !== $returnType) {
                     $content = json_decode($content);
                 }
             }
@@ -3837,9 +3980,8 @@ class ReportsApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -3849,7 +3991,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3857,7 +4001,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3865,7 +4011,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3873,7 +4021,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3881,7 +4031,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3889,7 +4041,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3897,7 +4051,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3905,7 +4061,9 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3913,32 +4071,33 @@ class ReportsApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation getReportsAsync
+     * Operation getReportsAsync.
      *
-     * @param  string[]|null $report_types
-     *  A list of report types used to filter reports. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. When reportTypes is provided, the other filter parameters (processingStatuses, marketplaceIds, createdSince, createdUntil) and pageSize may also be provided. Either reportTypes or nextToken is required. (optional)
-     * @param  string[]|null $processing_statuses
-     *  A list of processing statuses used to filter reports. (optional)
-     * @param  string[]|null $marketplace_ids
-     *  A list of marketplace identifiers used to filter reports. The reports returned will match at least one of the marketplaces that you specify. (optional)
-     * @param  int|null $page_size
-     *  The maximum number of reports to return in a single call. (optional, default to 10)
-     * @param  \DateTime|null $created_since
-     *  The earliest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is 90 days ago. Reports are retained for a maximum of 90 days. (optional)
-     * @param  \DateTime|null $created_until
-     *  The latest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is now. (optional)
-     * @param  string|null $next_token
-     *  A string token returned in the response to your previous request. &#x60;nextToken&#x60; is returned when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the &#x60;getReports&#x60; operation and include this token as the only parameter. Specifying &#x60;nextToken&#x60; with any other parameters will cause the request to fail. (optional)
+     * @param null|string[]  $report_types
+     *                                            A list of report types used to filter reports. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. When reportTypes is provided, the other filter parameters (processingStatuses, marketplaceIds, createdSince, createdUntil) and pageSize may also be provided. Either reportTypes or nextToken is required. (optional)
+     * @param null|string[]  $processing_statuses
+     *                                            A list of processing statuses used to filter reports. (optional)
+     * @param null|string[]  $marketplace_ids
+     *                                            A list of marketplace identifiers used to filter reports. The reports returned will match at least one of the marketplaces that you specify. (optional)
+     * @param null|int       $page_size
+     *                                            The maximum number of reports to return in a single call. (optional, default to 10)
+     * @param null|\DateTime $created_since
+     *                                            The earliest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is 90 days ago. Reports are retained for a maximum of 90 days. (optional)
+     * @param null|\DateTime $created_until
+     *                                            The latest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is now. (optional)
+     * @param null|string    $next_token
+     *                                            A string token returned in the response to your previous request. &#x60;nextToken&#x60; is returned when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the &#x60;getReports&#x60; operation and include this token as the only parameter. Specifying &#x60;nextToken&#x60; with any other parameters will cause the request to fail. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getReportsAsync(
         ?array $report_types = null,
@@ -3954,29 +4113,29 @@ class ReportsApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getReportsAsyncWithHttpInfo
+     * Operation getReportsAsyncWithHttpInfo.
      *
-     * @param  string[]|null $report_types
-     *  A list of report types used to filter reports. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. When reportTypes is provided, the other filter parameters (processingStatuses, marketplaceIds, createdSince, createdUntil) and pageSize may also be provided. Either reportTypes or nextToken is required. (optional)
-     * @param  string[]|null $processing_statuses
-     *  A list of processing statuses used to filter reports. (optional)
-     * @param  string[]|null $marketplace_ids
-     *  A list of marketplace identifiers used to filter reports. The reports returned will match at least one of the marketplaces that you specify. (optional)
-     * @param  int|null $page_size
-     *  The maximum number of reports to return in a single call. (optional, default to 10)
-     * @param  \DateTime|null $created_since
-     *  The earliest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is 90 days ago. Reports are retained for a maximum of 90 days. (optional)
-     * @param  \DateTime|null $created_until
-     *  The latest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is now. (optional)
-     * @param  string|null $next_token
-     *  A string token returned in the response to your previous request. &#x60;nextToken&#x60; is returned when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the &#x60;getReports&#x60; operation and include this token as the only parameter. Specifying &#x60;nextToken&#x60; with any other parameters will cause the request to fail. (optional)
+     * @param null|string[]  $report_types
+     *                                            A list of report types used to filter reports. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. When reportTypes is provided, the other filter parameters (processingStatuses, marketplaceIds, createdSince, createdUntil) and pageSize may also be provided. Either reportTypes or nextToken is required. (optional)
+     * @param null|string[]  $processing_statuses
+     *                                            A list of processing statuses used to filter reports. (optional)
+     * @param null|string[]  $marketplace_ids
+     *                                            A list of marketplace identifiers used to filter reports. The reports returned will match at least one of the marketplaces that you specify. (optional)
+     * @param null|int       $page_size
+     *                                            The maximum number of reports to return in a single call. (optional, default to 10)
+     * @param null|\DateTime $created_since
+     *                                            The earliest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is 90 days ago. Reports are retained for a maximum of 90 days. (optional)
+     * @param null|\DateTime $created_until
+     *                                            The latest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is now. (optional)
+     * @param null|string    $next_token
+     *                                            A string token returned in the response to your previous request. &#x60;nextToken&#x60; is returned when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the &#x60;getReports&#x60; operation and include this token as the only parameter. Specifying &#x60;nextToken&#x60; with any other parameters will cause the request to fail. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getReportsAsyncWithHttpInfo(
         ?array $report_types = null,
@@ -3996,11 +4155,11 @@ class ReportsApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -4008,12 +4167,13 @@ class ReportsApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -4025,29 +4185,29 @@ class ReportsApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getReports'
+     * Create request for operation 'getReports'.
      *
-     * @param  string[]|null $report_types
-     *  A list of report types used to filter reports. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. When reportTypes is provided, the other filter parameters (processingStatuses, marketplaceIds, createdSince, createdUntil) and pageSize may also be provided. Either reportTypes or nextToken is required. (optional)
-     * @param  string[]|null $processing_statuses
-     *  A list of processing statuses used to filter reports. (optional)
-     * @param  string[]|null $marketplace_ids
-     *  A list of marketplace identifiers used to filter reports. The reports returned will match at least one of the marketplaces that you specify. (optional)
-     * @param  int|null $page_size
-     *  The maximum number of reports to return in a single call. (optional, default to 10)
-     * @param  \DateTime|null $created_since
-     *  The earliest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is 90 days ago. Reports are retained for a maximum of 90 days. (optional)
-     * @param  \DateTime|null $created_until
-     *  The latest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is now. (optional)
-     * @param  string|null $next_token
-     *  A string token returned in the response to your previous request. &#x60;nextToken&#x60; is returned when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the &#x60;getReports&#x60; operation and include this token as the only parameter. Specifying &#x60;nextToken&#x60; with any other parameters will cause the request to fail. (optional)
+     * @param null|string[]  $report_types
+     *                                            A list of report types used to filter reports. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information. When reportTypes is provided, the other filter parameters (processingStatuses, marketplaceIds, createdSince, createdUntil) and pageSize may also be provided. Either reportTypes or nextToken is required. (optional)
+     * @param null|string[]  $processing_statuses
+     *                                            A list of processing statuses used to filter reports. (optional)
+     * @param null|string[]  $marketplace_ids
+     *                                            A list of marketplace identifiers used to filter reports. The reports returned will match at least one of the marketplaces that you specify. (optional)
+     * @param null|int       $page_size
+     *                                            The maximum number of reports to return in a single call. (optional, default to 10)
+     * @param null|\DateTime $created_since
+     *                                            The earliest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is 90 days ago. Reports are retained for a maximum of 90 days. (optional)
+     * @param null|\DateTime $created_until
+     *                                            The latest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is now. (optional)
+     * @param null|string    $next_token
+     *                                            A string token returned in the response to your previous request. &#x60;nextToken&#x60; is returned when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the &#x60;getReports&#x60; operation and include this token as the only parameter. Specifying &#x60;nextToken&#x60; with any other parameters will cause the request to fail. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getReportsRequest(
         ?array $report_types = null,
@@ -4058,31 +4218,30 @@ class ReportsApi
         ?\DateTime $created_until = null,
         ?string $next_token = null
     ): Request {
-        if ($report_types !== null && count($report_types) > 10) {
+        if (null !== $report_types && count($report_types) > 10) {
             throw new \InvalidArgumentException('invalid value for "$report_types" when calling ReportsApi.getReports, number of items must be less than or equal to 10.');
         }
-        if ($report_types !== null && count($report_types) < 1) {
+        if (null !== $report_types && count($report_types) < 1) {
             throw new \InvalidArgumentException('invalid value for "$report_types" when calling ReportsApi.getReports, number of items must be greater than or equal to 1.');
         }
 
-        if ($processing_statuses !== null && count($processing_statuses) < 1) {
+        if (null !== $processing_statuses && count($processing_statuses) < 1) {
             throw new \InvalidArgumentException('invalid value for "$processing_statuses" when calling ReportsApi.getReports, number of items must be greater than or equal to 1.');
         }
 
-        if ($marketplace_ids !== null && count($marketplace_ids) > 10) {
+        if (null !== $marketplace_ids && count($marketplace_ids) > 10) {
             throw new \InvalidArgumentException('invalid value for "$marketplace_ids" when calling ReportsApi.getReports, number of items must be less than or equal to 10.');
         }
-        if ($marketplace_ids !== null && count($marketplace_ids) < 1) {
+        if (null !== $marketplace_ids && count($marketplace_ids) < 1) {
             throw new \InvalidArgumentException('invalid value for "$marketplace_ids" when calling ReportsApi.getReports, number of items must be greater than or equal to 1.');
         }
 
-        if ($page_size !== null && $page_size > 100) {
+        if (null !== $page_size && $page_size > 100) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling ReportsApi.getReports, must be smaller than or equal to 100.');
         }
-        if ($page_size !== null && $page_size < 1) {
+        if (null !== $page_size && $page_size < 1) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling ReportsApi.getReports, must be bigger than or equal to 1.');
         }
-
 
         $resourcePath = '/reports/2021-06-30/reports';
         $formParams = [];
@@ -4155,9 +4314,6 @@ class ReportsApi
             false // required
         ) ?? []);
 
-
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -4165,7 +4321,6 @@ class ReportsApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                
                 '',
                 false
             );
@@ -4180,22 +4335,19 @@ class ReportsApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -4209,19 +4361,36 @@ class ReportsApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Create http client option
+     * Rate Limiter waits for tokens.
+     */
+    public function rateLimitWait(): void
+    {
+        if ($this->rateLimiter) {
+            $type = $this->rateLimitConfig->getRateLimitType();
+            if (0 != $this->rateLimitConfig->getTimeOut() && ('token_bucket' == $type || 'fixed_window' == $type)) {
+                $this->rateLimiter->reserve(1, $this->rateLimitConfig->getTimeOut() / 1000)->wait();
+            } else {
+                $this->rateLimiter->consume()->wait();
+            }
+        }
+    }
+
+    /**
+     * Create http client option.
+     *
+     * @return array of http client options
      *
      * @throws \RuntimeException on file opening failure
-     * @return array of http client options
      */
     protected function createHttpClientOption(): array
     {
@@ -4229,27 +4398,10 @@ class ReportsApi
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
             if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+                throw new \RuntimeException('Failed to open the debug file: '.$this->config->getDebugFile());
             }
         }
 
         return $options;
-    }
-
-    /**
-     * Rate Limiter waits for tokens
-     *
-     * @return void
-     */
-    public function rateLimitWait(): void
-    {
-        if ($this->rateLimiter) {
-            $type = $this->rateLimitConfig->getRateLimitType();
-            if ($this->rateLimitConfig->getTimeOut() != 0 && ($type == "token_bucket" || $type == "fixed_window")) {
-                $this->rateLimiter->reserve(1, ($this->rateLimitConfig->getTimeOut()) / 1000)->wait();
-            } else {
-                $this->rateLimiter->consume()->wait();
-            }
-        }
     }
 }

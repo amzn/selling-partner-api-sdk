@@ -1,17 +1,19 @@
 <?php
+
 /**
- * FulfillmentChannelType
+ * FulfillmentChannelType.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Pricing
+ * Selling Partner API for Pricing.
  *
  * The Selling Partner API for Pricing helps you programmatically retrieve product pricing and offer information for Amazon Marketplace products.
  *
@@ -27,38 +29,37 @@
  */
 
 namespace SpApi\Model\pricing\v0;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * FulfillmentChannelType Class Doc Comment
+ * FulfillmentChannelType Class Doc Comment.
  *
  * @category Class
+ *
  * @description Indicates whether the item is fulfilled by Amazon or by the seller (merchant).
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class FulfillmentChannelType
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const AMAZON = 'Amazon';
 
     public const MERCHANT = 'Merchant';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
     {
         return [
             self::AMAZON,
-            self::MERCHANT
+            self::MERCHANT,
         ];
     }
 }
-
-

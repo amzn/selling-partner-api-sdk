@@ -1,13 +1,15 @@
 <?php
+
 /**
- * OwnerConstraint
+ * OwnerConstraint.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
@@ -27,22 +29,22 @@
  */
 
 namespace SpApi\Model\fulfillment\inbound\v2024_03_20;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * OwnerConstraint Class Doc Comment
+ * OwnerConstraint Class Doc Comment.
  *
  * @category Class
+ *
  * @description A constraint that can apply to an individual owner. If no constraint is specified, both &#x60;AMAZON&#x60; and &#x60;SELLER&#x60; are acceptable.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class OwnerConstraint
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const AMAZON_ONLY = 'AMAZON_ONLY';
 
@@ -51,7 +53,8 @@ class OwnerConstraint
     public const SELLER_ONLY = 'SELLER_ONLY';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
@@ -59,9 +62,7 @@ class OwnerConstraint
         return [
             self::AMAZON_ONLY,
             self::NONE_ONLY,
-            self::SELLER_ONLY
+            self::SELLER_ONLY,
         ];
     }
 }
-
-

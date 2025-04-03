@@ -1,12 +1,14 @@
 <?php
+
 /**
  * DefaultApi
- * PHP version 8.3
+ * PHP version 8.3.
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
@@ -35,38 +37,33 @@ use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use SpApi\AuthAndAuth\RateLimitConfiguration;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RateLimitConfiguration;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
+use SpApi\Model\transfers\v2024_06_01\GetPaymentMethodsResponse;
+use SpApi\Model\transfers\v2024_06_01\InitiatePayoutRequest;
+use SpApi\Model\transfers\v2024_06_01\InitiatePayoutResponse;
 use SpApi\ObjectSerializer;
+use Symfony\Component\RateLimiter\LimiterInterface;
+use Symfony\Component\RateLimiter\RateLimiterFactory;
+use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
- * DefaultApi Class Doc Comment
+ * DefaultApi Class Doc Comment.
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class DefaultApi
 {
-    /**
-     * @var ClientInterface
-     */
     protected ClientInterface $client;
 
-    /**
-     * @var Configuration
-     */
     protected Configuration $config;
 
-    /**
-     * @var HeaderSelector
-     */
     protected HeaderSelector $headerSelector;
 
     /**
@@ -74,21 +71,11 @@ class DefaultApi
      */
     protected int $hostIndex;
 
-    /**
-     * @var ?RateLimitConfiguration
-     */
     private ?RateLimitConfiguration $rateLimitConfig = null;
 
-    /**
-     * @var ?LimiterInterface
-     */
     private ?LimiterInterface $rateLimiter = null;
 
     /**
-     * @param Configuration   $config
-     * @param RateLimitConfiguration|null $rateLimitConfig
-     * @param ClientInterface|null $client
-     * @param HeaderSelector|null $selector
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
@@ -107,10 +94,10 @@ class DefaultApi
                 'policy' => $type,
                 'limit' => $rateLimitConfig->getRateLimitTokenLimit(),
             ];
-            if ($type === "fixed_window" || $type === "sliding_window") {
-                $rateLimitOptions['interval'] = $rateLimitConfig->getRateLimitToken() . 'seconds';
+            if ('fixed_window' === $type || 'sliding_window' === $type) {
+                $rateLimitOptions['interval'] = $rateLimitConfig->getRateLimitToken().'seconds';
             } else {
-                $rateLimitOptions['rate'] = ['interval' => $rateLimitConfig->getRateLimitToken() . 'seconds'];
+                $rateLimitOptions['rate'] = ['interval' => $rateLimitConfig->getRateLimitToken().'seconds'];
             }
             $factory = new RateLimiterFactory($rateLimitOptions, new InMemoryStorage());
             $this->rateLimiter = $factory->create();
@@ -122,7 +109,7 @@ class DefaultApi
     }
 
     /**
-     * Set the host index
+     * Set the host index.
      *
      * @param int $hostIndex Host index (required)
      */
@@ -132,7 +119,7 @@ class DefaultApi
     }
 
     /**
-     * Get the host index
+     * Get the host index.
      *
      * @return int Host index
      */
@@ -141,45 +128,43 @@ class DefaultApi
         return $this->hostIndex;
     }
 
-    /**
-     * @return Configuration
-     */
     public function getConfig(): Configuration
     {
         return $this->config;
     }
 
     /**
-     * Operation getPaymentMethods
+     * Operation getPaymentMethods.
      *
-     * @param  string $marketplace_id
-     *  The identifier of the marketplace from which you want to retrieve payment methods. For the list of possible marketplace identifiers, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  string[]|null $payment_method_types
-     *  A comma-separated list of the payment method types you want to include in the response. (optional)
+     * @param string        $marketplace_id
+     *                                            The identifier of the marketplace from which you want to retrieve payment methods. For the list of possible marketplace identifiers, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param null|string[] $payment_method_types
+     *                                            A comma-separated list of the payment method types you want to include in the response. (optional)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\transfers\v2024_06_01\GetPaymentMethodsResponse
      */
     public function getPaymentMethods(
         string $marketplace_id,
         ?array $payment_method_types = null
-    ): \SpApi\Model\transfers\v2024_06_01\GetPaymentMethodsResponse {
+    ): GetPaymentMethodsResponse {
         list($response) = $this->getPaymentMethodsWithHttpInfo($marketplace_id, $payment_method_types);
+
         return $response;
     }
 
     /**
-     * Operation getPaymentMethodsWithHttpInfo
+     * Operation getPaymentMethodsWithHttpInfo.
      *
-     * @param  string $marketplace_id
-     *  The identifier of the marketplace from which you want to retrieve payment methods. For the list of possible marketplace identifiers, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  string[]|null $payment_method_types
-     *  A comma-separated list of the payment method types you want to include in the response. (optional)
+     * @param string        $marketplace_id
+     *                                            The identifier of the marketplace from which you want to retrieve payment methods. For the list of possible marketplace identifiers, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param null|string[] $payment_method_types
+     *                                            A comma-separated list of the payment method types you want to include in the response. (optional)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\transfers\v2024_06_01\GetPaymentMethodsResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getPaymentMethodsWithHttpInfo(
         string $marketplace_id,
@@ -190,6 +175,7 @@ class DefaultApi
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -224,10 +210,10 @@ class DefaultApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\SpApi\Model\transfers\v2024_06_01\GetPaymentMethodsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\transfers\v2024_06_01\GetPaymentMethodsResponse' !== 'string') {
@@ -238,11 +224,12 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\transfers\v2024_06_01\GetPaymentMethodsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 400:
                     if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
@@ -253,11 +240,12 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\transfers\v2024_06_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 403:
                     if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
@@ -268,11 +256,12 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\transfers\v2024_06_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 404:
                     if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
@@ -283,11 +272,12 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\transfers\v2024_06_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 413:
                     if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
@@ -298,11 +288,12 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\transfers\v2024_06_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 415:
                     if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
@@ -313,11 +304,12 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\transfers\v2024_06_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 429:
                     if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
@@ -328,11 +320,12 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\transfers\v2024_06_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 500:
                     if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
@@ -343,11 +336,12 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\transfers\v2024_06_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 503:
                     if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
@@ -358,16 +352,16 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\transfers\v2024_06_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
             $returnType = '\SpApi\Model\transfers\v2024_06_01\GetPaymentMethodsResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+            if ('\SplFileObject' === $returnType) {
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
+                if ('string' !== $returnType) {
                     $content = json_decode($content);
                 }
             }
@@ -375,9 +369,8 @@ class DefaultApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -387,7 +380,9 @@ class DefaultApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -395,7 +390,9 @@ class DefaultApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -403,7 +400,9 @@ class DefaultApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -411,7 +410,9 @@ class DefaultApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -419,7 +420,9 @@ class DefaultApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -427,7 +430,9 @@ class DefaultApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -435,7 +440,9 @@ class DefaultApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -443,7 +450,9 @@ class DefaultApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -451,22 +460,23 @@ class DefaultApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation getPaymentMethodsAsync
+     * Operation getPaymentMethodsAsync.
      *
-     * @param  string $marketplace_id
-     *  The identifier of the marketplace from which you want to retrieve payment methods. For the list of possible marketplace identifiers, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  string[]|null $payment_method_types
-     *  A comma-separated list of the payment method types you want to include in the response. (optional)
+     * @param string        $marketplace_id
+     *                                            The identifier of the marketplace from which you want to retrieve payment methods. For the list of possible marketplace identifiers, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param null|string[] $payment_method_types
+     *                                            A comma-separated list of the payment method types you want to include in the response. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getPaymentMethodsAsync(
         string $marketplace_id,
@@ -477,19 +487,19 @@ class DefaultApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getPaymentMethodsAsyncWithHttpInfo
+     * Operation getPaymentMethodsAsyncWithHttpInfo.
      *
-     * @param  string $marketplace_id
-     *  The identifier of the marketplace from which you want to retrieve payment methods. For the list of possible marketplace identifiers, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  string[]|null $payment_method_types
-     *  A comma-separated list of the payment method types you want to include in the response. (optional)
+     * @param string        $marketplace_id
+     *                                            The identifier of the marketplace from which you want to retrieve payment methods. For the list of possible marketplace identifiers, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param null|string[] $payment_method_types
+     *                                            A comma-separated list of the payment method types you want to include in the response. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getPaymentMethodsAsyncWithHttpInfo(
         string $marketplace_id,
@@ -504,11 +514,11 @@ class DefaultApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -516,12 +526,13 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -533,34 +544,33 @@ class DefaultApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getPaymentMethods'
+     * Create request for operation 'getPaymentMethods'.
      *
-     * @param  string $marketplace_id
-     *  The identifier of the marketplace from which you want to retrieve payment methods. For the list of possible marketplace identifiers, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  string[]|null $payment_method_types
-     *  A comma-separated list of the payment method types you want to include in the response. (optional)
+     * @param string        $marketplace_id
+     *                                            The identifier of the marketplace from which you want to retrieve payment methods. For the list of possible marketplace identifiers, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param null|string[] $payment_method_types
+     *                                            A comma-separated list of the payment method types you want to include in the response. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getPaymentMethodsRequest(
         string $marketplace_id,
         ?array $payment_method_types = null
     ): Request {
         // verify the required parameter 'marketplace_id' is set
-        if ($marketplace_id === null || (is_array($marketplace_id) && count($marketplace_id) === 0)) {
+        if (null === $marketplace_id || (is_array($marketplace_id) && 0 === count($marketplace_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_id when calling getPaymentMethods'
             );
         }
-        if ($payment_method_types !== null && count($payment_method_types) < 1) {
+        if (null !== $payment_method_types && count($payment_method_types) < 1) {
             throw new \InvalidArgumentException('invalid value for "$payment_method_types" when calling DefaultApi.getPaymentMethods, number of items must be greater than or equal to 1.');
         }
-
 
         $resourcePath = '/finances/transfers/2024-06-01/paymentMethods';
         $formParams = [];
@@ -588,9 +598,6 @@ class DefaultApi
             false // required
         ) ?? []);
 
-
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -598,7 +605,6 @@ class DefaultApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                
                 '',
                 false
             );
@@ -613,22 +619,19 @@ class DefaultApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -642,49 +645,52 @@ class DefaultApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation initiatePayout
+     * Operation initiatePayout.
      *
-     * @param  \SpApi\Model\transfers\v2024_06_01\InitiatePayoutRequest $body
-     *  The request body for the &#x60;initiatePayout&#x60; operation. (required)
+     * @param InitiatePayoutRequest $body
+     *                                    The request body for the &#x60;initiatePayout&#x60; operation. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\transfers\v2024_06_01\InitiatePayoutResponse
      */
     public function initiatePayout(
-        \SpApi\Model\transfers\v2024_06_01\InitiatePayoutRequest $body
-    ): \SpApi\Model\transfers\v2024_06_01\InitiatePayoutResponse {
+        InitiatePayoutRequest $body
+    ): InitiatePayoutResponse {
         list($response) = $this->initiatePayoutWithHttpInfo($body);
+
         return $response;
     }
 
     /**
-     * Operation initiatePayoutWithHttpInfo
+     * Operation initiatePayoutWithHttpInfo.
      *
-     * @param  \SpApi\Model\transfers\v2024_06_01\InitiatePayoutRequest $body
-     *  The request body for the &#x60;initiatePayout&#x60; operation. (required)
+     * @param InitiatePayoutRequest $body
+     *                                    The request body for the &#x60;initiatePayout&#x60; operation. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\transfers\v2024_06_01\InitiatePayoutResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function initiatePayoutWithHttpInfo(
-        \SpApi\Model\transfers\v2024_06_01\InitiatePayoutRequest $body
+        InitiatePayoutRequest $body
     ): array {
         $request = $this->initiatePayoutRequest($body);
         $request = $this->config->sign($request);
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -719,10 +725,10 @@ class DefaultApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\SpApi\Model\transfers\v2024_06_01\InitiatePayoutResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\transfers\v2024_06_01\InitiatePayoutResponse' !== 'string') {
@@ -733,11 +739,12 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\transfers\v2024_06_01\InitiatePayoutResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 400:
                     if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
@@ -748,11 +755,12 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\transfers\v2024_06_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 403:
                     if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
@@ -763,11 +771,12 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\transfers\v2024_06_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 404:
                     if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
@@ -778,11 +787,12 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\transfers\v2024_06_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 413:
                     if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
@@ -793,11 +803,12 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\transfers\v2024_06_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 415:
                     if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
@@ -808,11 +819,12 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\transfers\v2024_06_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 429:
                     if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
@@ -823,11 +835,12 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\transfers\v2024_06_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 500:
                     if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
@@ -838,11 +851,12 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\transfers\v2024_06_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 503:
                     if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\transfers\v2024_06_01\ErrorList' !== 'string') {
@@ -853,16 +867,16 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\transfers\v2024_06_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
             $returnType = '\SpApi\Model\transfers\v2024_06_01\InitiatePayoutResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+            if ('\SplFileObject' === $returnType) {
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
+                if ('string' !== $returnType) {
                     $content = json_decode($content);
                 }
             }
@@ -870,9 +884,8 @@ class DefaultApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -882,7 +895,9 @@ class DefaultApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -890,7 +905,9 @@ class DefaultApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -898,7 +915,9 @@ class DefaultApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -906,7 +925,9 @@ class DefaultApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -914,7 +935,9 @@ class DefaultApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -922,7 +945,9 @@ class DefaultApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -930,7 +955,9 @@ class DefaultApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -938,7 +965,9 @@ class DefaultApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -946,43 +975,44 @@ class DefaultApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation initiatePayoutAsync
+     * Operation initiatePayoutAsync.
      *
-     * @param  \SpApi\Model\transfers\v2024_06_01\InitiatePayoutRequest $body
-     *  The request body for the &#x60;initiatePayout&#x60; operation. (required)
+     * @param InitiatePayoutRequest $body
+     *                                    The request body for the &#x60;initiatePayout&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function initiatePayoutAsync(
-        \SpApi\Model\transfers\v2024_06_01\InitiatePayoutRequest $body
+        InitiatePayoutRequest $body
     ): PromiseInterface {
         return $this->initiatePayoutAsyncWithHttpInfo($body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation initiatePayoutAsyncWithHttpInfo
+     * Operation initiatePayoutAsyncWithHttpInfo.
      *
-     * @param  \SpApi\Model\transfers\v2024_06_01\InitiatePayoutRequest $body
-     *  The request body for the &#x60;initiatePayout&#x60; operation. (required)
+     * @param InitiatePayoutRequest $body
+     *                                    The request body for the &#x60;initiatePayout&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function initiatePayoutAsyncWithHttpInfo(
-        \SpApi\Model\transfers\v2024_06_01\InitiatePayoutRequest $body
+        InitiatePayoutRequest $body
     ): PromiseInterface {
         $returnType = '\SpApi\Model\transfers\v2024_06_01\InitiatePayoutResponse';
         $request = $this->initiatePayoutRequest($body);
@@ -993,11 +1023,11 @@ class DefaultApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -1005,12 +1035,13 @@ class DefaultApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -1022,23 +1053,23 @@ class DefaultApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'initiatePayout'
+     * Create request for operation 'initiatePayout'.
      *
-     * @param  \SpApi\Model\transfers\v2024_06_01\InitiatePayoutRequest $body
-     *  The request body for the &#x60;initiatePayout&#x60; operation. (required)
+     * @param InitiatePayoutRequest $body
+     *                                    The request body for the &#x60;initiatePayout&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function initiatePayoutRequest(
-        \SpApi\Model\transfers\v2024_06_01\InitiatePayoutRequest $body
+        InitiatePayoutRequest $body
     ): Request {
         // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        if (null === $body || (is_array($body) && 0 === count($body))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling initiatePayout'
             );
@@ -1051,10 +1082,6 @@ class DefaultApi
         $httpBody = '';
         $multipart = false;
 
-
-
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -1062,15 +1089,14 @@ class DefaultApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                'application/json'
-                ,
+                'application/json',
                 false
             );
         }
 
         // for model (json/xml)
         if (isset($body)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -1083,22 +1109,19 @@ class DefaultApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1112,19 +1135,36 @@ class DefaultApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Create http client option
+     * Rate Limiter waits for tokens.
+     */
+    public function rateLimitWait(): void
+    {
+        if ($this->rateLimiter) {
+            $type = $this->rateLimitConfig->getRateLimitType();
+            if (0 != $this->rateLimitConfig->getTimeOut() && ('token_bucket' == $type || 'fixed_window' == $type)) {
+                $this->rateLimiter->reserve(1, $this->rateLimitConfig->getTimeOut() / 1000)->wait();
+            } else {
+                $this->rateLimiter->consume()->wait();
+            }
+        }
+    }
+
+    /**
+     * Create http client option.
+     *
+     * @return array of http client options
      *
      * @throws \RuntimeException on file opening failure
-     * @return array of http client options
      */
     protected function createHttpClientOption(): array
     {
@@ -1132,27 +1172,10 @@ class DefaultApi
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
             if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+                throw new \RuntimeException('Failed to open the debug file: '.$this->config->getDebugFile());
             }
         }
 
         return $options;
-    }
-
-    /**
-     * Rate Limiter waits for tokens
-     *
-     * @return void
-     */
-    public function rateLimitWait(): void
-    {
-        if ($this->rateLimiter) {
-            $type = $this->rateLimitConfig->getRateLimitType();
-            if ($this->rateLimitConfig->getTimeOut() != 0 && ($type == "token_bucket" || $type == "fixed_window")) {
-                $this->rateLimiter->reserve(1, ($this->rateLimitConfig->getTimeOut()) / 1000)->wait();
-            } else {
-                $this->rateLimiter->consume()->wait();
-            }
-        }
     }
 }

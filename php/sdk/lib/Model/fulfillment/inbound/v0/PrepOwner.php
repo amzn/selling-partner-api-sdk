@@ -1,17 +1,19 @@
 <?php
+
 /**
- * PrepOwner
+ * PrepOwner.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Fulfillment Inbound
+ * Selling Partner API for Fulfillment Inbound.
  *
  * The Selling Partner API for Fulfillment Inbound lets you create applications that create and update inbound shipments of inventory to Amazon's fulfillment network.
  *
@@ -27,38 +29,37 @@
  */
 
 namespace SpApi\Model\fulfillment\inbound\v0;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * PrepOwner Class Doc Comment
+ * PrepOwner Class Doc Comment.
  *
  * @category Class
+ *
  * @description Indicates who will prepare the item.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class PrepOwner
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const AMAZON = 'AMAZON';
 
     public const SELLER = 'SELLER';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
     {
         return [
             self::AMAZON,
-            self::SELLER
+            self::SELLER,
         ];
     }
 }
-
-

@@ -1,13 +1,15 @@
 <?php
+
 /**
- * VehicleStatusInCatalog
+ * VehicleStatusInCatalog.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
@@ -27,38 +29,37 @@
  */
 
 namespace SpApi\Model\vehicles\v2024_11_01;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * VehicleStatusInCatalog Class Doc Comment
+ * VehicleStatusInCatalog Class Doc Comment.
  *
  * @category Class
+ *
  * @description Status of vehicle in Amazon&#39;s catalog.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class VehicleStatusInCatalog
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const ACTIVE = 'ACTIVE';
 
     public const DELETED = 'DELETED';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
     {
         return [
             self::ACTIVE,
-            self::DELETED
+            self::DELETED,
         ];
     }
 }
-
-

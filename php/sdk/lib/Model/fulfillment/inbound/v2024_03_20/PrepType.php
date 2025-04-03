@@ -1,13 +1,15 @@
 <?php
+
 /**
- * PrepType
+ * PrepType.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
@@ -27,22 +29,22 @@
  */
 
 namespace SpApi\Model\fulfillment\inbound\v2024_03_20;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * PrepType Class Doc Comment
+ * PrepType Class Doc Comment.
  *
  * @category Class
+ *
  * @description Preparation instructions for shipping an item to Amazon&#39;s fulfillment network. For more information about preparing items for shipment to Amazon&#39;s fulfillment network, refer to [Seller Central Help for your marketplace](https://developer-docs.amazon.com/sp-api/docs/seller-central-urls).
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class PrepType
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const BLACK_SHRINKWRAP = 'ITEM_BLACK_SHRINKWRAP';
 
@@ -77,7 +79,8 @@ class PrepType
     public const TAPING = 'ITEM_TAPING';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
@@ -98,9 +101,7 @@ class PrepType
             self::SETSTK,
             self::SIOC,
             self::SUFFOSTK,
-            self::TAPING
+            self::TAPING,
         ];
     }
 }
-
-

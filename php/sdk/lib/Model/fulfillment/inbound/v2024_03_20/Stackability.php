@@ -1,13 +1,15 @@
 <?php
+
 /**
- * Stackability
+ * Stackability.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
@@ -27,38 +29,37 @@
  */
 
 namespace SpApi\Model\fulfillment\inbound\v2024_03_20;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * Stackability Class Doc Comment
+ * Stackability Class Doc Comment.
  *
  * @category Class
+ *
  * @description Indicates whether pallets will be stacked when carrier arrives for pick-up.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class Stackability
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const STACKABLE = 'STACKABLE';
 
     public const NON_STACKABLE = 'NON_STACKABLE';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
     {
         return [
             self::STACKABLE,
-            self::NON_STACKABLE
+            self::NON_STACKABLE,
         ];
     }
 }
-
-

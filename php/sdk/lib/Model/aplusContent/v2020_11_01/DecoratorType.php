@@ -1,17 +1,19 @@
 <?php
+
 /**
- * DecoratorType
+ * DecoratorType.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for A+ Content Management
+ * Selling Partner API for A+ Content Management.
  *
  * Use the A+ Content API to build applications that help selling partners add rich marketing content to their Amazon product detail pages. Selling partners can use A+ content to share their brand and product story, which helps buyers make informed purchasing decisions. Selling partners use content modules to add images and text.
  *
@@ -27,22 +29,22 @@
  */
 
 namespace SpApi\Model\aplusContent\v2020_11_01;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * DecoratorType Class Doc Comment
+ * DecoratorType Class Doc Comment.
  *
  * @category Class
+ *
  * @description The type of rich text decorator.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class DecoratorType
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const LIST_ITEM = 'LIST_ITEM';
 
@@ -61,7 +63,8 @@ class DecoratorType
     public const STYLE_UNDERLINE = 'STYLE_UNDERLINE';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
@@ -74,9 +77,7 @@ class DecoratorType
             self::STYLE_ITALIC,
             self::STYLE_LINEBREAK,
             self::STYLE_PARAGRAPH,
-            self::STYLE_UNDERLINE
+            self::STYLE_UNDERLINE,
         ];
     }
 }
-
-

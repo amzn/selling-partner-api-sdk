@@ -1,17 +1,19 @@
 <?php
+
 /**
- * SellerReviewEnrollmentPaymentEvent
+ * SellerReviewEnrollmentPaymentEvent.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Finances
+ * Selling Partner API for Finances.
  *
  * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range.
  *
@@ -28,171 +30,99 @@
 
 namespace SpApi\Model\finances\v0;
 
-use
-ArrayAccess;
-use SpApi\ObjectSerializer;
 use SpApi\Model\ModelInterface;
+use SpApi\ObjectSerializer;
 
 /**
- * SellerReviewEnrollmentPaymentEvent Class Doc Comment
+ * SellerReviewEnrollmentPaymentEvent Class Doc Comment.
  *
  * @category Class
+ *
  * @description A fee payment event for the Early Reviewer Program.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
+ *
  * @implements \ArrayAccess<string, mixed>
  */
-class SellerReviewEnrollmentPaymentEvent implements ModelInterface, ArrayAccess, \JsonSerializable
+class SellerReviewEnrollmentPaymentEvent implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     */
     protected static string $openAPIModelName = 'SellerReviewEnrollmentPaymentEvent';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static array $openAPITypes = [
-             'posted_date' => '\DateTime',
-             'enrollment_id' => 'string',
-             'parent_asin' => 'string',
-             'fee_component' => '\SpApi\Model\finances\v0\FeeComponent',
-             'charge_component' => '\SpApi\Model\finances\v0\ChargeComponent',
-             'total_amount' => '\SpApi\Model\finances\v0\Currency'    ];
+        'posted_date' => '\DateTime',
+        'enrollment_id' => 'string',
+        'parent_asin' => 'string',
+        'fee_component' => '\SpApi\Model\finances\v0\FeeComponent',
+        'charge_component' => '\SpApi\Model\finances\v0\ChargeComponent',
+        'total_amount' => '\SpApi\Model\finances\v0\Currency'];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     *
+     * @phpstan-var array<string, string|null>
+     *
+     * @psalm-var array<string, string|null>
+     */
     protected static array $openAPIFormats = [
-            'posted_date' => 'date-time',
-            'enrollment_id' => null,
-            'parent_asin' => null,
-            'fee_component' => null,
-            'charge_component' => null,
-            'total_amount' => null    ];
+        'posted_date' => 'date-time',
+        'enrollment_id' => null,
+        'parent_asin' => null,
+        'fee_component' => null,
+        'charge_component' => null,
+        'total_amount' => null];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization.
+     *
+     * @var bool[]
+     */
     protected static array $openAPINullables = [
         'posted_date' => true,
         'enrollment_id' => true,
         'parent_asin' => true,
         'fee_component' => true,
         'charge_component' => true,
-        'total_amount' => true
+        'total_amount' => true,
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here.
+     *
+     * @var bool[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPIFormats(): array
-    {
-        return self::$openAPIFormats;
-    }
-
-    /**
-     * Array of nullable properties
-     *
-     * @return array
-     */
-    protected static function openAPINullables(): array
-    {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * Array of nullable field names deliberately set to null
-     *
-     * @return boolean[]
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * Setter - Array of nullable field names deliberately set to null
-     *
-     * @param boolean[] $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    /**
-     * Checks if a property is nullable
-     *
-     * @param string $property
-     * @return bool
-     */
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    /**
-     * Checks if a nullable property is set to null.
-     *
-     * @param string $property
-     * @return bool
-     */
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @var string[]
      */
     protected static array $attributeMap = [
         'posted_date' => 'PostedDate',
-                'enrollment_id' => 'EnrollmentId',
-                'parent_asin' => 'ParentASIN',
-                'fee_component' => 'FeeComponent',
-                'charge_component' => 'ChargeComponent',
-                'total_amount' => 'TotalAmount'
-        
+        'enrollment_id' => 'EnrollmentId',
+        'parent_asin' => 'ParentASIN',
+        'fee_component' => 'FeeComponent',
+        'charge_component' => 'ChargeComponent',
+        'total_amount' => 'TotalAmount',
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @var string[]
      */
@@ -202,11 +132,11 @@ class SellerReviewEnrollmentPaymentEvent implements ModelInterface, ArrayAccess,
         'parent_asin' => 'setParentAsin',
         'fee_component' => 'setFeeComponent',
         'charge_component' => 'setChargeComponent',
-        'total_amount' => 'setTotalAmount'
+        'total_amount' => 'setTotalAmount',
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @var string[]
      */
@@ -216,63 +146,19 @@ class SellerReviewEnrollmentPaymentEvent implements ModelInterface, ArrayAccess,
         'parent_asin' => 'getParentAsin',
         'fee_component' => 'getFeeComponent',
         'charge_component' => 'getChargeComponent',
-        'total_amount' => 'getTotalAmount'
+        'total_amount' => 'getTotalAmount',
     ];
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @return array
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @return array
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @return array
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    /**
-     * The original name of the model.
-     *
-     * @return string
-     */
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-
-    /**
-     * Associative array for storing property values
-     *
-     * @var array
+     * Associative array for storing property values.
      */
     protected array $container = [];
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param array|null $data Associated array of property values
-     *                      initializing the model
+     * @param null|array $data Associated array of property values
+     *                         initializing the model
      */
     public function __construct(?array $data = null)
     {
@@ -285,21 +171,81 @@ class SellerReviewEnrollmentPaymentEvent implements ModelInterface, ArrayAccess,
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
-    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+     * Gets the string presentation of the object.
+     *
+     * @return string
+     */
+    public function __toString()
     {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
+        return json_encode(
+            ObjectSerializer::sanitizeForSerialization($this),
+            JSON_PRETTY_PRINT
+        );
+    }
 
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    /**
+     * Array of property to type mappings. Used for (de)serialization.
+     */
+    public static function openAPITypes(): array
+    {
+        return self::$openAPITypes;
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization.
+     */
+    public static function openAPIFormats(): array
+    {
+        return self::$openAPIFormats;
+    }
+
+    /**
+     * Checks if a property is nullable.
+     */
+    public static function isNullable(string $property): bool
+    {
+        return self::openAPINullables()[$property] ?? false;
+    }
+
+    /**
+     * Checks if a nullable property is set to null.
+     */
+    public function isNullableSetToNull(string $property): bool
+    {
+        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name.
+     */
+    public static function attributeMap(): array
+    {
+        return self::$attributeMap;
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses).
+     */
+    public static function setters(): array
+    {
+        return self::$setters;
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests).
+     */
+    public static function getters(): array
+    {
+        return self::$getters;
+    }
+
+    /**
+     * The original name of the model.
+     */
+    public function getModelName(): string
+    {
+        return self::$openAPIModelName;
     }
 
     /**
@@ -309,27 +255,22 @@ class SellerReviewEnrollmentPaymentEvent implements ModelInterface, ArrayAccess,
      */
     public function listInvalidProperties(): array
     {
-        $invalidProperties = [];
-
-        return $invalidProperties;
+        return [];
     }
 
     /**
      * Validate all the properties in the model
-     * return true if all passed
+     * return true if all passed.
      *
      * @return bool True if all properties are valid
      */
     public function valid(): bool
     {
-        return count($this->listInvalidProperties()) === 0;
+        return 0 === count($this->listInvalidProperties());
     }
 
-
     /**
-     * Gets posted_date
-     *
-     * @return \DateTime|null
+     * Gets posted_date.
      */
     public function getPostedDate(): ?\DateTime
     {
@@ -337,11 +278,9 @@ class SellerReviewEnrollmentPaymentEvent implements ModelInterface, ArrayAccess,
     }
 
     /**
-     * Sets posted_date
+     * Sets posted_date.
      *
-     * @param \DateTime|null $posted_date Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
-     *
-     * @return self
+     * @param null|\DateTime $posted_date fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate)
      */
     public function setPostedDate(?\DateTime $posted_date): self
     {
@@ -350,7 +289,7 @@ class SellerReviewEnrollmentPaymentEvent implements ModelInterface, ArrayAccess,
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('posted_date', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -361,9 +300,7 @@ class SellerReviewEnrollmentPaymentEvent implements ModelInterface, ArrayAccess,
     }
 
     /**
-     * Gets enrollment_id
-     *
-     * @return string|null
+     * Gets enrollment_id.
      */
     public function getEnrollmentId(): ?string
     {
@@ -371,11 +308,9 @@ class SellerReviewEnrollmentPaymentEvent implements ModelInterface, ArrayAccess,
     }
 
     /**
-     * Sets enrollment_id
+     * Sets enrollment_id.
      *
-     * @param string|null $enrollment_id An enrollment identifier.
-     *
-     * @return self
+     * @param null|string $enrollment_id an enrollment identifier
      */
     public function setEnrollmentId(?string $enrollment_id): self
     {
@@ -384,7 +319,7 @@ class SellerReviewEnrollmentPaymentEvent implements ModelInterface, ArrayAccess,
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('enrollment_id', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -395,9 +330,7 @@ class SellerReviewEnrollmentPaymentEvent implements ModelInterface, ArrayAccess,
     }
 
     /**
-     * Gets parent_asin
-     *
-     * @return string|null
+     * Gets parent_asin.
      */
     public function getParentAsin(): ?string
     {
@@ -405,11 +338,9 @@ class SellerReviewEnrollmentPaymentEvent implements ModelInterface, ArrayAccess,
     }
 
     /**
-     * Sets parent_asin
+     * Sets parent_asin.
      *
-     * @param string|null $parent_asin The Amazon Standard Identification Number (ASIN) of the item that was enrolled in the Early Reviewer Program.
-     *
-     * @return self
+     * @param null|string $parent_asin the Amazon Standard Identification Number (ASIN) of the item that was enrolled in the Early Reviewer Program
      */
     public function setParentAsin(?string $parent_asin): self
     {
@@ -418,7 +349,7 @@ class SellerReviewEnrollmentPaymentEvent implements ModelInterface, ArrayAccess,
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('parent_asin', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -429,30 +360,26 @@ class SellerReviewEnrollmentPaymentEvent implements ModelInterface, ArrayAccess,
     }
 
     /**
-     * Gets fee_component
-     *
-     * @return \SpApi\Model\finances\v0\FeeComponent|null
+     * Gets fee_component.
      */
-    public function getFeeComponent(): ?\SpApi\Model\finances\v0\FeeComponent
+    public function getFeeComponent(): ?FeeComponent
     {
         return $this->container['fee_component'];
     }
 
     /**
-     * Sets fee_component
+     * Sets fee_component.
      *
-     * @param \SpApi\Model\finances\v0\FeeComponent|null $fee_component fee_component
-     *
-     * @return self
+     * @param null|FeeComponent $fee_component fee_component
      */
-    public function setFeeComponent(?\SpApi\Model\finances\v0\FeeComponent $fee_component): self
+    public function setFeeComponent(?FeeComponent $fee_component): self
     {
         if (is_null($fee_component)) {
             array_push($this->openAPINullablesSetToNull, 'fee_component');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('fee_component', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -463,30 +390,26 @@ class SellerReviewEnrollmentPaymentEvent implements ModelInterface, ArrayAccess,
     }
 
     /**
-     * Gets charge_component
-     *
-     * @return \SpApi\Model\finances\v0\ChargeComponent|null
+     * Gets charge_component.
      */
-    public function getChargeComponent(): ?\SpApi\Model\finances\v0\ChargeComponent
+    public function getChargeComponent(): ?ChargeComponent
     {
         return $this->container['charge_component'];
     }
 
     /**
-     * Sets charge_component
+     * Sets charge_component.
      *
-     * @param \SpApi\Model\finances\v0\ChargeComponent|null $charge_component charge_component
-     *
-     * @return self
+     * @param null|ChargeComponent $charge_component charge_component
      */
-    public function setChargeComponent(?\SpApi\Model\finances\v0\ChargeComponent $charge_component): self
+    public function setChargeComponent(?ChargeComponent $charge_component): self
     {
         if (is_null($charge_component)) {
             array_push($this->openAPINullablesSetToNull, 'charge_component');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('charge_component', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -497,30 +420,26 @@ class SellerReviewEnrollmentPaymentEvent implements ModelInterface, ArrayAccess,
     }
 
     /**
-     * Gets total_amount
-     *
-     * @return \SpApi\Model\finances\v0\Currency|null
+     * Gets total_amount.
      */
-    public function getTotalAmount(): ?\SpApi\Model\finances\v0\Currency
+    public function getTotalAmount(): ?Currency
     {
         return $this->container['total_amount'];
     }
 
     /**
-     * Sets total_amount
+     * Sets total_amount.
      *
-     * @param \SpApi\Model\finances\v0\Currency|null $total_amount total_amount
-     *
-     * @return self
+     * @param null|Currency $total_amount total_amount
      */
-    public function setTotalAmount(?\SpApi\Model\finances\v0\Currency $total_amount): self
+    public function setTotalAmount(?Currency $total_amount): self
     {
         if (is_null($total_amount)) {
             array_push($this->openAPINullablesSetToNull, 'total_amount');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('total_amount', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -530,13 +449,10 @@ class SellerReviewEnrollmentPaymentEvent implements ModelInterface, ArrayAccess,
         return $this;
     }
 
-
     /**
      * Returns true if offset exists. False otherwise.
      *
-     * @param integer $offset Offset
-     *
-     * @return boolean
+     * @param int $offset Offset
      */
     public function offsetExists($offset): bool
     {
@@ -546,9 +462,9 @@ class SellerReviewEnrollmentPaymentEvent implements ModelInterface, ArrayAccess,
     /**
      * Gets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
-     * @return mixed|null
+     * @return null|mixed
      */
     #[\ReturnTypeWillChange]
     public function offsetGet($offset): mixed
@@ -559,10 +475,8 @@ class SellerReviewEnrollmentPaymentEvent implements ModelInterface, ArrayAccess,
     /**
      * Sets value based on offset.
      *
-     * @param int|null $offset Offset
+     * @param null|int $offset Offset
      * @param mixed    $value  Value to be set
-     *
-     * @return void
      */
     public function offsetSet($offset, mixed $value): void
     {
@@ -576,9 +490,7 @@ class SellerReviewEnrollmentPaymentEvent implements ModelInterface, ArrayAccess,
     /**
      * Unsets offset.
      *
-     * @param integer $offset Offset
-     *
-     * @return void
+     * @param int $offset Offset
      */
     public function offsetUnset($offset): void
     {
@@ -587,39 +499,67 @@ class SellerReviewEnrollmentPaymentEvent implements ModelInterface, ArrayAccess,
 
     /**
      * Serializes the object to a value that can be serialized natively by json_encode().
-     * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
      *
-     * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
+     * @see https://www.php.net/manual/en/jsonserializable.jsonserialize.php
+     *
+     * @return mixed returns data which can be serialized by json_encode(), which is a value
+     *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
     public function jsonSerialize(): mixed
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
-     * Gets the string presentation of the object
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    /**
-     * Gets a header-safe presentation of the object
-     *
-     * @return string
+     * Gets a header-safe presentation of the object.
      */
     public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
+
+    /**
+     * Array of nullable properties.
+     */
+    protected static function openAPINullables(): array
+    {
+        return self::$openAPINullables;
+    }
+
+    /**
+     * Array of nullable field names deliberately set to null.
+     *
+     * @return bool[]
+     */
+    private function getOpenAPINullablesSetToNull(): array
+    {
+        return $this->openAPINullablesSetToNull;
+    }
+
+    /**
+     * Setter - Array of nullable field names deliberately set to null.
+     *
+     * @param bool[] $openAPINullablesSetToNull
+     */
+    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
+    {
+        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
+    }
+
+    /**
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array.
+     *
+     * @param mixed $defaultValue
+     */
+    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+    {
+        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
+            $this->openAPINullablesSetToNull[] = $variableName;
+        }
+
+        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    }
 }
-
-

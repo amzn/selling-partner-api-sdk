@@ -1,17 +1,19 @@
 <?php
+
 /**
- * OrderAddress
+ * OrderAddress.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Orders
+ * Selling Partner API for Orders.
  *
  * Use the Orders Selling Partner API to programmatically retrieve order information. With this API, you can develop fast, flexible, and custom applications to manage order synchronization, perform order research, and create demand-based decision support tools.   _Note:_ For the JP, AU, and SG marketplaces, the Orders API supports orders from 2016 onward. For all other marketplaces, the Orders API supports orders for the last two years (orders older than this don't show up in the response).
  *
@@ -28,163 +30,91 @@
 
 namespace SpApi\Model\orders\v0;
 
-use
-ArrayAccess;
-use SpApi\ObjectSerializer;
 use SpApi\Model\ModelInterface;
+use SpApi\ObjectSerializer;
 
 /**
- * OrderAddress Class Doc Comment
+ * OrderAddress Class Doc Comment.
  *
  * @category Class
+ *
  * @description The shipping address for the order.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
+ *
  * @implements \ArrayAccess<string, mixed>
  */
-class OrderAddress implements ModelInterface, ArrayAccess, \JsonSerializable
+class OrderAddress implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     */
     protected static string $openAPIModelName = 'OrderAddress';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static array $openAPITypes = [
-             'amazon_order_id' => 'string',
-             'buyer_company_name' => 'string',
-             'shipping_address' => '\SpApi\Model\orders\v0\Address',
-             'delivery_preferences' => '\SpApi\Model\orders\v0\DeliveryPreferences'    ];
+        'amazon_order_id' => 'string',
+        'buyer_company_name' => 'string',
+        'shipping_address' => '\SpApi\Model\orders\v0\Address',
+        'delivery_preferences' => '\SpApi\Model\orders\v0\DeliveryPreferences'];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     *
+     * @phpstan-var array<string, string|null>
+     *
+     * @psalm-var array<string, string|null>
+     */
     protected static array $openAPIFormats = [
-            'amazon_order_id' => null,
-            'buyer_company_name' => null,
-            'shipping_address' => null,
-            'delivery_preferences' => null    ];
+        'amazon_order_id' => null,
+        'buyer_company_name' => null,
+        'shipping_address' => null,
+        'delivery_preferences' => null];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization.
+     *
+     * @var bool[]
+     */
     protected static array $openAPINullables = [
         'amazon_order_id' => false,
         'buyer_company_name' => true,
         'shipping_address' => true,
-        'delivery_preferences' => true
+        'delivery_preferences' => true,
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here.
+     *
+     * @var bool[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPIFormats(): array
-    {
-        return self::$openAPIFormats;
-    }
-
-    /**
-     * Array of nullable properties
-     *
-     * @return array
-     */
-    protected static function openAPINullables(): array
-    {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * Array of nullable field names deliberately set to null
-     *
-     * @return boolean[]
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * Setter - Array of nullable field names deliberately set to null
-     *
-     * @param boolean[] $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    /**
-     * Checks if a property is nullable
-     *
-     * @param string $property
-     * @return bool
-     */
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    /**
-     * Checks if a nullable property is set to null.
-     *
-     * @param string $property
-     * @return bool
-     */
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @var string[]
      */
     protected static array $attributeMap = [
         'amazon_order_id' => 'AmazonOrderId',
-                'buyer_company_name' => 'BuyerCompanyName',
-                'shipping_address' => 'ShippingAddress',
-                'delivery_preferences' => 'DeliveryPreferences'
-        
+        'buyer_company_name' => 'BuyerCompanyName',
+        'shipping_address' => 'ShippingAddress',
+        'delivery_preferences' => 'DeliveryPreferences',
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @var string[]
      */
@@ -192,11 +122,11 @@ class OrderAddress implements ModelInterface, ArrayAccess, \JsonSerializable
         'amazon_order_id' => 'setAmazonOrderId',
         'buyer_company_name' => 'setBuyerCompanyName',
         'shipping_address' => 'setShippingAddress',
-        'delivery_preferences' => 'setDeliveryPreferences'
+        'delivery_preferences' => 'setDeliveryPreferences',
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @var string[]
      */
@@ -204,63 +134,19 @@ class OrderAddress implements ModelInterface, ArrayAccess, \JsonSerializable
         'amazon_order_id' => 'getAmazonOrderId',
         'buyer_company_name' => 'getBuyerCompanyName',
         'shipping_address' => 'getShippingAddress',
-        'delivery_preferences' => 'getDeliveryPreferences'
+        'delivery_preferences' => 'getDeliveryPreferences',
     ];
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @return array
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @return array
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @return array
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    /**
-     * The original name of the model.
-     *
-     * @return string
-     */
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-
-    /**
-     * Associative array for storing property values
-     *
-     * @var array
+     * Associative array for storing property values.
      */
     protected array $container = [];
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param array|null $data Associated array of property values
-     *                      initializing the model
+     * @param null|array $data Associated array of property values
+     *                         initializing the model
      */
     public function __construct(?array $data = null)
     {
@@ -271,21 +157,81 @@ class OrderAddress implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
-    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+     * Gets the string presentation of the object.
+     *
+     * @return string
+     */
+    public function __toString()
     {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
+        return json_encode(
+            ObjectSerializer::sanitizeForSerialization($this),
+            JSON_PRETTY_PRINT
+        );
+    }
 
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    /**
+     * Array of property to type mappings. Used for (de)serialization.
+     */
+    public static function openAPITypes(): array
+    {
+        return self::$openAPITypes;
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization.
+     */
+    public static function openAPIFormats(): array
+    {
+        return self::$openAPIFormats;
+    }
+
+    /**
+     * Checks if a property is nullable.
+     */
+    public static function isNullable(string $property): bool
+    {
+        return self::openAPINullables()[$property] ?? false;
+    }
+
+    /**
+     * Checks if a nullable property is set to null.
+     */
+    public function isNullableSetToNull(string $property): bool
+    {
+        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name.
+     */
+    public static function attributeMap(): array
+    {
+        return self::$attributeMap;
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses).
+     */
+    public static function setters(): array
+    {
+        return self::$setters;
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests).
+     */
+    public static function getters(): array
+    {
+        return self::$getters;
+    }
+
+    /**
+     * The original name of the model.
+     */
+    public function getModelName(): string
+    {
+        return self::$openAPIModelName;
     }
 
     /**
@@ -297,28 +243,26 @@ class OrderAddress implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['amazon_order_id'] === null) {
+        if (null === $this->container['amazon_order_id']) {
             $invalidProperties[] = "'amazon_order_id' can't be null";
         }
+
         return $invalidProperties;
     }
 
     /**
      * Validate all the properties in the model
-     * return true if all passed
+     * return true if all passed.
      *
      * @return bool True if all properties are valid
      */
     public function valid(): bool
     {
-        return count($this->listInvalidProperties()) === 0;
+        return 0 === count($this->listInvalidProperties());
     }
 
-
     /**
-     * Gets amazon_order_id
-     *
-     * @return string
+     * Gets amazon_order_id.
      */
     public function getAmazonOrderId(): string
     {
@@ -326,11 +270,9 @@ class OrderAddress implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets amazon_order_id
+     * Sets amazon_order_id.
      *
-     * @param string $amazon_order_id An Amazon-defined order identifier, in 3-7-7 format.
-     *
-     * @return self
+     * @param string $amazon_order_id an Amazon-defined order identifier, in 3-7-7 format
      */
     public function setAmazonOrderId(string $amazon_order_id): self
     {
@@ -343,9 +285,7 @@ class OrderAddress implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets buyer_company_name
-     *
-     * @return string|null
+     * Gets buyer_company_name.
      */
     public function getBuyerCompanyName(): ?string
     {
@@ -353,11 +293,9 @@ class OrderAddress implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets buyer_company_name
+     * Sets buyer_company_name.
      *
-     * @param string|null $buyer_company_name The company name of the contact buyer. For IBA orders, the buyer company must be Amazon entities.
-     *
-     * @return self
+     * @param null|string $buyer_company_name The company name of the contact buyer. For IBA orders, the buyer company must be Amazon entities.
      */
     public function setBuyerCompanyName(?string $buyer_company_name): self
     {
@@ -366,7 +304,7 @@ class OrderAddress implements ModelInterface, ArrayAccess, \JsonSerializable
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('buyer_company_name', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -377,30 +315,26 @@ class OrderAddress implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets shipping_address
-     *
-     * @return \SpApi\Model\orders\v0\Address|null
+     * Gets shipping_address.
      */
-    public function getShippingAddress(): ?\SpApi\Model\orders\v0\Address
+    public function getShippingAddress(): ?Address
     {
         return $this->container['shipping_address'];
     }
 
     /**
-     * Sets shipping_address
+     * Sets shipping_address.
      *
-     * @param \SpApi\Model\orders\v0\Address|null $shipping_address shipping_address
-     *
-     * @return self
+     * @param null|Address $shipping_address shipping_address
      */
-    public function setShippingAddress(?\SpApi\Model\orders\v0\Address $shipping_address): self
+    public function setShippingAddress(?Address $shipping_address): self
     {
         if (is_null($shipping_address)) {
             array_push($this->openAPINullablesSetToNull, 'shipping_address');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('shipping_address', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -411,30 +345,26 @@ class OrderAddress implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets delivery_preferences
-     *
-     * @return \SpApi\Model\orders\v0\DeliveryPreferences|null
+     * Gets delivery_preferences.
      */
-    public function getDeliveryPreferences(): ?\SpApi\Model\orders\v0\DeliveryPreferences
+    public function getDeliveryPreferences(): ?DeliveryPreferences
     {
         return $this->container['delivery_preferences'];
     }
 
     /**
-     * Sets delivery_preferences
+     * Sets delivery_preferences.
      *
-     * @param \SpApi\Model\orders\v0\DeliveryPreferences|null $delivery_preferences delivery_preferences
-     *
-     * @return self
+     * @param null|DeliveryPreferences $delivery_preferences delivery_preferences
      */
-    public function setDeliveryPreferences(?\SpApi\Model\orders\v0\DeliveryPreferences $delivery_preferences): self
+    public function setDeliveryPreferences(?DeliveryPreferences $delivery_preferences): self
     {
         if (is_null($delivery_preferences)) {
             array_push($this->openAPINullablesSetToNull, 'delivery_preferences');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('delivery_preferences', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -444,13 +374,10 @@ class OrderAddress implements ModelInterface, ArrayAccess, \JsonSerializable
         return $this;
     }
 
-
     /**
      * Returns true if offset exists. False otherwise.
      *
-     * @param integer $offset Offset
-     *
-     * @return boolean
+     * @param int $offset Offset
      */
     public function offsetExists($offset): bool
     {
@@ -460,9 +387,9 @@ class OrderAddress implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
-     * @return mixed|null
+     * @return null|mixed
      */
     #[\ReturnTypeWillChange]
     public function offsetGet($offset): mixed
@@ -473,10 +400,8 @@ class OrderAddress implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets value based on offset.
      *
-     * @param int|null $offset Offset
+     * @param null|int $offset Offset
      * @param mixed    $value  Value to be set
-     *
-     * @return void
      */
     public function offsetSet($offset, mixed $value): void
     {
@@ -490,9 +415,7 @@ class OrderAddress implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Unsets offset.
      *
-     * @param integer $offset Offset
-     *
-     * @return void
+     * @param int $offset Offset
      */
     public function offsetUnset($offset): void
     {
@@ -501,39 +424,67 @@ class OrderAddress implements ModelInterface, ArrayAccess, \JsonSerializable
 
     /**
      * Serializes the object to a value that can be serialized natively by json_encode().
-     * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
      *
-     * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
+     * @see https://www.php.net/manual/en/jsonserializable.jsonserialize.php
+     *
+     * @return mixed returns data which can be serialized by json_encode(), which is a value
+     *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
     public function jsonSerialize(): mixed
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
-     * Gets the string presentation of the object
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    /**
-     * Gets a header-safe presentation of the object
-     *
-     * @return string
+     * Gets a header-safe presentation of the object.
      */
     public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
+
+    /**
+     * Array of nullable properties.
+     */
+    protected static function openAPINullables(): array
+    {
+        return self::$openAPINullables;
+    }
+
+    /**
+     * Array of nullable field names deliberately set to null.
+     *
+     * @return bool[]
+     */
+    private function getOpenAPINullablesSetToNull(): array
+    {
+        return $this->openAPINullablesSetToNull;
+    }
+
+    /**
+     * Setter - Array of nullable field names deliberately set to null.
+     *
+     * @param bool[] $openAPINullablesSetToNull
+     */
+    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
+    {
+        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
+    }
+
+    /**
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array.
+     *
+     * @param mixed $defaultValue
+     */
+    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+    {
+        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
+            $this->openAPINullablesSetToNull[] = $variableName;
+        }
+
+        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    }
 }
-
-

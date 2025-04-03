@@ -1,17 +1,19 @@
 <?php
+
 /**
- * FileType
+ * FileType.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Merchant Fulfillment
+ * Selling Partner API for Merchant Fulfillment.
  *
  * With the Selling Partner API for Merchant Fulfillment, you can build applications that sellers can use to purchase shipping for non-Prime and Prime orders using Amazon's Buy Shipping Services.
  *
@@ -27,22 +29,22 @@
  */
 
 namespace SpApi\Model\merchantFulfillment\v0;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * FileType Class Doc Comment
+ * FileType Class Doc Comment.
  *
  * @category Class
+ *
  * @description The file type for a label.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class FileType
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const APPLICATION_PDF = 'application/pdf';
 
@@ -51,7 +53,8 @@ class FileType
     public const IMAGE_PNG = 'image/png';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
@@ -59,9 +62,7 @@ class FileType
         return [
             self::APPLICATION_PDF,
             self::APPLICATION_ZPL,
-            self::IMAGE_PNG
+            self::IMAGE_PNG,
         ];
     }
 }
-
-

@@ -1,17 +1,19 @@
 <?php
+
 /**
- * AvailabilityRecord
+ * AvailabilityRecord.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Services
+ * Selling Partner API for Services.
  *
  * With the Services API, you can build applications that help service providers get and modify their service orders and manage their resources.
  *
@@ -28,163 +30,91 @@
 
 namespace SpApi\Model\services\v1;
 
-use
-ArrayAccess;
-use SpApi\ObjectSerializer;
 use SpApi\Model\ModelInterface;
+use SpApi\ObjectSerializer;
 
 /**
- * AvailabilityRecord Class Doc Comment
+ * AvailabilityRecord Class Doc Comment.
  *
  * @category Class
+ *
  * @description &#x60;AvailabilityRecord&#x60; to represent the capacity of a resource over a time range.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
+ *
  * @implements \ArrayAccess<string, mixed>
  */
-class AvailabilityRecord implements ModelInterface, ArrayAccess, \JsonSerializable
+class AvailabilityRecord implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     */
     protected static string $openAPIModelName = 'AvailabilityRecord';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static array $openAPITypes = [
-             'start_time' => '\DateTime',
-             'end_time' => '\DateTime',
-             'recurrence' => '\SpApi\Model\services\v1\Recurrence',
-             'capacity' => 'int'    ];
+        'start_time' => '\DateTime',
+        'end_time' => '\DateTime',
+        'recurrence' => '\SpApi\Model\services\v1\Recurrence',
+        'capacity' => 'int'];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     *
+     * @phpstan-var array<string, string|null>
+     *
+     * @psalm-var array<string, string|null>
+     */
     protected static array $openAPIFormats = [
-            'start_time' => 'date-time',
-            'end_time' => 'date-time',
-            'recurrence' => null,
-            'capacity' => null    ];
+        'start_time' => 'date-time',
+        'end_time' => 'date-time',
+        'recurrence' => null,
+        'capacity' => null];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization.
+     *
+     * @var bool[]
+     */
     protected static array $openAPINullables = [
         'start_time' => false,
         'end_time' => false,
         'recurrence' => true,
-        'capacity' => true
+        'capacity' => true,
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here.
+     *
+     * @var bool[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPIFormats(): array
-    {
-        return self::$openAPIFormats;
-    }
-
-    /**
-     * Array of nullable properties
-     *
-     * @return array
-     */
-    protected static function openAPINullables(): array
-    {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * Array of nullable field names deliberately set to null
-     *
-     * @return boolean[]
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * Setter - Array of nullable field names deliberately set to null
-     *
-     * @param boolean[] $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    /**
-     * Checks if a property is nullable
-     *
-     * @param string $property
-     * @return bool
-     */
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    /**
-     * Checks if a nullable property is set to null.
-     *
-     * @param string $property
-     * @return bool
-     */
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @var string[]
      */
     protected static array $attributeMap = [
         'start_time' => 'startTime',
-                'end_time' => 'endTime',
-                'recurrence' => 'recurrence',
-                'capacity' => 'capacity'
-        
+        'end_time' => 'endTime',
+        'recurrence' => 'recurrence',
+        'capacity' => 'capacity',
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @var string[]
      */
@@ -192,11 +122,11 @@ class AvailabilityRecord implements ModelInterface, ArrayAccess, \JsonSerializab
         'start_time' => 'setStartTime',
         'end_time' => 'setEndTime',
         'recurrence' => 'setRecurrence',
-        'capacity' => 'setCapacity'
+        'capacity' => 'setCapacity',
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @var string[]
      */
@@ -204,63 +134,19 @@ class AvailabilityRecord implements ModelInterface, ArrayAccess, \JsonSerializab
         'start_time' => 'getStartTime',
         'end_time' => 'getEndTime',
         'recurrence' => 'getRecurrence',
-        'capacity' => 'getCapacity'
+        'capacity' => 'getCapacity',
     ];
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @return array
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @return array
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @return array
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    /**
-     * The original name of the model.
-     *
-     * @return string
-     */
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-
-    /**
-     * Associative array for storing property values
-     *
-     * @var array
+     * Associative array for storing property values.
      */
     protected array $container = [];
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param array|null $data Associated array of property values
-     *                      initializing the model
+     * @param null|array $data Associated array of property values
+     *                         initializing the model
      */
     public function __construct(?array $data = null)
     {
@@ -271,21 +157,81 @@ class AvailabilityRecord implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
-    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+     * Gets the string presentation of the object.
+     *
+     * @return string
+     */
+    public function __toString()
     {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
+        return json_encode(
+            ObjectSerializer::sanitizeForSerialization($this),
+            JSON_PRETTY_PRINT
+        );
+    }
 
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    /**
+     * Array of property to type mappings. Used for (de)serialization.
+     */
+    public static function openAPITypes(): array
+    {
+        return self::$openAPITypes;
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization.
+     */
+    public static function openAPIFormats(): array
+    {
+        return self::$openAPIFormats;
+    }
+
+    /**
+     * Checks if a property is nullable.
+     */
+    public static function isNullable(string $property): bool
+    {
+        return self::openAPINullables()[$property] ?? false;
+    }
+
+    /**
+     * Checks if a nullable property is set to null.
+     */
+    public function isNullableSetToNull(string $property): bool
+    {
+        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name.
+     */
+    public static function attributeMap(): array
+    {
+        return self::$attributeMap;
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses).
+     */
+    public static function setters(): array
+    {
+        return self::$setters;
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests).
+     */
+    public static function getters(): array
+    {
+        return self::$getters;
+    }
+
+    /**
+     * The original name of the model.
+     */
+    public function getModelName(): string
+    {
+        return self::$openAPIModelName;
     }
 
     /**
@@ -297,10 +243,10 @@ class AvailabilityRecord implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
-        if ($this->container['start_time'] === null) {
+        if (null === $this->container['start_time']) {
             $invalidProperties[] = "'start_time' can't be null";
         }
-        if ($this->container['end_time'] === null) {
+        if (null === $this->container['end_time']) {
             $invalidProperties[] = "'end_time' can't be null";
         }
         if (!is_null($this->container['capacity']) && ($this->container['capacity'] < 1)) {
@@ -312,20 +258,17 @@ class AvailabilityRecord implements ModelInterface, ArrayAccess, \JsonSerializab
 
     /**
      * Validate all the properties in the model
-     * return true if all passed
+     * return true if all passed.
      *
      * @return bool True if all properties are valid
      */
     public function valid(): bool
     {
-        return count($this->listInvalidProperties()) === 0;
+        return 0 === count($this->listInvalidProperties());
     }
 
-
     /**
-     * Gets start_time
-     *
-     * @return \DateTime
+     * Gets start_time.
      */
     public function getStartTime(): \DateTime
     {
@@ -333,11 +276,9 @@ class AvailabilityRecord implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Sets start_time
+     * Sets start_time.
      *
-     * @param \DateTime $start_time Denotes the time from when the resource is available in a day in ISO-8601 format.
-     *
-     * @return self
+     * @param \DateTime $start_time denotes the time from when the resource is available in a day in ISO-8601 format
      */
     public function setStartTime(\DateTime $start_time): self
     {
@@ -350,9 +291,7 @@ class AvailabilityRecord implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets end_time
-     *
-     * @return \DateTime
+     * Gets end_time.
      */
     public function getEndTime(): \DateTime
     {
@@ -360,11 +299,9 @@ class AvailabilityRecord implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Sets end_time
+     * Sets end_time.
      *
-     * @param \DateTime $end_time Denotes the time till when the resource is available in a day in ISO-8601 format.
-     *
-     * @return self
+     * @param \DateTime $end_time denotes the time till when the resource is available in a day in ISO-8601 format
      */
     public function setEndTime(\DateTime $end_time): self
     {
@@ -377,30 +314,26 @@ class AvailabilityRecord implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets recurrence
-     *
-     * @return \SpApi\Model\services\v1\Recurrence|null
+     * Gets recurrence.
      */
-    public function getRecurrence(): ?\SpApi\Model\services\v1\Recurrence
+    public function getRecurrence(): ?Recurrence
     {
         return $this->container['recurrence'];
     }
 
     /**
-     * Sets recurrence
+     * Sets recurrence.
      *
-     * @param \SpApi\Model\services\v1\Recurrence|null $recurrence recurrence
-     *
-     * @return self
+     * @param null|Recurrence $recurrence recurrence
      */
-    public function setRecurrence(?\SpApi\Model\services\v1\Recurrence $recurrence): self
+    public function setRecurrence(?Recurrence $recurrence): self
     {
         if (is_null($recurrence)) {
             array_push($this->openAPINullablesSetToNull, 'recurrence');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('recurrence', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -411,9 +344,7 @@ class AvailabilityRecord implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets capacity
-     *
-     * @return int|null
+     * Gets capacity.
      */
     public function getCapacity(): ?int
     {
@@ -421,11 +352,9 @@ class AvailabilityRecord implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Sets capacity
+     * Sets capacity.
      *
-     * @param int|null $capacity Signifies the capacity of a resource which is available.
-     *
-     * @return self
+     * @param null|int $capacity signifies the capacity of a resource which is available
      */
     public function setCapacity(?int $capacity): self
     {
@@ -434,7 +363,7 @@ class AvailabilityRecord implements ModelInterface, ArrayAccess, \JsonSerializab
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('capacity', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -449,13 +378,10 @@ class AvailabilityRecord implements ModelInterface, ArrayAccess, \JsonSerializab
         return $this;
     }
 
-
     /**
      * Returns true if offset exists. False otherwise.
      *
-     * @param integer $offset Offset
-     *
-     * @return boolean
+     * @param int $offset Offset
      */
     public function offsetExists($offset): bool
     {
@@ -465,9 +391,9 @@ class AvailabilityRecord implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
-     * @return mixed|null
+     * @return null|mixed
      */
     #[\ReturnTypeWillChange]
     public function offsetGet($offset): mixed
@@ -478,10 +404,8 @@ class AvailabilityRecord implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets value based on offset.
      *
-     * @param int|null $offset Offset
+     * @param null|int $offset Offset
      * @param mixed    $value  Value to be set
-     *
-     * @return void
      */
     public function offsetSet($offset, mixed $value): void
     {
@@ -495,9 +419,7 @@ class AvailabilityRecord implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Unsets offset.
      *
-     * @param integer $offset Offset
-     *
-     * @return void
+     * @param int $offset Offset
      */
     public function offsetUnset($offset): void
     {
@@ -506,39 +428,67 @@ class AvailabilityRecord implements ModelInterface, ArrayAccess, \JsonSerializab
 
     /**
      * Serializes the object to a value that can be serialized natively by json_encode().
-     * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
      *
-     * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
+     * @see https://www.php.net/manual/en/jsonserializable.jsonserialize.php
+     *
+     * @return mixed returns data which can be serialized by json_encode(), which is a value
+     *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
     public function jsonSerialize(): mixed
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
-     * Gets the string presentation of the object
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    /**
-     * Gets a header-safe presentation of the object
-     *
-     * @return string
+     * Gets a header-safe presentation of the object.
      */
     public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
+
+    /**
+     * Array of nullable properties.
+     */
+    protected static function openAPINullables(): array
+    {
+        return self::$openAPINullables;
+    }
+
+    /**
+     * Array of nullable field names deliberately set to null.
+     *
+     * @return bool[]
+     */
+    private function getOpenAPINullablesSetToNull(): array
+    {
+        return $this->openAPINullablesSetToNull;
+    }
+
+    /**
+     * Setter - Array of nullable field names deliberately set to null.
+     *
+     * @param bool[] $openAPINullablesSetToNull
+     */
+    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
+    {
+        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
+    }
+
+    /**
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array.
+     *
+     * @param mixed $defaultValue
+     */
+    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+    {
+        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
+            $this->openAPINullablesSetToNull[] = $variableName;
+        }
+
+        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    }
 }
-
-

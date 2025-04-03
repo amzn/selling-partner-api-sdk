@@ -1,17 +1,19 @@
 <?php
+
 /**
- * CustomerType
+ * CustomerType.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Pricing
+ * Selling Partner API for Pricing.
  *
  * The Selling Partner API for Pricing helps you programmatically retrieve product pricing and offer information for Amazon Marketplace products.
  *
@@ -27,38 +29,37 @@
  */
 
 namespace SpApi\Model\pricing\v0;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * CustomerType Class Doc Comment
+ * CustomerType Class Doc Comment.
  *
  * @category Class
+ *
  * @description Indicates whether to request Consumer or Business offers. Default is Consumer.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class CustomerType
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const CONSUMER = 'Consumer';
 
     public const BUSINESS = 'Business';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
     {
         return [
             self::CONSUMER,
-            self::BUSINESS
+            self::BUSINESS,
         ];
     }
 }
-
-

@@ -1,17 +1,19 @@
 <?php
+
 /**
- * Address
+ * Address.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * The Selling Partner API for Amazon Warehousing and Distribution
+ * The Selling Partner API for Amazon Warehousing and Distribution.
  *
  * The Selling Partner API for Amazon Warehousing and Distribution (AWD) provides programmatic access to information about AWD shipments and inventory.
  *
@@ -28,75 +30,76 @@
 
 namespace SpApi\Model\awd\v2024_05_09;
 
-use
-ArrayAccess;
-use SpApi\ObjectSerializer;
 use SpApi\Model\ModelInterface;
+use SpApi\ObjectSerializer;
 
 /**
- * Address Class Doc Comment
+ * Address Class Doc Comment.
  *
  * @category Class
+ *
  * @description Shipping address that represents the origin or destination location.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
+ *
  * @implements \ArrayAccess<string, mixed>
  */
-class Address implements ModelInterface, ArrayAccess, \JsonSerializable
+class Address implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     */
     protected static string $openAPIModelName = 'Address';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static array $openAPITypes = [
-             'address_line1' => 'string',
-             'address_line2' => 'string',
-             'address_line3' => 'string',
-             'city' => 'string',
-             'country_code' => 'string',
-             'county' => 'string',
-             'district' => 'string',
-             'name' => 'string',
-             'phone_number' => 'string',
-             'postal_code' => 'string',
-             'state_or_region' => 'string'    ];
+        'address_line1' => 'string',
+        'address_line2' => 'string',
+        'address_line3' => 'string',
+        'city' => 'string',
+        'country_code' => 'string',
+        'county' => 'string',
+        'district' => 'string',
+        'name' => 'string',
+        'phone_number' => 'string',
+        'postal_code' => 'string',
+        'state_or_region' => 'string'];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     *
+     * @phpstan-var array<string, string|null>
+     *
+     * @psalm-var array<string, string|null>
+     */
     protected static array $openAPIFormats = [
-            'address_line1' => null,
-            'address_line2' => null,
-            'address_line3' => null,
-            'city' => null,
-            'country_code' => null,
-            'county' => null,
-            'district' => null,
-            'name' => null,
-            'phone_number' => null,
-            'postal_code' => null,
-            'state_or_region' => null    ];
+        'address_line1' => null,
+        'address_line2' => null,
+        'address_line3' => null,
+        'city' => null,
+        'country_code' => null,
+        'county' => null,
+        'district' => null,
+        'name' => null,
+        'phone_number' => null,
+        'postal_code' => null,
+        'state_or_region' => null];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization.
+     *
+     * @var bool[]
+     */
     protected static array $openAPINullables = [
         'address_line1' => false,
         'address_line2' => true,
@@ -108,111 +111,38 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => false,
         'phone_number' => true,
         'postal_code' => true,
-        'state_or_region' => false
+        'state_or_region' => false,
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here.
+     *
+     * @var bool[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPIFormats(): array
-    {
-        return self::$openAPIFormats;
-    }
-
-    /**
-     * Array of nullable properties
-     *
-     * @return array
-     */
-    protected static function openAPINullables(): array
-    {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * Array of nullable field names deliberately set to null
-     *
-     * @return boolean[]
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * Setter - Array of nullable field names deliberately set to null
-     *
-     * @param boolean[] $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    /**
-     * Checks if a property is nullable
-     *
-     * @param string $property
-     * @return bool
-     */
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    /**
-     * Checks if a nullable property is set to null.
-     *
-     * @param string $property
-     * @return bool
-     */
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @var string[]
      */
     protected static array $attributeMap = [
         'address_line1' => 'addressLine1',
-                'address_line2' => 'addressLine2',
-                'address_line3' => 'addressLine3',
-                'city' => 'city',
-                'country_code' => 'countryCode',
-                'county' => 'county',
-                'district' => 'district',
-                'name' => 'name',
-                'phone_number' => 'phoneNumber',
-                'postal_code' => 'postalCode',
-                'state_or_region' => 'stateOrRegion'
-        
+        'address_line2' => 'addressLine2',
+        'address_line3' => 'addressLine3',
+        'city' => 'city',
+        'country_code' => 'countryCode',
+        'county' => 'county',
+        'district' => 'district',
+        'name' => 'name',
+        'phone_number' => 'phoneNumber',
+        'postal_code' => 'postalCode',
+        'state_or_region' => 'stateOrRegion',
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @var string[]
      */
@@ -227,11 +157,11 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'setName',
         'phone_number' => 'setPhoneNumber',
         'postal_code' => 'setPostalCode',
-        'state_or_region' => 'setStateOrRegion'
+        'state_or_region' => 'setStateOrRegion',
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @var string[]
      */
@@ -246,63 +176,19 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'getName',
         'phone_number' => 'getPhoneNumber',
         'postal_code' => 'getPostalCode',
-        'state_or_region' => 'getStateOrRegion'
+        'state_or_region' => 'getStateOrRegion',
     ];
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @return array
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @return array
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @return array
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    /**
-     * The original name of the model.
-     *
-     * @return string
-     */
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-
-    /**
-     * Associative array for storing property values
-     *
-     * @var array
+     * Associative array for storing property values.
      */
     protected array $container = [];
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param array|null $data Associated array of property values
-     *                      initializing the model
+     * @param null|array $data Associated array of property values
+     *                         initializing the model
      */
     public function __construct(?array $data = null)
     {
@@ -320,21 +206,81 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
-    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+     * Gets the string presentation of the object.
+     *
+     * @return string
+     */
+    public function __toString()
     {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
+        return json_encode(
+            ObjectSerializer::sanitizeForSerialization($this),
+            JSON_PRETTY_PRINT
+        );
+    }
 
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    /**
+     * Array of property to type mappings. Used for (de)serialization.
+     */
+    public static function openAPITypes(): array
+    {
+        return self::$openAPITypes;
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization.
+     */
+    public static function openAPIFormats(): array
+    {
+        return self::$openAPIFormats;
+    }
+
+    /**
+     * Checks if a property is nullable.
+     */
+    public static function isNullable(string $property): bool
+    {
+        return self::openAPINullables()[$property] ?? false;
+    }
+
+    /**
+     * Checks if a nullable property is set to null.
+     */
+    public function isNullableSetToNull(string $property): bool
+    {
+        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name.
+     */
+    public static function attributeMap(): array
+    {
+        return self::$attributeMap;
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses).
+     */
+    public static function setters(): array
+    {
+        return self::$setters;
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests).
+     */
+    public static function getters(): array
+    {
+        return self::$getters;
+    }
+
+    /**
+     * The original name of the model.
+     */
+    public function getModelName(): string
+    {
+        return self::$openAPIModelName;
     }
 
     /**
@@ -346,37 +292,35 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['address_line1'] === null) {
+        if (null === $this->container['address_line1']) {
             $invalidProperties[] = "'address_line1' can't be null";
         }
-        if ($this->container['country_code'] === null) {
+        if (null === $this->container['country_code']) {
             $invalidProperties[] = "'country_code' can't be null";
         }
-        if ($this->container['name'] === null) {
+        if (null === $this->container['name']) {
             $invalidProperties[] = "'name' can't be null";
         }
-        if ($this->container['state_or_region'] === null) {
+        if (null === $this->container['state_or_region']) {
             $invalidProperties[] = "'state_or_region' can't be null";
         }
+
         return $invalidProperties;
     }
 
     /**
      * Validate all the properties in the model
-     * return true if all passed
+     * return true if all passed.
      *
      * @return bool True if all properties are valid
      */
     public function valid(): bool
     {
-        return count($this->listInvalidProperties()) === 0;
+        return 0 === count($this->listInvalidProperties());
     }
 
-
     /**
-     * Gets address_line1
-     *
-     * @return string
+     * Gets address_line1.
      */
     public function getAddressLine1(): string
     {
@@ -384,11 +328,9 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets address_line1
+     * Sets address_line1.
      *
-     * @param string $address_line1 First line of the address text.
-     *
-     * @return self
+     * @param string $address_line1 first line of the address text
      */
     public function setAddressLine1(string $address_line1): self
     {
@@ -401,9 +343,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets address_line2
-     *
-     * @return string|null
+     * Gets address_line2.
      */
     public function getAddressLine2(): ?string
     {
@@ -411,11 +351,9 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets address_line2
+     * Sets address_line2.
      *
-     * @param string|null $address_line2 Optional second line of the address text.
-     *
-     * @return self
+     * @param null|string $address_line2 optional second line of the address text
      */
     public function setAddressLine2(?string $address_line2): self
     {
@@ -424,7 +362,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('address_line2', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -435,9 +373,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets address_line3
-     *
-     * @return string|null
+     * Gets address_line3.
      */
     public function getAddressLine3(): ?string
     {
@@ -445,11 +381,9 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets address_line3
+     * Sets address_line3.
      *
-     * @param string|null $address_line3 Optional third line of the address text.
-     *
-     * @return self
+     * @param null|string $address_line3 optional third line of the address text
      */
     public function setAddressLine3(?string $address_line3): self
     {
@@ -458,7 +392,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('address_line3', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -469,9 +403,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets city
-     *
-     * @return string|null
+     * Gets city.
      */
     public function getCity(): ?string
     {
@@ -479,11 +411,9 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets city
+     * Sets city.
      *
-     * @param string|null $city Optional city where this address is located.
-     *
-     * @return self
+     * @param null|string $city optional city where this address is located
      */
     public function setCity(?string $city): self
     {
@@ -492,7 +422,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('city', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -503,9 +433,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets country_code
-     *
-     * @return string
+     * Gets country_code.
      */
     public function getCountryCode(): string
     {
@@ -513,11 +441,9 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets country_code
+     * Sets country_code.
      *
-     * @param string $country_code Two-digit, ISO 3166-1 alpha-2 formatted country code where this address is located.
-     *
-     * @return self
+     * @param string $country_code two-digit, ISO 3166-1 alpha-2 formatted country code where this address is located
      */
     public function setCountryCode(string $country_code): self
     {
@@ -530,9 +456,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets county
-     *
-     * @return string|null
+     * Gets county.
      */
     public function getCounty(): ?string
     {
@@ -540,11 +464,9 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets county
+     * Sets county.
      *
-     * @param string|null $county Optional county where this address is located.
-     *
-     * @return self
+     * @param null|string $county optional county where this address is located
      */
     public function setCounty(?string $county): self
     {
@@ -553,7 +475,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('county', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -564,9 +486,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets district
-     *
-     * @return string|null
+     * Gets district.
      */
     public function getDistrict(): ?string
     {
@@ -574,11 +494,9 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets district
+     * Sets district.
      *
-     * @param string|null $district Optional district where this address is located.
-     *
-     * @return self
+     * @param null|string $district optional district where this address is located
      */
     public function setDistrict(?string $district): self
     {
@@ -587,7 +505,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('district', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -598,9 +516,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets name
-     *
-     * @return string
+     * Gets name.
      */
     public function getName(): string
     {
@@ -608,11 +524,9 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets name
+     * Sets name.
      *
-     * @param string $name Name of the person, business, or institution at this address.
-     *
-     * @return self
+     * @param string $name name of the person, business, or institution at this address
      */
     public function setName(string $name): self
     {
@@ -625,9 +539,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets phone_number
-     *
-     * @return string|null
+     * Gets phone_number.
      */
     public function getPhoneNumber(): ?string
     {
@@ -635,11 +547,9 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets phone_number
+     * Sets phone_number.
      *
-     * @param string|null $phone_number Optional E.164-formatted phone number for an available contact at this address.
-     *
-     * @return self
+     * @param null|string $phone_number Optional E.164-formatted phone number for an available contact at this address.
      */
     public function setPhoneNumber(?string $phone_number): self
     {
@@ -648,7 +558,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('phone_number', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -659,9 +569,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets postal_code
-     *
-     * @return string|null
+     * Gets postal_code.
      */
     public function getPostalCode(): ?string
     {
@@ -669,11 +577,9 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets postal_code
+     * Sets postal_code.
      *
-     * @param string|null $postal_code Optional postal code where this address is located.
-     *
-     * @return self
+     * @param null|string $postal_code optional postal code where this address is located
      */
     public function setPostalCode(?string $postal_code): self
     {
@@ -682,7 +588,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('postal_code', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -693,9 +599,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets state_or_region
-     *
-     * @return string
+     * Gets state_or_region.
      */
     public function getStateOrRegion(): string
     {
@@ -703,11 +607,9 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets state_or_region
+     * Sets state_or_region.
      *
      * @param string $state_or_region State or region where this address is located. Note that this is contextual to the specified country code.
-     *
-     * @return self
      */
     public function setStateOrRegion(string $state_or_region): self
     {
@@ -719,13 +621,10 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
         return $this;
     }
 
-
     /**
      * Returns true if offset exists. False otherwise.
      *
-     * @param integer $offset Offset
-     *
-     * @return boolean
+     * @param int $offset Offset
      */
     public function offsetExists($offset): bool
     {
@@ -735,9 +634,9 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
-     * @return mixed|null
+     * @return null|mixed
      */
     #[\ReturnTypeWillChange]
     public function offsetGet($offset): mixed
@@ -748,10 +647,8 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets value based on offset.
      *
-     * @param int|null $offset Offset
+     * @param null|int $offset Offset
      * @param mixed    $value  Value to be set
-     *
-     * @return void
      */
     public function offsetSet($offset, mixed $value): void
     {
@@ -765,9 +662,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Unsets offset.
      *
-     * @param integer $offset Offset
-     *
-     * @return void
+     * @param int $offset Offset
      */
     public function offsetUnset($offset): void
     {
@@ -776,39 +671,67 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
 
     /**
      * Serializes the object to a value that can be serialized natively by json_encode().
-     * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
      *
-     * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
+     * @see https://www.php.net/manual/en/jsonserializable.jsonserialize.php
+     *
+     * @return mixed returns data which can be serialized by json_encode(), which is a value
+     *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
     public function jsonSerialize(): mixed
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
-     * Gets the string presentation of the object
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    /**
-     * Gets a header-safe presentation of the object
-     *
-     * @return string
+     * Gets a header-safe presentation of the object.
      */
     public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
+
+    /**
+     * Array of nullable properties.
+     */
+    protected static function openAPINullables(): array
+    {
+        return self::$openAPINullables;
+    }
+
+    /**
+     * Array of nullable field names deliberately set to null.
+     *
+     * @return bool[]
+     */
+    private function getOpenAPINullablesSetToNull(): array
+    {
+        return $this->openAPINullablesSetToNull;
+    }
+
+    /**
+     * Setter - Array of nullable field names deliberately set to null.
+     *
+     * @param bool[] $openAPINullablesSetToNull
+     */
+    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
+    {
+        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
+    }
+
+    /**
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array.
+     *
+     * @param mixed $defaultValue
+     */
+    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+    {
+        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
+            $this->openAPINullablesSetToNull[] = $variableName;
+        }
+
+        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    }
 }
-
-

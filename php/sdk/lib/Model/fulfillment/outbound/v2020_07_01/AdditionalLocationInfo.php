@@ -1,17 +1,19 @@
 <?php
+
 /**
- * AdditionalLocationInfo
+ * AdditionalLocationInfo.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner APIs for Fulfillment Outbound
+ * Selling Partner APIs for Fulfillment Outbound.
  *
  * The Selling Partner API for Fulfillment Outbound lets you create applications that help a seller fulfill Multi-Channel Fulfillment orders using their inventory in Amazon's fulfillment network. You can get information on both potential and existing fulfillment orders.
  *
@@ -27,22 +29,22 @@
  */
 
 namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * AdditionalLocationInfo Class Doc Comment
+ * AdditionalLocationInfo Class Doc Comment.
  *
  * @category Class
+ *
  * @description Additional location information.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class AdditionalLocationInfo
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const AS_INSTRUCTED = 'AS_INSTRUCTED';
 
@@ -97,7 +99,8 @@ class AdditionalLocationInfo
     public const SIDE_DOOR = 'SIDE_DOOR';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
@@ -128,9 +131,7 @@ class AdditionalLocationInfo
             self::RECEPTIONIST,
             self::RECEIVER,
             self::SECURE_LOCATION,
-            self::SIDE_DOOR
+            self::SIDE_DOOR,
         ];
     }
 }
-
-

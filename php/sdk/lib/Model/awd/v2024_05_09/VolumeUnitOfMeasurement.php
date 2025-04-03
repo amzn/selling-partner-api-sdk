@@ -1,17 +1,19 @@
 <?php
+
 /**
- * VolumeUnitOfMeasurement
+ * VolumeUnitOfMeasurement.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * The Selling Partner API for Amazon Warehousing and Distribution
+ * The Selling Partner API for Amazon Warehousing and Distribution.
  *
  * The Selling Partner API for Amazon Warehousing and Distribution (AWD) provides programmatic access to information about AWD shipments and inventory.
  *
@@ -27,22 +29,22 @@
  */
 
 namespace SpApi\Model\awd\v2024_05_09;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * VolumeUnitOfMeasurement Class Doc Comment
+ * VolumeUnitOfMeasurement Class Doc Comment.
  *
  * @category Class
+ *
  * @description Unit of measurement for the package volume.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class VolumeUnitOfMeasurement
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const CU_IN = 'CU_IN';
 
@@ -51,7 +53,8 @@ class VolumeUnitOfMeasurement
     public const CC = 'CC';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
@@ -59,9 +62,7 @@ class VolumeUnitOfMeasurement
         return [
             self::CU_IN,
             self::CBM,
-            self::CC
+            self::CC,
         ];
     }
 }
-
-

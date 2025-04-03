@@ -1,17 +1,19 @@
 <?php
+
 /**
- * ListOfferMetricsRequestFilters
+ * ListOfferMetricsRequestFilters.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Replenishment
+ * Selling Partner API for Replenishment.
  *
  * The Selling Partner API for Replenishment (Replenishment API) provides programmatic access to replenishment program metrics and offers. These programs provide recurring delivery of any replenishable item at a frequency chosen by the customer.  The Replenishment API is available worldwide wherever Amazon Subscribe & Save is available or is supported. The API is available to vendors and FBA selling partners.
  *
@@ -28,171 +30,99 @@
 
 namespace SpApi\Model\replenishment\v2022_11_07;
 
-use
-ArrayAccess;
-use SpApi\ObjectSerializer;
 use SpApi\Model\ModelInterface;
+use SpApi\ObjectSerializer;
 
 /**
- * ListOfferMetricsRequestFilters Class Doc Comment
+ * ListOfferMetricsRequestFilters Class Doc Comment.
  *
  * @category Class
+ *
  * @description Use these parameters to filter results. Any result must match all provided parameters. For any parameter that is an array, the result must match at least one element in the provided array.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
+ *
  * @implements \ArrayAccess<string, mixed>
  */
-class ListOfferMetricsRequestFilters implements ModelInterface, ArrayAccess, \JsonSerializable
+class ListOfferMetricsRequestFilters implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     */
     protected static string $openAPIModelName = 'ListOfferMetricsRequestFilters';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static array $openAPITypes = [
-             'aggregation_frequency' => '\SpApi\Model\replenishment\v2022_11_07\AggregationFrequency',
-             'time_interval' => '\SpApi\Model\replenishment\v2022_11_07\TimeInterval',
-             'time_period_type' => '\SpApi\Model\replenishment\v2022_11_07\TimePeriodType',
-             'marketplace_id' => 'string',
-             'program_types' => '\SpApi\Model\replenishment\v2022_11_07\ProgramType[]',
-             'asins' => 'string[]'    ];
+        'aggregation_frequency' => '\SpApi\Model\replenishment\v2022_11_07\AggregationFrequency',
+        'time_interval' => '\SpApi\Model\replenishment\v2022_11_07\TimeInterval',
+        'time_period_type' => '\SpApi\Model\replenishment\v2022_11_07\TimePeriodType',
+        'marketplace_id' => 'string',
+        'program_types' => '\SpApi\Model\replenishment\v2022_11_07\ProgramType[]',
+        'asins' => 'string[]'];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     *
+     * @phpstan-var array<string, string|null>
+     *
+     * @psalm-var array<string, string|null>
+     */
     protected static array $openAPIFormats = [
-            'aggregation_frequency' => null,
-            'time_interval' => null,
-            'time_period_type' => null,
-            'marketplace_id' => null,
-            'program_types' => null,
-            'asins' => null    ];
+        'aggregation_frequency' => null,
+        'time_interval' => null,
+        'time_period_type' => null,
+        'marketplace_id' => null,
+        'program_types' => null,
+        'asins' => null];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization.
+     *
+     * @var bool[]
+     */
     protected static array $openAPINullables = [
         'aggregation_frequency' => true,
         'time_interval' => false,
         'time_period_type' => false,
         'marketplace_id' => false,
         'program_types' => false,
-        'asins' => true
+        'asins' => true,
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here.
+     *
+     * @var bool[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPIFormats(): array
-    {
-        return self::$openAPIFormats;
-    }
-
-    /**
-     * Array of nullable properties
-     *
-     * @return array
-     */
-    protected static function openAPINullables(): array
-    {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * Array of nullable field names deliberately set to null
-     *
-     * @return boolean[]
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * Setter - Array of nullable field names deliberately set to null
-     *
-     * @param boolean[] $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    /**
-     * Checks if a property is nullable
-     *
-     * @param string $property
-     * @return bool
-     */
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    /**
-     * Checks if a nullable property is set to null.
-     *
-     * @param string $property
-     * @return bool
-     */
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @var string[]
      */
     protected static array $attributeMap = [
         'aggregation_frequency' => 'aggregationFrequency',
-                'time_interval' => 'timeInterval',
-                'time_period_type' => 'timePeriodType',
-                'marketplace_id' => 'marketplaceId',
-                'program_types' => 'programTypes',
-                'asins' => 'asins'
-        
+        'time_interval' => 'timeInterval',
+        'time_period_type' => 'timePeriodType',
+        'marketplace_id' => 'marketplaceId',
+        'program_types' => 'programTypes',
+        'asins' => 'asins',
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @var string[]
      */
@@ -202,11 +132,11 @@ class ListOfferMetricsRequestFilters implements ModelInterface, ArrayAccess, \Js
         'time_period_type' => 'setTimePeriodType',
         'marketplace_id' => 'setMarketplaceId',
         'program_types' => 'setProgramTypes',
-        'asins' => 'setAsins'
+        'asins' => 'setAsins',
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @var string[]
      */
@@ -216,63 +146,19 @@ class ListOfferMetricsRequestFilters implements ModelInterface, ArrayAccess, \Js
         'time_period_type' => 'getTimePeriodType',
         'marketplace_id' => 'getMarketplaceId',
         'program_types' => 'getProgramTypes',
-        'asins' => 'getAsins'
+        'asins' => 'getAsins',
     ];
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @return array
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @return array
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @return array
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    /**
-     * The original name of the model.
-     *
-     * @return string
-     */
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-
-    /**
-     * Associative array for storing property values
-     *
-     * @var array
+     * Associative array for storing property values.
      */
     protected array $container = [];
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param array|null $data Associated array of property values
-     *                      initializing the model
+     * @param null|array $data Associated array of property values
+     *                         initializing the model
      */
     public function __construct(?array $data = null)
     {
@@ -285,21 +171,81 @@ class ListOfferMetricsRequestFilters implements ModelInterface, ArrayAccess, \Js
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
-    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+     * Gets the string presentation of the object.
+     *
+     * @return string
+     */
+    public function __toString()
     {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
+        return json_encode(
+            ObjectSerializer::sanitizeForSerialization($this),
+            JSON_PRETTY_PRINT
+        );
+    }
 
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    /**
+     * Array of property to type mappings. Used for (de)serialization.
+     */
+    public static function openAPITypes(): array
+    {
+        return self::$openAPITypes;
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization.
+     */
+    public static function openAPIFormats(): array
+    {
+        return self::$openAPIFormats;
+    }
+
+    /**
+     * Checks if a property is nullable.
+     */
+    public static function isNullable(string $property): bool
+    {
+        return self::openAPINullables()[$property] ?? false;
+    }
+
+    /**
+     * Checks if a nullable property is set to null.
+     */
+    public function isNullableSetToNull(string $property): bool
+    {
+        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name.
+     */
+    public static function attributeMap(): array
+    {
+        return self::$attributeMap;
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses).
+     */
+    public static function setters(): array
+    {
+        return self::$setters;
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests).
+     */
+    public static function getters(): array
+    {
+        return self::$getters;
+    }
+
+    /**
+     * The original name of the model.
+     */
+    public function getModelName(): string
+    {
+        return self::$openAPIModelName;
     }
 
     /**
@@ -311,19 +257,19 @@ class ListOfferMetricsRequestFilters implements ModelInterface, ArrayAccess, \Js
     {
         $invalidProperties = [];
 
-        if ($this->container['time_interval'] === null) {
+        if (null === $this->container['time_interval']) {
             $invalidProperties[] = "'time_interval' can't be null";
         }
-        if ($this->container['time_period_type'] === null) {
+        if (null === $this->container['time_period_type']) {
             $invalidProperties[] = "'time_period_type' can't be null";
         }
-        if ($this->container['marketplace_id'] === null) {
+        if (null === $this->container['marketplace_id']) {
             $invalidProperties[] = "'marketplace_id' can't be null";
         }
-        if ($this->container['program_types'] === null) {
+        if (null === $this->container['program_types']) {
             $invalidProperties[] = "'program_types' can't be null";
         }
-        if ((count($this->container['program_types']) < 1)) {
+        if (count($this->container['program_types']) < 1) {
             $invalidProperties[] = "invalid value for 'program_types', number of items must be greater than or equal to 1.";
         }
 
@@ -340,20 +286,17 @@ class ListOfferMetricsRequestFilters implements ModelInterface, ArrayAccess, \Js
 
     /**
      * Validate all the properties in the model
-     * return true if all passed
+     * return true if all passed.
      *
      * @return bool True if all properties are valid
      */
     public function valid(): bool
     {
-        return count($this->listInvalidProperties()) === 0;
+        return 0 === count($this->listInvalidProperties());
     }
 
-
     /**
-     * Gets aggregation_frequency
-     *
-     * @return string|null
+     * Gets aggregation_frequency.
      */
     public function getAggregationFrequency(): ?string
     {
@@ -361,11 +304,9 @@ class ListOfferMetricsRequestFilters implements ModelInterface, ArrayAccess, \Js
     }
 
     /**
-     * Sets aggregation_frequency
+     * Sets aggregation_frequency.
      *
-     * @param string|null $aggregation_frequency aggregation_frequency
-     *
-     * @return self
+     * @param null|string $aggregation_frequency aggregation_frequency
      */
     public function setAggregationFrequency(?string $aggregation_frequency): self
     {
@@ -374,7 +315,7 @@ class ListOfferMetricsRequestFilters implements ModelInterface, ArrayAccess, \Js
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('aggregation_frequency', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -385,23 +326,19 @@ class ListOfferMetricsRequestFilters implements ModelInterface, ArrayAccess, \Js
     }
 
     /**
-     * Gets time_interval
-     *
-     * @return \SpApi\Model\replenishment\v2022_11_07\TimeInterval
+     * Gets time_interval.
      */
-    public function getTimeInterval(): \SpApi\Model\replenishment\v2022_11_07\TimeInterval
+    public function getTimeInterval(): TimeInterval
     {
         return $this->container['time_interval'];
     }
 
     /**
-     * Sets time_interval
+     * Sets time_interval.
      *
-     * @param \SpApi\Model\replenishment\v2022_11_07\TimeInterval $time_interval time_interval
-     *
-     * @return self
+     * @param TimeInterval $time_interval time_interval
      */
-    public function setTimeInterval(\SpApi\Model\replenishment\v2022_11_07\TimeInterval $time_interval): self
+    public function setTimeInterval(TimeInterval $time_interval): self
     {
         if (is_null($time_interval)) {
             throw new \InvalidArgumentException('non-nullable time_interval cannot be null');
@@ -412,9 +349,7 @@ class ListOfferMetricsRequestFilters implements ModelInterface, ArrayAccess, \Js
     }
 
     /**
-     * Gets time_period_type
-     *
-     * @return string
+     * Gets time_period_type.
      */
     public function getTimePeriodType(): string
     {
@@ -422,11 +357,9 @@ class ListOfferMetricsRequestFilters implements ModelInterface, ArrayAccess, \Js
     }
 
     /**
-     * Sets time_period_type
+     * Sets time_period_type.
      *
      * @param string $time_period_type time_period_type
-     *
-     * @return self
      */
     public function setTimePeriodType(string $time_period_type): self
     {
@@ -439,9 +372,7 @@ class ListOfferMetricsRequestFilters implements ModelInterface, ArrayAccess, \Js
     }
 
     /**
-     * Gets marketplace_id
-     *
-     * @return string
+     * Gets marketplace_id.
      */
     public function getMarketplaceId(): string
     {
@@ -449,11 +380,9 @@ class ListOfferMetricsRequestFilters implements ModelInterface, ArrayAccess, \Js
     }
 
     /**
-     * Sets marketplace_id
+     * Sets marketplace_id.
      *
      * @param string $marketplace_id The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE and JP. The supported marketplaces for vendors only are BR, AU, MX, AE and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.
-     *
-     * @return self
      */
     public function setMarketplaceId(string $marketplace_id): self
     {
@@ -466,9 +395,7 @@ class ListOfferMetricsRequestFilters implements ModelInterface, ArrayAccess, \Js
     }
 
     /**
-     * Gets program_types
-     *
-     * @return array
+     * Gets program_types.
      */
     public function getProgramTypes(): array
     {
@@ -476,11 +403,9 @@ class ListOfferMetricsRequestFilters implements ModelInterface, ArrayAccess, \Js
     }
 
     /**
-     * Sets program_types
+     * Sets program_types.
      *
-     * @param array $program_types A list of replenishment program types.
-     *
-     * @return self
+     * @param array $program_types a list of replenishment program types
      */
     public function setProgramTypes(array $program_types): self
     {
@@ -488,8 +413,7 @@ class ListOfferMetricsRequestFilters implements ModelInterface, ArrayAccess, \Js
             throw new \InvalidArgumentException('non-nullable program_types cannot be null');
         }
 
-
-        if ((count($program_types) < 1)) {
+        if (count($program_types) < 1) {
             throw new \InvalidArgumentException('invalid length for $program_types when calling ListOfferMetricsRequestFilters., number of items must be greater than or equal to 1.');
         }
         $this->container['program_types'] = $program_types;
@@ -498,9 +422,7 @@ class ListOfferMetricsRequestFilters implements ModelInterface, ArrayAccess, \Js
     }
 
     /**
-     * Gets asins
-     *
-     * @return array|null
+     * Gets asins.
      */
     public function getAsins(): ?array
     {
@@ -508,11 +430,9 @@ class ListOfferMetricsRequestFilters implements ModelInterface, ArrayAccess, \Js
     }
 
     /**
-     * Sets asins
+     * Sets asins.
      *
-     * @param array|null $asins A list of Amazon Standard Identification Numbers (ASINs).
-     *
-     * @return self
+     * @param null|array $asins a list of Amazon Standard Identification Numbers (ASINs)
      */
     public function setAsins(?array $asins): self
     {
@@ -521,7 +441,7 @@ class ListOfferMetricsRequestFilters implements ModelInterface, ArrayAccess, \Js
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('asins', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -538,13 +458,10 @@ class ListOfferMetricsRequestFilters implements ModelInterface, ArrayAccess, \Js
         return $this;
     }
 
-
     /**
      * Returns true if offset exists. False otherwise.
      *
-     * @param integer $offset Offset
-     *
-     * @return boolean
+     * @param int $offset Offset
      */
     public function offsetExists($offset): bool
     {
@@ -554,9 +471,9 @@ class ListOfferMetricsRequestFilters implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
-     * @return mixed|null
+     * @return null|mixed
      */
     #[\ReturnTypeWillChange]
     public function offsetGet($offset): mixed
@@ -567,10 +484,8 @@ class ListOfferMetricsRequestFilters implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets value based on offset.
      *
-     * @param int|null $offset Offset
+     * @param null|int $offset Offset
      * @param mixed    $value  Value to be set
-     *
-     * @return void
      */
     public function offsetSet($offset, mixed $value): void
     {
@@ -584,9 +499,7 @@ class ListOfferMetricsRequestFilters implements ModelInterface, ArrayAccess, \Js
     /**
      * Unsets offset.
      *
-     * @param integer $offset Offset
-     *
-     * @return void
+     * @param int $offset Offset
      */
     public function offsetUnset($offset): void
     {
@@ -595,39 +508,67 @@ class ListOfferMetricsRequestFilters implements ModelInterface, ArrayAccess, \Js
 
     /**
      * Serializes the object to a value that can be serialized natively by json_encode().
-     * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
      *
-     * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
+     * @see https://www.php.net/manual/en/jsonserializable.jsonserialize.php
+     *
+     * @return mixed returns data which can be serialized by json_encode(), which is a value
+     *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
     public function jsonSerialize(): mixed
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
-     * Gets the string presentation of the object
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    /**
-     * Gets a header-safe presentation of the object
-     *
-     * @return string
+     * Gets a header-safe presentation of the object.
      */
     public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
+
+    /**
+     * Array of nullable properties.
+     */
+    protected static function openAPINullables(): array
+    {
+        return self::$openAPINullables;
+    }
+
+    /**
+     * Array of nullable field names deliberately set to null.
+     *
+     * @return bool[]
+     */
+    private function getOpenAPINullablesSetToNull(): array
+    {
+        return $this->openAPINullablesSetToNull;
+    }
+
+    /**
+     * Setter - Array of nullable field names deliberately set to null.
+     *
+     * @param bool[] $openAPINullablesSetToNull
+     */
+    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
+    {
+        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
+    }
+
+    /**
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array.
+     *
+     * @param mixed $defaultValue
+     */
+    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+    {
+        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
+            $this->openAPINullablesSetToNull[] = $variableName;
+        }
+
+        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    }
 }
-
-

@@ -1,17 +1,19 @@
 <?php
+
 /**
- * DistributionPackageType
+ * DistributionPackageType.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * The Selling Partner API for Amazon Warehousing and Distribution
+ * The Selling Partner API for Amazon Warehousing and Distribution.
  *
  * The Selling Partner API for Amazon Warehousing and Distribution (AWD) provides programmatic access to information about AWD shipments and inventory.
  *
@@ -27,38 +29,37 @@
  */
 
 namespace SpApi\Model\awd\v2024_05_09;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * DistributionPackageType Class Doc Comment
+ * DistributionPackageType Class Doc Comment.
  *
  * @category Class
+ *
  * @description Type of distribution packages.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class DistributionPackageType
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const _CASE = 'CASE';
 
     public const PALLET = 'PALLET';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
     {
         return [
             self::_CASE,
-            self::PALLET
+            self::PALLET,
         ];
     }
 }
-
-

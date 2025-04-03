@@ -1,17 +1,19 @@
 <?php
+
 /**
- * OfferCustomerType
+ * OfferCustomerType.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Pricing
+ * Selling Partner API for Pricing.
  *
  * The Selling Partner API for Pricing helps you programmatically retrieve product pricing and offer information for Amazon Marketplace products.
  *
@@ -27,38 +29,37 @@
  */
 
 namespace SpApi\Model\pricing\v0;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * OfferCustomerType Class Doc Comment
+ * OfferCustomerType Class Doc Comment.
  *
  * @category Class
+ *
  * @description Indicates whether the offer is a B2B or B2C offer
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class OfferCustomerType
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const B2_C = 'B2C';
 
     public const B2_B = 'B2B';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
     {
         return [
             self::B2_C,
-            self::B2_B
+            self::B2_B,
         ];
     }
 }
-
-
