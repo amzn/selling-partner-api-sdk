@@ -19,7 +19,6 @@ import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
 import com.amazon.SellingPartnerAPIAA.RateLimitConfiguration;
 import com.google.gson.reflect.TypeToken;
-import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,7 +29,6 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
-import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.ProgressResponseBody;
@@ -44,19 +42,7 @@ import software.amazon.spapi.models.fulfillment.inbound.v0.GetShipmentsResponse;
 public class FbaInboundApi {
     private ApiClient apiClient;
 
-    FbaInboundApi() {
-        this(Configuration.getDefaultApiClient());
-    }
-
     public FbaInboundApi(ApiClient apiClient) {
-        this.apiClient = apiClient;
-    }
-
-    public ApiClient getApiClient() {
-        return apiClient;
-    }
-
-    public void setApiClient(ApiClient apiClient) {
         this.apiClient = apiClient;
     }
 
@@ -99,15 +85,12 @@ public class FbaInboundApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
-                @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse
-                            .newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                            .build();
-                }
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
             });
         }
 
@@ -124,7 +107,6 @@ public class FbaInboundApi {
                 progressRequestListener);
     }
 
-    @SuppressWarnings("rawtypes")
     private okhttp3.Call getBillOfLadingValidateBeforeCall(
             String shipmentId,
             final ProgressResponseBody.ProgressListener progressListener,
@@ -135,8 +117,7 @@ public class FbaInboundApi {
             throw new ApiException("Missing the required parameter 'shipmentId' when calling getBillOfLading(Async)");
         }
 
-        okhttp3.Call call = getBillOfLadingCall(shipmentId, progressListener, progressRequestListener);
-        return call;
+        return getBillOfLadingCall(shipmentId, progressListener, progressRequestListener);
     }
 
     /**
@@ -207,19 +188,8 @@ public class FbaInboundApi {
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
+            progressListener = callback::onDownloadProgress;
+            progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = getBillOfLadingValidateBeforeCall(shipmentId, progressListener, progressRequestListener);
@@ -304,15 +274,12 @@ public class FbaInboundApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
-                @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse
-                            .newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                            .build();
-                }
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
             });
         }
 
@@ -329,7 +296,6 @@ public class FbaInboundApi {
                 progressRequestListener);
     }
 
-    @SuppressWarnings("rawtypes")
     private okhttp3.Call getLabelsValidateBeforeCall(
             String shipmentId,
             String pageType,
@@ -355,7 +321,7 @@ public class FbaInboundApi {
             throw new ApiException("Missing the required parameter 'labelType' when calling getLabels(Async)");
         }
 
-        okhttp3.Call call = getLabelsCall(
+        return getLabelsCall(
                 shipmentId,
                 pageType,
                 labelType,
@@ -366,7 +332,6 @@ public class FbaInboundApi {
                 pageStartIndex,
                 progressListener,
                 progressRequestListener);
-        return call;
     }
 
     /**
@@ -535,19 +500,8 @@ public class FbaInboundApi {
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
+            progressListener = callback::onDownloadProgress;
+            progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = getLabelsValidateBeforeCall(
@@ -623,15 +577,12 @@ public class FbaInboundApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
-                @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse
-                            .newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                            .build();
-                }
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
             });
         }
 
@@ -648,7 +599,6 @@ public class FbaInboundApi {
                 progressRequestListener);
     }
 
-    @SuppressWarnings("rawtypes")
     private okhttp3.Call getPrepInstructionsValidateBeforeCall(
             String shipToCountryCode,
             List<String> sellerSKUList,
@@ -662,9 +612,8 @@ public class FbaInboundApi {
                     "Missing the required parameter 'shipToCountryCode' when calling getPrepInstructions(Async)");
         }
 
-        okhttp3.Call call = getPrepInstructionsCall(
+        return getPrepInstructionsCall(
                 shipToCountryCode, sellerSKUList, asINList, progressListener, progressRequestListener);
-        return call;
     }
 
     /**
@@ -777,19 +726,8 @@ public class FbaInboundApi {
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
+            progressListener = callback::onDownloadProgress;
+            progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = getPrepInstructionsValidateBeforeCall(
@@ -856,15 +794,12 @@ public class FbaInboundApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
-                @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse
-                            .newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                            .build();
-                }
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
             });
         }
 
@@ -881,7 +816,6 @@ public class FbaInboundApi {
                 progressRequestListener);
     }
 
-    @SuppressWarnings("rawtypes")
     private okhttp3.Call getShipmentItemsValidateBeforeCall(
             String queryType,
             String marketplaceId,
@@ -901,7 +835,7 @@ public class FbaInboundApi {
                     "Missing the required parameter 'marketplaceId' when calling getShipmentItems(Async)");
         }
 
-        okhttp3.Call call = getShipmentItemsCall(
+        return getShipmentItemsCall(
                 queryType,
                 marketplaceId,
                 lastUpdatedAfter,
@@ -909,7 +843,6 @@ public class FbaInboundApi {
                 nextToken,
                 progressListener,
                 progressRequestListener);
-        return call;
     }
 
     /**
@@ -1020,19 +953,8 @@ public class FbaInboundApi {
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
+            progressListener = callback::onDownloadProgress;
+            progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = getShipmentItemsValidateBeforeCall(
@@ -1089,15 +1011,12 @@ public class FbaInboundApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
-                @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse
-                            .newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                            .build();
-                }
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
             });
         }
 
@@ -1114,7 +1033,6 @@ public class FbaInboundApi {
                 progressRequestListener);
     }
 
-    @SuppressWarnings("rawtypes")
     private okhttp3.Call getShipmentItemsByShipmentIdValidateBeforeCall(
             String shipmentId,
             String marketplaceId,
@@ -1127,9 +1045,7 @@ public class FbaInboundApi {
                     "Missing the required parameter 'shipmentId' when calling getShipmentItemsByShipmentId(Async)");
         }
 
-        okhttp3.Call call =
-                getShipmentItemsByShipmentIdCall(shipmentId, marketplaceId, progressListener, progressRequestListener);
-        return call;
+        return getShipmentItemsByShipmentIdCall(shipmentId, marketplaceId, progressListener, progressRequestListener);
     }
 
     /**
@@ -1198,19 +1114,8 @@ public class FbaInboundApi {
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
+            progressListener = callback::onDownloadProgress;
+            progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = getShipmentItemsByShipmentIdValidateBeforeCall(
@@ -1290,15 +1195,12 @@ public class FbaInboundApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
-                @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse
-                            .newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                            .build();
-                }
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
             });
         }
 
@@ -1315,7 +1217,6 @@ public class FbaInboundApi {
                 progressRequestListener);
     }
 
-    @SuppressWarnings("rawtypes")
     private okhttp3.Call getShipmentsValidateBeforeCall(
             String queryType,
             String marketplaceId,
@@ -1336,7 +1237,7 @@ public class FbaInboundApi {
             throw new ApiException("Missing the required parameter 'marketplaceId' when calling getShipments(Async)");
         }
 
-        okhttp3.Call call = getShipmentsCall(
+        return getShipmentsCall(
                 queryType,
                 marketplaceId,
                 shipmentStatusList,
@@ -1346,7 +1247,6 @@ public class FbaInboundApi {
                 nextToken,
                 progressListener,
                 progressRequestListener);
-        return call;
     }
 
     /**
@@ -1495,19 +1395,8 @@ public class FbaInboundApi {
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
+            progressListener = callback::onDownloadProgress;
+            progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = getShipmentsValidateBeforeCall(
