@@ -19,7 +19,6 @@ import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
 import com.amazon.SellingPartnerAPIAA.RateLimitConfiguration;
 import com.google.gson.reflect.TypeToken;
-import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,7 +28,6 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
-import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.ProgressResponseBody;
@@ -42,19 +40,7 @@ import software.amazon.spapi.models.appintegrations.v2024_04_01.RecordActionFeed
 public class AppIntegrationsApi {
     private ApiClient apiClient;
 
-    AppIntegrationsApi() {
-        this(Configuration.getDefaultApiClient());
-    }
-
     public AppIntegrationsApi(ApiClient apiClient) {
-        this.apiClient = apiClient;
-    }
-
-    public ApiClient getApiClient() {
-        return apiClient;
-    }
-
-    public void setApiClient(ApiClient apiClient) {
         this.apiClient = apiClient;
     }
 
@@ -94,15 +80,12 @@ public class AppIntegrationsApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
-                @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse
-                            .newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                            .build();
-                }
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
             });
         }
 
@@ -119,7 +102,6 @@ public class AppIntegrationsApi {
                 progressRequestListener);
     }
 
-    @SuppressWarnings("rawtypes")
     private okhttp3.Call createNotificationValidateBeforeCall(
             CreateNotificationRequest body,
             final ProgressResponseBody.ProgressListener progressListener,
@@ -130,8 +112,7 @@ public class AppIntegrationsApi {
             throw new ApiException("Missing the required parameter 'body' when calling createNotification(Async)");
         }
 
-        okhttp3.Call call = createNotificationCall(body, progressListener, progressRequestListener);
-        return call;
+        return createNotificationCall(body, progressListener, progressRequestListener);
     }
 
     /**
@@ -196,19 +177,8 @@ public class AppIntegrationsApi {
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
+            progressListener = callback::onDownloadProgress;
+            progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = createNotificationValidateBeforeCall(body, progressListener, progressRequestListener);
@@ -252,15 +222,12 @@ public class AppIntegrationsApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
-                @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse
-                            .newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                            .build();
-                }
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
             });
         }
 
@@ -277,7 +244,6 @@ public class AppIntegrationsApi {
                 progressRequestListener);
     }
 
-    @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteNotificationsValidateBeforeCall(
             DeleteNotificationsRequest body,
             final ProgressResponseBody.ProgressListener progressListener,
@@ -288,8 +254,7 @@ public class AppIntegrationsApi {
             throw new ApiException("Missing the required parameter 'body' when calling deleteNotifications(Async)");
         }
 
-        okhttp3.Call call = deleteNotificationsCall(body, progressListener, progressRequestListener);
-        return call;
+        return deleteNotificationsCall(body, progressListener, progressRequestListener);
     }
 
     /**
@@ -351,19 +316,8 @@ public class AppIntegrationsApi {
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
+            progressListener = callback::onDownloadProgress;
+            progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = deleteNotificationsValidateBeforeCall(body, progressListener, progressRequestListener);
@@ -409,15 +363,12 @@ public class AppIntegrationsApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
-                @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse
-                            .newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                            .build();
-                }
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
             });
         }
 
@@ -434,7 +385,6 @@ public class AppIntegrationsApi {
                 progressRequestListener);
     }
 
-    @SuppressWarnings("rawtypes")
     private okhttp3.Call recordActionFeedbackValidateBeforeCall(
             RecordActionFeedbackRequest body,
             String notificationId,
@@ -451,8 +401,7 @@ public class AppIntegrationsApi {
                     "Missing the required parameter 'notificationId' when calling recordActionFeedback(Async)");
         }
 
-        okhttp3.Call call = recordActionFeedbackCall(body, notificationId, progressListener, progressRequestListener);
-        return call;
+        return recordActionFeedbackCall(body, notificationId, progressListener, progressRequestListener);
     }
 
     /**
@@ -517,19 +466,8 @@ public class AppIntegrationsApi {
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
+            progressListener = callback::onDownloadProgress;
+            progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call =

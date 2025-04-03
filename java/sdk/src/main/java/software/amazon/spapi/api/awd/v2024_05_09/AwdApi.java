@@ -19,7 +19,6 @@ import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
 import com.amazon.SellingPartnerAPIAA.RateLimitConfiguration;
 import com.google.gson.reflect.TypeToken;
-import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,7 +29,6 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
-import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.ProgressResponseBody;
@@ -49,19 +47,7 @@ import software.amazon.spapi.models.awd.v2024_05_09.TransportationDetails;
 public class AwdApi {
     private ApiClient apiClient;
 
-    AwdApi() {
-        this(Configuration.getDefaultApiClient());
-    }
-
     public AwdApi(ApiClient apiClient) {
-        this.apiClient = apiClient;
-    }
-
-    public ApiClient getApiClient() {
-        return apiClient;
-    }
-
-    public void setApiClient(ApiClient apiClient) {
         this.apiClient = apiClient;
     }
 
@@ -103,15 +89,12 @@ public class AwdApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
-                @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse
-                            .newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                            .build();
-                }
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
             });
         }
 
@@ -128,7 +111,6 @@ public class AwdApi {
                 progressRequestListener);
     }
 
-    @SuppressWarnings("rawtypes")
     private okhttp3.Call cancelInboundValidateBeforeCall(
             String orderId,
             final ProgressResponseBody.ProgressListener progressListener,
@@ -139,8 +121,7 @@ public class AwdApi {
             throw new ApiException("Missing the required parameter 'orderId' when calling cancelInbound(Async)");
         }
 
-        okhttp3.Call call = cancelInboundCall(orderId, progressListener, progressRequestListener);
-        return call;
+        return cancelInboundCall(orderId, progressListener, progressRequestListener);
     }
 
     /**
@@ -201,19 +182,8 @@ public class AwdApi {
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
+            progressListener = callback::onDownloadProgress;
+            progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = cancelInboundValidateBeforeCall(orderId, progressListener, progressRequestListener);
@@ -256,15 +226,12 @@ public class AwdApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
-                @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse
-                            .newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                            .build();
-                }
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
             });
         }
 
@@ -281,7 +248,6 @@ public class AwdApi {
                 progressRequestListener);
     }
 
-    @SuppressWarnings("rawtypes")
     private okhttp3.Call checkInboundEligibilityValidateBeforeCall(
             InboundPackages body,
             final ProgressResponseBody.ProgressListener progressListener,
@@ -292,8 +258,7 @@ public class AwdApi {
             throw new ApiException("Missing the required parameter 'body' when calling checkInboundEligibility(Async)");
         }
 
-        okhttp3.Call call = checkInboundEligibilityCall(body, progressListener, progressRequestListener);
-        return call;
+        return checkInboundEligibilityCall(body, progressListener, progressRequestListener);
     }
 
     /**
@@ -358,19 +323,8 @@ public class AwdApi {
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
+            progressListener = callback::onDownloadProgress;
+            progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = checkInboundEligibilityValidateBeforeCall(body, progressListener, progressRequestListener);
@@ -416,15 +370,12 @@ public class AwdApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
-                @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse
-                            .newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                            .build();
-                }
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
             });
         }
 
@@ -441,7 +392,6 @@ public class AwdApi {
                 progressRequestListener);
     }
 
-    @SuppressWarnings("rawtypes")
     private okhttp3.Call confirmInboundValidateBeforeCall(
             String orderId,
             final ProgressResponseBody.ProgressListener progressListener,
@@ -452,8 +402,7 @@ public class AwdApi {
             throw new ApiException("Missing the required parameter 'orderId' when calling confirmInbound(Async)");
         }
 
-        okhttp3.Call call = confirmInboundCall(orderId, progressListener, progressRequestListener);
-        return call;
+        return confirmInboundCall(orderId, progressListener, progressRequestListener);
     }
 
     /**
@@ -514,19 +463,8 @@ public class AwdApi {
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
+            progressListener = callback::onDownloadProgress;
+            progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = confirmInboundValidateBeforeCall(orderId, progressListener, progressRequestListener);
@@ -569,15 +507,12 @@ public class AwdApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
-                @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse
-                            .newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                            .build();
-                }
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
             });
         }
 
@@ -594,7 +529,6 @@ public class AwdApi {
                 progressRequestListener);
     }
 
-    @SuppressWarnings("rawtypes")
     private okhttp3.Call createInboundValidateBeforeCall(
             InboundOrderCreationData body,
             final ProgressResponseBody.ProgressListener progressListener,
@@ -605,8 +539,7 @@ public class AwdApi {
             throw new ApiException("Missing the required parameter 'body' when calling createInbound(Async)");
         }
 
-        okhttp3.Call call = createInboundCall(body, progressListener, progressRequestListener);
-        return call;
+        return createInboundCall(body, progressListener, progressRequestListener);
     }
 
     /**
@@ -672,19 +605,8 @@ public class AwdApi {
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
+            progressListener = callback::onDownloadProgress;
+            progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = createInboundValidateBeforeCall(body, progressListener, progressRequestListener);
@@ -730,15 +652,12 @@ public class AwdApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
-                @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse
-                            .newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                            .build();
-                }
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
             });
         }
 
@@ -755,7 +674,6 @@ public class AwdApi {
                 progressRequestListener);
     }
 
-    @SuppressWarnings("rawtypes")
     private okhttp3.Call getInboundValidateBeforeCall(
             String orderId,
             final ProgressResponseBody.ProgressListener progressListener,
@@ -766,8 +684,7 @@ public class AwdApi {
             throw new ApiException("Missing the required parameter 'orderId' when calling getInbound(Async)");
         }
 
-        okhttp3.Call call = getInboundCall(orderId, progressListener, progressRequestListener);
-        return call;
+        return getInboundCall(orderId, progressListener, progressRequestListener);
     }
 
     /**
@@ -828,19 +745,8 @@ public class AwdApi {
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
+            progressListener = callback::onDownloadProgress;
+            progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = getInboundValidateBeforeCall(orderId, progressListener, progressRequestListener);
@@ -891,15 +797,12 @@ public class AwdApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
-                @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse
-                            .newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                            .build();
-                }
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
             });
         }
 
@@ -916,7 +819,6 @@ public class AwdApi {
                 progressRequestListener);
     }
 
-    @SuppressWarnings("rawtypes")
     private okhttp3.Call getInboundShipmentValidateBeforeCall(
             String shipmentId,
             String skuQuantities,
@@ -929,9 +831,7 @@ public class AwdApi {
                     "Missing the required parameter 'shipmentId' when calling getInboundShipment(Async)");
         }
 
-        okhttp3.Call call =
-                getInboundShipmentCall(shipmentId, skuQuantities, progressListener, progressRequestListener);
-        return call;
+        return getInboundShipmentCall(shipmentId, skuQuantities, progressListener, progressRequestListener);
     }
 
     /**
@@ -1001,19 +901,8 @@ public class AwdApi {
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
+            progressListener = callback::onDownloadProgress;
+            progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = getInboundShipmentValidateBeforeCall(
@@ -1067,15 +956,12 @@ public class AwdApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
-                @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse
-                            .newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                            .build();
-                }
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
             });
         }
 
@@ -1092,7 +978,6 @@ public class AwdApi {
                 progressRequestListener);
     }
 
-    @SuppressWarnings("rawtypes")
     private okhttp3.Call getInboundShipmentLabelsValidateBeforeCall(
             String shipmentId,
             String pageType,
@@ -1106,9 +991,8 @@ public class AwdApi {
                     "Missing the required parameter 'shipmentId' when calling getInboundShipmentLabels(Async)");
         }
 
-        okhttp3.Call call = getInboundShipmentLabelsCall(
+        return getInboundShipmentLabelsCall(
                 shipmentId, pageType, formatType, progressListener, progressRequestListener);
-        return call;
     }
 
     /**
@@ -1187,19 +1071,8 @@ public class AwdApi {
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
+            progressListener = callback::onDownloadProgress;
+            progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = getInboundShipmentLabelsValidateBeforeCall(
@@ -1275,15 +1148,12 @@ public class AwdApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
-                @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse
-                            .newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                            .build();
-                }
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
             });
         }
 
@@ -1300,7 +1170,6 @@ public class AwdApi {
                 progressRequestListener);
     }
 
-    @SuppressWarnings("rawtypes")
     private okhttp3.Call listInboundShipmentsValidateBeforeCall(
             String sortBy,
             String sortOrder,
@@ -1313,7 +1182,7 @@ public class AwdApi {
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
 
-        okhttp3.Call call = listInboundShipmentsCall(
+        return listInboundShipmentsCall(
                 sortBy,
                 sortOrder,
                 shipmentStatus,
@@ -1323,7 +1192,6 @@ public class AwdApi {
                 nextToken,
                 progressListener,
                 progressRequestListener);
-        return call;
     }
 
     /**
@@ -1458,19 +1326,8 @@ public class AwdApi {
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
+            progressListener = callback::onDownloadProgress;
+            progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = listInboundShipmentsValidateBeforeCall(
@@ -1542,15 +1399,12 @@ public class AwdApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
-                @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse
-                            .newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                            .build();
-                }
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
             });
         }
 
@@ -1567,7 +1421,6 @@ public class AwdApi {
                 progressRequestListener);
     }
 
-    @SuppressWarnings("rawtypes")
     private okhttp3.Call listInventoryValidateBeforeCall(
             String sku,
             String sortOrder,
@@ -1578,9 +1431,8 @@ public class AwdApi {
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
 
-        okhttp3.Call call = listInventoryCall(
+        return listInventoryCall(
                 sku, sortOrder, details, nextToken, maxResults, progressListener, progressRequestListener);
-        return call;
     }
 
     /**
@@ -1681,19 +1533,8 @@ public class AwdApi {
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
+            progressListener = callback::onDownloadProgress;
+            progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = listInventoryValidateBeforeCall(
@@ -1741,15 +1582,12 @@ public class AwdApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
-                @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse
-                            .newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                            .build();
-                }
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
             });
         }
 
@@ -1766,7 +1604,6 @@ public class AwdApi {
                 progressRequestListener);
     }
 
-    @SuppressWarnings("rawtypes")
     private okhttp3.Call updateInboundValidateBeforeCall(
             InboundOrder body,
             String orderId,
@@ -1782,8 +1619,7 @@ public class AwdApi {
             throw new ApiException("Missing the required parameter 'orderId' when calling updateInbound(Async)");
         }
 
-        okhttp3.Call call = updateInboundCall(body, orderId, progressListener, progressRequestListener);
-        return call;
+        return updateInboundCall(body, orderId, progressListener, progressRequestListener);
     }
 
     /**
@@ -1851,19 +1687,8 @@ public class AwdApi {
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
+            progressListener = callback::onDownloadProgress;
+            progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = updateInboundValidateBeforeCall(body, orderId, progressListener, progressRequestListener);
@@ -1909,15 +1734,12 @@ public class AwdApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
-                @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse
-                            .newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                            .build();
-                }
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
             });
         }
 
@@ -1934,7 +1756,6 @@ public class AwdApi {
                 progressRequestListener);
     }
 
-    @SuppressWarnings("rawtypes")
     private okhttp3.Call updateInboundShipmentTransportDetailsValidateBeforeCall(
             TransportationDetails body,
             String shipmentId,
@@ -1952,9 +1773,7 @@ public class AwdApi {
                     "Missing the required parameter 'shipmentId' when calling updateInboundShipmentTransportDetails(Async)");
         }
 
-        okhttp3.Call call =
-                updateInboundShipmentTransportDetailsCall(body, shipmentId, progressListener, progressRequestListener);
-        return call;
+        return updateInboundShipmentTransportDetailsCall(body, shipmentId, progressListener, progressRequestListener);
     }
 
     /**
@@ -2019,19 +1838,8 @@ public class AwdApi {
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
+            progressListener = callback::onDownloadProgress;
+            progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = updateInboundShipmentTransportDetailsValidateBeforeCall(

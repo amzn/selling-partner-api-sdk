@@ -31,9 +31,9 @@ import software.amazon.spapi.models.listings.restrictions.v2021_08_01.Restrictio
 
 public class ListingsApiTest {
 
-    private static String endpoint = "http://localhost:3000";
-    private static String authEndpoint = "http://localhost:3000/auth/o2/token";
-    private static LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+    private static final String endpoint = "http://localhost:3000";
+    private static final String authEndpoint = "http://localhost:3000/auth/o2/token";
+    private static final LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
             .clientId("clientId")
             .clientSecret("clientSecret")
             .refreshToken("refreshToken")

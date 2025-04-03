@@ -19,7 +19,6 @@ import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
 import com.amazon.SellingPartnerAPIAA.RateLimitConfiguration;
 import com.google.gson.reflect.TypeToken;
-import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,7 +28,6 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
-import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.ProgressResponseBody;
@@ -41,19 +39,7 @@ import software.amazon.spapi.models.transfers.v2024_06_01.InitiatePayoutResponse
 public class DefaultApi {
     private ApiClient apiClient;
 
-    DefaultApi() {
-        this(Configuration.getDefaultApiClient());
-    }
-
     public DefaultApi(ApiClient apiClient) {
-        this.apiClient = apiClient;
-    }
-
-    public ApiClient getApiClient() {
-        return apiClient;
-    }
-
-    public void setApiClient(ApiClient apiClient) {
         this.apiClient = apiClient;
     }
 
@@ -104,15 +90,12 @@ public class DefaultApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
-                @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse
-                            .newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                            .build();
-                }
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
             });
         }
 
@@ -129,7 +112,6 @@ public class DefaultApi {
                 progressRequestListener);
     }
 
-    @SuppressWarnings("rawtypes")
     private okhttp3.Call getPaymentMethodsValidateBeforeCall(
             String marketplaceId,
             List<String> paymentMethodTypes,
@@ -142,9 +124,7 @@ public class DefaultApi {
                     "Missing the required parameter 'marketplaceId' when calling getPaymentMethods(Async)");
         }
 
-        okhttp3.Call call =
-                getPaymentMethodsCall(marketplaceId, paymentMethodTypes, progressListener, progressRequestListener);
-        return call;
+        return getPaymentMethodsCall(marketplaceId, paymentMethodTypes, progressListener, progressRequestListener);
     }
 
     /**
@@ -223,19 +203,8 @@ public class DefaultApi {
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
+            progressListener = callback::onDownloadProgress;
+            progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = getPaymentMethodsValidateBeforeCall(
@@ -280,15 +249,12 @@ public class DefaultApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
-                @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse
-                            .newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                            .build();
-                }
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
             });
         }
 
@@ -305,7 +271,6 @@ public class DefaultApi {
                 progressRequestListener);
     }
 
-    @SuppressWarnings("rawtypes")
     private okhttp3.Call initiatePayoutValidateBeforeCall(
             InitiatePayoutRequest body,
             final ProgressResponseBody.ProgressListener progressListener,
@@ -316,8 +281,7 @@ public class DefaultApi {
             throw new ApiException("Missing the required parameter 'body' when calling initiatePayout(Async)");
         }
 
-        okhttp3.Call call = initiatePayoutCall(body, progressListener, progressRequestListener);
-        return call;
+        return initiatePayoutCall(body, progressListener, progressRequestListener);
     }
 
     /**
@@ -386,19 +350,8 @@ public class DefaultApi {
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
+            progressListener = callback::onDownloadProgress;
+            progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = initiatePayoutValidateBeforeCall(body, progressListener, progressRequestListener);

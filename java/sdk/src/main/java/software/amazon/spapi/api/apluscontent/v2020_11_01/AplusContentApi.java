@@ -19,7 +19,6 @@ import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
 import com.amazon.SellingPartnerAPIAA.RateLimitConfiguration;
 import com.google.gson.reflect.TypeToken;
-import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,7 +28,6 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
-import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.ProgressResponseBody;
@@ -49,19 +47,7 @@ import software.amazon.spapi.models.apluscontent.v2020_11_01.ValidateContentDocu
 public class AplusContentApi {
     private ApiClient apiClient;
 
-    AplusContentApi() {
-        this(Configuration.getDefaultApiClient());
-    }
-
     public AplusContentApi(ApiClient apiClient) {
-        this.apiClient = apiClient;
-    }
-
-    public ApiClient getApiClient() {
-        return apiClient;
-    }
-
-    public void setApiClient(ApiClient apiClient) {
         this.apiClient = apiClient;
     }
 
@@ -107,15 +93,12 @@ public class AplusContentApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
-                @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse
-                            .newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                            .build();
-                }
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
             });
         }
 
@@ -132,7 +115,6 @@ public class AplusContentApi {
                 progressRequestListener);
     }
 
-    @SuppressWarnings("rawtypes")
     private okhttp3.Call createContentDocumentValidateBeforeCall(
             PostContentDocumentRequest body,
             String marketplaceId,
@@ -149,8 +131,7 @@ public class AplusContentApi {
                     "Missing the required parameter 'marketplaceId' when calling createContentDocument(Async)");
         }
 
-        okhttp3.Call call = createContentDocumentCall(body, marketplaceId, progressListener, progressRequestListener);
-        return call;
+        return createContentDocumentCall(body, marketplaceId, progressListener, progressRequestListener);
     }
 
     /**
@@ -225,19 +206,8 @@ public class AplusContentApi {
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
+            progressListener = callback::onDownloadProgress;
+            progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call =
@@ -297,15 +267,12 @@ public class AplusContentApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
-                @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse
-                            .newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                            .build();
-                }
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
             });
         }
 
@@ -322,7 +289,6 @@ public class AplusContentApi {
                 progressRequestListener);
     }
 
-    @SuppressWarnings("rawtypes")
     private okhttp3.Call getContentDocumentValidateBeforeCall(
             String contentReferenceKey,
             String marketplaceId,
@@ -346,9 +312,8 @@ public class AplusContentApi {
                     "Missing the required parameter 'includedDataSet' when calling getContentDocument(Async)");
         }
 
-        okhttp3.Call call = getContentDocumentCall(
+        return getContentDocumentCall(
                 contentReferenceKey, marketplaceId, includedDataSet, progressListener, progressRequestListener);
-        return call;
     }
 
     /**
@@ -437,19 +402,8 @@ public class AplusContentApi {
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
+            progressListener = callback::onDownloadProgress;
+            progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = getContentDocumentValidateBeforeCall(
@@ -518,15 +472,12 @@ public class AplusContentApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
-                @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse
-                            .newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                            .build();
-                }
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
             });
         }
 
@@ -543,7 +494,6 @@ public class AplusContentApi {
                 progressRequestListener);
     }
 
-    @SuppressWarnings("rawtypes")
     private okhttp3.Call listContentDocumentAsinRelationsValidateBeforeCall(
             String contentReferenceKey,
             String marketplaceId,
@@ -564,7 +514,7 @@ public class AplusContentApi {
                     "Missing the required parameter 'marketplaceId' when calling listContentDocumentAsinRelations(Async)");
         }
 
-        okhttp3.Call call = listContentDocumentAsinRelationsCall(
+        return listContentDocumentAsinRelationsCall(
                 contentReferenceKey,
                 marketplaceId,
                 includedDataSet,
@@ -572,7 +522,6 @@ public class AplusContentApi {
                 pageToken,
                 progressListener,
                 progressRequestListener);
-        return call;
     }
 
     /**
@@ -689,19 +638,8 @@ public class AplusContentApi {
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
+            progressListener = callback::onDownloadProgress;
+            progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = listContentDocumentAsinRelationsValidateBeforeCall(
@@ -763,15 +701,12 @@ public class AplusContentApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
-                @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse
-                            .newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                            .build();
-                }
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
             });
         }
 
@@ -788,7 +723,6 @@ public class AplusContentApi {
                 progressRequestListener);
     }
 
-    @SuppressWarnings("rawtypes")
     private okhttp3.Call postContentDocumentApprovalSubmissionValidateBeforeCall(
             String contentReferenceKey,
             String marketplaceId,
@@ -806,9 +740,8 @@ public class AplusContentApi {
                     "Missing the required parameter 'marketplaceId' when calling postContentDocumentApprovalSubmission(Async)");
         }
 
-        okhttp3.Call call = postContentDocumentApprovalSubmissionCall(
+        return postContentDocumentApprovalSubmissionCall(
                 contentReferenceKey, marketplaceId, progressListener, progressRequestListener);
-        return call;
     }
 
     /**
@@ -891,19 +824,8 @@ public class AplusContentApi {
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
+            progressListener = callback::onDownloadProgress;
+            progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = postContentDocumentApprovalSubmissionValidateBeforeCall(
@@ -960,15 +882,12 @@ public class AplusContentApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
-                @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse
-                            .newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                            .build();
-                }
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
             });
         }
 
@@ -985,7 +904,6 @@ public class AplusContentApi {
                 progressRequestListener);
     }
 
-    @SuppressWarnings("rawtypes")
     private okhttp3.Call postContentDocumentAsinRelationsValidateBeforeCall(
             PostContentDocumentAsinRelationsRequest body,
             String contentReferenceKey,
@@ -1009,9 +927,8 @@ public class AplusContentApi {
                     "Missing the required parameter 'marketplaceId' when calling postContentDocumentAsinRelations(Async)");
         }
 
-        okhttp3.Call call = postContentDocumentAsinRelationsCall(
+        return postContentDocumentAsinRelationsCall(
                 body, contentReferenceKey, marketplaceId, progressListener, progressRequestListener);
-        return call;
     }
 
     /**
@@ -1106,19 +1023,8 @@ public class AplusContentApi {
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
+            progressListener = callback::onDownloadProgress;
+            progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = postContentDocumentAsinRelationsValidateBeforeCall(
@@ -1174,15 +1080,12 @@ public class AplusContentApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
-                @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse
-                            .newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                            .build();
-                }
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
             });
         }
 
@@ -1199,7 +1102,6 @@ public class AplusContentApi {
                 progressRequestListener);
     }
 
-    @SuppressWarnings("rawtypes")
     private okhttp3.Call postContentDocumentSuspendSubmissionValidateBeforeCall(
             String contentReferenceKey,
             String marketplaceId,
@@ -1217,9 +1119,8 @@ public class AplusContentApi {
                     "Missing the required parameter 'marketplaceId' when calling postContentDocumentSuspendSubmission(Async)");
         }
 
-        okhttp3.Call call = postContentDocumentSuspendSubmissionCall(
+        return postContentDocumentSuspendSubmissionCall(
                 contentReferenceKey, marketplaceId, progressListener, progressRequestListener);
-        return call;
     }
 
     /**
@@ -1305,19 +1206,8 @@ public class AplusContentApi {
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
+            progressListener = callback::onDownloadProgress;
+            progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = postContentDocumentSuspendSubmissionValidateBeforeCall(
@@ -1371,15 +1261,12 @@ public class AplusContentApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
-                @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse
-                            .newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                            .build();
-                }
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
             });
         }
 
@@ -1396,7 +1283,6 @@ public class AplusContentApi {
                 progressRequestListener);
     }
 
-    @SuppressWarnings("rawtypes")
     private okhttp3.Call searchContentDocumentsValidateBeforeCall(
             String marketplaceId,
             String pageToken,
@@ -1409,9 +1295,7 @@ public class AplusContentApi {
                     "Missing the required parameter 'marketplaceId' when calling searchContentDocuments(Async)");
         }
 
-        okhttp3.Call call =
-                searchContentDocumentsCall(marketplaceId, pageToken, progressListener, progressRequestListener);
-        return call;
+        return searchContentDocumentsCall(marketplaceId, pageToken, progressListener, progressRequestListener);
     }
 
     /**
@@ -1493,19 +1377,8 @@ public class AplusContentApi {
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
+            progressListener = callback::onDownloadProgress;
+            progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = searchContentDocumentsValidateBeforeCall(
@@ -1563,15 +1436,12 @@ public class AplusContentApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
-                @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse
-                            .newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                            .build();
-                }
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
             });
         }
 
@@ -1588,7 +1458,6 @@ public class AplusContentApi {
                 progressRequestListener);
     }
 
-    @SuppressWarnings("rawtypes")
     private okhttp3.Call searchContentPublishRecordsValidateBeforeCall(
             String marketplaceId,
             String asin,
@@ -1607,9 +1476,8 @@ public class AplusContentApi {
                     "Missing the required parameter 'asin' when calling searchContentPublishRecords(Async)");
         }
 
-        okhttp3.Call call = searchContentPublishRecordsCall(
+        return searchContentPublishRecordsCall(
                 marketplaceId, asin, pageToken, progressListener, progressRequestListener);
-        return call;
     }
 
     /**
@@ -1695,19 +1563,8 @@ public class AplusContentApi {
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
+            progressListener = callback::onDownloadProgress;
+            progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = searchContentPublishRecordsValidateBeforeCall(
@@ -1764,15 +1621,12 @@ public class AplusContentApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
-                @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse
-                            .newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                            .build();
-                }
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
             });
         }
 
@@ -1789,7 +1643,6 @@ public class AplusContentApi {
                 progressRequestListener);
     }
 
-    @SuppressWarnings("rawtypes")
     private okhttp3.Call updateContentDocumentValidateBeforeCall(
             PostContentDocumentRequest body,
             String contentReferenceKey,
@@ -1812,9 +1665,8 @@ public class AplusContentApi {
                     "Missing the required parameter 'marketplaceId' when calling updateContentDocument(Async)");
         }
 
-        okhttp3.Call call = updateContentDocumentCall(
+        return updateContentDocumentCall(
                 body, contentReferenceKey, marketplaceId, progressListener, progressRequestListener);
-        return call;
     }
 
     /**
@@ -1903,19 +1755,8 @@ public class AplusContentApi {
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
+            progressListener = callback::onDownloadProgress;
+            progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = updateContentDocumentValidateBeforeCall(
@@ -1970,15 +1811,12 @@ public class AplusContentApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
-                @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse
-                            .newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                            .build();
-                }
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
             });
         }
 
@@ -1995,7 +1833,6 @@ public class AplusContentApi {
                 progressRequestListener);
     }
 
-    @SuppressWarnings("rawtypes")
     private okhttp3.Call validateContentDocumentAsinRelationsValidateBeforeCall(
             PostContentDocumentRequest body,
             String marketplaceId,
@@ -2014,9 +1851,8 @@ public class AplusContentApi {
                     "Missing the required parameter 'marketplaceId' when calling validateContentDocumentAsinRelations(Async)");
         }
 
-        okhttp3.Call call = validateContentDocumentAsinRelationsCall(
+        return validateContentDocumentAsinRelationsCall(
                 body, marketplaceId, asinSet, progressListener, progressRequestListener);
-        return call;
     }
 
     /**
@@ -2099,19 +1935,8 @@ public class AplusContentApi {
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
+            progressListener = callback::onDownloadProgress;
+            progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = validateContentDocumentAsinRelationsValidateBeforeCall(

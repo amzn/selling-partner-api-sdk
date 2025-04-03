@@ -19,7 +19,6 @@ import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
 import com.amazon.SellingPartnerAPIAA.RateLimitConfiguration;
 import com.google.gson.reflect.TypeToken;
-import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,7 +28,6 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
-import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.ProgressResponseBody;
@@ -40,19 +38,7 @@ import software.amazon.spapi.models.catalogitems.v2022_04_01.ItemSearchResults;
 public class CatalogApi {
     private ApiClient apiClient;
 
-    CatalogApi() {
-        this(Configuration.getDefaultApiClient());
-    }
-
     public CatalogApi(ApiClient apiClient) {
-        this.apiClient = apiClient;
-    }
-
-    public ApiClient getApiClient() {
-        return apiClient;
-    }
-
-    public void setApiClient(ApiClient apiClient) {
         this.apiClient = apiClient;
     }
 
@@ -108,15 +94,12 @@ public class CatalogApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
-                @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse
-                            .newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                            .build();
-                }
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
             });
         }
 
@@ -133,7 +116,6 @@ public class CatalogApi {
                 progressRequestListener);
     }
 
-    @SuppressWarnings("rawtypes")
     private okhttp3.Call getCatalogItemValidateBeforeCall(
             String asin,
             List<String> marketplaceIds,
@@ -152,9 +134,8 @@ public class CatalogApi {
                     "Missing the required parameter 'marketplaceIds' when calling getCatalogItem(Async)");
         }
 
-        okhttp3.Call call = getCatalogItemCall(
+        return getCatalogItemCall(
                 asin, marketplaceIds, includedData, locale, progressListener, progressRequestListener);
-        return call;
     }
 
     /**
@@ -241,19 +222,8 @@ public class CatalogApi {
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
+            progressListener = callback::onDownloadProgress;
+            progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = getCatalogItemValidateBeforeCall(
@@ -355,15 +325,12 @@ public class CatalogApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
-                @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse
-                            .newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                            .build();
-                }
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
             });
         }
 
@@ -380,7 +347,6 @@ public class CatalogApi {
                 progressRequestListener);
     }
 
-    @SuppressWarnings("rawtypes")
     private okhttp3.Call searchCatalogItemsValidateBeforeCall(
             List<String> marketplaceIds,
             List<String> identifiers,
@@ -403,7 +369,7 @@ public class CatalogApi {
                     "Missing the required parameter 'marketplaceIds' when calling searchCatalogItems(Async)");
         }
 
-        okhttp3.Call call = searchCatalogItemsCall(
+        return searchCatalogItemsCall(
                 marketplaceIds,
                 identifiers,
                 identifiersType,
@@ -418,7 +384,6 @@ public class CatalogApi {
                 keywordsLocale,
                 progressListener,
                 progressRequestListener);
-        return call;
     }
 
     /**
@@ -619,19 +584,8 @@ public class CatalogApi {
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
+            progressListener = callback::onDownloadProgress;
+            progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = searchCatalogItemsValidateBeforeCall(

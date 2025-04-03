@@ -19,7 +19,6 @@ import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
 import com.amazon.SellingPartnerAPIAA.RateLimitConfiguration;
 import com.google.gson.reflect.TypeToken;
-import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,7 +29,6 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
-import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.ProgressResponseBody;
@@ -41,19 +39,7 @@ import software.amazon.spapi.models.finances.v0.ListFinancialEventsResponse;
 public class DefaultApi {
     private ApiClient apiClient;
 
-    DefaultApi() {
-        this(Configuration.getDefaultApiClient());
-    }
-
     public DefaultApi(ApiClient apiClient) {
-        this.apiClient = apiClient;
-    }
-
-    public ApiClient getApiClient() {
-        return apiClient;
-    }
-
-    public void setApiClient(ApiClient apiClient) {
         this.apiClient = apiClient;
     }
 
@@ -116,15 +102,12 @@ public class DefaultApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
-                @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse
-                            .newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                            .build();
-                }
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
             });
         }
 
@@ -141,7 +124,6 @@ public class DefaultApi {
                 progressRequestListener);
     }
 
-    @SuppressWarnings("rawtypes")
     private okhttp3.Call listFinancialEventGroupsValidateBeforeCall(
             Integer maxResultsPerPage,
             OffsetDateTime financialEventGroupStartedBefore,
@@ -151,14 +133,13 @@ public class DefaultApi {
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
 
-        okhttp3.Call call = listFinancialEventGroupsCall(
+        return listFinancialEventGroupsCall(
                 maxResultsPerPage,
                 financialEventGroupStartedBefore,
                 financialEventGroupStartedAfter,
                 nextToken,
                 progressListener,
                 progressRequestListener);
-        return call;
     }
 
     /**
@@ -274,19 +255,8 @@ public class DefaultApi {
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
+            progressListener = callback::onDownloadProgress;
+            progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = listFinancialEventGroupsValidateBeforeCall(
@@ -355,15 +325,12 @@ public class DefaultApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
-                @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse
-                            .newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                            .build();
-                }
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
             });
         }
 
@@ -380,7 +347,6 @@ public class DefaultApi {
                 progressRequestListener);
     }
 
-    @SuppressWarnings("rawtypes")
     private okhttp3.Call listFinancialEventsValidateBeforeCall(
             Integer maxResultsPerPage,
             OffsetDateTime postedAfter,
@@ -390,9 +356,8 @@ public class DefaultApi {
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
 
-        okhttp3.Call call = listFinancialEventsCall(
+        return listFinancialEventsCall(
                 maxResultsPerPage, postedAfter, postedBefore, nextToken, progressListener, progressRequestListener);
-        return call;
     }
 
     /**
@@ -500,19 +465,8 @@ public class DefaultApi {
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
+            progressListener = callback::onDownloadProgress;
+            progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = listFinancialEventsValidateBeforeCall(
@@ -580,15 +534,12 @@ public class DefaultApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
-                @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse
-                            .newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                            .build();
-                }
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
             });
         }
 
@@ -605,7 +556,6 @@ public class DefaultApi {
                 progressRequestListener);
     }
 
-    @SuppressWarnings("rawtypes")
     private okhttp3.Call listFinancialEventsByGroupIdValidateBeforeCall(
             String eventGroupId,
             Integer maxResultsPerPage,
@@ -621,7 +571,7 @@ public class DefaultApi {
                     "Missing the required parameter 'eventGroupId' when calling listFinancialEventsByGroupId(Async)");
         }
 
-        okhttp3.Call call = listFinancialEventsByGroupIdCall(
+        return listFinancialEventsByGroupIdCall(
                 eventGroupId,
                 maxResultsPerPage,
                 postedAfter,
@@ -629,7 +579,6 @@ public class DefaultApi {
                 nextToken,
                 progressListener,
                 progressRequestListener);
-        return call;
     }
 
     /**
@@ -755,19 +704,8 @@ public class DefaultApi {
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
+            progressListener = callback::onDownloadProgress;
+            progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = listFinancialEventsByGroupIdValidateBeforeCall(
@@ -828,15 +766,12 @@ public class DefaultApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
-                @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse
-                            .newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                            .build();
-                }
+            apiClient.getHttpClient().networkInterceptors().add(chain -> {
+                okhttp3.Response originalResponse = chain.proceed(chain.request());
+                return originalResponse
+                        .newBuilder()
+                        .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                        .build();
             });
         }
 
@@ -853,7 +788,6 @@ public class DefaultApi {
                 progressRequestListener);
     }
 
-    @SuppressWarnings("rawtypes")
     private okhttp3.Call listFinancialEventsByOrderIdValidateBeforeCall(
             String orderId,
             Integer maxResultsPerPage,
@@ -867,9 +801,8 @@ public class DefaultApi {
                     "Missing the required parameter 'orderId' when calling listFinancialEventsByOrderId(Async)");
         }
 
-        okhttp3.Call call = listFinancialEventsByOrderIdCall(
+        return listFinancialEventsByOrderIdCall(
                 orderId, maxResultsPerPage, nextToken, progressListener, progressRequestListener);
-        return call;
     }
 
     /**
@@ -950,19 +883,8 @@ public class DefaultApi {
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
         if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
+            progressListener = callback::onDownloadProgress;
+            progressRequestListener = callback::onUploadProgress;
         }
 
         okhttp3.Call call = listFinancialEventsByOrderIdValidateBeforeCall(
