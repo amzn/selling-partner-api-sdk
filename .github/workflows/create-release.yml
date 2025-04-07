@@ -33,6 +33,27 @@ jobs:
         working-directory: java/sdk
         run: ./gradlew publish
 
+  release_javascript:
+    runs-on: ubuntu-latest
+    env:
+      NODE_AUTH_TOKEN: ${{ secrets.JAVASCRIPT_NPM_REPO_USER_PASSWORD }}
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '21'
+          registry-url: 'https://registry.npmjs.org'
+          cache: 'npm'
+
+      - name: Install dependencies
+        working-directory: javascript
+        run: npm install
+
+      - name: Publish to npm
+        working-directory: javascript
+        run: npm publish
+
   release_php:
     runs-on: ubuntu-latest
 
