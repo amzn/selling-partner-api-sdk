@@ -18,7 +18,7 @@ import {ApiClient} from '../ApiClient.js';
 * @enum {}
 * @readonly
 */
-export default class CapacityType {
+export class CapacityType {
     
         /**
          * value: "SCHEDULED_CAPACITY"

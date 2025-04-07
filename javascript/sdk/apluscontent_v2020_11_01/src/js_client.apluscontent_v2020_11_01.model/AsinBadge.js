@@ -18,7 +18,7 @@ import {ApiClient} from '../ApiClient.js';
 * @enum {}
 * @readonly
 */
-export default class AsinBadge {
+export class AsinBadge {
     
         /**
          * value: "BRAND_NOT_ELIGIBLE"

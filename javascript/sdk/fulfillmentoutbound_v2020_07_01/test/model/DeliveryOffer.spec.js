@@ -11,103 +11,90 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApisForFulfillmentOutbound);
+import expect from 'expect.js';
+import * as SellingPartnerApisForFulfillmentOutbound from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new SellingPartnerApisForFulfillmentOutbound.DeliveryOffer();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(SellingPartnerApisForFulfillmentOutbound.DeliveryOffer.prototype);
   }
-}(this, function(expect, SellingPartnerApisForFulfillmentOutbound) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new SellingPartnerApisForFulfillmentOutbound.DeliveryOffer();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(SellingPartnerApisForFulfillmentOutbound.DeliveryOffer.prototype);
-    }
+describe('DeliveryOffer', () => {
+  it('should create an instance of DeliveryOffer', () => {
+    expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.DeliveryOffer);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property expiresAt', () => {
+    // verify property exists
+    expect(instance).to.have.property('expiresAt');
 
-  describe('DeliveryOffer', function() {
-    it('should create an instance of DeliveryOffer', function() {
-      expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.DeliveryOffer);
-    });
-
-    it('should have the property expiresAt', function() {
-      // verify property exists
-      expect(instance).to.have.property('expiresAt');
-
-      // set and verify value
-      var expectedValue = generateMockData('Date');
-      instance.expiresAt = expectedValue;
-      expect(instance.expiresAt).to.equal(expectedValue);
-    });
-
-    it('should have the property dateRange', function() {
-      // verify property exists
-      expect(instance).to.have.property('dateRange');
-
-      // set and verify value
-      var expectedValue = generateMockData('DateRange');
-      instance.dateRange = expectedValue;
-      expect(instance.dateRange).to.equal(expectedValue);
-    });
-
-    it('should have the property policy', function() {
-      // verify property exists
-      expect(instance).to.have.property('policy');
-
-      // set and verify value
-      var expectedValue = generateMockData('DeliveryPolicy');
-      instance.policy = expectedValue;
-      expect(instance.policy).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('Date');
+    instance.expiresAt = expectedValue;
+    expect(instance.expiresAt).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property dateRange', () => {
+    // verify property exists
+    expect(instance).to.have.property('dateRange');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('DateRange');
+    instance.dateRange = expectedValue;
+    expect(instance.dateRange).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApisForFulfillmentOutbound[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property policy', () => {
+    // verify property exists
+    expect(instance).to.have.property('policy');
+
+    // set and verify value
+    const expectedValue = generateMockData('DeliveryPolicy');
+    instance.policy = expectedValue;
+    expect(instance.policy).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApisForFulfillmentOutbound[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

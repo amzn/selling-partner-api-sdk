@@ -11,103 +11,90 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.TheSellingPartnerApiForFbaInboundOperations);
+import expect from 'expect.js';
+import * as TheSellingPartnerApiForFbaInboundOperations from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new TheSellingPartnerApiForFbaInboundOperations.SelfShipAppointmentDetails();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(TheSellingPartnerApiForFbaInboundOperations.SelfShipAppointmentDetails.prototype);
   }
-}(this, function(expect, TheSellingPartnerApiForFbaInboundOperations) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new TheSellingPartnerApiForFbaInboundOperations.SelfShipAppointmentDetails();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(TheSellingPartnerApiForFbaInboundOperations.SelfShipAppointmentDetails.prototype);
-    }
+describe('SelfShipAppointmentDetails', () => {
+  it('should create an instance of SelfShipAppointmentDetails', () => {
+    expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.SelfShipAppointmentDetails);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property appointmentId', () => {
+    // verify property exists
+    expect(instance).to.have.property('appointmentId');
 
-  describe('SelfShipAppointmentDetails', function() {
-    it('should create an instance of SelfShipAppointmentDetails', function() {
-      expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.SelfShipAppointmentDetails);
-    });
-
-    it('should have the property appointmentId', function() {
-      // verify property exists
-      expect(instance).to.have.property('appointmentId');
-
-      // set and verify value
-      var expectedValue = generateMockData('Number');
-      instance.appointmentId = expectedValue;
-      expect(instance.appointmentId).to.equal(expectedValue);
-    });
-
-    it('should have the property appointmentSlotTime', function() {
-      // verify property exists
-      expect(instance).to.have.property('appointmentSlotTime');
-
-      // set and verify value
-      var expectedValue = generateMockData('AppointmentSlotTime');
-      instance.appointmentSlotTime = expectedValue;
-      expect(instance.appointmentSlotTime).to.equal(expectedValue);
-    });
-
-    it('should have the property appointmentStatus', function() {
-      // verify property exists
-      expect(instance).to.have.property('appointmentStatus');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.appointmentStatus = expectedValue;
-      expect(instance.appointmentStatus).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('Number');
+    instance.appointmentId = expectedValue;
+    expect(instance.appointmentId).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property appointmentSlotTime', () => {
+    // verify property exists
+    expect(instance).to.have.property('appointmentSlotTime');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('AppointmentSlotTime');
+    instance.appointmentSlotTime = expectedValue;
+    expect(instance.appointmentSlotTime).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = TheSellingPartnerApiForFbaInboundOperations[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property appointmentStatus', () => {
+    // verify property exists
+    expect(instance).to.have.property('appointmentStatus');
+
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.appointmentStatus = expectedValue;
+    expect(instance.appointmentStatus).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = TheSellingPartnerApiForFbaInboundOperations[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

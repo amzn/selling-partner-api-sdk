@@ -11,133 +11,120 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForAContentManagement);
+import expect from 'expect.js';
+import * as SellingPartnerApiForAContentManagement from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new SellingPartnerApiForAContentManagement.StandardSingleImageHighlightsModule();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(SellingPartnerApiForAContentManagement.StandardSingleImageHighlightsModule.prototype);
   }
-}(this, function(expect, SellingPartnerApiForAContentManagement) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new SellingPartnerApiForAContentManagement.StandardSingleImageHighlightsModule();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(SellingPartnerApiForAContentManagement.StandardSingleImageHighlightsModule.prototype);
-    }
+describe('StandardSingleImageHighlightsModule', () => {
+  it('should create an instance of StandardSingleImageHighlightsModule', () => {
+    expect(instance).to.be.a(SellingPartnerApiForAContentManagement.StandardSingleImageHighlightsModule);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property image', () => {
+    // verify property exists
+    expect(instance).to.have.property('image');
 
-  describe('StandardSingleImageHighlightsModule', function() {
-    it('should create an instance of StandardSingleImageHighlightsModule', function() {
-      expect(instance).to.be.a(SellingPartnerApiForAContentManagement.StandardSingleImageHighlightsModule);
-    });
-
-    it('should have the property image', function() {
-      // verify property exists
-      expect(instance).to.have.property('image');
-
-      // set and verify value
-      var expectedValue = generateMockData('ImageComponent');
-      instance.image = expectedValue;
-      expect(instance.image).to.equal(expectedValue);
-    });
-
-    it('should have the property headline', function() {
-      // verify property exists
-      expect(instance).to.have.property('headline');
-
-      // set and verify value
-      var expectedValue = generateMockData('TextComponent');
-      instance.headline = expectedValue;
-      expect(instance.headline).to.equal(expectedValue);
-    });
-
-    it('should have the property textBlock1', function() {
-      // verify property exists
-      expect(instance).to.have.property('textBlock1');
-
-      // set and verify value
-      var expectedValue = generateMockData('StandardTextBlock');
-      instance.textBlock1 = expectedValue;
-      expect(instance.textBlock1).to.equal(expectedValue);
-    });
-
-    it('should have the property textBlock2', function() {
-      // verify property exists
-      expect(instance).to.have.property('textBlock2');
-
-      // set and verify value
-      var expectedValue = generateMockData('StandardTextBlock');
-      instance.textBlock2 = expectedValue;
-      expect(instance.textBlock2).to.equal(expectedValue);
-    });
-
-    it('should have the property textBlock3', function() {
-      // verify property exists
-      expect(instance).to.have.property('textBlock3');
-
-      // set and verify value
-      var expectedValue = generateMockData('StandardTextBlock');
-      instance.textBlock3 = expectedValue;
-      expect(instance.textBlock3).to.equal(expectedValue);
-    });
-
-    it('should have the property bulletedListBlock', function() {
-      // verify property exists
-      expect(instance).to.have.property('bulletedListBlock');
-
-      // set and verify value
-      var expectedValue = generateMockData('StandardHeaderTextListBlock');
-      instance.bulletedListBlock = expectedValue;
-      expect(instance.bulletedListBlock).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('ImageComponent');
+    instance.image = expectedValue;
+    expect(instance.image).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property headline', () => {
+    // verify property exists
+    expect(instance).to.have.property('headline');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('TextComponent');
+    instance.headline = expectedValue;
+    expect(instance.headline).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForAContentManagement[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property textBlock1', () => {
+    // verify property exists
+    expect(instance).to.have.property('textBlock1');
+
+    // set and verify value
+    const expectedValue = generateMockData('StandardTextBlock');
+    instance.textBlock1 = expectedValue;
+    expect(instance.textBlock1).to.equal(expectedValue);
+  });
+
+  it('should have the property textBlock2', () => {
+    // verify property exists
+    expect(instance).to.have.property('textBlock2');
+
+    // set and verify value
+    const expectedValue = generateMockData('StandardTextBlock');
+    instance.textBlock2 = expectedValue;
+    expect(instance.textBlock2).to.equal(expectedValue);
+  });
+
+  it('should have the property textBlock3', () => {
+    // verify property exists
+    expect(instance).to.have.property('textBlock3');
+
+    // set and verify value
+    const expectedValue = generateMockData('StandardTextBlock');
+    instance.textBlock3 = expectedValue;
+    expect(instance.textBlock3).to.equal(expectedValue);
+  });
+
+  it('should have the property bulletedListBlock', () => {
+    // verify property exists
+    expect(instance).to.have.property('bulletedListBlock');
+
+    // set and verify value
+    const expectedValue = generateMockData('StandardHeaderTextListBlock');
+    instance.bulletedListBlock = expectedValue;
+    expect(instance.bulletedListBlock).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForAContentManagement[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

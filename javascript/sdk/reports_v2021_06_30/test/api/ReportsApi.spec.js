@@ -11,58 +11,47 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', 'sinon', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('sinon'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.sinon, root.SellingPartnerApiForReports);
+import expect from 'expect.js';
+import sinon from 'sinon';
+import * as SellingPartnerApiForReports from '../../src/index.js';
+
+let instance;
+let sandbox;
+const testEndpoint = 'https://localhost:3000';
+const testAccessToken = "testAccessToken";
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
   }
-}(this, function(expect, sinon, SellingPartnerApiForReports) {
-  'use strict';
 
-  var instance;
-  var sandbox;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
-
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
-
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
-
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForReports[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForReports[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-  
+}
 
 // Generate mock requests and responses for each operation
 const mockcancelReportData = {
@@ -153,521 +142,439 @@ const mockgetReportsData = {
   }
 };
 
-  beforeEach(function() {
+describe('ReportsApi', () => {
+  beforeEach(() => {
     sandbox = sinon.createSandbox();
-    var apiClientInstance = new SellingPartnerApiForReports.ApiClient(testEndpoint);
+    const apiClientInstance = new SellingPartnerApiForReports.ApiClient(testEndpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
     sandbox.stub(apiClientInstance, 'callApi');
     instance = new SellingPartnerApiForReports.ReportsApi(apiClientInstance);
   });
 
-  afterEach(function() {
+  afterEach(() => {
     sandbox.restore();
   });
 
-  describe('ReportsApi', function() {
-    describe('cancelReport', function() {
-      
-      it('should successfully call cancelReport', function(done) {
-        instance.apiClient.callApi.resolves(mockcancelReportData.response);
+  describe('cancelReport', () => {
+    it('should successfully call cancelReport', async () => {
+      instance.apiClient.callApi.resolves(mockcancelReportData.response);
 
+      const params = [
+        mockcancelReportData.request['reportId']
+      ];
+      const data = await instance.cancelReport(...params);
+
+      expect(data).to.be.undefined;
+    });
+
+    it('should successfully call cancelReportWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockcancelReportData.response);
+
+      const params = [
+        mockcancelReportData.request['reportId']
+      ];
+      const response = await instance.cancelReportWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockcancelReportData.response.statusCode)
+      expect(response).to.have.property('headers');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
         const params = [
           mockcancelReportData.request['reportId']
         ];
-        instance.cancelReport(...params)
-          .then(function(data) {
-            expect(data).to.be.undefined;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call cancelReportWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockcancelReportData.response);
-
-        const params = [
-          mockcancelReportData.request['reportId']
-        ];
-        instance.cancelReportWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockcancelReportData.response.statusCode)
-            expect(response).to.have.property('headers');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockcancelReportData.request['reportId']
-        ];
-        instance.cancelReport(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('cancelReportSchedule', function() {
-      
-      it('should successfully call cancelReportSchedule', function(done) {
-        instance.apiClient.callApi.resolves(mockcancelReportScheduleData.response);
-
-        const params = [
-          mockcancelReportScheduleData.request['reportScheduleId']
-        ];
-        instance.cancelReportSchedule(...params)
-          .then(function(data) {
-            expect(data).to.be.undefined;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call cancelReportScheduleWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockcancelReportScheduleData.response);
-
-        const params = [
-          mockcancelReportScheduleData.request['reportScheduleId']
-        ];
-        instance.cancelReportScheduleWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockcancelReportScheduleData.response.statusCode)
-            expect(response).to.have.property('headers');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockcancelReportScheduleData.request['reportScheduleId']
-        ];
-        instance.cancelReportSchedule(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('createReport', function() {
-      
-      it('should successfully call createReport', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateReportData.response);
-
-        const params = [
-          mockcreateReportData.request['body']
-        ];
-        instance.createReport(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForReports.CreateReportResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call createReportWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateReportData.response);
-
-        const params = [
-          mockcreateReportData.request['body']
-        ];
-        instance.createReportWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockcreateReportData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockcreateReportData.request['body']
-        ];
-        instance.createReport(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('createReportSchedule', function() {
-      
-      it('should successfully call createReportSchedule', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateReportScheduleData.response);
-
-        const params = [
-          mockcreateReportScheduleData.request['body']
-        ];
-        instance.createReportSchedule(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForReports.CreateReportScheduleResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call createReportScheduleWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateReportScheduleData.response);
-
-        const params = [
-          mockcreateReportScheduleData.request['body']
-        ];
-        instance.createReportScheduleWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockcreateReportScheduleData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockcreateReportScheduleData.request['body']
-        ];
-        instance.createReportSchedule(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('getReport', function() {
-      
-      it('should successfully call getReport', function(done) {
-        instance.apiClient.callApi.resolves(mockgetReportData.response);
-
-        const params = [
-          mockgetReportData.request['reportId']
-        ];
-        instance.getReport(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForReports.Report).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call getReportWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetReportData.response);
-
-        const params = [
-          mockgetReportData.request['reportId']
-        ];
-        instance.getReportWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetReportData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgetReportData.request['reportId']
-        ];
-        instance.getReport(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('getReportDocument', function() {
-      
-      it('should successfully call getReportDocument', function(done) {
-        instance.apiClient.callApi.resolves(mockgetReportDocumentData.response);
-
-        const params = [
-          mockgetReportDocumentData.request['reportDocumentId']
-        ];
-        instance.getReportDocument(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForReports.ReportDocument).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call getReportDocumentWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetReportDocumentData.response);
-
-        const params = [
-          mockgetReportDocumentData.request['reportDocumentId']
-        ];
-        instance.getReportDocumentWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetReportDocumentData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgetReportDocumentData.request['reportDocumentId']
-        ];
-        instance.getReportDocument(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('getReportSchedule', function() {
-      
-      it('should successfully call getReportSchedule', function(done) {
-        instance.apiClient.callApi.resolves(mockgetReportScheduleData.response);
-
-        const params = [
-          mockgetReportScheduleData.request['reportScheduleId']
-        ];
-        instance.getReportSchedule(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForReports.ReportSchedule).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call getReportScheduleWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetReportScheduleData.response);
-
-        const params = [
-          mockgetReportScheduleData.request['reportScheduleId']
-        ];
-        instance.getReportScheduleWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetReportScheduleData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgetReportScheduleData.request['reportScheduleId']
-        ];
-        instance.getReportSchedule(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('getReportSchedules', function() {
-      
-      it('should successfully call getReportSchedules', function(done) {
-        instance.apiClient.callApi.resolves(mockgetReportSchedulesData.response);
-
-        const params = [
-          mockgetReportSchedulesData.request['reportTypes']
-        ];
-        instance.getReportSchedules(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForReports.ReportScheduleList).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call getReportSchedulesWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetReportSchedulesData.response);
-
-        const params = [
-          mockgetReportSchedulesData.request['reportTypes']
-        ];
-        instance.getReportSchedulesWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetReportSchedulesData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgetReportSchedulesData.request['reportTypes']
-        ];
-        instance.getReportSchedules(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('getReports', function() {
-      
-      it('should successfully call getReports', function(done) {
-        instance.apiClient.callApi.resolves(mockgetReportsData.response);
-
-        const params = [
-        ];
-        instance.getReports(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForReports.GetReportsResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call getReportsWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetReportsData.response);
-
-        const params = [
-        ];
-        instance.getReportsWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetReportsData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-        ];
-        instance.getReports(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-
-    describe('constructor', function() {
-      it('should use default ApiClient when none provided', function() {
-        var defaultInstance = new SellingPartnerApiForReports.ReportsApi();
-        expect(defaultInstance.apiClient).to.equal(SellingPartnerApiForReports.ApiClient.instance);
-      });
-
-      it('should use provided ApiClient', function() {
-        var customClient = new SellingPartnerApiForReports.ApiClient();
-        var customInstance = new SellingPartnerApiForReports.ReportsApi(customClient);
-        expect(customInstance.apiClient).to.equal(customClient);
-      });
+        await instance.cancelReport(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
     });
   });
-}));
+  describe('cancelReportSchedule', () => {
+    it('should successfully call cancelReportSchedule', async () => {
+      instance.apiClient.callApi.resolves(mockcancelReportScheduleData.response);
+
+      const params = [
+        mockcancelReportScheduleData.request['reportScheduleId']
+      ];
+      const data = await instance.cancelReportSchedule(...params);
+
+      expect(data).to.be.undefined;
+    });
+
+    it('should successfully call cancelReportScheduleWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockcancelReportScheduleData.response);
+
+      const params = [
+        mockcancelReportScheduleData.request['reportScheduleId']
+      ];
+      const response = await instance.cancelReportScheduleWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockcancelReportScheduleData.response.statusCode)
+      expect(response).to.have.property('headers');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockcancelReportScheduleData.request['reportScheduleId']
+        ];
+        await instance.cancelReportSchedule(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('createReport', () => {
+    it('should successfully call createReport', async () => {
+      instance.apiClient.callApi.resolves(mockcreateReportData.response);
+
+      const params = [
+        mockcreateReportData.request['body']
+      ];
+      const data = await instance.createReport(...params);
+
+      expect(data instanceof SellingPartnerApiForReports.CreateReportResponse).to.be.true;
+    });
+
+    it('should successfully call createReportWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockcreateReportData.response);
+
+      const params = [
+        mockcreateReportData.request['body']
+      ];
+      const response = await instance.createReportWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockcreateReportData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockcreateReportData.request['body']
+        ];
+        await instance.createReport(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('createReportSchedule', () => {
+    it('should successfully call createReportSchedule', async () => {
+      instance.apiClient.callApi.resolves(mockcreateReportScheduleData.response);
+
+      const params = [
+        mockcreateReportScheduleData.request['body']
+      ];
+      const data = await instance.createReportSchedule(...params);
+
+      expect(data instanceof SellingPartnerApiForReports.CreateReportScheduleResponse).to.be.true;
+    });
+
+    it('should successfully call createReportScheduleWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockcreateReportScheduleData.response);
+
+      const params = [
+        mockcreateReportScheduleData.request['body']
+      ];
+      const response = await instance.createReportScheduleWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockcreateReportScheduleData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockcreateReportScheduleData.request['body']
+        ];
+        await instance.createReportSchedule(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('getReport', () => {
+    it('should successfully call getReport', async () => {
+      instance.apiClient.callApi.resolves(mockgetReportData.response);
+
+      const params = [
+        mockgetReportData.request['reportId']
+      ];
+      const data = await instance.getReport(...params);
+
+      expect(data instanceof SellingPartnerApiForReports.Report).to.be.true;
+    });
+
+    it('should successfully call getReportWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetReportData.response);
+
+      const params = [
+        mockgetReportData.request['reportId']
+      ];
+      const response = await instance.getReportWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetReportData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgetReportData.request['reportId']
+        ];
+        await instance.getReport(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('getReportDocument', () => {
+    it('should successfully call getReportDocument', async () => {
+      instance.apiClient.callApi.resolves(mockgetReportDocumentData.response);
+
+      const params = [
+        mockgetReportDocumentData.request['reportDocumentId']
+      ];
+      const data = await instance.getReportDocument(...params);
+
+      expect(data instanceof SellingPartnerApiForReports.ReportDocument).to.be.true;
+    });
+
+    it('should successfully call getReportDocumentWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetReportDocumentData.response);
+
+      const params = [
+        mockgetReportDocumentData.request['reportDocumentId']
+      ];
+      const response = await instance.getReportDocumentWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetReportDocumentData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgetReportDocumentData.request['reportDocumentId']
+        ];
+        await instance.getReportDocument(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('getReportSchedule', () => {
+    it('should successfully call getReportSchedule', async () => {
+      instance.apiClient.callApi.resolves(mockgetReportScheduleData.response);
+
+      const params = [
+        mockgetReportScheduleData.request['reportScheduleId']
+      ];
+      const data = await instance.getReportSchedule(...params);
+
+      expect(data instanceof SellingPartnerApiForReports.ReportSchedule).to.be.true;
+    });
+
+    it('should successfully call getReportScheduleWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetReportScheduleData.response);
+
+      const params = [
+        mockgetReportScheduleData.request['reportScheduleId']
+      ];
+      const response = await instance.getReportScheduleWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetReportScheduleData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgetReportScheduleData.request['reportScheduleId']
+        ];
+        await instance.getReportSchedule(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('getReportSchedules', () => {
+    it('should successfully call getReportSchedules', async () => {
+      instance.apiClient.callApi.resolves(mockgetReportSchedulesData.response);
+
+      const params = [
+        mockgetReportSchedulesData.request['reportTypes']
+      ];
+      const data = await instance.getReportSchedules(...params);
+
+      expect(data instanceof SellingPartnerApiForReports.ReportScheduleList).to.be.true;
+    });
+
+    it('should successfully call getReportSchedulesWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetReportSchedulesData.response);
+
+      const params = [
+        mockgetReportSchedulesData.request['reportTypes']
+      ];
+      const response = await instance.getReportSchedulesWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetReportSchedulesData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgetReportSchedulesData.request['reportTypes']
+        ];
+        await instance.getReportSchedules(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('getReports', () => {
+    it('should successfully call getReports', async () => {
+      instance.apiClient.callApi.resolves(mockgetReportsData.response);
+
+      const params = [
+      ];
+      const data = await instance.getReports(...params);
+
+      expect(data instanceof SellingPartnerApiForReports.GetReportsResponse).to.be.true;
+    });
+
+    it('should successfully call getReportsWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetReportsData.response);
+
+      const params = [
+      ];
+      const response = await instance.getReportsWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetReportsData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+        ];
+        await instance.getReports(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+
+  describe('constructor', () => {
+    it('should use default ApiClient when none provided', () => {
+      const defaultInstance = new SellingPartnerApiForReports.ReportsApi();
+      expect(defaultInstance.apiClient).to.equal(SellingPartnerApiForReports.ApiClient.instance);
+    });
+
+    it('should use provided ApiClient', () => {
+      const customClient = new SellingPartnerApiForReports.ApiClient();
+      const customInstance = new SellingPartnerApiForReports.ReportsApi(customClient);
+      expect(customInstance.apiClient).to.equal(customClient);
+    });
+  });
+});

@@ -11,103 +11,90 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.AmazonShippingApi);
+import expect from 'expect.js';
+import * as AmazonShippingApi from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new AmazonShippingApi.ChannelDetails();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(AmazonShippingApi.ChannelDetails.prototype);
   }
-}(this, function(expect, AmazonShippingApi) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new AmazonShippingApi.ChannelDetails();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(AmazonShippingApi.ChannelDetails.prototype);
-    }
+describe('ChannelDetails', () => {
+  it('should create an instance of ChannelDetails', () => {
+    expect(instance).to.be.a(AmazonShippingApi.ChannelDetails);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property channelType', () => {
+    // verify property exists
+    expect(instance).to.have.property('channelType');
 
-  describe('ChannelDetails', function() {
-    it('should create an instance of ChannelDetails', function() {
-      expect(instance).to.be.a(AmazonShippingApi.ChannelDetails);
-    });
-
-    it('should have the property channelType', function() {
-      // verify property exists
-      expect(instance).to.have.property('channelType');
-
-      // set and verify value
-      var expectedValue = generateMockData('ChannelType');
-      instance.channelType = expectedValue;
-      expect(instance.channelType).to.equal(expectedValue);
-    });
-
-    it('should have the property amazonOrderDetails', function() {
-      // verify property exists
-      expect(instance).to.have.property('amazonOrderDetails');
-
-      // set and verify value
-      var expectedValue = generateMockData('AmazonOrderDetails');
-      instance.amazonOrderDetails = expectedValue;
-      expect(instance.amazonOrderDetails).to.equal(expectedValue);
-    });
-
-    it('should have the property amazonShipmentDetails', function() {
-      // verify property exists
-      expect(instance).to.have.property('amazonShipmentDetails');
-
-      // set and verify value
-      var expectedValue = generateMockData('AmazonShipmentDetails');
-      instance.amazonShipmentDetails = expectedValue;
-      expect(instance.amazonShipmentDetails).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('ChannelType');
+    instance.channelType = expectedValue;
+    expect(instance.channelType).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property amazonOrderDetails', () => {
+    // verify property exists
+    expect(instance).to.have.property('amazonOrderDetails');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('AmazonOrderDetails');
+    instance.amazonOrderDetails = expectedValue;
+    expect(instance.amazonOrderDetails).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = AmazonShippingApi[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property amazonShipmentDetails', () => {
+    // verify property exists
+    expect(instance).to.have.property('amazonShipmentDetails');
+
+    // set and verify value
+    const expectedValue = generateMockData('AmazonShipmentDetails');
+    instance.amazonShipmentDetails = expectedValue;
+    expect(instance.amazonShipmentDetails).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = AmazonShippingApi[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

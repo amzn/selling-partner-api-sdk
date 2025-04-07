@@ -11,93 +11,80 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForEasyShip);
+import expect from 'expect.js';
+import * as SellingPartnerApiForEasyShip from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new SellingPartnerApiForEasyShip.RejectedOrder();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(SellingPartnerApiForEasyShip.RejectedOrder.prototype);
   }
-}(this, function(expect, SellingPartnerApiForEasyShip) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new SellingPartnerApiForEasyShip.RejectedOrder();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(SellingPartnerApiForEasyShip.RejectedOrder.prototype);
-    }
+describe('RejectedOrder', () => {
+  it('should create an instance of RejectedOrder', () => {
+    expect(instance).to.be.a(SellingPartnerApiForEasyShip.RejectedOrder);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property amazonOrderId', () => {
+    // verify property exists
+    expect(instance).to.have.property('amazonOrderId');
 
-  describe('RejectedOrder', function() {
-    it('should create an instance of RejectedOrder', function() {
-      expect(instance).to.be.a(SellingPartnerApiForEasyShip.RejectedOrder);
-    });
-
-    it('should have the property amazonOrderId', function() {
-      // verify property exists
-      expect(instance).to.have.property('amazonOrderId');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.amazonOrderId = expectedValue;
-      expect(instance.amazonOrderId).to.equal(expectedValue);
-    });
-
-    it('should have the property error', function() {
-      // verify property exists
-      expect(instance).to.have.property('error');
-
-      // set and verify value
-      var expectedValue = generateMockData('Error');
-      instance.error = expectedValue;
-      expect(instance.error).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.amazonOrderId = expectedValue;
+    expect(instance.amazonOrderId).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property error', () => {
+    // verify property exists
+    expect(instance).to.have.property('error');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('Error');
+    instance.error = expectedValue;
+    expect(instance.error).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForEasyShip[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForEasyShip[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

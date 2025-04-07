@@ -18,7 +18,7 @@ import {ApiClient} from '../ApiClient.js';
 * @enum {}
 * @readonly
 */
-export default class PredefinedPackageDimensions {
+export class PredefinedPackageDimensions {
     
         /**
          * value: "FedEx_Box_10kg"

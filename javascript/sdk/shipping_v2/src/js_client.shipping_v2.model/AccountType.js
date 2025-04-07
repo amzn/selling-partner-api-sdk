@@ -18,7 +18,7 @@ import {ApiClient} from '../ApiClient.js';
 * @enum {}
 * @readonly
 */
-export default class AccountType {
+export class AccountType {
     
         /**
          * value: "SHIPPER_ACCOUNT"

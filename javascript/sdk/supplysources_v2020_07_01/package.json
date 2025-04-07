@@ -4,6 +4,7 @@
   "description": "Manage configurations and capabilities of seller supply sources.",
   "license": "Apache License 2.0",
   "main": "dist/index.js",
+  "type": "module",
   "scripts": {
     "build": "babel src -d dist",
     "prepare": "npm run build",

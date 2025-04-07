@@ -11,113 +11,100 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.AmazonShippingApi);
+import expect from 'expect.js';
+import * as AmazonShippingApi from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new AmazonShippingApi.LinkCarrierAccountRequest();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(AmazonShippingApi.LinkCarrierAccountRequest.prototype);
   }
-}(this, function(expect, AmazonShippingApi) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new AmazonShippingApi.LinkCarrierAccountRequest();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(AmazonShippingApi.LinkCarrierAccountRequest.prototype);
-    }
+describe('LinkCarrierAccountRequest', () => {
+  it('should create an instance of LinkCarrierAccountRequest', () => {
+    expect(instance).to.be.a(AmazonShippingApi.LinkCarrierAccountRequest);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property clientReferenceDetails', () => {
+    // verify property exists
+    expect(instance).to.have.property('clientReferenceDetails');
 
-  describe('LinkCarrierAccountRequest', function() {
-    it('should create an instance of LinkCarrierAccountRequest', function() {
-      expect(instance).to.be.a(AmazonShippingApi.LinkCarrierAccountRequest);
-    });
-
-    it('should have the property clientReferenceDetails', function() {
-      // verify property exists
-      expect(instance).to.have.property('clientReferenceDetails');
-
-      // set and verify value
-      var expectedValue = generateMockData('ClientReferenceDetail', true);
-      instance.clientReferenceDetails = expectedValue;
-      expect(instance.clientReferenceDetails).to.equal(expectedValue);
-    });
-
-    it('should have the property carrierAccountType', function() {
-      // verify property exists
-      expect(instance).to.have.property('carrierAccountType');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.carrierAccountType = expectedValue;
-      expect(instance.carrierAccountType).to.equal(expectedValue);
-    });
-
-    it('should have the property carrierAccountAttributes', function() {
-      // verify property exists
-      expect(instance).to.have.property('carrierAccountAttributes');
-
-      // set and verify value
-      var expectedValue = generateMockData('CarrierAccountAttribute', true);
-      instance.carrierAccountAttributes = expectedValue;
-      expect(instance.carrierAccountAttributes).to.equal(expectedValue);
-    });
-
-    it('should have the property encryptedCarrierAccountAttributes', function() {
-      // verify property exists
-      expect(instance).to.have.property('encryptedCarrierAccountAttributes');
-
-      // set and verify value
-      var expectedValue = generateMockData('CarrierAccountAttribute', true);
-      instance.encryptedCarrierAccountAttributes = expectedValue;
-      expect(instance.encryptedCarrierAccountAttributes).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('ClientReferenceDetail', true);
+    instance.clientReferenceDetails = expectedValue;
+    expect(instance.clientReferenceDetails).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property carrierAccountType', () => {
+    // verify property exists
+    expect(instance).to.have.property('carrierAccountType');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.carrierAccountType = expectedValue;
+    expect(instance.carrierAccountType).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = AmazonShippingApi[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property carrierAccountAttributes', () => {
+    // verify property exists
+    expect(instance).to.have.property('carrierAccountAttributes');
+
+    // set and verify value
+    const expectedValue = generateMockData('CarrierAccountAttribute', true);
+    instance.carrierAccountAttributes = expectedValue;
+    expect(instance.carrierAccountAttributes).to.equal(expectedValue);
+  });
+
+  it('should have the property encryptedCarrierAccountAttributes', () => {
+    // verify property exists
+    expect(instance).to.have.property('encryptedCarrierAccountAttributes');
+
+    // set and verify value
+    const expectedValue = generateMockData('CarrierAccountAttribute', true);
+    instance.encryptedCarrierAccountAttributes = expectedValue;
+    expect(instance.encryptedCarrierAccountAttributes).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = AmazonShippingApi[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

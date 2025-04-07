@@ -18,7 +18,7 @@ import {ApiClient} from '../ApiClient.js';
 * @enum {}
 * @readonly
 */
-export default class ContentModuleType {
+export class ContentModuleType {
     
         /**
          * value: "STANDARD_COMPANY_LOGO"

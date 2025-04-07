@@ -11,58 +11,47 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', 'sinon', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('sinon'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.sinon, root.SellingPartnerApiForProductTypeDefinitions);
+import expect from 'expect.js';
+import sinon from 'sinon';
+import * as SellingPartnerApiForProductTypeDefinitions from '../../src/index.js';
+
+let instance;
+let sandbox;
+const testEndpoint = 'https://localhost:3000';
+const testAccessToken = "testAccessToken";
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
   }
-}(this, function(expect, sinon, SellingPartnerApiForProductTypeDefinitions) {
-  'use strict';
 
-  var instance;
-  var sandbox;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
-
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
-
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
-
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForProductTypeDefinitions[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForProductTypeDefinitions[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-  
+}
 
 // Generate mock requests and responses for each operation
 const mockgetDefinitionsProductTypeData = {
@@ -87,144 +76,125 @@ const mocksearchDefinitionsProductTypesData = {
   }
 };
 
-  beforeEach(function() {
+describe('DefinitionsApi', () => {
+  beforeEach(() => {
     sandbox = sinon.createSandbox();
-    var apiClientInstance = new SellingPartnerApiForProductTypeDefinitions.ApiClient(testEndpoint);
+    const apiClientInstance = new SellingPartnerApiForProductTypeDefinitions.ApiClient(testEndpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
     sandbox.stub(apiClientInstance, 'callApi');
     instance = new SellingPartnerApiForProductTypeDefinitions.DefinitionsApi(apiClientInstance);
   });
 
-  afterEach(function() {
+  afterEach(() => {
     sandbox.restore();
   });
 
-  describe('DefinitionsApi', function() {
-    describe('getDefinitionsProductType', function() {
-      
-      it('should successfully call getDefinitionsProductType', function(done) {
-        instance.apiClient.callApi.resolves(mockgetDefinitionsProductTypeData.response);
+  describe('getDefinitionsProductType', () => {
+    it('should successfully call getDefinitionsProductType', async () => {
+      instance.apiClient.callApi.resolves(mockgetDefinitionsProductTypeData.response);
 
-        const params = [
-          mockgetDefinitionsProductTypeData.request['productType'],
-          mockgetDefinitionsProductTypeData.request['marketplaceIds'],
-        ];
-        instance.getDefinitionsProductType(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForProductTypeDefinitions.ProductTypeDefinition).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
+      const params = [
+        mockgetDefinitionsProductTypeData.request['productType'],
+        mockgetDefinitionsProductTypeData.request['marketplaceIds'],
+      ];
+      const data = await instance.getDefinitionsProductType(...params);
 
-      it('should successfully call getDefinitionsProductTypeWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetDefinitionsProductTypeData.response);
-
-        const params = [
-          mockgetDefinitionsProductTypeData.request['productType'],
-          mockgetDefinitionsProductTypeData.request['marketplaceIds'],
-        ];
-        instance.getDefinitionsProductTypeWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetDefinitionsProductTypeData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgetDefinitionsProductTypeData.request['productType'],
-          mockgetDefinitionsProductTypeData.request['marketplaceIds'],
-        ];
-        instance.getDefinitionsProductType(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('searchDefinitionsProductTypes', function() {
-      
-      it('should successfully call searchDefinitionsProductTypes', function(done) {
-        instance.apiClient.callApi.resolves(mocksearchDefinitionsProductTypesData.response);
-
-        const params = [
-          mocksearchDefinitionsProductTypesData.request['marketplaceIds'],
-        ];
-        instance.searchDefinitionsProductTypes(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForProductTypeDefinitions.ProductTypeList).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call searchDefinitionsProductTypesWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mocksearchDefinitionsProductTypesData.response);
-
-        const params = [
-          mocksearchDefinitionsProductTypesData.request['marketplaceIds'],
-        ];
-        instance.searchDefinitionsProductTypesWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mocksearchDefinitionsProductTypesData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mocksearchDefinitionsProductTypesData.request['marketplaceIds'],
-        ];
-        instance.searchDefinitionsProductTypes(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
+      expect(data instanceof SellingPartnerApiForProductTypeDefinitions.ProductTypeDefinition).to.be.true;
     });
 
-    describe('constructor', function() {
-      it('should use default ApiClient when none provided', function() {
-        var defaultInstance = new SellingPartnerApiForProductTypeDefinitions.DefinitionsApi();
-        expect(defaultInstance.apiClient).to.equal(SellingPartnerApiForProductTypeDefinitions.ApiClient.instance);
-      });
+    it('should successfully call getDefinitionsProductTypeWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetDefinitionsProductTypeData.response);
 
-      it('should use provided ApiClient', function() {
-        var customClient = new SellingPartnerApiForProductTypeDefinitions.ApiClient();
-        var customInstance = new SellingPartnerApiForProductTypeDefinitions.DefinitionsApi(customClient);
-        expect(customInstance.apiClient).to.equal(customClient);
-      });
+      const params = [
+        mockgetDefinitionsProductTypeData.request['productType'],
+        mockgetDefinitionsProductTypeData.request['marketplaceIds'],
+      ];
+      const response = await instance.getDefinitionsProductTypeWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetDefinitionsProductTypeData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgetDefinitionsProductTypeData.request['productType'],
+          mockgetDefinitionsProductTypeData.request['marketplaceIds'],
+        ];
+        await instance.getDefinitionsProductType(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
     });
   });
-}));
+  describe('searchDefinitionsProductTypes', () => {
+    it('should successfully call searchDefinitionsProductTypes', async () => {
+      instance.apiClient.callApi.resolves(mocksearchDefinitionsProductTypesData.response);
+
+      const params = [
+        mocksearchDefinitionsProductTypesData.request['marketplaceIds'],
+      ];
+      const data = await instance.searchDefinitionsProductTypes(...params);
+
+      expect(data instanceof SellingPartnerApiForProductTypeDefinitions.ProductTypeList).to.be.true;
+    });
+
+    it('should successfully call searchDefinitionsProductTypesWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mocksearchDefinitionsProductTypesData.response);
+
+      const params = [
+        mocksearchDefinitionsProductTypesData.request['marketplaceIds'],
+      ];
+      const response = await instance.searchDefinitionsProductTypesWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mocksearchDefinitionsProductTypesData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mocksearchDefinitionsProductTypesData.request['marketplaceIds'],
+        ];
+        await instance.searchDefinitionsProductTypes(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+
+  describe('constructor', () => {
+    it('should use default ApiClient when none provided', () => {
+      const defaultInstance = new SellingPartnerApiForProductTypeDefinitions.DefinitionsApi();
+      expect(defaultInstance.apiClient).to.equal(SellingPartnerApiForProductTypeDefinitions.ApiClient.instance);
+    });
+
+    it('should use provided ApiClient', () => {
+      const customClient = new SellingPartnerApiForProductTypeDefinitions.ApiClient();
+      const customInstance = new SellingPartnerApiForProductTypeDefinitions.DefinitionsApi(customClient);
+      expect(customInstance.apiClient).to.equal(customClient);
+    });
+  });
+});

@@ -18,7 +18,7 @@ import {ApiClient} from '../ApiClient.js';
 * @enum {}
 * @readonly
 */
-export default class FileType {
+export class FileType {
     
         /**
          * value: "application/pdf"

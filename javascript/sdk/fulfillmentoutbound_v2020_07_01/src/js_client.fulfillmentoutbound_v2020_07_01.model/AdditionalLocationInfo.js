@@ -18,7 +18,7 @@ import {ApiClient} from '../ApiClient.js';
 * @enum {}
 * @readonly
 */
-export default class AdditionalLocationInfo {
+export class AdditionalLocationInfo {
     
         /**
          * value: "AS_INSTRUCTED"

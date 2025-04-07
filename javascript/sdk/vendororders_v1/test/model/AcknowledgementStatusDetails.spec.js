@@ -11,103 +11,90 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForRetailProcurementOrders);
+import expect from 'expect.js';
+import * as SellingPartnerApiForRetailProcurementOrders from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new SellingPartnerApiForRetailProcurementOrders.AcknowledgementStatusDetails();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(SellingPartnerApiForRetailProcurementOrders.AcknowledgementStatusDetails.prototype);
   }
-}(this, function(expect, SellingPartnerApiForRetailProcurementOrders) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new SellingPartnerApiForRetailProcurementOrders.AcknowledgementStatusDetails();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(SellingPartnerApiForRetailProcurementOrders.AcknowledgementStatusDetails.prototype);
-    }
+describe('AcknowledgementStatusDetails', () => {
+  it('should create an instance of AcknowledgementStatusDetails', () => {
+    expect(instance).to.be.a(SellingPartnerApiForRetailProcurementOrders.AcknowledgementStatusDetails);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property acknowledgementDate', () => {
+    // verify property exists
+    expect(instance).to.have.property('acknowledgementDate');
 
-  describe('AcknowledgementStatusDetails', function() {
-    it('should create an instance of AcknowledgementStatusDetails', function() {
-      expect(instance).to.be.a(SellingPartnerApiForRetailProcurementOrders.AcknowledgementStatusDetails);
-    });
-
-    it('should have the property acknowledgementDate', function() {
-      // verify property exists
-      expect(instance).to.have.property('acknowledgementDate');
-
-      // set and verify value
-      var expectedValue = generateMockData('Date');
-      instance.acknowledgementDate = expectedValue;
-      expect(instance.acknowledgementDate).to.equal(expectedValue);
-    });
-
-    it('should have the property acceptedQuantity', function() {
-      // verify property exists
-      expect(instance).to.have.property('acceptedQuantity');
-
-      // set and verify value
-      var expectedValue = generateMockData('ItemQuantity');
-      instance.acceptedQuantity = expectedValue;
-      expect(instance.acceptedQuantity).to.equal(expectedValue);
-    });
-
-    it('should have the property rejectedQuantity', function() {
-      // verify property exists
-      expect(instance).to.have.property('rejectedQuantity');
-
-      // set and verify value
-      var expectedValue = generateMockData('ItemQuantity');
-      instance.rejectedQuantity = expectedValue;
-      expect(instance.rejectedQuantity).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('Date');
+    instance.acknowledgementDate = expectedValue;
+    expect(instance.acknowledgementDate).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property acceptedQuantity', () => {
+    // verify property exists
+    expect(instance).to.have.property('acceptedQuantity');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('ItemQuantity');
+    instance.acceptedQuantity = expectedValue;
+    expect(instance.acceptedQuantity).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForRetailProcurementOrders[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property rejectedQuantity', () => {
+    // verify property exists
+    expect(instance).to.have.property('rejectedQuantity');
+
+    // set and verify value
+    const expectedValue = generateMockData('ItemQuantity');
+    instance.rejectedQuantity = expectedValue;
+    expect(instance.rejectedQuantity).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForRetailProcurementOrders[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

@@ -11,103 +11,90 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.TheSellingPartnerApiForThirdPartyApplicationIntegrations);
+import expect from 'expect.js';
+import * as TheSellingPartnerApiForThirdPartyApplicationIntegrations from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new TheSellingPartnerApiForThirdPartyApplicationIntegrations.CreateNotificationRequest();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(TheSellingPartnerApiForThirdPartyApplicationIntegrations.CreateNotificationRequest.prototype);
   }
-}(this, function(expect, TheSellingPartnerApiForThirdPartyApplicationIntegrations) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new TheSellingPartnerApiForThirdPartyApplicationIntegrations.CreateNotificationRequest();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(TheSellingPartnerApiForThirdPartyApplicationIntegrations.CreateNotificationRequest.prototype);
-    }
+describe('CreateNotificationRequest', () => {
+  it('should create an instance of CreateNotificationRequest', () => {
+    expect(instance).to.be.a(TheSellingPartnerApiForThirdPartyApplicationIntegrations.CreateNotificationRequest);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property templateId', () => {
+    // verify property exists
+    expect(instance).to.have.property('templateId');
 
-  describe('CreateNotificationRequest', function() {
-    it('should create an instance of CreateNotificationRequest', function() {
-      expect(instance).to.be.a(TheSellingPartnerApiForThirdPartyApplicationIntegrations.CreateNotificationRequest);
-    });
-
-    it('should have the property templateId', function() {
-      // verify property exists
-      expect(instance).to.have.property('templateId');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.templateId = expectedValue;
-      expect(instance.templateId).to.equal(expectedValue);
-    });
-
-    it('should have the property notificationParameters', function() {
-      // verify property exists
-      expect(instance).to.have.property('notificationParameters');
-
-      // set and verify value
-      var expectedValue = generateMockData('{String: Object}');
-      instance.notificationParameters = expectedValue;
-      expect(instance.notificationParameters).to.equal(expectedValue);
-    });
-
-    it('should have the property marketplaceId', function() {
-      // verify property exists
-      expect(instance).to.have.property('marketplaceId');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.marketplaceId = expectedValue;
-      expect(instance.marketplaceId).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.templateId = expectedValue;
+    expect(instance.templateId).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property notificationParameters', () => {
+    // verify property exists
+    expect(instance).to.have.property('notificationParameters');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('{String: Object}');
+    instance.notificationParameters = expectedValue;
+    expect(instance.notificationParameters).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = TheSellingPartnerApiForThirdPartyApplicationIntegrations[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property marketplaceId', () => {
+    // verify property exists
+    expect(instance).to.have.property('marketplaceId');
+
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.marketplaceId = expectedValue;
+    expect(instance.marketplaceId).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = TheSellingPartnerApiForThirdPartyApplicationIntegrations[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

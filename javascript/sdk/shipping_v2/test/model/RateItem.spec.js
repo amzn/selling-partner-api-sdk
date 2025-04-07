@@ -11,113 +11,100 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.AmazonShippingApi);
+import expect from 'expect.js';
+import * as AmazonShippingApi from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new AmazonShippingApi.RateItem();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(AmazonShippingApi.RateItem.prototype);
   }
-}(this, function(expect, AmazonShippingApi) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new AmazonShippingApi.RateItem();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(AmazonShippingApi.RateItem.prototype);
-    }
+describe('RateItem', () => {
+  it('should create an instance of RateItem', () => {
+    expect(instance).to.be.a(AmazonShippingApi.RateItem);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property rateItemID', () => {
+    // verify property exists
+    expect(instance).to.have.property('rateItemID');
 
-  describe('RateItem', function() {
-    it('should create an instance of RateItem', function() {
-      expect(instance).to.be.a(AmazonShippingApi.RateItem);
-    });
-
-    it('should have the property rateItemID', function() {
-      // verify property exists
-      expect(instance).to.have.property('rateItemID');
-
-      // set and verify value
-      var expectedValue = generateMockData('RateItemID');
-      instance.rateItemID = expectedValue;
-      expect(instance.rateItemID).to.equal(expectedValue);
-    });
-
-    it('should have the property rateItemType', function() {
-      // verify property exists
-      expect(instance).to.have.property('rateItemType');
-
-      // set and verify value
-      var expectedValue = generateMockData('RateItemType');
-      instance.rateItemType = expectedValue;
-      expect(instance.rateItemType).to.equal(expectedValue);
-    });
-
-    it('should have the property rateItemCharge', function() {
-      // verify property exists
-      expect(instance).to.have.property('rateItemCharge');
-
-      // set and verify value
-      var expectedValue = generateMockData('Currency');
-      instance.rateItemCharge = expectedValue;
-      expect(instance.rateItemCharge).to.equal(expectedValue);
-    });
-
-    it('should have the property rateItemNameLocalization', function() {
-      // verify property exists
-      expect(instance).to.have.property('rateItemNameLocalization');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.rateItemNameLocalization = expectedValue;
-      expect(instance.rateItemNameLocalization).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('RateItemID');
+    instance.rateItemID = expectedValue;
+    expect(instance.rateItemID).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property rateItemType', () => {
+    // verify property exists
+    expect(instance).to.have.property('rateItemType');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('RateItemType');
+    instance.rateItemType = expectedValue;
+    expect(instance.rateItemType).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = AmazonShippingApi[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property rateItemCharge', () => {
+    // verify property exists
+    expect(instance).to.have.property('rateItemCharge');
+
+    // set and verify value
+    const expectedValue = generateMockData('Currency');
+    instance.rateItemCharge = expectedValue;
+    expect(instance.rateItemCharge).to.equal(expectedValue);
+  });
+
+  it('should have the property rateItemNameLocalization', () => {
+    // verify property exists
+    expect(instance).to.have.property('rateItemNameLocalization');
+
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.rateItemNameLocalization = expectedValue;
+    expect(instance.rateItemNameLocalization).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = AmazonShippingApi[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

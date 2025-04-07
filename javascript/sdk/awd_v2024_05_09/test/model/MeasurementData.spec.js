@@ -11,103 +11,90 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.TheSellingPartnerApiForAmazonWarehousingAndDistribution);
+import expect from 'expect.js';
+import * as TheSellingPartnerApiForAmazonWarehousingAndDistribution from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new TheSellingPartnerApiForAmazonWarehousingAndDistribution.MeasurementData();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(TheSellingPartnerApiForAmazonWarehousingAndDistribution.MeasurementData.prototype);
   }
-}(this, function(expect, TheSellingPartnerApiForAmazonWarehousingAndDistribution) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new TheSellingPartnerApiForAmazonWarehousingAndDistribution.MeasurementData();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(TheSellingPartnerApiForAmazonWarehousingAndDistribution.MeasurementData.prototype);
-    }
+describe('MeasurementData', () => {
+  it('should create an instance of MeasurementData', () => {
+    expect(instance).to.be.a(TheSellingPartnerApiForAmazonWarehousingAndDistribution.MeasurementData);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property dimensions', () => {
+    // verify property exists
+    expect(instance).to.have.property('dimensions');
 
-  describe('MeasurementData', function() {
-    it('should create an instance of MeasurementData', function() {
-      expect(instance).to.be.a(TheSellingPartnerApiForAmazonWarehousingAndDistribution.MeasurementData);
-    });
-
-    it('should have the property dimensions', function() {
-      // verify property exists
-      expect(instance).to.have.property('dimensions');
-
-      // set and verify value
-      var expectedValue = generateMockData('PackageDimensions');
-      instance.dimensions = expectedValue;
-      expect(instance.dimensions).to.equal(expectedValue);
-    });
-
-    it('should have the property volume', function() {
-      // verify property exists
-      expect(instance).to.have.property('volume');
-
-      // set and verify value
-      var expectedValue = generateMockData('PackageVolume');
-      instance.volume = expectedValue;
-      expect(instance.volume).to.equal(expectedValue);
-    });
-
-    it('should have the property weight', function() {
-      // verify property exists
-      expect(instance).to.have.property('weight');
-
-      // set and verify value
-      var expectedValue = generateMockData('PackageWeight');
-      instance.weight = expectedValue;
-      expect(instance.weight).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('PackageDimensions');
+    instance.dimensions = expectedValue;
+    expect(instance.dimensions).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property volume', () => {
+    // verify property exists
+    expect(instance).to.have.property('volume');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('PackageVolume');
+    instance.volume = expectedValue;
+    expect(instance.volume).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = TheSellingPartnerApiForAmazonWarehousingAndDistribution[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property weight', () => {
+    // verify property exists
+    expect(instance).to.have.property('weight');
+
+    // set and verify value
+    const expectedValue = generateMockData('PackageWeight');
+    instance.weight = expectedValue;
+    expect(instance.weight).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = TheSellingPartnerApiForAmazonWarehousingAndDistribution[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

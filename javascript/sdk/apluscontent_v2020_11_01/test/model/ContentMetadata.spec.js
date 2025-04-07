@@ -11,123 +11,110 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForAContentManagement);
+import expect from 'expect.js';
+import * as SellingPartnerApiForAContentManagement from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new SellingPartnerApiForAContentManagement.ContentMetadata();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(SellingPartnerApiForAContentManagement.ContentMetadata.prototype);
   }
-}(this, function(expect, SellingPartnerApiForAContentManagement) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new SellingPartnerApiForAContentManagement.ContentMetadata();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(SellingPartnerApiForAContentManagement.ContentMetadata.prototype);
-    }
+describe('ContentMetadata', () => {
+  it('should create an instance of ContentMetadata', () => {
+    expect(instance).to.be.a(SellingPartnerApiForAContentManagement.ContentMetadata);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property name', () => {
+    // verify property exists
+    expect(instance).to.have.property('name');
 
-  describe('ContentMetadata', function() {
-    it('should create an instance of ContentMetadata', function() {
-      expect(instance).to.be.a(SellingPartnerApiForAContentManagement.ContentMetadata);
-    });
-
-    it('should have the property name', function() {
-      // verify property exists
-      expect(instance).to.have.property('name');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.name = expectedValue;
-      expect(instance.name).to.equal(expectedValue);
-    });
-
-    it('should have the property marketplaceId', function() {
-      // verify property exists
-      expect(instance).to.have.property('marketplaceId');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.marketplaceId = expectedValue;
-      expect(instance.marketplaceId).to.equal(expectedValue);
-    });
-
-    it('should have the property status', function() {
-      // verify property exists
-      expect(instance).to.have.property('status');
-
-      // set and verify value
-      var expectedValue = generateMockData('ContentStatus');
-      instance.status = expectedValue;
-      expect(instance.status).to.equal(expectedValue);
-    });
-
-    it('should have the property badgeSet', function() {
-      // verify property exists
-      expect(instance).to.have.property('badgeSet');
-
-      // set and verify value
-      var expectedValue = generateMockData('ContentBadge', true);
-      instance.badgeSet = expectedValue;
-      expect(instance.badgeSet).to.equal(expectedValue);
-    });
-
-    it('should have the property updateTime', function() {
-      // verify property exists
-      expect(instance).to.have.property('updateTime');
-
-      // set and verify value
-      var expectedValue = generateMockData('Date');
-      instance.updateTime = expectedValue;
-      expect(instance.updateTime).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.name = expectedValue;
+    expect(instance.name).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property marketplaceId', () => {
+    // verify property exists
+    expect(instance).to.have.property('marketplaceId');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.marketplaceId = expectedValue;
+    expect(instance.marketplaceId).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForAContentManagement[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property status', () => {
+    // verify property exists
+    expect(instance).to.have.property('status');
+
+    // set and verify value
+    const expectedValue = generateMockData('ContentStatus');
+    instance.status = expectedValue;
+    expect(instance.status).to.equal(expectedValue);
+  });
+
+  it('should have the property badgeSet', () => {
+    // verify property exists
+    expect(instance).to.have.property('badgeSet');
+
+    // set and verify value
+    const expectedValue = generateMockData('ContentBadge', true);
+    instance.badgeSet = expectedValue;
+    expect(instance.badgeSet).to.equal(expectedValue);
+  });
+
+  it('should have the property updateTime', () => {
+    // verify property exists
+    expect(instance).to.have.property('updateTime');
+
+    // set and verify value
+    const expectedValue = generateMockData('Date');
+    instance.updateTime = expectedValue;
+    expect(instance.updateTime).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForAContentManagement[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

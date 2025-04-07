@@ -11,113 +11,100 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForMerchantFulfillment);
+import expect from 'expect.js';
+import * as SellingPartnerApiForMerchantFulfillment from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new SellingPartnerApiForMerchantFulfillment.GetEligibleShipmentServicesResult();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(SellingPartnerApiForMerchantFulfillment.GetEligibleShipmentServicesResult.prototype);
   }
-}(this, function(expect, SellingPartnerApiForMerchantFulfillment) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new SellingPartnerApiForMerchantFulfillment.GetEligibleShipmentServicesResult();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(SellingPartnerApiForMerchantFulfillment.GetEligibleShipmentServicesResult.prototype);
-    }
+describe('GetEligibleShipmentServicesResult', () => {
+  it('should create an instance of GetEligibleShipmentServicesResult', () => {
+    expect(instance).to.be.a(SellingPartnerApiForMerchantFulfillment.GetEligibleShipmentServicesResult);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property shippingServiceList', () => {
+    // verify property exists
+    expect(instance).to.have.property('shippingServiceList');
 
-  describe('GetEligibleShipmentServicesResult', function() {
-    it('should create an instance of GetEligibleShipmentServicesResult', function() {
-      expect(instance).to.be.a(SellingPartnerApiForMerchantFulfillment.GetEligibleShipmentServicesResult);
-    });
-
-    it('should have the property shippingServiceList', function() {
-      // verify property exists
-      expect(instance).to.have.property('shippingServiceList');
-
-      // set and verify value
-      var expectedValue = generateMockData('ShippingService', true);
-      instance.shippingServiceList = expectedValue;
-      expect(instance.shippingServiceList).to.equal(expectedValue);
-    });
-
-    it('should have the property rejectedShippingServiceList', function() {
-      // verify property exists
-      expect(instance).to.have.property('rejectedShippingServiceList');
-
-      // set and verify value
-      var expectedValue = generateMockData('RejectedShippingService', true);
-      instance.rejectedShippingServiceList = expectedValue;
-      expect(instance.rejectedShippingServiceList).to.equal(expectedValue);
-    });
-
-    it('should have the property temporarilyUnavailableCarrierList', function() {
-      // verify property exists
-      expect(instance).to.have.property('temporarilyUnavailableCarrierList');
-
-      // set and verify value
-      var expectedValue = generateMockData('TemporarilyUnavailableCarrier', true);
-      instance.temporarilyUnavailableCarrierList = expectedValue;
-      expect(instance.temporarilyUnavailableCarrierList).to.equal(expectedValue);
-    });
-
-    it('should have the property termsAndConditionsNotAcceptedCarrierList', function() {
-      // verify property exists
-      expect(instance).to.have.property('termsAndConditionsNotAcceptedCarrierList');
-
-      // set and verify value
-      var expectedValue = generateMockData('TermsAndConditionsNotAcceptedCarrier', true);
-      instance.termsAndConditionsNotAcceptedCarrierList = expectedValue;
-      expect(instance.termsAndConditionsNotAcceptedCarrierList).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('ShippingService', true);
+    instance.shippingServiceList = expectedValue;
+    expect(instance.shippingServiceList).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property rejectedShippingServiceList', () => {
+    // verify property exists
+    expect(instance).to.have.property('rejectedShippingServiceList');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('RejectedShippingService', true);
+    instance.rejectedShippingServiceList = expectedValue;
+    expect(instance.rejectedShippingServiceList).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForMerchantFulfillment[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property temporarilyUnavailableCarrierList', () => {
+    // verify property exists
+    expect(instance).to.have.property('temporarilyUnavailableCarrierList');
+
+    // set and verify value
+    const expectedValue = generateMockData('TemporarilyUnavailableCarrier', true);
+    instance.temporarilyUnavailableCarrierList = expectedValue;
+    expect(instance.temporarilyUnavailableCarrierList).to.equal(expectedValue);
+  });
+
+  it('should have the property termsAndConditionsNotAcceptedCarrierList', () => {
+    // verify property exists
+    expect(instance).to.have.property('termsAndConditionsNotAcceptedCarrierList');
+
+    // set and verify value
+    const expectedValue = generateMockData('TermsAndConditionsNotAcceptedCarrier', true);
+    instance.termsAndConditionsNotAcceptedCarrierList = expectedValue;
+    expect(instance.termsAndConditionsNotAcceptedCarrierList).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForMerchantFulfillment[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

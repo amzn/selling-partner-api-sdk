@@ -11,103 +11,90 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.TheSellingPartnerApiForFbaInboundOperations);
+import expect from 'expect.js';
+import * as TheSellingPartnerApiForFbaInboundOperations from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new TheSellingPartnerApiForFbaInboundOperations.TaxDetails();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(TheSellingPartnerApiForFbaInboundOperations.TaxDetails.prototype);
   }
-}(this, function(expect, TheSellingPartnerApiForFbaInboundOperations) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new TheSellingPartnerApiForFbaInboundOperations.TaxDetails();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(TheSellingPartnerApiForFbaInboundOperations.TaxDetails.prototype);
-    }
+describe('TaxDetails', () => {
+  it('should create an instance of TaxDetails', () => {
+    expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.TaxDetails);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property declaredValue', () => {
+    // verify property exists
+    expect(instance).to.have.property('declaredValue');
 
-  describe('TaxDetails', function() {
-    it('should create an instance of TaxDetails', function() {
-      expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.TaxDetails);
-    });
-
-    it('should have the property declaredValue', function() {
-      // verify property exists
-      expect(instance).to.have.property('declaredValue');
-
-      // set and verify value
-      var expectedValue = generateMockData('Currency');
-      instance.declaredValue = expectedValue;
-      expect(instance.declaredValue).to.equal(expectedValue);
-    });
-
-    it('should have the property hsnCode', function() {
-      // verify property exists
-      expect(instance).to.have.property('hsnCode');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.hsnCode = expectedValue;
-      expect(instance.hsnCode).to.equal(expectedValue);
-    });
-
-    it('should have the property taxRates', function() {
-      // verify property exists
-      expect(instance).to.have.property('taxRates');
-
-      // set and verify value
-      var expectedValue = generateMockData('TaxRate', true);
-      instance.taxRates = expectedValue;
-      expect(instance.taxRates).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('Currency');
+    instance.declaredValue = expectedValue;
+    expect(instance.declaredValue).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property hsnCode', () => {
+    // verify property exists
+    expect(instance).to.have.property('hsnCode');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.hsnCode = expectedValue;
+    expect(instance.hsnCode).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = TheSellingPartnerApiForFbaInboundOperations[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property taxRates', () => {
+    // verify property exists
+    expect(instance).to.have.property('taxRates');
+
+    // set and verify value
+    const expectedValue = generateMockData('TaxRate', true);
+    instance.taxRates = expectedValue;
+    expect(instance.taxRates).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = TheSellingPartnerApiForFbaInboundOperations[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

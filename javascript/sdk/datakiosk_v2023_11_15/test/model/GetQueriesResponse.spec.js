@@ -11,93 +11,80 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForDataKiosk);
+import expect from 'expect.js';
+import * as SellingPartnerApiForDataKiosk from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new SellingPartnerApiForDataKiosk.GetQueriesResponse();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(SellingPartnerApiForDataKiosk.GetQueriesResponse.prototype);
   }
-}(this, function(expect, SellingPartnerApiForDataKiosk) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new SellingPartnerApiForDataKiosk.GetQueriesResponse();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(SellingPartnerApiForDataKiosk.GetQueriesResponse.prototype);
-    }
+describe('GetQueriesResponse', () => {
+  it('should create an instance of GetQueriesResponse', () => {
+    expect(instance).to.be.a(SellingPartnerApiForDataKiosk.GetQueriesResponse);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property queries', () => {
+    // verify property exists
+    expect(instance).to.have.property('queries');
 
-  describe('GetQueriesResponse', function() {
-    it('should create an instance of GetQueriesResponse', function() {
-      expect(instance).to.be.a(SellingPartnerApiForDataKiosk.GetQueriesResponse);
-    });
-
-    it('should have the property queries', function() {
-      // verify property exists
-      expect(instance).to.have.property('queries');
-
-      // set and verify value
-      var expectedValue = generateMockData('Query', true);
-      instance.queries = expectedValue;
-      expect(instance.queries).to.equal(expectedValue);
-    });
-
-    it('should have the property pagination', function() {
-      // verify property exists
-      expect(instance).to.have.property('pagination');
-
-      // set and verify value
-      var expectedValue = generateMockData('GetQueriesResponsePagination');
-      instance.pagination = expectedValue;
-      expect(instance.pagination).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('Query', true);
+    instance.queries = expectedValue;
+    expect(instance.queries).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property pagination', () => {
+    // verify property exists
+    expect(instance).to.have.property('pagination');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('GetQueriesResponsePagination');
+    instance.pagination = expectedValue;
+    expect(instance.pagination).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForDataKiosk[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForDataKiosk[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

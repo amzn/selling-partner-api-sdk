@@ -11,58 +11,47 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', 'sinon', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('sinon'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.sinon, root.SellingPartnerApiForCatalogItems);
+import expect from 'expect.js';
+import sinon from 'sinon';
+import * as SellingPartnerApiForCatalogItems from '../../src/index.js';
+
+let instance;
+let sandbox;
+const testEndpoint = 'https://localhost:3000';
+const testAccessToken = "testAccessToken";
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
   }
-}(this, function(expect, sinon, SellingPartnerApiForCatalogItems) {
-  'use strict';
 
-  var instance;
-  var sandbox;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
-
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
-
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
-
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForCatalogItems[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForCatalogItems[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-  
+}
 
 // Generate mock requests and responses for each operation
 const mockgetCatalogItemData = {
@@ -87,144 +76,125 @@ const mocksearchCatalogItemsData = {
   }
 };
 
-  beforeEach(function() {
+describe('CatalogApi', () => {
+  beforeEach(() => {
     sandbox = sinon.createSandbox();
-    var apiClientInstance = new SellingPartnerApiForCatalogItems.ApiClient(testEndpoint);
+    const apiClientInstance = new SellingPartnerApiForCatalogItems.ApiClient(testEndpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
     sandbox.stub(apiClientInstance, 'callApi');
     instance = new SellingPartnerApiForCatalogItems.CatalogApi(apiClientInstance);
   });
 
-  afterEach(function() {
+  afterEach(() => {
     sandbox.restore();
   });
 
-  describe('CatalogApi', function() {
-    describe('getCatalogItem', function() {
-      
-      it('should successfully call getCatalogItem', function(done) {
-        instance.apiClient.callApi.resolves(mockgetCatalogItemData.response);
+  describe('getCatalogItem', () => {
+    it('should successfully call getCatalogItem', async () => {
+      instance.apiClient.callApi.resolves(mockgetCatalogItemData.response);
 
-        const params = [
-          mockgetCatalogItemData.request['asin'],
-          mockgetCatalogItemData.request['marketplaceIds'],
-        ];
-        instance.getCatalogItem(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForCatalogItems.Item).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
+      const params = [
+        mockgetCatalogItemData.request['asin'],
+        mockgetCatalogItemData.request['marketplaceIds'],
+      ];
+      const data = await instance.getCatalogItem(...params);
 
-      it('should successfully call getCatalogItemWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetCatalogItemData.response);
-
-        const params = [
-          mockgetCatalogItemData.request['asin'],
-          mockgetCatalogItemData.request['marketplaceIds'],
-        ];
-        instance.getCatalogItemWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetCatalogItemData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgetCatalogItemData.request['asin'],
-          mockgetCatalogItemData.request['marketplaceIds'],
-        ];
-        instance.getCatalogItem(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('searchCatalogItems', function() {
-      
-      it('should successfully call searchCatalogItems', function(done) {
-        instance.apiClient.callApi.resolves(mocksearchCatalogItemsData.response);
-
-        const params = [
-          mocksearchCatalogItemsData.request['marketplaceIds'],
-        ];
-        instance.searchCatalogItems(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForCatalogItems.ItemSearchResults).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call searchCatalogItemsWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mocksearchCatalogItemsData.response);
-
-        const params = [
-          mocksearchCatalogItemsData.request['marketplaceIds'],
-        ];
-        instance.searchCatalogItemsWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mocksearchCatalogItemsData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mocksearchCatalogItemsData.request['marketplaceIds'],
-        ];
-        instance.searchCatalogItems(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
+      expect(data instanceof SellingPartnerApiForCatalogItems.Item).to.be.true;
     });
 
-    describe('constructor', function() {
-      it('should use default ApiClient when none provided', function() {
-        var defaultInstance = new SellingPartnerApiForCatalogItems.CatalogApi();
-        expect(defaultInstance.apiClient).to.equal(SellingPartnerApiForCatalogItems.ApiClient.instance);
-      });
+    it('should successfully call getCatalogItemWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetCatalogItemData.response);
 
-      it('should use provided ApiClient', function() {
-        var customClient = new SellingPartnerApiForCatalogItems.ApiClient();
-        var customInstance = new SellingPartnerApiForCatalogItems.CatalogApi(customClient);
-        expect(customInstance.apiClient).to.equal(customClient);
-      });
+      const params = [
+        mockgetCatalogItemData.request['asin'],
+        mockgetCatalogItemData.request['marketplaceIds'],
+      ];
+      const response = await instance.getCatalogItemWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetCatalogItemData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgetCatalogItemData.request['asin'],
+          mockgetCatalogItemData.request['marketplaceIds'],
+        ];
+        await instance.getCatalogItem(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
     });
   });
-}));
+  describe('searchCatalogItems', () => {
+    it('should successfully call searchCatalogItems', async () => {
+      instance.apiClient.callApi.resolves(mocksearchCatalogItemsData.response);
+
+      const params = [
+        mocksearchCatalogItemsData.request['marketplaceIds'],
+      ];
+      const data = await instance.searchCatalogItems(...params);
+
+      expect(data instanceof SellingPartnerApiForCatalogItems.ItemSearchResults).to.be.true;
+    });
+
+    it('should successfully call searchCatalogItemsWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mocksearchCatalogItemsData.response);
+
+      const params = [
+        mocksearchCatalogItemsData.request['marketplaceIds'],
+      ];
+      const response = await instance.searchCatalogItemsWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mocksearchCatalogItemsData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mocksearchCatalogItemsData.request['marketplaceIds'],
+        ];
+        await instance.searchCatalogItems(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+
+  describe('constructor', () => {
+    it('should use default ApiClient when none provided', () => {
+      const defaultInstance = new SellingPartnerApiForCatalogItems.CatalogApi();
+      expect(defaultInstance.apiClient).to.equal(SellingPartnerApiForCatalogItems.ApiClient.instance);
+    });
+
+    it('should use provided ApiClient', () => {
+      const customClient = new SellingPartnerApiForCatalogItems.ApiClient();
+      const customInstance = new SellingPartnerApiForCatalogItems.CatalogApi(customClient);
+      expect(customInstance.apiClient).to.equal(customClient);
+    });
+  });
+});

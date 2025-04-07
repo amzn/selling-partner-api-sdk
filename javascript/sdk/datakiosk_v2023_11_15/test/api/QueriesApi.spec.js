@@ -11,58 +11,47 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', 'sinon', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('sinon'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.sinon, root.SellingPartnerApiForDataKiosk);
+import expect from 'expect.js';
+import sinon from 'sinon';
+import * as SellingPartnerApiForDataKiosk from '../../src/index.js';
+
+let instance;
+let sandbox;
+const testEndpoint = 'https://localhost:3000';
+const testAccessToken = "testAccessToken";
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
   }
-}(this, function(expect, sinon, SellingPartnerApiForDataKiosk) {
-  'use strict';
 
-  var instance;
-  var sandbox;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
-
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
-
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
-
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForDataKiosk[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForDataKiosk[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-  
+}
 
 // Generate mock requests and responses for each operation
 const mockcancelQueryData = {
@@ -114,302 +103,256 @@ const mockgetQueryData = {
   }
 };
 
-  beforeEach(function() {
+describe('QueriesApi', () => {
+  beforeEach(() => {
     sandbox = sinon.createSandbox();
-    var apiClientInstance = new SellingPartnerApiForDataKiosk.ApiClient(testEndpoint);
+    const apiClientInstance = new SellingPartnerApiForDataKiosk.ApiClient(testEndpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
     sandbox.stub(apiClientInstance, 'callApi');
     instance = new SellingPartnerApiForDataKiosk.QueriesApi(apiClientInstance);
   });
 
-  afterEach(function() {
+  afterEach(() => {
     sandbox.restore();
   });
 
-  describe('QueriesApi', function() {
-    describe('cancelQuery', function() {
-      
-      it('should successfully call cancelQuery', function(done) {
-        instance.apiClient.callApi.resolves(mockcancelQueryData.response);
+  describe('cancelQuery', () => {
+    it('should successfully call cancelQuery', async () => {
+      instance.apiClient.callApi.resolves(mockcancelQueryData.response);
 
+      const params = [
+        mockcancelQueryData.request['queryId']
+      ];
+      const data = await instance.cancelQuery(...params);
+
+      expect(data).to.be.undefined;
+    });
+
+    it('should successfully call cancelQueryWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockcancelQueryData.response);
+
+      const params = [
+        mockcancelQueryData.request['queryId']
+      ];
+      const response = await instance.cancelQueryWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockcancelQueryData.response.statusCode)
+      expect(response).to.have.property('headers');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
         const params = [
           mockcancelQueryData.request['queryId']
         ];
-        instance.cancelQuery(...params)
-          .then(function(data) {
-            expect(data).to.be.undefined;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call cancelQueryWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockcancelQueryData.response);
-
-        const params = [
-          mockcancelQueryData.request['queryId']
-        ];
-        instance.cancelQueryWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockcancelQueryData.response.statusCode)
-            expect(response).to.have.property('headers');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockcancelQueryData.request['queryId']
-        ];
-        instance.cancelQuery(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('createQuery', function() {
-      
-      it('should successfully call createQuery', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateQueryData.response);
-
-        const params = [
-          mockcreateQueryData.request['body']
-        ];
-        instance.createQuery(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForDataKiosk.CreateQueryResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call createQueryWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateQueryData.response);
-
-        const params = [
-          mockcreateQueryData.request['body']
-        ];
-        instance.createQueryWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockcreateQueryData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockcreateQueryData.request['body']
-        ];
-        instance.createQuery(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('getDocument', function() {
-      
-      it('should successfully call getDocument', function(done) {
-        instance.apiClient.callApi.resolves(mockgetDocumentData.response);
-
-        const params = [
-          mockgetDocumentData.request['documentId']
-        ];
-        instance.getDocument(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForDataKiosk.GetDocumentResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call getDocumentWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetDocumentData.response);
-
-        const params = [
-          mockgetDocumentData.request['documentId']
-        ];
-        instance.getDocumentWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetDocumentData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgetDocumentData.request['documentId']
-        ];
-        instance.getDocument(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('getQueries', function() {
-      
-      it('should successfully call getQueries', function(done) {
-        instance.apiClient.callApi.resolves(mockgetQueriesData.response);
-
-        const params = [
-        ];
-        instance.getQueries(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForDataKiosk.GetQueriesResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call getQueriesWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetQueriesData.response);
-
-        const params = [
-        ];
-        instance.getQueriesWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetQueriesData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-        ];
-        instance.getQueries(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('getQuery', function() {
-      
-      it('should successfully call getQuery', function(done) {
-        instance.apiClient.callApi.resolves(mockgetQueryData.response);
-
-        const params = [
-          mockgetQueryData.request['queryId']
-        ];
-        instance.getQuery(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForDataKiosk.Query).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call getQueryWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetQueryData.response);
-
-        const params = [
-          mockgetQueryData.request['queryId']
-        ];
-        instance.getQueryWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetQueryData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgetQueryData.request['queryId']
-        ];
-        instance.getQuery(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-
-    describe('constructor', function() {
-      it('should use default ApiClient when none provided', function() {
-        var defaultInstance = new SellingPartnerApiForDataKiosk.QueriesApi();
-        expect(defaultInstance.apiClient).to.equal(SellingPartnerApiForDataKiosk.ApiClient.instance);
-      });
-
-      it('should use provided ApiClient', function() {
-        var customClient = new SellingPartnerApiForDataKiosk.ApiClient();
-        var customInstance = new SellingPartnerApiForDataKiosk.QueriesApi(customClient);
-        expect(customInstance.apiClient).to.equal(customClient);
-      });
+        await instance.cancelQuery(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
     });
   });
-}));
+  describe('createQuery', () => {
+    it('should successfully call createQuery', async () => {
+      instance.apiClient.callApi.resolves(mockcreateQueryData.response);
+
+      const params = [
+        mockcreateQueryData.request['body']
+      ];
+      const data = await instance.createQuery(...params);
+
+      expect(data instanceof SellingPartnerApiForDataKiosk.CreateQueryResponse).to.be.true;
+    });
+
+    it('should successfully call createQueryWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockcreateQueryData.response);
+
+      const params = [
+        mockcreateQueryData.request['body']
+      ];
+      const response = await instance.createQueryWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockcreateQueryData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockcreateQueryData.request['body']
+        ];
+        await instance.createQuery(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('getDocument', () => {
+    it('should successfully call getDocument', async () => {
+      instance.apiClient.callApi.resolves(mockgetDocumentData.response);
+
+      const params = [
+        mockgetDocumentData.request['documentId']
+      ];
+      const data = await instance.getDocument(...params);
+
+      expect(data instanceof SellingPartnerApiForDataKiosk.GetDocumentResponse).to.be.true;
+    });
+
+    it('should successfully call getDocumentWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetDocumentData.response);
+
+      const params = [
+        mockgetDocumentData.request['documentId']
+      ];
+      const response = await instance.getDocumentWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetDocumentData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgetDocumentData.request['documentId']
+        ];
+        await instance.getDocument(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('getQueries', () => {
+    it('should successfully call getQueries', async () => {
+      instance.apiClient.callApi.resolves(mockgetQueriesData.response);
+
+      const params = [
+      ];
+      const data = await instance.getQueries(...params);
+
+      expect(data instanceof SellingPartnerApiForDataKiosk.GetQueriesResponse).to.be.true;
+    });
+
+    it('should successfully call getQueriesWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetQueriesData.response);
+
+      const params = [
+      ];
+      const response = await instance.getQueriesWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetQueriesData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+        ];
+        await instance.getQueries(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('getQuery', () => {
+    it('should successfully call getQuery', async () => {
+      instance.apiClient.callApi.resolves(mockgetQueryData.response);
+
+      const params = [
+        mockgetQueryData.request['queryId']
+      ];
+      const data = await instance.getQuery(...params);
+
+      expect(data instanceof SellingPartnerApiForDataKiosk.Query).to.be.true;
+    });
+
+    it('should successfully call getQueryWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetQueryData.response);
+
+      const params = [
+        mockgetQueryData.request['queryId']
+      ];
+      const response = await instance.getQueryWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetQueryData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgetQueryData.request['queryId']
+        ];
+        await instance.getQuery(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+
+  describe('constructor', () => {
+    it('should use default ApiClient when none provided', () => {
+      const defaultInstance = new SellingPartnerApiForDataKiosk.QueriesApi();
+      expect(defaultInstance.apiClient).to.equal(SellingPartnerApiForDataKiosk.ApiClient.instance);
+    });
+
+    it('should use provided ApiClient', () => {
+      const customClient = new SellingPartnerApiForDataKiosk.ApiClient();
+      const customInstance = new SellingPartnerApiForDataKiosk.QueriesApi(customClient);
+      expect(customInstance.apiClient).to.equal(customClient);
+    });
+  });
+});

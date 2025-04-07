@@ -18,7 +18,7 @@ import {ApiClient} from '../ApiClient.js';
 * @enum {}
 * @readonly
 */
-export default class LabelPrepType {
+export class LabelPrepType {
     
         /**
          * value: "NO_LABEL"

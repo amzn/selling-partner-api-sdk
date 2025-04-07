@@ -11,163 +11,150 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForDataKiosk);
+import expect from 'expect.js';
+import * as SellingPartnerApiForDataKiosk from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new SellingPartnerApiForDataKiosk.Query();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(SellingPartnerApiForDataKiosk.Query.prototype);
   }
-}(this, function(expect, SellingPartnerApiForDataKiosk) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new SellingPartnerApiForDataKiosk.Query();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(SellingPartnerApiForDataKiosk.Query.prototype);
-    }
+describe('Query', () => {
+  it('should create an instance of Query', () => {
+    expect(instance).to.be.a(SellingPartnerApiForDataKiosk.Query);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property queryId', () => {
+    // verify property exists
+    expect(instance).to.have.property('queryId');
 
-  describe('Query', function() {
-    it('should create an instance of Query', function() {
-      expect(instance).to.be.a(SellingPartnerApiForDataKiosk.Query);
-    });
-
-    it('should have the property queryId', function() {
-      // verify property exists
-      expect(instance).to.have.property('queryId');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.queryId = expectedValue;
-      expect(instance.queryId).to.equal(expectedValue);
-    });
-
-    it('should have the property query', function() {
-      // verify property exists
-      expect(instance).to.have.property('query');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.query = expectedValue;
-      expect(instance.query).to.equal(expectedValue);
-    });
-
-    it('should have the property createdTime', function() {
-      // verify property exists
-      expect(instance).to.have.property('createdTime');
-
-      // set and verify value
-      var expectedValue = generateMockData('Date');
-      instance.createdTime = expectedValue;
-      expect(instance.createdTime).to.equal(expectedValue);
-    });
-
-    it('should have the property processingStatus', function() {
-      // verify property exists
-      expect(instance).to.have.property('processingStatus');
-
-      // set and verify value
-      var expectedValue = ['CANCELLED', 'DONE', 'FATAL', 'IN_PROGRESS', 'IN_QUEUE', ][0];
-      instance.processingStatus = expectedValue;
-      expect(instance.processingStatus).to.equal(expectedValue);
-    });
-
-    it('should have the property processingStartTime', function() {
-      // verify property exists
-      expect(instance).to.have.property('processingStartTime');
-
-      // set and verify value
-      var expectedValue = generateMockData('Date');
-      instance.processingStartTime = expectedValue;
-      expect(instance.processingStartTime).to.equal(expectedValue);
-    });
-
-    it('should have the property processingEndTime', function() {
-      // verify property exists
-      expect(instance).to.have.property('processingEndTime');
-
-      // set and verify value
-      var expectedValue = generateMockData('Date');
-      instance.processingEndTime = expectedValue;
-      expect(instance.processingEndTime).to.equal(expectedValue);
-    });
-
-    it('should have the property dataDocumentId', function() {
-      // verify property exists
-      expect(instance).to.have.property('dataDocumentId');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.dataDocumentId = expectedValue;
-      expect(instance.dataDocumentId).to.equal(expectedValue);
-    });
-
-    it('should have the property errorDocumentId', function() {
-      // verify property exists
-      expect(instance).to.have.property('errorDocumentId');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.errorDocumentId = expectedValue;
-      expect(instance.errorDocumentId).to.equal(expectedValue);
-    });
-
-    it('should have the property pagination', function() {
-      // verify property exists
-      expect(instance).to.have.property('pagination');
-
-      // set and verify value
-      var expectedValue = generateMockData('QueryPagination');
-      instance.pagination = expectedValue;
-      expect(instance.pagination).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.queryId = expectedValue;
+    expect(instance.queryId).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property query', () => {
+    // verify property exists
+    expect(instance).to.have.property('query');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.query = expectedValue;
+    expect(instance.query).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForDataKiosk[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property createdTime', () => {
+    // verify property exists
+    expect(instance).to.have.property('createdTime');
+
+    // set and verify value
+    const expectedValue = generateMockData('Date');
+    instance.createdTime = expectedValue;
+    expect(instance.createdTime).to.equal(expectedValue);
+  });
+
+  it('should have the property processingStatus', () => {
+    // verify property exists
+    expect(instance).to.have.property('processingStatus');
+
+    // set and verify value
+    const expectedValue = ['CANCELLED', 'DONE', 'FATAL', 'IN_PROGRESS', 'IN_QUEUE', ][0];
+    instance.processingStatus = expectedValue;
+    expect(instance.processingStatus).to.equal(expectedValue);
+  });
+
+  it('should have the property processingStartTime', () => {
+    // verify property exists
+    expect(instance).to.have.property('processingStartTime');
+
+    // set and verify value
+    const expectedValue = generateMockData('Date');
+    instance.processingStartTime = expectedValue;
+    expect(instance.processingStartTime).to.equal(expectedValue);
+  });
+
+  it('should have the property processingEndTime', () => {
+    // verify property exists
+    expect(instance).to.have.property('processingEndTime');
+
+    // set and verify value
+    const expectedValue = generateMockData('Date');
+    instance.processingEndTime = expectedValue;
+    expect(instance.processingEndTime).to.equal(expectedValue);
+  });
+
+  it('should have the property dataDocumentId', () => {
+    // verify property exists
+    expect(instance).to.have.property('dataDocumentId');
+
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.dataDocumentId = expectedValue;
+    expect(instance.dataDocumentId).to.equal(expectedValue);
+  });
+
+  it('should have the property errorDocumentId', () => {
+    // verify property exists
+    expect(instance).to.have.property('errorDocumentId');
+
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.errorDocumentId = expectedValue;
+    expect(instance.errorDocumentId).to.equal(expectedValue);
+  });
+
+  it('should have the property pagination', () => {
+    // verify property exists
+    expect(instance).to.have.property('pagination');
+
+    // set and verify value
+    const expectedValue = generateMockData('QueryPagination');
+    instance.pagination = expectedValue;
+    expect(instance.pagination).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForDataKiosk[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

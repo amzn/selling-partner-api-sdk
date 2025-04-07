@@ -11,103 +11,90 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForEasyShip);
+import expect from 'expect.js';
+import * as SellingPartnerApiForEasyShip from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new SellingPartnerApiForEasyShip.CreateScheduledPackagesRequest();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(SellingPartnerApiForEasyShip.CreateScheduledPackagesRequest.prototype);
   }
-}(this, function(expect, SellingPartnerApiForEasyShip) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new SellingPartnerApiForEasyShip.CreateScheduledPackagesRequest();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(SellingPartnerApiForEasyShip.CreateScheduledPackagesRequest.prototype);
-    }
+describe('CreateScheduledPackagesRequest', () => {
+  it('should create an instance of CreateScheduledPackagesRequest', () => {
+    expect(instance).to.be.a(SellingPartnerApiForEasyShip.CreateScheduledPackagesRequest);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property marketplaceId', () => {
+    // verify property exists
+    expect(instance).to.have.property('marketplaceId');
 
-  describe('CreateScheduledPackagesRequest', function() {
-    it('should create an instance of CreateScheduledPackagesRequest', function() {
-      expect(instance).to.be.a(SellingPartnerApiForEasyShip.CreateScheduledPackagesRequest);
-    });
-
-    it('should have the property marketplaceId', function() {
-      // verify property exists
-      expect(instance).to.have.property('marketplaceId');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.marketplaceId = expectedValue;
-      expect(instance.marketplaceId).to.equal(expectedValue);
-    });
-
-    it('should have the property orderScheduleDetailsList', function() {
-      // verify property exists
-      expect(instance).to.have.property('orderScheduleDetailsList');
-
-      // set and verify value
-      var expectedValue = generateMockData('OrderScheduleDetails', true);
-      instance.orderScheduleDetailsList = expectedValue;
-      expect(instance.orderScheduleDetailsList).to.equal(expectedValue);
-    });
-
-    it('should have the property labelFormat', function() {
-      // verify property exists
-      expect(instance).to.have.property('labelFormat');
-
-      // set and verify value
-      var expectedValue = generateMockData('LabelFormat');
-      instance.labelFormat = expectedValue;
-      expect(instance.labelFormat).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.marketplaceId = expectedValue;
+    expect(instance.marketplaceId).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property orderScheduleDetailsList', () => {
+    // verify property exists
+    expect(instance).to.have.property('orderScheduleDetailsList');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('OrderScheduleDetails', true);
+    instance.orderScheduleDetailsList = expectedValue;
+    expect(instance.orderScheduleDetailsList).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForEasyShip[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property labelFormat', () => {
+    // verify property exists
+    expect(instance).to.have.property('labelFormat');
+
+    // set and verify value
+    const expectedValue = generateMockData('LabelFormat');
+    instance.labelFormat = expectedValue;
+    expect(instance.labelFormat).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForEasyShip[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

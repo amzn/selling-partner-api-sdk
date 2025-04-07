@@ -11,93 +11,80 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForListingsItems);
+import expect from 'expect.js';
+import * as SellingPartnerApiForListingsItems from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new SellingPartnerApiForListingsItems.IssueEnforcements();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(SellingPartnerApiForListingsItems.IssueEnforcements.prototype);
   }
-}(this, function(expect, SellingPartnerApiForListingsItems) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new SellingPartnerApiForListingsItems.IssueEnforcements();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(SellingPartnerApiForListingsItems.IssueEnforcements.prototype);
-    }
+describe('IssueEnforcements', () => {
+  it('should create an instance of IssueEnforcements', () => {
+    expect(instance).to.be.a(SellingPartnerApiForListingsItems.IssueEnforcements);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property actions', () => {
+    // verify property exists
+    expect(instance).to.have.property('actions');
 
-  describe('IssueEnforcements', function() {
-    it('should create an instance of IssueEnforcements', function() {
-      expect(instance).to.be.a(SellingPartnerApiForListingsItems.IssueEnforcements);
-    });
-
-    it('should have the property actions', function() {
-      // verify property exists
-      expect(instance).to.have.property('actions');
-
-      // set and verify value
-      var expectedValue = generateMockData('IssueEnforcementAction', true);
-      instance.actions = expectedValue;
-      expect(instance.actions).to.equal(expectedValue);
-    });
-
-    it('should have the property exemption', function() {
-      // verify property exists
-      expect(instance).to.have.property('exemption');
-
-      // set and verify value
-      var expectedValue = generateMockData('IssueExemption');
-      instance.exemption = expectedValue;
-      expect(instance.exemption).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('IssueEnforcementAction', true);
+    instance.actions = expectedValue;
+    expect(instance.actions).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property exemption', () => {
+    // verify property exists
+    expect(instance).to.have.property('exemption');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('IssueExemption');
+    instance.exemption = expectedValue;
+    expect(instance.exemption).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForListingsItems[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForListingsItems[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

@@ -11,58 +11,47 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', 'sinon', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('sinon'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.sinon, root.TheSellingPartnerApiForInvoices);
+import expect from 'expect.js';
+import sinon from 'sinon';
+import * as TheSellingPartnerApiForInvoices from '../../src/index.js';
+
+let instance;
+let sandbox;
+const testEndpoint = 'https://localhost:3000';
+const testAccessToken = "testAccessToken";
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
   }
-}(this, function(expect, sinon, TheSellingPartnerApiForInvoices) {
-  'use strict';
 
-  var instance;
-  var sandbox;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
-
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
-
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
-
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = TheSellingPartnerApiForInvoices[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = TheSellingPartnerApiForInvoices[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-  
+}
 
 // Generate mock requests and responses for each operation
 const mockcreateInvoicesExportData = {
@@ -137,419 +126,355 @@ const mockgetInvoicesExportsData = {
   }
 };
 
-  beforeEach(function() {
+describe('InvoicesApi', () => {
+  beforeEach(() => {
     sandbox = sinon.createSandbox();
-    var apiClientInstance = new TheSellingPartnerApiForInvoices.ApiClient(testEndpoint);
+    const apiClientInstance = new TheSellingPartnerApiForInvoices.ApiClient(testEndpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
     sandbox.stub(apiClientInstance, 'callApi');
     instance = new TheSellingPartnerApiForInvoices.InvoicesApi(apiClientInstance);
   });
 
-  afterEach(function() {
+  afterEach(() => {
     sandbox.restore();
   });
 
-  describe('InvoicesApi', function() {
-    describe('createInvoicesExport', function() {
-      
-      it('should successfully call createInvoicesExport', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateInvoicesExportData.response);
+  describe('createInvoicesExport', () => {
+    it('should successfully call createInvoicesExport', async () => {
+      instance.apiClient.callApi.resolves(mockcreateInvoicesExportData.response);
 
+      const params = [
+        mockcreateInvoicesExportData.request['body']
+      ];
+      const data = await instance.createInvoicesExport(...params);
+
+      expect(data instanceof TheSellingPartnerApiForInvoices.ExportInvoicesResponse).to.be.true;
+    });
+
+    it('should successfully call createInvoicesExportWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockcreateInvoicesExportData.response);
+
+      const params = [
+        mockcreateInvoicesExportData.request['body']
+      ];
+      const response = await instance.createInvoicesExportWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockcreateInvoicesExportData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
         const params = [
           mockcreateInvoicesExportData.request['body']
         ];
-        instance.createInvoicesExport(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForInvoices.ExportInvoicesResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call createInvoicesExportWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateInvoicesExportData.response);
-
-        const params = [
-          mockcreateInvoicesExportData.request['body']
-        ];
-        instance.createInvoicesExportWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockcreateInvoicesExportData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockcreateInvoicesExportData.request['body']
-        ];
-        instance.createInvoicesExport(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('getInvoice', function() {
-      
-      it('should successfully call getInvoice', function(done) {
-        instance.apiClient.callApi.resolves(mockgetInvoiceData.response);
-
-        const params = [
-          mockgetInvoiceData.request['marketplaceId'],
-          mockgetInvoiceData.request['invoiceId']
-        ];
-        instance.getInvoice(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForInvoices.GetInvoiceResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call getInvoiceWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetInvoiceData.response);
-
-        const params = [
-          mockgetInvoiceData.request['marketplaceId'],
-          mockgetInvoiceData.request['invoiceId']
-        ];
-        instance.getInvoiceWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetInvoiceData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgetInvoiceData.request['marketplaceId'],
-          mockgetInvoiceData.request['invoiceId']
-        ];
-        instance.getInvoice(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('getInvoices', function() {
-      
-      it('should successfully call getInvoices', function(done) {
-        instance.apiClient.callApi.resolves(mockgetInvoicesData.response);
-
-        const params = [
-          mockgetInvoicesData.request['marketplaceId'],
-        ];
-        instance.getInvoices(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForInvoices.GetInvoicesResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call getInvoicesWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetInvoicesData.response);
-
-        const params = [
-          mockgetInvoicesData.request['marketplaceId'],
-        ];
-        instance.getInvoicesWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetInvoicesData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgetInvoicesData.request['marketplaceId'],
-        ];
-        instance.getInvoices(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('getInvoicesAttributes', function() {
-      
-      it('should successfully call getInvoicesAttributes', function(done) {
-        instance.apiClient.callApi.resolves(mockgetInvoicesAttributesData.response);
-
-        const params = [
-          mockgetInvoicesAttributesData.request['marketplaceId']
-        ];
-        instance.getInvoicesAttributes(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForInvoices.GetInvoicesAttributesResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call getInvoicesAttributesWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetInvoicesAttributesData.response);
-
-        const params = [
-          mockgetInvoicesAttributesData.request['marketplaceId']
-        ];
-        instance.getInvoicesAttributesWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetInvoicesAttributesData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgetInvoicesAttributesData.request['marketplaceId']
-        ];
-        instance.getInvoicesAttributes(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('getInvoicesDocument', function() {
-      
-      it('should successfully call getInvoicesDocument', function(done) {
-        instance.apiClient.callApi.resolves(mockgetInvoicesDocumentData.response);
-
-        const params = [
-          mockgetInvoicesDocumentData.request['invoicesDocumentId']
-        ];
-        instance.getInvoicesDocument(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForInvoices.GetInvoicesDocumentResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call getInvoicesDocumentWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetInvoicesDocumentData.response);
-
-        const params = [
-          mockgetInvoicesDocumentData.request['invoicesDocumentId']
-        ];
-        instance.getInvoicesDocumentWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetInvoicesDocumentData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgetInvoicesDocumentData.request['invoicesDocumentId']
-        ];
-        instance.getInvoicesDocument(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('getInvoicesExport', function() {
-      
-      it('should successfully call getInvoicesExport', function(done) {
-        instance.apiClient.callApi.resolves(mockgetInvoicesExportData.response);
-
-        const params = [
-          mockgetInvoicesExportData.request['exportId']
-        ];
-        instance.getInvoicesExport(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForInvoices.GetInvoicesExportResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call getInvoicesExportWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetInvoicesExportData.response);
-
-        const params = [
-          mockgetInvoicesExportData.request['exportId']
-        ];
-        instance.getInvoicesExportWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetInvoicesExportData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgetInvoicesExportData.request['exportId']
-        ];
-        instance.getInvoicesExport(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('getInvoicesExports', function() {
-      
-      it('should successfully call getInvoicesExports', function(done) {
-        instance.apiClient.callApi.resolves(mockgetInvoicesExportsData.response);
-
-        const params = [
-          mockgetInvoicesExportsData.request['marketplaceId'],
-        ];
-        instance.getInvoicesExports(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForInvoices.GetInvoicesExportsResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call getInvoicesExportsWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetInvoicesExportsData.response);
-
-        const params = [
-          mockgetInvoicesExportsData.request['marketplaceId'],
-        ];
-        instance.getInvoicesExportsWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetInvoicesExportsData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgetInvoicesExportsData.request['marketplaceId'],
-        ];
-        instance.getInvoicesExports(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-
-    describe('constructor', function() {
-      it('should use default ApiClient when none provided', function() {
-        var defaultInstance = new TheSellingPartnerApiForInvoices.InvoicesApi();
-        expect(defaultInstance.apiClient).to.equal(TheSellingPartnerApiForInvoices.ApiClient.instance);
-      });
-
-      it('should use provided ApiClient', function() {
-        var customClient = new TheSellingPartnerApiForInvoices.ApiClient();
-        var customInstance = new TheSellingPartnerApiForInvoices.InvoicesApi(customClient);
-        expect(customInstance.apiClient).to.equal(customClient);
-      });
+        await instance.createInvoicesExport(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
     });
   });
-}));
+  describe('getInvoice', () => {
+    it('should successfully call getInvoice', async () => {
+      instance.apiClient.callApi.resolves(mockgetInvoiceData.response);
+
+      const params = [
+        mockgetInvoiceData.request['marketplaceId'],
+        mockgetInvoiceData.request['invoiceId']
+      ];
+      const data = await instance.getInvoice(...params);
+
+      expect(data instanceof TheSellingPartnerApiForInvoices.GetInvoiceResponse).to.be.true;
+    });
+
+    it('should successfully call getInvoiceWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetInvoiceData.response);
+
+      const params = [
+        mockgetInvoiceData.request['marketplaceId'],
+        mockgetInvoiceData.request['invoiceId']
+      ];
+      const response = await instance.getInvoiceWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetInvoiceData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgetInvoiceData.request['marketplaceId'],
+          mockgetInvoiceData.request['invoiceId']
+        ];
+        await instance.getInvoice(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('getInvoices', () => {
+    it('should successfully call getInvoices', async () => {
+      instance.apiClient.callApi.resolves(mockgetInvoicesData.response);
+
+      const params = [
+        mockgetInvoicesData.request['marketplaceId'],
+      ];
+      const data = await instance.getInvoices(...params);
+
+      expect(data instanceof TheSellingPartnerApiForInvoices.GetInvoicesResponse).to.be.true;
+    });
+
+    it('should successfully call getInvoicesWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetInvoicesData.response);
+
+      const params = [
+        mockgetInvoicesData.request['marketplaceId'],
+      ];
+      const response = await instance.getInvoicesWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetInvoicesData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgetInvoicesData.request['marketplaceId'],
+        ];
+        await instance.getInvoices(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('getInvoicesAttributes', () => {
+    it('should successfully call getInvoicesAttributes', async () => {
+      instance.apiClient.callApi.resolves(mockgetInvoicesAttributesData.response);
+
+      const params = [
+        mockgetInvoicesAttributesData.request['marketplaceId']
+      ];
+      const data = await instance.getInvoicesAttributes(...params);
+
+      expect(data instanceof TheSellingPartnerApiForInvoices.GetInvoicesAttributesResponse).to.be.true;
+    });
+
+    it('should successfully call getInvoicesAttributesWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetInvoicesAttributesData.response);
+
+      const params = [
+        mockgetInvoicesAttributesData.request['marketplaceId']
+      ];
+      const response = await instance.getInvoicesAttributesWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetInvoicesAttributesData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgetInvoicesAttributesData.request['marketplaceId']
+        ];
+        await instance.getInvoicesAttributes(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('getInvoicesDocument', () => {
+    it('should successfully call getInvoicesDocument', async () => {
+      instance.apiClient.callApi.resolves(mockgetInvoicesDocumentData.response);
+
+      const params = [
+        mockgetInvoicesDocumentData.request['invoicesDocumentId']
+      ];
+      const data = await instance.getInvoicesDocument(...params);
+
+      expect(data instanceof TheSellingPartnerApiForInvoices.GetInvoicesDocumentResponse).to.be.true;
+    });
+
+    it('should successfully call getInvoicesDocumentWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetInvoicesDocumentData.response);
+
+      const params = [
+        mockgetInvoicesDocumentData.request['invoicesDocumentId']
+      ];
+      const response = await instance.getInvoicesDocumentWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetInvoicesDocumentData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgetInvoicesDocumentData.request['invoicesDocumentId']
+        ];
+        await instance.getInvoicesDocument(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('getInvoicesExport', () => {
+    it('should successfully call getInvoicesExport', async () => {
+      instance.apiClient.callApi.resolves(mockgetInvoicesExportData.response);
+
+      const params = [
+        mockgetInvoicesExportData.request['exportId']
+      ];
+      const data = await instance.getInvoicesExport(...params);
+
+      expect(data instanceof TheSellingPartnerApiForInvoices.GetInvoicesExportResponse).to.be.true;
+    });
+
+    it('should successfully call getInvoicesExportWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetInvoicesExportData.response);
+
+      const params = [
+        mockgetInvoicesExportData.request['exportId']
+      ];
+      const response = await instance.getInvoicesExportWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetInvoicesExportData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgetInvoicesExportData.request['exportId']
+        ];
+        await instance.getInvoicesExport(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('getInvoicesExports', () => {
+    it('should successfully call getInvoicesExports', async () => {
+      instance.apiClient.callApi.resolves(mockgetInvoicesExportsData.response);
+
+      const params = [
+        mockgetInvoicesExportsData.request['marketplaceId'],
+      ];
+      const data = await instance.getInvoicesExports(...params);
+
+      expect(data instanceof TheSellingPartnerApiForInvoices.GetInvoicesExportsResponse).to.be.true;
+    });
+
+    it('should successfully call getInvoicesExportsWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetInvoicesExportsData.response);
+
+      const params = [
+        mockgetInvoicesExportsData.request['marketplaceId'],
+      ];
+      const response = await instance.getInvoicesExportsWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetInvoicesExportsData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgetInvoicesExportsData.request['marketplaceId'],
+        ];
+        await instance.getInvoicesExports(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+
+  describe('constructor', () => {
+    it('should use default ApiClient when none provided', () => {
+      const defaultInstance = new TheSellingPartnerApiForInvoices.InvoicesApi();
+      expect(defaultInstance.apiClient).to.equal(TheSellingPartnerApiForInvoices.ApiClient.instance);
+    });
+
+    it('should use provided ApiClient', () => {
+      const customClient = new TheSellingPartnerApiForInvoices.ApiClient();
+      const customInstance = new TheSellingPartnerApiForInvoices.InvoicesApi(customClient);
+      expect(customInstance.apiClient).to.equal(customClient);
+    });
+  });
+});

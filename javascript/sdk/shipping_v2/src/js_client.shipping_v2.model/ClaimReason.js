@@ -18,7 +18,7 @@ import {ApiClient} from '../ApiClient.js';
 * @enum {}
 * @readonly
 */
-export default class ClaimReason {
+export class ClaimReason {
     
         /**
          * value: "LOST_IN_TRANSIT"

@@ -11,58 +11,47 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', 'sinon', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('sinon'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.sinon, root.SellingPartnerApiForFbaInboundEligibilty);
+import expect from 'expect.js';
+import sinon from 'sinon';
+import * as SellingPartnerApiForFbaInboundEligibilty from '../../src/index.js';
+
+let instance;
+let sandbox;
+const testEndpoint = 'https://localhost:3000';
+const testAccessToken = "testAccessToken";
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
   }
-}(this, function(expect, sinon, SellingPartnerApiForFbaInboundEligibilty) {
-  'use strict';
 
-  var instance;
-  var sandbox;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
-
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
-
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
-
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForFbaInboundEligibilty[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForFbaInboundEligibilty[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-  
+}
 
 // Generate mock requests and responses for each operation
 const mockgetItemEligibilityPreviewData = {
@@ -77,89 +66,79 @@ const mockgetItemEligibilityPreviewData = {
   }
 };
 
-  beforeEach(function() {
+describe('FbaInboundApi', () => {
+  beforeEach(() => {
     sandbox = sinon.createSandbox();
-    var apiClientInstance = new SellingPartnerApiForFbaInboundEligibilty.ApiClient(testEndpoint);
+    const apiClientInstance = new SellingPartnerApiForFbaInboundEligibilty.ApiClient(testEndpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
     sandbox.stub(apiClientInstance, 'callApi');
     instance = new SellingPartnerApiForFbaInboundEligibilty.FbaInboundApi(apiClientInstance);
   });
 
-  afterEach(function() {
+  afterEach(() => {
     sandbox.restore();
   });
 
-  describe('FbaInboundApi', function() {
-    describe('getItemEligibilityPreview', function() {
-      
-      it('should successfully call getItemEligibilityPreview', function(done) {
-        instance.apiClient.callApi.resolves(mockgetItemEligibilityPreviewData.response);
+  describe('getItemEligibilityPreview', () => {
+    it('should successfully call getItemEligibilityPreview', async () => {
+      instance.apiClient.callApi.resolves(mockgetItemEligibilityPreviewData.response);
 
-        const params = [
-          mockgetItemEligibilityPreviewData.request['asin'],
-          mockgetItemEligibilityPreviewData.request['program'],
-        ];
-        instance.getItemEligibilityPreview(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForFbaInboundEligibilty.GetItemEligibilityPreviewResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
+      const params = [
+        mockgetItemEligibilityPreviewData.request['asin'],
+        mockgetItemEligibilityPreviewData.request['program'],
+      ];
+      const data = await instance.getItemEligibilityPreview(...params);
 
-      it('should successfully call getItemEligibilityPreviewWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetItemEligibilityPreviewData.response);
-
-        const params = [
-          mockgetItemEligibilityPreviewData.request['asin'],
-          mockgetItemEligibilityPreviewData.request['program'],
-        ];
-        instance.getItemEligibilityPreviewWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetItemEligibilityPreviewData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgetItemEligibilityPreviewData.request['asin'],
-          mockgetItemEligibilityPreviewData.request['program'],
-        ];
-        instance.getItemEligibilityPreview(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
+      expect(data instanceof SellingPartnerApiForFbaInboundEligibilty.GetItemEligibilityPreviewResponse).to.be.true;
     });
 
-    describe('constructor', function() {
-      it('should use default ApiClient when none provided', function() {
-        var defaultInstance = new SellingPartnerApiForFbaInboundEligibilty.FbaInboundApi();
-        expect(defaultInstance.apiClient).to.equal(SellingPartnerApiForFbaInboundEligibilty.ApiClient.instance);
-      });
+    it('should successfully call getItemEligibilityPreviewWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetItemEligibilityPreviewData.response);
 
-      it('should use provided ApiClient', function() {
-        var customClient = new SellingPartnerApiForFbaInboundEligibilty.ApiClient();
-        var customInstance = new SellingPartnerApiForFbaInboundEligibilty.FbaInboundApi(customClient);
-        expect(customInstance.apiClient).to.equal(customClient);
-      });
+      const params = [
+        mockgetItemEligibilityPreviewData.request['asin'],
+        mockgetItemEligibilityPreviewData.request['program'],
+      ];
+      const response = await instance.getItemEligibilityPreviewWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetItemEligibilityPreviewData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgetItemEligibilityPreviewData.request['asin'],
+          mockgetItemEligibilityPreviewData.request['program'],
+        ];
+        await instance.getItemEligibilityPreview(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
     });
   });
-}));
+
+  describe('constructor', () => {
+    it('should use default ApiClient when none provided', () => {
+      const defaultInstance = new SellingPartnerApiForFbaInboundEligibilty.FbaInboundApi();
+      expect(defaultInstance.apiClient).to.equal(SellingPartnerApiForFbaInboundEligibilty.ApiClient.instance);
+    });
+
+    it('should use provided ApiClient', () => {
+      const customClient = new SellingPartnerApiForFbaInboundEligibilty.ApiClient();
+      const customInstance = new SellingPartnerApiForFbaInboundEligibilty.FbaInboundApi(customClient);
+      expect(customInstance.apiClient).to.equal(customClient);
+    });
+  });
+});

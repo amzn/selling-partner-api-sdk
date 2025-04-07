@@ -11,93 +11,80 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.TheSellingPartnerApiForFbaInboundOperations);
+import expect from 'expect.js';
+import * as TheSellingPartnerApiForFbaInboundOperations from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new TheSellingPartnerApiForFbaInboundOperations.ListPlacementOptionsResponse();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(TheSellingPartnerApiForFbaInboundOperations.ListPlacementOptionsResponse.prototype);
   }
-}(this, function(expect, TheSellingPartnerApiForFbaInboundOperations) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new TheSellingPartnerApiForFbaInboundOperations.ListPlacementOptionsResponse();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(TheSellingPartnerApiForFbaInboundOperations.ListPlacementOptionsResponse.prototype);
-    }
+describe('ListPlacementOptionsResponse', () => {
+  it('should create an instance of ListPlacementOptionsResponse', () => {
+    expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.ListPlacementOptionsResponse);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property pagination', () => {
+    // verify property exists
+    expect(instance).to.have.property('pagination');
 
-  describe('ListPlacementOptionsResponse', function() {
-    it('should create an instance of ListPlacementOptionsResponse', function() {
-      expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.ListPlacementOptionsResponse);
-    });
-
-    it('should have the property pagination', function() {
-      // verify property exists
-      expect(instance).to.have.property('pagination');
-
-      // set and verify value
-      var expectedValue = generateMockData('Pagination');
-      instance.pagination = expectedValue;
-      expect(instance.pagination).to.equal(expectedValue);
-    });
-
-    it('should have the property placementOptions', function() {
-      // verify property exists
-      expect(instance).to.have.property('placementOptions');
-
-      // set and verify value
-      var expectedValue = generateMockData('PlacementOption', true);
-      instance.placementOptions = expectedValue;
-      expect(instance.placementOptions).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('Pagination');
+    instance.pagination = expectedValue;
+    expect(instance.pagination).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property placementOptions', () => {
+    // verify property exists
+    expect(instance).to.have.property('placementOptions');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('PlacementOption', true);
+    instance.placementOptions = expectedValue;
+    expect(instance.placementOptions).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = TheSellingPartnerApiForFbaInboundOperations[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = TheSellingPartnerApiForFbaInboundOperations[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

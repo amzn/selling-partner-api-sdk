@@ -11,83 +11,70 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForDirectFulfillmentOrders);
+import expect from 'expect.js';
+import * as SellingPartnerApiForDirectFulfillmentOrders from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new SellingPartnerApiForDirectFulfillmentOrders.TaxItemDetails();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(SellingPartnerApiForDirectFulfillmentOrders.TaxItemDetails.prototype);
   }
-}(this, function(expect, SellingPartnerApiForDirectFulfillmentOrders) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new SellingPartnerApiForDirectFulfillmentOrders.TaxItemDetails();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(SellingPartnerApiForDirectFulfillmentOrders.TaxItemDetails.prototype);
-    }
+describe('TaxItemDetails', () => {
+  it('should create an instance of TaxItemDetails', () => {
+    expect(instance).to.be.a(SellingPartnerApiForDirectFulfillmentOrders.TaxItemDetails);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property taxLineItem', () => {
+    // verify property exists
+    expect(instance).to.have.property('taxLineItem');
 
-  describe('TaxItemDetails', function() {
-    it('should create an instance of TaxItemDetails', function() {
-      expect(instance).to.be.a(SellingPartnerApiForDirectFulfillmentOrders.TaxItemDetails);
-    });
-
-    it('should have the property taxLineItem', function() {
-      // verify property exists
-      expect(instance).to.have.property('taxLineItem');
-
-      // set and verify value
-      var expectedValue = generateMockData('TaxDetails', true);
-      instance.taxLineItem = expectedValue;
-      expect(instance.taxLineItem).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('TaxDetails', true);
+    instance.taxLineItem = expectedValue;
+    expect(instance.taxLineItem).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+});
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForDirectFulfillmentOrders[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForDirectFulfillmentOrders[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

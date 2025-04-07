@@ -11,93 +11,80 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApisForFulfillmentOutbound);
+import expect from 'expect.js';
+import * as SellingPartnerApisForFulfillmentOutbound from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new SellingPartnerApisForFulfillmentOutbound.GetDeliveryOffersTerms();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(SellingPartnerApisForFulfillmentOutbound.GetDeliveryOffersTerms.prototype);
   }
-}(this, function(expect, SellingPartnerApisForFulfillmentOutbound) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new SellingPartnerApisForFulfillmentOutbound.GetDeliveryOffersTerms();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(SellingPartnerApisForFulfillmentOutbound.GetDeliveryOffersTerms.prototype);
-    }
+describe('GetDeliveryOffersTerms', () => {
+  it('should create an instance of GetDeliveryOffersTerms', () => {
+    expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.GetDeliveryOffersTerms);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property origin', () => {
+    // verify property exists
+    expect(instance).to.have.property('origin');
 
-  describe('GetDeliveryOffersTerms', function() {
-    it('should create an instance of GetDeliveryOffersTerms', function() {
-      expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.GetDeliveryOffersTerms);
-    });
-
-    it('should have the property origin', function() {
-      // verify property exists
-      expect(instance).to.have.property('origin');
-
-      // set and verify value
-      var expectedValue = generateMockData('Origin');
-      instance.origin = expectedValue;
-      expect(instance.origin).to.equal(expectedValue);
-    });
-
-    it('should have the property destination', function() {
-      // verify property exists
-      expect(instance).to.have.property('destination');
-
-      // set and verify value
-      var expectedValue = generateMockData('Destination');
-      instance.destination = expectedValue;
-      expect(instance.destination).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('Origin');
+    instance.origin = expectedValue;
+    expect(instance.origin).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property destination', () => {
+    // verify property exists
+    expect(instance).to.have.property('destination');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('Destination');
+    instance.destination = expectedValue;
+    expect(instance.destination).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApisForFulfillmentOutbound[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApisForFulfillmentOutbound[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

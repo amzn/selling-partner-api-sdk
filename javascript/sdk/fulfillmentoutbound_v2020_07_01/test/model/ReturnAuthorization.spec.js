@@ -11,123 +11,110 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApisForFulfillmentOutbound);
+import expect from 'expect.js';
+import * as SellingPartnerApisForFulfillmentOutbound from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new SellingPartnerApisForFulfillmentOutbound.ReturnAuthorization();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(SellingPartnerApisForFulfillmentOutbound.ReturnAuthorization.prototype);
   }
-}(this, function(expect, SellingPartnerApisForFulfillmentOutbound) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new SellingPartnerApisForFulfillmentOutbound.ReturnAuthorization();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(SellingPartnerApisForFulfillmentOutbound.ReturnAuthorization.prototype);
-    }
+describe('ReturnAuthorization', () => {
+  it('should create an instance of ReturnAuthorization', () => {
+    expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.ReturnAuthorization);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property returnAuthorizationId', () => {
+    // verify property exists
+    expect(instance).to.have.property('returnAuthorizationId');
 
-  describe('ReturnAuthorization', function() {
-    it('should create an instance of ReturnAuthorization', function() {
-      expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.ReturnAuthorization);
-    });
-
-    it('should have the property returnAuthorizationId', function() {
-      // verify property exists
-      expect(instance).to.have.property('returnAuthorizationId');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.returnAuthorizationId = expectedValue;
-      expect(instance.returnAuthorizationId).to.equal(expectedValue);
-    });
-
-    it('should have the property fulfillmentCenterId', function() {
-      // verify property exists
-      expect(instance).to.have.property('fulfillmentCenterId');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.fulfillmentCenterId = expectedValue;
-      expect(instance.fulfillmentCenterId).to.equal(expectedValue);
-    });
-
-    it('should have the property returnToAddress', function() {
-      // verify property exists
-      expect(instance).to.have.property('returnToAddress');
-
-      // set and verify value
-      var expectedValue = generateMockData('Address');
-      instance.returnToAddress = expectedValue;
-      expect(instance.returnToAddress).to.equal(expectedValue);
-    });
-
-    it('should have the property amazonRmaId', function() {
-      // verify property exists
-      expect(instance).to.have.property('amazonRmaId');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.amazonRmaId = expectedValue;
-      expect(instance.amazonRmaId).to.equal(expectedValue);
-    });
-
-    it('should have the property rmaPageURL', function() {
-      // verify property exists
-      expect(instance).to.have.property('rmaPageURL');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.rmaPageURL = expectedValue;
-      expect(instance.rmaPageURL).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.returnAuthorizationId = expectedValue;
+    expect(instance.returnAuthorizationId).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property fulfillmentCenterId', () => {
+    // verify property exists
+    expect(instance).to.have.property('fulfillmentCenterId');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.fulfillmentCenterId = expectedValue;
+    expect(instance.fulfillmentCenterId).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApisForFulfillmentOutbound[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property returnToAddress', () => {
+    // verify property exists
+    expect(instance).to.have.property('returnToAddress');
+
+    // set and verify value
+    const expectedValue = generateMockData('Address');
+    instance.returnToAddress = expectedValue;
+    expect(instance.returnToAddress).to.equal(expectedValue);
+  });
+
+  it('should have the property amazonRmaId', () => {
+    // verify property exists
+    expect(instance).to.have.property('amazonRmaId');
+
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.amazonRmaId = expectedValue;
+    expect(instance.amazonRmaId).to.equal(expectedValue);
+  });
+
+  it('should have the property rmaPageURL', () => {
+    // verify property exists
+    expect(instance).to.have.property('rmaPageURL');
+
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.rmaPageURL = expectedValue;
+    expect(instance.rmaPageURL).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApisForFulfillmentOutbound[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

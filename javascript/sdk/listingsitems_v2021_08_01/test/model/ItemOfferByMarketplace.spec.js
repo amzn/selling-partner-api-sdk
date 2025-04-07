@@ -11,123 +11,110 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForListingsItems);
+import expect from 'expect.js';
+import * as SellingPartnerApiForListingsItems from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new SellingPartnerApiForListingsItems.ItemOfferByMarketplace();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(SellingPartnerApiForListingsItems.ItemOfferByMarketplace.prototype);
   }
-}(this, function(expect, SellingPartnerApiForListingsItems) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new SellingPartnerApiForListingsItems.ItemOfferByMarketplace();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(SellingPartnerApiForListingsItems.ItemOfferByMarketplace.prototype);
-    }
+describe('ItemOfferByMarketplace', () => {
+  it('should create an instance of ItemOfferByMarketplace', () => {
+    expect(instance).to.be.a(SellingPartnerApiForListingsItems.ItemOfferByMarketplace);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property marketplaceId', () => {
+    // verify property exists
+    expect(instance).to.have.property('marketplaceId');
 
-  describe('ItemOfferByMarketplace', function() {
-    it('should create an instance of ItemOfferByMarketplace', function() {
-      expect(instance).to.be.a(SellingPartnerApiForListingsItems.ItemOfferByMarketplace);
-    });
-
-    it('should have the property marketplaceId', function() {
-      // verify property exists
-      expect(instance).to.have.property('marketplaceId');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.marketplaceId = expectedValue;
-      expect(instance.marketplaceId).to.equal(expectedValue);
-    });
-
-    it('should have the property offerType', function() {
-      // verify property exists
-      expect(instance).to.have.property('offerType');
-
-      // set and verify value
-      var expectedValue = ['B2C', 'B2B', ][0];
-      instance.offerType = expectedValue;
-      expect(instance.offerType).to.equal(expectedValue);
-    });
-
-    it('should have the property price', function() {
-      // verify property exists
-      expect(instance).to.have.property('price');
-
-      // set and verify value
-      var expectedValue = generateMockData('Money');
-      instance.price = expectedValue;
-      expect(instance.price).to.equal(expectedValue);
-    });
-
-    it('should have the property points', function() {
-      // verify property exists
-      expect(instance).to.have.property('points');
-
-      // set and verify value
-      var expectedValue = generateMockData('Points');
-      instance.points = expectedValue;
-      expect(instance.points).to.equal(expectedValue);
-    });
-
-    it('should have the property audience', function() {
-      // verify property exists
-      expect(instance).to.have.property('audience');
-
-      // set and verify value
-      var expectedValue = generateMockData('Audience');
-      instance.audience = expectedValue;
-      expect(instance.audience).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.marketplaceId = expectedValue;
+    expect(instance.marketplaceId).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property offerType', () => {
+    // verify property exists
+    expect(instance).to.have.property('offerType');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = ['B2C', 'B2B', ][0];
+    instance.offerType = expectedValue;
+    expect(instance.offerType).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForListingsItems[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property price', () => {
+    // verify property exists
+    expect(instance).to.have.property('price');
+
+    // set and verify value
+    const expectedValue = generateMockData('Money');
+    instance.price = expectedValue;
+    expect(instance.price).to.equal(expectedValue);
+  });
+
+  it('should have the property points', () => {
+    // verify property exists
+    expect(instance).to.have.property('points');
+
+    // set and verify value
+    const expectedValue = generateMockData('Points');
+    instance.points = expectedValue;
+    expect(instance.points).to.equal(expectedValue);
+  });
+
+  it('should have the property audience', () => {
+    // verify property exists
+    expect(instance).to.have.property('audience');
+
+    // set and verify value
+    const expectedValue = generateMockData('Audience');
+    instance.audience = expectedValue;
+    expect(instance.audience).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForListingsItems[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

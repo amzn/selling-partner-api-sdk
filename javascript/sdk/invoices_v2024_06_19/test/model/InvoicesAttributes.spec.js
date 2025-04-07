@@ -11,113 +11,100 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.TheSellingPartnerApiForInvoices);
+import expect from 'expect.js';
+import * as TheSellingPartnerApiForInvoices from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new TheSellingPartnerApiForInvoices.InvoicesAttributes();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(TheSellingPartnerApiForInvoices.InvoicesAttributes.prototype);
   }
-}(this, function(expect, TheSellingPartnerApiForInvoices) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new TheSellingPartnerApiForInvoices.InvoicesAttributes();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(TheSellingPartnerApiForInvoices.InvoicesAttributes.prototype);
-    }
+describe('InvoicesAttributes', () => {
+  it('should create an instance of InvoicesAttributes', () => {
+    expect(instance).to.be.a(TheSellingPartnerApiForInvoices.InvoicesAttributes);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property invoiceStatusOptions', () => {
+    // verify property exists
+    expect(instance).to.have.property('invoiceStatusOptions');
 
-  describe('InvoicesAttributes', function() {
-    it('should create an instance of InvoicesAttributes', function() {
-      expect(instance).to.be.a(TheSellingPartnerApiForInvoices.InvoicesAttributes);
-    });
-
-    it('should have the property invoiceStatusOptions', function() {
-      // verify property exists
-      expect(instance).to.have.property('invoiceStatusOptions');
-
-      // set and verify value
-      var expectedValue = generateMockData('AttributeOption', true);
-      instance.invoiceStatusOptions = expectedValue;
-      expect(instance.invoiceStatusOptions).to.equal(expectedValue);
-    });
-
-    it('should have the property invoiceTypeOptions', function() {
-      // verify property exists
-      expect(instance).to.have.property('invoiceTypeOptions');
-
-      // set and verify value
-      var expectedValue = generateMockData('AttributeOption', true);
-      instance.invoiceTypeOptions = expectedValue;
-      expect(instance.invoiceTypeOptions).to.equal(expectedValue);
-    });
-
-    it('should have the property transactionIdentifierNameOptions', function() {
-      // verify property exists
-      expect(instance).to.have.property('transactionIdentifierNameOptions');
-
-      // set and verify value
-      var expectedValue = generateMockData('AttributeOption', true);
-      instance.transactionIdentifierNameOptions = expectedValue;
-      expect(instance.transactionIdentifierNameOptions).to.equal(expectedValue);
-    });
-
-    it('should have the property transactionTypeOptions', function() {
-      // verify property exists
-      expect(instance).to.have.property('transactionTypeOptions');
-
-      // set and verify value
-      var expectedValue = generateMockData('AttributeOption', true);
-      instance.transactionTypeOptions = expectedValue;
-      expect(instance.transactionTypeOptions).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('AttributeOption', true);
+    instance.invoiceStatusOptions = expectedValue;
+    expect(instance.invoiceStatusOptions).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property invoiceTypeOptions', () => {
+    // verify property exists
+    expect(instance).to.have.property('invoiceTypeOptions');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('AttributeOption', true);
+    instance.invoiceTypeOptions = expectedValue;
+    expect(instance.invoiceTypeOptions).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = TheSellingPartnerApiForInvoices[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property transactionIdentifierNameOptions', () => {
+    // verify property exists
+    expect(instance).to.have.property('transactionIdentifierNameOptions');
+
+    // set and verify value
+    const expectedValue = generateMockData('AttributeOption', true);
+    instance.transactionIdentifierNameOptions = expectedValue;
+    expect(instance.transactionIdentifierNameOptions).to.equal(expectedValue);
+  });
+
+  it('should have the property transactionTypeOptions', () => {
+    // verify property exists
+    expect(instance).to.have.property('transactionTypeOptions');
+
+    // set and verify value
+    const expectedValue = generateMockData('AttributeOption', true);
+    instance.transactionTypeOptions = expectedValue;
+    expect(instance.transactionTypeOptions).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = TheSellingPartnerApiForInvoices[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

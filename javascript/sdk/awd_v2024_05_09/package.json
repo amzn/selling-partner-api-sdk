@@ -4,6 +4,7 @@
   "description": "The Selling Partner API for Amazon Warehousing and Distribution (AWD) provides programmatic access to information about AWD shipments and inventory.",
   "license": "Apache License 2.0",
   "main": "dist/index.js",
+  "type": "module",
   "scripts": {
     "build": "babel src -d dist",
     "prepare": "npm run build",

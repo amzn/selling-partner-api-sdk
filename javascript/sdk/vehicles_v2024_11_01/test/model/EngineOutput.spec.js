@@ -11,93 +11,80 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.TheSellingPartnerApiForAutomotive);
+import expect from 'expect.js';
+import * as TheSellingPartnerApiForAutomotive from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new TheSellingPartnerApiForAutomotive.EngineOutput();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(TheSellingPartnerApiForAutomotive.EngineOutput.prototype);
   }
-}(this, function(expect, TheSellingPartnerApiForAutomotive) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new TheSellingPartnerApiForAutomotive.EngineOutput();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(TheSellingPartnerApiForAutomotive.EngineOutput.prototype);
-    }
+describe('EngineOutput', () => {
+  it('should create an instance of EngineOutput', () => {
+    expect(instance).to.be.a(TheSellingPartnerApiForAutomotive.EngineOutput);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property value', () => {
+    // verify property exists
+    expect(instance).to.have.property('value');
 
-  describe('EngineOutput', function() {
-    it('should create an instance of EngineOutput', function() {
-      expect(instance).to.be.a(TheSellingPartnerApiForAutomotive.EngineOutput);
-    });
-
-    it('should have the property value', function() {
-      // verify property exists
-      expect(instance).to.have.property('value');
-
-      // set and verify value
-      var expectedValue = generateMockData('Number');
-      instance.value = expectedValue;
-      expect(instance.value).to.equal(expectedValue);
-    });
-
-    it('should have the property unit', function() {
-      // verify property exists
-      expect(instance).to.have.property('unit');
-
-      // set and verify value
-      var expectedValue = generateMockData('EngineOutputUnit');
-      instance.unit = expectedValue;
-      expect(instance.unit).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('Number');
+    instance.value = expectedValue;
+    expect(instance.value).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property unit', () => {
+    // verify property exists
+    expect(instance).to.have.property('unit');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('EngineOutputUnit');
+    instance.unit = expectedValue;
+    expect(instance.unit).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = TheSellingPartnerApiForAutomotive[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = TheSellingPartnerApiForAutomotive[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

@@ -18,7 +18,7 @@ import {ApiClient} from '../ApiClient.js';
 * @enum {}
 * @readonly
 */
-export default class PrepCategory {
+export class PrepCategory {
     
         /**
          * value: "ADULT"

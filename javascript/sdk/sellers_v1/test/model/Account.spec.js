@@ -11,123 +11,110 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.TheSellingPartnerApiForSellers);
+import expect from 'expect.js';
+import * as TheSellingPartnerApiForSellers from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new TheSellingPartnerApiForSellers.Account();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(TheSellingPartnerApiForSellers.Account.prototype);
   }
-}(this, function(expect, TheSellingPartnerApiForSellers) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new TheSellingPartnerApiForSellers.Account();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(TheSellingPartnerApiForSellers.Account.prototype);
-    }
+describe('Account', () => {
+  it('should create an instance of Account', () => {
+    expect(instance).to.be.a(TheSellingPartnerApiForSellers.Account);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property marketplaceParticipationList', () => {
+    // verify property exists
+    expect(instance).to.have.property('marketplaceParticipationList');
 
-  describe('Account', function() {
-    it('should create an instance of Account', function() {
-      expect(instance).to.be.a(TheSellingPartnerApiForSellers.Account);
-    });
-
-    it('should have the property marketplaceParticipationList', function() {
-      // verify property exists
-      expect(instance).to.have.property('marketplaceParticipationList');
-
-      // set and verify value
-      var expectedValue = generateMockData('MarketplaceParticipation', true);
-      instance.marketplaceParticipationList = expectedValue;
-      expect(instance.marketplaceParticipationList).to.equal(expectedValue);
-    });
-
-    it('should have the property businessType', function() {
-      // verify property exists
-      expect(instance).to.have.property('businessType');
-
-      // set and verify value
-      var expectedValue = ['CHARITY', 'CRAFTSMAN', 'NATURAL_PERSON_COMPANY', 'PUBLIC_LISTED', 'PRIVATE_LIMITED', 'SOLE_PROPRIETORSHIP', 'STATE_OWNED', 'INDIVIDUAL', ][0];
-      instance.businessType = expectedValue;
-      expect(instance.businessType).to.equal(expectedValue);
-    });
-
-    it('should have the property sellingPlan', function() {
-      // verify property exists
-      expect(instance).to.have.property('sellingPlan');
-
-      // set and verify value
-      var expectedValue = ['PROFESSIONAL', 'INDIVIDUAL', ][0];
-      instance.sellingPlan = expectedValue;
-      expect(instance.sellingPlan).to.equal(expectedValue);
-    });
-
-    it('should have the property business', function() {
-      // verify property exists
-      expect(instance).to.have.property('business');
-
-      // set and verify value
-      var expectedValue = generateMockData('Business');
-      instance.business = expectedValue;
-      expect(instance.business).to.equal(expectedValue);
-    });
-
-    it('should have the property primaryContact', function() {
-      // verify property exists
-      expect(instance).to.have.property('primaryContact');
-
-      // set and verify value
-      var expectedValue = generateMockData('PrimaryContact');
-      instance.primaryContact = expectedValue;
-      expect(instance.primaryContact).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('MarketplaceParticipation', true);
+    instance.marketplaceParticipationList = expectedValue;
+    expect(instance.marketplaceParticipationList).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property businessType', () => {
+    // verify property exists
+    expect(instance).to.have.property('businessType');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = ['CHARITY', 'CRAFTSMAN', 'NATURAL_PERSON_COMPANY', 'PUBLIC_LISTED', 'PRIVATE_LIMITED', 'SOLE_PROPRIETORSHIP', 'STATE_OWNED', 'INDIVIDUAL', ][0];
+    instance.businessType = expectedValue;
+    expect(instance.businessType).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = TheSellingPartnerApiForSellers[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property sellingPlan', () => {
+    // verify property exists
+    expect(instance).to.have.property('sellingPlan');
+
+    // set and verify value
+    const expectedValue = ['PROFESSIONAL', 'INDIVIDUAL', ][0];
+    instance.sellingPlan = expectedValue;
+    expect(instance.sellingPlan).to.equal(expectedValue);
+  });
+
+  it('should have the property business', () => {
+    // verify property exists
+    expect(instance).to.have.property('business');
+
+    // set and verify value
+    const expectedValue = generateMockData('Business');
+    instance.business = expectedValue;
+    expect(instance.business).to.equal(expectedValue);
+  });
+
+  it('should have the property primaryContact', () => {
+    // verify property exists
+    expect(instance).to.have.property('primaryContact');
+
+    // set and verify value
+    const expectedValue = generateMockData('PrimaryContact');
+    instance.primaryContact = expectedValue;
+    expect(instance.primaryContact).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = TheSellingPartnerApiForSellers[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

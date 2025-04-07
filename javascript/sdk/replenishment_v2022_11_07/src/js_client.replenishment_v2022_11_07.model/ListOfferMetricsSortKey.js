@@ -18,7 +18,7 @@ import {ApiClient} from '../ApiClient.js';
 * @enum {}
 * @readonly
 */
-export default class ListOfferMetricsSortKey {
+export class ListOfferMetricsSortKey {
     
         /**
          * value: "SHIPPED_SUBSCRIPTION_UNITS"

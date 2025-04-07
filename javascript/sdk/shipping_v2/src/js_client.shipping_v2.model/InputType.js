@@ -18,7 +18,7 @@ import {ApiClient} from '../ApiClient.js';
 * @enum {}
 * @readonly
 */
-export default class InputType {
+export class InputType {
     
         /**
          * value: "TEXTBOX"

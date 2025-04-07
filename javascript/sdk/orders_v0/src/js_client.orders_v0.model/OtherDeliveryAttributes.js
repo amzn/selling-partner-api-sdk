@@ -18,7 +18,7 @@ import {ApiClient} from '../ApiClient.js';
 * @enum {}
 * @readonly
 */
-export default class OtherDeliveryAttributes {
+export class OtherDeliveryAttributes {
     
         /**
          * value: "HAS_ACCESS_POINT"

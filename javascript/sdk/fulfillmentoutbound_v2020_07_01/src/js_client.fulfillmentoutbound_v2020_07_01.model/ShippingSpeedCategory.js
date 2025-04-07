@@ -18,7 +18,7 @@ import {ApiClient} from '../ApiClient.js';
 * @enum {}
 * @readonly
 */
-export default class ShippingSpeedCategory {
+export class ShippingSpeedCategory {
     
         /**
          * value: "Standard"

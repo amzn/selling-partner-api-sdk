@@ -11,103 +11,90 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForAContentManagement);
+import expect from 'expect.js';
+import * as SellingPartnerApiForAContentManagement from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new SellingPartnerApiForAContentManagement.ContentRecord();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(SellingPartnerApiForAContentManagement.ContentRecord.prototype);
   }
-}(this, function(expect, SellingPartnerApiForAContentManagement) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new SellingPartnerApiForAContentManagement.ContentRecord();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(SellingPartnerApiForAContentManagement.ContentRecord.prototype);
-    }
+describe('ContentRecord', () => {
+  it('should create an instance of ContentRecord', () => {
+    expect(instance).to.be.a(SellingPartnerApiForAContentManagement.ContentRecord);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property contentReferenceKey', () => {
+    // verify property exists
+    expect(instance).to.have.property('contentReferenceKey');
 
-  describe('ContentRecord', function() {
-    it('should create an instance of ContentRecord', function() {
-      expect(instance).to.be.a(SellingPartnerApiForAContentManagement.ContentRecord);
-    });
-
-    it('should have the property contentReferenceKey', function() {
-      // verify property exists
-      expect(instance).to.have.property('contentReferenceKey');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.contentReferenceKey = expectedValue;
-      expect(instance.contentReferenceKey).to.equal(expectedValue);
-    });
-
-    it('should have the property contentMetadata', function() {
-      // verify property exists
-      expect(instance).to.have.property('contentMetadata');
-
-      // set and verify value
-      var expectedValue = generateMockData('ContentMetadata');
-      instance.contentMetadata = expectedValue;
-      expect(instance.contentMetadata).to.equal(expectedValue);
-    });
-
-    it('should have the property contentDocument', function() {
-      // verify property exists
-      expect(instance).to.have.property('contentDocument');
-
-      // set and verify value
-      var expectedValue = generateMockData('ContentDocument');
-      instance.contentDocument = expectedValue;
-      expect(instance.contentDocument).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.contentReferenceKey = expectedValue;
+    expect(instance.contentReferenceKey).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property contentMetadata', () => {
+    // verify property exists
+    expect(instance).to.have.property('contentMetadata');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('ContentMetadata');
+    instance.contentMetadata = expectedValue;
+    expect(instance.contentMetadata).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForAContentManagement[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property contentDocument', () => {
+    // verify property exists
+    expect(instance).to.have.property('contentDocument');
+
+    // set and verify value
+    const expectedValue = generateMockData('ContentDocument');
+    instance.contentDocument = expectedValue;
+    expect(instance.contentDocument).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForAContentManagement[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

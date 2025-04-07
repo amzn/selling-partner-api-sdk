@@ -11,83 +11,70 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForSolicitations);
+import expect from 'expect.js';
+import * as SellingPartnerApiForSolicitations from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new SellingPartnerApiForSolicitations.GetSolicitationActionResponseEmbedded();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(SellingPartnerApiForSolicitations.GetSolicitationActionResponseEmbedded.prototype);
   }
-}(this, function(expect, SellingPartnerApiForSolicitations) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new SellingPartnerApiForSolicitations.GetSolicitationActionResponseEmbedded();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(SellingPartnerApiForSolicitations.GetSolicitationActionResponseEmbedded.prototype);
-    }
+describe('GetSolicitationActionResponseEmbedded', () => {
+  it('should create an instance of GetSolicitationActionResponseEmbedded', () => {
+    expect(instance).to.be.a(SellingPartnerApiForSolicitations.GetSolicitationActionResponseEmbedded);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property schema', () => {
+    // verify property exists
+    expect(instance).to.have.property('schema');
 
-  describe('GetSolicitationActionResponseEmbedded', function() {
-    it('should create an instance of GetSolicitationActionResponseEmbedded', function() {
-      expect(instance).to.be.a(SellingPartnerApiForSolicitations.GetSolicitationActionResponseEmbedded);
-    });
-
-    it('should have the property schema', function() {
-      // verify property exists
-      expect(instance).to.have.property('schema');
-
-      // set and verify value
-      var expectedValue = generateMockData('GetSchemaResponse');
-      instance.schema = expectedValue;
-      expect(instance.schema).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('GetSchemaResponse');
+    instance.schema = expectedValue;
+    expect(instance.schema).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+});
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForSolicitations[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForSolicitations[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

@@ -18,7 +18,7 @@ import {ApiClient} from '../ApiClient.js';
 * @enum {}
 * @readonly
 */
-export default class InventoryUnitOfMeasurement {
+export class InventoryUnitOfMeasurement {
     
         /**
          * value: "PRODUCT_UNITS"

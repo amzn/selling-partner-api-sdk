@@ -11,58 +11,47 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', 'sinon', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('sinon'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.sinon, root.SellingPartnerApiForMessaging);
+import expect from 'expect.js';
+import sinon from 'sinon';
+import * as SellingPartnerApiForMessaging from '../../src/index.js';
+
+let instance;
+let sandbox;
+const testEndpoint = 'https://localhost:3000';
+const testAccessToken = "testAccessToken";
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
   }
-}(this, function(expect, sinon, SellingPartnerApiForMessaging) {
-  'use strict';
 
-  var instance;
-  var sandbox;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
-
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
-
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
-
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForMessaging[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForMessaging[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-  
+}
 
 // Generate mock requests and responses for each operation
 const mockconfirmCustomizationDetailsData = {
@@ -219,815 +208,697 @@ const mocksendInvoiceData = {
   }
 };
 
-  beforeEach(function() {
+describe('MessagingApi', () => {
+  beforeEach(() => {
     sandbox = sinon.createSandbox();
-    var apiClientInstance = new SellingPartnerApiForMessaging.ApiClient(testEndpoint);
+    const apiClientInstance = new SellingPartnerApiForMessaging.ApiClient(testEndpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
     sandbox.stub(apiClientInstance, 'callApi');
     instance = new SellingPartnerApiForMessaging.MessagingApi(apiClientInstance);
   });
 
-  afterEach(function() {
+  afterEach(() => {
     sandbox.restore();
   });
 
-  describe('MessagingApi', function() {
-    describe('confirmCustomizationDetails', function() {
-      
-      it('should successfully call confirmCustomizationDetails', function(done) {
-        instance.apiClient.callApi.resolves(mockconfirmCustomizationDetailsData.response);
+  describe('confirmCustomizationDetails', () => {
+    it('should successfully call confirmCustomizationDetails', async () => {
+      instance.apiClient.callApi.resolves(mockconfirmCustomizationDetailsData.response);
 
+      const params = [
+        mockconfirmCustomizationDetailsData.request['amazonOrderId'],
+        mockconfirmCustomizationDetailsData.request['marketplaceIds'],
+        mockconfirmCustomizationDetailsData.request['body']
+      ];
+      const data = await instance.confirmCustomizationDetails(...params);
+
+      expect(data instanceof SellingPartnerApiForMessaging.CreateConfirmCustomizationDetailsResponse).to.be.true;
+    });
+
+    it('should successfully call confirmCustomizationDetailsWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockconfirmCustomizationDetailsData.response);
+
+      const params = [
+        mockconfirmCustomizationDetailsData.request['amazonOrderId'],
+        mockconfirmCustomizationDetailsData.request['marketplaceIds'],
+        mockconfirmCustomizationDetailsData.request['body']
+      ];
+      const response = await instance.confirmCustomizationDetailsWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockconfirmCustomizationDetailsData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
         const params = [
           mockconfirmCustomizationDetailsData.request['amazonOrderId'],
           mockconfirmCustomizationDetailsData.request['marketplaceIds'],
           mockconfirmCustomizationDetailsData.request['body']
         ];
-        instance.confirmCustomizationDetails(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForMessaging.CreateConfirmCustomizationDetailsResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call confirmCustomizationDetailsWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockconfirmCustomizationDetailsData.response);
-
-        const params = [
-          mockconfirmCustomizationDetailsData.request['amazonOrderId'],
-          mockconfirmCustomizationDetailsData.request['marketplaceIds'],
-          mockconfirmCustomizationDetailsData.request['body']
-        ];
-        instance.confirmCustomizationDetailsWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockconfirmCustomizationDetailsData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockconfirmCustomizationDetailsData.request['amazonOrderId'],
-          mockconfirmCustomizationDetailsData.request['marketplaceIds'],
-          mockconfirmCustomizationDetailsData.request['body']
-        ];
-        instance.confirmCustomizationDetails(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('createAmazonMotors', function() {
-      
-      it('should successfully call createAmazonMotors', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateAmazonMotorsData.response);
-
-        const params = [
-          mockcreateAmazonMotorsData.request['amazonOrderId'],
-          mockcreateAmazonMotorsData.request['marketplaceIds'],
-          mockcreateAmazonMotorsData.request['body']
-        ];
-        instance.createAmazonMotors(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForMessaging.CreateAmazonMotorsResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call createAmazonMotorsWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateAmazonMotorsData.response);
-
-        const params = [
-          mockcreateAmazonMotorsData.request['amazonOrderId'],
-          mockcreateAmazonMotorsData.request['marketplaceIds'],
-          mockcreateAmazonMotorsData.request['body']
-        ];
-        instance.createAmazonMotorsWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockcreateAmazonMotorsData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockcreateAmazonMotorsData.request['amazonOrderId'],
-          mockcreateAmazonMotorsData.request['marketplaceIds'],
-          mockcreateAmazonMotorsData.request['body']
-        ];
-        instance.createAmazonMotors(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('createConfirmDeliveryDetails', function() {
-      
-      it('should successfully call createConfirmDeliveryDetails', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateConfirmDeliveryDetailsData.response);
-
-        const params = [
-          mockcreateConfirmDeliveryDetailsData.request['amazonOrderId'],
-          mockcreateConfirmDeliveryDetailsData.request['marketplaceIds'],
-          mockcreateConfirmDeliveryDetailsData.request['body']
-        ];
-        instance.createConfirmDeliveryDetails(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForMessaging.CreateConfirmDeliveryDetailsResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call createConfirmDeliveryDetailsWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateConfirmDeliveryDetailsData.response);
-
-        const params = [
-          mockcreateConfirmDeliveryDetailsData.request['amazonOrderId'],
-          mockcreateConfirmDeliveryDetailsData.request['marketplaceIds'],
-          mockcreateConfirmDeliveryDetailsData.request['body']
-        ];
-        instance.createConfirmDeliveryDetailsWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockcreateConfirmDeliveryDetailsData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockcreateConfirmDeliveryDetailsData.request['amazonOrderId'],
-          mockcreateConfirmDeliveryDetailsData.request['marketplaceIds'],
-          mockcreateConfirmDeliveryDetailsData.request['body']
-        ];
-        instance.createConfirmDeliveryDetails(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('createConfirmOrderDetails', function() {
-      
-      it('should successfully call createConfirmOrderDetails', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateConfirmOrderDetailsData.response);
-
-        const params = [
-          mockcreateConfirmOrderDetailsData.request['amazonOrderId'],
-          mockcreateConfirmOrderDetailsData.request['marketplaceIds'],
-          mockcreateConfirmOrderDetailsData.request['body']
-        ];
-        instance.createConfirmOrderDetails(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForMessaging.CreateConfirmOrderDetailsResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call createConfirmOrderDetailsWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateConfirmOrderDetailsData.response);
-
-        const params = [
-          mockcreateConfirmOrderDetailsData.request['amazonOrderId'],
-          mockcreateConfirmOrderDetailsData.request['marketplaceIds'],
-          mockcreateConfirmOrderDetailsData.request['body']
-        ];
-        instance.createConfirmOrderDetailsWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockcreateConfirmOrderDetailsData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockcreateConfirmOrderDetailsData.request['amazonOrderId'],
-          mockcreateConfirmOrderDetailsData.request['marketplaceIds'],
-          mockcreateConfirmOrderDetailsData.request['body']
-        ];
-        instance.createConfirmOrderDetails(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('createConfirmServiceDetails', function() {
-      
-      it('should successfully call createConfirmServiceDetails', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateConfirmServiceDetailsData.response);
-
-        const params = [
-          mockcreateConfirmServiceDetailsData.request['amazonOrderId'],
-          mockcreateConfirmServiceDetailsData.request['marketplaceIds'],
-          mockcreateConfirmServiceDetailsData.request['body']
-        ];
-        instance.createConfirmServiceDetails(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForMessaging.CreateConfirmServiceDetailsResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call createConfirmServiceDetailsWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateConfirmServiceDetailsData.response);
-
-        const params = [
-          mockcreateConfirmServiceDetailsData.request['amazonOrderId'],
-          mockcreateConfirmServiceDetailsData.request['marketplaceIds'],
-          mockcreateConfirmServiceDetailsData.request['body']
-        ];
-        instance.createConfirmServiceDetailsWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockcreateConfirmServiceDetailsData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockcreateConfirmServiceDetailsData.request['amazonOrderId'],
-          mockcreateConfirmServiceDetailsData.request['marketplaceIds'],
-          mockcreateConfirmServiceDetailsData.request['body']
-        ];
-        instance.createConfirmServiceDetails(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('createDigitalAccessKey', function() {
-      
-      it('should successfully call createDigitalAccessKey', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateDigitalAccessKeyData.response);
-
-        const params = [
-          mockcreateDigitalAccessKeyData.request['amazonOrderId'],
-          mockcreateDigitalAccessKeyData.request['marketplaceIds'],
-          mockcreateDigitalAccessKeyData.request['body']
-        ];
-        instance.createDigitalAccessKey(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForMessaging.CreateDigitalAccessKeyResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call createDigitalAccessKeyWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateDigitalAccessKeyData.response);
-
-        const params = [
-          mockcreateDigitalAccessKeyData.request['amazonOrderId'],
-          mockcreateDigitalAccessKeyData.request['marketplaceIds'],
-          mockcreateDigitalAccessKeyData.request['body']
-        ];
-        instance.createDigitalAccessKeyWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockcreateDigitalAccessKeyData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockcreateDigitalAccessKeyData.request['amazonOrderId'],
-          mockcreateDigitalAccessKeyData.request['marketplaceIds'],
-          mockcreateDigitalAccessKeyData.request['body']
-        ];
-        instance.createDigitalAccessKey(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('createLegalDisclosure', function() {
-      
-      it('should successfully call createLegalDisclosure', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateLegalDisclosureData.response);
-
-        const params = [
-          mockcreateLegalDisclosureData.request['amazonOrderId'],
-          mockcreateLegalDisclosureData.request['marketplaceIds'],
-          mockcreateLegalDisclosureData.request['body']
-        ];
-        instance.createLegalDisclosure(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForMessaging.CreateLegalDisclosureResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call createLegalDisclosureWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateLegalDisclosureData.response);
-
-        const params = [
-          mockcreateLegalDisclosureData.request['amazonOrderId'],
-          mockcreateLegalDisclosureData.request['marketplaceIds'],
-          mockcreateLegalDisclosureData.request['body']
-        ];
-        instance.createLegalDisclosureWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockcreateLegalDisclosureData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockcreateLegalDisclosureData.request['amazonOrderId'],
-          mockcreateLegalDisclosureData.request['marketplaceIds'],
-          mockcreateLegalDisclosureData.request['body']
-        ];
-        instance.createLegalDisclosure(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('createNegativeFeedbackRemoval', function() {
-      
-      it('should successfully call createNegativeFeedbackRemoval', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateNegativeFeedbackRemovalData.response);
-
-        const params = [
-          mockcreateNegativeFeedbackRemovalData.request['amazonOrderId'],
-          mockcreateNegativeFeedbackRemovalData.request['marketplaceIds']
-        ];
-        instance.createNegativeFeedbackRemoval(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForMessaging.CreateNegativeFeedbackRemovalResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call createNegativeFeedbackRemovalWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateNegativeFeedbackRemovalData.response);
-
-        const params = [
-          mockcreateNegativeFeedbackRemovalData.request['amazonOrderId'],
-          mockcreateNegativeFeedbackRemovalData.request['marketplaceIds']
-        ];
-        instance.createNegativeFeedbackRemovalWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockcreateNegativeFeedbackRemovalData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockcreateNegativeFeedbackRemovalData.request['amazonOrderId'],
-          mockcreateNegativeFeedbackRemovalData.request['marketplaceIds']
-        ];
-        instance.createNegativeFeedbackRemoval(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('createUnexpectedProblem', function() {
-      
-      it('should successfully call createUnexpectedProblem', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateUnexpectedProblemData.response);
-
-        const params = [
-          mockcreateUnexpectedProblemData.request['amazonOrderId'],
-          mockcreateUnexpectedProblemData.request['marketplaceIds'],
-          mockcreateUnexpectedProblemData.request['body']
-        ];
-        instance.createUnexpectedProblem(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForMessaging.CreateUnexpectedProblemResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call createUnexpectedProblemWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateUnexpectedProblemData.response);
-
-        const params = [
-          mockcreateUnexpectedProblemData.request['amazonOrderId'],
-          mockcreateUnexpectedProblemData.request['marketplaceIds'],
-          mockcreateUnexpectedProblemData.request['body']
-        ];
-        instance.createUnexpectedProblemWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockcreateUnexpectedProblemData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockcreateUnexpectedProblemData.request['amazonOrderId'],
-          mockcreateUnexpectedProblemData.request['marketplaceIds'],
-          mockcreateUnexpectedProblemData.request['body']
-        ];
-        instance.createUnexpectedProblem(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('createWarranty', function() {
-      
-      it('should successfully call createWarranty', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateWarrantyData.response);
-
-        const params = [
-          mockcreateWarrantyData.request['amazonOrderId'],
-          mockcreateWarrantyData.request['marketplaceIds'],
-          mockcreateWarrantyData.request['body']
-        ];
-        instance.createWarranty(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForMessaging.CreateWarrantyResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call createWarrantyWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateWarrantyData.response);
-
-        const params = [
-          mockcreateWarrantyData.request['amazonOrderId'],
-          mockcreateWarrantyData.request['marketplaceIds'],
-          mockcreateWarrantyData.request['body']
-        ];
-        instance.createWarrantyWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockcreateWarrantyData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockcreateWarrantyData.request['amazonOrderId'],
-          mockcreateWarrantyData.request['marketplaceIds'],
-          mockcreateWarrantyData.request['body']
-        ];
-        instance.createWarranty(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('getAttributes', function() {
-      
-      it('should successfully call getAttributes', function(done) {
-        instance.apiClient.callApi.resolves(mockgetAttributesData.response);
-
-        const params = [
-          mockgetAttributesData.request['amazonOrderId'],
-          mockgetAttributesData.request['marketplaceIds']
-        ];
-        instance.getAttributes(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForMessaging.GetAttributesResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call getAttributesWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetAttributesData.response);
-
-        const params = [
-          mockgetAttributesData.request['amazonOrderId'],
-          mockgetAttributesData.request['marketplaceIds']
-        ];
-        instance.getAttributesWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetAttributesData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgetAttributesData.request['amazonOrderId'],
-          mockgetAttributesData.request['marketplaceIds']
-        ];
-        instance.getAttributes(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('getMessagingActionsForOrder', function() {
-      
-      it('should successfully call getMessagingActionsForOrder', function(done) {
-        instance.apiClient.callApi.resolves(mockgetMessagingActionsForOrderData.response);
-
-        const params = [
-          mockgetMessagingActionsForOrderData.request['amazonOrderId'],
-          mockgetMessagingActionsForOrderData.request['marketplaceIds']
-        ];
-        instance.getMessagingActionsForOrder(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForMessaging.GetMessagingActionsForOrderResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call getMessagingActionsForOrderWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetMessagingActionsForOrderData.response);
-
-        const params = [
-          mockgetMessagingActionsForOrderData.request['amazonOrderId'],
-          mockgetMessagingActionsForOrderData.request['marketplaceIds']
-        ];
-        instance.getMessagingActionsForOrderWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetMessagingActionsForOrderData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgetMessagingActionsForOrderData.request['amazonOrderId'],
-          mockgetMessagingActionsForOrderData.request['marketplaceIds']
-        ];
-        instance.getMessagingActionsForOrder(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('sendInvoice', function() {
-      
-      it('should successfully call sendInvoice', function(done) {
-        instance.apiClient.callApi.resolves(mocksendInvoiceData.response);
-
-        const params = [
-          mocksendInvoiceData.request['amazonOrderId'],
-          mocksendInvoiceData.request['marketplaceIds'],
-          mocksendInvoiceData.request['body']
-        ];
-        instance.sendInvoice(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForMessaging.InvoiceResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call sendInvoiceWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mocksendInvoiceData.response);
-
-        const params = [
-          mocksendInvoiceData.request['amazonOrderId'],
-          mocksendInvoiceData.request['marketplaceIds'],
-          mocksendInvoiceData.request['body']
-        ];
-        instance.sendInvoiceWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mocksendInvoiceData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mocksendInvoiceData.request['amazonOrderId'],
-          mocksendInvoiceData.request['marketplaceIds'],
-          mocksendInvoiceData.request['body']
-        ];
-        instance.sendInvoice(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-
-    describe('constructor', function() {
-      it('should use default ApiClient when none provided', function() {
-        var defaultInstance = new SellingPartnerApiForMessaging.MessagingApi();
-        expect(defaultInstance.apiClient).to.equal(SellingPartnerApiForMessaging.ApiClient.instance);
-      });
-
-      it('should use provided ApiClient', function() {
-        var customClient = new SellingPartnerApiForMessaging.ApiClient();
-        var customInstance = new SellingPartnerApiForMessaging.MessagingApi(customClient);
-        expect(customInstance.apiClient).to.equal(customClient);
-      });
+        await instance.confirmCustomizationDetails(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
     });
   });
-}));
+  describe('createAmazonMotors', () => {
+    it('should successfully call createAmazonMotors', async () => {
+      instance.apiClient.callApi.resolves(mockcreateAmazonMotorsData.response);
+
+      const params = [
+        mockcreateAmazonMotorsData.request['amazonOrderId'],
+        mockcreateAmazonMotorsData.request['marketplaceIds'],
+        mockcreateAmazonMotorsData.request['body']
+      ];
+      const data = await instance.createAmazonMotors(...params);
+
+      expect(data instanceof SellingPartnerApiForMessaging.CreateAmazonMotorsResponse).to.be.true;
+    });
+
+    it('should successfully call createAmazonMotorsWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockcreateAmazonMotorsData.response);
+
+      const params = [
+        mockcreateAmazonMotorsData.request['amazonOrderId'],
+        mockcreateAmazonMotorsData.request['marketplaceIds'],
+        mockcreateAmazonMotorsData.request['body']
+      ];
+      const response = await instance.createAmazonMotorsWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockcreateAmazonMotorsData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockcreateAmazonMotorsData.request['amazonOrderId'],
+          mockcreateAmazonMotorsData.request['marketplaceIds'],
+          mockcreateAmazonMotorsData.request['body']
+        ];
+        await instance.createAmazonMotors(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('createConfirmDeliveryDetails', () => {
+    it('should successfully call createConfirmDeliveryDetails', async () => {
+      instance.apiClient.callApi.resolves(mockcreateConfirmDeliveryDetailsData.response);
+
+      const params = [
+        mockcreateConfirmDeliveryDetailsData.request['amazonOrderId'],
+        mockcreateConfirmDeliveryDetailsData.request['marketplaceIds'],
+        mockcreateConfirmDeliveryDetailsData.request['body']
+      ];
+      const data = await instance.createConfirmDeliveryDetails(...params);
+
+      expect(data instanceof SellingPartnerApiForMessaging.CreateConfirmDeliveryDetailsResponse).to.be.true;
+    });
+
+    it('should successfully call createConfirmDeliveryDetailsWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockcreateConfirmDeliveryDetailsData.response);
+
+      const params = [
+        mockcreateConfirmDeliveryDetailsData.request['amazonOrderId'],
+        mockcreateConfirmDeliveryDetailsData.request['marketplaceIds'],
+        mockcreateConfirmDeliveryDetailsData.request['body']
+      ];
+      const response = await instance.createConfirmDeliveryDetailsWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockcreateConfirmDeliveryDetailsData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockcreateConfirmDeliveryDetailsData.request['amazonOrderId'],
+          mockcreateConfirmDeliveryDetailsData.request['marketplaceIds'],
+          mockcreateConfirmDeliveryDetailsData.request['body']
+        ];
+        await instance.createConfirmDeliveryDetails(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('createConfirmOrderDetails', () => {
+    it('should successfully call createConfirmOrderDetails', async () => {
+      instance.apiClient.callApi.resolves(mockcreateConfirmOrderDetailsData.response);
+
+      const params = [
+        mockcreateConfirmOrderDetailsData.request['amazonOrderId'],
+        mockcreateConfirmOrderDetailsData.request['marketplaceIds'],
+        mockcreateConfirmOrderDetailsData.request['body']
+      ];
+      const data = await instance.createConfirmOrderDetails(...params);
+
+      expect(data instanceof SellingPartnerApiForMessaging.CreateConfirmOrderDetailsResponse).to.be.true;
+    });
+
+    it('should successfully call createConfirmOrderDetailsWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockcreateConfirmOrderDetailsData.response);
+
+      const params = [
+        mockcreateConfirmOrderDetailsData.request['amazonOrderId'],
+        mockcreateConfirmOrderDetailsData.request['marketplaceIds'],
+        mockcreateConfirmOrderDetailsData.request['body']
+      ];
+      const response = await instance.createConfirmOrderDetailsWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockcreateConfirmOrderDetailsData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockcreateConfirmOrderDetailsData.request['amazonOrderId'],
+          mockcreateConfirmOrderDetailsData.request['marketplaceIds'],
+          mockcreateConfirmOrderDetailsData.request['body']
+        ];
+        await instance.createConfirmOrderDetails(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('createConfirmServiceDetails', () => {
+    it('should successfully call createConfirmServiceDetails', async () => {
+      instance.apiClient.callApi.resolves(mockcreateConfirmServiceDetailsData.response);
+
+      const params = [
+        mockcreateConfirmServiceDetailsData.request['amazonOrderId'],
+        mockcreateConfirmServiceDetailsData.request['marketplaceIds'],
+        mockcreateConfirmServiceDetailsData.request['body']
+      ];
+      const data = await instance.createConfirmServiceDetails(...params);
+
+      expect(data instanceof SellingPartnerApiForMessaging.CreateConfirmServiceDetailsResponse).to.be.true;
+    });
+
+    it('should successfully call createConfirmServiceDetailsWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockcreateConfirmServiceDetailsData.response);
+
+      const params = [
+        mockcreateConfirmServiceDetailsData.request['amazonOrderId'],
+        mockcreateConfirmServiceDetailsData.request['marketplaceIds'],
+        mockcreateConfirmServiceDetailsData.request['body']
+      ];
+      const response = await instance.createConfirmServiceDetailsWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockcreateConfirmServiceDetailsData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockcreateConfirmServiceDetailsData.request['amazonOrderId'],
+          mockcreateConfirmServiceDetailsData.request['marketplaceIds'],
+          mockcreateConfirmServiceDetailsData.request['body']
+        ];
+        await instance.createConfirmServiceDetails(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('createDigitalAccessKey', () => {
+    it('should successfully call createDigitalAccessKey', async () => {
+      instance.apiClient.callApi.resolves(mockcreateDigitalAccessKeyData.response);
+
+      const params = [
+        mockcreateDigitalAccessKeyData.request['amazonOrderId'],
+        mockcreateDigitalAccessKeyData.request['marketplaceIds'],
+        mockcreateDigitalAccessKeyData.request['body']
+      ];
+      const data = await instance.createDigitalAccessKey(...params);
+
+      expect(data instanceof SellingPartnerApiForMessaging.CreateDigitalAccessKeyResponse).to.be.true;
+    });
+
+    it('should successfully call createDigitalAccessKeyWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockcreateDigitalAccessKeyData.response);
+
+      const params = [
+        mockcreateDigitalAccessKeyData.request['amazonOrderId'],
+        mockcreateDigitalAccessKeyData.request['marketplaceIds'],
+        mockcreateDigitalAccessKeyData.request['body']
+      ];
+      const response = await instance.createDigitalAccessKeyWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockcreateDigitalAccessKeyData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockcreateDigitalAccessKeyData.request['amazonOrderId'],
+          mockcreateDigitalAccessKeyData.request['marketplaceIds'],
+          mockcreateDigitalAccessKeyData.request['body']
+        ];
+        await instance.createDigitalAccessKey(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('createLegalDisclosure', () => {
+    it('should successfully call createLegalDisclosure', async () => {
+      instance.apiClient.callApi.resolves(mockcreateLegalDisclosureData.response);
+
+      const params = [
+        mockcreateLegalDisclosureData.request['amazonOrderId'],
+        mockcreateLegalDisclosureData.request['marketplaceIds'],
+        mockcreateLegalDisclosureData.request['body']
+      ];
+      const data = await instance.createLegalDisclosure(...params);
+
+      expect(data instanceof SellingPartnerApiForMessaging.CreateLegalDisclosureResponse).to.be.true;
+    });
+
+    it('should successfully call createLegalDisclosureWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockcreateLegalDisclosureData.response);
+
+      const params = [
+        mockcreateLegalDisclosureData.request['amazonOrderId'],
+        mockcreateLegalDisclosureData.request['marketplaceIds'],
+        mockcreateLegalDisclosureData.request['body']
+      ];
+      const response = await instance.createLegalDisclosureWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockcreateLegalDisclosureData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockcreateLegalDisclosureData.request['amazonOrderId'],
+          mockcreateLegalDisclosureData.request['marketplaceIds'],
+          mockcreateLegalDisclosureData.request['body']
+        ];
+        await instance.createLegalDisclosure(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('createNegativeFeedbackRemoval', () => {
+    it('should successfully call createNegativeFeedbackRemoval', async () => {
+      instance.apiClient.callApi.resolves(mockcreateNegativeFeedbackRemovalData.response);
+
+      const params = [
+        mockcreateNegativeFeedbackRemovalData.request['amazonOrderId'],
+        mockcreateNegativeFeedbackRemovalData.request['marketplaceIds']
+      ];
+      const data = await instance.createNegativeFeedbackRemoval(...params);
+
+      expect(data instanceof SellingPartnerApiForMessaging.CreateNegativeFeedbackRemovalResponse).to.be.true;
+    });
+
+    it('should successfully call createNegativeFeedbackRemovalWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockcreateNegativeFeedbackRemovalData.response);
+
+      const params = [
+        mockcreateNegativeFeedbackRemovalData.request['amazonOrderId'],
+        mockcreateNegativeFeedbackRemovalData.request['marketplaceIds']
+      ];
+      const response = await instance.createNegativeFeedbackRemovalWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockcreateNegativeFeedbackRemovalData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockcreateNegativeFeedbackRemovalData.request['amazonOrderId'],
+          mockcreateNegativeFeedbackRemovalData.request['marketplaceIds']
+        ];
+        await instance.createNegativeFeedbackRemoval(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('createUnexpectedProblem', () => {
+    it('should successfully call createUnexpectedProblem', async () => {
+      instance.apiClient.callApi.resolves(mockcreateUnexpectedProblemData.response);
+
+      const params = [
+        mockcreateUnexpectedProblemData.request['amazonOrderId'],
+        mockcreateUnexpectedProblemData.request['marketplaceIds'],
+        mockcreateUnexpectedProblemData.request['body']
+      ];
+      const data = await instance.createUnexpectedProblem(...params);
+
+      expect(data instanceof SellingPartnerApiForMessaging.CreateUnexpectedProblemResponse).to.be.true;
+    });
+
+    it('should successfully call createUnexpectedProblemWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockcreateUnexpectedProblemData.response);
+
+      const params = [
+        mockcreateUnexpectedProblemData.request['amazonOrderId'],
+        mockcreateUnexpectedProblemData.request['marketplaceIds'],
+        mockcreateUnexpectedProblemData.request['body']
+      ];
+      const response = await instance.createUnexpectedProblemWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockcreateUnexpectedProblemData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockcreateUnexpectedProblemData.request['amazonOrderId'],
+          mockcreateUnexpectedProblemData.request['marketplaceIds'],
+          mockcreateUnexpectedProblemData.request['body']
+        ];
+        await instance.createUnexpectedProblem(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('createWarranty', () => {
+    it('should successfully call createWarranty', async () => {
+      instance.apiClient.callApi.resolves(mockcreateWarrantyData.response);
+
+      const params = [
+        mockcreateWarrantyData.request['amazonOrderId'],
+        mockcreateWarrantyData.request['marketplaceIds'],
+        mockcreateWarrantyData.request['body']
+      ];
+      const data = await instance.createWarranty(...params);
+
+      expect(data instanceof SellingPartnerApiForMessaging.CreateWarrantyResponse).to.be.true;
+    });
+
+    it('should successfully call createWarrantyWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockcreateWarrantyData.response);
+
+      const params = [
+        mockcreateWarrantyData.request['amazonOrderId'],
+        mockcreateWarrantyData.request['marketplaceIds'],
+        mockcreateWarrantyData.request['body']
+      ];
+      const response = await instance.createWarrantyWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockcreateWarrantyData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockcreateWarrantyData.request['amazonOrderId'],
+          mockcreateWarrantyData.request['marketplaceIds'],
+          mockcreateWarrantyData.request['body']
+        ];
+        await instance.createWarranty(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('getAttributes', () => {
+    it('should successfully call getAttributes', async () => {
+      instance.apiClient.callApi.resolves(mockgetAttributesData.response);
+
+      const params = [
+        mockgetAttributesData.request['amazonOrderId'],
+        mockgetAttributesData.request['marketplaceIds']
+      ];
+      const data = await instance.getAttributes(...params);
+
+      expect(data instanceof SellingPartnerApiForMessaging.GetAttributesResponse).to.be.true;
+    });
+
+    it('should successfully call getAttributesWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetAttributesData.response);
+
+      const params = [
+        mockgetAttributesData.request['amazonOrderId'],
+        mockgetAttributesData.request['marketplaceIds']
+      ];
+      const response = await instance.getAttributesWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetAttributesData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgetAttributesData.request['amazonOrderId'],
+          mockgetAttributesData.request['marketplaceIds']
+        ];
+        await instance.getAttributes(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('getMessagingActionsForOrder', () => {
+    it('should successfully call getMessagingActionsForOrder', async () => {
+      instance.apiClient.callApi.resolves(mockgetMessagingActionsForOrderData.response);
+
+      const params = [
+        mockgetMessagingActionsForOrderData.request['amazonOrderId'],
+        mockgetMessagingActionsForOrderData.request['marketplaceIds']
+      ];
+      const data = await instance.getMessagingActionsForOrder(...params);
+
+      expect(data instanceof SellingPartnerApiForMessaging.GetMessagingActionsForOrderResponse).to.be.true;
+    });
+
+    it('should successfully call getMessagingActionsForOrderWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetMessagingActionsForOrderData.response);
+
+      const params = [
+        mockgetMessagingActionsForOrderData.request['amazonOrderId'],
+        mockgetMessagingActionsForOrderData.request['marketplaceIds']
+      ];
+      const response = await instance.getMessagingActionsForOrderWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetMessagingActionsForOrderData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgetMessagingActionsForOrderData.request['amazonOrderId'],
+          mockgetMessagingActionsForOrderData.request['marketplaceIds']
+        ];
+        await instance.getMessagingActionsForOrder(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('sendInvoice', () => {
+    it('should successfully call sendInvoice', async () => {
+      instance.apiClient.callApi.resolves(mocksendInvoiceData.response);
+
+      const params = [
+        mocksendInvoiceData.request['amazonOrderId'],
+        mocksendInvoiceData.request['marketplaceIds'],
+        mocksendInvoiceData.request['body']
+      ];
+      const data = await instance.sendInvoice(...params);
+
+      expect(data instanceof SellingPartnerApiForMessaging.InvoiceResponse).to.be.true;
+    });
+
+    it('should successfully call sendInvoiceWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mocksendInvoiceData.response);
+
+      const params = [
+        mocksendInvoiceData.request['amazonOrderId'],
+        mocksendInvoiceData.request['marketplaceIds'],
+        mocksendInvoiceData.request['body']
+      ];
+      const response = await instance.sendInvoiceWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mocksendInvoiceData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mocksendInvoiceData.request['amazonOrderId'],
+          mocksendInvoiceData.request['marketplaceIds'],
+          mocksendInvoiceData.request['body']
+        ];
+        await instance.sendInvoice(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+
+  describe('constructor', () => {
+    it('should use default ApiClient when none provided', () => {
+      const defaultInstance = new SellingPartnerApiForMessaging.MessagingApi();
+      expect(defaultInstance.apiClient).to.equal(SellingPartnerApiForMessaging.ApiClient.instance);
+    });
+
+    it('should use provided ApiClient', () => {
+      const customClient = new SellingPartnerApiForMessaging.ApiClient();
+      const customInstance = new SellingPartnerApiForMessaging.MessagingApi(customClient);
+      expect(customInstance.apiClient).to.equal(customClient);
+    });
+  });
+});

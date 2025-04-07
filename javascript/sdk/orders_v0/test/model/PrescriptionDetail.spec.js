@@ -11,143 +11,130 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForOrders);
+import expect from 'expect.js';
+import * as SellingPartnerApiForOrders from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new SellingPartnerApiForOrders.PrescriptionDetail();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(SellingPartnerApiForOrders.PrescriptionDetail.prototype);
   }
-}(this, function(expect, SellingPartnerApiForOrders) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new SellingPartnerApiForOrders.PrescriptionDetail();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(SellingPartnerApiForOrders.PrescriptionDetail.prototype);
-    }
+describe('PrescriptionDetail', () => {
+  it('should create an instance of PrescriptionDetail', () => {
+    expect(instance).to.be.a(SellingPartnerApiForOrders.PrescriptionDetail);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property prescriptionId', () => {
+    // verify property exists
+    expect(instance).to.have.property('prescriptionId');
 
-  describe('PrescriptionDetail', function() {
-    it('should create an instance of PrescriptionDetail', function() {
-      expect(instance).to.be.a(SellingPartnerApiForOrders.PrescriptionDetail);
-    });
-
-    it('should have the property prescriptionId', function() {
-      // verify property exists
-      expect(instance).to.have.property('prescriptionId');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.prescriptionId = expectedValue;
-      expect(instance.prescriptionId).to.equal(expectedValue);
-    });
-
-    it('should have the property expirationDate', function() {
-      // verify property exists
-      expect(instance).to.have.property('expirationDate');
-
-      // set and verify value
-      var expectedValue = generateMockData('Date');
-      instance.expirationDate = expectedValue;
-      expect(instance.expirationDate).to.equal(expectedValue);
-    });
-
-    it('should have the property writtenQuantity', function() {
-      // verify property exists
-      expect(instance).to.have.property('writtenQuantity');
-
-      // set and verify value
-      var expectedValue = generateMockData('Number');
-      instance.writtenQuantity = expectedValue;
-      expect(instance.writtenQuantity).to.equal(expectedValue);
-    });
-
-    it('should have the property totalRefillsAuthorized', function() {
-      // verify property exists
-      expect(instance).to.have.property('totalRefillsAuthorized');
-
-      // set and verify value
-      var expectedValue = generateMockData('Number');
-      instance.totalRefillsAuthorized = expectedValue;
-      expect(instance.totalRefillsAuthorized).to.equal(expectedValue);
-    });
-
-    it('should have the property refillsRemaining', function() {
-      // verify property exists
-      expect(instance).to.have.property('refillsRemaining');
-
-      // set and verify value
-      var expectedValue = generateMockData('Number');
-      instance.refillsRemaining = expectedValue;
-      expect(instance.refillsRemaining).to.equal(expectedValue);
-    });
-
-    it('should have the property clinicId', function() {
-      // verify property exists
-      expect(instance).to.have.property('clinicId');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.clinicId = expectedValue;
-      expect(instance.clinicId).to.equal(expectedValue);
-    });
-
-    it('should have the property usageInstructions', function() {
-      // verify property exists
-      expect(instance).to.have.property('usageInstructions');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.usageInstructions = expectedValue;
-      expect(instance.usageInstructions).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.prescriptionId = expectedValue;
+    expect(instance.prescriptionId).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property expirationDate', () => {
+    // verify property exists
+    expect(instance).to.have.property('expirationDate');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('Date');
+    instance.expirationDate = expectedValue;
+    expect(instance.expirationDate).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForOrders[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property writtenQuantity', () => {
+    // verify property exists
+    expect(instance).to.have.property('writtenQuantity');
+
+    // set and verify value
+    const expectedValue = generateMockData('Number');
+    instance.writtenQuantity = expectedValue;
+    expect(instance.writtenQuantity).to.equal(expectedValue);
+  });
+
+  it('should have the property totalRefillsAuthorized', () => {
+    // verify property exists
+    expect(instance).to.have.property('totalRefillsAuthorized');
+
+    // set and verify value
+    const expectedValue = generateMockData('Number');
+    instance.totalRefillsAuthorized = expectedValue;
+    expect(instance.totalRefillsAuthorized).to.equal(expectedValue);
+  });
+
+  it('should have the property refillsRemaining', () => {
+    // verify property exists
+    expect(instance).to.have.property('refillsRemaining');
+
+    // set and verify value
+    const expectedValue = generateMockData('Number');
+    instance.refillsRemaining = expectedValue;
+    expect(instance.refillsRemaining).to.equal(expectedValue);
+  });
+
+  it('should have the property clinicId', () => {
+    // verify property exists
+    expect(instance).to.have.property('clinicId');
+
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.clinicId = expectedValue;
+    expect(instance.clinicId).to.equal(expectedValue);
+  });
+
+  it('should have the property usageInstructions', () => {
+    // verify property exists
+    expect(instance).to.have.property('usageInstructions');
+
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.usageInstructions = expectedValue;
+    expect(instance.usageInstructions).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForOrders[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

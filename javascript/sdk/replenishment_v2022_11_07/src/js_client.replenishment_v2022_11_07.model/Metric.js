@@ -18,7 +18,7 @@ import {ApiClient} from '../ApiClient.js';
 * @enum {}
 * @readonly
 */
-export default class Metric {
+export class Metric {
     
         /**
          * value: "SHIPPED_SUBSCRIPTION_UNITS"

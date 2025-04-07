@@ -18,7 +18,7 @@ import {ApiClient} from '../ApiClient.js';
 * @enum {}
 * @readonly
 */
-export default class DecoratorType {
+export class DecoratorType {
     
         /**
          * value: "LIST_ITEM"

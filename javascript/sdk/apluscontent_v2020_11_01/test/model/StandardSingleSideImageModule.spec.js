@@ -11,93 +11,80 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForAContentManagement);
+import expect from 'expect.js';
+import * as SellingPartnerApiForAContentManagement from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new SellingPartnerApiForAContentManagement.StandardSingleSideImageModule();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(SellingPartnerApiForAContentManagement.StandardSingleSideImageModule.prototype);
   }
-}(this, function(expect, SellingPartnerApiForAContentManagement) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new SellingPartnerApiForAContentManagement.StandardSingleSideImageModule();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(SellingPartnerApiForAContentManagement.StandardSingleSideImageModule.prototype);
-    }
+describe('StandardSingleSideImageModule', () => {
+  it('should create an instance of StandardSingleSideImageModule', () => {
+    expect(instance).to.be.a(SellingPartnerApiForAContentManagement.StandardSingleSideImageModule);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property imagePositionType', () => {
+    // verify property exists
+    expect(instance).to.have.property('imagePositionType');
 
-  describe('StandardSingleSideImageModule', function() {
-    it('should create an instance of StandardSingleSideImageModule', function() {
-      expect(instance).to.be.a(SellingPartnerApiForAContentManagement.StandardSingleSideImageModule);
-    });
-
-    it('should have the property imagePositionType', function() {
-      // verify property exists
-      expect(instance).to.have.property('imagePositionType');
-
-      // set and verify value
-      var expectedValue = generateMockData('PositionType');
-      instance.imagePositionType = expectedValue;
-      expect(instance.imagePositionType).to.equal(expectedValue);
-    });
-
-    it('should have the property block', function() {
-      // verify property exists
-      expect(instance).to.have.property('block');
-
-      // set and verify value
-      var expectedValue = generateMockData('StandardImageTextBlock');
-      instance.block = expectedValue;
-      expect(instance.block).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('PositionType');
+    instance.imagePositionType = expectedValue;
+    expect(instance.imagePositionType).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property block', () => {
+    // verify property exists
+    expect(instance).to.have.property('block');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('StandardImageTextBlock');
+    instance.block = expectedValue;
+    expect(instance.block).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForAContentManagement[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForAContentManagement[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

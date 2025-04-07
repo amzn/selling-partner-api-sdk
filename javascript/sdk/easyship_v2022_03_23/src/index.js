@@ -45,31 +45,6 @@ import {EasyShipApi} from './js_client.easyship_v2022_03_23.api/EasyShipApi.js';
 /**
 * Use the Selling Partner API for Easy Ship to build applications for sellers to manage and ship Amazon Easy Ship orders. With this API, you can get available time slots, schedule and reschedule Easy Ship orders, and print shipping labels, invoices, and warranties. To review the differences in Easy Ship operations by marketplace, refer to [Marketplace support](https://developer-docs.amazon.com/sp-api/docs/easyship-api-v2022-03-23-use-case-guide#marketplace-support)..<br>
 * The <code>index</code> module provides access to constructors for all the classes which comprise the public API.
-* <p>
-* An AMD (recommended!) or CommonJS application will generally do something equivalent to the following:
-* <pre>
-* var SellingPartnerApiForEasyShip = require('index'); // See note below*.
-* var xxxSvc = new SellingPartnerApiForEasyShip.XxxApi(); // Allocate the API class we're going to use.
-* var yyyModel = new SellingPartnerApiForEasyShip.Yyy(); // Construct a model instance.
-* yyyModel.someProperty = 'someValue';
-* ...
-* var zzz = xxxSvc.doSomething(yyyModel); // Invoke the service.
-* ...
-* </pre>
-* <em>*NOTE: For a top-level AMD script, use require(['index'], function(){...})
-* and put the application logic within the callback function.</em>
-* </p>
-* <p>
-* A non-AMD browser application (discouraged) might do something like this:
-* <pre>
-* var xxxSvc = new SellingPartnerApiForEasyShip.XxxApi(); // Allocate the API class we're going to use.
-* var yyy = new SellingPartnerApiForEasyShip.Yyy(); // Construct a model instance.
-* yyyModel.someProperty = 'someValue';
-* ...
-* var zzz = xxxSvc.doSomething(yyyModel); // Invoke the service.
-* ...
-* </pre>
-* </p>
 * @module index
 * @version 2022-03-23
 */

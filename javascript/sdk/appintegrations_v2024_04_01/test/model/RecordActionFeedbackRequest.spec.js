@@ -11,83 +11,70 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.TheSellingPartnerApiForThirdPartyApplicationIntegrations);
+import expect from 'expect.js';
+import * as TheSellingPartnerApiForThirdPartyApplicationIntegrations from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new TheSellingPartnerApiForThirdPartyApplicationIntegrations.RecordActionFeedbackRequest();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(TheSellingPartnerApiForThirdPartyApplicationIntegrations.RecordActionFeedbackRequest.prototype);
   }
-}(this, function(expect, TheSellingPartnerApiForThirdPartyApplicationIntegrations) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new TheSellingPartnerApiForThirdPartyApplicationIntegrations.RecordActionFeedbackRequest();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(TheSellingPartnerApiForThirdPartyApplicationIntegrations.RecordActionFeedbackRequest.prototype);
-    }
+describe('RecordActionFeedbackRequest', () => {
+  it('should create an instance of RecordActionFeedbackRequest', () => {
+    expect(instance).to.be.a(TheSellingPartnerApiForThirdPartyApplicationIntegrations.RecordActionFeedbackRequest);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property feedbackActionCode', () => {
+    // verify property exists
+    expect(instance).to.have.property('feedbackActionCode');
 
-  describe('RecordActionFeedbackRequest', function() {
-    it('should create an instance of RecordActionFeedbackRequest', function() {
-      expect(instance).to.be.a(TheSellingPartnerApiForThirdPartyApplicationIntegrations.RecordActionFeedbackRequest);
-    });
-
-    it('should have the property feedbackActionCode', function() {
-      // verify property exists
-      expect(instance).to.have.property('feedbackActionCode');
-
-      // set and verify value
-      var expectedValue = ['SELLER_ACTION_COMPLETED', ][0];
-      instance.feedbackActionCode = expectedValue;
-      expect(instance.feedbackActionCode).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = ['SELLER_ACTION_COMPLETED', ][0];
+    instance.feedbackActionCode = expectedValue;
+    expect(instance.feedbackActionCode).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+});
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = TheSellingPartnerApiForThirdPartyApplicationIntegrations[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = TheSellingPartnerApiForThirdPartyApplicationIntegrations[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

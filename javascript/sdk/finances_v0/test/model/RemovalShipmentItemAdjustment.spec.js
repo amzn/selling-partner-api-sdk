@@ -11,143 +11,130 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForFinances);
+import expect from 'expect.js';
+import * as SellingPartnerApiForFinances from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new SellingPartnerApiForFinances.RemovalShipmentItemAdjustment();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(SellingPartnerApiForFinances.RemovalShipmentItemAdjustment.prototype);
   }
-}(this, function(expect, SellingPartnerApiForFinances) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new SellingPartnerApiForFinances.RemovalShipmentItemAdjustment();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(SellingPartnerApiForFinances.RemovalShipmentItemAdjustment.prototype);
-    }
+describe('RemovalShipmentItemAdjustment', () => {
+  it('should create an instance of RemovalShipmentItemAdjustment', () => {
+    expect(instance).to.be.a(SellingPartnerApiForFinances.RemovalShipmentItemAdjustment);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property removalShipmentItemId', () => {
+    // verify property exists
+    expect(instance).to.have.property('removalShipmentItemId');
 
-  describe('RemovalShipmentItemAdjustment', function() {
-    it('should create an instance of RemovalShipmentItemAdjustment', function() {
-      expect(instance).to.be.a(SellingPartnerApiForFinances.RemovalShipmentItemAdjustment);
-    });
-
-    it('should have the property removalShipmentItemId', function() {
-      // verify property exists
-      expect(instance).to.have.property('removalShipmentItemId');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.removalShipmentItemId = expectedValue;
-      expect(instance.removalShipmentItemId).to.equal(expectedValue);
-    });
-
-    it('should have the property taxCollectionModel', function() {
-      // verify property exists
-      expect(instance).to.have.property('taxCollectionModel');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.taxCollectionModel = expectedValue;
-      expect(instance.taxCollectionModel).to.equal(expectedValue);
-    });
-
-    it('should have the property fulfillmentNetworkSKU', function() {
-      // verify property exists
-      expect(instance).to.have.property('fulfillmentNetworkSKU');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.fulfillmentNetworkSKU = expectedValue;
-      expect(instance.fulfillmentNetworkSKU).to.equal(expectedValue);
-    });
-
-    it('should have the property adjustedQuantity', function() {
-      // verify property exists
-      expect(instance).to.have.property('adjustedQuantity');
-
-      // set and verify value
-      var expectedValue = generateMockData('Number');
-      instance.adjustedQuantity = expectedValue;
-      expect(instance.adjustedQuantity).to.equal(expectedValue);
-    });
-
-    it('should have the property revenueAdjustment', function() {
-      // verify property exists
-      expect(instance).to.have.property('revenueAdjustment');
-
-      // set and verify value
-      var expectedValue = generateMockData('Currency');
-      instance.revenueAdjustment = expectedValue;
-      expect(instance.revenueAdjustment).to.equal(expectedValue);
-    });
-
-    it('should have the property taxAmountAdjustment', function() {
-      // verify property exists
-      expect(instance).to.have.property('taxAmountAdjustment');
-
-      // set and verify value
-      var expectedValue = generateMockData('Currency');
-      instance.taxAmountAdjustment = expectedValue;
-      expect(instance.taxAmountAdjustment).to.equal(expectedValue);
-    });
-
-    it('should have the property taxWithheldAdjustment', function() {
-      // verify property exists
-      expect(instance).to.have.property('taxWithheldAdjustment');
-
-      // set and verify value
-      var expectedValue = generateMockData('Currency');
-      instance.taxWithheldAdjustment = expectedValue;
-      expect(instance.taxWithheldAdjustment).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.removalShipmentItemId = expectedValue;
+    expect(instance.removalShipmentItemId).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property taxCollectionModel', () => {
+    // verify property exists
+    expect(instance).to.have.property('taxCollectionModel');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.taxCollectionModel = expectedValue;
+    expect(instance.taxCollectionModel).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForFinances[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property fulfillmentNetworkSKU', () => {
+    // verify property exists
+    expect(instance).to.have.property('fulfillmentNetworkSKU');
+
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.fulfillmentNetworkSKU = expectedValue;
+    expect(instance.fulfillmentNetworkSKU).to.equal(expectedValue);
+  });
+
+  it('should have the property adjustedQuantity', () => {
+    // verify property exists
+    expect(instance).to.have.property('adjustedQuantity');
+
+    // set and verify value
+    const expectedValue = generateMockData('Number');
+    instance.adjustedQuantity = expectedValue;
+    expect(instance.adjustedQuantity).to.equal(expectedValue);
+  });
+
+  it('should have the property revenueAdjustment', () => {
+    // verify property exists
+    expect(instance).to.have.property('revenueAdjustment');
+
+    // set and verify value
+    const expectedValue = generateMockData('Currency');
+    instance.revenueAdjustment = expectedValue;
+    expect(instance.revenueAdjustment).to.equal(expectedValue);
+  });
+
+  it('should have the property taxAmountAdjustment', () => {
+    // verify property exists
+    expect(instance).to.have.property('taxAmountAdjustment');
+
+    // set and verify value
+    const expectedValue = generateMockData('Currency');
+    instance.taxAmountAdjustment = expectedValue;
+    expect(instance.taxAmountAdjustment).to.equal(expectedValue);
+  });
+
+  it('should have the property taxWithheldAdjustment', () => {
+    // verify property exists
+    expect(instance).to.have.property('taxWithheldAdjustment');
+
+    // set and verify value
+    const expectedValue = generateMockData('Currency');
+    instance.taxWithheldAdjustment = expectedValue;
+    expect(instance.taxWithheldAdjustment).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForFinances[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

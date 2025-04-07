@@ -1,56 +1,45 @@
 {{>licenseInfo}}
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', 'sinon', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('sinon'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.sinon, root.{{moduleName}});
+import expect from 'expect.js';
+import sinon from 'sinon';
+import * as {{moduleName}} from '../../src/index.js';
+
+let instance;
+let sandbox;
+const testEndpoint = 'https://localhost:3000';
+const testAccessToken = "testAccessToken";
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
   }
-}(this, function(expect, sinon, {{moduleName}}) {
-  'use strict';
 
-  var instance;
-  var sandbox;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
-
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
-
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
-
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = {{moduleName}}[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = {{moduleName}}[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-  
+}
 
 // Generate mock requests and responses for each operation
 {{#operations}}
@@ -78,134 +67,124 @@ const mock{{operationId}}Data = {
 {{/operation}}
 {{/operations}}
 
-  beforeEach(function() {
+describe('{{classname}}', () => {
+  beforeEach(() => {
     sandbox = sinon.createSandbox();
-    var apiClientInstance = new {{moduleName}}.ApiClient(testEndpoint);
+    const apiClientInstance = new {{moduleName}}.ApiClient(testEndpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
     sandbox.stub(apiClientInstance, 'callApi');
     instance = new {{moduleName}}.{{classname}}(apiClientInstance);
   });
 
-  afterEach(function() {
+  afterEach(() => {
     sandbox.restore();
   });
 
-  describe('{{classname}}', function() {
-    {{#operations}}
-    {{#operation}}
-    describe('{{operationId}}', function() {
-      
-      {{^operationIdsetAppointmentFulfillmentData}}
-      it('should successfully call {{operationId}}', function(done) {
-        instance.apiClient.callApi.resolves(mock{{operationId}}Data.response);
+  {{#operations}}
+  {{#operation}}
+  describe('{{operationId}}', () => {
+    {{^operationIdsetAppointmentFulfillmentData}}
+    it('should successfully call {{operationId}}', async () => {
+      instance.apiClient.callApi.resolves(mock{{operationId}}Data.response);
 
-        {{#hasParams}}
-        const params = [
-          {{#allParams}}
-          {{#required}}
-          mock{{operationId}}Data.request['{{paramName}}']{{^-last}},{{/-last}}
-          {{/required}}
-          {{/allParams}}
-        ];
-        instance.{{operationId}}(...params)
-        {{/hasParams}}
-        {{^hasParams}}
-        instance.{{operationId}}()
-        {{/hasParams}}
-          .then(function(data) {
-            {{#responses}}
-            {{#-first}}
-            {{#schema}}
-            expect(data instanceof {{#isPrimitiveType}}{{returnBaseType}}{{/isPrimitiveType}}{{^isPrimitiveType}}{{moduleName}}.{{returnBaseType}}{{/isPrimitiveType}}).to.be.true;
-            {{/schema}}
-            {{^schema}}
-            expect(data).to.be.undefined;
-            {{/schema}}
-            {{/-first}}
-            {{/responses}}
-            done();
-          })
-          .catch(done);
-      });
-      {{/operationIdsetAppointmentFulfillmentData}}
+      {{#hasParams}}
+      const params = [
+        {{#allParams}}
+        {{#required}}
+        mock{{operationId}}Data.request['{{paramName}}']{{^-last}},{{/-last}}
+        {{/required}}
+        {{/allParams}}
+      ];
+      const data = await instance.{{operationId}}(...params);
+      {{/hasParams}}
+      {{^hasParams}}
+      const data = await instance.{{operationId}}();
+      {{/hasParams}}
 
-      it('should successfully call {{operationId}}WithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mock{{operationId}}Data.response);
-
-        {{#hasParams}}
-        const params = [
-          {{#allParams}}
-          {{#required}}
-          mock{{operationId}}Data.request['{{paramName}}']{{^-last}},{{/-last}}
-          {{/required}}
-          {{/allParams}}
-        ];
-        instance.{{operationId}}WithHttpInfo(...params)
-        {{/hasParams}}
-        {{^hasParams}}
-        instance.{{operationId}}WithHttpInfo()
-        {{/hasParams}}
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mock{{operationId}}Data.response.statusCode)
-            expect(response).to.have.property('headers');
-            {{#responses}}
-            {{#-first}}
-            {{#schema}}
-            expect(response).to.have.property('data');
-            {{/schema}}
-            {{/-first}}
-            {{/responses}}
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        {{#hasParams}}
-        const params = [
-          {{#allParams}}
-          {{#required}}
-          mock{{operationId}}Data.request['{{paramName}}']{{^-last}},{{/-last}}
-          {{/required}}
-          {{/allParams}}
-        ];
-        instance.{{operationId}}(...params)
-        {{/hasParams}}
-        {{^hasParams}}
-        instance.{{operationId}}()
-        {{/hasParams}}
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
+      {{#responses}}
+      {{#-first}}
+      {{#schema}}
+      expect(data instanceof {{#isPrimitiveType}}{{returnBaseType}}{{/isPrimitiveType}}{{^isPrimitiveType}}{{moduleName}}.{{returnBaseType}}{{/isPrimitiveType}}).to.be.true;
+      {{/schema}}
+      {{^schema}}
+      expect(data).to.be.undefined;
+      {{/schema}}
+      {{/-first}}
+      {{/responses}}
     });
-    {{/operation}}
-    {{/operations}}
+    {{/operationIdsetAppointmentFulfillmentData}}
 
-    describe('constructor', function() {
-      it('should use default ApiClient when none provided', function() {
-        var defaultInstance = new {{moduleName}}.{{classname}}();
-        expect(defaultInstance.apiClient).to.equal({{moduleName}}.ApiClient.instance);
-      });
+    it('should successfully call {{operationId}}WithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mock{{operationId}}Data.response);
 
-      it('should use provided ApiClient', function() {
-        var customClient = new {{moduleName}}.ApiClient();
-        var customInstance = new {{moduleName}}.{{classname}}(customClient);
-        expect(customInstance.apiClient).to.equal(customClient);
-      });
+      {{#hasParams}}
+      const params = [
+        {{#allParams}}
+        {{#required}}
+        mock{{operationId}}Data.request['{{paramName}}']{{^-last}},{{/-last}}
+        {{/required}}
+        {{/allParams}}
+      ];
+      const response = await instance.{{operationId}}WithHttpInfo(...params);
+      {{/hasParams}}
+      {{^hasParams}}
+      const response = await instance.{{operationId}}WithHttpInfo();
+      {{/hasParams}}
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mock{{operationId}}Data.response.statusCode)
+      expect(response).to.have.property('headers');
+      {{#responses}}
+      {{#-first}}
+      {{#schema}}
+      expect(response).to.have.property('data');
+      {{/schema}}
+      {{/-first}}
+      {{/responses}}
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        {{#hasParams}}
+        const params = [
+          {{#allParams}}
+          {{#required}}
+          mock{{operationId}}Data.request['{{paramName}}']{{^-last}},{{/-last}}
+          {{/required}}
+          {{/allParams}}
+        ];
+        await instance.{{operationId}}(...params);
+        {{/hasParams}}
+        {{^hasParams}}
+        await instance.{{operationId}}();
+        {{/hasParams}}
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
     });
   });
-}));
+  {{/operation}}
+  {{/operations}}
+
+  describe('constructor', () => {
+    it('should use default ApiClient when none provided', () => {
+      const defaultInstance = new {{moduleName}}.{{classname}}();
+      expect(defaultInstance.apiClient).to.equal({{moduleName}}.ApiClient.instance);
+    });
+
+    it('should use provided ApiClient', () => {
+      const customClient = new {{moduleName}}.ApiClient();
+      const customInstance = new {{moduleName}}.{{classname}}(customClient);
+      expect(customInstance.apiClient).to.equal(customClient);
+    });
+  });
+});

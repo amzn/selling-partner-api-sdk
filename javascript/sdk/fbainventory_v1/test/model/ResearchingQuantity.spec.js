@@ -11,93 +11,80 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForFbaInventory);
+import expect from 'expect.js';
+import * as SellingPartnerApiForFbaInventory from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new SellingPartnerApiForFbaInventory.ResearchingQuantity();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(SellingPartnerApiForFbaInventory.ResearchingQuantity.prototype);
   }
-}(this, function(expect, SellingPartnerApiForFbaInventory) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new SellingPartnerApiForFbaInventory.ResearchingQuantity();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(SellingPartnerApiForFbaInventory.ResearchingQuantity.prototype);
-    }
+describe('ResearchingQuantity', () => {
+  it('should create an instance of ResearchingQuantity', () => {
+    expect(instance).to.be.a(SellingPartnerApiForFbaInventory.ResearchingQuantity);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property totalResearchingQuantity', () => {
+    // verify property exists
+    expect(instance).to.have.property('totalResearchingQuantity');
 
-  describe('ResearchingQuantity', function() {
-    it('should create an instance of ResearchingQuantity', function() {
-      expect(instance).to.be.a(SellingPartnerApiForFbaInventory.ResearchingQuantity);
-    });
-
-    it('should have the property totalResearchingQuantity', function() {
-      // verify property exists
-      expect(instance).to.have.property('totalResearchingQuantity');
-
-      // set and verify value
-      var expectedValue = generateMockData('Number');
-      instance.totalResearchingQuantity = expectedValue;
-      expect(instance.totalResearchingQuantity).to.equal(expectedValue);
-    });
-
-    it('should have the property researchingQuantityBreakdown', function() {
-      // verify property exists
-      expect(instance).to.have.property('researchingQuantityBreakdown');
-
-      // set and verify value
-      var expectedValue = generateMockData('ResearchingQuantityEntry', true);
-      instance.researchingQuantityBreakdown = expectedValue;
-      expect(instance.researchingQuantityBreakdown).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('Number');
+    instance.totalResearchingQuantity = expectedValue;
+    expect(instance.totalResearchingQuantity).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property researchingQuantityBreakdown', () => {
+    // verify property exists
+    expect(instance).to.have.property('researchingQuantityBreakdown');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('ResearchingQuantityEntry', true);
+    instance.researchingQuantityBreakdown = expectedValue;
+    expect(instance.researchingQuantityBreakdown).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForFbaInventory[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForFbaInventory[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

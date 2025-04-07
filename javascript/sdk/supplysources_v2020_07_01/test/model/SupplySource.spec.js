@@ -11,163 +11,150 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForSupplySources);
+import expect from 'expect.js';
+import * as SellingPartnerApiForSupplySources from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new SellingPartnerApiForSupplySources.SupplySource();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(SellingPartnerApiForSupplySources.SupplySource.prototype);
   }
-}(this, function(expect, SellingPartnerApiForSupplySources) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new SellingPartnerApiForSupplySources.SupplySource();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(SellingPartnerApiForSupplySources.SupplySource.prototype);
-    }
+describe('SupplySource', () => {
+  it('should create an instance of SupplySource', () => {
+    expect(instance).to.be.a(SellingPartnerApiForSupplySources.SupplySource);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property supplySourceId', () => {
+    // verify property exists
+    expect(instance).to.have.property('supplySourceId');
 
-  describe('SupplySource', function() {
-    it('should create an instance of SupplySource', function() {
-      expect(instance).to.be.a(SellingPartnerApiForSupplySources.SupplySource);
-    });
-
-    it('should have the property supplySourceId', function() {
-      // verify property exists
-      expect(instance).to.have.property('supplySourceId');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.supplySourceId = expectedValue;
-      expect(instance.supplySourceId).to.equal(expectedValue);
-    });
-
-    it('should have the property supplySourceCode', function() {
-      // verify property exists
-      expect(instance).to.have.property('supplySourceCode');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.supplySourceCode = expectedValue;
-      expect(instance.supplySourceCode).to.equal(expectedValue);
-    });
-
-    it('should have the property alias', function() {
-      // verify property exists
-      expect(instance).to.have.property('alias');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.alias = expectedValue;
-      expect(instance.alias).to.equal(expectedValue);
-    });
-
-    it('should have the property status', function() {
-      // verify property exists
-      expect(instance).to.have.property('status');
-
-      // set and verify value
-      var expectedValue = generateMockData('SupplySourceStatusReadOnly');
-      instance.status = expectedValue;
-      expect(instance.status).to.equal(expectedValue);
-    });
-
-    it('should have the property address', function() {
-      // verify property exists
-      expect(instance).to.have.property('address');
-
-      // set and verify value
-      var expectedValue = generateMockData('Address');
-      instance.address = expectedValue;
-      expect(instance.address).to.equal(expectedValue);
-    });
-
-    it('should have the property configuration', function() {
-      // verify property exists
-      expect(instance).to.have.property('configuration');
-
-      // set and verify value
-      var expectedValue = generateMockData('SupplySourceConfiguration');
-      instance.configuration = expectedValue;
-      expect(instance.configuration).to.equal(expectedValue);
-    });
-
-    it('should have the property capabilities', function() {
-      // verify property exists
-      expect(instance).to.have.property('capabilities');
-
-      // set and verify value
-      var expectedValue = generateMockData('SupplySourceCapabilities');
-      instance.capabilities = expectedValue;
-      expect(instance.capabilities).to.equal(expectedValue);
-    });
-
-    it('should have the property createdAt', function() {
-      // verify property exists
-      expect(instance).to.have.property('createdAt');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.createdAt = expectedValue;
-      expect(instance.createdAt).to.equal(expectedValue);
-    });
-
-    it('should have the property updatedAt', function() {
-      // verify property exists
-      expect(instance).to.have.property('updatedAt');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.updatedAt = expectedValue;
-      expect(instance.updatedAt).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.supplySourceId = expectedValue;
+    expect(instance.supplySourceId).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property supplySourceCode', () => {
+    // verify property exists
+    expect(instance).to.have.property('supplySourceCode');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.supplySourceCode = expectedValue;
+    expect(instance.supplySourceCode).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForSupplySources[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property alias', () => {
+    // verify property exists
+    expect(instance).to.have.property('alias');
+
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.alias = expectedValue;
+    expect(instance.alias).to.equal(expectedValue);
+  });
+
+  it('should have the property status', () => {
+    // verify property exists
+    expect(instance).to.have.property('status');
+
+    // set and verify value
+    const expectedValue = generateMockData('SupplySourceStatusReadOnly');
+    instance.status = expectedValue;
+    expect(instance.status).to.equal(expectedValue);
+  });
+
+  it('should have the property address', () => {
+    // verify property exists
+    expect(instance).to.have.property('address');
+
+    // set and verify value
+    const expectedValue = generateMockData('Address');
+    instance.address = expectedValue;
+    expect(instance.address).to.equal(expectedValue);
+  });
+
+  it('should have the property configuration', () => {
+    // verify property exists
+    expect(instance).to.have.property('configuration');
+
+    // set and verify value
+    const expectedValue = generateMockData('SupplySourceConfiguration');
+    instance.configuration = expectedValue;
+    expect(instance.configuration).to.equal(expectedValue);
+  });
+
+  it('should have the property capabilities', () => {
+    // verify property exists
+    expect(instance).to.have.property('capabilities');
+
+    // set and verify value
+    const expectedValue = generateMockData('SupplySourceCapabilities');
+    instance.capabilities = expectedValue;
+    expect(instance.capabilities).to.equal(expectedValue);
+  });
+
+  it('should have the property createdAt', () => {
+    // verify property exists
+    expect(instance).to.have.property('createdAt');
+
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.createdAt = expectedValue;
+    expect(instance.createdAt).to.equal(expectedValue);
+  });
+
+  it('should have the property updatedAt', () => {
+    // verify property exists
+    expect(instance).to.have.property('updatedAt');
+
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.updatedAt = expectedValue;
+    expect(instance.updatedAt).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForSupplySources[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

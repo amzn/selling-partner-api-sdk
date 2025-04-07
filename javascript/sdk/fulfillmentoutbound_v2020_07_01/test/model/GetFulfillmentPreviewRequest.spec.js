@@ -11,143 +11,130 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApisForFulfillmentOutbound);
+import expect from 'expect.js';
+import * as SellingPartnerApisForFulfillmentOutbound from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new SellingPartnerApisForFulfillmentOutbound.GetFulfillmentPreviewRequest();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(SellingPartnerApisForFulfillmentOutbound.GetFulfillmentPreviewRequest.prototype);
   }
-}(this, function(expect, SellingPartnerApisForFulfillmentOutbound) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new SellingPartnerApisForFulfillmentOutbound.GetFulfillmentPreviewRequest();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(SellingPartnerApisForFulfillmentOutbound.GetFulfillmentPreviewRequest.prototype);
-    }
+describe('GetFulfillmentPreviewRequest', () => {
+  it('should create an instance of GetFulfillmentPreviewRequest', () => {
+    expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.GetFulfillmentPreviewRequest);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property marketplaceId', () => {
+    // verify property exists
+    expect(instance).to.have.property('marketplaceId');
 
-  describe('GetFulfillmentPreviewRequest', function() {
-    it('should create an instance of GetFulfillmentPreviewRequest', function() {
-      expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.GetFulfillmentPreviewRequest);
-    });
-
-    it('should have the property marketplaceId', function() {
-      // verify property exists
-      expect(instance).to.have.property('marketplaceId');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.marketplaceId = expectedValue;
-      expect(instance.marketplaceId).to.equal(expectedValue);
-    });
-
-    it('should have the property address', function() {
-      // verify property exists
-      expect(instance).to.have.property('address');
-
-      // set and verify value
-      var expectedValue = generateMockData('Address');
-      instance.address = expectedValue;
-      expect(instance.address).to.equal(expectedValue);
-    });
-
-    it('should have the property items', function() {
-      // verify property exists
-      expect(instance).to.have.property('items');
-
-      // set and verify value
-      var expectedValue = generateMockData('GetFulfillmentPreviewItem', true);
-      instance.items = expectedValue;
-      expect(instance.items).to.equal(expectedValue);
-    });
-
-    it('should have the property shippingSpeedCategories', function() {
-      // verify property exists
-      expect(instance).to.have.property('shippingSpeedCategories');
-
-      // set and verify value
-      var expectedValue = generateMockData('ShippingSpeedCategory', true);
-      instance.shippingSpeedCategories = expectedValue;
-      expect(instance.shippingSpeedCategories).to.equal(expectedValue);
-    });
-
-    it('should have the property includeCODFulfillmentPreview', function() {
-      // verify property exists
-      expect(instance).to.have.property('includeCODFulfillmentPreview');
-
-      // set and verify value
-      var expectedValue = generateMockData('Boolean');
-      instance.includeCODFulfillmentPreview = expectedValue;
-      expect(instance.includeCODFulfillmentPreview).to.equal(expectedValue);
-    });
-
-    it('should have the property includeDeliveryWindows', function() {
-      // verify property exists
-      expect(instance).to.have.property('includeDeliveryWindows');
-
-      // set and verify value
-      var expectedValue = generateMockData('Boolean');
-      instance.includeDeliveryWindows = expectedValue;
-      expect(instance.includeDeliveryWindows).to.equal(expectedValue);
-    });
-
-    it('should have the property featureConstraints', function() {
-      // verify property exists
-      expect(instance).to.have.property('featureConstraints');
-
-      // set and verify value
-      var expectedValue = generateMockData('FeatureSettings', true);
-      instance.featureConstraints = expectedValue;
-      expect(instance.featureConstraints).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.marketplaceId = expectedValue;
+    expect(instance.marketplaceId).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property address', () => {
+    // verify property exists
+    expect(instance).to.have.property('address');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('Address');
+    instance.address = expectedValue;
+    expect(instance.address).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApisForFulfillmentOutbound[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property items', () => {
+    // verify property exists
+    expect(instance).to.have.property('items');
+
+    // set and verify value
+    const expectedValue = generateMockData('GetFulfillmentPreviewItem', true);
+    instance.items = expectedValue;
+    expect(instance.items).to.equal(expectedValue);
+  });
+
+  it('should have the property shippingSpeedCategories', () => {
+    // verify property exists
+    expect(instance).to.have.property('shippingSpeedCategories');
+
+    // set and verify value
+    const expectedValue = generateMockData('ShippingSpeedCategory', true);
+    instance.shippingSpeedCategories = expectedValue;
+    expect(instance.shippingSpeedCategories).to.equal(expectedValue);
+  });
+
+  it('should have the property includeCODFulfillmentPreview', () => {
+    // verify property exists
+    expect(instance).to.have.property('includeCODFulfillmentPreview');
+
+    // set and verify value
+    const expectedValue = generateMockData('Boolean');
+    instance.includeCODFulfillmentPreview = expectedValue;
+    expect(instance.includeCODFulfillmentPreview).to.equal(expectedValue);
+  });
+
+  it('should have the property includeDeliveryWindows', () => {
+    // verify property exists
+    expect(instance).to.have.property('includeDeliveryWindows');
+
+    // set and verify value
+    const expectedValue = generateMockData('Boolean');
+    instance.includeDeliveryWindows = expectedValue;
+    expect(instance.includeDeliveryWindows).to.equal(expectedValue);
+  });
+
+  it('should have the property featureConstraints', () => {
+    // verify property exists
+    expect(instance).to.have.property('featureConstraints');
+
+    // set and verify value
+    const expectedValue = generateMockData('FeatureSettings', true);
+    instance.featureConstraints = expectedValue;
+    expect(instance.featureConstraints).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApisForFulfillmentOutbound[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

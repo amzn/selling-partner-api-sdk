@@ -18,7 +18,7 @@ import {ApiClient} from '../ApiClient.js';
 * @enum {}
 * @readonly
 */
-export default class FulfillmentReturnItemStatus {
+export class FulfillmentReturnItemStatus {
     
         /**
          * value: "New"

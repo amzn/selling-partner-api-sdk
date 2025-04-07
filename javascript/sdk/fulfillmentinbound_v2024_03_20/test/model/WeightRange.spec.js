@@ -11,103 +11,90 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.TheSellingPartnerApiForFbaInboundOperations);
+import expect from 'expect.js';
+import * as TheSellingPartnerApiForFbaInboundOperations from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new TheSellingPartnerApiForFbaInboundOperations.WeightRange();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(TheSellingPartnerApiForFbaInboundOperations.WeightRange.prototype);
   }
-}(this, function(expect, TheSellingPartnerApiForFbaInboundOperations) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new TheSellingPartnerApiForFbaInboundOperations.WeightRange();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(TheSellingPartnerApiForFbaInboundOperations.WeightRange.prototype);
-    }
+describe('WeightRange', () => {
+  it('should create an instance of WeightRange', () => {
+    expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.WeightRange);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property maximum', () => {
+    // verify property exists
+    expect(instance).to.have.property('maximum');
 
-  describe('WeightRange', function() {
-    it('should create an instance of WeightRange', function() {
-      expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.WeightRange);
-    });
-
-    it('should have the property maximum', function() {
-      // verify property exists
-      expect(instance).to.have.property('maximum');
-
-      // set and verify value
-      var expectedValue = generateMockData('Number');
-      instance.maximum = expectedValue;
-      expect(instance.maximum).to.equal(expectedValue);
-    });
-
-    it('should have the property minimum', function() {
-      // verify property exists
-      expect(instance).to.have.property('minimum');
-
-      // set and verify value
-      var expectedValue = generateMockData('Number');
-      instance.minimum = expectedValue;
-      expect(instance.minimum).to.equal(expectedValue);
-    });
-
-    it('should have the property unit', function() {
-      // verify property exists
-      expect(instance).to.have.property('unit');
-
-      // set and verify value
-      var expectedValue = generateMockData('UnitOfWeight');
-      instance.unit = expectedValue;
-      expect(instance.unit).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('Number');
+    instance.maximum = expectedValue;
+    expect(instance.maximum).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property minimum', () => {
+    // verify property exists
+    expect(instance).to.have.property('minimum');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('Number');
+    instance.minimum = expectedValue;
+    expect(instance.minimum).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = TheSellingPartnerApiForFbaInboundOperations[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property unit', () => {
+    // verify property exists
+    expect(instance).to.have.property('unit');
+
+    // set and verify value
+    const expectedValue = generateMockData('UnitOfWeight');
+    instance.unit = expectedValue;
+    expect(instance.unit).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = TheSellingPartnerApiForFbaInboundOperations[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

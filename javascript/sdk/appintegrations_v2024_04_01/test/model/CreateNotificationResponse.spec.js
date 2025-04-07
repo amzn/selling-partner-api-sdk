@@ -11,83 +11,70 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.TheSellingPartnerApiForThirdPartyApplicationIntegrations);
+import expect from 'expect.js';
+import * as TheSellingPartnerApiForThirdPartyApplicationIntegrations from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new TheSellingPartnerApiForThirdPartyApplicationIntegrations.CreateNotificationResponse();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(TheSellingPartnerApiForThirdPartyApplicationIntegrations.CreateNotificationResponse.prototype);
   }
-}(this, function(expect, TheSellingPartnerApiForThirdPartyApplicationIntegrations) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new TheSellingPartnerApiForThirdPartyApplicationIntegrations.CreateNotificationResponse();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(TheSellingPartnerApiForThirdPartyApplicationIntegrations.CreateNotificationResponse.prototype);
-    }
+describe('CreateNotificationResponse', () => {
+  it('should create an instance of CreateNotificationResponse', () => {
+    expect(instance).to.be.a(TheSellingPartnerApiForThirdPartyApplicationIntegrations.CreateNotificationResponse);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property notificationId', () => {
+    // verify property exists
+    expect(instance).to.have.property('notificationId');
 
-  describe('CreateNotificationResponse', function() {
-    it('should create an instance of CreateNotificationResponse', function() {
-      expect(instance).to.be.a(TheSellingPartnerApiForThirdPartyApplicationIntegrations.CreateNotificationResponse);
-    });
-
-    it('should have the property notificationId', function() {
-      // verify property exists
-      expect(instance).to.have.property('notificationId');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.notificationId = expectedValue;
-      expect(instance.notificationId).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.notificationId = expectedValue;
+    expect(instance.notificationId).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+});
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = TheSellingPartnerApiForThirdPartyApplicationIntegrations[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = TheSellingPartnerApiForThirdPartyApplicationIntegrations[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

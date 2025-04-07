@@ -11,93 +11,80 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.AmazonShippingApi);
+import expect from 'expect.js';
+import * as AmazonShippingApi from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new AmazonShippingApi.Benefits();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(AmazonShippingApi.Benefits.prototype);
   }
-}(this, function(expect, AmazonShippingApi) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new AmazonShippingApi.Benefits();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(AmazonShippingApi.Benefits.prototype);
-    }
+describe('Benefits', () => {
+  it('should create an instance of Benefits', () => {
+    expect(instance).to.be.a(AmazonShippingApi.Benefits);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property includedBenefits', () => {
+    // verify property exists
+    expect(instance).to.have.property('includedBenefits');
 
-  describe('Benefits', function() {
-    it('should create an instance of Benefits', function() {
-      expect(instance).to.be.a(AmazonShippingApi.Benefits);
-    });
-
-    it('should have the property includedBenefits', function() {
-      // verify property exists
-      expect(instance).to.have.property('includedBenefits');
-
-      // set and verify value
-      var expectedValue = generateMockData('String', true);
-      instance.includedBenefits = expectedValue;
-      expect(instance.includedBenefits).to.equal(expectedValue);
-    });
-
-    it('should have the property excludedBenefits', function() {
-      // verify property exists
-      expect(instance).to.have.property('excludedBenefits');
-
-      // set and verify value
-      var expectedValue = generateMockData('ExcludedBenefit', true);
-      instance.excludedBenefits = expectedValue;
-      expect(instance.excludedBenefits).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('String', true);
+    instance.includedBenefits = expectedValue;
+    expect(instance.includedBenefits).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property excludedBenefits', () => {
+    // verify property exists
+    expect(instance).to.have.property('excludedBenefits');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('ExcludedBenefit', true);
+    instance.excludedBenefits = expectedValue;
+    expect(instance.excludedBenefits).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = AmazonShippingApi[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = AmazonShippingApi[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

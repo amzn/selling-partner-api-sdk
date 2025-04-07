@@ -11,103 +11,90 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.AmazonShippingApi);
+import expect from 'expect.js';
+import * as AmazonShippingApi from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new AmazonShippingApi.OperatingHours();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(AmazonShippingApi.OperatingHours.prototype);
   }
-}(this, function(expect, AmazonShippingApi) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new AmazonShippingApi.OperatingHours();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(AmazonShippingApi.OperatingHours.prototype);
-    }
+describe('OperatingHours', () => {
+  it('should create an instance of OperatingHours', () => {
+    expect(instance).to.be.a(AmazonShippingApi.OperatingHours);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property closingTime', () => {
+    // verify property exists
+    expect(instance).to.have.property('closingTime');
 
-  describe('OperatingHours', function() {
-    it('should create an instance of OperatingHours', function() {
-      expect(instance).to.be.a(AmazonShippingApi.OperatingHours);
-    });
-
-    it('should have the property closingTime', function() {
-      // verify property exists
-      expect(instance).to.have.property('closingTime');
-
-      // set and verify value
-      var expectedValue = generateMockData('TimeOfDay');
-      instance.closingTime = expectedValue;
-      expect(instance.closingTime).to.equal(expectedValue);
-    });
-
-    it('should have the property openingTime', function() {
-      // verify property exists
-      expect(instance).to.have.property('openingTime');
-
-      // set and verify value
-      var expectedValue = generateMockData('TimeOfDay');
-      instance.openingTime = expectedValue;
-      expect(instance.openingTime).to.equal(expectedValue);
-    });
-
-    it('should have the property midDayClosures', function() {
-      // verify property exists
-      expect(instance).to.have.property('midDayClosures');
-
-      // set and verify value
-      var expectedValue = generateMockData('TimeOfDay', true);
-      instance.midDayClosures = expectedValue;
-      expect(instance.midDayClosures).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('TimeOfDay');
+    instance.closingTime = expectedValue;
+    expect(instance.closingTime).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property openingTime', () => {
+    // verify property exists
+    expect(instance).to.have.property('openingTime');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('TimeOfDay');
+    instance.openingTime = expectedValue;
+    expect(instance.openingTime).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = AmazonShippingApi[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property midDayClosures', () => {
+    // verify property exists
+    expect(instance).to.have.property('midDayClosures');
+
+    // set and verify value
+    const expectedValue = generateMockData('TimeOfDay', true);
+    instance.midDayClosures = expectedValue;
+    expect(instance.midDayClosures).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = AmazonShippingApi[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

@@ -11,113 +11,100 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForServices);
+import expect from 'expect.js';
+import * as SellingPartnerApiForServices from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new SellingPartnerApiForServices.FixedSlotCapacity();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(SellingPartnerApiForServices.FixedSlotCapacity.prototype);
   }
-}(this, function(expect, SellingPartnerApiForServices) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new SellingPartnerApiForServices.FixedSlotCapacity();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(SellingPartnerApiForServices.FixedSlotCapacity.prototype);
-    }
+describe('FixedSlotCapacity', () => {
+  it('should create an instance of FixedSlotCapacity', () => {
+    expect(instance).to.be.a(SellingPartnerApiForServices.FixedSlotCapacity);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property resourceId', () => {
+    // verify property exists
+    expect(instance).to.have.property('resourceId');
 
-  describe('FixedSlotCapacity', function() {
-    it('should create an instance of FixedSlotCapacity', function() {
-      expect(instance).to.be.a(SellingPartnerApiForServices.FixedSlotCapacity);
-    });
-
-    it('should have the property resourceId', function() {
-      // verify property exists
-      expect(instance).to.have.property('resourceId');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.resourceId = expectedValue;
-      expect(instance.resourceId).to.equal(expectedValue);
-    });
-
-    it('should have the property slotDuration', function() {
-      // verify property exists
-      expect(instance).to.have.property('slotDuration');
-
-      // set and verify value
-      var expectedValue = generateMockData('Number');
-      instance.slotDuration = expectedValue;
-      expect(instance.slotDuration).to.equal(expectedValue);
-    });
-
-    it('should have the property capacities', function() {
-      // verify property exists
-      expect(instance).to.have.property('capacities');
-
-      // set and verify value
-      var expectedValue = generateMockData('FixedSlot', true);
-      instance.capacities = expectedValue;
-      expect(instance.capacities).to.equal(expectedValue);
-    });
-
-    it('should have the property nextPageToken', function() {
-      // verify property exists
-      expect(instance).to.have.property('nextPageToken');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.nextPageToken = expectedValue;
-      expect(instance.nextPageToken).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.resourceId = expectedValue;
+    expect(instance.resourceId).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property slotDuration', () => {
+    // verify property exists
+    expect(instance).to.have.property('slotDuration');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('Number');
+    instance.slotDuration = expectedValue;
+    expect(instance.slotDuration).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForServices[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property capacities', () => {
+    // verify property exists
+    expect(instance).to.have.property('capacities');
+
+    // set and verify value
+    const expectedValue = generateMockData('FixedSlot', true);
+    instance.capacities = expectedValue;
+    expect(instance.capacities).to.equal(expectedValue);
+  });
+
+  it('should have the property nextPageToken', () => {
+    // verify property exists
+    expect(instance).to.have.property('nextPageToken');
+
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.nextPageToken = expectedValue;
+    expect(instance.nextPageToken).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForServices[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

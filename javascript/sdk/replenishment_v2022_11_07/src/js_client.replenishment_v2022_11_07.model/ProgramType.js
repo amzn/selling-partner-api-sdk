@@ -18,7 +18,7 @@ import {ApiClient} from '../ApiClient.js';
 * @enum {}
 * @readonly
 */
-export default class ProgramType {
+export class ProgramType {
     
         /**
          * value: "SUBSCRIBE_AND_SAVE"

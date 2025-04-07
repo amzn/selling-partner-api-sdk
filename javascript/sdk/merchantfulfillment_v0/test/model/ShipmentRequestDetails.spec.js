@@ -11,173 +11,160 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForMerchantFulfillment);
+import expect from 'expect.js';
+import * as SellingPartnerApiForMerchantFulfillment from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new SellingPartnerApiForMerchantFulfillment.ShipmentRequestDetails();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(SellingPartnerApiForMerchantFulfillment.ShipmentRequestDetails.prototype);
   }
-}(this, function(expect, SellingPartnerApiForMerchantFulfillment) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new SellingPartnerApiForMerchantFulfillment.ShipmentRequestDetails();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(SellingPartnerApiForMerchantFulfillment.ShipmentRequestDetails.prototype);
-    }
+describe('ShipmentRequestDetails', () => {
+  it('should create an instance of ShipmentRequestDetails', () => {
+    expect(instance).to.be.a(SellingPartnerApiForMerchantFulfillment.ShipmentRequestDetails);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property amazonOrderId', () => {
+    // verify property exists
+    expect(instance).to.have.property('amazonOrderId');
 
-  describe('ShipmentRequestDetails', function() {
-    it('should create an instance of ShipmentRequestDetails', function() {
-      expect(instance).to.be.a(SellingPartnerApiForMerchantFulfillment.ShipmentRequestDetails);
-    });
-
-    it('should have the property amazonOrderId', function() {
-      // verify property exists
-      expect(instance).to.have.property('amazonOrderId');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.amazonOrderId = expectedValue;
-      expect(instance.amazonOrderId).to.equal(expectedValue);
-    });
-
-    it('should have the property sellerOrderId', function() {
-      // verify property exists
-      expect(instance).to.have.property('sellerOrderId');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.sellerOrderId = expectedValue;
-      expect(instance.sellerOrderId).to.equal(expectedValue);
-    });
-
-    it('should have the property itemList', function() {
-      // verify property exists
-      expect(instance).to.have.property('itemList');
-
-      // set and verify value
-      var expectedValue = generateMockData('Item', true);
-      instance.itemList = expectedValue;
-      expect(instance.itemList).to.equal(expectedValue);
-    });
-
-    it('should have the property shipFromAddress', function() {
-      // verify property exists
-      expect(instance).to.have.property('shipFromAddress');
-
-      // set and verify value
-      var expectedValue = generateMockData('Address');
-      instance.shipFromAddress = expectedValue;
-      expect(instance.shipFromAddress).to.equal(expectedValue);
-    });
-
-    it('should have the property packageDimensions', function() {
-      // verify property exists
-      expect(instance).to.have.property('packageDimensions');
-
-      // set and verify value
-      var expectedValue = generateMockData('PackageDimensions');
-      instance.packageDimensions = expectedValue;
-      expect(instance.packageDimensions).to.equal(expectedValue);
-    });
-
-    it('should have the property weight', function() {
-      // verify property exists
-      expect(instance).to.have.property('weight');
-
-      // set and verify value
-      var expectedValue = generateMockData('Weight');
-      instance.weight = expectedValue;
-      expect(instance.weight).to.equal(expectedValue);
-    });
-
-    it('should have the property mustArriveByDate', function() {
-      // verify property exists
-      expect(instance).to.have.property('mustArriveByDate');
-
-      // set and verify value
-      var expectedValue = generateMockData('Date');
-      instance.mustArriveByDate = expectedValue;
-      expect(instance.mustArriveByDate).to.equal(expectedValue);
-    });
-
-    it('should have the property shipDate', function() {
-      // verify property exists
-      expect(instance).to.have.property('shipDate');
-
-      // set and verify value
-      var expectedValue = generateMockData('Date');
-      instance.shipDate = expectedValue;
-      expect(instance.shipDate).to.equal(expectedValue);
-    });
-
-    it('should have the property shippingServiceOptions', function() {
-      // verify property exists
-      expect(instance).to.have.property('shippingServiceOptions');
-
-      // set and verify value
-      var expectedValue = generateMockData('ShippingServiceOptions');
-      instance.shippingServiceOptions = expectedValue;
-      expect(instance.shippingServiceOptions).to.equal(expectedValue);
-    });
-
-    it('should have the property labelCustomization', function() {
-      // verify property exists
-      expect(instance).to.have.property('labelCustomization');
-
-      // set and verify value
-      var expectedValue = generateMockData('LabelCustomization');
-      instance.labelCustomization = expectedValue;
-      expect(instance.labelCustomization).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.amazonOrderId = expectedValue;
+    expect(instance.amazonOrderId).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property sellerOrderId', () => {
+    // verify property exists
+    expect(instance).to.have.property('sellerOrderId');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.sellerOrderId = expectedValue;
+    expect(instance.sellerOrderId).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForMerchantFulfillment[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property itemList', () => {
+    // verify property exists
+    expect(instance).to.have.property('itemList');
+
+    // set and verify value
+    const expectedValue = generateMockData('Item', true);
+    instance.itemList = expectedValue;
+    expect(instance.itemList).to.equal(expectedValue);
+  });
+
+  it('should have the property shipFromAddress', () => {
+    // verify property exists
+    expect(instance).to.have.property('shipFromAddress');
+
+    // set and verify value
+    const expectedValue = generateMockData('Address');
+    instance.shipFromAddress = expectedValue;
+    expect(instance.shipFromAddress).to.equal(expectedValue);
+  });
+
+  it('should have the property packageDimensions', () => {
+    // verify property exists
+    expect(instance).to.have.property('packageDimensions');
+
+    // set and verify value
+    const expectedValue = generateMockData('PackageDimensions');
+    instance.packageDimensions = expectedValue;
+    expect(instance.packageDimensions).to.equal(expectedValue);
+  });
+
+  it('should have the property weight', () => {
+    // verify property exists
+    expect(instance).to.have.property('weight');
+
+    // set and verify value
+    const expectedValue = generateMockData('Weight');
+    instance.weight = expectedValue;
+    expect(instance.weight).to.equal(expectedValue);
+  });
+
+  it('should have the property mustArriveByDate', () => {
+    // verify property exists
+    expect(instance).to.have.property('mustArriveByDate');
+
+    // set and verify value
+    const expectedValue = generateMockData('Date');
+    instance.mustArriveByDate = expectedValue;
+    expect(instance.mustArriveByDate).to.equal(expectedValue);
+  });
+
+  it('should have the property shipDate', () => {
+    // verify property exists
+    expect(instance).to.have.property('shipDate');
+
+    // set and verify value
+    const expectedValue = generateMockData('Date');
+    instance.shipDate = expectedValue;
+    expect(instance.shipDate).to.equal(expectedValue);
+  });
+
+  it('should have the property shippingServiceOptions', () => {
+    // verify property exists
+    expect(instance).to.have.property('shippingServiceOptions');
+
+    // set and verify value
+    const expectedValue = generateMockData('ShippingServiceOptions');
+    instance.shippingServiceOptions = expectedValue;
+    expect(instance.shippingServiceOptions).to.equal(expectedValue);
+  });
+
+  it('should have the property labelCustomization', () => {
+    // verify property exists
+    expect(instance).to.have.property('labelCustomization');
+
+    // set and verify value
+    const expectedValue = generateMockData('LabelCustomization');
+    instance.labelCustomization = expectedValue;
+    expect(instance.labelCustomization).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForMerchantFulfillment[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

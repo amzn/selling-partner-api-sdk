@@ -11,123 +11,110 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.AmazonShippingApi);
+import expect from 'expect.js';
+import * as AmazonShippingApi from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new AmazonShippingApi.IneligibleRate();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(AmazonShippingApi.IneligibleRate.prototype);
   }
-}(this, function(expect, AmazonShippingApi) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new AmazonShippingApi.IneligibleRate();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(AmazonShippingApi.IneligibleRate.prototype);
-    }
+describe('IneligibleRate', () => {
+  it('should create an instance of IneligibleRate', () => {
+    expect(instance).to.be.a(AmazonShippingApi.IneligibleRate);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property serviceId', () => {
+    // verify property exists
+    expect(instance).to.have.property('serviceId');
 
-  describe('IneligibleRate', function() {
-    it('should create an instance of IneligibleRate', function() {
-      expect(instance).to.be.a(AmazonShippingApi.IneligibleRate);
-    });
-
-    it('should have the property serviceId', function() {
-      // verify property exists
-      expect(instance).to.have.property('serviceId');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.serviceId = expectedValue;
-      expect(instance.serviceId).to.equal(expectedValue);
-    });
-
-    it('should have the property serviceName', function() {
-      // verify property exists
-      expect(instance).to.have.property('serviceName');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.serviceName = expectedValue;
-      expect(instance.serviceName).to.equal(expectedValue);
-    });
-
-    it('should have the property carrierName', function() {
-      // verify property exists
-      expect(instance).to.have.property('carrierName');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.carrierName = expectedValue;
-      expect(instance.carrierName).to.equal(expectedValue);
-    });
-
-    it('should have the property carrierId', function() {
-      // verify property exists
-      expect(instance).to.have.property('carrierId');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.carrierId = expectedValue;
-      expect(instance.carrierId).to.equal(expectedValue);
-    });
-
-    it('should have the property ineligibilityReasons', function() {
-      // verify property exists
-      expect(instance).to.have.property('ineligibilityReasons');
-
-      // set and verify value
-      var expectedValue = generateMockData('IneligibilityReason', true);
-      instance.ineligibilityReasons = expectedValue;
-      expect(instance.ineligibilityReasons).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.serviceId = expectedValue;
+    expect(instance.serviceId).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property serviceName', () => {
+    // verify property exists
+    expect(instance).to.have.property('serviceName');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.serviceName = expectedValue;
+    expect(instance.serviceName).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = AmazonShippingApi[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property carrierName', () => {
+    // verify property exists
+    expect(instance).to.have.property('carrierName');
+
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.carrierName = expectedValue;
+    expect(instance.carrierName).to.equal(expectedValue);
+  });
+
+  it('should have the property carrierId', () => {
+    // verify property exists
+    expect(instance).to.have.property('carrierId');
+
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.carrierId = expectedValue;
+    expect(instance.carrierId).to.equal(expectedValue);
+  });
+
+  it('should have the property ineligibilityReasons', () => {
+    // verify property exists
+    expect(instance).to.have.property('ineligibilityReasons');
+
+    // set and verify value
+    const expectedValue = generateMockData('IneligibilityReason', true);
+    instance.ineligibilityReasons = expectedValue;
+    expect(instance.ineligibilityReasons).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = AmazonShippingApi[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

@@ -11,58 +11,47 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', 'sinon', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('sinon'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.sinon, root.SellingPartnerApiForServices);
+import expect from 'expect.js';
+import sinon from 'sinon';
+import * as SellingPartnerApiForServices from '../../src/index.js';
+
+let instance;
+let sandbox;
+const testEndpoint = 'https://localhost:3000';
+const testAccessToken = "testAccessToken";
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
   }
-}(this, function(expect, sinon, SellingPartnerApiForServices) {
-  'use strict';
 
-  var instance;
-  var sandbox;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
-
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
-
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
-
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForServices[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForServices[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-  
+}
 
 // Generate mock requests and responses for each operation
 const mockaddAppointmentForServiceJobByServiceJobIdData = {
@@ -257,1029 +246,875 @@ const mockupdateScheduleData = {
   }
 };
 
-  beforeEach(function() {
+describe('ServiceApi', () => {
+  beforeEach(() => {
     sandbox = sinon.createSandbox();
-    var apiClientInstance = new SellingPartnerApiForServices.ApiClient(testEndpoint);
+    const apiClientInstance = new SellingPartnerApiForServices.ApiClient(testEndpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
     sandbox.stub(apiClientInstance, 'callApi');
     instance = new SellingPartnerApiForServices.ServiceApi(apiClientInstance);
   });
 
-  afterEach(function() {
+  afterEach(() => {
     sandbox.restore();
   });
 
-  describe('ServiceApi', function() {
-    describe('addAppointmentForServiceJobByServiceJobId', function() {
-      
-      it('should successfully call addAppointmentForServiceJobByServiceJobId', function(done) {
-        instance.apiClient.callApi.resolves(mockaddAppointmentForServiceJobByServiceJobIdData.response);
+  describe('addAppointmentForServiceJobByServiceJobId', () => {
+    it('should successfully call addAppointmentForServiceJobByServiceJobId', async () => {
+      instance.apiClient.callApi.resolves(mockaddAppointmentForServiceJobByServiceJobIdData.response);
 
+      const params = [
+        mockaddAppointmentForServiceJobByServiceJobIdData.request['serviceJobId'],
+        mockaddAppointmentForServiceJobByServiceJobIdData.request['body']
+      ];
+      const data = await instance.addAppointmentForServiceJobByServiceJobId(...params);
+
+      expect(data instanceof SellingPartnerApiForServices.SetAppointmentResponse).to.be.true;
+    });
+
+    it('should successfully call addAppointmentForServiceJobByServiceJobIdWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockaddAppointmentForServiceJobByServiceJobIdData.response);
+
+      const params = [
+        mockaddAppointmentForServiceJobByServiceJobIdData.request['serviceJobId'],
+        mockaddAppointmentForServiceJobByServiceJobIdData.request['body']
+      ];
+      const response = await instance.addAppointmentForServiceJobByServiceJobIdWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockaddAppointmentForServiceJobByServiceJobIdData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
         const params = [
           mockaddAppointmentForServiceJobByServiceJobIdData.request['serviceJobId'],
           mockaddAppointmentForServiceJobByServiceJobIdData.request['body']
         ];
-        instance.addAppointmentForServiceJobByServiceJobId(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForServices.SetAppointmentResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call addAppointmentForServiceJobByServiceJobIdWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockaddAppointmentForServiceJobByServiceJobIdData.response);
-
-        const params = [
-          mockaddAppointmentForServiceJobByServiceJobIdData.request['serviceJobId'],
-          mockaddAppointmentForServiceJobByServiceJobIdData.request['body']
-        ];
-        instance.addAppointmentForServiceJobByServiceJobIdWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockaddAppointmentForServiceJobByServiceJobIdData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockaddAppointmentForServiceJobByServiceJobIdData.request['serviceJobId'],
-          mockaddAppointmentForServiceJobByServiceJobIdData.request['body']
-        ];
-        instance.addAppointmentForServiceJobByServiceJobId(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('assignAppointmentResources', function() {
-      
-      it('should successfully call assignAppointmentResources', function(done) {
-        instance.apiClient.callApi.resolves(mockassignAppointmentResourcesData.response);
-
-        const params = [
-          mockassignAppointmentResourcesData.request['serviceJobId'],
-          mockassignAppointmentResourcesData.request['appointmentId'],
-          mockassignAppointmentResourcesData.request['body']
-        ];
-        instance.assignAppointmentResources(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForServices.AssignAppointmentResourcesResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call assignAppointmentResourcesWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockassignAppointmentResourcesData.response);
-
-        const params = [
-          mockassignAppointmentResourcesData.request['serviceJobId'],
-          mockassignAppointmentResourcesData.request['appointmentId'],
-          mockassignAppointmentResourcesData.request['body']
-        ];
-        instance.assignAppointmentResourcesWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockassignAppointmentResourcesData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockassignAppointmentResourcesData.request['serviceJobId'],
-          mockassignAppointmentResourcesData.request['appointmentId'],
-          mockassignAppointmentResourcesData.request['body']
-        ];
-        instance.assignAppointmentResources(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('cancelReservation', function() {
-      
-      it('should successfully call cancelReservation', function(done) {
-        instance.apiClient.callApi.resolves(mockcancelReservationData.response);
-
-        const params = [
-          mockcancelReservationData.request['reservationId'],
-          mockcancelReservationData.request['marketplaceIds']
-        ];
-        instance.cancelReservation(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForServices.CancelReservationResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call cancelReservationWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockcancelReservationData.response);
-
-        const params = [
-          mockcancelReservationData.request['reservationId'],
-          mockcancelReservationData.request['marketplaceIds']
-        ];
-        instance.cancelReservationWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockcancelReservationData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockcancelReservationData.request['reservationId'],
-          mockcancelReservationData.request['marketplaceIds']
-        ];
-        instance.cancelReservation(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('cancelServiceJobByServiceJobId', function() {
-      
-      it('should successfully call cancelServiceJobByServiceJobId', function(done) {
-        instance.apiClient.callApi.resolves(mockcancelServiceJobByServiceJobIdData.response);
-
-        const params = [
-          mockcancelServiceJobByServiceJobIdData.request['serviceJobId'],
-          mockcancelServiceJobByServiceJobIdData.request['cancellationReasonCode']
-        ];
-        instance.cancelServiceJobByServiceJobId(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForServices.CancelServiceJobByServiceJobIdResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call cancelServiceJobByServiceJobIdWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockcancelServiceJobByServiceJobIdData.response);
-
-        const params = [
-          mockcancelServiceJobByServiceJobIdData.request['serviceJobId'],
-          mockcancelServiceJobByServiceJobIdData.request['cancellationReasonCode']
-        ];
-        instance.cancelServiceJobByServiceJobIdWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockcancelServiceJobByServiceJobIdData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockcancelServiceJobByServiceJobIdData.request['serviceJobId'],
-          mockcancelServiceJobByServiceJobIdData.request['cancellationReasonCode']
-        ];
-        instance.cancelServiceJobByServiceJobId(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('completeServiceJobByServiceJobId', function() {
-      
-      it('should successfully call completeServiceJobByServiceJobId', function(done) {
-        instance.apiClient.callApi.resolves(mockcompleteServiceJobByServiceJobIdData.response);
-
-        const params = [
-          mockcompleteServiceJobByServiceJobIdData.request['serviceJobId']
-        ];
-        instance.completeServiceJobByServiceJobId(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForServices.CompleteServiceJobByServiceJobIdResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call completeServiceJobByServiceJobIdWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockcompleteServiceJobByServiceJobIdData.response);
-
-        const params = [
-          mockcompleteServiceJobByServiceJobIdData.request['serviceJobId']
-        ];
-        instance.completeServiceJobByServiceJobIdWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockcompleteServiceJobByServiceJobIdData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockcompleteServiceJobByServiceJobIdData.request['serviceJobId']
-        ];
-        instance.completeServiceJobByServiceJobId(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('createReservation', function() {
-      
-      it('should successfully call createReservation', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateReservationData.response);
-
-        const params = [
-          mockcreateReservationData.request['marketplaceIds'],
-          mockcreateReservationData.request['body']
-        ];
-        instance.createReservation(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForServices.CreateReservationResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call createReservationWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateReservationData.response);
-
-        const params = [
-          mockcreateReservationData.request['marketplaceIds'],
-          mockcreateReservationData.request['body']
-        ];
-        instance.createReservationWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockcreateReservationData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockcreateReservationData.request['marketplaceIds'],
-          mockcreateReservationData.request['body']
-        ];
-        instance.createReservation(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('createServiceDocumentUploadDestination', function() {
-      
-      it('should successfully call createServiceDocumentUploadDestination', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateServiceDocumentUploadDestinationData.response);
-
-        const params = [
-          mockcreateServiceDocumentUploadDestinationData.request['body']
-        ];
-        instance.createServiceDocumentUploadDestination(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForServices.CreateServiceDocumentUploadDestination).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call createServiceDocumentUploadDestinationWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateServiceDocumentUploadDestinationData.response);
-
-        const params = [
-          mockcreateServiceDocumentUploadDestinationData.request['body']
-        ];
-        instance.createServiceDocumentUploadDestinationWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockcreateServiceDocumentUploadDestinationData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockcreateServiceDocumentUploadDestinationData.request['body']
-        ];
-        instance.createServiceDocumentUploadDestination(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('getAppointmentSlots', function() {
-      
-      it('should successfully call getAppointmentSlots', function(done) {
-        instance.apiClient.callApi.resolves(mockgetAppointmentSlotsData.response);
-
-        const params = [
-          mockgetAppointmentSlotsData.request['asin'],
-          mockgetAppointmentSlotsData.request['storeId'],
-          mockgetAppointmentSlotsData.request['marketplaceIds'],
-        ];
-        instance.getAppointmentSlots(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForServices.GetAppointmentSlotsResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call getAppointmentSlotsWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetAppointmentSlotsData.response);
-
-        const params = [
-          mockgetAppointmentSlotsData.request['asin'],
-          mockgetAppointmentSlotsData.request['storeId'],
-          mockgetAppointmentSlotsData.request['marketplaceIds'],
-        ];
-        instance.getAppointmentSlotsWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetAppointmentSlotsData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgetAppointmentSlotsData.request['asin'],
-          mockgetAppointmentSlotsData.request['storeId'],
-          mockgetAppointmentSlotsData.request['marketplaceIds'],
-        ];
-        instance.getAppointmentSlots(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('getAppointmmentSlotsByJobId', function() {
-      
-      it('should successfully call getAppointmmentSlotsByJobId', function(done) {
-        instance.apiClient.callApi.resolves(mockgetAppointmmentSlotsByJobIdData.response);
-
-        const params = [
-          mockgetAppointmmentSlotsByJobIdData.request['serviceJobId'],
-          mockgetAppointmmentSlotsByJobIdData.request['marketplaceIds'],
-        ];
-        instance.getAppointmmentSlotsByJobId(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForServices.GetAppointmentSlotsResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call getAppointmmentSlotsByJobIdWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetAppointmmentSlotsByJobIdData.response);
-
-        const params = [
-          mockgetAppointmmentSlotsByJobIdData.request['serviceJobId'],
-          mockgetAppointmmentSlotsByJobIdData.request['marketplaceIds'],
-        ];
-        instance.getAppointmmentSlotsByJobIdWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetAppointmmentSlotsByJobIdData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgetAppointmmentSlotsByJobIdData.request['serviceJobId'],
-          mockgetAppointmmentSlotsByJobIdData.request['marketplaceIds'],
-        ];
-        instance.getAppointmmentSlotsByJobId(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('getFixedSlotCapacity', function() {
-      
-      it('should successfully call getFixedSlotCapacity', function(done) {
-        instance.apiClient.callApi.resolves(mockgetFixedSlotCapacityData.response);
-
-        const params = [
-          mockgetFixedSlotCapacityData.request['resourceId'],
-          mockgetFixedSlotCapacityData.request['marketplaceIds'],
-          mockgetFixedSlotCapacityData.request['body'],
-        ];
-        instance.getFixedSlotCapacity(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForServices.FixedSlotCapacity).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call getFixedSlotCapacityWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetFixedSlotCapacityData.response);
-
-        const params = [
-          mockgetFixedSlotCapacityData.request['resourceId'],
-          mockgetFixedSlotCapacityData.request['marketplaceIds'],
-          mockgetFixedSlotCapacityData.request['body'],
-        ];
-        instance.getFixedSlotCapacityWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetFixedSlotCapacityData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgetFixedSlotCapacityData.request['resourceId'],
-          mockgetFixedSlotCapacityData.request['marketplaceIds'],
-          mockgetFixedSlotCapacityData.request['body'],
-        ];
-        instance.getFixedSlotCapacity(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('getRangeSlotCapacity', function() {
-      
-      it('should successfully call getRangeSlotCapacity', function(done) {
-        instance.apiClient.callApi.resolves(mockgetRangeSlotCapacityData.response);
-
-        const params = [
-          mockgetRangeSlotCapacityData.request['resourceId'],
-          mockgetRangeSlotCapacityData.request['marketplaceIds'],
-          mockgetRangeSlotCapacityData.request['body'],
-        ];
-        instance.getRangeSlotCapacity(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForServices.RangeSlotCapacity).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call getRangeSlotCapacityWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetRangeSlotCapacityData.response);
-
-        const params = [
-          mockgetRangeSlotCapacityData.request['resourceId'],
-          mockgetRangeSlotCapacityData.request['marketplaceIds'],
-          mockgetRangeSlotCapacityData.request['body'],
-        ];
-        instance.getRangeSlotCapacityWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetRangeSlotCapacityData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgetRangeSlotCapacityData.request['resourceId'],
-          mockgetRangeSlotCapacityData.request['marketplaceIds'],
-          mockgetRangeSlotCapacityData.request['body'],
-        ];
-        instance.getRangeSlotCapacity(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('getServiceJobByServiceJobId', function() {
-      
-      it('should successfully call getServiceJobByServiceJobId', function(done) {
-        instance.apiClient.callApi.resolves(mockgetServiceJobByServiceJobIdData.response);
-
-        const params = [
-          mockgetServiceJobByServiceJobIdData.request['serviceJobId']
-        ];
-        instance.getServiceJobByServiceJobId(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForServices.GetServiceJobByServiceJobIdResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call getServiceJobByServiceJobIdWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetServiceJobByServiceJobIdData.response);
-
-        const params = [
-          mockgetServiceJobByServiceJobIdData.request['serviceJobId']
-        ];
-        instance.getServiceJobByServiceJobIdWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetServiceJobByServiceJobIdData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgetServiceJobByServiceJobIdData.request['serviceJobId']
-        ];
-        instance.getServiceJobByServiceJobId(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('getServiceJobs', function() {
-      
-      it('should successfully call getServiceJobs', function(done) {
-        instance.apiClient.callApi.resolves(mockgetServiceJobsData.response);
-
-        const params = [
-          mockgetServiceJobsData.request['marketplaceIds'],
-        ];
-        instance.getServiceJobs(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForServices.GetServiceJobsResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call getServiceJobsWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetServiceJobsData.response);
-
-        const params = [
-          mockgetServiceJobsData.request['marketplaceIds'],
-        ];
-        instance.getServiceJobsWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetServiceJobsData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgetServiceJobsData.request['marketplaceIds'],
-        ];
-        instance.getServiceJobs(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('rescheduleAppointmentForServiceJobByServiceJobId', function() {
-      
-      it('should successfully call rescheduleAppointmentForServiceJobByServiceJobId', function(done) {
-        instance.apiClient.callApi.resolves(mockrescheduleAppointmentForServiceJobByServiceJobIdData.response);
-
-        const params = [
-          mockrescheduleAppointmentForServiceJobByServiceJobIdData.request['serviceJobId'],
-          mockrescheduleAppointmentForServiceJobByServiceJobIdData.request['appointmentId'],
-          mockrescheduleAppointmentForServiceJobByServiceJobIdData.request['body']
-        ];
-        instance.rescheduleAppointmentForServiceJobByServiceJobId(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForServices.SetAppointmentResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call rescheduleAppointmentForServiceJobByServiceJobIdWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockrescheduleAppointmentForServiceJobByServiceJobIdData.response);
-
-        const params = [
-          mockrescheduleAppointmentForServiceJobByServiceJobIdData.request['serviceJobId'],
-          mockrescheduleAppointmentForServiceJobByServiceJobIdData.request['appointmentId'],
-          mockrescheduleAppointmentForServiceJobByServiceJobIdData.request['body']
-        ];
-        instance.rescheduleAppointmentForServiceJobByServiceJobIdWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockrescheduleAppointmentForServiceJobByServiceJobIdData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockrescheduleAppointmentForServiceJobByServiceJobIdData.request['serviceJobId'],
-          mockrescheduleAppointmentForServiceJobByServiceJobIdData.request['appointmentId'],
-          mockrescheduleAppointmentForServiceJobByServiceJobIdData.request['body']
-        ];
-        instance.rescheduleAppointmentForServiceJobByServiceJobId(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('setAppointmentFulfillmentData', function() {
-      
-      it('should successfully call setAppointmentFulfillmentData', function(done) {
-        instance.apiClient.callApi.resolves(mocksetAppointmentFulfillmentDataData.response);
-
-        const params = [
-          mocksetAppointmentFulfillmentDataData.request['serviceJobId'],
-          mocksetAppointmentFulfillmentDataData.request['appointmentId'],
-          mocksetAppointmentFulfillmentDataData.request['body']
-        ];
-        instance.setAppointmentFulfillmentData(...params)
-          .then(function(data) {
-            expect(data instanceof String).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call setAppointmentFulfillmentDataWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mocksetAppointmentFulfillmentDataData.response);
-
-        const params = [
-          mocksetAppointmentFulfillmentDataData.request['serviceJobId'],
-          mocksetAppointmentFulfillmentDataData.request['appointmentId'],
-          mocksetAppointmentFulfillmentDataData.request['body']
-        ];
-        instance.setAppointmentFulfillmentDataWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mocksetAppointmentFulfillmentDataData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mocksetAppointmentFulfillmentDataData.request['serviceJobId'],
-          mocksetAppointmentFulfillmentDataData.request['appointmentId'],
-          mocksetAppointmentFulfillmentDataData.request['body']
-        ];
-        instance.setAppointmentFulfillmentData(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('updateReservation', function() {
-      
-      it('should successfully call updateReservation', function(done) {
-        instance.apiClient.callApi.resolves(mockupdateReservationData.response);
-
-        const params = [
-          mockupdateReservationData.request['reservationId'],
-          mockupdateReservationData.request['marketplaceIds'],
-          mockupdateReservationData.request['body']
-        ];
-        instance.updateReservation(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForServices.UpdateReservationResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call updateReservationWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockupdateReservationData.response);
-
-        const params = [
-          mockupdateReservationData.request['reservationId'],
-          mockupdateReservationData.request['marketplaceIds'],
-          mockupdateReservationData.request['body']
-        ];
-        instance.updateReservationWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockupdateReservationData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockupdateReservationData.request['reservationId'],
-          mockupdateReservationData.request['marketplaceIds'],
-          mockupdateReservationData.request['body']
-        ];
-        instance.updateReservation(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('updateSchedule', function() {
-      
-      it('should successfully call updateSchedule', function(done) {
-        instance.apiClient.callApi.resolves(mockupdateScheduleData.response);
-
-        const params = [
-          mockupdateScheduleData.request['resourceId'],
-          mockupdateScheduleData.request['marketplaceIds'],
-          mockupdateScheduleData.request['body']
-        ];
-        instance.updateSchedule(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForServices.UpdateScheduleResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call updateScheduleWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockupdateScheduleData.response);
-
-        const params = [
-          mockupdateScheduleData.request['resourceId'],
-          mockupdateScheduleData.request['marketplaceIds'],
-          mockupdateScheduleData.request['body']
-        ];
-        instance.updateScheduleWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockupdateScheduleData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockupdateScheduleData.request['resourceId'],
-          mockupdateScheduleData.request['marketplaceIds'],
-          mockupdateScheduleData.request['body']
-        ];
-        instance.updateSchedule(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-
-    describe('constructor', function() {
-      it('should use default ApiClient when none provided', function() {
-        var defaultInstance = new SellingPartnerApiForServices.ServiceApi();
-        expect(defaultInstance.apiClient).to.equal(SellingPartnerApiForServices.ApiClient.instance);
-      });
-
-      it('should use provided ApiClient', function() {
-        var customClient = new SellingPartnerApiForServices.ApiClient();
-        var customInstance = new SellingPartnerApiForServices.ServiceApi(customClient);
-        expect(customInstance.apiClient).to.equal(customClient);
-      });
+        await instance.addAppointmentForServiceJobByServiceJobId(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
     });
   });
-}));
+  describe('assignAppointmentResources', () => {
+    it('should successfully call assignAppointmentResources', async () => {
+      instance.apiClient.callApi.resolves(mockassignAppointmentResourcesData.response);
+
+      const params = [
+        mockassignAppointmentResourcesData.request['serviceJobId'],
+        mockassignAppointmentResourcesData.request['appointmentId'],
+        mockassignAppointmentResourcesData.request['body']
+      ];
+      const data = await instance.assignAppointmentResources(...params);
+
+      expect(data instanceof SellingPartnerApiForServices.AssignAppointmentResourcesResponse).to.be.true;
+    });
+
+    it('should successfully call assignAppointmentResourcesWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockassignAppointmentResourcesData.response);
+
+      const params = [
+        mockassignAppointmentResourcesData.request['serviceJobId'],
+        mockassignAppointmentResourcesData.request['appointmentId'],
+        mockassignAppointmentResourcesData.request['body']
+      ];
+      const response = await instance.assignAppointmentResourcesWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockassignAppointmentResourcesData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockassignAppointmentResourcesData.request['serviceJobId'],
+          mockassignAppointmentResourcesData.request['appointmentId'],
+          mockassignAppointmentResourcesData.request['body']
+        ];
+        await instance.assignAppointmentResources(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('cancelReservation', () => {
+    it('should successfully call cancelReservation', async () => {
+      instance.apiClient.callApi.resolves(mockcancelReservationData.response);
+
+      const params = [
+        mockcancelReservationData.request['reservationId'],
+        mockcancelReservationData.request['marketplaceIds']
+      ];
+      const data = await instance.cancelReservation(...params);
+
+      expect(data instanceof SellingPartnerApiForServices.CancelReservationResponse).to.be.true;
+    });
+
+    it('should successfully call cancelReservationWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockcancelReservationData.response);
+
+      const params = [
+        mockcancelReservationData.request['reservationId'],
+        mockcancelReservationData.request['marketplaceIds']
+      ];
+      const response = await instance.cancelReservationWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockcancelReservationData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockcancelReservationData.request['reservationId'],
+          mockcancelReservationData.request['marketplaceIds']
+        ];
+        await instance.cancelReservation(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('cancelServiceJobByServiceJobId', () => {
+    it('should successfully call cancelServiceJobByServiceJobId', async () => {
+      instance.apiClient.callApi.resolves(mockcancelServiceJobByServiceJobIdData.response);
+
+      const params = [
+        mockcancelServiceJobByServiceJobIdData.request['serviceJobId'],
+        mockcancelServiceJobByServiceJobIdData.request['cancellationReasonCode']
+      ];
+      const data = await instance.cancelServiceJobByServiceJobId(...params);
+
+      expect(data instanceof SellingPartnerApiForServices.CancelServiceJobByServiceJobIdResponse).to.be.true;
+    });
+
+    it('should successfully call cancelServiceJobByServiceJobIdWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockcancelServiceJobByServiceJobIdData.response);
+
+      const params = [
+        mockcancelServiceJobByServiceJobIdData.request['serviceJobId'],
+        mockcancelServiceJobByServiceJobIdData.request['cancellationReasonCode']
+      ];
+      const response = await instance.cancelServiceJobByServiceJobIdWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockcancelServiceJobByServiceJobIdData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockcancelServiceJobByServiceJobIdData.request['serviceJobId'],
+          mockcancelServiceJobByServiceJobIdData.request['cancellationReasonCode']
+        ];
+        await instance.cancelServiceJobByServiceJobId(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('completeServiceJobByServiceJobId', () => {
+    it('should successfully call completeServiceJobByServiceJobId', async () => {
+      instance.apiClient.callApi.resolves(mockcompleteServiceJobByServiceJobIdData.response);
+
+      const params = [
+        mockcompleteServiceJobByServiceJobIdData.request['serviceJobId']
+      ];
+      const data = await instance.completeServiceJobByServiceJobId(...params);
+
+      expect(data instanceof SellingPartnerApiForServices.CompleteServiceJobByServiceJobIdResponse).to.be.true;
+    });
+
+    it('should successfully call completeServiceJobByServiceJobIdWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockcompleteServiceJobByServiceJobIdData.response);
+
+      const params = [
+        mockcompleteServiceJobByServiceJobIdData.request['serviceJobId']
+      ];
+      const response = await instance.completeServiceJobByServiceJobIdWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockcompleteServiceJobByServiceJobIdData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockcompleteServiceJobByServiceJobIdData.request['serviceJobId']
+        ];
+        await instance.completeServiceJobByServiceJobId(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('createReservation', () => {
+    it('should successfully call createReservation', async () => {
+      instance.apiClient.callApi.resolves(mockcreateReservationData.response);
+
+      const params = [
+        mockcreateReservationData.request['marketplaceIds'],
+        mockcreateReservationData.request['body']
+      ];
+      const data = await instance.createReservation(...params);
+
+      expect(data instanceof SellingPartnerApiForServices.CreateReservationResponse).to.be.true;
+    });
+
+    it('should successfully call createReservationWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockcreateReservationData.response);
+
+      const params = [
+        mockcreateReservationData.request['marketplaceIds'],
+        mockcreateReservationData.request['body']
+      ];
+      const response = await instance.createReservationWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockcreateReservationData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockcreateReservationData.request['marketplaceIds'],
+          mockcreateReservationData.request['body']
+        ];
+        await instance.createReservation(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('createServiceDocumentUploadDestination', () => {
+    it('should successfully call createServiceDocumentUploadDestination', async () => {
+      instance.apiClient.callApi.resolves(mockcreateServiceDocumentUploadDestinationData.response);
+
+      const params = [
+        mockcreateServiceDocumentUploadDestinationData.request['body']
+      ];
+      const data = await instance.createServiceDocumentUploadDestination(...params);
+
+      expect(data instanceof SellingPartnerApiForServices.CreateServiceDocumentUploadDestination).to.be.true;
+    });
+
+    it('should successfully call createServiceDocumentUploadDestinationWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockcreateServiceDocumentUploadDestinationData.response);
+
+      const params = [
+        mockcreateServiceDocumentUploadDestinationData.request['body']
+      ];
+      const response = await instance.createServiceDocumentUploadDestinationWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockcreateServiceDocumentUploadDestinationData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockcreateServiceDocumentUploadDestinationData.request['body']
+        ];
+        await instance.createServiceDocumentUploadDestination(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('getAppointmentSlots', () => {
+    it('should successfully call getAppointmentSlots', async () => {
+      instance.apiClient.callApi.resolves(mockgetAppointmentSlotsData.response);
+
+      const params = [
+        mockgetAppointmentSlotsData.request['asin'],
+        mockgetAppointmentSlotsData.request['storeId'],
+        mockgetAppointmentSlotsData.request['marketplaceIds'],
+      ];
+      const data = await instance.getAppointmentSlots(...params);
+
+      expect(data instanceof SellingPartnerApiForServices.GetAppointmentSlotsResponse).to.be.true;
+    });
+
+    it('should successfully call getAppointmentSlotsWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetAppointmentSlotsData.response);
+
+      const params = [
+        mockgetAppointmentSlotsData.request['asin'],
+        mockgetAppointmentSlotsData.request['storeId'],
+        mockgetAppointmentSlotsData.request['marketplaceIds'],
+      ];
+      const response = await instance.getAppointmentSlotsWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetAppointmentSlotsData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgetAppointmentSlotsData.request['asin'],
+          mockgetAppointmentSlotsData.request['storeId'],
+          mockgetAppointmentSlotsData.request['marketplaceIds'],
+        ];
+        await instance.getAppointmentSlots(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('getAppointmmentSlotsByJobId', () => {
+    it('should successfully call getAppointmmentSlotsByJobId', async () => {
+      instance.apiClient.callApi.resolves(mockgetAppointmmentSlotsByJobIdData.response);
+
+      const params = [
+        mockgetAppointmmentSlotsByJobIdData.request['serviceJobId'],
+        mockgetAppointmmentSlotsByJobIdData.request['marketplaceIds'],
+      ];
+      const data = await instance.getAppointmmentSlotsByJobId(...params);
+
+      expect(data instanceof SellingPartnerApiForServices.GetAppointmentSlotsResponse).to.be.true;
+    });
+
+    it('should successfully call getAppointmmentSlotsByJobIdWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetAppointmmentSlotsByJobIdData.response);
+
+      const params = [
+        mockgetAppointmmentSlotsByJobIdData.request['serviceJobId'],
+        mockgetAppointmmentSlotsByJobIdData.request['marketplaceIds'],
+      ];
+      const response = await instance.getAppointmmentSlotsByJobIdWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetAppointmmentSlotsByJobIdData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgetAppointmmentSlotsByJobIdData.request['serviceJobId'],
+          mockgetAppointmmentSlotsByJobIdData.request['marketplaceIds'],
+        ];
+        await instance.getAppointmmentSlotsByJobId(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('getFixedSlotCapacity', () => {
+    it('should successfully call getFixedSlotCapacity', async () => {
+      instance.apiClient.callApi.resolves(mockgetFixedSlotCapacityData.response);
+
+      const params = [
+        mockgetFixedSlotCapacityData.request['resourceId'],
+        mockgetFixedSlotCapacityData.request['marketplaceIds'],
+        mockgetFixedSlotCapacityData.request['body'],
+      ];
+      const data = await instance.getFixedSlotCapacity(...params);
+
+      expect(data instanceof SellingPartnerApiForServices.FixedSlotCapacity).to.be.true;
+    });
+
+    it('should successfully call getFixedSlotCapacityWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetFixedSlotCapacityData.response);
+
+      const params = [
+        mockgetFixedSlotCapacityData.request['resourceId'],
+        mockgetFixedSlotCapacityData.request['marketplaceIds'],
+        mockgetFixedSlotCapacityData.request['body'],
+      ];
+      const response = await instance.getFixedSlotCapacityWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetFixedSlotCapacityData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgetFixedSlotCapacityData.request['resourceId'],
+          mockgetFixedSlotCapacityData.request['marketplaceIds'],
+          mockgetFixedSlotCapacityData.request['body'],
+        ];
+        await instance.getFixedSlotCapacity(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('getRangeSlotCapacity', () => {
+    it('should successfully call getRangeSlotCapacity', async () => {
+      instance.apiClient.callApi.resolves(mockgetRangeSlotCapacityData.response);
+
+      const params = [
+        mockgetRangeSlotCapacityData.request['resourceId'],
+        mockgetRangeSlotCapacityData.request['marketplaceIds'],
+        mockgetRangeSlotCapacityData.request['body'],
+      ];
+      const data = await instance.getRangeSlotCapacity(...params);
+
+      expect(data instanceof SellingPartnerApiForServices.RangeSlotCapacity).to.be.true;
+    });
+
+    it('should successfully call getRangeSlotCapacityWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetRangeSlotCapacityData.response);
+
+      const params = [
+        mockgetRangeSlotCapacityData.request['resourceId'],
+        mockgetRangeSlotCapacityData.request['marketplaceIds'],
+        mockgetRangeSlotCapacityData.request['body'],
+      ];
+      const response = await instance.getRangeSlotCapacityWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetRangeSlotCapacityData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgetRangeSlotCapacityData.request['resourceId'],
+          mockgetRangeSlotCapacityData.request['marketplaceIds'],
+          mockgetRangeSlotCapacityData.request['body'],
+        ];
+        await instance.getRangeSlotCapacity(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('getServiceJobByServiceJobId', () => {
+    it('should successfully call getServiceJobByServiceJobId', async () => {
+      instance.apiClient.callApi.resolves(mockgetServiceJobByServiceJobIdData.response);
+
+      const params = [
+        mockgetServiceJobByServiceJobIdData.request['serviceJobId']
+      ];
+      const data = await instance.getServiceJobByServiceJobId(...params);
+
+      expect(data instanceof SellingPartnerApiForServices.GetServiceJobByServiceJobIdResponse).to.be.true;
+    });
+
+    it('should successfully call getServiceJobByServiceJobIdWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetServiceJobByServiceJobIdData.response);
+
+      const params = [
+        mockgetServiceJobByServiceJobIdData.request['serviceJobId']
+      ];
+      const response = await instance.getServiceJobByServiceJobIdWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetServiceJobByServiceJobIdData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgetServiceJobByServiceJobIdData.request['serviceJobId']
+        ];
+        await instance.getServiceJobByServiceJobId(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('getServiceJobs', () => {
+    it('should successfully call getServiceJobs', async () => {
+      instance.apiClient.callApi.resolves(mockgetServiceJobsData.response);
+
+      const params = [
+        mockgetServiceJobsData.request['marketplaceIds'],
+      ];
+      const data = await instance.getServiceJobs(...params);
+
+      expect(data instanceof SellingPartnerApiForServices.GetServiceJobsResponse).to.be.true;
+    });
+
+    it('should successfully call getServiceJobsWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetServiceJobsData.response);
+
+      const params = [
+        mockgetServiceJobsData.request['marketplaceIds'],
+      ];
+      const response = await instance.getServiceJobsWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetServiceJobsData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgetServiceJobsData.request['marketplaceIds'],
+        ];
+        await instance.getServiceJobs(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('rescheduleAppointmentForServiceJobByServiceJobId', () => {
+    it('should successfully call rescheduleAppointmentForServiceJobByServiceJobId', async () => {
+      instance.apiClient.callApi.resolves(mockrescheduleAppointmentForServiceJobByServiceJobIdData.response);
+
+      const params = [
+        mockrescheduleAppointmentForServiceJobByServiceJobIdData.request['serviceJobId'],
+        mockrescheduleAppointmentForServiceJobByServiceJobIdData.request['appointmentId'],
+        mockrescheduleAppointmentForServiceJobByServiceJobIdData.request['body']
+      ];
+      const data = await instance.rescheduleAppointmentForServiceJobByServiceJobId(...params);
+
+      expect(data instanceof SellingPartnerApiForServices.SetAppointmentResponse).to.be.true;
+    });
+
+    it('should successfully call rescheduleAppointmentForServiceJobByServiceJobIdWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockrescheduleAppointmentForServiceJobByServiceJobIdData.response);
+
+      const params = [
+        mockrescheduleAppointmentForServiceJobByServiceJobIdData.request['serviceJobId'],
+        mockrescheduleAppointmentForServiceJobByServiceJobIdData.request['appointmentId'],
+        mockrescheduleAppointmentForServiceJobByServiceJobIdData.request['body']
+      ];
+      const response = await instance.rescheduleAppointmentForServiceJobByServiceJobIdWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockrescheduleAppointmentForServiceJobByServiceJobIdData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockrescheduleAppointmentForServiceJobByServiceJobIdData.request['serviceJobId'],
+          mockrescheduleAppointmentForServiceJobByServiceJobIdData.request['appointmentId'],
+          mockrescheduleAppointmentForServiceJobByServiceJobIdData.request['body']
+        ];
+        await instance.rescheduleAppointmentForServiceJobByServiceJobId(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('setAppointmentFulfillmentData', () => {
+    it('should successfully call setAppointmentFulfillmentData', async () => {
+      instance.apiClient.callApi.resolves(mocksetAppointmentFulfillmentDataData.response);
+
+      const params = [
+        mocksetAppointmentFulfillmentDataData.request['serviceJobId'],
+        mocksetAppointmentFulfillmentDataData.request['appointmentId'],
+        mocksetAppointmentFulfillmentDataData.request['body']
+      ];
+      const data = await instance.setAppointmentFulfillmentData(...params);
+
+      expect(data instanceof String).to.be.true;
+    });
+
+    it('should successfully call setAppointmentFulfillmentDataWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mocksetAppointmentFulfillmentDataData.response);
+
+      const params = [
+        mocksetAppointmentFulfillmentDataData.request['serviceJobId'],
+        mocksetAppointmentFulfillmentDataData.request['appointmentId'],
+        mocksetAppointmentFulfillmentDataData.request['body']
+      ];
+      const response = await instance.setAppointmentFulfillmentDataWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mocksetAppointmentFulfillmentDataData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mocksetAppointmentFulfillmentDataData.request['serviceJobId'],
+          mocksetAppointmentFulfillmentDataData.request['appointmentId'],
+          mocksetAppointmentFulfillmentDataData.request['body']
+        ];
+        await instance.setAppointmentFulfillmentData(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('updateReservation', () => {
+    it('should successfully call updateReservation', async () => {
+      instance.apiClient.callApi.resolves(mockupdateReservationData.response);
+
+      const params = [
+        mockupdateReservationData.request['reservationId'],
+        mockupdateReservationData.request['marketplaceIds'],
+        mockupdateReservationData.request['body']
+      ];
+      const data = await instance.updateReservation(...params);
+
+      expect(data instanceof SellingPartnerApiForServices.UpdateReservationResponse).to.be.true;
+    });
+
+    it('should successfully call updateReservationWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockupdateReservationData.response);
+
+      const params = [
+        mockupdateReservationData.request['reservationId'],
+        mockupdateReservationData.request['marketplaceIds'],
+        mockupdateReservationData.request['body']
+      ];
+      const response = await instance.updateReservationWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockupdateReservationData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockupdateReservationData.request['reservationId'],
+          mockupdateReservationData.request['marketplaceIds'],
+          mockupdateReservationData.request['body']
+        ];
+        await instance.updateReservation(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('updateSchedule', () => {
+    it('should successfully call updateSchedule', async () => {
+      instance.apiClient.callApi.resolves(mockupdateScheduleData.response);
+
+      const params = [
+        mockupdateScheduleData.request['resourceId'],
+        mockupdateScheduleData.request['marketplaceIds'],
+        mockupdateScheduleData.request['body']
+      ];
+      const data = await instance.updateSchedule(...params);
+
+      expect(data instanceof SellingPartnerApiForServices.UpdateScheduleResponse).to.be.true;
+    });
+
+    it('should successfully call updateScheduleWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockupdateScheduleData.response);
+
+      const params = [
+        mockupdateScheduleData.request['resourceId'],
+        mockupdateScheduleData.request['marketplaceIds'],
+        mockupdateScheduleData.request['body']
+      ];
+      const response = await instance.updateScheduleWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockupdateScheduleData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockupdateScheduleData.request['resourceId'],
+          mockupdateScheduleData.request['marketplaceIds'],
+          mockupdateScheduleData.request['body']
+        ];
+        await instance.updateSchedule(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+
+  describe('constructor', () => {
+    it('should use default ApiClient when none provided', () => {
+      const defaultInstance = new SellingPartnerApiForServices.ServiceApi();
+      expect(defaultInstance.apiClient).to.equal(SellingPartnerApiForServices.ApiClient.instance);
+    });
+
+    it('should use provided ApiClient', () => {
+      const customClient = new SellingPartnerApiForServices.ApiClient();
+      const customInstance = new SellingPartnerApiForServices.ServiceApi(customClient);
+      expect(customInstance.apiClient).to.equal(customClient);
+    });
+  });
+});

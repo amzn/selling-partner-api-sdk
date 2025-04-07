@@ -18,7 +18,7 @@ import {ApiClient} from '../ApiClient.js';
 * @enum {}
 * @readonly
 */
-export default class QuantityDiscountType {
+export class QuantityDiscountType {
     
         /**
          * value: "QUANTITY_DISCOUNT"

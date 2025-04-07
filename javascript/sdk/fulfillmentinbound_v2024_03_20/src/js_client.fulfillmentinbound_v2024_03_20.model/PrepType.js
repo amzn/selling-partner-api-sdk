@@ -18,7 +18,7 @@ import {ApiClient} from '../ApiClient.js';
 * @enum {}
 * @readonly
 */
-export default class PrepType {
+export class PrepType {
     
         /**
          * value: "ITEM_BLACK_SHRINKWRAP"

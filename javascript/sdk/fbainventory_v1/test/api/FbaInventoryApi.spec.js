@@ -11,58 +11,47 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', 'sinon', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('sinon'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.sinon, root.SellingPartnerApiForFbaInventory);
+import expect from 'expect.js';
+import sinon from 'sinon';
+import * as SellingPartnerApiForFbaInventory from '../../src/index.js';
+
+let instance;
+let sandbox;
+const testEndpoint = 'https://localhost:3000';
+const testAccessToken = "testAccessToken";
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
   }
-}(this, function(expect, sinon, SellingPartnerApiForFbaInventory) {
-  'use strict';
 
-  var instance;
-  var sandbox;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
-
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
-
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
-
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForFbaInventory[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForFbaInventory[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-  
+}
 
 // Generate mock requests and responses for each operation
 const mockaddInventoryData = {
@@ -110,263 +99,226 @@ const mockgetInventorySummariesData = {
   }
 };
 
-  beforeEach(function() {
+describe('FbaInventoryApi', () => {
+  beforeEach(() => {
     sandbox = sinon.createSandbox();
-    var apiClientInstance = new SellingPartnerApiForFbaInventory.ApiClient(testEndpoint);
+    const apiClientInstance = new SellingPartnerApiForFbaInventory.ApiClient(testEndpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
     sandbox.stub(apiClientInstance, 'callApi');
     instance = new SellingPartnerApiForFbaInventory.FbaInventoryApi(apiClientInstance);
   });
 
-  afterEach(function() {
+  afterEach(() => {
     sandbox.restore();
   });
 
-  describe('FbaInventoryApi', function() {
-    describe('addInventory', function() {
-      
-      it('should successfully call addInventory', function(done) {
-        instance.apiClient.callApi.resolves(mockaddInventoryData.response);
+  describe('addInventory', () => {
+    it('should successfully call addInventory', async () => {
+      instance.apiClient.callApi.resolves(mockaddInventoryData.response);
 
+      const params = [
+        mockaddInventoryData.request['xAmznIdempotencyToken'],
+        mockaddInventoryData.request['addInventoryRequestBody']
+      ];
+      const data = await instance.addInventory(...params);
+
+      expect(data instanceof SellingPartnerApiForFbaInventory.AddInventoryResponse).to.be.true;
+    });
+
+    it('should successfully call addInventoryWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockaddInventoryData.response);
+
+      const params = [
+        mockaddInventoryData.request['xAmznIdempotencyToken'],
+        mockaddInventoryData.request['addInventoryRequestBody']
+      ];
+      const response = await instance.addInventoryWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockaddInventoryData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
         const params = [
           mockaddInventoryData.request['xAmznIdempotencyToken'],
           mockaddInventoryData.request['addInventoryRequestBody']
         ];
-        instance.addInventory(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForFbaInventory.AddInventoryResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call addInventoryWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockaddInventoryData.response);
-
-        const params = [
-          mockaddInventoryData.request['xAmznIdempotencyToken'],
-          mockaddInventoryData.request['addInventoryRequestBody']
-        ];
-        instance.addInventoryWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockaddInventoryData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockaddInventoryData.request['xAmznIdempotencyToken'],
-          mockaddInventoryData.request['addInventoryRequestBody']
-        ];
-        instance.addInventory(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('createInventoryItem', function() {
-      
-      it('should successfully call createInventoryItem', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateInventoryItemData.response);
-
-        const params = [
-          mockcreateInventoryItemData.request['createInventoryItemRequestBody']
-        ];
-        instance.createInventoryItem(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForFbaInventory.CreateInventoryItemResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call createInventoryItemWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateInventoryItemData.response);
-
-        const params = [
-          mockcreateInventoryItemData.request['createInventoryItemRequestBody']
-        ];
-        instance.createInventoryItemWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockcreateInventoryItemData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockcreateInventoryItemData.request['createInventoryItemRequestBody']
-        ];
-        instance.createInventoryItem(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('deleteInventoryItem', function() {
-      
-      it('should successfully call deleteInventoryItem', function(done) {
-        instance.apiClient.callApi.resolves(mockdeleteInventoryItemData.response);
-
-        const params = [
-          mockdeleteInventoryItemData.request['sellerSku'],
-          mockdeleteInventoryItemData.request['marketplaceId']
-        ];
-        instance.deleteInventoryItem(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForFbaInventory.DeleteInventoryItemResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call deleteInventoryItemWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockdeleteInventoryItemData.response);
-
-        const params = [
-          mockdeleteInventoryItemData.request['sellerSku'],
-          mockdeleteInventoryItemData.request['marketplaceId']
-        ];
-        instance.deleteInventoryItemWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockdeleteInventoryItemData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockdeleteInventoryItemData.request['sellerSku'],
-          mockdeleteInventoryItemData.request['marketplaceId']
-        ];
-        instance.deleteInventoryItem(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('getInventorySummaries', function() {
-      
-      it('should successfully call getInventorySummaries', function(done) {
-        instance.apiClient.callApi.resolves(mockgetInventorySummariesData.response);
-
-        const params = [
-          mockgetInventorySummariesData.request['granularityType'],
-          mockgetInventorySummariesData.request['granularityId'],
-          mockgetInventorySummariesData.request['marketplaceIds'],
-        ];
-        instance.getInventorySummaries(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForFbaInventory.GetInventorySummariesResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call getInventorySummariesWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetInventorySummariesData.response);
-
-        const params = [
-          mockgetInventorySummariesData.request['granularityType'],
-          mockgetInventorySummariesData.request['granularityId'],
-          mockgetInventorySummariesData.request['marketplaceIds'],
-        ];
-        instance.getInventorySummariesWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetInventorySummariesData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgetInventorySummariesData.request['granularityType'],
-          mockgetInventorySummariesData.request['granularityId'],
-          mockgetInventorySummariesData.request['marketplaceIds'],
-        ];
-        instance.getInventorySummaries(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-
-    describe('constructor', function() {
-      it('should use default ApiClient when none provided', function() {
-        var defaultInstance = new SellingPartnerApiForFbaInventory.FbaInventoryApi();
-        expect(defaultInstance.apiClient).to.equal(SellingPartnerApiForFbaInventory.ApiClient.instance);
-      });
-
-      it('should use provided ApiClient', function() {
-        var customClient = new SellingPartnerApiForFbaInventory.ApiClient();
-        var customInstance = new SellingPartnerApiForFbaInventory.FbaInventoryApi(customClient);
-        expect(customInstance.apiClient).to.equal(customClient);
-      });
+        await instance.addInventory(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
     });
   });
-}));
+  describe('createInventoryItem', () => {
+    it('should successfully call createInventoryItem', async () => {
+      instance.apiClient.callApi.resolves(mockcreateInventoryItemData.response);
+
+      const params = [
+        mockcreateInventoryItemData.request['createInventoryItemRequestBody']
+      ];
+      const data = await instance.createInventoryItem(...params);
+
+      expect(data instanceof SellingPartnerApiForFbaInventory.CreateInventoryItemResponse).to.be.true;
+    });
+
+    it('should successfully call createInventoryItemWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockcreateInventoryItemData.response);
+
+      const params = [
+        mockcreateInventoryItemData.request['createInventoryItemRequestBody']
+      ];
+      const response = await instance.createInventoryItemWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockcreateInventoryItemData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockcreateInventoryItemData.request['createInventoryItemRequestBody']
+        ];
+        await instance.createInventoryItem(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('deleteInventoryItem', () => {
+    it('should successfully call deleteInventoryItem', async () => {
+      instance.apiClient.callApi.resolves(mockdeleteInventoryItemData.response);
+
+      const params = [
+        mockdeleteInventoryItemData.request['sellerSku'],
+        mockdeleteInventoryItemData.request['marketplaceId']
+      ];
+      const data = await instance.deleteInventoryItem(...params);
+
+      expect(data instanceof SellingPartnerApiForFbaInventory.DeleteInventoryItemResponse).to.be.true;
+    });
+
+    it('should successfully call deleteInventoryItemWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockdeleteInventoryItemData.response);
+
+      const params = [
+        mockdeleteInventoryItemData.request['sellerSku'],
+        mockdeleteInventoryItemData.request['marketplaceId']
+      ];
+      const response = await instance.deleteInventoryItemWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockdeleteInventoryItemData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockdeleteInventoryItemData.request['sellerSku'],
+          mockdeleteInventoryItemData.request['marketplaceId']
+        ];
+        await instance.deleteInventoryItem(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('getInventorySummaries', () => {
+    it('should successfully call getInventorySummaries', async () => {
+      instance.apiClient.callApi.resolves(mockgetInventorySummariesData.response);
+
+      const params = [
+        mockgetInventorySummariesData.request['granularityType'],
+        mockgetInventorySummariesData.request['granularityId'],
+        mockgetInventorySummariesData.request['marketplaceIds'],
+      ];
+      const data = await instance.getInventorySummaries(...params);
+
+      expect(data instanceof SellingPartnerApiForFbaInventory.GetInventorySummariesResponse).to.be.true;
+    });
+
+    it('should successfully call getInventorySummariesWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetInventorySummariesData.response);
+
+      const params = [
+        mockgetInventorySummariesData.request['granularityType'],
+        mockgetInventorySummariesData.request['granularityId'],
+        mockgetInventorySummariesData.request['marketplaceIds'],
+      ];
+      const response = await instance.getInventorySummariesWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetInventorySummariesData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgetInventorySummariesData.request['granularityType'],
+          mockgetInventorySummariesData.request['granularityId'],
+          mockgetInventorySummariesData.request['marketplaceIds'],
+        ];
+        await instance.getInventorySummaries(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+
+  describe('constructor', () => {
+    it('should use default ApiClient when none provided', () => {
+      const defaultInstance = new SellingPartnerApiForFbaInventory.FbaInventoryApi();
+      expect(defaultInstance.apiClient).to.equal(SellingPartnerApiForFbaInventory.ApiClient.instance);
+    });
+
+    it('should use provided ApiClient', () => {
+      const customClient = new SellingPartnerApiForFbaInventory.ApiClient();
+      const customInstance = new SellingPartnerApiForFbaInventory.FbaInventoryApi(customClient);
+      expect(customInstance.apiClient).to.equal(customClient);
+    });
+  });
+});

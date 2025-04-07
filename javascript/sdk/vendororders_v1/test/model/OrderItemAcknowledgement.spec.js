@@ -11,123 +11,110 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForRetailProcurementOrders);
+import expect from 'expect.js';
+import * as SellingPartnerApiForRetailProcurementOrders from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new SellingPartnerApiForRetailProcurementOrders.OrderItemAcknowledgement();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(SellingPartnerApiForRetailProcurementOrders.OrderItemAcknowledgement.prototype);
   }
-}(this, function(expect, SellingPartnerApiForRetailProcurementOrders) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new SellingPartnerApiForRetailProcurementOrders.OrderItemAcknowledgement();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(SellingPartnerApiForRetailProcurementOrders.OrderItemAcknowledgement.prototype);
-    }
+describe('OrderItemAcknowledgement', () => {
+  it('should create an instance of OrderItemAcknowledgement', () => {
+    expect(instance).to.be.a(SellingPartnerApiForRetailProcurementOrders.OrderItemAcknowledgement);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property acknowledgementCode', () => {
+    // verify property exists
+    expect(instance).to.have.property('acknowledgementCode');
 
-  describe('OrderItemAcknowledgement', function() {
-    it('should create an instance of OrderItemAcknowledgement', function() {
-      expect(instance).to.be.a(SellingPartnerApiForRetailProcurementOrders.OrderItemAcknowledgement);
-    });
-
-    it('should have the property acknowledgementCode', function() {
-      // verify property exists
-      expect(instance).to.have.property('acknowledgementCode');
-
-      // set and verify value
-      var expectedValue = ['Accepted', 'Backordered', 'Rejected', ][0];
-      instance.acknowledgementCode = expectedValue;
-      expect(instance.acknowledgementCode).to.equal(expectedValue);
-    });
-
-    it('should have the property acknowledgedQuantity', function() {
-      // verify property exists
-      expect(instance).to.have.property('acknowledgedQuantity');
-
-      // set and verify value
-      var expectedValue = generateMockData('ItemQuantity');
-      instance.acknowledgedQuantity = expectedValue;
-      expect(instance.acknowledgedQuantity).to.equal(expectedValue);
-    });
-
-    it('should have the property scheduledShipDate', function() {
-      // verify property exists
-      expect(instance).to.have.property('scheduledShipDate');
-
-      // set and verify value
-      var expectedValue = generateMockData('Date');
-      instance.scheduledShipDate = expectedValue;
-      expect(instance.scheduledShipDate).to.equal(expectedValue);
-    });
-
-    it('should have the property scheduledDeliveryDate', function() {
-      // verify property exists
-      expect(instance).to.have.property('scheduledDeliveryDate');
-
-      // set and verify value
-      var expectedValue = generateMockData('Date');
-      instance.scheduledDeliveryDate = expectedValue;
-      expect(instance.scheduledDeliveryDate).to.equal(expectedValue);
-    });
-
-    it('should have the property rejectionReason', function() {
-      // verify property exists
-      expect(instance).to.have.property('rejectionReason');
-
-      // set and verify value
-      var expectedValue = ['TemporarilyUnavailable', 'InvalidProductIdentifier', 'ObsoleteProduct', ][0];
-      instance.rejectionReason = expectedValue;
-      expect(instance.rejectionReason).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = ['Accepted', 'Backordered', 'Rejected', ][0];
+    instance.acknowledgementCode = expectedValue;
+    expect(instance.acknowledgementCode).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property acknowledgedQuantity', () => {
+    // verify property exists
+    expect(instance).to.have.property('acknowledgedQuantity');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('ItemQuantity');
+    instance.acknowledgedQuantity = expectedValue;
+    expect(instance.acknowledgedQuantity).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForRetailProcurementOrders[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property scheduledShipDate', () => {
+    // verify property exists
+    expect(instance).to.have.property('scheduledShipDate');
+
+    // set and verify value
+    const expectedValue = generateMockData('Date');
+    instance.scheduledShipDate = expectedValue;
+    expect(instance.scheduledShipDate).to.equal(expectedValue);
+  });
+
+  it('should have the property scheduledDeliveryDate', () => {
+    // verify property exists
+    expect(instance).to.have.property('scheduledDeliveryDate');
+
+    // set and verify value
+    const expectedValue = generateMockData('Date');
+    instance.scheduledDeliveryDate = expectedValue;
+    expect(instance.scheduledDeliveryDate).to.equal(expectedValue);
+  });
+
+  it('should have the property rejectionReason', () => {
+    // verify property exists
+    expect(instance).to.have.property('rejectionReason');
+
+    // set and verify value
+    const expectedValue = ['TemporarilyUnavailable', 'InvalidProductIdentifier', 'ObsoleteProduct', ][0];
+    instance.rejectionReason = expectedValue;
+    expect(instance.rejectionReason).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForRetailProcurementOrders[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

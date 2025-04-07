@@ -18,7 +18,7 @@ import {ApiClient} from '../ApiClient.js';
 * @enum {}
 * @readonly
 */
-export default class PaymentType {
+export class PaymentType {
     
         /**
          * value: "PAY_THROUGH_AMAZON"

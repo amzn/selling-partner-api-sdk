@@ -11,58 +11,47 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', 'sinon', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('sinon'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.sinon, root.SellingPartnerApiForUploads);
+import expect from 'expect.js';
+import sinon from 'sinon';
+import * as SellingPartnerApiForUploads from '../../src/index.js';
+
+let instance;
+let sandbox;
+const testEndpoint = 'https://localhost:3000';
+const testAccessToken = "testAccessToken";
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
   }
-}(this, function(expect, sinon, SellingPartnerApiForUploads) {
-  'use strict';
 
-  var instance;
-  var sandbox;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
-
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
-
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
-
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForUploads[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForUploads[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-  
+}
 
 // Generate mock requests and responses for each operation
 const mockcreateUploadDestinationForResourceData = {
@@ -78,92 +67,82 @@ const mockcreateUploadDestinationForResourceData = {
   }
 };
 
-  beforeEach(function() {
+describe('UploadsApi', () => {
+  beforeEach(() => {
     sandbox = sinon.createSandbox();
-    var apiClientInstance = new SellingPartnerApiForUploads.ApiClient(testEndpoint);
+    const apiClientInstance = new SellingPartnerApiForUploads.ApiClient(testEndpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
     sandbox.stub(apiClientInstance, 'callApi');
     instance = new SellingPartnerApiForUploads.UploadsApi(apiClientInstance);
   });
 
-  afterEach(function() {
+  afterEach(() => {
     sandbox.restore();
   });
 
-  describe('UploadsApi', function() {
-    describe('createUploadDestinationForResource', function() {
-      
-      it('should successfully call createUploadDestinationForResource', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateUploadDestinationForResourceData.response);
+  describe('createUploadDestinationForResource', () => {
+    it('should successfully call createUploadDestinationForResource', async () => {
+      instance.apiClient.callApi.resolves(mockcreateUploadDestinationForResourceData.response);
 
-        const params = [
-          mockcreateUploadDestinationForResourceData.request['marketplaceIds'],
-          mockcreateUploadDestinationForResourceData.request['contentMD5'],
-          mockcreateUploadDestinationForResourceData.request['resource'],
-        ];
-        instance.createUploadDestinationForResource(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForUploads.CreateUploadDestinationResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
+      const params = [
+        mockcreateUploadDestinationForResourceData.request['marketplaceIds'],
+        mockcreateUploadDestinationForResourceData.request['contentMD5'],
+        mockcreateUploadDestinationForResourceData.request['resource'],
+      ];
+      const data = await instance.createUploadDestinationForResource(...params);
 
-      it('should successfully call createUploadDestinationForResourceWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateUploadDestinationForResourceData.response);
-
-        const params = [
-          mockcreateUploadDestinationForResourceData.request['marketplaceIds'],
-          mockcreateUploadDestinationForResourceData.request['contentMD5'],
-          mockcreateUploadDestinationForResourceData.request['resource'],
-        ];
-        instance.createUploadDestinationForResourceWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockcreateUploadDestinationForResourceData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockcreateUploadDestinationForResourceData.request['marketplaceIds'],
-          mockcreateUploadDestinationForResourceData.request['contentMD5'],
-          mockcreateUploadDestinationForResourceData.request['resource'],
-        ];
-        instance.createUploadDestinationForResource(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
+      expect(data instanceof SellingPartnerApiForUploads.CreateUploadDestinationResponse).to.be.true;
     });
 
-    describe('constructor', function() {
-      it('should use default ApiClient when none provided', function() {
-        var defaultInstance = new SellingPartnerApiForUploads.UploadsApi();
-        expect(defaultInstance.apiClient).to.equal(SellingPartnerApiForUploads.ApiClient.instance);
-      });
+    it('should successfully call createUploadDestinationForResourceWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockcreateUploadDestinationForResourceData.response);
 
-      it('should use provided ApiClient', function() {
-        var customClient = new SellingPartnerApiForUploads.ApiClient();
-        var customInstance = new SellingPartnerApiForUploads.UploadsApi(customClient);
-        expect(customInstance.apiClient).to.equal(customClient);
-      });
+      const params = [
+        mockcreateUploadDestinationForResourceData.request['marketplaceIds'],
+        mockcreateUploadDestinationForResourceData.request['contentMD5'],
+        mockcreateUploadDestinationForResourceData.request['resource'],
+      ];
+      const response = await instance.createUploadDestinationForResourceWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockcreateUploadDestinationForResourceData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockcreateUploadDestinationForResourceData.request['marketplaceIds'],
+          mockcreateUploadDestinationForResourceData.request['contentMD5'],
+          mockcreateUploadDestinationForResourceData.request['resource'],
+        ];
+        await instance.createUploadDestinationForResource(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
     });
   });
-}));
+
+  describe('constructor', () => {
+    it('should use default ApiClient when none provided', () => {
+      const defaultInstance = new SellingPartnerApiForUploads.UploadsApi();
+      expect(defaultInstance.apiClient).to.equal(SellingPartnerApiForUploads.ApiClient.instance);
+    });
+
+    it('should use provided ApiClient', () => {
+      const customClient = new SellingPartnerApiForUploads.ApiClient();
+      const customInstance = new SellingPartnerApiForUploads.UploadsApi(customClient);
+      expect(customInstance.apiClient).to.equal(customClient);
+    });
+  });
+});

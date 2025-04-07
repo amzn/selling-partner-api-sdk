@@ -18,7 +18,7 @@ import {ApiClient} from '../ApiClient.js';
 * @enum {}
 * @readonly
 */
-export default class ContentStatus {
+export class ContentStatus {
     
         /**
          * value: "APPROVED"

@@ -18,7 +18,7 @@ import {ApiClient} from '../ApiClient.js';
 * @enum {}
 * @readonly
 */
-export default class TimePeriodType {
+export class TimePeriodType {
     
         /**
          * value: "PERFORMANCE"

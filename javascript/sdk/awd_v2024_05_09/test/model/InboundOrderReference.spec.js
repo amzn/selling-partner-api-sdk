@@ -11,83 +11,70 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.TheSellingPartnerApiForAmazonWarehousingAndDistribution);
+import expect from 'expect.js';
+import * as TheSellingPartnerApiForAmazonWarehousingAndDistribution from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new TheSellingPartnerApiForAmazonWarehousingAndDistribution.InboundOrderReference();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(TheSellingPartnerApiForAmazonWarehousingAndDistribution.InboundOrderReference.prototype);
   }
-}(this, function(expect, TheSellingPartnerApiForAmazonWarehousingAndDistribution) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new TheSellingPartnerApiForAmazonWarehousingAndDistribution.InboundOrderReference();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(TheSellingPartnerApiForAmazonWarehousingAndDistribution.InboundOrderReference.prototype);
-    }
+describe('InboundOrderReference', () => {
+  it('should create an instance of InboundOrderReference', () => {
+    expect(instance).to.be.a(TheSellingPartnerApiForAmazonWarehousingAndDistribution.InboundOrderReference);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property orderId', () => {
+    // verify property exists
+    expect(instance).to.have.property('orderId');
 
-  describe('InboundOrderReference', function() {
-    it('should create an instance of InboundOrderReference', function() {
-      expect(instance).to.be.a(TheSellingPartnerApiForAmazonWarehousingAndDistribution.InboundOrderReference);
-    });
-
-    it('should have the property orderId', function() {
-      // verify property exists
-      expect(instance).to.have.property('orderId');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.orderId = expectedValue;
-      expect(instance.orderId).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.orderId = expectedValue;
+    expect(instance.orderId).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+});
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = TheSellingPartnerApiForAmazonWarehousingAndDistribution[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = TheSellingPartnerApiForAmazonWarehousingAndDistribution[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

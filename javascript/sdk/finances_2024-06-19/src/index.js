@@ -35,31 +35,6 @@ import {DefaultApi} from './js_client.finances_2024-06-19.api/DefaultApi.js';
 /**
 * The Selling Partner API for Finances helps you obtain financial information relevant to a seller&#39;s business. You can obtain financial events for a given order or date range without having to wait until a statement period closes..<br>
 * The <code>index</code> module provides access to constructors for all the classes which comprise the public API.
-* <p>
-* An AMD (recommended!) or CommonJS application will generally do something equivalent to the following:
-* <pre>
-* var TheSellingPartnerApiForFinances = require('index'); // See note below*.
-* var xxxSvc = new TheSellingPartnerApiForFinances.XxxApi(); // Allocate the API class we're going to use.
-* var yyyModel = new TheSellingPartnerApiForFinances.Yyy(); // Construct a model instance.
-* yyyModel.someProperty = 'someValue';
-* ...
-* var zzz = xxxSvc.doSomething(yyyModel); // Invoke the service.
-* ...
-* </pre>
-* <em>*NOTE: For a top-level AMD script, use require(['index'], function(){...})
-* and put the application logic within the callback function.</em>
-* </p>
-* <p>
-* A non-AMD browser application (discouraged) might do something like this:
-* <pre>
-* var xxxSvc = new TheSellingPartnerApiForFinances.XxxApi(); // Allocate the API class we're going to use.
-* var yyy = new TheSellingPartnerApiForFinances.Yyy(); // Construct a model instance.
-* yyyModel.someProperty = 'someValue';
-* ...
-* var zzz = xxxSvc.doSomething(yyyModel); // Invoke the service.
-* ...
-* </pre>
-* </p>
 * @module index
 * @version 2024-06-19
 */

@@ -11,58 +11,47 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', 'sinon', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('sinon'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.sinon, root.TheSellingPartnerApiForFbaInboundOperations);
+import expect from 'expect.js';
+import sinon from 'sinon';
+import * as TheSellingPartnerApiForFbaInboundOperations from '../../src/index.js';
+
+let instance;
+let sandbox;
+const testEndpoint = 'https://localhost:3000';
+const testAccessToken = "testAccessToken";
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
   }
-}(this, function(expect, sinon, TheSellingPartnerApiForFbaInboundOperations) {
-  'use strict';
 
-  var instance;
-  var sandbox;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
-
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
-
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
-
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = TheSellingPartnerApiForFbaInboundOperations[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = TheSellingPartnerApiForFbaInboundOperations[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-  
+}
 
 // Generate mock requests and responses for each operation
 const mockcancelInboundPlanData = {
@@ -555,2627 +544,2221 @@ const mockupdateShipmentTrackingDetailsData = {
   }
 };
 
-  beforeEach(function() {
+describe('FbaInboundApi', () => {
+  beforeEach(() => {
     sandbox = sinon.createSandbox();
-    var apiClientInstance = new TheSellingPartnerApiForFbaInboundOperations.ApiClient(testEndpoint);
+    const apiClientInstance = new TheSellingPartnerApiForFbaInboundOperations.ApiClient(testEndpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
     sandbox.stub(apiClientInstance, 'callApi');
     instance = new TheSellingPartnerApiForFbaInboundOperations.FbaInboundApi(apiClientInstance);
   });
 
-  afterEach(function() {
+  afterEach(() => {
     sandbox.restore();
   });
 
-  describe('FbaInboundApi', function() {
-    describe('cancelInboundPlan', function() {
-      
-      it('should successfully call cancelInboundPlan', function(done) {
-        instance.apiClient.callApi.resolves(mockcancelInboundPlanData.response);
+  describe('cancelInboundPlan', () => {
+    it('should successfully call cancelInboundPlan', async () => {
+      instance.apiClient.callApi.resolves(mockcancelInboundPlanData.response);
 
+      const params = [
+        mockcancelInboundPlanData.request['inboundPlanId']
+      ];
+      const data = await instance.cancelInboundPlan(...params);
+
+      expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.CancelInboundPlanResponse).to.be.true;
+    });
+
+    it('should successfully call cancelInboundPlanWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockcancelInboundPlanData.response);
+
+      const params = [
+        mockcancelInboundPlanData.request['inboundPlanId']
+      ];
+      const response = await instance.cancelInboundPlanWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockcancelInboundPlanData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
         const params = [
           mockcancelInboundPlanData.request['inboundPlanId']
         ];
-        instance.cancelInboundPlan(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.CancelInboundPlanResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call cancelInboundPlanWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockcancelInboundPlanData.response);
-
-        const params = [
-          mockcancelInboundPlanData.request['inboundPlanId']
-        ];
-        instance.cancelInboundPlanWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockcancelInboundPlanData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockcancelInboundPlanData.request['inboundPlanId']
-        ];
-        instance.cancelInboundPlan(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('cancelSelfShipAppointment', function() {
-      
-      it('should successfully call cancelSelfShipAppointment', function(done) {
-        instance.apiClient.callApi.resolves(mockcancelSelfShipAppointmentData.response);
-
-        const params = [
-          mockcancelSelfShipAppointmentData.request['inboundPlanId'],
-          mockcancelSelfShipAppointmentData.request['shipmentId'],
-          mockcancelSelfShipAppointmentData.request['body']
-        ];
-        instance.cancelSelfShipAppointment(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.CancelSelfShipAppointmentResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call cancelSelfShipAppointmentWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockcancelSelfShipAppointmentData.response);
-
-        const params = [
-          mockcancelSelfShipAppointmentData.request['inboundPlanId'],
-          mockcancelSelfShipAppointmentData.request['shipmentId'],
-          mockcancelSelfShipAppointmentData.request['body']
-        ];
-        instance.cancelSelfShipAppointmentWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockcancelSelfShipAppointmentData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockcancelSelfShipAppointmentData.request['inboundPlanId'],
-          mockcancelSelfShipAppointmentData.request['shipmentId'],
-          mockcancelSelfShipAppointmentData.request['body']
-        ];
-        instance.cancelSelfShipAppointment(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('confirmDeliveryWindowOptions', function() {
-      
-      it('should successfully call confirmDeliveryWindowOptions', function(done) {
-        instance.apiClient.callApi.resolves(mockconfirmDeliveryWindowOptionsData.response);
-
-        const params = [
-          mockconfirmDeliveryWindowOptionsData.request['inboundPlanId'],
-          mockconfirmDeliveryWindowOptionsData.request['shipmentId'],
-          mockconfirmDeliveryWindowOptionsData.request['deliveryWindowOptionId']
-        ];
-        instance.confirmDeliveryWindowOptions(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.ConfirmDeliveryWindowOptionsResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call confirmDeliveryWindowOptionsWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockconfirmDeliveryWindowOptionsData.response);
-
-        const params = [
-          mockconfirmDeliveryWindowOptionsData.request['inboundPlanId'],
-          mockconfirmDeliveryWindowOptionsData.request['shipmentId'],
-          mockconfirmDeliveryWindowOptionsData.request['deliveryWindowOptionId']
-        ];
-        instance.confirmDeliveryWindowOptionsWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockconfirmDeliveryWindowOptionsData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockconfirmDeliveryWindowOptionsData.request['inboundPlanId'],
-          mockconfirmDeliveryWindowOptionsData.request['shipmentId'],
-          mockconfirmDeliveryWindowOptionsData.request['deliveryWindowOptionId']
-        ];
-        instance.confirmDeliveryWindowOptions(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('confirmPackingOption', function() {
-      
-      it('should successfully call confirmPackingOption', function(done) {
-        instance.apiClient.callApi.resolves(mockconfirmPackingOptionData.response);
-
-        const params = [
-          mockconfirmPackingOptionData.request['inboundPlanId'],
-          mockconfirmPackingOptionData.request['packingOptionId']
-        ];
-        instance.confirmPackingOption(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.ConfirmPackingOptionResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call confirmPackingOptionWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockconfirmPackingOptionData.response);
-
-        const params = [
-          mockconfirmPackingOptionData.request['inboundPlanId'],
-          mockconfirmPackingOptionData.request['packingOptionId']
-        ];
-        instance.confirmPackingOptionWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockconfirmPackingOptionData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockconfirmPackingOptionData.request['inboundPlanId'],
-          mockconfirmPackingOptionData.request['packingOptionId']
-        ];
-        instance.confirmPackingOption(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('confirmPlacementOption', function() {
-      
-      it('should successfully call confirmPlacementOption', function(done) {
-        instance.apiClient.callApi.resolves(mockconfirmPlacementOptionData.response);
-
-        const params = [
-          mockconfirmPlacementOptionData.request['inboundPlanId'],
-          mockconfirmPlacementOptionData.request['placementOptionId']
-        ];
-        instance.confirmPlacementOption(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.ConfirmPlacementOptionResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call confirmPlacementOptionWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockconfirmPlacementOptionData.response);
-
-        const params = [
-          mockconfirmPlacementOptionData.request['inboundPlanId'],
-          mockconfirmPlacementOptionData.request['placementOptionId']
-        ];
-        instance.confirmPlacementOptionWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockconfirmPlacementOptionData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockconfirmPlacementOptionData.request['inboundPlanId'],
-          mockconfirmPlacementOptionData.request['placementOptionId']
-        ];
-        instance.confirmPlacementOption(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('confirmShipmentContentUpdatePreview', function() {
-      
-      it('should successfully call confirmShipmentContentUpdatePreview', function(done) {
-        instance.apiClient.callApi.resolves(mockconfirmShipmentContentUpdatePreviewData.response);
-
-        const params = [
-          mockconfirmShipmentContentUpdatePreviewData.request['inboundPlanId'],
-          mockconfirmShipmentContentUpdatePreviewData.request['shipmentId'],
-          mockconfirmShipmentContentUpdatePreviewData.request['contentUpdatePreviewId']
-        ];
-        instance.confirmShipmentContentUpdatePreview(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.ConfirmShipmentContentUpdatePreviewResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call confirmShipmentContentUpdatePreviewWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockconfirmShipmentContentUpdatePreviewData.response);
-
-        const params = [
-          mockconfirmShipmentContentUpdatePreviewData.request['inboundPlanId'],
-          mockconfirmShipmentContentUpdatePreviewData.request['shipmentId'],
-          mockconfirmShipmentContentUpdatePreviewData.request['contentUpdatePreviewId']
-        ];
-        instance.confirmShipmentContentUpdatePreviewWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockconfirmShipmentContentUpdatePreviewData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockconfirmShipmentContentUpdatePreviewData.request['inboundPlanId'],
-          mockconfirmShipmentContentUpdatePreviewData.request['shipmentId'],
-          mockconfirmShipmentContentUpdatePreviewData.request['contentUpdatePreviewId']
-        ];
-        instance.confirmShipmentContentUpdatePreview(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('confirmTransportationOptions', function() {
-      
-      it('should successfully call confirmTransportationOptions', function(done) {
-        instance.apiClient.callApi.resolves(mockconfirmTransportationOptionsData.response);
-
-        const params = [
-          mockconfirmTransportationOptionsData.request['inboundPlanId'],
-          mockconfirmTransportationOptionsData.request['body']
-        ];
-        instance.confirmTransportationOptions(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.ConfirmTransportationOptionsResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call confirmTransportationOptionsWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockconfirmTransportationOptionsData.response);
-
-        const params = [
-          mockconfirmTransportationOptionsData.request['inboundPlanId'],
-          mockconfirmTransportationOptionsData.request['body']
-        ];
-        instance.confirmTransportationOptionsWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockconfirmTransportationOptionsData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockconfirmTransportationOptionsData.request['inboundPlanId'],
-          mockconfirmTransportationOptionsData.request['body']
-        ];
-        instance.confirmTransportationOptions(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('createInboundPlan', function() {
-      
-      it('should successfully call createInboundPlan', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateInboundPlanData.response);
-
-        const params = [
-          mockcreateInboundPlanData.request['body']
-        ];
-        instance.createInboundPlan(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.CreateInboundPlanResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call createInboundPlanWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateInboundPlanData.response);
-
-        const params = [
-          mockcreateInboundPlanData.request['body']
-        ];
-        instance.createInboundPlanWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockcreateInboundPlanData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockcreateInboundPlanData.request['body']
-        ];
-        instance.createInboundPlan(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('createMarketplaceItemLabels', function() {
-      
-      it('should successfully call createMarketplaceItemLabels', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateMarketplaceItemLabelsData.response);
-
-        const params = [
-          mockcreateMarketplaceItemLabelsData.request['body']
-        ];
-        instance.createMarketplaceItemLabels(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.CreateMarketplaceItemLabelsResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call createMarketplaceItemLabelsWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateMarketplaceItemLabelsData.response);
-
-        const params = [
-          mockcreateMarketplaceItemLabelsData.request['body']
-        ];
-        instance.createMarketplaceItemLabelsWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockcreateMarketplaceItemLabelsData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockcreateMarketplaceItemLabelsData.request['body']
-        ];
-        instance.createMarketplaceItemLabels(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('generateDeliveryWindowOptions', function() {
-      
-      it('should successfully call generateDeliveryWindowOptions', function(done) {
-        instance.apiClient.callApi.resolves(mockgenerateDeliveryWindowOptionsData.response);
-
-        const params = [
-          mockgenerateDeliveryWindowOptionsData.request['inboundPlanId'],
-          mockgenerateDeliveryWindowOptionsData.request['shipmentId']
-        ];
-        instance.generateDeliveryWindowOptions(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.GenerateDeliveryWindowOptionsResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call generateDeliveryWindowOptionsWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgenerateDeliveryWindowOptionsData.response);
-
-        const params = [
-          mockgenerateDeliveryWindowOptionsData.request['inboundPlanId'],
-          mockgenerateDeliveryWindowOptionsData.request['shipmentId']
-        ];
-        instance.generateDeliveryWindowOptionsWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgenerateDeliveryWindowOptionsData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgenerateDeliveryWindowOptionsData.request['inboundPlanId'],
-          mockgenerateDeliveryWindowOptionsData.request['shipmentId']
-        ];
-        instance.generateDeliveryWindowOptions(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('generatePackingOptions', function() {
-      
-      it('should successfully call generatePackingOptions', function(done) {
-        instance.apiClient.callApi.resolves(mockgeneratePackingOptionsData.response);
-
-        const params = [
-          mockgeneratePackingOptionsData.request['inboundPlanId']
-        ];
-        instance.generatePackingOptions(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.GeneratePackingOptionsResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call generatePackingOptionsWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgeneratePackingOptionsData.response);
-
-        const params = [
-          mockgeneratePackingOptionsData.request['inboundPlanId']
-        ];
-        instance.generatePackingOptionsWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgeneratePackingOptionsData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgeneratePackingOptionsData.request['inboundPlanId']
-        ];
-        instance.generatePackingOptions(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('generatePlacementOptions', function() {
-      
-      it('should successfully call generatePlacementOptions', function(done) {
-        instance.apiClient.callApi.resolves(mockgeneratePlacementOptionsData.response);
-
-        const params = [
-          mockgeneratePlacementOptionsData.request['inboundPlanId'],
-          mockgeneratePlacementOptionsData.request['body']
-        ];
-        instance.generatePlacementOptions(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.GeneratePlacementOptionsResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call generatePlacementOptionsWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgeneratePlacementOptionsData.response);
-
-        const params = [
-          mockgeneratePlacementOptionsData.request['inboundPlanId'],
-          mockgeneratePlacementOptionsData.request['body']
-        ];
-        instance.generatePlacementOptionsWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgeneratePlacementOptionsData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgeneratePlacementOptionsData.request['inboundPlanId'],
-          mockgeneratePlacementOptionsData.request['body']
-        ];
-        instance.generatePlacementOptions(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('generateSelfShipAppointmentSlots', function() {
-      
-      it('should successfully call generateSelfShipAppointmentSlots', function(done) {
-        instance.apiClient.callApi.resolves(mockgenerateSelfShipAppointmentSlotsData.response);
-
-        const params = [
-          mockgenerateSelfShipAppointmentSlotsData.request['inboundPlanId'],
-          mockgenerateSelfShipAppointmentSlotsData.request['shipmentId'],
-          mockgenerateSelfShipAppointmentSlotsData.request['body']
-        ];
-        instance.generateSelfShipAppointmentSlots(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.GenerateSelfShipAppointmentSlotsResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call generateSelfShipAppointmentSlotsWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgenerateSelfShipAppointmentSlotsData.response);
-
-        const params = [
-          mockgenerateSelfShipAppointmentSlotsData.request['inboundPlanId'],
-          mockgenerateSelfShipAppointmentSlotsData.request['shipmentId'],
-          mockgenerateSelfShipAppointmentSlotsData.request['body']
-        ];
-        instance.generateSelfShipAppointmentSlotsWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgenerateSelfShipAppointmentSlotsData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgenerateSelfShipAppointmentSlotsData.request['inboundPlanId'],
-          mockgenerateSelfShipAppointmentSlotsData.request['shipmentId'],
-          mockgenerateSelfShipAppointmentSlotsData.request['body']
-        ];
-        instance.generateSelfShipAppointmentSlots(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('generateShipmentContentUpdatePreviews', function() {
-      
-      it('should successfully call generateShipmentContentUpdatePreviews', function(done) {
-        instance.apiClient.callApi.resolves(mockgenerateShipmentContentUpdatePreviewsData.response);
-
-        const params = [
-          mockgenerateShipmentContentUpdatePreviewsData.request['inboundPlanId'],
-          mockgenerateShipmentContentUpdatePreviewsData.request['shipmentId'],
-          mockgenerateShipmentContentUpdatePreviewsData.request['body']
-        ];
-        instance.generateShipmentContentUpdatePreviews(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.GenerateShipmentContentUpdatePreviewsResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call generateShipmentContentUpdatePreviewsWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgenerateShipmentContentUpdatePreviewsData.response);
-
-        const params = [
-          mockgenerateShipmentContentUpdatePreviewsData.request['inboundPlanId'],
-          mockgenerateShipmentContentUpdatePreviewsData.request['shipmentId'],
-          mockgenerateShipmentContentUpdatePreviewsData.request['body']
-        ];
-        instance.generateShipmentContentUpdatePreviewsWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgenerateShipmentContentUpdatePreviewsData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgenerateShipmentContentUpdatePreviewsData.request['inboundPlanId'],
-          mockgenerateShipmentContentUpdatePreviewsData.request['shipmentId'],
-          mockgenerateShipmentContentUpdatePreviewsData.request['body']
-        ];
-        instance.generateShipmentContentUpdatePreviews(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('generateTransportationOptions', function() {
-      
-      it('should successfully call generateTransportationOptions', function(done) {
-        instance.apiClient.callApi.resolves(mockgenerateTransportationOptionsData.response);
-
-        const params = [
-          mockgenerateTransportationOptionsData.request['inboundPlanId'],
-          mockgenerateTransportationOptionsData.request['body']
-        ];
-        instance.generateTransportationOptions(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.GenerateTransportationOptionsResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call generateTransportationOptionsWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgenerateTransportationOptionsData.response);
-
-        const params = [
-          mockgenerateTransportationOptionsData.request['inboundPlanId'],
-          mockgenerateTransportationOptionsData.request['body']
-        ];
-        instance.generateTransportationOptionsWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgenerateTransportationOptionsData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgenerateTransportationOptionsData.request['inboundPlanId'],
-          mockgenerateTransportationOptionsData.request['body']
-        ];
-        instance.generateTransportationOptions(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('getDeliveryChallanDocument', function() {
-      
-      it('should successfully call getDeliveryChallanDocument', function(done) {
-        instance.apiClient.callApi.resolves(mockgetDeliveryChallanDocumentData.response);
-
-        const params = [
-          mockgetDeliveryChallanDocumentData.request['inboundPlanId'],
-          mockgetDeliveryChallanDocumentData.request['shipmentId']
-        ];
-        instance.getDeliveryChallanDocument(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.GetDeliveryChallanDocumentResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call getDeliveryChallanDocumentWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetDeliveryChallanDocumentData.response);
-
-        const params = [
-          mockgetDeliveryChallanDocumentData.request['inboundPlanId'],
-          mockgetDeliveryChallanDocumentData.request['shipmentId']
-        ];
-        instance.getDeliveryChallanDocumentWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetDeliveryChallanDocumentData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgetDeliveryChallanDocumentData.request['inboundPlanId'],
-          mockgetDeliveryChallanDocumentData.request['shipmentId']
-        ];
-        instance.getDeliveryChallanDocument(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('getInboundOperationStatus', function() {
-      
-      it('should successfully call getInboundOperationStatus', function(done) {
-        instance.apiClient.callApi.resolves(mockgetInboundOperationStatusData.response);
-
-        const params = [
-          mockgetInboundOperationStatusData.request['operationId']
-        ];
-        instance.getInboundOperationStatus(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.InboundOperationStatus).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call getInboundOperationStatusWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetInboundOperationStatusData.response);
-
-        const params = [
-          mockgetInboundOperationStatusData.request['operationId']
-        ];
-        instance.getInboundOperationStatusWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetInboundOperationStatusData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgetInboundOperationStatusData.request['operationId']
-        ];
-        instance.getInboundOperationStatus(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('getInboundPlan', function() {
-      
-      it('should successfully call getInboundPlan', function(done) {
-        instance.apiClient.callApi.resolves(mockgetInboundPlanData.response);
-
-        const params = [
-          mockgetInboundPlanData.request['inboundPlanId']
-        ];
-        instance.getInboundPlan(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.InboundPlan).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call getInboundPlanWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetInboundPlanData.response);
-
-        const params = [
-          mockgetInboundPlanData.request['inboundPlanId']
-        ];
-        instance.getInboundPlanWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetInboundPlanData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgetInboundPlanData.request['inboundPlanId']
-        ];
-        instance.getInboundPlan(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('getSelfShipAppointmentSlots', function() {
-      
-      it('should successfully call getSelfShipAppointmentSlots', function(done) {
-        instance.apiClient.callApi.resolves(mockgetSelfShipAppointmentSlotsData.response);
-
-        const params = [
-          mockgetSelfShipAppointmentSlotsData.request['inboundPlanId'],
-          mockgetSelfShipAppointmentSlotsData.request['shipmentId'],
-        ];
-        instance.getSelfShipAppointmentSlots(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.GetSelfShipAppointmentSlotsResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call getSelfShipAppointmentSlotsWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetSelfShipAppointmentSlotsData.response);
-
-        const params = [
-          mockgetSelfShipAppointmentSlotsData.request['inboundPlanId'],
-          mockgetSelfShipAppointmentSlotsData.request['shipmentId'],
-        ];
-        instance.getSelfShipAppointmentSlotsWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetSelfShipAppointmentSlotsData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgetSelfShipAppointmentSlotsData.request['inboundPlanId'],
-          mockgetSelfShipAppointmentSlotsData.request['shipmentId'],
-        ];
-        instance.getSelfShipAppointmentSlots(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('getShipment', function() {
-      
-      it('should successfully call getShipment', function(done) {
-        instance.apiClient.callApi.resolves(mockgetShipmentData.response);
-
-        const params = [
-          mockgetShipmentData.request['inboundPlanId'],
-          mockgetShipmentData.request['shipmentId']
-        ];
-        instance.getShipment(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.Shipment).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call getShipmentWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetShipmentData.response);
-
-        const params = [
-          mockgetShipmentData.request['inboundPlanId'],
-          mockgetShipmentData.request['shipmentId']
-        ];
-        instance.getShipmentWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetShipmentData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgetShipmentData.request['inboundPlanId'],
-          mockgetShipmentData.request['shipmentId']
-        ];
-        instance.getShipment(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('getShipmentContentUpdatePreview', function() {
-      
-      it('should successfully call getShipmentContentUpdatePreview', function(done) {
-        instance.apiClient.callApi.resolves(mockgetShipmentContentUpdatePreviewData.response);
-
-        const params = [
-          mockgetShipmentContentUpdatePreviewData.request['inboundPlanId'],
-          mockgetShipmentContentUpdatePreviewData.request['shipmentId'],
-          mockgetShipmentContentUpdatePreviewData.request['contentUpdatePreviewId']
-        ];
-        instance.getShipmentContentUpdatePreview(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.ContentUpdatePreview).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call getShipmentContentUpdatePreviewWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetShipmentContentUpdatePreviewData.response);
-
-        const params = [
-          mockgetShipmentContentUpdatePreviewData.request['inboundPlanId'],
-          mockgetShipmentContentUpdatePreviewData.request['shipmentId'],
-          mockgetShipmentContentUpdatePreviewData.request['contentUpdatePreviewId']
-        ];
-        instance.getShipmentContentUpdatePreviewWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetShipmentContentUpdatePreviewData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgetShipmentContentUpdatePreviewData.request['inboundPlanId'],
-          mockgetShipmentContentUpdatePreviewData.request['shipmentId'],
-          mockgetShipmentContentUpdatePreviewData.request['contentUpdatePreviewId']
-        ];
-        instance.getShipmentContentUpdatePreview(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('listDeliveryWindowOptions', function() {
-      
-      it('should successfully call listDeliveryWindowOptions', function(done) {
-        instance.apiClient.callApi.resolves(mocklistDeliveryWindowOptionsData.response);
-
-        const params = [
-          mocklistDeliveryWindowOptionsData.request['inboundPlanId'],
-          mocklistDeliveryWindowOptionsData.request['shipmentId'],
-        ];
-        instance.listDeliveryWindowOptions(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.ListDeliveryWindowOptionsResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call listDeliveryWindowOptionsWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mocklistDeliveryWindowOptionsData.response);
-
-        const params = [
-          mocklistDeliveryWindowOptionsData.request['inboundPlanId'],
-          mocklistDeliveryWindowOptionsData.request['shipmentId'],
-        ];
-        instance.listDeliveryWindowOptionsWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mocklistDeliveryWindowOptionsData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mocklistDeliveryWindowOptionsData.request['inboundPlanId'],
-          mocklistDeliveryWindowOptionsData.request['shipmentId'],
-        ];
-        instance.listDeliveryWindowOptions(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('listInboundPlanBoxes', function() {
-      
-      it('should successfully call listInboundPlanBoxes', function(done) {
-        instance.apiClient.callApi.resolves(mocklistInboundPlanBoxesData.response);
-
-        const params = [
-          mocklistInboundPlanBoxesData.request['inboundPlanId'],
-        ];
-        instance.listInboundPlanBoxes(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.ListInboundPlanBoxesResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call listInboundPlanBoxesWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mocklistInboundPlanBoxesData.response);
-
-        const params = [
-          mocklistInboundPlanBoxesData.request['inboundPlanId'],
-        ];
-        instance.listInboundPlanBoxesWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mocklistInboundPlanBoxesData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mocklistInboundPlanBoxesData.request['inboundPlanId'],
-        ];
-        instance.listInboundPlanBoxes(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('listInboundPlanItems', function() {
-      
-      it('should successfully call listInboundPlanItems', function(done) {
-        instance.apiClient.callApi.resolves(mocklistInboundPlanItemsData.response);
-
-        const params = [
-          mocklistInboundPlanItemsData.request['inboundPlanId'],
-        ];
-        instance.listInboundPlanItems(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.ListInboundPlanItemsResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call listInboundPlanItemsWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mocklistInboundPlanItemsData.response);
-
-        const params = [
-          mocklistInboundPlanItemsData.request['inboundPlanId'],
-        ];
-        instance.listInboundPlanItemsWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mocklistInboundPlanItemsData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mocklistInboundPlanItemsData.request['inboundPlanId'],
-        ];
-        instance.listInboundPlanItems(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('listInboundPlanPallets', function() {
-      
-      it('should successfully call listInboundPlanPallets', function(done) {
-        instance.apiClient.callApi.resolves(mocklistInboundPlanPalletsData.response);
-
-        const params = [
-          mocklistInboundPlanPalletsData.request['inboundPlanId'],
-        ];
-        instance.listInboundPlanPallets(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.ListInboundPlanPalletsResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call listInboundPlanPalletsWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mocklistInboundPlanPalletsData.response);
-
-        const params = [
-          mocklistInboundPlanPalletsData.request['inboundPlanId'],
-        ];
-        instance.listInboundPlanPalletsWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mocklistInboundPlanPalletsData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mocklistInboundPlanPalletsData.request['inboundPlanId'],
-        ];
-        instance.listInboundPlanPallets(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('listInboundPlans', function() {
-      
-      it('should successfully call listInboundPlans', function(done) {
-        instance.apiClient.callApi.resolves(mocklistInboundPlansData.response);
-
-        const params = [
-        ];
-        instance.listInboundPlans(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.ListInboundPlansResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call listInboundPlansWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mocklistInboundPlansData.response);
-
-        const params = [
-        ];
-        instance.listInboundPlansWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mocklistInboundPlansData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-        ];
-        instance.listInboundPlans(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('listItemComplianceDetails', function() {
-      
-      it('should successfully call listItemComplianceDetails', function(done) {
-        instance.apiClient.callApi.resolves(mocklistItemComplianceDetailsData.response);
-
-        const params = [
-          mocklistItemComplianceDetailsData.request['mskus'],
-          mocklistItemComplianceDetailsData.request['marketplaceId']
-        ];
-        instance.listItemComplianceDetails(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.ListItemComplianceDetailsResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call listItemComplianceDetailsWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mocklistItemComplianceDetailsData.response);
-
-        const params = [
-          mocklistItemComplianceDetailsData.request['mskus'],
-          mocklistItemComplianceDetailsData.request['marketplaceId']
-        ];
-        instance.listItemComplianceDetailsWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mocklistItemComplianceDetailsData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mocklistItemComplianceDetailsData.request['mskus'],
-          mocklistItemComplianceDetailsData.request['marketplaceId']
-        ];
-        instance.listItemComplianceDetails(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('listPackingGroupBoxes', function() {
-      
-      it('should successfully call listPackingGroupBoxes', function(done) {
-        instance.apiClient.callApi.resolves(mocklistPackingGroupBoxesData.response);
-
-        const params = [
-          mocklistPackingGroupBoxesData.request['inboundPlanId'],
-          mocklistPackingGroupBoxesData.request['packingGroupId'],
-        ];
-        instance.listPackingGroupBoxes(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.ListPackingGroupBoxesResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call listPackingGroupBoxesWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mocklistPackingGroupBoxesData.response);
-
-        const params = [
-          mocklistPackingGroupBoxesData.request['inboundPlanId'],
-          mocklistPackingGroupBoxesData.request['packingGroupId'],
-        ];
-        instance.listPackingGroupBoxesWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mocklistPackingGroupBoxesData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mocklistPackingGroupBoxesData.request['inboundPlanId'],
-          mocklistPackingGroupBoxesData.request['packingGroupId'],
-        ];
-        instance.listPackingGroupBoxes(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('listPackingGroupItems', function() {
-      
-      it('should successfully call listPackingGroupItems', function(done) {
-        instance.apiClient.callApi.resolves(mocklistPackingGroupItemsData.response);
-
-        const params = [
-          mocklistPackingGroupItemsData.request['inboundPlanId'],
-          mocklistPackingGroupItemsData.request['packingGroupId'],
-        ];
-        instance.listPackingGroupItems(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.ListPackingGroupItemsResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call listPackingGroupItemsWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mocklistPackingGroupItemsData.response);
-
-        const params = [
-          mocklistPackingGroupItemsData.request['inboundPlanId'],
-          mocklistPackingGroupItemsData.request['packingGroupId'],
-        ];
-        instance.listPackingGroupItemsWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mocklistPackingGroupItemsData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mocklistPackingGroupItemsData.request['inboundPlanId'],
-          mocklistPackingGroupItemsData.request['packingGroupId'],
-        ];
-        instance.listPackingGroupItems(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('listPackingOptions', function() {
-      
-      it('should successfully call listPackingOptions', function(done) {
-        instance.apiClient.callApi.resolves(mocklistPackingOptionsData.response);
-
-        const params = [
-          mocklistPackingOptionsData.request['inboundPlanId'],
-        ];
-        instance.listPackingOptions(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.ListPackingOptionsResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call listPackingOptionsWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mocklistPackingOptionsData.response);
-
-        const params = [
-          mocklistPackingOptionsData.request['inboundPlanId'],
-        ];
-        instance.listPackingOptionsWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mocklistPackingOptionsData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mocklistPackingOptionsData.request['inboundPlanId'],
-        ];
-        instance.listPackingOptions(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('listPlacementOptions', function() {
-      
-      it('should successfully call listPlacementOptions', function(done) {
-        instance.apiClient.callApi.resolves(mocklistPlacementOptionsData.response);
-
-        const params = [
-          mocklistPlacementOptionsData.request['inboundPlanId'],
-        ];
-        instance.listPlacementOptions(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.ListPlacementOptionsResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call listPlacementOptionsWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mocklistPlacementOptionsData.response);
-
-        const params = [
-          mocklistPlacementOptionsData.request['inboundPlanId'],
-        ];
-        instance.listPlacementOptionsWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mocklistPlacementOptionsData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mocklistPlacementOptionsData.request['inboundPlanId'],
-        ];
-        instance.listPlacementOptions(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('listPrepDetails', function() {
-      
-      it('should successfully call listPrepDetails', function(done) {
-        instance.apiClient.callApi.resolves(mocklistPrepDetailsData.response);
-
-        const params = [
-          mocklistPrepDetailsData.request['marketplaceId'],
-          mocklistPrepDetailsData.request['mskus']
-        ];
-        instance.listPrepDetails(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.ListPrepDetailsResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call listPrepDetailsWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mocklistPrepDetailsData.response);
-
-        const params = [
-          mocklistPrepDetailsData.request['marketplaceId'],
-          mocklistPrepDetailsData.request['mskus']
-        ];
-        instance.listPrepDetailsWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mocklistPrepDetailsData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mocklistPrepDetailsData.request['marketplaceId'],
-          mocklistPrepDetailsData.request['mskus']
-        ];
-        instance.listPrepDetails(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('listShipmentBoxes', function() {
-      
-      it('should successfully call listShipmentBoxes', function(done) {
-        instance.apiClient.callApi.resolves(mocklistShipmentBoxesData.response);
-
-        const params = [
-          mocklistShipmentBoxesData.request['inboundPlanId'],
-          mocklistShipmentBoxesData.request['shipmentId'],
-        ];
-        instance.listShipmentBoxes(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.ListShipmentBoxesResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call listShipmentBoxesWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mocklistShipmentBoxesData.response);
-
-        const params = [
-          mocklistShipmentBoxesData.request['inboundPlanId'],
-          mocklistShipmentBoxesData.request['shipmentId'],
-        ];
-        instance.listShipmentBoxesWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mocklistShipmentBoxesData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mocklistShipmentBoxesData.request['inboundPlanId'],
-          mocklistShipmentBoxesData.request['shipmentId'],
-        ];
-        instance.listShipmentBoxes(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('listShipmentContentUpdatePreviews', function() {
-      
-      it('should successfully call listShipmentContentUpdatePreviews', function(done) {
-        instance.apiClient.callApi.resolves(mocklistShipmentContentUpdatePreviewsData.response);
-
-        const params = [
-          mocklistShipmentContentUpdatePreviewsData.request['inboundPlanId'],
-          mocklistShipmentContentUpdatePreviewsData.request['shipmentId'],
-        ];
-        instance.listShipmentContentUpdatePreviews(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.ListShipmentContentUpdatePreviewsResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call listShipmentContentUpdatePreviewsWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mocklistShipmentContentUpdatePreviewsData.response);
-
-        const params = [
-          mocklistShipmentContentUpdatePreviewsData.request['inboundPlanId'],
-          mocklistShipmentContentUpdatePreviewsData.request['shipmentId'],
-        ];
-        instance.listShipmentContentUpdatePreviewsWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mocklistShipmentContentUpdatePreviewsData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mocklistShipmentContentUpdatePreviewsData.request['inboundPlanId'],
-          mocklistShipmentContentUpdatePreviewsData.request['shipmentId'],
-        ];
-        instance.listShipmentContentUpdatePreviews(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('listShipmentItems', function() {
-      
-      it('should successfully call listShipmentItems', function(done) {
-        instance.apiClient.callApi.resolves(mocklistShipmentItemsData.response);
-
-        const params = [
-          mocklistShipmentItemsData.request['inboundPlanId'],
-          mocklistShipmentItemsData.request['shipmentId'],
-        ];
-        instance.listShipmentItems(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.ListShipmentItemsResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call listShipmentItemsWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mocklistShipmentItemsData.response);
-
-        const params = [
-          mocklistShipmentItemsData.request['inboundPlanId'],
-          mocklistShipmentItemsData.request['shipmentId'],
-        ];
-        instance.listShipmentItemsWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mocklistShipmentItemsData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mocklistShipmentItemsData.request['inboundPlanId'],
-          mocklistShipmentItemsData.request['shipmentId'],
-        ];
-        instance.listShipmentItems(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('listShipmentPallets', function() {
-      
-      it('should successfully call listShipmentPallets', function(done) {
-        instance.apiClient.callApi.resolves(mocklistShipmentPalletsData.response);
-
-        const params = [
-          mocklistShipmentPalletsData.request['inboundPlanId'],
-          mocklistShipmentPalletsData.request['shipmentId'],
-        ];
-        instance.listShipmentPallets(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.ListShipmentPalletsResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call listShipmentPalletsWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mocklistShipmentPalletsData.response);
-
-        const params = [
-          mocklistShipmentPalletsData.request['inboundPlanId'],
-          mocklistShipmentPalletsData.request['shipmentId'],
-        ];
-        instance.listShipmentPalletsWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mocklistShipmentPalletsData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mocklistShipmentPalletsData.request['inboundPlanId'],
-          mocklistShipmentPalletsData.request['shipmentId'],
-        ];
-        instance.listShipmentPallets(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('listTransportationOptions', function() {
-      
-      it('should successfully call listTransportationOptions', function(done) {
-        instance.apiClient.callApi.resolves(mocklistTransportationOptionsData.response);
-
-        const params = [
-          mocklistTransportationOptionsData.request['inboundPlanId'],
-        ];
-        instance.listTransportationOptions(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.ListTransportationOptionsResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call listTransportationOptionsWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mocklistTransportationOptionsData.response);
-
-        const params = [
-          mocklistTransportationOptionsData.request['inboundPlanId'],
-        ];
-        instance.listTransportationOptionsWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mocklistTransportationOptionsData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mocklistTransportationOptionsData.request['inboundPlanId'],
-        ];
-        instance.listTransportationOptions(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('scheduleSelfShipAppointment', function() {
-      
-      it('should successfully call scheduleSelfShipAppointment', function(done) {
-        instance.apiClient.callApi.resolves(mockscheduleSelfShipAppointmentData.response);
-
-        const params = [
-          mockscheduleSelfShipAppointmentData.request['inboundPlanId'],
-          mockscheduleSelfShipAppointmentData.request['shipmentId'],
-          mockscheduleSelfShipAppointmentData.request['slotId'],
-          mockscheduleSelfShipAppointmentData.request['body']
-        ];
-        instance.scheduleSelfShipAppointment(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.ScheduleSelfShipAppointmentResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call scheduleSelfShipAppointmentWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockscheduleSelfShipAppointmentData.response);
-
-        const params = [
-          mockscheduleSelfShipAppointmentData.request['inboundPlanId'],
-          mockscheduleSelfShipAppointmentData.request['shipmentId'],
-          mockscheduleSelfShipAppointmentData.request['slotId'],
-          mockscheduleSelfShipAppointmentData.request['body']
-        ];
-        instance.scheduleSelfShipAppointmentWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockscheduleSelfShipAppointmentData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockscheduleSelfShipAppointmentData.request['inboundPlanId'],
-          mockscheduleSelfShipAppointmentData.request['shipmentId'],
-          mockscheduleSelfShipAppointmentData.request['slotId'],
-          mockscheduleSelfShipAppointmentData.request['body']
-        ];
-        instance.scheduleSelfShipAppointment(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('setPackingInformation', function() {
-      
-      it('should successfully call setPackingInformation', function(done) {
-        instance.apiClient.callApi.resolves(mocksetPackingInformationData.response);
-
-        const params = [
-          mocksetPackingInformationData.request['inboundPlanId'],
-          mocksetPackingInformationData.request['body']
-        ];
-        instance.setPackingInformation(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.SetPackingInformationResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call setPackingInformationWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mocksetPackingInformationData.response);
-
-        const params = [
-          mocksetPackingInformationData.request['inboundPlanId'],
-          mocksetPackingInformationData.request['body']
-        ];
-        instance.setPackingInformationWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mocksetPackingInformationData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mocksetPackingInformationData.request['inboundPlanId'],
-          mocksetPackingInformationData.request['body']
-        ];
-        instance.setPackingInformation(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('setPrepDetails', function() {
-      
-      it('should successfully call setPrepDetails', function(done) {
-        instance.apiClient.callApi.resolves(mocksetPrepDetailsData.response);
-
-        const params = [
-          mocksetPrepDetailsData.request['body']
-        ];
-        instance.setPrepDetails(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.SetPrepDetailsResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call setPrepDetailsWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mocksetPrepDetailsData.response);
-
-        const params = [
-          mocksetPrepDetailsData.request['body']
-        ];
-        instance.setPrepDetailsWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mocksetPrepDetailsData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mocksetPrepDetailsData.request['body']
-        ];
-        instance.setPrepDetails(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('updateInboundPlanName', function() {
-      
-      it('should successfully call updateInboundPlanName', function(done) {
-        instance.apiClient.callApi.resolves(mockupdateInboundPlanNameData.response);
-
-        const params = [
-          mockupdateInboundPlanNameData.request['inboundPlanId'],
-          mockupdateInboundPlanNameData.request['body']
-        ];
-        instance.updateInboundPlanName(...params)
-          .then(function(data) {
-            expect(data).to.be.undefined;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call updateInboundPlanNameWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockupdateInboundPlanNameData.response);
-
-        const params = [
-          mockupdateInboundPlanNameData.request['inboundPlanId'],
-          mockupdateInboundPlanNameData.request['body']
-        ];
-        instance.updateInboundPlanNameWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockupdateInboundPlanNameData.response.statusCode)
-            expect(response).to.have.property('headers');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockupdateInboundPlanNameData.request['inboundPlanId'],
-          mockupdateInboundPlanNameData.request['body']
-        ];
-        instance.updateInboundPlanName(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('updateItemComplianceDetails', function() {
-      
-      it('should successfully call updateItemComplianceDetails', function(done) {
-        instance.apiClient.callApi.resolves(mockupdateItemComplianceDetailsData.response);
-
-        const params = [
-          mockupdateItemComplianceDetailsData.request['marketplaceId'],
-          mockupdateItemComplianceDetailsData.request['body']
-        ];
-        instance.updateItemComplianceDetails(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.UpdateItemComplianceDetailsResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call updateItemComplianceDetailsWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockupdateItemComplianceDetailsData.response);
-
-        const params = [
-          mockupdateItemComplianceDetailsData.request['marketplaceId'],
-          mockupdateItemComplianceDetailsData.request['body']
-        ];
-        instance.updateItemComplianceDetailsWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockupdateItemComplianceDetailsData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockupdateItemComplianceDetailsData.request['marketplaceId'],
-          mockupdateItemComplianceDetailsData.request['body']
-        ];
-        instance.updateItemComplianceDetails(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('updateShipmentName', function() {
-      
-      it('should successfully call updateShipmentName', function(done) {
-        instance.apiClient.callApi.resolves(mockupdateShipmentNameData.response);
-
-        const params = [
-          mockupdateShipmentNameData.request['inboundPlanId'],
-          mockupdateShipmentNameData.request['shipmentId'],
-          mockupdateShipmentNameData.request['body']
-        ];
-        instance.updateShipmentName(...params)
-          .then(function(data) {
-            expect(data).to.be.undefined;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call updateShipmentNameWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockupdateShipmentNameData.response);
-
-        const params = [
-          mockupdateShipmentNameData.request['inboundPlanId'],
-          mockupdateShipmentNameData.request['shipmentId'],
-          mockupdateShipmentNameData.request['body']
-        ];
-        instance.updateShipmentNameWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockupdateShipmentNameData.response.statusCode)
-            expect(response).to.have.property('headers');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockupdateShipmentNameData.request['inboundPlanId'],
-          mockupdateShipmentNameData.request['shipmentId'],
-          mockupdateShipmentNameData.request['body']
-        ];
-        instance.updateShipmentName(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('updateShipmentSourceAddress', function() {
-      
-      it('should successfully call updateShipmentSourceAddress', function(done) {
-        instance.apiClient.callApi.resolves(mockupdateShipmentSourceAddressData.response);
-
-        const params = [
-          mockupdateShipmentSourceAddressData.request['inboundPlanId'],
-          mockupdateShipmentSourceAddressData.request['shipmentId'],
-          mockupdateShipmentSourceAddressData.request['body']
-        ];
-        instance.updateShipmentSourceAddress(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.UpdateShipmentSourceAddressResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call updateShipmentSourceAddressWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockupdateShipmentSourceAddressData.response);
-
-        const params = [
-          mockupdateShipmentSourceAddressData.request['inboundPlanId'],
-          mockupdateShipmentSourceAddressData.request['shipmentId'],
-          mockupdateShipmentSourceAddressData.request['body']
-        ];
-        instance.updateShipmentSourceAddressWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockupdateShipmentSourceAddressData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockupdateShipmentSourceAddressData.request['inboundPlanId'],
-          mockupdateShipmentSourceAddressData.request['shipmentId'],
-          mockupdateShipmentSourceAddressData.request['body']
-        ];
-        instance.updateShipmentSourceAddress(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('updateShipmentTrackingDetails', function() {
-      
-      it('should successfully call updateShipmentTrackingDetails', function(done) {
-        instance.apiClient.callApi.resolves(mockupdateShipmentTrackingDetailsData.response);
-
-        const params = [
-          mockupdateShipmentTrackingDetailsData.request['inboundPlanId'],
-          mockupdateShipmentTrackingDetailsData.request['shipmentId'],
-          mockupdateShipmentTrackingDetailsData.request['body']
-        ];
-        instance.updateShipmentTrackingDetails(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.UpdateShipmentTrackingDetailsResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call updateShipmentTrackingDetailsWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockupdateShipmentTrackingDetailsData.response);
-
-        const params = [
-          mockupdateShipmentTrackingDetailsData.request['inboundPlanId'],
-          mockupdateShipmentTrackingDetailsData.request['shipmentId'],
-          mockupdateShipmentTrackingDetailsData.request['body']
-        ];
-        instance.updateShipmentTrackingDetailsWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockupdateShipmentTrackingDetailsData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockupdateShipmentTrackingDetailsData.request['inboundPlanId'],
-          mockupdateShipmentTrackingDetailsData.request['shipmentId'],
-          mockupdateShipmentTrackingDetailsData.request['body']
-        ];
-        instance.updateShipmentTrackingDetails(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-
-    describe('constructor', function() {
-      it('should use default ApiClient when none provided', function() {
-        var defaultInstance = new TheSellingPartnerApiForFbaInboundOperations.FbaInboundApi();
-        expect(defaultInstance.apiClient).to.equal(TheSellingPartnerApiForFbaInboundOperations.ApiClient.instance);
-      });
-
-      it('should use provided ApiClient', function() {
-        var customClient = new TheSellingPartnerApiForFbaInboundOperations.ApiClient();
-        var customInstance = new TheSellingPartnerApiForFbaInboundOperations.FbaInboundApi(customClient);
-        expect(customInstance.apiClient).to.equal(customClient);
-      });
+        await instance.cancelInboundPlan(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
     });
   });
-}));
+  describe('cancelSelfShipAppointment', () => {
+    it('should successfully call cancelSelfShipAppointment', async () => {
+      instance.apiClient.callApi.resolves(mockcancelSelfShipAppointmentData.response);
+
+      const params = [
+        mockcancelSelfShipAppointmentData.request['inboundPlanId'],
+        mockcancelSelfShipAppointmentData.request['shipmentId'],
+        mockcancelSelfShipAppointmentData.request['body']
+      ];
+      const data = await instance.cancelSelfShipAppointment(...params);
+
+      expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.CancelSelfShipAppointmentResponse).to.be.true;
+    });
+
+    it('should successfully call cancelSelfShipAppointmentWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockcancelSelfShipAppointmentData.response);
+
+      const params = [
+        mockcancelSelfShipAppointmentData.request['inboundPlanId'],
+        mockcancelSelfShipAppointmentData.request['shipmentId'],
+        mockcancelSelfShipAppointmentData.request['body']
+      ];
+      const response = await instance.cancelSelfShipAppointmentWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockcancelSelfShipAppointmentData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockcancelSelfShipAppointmentData.request['inboundPlanId'],
+          mockcancelSelfShipAppointmentData.request['shipmentId'],
+          mockcancelSelfShipAppointmentData.request['body']
+        ];
+        await instance.cancelSelfShipAppointment(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('confirmDeliveryWindowOptions', () => {
+    it('should successfully call confirmDeliveryWindowOptions', async () => {
+      instance.apiClient.callApi.resolves(mockconfirmDeliveryWindowOptionsData.response);
+
+      const params = [
+        mockconfirmDeliveryWindowOptionsData.request['inboundPlanId'],
+        mockconfirmDeliveryWindowOptionsData.request['shipmentId'],
+        mockconfirmDeliveryWindowOptionsData.request['deliveryWindowOptionId']
+      ];
+      const data = await instance.confirmDeliveryWindowOptions(...params);
+
+      expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.ConfirmDeliveryWindowOptionsResponse).to.be.true;
+    });
+
+    it('should successfully call confirmDeliveryWindowOptionsWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockconfirmDeliveryWindowOptionsData.response);
+
+      const params = [
+        mockconfirmDeliveryWindowOptionsData.request['inboundPlanId'],
+        mockconfirmDeliveryWindowOptionsData.request['shipmentId'],
+        mockconfirmDeliveryWindowOptionsData.request['deliveryWindowOptionId']
+      ];
+      const response = await instance.confirmDeliveryWindowOptionsWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockconfirmDeliveryWindowOptionsData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockconfirmDeliveryWindowOptionsData.request['inboundPlanId'],
+          mockconfirmDeliveryWindowOptionsData.request['shipmentId'],
+          mockconfirmDeliveryWindowOptionsData.request['deliveryWindowOptionId']
+        ];
+        await instance.confirmDeliveryWindowOptions(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('confirmPackingOption', () => {
+    it('should successfully call confirmPackingOption', async () => {
+      instance.apiClient.callApi.resolves(mockconfirmPackingOptionData.response);
+
+      const params = [
+        mockconfirmPackingOptionData.request['inboundPlanId'],
+        mockconfirmPackingOptionData.request['packingOptionId']
+      ];
+      const data = await instance.confirmPackingOption(...params);
+
+      expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.ConfirmPackingOptionResponse).to.be.true;
+    });
+
+    it('should successfully call confirmPackingOptionWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockconfirmPackingOptionData.response);
+
+      const params = [
+        mockconfirmPackingOptionData.request['inboundPlanId'],
+        mockconfirmPackingOptionData.request['packingOptionId']
+      ];
+      const response = await instance.confirmPackingOptionWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockconfirmPackingOptionData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockconfirmPackingOptionData.request['inboundPlanId'],
+          mockconfirmPackingOptionData.request['packingOptionId']
+        ];
+        await instance.confirmPackingOption(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('confirmPlacementOption', () => {
+    it('should successfully call confirmPlacementOption', async () => {
+      instance.apiClient.callApi.resolves(mockconfirmPlacementOptionData.response);
+
+      const params = [
+        mockconfirmPlacementOptionData.request['inboundPlanId'],
+        mockconfirmPlacementOptionData.request['placementOptionId']
+      ];
+      const data = await instance.confirmPlacementOption(...params);
+
+      expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.ConfirmPlacementOptionResponse).to.be.true;
+    });
+
+    it('should successfully call confirmPlacementOptionWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockconfirmPlacementOptionData.response);
+
+      const params = [
+        mockconfirmPlacementOptionData.request['inboundPlanId'],
+        mockconfirmPlacementOptionData.request['placementOptionId']
+      ];
+      const response = await instance.confirmPlacementOptionWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockconfirmPlacementOptionData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockconfirmPlacementOptionData.request['inboundPlanId'],
+          mockconfirmPlacementOptionData.request['placementOptionId']
+        ];
+        await instance.confirmPlacementOption(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('confirmShipmentContentUpdatePreview', () => {
+    it('should successfully call confirmShipmentContentUpdatePreview', async () => {
+      instance.apiClient.callApi.resolves(mockconfirmShipmentContentUpdatePreviewData.response);
+
+      const params = [
+        mockconfirmShipmentContentUpdatePreviewData.request['inboundPlanId'],
+        mockconfirmShipmentContentUpdatePreviewData.request['shipmentId'],
+        mockconfirmShipmentContentUpdatePreviewData.request['contentUpdatePreviewId']
+      ];
+      const data = await instance.confirmShipmentContentUpdatePreview(...params);
+
+      expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.ConfirmShipmentContentUpdatePreviewResponse).to.be.true;
+    });
+
+    it('should successfully call confirmShipmentContentUpdatePreviewWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockconfirmShipmentContentUpdatePreviewData.response);
+
+      const params = [
+        mockconfirmShipmentContentUpdatePreviewData.request['inboundPlanId'],
+        mockconfirmShipmentContentUpdatePreviewData.request['shipmentId'],
+        mockconfirmShipmentContentUpdatePreviewData.request['contentUpdatePreviewId']
+      ];
+      const response = await instance.confirmShipmentContentUpdatePreviewWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockconfirmShipmentContentUpdatePreviewData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockconfirmShipmentContentUpdatePreviewData.request['inboundPlanId'],
+          mockconfirmShipmentContentUpdatePreviewData.request['shipmentId'],
+          mockconfirmShipmentContentUpdatePreviewData.request['contentUpdatePreviewId']
+        ];
+        await instance.confirmShipmentContentUpdatePreview(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('confirmTransportationOptions', () => {
+    it('should successfully call confirmTransportationOptions', async () => {
+      instance.apiClient.callApi.resolves(mockconfirmTransportationOptionsData.response);
+
+      const params = [
+        mockconfirmTransportationOptionsData.request['inboundPlanId'],
+        mockconfirmTransportationOptionsData.request['body']
+      ];
+      const data = await instance.confirmTransportationOptions(...params);
+
+      expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.ConfirmTransportationOptionsResponse).to.be.true;
+    });
+
+    it('should successfully call confirmTransportationOptionsWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockconfirmTransportationOptionsData.response);
+
+      const params = [
+        mockconfirmTransportationOptionsData.request['inboundPlanId'],
+        mockconfirmTransportationOptionsData.request['body']
+      ];
+      const response = await instance.confirmTransportationOptionsWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockconfirmTransportationOptionsData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockconfirmTransportationOptionsData.request['inboundPlanId'],
+          mockconfirmTransportationOptionsData.request['body']
+        ];
+        await instance.confirmTransportationOptions(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('createInboundPlan', () => {
+    it('should successfully call createInboundPlan', async () => {
+      instance.apiClient.callApi.resolves(mockcreateInboundPlanData.response);
+
+      const params = [
+        mockcreateInboundPlanData.request['body']
+      ];
+      const data = await instance.createInboundPlan(...params);
+
+      expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.CreateInboundPlanResponse).to.be.true;
+    });
+
+    it('should successfully call createInboundPlanWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockcreateInboundPlanData.response);
+
+      const params = [
+        mockcreateInboundPlanData.request['body']
+      ];
+      const response = await instance.createInboundPlanWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockcreateInboundPlanData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockcreateInboundPlanData.request['body']
+        ];
+        await instance.createInboundPlan(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('createMarketplaceItemLabels', () => {
+    it('should successfully call createMarketplaceItemLabels', async () => {
+      instance.apiClient.callApi.resolves(mockcreateMarketplaceItemLabelsData.response);
+
+      const params = [
+        mockcreateMarketplaceItemLabelsData.request['body']
+      ];
+      const data = await instance.createMarketplaceItemLabels(...params);
+
+      expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.CreateMarketplaceItemLabelsResponse).to.be.true;
+    });
+
+    it('should successfully call createMarketplaceItemLabelsWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockcreateMarketplaceItemLabelsData.response);
+
+      const params = [
+        mockcreateMarketplaceItemLabelsData.request['body']
+      ];
+      const response = await instance.createMarketplaceItemLabelsWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockcreateMarketplaceItemLabelsData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockcreateMarketplaceItemLabelsData.request['body']
+        ];
+        await instance.createMarketplaceItemLabels(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('generateDeliveryWindowOptions', () => {
+    it('should successfully call generateDeliveryWindowOptions', async () => {
+      instance.apiClient.callApi.resolves(mockgenerateDeliveryWindowOptionsData.response);
+
+      const params = [
+        mockgenerateDeliveryWindowOptionsData.request['inboundPlanId'],
+        mockgenerateDeliveryWindowOptionsData.request['shipmentId']
+      ];
+      const data = await instance.generateDeliveryWindowOptions(...params);
+
+      expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.GenerateDeliveryWindowOptionsResponse).to.be.true;
+    });
+
+    it('should successfully call generateDeliveryWindowOptionsWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgenerateDeliveryWindowOptionsData.response);
+
+      const params = [
+        mockgenerateDeliveryWindowOptionsData.request['inboundPlanId'],
+        mockgenerateDeliveryWindowOptionsData.request['shipmentId']
+      ];
+      const response = await instance.generateDeliveryWindowOptionsWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgenerateDeliveryWindowOptionsData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgenerateDeliveryWindowOptionsData.request['inboundPlanId'],
+          mockgenerateDeliveryWindowOptionsData.request['shipmentId']
+        ];
+        await instance.generateDeliveryWindowOptions(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('generatePackingOptions', () => {
+    it('should successfully call generatePackingOptions', async () => {
+      instance.apiClient.callApi.resolves(mockgeneratePackingOptionsData.response);
+
+      const params = [
+        mockgeneratePackingOptionsData.request['inboundPlanId']
+      ];
+      const data = await instance.generatePackingOptions(...params);
+
+      expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.GeneratePackingOptionsResponse).to.be.true;
+    });
+
+    it('should successfully call generatePackingOptionsWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgeneratePackingOptionsData.response);
+
+      const params = [
+        mockgeneratePackingOptionsData.request['inboundPlanId']
+      ];
+      const response = await instance.generatePackingOptionsWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgeneratePackingOptionsData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgeneratePackingOptionsData.request['inboundPlanId']
+        ];
+        await instance.generatePackingOptions(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('generatePlacementOptions', () => {
+    it('should successfully call generatePlacementOptions', async () => {
+      instance.apiClient.callApi.resolves(mockgeneratePlacementOptionsData.response);
+
+      const params = [
+        mockgeneratePlacementOptionsData.request['inboundPlanId'],
+        mockgeneratePlacementOptionsData.request['body']
+      ];
+      const data = await instance.generatePlacementOptions(...params);
+
+      expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.GeneratePlacementOptionsResponse).to.be.true;
+    });
+
+    it('should successfully call generatePlacementOptionsWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgeneratePlacementOptionsData.response);
+
+      const params = [
+        mockgeneratePlacementOptionsData.request['inboundPlanId'],
+        mockgeneratePlacementOptionsData.request['body']
+      ];
+      const response = await instance.generatePlacementOptionsWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgeneratePlacementOptionsData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgeneratePlacementOptionsData.request['inboundPlanId'],
+          mockgeneratePlacementOptionsData.request['body']
+        ];
+        await instance.generatePlacementOptions(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('generateSelfShipAppointmentSlots', () => {
+    it('should successfully call generateSelfShipAppointmentSlots', async () => {
+      instance.apiClient.callApi.resolves(mockgenerateSelfShipAppointmentSlotsData.response);
+
+      const params = [
+        mockgenerateSelfShipAppointmentSlotsData.request['inboundPlanId'],
+        mockgenerateSelfShipAppointmentSlotsData.request['shipmentId'],
+        mockgenerateSelfShipAppointmentSlotsData.request['body']
+      ];
+      const data = await instance.generateSelfShipAppointmentSlots(...params);
+
+      expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.GenerateSelfShipAppointmentSlotsResponse).to.be.true;
+    });
+
+    it('should successfully call generateSelfShipAppointmentSlotsWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgenerateSelfShipAppointmentSlotsData.response);
+
+      const params = [
+        mockgenerateSelfShipAppointmentSlotsData.request['inboundPlanId'],
+        mockgenerateSelfShipAppointmentSlotsData.request['shipmentId'],
+        mockgenerateSelfShipAppointmentSlotsData.request['body']
+      ];
+      const response = await instance.generateSelfShipAppointmentSlotsWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgenerateSelfShipAppointmentSlotsData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgenerateSelfShipAppointmentSlotsData.request['inboundPlanId'],
+          mockgenerateSelfShipAppointmentSlotsData.request['shipmentId'],
+          mockgenerateSelfShipAppointmentSlotsData.request['body']
+        ];
+        await instance.generateSelfShipAppointmentSlots(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('generateShipmentContentUpdatePreviews', () => {
+    it('should successfully call generateShipmentContentUpdatePreviews', async () => {
+      instance.apiClient.callApi.resolves(mockgenerateShipmentContentUpdatePreviewsData.response);
+
+      const params = [
+        mockgenerateShipmentContentUpdatePreviewsData.request['inboundPlanId'],
+        mockgenerateShipmentContentUpdatePreviewsData.request['shipmentId'],
+        mockgenerateShipmentContentUpdatePreviewsData.request['body']
+      ];
+      const data = await instance.generateShipmentContentUpdatePreviews(...params);
+
+      expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.GenerateShipmentContentUpdatePreviewsResponse).to.be.true;
+    });
+
+    it('should successfully call generateShipmentContentUpdatePreviewsWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgenerateShipmentContentUpdatePreviewsData.response);
+
+      const params = [
+        mockgenerateShipmentContentUpdatePreviewsData.request['inboundPlanId'],
+        mockgenerateShipmentContentUpdatePreviewsData.request['shipmentId'],
+        mockgenerateShipmentContentUpdatePreviewsData.request['body']
+      ];
+      const response = await instance.generateShipmentContentUpdatePreviewsWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgenerateShipmentContentUpdatePreviewsData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgenerateShipmentContentUpdatePreviewsData.request['inboundPlanId'],
+          mockgenerateShipmentContentUpdatePreviewsData.request['shipmentId'],
+          mockgenerateShipmentContentUpdatePreviewsData.request['body']
+        ];
+        await instance.generateShipmentContentUpdatePreviews(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('generateTransportationOptions', () => {
+    it('should successfully call generateTransportationOptions', async () => {
+      instance.apiClient.callApi.resolves(mockgenerateTransportationOptionsData.response);
+
+      const params = [
+        mockgenerateTransportationOptionsData.request['inboundPlanId'],
+        mockgenerateTransportationOptionsData.request['body']
+      ];
+      const data = await instance.generateTransportationOptions(...params);
+
+      expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.GenerateTransportationOptionsResponse).to.be.true;
+    });
+
+    it('should successfully call generateTransportationOptionsWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgenerateTransportationOptionsData.response);
+
+      const params = [
+        mockgenerateTransportationOptionsData.request['inboundPlanId'],
+        mockgenerateTransportationOptionsData.request['body']
+      ];
+      const response = await instance.generateTransportationOptionsWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgenerateTransportationOptionsData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgenerateTransportationOptionsData.request['inboundPlanId'],
+          mockgenerateTransportationOptionsData.request['body']
+        ];
+        await instance.generateTransportationOptions(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('getDeliveryChallanDocument', () => {
+    it('should successfully call getDeliveryChallanDocument', async () => {
+      instance.apiClient.callApi.resolves(mockgetDeliveryChallanDocumentData.response);
+
+      const params = [
+        mockgetDeliveryChallanDocumentData.request['inboundPlanId'],
+        mockgetDeliveryChallanDocumentData.request['shipmentId']
+      ];
+      const data = await instance.getDeliveryChallanDocument(...params);
+
+      expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.GetDeliveryChallanDocumentResponse).to.be.true;
+    });
+
+    it('should successfully call getDeliveryChallanDocumentWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetDeliveryChallanDocumentData.response);
+
+      const params = [
+        mockgetDeliveryChallanDocumentData.request['inboundPlanId'],
+        mockgetDeliveryChallanDocumentData.request['shipmentId']
+      ];
+      const response = await instance.getDeliveryChallanDocumentWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetDeliveryChallanDocumentData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgetDeliveryChallanDocumentData.request['inboundPlanId'],
+          mockgetDeliveryChallanDocumentData.request['shipmentId']
+        ];
+        await instance.getDeliveryChallanDocument(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('getInboundOperationStatus', () => {
+    it('should successfully call getInboundOperationStatus', async () => {
+      instance.apiClient.callApi.resolves(mockgetInboundOperationStatusData.response);
+
+      const params = [
+        mockgetInboundOperationStatusData.request['operationId']
+      ];
+      const data = await instance.getInboundOperationStatus(...params);
+
+      expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.InboundOperationStatus).to.be.true;
+    });
+
+    it('should successfully call getInboundOperationStatusWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetInboundOperationStatusData.response);
+
+      const params = [
+        mockgetInboundOperationStatusData.request['operationId']
+      ];
+      const response = await instance.getInboundOperationStatusWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetInboundOperationStatusData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgetInboundOperationStatusData.request['operationId']
+        ];
+        await instance.getInboundOperationStatus(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('getInboundPlan', () => {
+    it('should successfully call getInboundPlan', async () => {
+      instance.apiClient.callApi.resolves(mockgetInboundPlanData.response);
+
+      const params = [
+        mockgetInboundPlanData.request['inboundPlanId']
+      ];
+      const data = await instance.getInboundPlan(...params);
+
+      expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.InboundPlan).to.be.true;
+    });
+
+    it('should successfully call getInboundPlanWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetInboundPlanData.response);
+
+      const params = [
+        mockgetInboundPlanData.request['inboundPlanId']
+      ];
+      const response = await instance.getInboundPlanWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetInboundPlanData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgetInboundPlanData.request['inboundPlanId']
+        ];
+        await instance.getInboundPlan(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('getSelfShipAppointmentSlots', () => {
+    it('should successfully call getSelfShipAppointmentSlots', async () => {
+      instance.apiClient.callApi.resolves(mockgetSelfShipAppointmentSlotsData.response);
+
+      const params = [
+        mockgetSelfShipAppointmentSlotsData.request['inboundPlanId'],
+        mockgetSelfShipAppointmentSlotsData.request['shipmentId'],
+      ];
+      const data = await instance.getSelfShipAppointmentSlots(...params);
+
+      expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.GetSelfShipAppointmentSlotsResponse).to.be.true;
+    });
+
+    it('should successfully call getSelfShipAppointmentSlotsWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetSelfShipAppointmentSlotsData.response);
+
+      const params = [
+        mockgetSelfShipAppointmentSlotsData.request['inboundPlanId'],
+        mockgetSelfShipAppointmentSlotsData.request['shipmentId'],
+      ];
+      const response = await instance.getSelfShipAppointmentSlotsWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetSelfShipAppointmentSlotsData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgetSelfShipAppointmentSlotsData.request['inboundPlanId'],
+          mockgetSelfShipAppointmentSlotsData.request['shipmentId'],
+        ];
+        await instance.getSelfShipAppointmentSlots(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('getShipment', () => {
+    it('should successfully call getShipment', async () => {
+      instance.apiClient.callApi.resolves(mockgetShipmentData.response);
+
+      const params = [
+        mockgetShipmentData.request['inboundPlanId'],
+        mockgetShipmentData.request['shipmentId']
+      ];
+      const data = await instance.getShipment(...params);
+
+      expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.Shipment).to.be.true;
+    });
+
+    it('should successfully call getShipmentWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetShipmentData.response);
+
+      const params = [
+        mockgetShipmentData.request['inboundPlanId'],
+        mockgetShipmentData.request['shipmentId']
+      ];
+      const response = await instance.getShipmentWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetShipmentData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgetShipmentData.request['inboundPlanId'],
+          mockgetShipmentData.request['shipmentId']
+        ];
+        await instance.getShipment(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('getShipmentContentUpdatePreview', () => {
+    it('should successfully call getShipmentContentUpdatePreview', async () => {
+      instance.apiClient.callApi.resolves(mockgetShipmentContentUpdatePreviewData.response);
+
+      const params = [
+        mockgetShipmentContentUpdatePreviewData.request['inboundPlanId'],
+        mockgetShipmentContentUpdatePreviewData.request['shipmentId'],
+        mockgetShipmentContentUpdatePreviewData.request['contentUpdatePreviewId']
+      ];
+      const data = await instance.getShipmentContentUpdatePreview(...params);
+
+      expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.ContentUpdatePreview).to.be.true;
+    });
+
+    it('should successfully call getShipmentContentUpdatePreviewWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetShipmentContentUpdatePreviewData.response);
+
+      const params = [
+        mockgetShipmentContentUpdatePreviewData.request['inboundPlanId'],
+        mockgetShipmentContentUpdatePreviewData.request['shipmentId'],
+        mockgetShipmentContentUpdatePreviewData.request['contentUpdatePreviewId']
+      ];
+      const response = await instance.getShipmentContentUpdatePreviewWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetShipmentContentUpdatePreviewData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgetShipmentContentUpdatePreviewData.request['inboundPlanId'],
+          mockgetShipmentContentUpdatePreviewData.request['shipmentId'],
+          mockgetShipmentContentUpdatePreviewData.request['contentUpdatePreviewId']
+        ];
+        await instance.getShipmentContentUpdatePreview(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('listDeliveryWindowOptions', () => {
+    it('should successfully call listDeliveryWindowOptions', async () => {
+      instance.apiClient.callApi.resolves(mocklistDeliveryWindowOptionsData.response);
+
+      const params = [
+        mocklistDeliveryWindowOptionsData.request['inboundPlanId'],
+        mocklistDeliveryWindowOptionsData.request['shipmentId'],
+      ];
+      const data = await instance.listDeliveryWindowOptions(...params);
+
+      expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.ListDeliveryWindowOptionsResponse).to.be.true;
+    });
+
+    it('should successfully call listDeliveryWindowOptionsWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mocklistDeliveryWindowOptionsData.response);
+
+      const params = [
+        mocklistDeliveryWindowOptionsData.request['inboundPlanId'],
+        mocklistDeliveryWindowOptionsData.request['shipmentId'],
+      ];
+      const response = await instance.listDeliveryWindowOptionsWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mocklistDeliveryWindowOptionsData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mocklistDeliveryWindowOptionsData.request['inboundPlanId'],
+          mocklistDeliveryWindowOptionsData.request['shipmentId'],
+        ];
+        await instance.listDeliveryWindowOptions(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('listInboundPlanBoxes', () => {
+    it('should successfully call listInboundPlanBoxes', async () => {
+      instance.apiClient.callApi.resolves(mocklistInboundPlanBoxesData.response);
+
+      const params = [
+        mocklistInboundPlanBoxesData.request['inboundPlanId'],
+      ];
+      const data = await instance.listInboundPlanBoxes(...params);
+
+      expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.ListInboundPlanBoxesResponse).to.be.true;
+    });
+
+    it('should successfully call listInboundPlanBoxesWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mocklistInboundPlanBoxesData.response);
+
+      const params = [
+        mocklistInboundPlanBoxesData.request['inboundPlanId'],
+      ];
+      const response = await instance.listInboundPlanBoxesWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mocklistInboundPlanBoxesData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mocklistInboundPlanBoxesData.request['inboundPlanId'],
+        ];
+        await instance.listInboundPlanBoxes(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('listInboundPlanItems', () => {
+    it('should successfully call listInboundPlanItems', async () => {
+      instance.apiClient.callApi.resolves(mocklistInboundPlanItemsData.response);
+
+      const params = [
+        mocklistInboundPlanItemsData.request['inboundPlanId'],
+      ];
+      const data = await instance.listInboundPlanItems(...params);
+
+      expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.ListInboundPlanItemsResponse).to.be.true;
+    });
+
+    it('should successfully call listInboundPlanItemsWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mocklistInboundPlanItemsData.response);
+
+      const params = [
+        mocklistInboundPlanItemsData.request['inboundPlanId'],
+      ];
+      const response = await instance.listInboundPlanItemsWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mocklistInboundPlanItemsData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mocklistInboundPlanItemsData.request['inboundPlanId'],
+        ];
+        await instance.listInboundPlanItems(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('listInboundPlanPallets', () => {
+    it('should successfully call listInboundPlanPallets', async () => {
+      instance.apiClient.callApi.resolves(mocklistInboundPlanPalletsData.response);
+
+      const params = [
+        mocklistInboundPlanPalletsData.request['inboundPlanId'],
+      ];
+      const data = await instance.listInboundPlanPallets(...params);
+
+      expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.ListInboundPlanPalletsResponse).to.be.true;
+    });
+
+    it('should successfully call listInboundPlanPalletsWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mocklistInboundPlanPalletsData.response);
+
+      const params = [
+        mocklistInboundPlanPalletsData.request['inboundPlanId'],
+      ];
+      const response = await instance.listInboundPlanPalletsWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mocklistInboundPlanPalletsData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mocklistInboundPlanPalletsData.request['inboundPlanId'],
+        ];
+        await instance.listInboundPlanPallets(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('listInboundPlans', () => {
+    it('should successfully call listInboundPlans', async () => {
+      instance.apiClient.callApi.resolves(mocklistInboundPlansData.response);
+
+      const params = [
+      ];
+      const data = await instance.listInboundPlans(...params);
+
+      expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.ListInboundPlansResponse).to.be.true;
+    });
+
+    it('should successfully call listInboundPlansWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mocklistInboundPlansData.response);
+
+      const params = [
+      ];
+      const response = await instance.listInboundPlansWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mocklistInboundPlansData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+        ];
+        await instance.listInboundPlans(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('listItemComplianceDetails', () => {
+    it('should successfully call listItemComplianceDetails', async () => {
+      instance.apiClient.callApi.resolves(mocklistItemComplianceDetailsData.response);
+
+      const params = [
+        mocklistItemComplianceDetailsData.request['mskus'],
+        mocklistItemComplianceDetailsData.request['marketplaceId']
+      ];
+      const data = await instance.listItemComplianceDetails(...params);
+
+      expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.ListItemComplianceDetailsResponse).to.be.true;
+    });
+
+    it('should successfully call listItemComplianceDetailsWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mocklistItemComplianceDetailsData.response);
+
+      const params = [
+        mocklistItemComplianceDetailsData.request['mskus'],
+        mocklistItemComplianceDetailsData.request['marketplaceId']
+      ];
+      const response = await instance.listItemComplianceDetailsWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mocklistItemComplianceDetailsData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mocklistItemComplianceDetailsData.request['mskus'],
+          mocklistItemComplianceDetailsData.request['marketplaceId']
+        ];
+        await instance.listItemComplianceDetails(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('listPackingGroupBoxes', () => {
+    it('should successfully call listPackingGroupBoxes', async () => {
+      instance.apiClient.callApi.resolves(mocklistPackingGroupBoxesData.response);
+
+      const params = [
+        mocklistPackingGroupBoxesData.request['inboundPlanId'],
+        mocklistPackingGroupBoxesData.request['packingGroupId'],
+      ];
+      const data = await instance.listPackingGroupBoxes(...params);
+
+      expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.ListPackingGroupBoxesResponse).to.be.true;
+    });
+
+    it('should successfully call listPackingGroupBoxesWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mocklistPackingGroupBoxesData.response);
+
+      const params = [
+        mocklistPackingGroupBoxesData.request['inboundPlanId'],
+        mocklistPackingGroupBoxesData.request['packingGroupId'],
+      ];
+      const response = await instance.listPackingGroupBoxesWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mocklistPackingGroupBoxesData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mocklistPackingGroupBoxesData.request['inboundPlanId'],
+          mocklistPackingGroupBoxesData.request['packingGroupId'],
+        ];
+        await instance.listPackingGroupBoxes(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('listPackingGroupItems', () => {
+    it('should successfully call listPackingGroupItems', async () => {
+      instance.apiClient.callApi.resolves(mocklistPackingGroupItemsData.response);
+
+      const params = [
+        mocklistPackingGroupItemsData.request['inboundPlanId'],
+        mocklistPackingGroupItemsData.request['packingGroupId'],
+      ];
+      const data = await instance.listPackingGroupItems(...params);
+
+      expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.ListPackingGroupItemsResponse).to.be.true;
+    });
+
+    it('should successfully call listPackingGroupItemsWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mocklistPackingGroupItemsData.response);
+
+      const params = [
+        mocklistPackingGroupItemsData.request['inboundPlanId'],
+        mocklistPackingGroupItemsData.request['packingGroupId'],
+      ];
+      const response = await instance.listPackingGroupItemsWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mocklistPackingGroupItemsData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mocklistPackingGroupItemsData.request['inboundPlanId'],
+          mocklistPackingGroupItemsData.request['packingGroupId'],
+        ];
+        await instance.listPackingGroupItems(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('listPackingOptions', () => {
+    it('should successfully call listPackingOptions', async () => {
+      instance.apiClient.callApi.resolves(mocklistPackingOptionsData.response);
+
+      const params = [
+        mocklistPackingOptionsData.request['inboundPlanId'],
+      ];
+      const data = await instance.listPackingOptions(...params);
+
+      expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.ListPackingOptionsResponse).to.be.true;
+    });
+
+    it('should successfully call listPackingOptionsWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mocklistPackingOptionsData.response);
+
+      const params = [
+        mocklistPackingOptionsData.request['inboundPlanId'],
+      ];
+      const response = await instance.listPackingOptionsWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mocklistPackingOptionsData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mocklistPackingOptionsData.request['inboundPlanId'],
+        ];
+        await instance.listPackingOptions(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('listPlacementOptions', () => {
+    it('should successfully call listPlacementOptions', async () => {
+      instance.apiClient.callApi.resolves(mocklistPlacementOptionsData.response);
+
+      const params = [
+        mocklistPlacementOptionsData.request['inboundPlanId'],
+      ];
+      const data = await instance.listPlacementOptions(...params);
+
+      expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.ListPlacementOptionsResponse).to.be.true;
+    });
+
+    it('should successfully call listPlacementOptionsWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mocklistPlacementOptionsData.response);
+
+      const params = [
+        mocklistPlacementOptionsData.request['inboundPlanId'],
+      ];
+      const response = await instance.listPlacementOptionsWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mocklistPlacementOptionsData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mocklistPlacementOptionsData.request['inboundPlanId'],
+        ];
+        await instance.listPlacementOptions(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('listPrepDetails', () => {
+    it('should successfully call listPrepDetails', async () => {
+      instance.apiClient.callApi.resolves(mocklistPrepDetailsData.response);
+
+      const params = [
+        mocklistPrepDetailsData.request['marketplaceId'],
+        mocklistPrepDetailsData.request['mskus']
+      ];
+      const data = await instance.listPrepDetails(...params);
+
+      expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.ListPrepDetailsResponse).to.be.true;
+    });
+
+    it('should successfully call listPrepDetailsWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mocklistPrepDetailsData.response);
+
+      const params = [
+        mocklistPrepDetailsData.request['marketplaceId'],
+        mocklistPrepDetailsData.request['mskus']
+      ];
+      const response = await instance.listPrepDetailsWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mocklistPrepDetailsData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mocklistPrepDetailsData.request['marketplaceId'],
+          mocklistPrepDetailsData.request['mskus']
+        ];
+        await instance.listPrepDetails(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('listShipmentBoxes', () => {
+    it('should successfully call listShipmentBoxes', async () => {
+      instance.apiClient.callApi.resolves(mocklistShipmentBoxesData.response);
+
+      const params = [
+        mocklistShipmentBoxesData.request['inboundPlanId'],
+        mocklistShipmentBoxesData.request['shipmentId'],
+      ];
+      const data = await instance.listShipmentBoxes(...params);
+
+      expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.ListShipmentBoxesResponse).to.be.true;
+    });
+
+    it('should successfully call listShipmentBoxesWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mocklistShipmentBoxesData.response);
+
+      const params = [
+        mocklistShipmentBoxesData.request['inboundPlanId'],
+        mocklistShipmentBoxesData.request['shipmentId'],
+      ];
+      const response = await instance.listShipmentBoxesWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mocklistShipmentBoxesData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mocklistShipmentBoxesData.request['inboundPlanId'],
+          mocklistShipmentBoxesData.request['shipmentId'],
+        ];
+        await instance.listShipmentBoxes(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('listShipmentContentUpdatePreviews', () => {
+    it('should successfully call listShipmentContentUpdatePreviews', async () => {
+      instance.apiClient.callApi.resolves(mocklistShipmentContentUpdatePreviewsData.response);
+
+      const params = [
+        mocklistShipmentContentUpdatePreviewsData.request['inboundPlanId'],
+        mocklistShipmentContentUpdatePreviewsData.request['shipmentId'],
+      ];
+      const data = await instance.listShipmentContentUpdatePreviews(...params);
+
+      expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.ListShipmentContentUpdatePreviewsResponse).to.be.true;
+    });
+
+    it('should successfully call listShipmentContentUpdatePreviewsWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mocklistShipmentContentUpdatePreviewsData.response);
+
+      const params = [
+        mocklistShipmentContentUpdatePreviewsData.request['inboundPlanId'],
+        mocklistShipmentContentUpdatePreviewsData.request['shipmentId'],
+      ];
+      const response = await instance.listShipmentContentUpdatePreviewsWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mocklistShipmentContentUpdatePreviewsData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mocklistShipmentContentUpdatePreviewsData.request['inboundPlanId'],
+          mocklistShipmentContentUpdatePreviewsData.request['shipmentId'],
+        ];
+        await instance.listShipmentContentUpdatePreviews(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('listShipmentItems', () => {
+    it('should successfully call listShipmentItems', async () => {
+      instance.apiClient.callApi.resolves(mocklistShipmentItemsData.response);
+
+      const params = [
+        mocklistShipmentItemsData.request['inboundPlanId'],
+        mocklistShipmentItemsData.request['shipmentId'],
+      ];
+      const data = await instance.listShipmentItems(...params);
+
+      expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.ListShipmentItemsResponse).to.be.true;
+    });
+
+    it('should successfully call listShipmentItemsWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mocklistShipmentItemsData.response);
+
+      const params = [
+        mocklistShipmentItemsData.request['inboundPlanId'],
+        mocklistShipmentItemsData.request['shipmentId'],
+      ];
+      const response = await instance.listShipmentItemsWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mocklistShipmentItemsData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mocklistShipmentItemsData.request['inboundPlanId'],
+          mocklistShipmentItemsData.request['shipmentId'],
+        ];
+        await instance.listShipmentItems(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('listShipmentPallets', () => {
+    it('should successfully call listShipmentPallets', async () => {
+      instance.apiClient.callApi.resolves(mocklistShipmentPalletsData.response);
+
+      const params = [
+        mocklistShipmentPalletsData.request['inboundPlanId'],
+        mocklistShipmentPalletsData.request['shipmentId'],
+      ];
+      const data = await instance.listShipmentPallets(...params);
+
+      expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.ListShipmentPalletsResponse).to.be.true;
+    });
+
+    it('should successfully call listShipmentPalletsWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mocklistShipmentPalletsData.response);
+
+      const params = [
+        mocklistShipmentPalletsData.request['inboundPlanId'],
+        mocklistShipmentPalletsData.request['shipmentId'],
+      ];
+      const response = await instance.listShipmentPalletsWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mocklistShipmentPalletsData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mocklistShipmentPalletsData.request['inboundPlanId'],
+          mocklistShipmentPalletsData.request['shipmentId'],
+        ];
+        await instance.listShipmentPallets(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('listTransportationOptions', () => {
+    it('should successfully call listTransportationOptions', async () => {
+      instance.apiClient.callApi.resolves(mocklistTransportationOptionsData.response);
+
+      const params = [
+        mocklistTransportationOptionsData.request['inboundPlanId'],
+      ];
+      const data = await instance.listTransportationOptions(...params);
+
+      expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.ListTransportationOptionsResponse).to.be.true;
+    });
+
+    it('should successfully call listTransportationOptionsWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mocklistTransportationOptionsData.response);
+
+      const params = [
+        mocklistTransportationOptionsData.request['inboundPlanId'],
+      ];
+      const response = await instance.listTransportationOptionsWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mocklistTransportationOptionsData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mocklistTransportationOptionsData.request['inboundPlanId'],
+        ];
+        await instance.listTransportationOptions(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('scheduleSelfShipAppointment', () => {
+    it('should successfully call scheduleSelfShipAppointment', async () => {
+      instance.apiClient.callApi.resolves(mockscheduleSelfShipAppointmentData.response);
+
+      const params = [
+        mockscheduleSelfShipAppointmentData.request['inboundPlanId'],
+        mockscheduleSelfShipAppointmentData.request['shipmentId'],
+        mockscheduleSelfShipAppointmentData.request['slotId'],
+        mockscheduleSelfShipAppointmentData.request['body']
+      ];
+      const data = await instance.scheduleSelfShipAppointment(...params);
+
+      expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.ScheduleSelfShipAppointmentResponse).to.be.true;
+    });
+
+    it('should successfully call scheduleSelfShipAppointmentWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockscheduleSelfShipAppointmentData.response);
+
+      const params = [
+        mockscheduleSelfShipAppointmentData.request['inboundPlanId'],
+        mockscheduleSelfShipAppointmentData.request['shipmentId'],
+        mockscheduleSelfShipAppointmentData.request['slotId'],
+        mockscheduleSelfShipAppointmentData.request['body']
+      ];
+      const response = await instance.scheduleSelfShipAppointmentWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockscheduleSelfShipAppointmentData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockscheduleSelfShipAppointmentData.request['inboundPlanId'],
+          mockscheduleSelfShipAppointmentData.request['shipmentId'],
+          mockscheduleSelfShipAppointmentData.request['slotId'],
+          mockscheduleSelfShipAppointmentData.request['body']
+        ];
+        await instance.scheduleSelfShipAppointment(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('setPackingInformation', () => {
+    it('should successfully call setPackingInformation', async () => {
+      instance.apiClient.callApi.resolves(mocksetPackingInformationData.response);
+
+      const params = [
+        mocksetPackingInformationData.request['inboundPlanId'],
+        mocksetPackingInformationData.request['body']
+      ];
+      const data = await instance.setPackingInformation(...params);
+
+      expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.SetPackingInformationResponse).to.be.true;
+    });
+
+    it('should successfully call setPackingInformationWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mocksetPackingInformationData.response);
+
+      const params = [
+        mocksetPackingInformationData.request['inboundPlanId'],
+        mocksetPackingInformationData.request['body']
+      ];
+      const response = await instance.setPackingInformationWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mocksetPackingInformationData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mocksetPackingInformationData.request['inboundPlanId'],
+          mocksetPackingInformationData.request['body']
+        ];
+        await instance.setPackingInformation(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('setPrepDetails', () => {
+    it('should successfully call setPrepDetails', async () => {
+      instance.apiClient.callApi.resolves(mocksetPrepDetailsData.response);
+
+      const params = [
+        mocksetPrepDetailsData.request['body']
+      ];
+      const data = await instance.setPrepDetails(...params);
+
+      expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.SetPrepDetailsResponse).to.be.true;
+    });
+
+    it('should successfully call setPrepDetailsWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mocksetPrepDetailsData.response);
+
+      const params = [
+        mocksetPrepDetailsData.request['body']
+      ];
+      const response = await instance.setPrepDetailsWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mocksetPrepDetailsData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mocksetPrepDetailsData.request['body']
+        ];
+        await instance.setPrepDetails(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('updateInboundPlanName', () => {
+    it('should successfully call updateInboundPlanName', async () => {
+      instance.apiClient.callApi.resolves(mockupdateInboundPlanNameData.response);
+
+      const params = [
+        mockupdateInboundPlanNameData.request['inboundPlanId'],
+        mockupdateInboundPlanNameData.request['body']
+      ];
+      const data = await instance.updateInboundPlanName(...params);
+
+      expect(data).to.be.undefined;
+    });
+
+    it('should successfully call updateInboundPlanNameWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockupdateInboundPlanNameData.response);
+
+      const params = [
+        mockupdateInboundPlanNameData.request['inboundPlanId'],
+        mockupdateInboundPlanNameData.request['body']
+      ];
+      const response = await instance.updateInboundPlanNameWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockupdateInboundPlanNameData.response.statusCode)
+      expect(response).to.have.property('headers');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockupdateInboundPlanNameData.request['inboundPlanId'],
+          mockupdateInboundPlanNameData.request['body']
+        ];
+        await instance.updateInboundPlanName(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('updateItemComplianceDetails', () => {
+    it('should successfully call updateItemComplianceDetails', async () => {
+      instance.apiClient.callApi.resolves(mockupdateItemComplianceDetailsData.response);
+
+      const params = [
+        mockupdateItemComplianceDetailsData.request['marketplaceId'],
+        mockupdateItemComplianceDetailsData.request['body']
+      ];
+      const data = await instance.updateItemComplianceDetails(...params);
+
+      expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.UpdateItemComplianceDetailsResponse).to.be.true;
+    });
+
+    it('should successfully call updateItemComplianceDetailsWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockupdateItemComplianceDetailsData.response);
+
+      const params = [
+        mockupdateItemComplianceDetailsData.request['marketplaceId'],
+        mockupdateItemComplianceDetailsData.request['body']
+      ];
+      const response = await instance.updateItemComplianceDetailsWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockupdateItemComplianceDetailsData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockupdateItemComplianceDetailsData.request['marketplaceId'],
+          mockupdateItemComplianceDetailsData.request['body']
+        ];
+        await instance.updateItemComplianceDetails(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('updateShipmentName', () => {
+    it('should successfully call updateShipmentName', async () => {
+      instance.apiClient.callApi.resolves(mockupdateShipmentNameData.response);
+
+      const params = [
+        mockupdateShipmentNameData.request['inboundPlanId'],
+        mockupdateShipmentNameData.request['shipmentId'],
+        mockupdateShipmentNameData.request['body']
+      ];
+      const data = await instance.updateShipmentName(...params);
+
+      expect(data).to.be.undefined;
+    });
+
+    it('should successfully call updateShipmentNameWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockupdateShipmentNameData.response);
+
+      const params = [
+        mockupdateShipmentNameData.request['inboundPlanId'],
+        mockupdateShipmentNameData.request['shipmentId'],
+        mockupdateShipmentNameData.request['body']
+      ];
+      const response = await instance.updateShipmentNameWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockupdateShipmentNameData.response.statusCode)
+      expect(response).to.have.property('headers');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockupdateShipmentNameData.request['inboundPlanId'],
+          mockupdateShipmentNameData.request['shipmentId'],
+          mockupdateShipmentNameData.request['body']
+        ];
+        await instance.updateShipmentName(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('updateShipmentSourceAddress', () => {
+    it('should successfully call updateShipmentSourceAddress', async () => {
+      instance.apiClient.callApi.resolves(mockupdateShipmentSourceAddressData.response);
+
+      const params = [
+        mockupdateShipmentSourceAddressData.request['inboundPlanId'],
+        mockupdateShipmentSourceAddressData.request['shipmentId'],
+        mockupdateShipmentSourceAddressData.request['body']
+      ];
+      const data = await instance.updateShipmentSourceAddress(...params);
+
+      expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.UpdateShipmentSourceAddressResponse).to.be.true;
+    });
+
+    it('should successfully call updateShipmentSourceAddressWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockupdateShipmentSourceAddressData.response);
+
+      const params = [
+        mockupdateShipmentSourceAddressData.request['inboundPlanId'],
+        mockupdateShipmentSourceAddressData.request['shipmentId'],
+        mockupdateShipmentSourceAddressData.request['body']
+      ];
+      const response = await instance.updateShipmentSourceAddressWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockupdateShipmentSourceAddressData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockupdateShipmentSourceAddressData.request['inboundPlanId'],
+          mockupdateShipmentSourceAddressData.request['shipmentId'],
+          mockupdateShipmentSourceAddressData.request['body']
+        ];
+        await instance.updateShipmentSourceAddress(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('updateShipmentTrackingDetails', () => {
+    it('should successfully call updateShipmentTrackingDetails', async () => {
+      instance.apiClient.callApi.resolves(mockupdateShipmentTrackingDetailsData.response);
+
+      const params = [
+        mockupdateShipmentTrackingDetailsData.request['inboundPlanId'],
+        mockupdateShipmentTrackingDetailsData.request['shipmentId'],
+        mockupdateShipmentTrackingDetailsData.request['body']
+      ];
+      const data = await instance.updateShipmentTrackingDetails(...params);
+
+      expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.UpdateShipmentTrackingDetailsResponse).to.be.true;
+    });
+
+    it('should successfully call updateShipmentTrackingDetailsWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockupdateShipmentTrackingDetailsData.response);
+
+      const params = [
+        mockupdateShipmentTrackingDetailsData.request['inboundPlanId'],
+        mockupdateShipmentTrackingDetailsData.request['shipmentId'],
+        mockupdateShipmentTrackingDetailsData.request['body']
+      ];
+      const response = await instance.updateShipmentTrackingDetailsWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockupdateShipmentTrackingDetailsData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockupdateShipmentTrackingDetailsData.request['inboundPlanId'],
+          mockupdateShipmentTrackingDetailsData.request['shipmentId'],
+          mockupdateShipmentTrackingDetailsData.request['body']
+        ];
+        await instance.updateShipmentTrackingDetails(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+
+  describe('constructor', () => {
+    it('should use default ApiClient when none provided', () => {
+      const defaultInstance = new TheSellingPartnerApiForFbaInboundOperations.FbaInboundApi();
+      expect(defaultInstance.apiClient).to.equal(TheSellingPartnerApiForFbaInboundOperations.ApiClient.instance);
+    });
+
+    it('should use provided ApiClient', () => {
+      const customClient = new TheSellingPartnerApiForFbaInboundOperations.ApiClient();
+      const customInstance = new TheSellingPartnerApiForFbaInboundOperations.FbaInboundApi(customClient);
+      expect(customInstance.apiClient).to.equal(customClient);
+    });
+  });
+});

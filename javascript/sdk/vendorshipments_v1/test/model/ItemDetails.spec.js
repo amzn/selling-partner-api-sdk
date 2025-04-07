@@ -11,123 +11,110 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForRetailProcurementShipments);
+import expect from 'expect.js';
+import * as SellingPartnerApiForRetailProcurementShipments from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new SellingPartnerApiForRetailProcurementShipments.ItemDetails();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(SellingPartnerApiForRetailProcurementShipments.ItemDetails.prototype);
   }
-}(this, function(expect, SellingPartnerApiForRetailProcurementShipments) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new SellingPartnerApiForRetailProcurementShipments.ItemDetails();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(SellingPartnerApiForRetailProcurementShipments.ItemDetails.prototype);
-    }
+describe('ItemDetails', () => {
+  it('should create an instance of ItemDetails', () => {
+    expect(instance).to.be.a(SellingPartnerApiForRetailProcurementShipments.ItemDetails);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property purchaseOrderNumber', () => {
+    // verify property exists
+    expect(instance).to.have.property('purchaseOrderNumber');
 
-  describe('ItemDetails', function() {
-    it('should create an instance of ItemDetails', function() {
-      expect(instance).to.be.a(SellingPartnerApiForRetailProcurementShipments.ItemDetails);
-    });
-
-    it('should have the property purchaseOrderNumber', function() {
-      // verify property exists
-      expect(instance).to.have.property('purchaseOrderNumber');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.purchaseOrderNumber = expectedValue;
-      expect(instance.purchaseOrderNumber).to.equal(expectedValue);
-    });
-
-    it('should have the property lotNumber', function() {
-      // verify property exists
-      expect(instance).to.have.property('lotNumber');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.lotNumber = expectedValue;
-      expect(instance.lotNumber).to.equal(expectedValue);
-    });
-
-    it('should have the property expiry', function() {
-      // verify property exists
-      expect(instance).to.have.property('expiry');
-
-      // set and verify value
-      var expectedValue = generateMockData('Expiry');
-      instance.expiry = expectedValue;
-      expect(instance.expiry).to.equal(expectedValue);
-    });
-
-    it('should have the property maximumRetailPrice', function() {
-      // verify property exists
-      expect(instance).to.have.property('maximumRetailPrice');
-
-      // set and verify value
-      var expectedValue = generateMockData('Money');
-      instance.maximumRetailPrice = expectedValue;
-      expect(instance.maximumRetailPrice).to.equal(expectedValue);
-    });
-
-    it('should have the property handlingCode', function() {
-      // verify property exists
-      expect(instance).to.have.property('handlingCode');
-
-      // set and verify value
-      var expectedValue = ['Oversized', 'Fragile', 'Food', 'HandleWithCare', ][0];
-      instance.handlingCode = expectedValue;
-      expect(instance.handlingCode).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.purchaseOrderNumber = expectedValue;
+    expect(instance.purchaseOrderNumber).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property lotNumber', () => {
+    // verify property exists
+    expect(instance).to.have.property('lotNumber');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.lotNumber = expectedValue;
+    expect(instance.lotNumber).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForRetailProcurementShipments[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property expiry', () => {
+    // verify property exists
+    expect(instance).to.have.property('expiry');
+
+    // set and verify value
+    const expectedValue = generateMockData('Expiry');
+    instance.expiry = expectedValue;
+    expect(instance.expiry).to.equal(expectedValue);
+  });
+
+  it('should have the property maximumRetailPrice', () => {
+    // verify property exists
+    expect(instance).to.have.property('maximumRetailPrice');
+
+    // set and verify value
+    const expectedValue = generateMockData('Money');
+    instance.maximumRetailPrice = expectedValue;
+    expect(instance.maximumRetailPrice).to.equal(expectedValue);
+  });
+
+  it('should have the property handlingCode', () => {
+    // verify property exists
+    expect(instance).to.have.property('handlingCode');
+
+    // set and verify value
+    const expectedValue = ['Oversized', 'Fragile', 'Food', 'HandleWithCare', ][0];
+    instance.handlingCode = expectedValue;
+    expect(instance.handlingCode).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForRetailProcurementShipments[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

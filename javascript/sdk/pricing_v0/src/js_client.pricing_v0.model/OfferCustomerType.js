@@ -18,7 +18,7 @@ import {ApiClient} from '../ApiClient.js';
 * @enum {}
 * @readonly
 */
-export default class OfferCustomerType {
+export class OfferCustomerType {
     
         /**
          * value: "B2C"

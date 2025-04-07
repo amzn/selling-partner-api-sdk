@@ -11,153 +11,140 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForPricing);
+import expect from 'expect.js';
+import * as SellingPartnerApiForPricing from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new SellingPartnerApiForPricing.Offer();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(SellingPartnerApiForPricing.Offer.prototype);
   }
-}(this, function(expect, SellingPartnerApiForPricing) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new SellingPartnerApiForPricing.Offer();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(SellingPartnerApiForPricing.Offer.prototype);
-    }
+describe('Offer', () => {
+  it('should create an instance of Offer', () => {
+    expect(instance).to.be.a(SellingPartnerApiForPricing.Offer);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property sellerId', () => {
+    // verify property exists
+    expect(instance).to.have.property('sellerId');
 
-  describe('Offer', function() {
-    it('should create an instance of Offer', function() {
-      expect(instance).to.be.a(SellingPartnerApiForPricing.Offer);
-    });
-
-    it('should have the property sellerId', function() {
-      // verify property exists
-      expect(instance).to.have.property('sellerId');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.sellerId = expectedValue;
-      expect(instance.sellerId).to.equal(expectedValue);
-    });
-
-    it('should have the property condition', function() {
-      // verify property exists
-      expect(instance).to.have.property('condition');
-
-      // set and verify value
-      var expectedValue = generateMockData('Condition');
-      instance.condition = expectedValue;
-      expect(instance.condition).to.equal(expectedValue);
-    });
-
-    it('should have the property subCondition', function() {
-      // verify property exists
-      expect(instance).to.have.property('subCondition');
-
-      // set and verify value
-      var expectedValue = ['New', 'Mint', 'VeryGood', 'Good', 'Acceptable', 'Poor', 'Club', 'OEM', 'Warranty', 'RefurbishedWarranty', 'Refurbished', 'OpenBox', 'Other', ][0];
-      instance.subCondition = expectedValue;
-      expect(instance.subCondition).to.equal(expectedValue);
-    });
-
-    it('should have the property fulfillmentType', function() {
-      // verify property exists
-      expect(instance).to.have.property('fulfillmentType');
-
-      // set and verify value
-      var expectedValue = generateMockData('FulfillmentType');
-      instance.fulfillmentType = expectedValue;
-      expect(instance.fulfillmentType).to.equal(expectedValue);
-    });
-
-    it('should have the property listingPrice', function() {
-      // verify property exists
-      expect(instance).to.have.property('listingPrice');
-
-      // set and verify value
-      var expectedValue = generateMockData('MoneyType');
-      instance.listingPrice = expectedValue;
-      expect(instance.listingPrice).to.equal(expectedValue);
-    });
-
-    it('should have the property shippingOptions', function() {
-      // verify property exists
-      expect(instance).to.have.property('shippingOptions');
-
-      // set and verify value
-      var expectedValue = generateMockData('ShippingOption', true);
-      instance.shippingOptions = expectedValue;
-      expect(instance.shippingOptions).to.equal(expectedValue);
-    });
-
-    it('should have the property points', function() {
-      // verify property exists
-      expect(instance).to.have.property('points');
-
-      // set and verify value
-      var expectedValue = generateMockData('Points');
-      instance.points = expectedValue;
-      expect(instance.points).to.equal(expectedValue);
-    });
-
-    it('should have the property primeDetails', function() {
-      // verify property exists
-      expect(instance).to.have.property('primeDetails');
-
-      // set and verify value
-      var expectedValue = generateMockData('PrimeDetails');
-      instance.primeDetails = expectedValue;
-      expect(instance.primeDetails).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.sellerId = expectedValue;
+    expect(instance.sellerId).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property condition', () => {
+    // verify property exists
+    expect(instance).to.have.property('condition');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('Condition');
+    instance.condition = expectedValue;
+    expect(instance.condition).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForPricing[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property subCondition', () => {
+    // verify property exists
+    expect(instance).to.have.property('subCondition');
+
+    // set and verify value
+    const expectedValue = ['New', 'Mint', 'VeryGood', 'Good', 'Acceptable', 'Poor', 'Club', 'OEM', 'Warranty', 'RefurbishedWarranty', 'Refurbished', 'OpenBox', 'Other', ][0];
+    instance.subCondition = expectedValue;
+    expect(instance.subCondition).to.equal(expectedValue);
+  });
+
+  it('should have the property fulfillmentType', () => {
+    // verify property exists
+    expect(instance).to.have.property('fulfillmentType');
+
+    // set and verify value
+    const expectedValue = generateMockData('FulfillmentType');
+    instance.fulfillmentType = expectedValue;
+    expect(instance.fulfillmentType).to.equal(expectedValue);
+  });
+
+  it('should have the property listingPrice', () => {
+    // verify property exists
+    expect(instance).to.have.property('listingPrice');
+
+    // set and verify value
+    const expectedValue = generateMockData('MoneyType');
+    instance.listingPrice = expectedValue;
+    expect(instance.listingPrice).to.equal(expectedValue);
+  });
+
+  it('should have the property shippingOptions', () => {
+    // verify property exists
+    expect(instance).to.have.property('shippingOptions');
+
+    // set and verify value
+    const expectedValue = generateMockData('ShippingOption', true);
+    instance.shippingOptions = expectedValue;
+    expect(instance.shippingOptions).to.equal(expectedValue);
+  });
+
+  it('should have the property points', () => {
+    // verify property exists
+    expect(instance).to.have.property('points');
+
+    // set and verify value
+    const expectedValue = generateMockData('Points');
+    instance.points = expectedValue;
+    expect(instance.points).to.equal(expectedValue);
+  });
+
+  it('should have the property primeDetails', () => {
+    // verify property exists
+    expect(instance).to.have.property('primeDetails');
+
+    // set and verify value
+    const expectedValue = generateMockData('PrimeDetails');
+    instance.primeDetails = expectedValue;
+    expect(instance.primeDetails).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForPricing[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

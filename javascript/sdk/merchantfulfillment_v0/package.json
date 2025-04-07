@@ -4,6 +4,7 @@
   "description": "With the Selling Partner API for Merchant Fulfillment, you can build applications that sellers can use to purchase shipping for non-Prime and Prime orders using Amazon's Buy Shipping Services.",
   "license": "Apache License 2.0",
   "main": "dist/index.js",
+  "type": "module",
   "scripts": {
     "build": "babel src -d dist",
     "prepare": "npm run build",

@@ -36,31 +36,6 @@ import {InvoicesApi} from './js_client.invoices_v2024_06_19.api/InvoicesApi.js';
 /**
 * Use the Selling Partner API for Invoices to retrieve and manage invoice-related operations, which can help selling partners manage their bookkeeping processes..<br>
 * The <code>index</code> module provides access to constructors for all the classes which comprise the public API.
-* <p>
-* An AMD (recommended!) or CommonJS application will generally do something equivalent to the following:
-* <pre>
-* var TheSellingPartnerApiForInvoices = require('index'); // See note below*.
-* var xxxSvc = new TheSellingPartnerApiForInvoices.XxxApi(); // Allocate the API class we're going to use.
-* var yyyModel = new TheSellingPartnerApiForInvoices.Yyy(); // Construct a model instance.
-* yyyModel.someProperty = 'someValue';
-* ...
-* var zzz = xxxSvc.doSomething(yyyModel); // Invoke the service.
-* ...
-* </pre>
-* <em>*NOTE: For a top-level AMD script, use require(['index'], function(){...})
-* and put the application logic within the callback function.</em>
-* </p>
-* <p>
-* A non-AMD browser application (discouraged) might do something like this:
-* <pre>
-* var xxxSvc = new TheSellingPartnerApiForInvoices.XxxApi(); // Allocate the API class we're going to use.
-* var yyy = new TheSellingPartnerApiForInvoices.Yyy(); // Construct a model instance.
-* yyyModel.someProperty = 'someValue';
-* ...
-* var zzz = xxxSvc.doSomething(yyyModel); // Invoke the service.
-* ...
-* </pre>
-* </p>
 * @module index
 * @version 2024-06-19
 */

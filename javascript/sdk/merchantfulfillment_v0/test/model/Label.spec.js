@@ -11,123 +11,110 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForMerchantFulfillment);
+import expect from 'expect.js';
+import * as SellingPartnerApiForMerchantFulfillment from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new SellingPartnerApiForMerchantFulfillment.Label();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(SellingPartnerApiForMerchantFulfillment.Label.prototype);
   }
-}(this, function(expect, SellingPartnerApiForMerchantFulfillment) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new SellingPartnerApiForMerchantFulfillment.Label();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(SellingPartnerApiForMerchantFulfillment.Label.prototype);
-    }
+describe('Label', () => {
+  it('should create an instance of Label', () => {
+    expect(instance).to.be.a(SellingPartnerApiForMerchantFulfillment.Label);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property customTextForLabel', () => {
+    // verify property exists
+    expect(instance).to.have.property('customTextForLabel');
 
-  describe('Label', function() {
-    it('should create an instance of Label', function() {
-      expect(instance).to.be.a(SellingPartnerApiForMerchantFulfillment.Label);
-    });
-
-    it('should have the property customTextForLabel', function() {
-      // verify property exists
-      expect(instance).to.have.property('customTextForLabel');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.customTextForLabel = expectedValue;
-      expect(instance.customTextForLabel).to.equal(expectedValue);
-    });
-
-    it('should have the property dimensions', function() {
-      // verify property exists
-      expect(instance).to.have.property('dimensions');
-
-      // set and verify value
-      var expectedValue = generateMockData('LabelDimensions');
-      instance.dimensions = expectedValue;
-      expect(instance.dimensions).to.equal(expectedValue);
-    });
-
-    it('should have the property fileContents', function() {
-      // verify property exists
-      expect(instance).to.have.property('fileContents');
-
-      // set and verify value
-      var expectedValue = generateMockData('FileContents');
-      instance.fileContents = expectedValue;
-      expect(instance.fileContents).to.equal(expectedValue);
-    });
-
-    it('should have the property labelFormat', function() {
-      // verify property exists
-      expect(instance).to.have.property('labelFormat');
-
-      // set and verify value
-      var expectedValue = generateMockData('LabelFormat');
-      instance.labelFormat = expectedValue;
-      expect(instance.labelFormat).to.equal(expectedValue);
-    });
-
-    it('should have the property standardIdForLabel', function() {
-      // verify property exists
-      expect(instance).to.have.property('standardIdForLabel');
-
-      // set and verify value
-      var expectedValue = generateMockData('StandardIdForLabel');
-      instance.standardIdForLabel = expectedValue;
-      expect(instance.standardIdForLabel).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.customTextForLabel = expectedValue;
+    expect(instance.customTextForLabel).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property dimensions', () => {
+    // verify property exists
+    expect(instance).to.have.property('dimensions');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('LabelDimensions');
+    instance.dimensions = expectedValue;
+    expect(instance.dimensions).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForMerchantFulfillment[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property fileContents', () => {
+    // verify property exists
+    expect(instance).to.have.property('fileContents');
+
+    // set and verify value
+    const expectedValue = generateMockData('FileContents');
+    instance.fileContents = expectedValue;
+    expect(instance.fileContents).to.equal(expectedValue);
+  });
+
+  it('should have the property labelFormat', () => {
+    // verify property exists
+    expect(instance).to.have.property('labelFormat');
+
+    // set and verify value
+    const expectedValue = generateMockData('LabelFormat');
+    instance.labelFormat = expectedValue;
+    expect(instance.labelFormat).to.equal(expectedValue);
+  });
+
+  it('should have the property standardIdForLabel', () => {
+    // verify property exists
+    expect(instance).to.have.property('standardIdForLabel');
+
+    // set and verify value
+    const expectedValue = generateMockData('StandardIdForLabel');
+    instance.standardIdForLabel = expectedValue;
+    expect(instance.standardIdForLabel).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForMerchantFulfillment[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

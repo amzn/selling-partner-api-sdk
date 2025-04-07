@@ -11,163 +11,150 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForMerchantFulfillment);
+import expect from 'expect.js';
+import * as SellingPartnerApiForMerchantFulfillment from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new SellingPartnerApiForMerchantFulfillment.Item();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(SellingPartnerApiForMerchantFulfillment.Item.prototype);
   }
-}(this, function(expect, SellingPartnerApiForMerchantFulfillment) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new SellingPartnerApiForMerchantFulfillment.Item();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(SellingPartnerApiForMerchantFulfillment.Item.prototype);
-    }
+describe('Item', () => {
+  it('should create an instance of Item', () => {
+    expect(instance).to.be.a(SellingPartnerApiForMerchantFulfillment.Item);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property orderItemId', () => {
+    // verify property exists
+    expect(instance).to.have.property('orderItemId');
 
-  describe('Item', function() {
-    it('should create an instance of Item', function() {
-      expect(instance).to.be.a(SellingPartnerApiForMerchantFulfillment.Item);
-    });
-
-    it('should have the property orderItemId', function() {
-      // verify property exists
-      expect(instance).to.have.property('orderItemId');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.orderItemId = expectedValue;
-      expect(instance.orderItemId).to.equal(expectedValue);
-    });
-
-    it('should have the property quantity', function() {
-      // verify property exists
-      expect(instance).to.have.property('quantity');
-
-      // set and verify value
-      var expectedValue = generateMockData('Number');
-      instance.quantity = expectedValue;
-      expect(instance.quantity).to.equal(expectedValue);
-    });
-
-    it('should have the property itemWeight', function() {
-      // verify property exists
-      expect(instance).to.have.property('itemWeight');
-
-      // set and verify value
-      var expectedValue = generateMockData('Weight');
-      instance.itemWeight = expectedValue;
-      expect(instance.itemWeight).to.equal(expectedValue);
-    });
-
-    it('should have the property itemDescription', function() {
-      // verify property exists
-      expect(instance).to.have.property('itemDescription');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.itemDescription = expectedValue;
-      expect(instance.itemDescription).to.equal(expectedValue);
-    });
-
-    it('should have the property transparencyCodeList', function() {
-      // verify property exists
-      expect(instance).to.have.property('transparencyCodeList');
-
-      // set and verify value
-      var expectedValue = generateMockData('String', true);
-      instance.transparencyCodeList = expectedValue;
-      expect(instance.transparencyCodeList).to.equal(expectedValue);
-    });
-
-    it('should have the property itemLevelSellerInputsList', function() {
-      // verify property exists
-      expect(instance).to.have.property('itemLevelSellerInputsList');
-
-      // set and verify value
-      var expectedValue = generateMockData('AdditionalSellerInputs', true);
-      instance.itemLevelSellerInputsList = expectedValue;
-      expect(instance.itemLevelSellerInputsList).to.equal(expectedValue);
-    });
-
-    it('should have the property liquidVolume', function() {
-      // verify property exists
-      expect(instance).to.have.property('liquidVolume');
-
-      // set and verify value
-      var expectedValue = generateMockData('LiquidVolume');
-      instance.liquidVolume = expectedValue;
-      expect(instance.liquidVolume).to.equal(expectedValue);
-    });
-
-    it('should have the property isHazmat', function() {
-      // verify property exists
-      expect(instance).to.have.property('isHazmat');
-
-      // set and verify value
-      var expectedValue = generateMockData('Boolean');
-      instance.isHazmat = expectedValue;
-      expect(instance.isHazmat).to.equal(expectedValue);
-    });
-
-    it('should have the property dangerousGoodsDetails', function() {
-      // verify property exists
-      expect(instance).to.have.property('dangerousGoodsDetails');
-
-      // set and verify value
-      var expectedValue = generateMockData('DangerousGoodsDetails');
-      instance.dangerousGoodsDetails = expectedValue;
-      expect(instance.dangerousGoodsDetails).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.orderItemId = expectedValue;
+    expect(instance.orderItemId).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property quantity', () => {
+    // verify property exists
+    expect(instance).to.have.property('quantity');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('Number');
+    instance.quantity = expectedValue;
+    expect(instance.quantity).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForMerchantFulfillment[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property itemWeight', () => {
+    // verify property exists
+    expect(instance).to.have.property('itemWeight');
+
+    // set and verify value
+    const expectedValue = generateMockData('Weight');
+    instance.itemWeight = expectedValue;
+    expect(instance.itemWeight).to.equal(expectedValue);
+  });
+
+  it('should have the property itemDescription', () => {
+    // verify property exists
+    expect(instance).to.have.property('itemDescription');
+
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.itemDescription = expectedValue;
+    expect(instance.itemDescription).to.equal(expectedValue);
+  });
+
+  it('should have the property transparencyCodeList', () => {
+    // verify property exists
+    expect(instance).to.have.property('transparencyCodeList');
+
+    // set and verify value
+    const expectedValue = generateMockData('String', true);
+    instance.transparencyCodeList = expectedValue;
+    expect(instance.transparencyCodeList).to.equal(expectedValue);
+  });
+
+  it('should have the property itemLevelSellerInputsList', () => {
+    // verify property exists
+    expect(instance).to.have.property('itemLevelSellerInputsList');
+
+    // set and verify value
+    const expectedValue = generateMockData('AdditionalSellerInputs', true);
+    instance.itemLevelSellerInputsList = expectedValue;
+    expect(instance.itemLevelSellerInputsList).to.equal(expectedValue);
+  });
+
+  it('should have the property liquidVolume', () => {
+    // verify property exists
+    expect(instance).to.have.property('liquidVolume');
+
+    // set and verify value
+    const expectedValue = generateMockData('LiquidVolume');
+    instance.liquidVolume = expectedValue;
+    expect(instance.liquidVolume).to.equal(expectedValue);
+  });
+
+  it('should have the property isHazmat', () => {
+    // verify property exists
+    expect(instance).to.have.property('isHazmat');
+
+    // set and verify value
+    const expectedValue = generateMockData('Boolean');
+    instance.isHazmat = expectedValue;
+    expect(instance.isHazmat).to.equal(expectedValue);
+  });
+
+  it('should have the property dangerousGoodsDetails', () => {
+    // verify property exists
+    expect(instance).to.have.property('dangerousGoodsDetails');
+
+    // set and verify value
+    const expectedValue = generateMockData('DangerousGoodsDetails');
+    instance.dangerousGoodsDetails = expectedValue;
+    expect(instance.dangerousGoodsDetails).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForMerchantFulfillment[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

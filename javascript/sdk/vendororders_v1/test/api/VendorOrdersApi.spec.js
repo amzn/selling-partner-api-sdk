@@ -11,58 +11,47 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', 'sinon', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('sinon'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.sinon, root.SellingPartnerApiForRetailProcurementOrders);
+import expect from 'expect.js';
+import sinon from 'sinon';
+import * as SellingPartnerApiForRetailProcurementOrders from '../../src/index.js';
+
+let instance;
+let sandbox;
+const testEndpoint = 'https://localhost:3000';
+const testAccessToken = "testAccessToken";
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
   }
-}(this, function(expect, sinon, SellingPartnerApiForRetailProcurementOrders) {
-  'use strict';
 
-  var instance;
-  var sandbox;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
-
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
-
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
-
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForRetailProcurementOrders[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForRetailProcurementOrders[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-  
+}
 
 // Generate mock requests and responses for each operation
 const mockgetPurchaseOrderData = {
@@ -104,245 +93,208 @@ const mocksubmitAcknowledgementData = {
   }
 };
 
-  beforeEach(function() {
+describe('VendorOrdersApi', () => {
+  beforeEach(() => {
     sandbox = sinon.createSandbox();
-    var apiClientInstance = new SellingPartnerApiForRetailProcurementOrders.ApiClient(testEndpoint);
+    const apiClientInstance = new SellingPartnerApiForRetailProcurementOrders.ApiClient(testEndpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
     sandbox.stub(apiClientInstance, 'callApi');
     instance = new SellingPartnerApiForRetailProcurementOrders.VendorOrdersApi(apiClientInstance);
   });
 
-  afterEach(function() {
+  afterEach(() => {
     sandbox.restore();
   });
 
-  describe('VendorOrdersApi', function() {
-    describe('getPurchaseOrder', function() {
-      
-      it('should successfully call getPurchaseOrder', function(done) {
-        instance.apiClient.callApi.resolves(mockgetPurchaseOrderData.response);
+  describe('getPurchaseOrder', () => {
+    it('should successfully call getPurchaseOrder', async () => {
+      instance.apiClient.callApi.resolves(mockgetPurchaseOrderData.response);
 
+      const params = [
+        mockgetPurchaseOrderData.request['purchaseOrderNumber']
+      ];
+      const data = await instance.getPurchaseOrder(...params);
+
+      expect(data instanceof SellingPartnerApiForRetailProcurementOrders.GetPurchaseOrderResponse).to.be.true;
+    });
+
+    it('should successfully call getPurchaseOrderWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetPurchaseOrderData.response);
+
+      const params = [
+        mockgetPurchaseOrderData.request['purchaseOrderNumber']
+      ];
+      const response = await instance.getPurchaseOrderWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetPurchaseOrderData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
         const params = [
           mockgetPurchaseOrderData.request['purchaseOrderNumber']
         ];
-        instance.getPurchaseOrder(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForRetailProcurementOrders.GetPurchaseOrderResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call getPurchaseOrderWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetPurchaseOrderData.response);
-
-        const params = [
-          mockgetPurchaseOrderData.request['purchaseOrderNumber']
-        ];
-        instance.getPurchaseOrderWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetPurchaseOrderData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgetPurchaseOrderData.request['purchaseOrderNumber']
-        ];
-        instance.getPurchaseOrder(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('getPurchaseOrders', function() {
-      
-      it('should successfully call getPurchaseOrders', function(done) {
-        instance.apiClient.callApi.resolves(mockgetPurchaseOrdersData.response);
-
-        const params = [
-        ];
-        instance.getPurchaseOrders(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForRetailProcurementOrders.GetPurchaseOrdersResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call getPurchaseOrdersWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetPurchaseOrdersData.response);
-
-        const params = [
-        ];
-        instance.getPurchaseOrdersWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetPurchaseOrdersData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-        ];
-        instance.getPurchaseOrders(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('getPurchaseOrdersStatus', function() {
-      
-      it('should successfully call getPurchaseOrdersStatus', function(done) {
-        instance.apiClient.callApi.resolves(mockgetPurchaseOrdersStatusData.response);
-
-        const params = [
-        ];
-        instance.getPurchaseOrdersStatus(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForRetailProcurementOrders.GetPurchaseOrdersStatusResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call getPurchaseOrdersStatusWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetPurchaseOrdersStatusData.response);
-
-        const params = [
-        ];
-        instance.getPurchaseOrdersStatusWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetPurchaseOrdersStatusData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-        ];
-        instance.getPurchaseOrdersStatus(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('submitAcknowledgement', function() {
-      
-      it('should successfully call submitAcknowledgement', function(done) {
-        instance.apiClient.callApi.resolves(mocksubmitAcknowledgementData.response);
-
-        const params = [
-          mocksubmitAcknowledgementData.request['body']
-        ];
-        instance.submitAcknowledgement(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForRetailProcurementOrders.SubmitAcknowledgementResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call submitAcknowledgementWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mocksubmitAcknowledgementData.response);
-
-        const params = [
-          mocksubmitAcknowledgementData.request['body']
-        ];
-        instance.submitAcknowledgementWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mocksubmitAcknowledgementData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mocksubmitAcknowledgementData.request['body']
-        ];
-        instance.submitAcknowledgement(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-
-    describe('constructor', function() {
-      it('should use default ApiClient when none provided', function() {
-        var defaultInstance = new SellingPartnerApiForRetailProcurementOrders.VendorOrdersApi();
-        expect(defaultInstance.apiClient).to.equal(SellingPartnerApiForRetailProcurementOrders.ApiClient.instance);
-      });
-
-      it('should use provided ApiClient', function() {
-        var customClient = new SellingPartnerApiForRetailProcurementOrders.ApiClient();
-        var customInstance = new SellingPartnerApiForRetailProcurementOrders.VendorOrdersApi(customClient);
-        expect(customInstance.apiClient).to.equal(customClient);
-      });
+        await instance.getPurchaseOrder(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
     });
   });
-}));
+  describe('getPurchaseOrders', () => {
+    it('should successfully call getPurchaseOrders', async () => {
+      instance.apiClient.callApi.resolves(mockgetPurchaseOrdersData.response);
+
+      const params = [
+      ];
+      const data = await instance.getPurchaseOrders(...params);
+
+      expect(data instanceof SellingPartnerApiForRetailProcurementOrders.GetPurchaseOrdersResponse).to.be.true;
+    });
+
+    it('should successfully call getPurchaseOrdersWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetPurchaseOrdersData.response);
+
+      const params = [
+      ];
+      const response = await instance.getPurchaseOrdersWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetPurchaseOrdersData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+        ];
+        await instance.getPurchaseOrders(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('getPurchaseOrdersStatus', () => {
+    it('should successfully call getPurchaseOrdersStatus', async () => {
+      instance.apiClient.callApi.resolves(mockgetPurchaseOrdersStatusData.response);
+
+      const params = [
+      ];
+      const data = await instance.getPurchaseOrdersStatus(...params);
+
+      expect(data instanceof SellingPartnerApiForRetailProcurementOrders.GetPurchaseOrdersStatusResponse).to.be.true;
+    });
+
+    it('should successfully call getPurchaseOrdersStatusWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetPurchaseOrdersStatusData.response);
+
+      const params = [
+      ];
+      const response = await instance.getPurchaseOrdersStatusWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetPurchaseOrdersStatusData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+        ];
+        await instance.getPurchaseOrdersStatus(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('submitAcknowledgement', () => {
+    it('should successfully call submitAcknowledgement', async () => {
+      instance.apiClient.callApi.resolves(mocksubmitAcknowledgementData.response);
+
+      const params = [
+        mocksubmitAcknowledgementData.request['body']
+      ];
+      const data = await instance.submitAcknowledgement(...params);
+
+      expect(data instanceof SellingPartnerApiForRetailProcurementOrders.SubmitAcknowledgementResponse).to.be.true;
+    });
+
+    it('should successfully call submitAcknowledgementWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mocksubmitAcknowledgementData.response);
+
+      const params = [
+        mocksubmitAcknowledgementData.request['body']
+      ];
+      const response = await instance.submitAcknowledgementWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mocksubmitAcknowledgementData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mocksubmitAcknowledgementData.request['body']
+        ];
+        await instance.submitAcknowledgement(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+
+  describe('constructor', () => {
+    it('should use default ApiClient when none provided', () => {
+      const defaultInstance = new SellingPartnerApiForRetailProcurementOrders.VendorOrdersApi();
+      expect(defaultInstance.apiClient).to.equal(SellingPartnerApiForRetailProcurementOrders.ApiClient.instance);
+    });
+
+    it('should use provided ApiClient', () => {
+      const customClient = new SellingPartnerApiForRetailProcurementOrders.ApiClient();
+      const customInstance = new SellingPartnerApiForRetailProcurementOrders.VendorOrdersApi(customClient);
+      expect(customInstance.apiClient).to.equal(customClient);
+    });
+  });
+});

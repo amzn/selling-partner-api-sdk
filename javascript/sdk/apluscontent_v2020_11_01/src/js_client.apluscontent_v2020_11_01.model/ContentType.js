@@ -18,7 +18,7 @@ import {ApiClient} from '../ApiClient.js';
 * @enum {}
 * @readonly
 */
-export default class ContentType {
+export class ContentType {
     
         /**
          * value: "EBC"

@@ -11,103 +11,90 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForServices);
+import expect from 'expect.js';
+import * as SellingPartnerApiForServices from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new SellingPartnerApiForServices.Recurrence();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(SellingPartnerApiForServices.Recurrence.prototype);
   }
-}(this, function(expect, SellingPartnerApiForServices) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new SellingPartnerApiForServices.Recurrence();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(SellingPartnerApiForServices.Recurrence.prototype);
-    }
+describe('Recurrence', () => {
+  it('should create an instance of Recurrence', () => {
+    expect(instance).to.be.a(SellingPartnerApiForServices.Recurrence);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property endTime', () => {
+    // verify property exists
+    expect(instance).to.have.property('endTime');
 
-  describe('Recurrence', function() {
-    it('should create an instance of Recurrence', function() {
-      expect(instance).to.be.a(SellingPartnerApiForServices.Recurrence);
-    });
-
-    it('should have the property endTime', function() {
-      // verify property exists
-      expect(instance).to.have.property('endTime');
-
-      // set and verify value
-      var expectedValue = generateMockData('Date');
-      instance.endTime = expectedValue;
-      expect(instance.endTime).to.equal(expectedValue);
-    });
-
-    it('should have the property daysOfWeek', function() {
-      // verify property exists
-      expect(instance).to.have.property('daysOfWeek');
-
-      // set and verify value
-      var expectedValue = generateMockData('DayOfWeek', true);
-      instance.daysOfWeek = expectedValue;
-      expect(instance.daysOfWeek).to.equal(expectedValue);
-    });
-
-    it('should have the property daysOfMonth', function() {
-      // verify property exists
-      expect(instance).to.have.property('daysOfMonth');
-
-      // set and verify value
-      var expectedValue = generateMockData('Number', true);
-      instance.daysOfMonth = expectedValue;
-      expect(instance.daysOfMonth).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('Date');
+    instance.endTime = expectedValue;
+    expect(instance.endTime).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property daysOfWeek', () => {
+    // verify property exists
+    expect(instance).to.have.property('daysOfWeek');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('DayOfWeek', true);
+    instance.daysOfWeek = expectedValue;
+    expect(instance.daysOfWeek).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForServices[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property daysOfMonth', () => {
+    // verify property exists
+    expect(instance).to.have.property('daysOfMonth');
+
+    // set and verify value
+    const expectedValue = generateMockData('Number', true);
+    instance.daysOfMonth = expectedValue;
+    expect(instance.daysOfMonth).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForServices[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

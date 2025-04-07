@@ -4,6 +4,7 @@
   "description": "The Selling Partner API for Transfers enables selling partners to retrieve payment methods and initiate payouts for their seller accounts. This API supports the following marketplaces: DE, FR, IT, ES, SE, NL, PL, and BE.",
   "license": "Apache License 2.0",
   "main": "dist/index.js",
+  "type": "module",
   "scripts": {
     "build": "babel src -d dist",
     "prepare": "npm run build",

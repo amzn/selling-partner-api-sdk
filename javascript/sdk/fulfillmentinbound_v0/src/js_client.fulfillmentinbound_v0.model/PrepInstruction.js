@@ -18,7 +18,7 @@ import {ApiClient} from '../ApiClient.js';
 * @enum {}
 * @readonly
 */
-export default class PrepInstruction {
+export class PrepInstruction {
     
         /**
          * value: "Polybagging"

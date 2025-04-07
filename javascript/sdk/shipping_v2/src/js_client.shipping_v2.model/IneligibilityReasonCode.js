@@ -18,7 +18,7 @@ import {ApiClient} from '../ApiClient.js';
 * @enum {}
 * @readonly
 */
-export default class IneligibilityReasonCode {
+export class IneligibilityReasonCode {
     
         /**
          * value: "NO_COVERAGE"

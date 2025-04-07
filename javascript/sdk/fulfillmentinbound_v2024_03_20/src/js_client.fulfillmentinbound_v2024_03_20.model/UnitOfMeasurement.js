@@ -18,7 +18,7 @@ import {ApiClient} from '../ApiClient.js';
 * @enum {}
 * @readonly
 */
-export default class UnitOfMeasurement {
+export class UnitOfMeasurement {
     
         /**
          * value: "IN"

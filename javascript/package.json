@@ -1,5 +1,5 @@
 {
-  "name": "@amzn/sellingpartnerjavascriptapilwalib",
+  "name": "amazon-selling-partner-api-sdk-js",
   "type": "module",
   "description": "This package is sellingpartnerAPI Javascript SDK with LWA library.",
   "version": "1.0.0",
@@ -18,5 +18,8 @@
   "files": [
     "src/helper/",
     "sdk/"
-   ]
+   ],
+   "publishConfig": {
+    "access": "public"
+   }
 }

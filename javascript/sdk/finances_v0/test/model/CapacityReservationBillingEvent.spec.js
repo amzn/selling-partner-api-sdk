@@ -11,113 +11,100 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForFinances);
+import expect from 'expect.js';
+import * as SellingPartnerApiForFinances from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new SellingPartnerApiForFinances.CapacityReservationBillingEvent();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(SellingPartnerApiForFinances.CapacityReservationBillingEvent.prototype);
   }
-}(this, function(expect, SellingPartnerApiForFinances) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new SellingPartnerApiForFinances.CapacityReservationBillingEvent();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(SellingPartnerApiForFinances.CapacityReservationBillingEvent.prototype);
-    }
+describe('CapacityReservationBillingEvent', () => {
+  it('should create an instance of CapacityReservationBillingEvent', () => {
+    expect(instance).to.be.a(SellingPartnerApiForFinances.CapacityReservationBillingEvent);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property transactionType', () => {
+    // verify property exists
+    expect(instance).to.have.property('transactionType');
 
-  describe('CapacityReservationBillingEvent', function() {
-    it('should create an instance of CapacityReservationBillingEvent', function() {
-      expect(instance).to.be.a(SellingPartnerApiForFinances.CapacityReservationBillingEvent);
-    });
-
-    it('should have the property transactionType', function() {
-      // verify property exists
-      expect(instance).to.have.property('transactionType');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.transactionType = expectedValue;
-      expect(instance.transactionType).to.equal(expectedValue);
-    });
-
-    it('should have the property postedDate', function() {
-      // verify property exists
-      expect(instance).to.have.property('postedDate');
-
-      // set and verify value
-      var expectedValue = generateMockData('Date');
-      instance.postedDate = expectedValue;
-      expect(instance.postedDate).to.equal(expectedValue);
-    });
-
-    it('should have the property description', function() {
-      // verify property exists
-      expect(instance).to.have.property('description');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.description = expectedValue;
-      expect(instance.description).to.equal(expectedValue);
-    });
-
-    it('should have the property transactionAmount', function() {
-      // verify property exists
-      expect(instance).to.have.property('transactionAmount');
-
-      // set and verify value
-      var expectedValue = generateMockData('Currency');
-      instance.transactionAmount = expectedValue;
-      expect(instance.transactionAmount).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.transactionType = expectedValue;
+    expect(instance.transactionType).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property postedDate', () => {
+    // verify property exists
+    expect(instance).to.have.property('postedDate');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('Date');
+    instance.postedDate = expectedValue;
+    expect(instance.postedDate).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForFinances[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property description', () => {
+    // verify property exists
+    expect(instance).to.have.property('description');
+
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.description = expectedValue;
+    expect(instance.description).to.equal(expectedValue);
+  });
+
+  it('should have the property transactionAmount', () => {
+    // verify property exists
+    expect(instance).to.have.property('transactionAmount');
+
+    // set and verify value
+    const expectedValue = generateMockData('Currency');
+    instance.transactionAmount = expectedValue;
+    expect(instance.transactionAmount).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForFinances[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

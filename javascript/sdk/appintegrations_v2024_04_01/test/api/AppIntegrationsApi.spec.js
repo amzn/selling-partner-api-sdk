@@ -11,58 +11,47 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', 'sinon', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('sinon'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.sinon, root.TheSellingPartnerApiForThirdPartyApplicationIntegrations);
+import expect from 'expect.js';
+import sinon from 'sinon';
+import * as TheSellingPartnerApiForThirdPartyApplicationIntegrations from '../../src/index.js';
+
+let instance;
+let sandbox;
+const testEndpoint = 'https://localhost:3000';
+const testAccessToken = "testAccessToken";
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
   }
-}(this, function(expect, sinon, TheSellingPartnerApiForThirdPartyApplicationIntegrations) {
-  'use strict';
 
-  var instance;
-  var sandbox;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
-
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
-
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
-
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = TheSellingPartnerApiForThirdPartyApplicationIntegrations[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = TheSellingPartnerApiForThirdPartyApplicationIntegrations[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-  
+}
 
 // Generate mock requests and responses for each operation
 const mockcreateNotificationData = {
@@ -95,197 +84,169 @@ const mockrecordActionFeedbackData = {
   }
 };
 
-  beforeEach(function() {
+describe('AppIntegrationsApi', () => {
+  beforeEach(() => {
     sandbox = sinon.createSandbox();
-    var apiClientInstance = new TheSellingPartnerApiForThirdPartyApplicationIntegrations.ApiClient(testEndpoint);
+    const apiClientInstance = new TheSellingPartnerApiForThirdPartyApplicationIntegrations.ApiClient(testEndpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
     sandbox.stub(apiClientInstance, 'callApi');
     instance = new TheSellingPartnerApiForThirdPartyApplicationIntegrations.AppIntegrationsApi(apiClientInstance);
   });
 
-  afterEach(function() {
+  afterEach(() => {
     sandbox.restore();
   });
 
-  describe('AppIntegrationsApi', function() {
-    describe('createNotification', function() {
-      
-      it('should successfully call createNotification', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateNotificationData.response);
+  describe('createNotification', () => {
+    it('should successfully call createNotification', async () => {
+      instance.apiClient.callApi.resolves(mockcreateNotificationData.response);
 
+      const params = [
+        mockcreateNotificationData.request['body']
+      ];
+      const data = await instance.createNotification(...params);
+
+      expect(data instanceof TheSellingPartnerApiForThirdPartyApplicationIntegrations.CreateNotificationResponse).to.be.true;
+    });
+
+    it('should successfully call createNotificationWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockcreateNotificationData.response);
+
+      const params = [
+        mockcreateNotificationData.request['body']
+      ];
+      const response = await instance.createNotificationWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockcreateNotificationData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
         const params = [
           mockcreateNotificationData.request['body']
         ];
-        instance.createNotification(...params)
-          .then(function(data) {
-            expect(data instanceof TheSellingPartnerApiForThirdPartyApplicationIntegrations.CreateNotificationResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call createNotificationWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateNotificationData.response);
-
-        const params = [
-          mockcreateNotificationData.request['body']
-        ];
-        instance.createNotificationWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockcreateNotificationData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockcreateNotificationData.request['body']
-        ];
-        instance.createNotification(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('deleteNotifications', function() {
-      
-      it('should successfully call deleteNotifications', function(done) {
-        instance.apiClient.callApi.resolves(mockdeleteNotificationsData.response);
-
-        const params = [
-          mockdeleteNotificationsData.request['body']
-        ];
-        instance.deleteNotifications(...params)
-          .then(function(data) {
-            expect(data).to.be.undefined;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call deleteNotificationsWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockdeleteNotificationsData.response);
-
-        const params = [
-          mockdeleteNotificationsData.request['body']
-        ];
-        instance.deleteNotificationsWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockdeleteNotificationsData.response.statusCode)
-            expect(response).to.have.property('headers');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockdeleteNotificationsData.request['body']
-        ];
-        instance.deleteNotifications(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('recordActionFeedback', function() {
-      
-      it('should successfully call recordActionFeedback', function(done) {
-        instance.apiClient.callApi.resolves(mockrecordActionFeedbackData.response);
-
-        const params = [
-          mockrecordActionFeedbackData.request['notificationId'],
-          mockrecordActionFeedbackData.request['body']
-        ];
-        instance.recordActionFeedback(...params)
-          .then(function(data) {
-            expect(data).to.be.undefined;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call recordActionFeedbackWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockrecordActionFeedbackData.response);
-
-        const params = [
-          mockrecordActionFeedbackData.request['notificationId'],
-          mockrecordActionFeedbackData.request['body']
-        ];
-        instance.recordActionFeedbackWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockrecordActionFeedbackData.response.statusCode)
-            expect(response).to.have.property('headers');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockrecordActionFeedbackData.request['notificationId'],
-          mockrecordActionFeedbackData.request['body']
-        ];
-        instance.recordActionFeedback(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-
-    describe('constructor', function() {
-      it('should use default ApiClient when none provided', function() {
-        var defaultInstance = new TheSellingPartnerApiForThirdPartyApplicationIntegrations.AppIntegrationsApi();
-        expect(defaultInstance.apiClient).to.equal(TheSellingPartnerApiForThirdPartyApplicationIntegrations.ApiClient.instance);
-      });
-
-      it('should use provided ApiClient', function() {
-        var customClient = new TheSellingPartnerApiForThirdPartyApplicationIntegrations.ApiClient();
-        var customInstance = new TheSellingPartnerApiForThirdPartyApplicationIntegrations.AppIntegrationsApi(customClient);
-        expect(customInstance.apiClient).to.equal(customClient);
-      });
+        await instance.createNotification(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
     });
   });
-}));
+  describe('deleteNotifications', () => {
+    it('should successfully call deleteNotifications', async () => {
+      instance.apiClient.callApi.resolves(mockdeleteNotificationsData.response);
+
+      const params = [
+        mockdeleteNotificationsData.request['body']
+      ];
+      const data = await instance.deleteNotifications(...params);
+
+      expect(data).to.be.undefined;
+    });
+
+    it('should successfully call deleteNotificationsWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockdeleteNotificationsData.response);
+
+      const params = [
+        mockdeleteNotificationsData.request['body']
+      ];
+      const response = await instance.deleteNotificationsWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockdeleteNotificationsData.response.statusCode)
+      expect(response).to.have.property('headers');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockdeleteNotificationsData.request['body']
+        ];
+        await instance.deleteNotifications(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('recordActionFeedback', () => {
+    it('should successfully call recordActionFeedback', async () => {
+      instance.apiClient.callApi.resolves(mockrecordActionFeedbackData.response);
+
+      const params = [
+        mockrecordActionFeedbackData.request['notificationId'],
+        mockrecordActionFeedbackData.request['body']
+      ];
+      const data = await instance.recordActionFeedback(...params);
+
+      expect(data).to.be.undefined;
+    });
+
+    it('should successfully call recordActionFeedbackWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockrecordActionFeedbackData.response);
+
+      const params = [
+        mockrecordActionFeedbackData.request['notificationId'],
+        mockrecordActionFeedbackData.request['body']
+      ];
+      const response = await instance.recordActionFeedbackWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockrecordActionFeedbackData.response.statusCode)
+      expect(response).to.have.property('headers');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockrecordActionFeedbackData.request['notificationId'],
+          mockrecordActionFeedbackData.request['body']
+        ];
+        await instance.recordActionFeedback(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+
+  describe('constructor', () => {
+    it('should use default ApiClient when none provided', () => {
+      const defaultInstance = new TheSellingPartnerApiForThirdPartyApplicationIntegrations.AppIntegrationsApi();
+      expect(defaultInstance.apiClient).to.equal(TheSellingPartnerApiForThirdPartyApplicationIntegrations.ApiClient.instance);
+    });
+
+    it('should use provided ApiClient', () => {
+      const customClient = new TheSellingPartnerApiForThirdPartyApplicationIntegrations.ApiClient();
+      const customInstance = new TheSellingPartnerApiForThirdPartyApplicationIntegrations.AppIntegrationsApi(customClient);
+      expect(customInstance.apiClient).to.equal(customClient);
+    });
+  });
+});

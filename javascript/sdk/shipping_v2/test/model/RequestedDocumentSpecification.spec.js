@@ -11,143 +11,130 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.AmazonShippingApi);
+import expect from 'expect.js';
+import * as AmazonShippingApi from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new AmazonShippingApi.RequestedDocumentSpecification();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(AmazonShippingApi.RequestedDocumentSpecification.prototype);
   }
-}(this, function(expect, AmazonShippingApi) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new AmazonShippingApi.RequestedDocumentSpecification();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(AmazonShippingApi.RequestedDocumentSpecification.prototype);
-    }
+describe('RequestedDocumentSpecification', () => {
+  it('should create an instance of RequestedDocumentSpecification', () => {
+    expect(instance).to.be.a(AmazonShippingApi.RequestedDocumentSpecification);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property format', () => {
+    // verify property exists
+    expect(instance).to.have.property('format');
 
-  describe('RequestedDocumentSpecification', function() {
-    it('should create an instance of RequestedDocumentSpecification', function() {
-      expect(instance).to.be.a(AmazonShippingApi.RequestedDocumentSpecification);
-    });
-
-    it('should have the property format', function() {
-      // verify property exists
-      expect(instance).to.have.property('format');
-
-      // set and verify value
-      var expectedValue = generateMockData('DocumentFormat');
-      instance.format = expectedValue;
-      expect(instance.format).to.equal(expectedValue);
-    });
-
-    it('should have the property size', function() {
-      // verify property exists
-      expect(instance).to.have.property('size');
-
-      // set and verify value
-      var expectedValue = generateMockData('DocumentSize');
-      instance.size = expectedValue;
-      expect(instance.size).to.equal(expectedValue);
-    });
-
-    it('should have the property dpi', function() {
-      // verify property exists
-      expect(instance).to.have.property('dpi');
-
-      // set and verify value
-      var expectedValue = generateMockData('Number');
-      instance.dpi = expectedValue;
-      expect(instance.dpi).to.equal(expectedValue);
-    });
-
-    it('should have the property pageLayout', function() {
-      // verify property exists
-      expect(instance).to.have.property('pageLayout');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.pageLayout = expectedValue;
-      expect(instance.pageLayout).to.equal(expectedValue);
-    });
-
-    it('should have the property needFileJoining', function() {
-      // verify property exists
-      expect(instance).to.have.property('needFileJoining');
-
-      // set and verify value
-      var expectedValue = generateMockData('Boolean');
-      instance.needFileJoining = expectedValue;
-      expect(instance.needFileJoining).to.equal(expectedValue);
-    });
-
-    it('should have the property requestedDocumentTypes', function() {
-      // verify property exists
-      expect(instance).to.have.property('requestedDocumentTypes');
-
-      // set and verify value
-      var expectedValue = generateMockData('DocumentType', true);
-      instance.requestedDocumentTypes = expectedValue;
-      expect(instance.requestedDocumentTypes).to.equal(expectedValue);
-    });
-
-    it('should have the property requestedLabelCustomization', function() {
-      // verify property exists
-      expect(instance).to.have.property('requestedLabelCustomization');
-
-      // set and verify value
-      var expectedValue = generateMockData('RequestedLabelCustomization');
-      instance.requestedLabelCustomization = expectedValue;
-      expect(instance.requestedLabelCustomization).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('DocumentFormat');
+    instance.format = expectedValue;
+    expect(instance.format).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property size', () => {
+    // verify property exists
+    expect(instance).to.have.property('size');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('DocumentSize');
+    instance.size = expectedValue;
+    expect(instance.size).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = AmazonShippingApi[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property dpi', () => {
+    // verify property exists
+    expect(instance).to.have.property('dpi');
+
+    // set and verify value
+    const expectedValue = generateMockData('Number');
+    instance.dpi = expectedValue;
+    expect(instance.dpi).to.equal(expectedValue);
+  });
+
+  it('should have the property pageLayout', () => {
+    // verify property exists
+    expect(instance).to.have.property('pageLayout');
+
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.pageLayout = expectedValue;
+    expect(instance.pageLayout).to.equal(expectedValue);
+  });
+
+  it('should have the property needFileJoining', () => {
+    // verify property exists
+    expect(instance).to.have.property('needFileJoining');
+
+    // set and verify value
+    const expectedValue = generateMockData('Boolean');
+    instance.needFileJoining = expectedValue;
+    expect(instance.needFileJoining).to.equal(expectedValue);
+  });
+
+  it('should have the property requestedDocumentTypes', () => {
+    // verify property exists
+    expect(instance).to.have.property('requestedDocumentTypes');
+
+    // set and verify value
+    const expectedValue = generateMockData('DocumentType', true);
+    instance.requestedDocumentTypes = expectedValue;
+    expect(instance.requestedDocumentTypes).to.equal(expectedValue);
+  });
+
+  it('should have the property requestedLabelCustomization', () => {
+    // verify property exists
+    expect(instance).to.have.property('requestedLabelCustomization');
+
+    // set and verify value
+    const expectedValue = generateMockData('RequestedLabelCustomization');
+    instance.requestedLabelCustomization = expectedValue;
+    expect(instance.requestedLabelCustomization).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = AmazonShippingApi[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

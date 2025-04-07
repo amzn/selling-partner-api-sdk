@@ -18,7 +18,7 @@ import {ApiClient} from '../ApiClient.js';
 * @enum {}
 * @readonly
 */
-export default class LabelPrintType {
+export class LabelPrintType {
     
         /**
          * value: "STANDARD_FORMAT"

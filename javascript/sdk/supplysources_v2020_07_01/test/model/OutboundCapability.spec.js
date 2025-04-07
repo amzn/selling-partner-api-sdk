@@ -11,123 +11,110 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForSupplySources);
+import expect from 'expect.js';
+import * as SellingPartnerApiForSupplySources from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new SellingPartnerApiForSupplySources.OutboundCapability();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(SellingPartnerApiForSupplySources.OutboundCapability.prototype);
   }
-}(this, function(expect, SellingPartnerApiForSupplySources) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new SellingPartnerApiForSupplySources.OutboundCapability();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(SellingPartnerApiForSupplySources.OutboundCapability.prototype);
-    }
+describe('OutboundCapability', () => {
+  it('should create an instance of OutboundCapability', () => {
+    expect(instance).to.be.a(SellingPartnerApiForSupplySources.OutboundCapability);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property isSupported', () => {
+    // verify property exists
+    expect(instance).to.have.property('isSupported');
 
-  describe('OutboundCapability', function() {
-    it('should create an instance of OutboundCapability', function() {
-      expect(instance).to.be.a(SellingPartnerApiForSupplySources.OutboundCapability);
-    });
-
-    it('should have the property isSupported', function() {
-      // verify property exists
-      expect(instance).to.have.property('isSupported');
-
-      // set and verify value
-      var expectedValue = generateMockData('Boolean');
-      instance.isSupported = expectedValue;
-      expect(instance.isSupported).to.equal(expectedValue);
-    });
-
-    it('should have the property operationalConfiguration', function() {
-      // verify property exists
-      expect(instance).to.have.property('operationalConfiguration');
-
-      // set and verify value
-      var expectedValue = generateMockData('OperationalConfiguration');
-      instance.operationalConfiguration = expectedValue;
-      expect(instance.operationalConfiguration).to.equal(expectedValue);
-    });
-
-    it('should have the property returnLocation', function() {
-      // verify property exists
-      expect(instance).to.have.property('returnLocation');
-
-      // set and verify value
-      var expectedValue = generateMockData('ReturnLocation');
-      instance.returnLocation = expectedValue;
-      expect(instance.returnLocation).to.equal(expectedValue);
-    });
-
-    it('should have the property deliveryChannel', function() {
-      // verify property exists
-      expect(instance).to.have.property('deliveryChannel');
-
-      // set and verify value
-      var expectedValue = generateMockData('DeliveryChannel');
-      instance.deliveryChannel = expectedValue;
-      expect(instance.deliveryChannel).to.equal(expectedValue);
-    });
-
-    it('should have the property pickupChannel', function() {
-      // verify property exists
-      expect(instance).to.have.property('pickupChannel');
-
-      // set and verify value
-      var expectedValue = generateMockData('PickupChannel');
-      instance.pickupChannel = expectedValue;
-      expect(instance.pickupChannel).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('Boolean');
+    instance.isSupported = expectedValue;
+    expect(instance.isSupported).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property operationalConfiguration', () => {
+    // verify property exists
+    expect(instance).to.have.property('operationalConfiguration');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('OperationalConfiguration');
+    instance.operationalConfiguration = expectedValue;
+    expect(instance.operationalConfiguration).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForSupplySources[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property returnLocation', () => {
+    // verify property exists
+    expect(instance).to.have.property('returnLocation');
+
+    // set and verify value
+    const expectedValue = generateMockData('ReturnLocation');
+    instance.returnLocation = expectedValue;
+    expect(instance.returnLocation).to.equal(expectedValue);
+  });
+
+  it('should have the property deliveryChannel', () => {
+    // verify property exists
+    expect(instance).to.have.property('deliveryChannel');
+
+    // set and verify value
+    const expectedValue = generateMockData('DeliveryChannel');
+    instance.deliveryChannel = expectedValue;
+    expect(instance.deliveryChannel).to.equal(expectedValue);
+  });
+
+  it('should have the property pickupChannel', () => {
+    // verify property exists
+    expect(instance).to.have.property('pickupChannel');
+
+    // set and verify value
+    const expectedValue = generateMockData('PickupChannel');
+    instance.pickupChannel = expectedValue;
+    expect(instance.pickupChannel).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForSupplySources[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

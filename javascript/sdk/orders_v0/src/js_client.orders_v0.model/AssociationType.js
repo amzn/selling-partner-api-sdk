@@ -18,7 +18,7 @@ import {ApiClient} from '../ApiClient.js';
 * @enum {}
 * @readonly
 */
-export default class AssociationType {
+export class AssociationType {
     
         /**
          * value: "VALUE_ADD_SERVICE"

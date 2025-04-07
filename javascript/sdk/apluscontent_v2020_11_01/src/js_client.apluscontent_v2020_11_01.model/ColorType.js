@@ -18,7 +18,7 @@ import {ApiClient} from '../ApiClient.js';
 * @enum {}
 * @readonly
 */
-export default class ColorType {
+export class ColorType {
     
         /**
          * value: "DARK"

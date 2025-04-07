@@ -11,173 +11,160 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForProductTypeDefinitions);
+import expect from 'expect.js';
+import * as SellingPartnerApiForProductTypeDefinitions from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new SellingPartnerApiForProductTypeDefinitions.ProductTypeDefinition();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(SellingPartnerApiForProductTypeDefinitions.ProductTypeDefinition.prototype);
   }
-}(this, function(expect, SellingPartnerApiForProductTypeDefinitions) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new SellingPartnerApiForProductTypeDefinitions.ProductTypeDefinition();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(SellingPartnerApiForProductTypeDefinitions.ProductTypeDefinition.prototype);
-    }
+describe('ProductTypeDefinition', () => {
+  it('should create an instance of ProductTypeDefinition', () => {
+    expect(instance).to.be.a(SellingPartnerApiForProductTypeDefinitions.ProductTypeDefinition);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property metaSchema', () => {
+    // verify property exists
+    expect(instance).to.have.property('metaSchema');
 
-  describe('ProductTypeDefinition', function() {
-    it('should create an instance of ProductTypeDefinition', function() {
-      expect(instance).to.be.a(SellingPartnerApiForProductTypeDefinitions.ProductTypeDefinition);
-    });
-
-    it('should have the property metaSchema', function() {
-      // verify property exists
-      expect(instance).to.have.property('metaSchema');
-
-      // set and verify value
-      var expectedValue = generateMockData('SchemaLink');
-      instance.metaSchema = expectedValue;
-      expect(instance.metaSchema).to.equal(expectedValue);
-    });
-
-    it('should have the property schema', function() {
-      // verify property exists
-      expect(instance).to.have.property('schema');
-
-      // set and verify value
-      var expectedValue = generateMockData('SchemaLink');
-      instance.schema = expectedValue;
-      expect(instance.schema).to.equal(expectedValue);
-    });
-
-    it('should have the property requirements', function() {
-      // verify property exists
-      expect(instance).to.have.property('requirements');
-
-      // set and verify value
-      var expectedValue = ['LISTING', 'LISTING_PRODUCT_ONLY', 'LISTING_OFFER_ONLY', ][0];
-      instance.requirements = expectedValue;
-      expect(instance.requirements).to.equal(expectedValue);
-    });
-
-    it('should have the property requirementsEnforced', function() {
-      // verify property exists
-      expect(instance).to.have.property('requirementsEnforced');
-
-      // set and verify value
-      var expectedValue = ['ENFORCED', 'NOT_ENFORCED', ][0];
-      instance.requirementsEnforced = expectedValue;
-      expect(instance.requirementsEnforced).to.equal(expectedValue);
-    });
-
-    it('should have the property propertyGroups', function() {
-      // verify property exists
-      expect(instance).to.have.property('propertyGroups');
-
-      // set and verify value
-      var expectedValue = generateMockData('{String: PropertyGroup}');
-      instance.propertyGroups = expectedValue;
-      expect(instance.propertyGroups).to.equal(expectedValue);
-    });
-
-    it('should have the property locale', function() {
-      // verify property exists
-      expect(instance).to.have.property('locale');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.locale = expectedValue;
-      expect(instance.locale).to.equal(expectedValue);
-    });
-
-    it('should have the property marketplaceIds', function() {
-      // verify property exists
-      expect(instance).to.have.property('marketplaceIds');
-
-      // set and verify value
-      var expectedValue = generateMockData('String', true);
-      instance.marketplaceIds = expectedValue;
-      expect(instance.marketplaceIds).to.equal(expectedValue);
-    });
-
-    it('should have the property productType', function() {
-      // verify property exists
-      expect(instance).to.have.property('productType');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.productType = expectedValue;
-      expect(instance.productType).to.equal(expectedValue);
-    });
-
-    it('should have the property displayName', function() {
-      // verify property exists
-      expect(instance).to.have.property('displayName');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.displayName = expectedValue;
-      expect(instance.displayName).to.equal(expectedValue);
-    });
-
-    it('should have the property productTypeVersion', function() {
-      // verify property exists
-      expect(instance).to.have.property('productTypeVersion');
-
-      // set and verify value
-      var expectedValue = generateMockData('ProductTypeVersion');
-      instance.productTypeVersion = expectedValue;
-      expect(instance.productTypeVersion).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('SchemaLink');
+    instance.metaSchema = expectedValue;
+    expect(instance.metaSchema).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property schema', () => {
+    // verify property exists
+    expect(instance).to.have.property('schema');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('SchemaLink');
+    instance.schema = expectedValue;
+    expect(instance.schema).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForProductTypeDefinitions[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property requirements', () => {
+    // verify property exists
+    expect(instance).to.have.property('requirements');
+
+    // set and verify value
+    const expectedValue = ['LISTING', 'LISTING_PRODUCT_ONLY', 'LISTING_OFFER_ONLY', ][0];
+    instance.requirements = expectedValue;
+    expect(instance.requirements).to.equal(expectedValue);
+  });
+
+  it('should have the property requirementsEnforced', () => {
+    // verify property exists
+    expect(instance).to.have.property('requirementsEnforced');
+
+    // set and verify value
+    const expectedValue = ['ENFORCED', 'NOT_ENFORCED', ][0];
+    instance.requirementsEnforced = expectedValue;
+    expect(instance.requirementsEnforced).to.equal(expectedValue);
+  });
+
+  it('should have the property propertyGroups', () => {
+    // verify property exists
+    expect(instance).to.have.property('propertyGroups');
+
+    // set and verify value
+    const expectedValue = generateMockData('{String: PropertyGroup}');
+    instance.propertyGroups = expectedValue;
+    expect(instance.propertyGroups).to.equal(expectedValue);
+  });
+
+  it('should have the property locale', () => {
+    // verify property exists
+    expect(instance).to.have.property('locale');
+
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.locale = expectedValue;
+    expect(instance.locale).to.equal(expectedValue);
+  });
+
+  it('should have the property marketplaceIds', () => {
+    // verify property exists
+    expect(instance).to.have.property('marketplaceIds');
+
+    // set and verify value
+    const expectedValue = generateMockData('String', true);
+    instance.marketplaceIds = expectedValue;
+    expect(instance.marketplaceIds).to.equal(expectedValue);
+  });
+
+  it('should have the property productType', () => {
+    // verify property exists
+    expect(instance).to.have.property('productType');
+
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.productType = expectedValue;
+    expect(instance.productType).to.equal(expectedValue);
+  });
+
+  it('should have the property displayName', () => {
+    // verify property exists
+    expect(instance).to.have.property('displayName');
+
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.displayName = expectedValue;
+    expect(instance.displayName).to.equal(expectedValue);
+  });
+
+  it('should have the property productTypeVersion', () => {
+    // verify property exists
+    expect(instance).to.have.property('productTypeVersion');
+
+    // set and verify value
+    const expectedValue = generateMockData('ProductTypeVersion');
+    instance.productTypeVersion = expectedValue;
+    expect(instance.productTypeVersion).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForProductTypeDefinitions[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

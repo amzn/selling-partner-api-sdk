@@ -11,103 +11,90 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.TheSellingPartnerApiForFbaInboundOperations);
+import expect from 'expect.js';
+import * as TheSellingPartnerApiForFbaInboundOperations from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new TheSellingPartnerApiForFbaInboundOperations.Quote();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(TheSellingPartnerApiForFbaInboundOperations.Quote.prototype);
   }
-}(this, function(expect, TheSellingPartnerApiForFbaInboundOperations) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new TheSellingPartnerApiForFbaInboundOperations.Quote();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(TheSellingPartnerApiForFbaInboundOperations.Quote.prototype);
-    }
+describe('Quote', () => {
+  it('should create an instance of Quote', () => {
+    expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.Quote);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property cost', () => {
+    // verify property exists
+    expect(instance).to.have.property('cost');
 
-  describe('Quote', function() {
-    it('should create an instance of Quote', function() {
-      expect(instance).to.be.a(TheSellingPartnerApiForFbaInboundOperations.Quote);
-    });
-
-    it('should have the property cost', function() {
-      // verify property exists
-      expect(instance).to.have.property('cost');
-
-      // set and verify value
-      var expectedValue = generateMockData('Currency');
-      instance.cost = expectedValue;
-      expect(instance.cost).to.equal(expectedValue);
-    });
-
-    it('should have the property expiration', function() {
-      // verify property exists
-      expect(instance).to.have.property('expiration');
-
-      // set and verify value
-      var expectedValue = generateMockData('Date');
-      instance.expiration = expectedValue;
-      expect(instance.expiration).to.equal(expectedValue);
-    });
-
-    it('should have the property voidableUntil', function() {
-      // verify property exists
-      expect(instance).to.have.property('voidableUntil');
-
-      // set and verify value
-      var expectedValue = generateMockData('Date');
-      instance.voidableUntil = expectedValue;
-      expect(instance.voidableUntil).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('Currency');
+    instance.cost = expectedValue;
+    expect(instance.cost).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property expiration', () => {
+    // verify property exists
+    expect(instance).to.have.property('expiration');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('Date');
+    instance.expiration = expectedValue;
+    expect(instance.expiration).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = TheSellingPartnerApiForFbaInboundOperations[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property voidableUntil', () => {
+    // verify property exists
+    expect(instance).to.have.property('voidableUntil');
+
+    // set and verify value
+    const expectedValue = generateMockData('Date');
+    instance.voidableUntil = expectedValue;
+    expect(instance.voidableUntil).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = TheSellingPartnerApiForFbaInboundOperations[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

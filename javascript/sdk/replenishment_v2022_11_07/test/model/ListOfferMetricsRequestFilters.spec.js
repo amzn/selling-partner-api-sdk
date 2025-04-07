@@ -11,133 +11,120 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForReplenishment);
+import expect from 'expect.js';
+import * as SellingPartnerApiForReplenishment from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new SellingPartnerApiForReplenishment.ListOfferMetricsRequestFilters();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(SellingPartnerApiForReplenishment.ListOfferMetricsRequestFilters.prototype);
   }
-}(this, function(expect, SellingPartnerApiForReplenishment) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new SellingPartnerApiForReplenishment.ListOfferMetricsRequestFilters();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(SellingPartnerApiForReplenishment.ListOfferMetricsRequestFilters.prototype);
-    }
+describe('ListOfferMetricsRequestFilters', () => {
+  it('should create an instance of ListOfferMetricsRequestFilters', () => {
+    expect(instance).to.be.a(SellingPartnerApiForReplenishment.ListOfferMetricsRequestFilters);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property aggregationFrequency', () => {
+    // verify property exists
+    expect(instance).to.have.property('aggregationFrequency');
 
-  describe('ListOfferMetricsRequestFilters', function() {
-    it('should create an instance of ListOfferMetricsRequestFilters', function() {
-      expect(instance).to.be.a(SellingPartnerApiForReplenishment.ListOfferMetricsRequestFilters);
-    });
-
-    it('should have the property aggregationFrequency', function() {
-      // verify property exists
-      expect(instance).to.have.property('aggregationFrequency');
-
-      // set and verify value
-      var expectedValue = generateMockData('AggregationFrequency');
-      instance.aggregationFrequency = expectedValue;
-      expect(instance.aggregationFrequency).to.equal(expectedValue);
-    });
-
-    it('should have the property timeInterval', function() {
-      // verify property exists
-      expect(instance).to.have.property('timeInterval');
-
-      // set and verify value
-      var expectedValue = generateMockData('TimeInterval');
-      instance.timeInterval = expectedValue;
-      expect(instance.timeInterval).to.equal(expectedValue);
-    });
-
-    it('should have the property timePeriodType', function() {
-      // verify property exists
-      expect(instance).to.have.property('timePeriodType');
-
-      // set and verify value
-      var expectedValue = generateMockData('TimePeriodType');
-      instance.timePeriodType = expectedValue;
-      expect(instance.timePeriodType).to.equal(expectedValue);
-    });
-
-    it('should have the property marketplaceId', function() {
-      // verify property exists
-      expect(instance).to.have.property('marketplaceId');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.marketplaceId = expectedValue;
-      expect(instance.marketplaceId).to.equal(expectedValue);
-    });
-
-    it('should have the property programTypes', function() {
-      // verify property exists
-      expect(instance).to.have.property('programTypes');
-
-      // set and verify value
-      var expectedValue = generateMockData('ProgramType', true);
-      instance.programTypes = expectedValue;
-      expect(instance.programTypes).to.equal(expectedValue);
-    });
-
-    it('should have the property asins', function() {
-      // verify property exists
-      expect(instance).to.have.property('asins');
-
-      // set and verify value
-      var expectedValue = generateMockData('String', true);
-      instance.asins = expectedValue;
-      expect(instance.asins).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('AggregationFrequency');
+    instance.aggregationFrequency = expectedValue;
+    expect(instance.aggregationFrequency).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property timeInterval', () => {
+    // verify property exists
+    expect(instance).to.have.property('timeInterval');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('TimeInterval');
+    instance.timeInterval = expectedValue;
+    expect(instance.timeInterval).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForReplenishment[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property timePeriodType', () => {
+    // verify property exists
+    expect(instance).to.have.property('timePeriodType');
+
+    // set and verify value
+    const expectedValue = generateMockData('TimePeriodType');
+    instance.timePeriodType = expectedValue;
+    expect(instance.timePeriodType).to.equal(expectedValue);
+  });
+
+  it('should have the property marketplaceId', () => {
+    // verify property exists
+    expect(instance).to.have.property('marketplaceId');
+
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.marketplaceId = expectedValue;
+    expect(instance.marketplaceId).to.equal(expectedValue);
+  });
+
+  it('should have the property programTypes', () => {
+    // verify property exists
+    expect(instance).to.have.property('programTypes');
+
+    // set and verify value
+    const expectedValue = generateMockData('ProgramType', true);
+    instance.programTypes = expectedValue;
+    expect(instance.programTypes).to.equal(expectedValue);
+  });
+
+  it('should have the property asins', () => {
+    // verify property exists
+    expect(instance).to.have.property('asins');
+
+    // set and verify value
+    const expectedValue = generateMockData('String', true);
+    instance.asins = expectedValue;
+    expect(instance.asins).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForReplenishment[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

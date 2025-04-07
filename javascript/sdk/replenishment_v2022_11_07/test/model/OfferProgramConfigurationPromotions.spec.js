@@ -11,113 +11,100 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForReplenishment);
+import expect from 'expect.js';
+import * as SellingPartnerApiForReplenishment from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new SellingPartnerApiForReplenishment.OfferProgramConfigurationPromotions();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(SellingPartnerApiForReplenishment.OfferProgramConfigurationPromotions.prototype);
   }
-}(this, function(expect, SellingPartnerApiForReplenishment) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new SellingPartnerApiForReplenishment.OfferProgramConfigurationPromotions();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(SellingPartnerApiForReplenishment.OfferProgramConfigurationPromotions.prototype);
-    }
+describe('OfferProgramConfigurationPromotions', () => {
+  it('should create an instance of OfferProgramConfigurationPromotions', () => {
+    expect(instance).to.be.a(SellingPartnerApiForReplenishment.OfferProgramConfigurationPromotions);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property sellingPartnerFundedBaseDiscount', () => {
+    // verify property exists
+    expect(instance).to.have.property('sellingPartnerFundedBaseDiscount');
 
-  describe('OfferProgramConfigurationPromotions', function() {
-    it('should create an instance of OfferProgramConfigurationPromotions', function() {
-      expect(instance).to.be.a(SellingPartnerApiForReplenishment.OfferProgramConfigurationPromotions);
-    });
-
-    it('should have the property sellingPartnerFundedBaseDiscount', function() {
-      // verify property exists
-      expect(instance).to.have.property('sellingPartnerFundedBaseDiscount');
-
-      // set and verify value
-      var expectedValue = generateMockData('OfferProgramConfigurationPromotionsDiscountFunding');
-      instance.sellingPartnerFundedBaseDiscount = expectedValue;
-      expect(instance.sellingPartnerFundedBaseDiscount).to.equal(expectedValue);
-    });
-
-    it('should have the property sellingPartnerFundedTieredDiscount', function() {
-      // verify property exists
-      expect(instance).to.have.property('sellingPartnerFundedTieredDiscount');
-
-      // set and verify value
-      var expectedValue = generateMockData('OfferProgramConfigurationPromotionsDiscountFunding');
-      instance.sellingPartnerFundedTieredDiscount = expectedValue;
-      expect(instance.sellingPartnerFundedTieredDiscount).to.equal(expectedValue);
-    });
-
-    it('should have the property amazonFundedBaseDiscount', function() {
-      // verify property exists
-      expect(instance).to.have.property('amazonFundedBaseDiscount');
-
-      // set and verify value
-      var expectedValue = generateMockData('OfferProgramConfigurationPromotionsDiscountFunding');
-      instance.amazonFundedBaseDiscount = expectedValue;
-      expect(instance.amazonFundedBaseDiscount).to.equal(expectedValue);
-    });
-
-    it('should have the property amazonFundedTieredDiscount', function() {
-      // verify property exists
-      expect(instance).to.have.property('amazonFundedTieredDiscount');
-
-      // set and verify value
-      var expectedValue = generateMockData('OfferProgramConfigurationPromotionsDiscountFunding');
-      instance.amazonFundedTieredDiscount = expectedValue;
-      expect(instance.amazonFundedTieredDiscount).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('OfferProgramConfigurationPromotionsDiscountFunding');
+    instance.sellingPartnerFundedBaseDiscount = expectedValue;
+    expect(instance.sellingPartnerFundedBaseDiscount).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property sellingPartnerFundedTieredDiscount', () => {
+    // verify property exists
+    expect(instance).to.have.property('sellingPartnerFundedTieredDiscount');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('OfferProgramConfigurationPromotionsDiscountFunding');
+    instance.sellingPartnerFundedTieredDiscount = expectedValue;
+    expect(instance.sellingPartnerFundedTieredDiscount).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForReplenishment[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property amazonFundedBaseDiscount', () => {
+    // verify property exists
+    expect(instance).to.have.property('amazonFundedBaseDiscount');
+
+    // set and verify value
+    const expectedValue = generateMockData('OfferProgramConfigurationPromotionsDiscountFunding');
+    instance.amazonFundedBaseDiscount = expectedValue;
+    expect(instance.amazonFundedBaseDiscount).to.equal(expectedValue);
+  });
+
+  it('should have the property amazonFundedTieredDiscount', () => {
+    // verify property exists
+    expect(instance).to.have.property('amazonFundedTieredDiscount');
+
+    // set and verify value
+    const expectedValue = generateMockData('OfferProgramConfigurationPromotionsDiscountFunding');
+    instance.amazonFundedTieredDiscount = expectedValue;
+    expect(instance.amazonFundedTieredDiscount).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForReplenishment[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

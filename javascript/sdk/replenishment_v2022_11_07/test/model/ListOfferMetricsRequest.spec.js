@@ -11,103 +11,90 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForReplenishment);
+import expect from 'expect.js';
+import * as SellingPartnerApiForReplenishment from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new SellingPartnerApiForReplenishment.ListOfferMetricsRequest();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(SellingPartnerApiForReplenishment.ListOfferMetricsRequest.prototype);
   }
-}(this, function(expect, SellingPartnerApiForReplenishment) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new SellingPartnerApiForReplenishment.ListOfferMetricsRequest();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(SellingPartnerApiForReplenishment.ListOfferMetricsRequest.prototype);
-    }
+describe('ListOfferMetricsRequest', () => {
+  it('should create an instance of ListOfferMetricsRequest', () => {
+    expect(instance).to.be.a(SellingPartnerApiForReplenishment.ListOfferMetricsRequest);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property pagination', () => {
+    // verify property exists
+    expect(instance).to.have.property('pagination');
 
-  describe('ListOfferMetricsRequest', function() {
-    it('should create an instance of ListOfferMetricsRequest', function() {
-      expect(instance).to.be.a(SellingPartnerApiForReplenishment.ListOfferMetricsRequest);
-    });
-
-    it('should have the property pagination', function() {
-      // verify property exists
-      expect(instance).to.have.property('pagination');
-
-      // set and verify value
-      var expectedValue = generateMockData('ListOfferMetricsRequestPagination');
-      instance.pagination = expectedValue;
-      expect(instance.pagination).to.equal(expectedValue);
-    });
-
-    it('should have the property sort', function() {
-      // verify property exists
-      expect(instance).to.have.property('sort');
-
-      // set and verify value
-      var expectedValue = generateMockData('ListOfferMetricsRequestSort');
-      instance.sort = expectedValue;
-      expect(instance.sort).to.equal(expectedValue);
-    });
-
-    it('should have the property filters', function() {
-      // verify property exists
-      expect(instance).to.have.property('filters');
-
-      // set and verify value
-      var expectedValue = generateMockData('ListOfferMetricsRequestFilters');
-      instance.filters = expectedValue;
-      expect(instance.filters).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('ListOfferMetricsRequestPagination');
+    instance.pagination = expectedValue;
+    expect(instance.pagination).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property sort', () => {
+    // verify property exists
+    expect(instance).to.have.property('sort');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('ListOfferMetricsRequestSort');
+    instance.sort = expectedValue;
+    expect(instance.sort).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForReplenishment[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property filters', () => {
+    // verify property exists
+    expect(instance).to.have.property('filters');
+
+    // set and verify value
+    const expectedValue = generateMockData('ListOfferMetricsRequestFilters');
+    instance.filters = expectedValue;
+    expect(instance.filters).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForReplenishment[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

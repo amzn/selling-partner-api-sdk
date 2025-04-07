@@ -11,83 +11,70 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.TheSellingPartnerApiForInvoices);
+import expect from 'expect.js';
+import * as TheSellingPartnerApiForInvoices from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new TheSellingPartnerApiForInvoices.GetInvoicesExportResponse();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(TheSellingPartnerApiForInvoices.GetInvoicesExportResponse.prototype);
   }
-}(this, function(expect, TheSellingPartnerApiForInvoices) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new TheSellingPartnerApiForInvoices.GetInvoicesExportResponse();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(TheSellingPartnerApiForInvoices.GetInvoicesExportResponse.prototype);
-    }
+describe('GetInvoicesExportResponse', () => {
+  it('should create an instance of GetInvoicesExportResponse', () => {
+    expect(instance).to.be.a(TheSellingPartnerApiForInvoices.GetInvoicesExportResponse);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property _export', () => {
+    // verify property exists
+    expect(instance).to.have.property('_export');
 
-  describe('GetInvoicesExportResponse', function() {
-    it('should create an instance of GetInvoicesExportResponse', function() {
-      expect(instance).to.be.a(TheSellingPartnerApiForInvoices.GetInvoicesExportResponse);
-    });
-
-    it('should have the property _export', function() {
-      // verify property exists
-      expect(instance).to.have.property('_export');
-
-      // set and verify value
-      var expectedValue = generateMockData('Export');
-      instance._export = expectedValue;
-      expect(instance._export).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('Export');
+    instance._export = expectedValue;
+    expect(instance._export).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+});
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = TheSellingPartnerApiForInvoices[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = TheSellingPartnerApiForInvoices[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

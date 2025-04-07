@@ -18,7 +18,7 @@ import {ApiClient} from '../ApiClient.js';
 * @enum {}
 * @readonly
 */
-export default class UnitOfWeight {
+export class UnitOfWeight {
     
         /**
          * value: "Grams"

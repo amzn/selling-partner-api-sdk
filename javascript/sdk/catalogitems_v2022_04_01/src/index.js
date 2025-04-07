@@ -47,31 +47,6 @@ import {CatalogApi} from './js_client.catalogitems_v2022_04_01.api/CatalogApi.js
 /**
 * Use the Selling Partner API for Catalog Items to retrieve information about items in the Amazon catalog.  For more information, refer to the [Catalog Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/:catalog-items-api-v2022-04-01-use-case-guide)..<br>
 * The <code>index</code> module provides access to constructors for all the classes which comprise the public API.
-* <p>
-* An AMD (recommended!) or CommonJS application will generally do something equivalent to the following:
-* <pre>
-* var SellingPartnerApiForCatalogItems = require('index'); // See note below*.
-* var xxxSvc = new SellingPartnerApiForCatalogItems.XxxApi(); // Allocate the API class we're going to use.
-* var yyyModel = new SellingPartnerApiForCatalogItems.Yyy(); // Construct a model instance.
-* yyyModel.someProperty = 'someValue';
-* ...
-* var zzz = xxxSvc.doSomething(yyyModel); // Invoke the service.
-* ...
-* </pre>
-* <em>*NOTE: For a top-level AMD script, use require(['index'], function(){...})
-* and put the application logic within the callback function.</em>
-* </p>
-* <p>
-* A non-AMD browser application (discouraged) might do something like this:
-* <pre>
-* var xxxSvc = new SellingPartnerApiForCatalogItems.XxxApi(); // Allocate the API class we're going to use.
-* var yyy = new SellingPartnerApiForCatalogItems.Yyy(); // Construct a model instance.
-* yyyModel.someProperty = 'someValue';
-* ...
-* var zzz = xxxSvc.doSomething(yyyModel); // Invoke the service.
-* ...
-* </pre>
-* </p>
 * @module index
 * @version 2022-04-01
 */

@@ -18,7 +18,7 @@ import {ApiClient} from '../ApiClient.js';
 * @enum {}
 * @readonly
 */
-export default class AssignmentType {
+export class AssignmentType {
     
         /**
          * value: "DEFAULT_DEPOSIT_METHOD"

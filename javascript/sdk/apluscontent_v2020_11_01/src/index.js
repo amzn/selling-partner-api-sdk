@@ -81,31 +81,6 @@ import {AplusContentApi} from './js_client.apluscontent_v2020_11_01.api/AplusCon
 /**
 * Use the A+ Content API to build applications that help selling partners add rich marketing content to their Amazon product detail pages. Selling partners can use A+ content to share their brand and product story, which helps buyers make informed purchasing decisions. Selling partners use content modules to add images and text..<br>
 * The <code>index</code> module provides access to constructors for all the classes which comprise the public API.
-* <p>
-* An AMD (recommended!) or CommonJS application will generally do something equivalent to the following:
-* <pre>
-* var SellingPartnerApiForAContentManagement = require('index'); // See note below*.
-* var xxxSvc = new SellingPartnerApiForAContentManagement.XxxApi(); // Allocate the API class we're going to use.
-* var yyyModel = new SellingPartnerApiForAContentManagement.Yyy(); // Construct a model instance.
-* yyyModel.someProperty = 'someValue';
-* ...
-* var zzz = xxxSvc.doSomething(yyyModel); // Invoke the service.
-* ...
-* </pre>
-* <em>*NOTE: For a top-level AMD script, use require(['index'], function(){...})
-* and put the application logic within the callback function.</em>
-* </p>
-* <p>
-* A non-AMD browser application (discouraged) might do something like this:
-* <pre>
-* var xxxSvc = new SellingPartnerApiForAContentManagement.XxxApi(); // Allocate the API class we're going to use.
-* var yyy = new SellingPartnerApiForAContentManagement.Yyy(); // Construct a model instance.
-* yyyModel.someProperty = 'someValue';
-* ...
-* var zzz = xxxSvc.doSomething(yyyModel); // Invoke the service.
-* ...
-* </pre>
-* </p>
 * @module index
 * @version 2020-11-01
 */

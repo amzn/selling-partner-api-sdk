@@ -11,173 +11,160 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApisForFulfillmentOutbound);
+import expect from 'expect.js';
+import * as SellingPartnerApisForFulfillmentOutbound from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new SellingPartnerApisForFulfillmentOutbound.Address();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(SellingPartnerApisForFulfillmentOutbound.Address.prototype);
   }
-}(this, function(expect, SellingPartnerApisForFulfillmentOutbound) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new SellingPartnerApisForFulfillmentOutbound.Address();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(SellingPartnerApisForFulfillmentOutbound.Address.prototype);
-    }
+describe('Address', () => {
+  it('should create an instance of Address', () => {
+    expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.Address);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property name', () => {
+    // verify property exists
+    expect(instance).to.have.property('name');
 
-  describe('Address', function() {
-    it('should create an instance of Address', function() {
-      expect(instance).to.be.a(SellingPartnerApisForFulfillmentOutbound.Address);
-    });
-
-    it('should have the property name', function() {
-      // verify property exists
-      expect(instance).to.have.property('name');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.name = expectedValue;
-      expect(instance.name).to.equal(expectedValue);
-    });
-
-    it('should have the property addressLine1', function() {
-      // verify property exists
-      expect(instance).to.have.property('addressLine1');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.addressLine1 = expectedValue;
-      expect(instance.addressLine1).to.equal(expectedValue);
-    });
-
-    it('should have the property addressLine2', function() {
-      // verify property exists
-      expect(instance).to.have.property('addressLine2');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.addressLine2 = expectedValue;
-      expect(instance.addressLine2).to.equal(expectedValue);
-    });
-
-    it('should have the property addressLine3', function() {
-      // verify property exists
-      expect(instance).to.have.property('addressLine3');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.addressLine3 = expectedValue;
-      expect(instance.addressLine3).to.equal(expectedValue);
-    });
-
-    it('should have the property city', function() {
-      // verify property exists
-      expect(instance).to.have.property('city');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.city = expectedValue;
-      expect(instance.city).to.equal(expectedValue);
-    });
-
-    it('should have the property districtOrCounty', function() {
-      // verify property exists
-      expect(instance).to.have.property('districtOrCounty');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.districtOrCounty = expectedValue;
-      expect(instance.districtOrCounty).to.equal(expectedValue);
-    });
-
-    it('should have the property stateOrRegion', function() {
-      // verify property exists
-      expect(instance).to.have.property('stateOrRegion');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.stateOrRegion = expectedValue;
-      expect(instance.stateOrRegion).to.equal(expectedValue);
-    });
-
-    it('should have the property postalCode', function() {
-      // verify property exists
-      expect(instance).to.have.property('postalCode');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.postalCode = expectedValue;
-      expect(instance.postalCode).to.equal(expectedValue);
-    });
-
-    it('should have the property countryCode', function() {
-      // verify property exists
-      expect(instance).to.have.property('countryCode');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.countryCode = expectedValue;
-      expect(instance.countryCode).to.equal(expectedValue);
-    });
-
-    it('should have the property phone', function() {
-      // verify property exists
-      expect(instance).to.have.property('phone');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.phone = expectedValue;
-      expect(instance.phone).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.name = expectedValue;
+    expect(instance.name).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property addressLine1', () => {
+    // verify property exists
+    expect(instance).to.have.property('addressLine1');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.addressLine1 = expectedValue;
+    expect(instance.addressLine1).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApisForFulfillmentOutbound[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property addressLine2', () => {
+    // verify property exists
+    expect(instance).to.have.property('addressLine2');
+
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.addressLine2 = expectedValue;
+    expect(instance.addressLine2).to.equal(expectedValue);
+  });
+
+  it('should have the property addressLine3', () => {
+    // verify property exists
+    expect(instance).to.have.property('addressLine3');
+
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.addressLine3 = expectedValue;
+    expect(instance.addressLine3).to.equal(expectedValue);
+  });
+
+  it('should have the property city', () => {
+    // verify property exists
+    expect(instance).to.have.property('city');
+
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.city = expectedValue;
+    expect(instance.city).to.equal(expectedValue);
+  });
+
+  it('should have the property districtOrCounty', () => {
+    // verify property exists
+    expect(instance).to.have.property('districtOrCounty');
+
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.districtOrCounty = expectedValue;
+    expect(instance.districtOrCounty).to.equal(expectedValue);
+  });
+
+  it('should have the property stateOrRegion', () => {
+    // verify property exists
+    expect(instance).to.have.property('stateOrRegion');
+
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.stateOrRegion = expectedValue;
+    expect(instance.stateOrRegion).to.equal(expectedValue);
+  });
+
+  it('should have the property postalCode', () => {
+    // verify property exists
+    expect(instance).to.have.property('postalCode');
+
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.postalCode = expectedValue;
+    expect(instance.postalCode).to.equal(expectedValue);
+  });
+
+  it('should have the property countryCode', () => {
+    // verify property exists
+    expect(instance).to.have.property('countryCode');
+
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.countryCode = expectedValue;
+    expect(instance.countryCode).to.equal(expectedValue);
+  });
+
+  it('should have the property phone', () => {
+    // verify property exists
+    expect(instance).to.have.property('phone');
+
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.phone = expectedValue;
+    expect(instance.phone).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApisForFulfillmentOutbound[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

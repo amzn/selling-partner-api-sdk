@@ -18,7 +18,7 @@ import {ApiClient} from '../ApiClient.js';
 * @enum {}
 * @readonly
 */
-export default class LabelAttribute {
+export class LabelAttribute {
     
         /**
          * value: "PACKAGE_CLIENT_REFERENCE_ID"

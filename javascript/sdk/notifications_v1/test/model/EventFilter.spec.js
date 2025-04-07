@@ -11,113 +11,100 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForNotifications);
+import expect from 'expect.js';
+import * as SellingPartnerApiForNotifications from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new SellingPartnerApiForNotifications.EventFilter();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(SellingPartnerApiForNotifications.EventFilter.prototype);
   }
-}(this, function(expect, SellingPartnerApiForNotifications) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new SellingPartnerApiForNotifications.EventFilter();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(SellingPartnerApiForNotifications.EventFilter.prototype);
-    }
+describe('EventFilter', () => {
+  it('should create an instance of EventFilter', () => {
+    expect(instance).to.be.a(SellingPartnerApiForNotifications.EventFilter);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property aggregationSettings', () => {
+    // verify property exists
+    expect(instance).to.have.property('aggregationSettings');
 
-  describe('EventFilter', function() {
-    it('should create an instance of EventFilter', function() {
-      expect(instance).to.be.a(SellingPartnerApiForNotifications.EventFilter);
-    });
-
-    it('should have the property aggregationSettings', function() {
-      // verify property exists
-      expect(instance).to.have.property('aggregationSettings');
-
-      // set and verify value
-      var expectedValue = generateMockData('AggregationSettings');
-      instance.aggregationSettings = expectedValue;
-      expect(instance.aggregationSettings).to.equal(expectedValue);
-    });
-
-    it('should have the property marketplaceIds', function() {
-      // verify property exists
-      expect(instance).to.have.property('marketplaceIds');
-
-      // set and verify value
-      var expectedValue = generateMockData('String', true);
-      instance.marketplaceIds = expectedValue;
-      expect(instance.marketplaceIds).to.equal(expectedValue);
-    });
-
-    it('should have the property orderChangeTypes', function() {
-      // verify property exists
-      expect(instance).to.have.property('orderChangeTypes');
-
-      // set and verify value
-      var expectedValue = generateMockData('OrderChangeTypeEnum', true);
-      instance.orderChangeTypes = expectedValue;
-      expect(instance.orderChangeTypes).to.equal(expectedValue);
-    });
-
-    it('should have the property eventFilterType', function() {
-      // verify property exists
-      expect(instance).to.have.property('eventFilterType');
-
-      // set and verify value
-      var expectedValue = ['ANY_OFFER_CHANGED', 'ORDER_CHANGE', ][0];
-      instance.eventFilterType = expectedValue;
-      expect(instance.eventFilterType).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('AggregationSettings');
+    instance.aggregationSettings = expectedValue;
+    expect(instance.aggregationSettings).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property marketplaceIds', () => {
+    // verify property exists
+    expect(instance).to.have.property('marketplaceIds');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('String', true);
+    instance.marketplaceIds = expectedValue;
+    expect(instance.marketplaceIds).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForNotifications[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property orderChangeTypes', () => {
+    // verify property exists
+    expect(instance).to.have.property('orderChangeTypes');
+
+    // set and verify value
+    const expectedValue = generateMockData('OrderChangeTypeEnum', true);
+    instance.orderChangeTypes = expectedValue;
+    expect(instance.orderChangeTypes).to.equal(expectedValue);
+  });
+
+  it('should have the property eventFilterType', () => {
+    // verify property exists
+    expect(instance).to.have.property('eventFilterType');
+
+    // set and verify value
+    const expectedValue = ['ANY_OFFER_CHANGED', 'ORDER_CHANGE', ][0];
+    instance.eventFilterType = expectedValue;
+    expect(instance.eventFilterType).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForNotifications[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

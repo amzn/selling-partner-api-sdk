@@ -11,113 +11,100 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.TheSellingPartnerApiForAmazonWarehousingAndDistribution);
+import expect from 'expect.js';
+import * as TheSellingPartnerApiForAmazonWarehousingAndDistribution from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new TheSellingPartnerApiForAmazonWarehousingAndDistribution.InboundEligibility();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(TheSellingPartnerApiForAmazonWarehousingAndDistribution.InboundEligibility.prototype);
   }
-}(this, function(expect, TheSellingPartnerApiForAmazonWarehousingAndDistribution) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new TheSellingPartnerApiForAmazonWarehousingAndDistribution.InboundEligibility();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(TheSellingPartnerApiForAmazonWarehousingAndDistribution.InboundEligibility.prototype);
-    }
+describe('InboundEligibility', () => {
+  it('should create an instance of InboundEligibility', () => {
+    expect(instance).to.be.a(TheSellingPartnerApiForAmazonWarehousingAndDistribution.InboundEligibility);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property ineligibilityReasons', () => {
+    // verify property exists
+    expect(instance).to.have.property('ineligibilityReasons');
 
-  describe('InboundEligibility', function() {
-    it('should create an instance of InboundEligibility', function() {
-      expect(instance).to.be.a(TheSellingPartnerApiForAmazonWarehousingAndDistribution.InboundEligibility);
-    });
-
-    it('should have the property ineligibilityReasons', function() {
-      // verify property exists
-      expect(instance).to.have.property('ineligibilityReasons');
-
-      // set and verify value
-      var expectedValue = generateMockData('OrderIneligibilityReason', true);
-      instance.ineligibilityReasons = expectedValue;
-      expect(instance.ineligibilityReasons).to.equal(expectedValue);
-    });
-
-    it('should have the property packagesToInbound', function() {
-      // verify property exists
-      expect(instance).to.have.property('packagesToInbound');
-
-      // set and verify value
-      var expectedValue = generateMockData('SkuEligibility', true);
-      instance.packagesToInbound = expectedValue;
-      expect(instance.packagesToInbound).to.equal(expectedValue);
-    });
-
-    it('should have the property previewedAt', function() {
-      // verify property exists
-      expect(instance).to.have.property('previewedAt');
-
-      // set and verify value
-      var expectedValue = generateMockData('Date');
-      instance.previewedAt = expectedValue;
-      expect(instance.previewedAt).to.equal(expectedValue);
-    });
-
-    it('should have the property status', function() {
-      // verify property exists
-      expect(instance).to.have.property('status');
-
-      // set and verify value
-      var expectedValue = generateMockData('InboundEligibilityStatus');
-      instance.status = expectedValue;
-      expect(instance.status).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('OrderIneligibilityReason', true);
+    instance.ineligibilityReasons = expectedValue;
+    expect(instance.ineligibilityReasons).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property packagesToInbound', () => {
+    // verify property exists
+    expect(instance).to.have.property('packagesToInbound');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('SkuEligibility', true);
+    instance.packagesToInbound = expectedValue;
+    expect(instance.packagesToInbound).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = TheSellingPartnerApiForAmazonWarehousingAndDistribution[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property previewedAt', () => {
+    // verify property exists
+    expect(instance).to.have.property('previewedAt');
+
+    // set and verify value
+    const expectedValue = generateMockData('Date');
+    instance.previewedAt = expectedValue;
+    expect(instance.previewedAt).to.equal(expectedValue);
+  });
+
+  it('should have the property status', () => {
+    // verify property exists
+    expect(instance).to.have.property('status');
+
+    // set and verify value
+    const expectedValue = generateMockData('InboundEligibilityStatus');
+    instance.status = expectedValue;
+    expect(instance.status).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = TheSellingPartnerApiForAmazonWarehousingAndDistribution[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

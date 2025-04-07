@@ -11,153 +11,140 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForAContentManagement);
+import expect from 'expect.js';
+import * as SellingPartnerApiForAContentManagement from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new SellingPartnerApiForAContentManagement.StandardSingleImageSpecsDetailModule();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(SellingPartnerApiForAContentManagement.StandardSingleImageSpecsDetailModule.prototype);
   }
-}(this, function(expect, SellingPartnerApiForAContentManagement) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new SellingPartnerApiForAContentManagement.StandardSingleImageSpecsDetailModule();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(SellingPartnerApiForAContentManagement.StandardSingleImageSpecsDetailModule.prototype);
-    }
+describe('StandardSingleImageSpecsDetailModule', () => {
+  it('should create an instance of StandardSingleImageSpecsDetailModule', () => {
+    expect(instance).to.be.a(SellingPartnerApiForAContentManagement.StandardSingleImageSpecsDetailModule);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property headline', () => {
+    // verify property exists
+    expect(instance).to.have.property('headline');
 
-  describe('StandardSingleImageSpecsDetailModule', function() {
-    it('should create an instance of StandardSingleImageSpecsDetailModule', function() {
-      expect(instance).to.be.a(SellingPartnerApiForAContentManagement.StandardSingleImageSpecsDetailModule);
-    });
-
-    it('should have the property headline', function() {
-      // verify property exists
-      expect(instance).to.have.property('headline');
-
-      // set and verify value
-      var expectedValue = generateMockData('TextComponent');
-      instance.headline = expectedValue;
-      expect(instance.headline).to.equal(expectedValue);
-    });
-
-    it('should have the property image', function() {
-      // verify property exists
-      expect(instance).to.have.property('image');
-
-      // set and verify value
-      var expectedValue = generateMockData('ImageComponent');
-      instance.image = expectedValue;
-      expect(instance.image).to.equal(expectedValue);
-    });
-
-    it('should have the property descriptionHeadline', function() {
-      // verify property exists
-      expect(instance).to.have.property('descriptionHeadline');
-
-      // set and verify value
-      var expectedValue = generateMockData('TextComponent');
-      instance.descriptionHeadline = expectedValue;
-      expect(instance.descriptionHeadline).to.equal(expectedValue);
-    });
-
-    it('should have the property descriptionBlock1', function() {
-      // verify property exists
-      expect(instance).to.have.property('descriptionBlock1');
-
-      // set and verify value
-      var expectedValue = generateMockData('StandardTextBlock');
-      instance.descriptionBlock1 = expectedValue;
-      expect(instance.descriptionBlock1).to.equal(expectedValue);
-    });
-
-    it('should have the property descriptionBlock2', function() {
-      // verify property exists
-      expect(instance).to.have.property('descriptionBlock2');
-
-      // set and verify value
-      var expectedValue = generateMockData('StandardTextBlock');
-      instance.descriptionBlock2 = expectedValue;
-      expect(instance.descriptionBlock2).to.equal(expectedValue);
-    });
-
-    it('should have the property specificationHeadline', function() {
-      // verify property exists
-      expect(instance).to.have.property('specificationHeadline');
-
-      // set and verify value
-      var expectedValue = generateMockData('TextComponent');
-      instance.specificationHeadline = expectedValue;
-      expect(instance.specificationHeadline).to.equal(expectedValue);
-    });
-
-    it('should have the property specificationListBlock', function() {
-      // verify property exists
-      expect(instance).to.have.property('specificationListBlock');
-
-      // set and verify value
-      var expectedValue = generateMockData('StandardHeaderTextListBlock');
-      instance.specificationListBlock = expectedValue;
-      expect(instance.specificationListBlock).to.equal(expectedValue);
-    });
-
-    it('should have the property specificationTextBlock', function() {
-      // verify property exists
-      expect(instance).to.have.property('specificationTextBlock');
-
-      // set and verify value
-      var expectedValue = generateMockData('StandardTextBlock');
-      instance.specificationTextBlock = expectedValue;
-      expect(instance.specificationTextBlock).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('TextComponent');
+    instance.headline = expectedValue;
+    expect(instance.headline).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property image', () => {
+    // verify property exists
+    expect(instance).to.have.property('image');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('ImageComponent');
+    instance.image = expectedValue;
+    expect(instance.image).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForAContentManagement[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property descriptionHeadline', () => {
+    // verify property exists
+    expect(instance).to.have.property('descriptionHeadline');
+
+    // set and verify value
+    const expectedValue = generateMockData('TextComponent');
+    instance.descriptionHeadline = expectedValue;
+    expect(instance.descriptionHeadline).to.equal(expectedValue);
+  });
+
+  it('should have the property descriptionBlock1', () => {
+    // verify property exists
+    expect(instance).to.have.property('descriptionBlock1');
+
+    // set and verify value
+    const expectedValue = generateMockData('StandardTextBlock');
+    instance.descriptionBlock1 = expectedValue;
+    expect(instance.descriptionBlock1).to.equal(expectedValue);
+  });
+
+  it('should have the property descriptionBlock2', () => {
+    // verify property exists
+    expect(instance).to.have.property('descriptionBlock2');
+
+    // set and verify value
+    const expectedValue = generateMockData('StandardTextBlock');
+    instance.descriptionBlock2 = expectedValue;
+    expect(instance.descriptionBlock2).to.equal(expectedValue);
+  });
+
+  it('should have the property specificationHeadline', () => {
+    // verify property exists
+    expect(instance).to.have.property('specificationHeadline');
+
+    // set and verify value
+    const expectedValue = generateMockData('TextComponent');
+    instance.specificationHeadline = expectedValue;
+    expect(instance.specificationHeadline).to.equal(expectedValue);
+  });
+
+  it('should have the property specificationListBlock', () => {
+    // verify property exists
+    expect(instance).to.have.property('specificationListBlock');
+
+    // set and verify value
+    const expectedValue = generateMockData('StandardHeaderTextListBlock');
+    instance.specificationListBlock = expectedValue;
+    expect(instance.specificationListBlock).to.equal(expectedValue);
+  });
+
+  it('should have the property specificationTextBlock', () => {
+    // verify property exists
+    expect(instance).to.have.property('specificationTextBlock');
+
+    // set and verify value
+    const expectedValue = generateMockData('StandardTextBlock');
+    instance.specificationTextBlock = expectedValue;
+    expect(instance.specificationTextBlock).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForAContentManagement[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

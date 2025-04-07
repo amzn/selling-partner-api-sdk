@@ -18,7 +18,7 @@ import {ApiClient} from '../ApiClient.js';
 * @enum {}
 * @readonly
 */
-export default class RateItemID {
+export class RateItemID {
     
         /**
          * value: "BASE_RATE"

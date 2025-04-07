@@ -11,113 +11,100 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForCatalogItems);
+import expect from 'expect.js';
+import * as SellingPartnerApiForCatalogItems from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new SellingPartnerApiForCatalogItems.Dimensions();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(SellingPartnerApiForCatalogItems.Dimensions.prototype);
   }
-}(this, function(expect, SellingPartnerApiForCatalogItems) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new SellingPartnerApiForCatalogItems.Dimensions();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(SellingPartnerApiForCatalogItems.Dimensions.prototype);
-    }
+describe('Dimensions', () => {
+  it('should create an instance of Dimensions', () => {
+    expect(instance).to.be.a(SellingPartnerApiForCatalogItems.Dimensions);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property height', () => {
+    // verify property exists
+    expect(instance).to.have.property('height');
 
-  describe('Dimensions', function() {
-    it('should create an instance of Dimensions', function() {
-      expect(instance).to.be.a(SellingPartnerApiForCatalogItems.Dimensions);
-    });
-
-    it('should have the property height', function() {
-      // verify property exists
-      expect(instance).to.have.property('height');
-
-      // set and verify value
-      var expectedValue = generateMockData('Dimension');
-      instance.height = expectedValue;
-      expect(instance.height).to.equal(expectedValue);
-    });
-
-    it('should have the property length', function() {
-      // verify property exists
-      expect(instance).to.have.property('length');
-
-      // set and verify value
-      var expectedValue = generateMockData('Dimension');
-      instance.length = expectedValue;
-      expect(instance.length).to.equal(expectedValue);
-    });
-
-    it('should have the property weight', function() {
-      // verify property exists
-      expect(instance).to.have.property('weight');
-
-      // set and verify value
-      var expectedValue = generateMockData('Dimension');
-      instance.weight = expectedValue;
-      expect(instance.weight).to.equal(expectedValue);
-    });
-
-    it('should have the property width', function() {
-      // verify property exists
-      expect(instance).to.have.property('width');
-
-      // set and verify value
-      var expectedValue = generateMockData('Dimension');
-      instance.width = expectedValue;
-      expect(instance.width).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('Dimension');
+    instance.height = expectedValue;
+    expect(instance.height).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property length', () => {
+    // verify property exists
+    expect(instance).to.have.property('length');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('Dimension');
+    instance.length = expectedValue;
+    expect(instance.length).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForCatalogItems[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property weight', () => {
+    // verify property exists
+    expect(instance).to.have.property('weight');
+
+    // set and verify value
+    const expectedValue = generateMockData('Dimension');
+    instance.weight = expectedValue;
+    expect(instance.weight).to.equal(expectedValue);
+  });
+
+  it('should have the property width', () => {
+    // verify property exists
+    expect(instance).to.have.property('width');
+
+    // set and verify value
+    const expectedValue = generateMockData('Dimension');
+    instance.width = expectedValue;
+    expect(instance.width).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForCatalogItems[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

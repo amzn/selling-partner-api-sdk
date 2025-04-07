@@ -11,103 +11,90 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForCatalogItems);
+import expect from 'expect.js';
+import * as SellingPartnerApiForCatalogItems from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new SellingPartnerApiForCatalogItems.ItemSalesRanksByMarketplace();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(SellingPartnerApiForCatalogItems.ItemSalesRanksByMarketplace.prototype);
   }
-}(this, function(expect, SellingPartnerApiForCatalogItems) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new SellingPartnerApiForCatalogItems.ItemSalesRanksByMarketplace();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(SellingPartnerApiForCatalogItems.ItemSalesRanksByMarketplace.prototype);
-    }
+describe('ItemSalesRanksByMarketplace', () => {
+  it('should create an instance of ItemSalesRanksByMarketplace', () => {
+    expect(instance).to.be.a(SellingPartnerApiForCatalogItems.ItemSalesRanksByMarketplace);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property marketplaceId', () => {
+    // verify property exists
+    expect(instance).to.have.property('marketplaceId');
 
-  describe('ItemSalesRanksByMarketplace', function() {
-    it('should create an instance of ItemSalesRanksByMarketplace', function() {
-      expect(instance).to.be.a(SellingPartnerApiForCatalogItems.ItemSalesRanksByMarketplace);
-    });
-
-    it('should have the property marketplaceId', function() {
-      // verify property exists
-      expect(instance).to.have.property('marketplaceId');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.marketplaceId = expectedValue;
-      expect(instance.marketplaceId).to.equal(expectedValue);
-    });
-
-    it('should have the property classificationRanks', function() {
-      // verify property exists
-      expect(instance).to.have.property('classificationRanks');
-
-      // set and verify value
-      var expectedValue = generateMockData('ItemClassificationSalesRank', true);
-      instance.classificationRanks = expectedValue;
-      expect(instance.classificationRanks).to.equal(expectedValue);
-    });
-
-    it('should have the property displayGroupRanks', function() {
-      // verify property exists
-      expect(instance).to.have.property('displayGroupRanks');
-
-      // set and verify value
-      var expectedValue = generateMockData('ItemDisplayGroupSalesRank', true);
-      instance.displayGroupRanks = expectedValue;
-      expect(instance.displayGroupRanks).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.marketplaceId = expectedValue;
+    expect(instance.marketplaceId).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property classificationRanks', () => {
+    // verify property exists
+    expect(instance).to.have.property('classificationRanks');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('ItemClassificationSalesRank', true);
+    instance.classificationRanks = expectedValue;
+    expect(instance.classificationRanks).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForCatalogItems[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property displayGroupRanks', () => {
+    // verify property exists
+    expect(instance).to.have.property('displayGroupRanks');
+
+    // set and verify value
+    const expectedValue = generateMockData('ItemDisplayGroupSalesRank', true);
+    instance.displayGroupRanks = expectedValue;
+    expect(instance.displayGroupRanks).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForCatalogItems[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

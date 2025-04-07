@@ -18,7 +18,7 @@ import {ApiClient} from '../ApiClient.js';
 * @enum {}
 * @readonly
 */
-export default class OwnerConstraint {
+export class OwnerConstraint {
     
         /**
          * value: "AMAZON_ONLY"

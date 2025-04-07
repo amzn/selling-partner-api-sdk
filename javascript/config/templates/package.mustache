@@ -4,6 +4,7 @@
   "description": "{{{projectDescription}}}",
   "license": "{{licenseName}}",
   "main": "dist{{#invokerPackage}}/{{.}}{{/invokerPackage}}/index.js",
+  "type": "module",
   "scripts": {
     "build": "babel src -d dist",
     "prepare": "npm run build",

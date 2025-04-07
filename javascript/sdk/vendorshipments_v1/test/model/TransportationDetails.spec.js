@@ -11,143 +11,130 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForRetailProcurementShipments);
+import expect from 'expect.js';
+import * as SellingPartnerApiForRetailProcurementShipments from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new SellingPartnerApiForRetailProcurementShipments.TransportationDetails();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(SellingPartnerApiForRetailProcurementShipments.TransportationDetails.prototype);
   }
-}(this, function(expect, SellingPartnerApiForRetailProcurementShipments) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new SellingPartnerApiForRetailProcurementShipments.TransportationDetails();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(SellingPartnerApiForRetailProcurementShipments.TransportationDetails.prototype);
-    }
+describe('TransportationDetails', () => {
+  it('should create an instance of TransportationDetails', () => {
+    expect(instance).to.be.a(SellingPartnerApiForRetailProcurementShipments.TransportationDetails);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property shipMode', () => {
+    // verify property exists
+    expect(instance).to.have.property('shipMode');
 
-  describe('TransportationDetails', function() {
-    it('should create an instance of TransportationDetails', function() {
-      expect(instance).to.be.a(SellingPartnerApiForRetailProcurementShipments.TransportationDetails);
-    });
-
-    it('should have the property shipMode', function() {
-      // verify property exists
-      expect(instance).to.have.property('shipMode');
-
-      // set and verify value
-      var expectedValue = ['TruckLoad', 'LessThanTruckLoad', 'SmallParcel', ][0];
-      instance.shipMode = expectedValue;
-      expect(instance.shipMode).to.equal(expectedValue);
-    });
-
-    it('should have the property transportationMode', function() {
-      // verify property exists
-      expect(instance).to.have.property('transportationMode');
-
-      // set and verify value
-      var expectedValue = ['Road', 'Air', 'Ocean', ][0];
-      instance.transportationMode = expectedValue;
-      expect(instance.transportationMode).to.equal(expectedValue);
-    });
-
-    it('should have the property shippedDate', function() {
-      // verify property exists
-      expect(instance).to.have.property('shippedDate');
-
-      // set and verify value
-      var expectedValue = generateMockData('Date');
-      instance.shippedDate = expectedValue;
-      expect(instance.shippedDate).to.equal(expectedValue);
-    });
-
-    it('should have the property estimatedDeliveryDate', function() {
-      // verify property exists
-      expect(instance).to.have.property('estimatedDeliveryDate');
-
-      // set and verify value
-      var expectedValue = generateMockData('Date');
-      instance.estimatedDeliveryDate = expectedValue;
-      expect(instance.estimatedDeliveryDate).to.equal(expectedValue);
-    });
-
-    it('should have the property shipmentDeliveryDate', function() {
-      // verify property exists
-      expect(instance).to.have.property('shipmentDeliveryDate');
-
-      // set and verify value
-      var expectedValue = generateMockData('Date');
-      instance.shipmentDeliveryDate = expectedValue;
-      expect(instance.shipmentDeliveryDate).to.equal(expectedValue);
-    });
-
-    it('should have the property carrierDetails', function() {
-      // verify property exists
-      expect(instance).to.have.property('carrierDetails');
-
-      // set and verify value
-      var expectedValue = generateMockData('CarrierDetails');
-      instance.carrierDetails = expectedValue;
-      expect(instance.carrierDetails).to.equal(expectedValue);
-    });
-
-    it('should have the property billOfLadingNumber', function() {
-      // verify property exists
-      expect(instance).to.have.property('billOfLadingNumber');
-
-      // set and verify value
-      var expectedValue = generateMockData('String');
-      instance.billOfLadingNumber = expectedValue;
-      expect(instance.billOfLadingNumber).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = ['TruckLoad', 'LessThanTruckLoad', 'SmallParcel', ][0];
+    instance.shipMode = expectedValue;
+    expect(instance.shipMode).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property transportationMode', () => {
+    // verify property exists
+    expect(instance).to.have.property('transportationMode');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = ['Road', 'Air', 'Ocean', ][0];
+    instance.transportationMode = expectedValue;
+    expect(instance.transportationMode).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForRetailProcurementShipments[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property shippedDate', () => {
+    // verify property exists
+    expect(instance).to.have.property('shippedDate');
+
+    // set and verify value
+    const expectedValue = generateMockData('Date');
+    instance.shippedDate = expectedValue;
+    expect(instance.shippedDate).to.equal(expectedValue);
+  });
+
+  it('should have the property estimatedDeliveryDate', () => {
+    // verify property exists
+    expect(instance).to.have.property('estimatedDeliveryDate');
+
+    // set and verify value
+    const expectedValue = generateMockData('Date');
+    instance.estimatedDeliveryDate = expectedValue;
+    expect(instance.estimatedDeliveryDate).to.equal(expectedValue);
+  });
+
+  it('should have the property shipmentDeliveryDate', () => {
+    // verify property exists
+    expect(instance).to.have.property('shipmentDeliveryDate');
+
+    // set and verify value
+    const expectedValue = generateMockData('Date');
+    instance.shipmentDeliveryDate = expectedValue;
+    expect(instance.shipmentDeliveryDate).to.equal(expectedValue);
+  });
+
+  it('should have the property carrierDetails', () => {
+    // verify property exists
+    expect(instance).to.have.property('carrierDetails');
+
+    // set and verify value
+    const expectedValue = generateMockData('CarrierDetails');
+    instance.carrierDetails = expectedValue;
+    expect(instance.carrierDetails).to.equal(expectedValue);
+  });
+
+  it('should have the property billOfLadingNumber', () => {
+    // verify property exists
+    expect(instance).to.have.property('billOfLadingNumber');
+
+    // set and verify value
+    const expectedValue = generateMockData('String');
+    instance.billOfLadingNumber = expectedValue;
+    expect(instance.billOfLadingNumber).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForRetailProcurementShipments[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

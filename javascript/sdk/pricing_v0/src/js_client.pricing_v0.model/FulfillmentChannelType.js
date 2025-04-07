@@ -18,7 +18,7 @@ import {ApiClient} from '../ApiClient.js';
 * @enum {}
 * @readonly
 */
-export default class FulfillmentChannelType {
+export class FulfillmentChannelType {
     
         /**
          * value: "Amazon"

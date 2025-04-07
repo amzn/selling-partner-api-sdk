@@ -18,7 +18,7 @@ import {ApiClient} from '../ApiClient.js';
 * @enum {}
 * @readonly
 */
-export default class Stackability {
+export class Stackability {
     
         /**
          * value: "STACKABLE"

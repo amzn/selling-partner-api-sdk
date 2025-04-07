@@ -18,7 +18,7 @@ import {ApiClient} from '../ApiClient.js';
 * @enum {}
 * @readonly
 */
-export default class InboundEligibilityStatus {
+export class InboundEligibilityStatus {
     
         /**
          * value: "ELIGIBLE"

@@ -11,58 +11,47 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', 'sinon', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('sinon'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.sinon, root.SellingPartnerApiForPricing);
+import expect from 'expect.js';
+import sinon from 'sinon';
+import * as SellingPartnerApiForPricing from '../../src/index.js';
+
+let instance;
+let sandbox;
+const testEndpoint = 'https://localhost:3000';
+const testAccessToken = "testAccessToken";
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
   }
-}(this, function(expect, sinon, SellingPartnerApiForPricing) {
-  'use strict';
 
-  var instance;
-  var sandbox;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
-
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
-
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
-
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForPricing[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForPricing[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-  
+}
 
 // Generate mock requests and responses for each operation
 const mockgetCompetitiveSummaryData = {
@@ -86,141 +75,122 @@ const mockgetFeaturedOfferExpectedPriceBatchData = {
   }
 };
 
-  beforeEach(function() {
+describe('ProductPricingApi', () => {
+  beforeEach(() => {
     sandbox = sinon.createSandbox();
-    var apiClientInstance = new SellingPartnerApiForPricing.ApiClient(testEndpoint);
+    const apiClientInstance = new SellingPartnerApiForPricing.ApiClient(testEndpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
     sandbox.stub(apiClientInstance, 'callApi');
     instance = new SellingPartnerApiForPricing.ProductPricingApi(apiClientInstance);
   });
 
-  afterEach(function() {
+  afterEach(() => {
     sandbox.restore();
   });
 
-  describe('ProductPricingApi', function() {
-    describe('getCompetitiveSummary', function() {
-      
-      it('should successfully call getCompetitiveSummary', function(done) {
-        instance.apiClient.callApi.resolves(mockgetCompetitiveSummaryData.response);
+  describe('getCompetitiveSummary', () => {
+    it('should successfully call getCompetitiveSummary', async () => {
+      instance.apiClient.callApi.resolves(mockgetCompetitiveSummaryData.response);
 
-        const params = [
-          mockgetCompetitiveSummaryData.request['requests']
-        ];
-        instance.getCompetitiveSummary(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForPricing.CompetitiveSummaryBatchResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
+      const params = [
+        mockgetCompetitiveSummaryData.request['requests']
+      ];
+      const data = await instance.getCompetitiveSummary(...params);
 
-      it('should successfully call getCompetitiveSummaryWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetCompetitiveSummaryData.response);
-
-        const params = [
-          mockgetCompetitiveSummaryData.request['requests']
-        ];
-        instance.getCompetitiveSummaryWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetCompetitiveSummaryData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgetCompetitiveSummaryData.request['requests']
-        ];
-        instance.getCompetitiveSummary(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('getFeaturedOfferExpectedPriceBatch', function() {
-      
-      it('should successfully call getFeaturedOfferExpectedPriceBatch', function(done) {
-        instance.apiClient.callApi.resolves(mockgetFeaturedOfferExpectedPriceBatchData.response);
-
-        const params = [
-          mockgetFeaturedOfferExpectedPriceBatchData.request['getFeaturedOfferExpectedPriceBatchRequestBody']
-        ];
-        instance.getFeaturedOfferExpectedPriceBatch(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForPricing.GetFeaturedOfferExpectedPriceBatchResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call getFeaturedOfferExpectedPriceBatchWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetFeaturedOfferExpectedPriceBatchData.response);
-
-        const params = [
-          mockgetFeaturedOfferExpectedPriceBatchData.request['getFeaturedOfferExpectedPriceBatchRequestBody']
-        ];
-        instance.getFeaturedOfferExpectedPriceBatchWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetFeaturedOfferExpectedPriceBatchData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgetFeaturedOfferExpectedPriceBatchData.request['getFeaturedOfferExpectedPriceBatchRequestBody']
-        ];
-        instance.getFeaturedOfferExpectedPriceBatch(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
+      expect(data instanceof SellingPartnerApiForPricing.CompetitiveSummaryBatchResponse).to.be.true;
     });
 
-    describe('constructor', function() {
-      it('should use default ApiClient when none provided', function() {
-        var defaultInstance = new SellingPartnerApiForPricing.ProductPricingApi();
-        expect(defaultInstance.apiClient).to.equal(SellingPartnerApiForPricing.ApiClient.instance);
-      });
+    it('should successfully call getCompetitiveSummaryWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetCompetitiveSummaryData.response);
 
-      it('should use provided ApiClient', function() {
-        var customClient = new SellingPartnerApiForPricing.ApiClient();
-        var customInstance = new SellingPartnerApiForPricing.ProductPricingApi(customClient);
-        expect(customInstance.apiClient).to.equal(customClient);
-      });
+      const params = [
+        mockgetCompetitiveSummaryData.request['requests']
+      ];
+      const response = await instance.getCompetitiveSummaryWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetCompetitiveSummaryData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgetCompetitiveSummaryData.request['requests']
+        ];
+        await instance.getCompetitiveSummary(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
     });
   });
-}));
+  describe('getFeaturedOfferExpectedPriceBatch', () => {
+    it('should successfully call getFeaturedOfferExpectedPriceBatch', async () => {
+      instance.apiClient.callApi.resolves(mockgetFeaturedOfferExpectedPriceBatchData.response);
+
+      const params = [
+        mockgetFeaturedOfferExpectedPriceBatchData.request['getFeaturedOfferExpectedPriceBatchRequestBody']
+      ];
+      const data = await instance.getFeaturedOfferExpectedPriceBatch(...params);
+
+      expect(data instanceof SellingPartnerApiForPricing.GetFeaturedOfferExpectedPriceBatchResponse).to.be.true;
+    });
+
+    it('should successfully call getFeaturedOfferExpectedPriceBatchWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetFeaturedOfferExpectedPriceBatchData.response);
+
+      const params = [
+        mockgetFeaturedOfferExpectedPriceBatchData.request['getFeaturedOfferExpectedPriceBatchRequestBody']
+      ];
+      const response = await instance.getFeaturedOfferExpectedPriceBatchWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetFeaturedOfferExpectedPriceBatchData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgetFeaturedOfferExpectedPriceBatchData.request['getFeaturedOfferExpectedPriceBatchRequestBody']
+        ];
+        await instance.getFeaturedOfferExpectedPriceBatch(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+
+  describe('constructor', () => {
+    it('should use default ApiClient when none provided', () => {
+      const defaultInstance = new SellingPartnerApiForPricing.ProductPricingApi();
+      expect(defaultInstance.apiClient).to.equal(SellingPartnerApiForPricing.ApiClient.instance);
+    });
+
+    it('should use provided ApiClient', () => {
+      const customClient = new SellingPartnerApiForPricing.ApiClient();
+      const customInstance = new SellingPartnerApiForPricing.ProductPricingApi(customClient);
+      expect(customInstance.apiClient).to.equal(customClient);
+    });
+  });
+});

@@ -27,31 +27,6 @@ import {FeedsApi} from './js_client.feeds_v2021_06_30.api/FeedsApi.js';
 /**
 * The Selling Partner API for Feeds lets you upload data to Amazon on behalf of a selling partner..<br>
 * The <code>index</code> module provides access to constructors for all the classes which comprise the public API.
-* <p>
-* An AMD (recommended!) or CommonJS application will generally do something equivalent to the following:
-* <pre>
-* var SellingPartnerApiForFeeds = require('index'); // See note below*.
-* var xxxSvc = new SellingPartnerApiForFeeds.XxxApi(); // Allocate the API class we're going to use.
-* var yyyModel = new SellingPartnerApiForFeeds.Yyy(); // Construct a model instance.
-* yyyModel.someProperty = 'someValue';
-* ...
-* var zzz = xxxSvc.doSomething(yyyModel); // Invoke the service.
-* ...
-* </pre>
-* <em>*NOTE: For a top-level AMD script, use require(['index'], function(){...})
-* and put the application logic within the callback function.</em>
-* </p>
-* <p>
-* A non-AMD browser application (discouraged) might do something like this:
-* <pre>
-* var xxxSvc = new SellingPartnerApiForFeeds.XxxApi(); // Allocate the API class we're going to use.
-* var yyy = new SellingPartnerApiForFeeds.Yyy(); // Construct a model instance.
-* yyyModel.someProperty = 'someValue';
-* ...
-* var zzz = xxxSvc.doSomething(yyyModel); // Invoke the service.
-* ...
-* </pre>
-* </p>
 * @module index
 * @version 2021-06-30
 */

@@ -11,123 +11,110 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForServices);
+import expect from 'expect.js';
+import * as SellingPartnerApiForServices from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new SellingPartnerApiForServices.FixedSlot();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(SellingPartnerApiForServices.FixedSlot.prototype);
   }
-}(this, function(expect, SellingPartnerApiForServices) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new SellingPartnerApiForServices.FixedSlot();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(SellingPartnerApiForServices.FixedSlot.prototype);
-    }
+describe('FixedSlot', () => {
+  it('should create an instance of FixedSlot', () => {
+    expect(instance).to.be.a(SellingPartnerApiForServices.FixedSlot);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property startDateTime', () => {
+    // verify property exists
+    expect(instance).to.have.property('startDateTime');
 
-  describe('FixedSlot', function() {
-    it('should create an instance of FixedSlot', function() {
-      expect(instance).to.be.a(SellingPartnerApiForServices.FixedSlot);
-    });
-
-    it('should have the property startDateTime', function() {
-      // verify property exists
-      expect(instance).to.have.property('startDateTime');
-
-      // set and verify value
-      var expectedValue = generateMockData('Date');
-      instance.startDateTime = expectedValue;
-      expect(instance.startDateTime).to.equal(expectedValue);
-    });
-
-    it('should have the property scheduledCapacity', function() {
-      // verify property exists
-      expect(instance).to.have.property('scheduledCapacity');
-
-      // set and verify value
-      var expectedValue = generateMockData('Number');
-      instance.scheduledCapacity = expectedValue;
-      expect(instance.scheduledCapacity).to.equal(expectedValue);
-    });
-
-    it('should have the property availableCapacity', function() {
-      // verify property exists
-      expect(instance).to.have.property('availableCapacity');
-
-      // set and verify value
-      var expectedValue = generateMockData('Number');
-      instance.availableCapacity = expectedValue;
-      expect(instance.availableCapacity).to.equal(expectedValue);
-    });
-
-    it('should have the property encumberedCapacity', function() {
-      // verify property exists
-      expect(instance).to.have.property('encumberedCapacity');
-
-      // set and verify value
-      var expectedValue = generateMockData('Number');
-      instance.encumberedCapacity = expectedValue;
-      expect(instance.encumberedCapacity).to.equal(expectedValue);
-    });
-
-    it('should have the property reservedCapacity', function() {
-      // verify property exists
-      expect(instance).to.have.property('reservedCapacity');
-
-      // set and verify value
-      var expectedValue = generateMockData('Number');
-      instance.reservedCapacity = expectedValue;
-      expect(instance.reservedCapacity).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('Date');
+    instance.startDateTime = expectedValue;
+    expect(instance.startDateTime).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property scheduledCapacity', () => {
+    // verify property exists
+    expect(instance).to.have.property('scheduledCapacity');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('Number');
+    instance.scheduledCapacity = expectedValue;
+    expect(instance.scheduledCapacity).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForServices[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property availableCapacity', () => {
+    // verify property exists
+    expect(instance).to.have.property('availableCapacity');
+
+    // set and verify value
+    const expectedValue = generateMockData('Number');
+    instance.availableCapacity = expectedValue;
+    expect(instance.availableCapacity).to.equal(expectedValue);
+  });
+
+  it('should have the property encumberedCapacity', () => {
+    // verify property exists
+    expect(instance).to.have.property('encumberedCapacity');
+
+    // set and verify value
+    const expectedValue = generateMockData('Number');
+    instance.encumberedCapacity = expectedValue;
+    expect(instance.encumberedCapacity).to.equal(expectedValue);
+  });
+
+  it('should have the property reservedCapacity', () => {
+    // verify property exists
+    expect(instance).to.have.property('reservedCapacity');
+
+    // set and verify value
+    const expectedValue = generateMockData('Number');
+    instance.reservedCapacity = expectedValue;
+    expect(instance.reservedCapacity).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForServices[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

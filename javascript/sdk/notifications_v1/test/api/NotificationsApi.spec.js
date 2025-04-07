@@ -11,58 +11,47 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', 'sinon', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('sinon'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.sinon, root.SellingPartnerApiForNotifications);
+import expect from 'expect.js';
+import sinon from 'sinon';
+import * as SellingPartnerApiForNotifications from '../../src/index.js';
+
+let instance;
+let sandbox;
+const testEndpoint = 'https://localhost:3000';
+const testAccessToken = "testAccessToken";
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
   }
-}(this, function(expect, sinon, SellingPartnerApiForNotifications) {
-  'use strict';
 
-  var instance;
-  var sandbox;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
-
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
-
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
-
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForNotifications[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForNotifications[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-  
+}
 
 // Generate mock requests and responses for each operation
 const mockcreateDestinationData = {
@@ -148,471 +137,398 @@ const mockgetSubscriptionByIdData = {
   }
 };
 
-  beforeEach(function() {
+describe('NotificationsApi', () => {
+  beforeEach(() => {
     sandbox = sinon.createSandbox();
-    var apiClientInstance = new SellingPartnerApiForNotifications.ApiClient(testEndpoint);
+    const apiClientInstance = new SellingPartnerApiForNotifications.ApiClient(testEndpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
     sandbox.stub(apiClientInstance, 'callApi');
     instance = new SellingPartnerApiForNotifications.NotificationsApi(apiClientInstance);
   });
 
-  afterEach(function() {
+  afterEach(() => {
     sandbox.restore();
   });
 
-  describe('NotificationsApi', function() {
-    describe('createDestination', function() {
-      
-      it('should successfully call createDestination', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateDestinationData.response);
+  describe('createDestination', () => {
+    it('should successfully call createDestination', async () => {
+      instance.apiClient.callApi.resolves(mockcreateDestinationData.response);
 
+      const params = [
+        mockcreateDestinationData.request['body']
+      ];
+      const data = await instance.createDestination(...params);
+
+      expect(data instanceof SellingPartnerApiForNotifications.CreateDestinationResponse).to.be.true;
+    });
+
+    it('should successfully call createDestinationWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockcreateDestinationData.response);
+
+      const params = [
+        mockcreateDestinationData.request['body']
+      ];
+      const response = await instance.createDestinationWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockcreateDestinationData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
         const params = [
           mockcreateDestinationData.request['body']
         ];
-        instance.createDestination(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForNotifications.CreateDestinationResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call createDestinationWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateDestinationData.response);
-
-        const params = [
-          mockcreateDestinationData.request['body']
-        ];
-        instance.createDestinationWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockcreateDestinationData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockcreateDestinationData.request['body']
-        ];
-        instance.createDestination(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('createSubscription', function() {
-      
-      it('should successfully call createSubscription', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateSubscriptionData.response);
-
-        const params = [
-          mockcreateSubscriptionData.request['notificationType'],
-          mockcreateSubscriptionData.request['body']
-        ];
-        instance.createSubscription(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForNotifications.CreateSubscriptionResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call createSubscriptionWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateSubscriptionData.response);
-
-        const params = [
-          mockcreateSubscriptionData.request['notificationType'],
-          mockcreateSubscriptionData.request['body']
-        ];
-        instance.createSubscriptionWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockcreateSubscriptionData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockcreateSubscriptionData.request['notificationType'],
-          mockcreateSubscriptionData.request['body']
-        ];
-        instance.createSubscription(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('deleteDestination', function() {
-      
-      it('should successfully call deleteDestination', function(done) {
-        instance.apiClient.callApi.resolves(mockdeleteDestinationData.response);
-
-        const params = [
-          mockdeleteDestinationData.request['destinationId']
-        ];
-        instance.deleteDestination(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForNotifications.DeleteDestinationResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call deleteDestinationWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockdeleteDestinationData.response);
-
-        const params = [
-          mockdeleteDestinationData.request['destinationId']
-        ];
-        instance.deleteDestinationWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockdeleteDestinationData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockdeleteDestinationData.request['destinationId']
-        ];
-        instance.deleteDestination(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('deleteSubscriptionById', function() {
-      
-      it('should successfully call deleteSubscriptionById', function(done) {
-        instance.apiClient.callApi.resolves(mockdeleteSubscriptionByIdData.response);
-
-        const params = [
-          mockdeleteSubscriptionByIdData.request['subscriptionId'],
-          mockdeleteSubscriptionByIdData.request['notificationType']
-        ];
-        instance.deleteSubscriptionById(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForNotifications.DeleteSubscriptionByIdResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call deleteSubscriptionByIdWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockdeleteSubscriptionByIdData.response);
-
-        const params = [
-          mockdeleteSubscriptionByIdData.request['subscriptionId'],
-          mockdeleteSubscriptionByIdData.request['notificationType']
-        ];
-        instance.deleteSubscriptionByIdWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockdeleteSubscriptionByIdData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockdeleteSubscriptionByIdData.request['subscriptionId'],
-          mockdeleteSubscriptionByIdData.request['notificationType']
-        ];
-        instance.deleteSubscriptionById(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('getDestination', function() {
-      
-      it('should successfully call getDestination', function(done) {
-        instance.apiClient.callApi.resolves(mockgetDestinationData.response);
-
-        const params = [
-          mockgetDestinationData.request['destinationId']
-        ];
-        instance.getDestination(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForNotifications.GetDestinationResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call getDestinationWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetDestinationData.response);
-
-        const params = [
-          mockgetDestinationData.request['destinationId']
-        ];
-        instance.getDestinationWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetDestinationData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgetDestinationData.request['destinationId']
-        ];
-        instance.getDestination(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('getDestinations', function() {
-      
-      it('should successfully call getDestinations', function(done) {
-        instance.apiClient.callApi.resolves(mockgetDestinationsData.response);
-
-        instance.getDestinations()
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForNotifications.GetDestinationsResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call getDestinationsWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetDestinationsData.response);
-
-        instance.getDestinationsWithHttpInfo()
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetDestinationsData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        instance.getDestinations()
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('getSubscription', function() {
-      
-      it('should successfully call getSubscription', function(done) {
-        instance.apiClient.callApi.resolves(mockgetSubscriptionData.response);
-
-        const params = [
-          mockgetSubscriptionData.request['notificationType'],
-        ];
-        instance.getSubscription(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForNotifications.GetSubscriptionResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call getSubscriptionWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetSubscriptionData.response);
-
-        const params = [
-          mockgetSubscriptionData.request['notificationType'],
-        ];
-        instance.getSubscriptionWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetSubscriptionData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgetSubscriptionData.request['notificationType'],
-        ];
-        instance.getSubscription(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('getSubscriptionById', function() {
-      
-      it('should successfully call getSubscriptionById', function(done) {
-        instance.apiClient.callApi.resolves(mockgetSubscriptionByIdData.response);
-
-        const params = [
-          mockgetSubscriptionByIdData.request['subscriptionId'],
-          mockgetSubscriptionByIdData.request['notificationType']
-        ];
-        instance.getSubscriptionById(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForNotifications.GetSubscriptionByIdResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call getSubscriptionByIdWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetSubscriptionByIdData.response);
-
-        const params = [
-          mockgetSubscriptionByIdData.request['subscriptionId'],
-          mockgetSubscriptionByIdData.request['notificationType']
-        ];
-        instance.getSubscriptionByIdWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetSubscriptionByIdData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgetSubscriptionByIdData.request['subscriptionId'],
-          mockgetSubscriptionByIdData.request['notificationType']
-        ];
-        instance.getSubscriptionById(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-
-    describe('constructor', function() {
-      it('should use default ApiClient when none provided', function() {
-        var defaultInstance = new SellingPartnerApiForNotifications.NotificationsApi();
-        expect(defaultInstance.apiClient).to.equal(SellingPartnerApiForNotifications.ApiClient.instance);
-      });
-
-      it('should use provided ApiClient', function() {
-        var customClient = new SellingPartnerApiForNotifications.ApiClient();
-        var customInstance = new SellingPartnerApiForNotifications.NotificationsApi(customClient);
-        expect(customInstance.apiClient).to.equal(customClient);
-      });
+        await instance.createDestination(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
     });
   });
-}));
+  describe('createSubscription', () => {
+    it('should successfully call createSubscription', async () => {
+      instance.apiClient.callApi.resolves(mockcreateSubscriptionData.response);
+
+      const params = [
+        mockcreateSubscriptionData.request['notificationType'],
+        mockcreateSubscriptionData.request['body']
+      ];
+      const data = await instance.createSubscription(...params);
+
+      expect(data instanceof SellingPartnerApiForNotifications.CreateSubscriptionResponse).to.be.true;
+    });
+
+    it('should successfully call createSubscriptionWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockcreateSubscriptionData.response);
+
+      const params = [
+        mockcreateSubscriptionData.request['notificationType'],
+        mockcreateSubscriptionData.request['body']
+      ];
+      const response = await instance.createSubscriptionWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockcreateSubscriptionData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockcreateSubscriptionData.request['notificationType'],
+          mockcreateSubscriptionData.request['body']
+        ];
+        await instance.createSubscription(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('deleteDestination', () => {
+    it('should successfully call deleteDestination', async () => {
+      instance.apiClient.callApi.resolves(mockdeleteDestinationData.response);
+
+      const params = [
+        mockdeleteDestinationData.request['destinationId']
+      ];
+      const data = await instance.deleteDestination(...params);
+
+      expect(data instanceof SellingPartnerApiForNotifications.DeleteDestinationResponse).to.be.true;
+    });
+
+    it('should successfully call deleteDestinationWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockdeleteDestinationData.response);
+
+      const params = [
+        mockdeleteDestinationData.request['destinationId']
+      ];
+      const response = await instance.deleteDestinationWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockdeleteDestinationData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockdeleteDestinationData.request['destinationId']
+        ];
+        await instance.deleteDestination(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('deleteSubscriptionById', () => {
+    it('should successfully call deleteSubscriptionById', async () => {
+      instance.apiClient.callApi.resolves(mockdeleteSubscriptionByIdData.response);
+
+      const params = [
+        mockdeleteSubscriptionByIdData.request['subscriptionId'],
+        mockdeleteSubscriptionByIdData.request['notificationType']
+      ];
+      const data = await instance.deleteSubscriptionById(...params);
+
+      expect(data instanceof SellingPartnerApiForNotifications.DeleteSubscriptionByIdResponse).to.be.true;
+    });
+
+    it('should successfully call deleteSubscriptionByIdWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockdeleteSubscriptionByIdData.response);
+
+      const params = [
+        mockdeleteSubscriptionByIdData.request['subscriptionId'],
+        mockdeleteSubscriptionByIdData.request['notificationType']
+      ];
+      const response = await instance.deleteSubscriptionByIdWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockdeleteSubscriptionByIdData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockdeleteSubscriptionByIdData.request['subscriptionId'],
+          mockdeleteSubscriptionByIdData.request['notificationType']
+        ];
+        await instance.deleteSubscriptionById(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('getDestination', () => {
+    it('should successfully call getDestination', async () => {
+      instance.apiClient.callApi.resolves(mockgetDestinationData.response);
+
+      const params = [
+        mockgetDestinationData.request['destinationId']
+      ];
+      const data = await instance.getDestination(...params);
+
+      expect(data instanceof SellingPartnerApiForNotifications.GetDestinationResponse).to.be.true;
+    });
+
+    it('should successfully call getDestinationWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetDestinationData.response);
+
+      const params = [
+        mockgetDestinationData.request['destinationId']
+      ];
+      const response = await instance.getDestinationWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetDestinationData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgetDestinationData.request['destinationId']
+        ];
+        await instance.getDestination(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('getDestinations', () => {
+    it('should successfully call getDestinations', async () => {
+      instance.apiClient.callApi.resolves(mockgetDestinationsData.response);
+
+      const data = await instance.getDestinations();
+
+      expect(data instanceof SellingPartnerApiForNotifications.GetDestinationsResponse).to.be.true;
+    });
+
+    it('should successfully call getDestinationsWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetDestinationsData.response);
+
+      const response = await instance.getDestinationsWithHttpInfo();
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetDestinationsData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        await instance.getDestinations();
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('getSubscription', () => {
+    it('should successfully call getSubscription', async () => {
+      instance.apiClient.callApi.resolves(mockgetSubscriptionData.response);
+
+      const params = [
+        mockgetSubscriptionData.request['notificationType'],
+      ];
+      const data = await instance.getSubscription(...params);
+
+      expect(data instanceof SellingPartnerApiForNotifications.GetSubscriptionResponse).to.be.true;
+    });
+
+    it('should successfully call getSubscriptionWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetSubscriptionData.response);
+
+      const params = [
+        mockgetSubscriptionData.request['notificationType'],
+      ];
+      const response = await instance.getSubscriptionWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetSubscriptionData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgetSubscriptionData.request['notificationType'],
+        ];
+        await instance.getSubscription(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('getSubscriptionById', () => {
+    it('should successfully call getSubscriptionById', async () => {
+      instance.apiClient.callApi.resolves(mockgetSubscriptionByIdData.response);
+
+      const params = [
+        mockgetSubscriptionByIdData.request['subscriptionId'],
+        mockgetSubscriptionByIdData.request['notificationType']
+      ];
+      const data = await instance.getSubscriptionById(...params);
+
+      expect(data instanceof SellingPartnerApiForNotifications.GetSubscriptionByIdResponse).to.be.true;
+    });
+
+    it('should successfully call getSubscriptionByIdWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetSubscriptionByIdData.response);
+
+      const params = [
+        mockgetSubscriptionByIdData.request['subscriptionId'],
+        mockgetSubscriptionByIdData.request['notificationType']
+      ];
+      const response = await instance.getSubscriptionByIdWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetSubscriptionByIdData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgetSubscriptionByIdData.request['subscriptionId'],
+          mockgetSubscriptionByIdData.request['notificationType']
+        ];
+        await instance.getSubscriptionById(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+
+  describe('constructor', () => {
+    it('should use default ApiClient when none provided', () => {
+      const defaultInstance = new SellingPartnerApiForNotifications.NotificationsApi();
+      expect(defaultInstance.apiClient).to.equal(SellingPartnerApiForNotifications.ApiClient.instance);
+    });
+
+    it('should use provided ApiClient', () => {
+      const customClient = new SellingPartnerApiForNotifications.ApiClient();
+      const customInstance = new SellingPartnerApiForNotifications.NotificationsApi(customClient);
+      expect(customInstance.apiClient).to.equal(customClient);
+    });
+  });
+});

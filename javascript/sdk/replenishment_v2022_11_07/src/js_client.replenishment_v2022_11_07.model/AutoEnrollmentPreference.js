@@ -18,7 +18,7 @@ import {ApiClient} from '../ApiClient.js';
 * @enum {}
 * @readonly
 */
-export default class AutoEnrollmentPreference {
+export class AutoEnrollmentPreference {
     
         /**
          * value: "OPTED_IN"

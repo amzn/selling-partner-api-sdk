@@ -18,7 +18,7 @@ import {ApiClient} from '../ApiClient.js';
 * @enum {}
 * @readonly
 */
-export default class AllOwnersConstraint {
+export class AllOwnersConstraint {
     
         /**
          * value: "MUST_MATCH"

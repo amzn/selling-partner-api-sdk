@@ -18,7 +18,7 @@ import {ApiClient} from '../ApiClient.js';
 * @enum {}
 * @readonly
 */
-export default class FulfillmentPolicy {
+export class FulfillmentPolicy {
     
         /**
          * value: "FillOrKill"

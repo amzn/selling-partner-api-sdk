@@ -11,113 +11,100 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForServices);
+import expect from 'expect.js';
+import * as SellingPartnerApiForServices from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new SellingPartnerApiForServices.AppointmentSlotReport();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(SellingPartnerApiForServices.AppointmentSlotReport.prototype);
   }
-}(this, function(expect, SellingPartnerApiForServices) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new SellingPartnerApiForServices.AppointmentSlotReport();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(SellingPartnerApiForServices.AppointmentSlotReport.prototype);
-    }
+describe('AppointmentSlotReport', () => {
+  it('should create an instance of AppointmentSlotReport', () => {
+    expect(instance).to.be.a(SellingPartnerApiForServices.AppointmentSlotReport);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property schedulingType', () => {
+    // verify property exists
+    expect(instance).to.have.property('schedulingType');
 
-  describe('AppointmentSlotReport', function() {
-    it('should create an instance of AppointmentSlotReport', function() {
-      expect(instance).to.be.a(SellingPartnerApiForServices.AppointmentSlotReport);
-    });
-
-    it('should have the property schedulingType', function() {
-      // verify property exists
-      expect(instance).to.have.property('schedulingType');
-
-      // set and verify value
-      var expectedValue = ['REAL_TIME_SCHEDULING', 'NON_REAL_TIME_SCHEDULING', ][0];
-      instance.schedulingType = expectedValue;
-      expect(instance.schedulingType).to.equal(expectedValue);
-    });
-
-    it('should have the property startTime', function() {
-      // verify property exists
-      expect(instance).to.have.property('startTime');
-
-      // set and verify value
-      var expectedValue = generateMockData('Date');
-      instance.startTime = expectedValue;
-      expect(instance.startTime).to.equal(expectedValue);
-    });
-
-    it('should have the property endTime', function() {
-      // verify property exists
-      expect(instance).to.have.property('endTime');
-
-      // set and verify value
-      var expectedValue = generateMockData('Date');
-      instance.endTime = expectedValue;
-      expect(instance.endTime).to.equal(expectedValue);
-    });
-
-    it('should have the property appointmentSlots', function() {
-      // verify property exists
-      expect(instance).to.have.property('appointmentSlots');
-
-      // set and verify value
-      var expectedValue = generateMockData('AppointmentSlot', true);
-      instance.appointmentSlots = expectedValue;
-      expect(instance.appointmentSlots).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = ['REAL_TIME_SCHEDULING', 'NON_REAL_TIME_SCHEDULING', ][0];
+    instance.schedulingType = expectedValue;
+    expect(instance.schedulingType).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property startTime', () => {
+    // verify property exists
+    expect(instance).to.have.property('startTime');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('Date');
+    instance.startTime = expectedValue;
+    expect(instance.startTime).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForServices[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property endTime', () => {
+    // verify property exists
+    expect(instance).to.have.property('endTime');
+
+    // set and verify value
+    const expectedValue = generateMockData('Date');
+    instance.endTime = expectedValue;
+    expect(instance.endTime).to.equal(expectedValue);
+  });
+
+  it('should have the property appointmentSlots', () => {
+    // verify property exists
+    expect(instance).to.have.property('appointmentSlots');
+
+    // set and verify value
+    const expectedValue = generateMockData('AppointmentSlot', true);
+    instance.appointmentSlots = expectedValue;
+    expect(instance.appointmentSlots).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForServices[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

@@ -11,58 +11,47 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', 'sinon', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('sinon'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.sinon, root.SellingPartnerApiForFulfillmentInbound);
+import expect from 'expect.js';
+import sinon from 'sinon';
+import * as SellingPartnerApiForFulfillmentInbound from '../../src/index.js';
+
+let instance;
+let sandbox;
+const testEndpoint = 'https://localhost:3000';
+const testAccessToken = "testAccessToken";
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
   }
-}(this, function(expect, sinon, SellingPartnerApiForFulfillmentInbound) {
-  'use strict';
 
-  var instance;
-  var sandbox;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
-
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
-
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
-
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForFulfillmentInbound[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForFulfillmentInbound[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-  
+}
 
 // Generate mock requests and responses for each operation
 const mockgetBillOfLadingData = {
@@ -130,373 +119,318 @@ const mockgetShipmentsData = {
   }
 };
 
-  beforeEach(function() {
+describe('FbaInboundApi', () => {
+  beforeEach(() => {
     sandbox = sinon.createSandbox();
-    var apiClientInstance = new SellingPartnerApiForFulfillmentInbound.ApiClient(testEndpoint);
+    const apiClientInstance = new SellingPartnerApiForFulfillmentInbound.ApiClient(testEndpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
     sandbox.stub(apiClientInstance, 'callApi');
     instance = new SellingPartnerApiForFulfillmentInbound.FbaInboundApi(apiClientInstance);
   });
 
-  afterEach(function() {
+  afterEach(() => {
     sandbox.restore();
   });
 
-  describe('FbaInboundApi', function() {
-    describe('getBillOfLading', function() {
-      
-      it('should successfully call getBillOfLading', function(done) {
-        instance.apiClient.callApi.resolves(mockgetBillOfLadingData.response);
+  describe('getBillOfLading', () => {
+    it('should successfully call getBillOfLading', async () => {
+      instance.apiClient.callApi.resolves(mockgetBillOfLadingData.response);
 
+      const params = [
+        mockgetBillOfLadingData.request['shipmentId']
+      ];
+      const data = await instance.getBillOfLading(...params);
+
+      expect(data instanceof SellingPartnerApiForFulfillmentInbound.GetBillOfLadingResponse).to.be.true;
+    });
+
+    it('should successfully call getBillOfLadingWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetBillOfLadingData.response);
+
+      const params = [
+        mockgetBillOfLadingData.request['shipmentId']
+      ];
+      const response = await instance.getBillOfLadingWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetBillOfLadingData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
         const params = [
           mockgetBillOfLadingData.request['shipmentId']
         ];
-        instance.getBillOfLading(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForFulfillmentInbound.GetBillOfLadingResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call getBillOfLadingWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetBillOfLadingData.response);
-
-        const params = [
-          mockgetBillOfLadingData.request['shipmentId']
-        ];
-        instance.getBillOfLadingWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetBillOfLadingData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgetBillOfLadingData.request['shipmentId']
-        ];
-        instance.getBillOfLading(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('getLabels', function() {
-      
-      it('should successfully call getLabels', function(done) {
-        instance.apiClient.callApi.resolves(mockgetLabelsData.response);
-
-        const params = [
-          mockgetLabelsData.request['shipmentId'],
-          mockgetLabelsData.request['pageType'],
-          mockgetLabelsData.request['labelType'],
-        ];
-        instance.getLabels(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForFulfillmentInbound.GetLabelsResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call getLabelsWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetLabelsData.response);
-
-        const params = [
-          mockgetLabelsData.request['shipmentId'],
-          mockgetLabelsData.request['pageType'],
-          mockgetLabelsData.request['labelType'],
-        ];
-        instance.getLabelsWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetLabelsData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgetLabelsData.request['shipmentId'],
-          mockgetLabelsData.request['pageType'],
-          mockgetLabelsData.request['labelType'],
-        ];
-        instance.getLabels(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('getPrepInstructions', function() {
-      
-      it('should successfully call getPrepInstructions', function(done) {
-        instance.apiClient.callApi.resolves(mockgetPrepInstructionsData.response);
-
-        const params = [
-          mockgetPrepInstructionsData.request['shipToCountryCode'],
-        ];
-        instance.getPrepInstructions(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForFulfillmentInbound.GetPrepInstructionsResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call getPrepInstructionsWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetPrepInstructionsData.response);
-
-        const params = [
-          mockgetPrepInstructionsData.request['shipToCountryCode'],
-        ];
-        instance.getPrepInstructionsWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetPrepInstructionsData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgetPrepInstructionsData.request['shipToCountryCode'],
-        ];
-        instance.getPrepInstructions(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('getShipmentItems', function() {
-      
-      it('should successfully call getShipmentItems', function(done) {
-        instance.apiClient.callApi.resolves(mockgetShipmentItemsData.response);
-
-        const params = [
-          mockgetShipmentItemsData.request['queryType'],
-          mockgetShipmentItemsData.request['marketplaceId'],
-        ];
-        instance.getShipmentItems(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForFulfillmentInbound.GetShipmentItemsResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call getShipmentItemsWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetShipmentItemsData.response);
-
-        const params = [
-          mockgetShipmentItemsData.request['queryType'],
-          mockgetShipmentItemsData.request['marketplaceId'],
-        ];
-        instance.getShipmentItemsWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetShipmentItemsData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgetShipmentItemsData.request['queryType'],
-          mockgetShipmentItemsData.request['marketplaceId'],
-        ];
-        instance.getShipmentItems(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('getShipmentItemsByShipmentId', function() {
-      
-      it('should successfully call getShipmentItemsByShipmentId', function(done) {
-        instance.apiClient.callApi.resolves(mockgetShipmentItemsByShipmentIdData.response);
-
-        const params = [
-          mockgetShipmentItemsByShipmentIdData.request['shipmentId'],
-        ];
-        instance.getShipmentItemsByShipmentId(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForFulfillmentInbound.GetShipmentItemsResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call getShipmentItemsByShipmentIdWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetShipmentItemsByShipmentIdData.response);
-
-        const params = [
-          mockgetShipmentItemsByShipmentIdData.request['shipmentId'],
-        ];
-        instance.getShipmentItemsByShipmentIdWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetShipmentItemsByShipmentIdData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgetShipmentItemsByShipmentIdData.request['shipmentId'],
-        ];
-        instance.getShipmentItemsByShipmentId(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('getShipments', function() {
-      
-      it('should successfully call getShipments', function(done) {
-        instance.apiClient.callApi.resolves(mockgetShipmentsData.response);
-
-        const params = [
-          mockgetShipmentsData.request['queryType'],
-          mockgetShipmentsData.request['marketplaceId'],
-        ];
-        instance.getShipments(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForFulfillmentInbound.GetShipmentsResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call getShipmentsWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetShipmentsData.response);
-
-        const params = [
-          mockgetShipmentsData.request['queryType'],
-          mockgetShipmentsData.request['marketplaceId'],
-        ];
-        instance.getShipmentsWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetShipmentsData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgetShipmentsData.request['queryType'],
-          mockgetShipmentsData.request['marketplaceId'],
-        ];
-        instance.getShipments(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-
-    describe('constructor', function() {
-      it('should use default ApiClient when none provided', function() {
-        var defaultInstance = new SellingPartnerApiForFulfillmentInbound.FbaInboundApi();
-        expect(defaultInstance.apiClient).to.equal(SellingPartnerApiForFulfillmentInbound.ApiClient.instance);
-      });
-
-      it('should use provided ApiClient', function() {
-        var customClient = new SellingPartnerApiForFulfillmentInbound.ApiClient();
-        var customInstance = new SellingPartnerApiForFulfillmentInbound.FbaInboundApi(customClient);
-        expect(customInstance.apiClient).to.equal(customClient);
-      });
+        await instance.getBillOfLading(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
     });
   });
-}));
+  describe('getLabels', () => {
+    it('should successfully call getLabels', async () => {
+      instance.apiClient.callApi.resolves(mockgetLabelsData.response);
+
+      const params = [
+        mockgetLabelsData.request['shipmentId'],
+        mockgetLabelsData.request['pageType'],
+        mockgetLabelsData.request['labelType'],
+      ];
+      const data = await instance.getLabels(...params);
+
+      expect(data instanceof SellingPartnerApiForFulfillmentInbound.GetLabelsResponse).to.be.true;
+    });
+
+    it('should successfully call getLabelsWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetLabelsData.response);
+
+      const params = [
+        mockgetLabelsData.request['shipmentId'],
+        mockgetLabelsData.request['pageType'],
+        mockgetLabelsData.request['labelType'],
+      ];
+      const response = await instance.getLabelsWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetLabelsData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgetLabelsData.request['shipmentId'],
+          mockgetLabelsData.request['pageType'],
+          mockgetLabelsData.request['labelType'],
+        ];
+        await instance.getLabels(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('getPrepInstructions', () => {
+    it('should successfully call getPrepInstructions', async () => {
+      instance.apiClient.callApi.resolves(mockgetPrepInstructionsData.response);
+
+      const params = [
+        mockgetPrepInstructionsData.request['shipToCountryCode'],
+      ];
+      const data = await instance.getPrepInstructions(...params);
+
+      expect(data instanceof SellingPartnerApiForFulfillmentInbound.GetPrepInstructionsResponse).to.be.true;
+    });
+
+    it('should successfully call getPrepInstructionsWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetPrepInstructionsData.response);
+
+      const params = [
+        mockgetPrepInstructionsData.request['shipToCountryCode'],
+      ];
+      const response = await instance.getPrepInstructionsWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetPrepInstructionsData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgetPrepInstructionsData.request['shipToCountryCode'],
+        ];
+        await instance.getPrepInstructions(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('getShipmentItems', () => {
+    it('should successfully call getShipmentItems', async () => {
+      instance.apiClient.callApi.resolves(mockgetShipmentItemsData.response);
+
+      const params = [
+        mockgetShipmentItemsData.request['queryType'],
+        mockgetShipmentItemsData.request['marketplaceId'],
+      ];
+      const data = await instance.getShipmentItems(...params);
+
+      expect(data instanceof SellingPartnerApiForFulfillmentInbound.GetShipmentItemsResponse).to.be.true;
+    });
+
+    it('should successfully call getShipmentItemsWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetShipmentItemsData.response);
+
+      const params = [
+        mockgetShipmentItemsData.request['queryType'],
+        mockgetShipmentItemsData.request['marketplaceId'],
+      ];
+      const response = await instance.getShipmentItemsWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetShipmentItemsData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgetShipmentItemsData.request['queryType'],
+          mockgetShipmentItemsData.request['marketplaceId'],
+        ];
+        await instance.getShipmentItems(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('getShipmentItemsByShipmentId', () => {
+    it('should successfully call getShipmentItemsByShipmentId', async () => {
+      instance.apiClient.callApi.resolves(mockgetShipmentItemsByShipmentIdData.response);
+
+      const params = [
+        mockgetShipmentItemsByShipmentIdData.request['shipmentId'],
+      ];
+      const data = await instance.getShipmentItemsByShipmentId(...params);
+
+      expect(data instanceof SellingPartnerApiForFulfillmentInbound.GetShipmentItemsResponse).to.be.true;
+    });
+
+    it('should successfully call getShipmentItemsByShipmentIdWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetShipmentItemsByShipmentIdData.response);
+
+      const params = [
+        mockgetShipmentItemsByShipmentIdData.request['shipmentId'],
+      ];
+      const response = await instance.getShipmentItemsByShipmentIdWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetShipmentItemsByShipmentIdData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgetShipmentItemsByShipmentIdData.request['shipmentId'],
+        ];
+        await instance.getShipmentItemsByShipmentId(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('getShipments', () => {
+    it('should successfully call getShipments', async () => {
+      instance.apiClient.callApi.resolves(mockgetShipmentsData.response);
+
+      const params = [
+        mockgetShipmentsData.request['queryType'],
+        mockgetShipmentsData.request['marketplaceId'],
+      ];
+      const data = await instance.getShipments(...params);
+
+      expect(data instanceof SellingPartnerApiForFulfillmentInbound.GetShipmentsResponse).to.be.true;
+    });
+
+    it('should successfully call getShipmentsWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetShipmentsData.response);
+
+      const params = [
+        mockgetShipmentsData.request['queryType'],
+        mockgetShipmentsData.request['marketplaceId'],
+      ];
+      const response = await instance.getShipmentsWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetShipmentsData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgetShipmentsData.request['queryType'],
+          mockgetShipmentsData.request['marketplaceId'],
+        ];
+        await instance.getShipments(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+
+  describe('constructor', () => {
+    it('should use default ApiClient when none provided', () => {
+      const defaultInstance = new SellingPartnerApiForFulfillmentInbound.FbaInboundApi();
+      expect(defaultInstance.apiClient).to.equal(SellingPartnerApiForFulfillmentInbound.ApiClient.instance);
+    });
+
+    it('should use provided ApiClient', () => {
+      const customClient = new SellingPartnerApiForFulfillmentInbound.ApiClient();
+      const customInstance = new SellingPartnerApiForFulfillmentInbound.FbaInboundApi(customClient);
+      expect(customInstance.apiClient).to.equal(customClient);
+    });
+  });
+});

@@ -11,103 +11,90 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForMessaging);
+import expect from 'expect.js';
+import * as SellingPartnerApiForMessaging from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new SellingPartnerApiForMessaging.GetMessagingActionsForOrderResponse();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(SellingPartnerApiForMessaging.GetMessagingActionsForOrderResponse.prototype);
   }
-}(this, function(expect, SellingPartnerApiForMessaging) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new SellingPartnerApiForMessaging.GetMessagingActionsForOrderResponse();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(SellingPartnerApiForMessaging.GetMessagingActionsForOrderResponse.prototype);
-    }
+describe('GetMessagingActionsForOrderResponse', () => {
+  it('should create an instance of GetMessagingActionsForOrderResponse', () => {
+    expect(instance).to.be.a(SellingPartnerApiForMessaging.GetMessagingActionsForOrderResponse);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property links', () => {
+    // verify property exists
+    expect(instance).to.have.property('links');
 
-  describe('GetMessagingActionsForOrderResponse', function() {
-    it('should create an instance of GetMessagingActionsForOrderResponse', function() {
-      expect(instance).to.be.a(SellingPartnerApiForMessaging.GetMessagingActionsForOrderResponse);
-    });
-
-    it('should have the property links', function() {
-      // verify property exists
-      expect(instance).to.have.property('links');
-
-      // set and verify value
-      var expectedValue = generateMockData('GetMessagingActionsForOrderResponseLinks');
-      instance.links = expectedValue;
-      expect(instance.links).to.equal(expectedValue);
-    });
-
-    it('should have the property embedded', function() {
-      // verify property exists
-      expect(instance).to.have.property('embedded');
-
-      // set and verify value
-      var expectedValue = generateMockData('GetMessagingActionsForOrderResponseEmbedded');
-      instance.embedded = expectedValue;
-      expect(instance.embedded).to.equal(expectedValue);
-    });
-
-    it('should have the property errors', function() {
-      // verify property exists
-      expect(instance).to.have.property('errors');
-
-      // set and verify value
-      var expectedValue = generateMockData('Error', true);
-      instance.errors = expectedValue;
-      expect(instance.errors).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('GetMessagingActionsForOrderResponseLinks');
+    instance.links = expectedValue;
+    expect(instance.links).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property embedded', () => {
+    // verify property exists
+    expect(instance).to.have.property('embedded');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('GetMessagingActionsForOrderResponseEmbedded');
+    instance.embedded = expectedValue;
+    expect(instance.embedded).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForMessaging[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property errors', () => {
+    // verify property exists
+    expect(instance).to.have.property('errors');
+
+    // set and verify value
+    const expectedValue = generateMockData('Error', true);
+    instance.errors = expectedValue;
+    expect(instance.errors).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForMessaging[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

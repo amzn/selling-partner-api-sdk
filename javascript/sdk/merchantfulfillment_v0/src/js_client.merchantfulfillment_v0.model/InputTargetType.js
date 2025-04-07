@@ -18,7 +18,7 @@ import {ApiClient} from '../ApiClient.js';
 * @enum {}
 * @readonly
 */
-export default class InputTargetType {
+export class InputTargetType {
     
         /**
          * value: "SHIPMENT_LEVEL"

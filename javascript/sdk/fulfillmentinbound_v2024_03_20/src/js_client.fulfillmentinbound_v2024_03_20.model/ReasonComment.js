@@ -18,7 +18,7 @@ import {ApiClient} from '../ApiClient.js';
 * @enum {}
 * @readonly
 */
-export default class ReasonComment {
+export class ReasonComment {
     
         /**
          * value: "APPOINTMENT_REQUESTED_BY_MISTAKE"

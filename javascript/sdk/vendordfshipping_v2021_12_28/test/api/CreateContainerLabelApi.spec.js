@@ -11,58 +11,47 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', 'sinon', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('sinon'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.sinon, root.SellingPartnerApiForDirectFulfillmentShipping);
+import expect from 'expect.js';
+import sinon from 'sinon';
+import * as SellingPartnerApiForDirectFulfillmentShipping from '../../src/index.js';
+
+let instance;
+let sandbox;
+const testEndpoint = 'https://localhost:3000';
+const testAccessToken = "testAccessToken";
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
   }
-}(this, function(expect, sinon, SellingPartnerApiForDirectFulfillmentShipping) {
-  'use strict';
 
-  var instance;
-  var sandbox;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
-
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
-
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
-
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForDirectFulfillmentShipping[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForDirectFulfillmentShipping[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-  
+}
 
 // Generate mock requests and responses for each operation
 const mockcreateContainerLabelData = {
@@ -76,86 +65,76 @@ const mockcreateContainerLabelData = {
   }
 };
 
-  beforeEach(function() {
+describe('CreateContainerLabelApi', () => {
+  beforeEach(() => {
     sandbox = sinon.createSandbox();
-    var apiClientInstance = new SellingPartnerApiForDirectFulfillmentShipping.ApiClient(testEndpoint);
+    const apiClientInstance = new SellingPartnerApiForDirectFulfillmentShipping.ApiClient(testEndpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
     sandbox.stub(apiClientInstance, 'callApi');
     instance = new SellingPartnerApiForDirectFulfillmentShipping.CreateContainerLabelApi(apiClientInstance);
   });
 
-  afterEach(function() {
+  afterEach(() => {
     sandbox.restore();
   });
 
-  describe('CreateContainerLabelApi', function() {
-    describe('createContainerLabel', function() {
-      
-      it('should successfully call createContainerLabel', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateContainerLabelData.response);
+  describe('createContainerLabel', () => {
+    it('should successfully call createContainerLabel', async () => {
+      instance.apiClient.callApi.resolves(mockcreateContainerLabelData.response);
 
-        const params = [
-          mockcreateContainerLabelData.request['body']
-        ];
-        instance.createContainerLabel(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForDirectFulfillmentShipping.CreateContainerLabelResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
+      const params = [
+        mockcreateContainerLabelData.request['body']
+      ];
+      const data = await instance.createContainerLabel(...params);
 
-      it('should successfully call createContainerLabelWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateContainerLabelData.response);
-
-        const params = [
-          mockcreateContainerLabelData.request['body']
-        ];
-        instance.createContainerLabelWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockcreateContainerLabelData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockcreateContainerLabelData.request['body']
-        ];
-        instance.createContainerLabel(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
+      expect(data instanceof SellingPartnerApiForDirectFulfillmentShipping.CreateContainerLabelResponse).to.be.true;
     });
 
-    describe('constructor', function() {
-      it('should use default ApiClient when none provided', function() {
-        var defaultInstance = new SellingPartnerApiForDirectFulfillmentShipping.CreateContainerLabelApi();
-        expect(defaultInstance.apiClient).to.equal(SellingPartnerApiForDirectFulfillmentShipping.ApiClient.instance);
-      });
+    it('should successfully call createContainerLabelWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockcreateContainerLabelData.response);
 
-      it('should use provided ApiClient', function() {
-        var customClient = new SellingPartnerApiForDirectFulfillmentShipping.ApiClient();
-        var customInstance = new SellingPartnerApiForDirectFulfillmentShipping.CreateContainerLabelApi(customClient);
-        expect(customInstance.apiClient).to.equal(customClient);
-      });
+      const params = [
+        mockcreateContainerLabelData.request['body']
+      ];
+      const response = await instance.createContainerLabelWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockcreateContainerLabelData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockcreateContainerLabelData.request['body']
+        ];
+        await instance.createContainerLabel(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
     });
   });
-}));
+
+  describe('constructor', () => {
+    it('should use default ApiClient when none provided', () => {
+      const defaultInstance = new SellingPartnerApiForDirectFulfillmentShipping.CreateContainerLabelApi();
+      expect(defaultInstance.apiClient).to.equal(SellingPartnerApiForDirectFulfillmentShipping.ApiClient.instance);
+    });
+
+    it('should use provided ApiClient', () => {
+      const customClient = new SellingPartnerApiForDirectFulfillmentShipping.ApiClient();
+      const customInstance = new SellingPartnerApiForDirectFulfillmentShipping.CreateContainerLabelApi(customClient);
+      expect(customInstance.apiClient).to.equal(customClient);
+    });
+  });
+});

@@ -18,7 +18,7 @@ import {ApiClient} from '../ApiClient.js';
 * @enum {}
 * @readonly
 */
-export default class OptionalFulfillmentProgram {
+export class OptionalFulfillmentProgram {
     
         /**
          * value: "FBA_CORE"

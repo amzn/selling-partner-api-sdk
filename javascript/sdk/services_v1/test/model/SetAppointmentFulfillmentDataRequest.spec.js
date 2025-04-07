@@ -11,103 +11,90 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForServices);
+import expect from 'expect.js';
+import * as SellingPartnerApiForServices from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new SellingPartnerApiForServices.SetAppointmentFulfillmentDataRequest();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(SellingPartnerApiForServices.SetAppointmentFulfillmentDataRequest.prototype);
   }
-}(this, function(expect, SellingPartnerApiForServices) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new SellingPartnerApiForServices.SetAppointmentFulfillmentDataRequest();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(SellingPartnerApiForServices.SetAppointmentFulfillmentDataRequest.prototype);
-    }
+describe('SetAppointmentFulfillmentDataRequest', () => {
+  it('should create an instance of SetAppointmentFulfillmentDataRequest', () => {
+    expect(instance).to.be.a(SellingPartnerApiForServices.SetAppointmentFulfillmentDataRequest);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property fulfillmentTime', () => {
+    // verify property exists
+    expect(instance).to.have.property('fulfillmentTime');
 
-  describe('SetAppointmentFulfillmentDataRequest', function() {
-    it('should create an instance of SetAppointmentFulfillmentDataRequest', function() {
-      expect(instance).to.be.a(SellingPartnerApiForServices.SetAppointmentFulfillmentDataRequest);
-    });
-
-    it('should have the property fulfillmentTime', function() {
-      // verify property exists
-      expect(instance).to.have.property('fulfillmentTime');
-
-      // set and verify value
-      var expectedValue = generateMockData('FulfillmentTime');
-      instance.fulfillmentTime = expectedValue;
-      expect(instance.fulfillmentTime).to.equal(expectedValue);
-    });
-
-    it('should have the property appointmentResources', function() {
-      // verify property exists
-      expect(instance).to.have.property('appointmentResources');
-
-      // set and verify value
-      var expectedValue = generateMockData('AppointmentResource', true);
-      instance.appointmentResources = expectedValue;
-      expect(instance.appointmentResources).to.equal(expectedValue);
-    });
-
-    it('should have the property fulfillmentDocuments', function() {
-      // verify property exists
-      expect(instance).to.have.property('fulfillmentDocuments');
-
-      // set and verify value
-      var expectedValue = generateMockData('FulfillmentDocument', true);
-      instance.fulfillmentDocuments = expectedValue;
-      expect(instance.fulfillmentDocuments).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('FulfillmentTime');
+    instance.fulfillmentTime = expectedValue;
+    expect(instance.fulfillmentTime).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property appointmentResources', () => {
+    // verify property exists
+    expect(instance).to.have.property('appointmentResources');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('AppointmentResource', true);
+    instance.appointmentResources = expectedValue;
+    expect(instance.appointmentResources).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForServices[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property fulfillmentDocuments', () => {
+    // verify property exists
+    expect(instance).to.have.property('fulfillmentDocuments');
+
+    // set and verify value
+    const expectedValue = generateMockData('FulfillmentDocument', true);
+    instance.fulfillmentDocuments = expectedValue;
+    expect(instance.fulfillmentDocuments).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForServices[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

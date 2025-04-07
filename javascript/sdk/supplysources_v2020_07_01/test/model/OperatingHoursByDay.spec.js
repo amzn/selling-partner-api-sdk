@@ -11,143 +11,130 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.SellingPartnerApiForSupplySources);
+import expect from 'expect.js';
+import * as SellingPartnerApiForSupplySources from '../../src/index.js';
+
+let instance;
+
+beforeEach(() => {
+  try {
+    instance = new SellingPartnerApiForSupplySources.OperatingHoursByDay();
+  } catch (e) {
+    //Handle the cases when this model extends another model by using Model.call(this);
+    instance = Object.create(SellingPartnerApiForSupplySources.OperatingHoursByDay.prototype);
   }
-}(this, function(expect, SellingPartnerApiForSupplySources) {
-  'use strict';
+});
 
-  var instance;
+afterEach(() => {
+  instance = null;
+});
 
-  beforeEach(function() {
-    try{
-     instance = new SellingPartnerApiForSupplySources.OperatingHoursByDay();
-    } catch (e) {
-     //Handle the cases when this model extends another model by using Model.call(this);
-     instance = Object.create(SellingPartnerApiForSupplySources.OperatingHoursByDay.prototype);
-    }
+describe('OperatingHoursByDay', () => {
+  it('should create an instance of OperatingHoursByDay', () => {
+    expect(instance).to.be.a(SellingPartnerApiForSupplySources.OperatingHoursByDay);
   });
 
-  afterEach(function() {
-    instance = null;
-  })
+  it('should have the property monday', () => {
+    // verify property exists
+    expect(instance).to.have.property('monday');
 
-  describe('OperatingHoursByDay', function() {
-    it('should create an instance of OperatingHoursByDay', function() {
-      expect(instance).to.be.a(SellingPartnerApiForSupplySources.OperatingHoursByDay);
-    });
-
-    it('should have the property monday', function() {
-      // verify property exists
-      expect(instance).to.have.property('monday');
-
-      // set and verify value
-      var expectedValue = generateMockData('OperatingHour', true);
-      instance.monday = expectedValue;
-      expect(instance.monday).to.equal(expectedValue);
-    });
-
-    it('should have the property tuesday', function() {
-      // verify property exists
-      expect(instance).to.have.property('tuesday');
-
-      // set and verify value
-      var expectedValue = generateMockData('OperatingHour', true);
-      instance.tuesday = expectedValue;
-      expect(instance.tuesday).to.equal(expectedValue);
-    });
-
-    it('should have the property wednesday', function() {
-      // verify property exists
-      expect(instance).to.have.property('wednesday');
-
-      // set and verify value
-      var expectedValue = generateMockData('OperatingHour', true);
-      instance.wednesday = expectedValue;
-      expect(instance.wednesday).to.equal(expectedValue);
-    });
-
-    it('should have the property thursday', function() {
-      // verify property exists
-      expect(instance).to.have.property('thursday');
-
-      // set and verify value
-      var expectedValue = generateMockData('OperatingHour', true);
-      instance.thursday = expectedValue;
-      expect(instance.thursday).to.equal(expectedValue);
-    });
-
-    it('should have the property friday', function() {
-      // verify property exists
-      expect(instance).to.have.property('friday');
-
-      // set and verify value
-      var expectedValue = generateMockData('OperatingHour', true);
-      instance.friday = expectedValue;
-      expect(instance.friday).to.equal(expectedValue);
-    });
-
-    it('should have the property saturday', function() {
-      // verify property exists
-      expect(instance).to.have.property('saturday');
-
-      // set and verify value
-      var expectedValue = generateMockData('OperatingHour', true);
-      instance.saturday = expectedValue;
-      expect(instance.saturday).to.equal(expectedValue);
-    });
-
-    it('should have the property sunday', function() {
-      // verify property exists
-      expect(instance).to.have.property('sunday');
-
-      // set and verify value
-      var expectedValue = generateMockData('OperatingHour', true);
-      instance.sunday = expectedValue;
-      expect(instance.sunday).to.equal(expectedValue);
-    });
-
+    // set and verify value
+    const expectedValue = generateMockData('OperatingHour', true);
+    instance.monday = expectedValue;
+    expect(instance.monday).to.equal(expectedValue);
   });
 
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
+  it('should have the property tuesday', () => {
+    // verify property exists
+    expect(instance).to.have.property('tuesday');
 
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
+    // set and verify value
+    const expectedValue = generateMockData('OperatingHour', true);
+    instance.tuesday = expectedValue;
+    expect(instance.tuesday).to.equal(expectedValue);
+  });
 
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForSupplySources[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  it('should have the property wednesday', () => {
+    // verify property exists
+    expect(instance).to.have.property('wednesday');
+
+    // set and verify value
+    const expectedValue = generateMockData('OperatingHour', true);
+    instance.wednesday = expectedValue;
+    expect(instance.wednesday).to.equal(expectedValue);
+  });
+
+  it('should have the property thursday', () => {
+    // verify property exists
+    expect(instance).to.have.property('thursday');
+
+    // set and verify value
+    const expectedValue = generateMockData('OperatingHour', true);
+    instance.thursday = expectedValue;
+    expect(instance.thursday).to.equal(expectedValue);
+  });
+
+  it('should have the property friday', () => {
+    // verify property exists
+    expect(instance).to.have.property('friday');
+
+    // set and verify value
+    const expectedValue = generateMockData('OperatingHour', true);
+    instance.friday = expectedValue;
+    expect(instance.friday).to.equal(expectedValue);
+  });
+
+  it('should have the property saturday', () => {
+    // verify property exists
+    expect(instance).to.have.property('saturday');
+
+    // set and verify value
+    const expectedValue = generateMockData('OperatingHour', true);
+    instance.saturday = expectedValue;
+    expect(instance.saturday).to.equal(expectedValue);
+  });
+
+  it('should have the property sunday', () => {
+    // verify property exists
+    expect(instance).to.have.property('sunday');
+
+    // set and verify value
+    const expectedValue = generateMockData('OperatingHour', true);
+    instance.sunday = expectedValue;
+    expect(instance.sunday).to.equal(expectedValue);
+  });
+
+});
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
+  }
+
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForSupplySources[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-
-}));
+}

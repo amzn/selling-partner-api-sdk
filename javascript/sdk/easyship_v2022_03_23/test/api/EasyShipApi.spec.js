@@ -11,58 +11,47 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', 'sinon', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require('sinon'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.sinon, root.SellingPartnerApiForEasyShip);
+import expect from 'expect.js';
+import sinon from 'sinon';
+import * as SellingPartnerApiForEasyShip from '../../src/index.js';
+
+let instance;
+let sandbox;
+const testEndpoint = 'https://localhost:3000';
+const testAccessToken = "testAccessToken";
+
+// Helper function to generate random test data
+function generateMockData(dataType, isArray = false) {
+  if (!dataType) return {};
+
+  // Handle array types
+  if (isArray) {
+    return [generateMockData(dataType), generateMockData(dataType)];
   }
-}(this, function(expect, sinon, SellingPartnerApiForEasyShip) {
-  'use strict';
 
-  var instance;
-  var sandbox;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
-
-  // Helper function to generate random test data
-  function generateMockData(dataType, isArray = false) {
-    if (!dataType) return {};
-
-    // Handle array types
-    if (isArray) {
-      return [generateMockData(dataType), generateMockData(dataType)];
-    }
-
-    switch(dataType) {
-      case 'String':
-        return 'mock-' + Math.random().toString(36).substring(2, 10);
-      case 'Number':
-        return Math.floor(Math.random() * 1000);
-      case 'Boolean':
-        return Math.random() > 0.5;
-      case 'Date':
-        return new Date().toISOString();
-      default:
-        try {
-          const ModelClass = SellingPartnerApiForEasyShip[dataType];
-          if (ModelClass) {
-            const instance = Object.create(ModelClass.prototype);
-            return instance;
-          }
-        } catch (e) {
-          console.error("Error creating instance of", dataType);
-          return {};
+  switch(dataType) {
+    case 'String':
+      return 'mock-' + Math.random().toString(36).substring(2, 10);
+    case 'Number':
+      return Math.floor(Math.random() * 1000);
+    case 'Boolean':
+      return Math.random() > 0.5;
+    case 'Date':
+      return new Date().toISOString();
+    default:
+      try {
+        const ModelClass = SellingPartnerApiForEasyShip[dataType];
+        if (ModelClass) {
+          const instance = Object.create(ModelClass.prototype);
+          return instance;
         }
+      } catch (e) {
+        console.error("Error creating instance of", dataType);
         return {};
-    }
+      }
+      return {};
   }
-  
+}
 
 // Generate mock requests and responses for each operation
 const mockcreateScheduledPackageData = {
@@ -115,303 +104,257 @@ const mockupdateScheduledPackagesData = {
   }
 };
 
-  beforeEach(function() {
+describe('EasyShipApi', () => {
+  beforeEach(() => {
     sandbox = sinon.createSandbox();
-    var apiClientInstance = new SellingPartnerApiForEasyShip.ApiClient(testEndpoint);
+    const apiClientInstance = new SellingPartnerApiForEasyShip.ApiClient(testEndpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
     sandbox.stub(apiClientInstance, 'callApi');
     instance = new SellingPartnerApiForEasyShip.EasyShipApi(apiClientInstance);
   });
 
-  afterEach(function() {
+  afterEach(() => {
     sandbox.restore();
   });
 
-  describe('EasyShipApi', function() {
-    describe('createScheduledPackage', function() {
-      
-      it('should successfully call createScheduledPackage', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateScheduledPackageData.response);
+  describe('createScheduledPackage', () => {
+    it('should successfully call createScheduledPackage', async () => {
+      instance.apiClient.callApi.resolves(mockcreateScheduledPackageData.response);
 
+      const params = [
+        mockcreateScheduledPackageData.request['createScheduledPackageRequest']
+      ];
+      const data = await instance.createScheduledPackage(...params);
+
+      expect(data instanceof SellingPartnerApiForEasyShip.Package).to.be.true;
+    });
+
+    it('should successfully call createScheduledPackageWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockcreateScheduledPackageData.response);
+
+      const params = [
+        mockcreateScheduledPackageData.request['createScheduledPackageRequest']
+      ];
+      const response = await instance.createScheduledPackageWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockcreateScheduledPackageData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
         const params = [
           mockcreateScheduledPackageData.request['createScheduledPackageRequest']
         ];
-        instance.createScheduledPackage(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForEasyShip.Package).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call createScheduledPackageWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateScheduledPackageData.response);
-
-        const params = [
-          mockcreateScheduledPackageData.request['createScheduledPackageRequest']
-        ];
-        instance.createScheduledPackageWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockcreateScheduledPackageData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockcreateScheduledPackageData.request['createScheduledPackageRequest']
-        ];
-        instance.createScheduledPackage(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('createScheduledPackageBulk', function() {
-      
-      it('should successfully call createScheduledPackageBulk', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateScheduledPackageBulkData.response);
-
-        const params = [
-          mockcreateScheduledPackageBulkData.request['createScheduledPackagesRequest']
-        ];
-        instance.createScheduledPackageBulk(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForEasyShip.CreateScheduledPackagesResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call createScheduledPackageBulkWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockcreateScheduledPackageBulkData.response);
-
-        const params = [
-          mockcreateScheduledPackageBulkData.request['createScheduledPackagesRequest']
-        ];
-        instance.createScheduledPackageBulkWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockcreateScheduledPackageBulkData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockcreateScheduledPackageBulkData.request['createScheduledPackagesRequest']
-        ];
-        instance.createScheduledPackageBulk(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('getScheduledPackage', function() {
-      
-      it('should successfully call getScheduledPackage', function(done) {
-        instance.apiClient.callApi.resolves(mockgetScheduledPackageData.response);
-
-        const params = [
-          mockgetScheduledPackageData.request['amazonOrderId'],
-          mockgetScheduledPackageData.request['marketplaceId']
-        ];
-        instance.getScheduledPackage(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForEasyShip.Package).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call getScheduledPackageWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockgetScheduledPackageData.response);
-
-        const params = [
-          mockgetScheduledPackageData.request['amazonOrderId'],
-          mockgetScheduledPackageData.request['marketplaceId']
-        ];
-        instance.getScheduledPackageWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockgetScheduledPackageData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-          mockgetScheduledPackageData.request['amazonOrderId'],
-          mockgetScheduledPackageData.request['marketplaceId']
-        ];
-        instance.getScheduledPackage(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('listHandoverSlots', function() {
-      
-      it('should successfully call listHandoverSlots', function(done) {
-        instance.apiClient.callApi.resolves(mocklistHandoverSlotsData.response);
-
-        const params = [
-        ];
-        instance.listHandoverSlots(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForEasyShip.ListHandoverSlotsResponse).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call listHandoverSlotsWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mocklistHandoverSlotsData.response);
-
-        const params = [
-        ];
-        instance.listHandoverSlotsWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mocklistHandoverSlotsData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-        ];
-        instance.listHandoverSlots(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-    describe('updateScheduledPackages', function() {
-      
-      it('should successfully call updateScheduledPackages', function(done) {
-        instance.apiClient.callApi.resolves(mockupdateScheduledPackagesData.response);
-
-        const params = [
-        ];
-        instance.updateScheduledPackages(...params)
-          .then(function(data) {
-            expect(data instanceof SellingPartnerApiForEasyShip.Packages).to.be.true;
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should successfully call updateScheduledPackagesWithHttpInfo', function(done) {
-        instance.apiClient.callApi.resolves(mockupdateScheduledPackagesData.response);
-
-        const params = [
-        ];
-        instance.updateScheduledPackagesWithHttpInfo(...params)
-          .then(function(response) {
-            expect(response).to.have.property('statusCode');
-            expect(response.statusCode).to.equal(mockupdateScheduledPackagesData.response.statusCode)
-            expect(response).to.have.property('headers');
-            expect(response).to.have.property('data');
-            done();
-          })
-          .catch(done);
-      });
-
-      it('should handle API errors', function(done) {
-        var errorResponse = {
-          errors: new Error('Expected error to be thrown'),
-          statusCode: 400,
-          headers: {}
-        };
-        instance.apiClient.callApi.rejects(errorResponse);
-
-        const params = [
-        ];
-        instance.updateScheduledPackages(...params)
-          .then(function() {
-            done(new Error('Expected error to be thrown'));
-          })
-          .catch(function(error) {
-            expect(error).to.exist;
-            expect(error.statusCode).to.equal(400)
-            done();
-          });
-      });
-    });
-
-    describe('constructor', function() {
-      it('should use default ApiClient when none provided', function() {
-        var defaultInstance = new SellingPartnerApiForEasyShip.EasyShipApi();
-        expect(defaultInstance.apiClient).to.equal(SellingPartnerApiForEasyShip.ApiClient.instance);
-      });
-
-      it('should use provided ApiClient', function() {
-        var customClient = new SellingPartnerApiForEasyShip.ApiClient();
-        var customInstance = new SellingPartnerApiForEasyShip.EasyShipApi(customClient);
-        expect(customInstance.apiClient).to.equal(customClient);
-      });
+        await instance.createScheduledPackage(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
     });
   });
-}));
+  describe('createScheduledPackageBulk', () => {
+    it('should successfully call createScheduledPackageBulk', async () => {
+      instance.apiClient.callApi.resolves(mockcreateScheduledPackageBulkData.response);
+
+      const params = [
+        mockcreateScheduledPackageBulkData.request['createScheduledPackagesRequest']
+      ];
+      const data = await instance.createScheduledPackageBulk(...params);
+
+      expect(data instanceof SellingPartnerApiForEasyShip.CreateScheduledPackagesResponse).to.be.true;
+    });
+
+    it('should successfully call createScheduledPackageBulkWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockcreateScheduledPackageBulkData.response);
+
+      const params = [
+        mockcreateScheduledPackageBulkData.request['createScheduledPackagesRequest']
+      ];
+      const response = await instance.createScheduledPackageBulkWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockcreateScheduledPackageBulkData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockcreateScheduledPackageBulkData.request['createScheduledPackagesRequest']
+        ];
+        await instance.createScheduledPackageBulk(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('getScheduledPackage', () => {
+    it('should successfully call getScheduledPackage', async () => {
+      instance.apiClient.callApi.resolves(mockgetScheduledPackageData.response);
+
+      const params = [
+        mockgetScheduledPackageData.request['amazonOrderId'],
+        mockgetScheduledPackageData.request['marketplaceId']
+      ];
+      const data = await instance.getScheduledPackage(...params);
+
+      expect(data instanceof SellingPartnerApiForEasyShip.Package).to.be.true;
+    });
+
+    it('should successfully call getScheduledPackageWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetScheduledPackageData.response);
+
+      const params = [
+        mockgetScheduledPackageData.request['amazonOrderId'],
+        mockgetScheduledPackageData.request['marketplaceId']
+      ];
+      const response = await instance.getScheduledPackageWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetScheduledPackageData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgetScheduledPackageData.request['amazonOrderId'],
+          mockgetScheduledPackageData.request['marketplaceId']
+        ];
+        await instance.getScheduledPackage(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('listHandoverSlots', () => {
+    it('should successfully call listHandoverSlots', async () => {
+      instance.apiClient.callApi.resolves(mocklistHandoverSlotsData.response);
+
+      const params = [
+      ];
+      const data = await instance.listHandoverSlots(...params);
+
+      expect(data instanceof SellingPartnerApiForEasyShip.ListHandoverSlotsResponse).to.be.true;
+    });
+
+    it('should successfully call listHandoverSlotsWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mocklistHandoverSlotsData.response);
+
+      const params = [
+      ];
+      const response = await instance.listHandoverSlotsWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mocklistHandoverSlotsData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+        ];
+        await instance.listHandoverSlots(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('updateScheduledPackages', () => {
+    it('should successfully call updateScheduledPackages', async () => {
+      instance.apiClient.callApi.resolves(mockupdateScheduledPackagesData.response);
+
+      const params = [
+      ];
+      const data = await instance.updateScheduledPackages(...params);
+
+      expect(data instanceof SellingPartnerApiForEasyShip.Packages).to.be.true;
+    });
+
+    it('should successfully call updateScheduledPackagesWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockupdateScheduledPackagesData.response);
+
+      const params = [
+      ];
+      const response = await instance.updateScheduledPackagesWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockupdateScheduledPackagesData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+        ];
+        await instance.updateScheduledPackages(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+
+  describe('constructor', () => {
+    it('should use default ApiClient when none provided', () => {
+      const defaultInstance = new SellingPartnerApiForEasyShip.EasyShipApi();
+      expect(defaultInstance.apiClient).to.equal(SellingPartnerApiForEasyShip.ApiClient.instance);
+    });
+
+    it('should use provided ApiClient', () => {
+      const customClient = new SellingPartnerApiForEasyShip.ApiClient();
+      const customInstance = new SellingPartnerApiForEasyShip.EasyShipApi(customClient);
+      expect(customInstance.apiClient).to.equal(customClient);
+    });
+  });
+});
