@@ -1,5 +1,5 @@
 {
-  "name": "amazon-sp-api-sdk-js",
+  "name": "@amazon-sp-api-release/amazon-sp-api-sdk-js",
   "type": "module",
   "description": "This package is sellingpartnerAPI Javascript SDK for nodeJS with LWA library.",
   "main": "index.js",
