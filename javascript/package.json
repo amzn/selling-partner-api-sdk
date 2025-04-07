@@ -1,14 +1,13 @@
 {
-  "name": "amazon-selling-partner-api-sdk-js",
+  "name": "amazon-selling-partner-api-sdk-js-test",
   "type": "module",
   "description": "This package is sellingpartnerAPI Javascript SDK with LWA library.",
-  "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "superagent": "^8.0.9"
+    "superagent": "^9.0.0"
   },
   "devDependencies": {
   },
