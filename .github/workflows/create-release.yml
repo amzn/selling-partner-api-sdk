@@ -44,17 +44,14 @@ jobs:
         with:
           node-version: '21'
           registry-url: 'https://registry.npmjs.org'
-
       - name: Set version in package.json
         working-directory: javascript
         run: |
           npm version ${{ github.event.inputs.newVersionNumber }} --no-git-tag-version
           echo "Updated package.json version to ${{ github.event.inputs.newVersionNumber }}"
-
       - name: Install dependencies
         working-directory: javascript
         run: npm install
-
       - name: Publish to npm
         working-directory: javascript
         run: npm publish

@@ -14,12 +14,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '21'
-
       - name: Install dependencies in each API dir
         working-directory: ./javascript/sdk
         run: |
@@ -31,7 +29,6 @@ jobs:
                 cd ..
               fi
             done
-
       - name: Run tests and generate reports
         working-directory: ./javascript/sdk
         run: |
