@@ -12,153 +12,141 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.io.IOException;
-import software.amazon.spapi.models.shipping.v2.Benefits;
-import software.amazon.spapi.models.shipping.v2.PackageDocumentDetailList;
-import software.amazon.spapi.models.shipping.v2.Promise;
-/**
- * The payload for the purchaseShipment operation.
- */
+import java.util.Objects;
+
+/** The payload for the purchaseShipment operation. */
 @Schema(description = "The payload for the purchaseShipment operation.")
-
-
 public class PurchaseShipmentResult {
-  @SerializedName("shipmentId")
-  private String shipmentId = null;
+    @SerializedName("shipmentId")
+    private String shipmentId = null;
 
-  @SerializedName("packageDocumentDetails")
-  private PackageDocumentDetailList packageDocumentDetails = null;
+    @SerializedName("packageDocumentDetails")
+    private PackageDocumentDetailList packageDocumentDetails = null;
 
-  @SerializedName("promise")
-  private Promise promise = null;
+    @SerializedName("promise")
+    private Promise promise = null;
 
-  @SerializedName("benefits")
-  private Benefits benefits = null;
+    @SerializedName("benefits")
+    private Benefits benefits = null;
 
-  public PurchaseShipmentResult shipmentId(String shipmentId) {
-    this.shipmentId = shipmentId;
-    return this;
-  }
-
-   /**
-   * Get shipmentId
-   * @return shipmentId
-  **/
-  @Schema(required = true, description = "")
-  public String getShipmentId() {
-    return shipmentId;
-  }
-
-  public void setShipmentId(String shipmentId) {
-    this.shipmentId = shipmentId;
-  }
-
-  public PurchaseShipmentResult packageDocumentDetails(PackageDocumentDetailList packageDocumentDetails) {
-    this.packageDocumentDetails = packageDocumentDetails;
-    return this;
-  }
-
-   /**
-   * Get packageDocumentDetails
-   * @return packageDocumentDetails
-  **/
-  @Schema(required = true, description = "")
-  public PackageDocumentDetailList getPackageDocumentDetails() {
-    return packageDocumentDetails;
-  }
-
-  public void setPackageDocumentDetails(PackageDocumentDetailList packageDocumentDetails) {
-    this.packageDocumentDetails = packageDocumentDetails;
-  }
-
-  public PurchaseShipmentResult promise(Promise promise) {
-    this.promise = promise;
-    return this;
-  }
-
-   /**
-   * Get promise
-   * @return promise
-  **/
-  @Schema(required = true, description = "")
-  public Promise getPromise() {
-    return promise;
-  }
-
-  public void setPromise(Promise promise) {
-    this.promise = promise;
-  }
-
-  public PurchaseShipmentResult benefits(Benefits benefits) {
-    this.benefits = benefits;
-    return this;
-  }
-
-   /**
-   * Get benefits
-   * @return benefits
-  **/
-  @Schema(description = "")
-  public Benefits getBenefits() {
-    return benefits;
-  }
-
-  public void setBenefits(Benefits benefits) {
-    this.benefits = benefits;
-  }
-
-
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
+    public PurchaseShipmentResult shipmentId(String shipmentId) {
+        this.shipmentId = shipmentId;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * Get shipmentId
+     *
+     * @return shipmentId
+     */
+    @Schema(required = true, description = "")
+    public String getShipmentId() {
+        return shipmentId;
     }
-    PurchaseShipmentResult purchaseShipmentResult = (PurchaseShipmentResult) o;
-    return Objects.equals(this.shipmentId, purchaseShipmentResult.shipmentId) &&
-        Objects.equals(this.packageDocumentDetails, purchaseShipmentResult.packageDocumentDetails) &&
-        Objects.equals(this.promise, purchaseShipmentResult.promise) &&
-        Objects.equals(this.benefits, purchaseShipmentResult.benefits);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(shipmentId, packageDocumentDetails, promise, benefits);
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class PurchaseShipmentResult {\n");
-    
-    sb.append("    shipmentId: ").append(toIndentedString(shipmentId)).append("\n");
-    sb.append("    packageDocumentDetails: ").append(toIndentedString(packageDocumentDetails)).append("\n");
-    sb.append("    promise: ").append(toIndentedString(promise)).append("\n");
-    sb.append("    benefits: ").append(toIndentedString(benefits)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    public void setShipmentId(String shipmentId) {
+        this.shipmentId = shipmentId;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    public PurchaseShipmentResult packageDocumentDetails(PackageDocumentDetailList packageDocumentDetails) {
+        this.packageDocumentDetails = packageDocumentDetails;
+        return this;
+    }
+
+    /**
+     * Get packageDocumentDetails
+     *
+     * @return packageDocumentDetails
+     */
+    @Schema(required = true, description = "")
+    public PackageDocumentDetailList getPackageDocumentDetails() {
+        return packageDocumentDetails;
+    }
+
+    public void setPackageDocumentDetails(PackageDocumentDetailList packageDocumentDetails) {
+        this.packageDocumentDetails = packageDocumentDetails;
+    }
+
+    public PurchaseShipmentResult promise(Promise promise) {
+        this.promise = promise;
+        return this;
+    }
+
+    /**
+     * Get promise
+     *
+     * @return promise
+     */
+    @Schema(required = true, description = "")
+    public Promise getPromise() {
+        return promise;
+    }
+
+    public void setPromise(Promise promise) {
+        this.promise = promise;
+    }
+
+    public PurchaseShipmentResult benefits(Benefits benefits) {
+        this.benefits = benefits;
+        return this;
+    }
+
+    /**
+     * Get benefits
+     *
+     * @return benefits
+     */
+    @Schema(description = "")
+    public Benefits getBenefits() {
+        return benefits;
+    }
+
+    public void setBenefits(Benefits benefits) {
+        this.benefits = benefits;
+    }
+
+    @Override
+    public boolean equals(java.lang.Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        PurchaseShipmentResult purchaseShipmentResult = (PurchaseShipmentResult) o;
+        return Objects.equals(this.shipmentId, purchaseShipmentResult.shipmentId)
+                && Objects.equals(this.packageDocumentDetails, purchaseShipmentResult.packageDocumentDetails)
+                && Objects.equals(this.promise, purchaseShipmentResult.promise)
+                && Objects.equals(this.benefits, purchaseShipmentResult.benefits);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(shipmentId, packageDocumentDetails, promise, benefits);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class PurchaseShipmentResult {\n");
+
+        sb.append("    shipmentId: ").append(toIndentedString(shipmentId)).append("\n");
+        sb.append("    packageDocumentDetails: ")
+                .append(toIndentedString(packageDocumentDetails))
+                .append("\n");
+        sb.append("    promise: ").append(toIndentedString(promise)).append("\n");
+        sb.append("    benefits: ").append(toIndentedString(benefits)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
+    private String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }

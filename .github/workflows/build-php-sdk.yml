@@ -19,7 +19,7 @@ jobs:
           path: selling-partner-api-models
       - uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.1'
+          php-version: '8.3'
           extensions: mbstring, xml, curl, json, openssl
           tools: composer:v2
           coverage: none
@@ -90,6 +90,12 @@ jobs:
         working-directory: ./selling-partner-api-sdk/php/sdk
         run: |
           sed -i "s/?bool \$include_details = 'true'/?bool \$include_details = true/g" lib/Api/vendor/df/orders/v2021_12_28/VendorOrdersApi.php
+      - name: Run composer install
+        working-directory: ./selling-partner-api-sdk/php/sdk
+        run: composer install
+      - name: Run linter
+        working-directory: ./selling-partner-api-sdk/php/sdk
+        run: PHP_CS_FIXER_IGNORE_ENV=1 ./vendor/bin/php-cs-fixer fix
       - name: Create PR
         uses: peter-evans/create-pull-request@v7
         with:

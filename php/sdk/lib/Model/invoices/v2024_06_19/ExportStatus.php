@@ -1,13 +1,15 @@
 <?php
+
 /**
- * ExportStatus
+ * ExportStatus.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
@@ -27,22 +29,22 @@
  */
 
 namespace SpApi\Model\invoices\v2024_06_19;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * ExportStatus Class Doc Comment
+ * ExportStatus Class Doc Comment.
  *
  * @category Class
+ *
  * @description The current status of the request.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class ExportStatus
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const REQUESTED = 'REQUESTED';
 
@@ -53,7 +55,8 @@ class ExportStatus
     public const ERROR = 'ERROR';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
@@ -62,9 +65,7 @@ class ExportStatus
             self::REQUESTED,
             self::PROCESSING,
             self::DONE,
-            self::ERROR
+            self::ERROR,
         ];
     }
 }
-
-

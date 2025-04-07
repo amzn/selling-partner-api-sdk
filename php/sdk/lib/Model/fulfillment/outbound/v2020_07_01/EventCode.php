@@ -1,17 +1,19 @@
 <?php
+
 /**
- * EventCode
+ * EventCode.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner APIs for Fulfillment Outbound
+ * Selling Partner APIs for Fulfillment Outbound.
  *
  * The Selling Partner API for Fulfillment Outbound lets you create applications that help a seller fulfill Multi-Channel Fulfillment orders using their inventory in Amazon's fulfillment network. You can get information on both potential and existing fulfillment orders.
  *
@@ -27,22 +29,22 @@
  */
 
 namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * EventCode Class Doc Comment
+ * EventCode Class Doc Comment.
  *
  * @category Class
+ *
  * @description The event code for the delivery event.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class EventCode
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const _101 = 'EVENT_101';
 
@@ -111,7 +113,8 @@ class EventCode
     public const _419 = 'EVENT_419';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
@@ -149,9 +152,7 @@ class EventCode
             self::_416,
             self::_417,
             self::_418,
-            self::_419
+            self::_419,
         ];
     }
 }
-
-

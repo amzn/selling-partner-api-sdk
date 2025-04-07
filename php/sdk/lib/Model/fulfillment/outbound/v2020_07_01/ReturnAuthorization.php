@@ -1,17 +1,19 @@
 <?php
+
 /**
- * ReturnAuthorization
+ * ReturnAuthorization.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner APIs for Fulfillment Outbound
+ * Selling Partner APIs for Fulfillment Outbound.
  *
  * The Selling Partner API for Fulfillment Outbound lets you create applications that help a seller fulfill Multi-Channel Fulfillment orders using their inventory in Amazon's fulfillment network. You can get information on both potential and existing fulfillment orders.
  *
@@ -28,167 +30,95 @@
 
 namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
 
-use
-ArrayAccess;
-use SpApi\ObjectSerializer;
 use SpApi\Model\ModelInterface;
+use SpApi\ObjectSerializer;
 
 /**
- * ReturnAuthorization Class Doc Comment
+ * ReturnAuthorization Class Doc Comment.
  *
  * @category Class
+ *
  * @description Return authorization information for items accepted for return.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
+ *
  * @implements \ArrayAccess<string, mixed>
  */
-class ReturnAuthorization implements ModelInterface, ArrayAccess, \JsonSerializable
+class ReturnAuthorization implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     */
     protected static string $openAPIModelName = 'ReturnAuthorization';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static array $openAPITypes = [
-             'return_authorization_id' => 'string',
-             'fulfillment_center_id' => 'string',
-             'return_to_address' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\Address',
-             'amazon_rma_id' => 'string',
-             'rma_page_url' => 'string'    ];
+        'return_authorization_id' => 'string',
+        'fulfillment_center_id' => 'string',
+        'return_to_address' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\Address',
+        'amazon_rma_id' => 'string',
+        'rma_page_url' => 'string'];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     *
+     * @phpstan-var array<string, string|null>
+     *
+     * @psalm-var array<string, string|null>
+     */
     protected static array $openAPIFormats = [
-            'return_authorization_id' => null,
-            'fulfillment_center_id' => null,
-            'return_to_address' => null,
-            'amazon_rma_id' => null,
-            'rma_page_url' => null    ];
+        'return_authorization_id' => null,
+        'fulfillment_center_id' => null,
+        'return_to_address' => null,
+        'amazon_rma_id' => null,
+        'rma_page_url' => null];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization.
+     *
+     * @var bool[]
+     */
     protected static array $openAPINullables = [
         'return_authorization_id' => false,
         'fulfillment_center_id' => false,
         'return_to_address' => false,
         'amazon_rma_id' => false,
-        'rma_page_url' => false
+        'rma_page_url' => false,
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here.
+     *
+     * @var bool[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPIFormats(): array
-    {
-        return self::$openAPIFormats;
-    }
-
-    /**
-     * Array of nullable properties
-     *
-     * @return array
-     */
-    protected static function openAPINullables(): array
-    {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * Array of nullable field names deliberately set to null
-     *
-     * @return boolean[]
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * Setter - Array of nullable field names deliberately set to null
-     *
-     * @param boolean[] $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    /**
-     * Checks if a property is nullable
-     *
-     * @param string $property
-     * @return bool
-     */
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    /**
-     * Checks if a nullable property is set to null.
-     *
-     * @param string $property
-     * @return bool
-     */
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @var string[]
      */
     protected static array $attributeMap = [
         'return_authorization_id' => 'returnAuthorizationId',
-                'fulfillment_center_id' => 'fulfillmentCenterId',
-                'return_to_address' => 'returnToAddress',
-                'amazon_rma_id' => 'amazonRmaId',
-                'rma_page_url' => 'rmaPageURL'
-        
+        'fulfillment_center_id' => 'fulfillmentCenterId',
+        'return_to_address' => 'returnToAddress',
+        'amazon_rma_id' => 'amazonRmaId',
+        'rma_page_url' => 'rmaPageURL',
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @var string[]
      */
@@ -197,11 +127,11 @@ class ReturnAuthorization implements ModelInterface, ArrayAccess, \JsonSerializa
         'fulfillment_center_id' => 'setFulfillmentCenterId',
         'return_to_address' => 'setReturnToAddress',
         'amazon_rma_id' => 'setAmazonRmaId',
-        'rma_page_url' => 'setRmaPageUrl'
+        'rma_page_url' => 'setRmaPageUrl',
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @var string[]
      */
@@ -210,63 +140,19 @@ class ReturnAuthorization implements ModelInterface, ArrayAccess, \JsonSerializa
         'fulfillment_center_id' => 'getFulfillmentCenterId',
         'return_to_address' => 'getReturnToAddress',
         'amazon_rma_id' => 'getAmazonRmaId',
-        'rma_page_url' => 'getRmaPageUrl'
+        'rma_page_url' => 'getRmaPageUrl',
     ];
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @return array
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @return array
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @return array
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    /**
-     * The original name of the model.
-     *
-     * @return string
-     */
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-
-    /**
-     * Associative array for storing property values
-     *
-     * @var array
+     * Associative array for storing property values.
      */
     protected array $container = [];
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param array|null $data Associated array of property values
-     *                      initializing the model
+     * @param null|array $data Associated array of property values
+     *                         initializing the model
      */
     public function __construct(?array $data = null)
     {
@@ -278,21 +164,81 @@ class ReturnAuthorization implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
-    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+     * Gets the string presentation of the object.
+     *
+     * @return string
+     */
+    public function __toString()
     {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
+        return json_encode(
+            ObjectSerializer::sanitizeForSerialization($this),
+            JSON_PRETTY_PRINT
+        );
+    }
 
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    /**
+     * Array of property to type mappings. Used for (de)serialization.
+     */
+    public static function openAPITypes(): array
+    {
+        return self::$openAPITypes;
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization.
+     */
+    public static function openAPIFormats(): array
+    {
+        return self::$openAPIFormats;
+    }
+
+    /**
+     * Checks if a property is nullable.
+     */
+    public static function isNullable(string $property): bool
+    {
+        return self::openAPINullables()[$property] ?? false;
+    }
+
+    /**
+     * Checks if a nullable property is set to null.
+     */
+    public function isNullableSetToNull(string $property): bool
+    {
+        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name.
+     */
+    public static function attributeMap(): array
+    {
+        return self::$attributeMap;
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses).
+     */
+    public static function setters(): array
+    {
+        return self::$setters;
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests).
+     */
+    public static function getters(): array
+    {
+        return self::$getters;
+    }
+
+    /**
+     * The original name of the model.
+     */
+    public function getModelName(): string
+    {
+        return self::$openAPIModelName;
     }
 
     /**
@@ -304,40 +250,38 @@ class ReturnAuthorization implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $invalidProperties = [];
 
-        if ($this->container['return_authorization_id'] === null) {
+        if (null === $this->container['return_authorization_id']) {
             $invalidProperties[] = "'return_authorization_id' can't be null";
         }
-        if ($this->container['fulfillment_center_id'] === null) {
+        if (null === $this->container['fulfillment_center_id']) {
             $invalidProperties[] = "'fulfillment_center_id' can't be null";
         }
-        if ($this->container['return_to_address'] === null) {
+        if (null === $this->container['return_to_address']) {
             $invalidProperties[] = "'return_to_address' can't be null";
         }
-        if ($this->container['amazon_rma_id'] === null) {
+        if (null === $this->container['amazon_rma_id']) {
             $invalidProperties[] = "'amazon_rma_id' can't be null";
         }
-        if ($this->container['rma_page_url'] === null) {
+        if (null === $this->container['rma_page_url']) {
             $invalidProperties[] = "'rma_page_url' can't be null";
         }
+
         return $invalidProperties;
     }
 
     /**
      * Validate all the properties in the model
-     * return true if all passed
+     * return true if all passed.
      *
      * @return bool True if all properties are valid
      */
     public function valid(): bool
     {
-        return count($this->listInvalidProperties()) === 0;
+        return 0 === count($this->listInvalidProperties());
     }
 
-
     /**
-     * Gets return_authorization_id
-     *
-     * @return string
+     * Gets return_authorization_id.
      */
     public function getReturnAuthorizationId(): string
     {
@@ -345,11 +289,9 @@ class ReturnAuthorization implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Sets return_authorization_id
+     * Sets return_authorization_id.
      *
      * @param string $return_authorization_id An identifier for the return authorization. This identifier associates return items with the return authorization used to return them.
-     *
-     * @return self
      */
     public function setReturnAuthorizationId(string $return_authorization_id): self
     {
@@ -362,9 +304,7 @@ class ReturnAuthorization implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets fulfillment_center_id
-     *
-     * @return string
+     * Gets fulfillment_center_id.
      */
     public function getFulfillmentCenterId(): string
     {
@@ -372,11 +312,9 @@ class ReturnAuthorization implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Sets fulfillment_center_id
+     * Sets fulfillment_center_id.
      *
-     * @param string $fulfillment_center_id An identifier for the Amazon fulfillment center that the return items should be sent to.
-     *
-     * @return self
+     * @param string $fulfillment_center_id an identifier for the Amazon fulfillment center that the return items should be sent to
      */
     public function setFulfillmentCenterId(string $fulfillment_center_id): self
     {
@@ -389,23 +327,19 @@ class ReturnAuthorization implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets return_to_address
-     *
-     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\Address
+     * Gets return_to_address.
      */
-    public function getReturnToAddress(): \SpApi\Model\fulfillment\outbound\v2020_07_01\Address
+    public function getReturnToAddress(): Address
     {
         return $this->container['return_to_address'];
     }
 
     /**
-     * Sets return_to_address
+     * Sets return_to_address.
      *
-     * @param \SpApi\Model\fulfillment\outbound\v2020_07_01\Address $return_to_address return_to_address
-     *
-     * @return self
+     * @param Address $return_to_address return_to_address
      */
-    public function setReturnToAddress(\SpApi\Model\fulfillment\outbound\v2020_07_01\Address $return_to_address): self
+    public function setReturnToAddress(Address $return_to_address): self
     {
         if (is_null($return_to_address)) {
             throw new \InvalidArgumentException('non-nullable return_to_address cannot be null');
@@ -416,9 +350,7 @@ class ReturnAuthorization implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets amazon_rma_id
-     *
-     * @return string
+     * Gets amazon_rma_id.
      */
     public function getAmazonRmaId(): string
     {
@@ -426,11 +358,9 @@ class ReturnAuthorization implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Sets amazon_rma_id
+     * Sets amazon_rma_id.
      *
-     * @param string $amazon_rma_id The return merchandise authorization (RMA) that Amazon needs to process the return.
-     *
-     * @return self
+     * @param string $amazon_rma_id the return merchandise authorization (RMA) that Amazon needs to process the return
      */
     public function setAmazonRmaId(string $amazon_rma_id): self
     {
@@ -443,9 +373,7 @@ class ReturnAuthorization implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets rma_page_url
-     *
-     * @return string
+     * Gets rma_page_url.
      */
     public function getRmaPageUrl(): string
     {
@@ -453,11 +381,9 @@ class ReturnAuthorization implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Sets rma_page_url
+     * Sets rma_page_url.
      *
      * @param string $rma_page_url A URL for a web page that contains the return authorization barcode and the mailing label. This does not include pre-paid shipping.
-     *
-     * @return self
      */
     public function setRmaPageUrl(string $rma_page_url): self
     {
@@ -469,13 +395,10 @@ class ReturnAuthorization implements ModelInterface, ArrayAccess, \JsonSerializa
         return $this;
     }
 
-
     /**
      * Returns true if offset exists. False otherwise.
      *
-     * @param integer $offset Offset
-     *
-     * @return boolean
+     * @param int $offset Offset
      */
     public function offsetExists($offset): bool
     {
@@ -485,9 +408,9 @@ class ReturnAuthorization implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
-     * @return mixed|null
+     * @return null|mixed
      */
     #[\ReturnTypeWillChange]
     public function offsetGet($offset): mixed
@@ -498,10 +421,8 @@ class ReturnAuthorization implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets value based on offset.
      *
-     * @param int|null $offset Offset
+     * @param null|int $offset Offset
      * @param mixed    $value  Value to be set
-     *
-     * @return void
      */
     public function offsetSet($offset, mixed $value): void
     {
@@ -515,9 +436,7 @@ class ReturnAuthorization implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Unsets offset.
      *
-     * @param integer $offset Offset
-     *
-     * @return void
+     * @param int $offset Offset
      */
     public function offsetUnset($offset): void
     {
@@ -526,39 +445,67 @@ class ReturnAuthorization implements ModelInterface, ArrayAccess, \JsonSerializa
 
     /**
      * Serializes the object to a value that can be serialized natively by json_encode().
-     * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
      *
-     * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
+     * @see https://www.php.net/manual/en/jsonserializable.jsonserialize.php
+     *
+     * @return mixed returns data which can be serialized by json_encode(), which is a value
+     *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
     public function jsonSerialize(): mixed
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
-     * Gets the string presentation of the object
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    /**
-     * Gets a header-safe presentation of the object
-     *
-     * @return string
+     * Gets a header-safe presentation of the object.
      */
     public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
+
+    /**
+     * Array of nullable properties.
+     */
+    protected static function openAPINullables(): array
+    {
+        return self::$openAPINullables;
+    }
+
+    /**
+     * Array of nullable field names deliberately set to null.
+     *
+     * @return bool[]
+     */
+    private function getOpenAPINullablesSetToNull(): array
+    {
+        return $this->openAPINullablesSetToNull;
+    }
+
+    /**
+     * Setter - Array of nullable field names deliberately set to null.
+     *
+     * @param bool[] $openAPINullablesSetToNull
+     */
+    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
+    {
+        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
+    }
+
+    /**
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array.
+     *
+     * @param mixed $defaultValue
+     */
+    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+    {
+        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
+            $this->openAPINullablesSetToNull[] = $variableName;
+        }
+
+        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    }
 }
-
-

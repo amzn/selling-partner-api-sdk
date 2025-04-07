@@ -12,82 +12,70 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.io.IOException;
-import software.amazon.spapi.models.shipping.v2.LinkableCarriersList;
-/**
- * The Response  for the GetCarrierAccountFormInputsResponse operation.
- */
+import java.util.Objects;
+
+/** The Response for the GetCarrierAccountFormInputsResponse operation. */
 @Schema(description = "The Response  for the GetCarrierAccountFormInputsResponse operation.")
-
-
 public class GetCarrierAccountFormInputsResponse {
-  @SerializedName("linkableCarriersList")
-  private LinkableCarriersList linkableCarriersList = null;
+    @SerializedName("linkableCarriersList")
+    private LinkableCarriersList linkableCarriersList = null;
 
-  public GetCarrierAccountFormInputsResponse linkableCarriersList(LinkableCarriersList linkableCarriersList) {
-    this.linkableCarriersList = linkableCarriersList;
-    return this;
-  }
-
-   /**
-   * Get linkableCarriersList
-   * @return linkableCarriersList
-  **/
-  @Schema(description = "")
-  public LinkableCarriersList getLinkableCarriersList() {
-    return linkableCarriersList;
-  }
-
-  public void setLinkableCarriersList(LinkableCarriersList linkableCarriersList) {
-    this.linkableCarriersList = linkableCarriersList;
-  }
-
-
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
+    public GetCarrierAccountFormInputsResponse linkableCarriersList(LinkableCarriersList linkableCarriersList) {
+        this.linkableCarriersList = linkableCarriersList;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * Get linkableCarriersList
+     *
+     * @return linkableCarriersList
+     */
+    @Schema(description = "")
+    public LinkableCarriersList getLinkableCarriersList() {
+        return linkableCarriersList;
     }
-    GetCarrierAccountFormInputsResponse getCarrierAccountFormInputsResponse = (GetCarrierAccountFormInputsResponse) o;
-    return Objects.equals(this.linkableCarriersList, getCarrierAccountFormInputsResponse.linkableCarriersList);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(linkableCarriersList);
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class GetCarrierAccountFormInputsResponse {\n");
-    
-    sb.append("    linkableCarriersList: ").append(toIndentedString(linkableCarriersList)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    public void setLinkableCarriersList(LinkableCarriersList linkableCarriersList) {
+        this.linkableCarriersList = linkableCarriersList;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    @Override
+    public boolean equals(java.lang.Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        GetCarrierAccountFormInputsResponse getCarrierAccountFormInputsResponse =
+                (GetCarrierAccountFormInputsResponse) o;
+        return Objects.equals(this.linkableCarriersList, getCarrierAccountFormInputsResponse.linkableCarriersList);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(linkableCarriersList);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class GetCarrierAccountFormInputsResponse {\n");
+
+        sb.append("    linkableCarriersList: ")
+                .append(toIndentedString(linkableCarriersList))
+                .append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
+    private String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }

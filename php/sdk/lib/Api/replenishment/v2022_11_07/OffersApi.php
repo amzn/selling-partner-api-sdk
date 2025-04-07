@@ -1,16 +1,18 @@
 <?php
+
 /**
  * OffersApi
- * PHP version 8.3
+ * PHP version 8.3.
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Replenishment
+ * Selling Partner API for Replenishment.
  *
  * The Selling Partner API for Replenishment (Replenishment API) provides programmatic access to replenishment program metrics and offers. These programs provide recurring delivery of any replenishable item at a frequency chosen by the customer.  The Replenishment API is available worldwide wherever Amazon Subscribe & Save is available or is supported. The API is available to vendors and FBA selling partners.
  *
@@ -35,38 +37,34 @@ use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use SpApi\AuthAndAuth\RateLimitConfiguration;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RateLimitConfiguration;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
+use SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsRequest;
+use SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsResponse;
+use SpApi\Model\replenishment\v2022_11_07\ListOffersRequest;
+use SpApi\Model\replenishment\v2022_11_07\ListOffersResponse;
 use SpApi\ObjectSerializer;
+use Symfony\Component\RateLimiter\LimiterInterface;
+use Symfony\Component\RateLimiter\RateLimiterFactory;
+use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
- * OffersApi Class Doc Comment
+ * OffersApi Class Doc Comment.
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class OffersApi
 {
-    /**
-     * @var ClientInterface
-     */
     protected ClientInterface $client;
 
-    /**
-     * @var Configuration
-     */
     protected Configuration $config;
 
-    /**
-     * @var HeaderSelector
-     */
     protected HeaderSelector $headerSelector;
 
     /**
@@ -74,21 +72,11 @@ class OffersApi
      */
     protected int $hostIndex;
 
-    /**
-     * @var ?RateLimitConfiguration
-     */
     private ?RateLimitConfiguration $rateLimitConfig = null;
 
-    /**
-     * @var ?LimiterInterface
-     */
     private ?LimiterInterface $rateLimiter = null;
 
     /**
-     * @param Configuration   $config
-     * @param RateLimitConfiguration|null $rateLimitConfig
-     * @param ClientInterface|null $client
-     * @param HeaderSelector|null $selector
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
@@ -107,10 +95,10 @@ class OffersApi
                 'policy' => $type,
                 'limit' => $rateLimitConfig->getRateLimitTokenLimit(),
             ];
-            if ($type === "fixed_window" || $type === "sliding_window") {
-                $rateLimitOptions['interval'] = $rateLimitConfig->getRateLimitToken() . 'seconds';
+            if ('fixed_window' === $type || 'sliding_window' === $type) {
+                $rateLimitOptions['interval'] = $rateLimitConfig->getRateLimitToken().'seconds';
             } else {
-                $rateLimitOptions['rate'] = ['interval' => $rateLimitConfig->getRateLimitToken() . 'seconds'];
+                $rateLimitOptions['rate'] = ['interval' => $rateLimitConfig->getRateLimitToken().'seconds'];
             }
             $factory = new RateLimiterFactory($rateLimitOptions, new InMemoryStorage());
             $this->rateLimiter = $factory->create();
@@ -122,7 +110,7 @@ class OffersApi
     }
 
     /**
-     * Set the host index
+     * Set the host index.
      *
      * @param int $hostIndex Host index (required)
      */
@@ -132,7 +120,7 @@ class OffersApi
     }
 
     /**
-     * Get the host index
+     * Get the host index.
      *
      * @return int Host index
      */
@@ -141,49 +129,48 @@ class OffersApi
         return $this->hostIndex;
     }
 
-    /**
-     * @return Configuration
-     */
     public function getConfig(): Configuration
     {
         return $this->config;
     }
 
     /**
-     * Operation listOfferMetrics
+     * Operation listOfferMetrics.
      *
-     * @param  \SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsRequest|null $body
-     *  The request body for the &#x60;listOfferMetrics&#x60; operation. (optional)
+     * @param null|ListOfferMetricsRequest $body
+     *                                           The request body for the &#x60;listOfferMetrics&#x60; operation. (optional)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsResponse
      */
     public function listOfferMetrics(
-        ?\SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsRequest $body = null
-    ): \SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsResponse {
+        ?ListOfferMetricsRequest $body = null
+    ): ListOfferMetricsResponse {
         list($response) = $this->listOfferMetricsWithHttpInfo($body);
+
         return $response;
     }
 
     /**
-     * Operation listOfferMetricsWithHttpInfo
+     * Operation listOfferMetricsWithHttpInfo.
      *
-     * @param  \SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsRequest|null $body
-     *  The request body for the &#x60;listOfferMetrics&#x60; operation. (optional)
+     * @param null|ListOfferMetricsRequest $body
+     *                                           The request body for the &#x60;listOfferMetrics&#x60; operation. (optional)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function listOfferMetricsWithHttpInfo(
-        ?\SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsRequest $body = null
+        ?ListOfferMetricsRequest $body = null
     ): array {
         $request = $this->listOfferMetricsRequest($body);
         $request = $this->config->sign($request);
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -218,10 +205,10 @@ class OffersApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsResponse' !== 'string') {
@@ -232,11 +219,12 @@ class OffersApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 400:
                     if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
@@ -247,11 +235,12 @@ class OffersApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\replenishment\v2022_11_07\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 401:
                     if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
@@ -262,11 +251,12 @@ class OffersApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\replenishment\v2022_11_07\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 403:
                     if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
@@ -277,11 +267,12 @@ class OffersApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\replenishment\v2022_11_07\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 404:
                     if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
@@ -292,11 +283,12 @@ class OffersApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\replenishment\v2022_11_07\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 413:
                     if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
@@ -307,11 +299,12 @@ class OffersApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\replenishment\v2022_11_07\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 415:
                     if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
@@ -322,11 +315,12 @@ class OffersApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\replenishment\v2022_11_07\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 429:
                     if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
@@ -337,11 +331,12 @@ class OffersApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\replenishment\v2022_11_07\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 500:
                     if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
@@ -352,11 +347,12 @@ class OffersApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\replenishment\v2022_11_07\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 503:
                     if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
@@ -367,16 +363,16 @@ class OffersApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\replenishment\v2022_11_07\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
             $returnType = '\SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+            if ('\SplFileObject' === $returnType) {
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
+                if ('string' !== $returnType) {
                     $content = json_decode($content);
                 }
             }
@@ -384,9 +380,8 @@ class OffersApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -396,7 +391,9 @@ class OffersApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -404,7 +401,9 @@ class OffersApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -412,7 +411,9 @@ class OffersApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -420,7 +421,9 @@ class OffersApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -428,7 +431,9 @@ class OffersApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -436,7 +441,9 @@ class OffersApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -444,7 +451,9 @@ class OffersApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -452,7 +461,9 @@ class OffersApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -460,7 +471,9 @@ class OffersApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -468,43 +481,44 @@ class OffersApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation listOfferMetricsAsync
+     * Operation listOfferMetricsAsync.
      *
-     * @param  \SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsRequest|null $body
-     *  The request body for the &#x60;listOfferMetrics&#x60; operation. (optional)
+     * @param null|ListOfferMetricsRequest $body
+     *                                           The request body for the &#x60;listOfferMetrics&#x60; operation. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listOfferMetricsAsync(
-        ?\SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsRequest $body = null
+        ?ListOfferMetricsRequest $body = null
     ): PromiseInterface {
         return $this->listOfferMetricsAsyncWithHttpInfo($body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation listOfferMetricsAsyncWithHttpInfo
+     * Operation listOfferMetricsAsyncWithHttpInfo.
      *
-     * @param  \SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsRequest|null $body
-     *  The request body for the &#x60;listOfferMetrics&#x60; operation. (optional)
+     * @param null|ListOfferMetricsRequest $body
+     *                                           The request body for the &#x60;listOfferMetrics&#x60; operation. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listOfferMetricsAsyncWithHttpInfo(
-        ?\SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsRequest $body = null
+        ?ListOfferMetricsRequest $body = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsResponse';
         $request = $this->listOfferMetricsRequest($body);
@@ -515,11 +529,11 @@ class OffersApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -527,12 +541,13 @@ class OffersApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -544,32 +559,27 @@ class OffersApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'listOfferMetrics'
+     * Create request for operation 'listOfferMetrics'.
      *
-     * @param  \SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsRequest|null $body
-     *  The request body for the &#x60;listOfferMetrics&#x60; operation. (optional)
+     * @param null|ListOfferMetricsRequest $body
+     *                                           The request body for the &#x60;listOfferMetrics&#x60; operation. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function listOfferMetricsRequest(
-        ?\SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsRequest $body = null
+        ?ListOfferMetricsRequest $body = null
     ): Request {
-
         $resourcePath = '/replenishment/2022-11-07/offers/metrics/search';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
-
-
-
-
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -578,15 +588,14 @@ class OffersApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                'application/json'
-                ,
+                'application/json',
                 false
             );
         }
 
         // for model (json/xml)
         if (isset($body)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -599,22 +608,19 @@ class OffersApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -628,49 +634,52 @@ class OffersApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation listOffers
+     * Operation listOffers.
      *
-     * @param  \SpApi\Model\replenishment\v2022_11_07\ListOffersRequest|null $body
-     *  The request body for the &#x60;listOffers&#x60; operation. (optional)
+     * @param null|ListOffersRequest $body
+     *                                     The request body for the &#x60;listOffers&#x60; operation. (optional)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\replenishment\v2022_11_07\ListOffersResponse
      */
     public function listOffers(
-        ?\SpApi\Model\replenishment\v2022_11_07\ListOffersRequest $body = null
-    ): \SpApi\Model\replenishment\v2022_11_07\ListOffersResponse {
+        ?ListOffersRequest $body = null
+    ): ListOffersResponse {
         list($response) = $this->listOffersWithHttpInfo($body);
+
         return $response;
     }
 
     /**
-     * Operation listOffersWithHttpInfo
+     * Operation listOffersWithHttpInfo.
      *
-     * @param  \SpApi\Model\replenishment\v2022_11_07\ListOffersRequest|null $body
-     *  The request body for the &#x60;listOffers&#x60; operation. (optional)
+     * @param null|ListOffersRequest $body
+     *                                     The request body for the &#x60;listOffers&#x60; operation. (optional)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\replenishment\v2022_11_07\ListOffersResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function listOffersWithHttpInfo(
-        ?\SpApi\Model\replenishment\v2022_11_07\ListOffersRequest $body = null
+        ?ListOffersRequest $body = null
     ): array {
         $request = $this->listOffersRequest($body);
         $request = $this->config->sign($request);
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -705,10 +714,10 @@ class OffersApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\SpApi\Model\replenishment\v2022_11_07\ListOffersResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\replenishment\v2022_11_07\ListOffersResponse' !== 'string') {
@@ -719,11 +728,12 @@ class OffersApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\replenishment\v2022_11_07\ListOffersResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 400:
                     if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
@@ -734,11 +744,12 @@ class OffersApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\replenishment\v2022_11_07\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 401:
                     if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
@@ -749,11 +760,12 @@ class OffersApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\replenishment\v2022_11_07\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 403:
                     if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
@@ -764,11 +776,12 @@ class OffersApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\replenishment\v2022_11_07\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 404:
                     if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
@@ -779,11 +792,12 @@ class OffersApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\replenishment\v2022_11_07\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 413:
                     if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
@@ -794,11 +808,12 @@ class OffersApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\replenishment\v2022_11_07\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 415:
                     if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
@@ -809,11 +824,12 @@ class OffersApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\replenishment\v2022_11_07\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 429:
                     if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
@@ -824,11 +840,12 @@ class OffersApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\replenishment\v2022_11_07\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 500:
                     if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
@@ -839,11 +856,12 @@ class OffersApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\replenishment\v2022_11_07\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 503:
                     if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\replenishment\v2022_11_07\ErrorList' !== 'string') {
@@ -854,16 +872,16 @@ class OffersApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\replenishment\v2022_11_07\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
             $returnType = '\SpApi\Model\replenishment\v2022_11_07\ListOffersResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+            if ('\SplFileObject' === $returnType) {
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
+                if ('string' !== $returnType) {
                     $content = json_decode($content);
                 }
             }
@@ -871,9 +889,8 @@ class OffersApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -883,7 +900,9 @@ class OffersApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -891,7 +910,9 @@ class OffersApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -899,7 +920,9 @@ class OffersApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -907,7 +930,9 @@ class OffersApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -915,7 +940,9 @@ class OffersApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -923,7 +950,9 @@ class OffersApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 415:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -931,7 +960,9 @@ class OffersApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -939,7 +970,9 @@ class OffersApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -947,7 +980,9 @@ class OffersApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -955,43 +990,44 @@ class OffersApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation listOffersAsync
+     * Operation listOffersAsync.
      *
-     * @param  \SpApi\Model\replenishment\v2022_11_07\ListOffersRequest|null $body
-     *  The request body for the &#x60;listOffers&#x60; operation. (optional)
+     * @param null|ListOffersRequest $body
+     *                                     The request body for the &#x60;listOffers&#x60; operation. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listOffersAsync(
-        ?\SpApi\Model\replenishment\v2022_11_07\ListOffersRequest $body = null
+        ?ListOffersRequest $body = null
     ): PromiseInterface {
         return $this->listOffersAsyncWithHttpInfo($body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation listOffersAsyncWithHttpInfo
+     * Operation listOffersAsyncWithHttpInfo.
      *
-     * @param  \SpApi\Model\replenishment\v2022_11_07\ListOffersRequest|null $body
-     *  The request body for the &#x60;listOffers&#x60; operation. (optional)
+     * @param null|ListOffersRequest $body
+     *                                     The request body for the &#x60;listOffers&#x60; operation. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listOffersAsyncWithHttpInfo(
-        ?\SpApi\Model\replenishment\v2022_11_07\ListOffersRequest $body = null
+        ?ListOffersRequest $body = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\replenishment\v2022_11_07\ListOffersResponse';
         $request = $this->listOffersRequest($body);
@@ -1002,11 +1038,11 @@ class OffersApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -1014,12 +1050,13 @@ class OffersApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -1031,32 +1068,27 @@ class OffersApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'listOffers'
+     * Create request for operation 'listOffers'.
      *
-     * @param  \SpApi\Model\replenishment\v2022_11_07\ListOffersRequest|null $body
-     *  The request body for the &#x60;listOffers&#x60; operation. (optional)
+     * @param null|ListOffersRequest $body
+     *                                     The request body for the &#x60;listOffers&#x60; operation. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function listOffersRequest(
-        ?\SpApi\Model\replenishment\v2022_11_07\ListOffersRequest $body = null
+        ?ListOffersRequest $body = null
     ): Request {
-
         $resourcePath = '/replenishment/2022-11-07/offers/search';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
-
-
-
-
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -1065,15 +1097,14 @@ class OffersApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                'application/json'
-                ,
+                'application/json',
                 false
             );
         }
 
         // for model (json/xml)
         if (isset($body)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -1086,22 +1117,19 @@ class OffersApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1115,19 +1143,36 @@ class OffersApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Create http client option
+     * Rate Limiter waits for tokens.
+     */
+    public function rateLimitWait(): void
+    {
+        if ($this->rateLimiter) {
+            $type = $this->rateLimitConfig->getRateLimitType();
+            if (0 != $this->rateLimitConfig->getTimeOut() && ('token_bucket' == $type || 'fixed_window' == $type)) {
+                $this->rateLimiter->reserve(1, $this->rateLimitConfig->getTimeOut() / 1000)->wait();
+            } else {
+                $this->rateLimiter->consume()->wait();
+            }
+        }
+    }
+
+    /**
+     * Create http client option.
+     *
+     * @return array of http client options
      *
      * @throws \RuntimeException on file opening failure
-     * @return array of http client options
      */
     protected function createHttpClientOption(): array
     {
@@ -1135,27 +1180,10 @@ class OffersApi
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
             if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+                throw new \RuntimeException('Failed to open the debug file: '.$this->config->getDebugFile());
             }
         }
 
         return $options;
-    }
-
-    /**
-     * Rate Limiter waits for tokens
-     *
-     * @return void
-     */
-    public function rateLimitWait(): void
-    {
-        if ($this->rateLimiter) {
-            $type = $this->rateLimitConfig->getRateLimitType();
-            if ($this->rateLimitConfig->getTimeOut() != 0 && ($type == "token_bucket" || $type == "fixed_window")) {
-                $this->rateLimiter->reserve(1, ($this->rateLimitConfig->getTimeOut()) / 1000)->wait();
-            } else {
-                $this->rateLimiter->consume()->wait();
-            }
-        }
     }
 }

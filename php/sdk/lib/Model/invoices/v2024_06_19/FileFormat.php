@@ -1,13 +1,15 @@
 <?php
+
 /**
- * FileFormat
+ * FileFormat.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
@@ -27,35 +29,34 @@
  */
 
 namespace SpApi\Model\invoices\v2024_06_19;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * FileFormat Class Doc Comment
+ * FileFormat Class Doc Comment.
  *
  * @category Class
+ *
  * @description Supported invoice file extensions.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class FileFormat
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const XML = 'XML';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
     {
         return [
-            self::XML
+            self::XML,
         ];
     }
 }
-
-

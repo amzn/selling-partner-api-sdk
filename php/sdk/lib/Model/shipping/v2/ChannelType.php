@@ -1,17 +1,19 @@
 <?php
+
 /**
- * ChannelType
+ * ChannelType.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Amazon Shipping API
+ * Amazon Shipping API.
  *
  * The Amazon Shipping API is designed to support outbound shipping use cases both for orders originating on Amazon-owned marketplaces as well as external channels/marketplaces. With these APIs, you can request shipping rates, create shipments, cancel shipments, and track shipments.
  *
@@ -28,38 +30,37 @@
  */
 
 namespace SpApi\Model\shipping\v2;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * ChannelType Class Doc Comment
+ * ChannelType Class Doc Comment.
  *
  * @category Class
+ *
  * @description The shipment source channel type.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class ChannelType
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const AMAZON = 'AMAZON';
 
     public const EXTERNAL = 'EXTERNAL';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
     {
         return [
             self::AMAZON,
-            self::EXTERNAL
+            self::EXTERNAL,
         ];
     }
 }
-
-

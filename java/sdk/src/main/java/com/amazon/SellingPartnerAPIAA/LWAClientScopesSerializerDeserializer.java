@@ -8,14 +8,13 @@ import com.google.gson.JsonParseException;
 import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
-
 import java.lang.reflect.Type;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-public class LWAClientScopesSerializerDeserializer implements JsonDeserializer<LWAClientScopes>,
-        JsonSerializer<LWAClientScopes> {
+public class LWAClientScopesSerializerDeserializer
+        implements JsonDeserializer<LWAClientScopes>, JsonSerializer<LWAClientScopes> {
 
     @Override
     public JsonElement serialize(LWAClientScopes src, Type typeOfSrc, JsonSerializationContext context) {
@@ -23,12 +22,12 @@ public class LWAClientScopesSerializerDeserializer implements JsonDeserializer<L
     }
 
     @Override
-    public LWAClientScopes deserialize(JsonElement jsonElement, Type type,
-            JsonDeserializationContext jsonDeserializationContext)
+    public LWAClientScopes deserialize(
+            JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext)
             throws JsonParseException {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-        Set<String> scopeSet = new HashSet<>(Arrays.asList(jsonObj.get("scope").getAsString().split(" ")));
+        Set<String> scopeSet =
+                new HashSet<>(Arrays.asList(jsonObj.get("scope").getAsString().split(" ")));
         return new LWAClientScopes(scopeSet);
-
     }
 }

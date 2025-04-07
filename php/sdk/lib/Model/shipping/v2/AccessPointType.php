@@ -1,17 +1,19 @@
 <?php
+
 /**
- * AccessPointType
+ * AccessPointType.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Amazon Shipping API
+ * Amazon Shipping API.
  *
  * The Amazon Shipping API is designed to support outbound shipping use cases both for orders originating on Amazon-owned marketplaces as well as external channels/marketplaces. With these APIs, you can request shipping rates, create shipments, cancel shipments, and track shipments.
  *
@@ -28,22 +30,22 @@
  */
 
 namespace SpApi\Model\shipping\v2;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * AccessPointType Class Doc Comment
+ * AccessPointType Class Doc Comment.
  *
  * @category Class
+ *
  * @description The type of access point, like counter (HELIX), lockers, etc.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class AccessPointType
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const HELIX = 'HELIX';
 
@@ -62,7 +64,8 @@ class AccessPointType
     public const CAMPUS_ROOM = 'CAMPUS_ROOM';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
@@ -75,9 +78,7 @@ class AccessPointType
             self::DOBBY_LOCKER,
             self::CORE_LOCKER,
             self::_3_P,
-            self::CAMPUS_ROOM
+            self::CAMPUS_ROOM,
         ];
     }
 }
-
-

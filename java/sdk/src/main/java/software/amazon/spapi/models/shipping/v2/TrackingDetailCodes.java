@@ -12,117 +12,111 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import software.amazon.spapi.models.shipping.v2.DetailCodes;
-/**
- * Contains detail codes that provide additional details related to the forward and return leg of the shipment.
- */
-@Schema(description = "Contains detail codes that provide additional details related to the forward and return leg of the shipment.")
+import java.util.Objects;
 
-
+/** Contains detail codes that provide additional details related to the forward and return leg of the shipment. */
+@Schema(
+        description =
+                "Contains detail codes that provide additional details related to the forward and return leg of the shipment.")
 public class TrackingDetailCodes {
-  @SerializedName("forward")
-  private List<DetailCodes> forward = new ArrayList<DetailCodes>();
+    @SerializedName("forward")
+    private List<DetailCodes> forward = new ArrayList<DetailCodes>();
 
-  @SerializedName("returns")
-  private List<DetailCodes> returns = new ArrayList<DetailCodes>();
+    @SerializedName("returns")
+    private List<DetailCodes> returns = new ArrayList<DetailCodes>();
 
-  public TrackingDetailCodes forward(List<DetailCodes> forward) {
-    this.forward = forward;
-    return this;
-  }
-
-  public TrackingDetailCodes addForwardItem(DetailCodes forwardItem) {
-    this.forward.add(forwardItem);
-    return this;
-  }
-
-   /**
-   * Contains detail codes that provide additional details related to the forward leg of the shipment.
-   * @return forward
-  **/
-  @Schema(required = true, description = "Contains detail codes that provide additional details related to the forward leg of the shipment.")
-  public List<DetailCodes> getForward() {
-    return forward;
-  }
-
-  public void setForward(List<DetailCodes> forward) {
-    this.forward = forward;
-  }
-
-  public TrackingDetailCodes returns(List<DetailCodes> returns) {
-    this.returns = returns;
-    return this;
-  }
-
-  public TrackingDetailCodes addReturnsItem(DetailCodes returnsItem) {
-    this.returns.add(returnsItem);
-    return this;
-  }
-
-   /**
-   * Contains detail codes that provide additional details related to the return leg of the shipment.
-   * @return returns
-  **/
-  @Schema(required = true, description = "Contains detail codes that provide additional details related to the return leg of the shipment.")
-  public List<DetailCodes> getReturns() {
-    return returns;
-  }
-
-  public void setReturns(List<DetailCodes> returns) {
-    this.returns = returns;
-  }
-
-
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
+    public TrackingDetailCodes forward(List<DetailCodes> forward) {
+        this.forward = forward;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    public TrackingDetailCodes addForwardItem(DetailCodes forwardItem) {
+        this.forward.add(forwardItem);
+        return this;
     }
-    TrackingDetailCodes trackingDetailCodes = (TrackingDetailCodes) o;
-    return Objects.equals(this.forward, trackingDetailCodes.forward) &&
-        Objects.equals(this.returns, trackingDetailCodes.returns);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(forward, returns);
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class TrackingDetailCodes {\n");
-    
-    sb.append("    forward: ").append(toIndentedString(forward)).append("\n");
-    sb.append("    returns: ").append(toIndentedString(returns)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Contains detail codes that provide additional details related to the forward leg of the shipment.
+     *
+     * @return forward
+     */
+    @Schema(
+            required = true,
+            description =
+                    "Contains detail codes that provide additional details related to the forward leg of the shipment.")
+    public List<DetailCodes> getForward() {
+        return forward;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    public void setForward(List<DetailCodes> forward) {
+        this.forward = forward;
+    }
+
+    public TrackingDetailCodes returns(List<DetailCodes> returns) {
+        this.returns = returns;
+        return this;
+    }
+
+    public TrackingDetailCodes addReturnsItem(DetailCodes returnsItem) {
+        this.returns.add(returnsItem);
+        return this;
+    }
+
+    /**
+     * Contains detail codes that provide additional details related to the return leg of the shipment.
+     *
+     * @return returns
+     */
+    @Schema(
+            required = true,
+            description =
+                    "Contains detail codes that provide additional details related to the return leg of the shipment.")
+    public List<DetailCodes> getReturns() {
+        return returns;
+    }
+
+    public void setReturns(List<DetailCodes> returns) {
+        this.returns = returns;
+    }
+
+    @Override
+    public boolean equals(java.lang.Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        TrackingDetailCodes trackingDetailCodes = (TrackingDetailCodes) o;
+        return Objects.equals(this.forward, trackingDetailCodes.forward)
+                && Objects.equals(this.returns, trackingDetailCodes.returns);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(forward, returns);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class TrackingDetailCodes {\n");
+
+        sb.append("    forward: ").append(toIndentedString(forward)).append("\n");
+        sb.append("    returns: ").append(toIndentedString(returns)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
+    private String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }

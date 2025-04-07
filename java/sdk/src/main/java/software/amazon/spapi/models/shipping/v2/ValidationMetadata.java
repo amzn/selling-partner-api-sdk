@@ -12,127 +12,117 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.io.IOException;
-/**
- * ValidationMetadata Details
- */
+import java.util.Objects;
+
+/** ValidationMetadata Details */
 @Schema(description = "ValidationMetadata Details")
-
-
 public class ValidationMetadata {
-  @SerializedName("errorMessage")
-  private String errorMessage = null;
+    @SerializedName("errorMessage")
+    private String errorMessage = null;
 
-  @SerializedName("validationStrategy")
-  private String validationStrategy = null;
+    @SerializedName("validationStrategy")
+    private String validationStrategy = null;
 
-  @SerializedName("value")
-  private String value = null;
+    @SerializedName("value")
+    private String value = null;
 
-  public ValidationMetadata errorMessage(String errorMessage) {
-    this.errorMessage = errorMessage;
-    return this;
-  }
-
-   /**
-   * errorMessage for the error.
-   * @return errorMessage
-  **/
-  @Schema(description = "errorMessage for the error.")
-  public String getErrorMessage() {
-    return errorMessage;
-  }
-
-  public void setErrorMessage(String errorMessage) {
-    this.errorMessage = errorMessage;
-  }
-
-  public ValidationMetadata validationStrategy(String validationStrategy) {
-    this.validationStrategy = validationStrategy;
-    return this;
-  }
-
-   /**
-   * validationStrategy for the error.
-   * @return validationStrategy
-  **/
-  @Schema(description = "validationStrategy for the error.")
-  public String getValidationStrategy() {
-    return validationStrategy;
-  }
-
-  public void setValidationStrategy(String validationStrategy) {
-    this.validationStrategy = validationStrategy;
-  }
-
-  public ValidationMetadata value(String value) {
-    this.value = value;
-    return this;
-  }
-
-   /**
-   * Value.
-   * @return value
-  **/
-  @Schema(description = "Value.")
-  public String getValue() {
-    return value;
-  }
-
-  public void setValue(String value) {
-    this.value = value;
-  }
-
-
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
+    public ValidationMetadata errorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * errorMessage for the error.
+     *
+     * @return errorMessage
+     */
+    @Schema(description = "errorMessage for the error.")
+    public String getErrorMessage() {
+        return errorMessage;
     }
-    ValidationMetadata validationMetadata = (ValidationMetadata) o;
-    return Objects.equals(this.errorMessage, validationMetadata.errorMessage) &&
-        Objects.equals(this.validationStrategy, validationMetadata.validationStrategy) &&
-        Objects.equals(this.value, validationMetadata.value);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(errorMessage, validationStrategy, value);
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ValidationMetadata {\n");
-    
-    sb.append("    errorMessage: ").append(toIndentedString(errorMessage)).append("\n");
-    sb.append("    validationStrategy: ").append(toIndentedString(validationStrategy)).append("\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    public ValidationMetadata validationStrategy(String validationStrategy) {
+        this.validationStrategy = validationStrategy;
+        return this;
+    }
+
+    /**
+     * validationStrategy for the error.
+     *
+     * @return validationStrategy
+     */
+    @Schema(description = "validationStrategy for the error.")
+    public String getValidationStrategy() {
+        return validationStrategy;
+    }
+
+    public void setValidationStrategy(String validationStrategy) {
+        this.validationStrategy = validationStrategy;
+    }
+
+    public ValidationMetadata value(String value) {
+        this.value = value;
+        return this;
+    }
+
+    /**
+     * Value.
+     *
+     * @return value
+     */
+    @Schema(description = "Value.")
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    @Override
+    public boolean equals(java.lang.Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ValidationMetadata validationMetadata = (ValidationMetadata) o;
+        return Objects.equals(this.errorMessage, validationMetadata.errorMessage)
+                && Objects.equals(this.validationStrategy, validationMetadata.validationStrategy)
+                && Objects.equals(this.value, validationMetadata.value);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(errorMessage, validationStrategy, value);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class ValidationMetadata {\n");
+
+        sb.append("    errorMessage: ").append(toIndentedString(errorMessage)).append("\n");
+        sb.append("    validationStrategy: ")
+                .append(toIndentedString(validationStrategy))
+                .append("\n");
+        sb.append("    value: ").append(toIndentedString(value)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
+    private String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }

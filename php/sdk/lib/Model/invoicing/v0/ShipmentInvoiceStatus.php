@@ -1,17 +1,19 @@
 <?php
+
 /**
- * ShipmentInvoiceStatus
+ * ShipmentInvoiceStatus.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Shipment Invoicing
+ * Selling Partner API for Shipment Invoicing.
  *
  * The Selling Partner API for Shipment Invoicing helps you programmatically retrieve shipment invoice information in the Brazil marketplace for a selling partner’s Fulfillment by Amazon (FBA) orders.
  *
@@ -27,22 +29,22 @@
  */
 
 namespace SpApi\Model\invoicing\v0;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * ShipmentInvoiceStatus Class Doc Comment
+ * ShipmentInvoiceStatus Class Doc Comment.
  *
  * @category Class
+ *
  * @description The shipment invoice status.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class ShipmentInvoiceStatus
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const PROCESSING = 'Processing';
 
@@ -53,7 +55,8 @@ class ShipmentInvoiceStatus
     public const NOT_FOUND = 'NotFound';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
@@ -62,9 +65,7 @@ class ShipmentInvoiceStatus
             self::PROCESSING,
             self::ACCEPTED,
             self::ERRORED,
-            self::NOT_FOUND
+            self::NOT_FOUND,
         ];
     }
 }
-
-

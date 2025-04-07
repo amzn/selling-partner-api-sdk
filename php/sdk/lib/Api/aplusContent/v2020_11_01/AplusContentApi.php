@@ -1,16 +1,18 @@
 <?php
+
 /**
  * AplusContentApi
- * PHP version 8.3
+ * PHP version 8.3.
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for A+ Content Management
+ * Selling Partner API for A+ Content Management.
  *
  * Use the A+ Content API to build applications that help selling partners add rich marketing content to their Amazon product detail pages. Selling partners can use A+ content to share their brand and product story, which helps buyers make informed purchasing decisions. Selling partners use content modules to add images and text.
  *
@@ -35,38 +37,41 @@ use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use SpApi\AuthAndAuth\RateLimitConfiguration;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RateLimitConfiguration;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
+use SpApi\Model\aplusContent\v2020_11_01\GetContentDocumentResponse;
+use SpApi\Model\aplusContent\v2020_11_01\ListContentDocumentAsinRelationsResponse;
+use SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentApprovalSubmissionResponse;
+use SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsRequest;
+use SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsResponse;
+use SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest;
+use SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentResponse;
+use SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentSuspendSubmissionResponse;
+use SpApi\Model\aplusContent\v2020_11_01\SearchContentDocumentsResponse;
+use SpApi\Model\aplusContent\v2020_11_01\SearchContentPublishRecordsResponse;
+use SpApi\Model\aplusContent\v2020_11_01\ValidateContentDocumentAsinRelationsResponse;
 use SpApi\ObjectSerializer;
+use Symfony\Component\RateLimiter\LimiterInterface;
+use Symfony\Component\RateLimiter\RateLimiterFactory;
+use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
- * AplusContentApi Class Doc Comment
+ * AplusContentApi Class Doc Comment.
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class AplusContentApi
 {
-    /**
-     * @var ClientInterface
-     */
     protected ClientInterface $client;
 
-    /**
-     * @var Configuration
-     */
     protected Configuration $config;
 
-    /**
-     * @var HeaderSelector
-     */
     protected HeaderSelector $headerSelector;
 
     /**
@@ -74,21 +79,11 @@ class AplusContentApi
      */
     protected int $hostIndex;
 
-    /**
-     * @var ?RateLimitConfiguration
-     */
     private ?RateLimitConfiguration $rateLimitConfig = null;
 
-    /**
-     * @var ?LimiterInterface
-     */
     private ?LimiterInterface $rateLimiter = null;
 
     /**
-     * @param Configuration   $config
-     * @param RateLimitConfiguration|null $rateLimitConfig
-     * @param ClientInterface|null $client
-     * @param HeaderSelector|null $selector
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
@@ -107,10 +102,10 @@ class AplusContentApi
                 'policy' => $type,
                 'limit' => $rateLimitConfig->getRateLimitTokenLimit(),
             ];
-            if ($type === "fixed_window" || $type === "sliding_window") {
-                $rateLimitOptions['interval'] = $rateLimitConfig->getRateLimitToken() . 'seconds';
+            if ('fixed_window' === $type || 'sliding_window' === $type) {
+                $rateLimitOptions['interval'] = $rateLimitConfig->getRateLimitToken().'seconds';
             } else {
-                $rateLimitOptions['rate'] = ['interval' => $rateLimitConfig->getRateLimitToken() . 'seconds'];
+                $rateLimitOptions['rate'] = ['interval' => $rateLimitConfig->getRateLimitToken().'seconds'];
             }
             $factory = new RateLimiterFactory($rateLimitOptions, new InMemoryStorage());
             $this->rateLimiter = $factory->create();
@@ -122,7 +117,7 @@ class AplusContentApi
     }
 
     /**
-     * Set the host index
+     * Set the host index.
      *
      * @param int $hostIndex Host index (required)
      */
@@ -132,7 +127,7 @@ class AplusContentApi
     }
 
     /**
-     * Get the host index
+     * Get the host index.
      *
      * @return int Host index
      */
@@ -141,55 +136,54 @@ class AplusContentApi
         return $this->hostIndex;
     }
 
-    /**
-     * @return Configuration
-     */
     public function getConfig(): Configuration
     {
         return $this->config;
     }
 
     /**
-     * Operation createContentDocument
+     * Operation createContentDocument.
      *
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
-     *  The content document request details. (required)
+     * @param string                     $marketplace_id
+     *                                                                  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param PostContentDocumentRequest $post_content_document_request
+     *                                                                  The content document request details. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentResponse
      */
     public function createContentDocument(
         string $marketplace_id,
-        \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
-    ): \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentResponse {
+        PostContentDocumentRequest $post_content_document_request
+    ): PostContentDocumentResponse {
         list($response) = $this->createContentDocumentWithHttpInfo($marketplace_id, $post_content_document_request);
+
         return $response;
     }
 
     /**
-     * Operation createContentDocumentWithHttpInfo
+     * Operation createContentDocumentWithHttpInfo.
      *
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
-     *  The content document request details. (required)
+     * @param string                     $marketplace_id
+     *                                                                  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param PostContentDocumentRequest $post_content_document_request
+     *                                                                  The content document request details. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function createContentDocumentWithHttpInfo(
         string $marketplace_id,
-        \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
+        PostContentDocumentRequest $post_content_document_request
     ): array {
         $request = $this->createContentDocumentRequest($marketplace_id, $post_content_document_request);
         $request = $this->config->sign($request);
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -224,10 +218,10 @@ class AplusContentApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentResponse' !== 'string') {
@@ -238,11 +232,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 400:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -253,11 +248,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 401:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -268,11 +264,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 403:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -283,11 +280,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 404:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -298,11 +296,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 429:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -313,11 +312,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 500:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -328,11 +328,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 503:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -343,16 +344,16 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
             $returnType = '\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+            if ('\SplFileObject' === $returnType) {
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
+                if ('string' !== $returnType) {
                     $content = json_decode($content);
                 }
             }
@@ -360,9 +361,8 @@ class AplusContentApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -372,7 +372,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -380,7 +382,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -388,7 +392,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -396,7 +402,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -404,7 +412,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -412,7 +422,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -420,7 +432,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -428,49 +442,50 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation createContentDocumentAsync
+     * Operation createContentDocumentAsync.
      *
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
-     *  The content document request details. (required)
+     * @param string                     $marketplace_id
+     *                                                                  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param PostContentDocumentRequest $post_content_document_request
+     *                                                                  The content document request details. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function createContentDocumentAsync(
         string $marketplace_id,
-        \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
+        PostContentDocumentRequest $post_content_document_request
     ): PromiseInterface {
         return $this->createContentDocumentAsyncWithHttpInfo($marketplace_id, $post_content_document_request)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation createContentDocumentAsyncWithHttpInfo
+     * Operation createContentDocumentAsyncWithHttpInfo.
      *
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
-     *  The content document request details. (required)
+     * @param string                     $marketplace_id
+     *                                                                  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param PostContentDocumentRequest $post_content_document_request
+     *                                                                  The content document request details. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function createContentDocumentAsyncWithHttpInfo(
         string $marketplace_id,
-        \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
+        PostContentDocumentRequest $post_content_document_request
     ): PromiseInterface {
         $returnType = '\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentResponse';
         $request = $this->createContentDocumentRequest($marketplace_id, $post_content_document_request);
@@ -481,11 +496,11 @@ class AplusContentApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -493,12 +508,13 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -510,26 +526,26 @@ class AplusContentApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'createContentDocument'
+     * Create request for operation 'createContentDocument'.
      *
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
-     *  The content document request details. (required)
+     * @param string                     $marketplace_id
+     *                                                                  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param PostContentDocumentRequest $post_content_document_request
+     *                                                                  The content document request details. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function createContentDocumentRequest(
         string $marketplace_id,
-        \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
+        PostContentDocumentRequest $post_content_document_request
     ): Request {
         // verify the required parameter 'marketplace_id' is set
-        if ($marketplace_id === null || (is_array($marketplace_id) && count($marketplace_id) === 0)) {
+        if (null === $marketplace_id || (is_array($marketplace_id) && 0 === count($marketplace_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_id when calling createContentDocument'
             );
@@ -539,7 +555,7 @@ class AplusContentApi
         }
 
         // verify the required parameter 'post_content_document_request' is set
-        if ($post_content_document_request === null || (is_array($post_content_document_request) && count($post_content_document_request) === 0)) {
+        if (null === $post_content_document_request || (is_array($post_content_document_request) && 0 === count($post_content_document_request))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $post_content_document_request when calling createContentDocument'
             );
@@ -562,9 +578,6 @@ class AplusContentApi
             true // required
         ) ?? []);
 
-
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -572,15 +585,14 @@ class AplusContentApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                'application/json'
-                ,
+                'application/json',
                 false
             );
         }
 
         // for model (json/xml)
         if (isset($post_content_document_request)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($post_content_document_request));
             } else {
                 $httpBody = $post_content_document_request;
@@ -593,22 +605,19 @@ class AplusContentApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -622,50 +631,52 @@ class AplusContentApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getContentDocument
+     * Operation getContentDocument.
      *
-     * @param  string $content_reference_key
-     *  The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier. (required)
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  string[] $included_data_set
-     *  The set of A+ Content data types to include in the response. (required)
+     * @param string   $content_reference_key
+     *                                        The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier. (required)
+     * @param string   $marketplace_id
+     *                                        The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param string[] $included_data_set
+     *                                        The set of A+ Content data types to include in the response. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\aplusContent\v2020_11_01\GetContentDocumentResponse
      */
     public function getContentDocument(
         string $content_reference_key,
         string $marketplace_id,
         array $included_data_set
-    ): \SpApi\Model\aplusContent\v2020_11_01\GetContentDocumentResponse {
+    ): GetContentDocumentResponse {
         list($response) = $this->getContentDocumentWithHttpInfo($content_reference_key, $marketplace_id, $included_data_set);
+
         return $response;
     }
 
     /**
-     * Operation getContentDocumentWithHttpInfo
+     * Operation getContentDocumentWithHttpInfo.
      *
-     * @param  string $content_reference_key
-     *  The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier. (required)
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  string[] $included_data_set
-     *  The set of A+ Content data types to include in the response. (required)
+     * @param string   $content_reference_key
+     *                                        The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier. (required)
+     * @param string   $marketplace_id
+     *                                        The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param string[] $included_data_set
+     *                                        The set of A+ Content data types to include in the response. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\aplusContent\v2020_11_01\GetContentDocumentResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getContentDocumentWithHttpInfo(
         string $content_reference_key,
@@ -677,6 +688,7 @@ class AplusContentApi
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -711,10 +723,10 @@ class AplusContentApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\GetContentDocumentResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\GetContentDocumentResponse' !== 'string') {
@@ -725,11 +737,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\GetContentDocumentResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 400:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -740,11 +753,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 401:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -755,11 +769,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 403:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -770,11 +785,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 404:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -785,11 +801,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 410:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -800,11 +817,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 429:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -815,11 +833,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 500:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -830,11 +849,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 503:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -845,16 +865,16 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
             $returnType = '\SpApi\Model\aplusContent\v2020_11_01\GetContentDocumentResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+            if ('\SplFileObject' === $returnType) {
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
+                if ('string' !== $returnType) {
                     $content = json_decode($content);
                 }
             }
@@ -862,9 +882,8 @@ class AplusContentApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -874,7 +893,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -882,7 +903,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -890,7 +913,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -898,7 +923,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -906,7 +933,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 410:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -914,7 +943,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -922,7 +953,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -930,7 +963,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -938,24 +973,25 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation getContentDocumentAsync
+     * Operation getContentDocumentAsync.
      *
-     * @param  string $content_reference_key
-     *  The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier. (required)
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  string[] $included_data_set
-     *  The set of A+ Content data types to include in the response. (required)
+     * @param string   $content_reference_key
+     *                                        The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier. (required)
+     * @param string   $marketplace_id
+     *                                        The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param string[] $included_data_set
+     *                                        The set of A+ Content data types to include in the response. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getContentDocumentAsync(
         string $content_reference_key,
@@ -967,21 +1003,21 @@ class AplusContentApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getContentDocumentAsyncWithHttpInfo
+     * Operation getContentDocumentAsyncWithHttpInfo.
      *
-     * @param  string $content_reference_key
-     *  The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier. (required)
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  string[] $included_data_set
-     *  The set of A+ Content data types to include in the response. (required)
+     * @param string   $content_reference_key
+     *                                        The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier. (required)
+     * @param string   $marketplace_id
+     *                                        The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param string[] $included_data_set
+     *                                        The set of A+ Content data types to include in the response. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getContentDocumentAsyncWithHttpInfo(
         string $content_reference_key,
@@ -997,11 +1033,11 @@ class AplusContentApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -1009,12 +1045,13 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -1026,21 +1063,21 @@ class AplusContentApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getContentDocument'
+     * Create request for operation 'getContentDocument'.
      *
-     * @param  string $content_reference_key
-     *  The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier. (required)
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  string[] $included_data_set
-     *  The set of A+ Content data types to include in the response. (required)
+     * @param string   $content_reference_key
+     *                                        The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier. (required)
+     * @param string   $marketplace_id
+     *                                        The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param string[] $included_data_set
+     *                                        The set of A+ Content data types to include in the response. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getContentDocumentRequest(
         string $content_reference_key,
@@ -1048,7 +1085,7 @@ class AplusContentApi
         array $included_data_set
     ): Request {
         // verify the required parameter 'content_reference_key' is set
-        if ($content_reference_key === null || (is_array($content_reference_key) && count($content_reference_key) === 0)) {
+        if (null === $content_reference_key || (is_array($content_reference_key) && 0 === count($content_reference_key))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $content_reference_key when calling getContentDocument'
             );
@@ -1058,7 +1095,7 @@ class AplusContentApi
         }
 
         // verify the required parameter 'marketplace_id' is set
-        if ($marketplace_id === null || (is_array($marketplace_id) && count($marketplace_id) === 0)) {
+        if (null === $marketplace_id || (is_array($marketplace_id) && 0 === count($marketplace_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_id when calling getContentDocument'
             );
@@ -1068,7 +1105,7 @@ class AplusContentApi
         }
 
         // verify the required parameter 'included_data_set' is set
-        if ($included_data_set === null || (is_array($included_data_set) && count($included_data_set) === 0)) {
+        if (null === $included_data_set || (is_array($included_data_set) && 0 === count($included_data_set))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $included_data_set when calling getContentDocument'
             );
@@ -1076,7 +1113,6 @@ class AplusContentApi
         if (count($included_data_set) < 1) {
             throw new \InvalidArgumentException('invalid value for "$included_data_set" when calling AplusContentApi.getContentDocument, number of items must be greater than or equal to 1.');
         }
-
 
         $resourcePath = '/aplus/2020-11-01/contentDocuments/{contentReferenceKey}';
         $formParams = [];
@@ -1104,16 +1140,14 @@ class AplusContentApi
             true // required
         ) ?? []);
 
-
         // path params
-        if ($content_reference_key !== null) {
+        if (null !== $content_reference_key) {
             $resourcePath = str_replace(
-                '{' . 'contentReferenceKey' . '}',
+                '{contentReferenceKey}',
                 ObjectSerializer::toPathValue($content_reference_key),
                 $resourcePath
             );
         }
-
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -1122,7 +1156,6 @@ class AplusContentApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                
                 '',
                 false
             );
@@ -1137,22 +1170,19 @@ class AplusContentApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1166,31 +1196,31 @@ class AplusContentApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation listContentDocumentAsinRelations
+     * Operation listContentDocumentAsinRelations.
      *
-     * @param  string $content_reference_key
-     *  The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier. (required)
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  string[]|null $included_data_set
-     *  The set of A+ Content data types to include in the response. If you don&#39;t include this parameter, the operation returns the related ASINs without metadata. (optional)
-     * @param  string[]|null $asin_set
-     *  The set of ASINs. (optional)
-     * @param  string|null $page_token
-     *  A token that you use to fetch a specific page when there are multiple pages of results. (optional)
+     * @param string        $content_reference_key
+     *                                             The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier. (required)
+     * @param string        $marketplace_id
+     *                                             The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param null|string[] $included_data_set
+     *                                             The set of A+ Content data types to include in the response. If you don&#39;t include this parameter, the operation returns the related ASINs without metadata. (optional)
+     * @param null|string[] $asin_set
+     *                                             The set of ASINs. (optional)
+     * @param null|string   $page_token
+     *                                             A token that you use to fetch a specific page when there are multiple pages of results. (optional)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\aplusContent\v2020_11_01\ListContentDocumentAsinRelationsResponse
      */
     public function listContentDocumentAsinRelations(
         string $content_reference_key,
@@ -1198,28 +1228,30 @@ class AplusContentApi
         ?array $included_data_set = null,
         ?array $asin_set = null,
         ?string $page_token = null
-    ): \SpApi\Model\aplusContent\v2020_11_01\ListContentDocumentAsinRelationsResponse {
+    ): ListContentDocumentAsinRelationsResponse {
         list($response) = $this->listContentDocumentAsinRelationsWithHttpInfo($content_reference_key, $marketplace_id, $included_data_set, $asin_set, $page_token);
+
         return $response;
     }
 
     /**
-     * Operation listContentDocumentAsinRelationsWithHttpInfo
+     * Operation listContentDocumentAsinRelationsWithHttpInfo.
      *
-     * @param  string $content_reference_key
-     *  The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier. (required)
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  string[]|null $included_data_set
-     *  The set of A+ Content data types to include in the response. If you don&#39;t include this parameter, the operation returns the related ASINs without metadata. (optional)
-     * @param  string[]|null $asin_set
-     *  The set of ASINs. (optional)
-     * @param  string|null $page_token
-     *  A token that you use to fetch a specific page when there are multiple pages of results. (optional)
+     * @param string        $content_reference_key
+     *                                             The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier. (required)
+     * @param string        $marketplace_id
+     *                                             The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param null|string[] $included_data_set
+     *                                             The set of A+ Content data types to include in the response. If you don&#39;t include this parameter, the operation returns the related ASINs without metadata. (optional)
+     * @param null|string[] $asin_set
+     *                                             The set of ASINs. (optional)
+     * @param null|string   $page_token
+     *                                             A token that you use to fetch a specific page when there are multiple pages of results. (optional)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\aplusContent\v2020_11_01\ListContentDocumentAsinRelationsResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function listContentDocumentAsinRelationsWithHttpInfo(
         string $content_reference_key,
@@ -1233,6 +1265,7 @@ class AplusContentApi
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -1267,10 +1300,10 @@ class AplusContentApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ListContentDocumentAsinRelationsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ListContentDocumentAsinRelationsResponse' !== 'string') {
@@ -1281,11 +1314,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ListContentDocumentAsinRelationsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 400:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -1296,11 +1330,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 401:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -1311,11 +1346,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 403:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -1326,11 +1362,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 404:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -1341,11 +1378,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 410:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -1356,11 +1394,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 429:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -1371,11 +1410,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 500:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -1386,11 +1426,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 503:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -1401,16 +1442,16 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
             $returnType = '\SpApi\Model\aplusContent\v2020_11_01\ListContentDocumentAsinRelationsResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+            if ('\SplFileObject' === $returnType) {
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
+                if ('string' !== $returnType) {
                     $content = json_decode($content);
                 }
             }
@@ -1418,9 +1459,8 @@ class AplusContentApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -1430,7 +1470,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1438,7 +1480,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1446,7 +1490,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1454,7 +1500,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1462,7 +1510,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 410:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1470,7 +1520,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1478,7 +1530,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1486,7 +1540,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1494,28 +1550,29 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation listContentDocumentAsinRelationsAsync
+     * Operation listContentDocumentAsinRelationsAsync.
      *
-     * @param  string $content_reference_key
-     *  The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier. (required)
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  string[]|null $included_data_set
-     *  The set of A+ Content data types to include in the response. If you don&#39;t include this parameter, the operation returns the related ASINs without metadata. (optional)
-     * @param  string[]|null $asin_set
-     *  The set of ASINs. (optional)
-     * @param  string|null $page_token
-     *  A token that you use to fetch a specific page when there are multiple pages of results. (optional)
+     * @param string        $content_reference_key
+     *                                             The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier. (required)
+     * @param string        $marketplace_id
+     *                                             The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param null|string[] $included_data_set
+     *                                             The set of A+ Content data types to include in the response. If you don&#39;t include this parameter, the operation returns the related ASINs without metadata. (optional)
+     * @param null|string[] $asin_set
+     *                                             The set of ASINs. (optional)
+     * @param null|string   $page_token
+     *                                             A token that you use to fetch a specific page when there are multiple pages of results. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listContentDocumentAsinRelationsAsync(
         string $content_reference_key,
@@ -1529,25 +1586,25 @@ class AplusContentApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation listContentDocumentAsinRelationsAsyncWithHttpInfo
+     * Operation listContentDocumentAsinRelationsAsyncWithHttpInfo.
      *
-     * @param  string $content_reference_key
-     *  The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier. (required)
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  string[]|null $included_data_set
-     *  The set of A+ Content data types to include in the response. If you don&#39;t include this parameter, the operation returns the related ASINs without metadata. (optional)
-     * @param  string[]|null $asin_set
-     *  The set of ASINs. (optional)
-     * @param  string|null $page_token
-     *  A token that you use to fetch a specific page when there are multiple pages of results. (optional)
+     * @param string        $content_reference_key
+     *                                             The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier. (required)
+     * @param string        $marketplace_id
+     *                                             The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param null|string[] $included_data_set
+     *                                             The set of A+ Content data types to include in the response. If you don&#39;t include this parameter, the operation returns the related ASINs without metadata. (optional)
+     * @param null|string[] $asin_set
+     *                                             The set of ASINs. (optional)
+     * @param null|string   $page_token
+     *                                             A token that you use to fetch a specific page when there are multiple pages of results. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function listContentDocumentAsinRelationsAsyncWithHttpInfo(
         string $content_reference_key,
@@ -1565,11 +1622,11 @@ class AplusContentApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -1577,12 +1634,13 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -1594,25 +1652,25 @@ class AplusContentApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'listContentDocumentAsinRelations'
+     * Create request for operation 'listContentDocumentAsinRelations'.
      *
-     * @param  string $content_reference_key
-     *  The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier. (required)
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  string[]|null $included_data_set
-     *  The set of A+ Content data types to include in the response. If you don&#39;t include this parameter, the operation returns the related ASINs without metadata. (optional)
-     * @param  string[]|null $asin_set
-     *  The set of ASINs. (optional)
-     * @param  string|null $page_token
-     *  A token that you use to fetch a specific page when there are multiple pages of results. (optional)
+     * @param string        $content_reference_key
+     *                                             The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier. (required)
+     * @param string        $marketplace_id
+     *                                             The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param null|string[] $included_data_set
+     *                                             The set of A+ Content data types to include in the response. If you don&#39;t include this parameter, the operation returns the related ASINs without metadata. (optional)
+     * @param null|string[] $asin_set
+     *                                             The set of ASINs. (optional)
+     * @param null|string   $page_token
+     *                                             A token that you use to fetch a specific page when there are multiple pages of results. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function listContentDocumentAsinRelationsRequest(
         string $content_reference_key,
@@ -1622,7 +1680,7 @@ class AplusContentApi
         ?string $page_token = null
     ): Request {
         // verify the required parameter 'content_reference_key' is set
-        if ($content_reference_key === null || (is_array($content_reference_key) && count($content_reference_key) === 0)) {
+        if (null === $content_reference_key || (is_array($content_reference_key) && 0 === count($content_reference_key))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $content_reference_key when calling listContentDocumentAsinRelations'
             );
@@ -1632,7 +1690,7 @@ class AplusContentApi
         }
 
         // verify the required parameter 'marketplace_id' is set
-        if ($marketplace_id === null || (is_array($marketplace_id) && count($marketplace_id) === 0)) {
+        if (null === $marketplace_id || (is_array($marketplace_id) && 0 === count($marketplace_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_id when calling listContentDocumentAsinRelations'
             );
@@ -1641,15 +1699,13 @@ class AplusContentApi
             throw new \InvalidArgumentException('invalid length for "$marketplace_id" when calling AplusContentApi.listContentDocumentAsinRelations, must be bigger than or equal to 1.');
         }
 
-        if ($included_data_set !== null && count($included_data_set) < 0) {
+        if (null !== $included_data_set && count($included_data_set) < 0) {
             throw new \InvalidArgumentException('invalid value for "$included_data_set" when calling AplusContentApi.listContentDocumentAsinRelations, number of items must be greater than or equal to 0.');
         }
 
-
-        if ($page_token !== null && strlen($page_token) < 1) {
+        if (null !== $page_token && strlen($page_token) < 1) {
             throw new \InvalidArgumentException('invalid length for "$page_token" when calling AplusContentApi.listContentDocumentAsinRelations, must be bigger than or equal to 1.');
         }
-
 
         $resourcePath = '/aplus/2020-11-01/contentDocuments/{contentReferenceKey}/asins';
         $formParams = [];
@@ -1695,16 +1751,14 @@ class AplusContentApi
             false // required
         ) ?? []);
 
-
         // path params
-        if ($content_reference_key !== null) {
+        if (null !== $content_reference_key) {
             $resourcePath = str_replace(
-                '{' . 'contentReferenceKey' . '}',
+                '{contentReferenceKey}',
                 ObjectSerializer::toPathValue($content_reference_key),
                 $resourcePath
             );
         }
-
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -1713,7 +1767,6 @@ class AplusContentApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                
                 '',
                 false
             );
@@ -1728,22 +1781,19 @@ class AplusContentApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1757,45 +1807,47 @@ class AplusContentApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation postContentDocumentApprovalSubmission
+     * Operation postContentDocumentApprovalSubmission.
      *
-     * @param  string $content_reference_key
-     *  The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier. (required)
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param string $content_reference_key
+     *                                      The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier. (required)
+     * @param string $marketplace_id
+     *                                      The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentApprovalSubmissionResponse
      */
     public function postContentDocumentApprovalSubmission(
         string $content_reference_key,
         string $marketplace_id
-    ): \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentApprovalSubmissionResponse {
+    ): PostContentDocumentApprovalSubmissionResponse {
         list($response) = $this->postContentDocumentApprovalSubmissionWithHttpInfo($content_reference_key, $marketplace_id);
+
         return $response;
     }
 
     /**
-     * Operation postContentDocumentApprovalSubmissionWithHttpInfo
+     * Operation postContentDocumentApprovalSubmissionWithHttpInfo.
      *
-     * @param  string $content_reference_key
-     *  The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier. (required)
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param string $content_reference_key
+     *                                      The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier. (required)
+     * @param string $marketplace_id
+     *                                      The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentApprovalSubmissionResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function postContentDocumentApprovalSubmissionWithHttpInfo(
         string $content_reference_key,
@@ -1806,6 +1858,7 @@ class AplusContentApi
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -1840,10 +1893,10 @@ class AplusContentApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentApprovalSubmissionResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentApprovalSubmissionResponse' !== 'string') {
@@ -1854,11 +1907,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentApprovalSubmissionResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 400:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -1869,11 +1923,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 401:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -1884,11 +1939,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 403:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -1899,11 +1955,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 404:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -1914,11 +1971,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 410:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -1929,11 +1987,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 429:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -1944,11 +2003,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 500:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -1959,11 +2019,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 503:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -1974,16 +2035,16 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
             $returnType = '\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentApprovalSubmissionResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+            if ('\SplFileObject' === $returnType) {
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
+                if ('string' !== $returnType) {
                     $content = json_decode($content);
                 }
             }
@@ -1991,9 +2052,8 @@ class AplusContentApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -2003,7 +2063,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2011,7 +2073,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2019,7 +2083,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2027,7 +2093,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2035,7 +2103,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 410:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2043,7 +2113,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2051,7 +2123,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2059,7 +2133,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2067,22 +2143,23 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation postContentDocumentApprovalSubmissionAsync
+     * Operation postContentDocumentApprovalSubmissionAsync.
      *
-     * @param  string $content_reference_key
-     *  The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier. (required)
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param string $content_reference_key
+     *                                      The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier. (required)
+     * @param string $marketplace_id
+     *                                      The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function postContentDocumentApprovalSubmissionAsync(
         string $content_reference_key,
@@ -2093,19 +2170,19 @@ class AplusContentApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation postContentDocumentApprovalSubmissionAsyncWithHttpInfo
+     * Operation postContentDocumentApprovalSubmissionAsyncWithHttpInfo.
      *
-     * @param  string $content_reference_key
-     *  The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier. (required)
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param string $content_reference_key
+     *                                      The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier. (required)
+     * @param string $marketplace_id
+     *                                      The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function postContentDocumentApprovalSubmissionAsyncWithHttpInfo(
         string $content_reference_key,
@@ -2120,11 +2197,11 @@ class AplusContentApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -2132,12 +2209,13 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -2149,26 +2227,26 @@ class AplusContentApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'postContentDocumentApprovalSubmission'
+     * Create request for operation 'postContentDocumentApprovalSubmission'.
      *
-     * @param  string $content_reference_key
-     *  The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier. (required)
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param string $content_reference_key
+     *                                      The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier. (required)
+     * @param string $marketplace_id
+     *                                      The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function postContentDocumentApprovalSubmissionRequest(
         string $content_reference_key,
         string $marketplace_id
     ): Request {
         // verify the required parameter 'content_reference_key' is set
-        if ($content_reference_key === null || (is_array($content_reference_key) && count($content_reference_key) === 0)) {
+        if (null === $content_reference_key || (is_array($content_reference_key) && 0 === count($content_reference_key))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $content_reference_key when calling postContentDocumentApprovalSubmission'
             );
@@ -2178,7 +2256,7 @@ class AplusContentApi
         }
 
         // verify the required parameter 'marketplace_id' is set
-        if ($marketplace_id === null || (is_array($marketplace_id) && count($marketplace_id) === 0)) {
+        if (null === $marketplace_id || (is_array($marketplace_id) && 0 === count($marketplace_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_id when calling postContentDocumentApprovalSubmission'
             );
@@ -2186,7 +2264,6 @@ class AplusContentApi
         if (strlen($marketplace_id) < 1) {
             throw new \InvalidArgumentException('invalid length for "$marketplace_id" when calling AplusContentApi.postContentDocumentApprovalSubmission, must be bigger than or equal to 1.');
         }
-
 
         $resourcePath = '/aplus/2020-11-01/contentDocuments/{contentReferenceKey}/approvalSubmissions';
         $formParams = [];
@@ -2205,16 +2282,14 @@ class AplusContentApi
             true // required
         ) ?? []);
 
-
         // path params
-        if ($content_reference_key !== null) {
+        if (null !== $content_reference_key) {
             $resourcePath = str_replace(
-                '{' . 'contentReferenceKey' . '}',
+                '{contentReferenceKey}',
                 ObjectSerializer::toPathValue($content_reference_key),
                 $resourcePath
             );
         }
-
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -2223,7 +2298,6 @@ class AplusContentApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                
                 '',
                 false
             );
@@ -2238,22 +2312,19 @@ class AplusContentApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -2267,61 +2338,64 @@ class AplusContentApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation postContentDocumentAsinRelations
+     * Operation postContentDocumentAsinRelations.
      *
-     * @param  string $content_reference_key
-     *  The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier. (required)
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request
-     *  The request details for the content document ASIN relations. (required)
+     * @param string                                  $content_reference_key
+     *                                                                                              The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier. (required)
+     * @param string                                  $marketplace_id
+     *                                                                                              The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request
+     *                                                                                              The request details for the content document ASIN relations. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsResponse
      */
     public function postContentDocumentAsinRelations(
         string $content_reference_key,
         string $marketplace_id,
-        \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request
-    ): \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsResponse {
+        PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request
+    ): PostContentDocumentAsinRelationsResponse {
         list($response) = $this->postContentDocumentAsinRelationsWithHttpInfo($content_reference_key, $marketplace_id, $post_content_document_asin_relations_request);
+
         return $response;
     }
 
     /**
-     * Operation postContentDocumentAsinRelationsWithHttpInfo
+     * Operation postContentDocumentAsinRelationsWithHttpInfo.
      *
-     * @param  string $content_reference_key
-     *  The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier. (required)
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request
-     *  The request details for the content document ASIN relations. (required)
+     * @param string                                  $content_reference_key
+     *                                                                                              The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier. (required)
+     * @param string                                  $marketplace_id
+     *                                                                                              The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request
+     *                                                                                              The request details for the content document ASIN relations. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function postContentDocumentAsinRelationsWithHttpInfo(
         string $content_reference_key,
         string $marketplace_id,
-        \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request
+        PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request
     ): array {
         $request = $this->postContentDocumentAsinRelationsRequest($content_reference_key, $marketplace_id, $post_content_document_asin_relations_request);
         $request = $this->config->sign($request);
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -2356,10 +2430,10 @@ class AplusContentApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsResponse' !== 'string') {
@@ -2370,11 +2444,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 400:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -2385,11 +2460,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 401:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -2400,11 +2476,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 403:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -2415,11 +2492,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 404:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -2430,11 +2508,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 410:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -2445,11 +2524,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 429:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -2460,11 +2540,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 500:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -2475,11 +2556,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 503:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -2490,16 +2572,16 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
             $returnType = '\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+            if ('\SplFileObject' === $returnType) {
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
+                if ('string' !== $returnType) {
                     $content = json_decode($content);
                 }
             }
@@ -2507,9 +2589,8 @@ class AplusContentApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -2519,7 +2600,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2527,7 +2610,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2535,7 +2620,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2543,7 +2630,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2551,7 +2640,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 410:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2559,7 +2650,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2567,7 +2660,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2575,7 +2670,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2583,55 +2680,56 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation postContentDocumentAsinRelationsAsync
+     * Operation postContentDocumentAsinRelationsAsync.
      *
-     * @param  string $content_reference_key
-     *  The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier. (required)
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request
-     *  The request details for the content document ASIN relations. (required)
+     * @param string                                  $content_reference_key
+     *                                                                                              The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier. (required)
+     * @param string                                  $marketplace_id
+     *                                                                                              The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request
+     *                                                                                              The request details for the content document ASIN relations. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function postContentDocumentAsinRelationsAsync(
         string $content_reference_key,
         string $marketplace_id,
-        \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request
+        PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request
     ): PromiseInterface {
         return $this->postContentDocumentAsinRelationsAsyncWithHttpInfo($content_reference_key, $marketplace_id, $post_content_document_asin_relations_request)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation postContentDocumentAsinRelationsAsyncWithHttpInfo
+     * Operation postContentDocumentAsinRelationsAsyncWithHttpInfo.
      *
-     * @param  string $content_reference_key
-     *  The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier. (required)
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request
-     *  The request details for the content document ASIN relations. (required)
+     * @param string                                  $content_reference_key
+     *                                                                                              The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier. (required)
+     * @param string                                  $marketplace_id
+     *                                                                                              The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request
+     *                                                                                              The request details for the content document ASIN relations. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function postContentDocumentAsinRelationsAsyncWithHttpInfo(
         string $content_reference_key,
         string $marketplace_id,
-        \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request
+        PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request
     ): PromiseInterface {
         $returnType = '\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsResponse';
         $request = $this->postContentDocumentAsinRelationsRequest($content_reference_key, $marketplace_id, $post_content_document_asin_relations_request);
@@ -2642,11 +2740,11 @@ class AplusContentApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -2654,12 +2752,13 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -2671,29 +2770,29 @@ class AplusContentApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'postContentDocumentAsinRelations'
+     * Create request for operation 'postContentDocumentAsinRelations'.
      *
-     * @param  string $content_reference_key
-     *  The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier. (required)
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request
-     *  The request details for the content document ASIN relations. (required)
+     * @param string                                  $content_reference_key
+     *                                                                                              The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier. (required)
+     * @param string                                  $marketplace_id
+     *                                                                                              The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request
+     *                                                                                              The request details for the content document ASIN relations. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function postContentDocumentAsinRelationsRequest(
         string $content_reference_key,
         string $marketplace_id,
-        \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request
+        PostContentDocumentAsinRelationsRequest $post_content_document_asin_relations_request
     ): Request {
         // verify the required parameter 'content_reference_key' is set
-        if ($content_reference_key === null || (is_array($content_reference_key) && count($content_reference_key) === 0)) {
+        if (null === $content_reference_key || (is_array($content_reference_key) && 0 === count($content_reference_key))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $content_reference_key when calling postContentDocumentAsinRelations'
             );
@@ -2703,7 +2802,7 @@ class AplusContentApi
         }
 
         // verify the required parameter 'marketplace_id' is set
-        if ($marketplace_id === null || (is_array($marketplace_id) && count($marketplace_id) === 0)) {
+        if (null === $marketplace_id || (is_array($marketplace_id) && 0 === count($marketplace_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_id when calling postContentDocumentAsinRelations'
             );
@@ -2713,7 +2812,7 @@ class AplusContentApi
         }
 
         // verify the required parameter 'post_content_document_asin_relations_request' is set
-        if ($post_content_document_asin_relations_request === null || (is_array($post_content_document_asin_relations_request) && count($post_content_document_asin_relations_request) === 0)) {
+        if (null === $post_content_document_asin_relations_request || (is_array($post_content_document_asin_relations_request) && 0 === count($post_content_document_asin_relations_request))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $post_content_document_asin_relations_request when calling postContentDocumentAsinRelations'
             );
@@ -2736,16 +2835,14 @@ class AplusContentApi
             true // required
         ) ?? []);
 
-
         // path params
-        if ($content_reference_key !== null) {
+        if (null !== $content_reference_key) {
             $resourcePath = str_replace(
-                '{' . 'contentReferenceKey' . '}',
+                '{contentReferenceKey}',
                 ObjectSerializer::toPathValue($content_reference_key),
                 $resourcePath
             );
         }
-
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -2754,15 +2851,14 @@ class AplusContentApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                'application/json'
-                ,
+                'application/json',
                 false
             );
         }
 
         // for model (json/xml)
         if (isset($post_content_document_asin_relations_request)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($post_content_document_asin_relations_request));
             } else {
                 $httpBody = $post_content_document_asin_relations_request;
@@ -2775,22 +2871,19 @@ class AplusContentApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -2804,45 +2897,47 @@ class AplusContentApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation postContentDocumentSuspendSubmission
+     * Operation postContentDocumentSuspendSubmission.
      *
-     * @param  string $content_reference_key
-     *  The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier. (required)
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param string $content_reference_key
+     *                                      The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier. (required)
+     * @param string $marketplace_id
+     *                                      The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentSuspendSubmissionResponse
      */
     public function postContentDocumentSuspendSubmission(
         string $content_reference_key,
         string $marketplace_id
-    ): \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentSuspendSubmissionResponse {
+    ): PostContentDocumentSuspendSubmissionResponse {
         list($response) = $this->postContentDocumentSuspendSubmissionWithHttpInfo($content_reference_key, $marketplace_id);
+
         return $response;
     }
 
     /**
-     * Operation postContentDocumentSuspendSubmissionWithHttpInfo
+     * Operation postContentDocumentSuspendSubmissionWithHttpInfo.
      *
-     * @param  string $content_reference_key
-     *  The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier. (required)
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param string $content_reference_key
+     *                                      The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier. (required)
+     * @param string $marketplace_id
+     *                                      The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentSuspendSubmissionResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function postContentDocumentSuspendSubmissionWithHttpInfo(
         string $content_reference_key,
@@ -2853,6 +2948,7 @@ class AplusContentApi
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -2887,10 +2983,10 @@ class AplusContentApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentSuspendSubmissionResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentSuspendSubmissionResponse' !== 'string') {
@@ -2901,11 +2997,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentSuspendSubmissionResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 400:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -2916,11 +3013,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 401:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -2931,11 +3029,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 403:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -2946,11 +3045,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 404:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -2961,11 +3061,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 410:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -2976,11 +3077,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 429:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -2991,11 +3093,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 500:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -3006,11 +3109,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 503:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -3021,16 +3125,16 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
             $returnType = '\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentSuspendSubmissionResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+            if ('\SplFileObject' === $returnType) {
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
+                if ('string' !== $returnType) {
                     $content = json_decode($content);
                 }
             }
@@ -3038,9 +3142,8 @@ class AplusContentApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -3050,7 +3153,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3058,7 +3163,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3066,7 +3173,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3074,7 +3183,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3082,7 +3193,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 410:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3090,7 +3203,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3098,7 +3213,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3106,7 +3223,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3114,22 +3233,23 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation postContentDocumentSuspendSubmissionAsync
+     * Operation postContentDocumentSuspendSubmissionAsync.
      *
-     * @param  string $content_reference_key
-     *  The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier. (required)
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param string $content_reference_key
+     *                                      The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier. (required)
+     * @param string $marketplace_id
+     *                                      The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function postContentDocumentSuspendSubmissionAsync(
         string $content_reference_key,
@@ -3140,19 +3260,19 @@ class AplusContentApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation postContentDocumentSuspendSubmissionAsyncWithHttpInfo
+     * Operation postContentDocumentSuspendSubmissionAsyncWithHttpInfo.
      *
-     * @param  string $content_reference_key
-     *  The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier. (required)
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param string $content_reference_key
+     *                                      The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier. (required)
+     * @param string $marketplace_id
+     *                                      The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function postContentDocumentSuspendSubmissionAsyncWithHttpInfo(
         string $content_reference_key,
@@ -3167,11 +3287,11 @@ class AplusContentApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -3179,12 +3299,13 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -3196,26 +3317,26 @@ class AplusContentApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'postContentDocumentSuspendSubmission'
+     * Create request for operation 'postContentDocumentSuspendSubmission'.
      *
-     * @param  string $content_reference_key
-     *  The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier. (required)
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param string $content_reference_key
+     *                                      The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier. (required)
+     * @param string $marketplace_id
+     *                                      The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function postContentDocumentSuspendSubmissionRequest(
         string $content_reference_key,
         string $marketplace_id
     ): Request {
         // verify the required parameter 'content_reference_key' is set
-        if ($content_reference_key === null || (is_array($content_reference_key) && count($content_reference_key) === 0)) {
+        if (null === $content_reference_key || (is_array($content_reference_key) && 0 === count($content_reference_key))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $content_reference_key when calling postContentDocumentSuspendSubmission'
             );
@@ -3225,7 +3346,7 @@ class AplusContentApi
         }
 
         // verify the required parameter 'marketplace_id' is set
-        if ($marketplace_id === null || (is_array($marketplace_id) && count($marketplace_id) === 0)) {
+        if (null === $marketplace_id || (is_array($marketplace_id) && 0 === count($marketplace_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_id when calling postContentDocumentSuspendSubmission'
             );
@@ -3233,7 +3354,6 @@ class AplusContentApi
         if (strlen($marketplace_id) < 1) {
             throw new \InvalidArgumentException('invalid length for "$marketplace_id" when calling AplusContentApi.postContentDocumentSuspendSubmission, must be bigger than or equal to 1.');
         }
-
 
         $resourcePath = '/aplus/2020-11-01/contentDocuments/{contentReferenceKey}/suspendSubmissions';
         $formParams = [];
@@ -3252,16 +3372,14 @@ class AplusContentApi
             true // required
         ) ?? []);
 
-
         // path params
-        if ($content_reference_key !== null) {
+        if (null !== $content_reference_key) {
             $resourcePath = str_replace(
-                '{' . 'contentReferenceKey' . '}',
+                '{contentReferenceKey}',
                 ObjectSerializer::toPathValue($content_reference_key),
                 $resourcePath
             );
         }
-
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -3270,7 +3388,6 @@ class AplusContentApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                
                 '',
                 false
             );
@@ -3285,22 +3402,19 @@ class AplusContentApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -3314,45 +3428,47 @@ class AplusContentApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation searchContentDocuments
+     * Operation searchContentDocuments.
      *
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  string|null $page_token
-     *  A token that you use to fetch a specific page when there are multiple pages of results. (optional)
+     * @param string      $marketplace_id
+     *                                    The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param null|string $page_token
+     *                                    A token that you use to fetch a specific page when there are multiple pages of results. (optional)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\aplusContent\v2020_11_01\SearchContentDocumentsResponse
      */
     public function searchContentDocuments(
         string $marketplace_id,
         ?string $page_token = null
-    ): \SpApi\Model\aplusContent\v2020_11_01\SearchContentDocumentsResponse {
+    ): SearchContentDocumentsResponse {
         list($response) = $this->searchContentDocumentsWithHttpInfo($marketplace_id, $page_token);
+
         return $response;
     }
 
     /**
-     * Operation searchContentDocumentsWithHttpInfo
+     * Operation searchContentDocumentsWithHttpInfo.
      *
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  string|null $page_token
-     *  A token that you use to fetch a specific page when there are multiple pages of results. (optional)
+     * @param string      $marketplace_id
+     *                                    The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param null|string $page_token
+     *                                    A token that you use to fetch a specific page when there are multiple pages of results. (optional)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\aplusContent\v2020_11_01\SearchContentDocumentsResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function searchContentDocumentsWithHttpInfo(
         string $marketplace_id,
@@ -3363,6 +3479,7 @@ class AplusContentApi
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -3397,10 +3514,10 @@ class AplusContentApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\SearchContentDocumentsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\SearchContentDocumentsResponse' !== 'string') {
@@ -3411,11 +3528,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\SearchContentDocumentsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 400:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -3426,11 +3544,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 401:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -3441,11 +3560,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 403:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -3456,11 +3576,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 404:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -3471,11 +3592,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 410:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -3486,11 +3608,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 429:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -3501,11 +3624,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 500:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -3516,11 +3640,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 503:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -3531,16 +3656,16 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
             $returnType = '\SpApi\Model\aplusContent\v2020_11_01\SearchContentDocumentsResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+            if ('\SplFileObject' === $returnType) {
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
+                if ('string' !== $returnType) {
                     $content = json_decode($content);
                 }
             }
@@ -3548,9 +3673,8 @@ class AplusContentApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -3560,7 +3684,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3568,7 +3694,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3576,7 +3704,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3584,7 +3714,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3592,7 +3724,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 410:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3600,7 +3734,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3608,7 +3744,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3616,7 +3754,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3624,22 +3764,23 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation searchContentDocumentsAsync
+     * Operation searchContentDocumentsAsync.
      *
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  string|null $page_token
-     *  A token that you use to fetch a specific page when there are multiple pages of results. (optional)
+     * @param string      $marketplace_id
+     *                                    The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param null|string $page_token
+     *                                    A token that you use to fetch a specific page when there are multiple pages of results. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function searchContentDocumentsAsync(
         string $marketplace_id,
@@ -3650,19 +3791,19 @@ class AplusContentApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation searchContentDocumentsAsyncWithHttpInfo
+     * Operation searchContentDocumentsAsyncWithHttpInfo.
      *
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  string|null $page_token
-     *  A token that you use to fetch a specific page when there are multiple pages of results. (optional)
+     * @param string      $marketplace_id
+     *                                    The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param null|string $page_token
+     *                                    A token that you use to fetch a specific page when there are multiple pages of results. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function searchContentDocumentsAsyncWithHttpInfo(
         string $marketplace_id,
@@ -3677,11 +3818,11 @@ class AplusContentApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -3689,12 +3830,13 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -3706,26 +3848,26 @@ class AplusContentApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'searchContentDocuments'
+     * Create request for operation 'searchContentDocuments'.
      *
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  string|null $page_token
-     *  A token that you use to fetch a specific page when there are multiple pages of results. (optional)
+     * @param string      $marketplace_id
+     *                                    The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param null|string $page_token
+     *                                    A token that you use to fetch a specific page when there are multiple pages of results. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function searchContentDocumentsRequest(
         string $marketplace_id,
         ?string $page_token = null
     ): Request {
         // verify the required parameter 'marketplace_id' is set
-        if ($marketplace_id === null || (is_array($marketplace_id) && count($marketplace_id) === 0)) {
+        if (null === $marketplace_id || (is_array($marketplace_id) && 0 === count($marketplace_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_id when calling searchContentDocuments'
             );
@@ -3734,10 +3876,9 @@ class AplusContentApi
             throw new \InvalidArgumentException('invalid length for "$marketplace_id" when calling AplusContentApi.searchContentDocuments, must be bigger than or equal to 1.');
         }
 
-        if ($page_token !== null && strlen($page_token) < 1) {
+        if (null !== $page_token && strlen($page_token) < 1) {
             throw new \InvalidArgumentException('invalid length for "$page_token" when calling AplusContentApi.searchContentDocuments, must be bigger than or equal to 1.');
         }
-
 
         $resourcePath = '/aplus/2020-11-01/contentDocuments';
         $formParams = [];
@@ -3765,9 +3906,6 @@ class AplusContentApi
             false // required
         ) ?? []);
 
-
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -3775,7 +3913,6 @@ class AplusContentApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                
                 '',
                 false
             );
@@ -3790,22 +3927,19 @@ class AplusContentApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -3819,50 +3953,52 @@ class AplusContentApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation searchContentPublishRecords
+     * Operation searchContentPublishRecords.
      *
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  string $asin
-     *  The Amazon Standard Identification Number (ASIN) is the unique identifier of a product within a marketplace. (required)
-     * @param  string|null $page_token
-     *  A token that you use to fetch a specific page when there are multiple pages of results. (optional)
+     * @param string      $marketplace_id
+     *                                    The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param string      $asin
+     *                                    The Amazon Standard Identification Number (ASIN) is the unique identifier of a product within a marketplace. (required)
+     * @param null|string $page_token
+     *                                    A token that you use to fetch a specific page when there are multiple pages of results. (optional)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\aplusContent\v2020_11_01\SearchContentPublishRecordsResponse
      */
     public function searchContentPublishRecords(
         string $marketplace_id,
         string $asin,
         ?string $page_token = null
-    ): \SpApi\Model\aplusContent\v2020_11_01\SearchContentPublishRecordsResponse {
+    ): SearchContentPublishRecordsResponse {
         list($response) = $this->searchContentPublishRecordsWithHttpInfo($marketplace_id, $asin, $page_token);
+
         return $response;
     }
 
     /**
-     * Operation searchContentPublishRecordsWithHttpInfo
+     * Operation searchContentPublishRecordsWithHttpInfo.
      *
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  string $asin
-     *  The Amazon Standard Identification Number (ASIN) is the unique identifier of a product within a marketplace. (required)
-     * @param  string|null $page_token
-     *  A token that you use to fetch a specific page when there are multiple pages of results. (optional)
+     * @param string      $marketplace_id
+     *                                    The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param string      $asin
+     *                                    The Amazon Standard Identification Number (ASIN) is the unique identifier of a product within a marketplace. (required)
+     * @param null|string $page_token
+     *                                    A token that you use to fetch a specific page when there are multiple pages of results. (optional)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\aplusContent\v2020_11_01\SearchContentPublishRecordsResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function searchContentPublishRecordsWithHttpInfo(
         string $marketplace_id,
@@ -3874,6 +4010,7 @@ class AplusContentApi
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -3908,10 +4045,10 @@ class AplusContentApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\SearchContentPublishRecordsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\SearchContentPublishRecordsResponse' !== 'string') {
@@ -3922,11 +4059,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\SearchContentPublishRecordsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 400:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -3937,11 +4075,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 401:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -3952,11 +4091,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 403:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -3967,11 +4107,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 404:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -3982,11 +4123,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 429:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -3997,11 +4139,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 500:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -4012,11 +4155,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 503:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -4027,16 +4171,16 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
             $returnType = '\SpApi\Model\aplusContent\v2020_11_01\SearchContentPublishRecordsResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+            if ('\SplFileObject' === $returnType) {
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
+                if ('string' !== $returnType) {
                     $content = json_decode($content);
                 }
             }
@@ -4044,9 +4188,8 @@ class AplusContentApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -4056,7 +4199,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -4064,7 +4209,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -4072,7 +4219,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -4080,7 +4229,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -4088,7 +4239,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -4096,7 +4249,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -4104,7 +4259,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -4112,24 +4269,25 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation searchContentPublishRecordsAsync
+     * Operation searchContentPublishRecordsAsync.
      *
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  string $asin
-     *  The Amazon Standard Identification Number (ASIN) is the unique identifier of a product within a marketplace. (required)
-     * @param  string|null $page_token
-     *  A token that you use to fetch a specific page when there are multiple pages of results. (optional)
+     * @param string      $marketplace_id
+     *                                    The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param string      $asin
+     *                                    The Amazon Standard Identification Number (ASIN) is the unique identifier of a product within a marketplace. (required)
+     * @param null|string $page_token
+     *                                    A token that you use to fetch a specific page when there are multiple pages of results. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function searchContentPublishRecordsAsync(
         string $marketplace_id,
@@ -4141,21 +4299,21 @@ class AplusContentApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation searchContentPublishRecordsAsyncWithHttpInfo
+     * Operation searchContentPublishRecordsAsyncWithHttpInfo.
      *
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  string $asin
-     *  The Amazon Standard Identification Number (ASIN) is the unique identifier of a product within a marketplace. (required)
-     * @param  string|null $page_token
-     *  A token that you use to fetch a specific page when there are multiple pages of results. (optional)
+     * @param string      $marketplace_id
+     *                                    The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param string      $asin
+     *                                    The Amazon Standard Identification Number (ASIN) is the unique identifier of a product within a marketplace. (required)
+     * @param null|string $page_token
+     *                                    A token that you use to fetch a specific page when there are multiple pages of results. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function searchContentPublishRecordsAsyncWithHttpInfo(
         string $marketplace_id,
@@ -4171,11 +4329,11 @@ class AplusContentApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -4183,12 +4341,13 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -4200,21 +4359,21 @@ class AplusContentApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'searchContentPublishRecords'
+     * Create request for operation 'searchContentPublishRecords'.
      *
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  string $asin
-     *  The Amazon Standard Identification Number (ASIN) is the unique identifier of a product within a marketplace. (required)
-     * @param  string|null $page_token
-     *  A token that you use to fetch a specific page when there are multiple pages of results. (optional)
+     * @param string      $marketplace_id
+     *                                    The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param string      $asin
+     *                                    The Amazon Standard Identification Number (ASIN) is the unique identifier of a product within a marketplace. (required)
+     * @param null|string $page_token
+     *                                    A token that you use to fetch a specific page when there are multiple pages of results. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function searchContentPublishRecordsRequest(
         string $marketplace_id,
@@ -4222,7 +4381,7 @@ class AplusContentApi
         ?string $page_token = null
     ): Request {
         // verify the required parameter 'marketplace_id' is set
-        if ($marketplace_id === null || (is_array($marketplace_id) && count($marketplace_id) === 0)) {
+        if (null === $marketplace_id || (is_array($marketplace_id) && 0 === count($marketplace_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_id when calling searchContentPublishRecords'
             );
@@ -4232,7 +4391,7 @@ class AplusContentApi
         }
 
         // verify the required parameter 'asin' is set
-        if ($asin === null || (is_array($asin) && count($asin) === 0)) {
+        if (null === $asin || (is_array($asin) && 0 === count($asin))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $asin when calling searchContentPublishRecords'
             );
@@ -4241,10 +4400,9 @@ class AplusContentApi
             throw new \InvalidArgumentException('invalid length for "$asin" when calling AplusContentApi.searchContentPublishRecords, must be bigger than or equal to 10.');
         }
 
-        if ($page_token !== null && strlen($page_token) < 1) {
+        if (null !== $page_token && strlen($page_token) < 1) {
             throw new \InvalidArgumentException('invalid length for "$page_token" when calling AplusContentApi.searchContentPublishRecords, must be bigger than or equal to 1.');
         }
-
 
         $resourcePath = '/aplus/2020-11-01/contentPublishRecords';
         $formParams = [];
@@ -4281,9 +4439,6 @@ class AplusContentApi
             false // required
         ) ?? []);
 
-
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -4291,7 +4446,6 @@ class AplusContentApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                
                 '',
                 false
             );
@@ -4306,22 +4460,19 @@ class AplusContentApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -4335,61 +4486,64 @@ class AplusContentApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation updateContentDocument
+     * Operation updateContentDocument.
      *
-     * @param  string $content_reference_key
-     *  The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier. (required)
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
-     *  The content document request details. (required)
+     * @param string                     $content_reference_key
+     *                                                                  The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier. (required)
+     * @param string                     $marketplace_id
+     *                                                                  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param PostContentDocumentRequest $post_content_document_request
+     *                                                                  The content document request details. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentResponse
      */
     public function updateContentDocument(
         string $content_reference_key,
         string $marketplace_id,
-        \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
-    ): \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentResponse {
+        PostContentDocumentRequest $post_content_document_request
+    ): PostContentDocumentResponse {
         list($response) = $this->updateContentDocumentWithHttpInfo($content_reference_key, $marketplace_id, $post_content_document_request);
+
         return $response;
     }
 
     /**
-     * Operation updateContentDocumentWithHttpInfo
+     * Operation updateContentDocumentWithHttpInfo.
      *
-     * @param  string $content_reference_key
-     *  The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier. (required)
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
-     *  The content document request details. (required)
+     * @param string                     $content_reference_key
+     *                                                                  The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier. (required)
+     * @param string                     $marketplace_id
+     *                                                                  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param PostContentDocumentRequest $post_content_document_request
+     *                                                                  The content document request details. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function updateContentDocumentWithHttpInfo(
         string $content_reference_key,
         string $marketplace_id,
-        \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
+        PostContentDocumentRequest $post_content_document_request
     ): array {
         $request = $this->updateContentDocumentRequest($content_reference_key, $marketplace_id, $post_content_document_request);
         $request = $this->config->sign($request);
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -4424,10 +4578,10 @@ class AplusContentApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentResponse' !== 'string') {
@@ -4438,11 +4592,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 400:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -4453,11 +4608,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 401:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -4468,11 +4624,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 403:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -4483,11 +4640,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 404:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -4498,11 +4656,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 410:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -4513,11 +4672,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 429:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -4528,11 +4688,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 500:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -4543,11 +4704,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 503:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -4558,16 +4720,16 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
             $returnType = '\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+            if ('\SplFileObject' === $returnType) {
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
+                if ('string' !== $returnType) {
                     $content = json_decode($content);
                 }
             }
@@ -4575,9 +4737,8 @@ class AplusContentApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -4587,7 +4748,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -4595,7 +4758,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -4603,7 +4768,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -4611,7 +4778,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -4619,7 +4788,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 410:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -4627,7 +4798,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -4635,7 +4808,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -4643,7 +4818,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -4651,55 +4828,56 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation updateContentDocumentAsync
+     * Operation updateContentDocumentAsync.
      *
-     * @param  string $content_reference_key
-     *  The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier. (required)
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
-     *  The content document request details. (required)
+     * @param string                     $content_reference_key
+     *                                                                  The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier. (required)
+     * @param string                     $marketplace_id
+     *                                                                  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param PostContentDocumentRequest $post_content_document_request
+     *                                                                  The content document request details. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function updateContentDocumentAsync(
         string $content_reference_key,
         string $marketplace_id,
-        \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
+        PostContentDocumentRequest $post_content_document_request
     ): PromiseInterface {
         return $this->updateContentDocumentAsyncWithHttpInfo($content_reference_key, $marketplace_id, $post_content_document_request)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation updateContentDocumentAsyncWithHttpInfo
+     * Operation updateContentDocumentAsyncWithHttpInfo.
      *
-     * @param  string $content_reference_key
-     *  The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier. (required)
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
-     *  The content document request details. (required)
+     * @param string                     $content_reference_key
+     *                                                                  The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier. (required)
+     * @param string                     $marketplace_id
+     *                                                                  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param PostContentDocumentRequest $post_content_document_request
+     *                                                                  The content document request details. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function updateContentDocumentAsyncWithHttpInfo(
         string $content_reference_key,
         string $marketplace_id,
-        \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
+        PostContentDocumentRequest $post_content_document_request
     ): PromiseInterface {
         $returnType = '\SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentResponse';
         $request = $this->updateContentDocumentRequest($content_reference_key, $marketplace_id, $post_content_document_request);
@@ -4710,11 +4888,11 @@ class AplusContentApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -4722,12 +4900,13 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -4739,29 +4918,29 @@ class AplusContentApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'updateContentDocument'
+     * Create request for operation 'updateContentDocument'.
      *
-     * @param  string $content_reference_key
-     *  The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier. (required)
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
-     *  The content document request details. (required)
+     * @param string                     $content_reference_key
+     *                                                                  The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier. (required)
+     * @param string                     $marketplace_id
+     *                                                                  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param PostContentDocumentRequest $post_content_document_request
+     *                                                                  The content document request details. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function updateContentDocumentRequest(
         string $content_reference_key,
         string $marketplace_id,
-        \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
+        PostContentDocumentRequest $post_content_document_request
     ): Request {
         // verify the required parameter 'content_reference_key' is set
-        if ($content_reference_key === null || (is_array($content_reference_key) && count($content_reference_key) === 0)) {
+        if (null === $content_reference_key || (is_array($content_reference_key) && 0 === count($content_reference_key))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $content_reference_key when calling updateContentDocument'
             );
@@ -4771,7 +4950,7 @@ class AplusContentApi
         }
 
         // verify the required parameter 'marketplace_id' is set
-        if ($marketplace_id === null || (is_array($marketplace_id) && count($marketplace_id) === 0)) {
+        if (null === $marketplace_id || (is_array($marketplace_id) && 0 === count($marketplace_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_id when calling updateContentDocument'
             );
@@ -4781,7 +4960,7 @@ class AplusContentApi
         }
 
         // verify the required parameter 'post_content_document_request' is set
-        if ($post_content_document_request === null || (is_array($post_content_document_request) && count($post_content_document_request) === 0)) {
+        if (null === $post_content_document_request || (is_array($post_content_document_request) && 0 === count($post_content_document_request))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $post_content_document_request when calling updateContentDocument'
             );
@@ -4804,16 +4983,14 @@ class AplusContentApi
             true // required
         ) ?? []);
 
-
         // path params
-        if ($content_reference_key !== null) {
+        if (null !== $content_reference_key) {
             $resourcePath = str_replace(
-                '{' . 'contentReferenceKey' . '}',
+                '{contentReferenceKey}',
                 ObjectSerializer::toPathValue($content_reference_key),
                 $resourcePath
             );
         }
-
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -4822,15 +4999,14 @@ class AplusContentApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                'application/json'
-                ,
+                'application/json',
                 false
             );
         }
 
         // for model (json/xml)
         if (isset($post_content_document_request)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($post_content_document_request));
             } else {
                 $httpBody = $post_content_document_request;
@@ -4843,22 +5019,19 @@ class AplusContentApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -4872,54 +5045,56 @@ class AplusContentApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation validateContentDocumentAsinRelations
+     * Operation validateContentDocumentAsinRelations.
      *
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
-     *  The content document request details. (required)
-     * @param  string[]|null $asin_set
-     *  The set of ASINs. (optional)
+     * @param string                     $marketplace_id
+     *                                                                  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param PostContentDocumentRequest $post_content_document_request
+     *                                                                  The content document request details. (required)
+     * @param null|string[]              $asin_set
+     *                                                                  The set of ASINs. (optional)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\aplusContent\v2020_11_01\ValidateContentDocumentAsinRelationsResponse
      */
     public function validateContentDocumentAsinRelations(
         string $marketplace_id,
-        \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request,
+        PostContentDocumentRequest $post_content_document_request,
         ?array $asin_set = null
-    ): \SpApi\Model\aplusContent\v2020_11_01\ValidateContentDocumentAsinRelationsResponse {
+    ): ValidateContentDocumentAsinRelationsResponse {
         list($response) = $this->validateContentDocumentAsinRelationsWithHttpInfo($marketplace_id, $post_content_document_request, $asin_set);
+
         return $response;
     }
 
     /**
-     * Operation validateContentDocumentAsinRelationsWithHttpInfo
+     * Operation validateContentDocumentAsinRelationsWithHttpInfo.
      *
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
-     *  The content document request details. (required)
-     * @param  string[]|null $asin_set
-     *  The set of ASINs. (optional)
+     * @param string                     $marketplace_id
+     *                                                                  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param PostContentDocumentRequest $post_content_document_request
+     *                                                                  The content document request details. (required)
+     * @param null|string[]              $asin_set
+     *                                                                  The set of ASINs. (optional)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\aplusContent\v2020_11_01\ValidateContentDocumentAsinRelationsResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function validateContentDocumentAsinRelationsWithHttpInfo(
         string $marketplace_id,
-        \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request,
+        PostContentDocumentRequest $post_content_document_request,
         ?array $asin_set = null
     ): array {
         $request = $this->validateContentDocumentAsinRelationsRequest($marketplace_id, $post_content_document_request, $asin_set);
@@ -4927,6 +5102,7 @@ class AplusContentApi
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -4961,10 +5137,10 @@ class AplusContentApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ValidateContentDocumentAsinRelationsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ValidateContentDocumentAsinRelationsResponse' !== 'string') {
@@ -4975,11 +5151,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ValidateContentDocumentAsinRelationsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 400:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -4990,11 +5167,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 401:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -5005,11 +5183,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 403:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -5020,11 +5199,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 404:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -5035,11 +5215,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 429:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -5050,11 +5231,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 500:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -5065,11 +5247,12 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 503:
                     if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\aplusContent\v2020_11_01\ErrorList' !== 'string') {
@@ -5080,16 +5263,16 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\aplusContent\v2020_11_01\ErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
             $returnType = '\SpApi\Model\aplusContent\v2020_11_01\ValidateContentDocumentAsinRelationsResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+            if ('\SplFileObject' === $returnType) {
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
+                if ('string' !== $returnType) {
                     $content = json_decode($content);
                 }
             }
@@ -5097,9 +5280,8 @@ class AplusContentApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -5109,7 +5291,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -5117,7 +5301,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -5125,7 +5311,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -5133,7 +5321,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -5141,7 +5331,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -5149,7 +5341,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -5157,7 +5351,9 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -5165,28 +5361,29 @@ class AplusContentApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation validateContentDocumentAsinRelationsAsync
+     * Operation validateContentDocumentAsinRelationsAsync.
      *
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
-     *  The content document request details. (required)
-     * @param  string[]|null $asin_set
-     *  The set of ASINs. (optional)
+     * @param string                     $marketplace_id
+     *                                                                  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param PostContentDocumentRequest $post_content_document_request
+     *                                                                  The content document request details. (required)
+     * @param null|string[]              $asin_set
+     *                                                                  The set of ASINs. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function validateContentDocumentAsinRelationsAsync(
         string $marketplace_id,
-        \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request,
+        PostContentDocumentRequest $post_content_document_request,
         ?array $asin_set = null
     ): PromiseInterface {
         return $this->validateContentDocumentAsinRelationsAsyncWithHttpInfo($marketplace_id, $post_content_document_request, $asin_set)
@@ -5194,25 +5391,25 @@ class AplusContentApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation validateContentDocumentAsinRelationsAsyncWithHttpInfo
+     * Operation validateContentDocumentAsinRelationsAsyncWithHttpInfo.
      *
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
-     *  The content document request details. (required)
-     * @param  string[]|null $asin_set
-     *  The set of ASINs. (optional)
+     * @param string                     $marketplace_id
+     *                                                                  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param PostContentDocumentRequest $post_content_document_request
+     *                                                                  The content document request details. (required)
+     * @param null|string[]              $asin_set
+     *                                                                  The set of ASINs. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function validateContentDocumentAsinRelationsAsyncWithHttpInfo(
         string $marketplace_id,
-        \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request,
+        PostContentDocumentRequest $post_content_document_request,
         ?array $asin_set = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\aplusContent\v2020_11_01\ValidateContentDocumentAsinRelationsResponse';
@@ -5224,11 +5421,11 @@ class AplusContentApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -5236,12 +5433,13 @@ class AplusContentApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -5253,29 +5451,29 @@ class AplusContentApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'validateContentDocumentAsinRelations'
+     * Create request for operation 'validateContentDocumentAsinRelations'.
      *
-     * @param  string $marketplace_id
-     *  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
-     * @param  \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request
-     *  The content document request details. (required)
-     * @param  string[]|null $asin_set
-     *  The set of ASINs. (optional)
+     * @param string                     $marketplace_id
+     *                                                                  The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param PostContentDocumentRequest $post_content_document_request
+     *                                                                  The content document request details. (required)
+     * @param null|string[]              $asin_set
+     *                                                                  The set of ASINs. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function validateContentDocumentAsinRelationsRequest(
         string $marketplace_id,
-        \SpApi\Model\aplusContent\v2020_11_01\PostContentDocumentRequest $post_content_document_request,
+        PostContentDocumentRequest $post_content_document_request,
         ?array $asin_set = null
     ): Request {
         // verify the required parameter 'marketplace_id' is set
-        if ($marketplace_id === null || (is_array($marketplace_id) && count($marketplace_id) === 0)) {
+        if (null === $marketplace_id || (is_array($marketplace_id) && 0 === count($marketplace_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_id when calling validateContentDocumentAsinRelations'
             );
@@ -5285,12 +5483,11 @@ class AplusContentApi
         }
 
         // verify the required parameter 'post_content_document_request' is set
-        if ($post_content_document_request === null || (is_array($post_content_document_request) && count($post_content_document_request) === 0)) {
+        if (null === $post_content_document_request || (is_array($post_content_document_request) && 0 === count($post_content_document_request))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $post_content_document_request when calling validateContentDocumentAsinRelations'
             );
         }
-
 
         $resourcePath = '/aplus/2020-11-01/contentAsinValidations';
         $formParams = [];
@@ -5318,9 +5515,6 @@ class AplusContentApi
             false // required
         ) ?? []);
 
-
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -5328,15 +5522,14 @@ class AplusContentApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                'application/json'
-                ,
+                'application/json',
                 false
             );
         }
 
         // for model (json/xml)
         if (isset($post_content_document_request)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($post_content_document_request));
             } else {
                 $httpBody = $post_content_document_request;
@@ -5349,22 +5542,19 @@ class AplusContentApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -5378,19 +5568,36 @@ class AplusContentApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Create http client option
+     * Rate Limiter waits for tokens.
+     */
+    public function rateLimitWait(): void
+    {
+        if ($this->rateLimiter) {
+            $type = $this->rateLimitConfig->getRateLimitType();
+            if (0 != $this->rateLimitConfig->getTimeOut() && ('token_bucket' == $type || 'fixed_window' == $type)) {
+                $this->rateLimiter->reserve(1, $this->rateLimitConfig->getTimeOut() / 1000)->wait();
+            } else {
+                $this->rateLimiter->consume()->wait();
+            }
+        }
+    }
+
+    /**
+     * Create http client option.
+     *
+     * @return array of http client options
      *
      * @throws \RuntimeException on file opening failure
-     * @return array of http client options
      */
     protected function createHttpClientOption(): array
     {
@@ -5398,27 +5605,10 @@ class AplusContentApi
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
             if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+                throw new \RuntimeException('Failed to open the debug file: '.$this->config->getDebugFile());
             }
         }
 
         return $options;
-    }
-
-    /**
-     * Rate Limiter waits for tokens
-     *
-     * @return void
-     */
-    public function rateLimitWait(): void
-    {
-        if ($this->rateLimiter) {
-            $type = $this->rateLimitConfig->getRateLimitType();
-            if ($this->rateLimitConfig->getTimeOut() != 0 && ($type == "token_bucket" || $type == "fixed_window")) {
-                $this->rateLimiter->reserve(1, ($this->rateLimitConfig->getTimeOut()) / 1000)->wait();
-            } else {
-                $this->rateLimiter->consume()->wait();
-            }
-        }
     }
 }

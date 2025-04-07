@@ -1,17 +1,19 @@
 <?php
+
 /**
- * SetAppointmentFulfillmentDataRequest
+ * SetAppointmentFulfillmentDataRequest.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Services
+ * Selling Partner API for Services.
  *
  * With the Services API, you can build applications that help service providers get and modify their service orders and manage their resources.
  *
@@ -28,76 +30,147 @@
 
 namespace SpApi\Model\services\v1;
 
-use
-ArrayAccess;
-use SpApi\ObjectSerializer;
 use SpApi\Model\ModelInterface;
+use SpApi\ObjectSerializer;
 
 /**
- * SetAppointmentFulfillmentDataRequest Class Doc Comment
+ * SetAppointmentFulfillmentDataRequest Class Doc Comment.
  *
  * @category Class
+ *
  * @description Input for set appointment fulfillment data operation.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
+ *
  * @implements \ArrayAccess<string, mixed>
  */
-class SetAppointmentFulfillmentDataRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class SetAppointmentFulfillmentDataRequest implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     */
     protected static string $openAPIModelName = 'SetAppointmentFulfillmentDataRequest';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static array $openAPITypes = [
-             'fulfillment_time' => '\SpApi\Model\services\v1\FulfillmentTime',
-             'appointment_resources' => '\SpApi\Model\services\v1\AppointmentResource[]',
-             'fulfillment_documents' => '\SpApi\Model\services\v1\FulfillmentDocument[]'    ];
+        'estimated_arrival_time' => '\SpApi\Model\services\v1\DateTimeRange',
+        'fulfillment_time' => '\SpApi\Model\services\v1\FulfillmentTime',
+        'appointment_resources' => '\SpApi\Model\services\v1\AppointmentResource[]',
+        'fulfillment_documents' => '\SpApi\Model\services\v1\FulfillmentDocument[]'];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     *
+     * @phpstan-var array<string, string|null>
+     *
+     * @psalm-var array<string, string|null>
+     */
     protected static array $openAPIFormats = [
-            'fulfillment_time' => null,
-            'appointment_resources' => null,
-            'fulfillment_documents' => null    ];
+        'estimated_arrival_time' => null,
+        'fulfillment_time' => null,
+        'appointment_resources' => null,
+        'fulfillment_documents' => null];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization.
+     *
+     * @var bool[]
+     */
     protected static array $openAPINullables = [
+        'estimated_arrival_time' => true,
         'fulfillment_time' => true,
         'appointment_resources' => true,
-        'fulfillment_documents' => true
+        'fulfillment_documents' => true,
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here.
+     *
+     * @var bool[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
+     * Array of attributes where the key is the local name,
+     * and the value is the original name.
      *
-     * @return array
+     * @var string[]
+     */
+    protected static array $attributeMap = [
+        'estimated_arrival_time' => 'estimatedArrivalTime',
+        'fulfillment_time' => 'fulfillmentTime',
+        'appointment_resources' => 'appointmentResources',
+        'fulfillment_documents' => 'fulfillmentDocuments',
+    ];
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses).
+     *
+     * @var string[]
+     */
+    protected static array $setters = [
+        'estimated_arrival_time' => 'setEstimatedArrivalTime',
+        'fulfillment_time' => 'setFulfillmentTime',
+        'appointment_resources' => 'setAppointmentResources',
+        'fulfillment_documents' => 'setFulfillmentDocuments',
+    ];
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests).
+     *
+     * @var string[]
+     */
+    protected static array $getters = [
+        'estimated_arrival_time' => 'getEstimatedArrivalTime',
+        'fulfillment_time' => 'getFulfillmentTime',
+        'appointment_resources' => 'getAppointmentResources',
+        'fulfillment_documents' => 'getFulfillmentDocuments',
+    ];
+
+    /**
+     * Associative array for storing property values.
+     */
+    protected array $container = [];
+
+    /**
+     * Constructor.
+     *
+     * @param null|array $data Associated array of property values
+     *                         initializing the model
+     */
+    public function __construct(?array $data = null)
+    {
+        $this->setIfExists('estimated_arrival_time', $data ?? [], null);
+        $this->setIfExists('fulfillment_time', $data ?? [], null);
+        $this->setIfExists('appointment_resources', $data ?? [], null);
+        $this->setIfExists('fulfillment_documents', $data ?? [], null);
+    }
+
+    /**
+     * Gets the string presentation of the object.
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return json_encode(
+            ObjectSerializer::sanitizeForSerialization($this),
+            JSON_PRETTY_PRINT
+        );
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization.
      */
     public static function openAPITypes(): array
     {
@@ -105,9 +178,7 @@ class SetAppointmentFulfillmentDataRequest implements ModelInterface, ArrayAcces
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
-     * @return array
+     * Array of property to format mappings. Used for (de)serialization.
      */
     public static function openAPIFormats(): array
     {
@@ -115,40 +186,7 @@ class SetAppointmentFulfillmentDataRequest implements ModelInterface, ArrayAcces
     }
 
     /**
-     * Array of nullable properties
-     *
-     * @return array
-     */
-    protected static function openAPINullables(): array
-    {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * Array of nullable field names deliberately set to null
-     *
-     * @return boolean[]
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * Setter - Array of nullable field names deliberately set to null
-     *
-     * @param boolean[] $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    /**
-     * Checks if a property is nullable
-     *
-     * @param string $property
-     * @return bool
+     * Checks if a property is nullable.
      */
     public static function isNullable(string $property): bool
     {
@@ -157,9 +195,6 @@ class SetAppointmentFulfillmentDataRequest implements ModelInterface, ArrayAcces
 
     /**
      * Checks if a nullable property is set to null.
-     *
-     * @param string $property
-     * @return bool
      */
     public function isNullableSetToNull(string $property): bool
     {
@@ -168,44 +203,7 @@ class SetAppointmentFulfillmentDataRequest implements ModelInterface, ArrayAcces
 
     /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static array $attributeMap = [
-        'fulfillment_time' => 'fulfillmentTime',
-                'appointment_resources' => 'appointmentResources',
-                'fulfillment_documents' => 'fulfillmentDocuments'
-        
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static array $setters = [
-        'fulfillment_time' => 'setFulfillmentTime',
-        'appointment_resources' => 'setAppointmentResources',
-        'fulfillment_documents' => 'setFulfillmentDocuments'
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static array $getters = [
-        'fulfillment_time' => 'getFulfillmentTime',
-        'appointment_resources' => 'getAppointmentResources',
-        'fulfillment_documents' => 'getFulfillmentDocuments'
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @return array
+     * and the value is the original name.
      */
     public static function attributeMap(): array
     {
@@ -213,9 +211,7 @@ class SetAppointmentFulfillmentDataRequest implements ModelInterface, ArrayAcces
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @return array
+     * Array of attributes to setter functions (for deserialization of responses).
      */
     public static function setters(): array
     {
@@ -223,9 +219,7 @@ class SetAppointmentFulfillmentDataRequest implements ModelInterface, ArrayAcces
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @return array
+     * Array of attributes to getter functions (for serialization of requests).
      */
     public static function getters(): array
     {
@@ -234,51 +228,10 @@ class SetAppointmentFulfillmentDataRequest implements ModelInterface, ArrayAcces
 
     /**
      * The original name of the model.
-     *
-     * @return string
      */
     public function getModelName(): string
     {
         return self::$openAPIModelName;
-    }
-
-
-    /**
-     * Associative array for storing property values
-     *
-     * @var array
-     */
-    protected array $container = [];
-
-    /**
-     * Constructor
-     *
-     * @param array|null $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-        $this->setIfExists('fulfillment_time', $data ?? [], null);
-        $this->setIfExists('appointment_resources', $data ?? [], null);
-        $this->setIfExists('fulfillment_documents', $data ?? [], null);
-    }
-
-    /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
-    private function setIfExists(string $variableName, array $fields, $defaultValue): void
-    {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
-
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
     }
 
     /**
@@ -288,48 +241,71 @@ class SetAppointmentFulfillmentDataRequest implements ModelInterface, ArrayAcces
      */
     public function listInvalidProperties(): array
     {
-        $invalidProperties = [];
-
-        return $invalidProperties;
+        return [];
     }
 
     /**
      * Validate all the properties in the model
-     * return true if all passed
+     * return true if all passed.
      *
      * @return bool True if all properties are valid
      */
     public function valid(): bool
     {
-        return count($this->listInvalidProperties()) === 0;
+        return 0 === count($this->listInvalidProperties());
     }
 
+    /**
+     * Gets estimated_arrival_time.
+     */
+    public function getEstimatedArrivalTime(): ?DateTimeRange
+    {
+        return $this->container['estimated_arrival_time'];
+    }
 
     /**
-     * Gets fulfillment_time
+     * Sets estimated_arrival_time.
      *
-     * @return \SpApi\Model\services\v1\FulfillmentTime|null
+     * @param null|DateTimeRange $estimated_arrival_time estimated_arrival_time
      */
-    public function getFulfillmentTime(): ?\SpApi\Model\services\v1\FulfillmentTime
+    public function setEstimatedArrivalTime(?DateTimeRange $estimated_arrival_time): self
+    {
+        if (is_null($estimated_arrival_time)) {
+            array_push($this->openAPINullablesSetToNull, 'estimated_arrival_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('estimated_arrival_time', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['estimated_arrival_time'] = $estimated_arrival_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets fulfillment_time.
+     */
+    public function getFulfillmentTime(): ?FulfillmentTime
     {
         return $this->container['fulfillment_time'];
     }
 
     /**
-     * Sets fulfillment_time
+     * Sets fulfillment_time.
      *
-     * @param \SpApi\Model\services\v1\FulfillmentTime|null $fulfillment_time fulfillment_time
-     *
-     * @return self
+     * @param null|FulfillmentTime $fulfillment_time fulfillment_time
      */
-    public function setFulfillmentTime(?\SpApi\Model\services\v1\FulfillmentTime $fulfillment_time): self
+    public function setFulfillmentTime(?FulfillmentTime $fulfillment_time): self
     {
         if (is_null($fulfillment_time)) {
             array_push($this->openAPINullablesSetToNull, 'fulfillment_time');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('fulfillment_time', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -340,9 +316,7 @@ class SetAppointmentFulfillmentDataRequest implements ModelInterface, ArrayAcces
     }
 
     /**
-     * Gets appointment_resources
-     *
-     * @return array|null
+     * Gets appointment_resources.
      */
     public function getAppointmentResources(): ?array
     {
@@ -350,11 +324,9 @@ class SetAppointmentFulfillmentDataRequest implements ModelInterface, ArrayAcces
     }
 
     /**
-     * Sets appointment_resources
+     * Sets appointment_resources.
      *
-     * @param array|null $appointment_resources List of resources that performs or performed job appointment fulfillment.
-     *
-     * @return self
+     * @param null|array $appointment_resources list of resources that performs or performed job appointment fulfillment
      */
     public function setAppointmentResources(?array $appointment_resources): self
     {
@@ -363,7 +335,7 @@ class SetAppointmentFulfillmentDataRequest implements ModelInterface, ArrayAcces
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('appointment_resources', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -374,9 +346,7 @@ class SetAppointmentFulfillmentDataRequest implements ModelInterface, ArrayAcces
     }
 
     /**
-     * Gets fulfillment_documents
-     *
-     * @return array|null
+     * Gets fulfillment_documents.
      */
     public function getFulfillmentDocuments(): ?array
     {
@@ -384,11 +354,9 @@ class SetAppointmentFulfillmentDataRequest implements ModelInterface, ArrayAcces
     }
 
     /**
-     * Sets fulfillment_documents
+     * Sets fulfillment_documents.
      *
-     * @param array|null $fulfillment_documents List of documents captured during service appointment fulfillment.
-     *
-     * @return self
+     * @param null|array $fulfillment_documents list of documents captured during service appointment fulfillment
      */
     public function setFulfillmentDocuments(?array $fulfillment_documents): self
     {
@@ -397,7 +365,7 @@ class SetAppointmentFulfillmentDataRequest implements ModelInterface, ArrayAcces
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('fulfillment_documents', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -407,13 +375,10 @@ class SetAppointmentFulfillmentDataRequest implements ModelInterface, ArrayAcces
         return $this;
     }
 
-
     /**
      * Returns true if offset exists. False otherwise.
      *
-     * @param integer $offset Offset
-     *
-     * @return boolean
+     * @param int $offset Offset
      */
     public function offsetExists($offset): bool
     {
@@ -423,9 +388,9 @@ class SetAppointmentFulfillmentDataRequest implements ModelInterface, ArrayAcces
     /**
      * Gets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
-     * @return mixed|null
+     * @return null|mixed
      */
     #[\ReturnTypeWillChange]
     public function offsetGet($offset): mixed
@@ -436,10 +401,8 @@ class SetAppointmentFulfillmentDataRequest implements ModelInterface, ArrayAcces
     /**
      * Sets value based on offset.
      *
-     * @param int|null $offset Offset
+     * @param null|int $offset Offset
      * @param mixed    $value  Value to be set
-     *
-     * @return void
      */
     public function offsetSet($offset, mixed $value): void
     {
@@ -453,9 +416,7 @@ class SetAppointmentFulfillmentDataRequest implements ModelInterface, ArrayAcces
     /**
      * Unsets offset.
      *
-     * @param integer $offset Offset
-     *
-     * @return void
+     * @param int $offset Offset
      */
     public function offsetUnset($offset): void
     {
@@ -464,39 +425,67 @@ class SetAppointmentFulfillmentDataRequest implements ModelInterface, ArrayAcces
 
     /**
      * Serializes the object to a value that can be serialized natively by json_encode().
-     * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
      *
-     * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
+     * @see https://www.php.net/manual/en/jsonserializable.jsonserialize.php
+     *
+     * @return mixed returns data which can be serialized by json_encode(), which is a value
+     *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
     public function jsonSerialize(): mixed
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
-     * Gets the string presentation of the object
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    /**
-     * Gets a header-safe presentation of the object
-     *
-     * @return string
+     * Gets a header-safe presentation of the object.
      */
     public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
+
+    /**
+     * Array of nullable properties.
+     */
+    protected static function openAPINullables(): array
+    {
+        return self::$openAPINullables;
+    }
+
+    /**
+     * Array of nullable field names deliberately set to null.
+     *
+     * @return bool[]
+     */
+    private function getOpenAPINullablesSetToNull(): array
+    {
+        return $this->openAPINullablesSetToNull;
+    }
+
+    /**
+     * Setter - Array of nullable field names deliberately set to null.
+     *
+     * @param bool[] $openAPINullablesSetToNull
+     */
+    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
+    {
+        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
+    }
+
+    /**
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array.
+     *
+     * @param mixed $defaultValue
+     */
+    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+    {
+        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
+            $this->openAPINullablesSetToNull[] = $variableName;
+        }
+
+        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    }
 }
-
-

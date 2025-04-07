@@ -12,8 +12,6 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
-import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -21,139 +19,135 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
-import software.amazon.spapi.models.shipping.v2.Currency;
-/**
- * The type and amount of a charge applied on a package.
- */
+import java.util.Objects;
+
+/** The type and amount of a charge applied on a package. */
 @Schema(description = "The type and amount of a charge applied on a package.")
-
-
 public class ChargeComponent {
-  @SerializedName("amount")
-  private Currency amount = null;
+    @SerializedName("amount")
+    private Currency amount = null;
 
-  /**
-   * The type of charge.
-   */
-  @JsonAdapter(ChargeTypeEnum.Adapter.class)
-  public enum ChargeTypeEnum {
-    @SerializedName("TAX")
-    TAX("TAX"),
-    @SerializedName("DISCOUNT")
-    DISCOUNT("DISCOUNT");
+    /** The type of charge. */
+    @JsonAdapter(ChargeTypeEnum.Adapter.class)
+    public enum ChargeTypeEnum {
+        @SerializedName("TAX")
+        TAX("TAX"),
+        @SerializedName("DISCOUNT")
+        DISCOUNT("DISCOUNT");
 
-    private String value;
+        private String value;
 
-    ChargeTypeEnum(String value) {
-      this.value = value;
+        ChargeTypeEnum(String value) {
+            this.value = value;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static ChargeTypeEnum fromValue(String input) {
+            for (ChargeTypeEnum b : ChargeTypeEnum.values()) {
+                if (b.value.equals(input)) {
+                    return b;
+                }
+            }
+            return null;
+        }
+
+        public static class Adapter extends TypeAdapter<ChargeTypeEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final ChargeTypeEnum enumeration) throws IOException {
+                jsonWriter.value(String.valueOf(enumeration.getValue()));
+            }
+
+            @Override
+            public ChargeTypeEnum read(final JsonReader jsonReader) throws IOException {
+                Object value = jsonReader.nextString();
+                return ChargeTypeEnum.fromValue((String) (value));
+            }
+        }
     }
-    public String getValue() {
-      return value;
+
+    @SerializedName("chargeType")
+    private ChargeTypeEnum chargeType = null;
+
+    public ChargeComponent amount(Currency amount) {
+        this.amount = amount;
+        return this;
+    }
+
+    /**
+     * Get amount
+     *
+     * @return amount
+     */
+    @Schema(description = "")
+    public Currency getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Currency amount) {
+        this.amount = amount;
+    }
+
+    public ChargeComponent chargeType(ChargeTypeEnum chargeType) {
+        this.chargeType = chargeType;
+        return this;
+    }
+
+    /**
+     * The type of charge.
+     *
+     * @return chargeType
+     */
+    @Schema(description = "The type of charge.")
+    public ChargeTypeEnum getChargeType() {
+        return chargeType;
+    }
+
+    public void setChargeType(ChargeTypeEnum chargeType) {
+        this.chargeType = chargeType;
+    }
+
+    @Override
+    public boolean equals(java.lang.Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ChargeComponent chargeComponent = (ChargeComponent) o;
+        return Objects.equals(this.amount, chargeComponent.amount)
+                && Objects.equals(this.chargeType, chargeComponent.chargeType);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(amount, chargeType);
     }
 
     @Override
     public String toString() {
-      return String.valueOf(value);
+        StringBuilder sb = new StringBuilder();
+        sb.append("class ChargeComponent {\n");
+
+        sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
+        sb.append("    chargeType: ").append(toIndentedString(chargeType)).append("\n");
+        sb.append("}");
+        return sb.toString();
     }
-    public static ChargeTypeEnum fromValue(String input) {
-      for (ChargeTypeEnum b : ChargeTypeEnum.values()) {
-        if (b.value.equals(input)) {
-          return b;
+
+    /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
+    private String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-      }
-      return null;
+        return o.toString().replace("\n", "\n    ");
     }
-    public static class Adapter extends TypeAdapter<ChargeTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ChargeTypeEnum enumeration) throws IOException {
-        jsonWriter.value(String.valueOf(enumeration.getValue()));
-      }
-
-      @Override
-      public ChargeTypeEnum read(final JsonReader jsonReader) throws IOException {
-        Object value = jsonReader.nextString();
-        return ChargeTypeEnum.fromValue((String)(value));
-      }
-    }
-  }  @SerializedName("chargeType")
-  private ChargeTypeEnum chargeType = null;
-
-  public ChargeComponent amount(Currency amount) {
-    this.amount = amount;
-    return this;
-  }
-
-   /**
-   * Get amount
-   * @return amount
-  **/
-  @Schema(description = "")
-  public Currency getAmount() {
-    return amount;
-  }
-
-  public void setAmount(Currency amount) {
-    this.amount = amount;
-  }
-
-  public ChargeComponent chargeType(ChargeTypeEnum chargeType) {
-    this.chargeType = chargeType;
-    return this;
-  }
-
-   /**
-   * The type of charge.
-   * @return chargeType
-  **/
-  @Schema(description = "The type of charge.")
-  public ChargeTypeEnum getChargeType() {
-    return chargeType;
-  }
-
-  public void setChargeType(ChargeTypeEnum chargeType) {
-    this.chargeType = chargeType;
-  }
-
-
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ChargeComponent chargeComponent = (ChargeComponent) o;
-    return Objects.equals(this.amount, chargeComponent.amount) &&
-        Objects.equals(this.chargeType, chargeComponent.chargeType);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(amount, chargeType);
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ChargeComponent {\n");
-    
-    sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
-    sb.append("    chargeType: ").append(toIndentedString(chargeType)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
 }

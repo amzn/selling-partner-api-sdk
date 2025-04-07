@@ -1,17 +1,19 @@
 <?php
+
 /**
- * ColorType
+ * ColorType.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for A+ Content Management
+ * Selling Partner API for A+ Content Management.
  *
  * Use the A+ Content API to build applications that help selling partners add rich marketing content to their Amazon product detail pages. Selling partners can use A+ content to share their brand and product story, which helps buyers make informed purchasing decisions. Selling partners use content modules to add images and text.
  *
@@ -27,38 +29,37 @@
  */
 
 namespace SpApi\Model\aplusContent\v2020_11_01;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * ColorType Class Doc Comment
+ * ColorType Class Doc Comment.
  *
  * @category Class
+ *
  * @description The relative color scheme of your content.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class ColorType
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const DARK = 'DARK';
 
     public const LIGHT = 'LIGHT';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
     {
         return [
             self::DARK,
-            self::LIGHT
+            self::LIGHT,
         ];
     }
 }
-
-

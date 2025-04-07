@@ -1,17 +1,19 @@
 <?php
+
 /**
- * CurrencyCode
+ * CurrencyCode.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Fulfillment Inbound
+ * Selling Partner API for Fulfillment Inbound.
  *
  * The Selling Partner API for Fulfillment Inbound lets you create applications that create and update inbound shipments of inventory to Amazon's fulfillment network.
  *
@@ -27,38 +29,37 @@
  */
 
 namespace SpApi\Model\fulfillment\inbound\v0;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * CurrencyCode Class Doc Comment
+ * CurrencyCode Class Doc Comment.
  *
  * @category Class
+ *
  * @description The currency code.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class CurrencyCode
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const USD = 'USD';
 
     public const GBP = 'GBP';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
     {
         return [
             self::USD,
-            self::GBP
+            self::GBP,
         ];
     }
 }
-
-

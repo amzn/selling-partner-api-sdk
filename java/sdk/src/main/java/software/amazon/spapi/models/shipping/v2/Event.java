@@ -12,154 +12,140 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.io.IOException;
+import java.util.Objects;
 import org.threeten.bp.OffsetDateTime;
-import software.amazon.spapi.models.shipping.v2.EventCode;
-import software.amazon.spapi.models.shipping.v2.Location;
-import software.amazon.spapi.models.shipping.v2.ShipmentType;
-/**
- * A tracking event.
- */
+
+/** A tracking event. */
 @Schema(description = "A tracking event.")
-
-
 public class Event {
-  @SerializedName("eventCode")
-  private EventCode eventCode = null;
+    @SerializedName("eventCode")
+    private EventCode eventCode = null;
 
-  @SerializedName("location")
-  private Location location = null;
+    @SerializedName("location")
+    private Location location = null;
 
-  @SerializedName("eventTime")
-  private OffsetDateTime eventTime = null;
+    @SerializedName("eventTime")
+    private OffsetDateTime eventTime = null;
 
-  @SerializedName("shipmentType")
-  private ShipmentType shipmentType = null;
+    @SerializedName("shipmentType")
+    private ShipmentType shipmentType = null;
 
-  public Event eventCode(EventCode eventCode) {
-    this.eventCode = eventCode;
-    return this;
-  }
-
-   /**
-   * Get eventCode
-   * @return eventCode
-  **/
-  @Schema(required = true, description = "")
-  public EventCode getEventCode() {
-    return eventCode;
-  }
-
-  public void setEventCode(EventCode eventCode) {
-    this.eventCode = eventCode;
-  }
-
-  public Event location(Location location) {
-    this.location = location;
-    return this;
-  }
-
-   /**
-   * Get location
-   * @return location
-  **/
-  @Schema(description = "")
-  public Location getLocation() {
-    return location;
-  }
-
-  public void setLocation(Location location) {
-    this.location = location;
-  }
-
-  public Event eventTime(OffsetDateTime eventTime) {
-    this.eventTime = eventTime;
-    return this;
-  }
-
-   /**
-   * The ISO 8601 formatted timestamp of the event.
-   * @return eventTime
-  **/
-  @Schema(required = true, description = "The ISO 8601 formatted timestamp of the event.")
-  public OffsetDateTime getEventTime() {
-    return eventTime;
-  }
-
-  public void setEventTime(OffsetDateTime eventTime) {
-    this.eventTime = eventTime;
-  }
-
-  public Event shipmentType(ShipmentType shipmentType) {
-    this.shipmentType = shipmentType;
-    return this;
-  }
-
-   /**
-   * Get shipmentType
-   * @return shipmentType
-  **/
-  @Schema(description = "")
-  public ShipmentType getShipmentType() {
-    return shipmentType;
-  }
-
-  public void setShipmentType(ShipmentType shipmentType) {
-    this.shipmentType = shipmentType;
-  }
-
-
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
+    public Event eventCode(EventCode eventCode) {
+        this.eventCode = eventCode;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * Get eventCode
+     *
+     * @return eventCode
+     */
+    @Schema(required = true, description = "")
+    public EventCode getEventCode() {
+        return eventCode;
     }
-    Event event = (Event) o;
-    return Objects.equals(this.eventCode, event.eventCode) &&
-        Objects.equals(this.location, event.location) &&
-        Objects.equals(this.eventTime, event.eventTime) &&
-        Objects.equals(this.shipmentType, event.shipmentType);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(eventCode, location, eventTime, shipmentType);
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Event {\n");
-    
-    sb.append("    eventCode: ").append(toIndentedString(eventCode)).append("\n");
-    sb.append("    location: ").append(toIndentedString(location)).append("\n");
-    sb.append("    eventTime: ").append(toIndentedString(eventTime)).append("\n");
-    sb.append("    shipmentType: ").append(toIndentedString(shipmentType)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    public void setEventCode(EventCode eventCode) {
+        this.eventCode = eventCode;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    public Event location(Location location) {
+        this.location = location;
+        return this;
+    }
+
+    /**
+     * Get location
+     *
+     * @return location
+     */
+    @Schema(description = "")
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public Event eventTime(OffsetDateTime eventTime) {
+        this.eventTime = eventTime;
+        return this;
+    }
+
+    /**
+     * The ISO 8601 formatted timestamp of the event.
+     *
+     * @return eventTime
+     */
+    @Schema(required = true, description = "The ISO 8601 formatted timestamp of the event.")
+    public OffsetDateTime getEventTime() {
+        return eventTime;
+    }
+
+    public void setEventTime(OffsetDateTime eventTime) {
+        this.eventTime = eventTime;
+    }
+
+    public Event shipmentType(ShipmentType shipmentType) {
+        this.shipmentType = shipmentType;
+        return this;
+    }
+
+    /**
+     * Get shipmentType
+     *
+     * @return shipmentType
+     */
+    @Schema(description = "")
+    public ShipmentType getShipmentType() {
+        return shipmentType;
+    }
+
+    public void setShipmentType(ShipmentType shipmentType) {
+        this.shipmentType = shipmentType;
+    }
+
+    @Override
+    public boolean equals(java.lang.Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Event event = (Event) o;
+        return Objects.equals(this.eventCode, event.eventCode)
+                && Objects.equals(this.location, event.location)
+                && Objects.equals(this.eventTime, event.eventTime)
+                && Objects.equals(this.shipmentType, event.shipmentType);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(eventCode, location, eventTime, shipmentType);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class Event {\n");
+
+        sb.append("    eventCode: ").append(toIndentedString(eventCode)).append("\n");
+        sb.append("    location: ").append(toIndentedString(location)).append("\n");
+        sb.append("    eventTime: ").append(toIndentedString(eventTime)).append("\n");
+        sb.append("    shipmentType: ").append(toIndentedString(shipmentType)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
+    private String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }

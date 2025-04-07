@@ -5673,6 +5673,26 @@ class ServiceApiTest extends BaseTestCase
           },
           &quot;body&quot; : {
             &quot;value&quot; : {
+              &quot;estimatedArrivalTime&quot; : {
+                &quot;startTime&quot; : &quot;2000-01-01T09:00:00.000Z&quot;,
+                &quot;endTime&quot; : &quot;2000-01-01T09:30:00.000Z&quot;
+              }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : &quot;&quot;
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validAppointmentId-1-9cb9bc29-3d7d-5e49-5709-efb693t25687_87b9d5f2-839d-y13e-sd4d-dae1c3996s3d&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
               &quot;fulfillmentTime&quot; : {
                 &quot;startTime&quot; : &quot;2020-01-02T13:18:10.668Z&quot;,
                 &quot;endTime&quot; : &quot;2022-01-03T13:18:10.668Z&quot;
@@ -6428,6 +6448,53 @@ class ServiceApiTest extends BaseTestCase
       &quot;response&quot; : [ {
         &quot;code&quot; : &quot;InvalidInput&quot;,
         &quot;message&quot; : &quot;Appointment end time should be after start time. Please check the input again.&quot;,
+        &quot;details&quot; : &quot;&quot;
+      } ]
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;estimatedArrivalTime&quot; : {
+                &quot;startTime&quot; : &quot;2021-01-01T10:00:00.000Z&quot;
+              }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : [ {
+        &quot;code&quot; : &quot;InvalidInput&quot;,
+        &quot;message&quot; : &quot;Failed to process input. Reason: ETA start and end time both are mandatory field as part of estimatedArrivalTime object. Please check the input again&quot;,
+        &quot;details&quot; : &quot;&quot;
+      } ]
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;serviceJobId&quot; : {
+            &quot;value&quot; : &quot;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468&quot;
+          },
+          &quot;appointmentId&quot; : {
+            &quot;value&quot; : &quot;validJobId-9cb9bc29-3d7d-5e49-5709-efb693d34468_00b9d5f2-839d-c13e-b8cd-dae1c3995b2a&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;estimatedArrivalTime&quot; : {
+                &quot;startTime&quot; : &quot;2021-01-01T10-00:00.000Z&quot;,
+                &quot;endTime&quot; : &quot;2000-01-01T10:30:00.000Z&quot;
+              }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : [ {
+        &quot;code&quot; : &quot;InvalidInput&quot;,
+        &quot;message&quot; : &quot;Could not parse given time input 2021-01-01T10-00:00.000Z. Please provide time in ISO8601 format&quot;,
         &quot;details&quot; : &quot;&quot;
       } ]
     }, {

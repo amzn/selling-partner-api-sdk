@@ -1,17 +1,19 @@
 <?php
+
 /**
- * ClaimReason
+ * ClaimReason.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Amazon Shipping API
+ * Amazon Shipping API.
  *
  * The Amazon Shipping API is designed to support outbound shipping use cases both for orders originating on Amazon-owned marketplaces as well as external channels/marketplaces. With these APIs, you can request shipping rates, create shipments, cancel shipments, and track shipments.
  *
@@ -28,22 +30,22 @@
  */
 
 namespace SpApi\Model\shipping\v2;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * ClaimReason Class Doc Comment
+ * ClaimReason Class Doc Comment.
  *
  * @category Class
+ *
  * @description The reason for which shipper is filing the claim for a particular shipment.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class ClaimReason
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const LOST_IN_TRANSIT = 'LOST_IN_TRANSIT';
 
@@ -56,7 +58,8 @@ class ClaimReason
     public const COD_ABUSE = 'COD_ABUSE';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
@@ -66,9 +69,7 @@ class ClaimReason
             self::DAMAGED_IN_TRANSIT,
             self::DELIVERED_NOT_RECEIVED,
             self::ITEM_MISSING_SWITCHEROO,
-            self::COD_ABUSE
+            self::COD_ABUSE,
         ];
     }
 }
-
-

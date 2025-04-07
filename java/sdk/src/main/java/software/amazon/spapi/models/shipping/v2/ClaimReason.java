@@ -12,66 +12,61 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
-import java.util.Objects;
-import java.util.Arrays;
-import io.swagger.v3.oas.annotations.media.Schema;
-import com.google.gson.annotations.SerializedName;
-import java.io.IOException;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
-/**
- * The reason for which shipper is filing the claim for a particular shipment.
- */
+/** The reason for which shipper is filing the claim for a particular shipment. */
 @JsonAdapter(ClaimReason.Adapter.class)
 public enum ClaimReason {
-  @SerializedName("LOST_IN_TRANSIT")
-  LOST_IN_TRANSIT("LOST_IN_TRANSIT"),
-  @SerializedName("DAMAGED_IN_TRANSIT")
-  DAMAGED_IN_TRANSIT("DAMAGED_IN_TRANSIT"),
-  @SerializedName("DELIVERED_NOT_RECEIVED")
-  DELIVERED_NOT_RECEIVED("DELIVERED_NOT_RECEIVED"),
-  @SerializedName("ITEM_MISSING_SWITCHEROO")
-  ITEM_MISSING_SWITCHEROO("ITEM_MISSING_SWITCHEROO"),
-  @SerializedName("COD_ABUSE")
-  COD_ABUSE("COD_ABUSE");
+    @SerializedName("LOST_IN_TRANSIT")
+    LOST_IN_TRANSIT("LOST_IN_TRANSIT"),
+    @SerializedName("DAMAGED_IN_TRANSIT")
+    DAMAGED_IN_TRANSIT("DAMAGED_IN_TRANSIT"),
+    @SerializedName("DELIVERED_NOT_RECEIVED")
+    DELIVERED_NOT_RECEIVED("DELIVERED_NOT_RECEIVED"),
+    @SerializedName("ITEM_MISSING_SWITCHEROO")
+    ITEM_MISSING_SWITCHEROO("ITEM_MISSING_SWITCHEROO"),
+    @SerializedName("COD_ABUSE")
+    COD_ABUSE("COD_ABUSE");
 
-  private String value;
+    private String value;
 
-  ClaimReason(String value) {
-    this.value = value;
-  }
-
-  public String getValue() {
-    return value;
-  }
-
-  @Override
-  public String toString() {
-    return String.valueOf(value);
-  }
-
-  public static ClaimReason fromValue(String input) {
-    for (ClaimReason b : ClaimReason.values()) {
-      if (b.value.equals(input)) {
-        return b;
-      }
+    ClaimReason(String value) {
+        this.value = value;
     }
-    return null;
-  }
 
-  public static class Adapter extends TypeAdapter<ClaimReason> {
-    @Override
-    public void write(final JsonWriter jsonWriter, final ClaimReason enumeration) throws IOException {
-      jsonWriter.value(String.valueOf(enumeration.getValue()));
+    public String getValue() {
+        return value;
     }
 
     @Override
-    public ClaimReason read(final JsonReader jsonReader) throws IOException {
-      Object value = jsonReader.nextString();
-      return ClaimReason.fromValue((String)(value));
+    public String toString() {
+        return String.valueOf(value);
     }
-  }
+
+    public static ClaimReason fromValue(String input) {
+        for (ClaimReason b : ClaimReason.values()) {
+            if (b.value.equals(input)) {
+                return b;
+            }
+        }
+        return null;
+    }
+
+    public static class Adapter extends TypeAdapter<ClaimReason> {
+        @Override
+        public void write(final JsonWriter jsonWriter, final ClaimReason enumeration) throws IOException {
+            jsonWriter.value(String.valueOf(enumeration.getValue()));
+        }
+
+        @Override
+        public ClaimReason read(final JsonReader jsonReader) throws IOException {
+            Object value = jsonReader.nextString();
+            return ClaimReason.fromValue((String) (value));
+        }
+    }
 }

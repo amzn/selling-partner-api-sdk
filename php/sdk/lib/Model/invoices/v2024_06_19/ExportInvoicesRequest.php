@@ -1,13 +1,15 @@
 <?php
+
 /**
- * ExportInvoicesRequest
+ * ExportInvoicesRequest.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
@@ -28,73 +30,74 @@
 
 namespace SpApi\Model\invoices\v2024_06_19;
 
-use
-ArrayAccess;
-use SpApi\ObjectSerializer;
 use SpApi\Model\ModelInterface;
+use SpApi\ObjectSerializer;
 
 /**
- * ExportInvoicesRequest Class Doc Comment
+ * ExportInvoicesRequest Class Doc Comment.
  *
  * @category Class
+ *
  * @description The information required to create the export request.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
+ *
  * @implements \ArrayAccess<string, mixed>
  */
-class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class ExportInvoicesRequest implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     */
     protected static string $openAPIModelName = 'ExportInvoicesRequest';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static array $openAPITypes = [
-             'date_end' => '\DateTime',
-             'date_start' => '\DateTime',
-             'external_invoice_id' => 'string',
-             'file_format' => '\SpApi\Model\invoices\v2024_06_19\FileFormat',
-             'invoice_type' => 'string',
-             'marketplace_id' => 'string',
-             'series' => 'string',
-             'statuses' => 'string[]',
-             'transaction_identifier' => '\SpApi\Model\invoices\v2024_06_19\TransactionIdentifier',
-             'transaction_type' => 'string'    ];
+        'date_end' => '\DateTime',
+        'date_start' => '\DateTime',
+        'external_invoice_id' => 'string',
+        'file_format' => '\SpApi\Model\invoices\v2024_06_19\FileFormat',
+        'invoice_type' => 'string',
+        'marketplace_id' => 'string',
+        'series' => 'string',
+        'statuses' => 'string[]',
+        'transaction_identifier' => '\SpApi\Model\invoices\v2024_06_19\TransactionIdentifier',
+        'transaction_type' => 'string'];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     *
+     * @phpstan-var array<string, string|null>
+     *
+     * @psalm-var array<string, string|null>
+     */
     protected static array $openAPIFormats = [
-            'date_end' => 'date',
-            'date_start' => 'date',
-            'external_invoice_id' => null,
-            'file_format' => null,
-            'invoice_type' => null,
-            'marketplace_id' => null,
-            'series' => null,
-            'statuses' => null,
-            'transaction_identifier' => null,
-            'transaction_type' => null    ];
+        'date_end' => 'date',
+        'date_start' => 'date',
+        'external_invoice_id' => null,
+        'file_format' => null,
+        'invoice_type' => null,
+        'marketplace_id' => null,
+        'series' => null,
+        'statuses' => null,
+        'transaction_identifier' => null,
+        'transaction_type' => null];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization.
+     *
+     * @var bool[]
+     */
     protected static array $openAPINullables = [
         'date_end' => true,
         'date_start' => true,
@@ -105,110 +108,37 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'series' => true,
         'statuses' => true,
         'transaction_identifier' => true,
-        'transaction_type' => true
+        'transaction_type' => true,
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here.
+     *
+     * @var bool[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPIFormats(): array
-    {
-        return self::$openAPIFormats;
-    }
-
-    /**
-     * Array of nullable properties
-     *
-     * @return array
-     */
-    protected static function openAPINullables(): array
-    {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * Array of nullable field names deliberately set to null
-     *
-     * @return boolean[]
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * Setter - Array of nullable field names deliberately set to null
-     *
-     * @param boolean[] $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    /**
-     * Checks if a property is nullable
-     *
-     * @param string $property
-     * @return bool
-     */
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    /**
-     * Checks if a nullable property is set to null.
-     *
-     * @param string $property
-     * @return bool
-     */
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @var string[]
      */
     protected static array $attributeMap = [
         'date_end' => 'dateEnd',
-                'date_start' => 'dateStart',
-                'external_invoice_id' => 'externalInvoiceId',
-                'file_format' => 'fileFormat',
-                'invoice_type' => 'invoiceType',
-                'marketplace_id' => 'marketplaceId',
-                'series' => 'series',
-                'statuses' => 'statuses',
-                'transaction_identifier' => 'transactionIdentifier',
-                'transaction_type' => 'transactionType'
-        
+        'date_start' => 'dateStart',
+        'external_invoice_id' => 'externalInvoiceId',
+        'file_format' => 'fileFormat',
+        'invoice_type' => 'invoiceType',
+        'marketplace_id' => 'marketplaceId',
+        'series' => 'series',
+        'statuses' => 'statuses',
+        'transaction_identifier' => 'transactionIdentifier',
+        'transaction_type' => 'transactionType',
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @var string[]
      */
@@ -222,11 +152,11 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'series' => 'setSeries',
         'statuses' => 'setStatuses',
         'transaction_identifier' => 'setTransactionIdentifier',
-        'transaction_type' => 'setTransactionType'
+        'transaction_type' => 'setTransactionType',
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @var string[]
      */
@@ -240,63 +170,19 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'series' => 'getSeries',
         'statuses' => 'getStatuses',
         'transaction_identifier' => 'getTransactionIdentifier',
-        'transaction_type' => 'getTransactionType'
+        'transaction_type' => 'getTransactionType',
     ];
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @return array
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @return array
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @return array
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    /**
-     * The original name of the model.
-     *
-     * @return string
-     */
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-
-    /**
-     * Associative array for storing property values
-     *
-     * @var array
+     * Associative array for storing property values.
      */
     protected array $container = [];
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param array|null $data Associated array of property values
-     *                      initializing the model
+     * @param null|array $data Associated array of property values
+     *                         initializing the model
      */
     public function __construct(?array $data = null)
     {
@@ -313,21 +199,81 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
-    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+     * Gets the string presentation of the object.
+     *
+     * @return string
+     */
+    public function __toString()
     {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
+        return json_encode(
+            ObjectSerializer::sanitizeForSerialization($this),
+            JSON_PRETTY_PRINT
+        );
+    }
 
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    /**
+     * Array of property to type mappings. Used for (de)serialization.
+     */
+    public static function openAPITypes(): array
+    {
+        return self::$openAPITypes;
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization.
+     */
+    public static function openAPIFormats(): array
+    {
+        return self::$openAPIFormats;
+    }
+
+    /**
+     * Checks if a property is nullable.
+     */
+    public static function isNullable(string $property): bool
+    {
+        return self::openAPINullables()[$property] ?? false;
+    }
+
+    /**
+     * Checks if a nullable property is set to null.
+     */
+    public function isNullableSetToNull(string $property): bool
+    {
+        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name.
+     */
+    public static function attributeMap(): array
+    {
+        return self::$attributeMap;
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses).
+     */
+    public static function setters(): array
+    {
+        return self::$setters;
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests).
+     */
+    public static function getters(): array
+    {
+        return self::$getters;
+    }
+
+    /**
+     * The original name of the model.
+     */
+    public function getModelName(): string
+    {
+        return self::$openAPIModelName;
     }
 
     /**
@@ -339,7 +285,7 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $invalidProperties = [];
 
-        if ($this->container['marketplace_id'] === null) {
+        if (null === $this->container['marketplace_id']) {
             $invalidProperties[] = "'marketplace_id' can't be null";
         }
         if (!is_null($this->container['statuses']) && (count($this->container['statuses']) < 1)) {
@@ -351,20 +297,17 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
 
     /**
      * Validate all the properties in the model
-     * return true if all passed
+     * return true if all passed.
      *
      * @return bool True if all properties are valid
      */
     public function valid(): bool
     {
-        return count($this->listInvalidProperties()) === 0;
+        return 0 === count($this->listInvalidProperties());
     }
 
-
     /**
-     * Gets date_end
-     *
-     * @return \DateTime|null
+     * Gets date_end.
      */
     public function getDateEnd(): ?\DateTime
     {
@@ -372,11 +315,9 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Sets date_end
+     * Sets date_end.
      *
-     * @param \DateTime|null $date_end The latest invoice creation date for invoices that you want to include in the response. Dates are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default is the time of the request.
-     *
-     * @return self
+     * @param null|\DateTime $date_end The latest invoice creation date for invoices that you want to include in the response. Dates are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default is the time of the request.
      */
     public function setDateEnd(?\DateTime $date_end): self
     {
@@ -385,7 +326,7 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('date_end', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -396,9 +337,7 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets date_start
-     *
-     * @return \DateTime|null
+     * Gets date_start.
      */
     public function getDateStart(): ?\DateTime
     {
@@ -406,11 +345,9 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Sets date_start
+     * Sets date_start.
      *
-     * @param \DateTime|null $date_start The earliest invoice creation date for invoices that you want to include in the response. Dates are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default is 24 hours prior to the time of the request.
-     *
-     * @return self
+     * @param null|\DateTime $date_start The earliest invoice creation date for invoices that you want to include in the response. Dates are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default is 24 hours prior to the time of the request.
      */
     public function setDateStart(?\DateTime $date_start): self
     {
@@ -419,7 +356,7 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('date_start', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -430,9 +367,7 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets external_invoice_id
-     *
-     * @return string|null
+     * Gets external_invoice_id.
      */
     public function getExternalInvoiceId(): ?string
     {
@@ -440,11 +375,9 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Sets external_invoice_id
+     * Sets external_invoice_id.
      *
-     * @param string|null $external_invoice_id The external ID of the invoices you want included in the response.
-     *
-     * @return self
+     * @param null|string $external_invoice_id the external ID of the invoices you want included in the response
      */
     public function setExternalInvoiceId(?string $external_invoice_id): self
     {
@@ -453,7 +386,7 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('external_invoice_id', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -464,9 +397,7 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets file_format
-     *
-     * @return string|null
+     * Gets file_format.
      */
     public function getFileFormat(): ?string
     {
@@ -474,11 +405,9 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Sets file_format
+     * Sets file_format.
      *
-     * @param string|null $file_format file_format
-     *
-     * @return self
+     * @param null|string $file_format file_format
      */
     public function setFileFormat(?string $file_format): self
     {
@@ -487,7 +416,7 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('file_format', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -498,9 +427,7 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets invoice_type
-     *
-     * @return string|null
+     * Gets invoice_type.
      */
     public function getInvoiceType(): ?string
     {
@@ -508,11 +435,9 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Sets invoice_type
+     * Sets invoice_type.
      *
-     * @param string|null $invoice_type The marketplace-specific classification of the invoice type. Use the `getInvoicesAttributes` operation to check `invoiceType` options.
-     *
-     * @return self
+     * @param null|string $invoice_type The marketplace-specific classification of the invoice type. Use the `getInvoicesAttributes` operation to check `invoiceType` options.
      */
     public function setInvoiceType(?string $invoice_type): self
     {
@@ -521,7 +446,7 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('invoice_type', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -532,9 +457,7 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets marketplace_id
-     *
-     * @return string
+     * Gets marketplace_id.
      */
     public function getMarketplaceId(): string
     {
@@ -542,11 +465,9 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Sets marketplace_id
+     * Sets marketplace_id.
      *
-     * @param string $marketplace_id The ID of the marketplace from which you want the invoices.
-     *
-     * @return self
+     * @param string $marketplace_id the ID of the marketplace from which you want the invoices
      */
     public function setMarketplaceId(string $marketplace_id): self
     {
@@ -559,9 +480,7 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets series
-     *
-     * @return string|null
+     * Gets series.
      */
     public function getSeries(): ?string
     {
@@ -569,11 +488,9 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Sets series
+     * Sets series.
      *
-     * @param string|null $series The series number of the invoices you want included in the response.
-     *
-     * @return self
+     * @param null|string $series the series number of the invoices you want included in the response
      */
     public function setSeries(?string $series): self
     {
@@ -582,7 +499,7 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('series', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -593,9 +510,7 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets statuses
-     *
-     * @return array|null
+     * Gets statuses.
      */
     public function getStatuses(): ?array
     {
@@ -603,11 +518,9 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Sets statuses
+     * Sets statuses.
      *
-     * @param array|null $statuses A list of statuses that you can use to filter invoices. Use the `getInvoicesAttributes` operation to check invoice status options.  Min count: 1
-     *
-     * @return self
+     * @param null|array $statuses A list of statuses that you can use to filter invoices. Use the `getInvoicesAttributes` operation to check invoice status options.  Min count: 1
      */
     public function setStatuses(?array $statuses): self
     {
@@ -616,12 +529,11 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('statuses', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
 
         if (!is_null($statuses) && (count($statuses) < 1)) {
             throw new \InvalidArgumentException('invalid length for $statuses when calling ExportInvoicesRequest., number of items must be greater than or equal to 1.');
@@ -632,30 +544,26 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets transaction_identifier
-     *
-     * @return \SpApi\Model\invoices\v2024_06_19\TransactionIdentifier|null
+     * Gets transaction_identifier.
      */
-    public function getTransactionIdentifier(): ?\SpApi\Model\invoices\v2024_06_19\TransactionIdentifier
+    public function getTransactionIdentifier(): ?TransactionIdentifier
     {
         return $this->container['transaction_identifier'];
     }
 
     /**
-     * Sets transaction_identifier
+     * Sets transaction_identifier.
      *
-     * @param \SpApi\Model\invoices\v2024_06_19\TransactionIdentifier|null $transaction_identifier transaction_identifier
-     *
-     * @return self
+     * @param null|TransactionIdentifier $transaction_identifier transaction_identifier
      */
-    public function setTransactionIdentifier(?\SpApi\Model\invoices\v2024_06_19\TransactionIdentifier $transaction_identifier): self
+    public function setTransactionIdentifier(?TransactionIdentifier $transaction_identifier): self
     {
         if (is_null($transaction_identifier)) {
             array_push($this->openAPINullablesSetToNull, 'transaction_identifier');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('transaction_identifier', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -666,9 +574,7 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets transaction_type
-     *
-     * @return string|null
+     * Gets transaction_type.
      */
     public function getTransactionType(): ?string
     {
@@ -676,11 +582,9 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Sets transaction_type
+     * Sets transaction_type.
      *
-     * @param string|null $transaction_type The marketplace-specific classification of the transaction type for which the invoice was created. Use the `getInvoicesAttributes` operation to check `transactionType` options
-     *
-     * @return self
+     * @param null|string $transaction_type The marketplace-specific classification of the transaction type for which the invoice was created. Use the `getInvoicesAttributes` operation to check `transactionType` options
      */
     public function setTransactionType(?string $transaction_type): self
     {
@@ -689,7 +593,7 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('transaction_type', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -699,13 +603,10 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         return $this;
     }
 
-
     /**
      * Returns true if offset exists. False otherwise.
      *
-     * @param integer $offset Offset
-     *
-     * @return boolean
+     * @param int $offset Offset
      */
     public function offsetExists($offset): bool
     {
@@ -715,9 +616,9 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
-     * @return mixed|null
+     * @return null|mixed
      */
     #[\ReturnTypeWillChange]
     public function offsetGet($offset): mixed
@@ -728,10 +629,8 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets value based on offset.
      *
-     * @param int|null $offset Offset
+     * @param null|int $offset Offset
      * @param mixed    $value  Value to be set
-     *
-     * @return void
      */
     public function offsetSet($offset, mixed $value): void
     {
@@ -745,9 +644,7 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Unsets offset.
      *
-     * @param integer $offset Offset
-     *
-     * @return void
+     * @param int $offset Offset
      */
     public function offsetUnset($offset): void
     {
@@ -756,39 +653,67 @@ class ExportInvoicesRequest implements ModelInterface, ArrayAccess, \JsonSeriali
 
     /**
      * Serializes the object to a value that can be serialized natively by json_encode().
-     * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
      *
-     * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
+     * @see https://www.php.net/manual/en/jsonserializable.jsonserialize.php
+     *
+     * @return mixed returns data which can be serialized by json_encode(), which is a value
+     *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
     public function jsonSerialize(): mixed
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
-     * Gets the string presentation of the object
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    /**
-     * Gets a header-safe presentation of the object
-     *
-     * @return string
+     * Gets a header-safe presentation of the object.
      */
     public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
+
+    /**
+     * Array of nullable properties.
+     */
+    protected static function openAPINullables(): array
+    {
+        return self::$openAPINullables;
+    }
+
+    /**
+     * Array of nullable field names deliberately set to null.
+     *
+     * @return bool[]
+     */
+    private function getOpenAPINullablesSetToNull(): array
+    {
+        return $this->openAPINullablesSetToNull;
+    }
+
+    /**
+     * Setter - Array of nullable field names deliberately set to null.
+     *
+     * @param bool[] $openAPINullablesSetToNull
+     */
+    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
+    {
+        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
+    }
+
+    /**
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array.
+     *
+     * @param mixed $defaultValue
+     */
+    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+    {
+        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
+            $this->openAPINullablesSetToNull[] = $variableName;
+        }
+
+        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    }
 }
-
-

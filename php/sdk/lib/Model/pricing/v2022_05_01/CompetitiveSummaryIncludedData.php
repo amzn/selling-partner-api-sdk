@@ -1,17 +1,19 @@
 <?php
+
 /**
- * CompetitiveSummaryIncludedData
+ * CompetitiveSummaryIncludedData.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Pricing
+ * Selling Partner API for Pricing.
  *
  * The Selling Partner API for Pricing helps you programmatically retrieve product pricing and offer pricing information for Amazon Marketplace products.  For more information, refer to the [Product Pricing v2022-05-01 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/product-pricing-api-v2022-05-01-use-case-guide).
  *
@@ -27,22 +29,22 @@
  */
 
 namespace SpApi\Model\pricing\v2022_05_01;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * CompetitiveSummaryIncludedData Class Doc Comment
+ * CompetitiveSummaryIncludedData Class Doc Comment.
  *
  * @category Class
+ *
  * @description The supported data types in the &#x60;getCompetitiveSummary&#x60; API.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class CompetitiveSummaryIncludedData
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const FEATURED_BUYING_OPTIONS = 'featuredBuyingOptions';
 
@@ -51,7 +53,8 @@ class CompetitiveSummaryIncludedData
     public const LOWEST_PRICED_OFFERS = 'lowestPricedOffers';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
@@ -59,9 +62,7 @@ class CompetitiveSummaryIncludedData
         return [
             self::FEATURED_BUYING_OPTIONS,
             self::REFERENCE_PRICES,
-            self::LOWEST_PRICED_OFFERS
+            self::LOWEST_PRICED_OFFERS,
         ];
     }
 }
-
-

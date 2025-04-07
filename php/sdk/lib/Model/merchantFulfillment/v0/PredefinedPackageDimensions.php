@@ -1,17 +1,19 @@
 <?php
+
 /**
- * PredefinedPackageDimensions
+ * PredefinedPackageDimensions.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Merchant Fulfillment
+ * Selling Partner API for Merchant Fulfillment.
  *
  * With the Selling Partner API for Merchant Fulfillment, you can build applications that sellers can use to purchase shipping for non-Prime and Prime orders using Amazon's Buy Shipping Services.
  *
@@ -27,22 +29,22 @@
  */
 
 namespace SpApi\Model\merchantFulfillment\v0;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * PredefinedPackageDimensions Class Doc Comment
+ * PredefinedPackageDimensions Class Doc Comment.
  *
  * @category Class
+ *
  * @description An enumeration of predefined parcel tokens. If you specify a &#x60;PredefinedPackageDimensions&#x60; token, you are not obligated to use a branded package from a carrier. For example, if you specify the &#x60;FedEx_Box_10kg&#x60; token, you do not have to use that particular package from FedEx. You are only obligated to use a box that matches the dimensions specified by the token. Note: Carriers can have restrictions on the type of package allowed for certain ship methods. Check the carrier website for details. Example: Flat rate pricing is available when materials are sent by USPS in a USPS-produced Flat Rate envelope or box.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class PredefinedPackageDimensions
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const FED_EX_BOX_10KG = 'FedEx_Box_10kg';
 
@@ -145,7 +147,8 @@ class PredefinedPackageDimensions
     public const USPS_SMALL_FLAT_RATE_ENVELOPE = 'USPS_SmallFlatRateEnvelope';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
@@ -200,9 +203,7 @@ class PredefinedPackageDimensions
             self::USPS_REGIONAL_RATE_BOX_B2,
             self::USPS_REGIONAL_RATE_BOX_C,
             self::USPS_SMALL_FLAT_RATE_BOX,
-            self::USPS_SMALL_FLAT_RATE_ENVELOPE
+            self::USPS_SMALL_FLAT_RATE_ENVELOPE,
         ];
     }
 }
-
-

@@ -1,17 +1,19 @@
 <?php
+
 /**
- * UnitOfLength
+ * UnitOfLength.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Easy Ship
+ * Selling Partner API for Easy Ship.
  *
  * Use the Selling Partner API for Easy Ship to build applications for sellers to manage and ship Amazon Easy Ship orders. With this API, you can get available time slots, schedule and reschedule Easy Ship orders, and print shipping labels, invoices, and warranties. To review the differences in Easy Ship operations by marketplace, refer to [Marketplace support](https://developer-docs.amazon.com/sp-api/docs/easyship-api-v2022-03-23-use-case-guide#marketplace-support).
  *
@@ -27,35 +29,34 @@
  */
 
 namespace SpApi\Model\easyship\v2022_03_23;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * UnitOfLength Class Doc Comment
+ * UnitOfLength Class Doc Comment.
  *
  * @category Class
+ *
  * @description The unit of measurement used to measure the length.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class UnitOfLength
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const CM = 'Cm';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
     {
         return [
-            self::CM
+            self::CM,
         ];
     }
 }
-
-

@@ -1,13 +1,15 @@
 <?php
+
 /**
- * AssignmentType
+ * AssignmentType.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
@@ -27,35 +29,34 @@
  */
 
 namespace SpApi\Model\transfers\v2024_06_01;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * AssignmentType Class Doc Comment
+ * AssignmentType Class Doc Comment.
  *
  * @category Class
+ *
  * @description The default payment method type.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class AssignmentType
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const DEFAULT_DEPOSIT_METHOD = 'DEFAULT_DEPOSIT_METHOD';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
     {
         return [
-            self::DEFAULT_DEPOSIT_METHOD
+            self::DEFAULT_DEPOSIT_METHOD,
         ];
     }
 }
-
-

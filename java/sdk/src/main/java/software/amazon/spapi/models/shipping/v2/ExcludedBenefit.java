@@ -12,105 +12,91 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.io.IOException;
-import software.amazon.spapi.models.shipping.v2.ExcludedBenefitReasonCodes;
-/**
- * Object representing a benefit that is excluded for a shipping offer or rate.
- */
+import java.util.Objects;
+
+/** Object representing a benefit that is excluded for a shipping offer or rate. */
 @Schema(description = "Object representing a benefit that is excluded for a shipping offer or rate.")
-
-
 public class ExcludedBenefit {
-  @SerializedName("benefit")
-  private String benefit = null;
+    @SerializedName("benefit")
+    private String benefit = null;
 
-  @SerializedName("reasonCodes")
-  private ExcludedBenefitReasonCodes reasonCodes = null;
+    @SerializedName("reasonCodes")
+    private ExcludedBenefitReasonCodes reasonCodes = null;
 
-  public ExcludedBenefit benefit(String benefit) {
-    this.benefit = benefit;
-    return this;
-  }
-
-   /**
-   * benefit
-   * @return benefit
-  **/
-  @Schema(required = true, description = "benefit")
-  public String getBenefit() {
-    return benefit;
-  }
-
-  public void setBenefit(String benefit) {
-    this.benefit = benefit;
-  }
-
-  public ExcludedBenefit reasonCodes(ExcludedBenefitReasonCodes reasonCodes) {
-    this.reasonCodes = reasonCodes;
-    return this;
-  }
-
-   /**
-   * Get reasonCodes
-   * @return reasonCodes
-  **/
-  @Schema(description = "")
-  public ExcludedBenefitReasonCodes getReasonCodes() {
-    return reasonCodes;
-  }
-
-  public void setReasonCodes(ExcludedBenefitReasonCodes reasonCodes) {
-    this.reasonCodes = reasonCodes;
-  }
-
-
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
+    public ExcludedBenefit benefit(String benefit) {
+        this.benefit = benefit;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * benefit
+     *
+     * @return benefit
+     */
+    @Schema(required = true, description = "benefit")
+    public String getBenefit() {
+        return benefit;
     }
-    ExcludedBenefit excludedBenefit = (ExcludedBenefit) o;
-    return Objects.equals(this.benefit, excludedBenefit.benefit) &&
-        Objects.equals(this.reasonCodes, excludedBenefit.reasonCodes);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(benefit, reasonCodes);
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ExcludedBenefit {\n");
-    
-    sb.append("    benefit: ").append(toIndentedString(benefit)).append("\n");
-    sb.append("    reasonCodes: ").append(toIndentedString(reasonCodes)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    public void setBenefit(String benefit) {
+        this.benefit = benefit;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    public ExcludedBenefit reasonCodes(ExcludedBenefitReasonCodes reasonCodes) {
+        this.reasonCodes = reasonCodes;
+        return this;
+    }
+
+    /**
+     * Get reasonCodes
+     *
+     * @return reasonCodes
+     */
+    @Schema(description = "")
+    public ExcludedBenefitReasonCodes getReasonCodes() {
+        return reasonCodes;
+    }
+
+    public void setReasonCodes(ExcludedBenefitReasonCodes reasonCodes) {
+        this.reasonCodes = reasonCodes;
+    }
+
+    @Override
+    public boolean equals(java.lang.Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ExcludedBenefit excludedBenefit = (ExcludedBenefit) o;
+        return Objects.equals(this.benefit, excludedBenefit.benefit)
+                && Objects.equals(this.reasonCodes, excludedBenefit.reasonCodes);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(benefit, reasonCodes);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class ExcludedBenefit {\n");
+
+        sb.append("    benefit: ").append(toIndentedString(benefit)).append("\n");
+        sb.append("    reasonCodes: ").append(toIndentedString(reasonCodes)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
+    private String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }

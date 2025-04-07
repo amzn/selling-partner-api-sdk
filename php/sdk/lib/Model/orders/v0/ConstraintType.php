@@ -1,17 +1,19 @@
 <?php
+
 /**
- * ConstraintType
+ * ConstraintType.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Orders
+ * Selling Partner API for Orders.
  *
  * Use the Orders Selling Partner API to programmatically retrieve order information. With this API, you can develop fast, flexible, and custom applications to manage order synchronization, perform order research, and create demand-based decision support tools.   _Note:_ For the JP, AU, and SG marketplaces, the Orders API supports orders from 2016 onward. For all other marketplaces, the Orders API supports orders for the last two years (orders older than this don't show up in the response).
  *
@@ -27,35 +29,34 @@
  */
 
 namespace SpApi\Model\orders\v0;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * ConstraintType Class Doc Comment
+ * ConstraintType Class Doc Comment.
  *
  * @category Class
+ *
  * @description Details the importance of the constraint present on the item
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class ConstraintType
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const MANDATORY = 'MANDATORY';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
     {
         return [
-            self::MANDATORY
+            self::MANDATORY,
         ];
     }
 }
-
-

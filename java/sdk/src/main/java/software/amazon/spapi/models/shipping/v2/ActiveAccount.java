@@ -12,104 +12,91 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.io.IOException;
-/**
- * Active Account Details
- */
+import java.util.Objects;
+
+/** Active Account Details */
 @Schema(description = "Active Account Details")
-
-
 public class ActiveAccount {
-  @SerializedName("accountId")
-  private String accountId = null;
+    @SerializedName("accountId")
+    private String accountId = null;
 
-  @SerializedName("carrierId")
-  private String carrierId = null;
+    @SerializedName("carrierId")
+    private String carrierId = null;
 
-  public ActiveAccount accountId(String accountId) {
-    this.accountId = accountId;
-    return this;
-  }
-
-   /**
-   * Get accountId
-   * @return accountId
-  **/
-  @Schema(description = "")
-  public String getAccountId() {
-    return accountId;
-  }
-
-  public void setAccountId(String accountId) {
-    this.accountId = accountId;
-  }
-
-  public ActiveAccount carrierId(String carrierId) {
-    this.carrierId = carrierId;
-    return this;
-  }
-
-   /**
-   * Get carrierId
-   * @return carrierId
-  **/
-  @Schema(description = "")
-  public String getCarrierId() {
-    return carrierId;
-  }
-
-  public void setCarrierId(String carrierId) {
-    this.carrierId = carrierId;
-  }
-
-
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
+    public ActiveAccount accountId(String accountId) {
+        this.accountId = accountId;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * Get accountId
+     *
+     * @return accountId
+     */
+    @Schema(description = "")
+    public String getAccountId() {
+        return accountId;
     }
-    ActiveAccount activeAccount = (ActiveAccount) o;
-    return Objects.equals(this.accountId, activeAccount.accountId) &&
-        Objects.equals(this.carrierId, activeAccount.carrierId);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(accountId, carrierId);
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ActiveAccount {\n");
-    
-    sb.append("    accountId: ").append(toIndentedString(accountId)).append("\n");
-    sb.append("    carrierId: ").append(toIndentedString(carrierId)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    public void setAccountId(String accountId) {
+        this.accountId = accountId;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    public ActiveAccount carrierId(String carrierId) {
+        this.carrierId = carrierId;
+        return this;
+    }
+
+    /**
+     * Get carrierId
+     *
+     * @return carrierId
+     */
+    @Schema(description = "")
+    public String getCarrierId() {
+        return carrierId;
+    }
+
+    public void setCarrierId(String carrierId) {
+        this.carrierId = carrierId;
+    }
+
+    @Override
+    public boolean equals(java.lang.Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ActiveAccount activeAccount = (ActiveAccount) o;
+        return Objects.equals(this.accountId, activeAccount.accountId)
+                && Objects.equals(this.carrierId, activeAccount.carrierId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(accountId, carrierId);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class ActiveAccount {\n");
+
+        sb.append("    accountId: ").append(toIndentedString(accountId)).append("\n");
+        sb.append("    carrierId: ").append(toIndentedString(carrierId)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
+    private String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }

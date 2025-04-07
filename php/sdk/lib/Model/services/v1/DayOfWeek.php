@@ -1,17 +1,19 @@
 <?php
+
 /**
- * DayOfWeek
+ * DayOfWeek.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Services
+ * Selling Partner API for Services.
  *
  * With the Services API, you can build applications that help service providers get and modify their service orders and manage their resources.
  *
@@ -27,22 +29,22 @@
  */
 
 namespace SpApi\Model\services\v1;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * DayOfWeek Class Doc Comment
+ * DayOfWeek Class Doc Comment.
  *
  * @category Class
+ *
  * @description The day of the week.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class DayOfWeek
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const MONDAY = 'MONDAY';
 
@@ -59,7 +61,8 @@ class DayOfWeek
     public const SUNDAY = 'SUNDAY';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
@@ -71,9 +74,7 @@ class DayOfWeek
             self::THURSDAY,
             self::FRIDAY,
             self::SATURDAY,
-            self::SUNDAY
+            self::SUNDAY,
         ];
     }
 }
-
-

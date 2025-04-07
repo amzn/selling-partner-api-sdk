@@ -12,104 +12,90 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.io.IOException;
-/**
- * Date Range for query the results.
- */
+import java.util.Objects;
+
+/** Date Range for query the results. */
 @Schema(description = "Date Range for query the results.")
-
-
 public class DateRange {
-  @SerializedName("startDate")
-  private String startDate = null;
+    @SerializedName("startDate")
+    private String startDate = null;
 
-  @SerializedName("endDate")
-  private String endDate = null;
+    @SerializedName("endDate")
+    private String endDate = null;
 
-  public DateRange startDate(String startDate) {
-    this.startDate = startDate;
-    return this;
-  }
-
-   /**
-   * Start Date for query .
-   * @return startDate
-  **/
-  @Schema(description = "Start Date for query .")
-  public String getStartDate() {
-    return startDate;
-  }
-
-  public void setStartDate(String startDate) {
-    this.startDate = startDate;
-  }
-
-  public DateRange endDate(String endDate) {
-    this.endDate = endDate;
-    return this;
-  }
-
-   /**
-   * end date for query.
-   * @return endDate
-  **/
-  @Schema(description = "end date for query.")
-  public String getEndDate() {
-    return endDate;
-  }
-
-  public void setEndDate(String endDate) {
-    this.endDate = endDate;
-  }
-
-
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
+    public DateRange startDate(String startDate) {
+        this.startDate = startDate;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * Start Date for query .
+     *
+     * @return startDate
+     */
+    @Schema(description = "Start Date for query .")
+    public String getStartDate() {
+        return startDate;
     }
-    DateRange dateRange = (DateRange) o;
-    return Objects.equals(this.startDate, dateRange.startDate) &&
-        Objects.equals(this.endDate, dateRange.endDate);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(startDate, endDate);
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class DateRange {\n");
-    
-    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
-    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    public DateRange endDate(String endDate) {
+        this.endDate = endDate;
+        return this;
+    }
+
+    /**
+     * end date for query.
+     *
+     * @return endDate
+     */
+    @Schema(description = "end date for query.")
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
+
+    @Override
+    public boolean equals(java.lang.Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        DateRange dateRange = (DateRange) o;
+        return Objects.equals(this.startDate, dateRange.startDate) && Objects.equals(this.endDate, dateRange.endDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(startDate, endDate);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class DateRange {\n");
+
+        sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
+        sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
+    private String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }

@@ -1,17 +1,19 @@
 <?php
+
 /**
- * GetFulfillmentPreviewRequest
+ * GetFulfillmentPreviewRequest.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner APIs for Fulfillment Outbound
+ * Selling Partner APIs for Fulfillment Outbound.
  *
  * The Selling Partner API for Fulfillment Outbound lets you create applications that help a seller fulfill Multi-Channel Fulfillment orders using their inventory in Amazon's fulfillment network. You can get information on both potential and existing fulfillment orders.
  *
@@ -28,67 +30,68 @@
 
 namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
 
-use
-ArrayAccess;
-use SpApi\ObjectSerializer;
 use SpApi\Model\ModelInterface;
+use SpApi\ObjectSerializer;
 
 /**
- * GetFulfillmentPreviewRequest Class Doc Comment
+ * GetFulfillmentPreviewRequest Class Doc Comment.
  *
  * @category Class
+ *
  * @description The request body schema for the &#x60;getFulfillmentPreview&#x60; operation.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
+ *
  * @implements \ArrayAccess<string, mixed>
  */
-class GetFulfillmentPreviewRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class GetFulfillmentPreviewRequest implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     */
     protected static string $openAPIModelName = 'GetFulfillmentPreviewRequest';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static array $openAPITypes = [
-             'marketplace_id' => 'string',
-             'address' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\Address',
-             'items' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentPreviewItem[]',
-             'shipping_speed_categories' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\ShippingSpeedCategory[]',
-             'include_cod_fulfillment_preview' => 'bool',
-             'include_delivery_windows' => 'bool',
-             'feature_constraints' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\FeatureSettings[]'    ];
+        'marketplace_id' => 'string',
+        'address' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\Address',
+        'items' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentPreviewItem[]',
+        'shipping_speed_categories' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\ShippingSpeedCategory[]',
+        'include_cod_fulfillment_preview' => 'bool',
+        'include_delivery_windows' => 'bool',
+        'feature_constraints' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\FeatureSettings[]'];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     *
+     * @phpstan-var array<string, string|null>
+     *
+     * @psalm-var array<string, string|null>
+     */
     protected static array $openAPIFormats = [
-            'marketplace_id' => null,
-            'address' => null,
-            'items' => null,
-            'shipping_speed_categories' => null,
-            'include_cod_fulfillment_preview' => null,
-            'include_delivery_windows' => null,
-            'feature_constraints' => null    ];
+        'marketplace_id' => null,
+        'address' => null,
+        'items' => null,
+        'shipping_speed_categories' => null,
+        'include_cod_fulfillment_preview' => null,
+        'include_delivery_windows' => null,
+        'feature_constraints' => null];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization.
+     *
+     * @var bool[]
+     */
     protected static array $openAPINullables = [
         'marketplace_id' => true,
         'address' => false,
@@ -96,107 +99,34 @@ class GetFulfillmentPreviewRequest implements ModelInterface, ArrayAccess, \Json
         'shipping_speed_categories' => true,
         'include_cod_fulfillment_preview' => true,
         'include_delivery_windows' => true,
-        'feature_constraints' => true
+        'feature_constraints' => true,
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here.
+     *
+     * @var bool[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPIFormats(): array
-    {
-        return self::$openAPIFormats;
-    }
-
-    /**
-     * Array of nullable properties
-     *
-     * @return array
-     */
-    protected static function openAPINullables(): array
-    {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * Array of nullable field names deliberately set to null
-     *
-     * @return boolean[]
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * Setter - Array of nullable field names deliberately set to null
-     *
-     * @param boolean[] $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    /**
-     * Checks if a property is nullable
-     *
-     * @param string $property
-     * @return bool
-     */
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    /**
-     * Checks if a nullable property is set to null.
-     *
-     * @param string $property
-     * @return bool
-     */
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @var string[]
      */
     protected static array $attributeMap = [
         'marketplace_id' => 'marketplaceId',
-                'address' => 'address',
-                'items' => 'items',
-                'shipping_speed_categories' => 'shippingSpeedCategories',
-                'include_cod_fulfillment_preview' => 'includeCODFulfillmentPreview',
-                'include_delivery_windows' => 'includeDeliveryWindows',
-                'feature_constraints' => 'featureConstraints'
-        
+        'address' => 'address',
+        'items' => 'items',
+        'shipping_speed_categories' => 'shippingSpeedCategories',
+        'include_cod_fulfillment_preview' => 'includeCODFulfillmentPreview',
+        'include_delivery_windows' => 'includeDeliveryWindows',
+        'feature_constraints' => 'featureConstraints',
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @var string[]
      */
@@ -207,11 +137,11 @@ class GetFulfillmentPreviewRequest implements ModelInterface, ArrayAccess, \Json
         'shipping_speed_categories' => 'setShippingSpeedCategories',
         'include_cod_fulfillment_preview' => 'setIncludeCodFulfillmentPreview',
         'include_delivery_windows' => 'setIncludeDeliveryWindows',
-        'feature_constraints' => 'setFeatureConstraints'
+        'feature_constraints' => 'setFeatureConstraints',
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @var string[]
      */
@@ -222,63 +152,19 @@ class GetFulfillmentPreviewRequest implements ModelInterface, ArrayAccess, \Json
         'shipping_speed_categories' => 'getShippingSpeedCategories',
         'include_cod_fulfillment_preview' => 'getIncludeCodFulfillmentPreview',
         'include_delivery_windows' => 'getIncludeDeliveryWindows',
-        'feature_constraints' => 'getFeatureConstraints'
+        'feature_constraints' => 'getFeatureConstraints',
     ];
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @return array
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @return array
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @return array
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    /**
-     * The original name of the model.
-     *
-     * @return string
-     */
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-
-    /**
-     * Associative array for storing property values
-     *
-     * @var array
+     * Associative array for storing property values.
      */
     protected array $container = [];
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param array|null $data Associated array of property values
-     *                      initializing the model
+     * @param null|array $data Associated array of property values
+     *                         initializing the model
      */
     public function __construct(?array $data = null)
     {
@@ -292,21 +178,81 @@ class GetFulfillmentPreviewRequest implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
-    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+     * Gets the string presentation of the object.
+     *
+     * @return string
+     */
+    public function __toString()
     {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
+        return json_encode(
+            ObjectSerializer::sanitizeForSerialization($this),
+            JSON_PRETTY_PRINT
+        );
+    }
 
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    /**
+     * Array of property to type mappings. Used for (de)serialization.
+     */
+    public static function openAPITypes(): array
+    {
+        return self::$openAPITypes;
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization.
+     */
+    public static function openAPIFormats(): array
+    {
+        return self::$openAPIFormats;
+    }
+
+    /**
+     * Checks if a property is nullable.
+     */
+    public static function isNullable(string $property): bool
+    {
+        return self::openAPINullables()[$property] ?? false;
+    }
+
+    /**
+     * Checks if a nullable property is set to null.
+     */
+    public function isNullableSetToNull(string $property): bool
+    {
+        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name.
+     */
+    public static function attributeMap(): array
+    {
+        return self::$attributeMap;
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses).
+     */
+    public static function setters(): array
+    {
+        return self::$setters;
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests).
+     */
+    public static function getters(): array
+    {
+        return self::$getters;
+    }
+
+    /**
+     * The original name of the model.
+     */
+    public function getModelName(): string
+    {
+        return self::$openAPIModelName;
     }
 
     /**
@@ -318,31 +264,29 @@ class GetFulfillmentPreviewRequest implements ModelInterface, ArrayAccess, \Json
     {
         $invalidProperties = [];
 
-        if ($this->container['address'] === null) {
+        if (null === $this->container['address']) {
             $invalidProperties[] = "'address' can't be null";
         }
-        if ($this->container['items'] === null) {
+        if (null === $this->container['items']) {
             $invalidProperties[] = "'items' can't be null";
         }
+
         return $invalidProperties;
     }
 
     /**
      * Validate all the properties in the model
-     * return true if all passed
+     * return true if all passed.
      *
      * @return bool True if all properties are valid
      */
     public function valid(): bool
     {
-        return count($this->listInvalidProperties()) === 0;
+        return 0 === count($this->listInvalidProperties());
     }
 
-
     /**
-     * Gets marketplace_id
-     *
-     * @return string|null
+     * Gets marketplace_id.
      */
     public function getMarketplaceId(): ?string
     {
@@ -350,11 +294,9 @@ class GetFulfillmentPreviewRequest implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
-     * Sets marketplace_id
+     * Sets marketplace_id.
      *
-     * @param string|null $marketplace_id The marketplace the fulfillment order is placed against.
-     *
-     * @return self
+     * @param null|string $marketplace_id the marketplace the fulfillment order is placed against
      */
     public function setMarketplaceId(?string $marketplace_id): self
     {
@@ -363,7 +305,7 @@ class GetFulfillmentPreviewRequest implements ModelInterface, ArrayAccess, \Json
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('marketplace_id', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -374,23 +316,19 @@ class GetFulfillmentPreviewRequest implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
-     * Gets address
-     *
-     * @return \SpApi\Model\fulfillment\outbound\v2020_07_01\Address
+     * Gets address.
      */
-    public function getAddress(): \SpApi\Model\fulfillment\outbound\v2020_07_01\Address
+    public function getAddress(): Address
     {
         return $this->container['address'];
     }
 
     /**
-     * Sets address
+     * Sets address.
      *
-     * @param \SpApi\Model\fulfillment\outbound\v2020_07_01\Address $address address
-     *
-     * @return self
+     * @param Address $address address
      */
-    public function setAddress(\SpApi\Model\fulfillment\outbound\v2020_07_01\Address $address): self
+    public function setAddress(Address $address): self
     {
         if (is_null($address)) {
             throw new \InvalidArgumentException('non-nullable address cannot be null');
@@ -401,9 +339,7 @@ class GetFulfillmentPreviewRequest implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
-     * Gets items
-     *
-     * @return array
+     * Gets items.
      */
     public function getItems(): array
     {
@@ -411,11 +347,9 @@ class GetFulfillmentPreviewRequest implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
-     * Sets items
+     * Sets items.
      *
-     * @param array $items An array of fulfillment preview item information.
-     *
-     * @return self
+     * @param array $items an array of fulfillment preview item information
      */
     public function setItems(array $items): self
     {
@@ -428,9 +362,7 @@ class GetFulfillmentPreviewRequest implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
-     * Gets shipping_speed_categories
-     *
-     * @return array|null
+     * Gets shipping_speed_categories.
      */
     public function getShippingSpeedCategories(): ?array
     {
@@ -438,11 +370,9 @@ class GetFulfillmentPreviewRequest implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
-     * Sets shipping_speed_categories
+     * Sets shipping_speed_categories.
      *
-     * @param array|null $shipping_speed_categories ShippingSpeedCategory List
-     *
-     * @return self
+     * @param null|array $shipping_speed_categories ShippingSpeedCategory List
      */
     public function setShippingSpeedCategories(?array $shipping_speed_categories): self
     {
@@ -451,7 +381,7 @@ class GetFulfillmentPreviewRequest implements ModelInterface, ArrayAccess, \Json
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('shipping_speed_categories', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -462,9 +392,7 @@ class GetFulfillmentPreviewRequest implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
-     * Gets include_cod_fulfillment_preview
-     *
-     * @return bool|null
+     * Gets include_cod_fulfillment_preview.
      */
     public function getIncludeCodFulfillmentPreview(): ?bool
     {
@@ -472,11 +400,9 @@ class GetFulfillmentPreviewRequest implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
-     * Sets include_cod_fulfillment_preview
+     * Sets include_cod_fulfillment_preview.
      *
-     * @param bool|null $include_cod_fulfillment_preview When true, returns all fulfillment order previews both for COD and not for COD. Otherwise, returns only fulfillment order previews that are not for COD.
-     *
-     * @return self
+     * @param null|bool $include_cod_fulfillment_preview When true, returns all fulfillment order previews both for COD and not for COD. Otherwise, returns only fulfillment order previews that are not for COD.
      */
     public function setIncludeCodFulfillmentPreview(?bool $include_cod_fulfillment_preview): self
     {
@@ -485,7 +411,7 @@ class GetFulfillmentPreviewRequest implements ModelInterface, ArrayAccess, \Json
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('include_cod_fulfillment_preview', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -496,9 +422,7 @@ class GetFulfillmentPreviewRequest implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
-     * Gets include_delivery_windows
-     *
-     * @return bool|null
+     * Gets include_delivery_windows.
      */
     public function getIncludeDeliveryWindows(): ?bool
     {
@@ -506,11 +430,9 @@ class GetFulfillmentPreviewRequest implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
-     * Sets include_delivery_windows
+     * Sets include_delivery_windows.
      *
-     * @param bool|null $include_delivery_windows When true, returns the `ScheduledDeliveryInfo` response object, which contains the available delivery windows for a Scheduled Delivery. The `ScheduledDeliveryInfo` response object can only be returned for fulfillment order previews with `ShippingSpeedCategories` = `ScheduledDelivery`.
-     *
-     * @return self
+     * @param null|bool $include_delivery_windows When true, returns the `ScheduledDeliveryInfo` response object, which contains the available delivery windows for a Scheduled Delivery. The `ScheduledDeliveryInfo` response object can only be returned for fulfillment order previews with `ShippingSpeedCategories` = `ScheduledDelivery`.
      */
     public function setIncludeDeliveryWindows(?bool $include_delivery_windows): self
     {
@@ -519,7 +441,7 @@ class GetFulfillmentPreviewRequest implements ModelInterface, ArrayAccess, \Json
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('include_delivery_windows', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -530,9 +452,7 @@ class GetFulfillmentPreviewRequest implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
-     * Gets feature_constraints
-     *
-     * @return array|null
+     * Gets feature_constraints.
      */
     public function getFeatureConstraints(): ?array
     {
@@ -540,11 +460,9 @@ class GetFulfillmentPreviewRequest implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
-     * Sets feature_constraints
+     * Sets feature_constraints.
      *
-     * @param array|null $feature_constraints A list of features and their fulfillment policies to apply to the order.
-     *
-     * @return self
+     * @param null|array $feature_constraints a list of features and their fulfillment policies to apply to the order
      */
     public function setFeatureConstraints(?array $feature_constraints): self
     {
@@ -553,7 +471,7 @@ class GetFulfillmentPreviewRequest implements ModelInterface, ArrayAccess, \Json
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('feature_constraints', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -563,13 +481,10 @@ class GetFulfillmentPreviewRequest implements ModelInterface, ArrayAccess, \Json
         return $this;
     }
 
-
     /**
      * Returns true if offset exists. False otherwise.
      *
-     * @param integer $offset Offset
-     *
-     * @return boolean
+     * @param int $offset Offset
      */
     public function offsetExists($offset): bool
     {
@@ -579,9 +494,9 @@ class GetFulfillmentPreviewRequest implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
-     * @return mixed|null
+     * @return null|mixed
      */
     #[\ReturnTypeWillChange]
     public function offsetGet($offset): mixed
@@ -592,10 +507,8 @@ class GetFulfillmentPreviewRequest implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets value based on offset.
      *
-     * @param int|null $offset Offset
+     * @param null|int $offset Offset
      * @param mixed    $value  Value to be set
-     *
-     * @return void
      */
     public function offsetSet($offset, mixed $value): void
     {
@@ -609,9 +522,7 @@ class GetFulfillmentPreviewRequest implements ModelInterface, ArrayAccess, \Json
     /**
      * Unsets offset.
      *
-     * @param integer $offset Offset
-     *
-     * @return void
+     * @param int $offset Offset
      */
     public function offsetUnset($offset): void
     {
@@ -620,39 +531,67 @@ class GetFulfillmentPreviewRequest implements ModelInterface, ArrayAccess, \Json
 
     /**
      * Serializes the object to a value that can be serialized natively by json_encode().
-     * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
      *
-     * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
+     * @see https://www.php.net/manual/en/jsonserializable.jsonserialize.php
+     *
+     * @return mixed returns data which can be serialized by json_encode(), which is a value
+     *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
     public function jsonSerialize(): mixed
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
-     * Gets the string presentation of the object
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    /**
-     * Gets a header-safe presentation of the object
-     *
-     * @return string
+     * Gets a header-safe presentation of the object.
      */
     public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
+
+    /**
+     * Array of nullable properties.
+     */
+    protected static function openAPINullables(): array
+    {
+        return self::$openAPINullables;
+    }
+
+    /**
+     * Array of nullable field names deliberately set to null.
+     *
+     * @return bool[]
+     */
+    private function getOpenAPINullablesSetToNull(): array
+    {
+        return $this->openAPINullablesSetToNull;
+    }
+
+    /**
+     * Setter - Array of nullable field names deliberately set to null.
+     *
+     * @param bool[] $openAPINullablesSetToNull
+     */
+    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
+    {
+        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
+    }
+
+    /**
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array.
+     *
+     * @param mixed $defaultValue
+     */
+    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+    {
+        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
+            $this->openAPINullablesSetToNull[] = $variableName;
+        }
+
+        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    }
 }
-
-

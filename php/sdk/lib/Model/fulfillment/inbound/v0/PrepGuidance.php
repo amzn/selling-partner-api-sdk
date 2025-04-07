@@ -1,17 +1,19 @@
 <?php
+
 /**
- * PrepGuidance
+ * PrepGuidance.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Fulfillment Inbound
+ * Selling Partner API for Fulfillment Inbound.
  *
  * The Selling Partner API for Fulfillment Inbound lets you create applications that create and update inbound shipments of inventory to Amazon's fulfillment network.
  *
@@ -27,22 +29,22 @@
  */
 
 namespace SpApi\Model\fulfillment\inbound\v0;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * PrepGuidance Class Doc Comment
+ * PrepGuidance Class Doc Comment.
  *
  * @category Class
+ *
  * @description Item preparation instructions.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class PrepGuidance
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const CONSULT_HELP_DOCUMENTS = 'ConsultHelpDocuments';
 
@@ -51,7 +53,8 @@ class PrepGuidance
     public const SEE_PREP_INSTRUCTIONS_LIST = 'SeePrepInstructionsList';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
@@ -59,9 +62,7 @@ class PrepGuidance
         return [
             self::CONSULT_HELP_DOCUMENTS,
             self::NO_ADDITIONAL_PREP_REQUIRED,
-            self::SEE_PREP_INSTRUCTIONS_LIST
+            self::SEE_PREP_INSTRUCTIONS_LIST,
         ];
     }
 }
-
-

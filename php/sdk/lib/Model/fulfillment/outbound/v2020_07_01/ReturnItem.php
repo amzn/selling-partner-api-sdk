@@ -1,17 +1,19 @@
 <?php
+
 /**
- * ReturnItem
+ * ReturnItem.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner APIs for Fulfillment Outbound
+ * Selling Partner APIs for Fulfillment Outbound.
  *
  * The Selling Partner API for Fulfillment Outbound lets you create applications that help a seller fulfill Multi-Channel Fulfillment orders using their inventory in Amazon's fulfillment network. You can get information on both potential and existing fulfillment orders.
  *
@@ -28,75 +30,76 @@
 
 namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
 
-use
-ArrayAccess;
-use SpApi\ObjectSerializer;
 use SpApi\Model\ModelInterface;
+use SpApi\ObjectSerializer;
 
 /**
- * ReturnItem Class Doc Comment
+ * ReturnItem Class Doc Comment.
  *
  * @category Class
+ *
  * @description An item that Amazon accepted for return.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
+ *
  * @implements \ArrayAccess<string, mixed>
  */
-class ReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
+class ReturnItem implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     */
     protected static string $openAPIModelName = 'ReturnItem';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static array $openAPITypes = [
-             'seller_return_item_id' => 'string',
-             'seller_fulfillment_order_item_id' => 'string',
-             'amazon_shipment_id' => 'string',
-             'seller_return_reason_code' => 'string',
-             'return_comment' => 'string',
-             'amazon_return_reason_code' => 'string',
-             'status' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\FulfillmentReturnItemStatus',
-             'status_changed_date' => '\DateTime',
-             'return_authorization_id' => 'string',
-             'return_received_condition' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\ReturnItemDisposition',
-             'fulfillment_center_id' => 'string'    ];
+        'seller_return_item_id' => 'string',
+        'seller_fulfillment_order_item_id' => 'string',
+        'amazon_shipment_id' => 'string',
+        'seller_return_reason_code' => 'string',
+        'return_comment' => 'string',
+        'amazon_return_reason_code' => 'string',
+        'status' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\FulfillmentReturnItemStatus',
+        'status_changed_date' => '\DateTime',
+        'return_authorization_id' => 'string',
+        'return_received_condition' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\ReturnItemDisposition',
+        'fulfillment_center_id' => 'string'];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     *
+     * @phpstan-var array<string, string|null>
+     *
+     * @psalm-var array<string, string|null>
+     */
     protected static array $openAPIFormats = [
-            'seller_return_item_id' => null,
-            'seller_fulfillment_order_item_id' => null,
-            'amazon_shipment_id' => null,
-            'seller_return_reason_code' => null,
-            'return_comment' => null,
-            'amazon_return_reason_code' => null,
-            'status' => null,
-            'status_changed_date' => 'date-time',
-            'return_authorization_id' => null,
-            'return_received_condition' => null,
-            'fulfillment_center_id' => null    ];
+        'seller_return_item_id' => null,
+        'seller_fulfillment_order_item_id' => null,
+        'amazon_shipment_id' => null,
+        'seller_return_reason_code' => null,
+        'return_comment' => null,
+        'amazon_return_reason_code' => null,
+        'status' => null,
+        'status_changed_date' => 'date-time',
+        'return_authorization_id' => null,
+        'return_received_condition' => null,
+        'fulfillment_center_id' => null];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization.
+     *
+     * @var bool[]
+     */
     protected static array $openAPINullables = [
         'seller_return_item_id' => false,
         'seller_fulfillment_order_item_id' => false,
@@ -108,111 +111,38 @@ class ReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'status_changed_date' => false,
         'return_authorization_id' => true,
         'return_received_condition' => true,
-        'fulfillment_center_id' => true
+        'fulfillment_center_id' => true,
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here.
+     *
+     * @var bool[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPIFormats(): array
-    {
-        return self::$openAPIFormats;
-    }
-
-    /**
-     * Array of nullable properties
-     *
-     * @return array
-     */
-    protected static function openAPINullables(): array
-    {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * Array of nullable field names deliberately set to null
-     *
-     * @return boolean[]
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * Setter - Array of nullable field names deliberately set to null
-     *
-     * @param boolean[] $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    /**
-     * Checks if a property is nullable
-     *
-     * @param string $property
-     * @return bool
-     */
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    /**
-     * Checks if a nullable property is set to null.
-     *
-     * @param string $property
-     * @return bool
-     */
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @var string[]
      */
     protected static array $attributeMap = [
         'seller_return_item_id' => 'sellerReturnItemId',
-                'seller_fulfillment_order_item_id' => 'sellerFulfillmentOrderItemId',
-                'amazon_shipment_id' => 'amazonShipmentId',
-                'seller_return_reason_code' => 'sellerReturnReasonCode',
-                'return_comment' => 'returnComment',
-                'amazon_return_reason_code' => 'amazonReturnReasonCode',
-                'status' => 'status',
-                'status_changed_date' => 'statusChangedDate',
-                'return_authorization_id' => 'returnAuthorizationId',
-                'return_received_condition' => 'returnReceivedCondition',
-                'fulfillment_center_id' => 'fulfillmentCenterId'
-        
+        'seller_fulfillment_order_item_id' => 'sellerFulfillmentOrderItemId',
+        'amazon_shipment_id' => 'amazonShipmentId',
+        'seller_return_reason_code' => 'sellerReturnReasonCode',
+        'return_comment' => 'returnComment',
+        'amazon_return_reason_code' => 'amazonReturnReasonCode',
+        'status' => 'status',
+        'status_changed_date' => 'statusChangedDate',
+        'return_authorization_id' => 'returnAuthorizationId',
+        'return_received_condition' => 'returnReceivedCondition',
+        'fulfillment_center_id' => 'fulfillmentCenterId',
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @var string[]
      */
@@ -227,11 +157,11 @@ class ReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'status_changed_date' => 'setStatusChangedDate',
         'return_authorization_id' => 'setReturnAuthorizationId',
         'return_received_condition' => 'setReturnReceivedCondition',
-        'fulfillment_center_id' => 'setFulfillmentCenterId'
+        'fulfillment_center_id' => 'setFulfillmentCenterId',
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @var string[]
      */
@@ -246,63 +176,19 @@ class ReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'status_changed_date' => 'getStatusChangedDate',
         'return_authorization_id' => 'getReturnAuthorizationId',
         'return_received_condition' => 'getReturnReceivedCondition',
-        'fulfillment_center_id' => 'getFulfillmentCenterId'
+        'fulfillment_center_id' => 'getFulfillmentCenterId',
     ];
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @return array
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @return array
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @return array
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    /**
-     * The original name of the model.
-     *
-     * @return string
-     */
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-
-    /**
-     * Associative array for storing property values
-     *
-     * @var array
+     * Associative array for storing property values.
      */
     protected array $container = [];
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param array|null $data Associated array of property values
-     *                      initializing the model
+     * @param null|array $data Associated array of property values
+     *                         initializing the model
      */
     public function __construct(?array $data = null)
     {
@@ -320,21 +206,81 @@ class ReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
-    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+     * Gets the string presentation of the object.
+     *
+     * @return string
+     */
+    public function __toString()
     {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
+        return json_encode(
+            ObjectSerializer::sanitizeForSerialization($this),
+            JSON_PRETTY_PRINT
+        );
+    }
 
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    /**
+     * Array of property to type mappings. Used for (de)serialization.
+     */
+    public static function openAPITypes(): array
+    {
+        return self::$openAPITypes;
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization.
+     */
+    public static function openAPIFormats(): array
+    {
+        return self::$openAPIFormats;
+    }
+
+    /**
+     * Checks if a property is nullable.
+     */
+    public static function isNullable(string $property): bool
+    {
+        return self::openAPINullables()[$property] ?? false;
+    }
+
+    /**
+     * Checks if a nullable property is set to null.
+     */
+    public function isNullableSetToNull(string $property): bool
+    {
+        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name.
+     */
+    public static function attributeMap(): array
+    {
+        return self::$attributeMap;
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses).
+     */
+    public static function setters(): array
+    {
+        return self::$setters;
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests).
+     */
+    public static function getters(): array
+    {
+        return self::$getters;
+    }
+
+    /**
+     * The original name of the model.
+     */
+    public function getModelName(): string
+    {
+        return self::$openAPIModelName;
     }
 
     /**
@@ -346,43 +292,41 @@ class ReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['seller_return_item_id'] === null) {
+        if (null === $this->container['seller_return_item_id']) {
             $invalidProperties[] = "'seller_return_item_id' can't be null";
         }
-        if ($this->container['seller_fulfillment_order_item_id'] === null) {
+        if (null === $this->container['seller_fulfillment_order_item_id']) {
             $invalidProperties[] = "'seller_fulfillment_order_item_id' can't be null";
         }
-        if ($this->container['amazon_shipment_id'] === null) {
+        if (null === $this->container['amazon_shipment_id']) {
             $invalidProperties[] = "'amazon_shipment_id' can't be null";
         }
-        if ($this->container['seller_return_reason_code'] === null) {
+        if (null === $this->container['seller_return_reason_code']) {
             $invalidProperties[] = "'seller_return_reason_code' can't be null";
         }
-        if ($this->container['status'] === null) {
+        if (null === $this->container['status']) {
             $invalidProperties[] = "'status' can't be null";
         }
-        if ($this->container['status_changed_date'] === null) {
+        if (null === $this->container['status_changed_date']) {
             $invalidProperties[] = "'status_changed_date' can't be null";
         }
+
         return $invalidProperties;
     }
 
     /**
      * Validate all the properties in the model
-     * return true if all passed
+     * return true if all passed.
      *
      * @return bool True if all properties are valid
      */
     public function valid(): bool
     {
-        return count($this->listInvalidProperties()) === 0;
+        return 0 === count($this->listInvalidProperties());
     }
 
-
     /**
-     * Gets seller_return_item_id
-     *
-     * @return string
+     * Gets seller_return_item_id.
      */
     public function getSellerReturnItemId(): string
     {
@@ -390,11 +334,9 @@ class ReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets seller_return_item_id
+     * Sets seller_return_item_id.
      *
-     * @param string $seller_return_item_id An identifier assigned by the seller to the return item.
-     *
-     * @return self
+     * @param string $seller_return_item_id an identifier assigned by the seller to the return item
      */
     public function setSellerReturnItemId(string $seller_return_item_id): self
     {
@@ -407,9 +349,7 @@ class ReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets seller_fulfillment_order_item_id
-     *
-     * @return string
+     * Gets seller_fulfillment_order_item_id.
      */
     public function getSellerFulfillmentOrderItemId(): string
     {
@@ -417,11 +357,9 @@ class ReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets seller_fulfillment_order_item_id
+     * Sets seller_fulfillment_order_item_id.
      *
-     * @param string $seller_fulfillment_order_item_id The identifier assigned to the item by the seller when the fulfillment order was created.
-     *
-     * @return self
+     * @param string $seller_fulfillment_order_item_id the identifier assigned to the item by the seller when the fulfillment order was created
      */
     public function setSellerFulfillmentOrderItemId(string $seller_fulfillment_order_item_id): self
     {
@@ -434,9 +372,7 @@ class ReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets amazon_shipment_id
-     *
-     * @return string
+     * Gets amazon_shipment_id.
      */
     public function getAmazonShipmentId(): string
     {
@@ -444,11 +380,9 @@ class ReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets amazon_shipment_id
+     * Sets amazon_shipment_id.
      *
-     * @param string $amazon_shipment_id The identifier for the shipment that is associated with the return item.
-     *
-     * @return self
+     * @param string $amazon_shipment_id the identifier for the shipment that is associated with the return item
      */
     public function setAmazonShipmentId(string $amazon_shipment_id): self
     {
@@ -461,9 +395,7 @@ class ReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets seller_return_reason_code
-     *
-     * @return string
+     * Gets seller_return_reason_code.
      */
     public function getSellerReturnReasonCode(): string
     {
@@ -471,11 +403,9 @@ class ReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets seller_return_reason_code
+     * Sets seller_return_reason_code.
      *
-     * @param string $seller_return_reason_code The return reason code assigned to the return item by the seller.
-     *
-     * @return self
+     * @param string $seller_return_reason_code the return reason code assigned to the return item by the seller
      */
     public function setSellerReturnReasonCode(string $seller_return_reason_code): self
     {
@@ -488,9 +418,7 @@ class ReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets return_comment
-     *
-     * @return string|null
+     * Gets return_comment.
      */
     public function getReturnComment(): ?string
     {
@@ -498,11 +426,9 @@ class ReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets return_comment
+     * Sets return_comment.
      *
-     * @param string|null $return_comment An optional comment about the return item.
-     *
-     * @return self
+     * @param null|string $return_comment an optional comment about the return item
      */
     public function setReturnComment(?string $return_comment): self
     {
@@ -511,7 +437,7 @@ class ReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('return_comment', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -522,9 +448,7 @@ class ReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets amazon_return_reason_code
-     *
-     * @return string|null
+     * Gets amazon_return_reason_code.
      */
     public function getAmazonReturnReasonCode(): ?string
     {
@@ -532,11 +456,9 @@ class ReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets amazon_return_reason_code
+     * Sets amazon_return_reason_code.
      *
-     * @param string|null $amazon_return_reason_code The return reason code that the Amazon fulfillment center assigned to the return item.
-     *
-     * @return self
+     * @param null|string $amazon_return_reason_code the return reason code that the Amazon fulfillment center assigned to the return item
      */
     public function setAmazonReturnReasonCode(?string $amazon_return_reason_code): self
     {
@@ -545,7 +467,7 @@ class ReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('amazon_return_reason_code', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -556,9 +478,7 @@ class ReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets status
-     *
-     * @return string
+     * Gets status.
      */
     public function getStatus(): string
     {
@@ -566,11 +486,9 @@ class ReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets status
+     * Sets status.
      *
      * @param string $status status
-     *
-     * @return self
      */
     public function setStatus(string $status): self
     {
@@ -583,9 +501,7 @@ class ReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets status_changed_date
-     *
-     * @return \DateTime
+     * Gets status_changed_date.
      */
     public function getStatusChangedDate(): \DateTime
     {
@@ -593,11 +509,9 @@ class ReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets status_changed_date
+     * Sets status_changed_date.
      *
      * @param \DateTime $status_changed_date Date timestamp
-     *
-     * @return self
      */
     public function setStatusChangedDate(\DateTime $status_changed_date): self
     {
@@ -610,9 +524,7 @@ class ReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets return_authorization_id
-     *
-     * @return string|null
+     * Gets return_authorization_id.
      */
     public function getReturnAuthorizationId(): ?string
     {
@@ -620,11 +532,9 @@ class ReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets return_authorization_id
+     * Sets return_authorization_id.
      *
-     * @param string|null $return_authorization_id Identifies the return authorization used to return this item. Refer to `ReturnAuthorization`.
-     *
-     * @return self
+     * @param null|string $return_authorization_id Identifies the return authorization used to return this item. Refer to `ReturnAuthorization`.
      */
     public function setReturnAuthorizationId(?string $return_authorization_id): self
     {
@@ -633,7 +543,7 @@ class ReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('return_authorization_id', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -644,9 +554,7 @@ class ReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets return_received_condition
-     *
-     * @return string|null
+     * Gets return_received_condition.
      */
     public function getReturnReceivedCondition(): ?string
     {
@@ -654,11 +562,9 @@ class ReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets return_received_condition
+     * Sets return_received_condition.
      *
-     * @param string|null $return_received_condition return_received_condition
-     *
-     * @return self
+     * @param null|string $return_received_condition return_received_condition
      */
     public function setReturnReceivedCondition(?string $return_received_condition): self
     {
@@ -667,7 +573,7 @@ class ReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('return_received_condition', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -678,9 +584,7 @@ class ReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets fulfillment_center_id
-     *
-     * @return string|null
+     * Gets fulfillment_center_id.
      */
     public function getFulfillmentCenterId(): ?string
     {
@@ -688,11 +592,9 @@ class ReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Sets fulfillment_center_id
+     * Sets fulfillment_center_id.
      *
-     * @param string|null $fulfillment_center_id The identifier for the Amazon fulfillment center that processed the return item.
-     *
-     * @return self
+     * @param null|string $fulfillment_center_id the identifier for the Amazon fulfillment center that processed the return item
      */
     public function setFulfillmentCenterId(?string $fulfillment_center_id): self
     {
@@ -701,7 +603,7 @@ class ReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('fulfillment_center_id', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -711,13 +613,10 @@ class ReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
         return $this;
     }
 
-
     /**
      * Returns true if offset exists. False otherwise.
      *
-     * @param integer $offset Offset
-     *
-     * @return boolean
+     * @param int $offset Offset
      */
     public function offsetExists($offset): bool
     {
@@ -727,9 +626,9 @@ class ReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
-     * @return mixed|null
+     * @return null|mixed
      */
     #[\ReturnTypeWillChange]
     public function offsetGet($offset): mixed
@@ -740,10 +639,8 @@ class ReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets value based on offset.
      *
-     * @param int|null $offset Offset
+     * @param null|int $offset Offset
      * @param mixed    $value  Value to be set
-     *
-     * @return void
      */
     public function offsetSet($offset, mixed $value): void
     {
@@ -757,9 +654,7 @@ class ReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Unsets offset.
      *
-     * @param integer $offset Offset
-     *
-     * @return void
+     * @param int $offset Offset
      */
     public function offsetUnset($offset): void
     {
@@ -768,39 +663,67 @@ class ReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
 
     /**
      * Serializes the object to a value that can be serialized natively by json_encode().
-     * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
      *
-     * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
+     * @see https://www.php.net/manual/en/jsonserializable.jsonserialize.php
+     *
+     * @return mixed returns data which can be serialized by json_encode(), which is a value
+     *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
     public function jsonSerialize(): mixed
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
-     * Gets the string presentation of the object
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    /**
-     * Gets a header-safe presentation of the object
-     *
-     * @return string
+     * Gets a header-safe presentation of the object.
      */
     public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
+
+    /**
+     * Array of nullable properties.
+     */
+    protected static function openAPINullables(): array
+    {
+        return self::$openAPINullables;
+    }
+
+    /**
+     * Array of nullable field names deliberately set to null.
+     *
+     * @return bool[]
+     */
+    private function getOpenAPINullablesSetToNull(): array
+    {
+        return $this->openAPINullablesSetToNull;
+    }
+
+    /**
+     * Setter - Array of nullable field names deliberately set to null.
+     *
+     * @param bool[] $openAPINullablesSetToNull
+     */
+    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
+    {
+        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
+    }
+
+    /**
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array.
+     *
+     * @param mixed $defaultValue
+     */
+    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+    {
+        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
+            $this->openAPINullablesSetToNull[] = $variableName;
+        }
+
+        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    }
 }
-
-

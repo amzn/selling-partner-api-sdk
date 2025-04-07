@@ -12,153 +12,145 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.io.IOException;
-import software.amazon.spapi.models.shipping.v2.Currency;
-import software.amazon.spapi.models.shipping.v2.RateItemID;
-import software.amazon.spapi.models.shipping.v2.RateItemType;
-/**
- * Rate Item for shipping (base cost, transaction fee, confirmation, insurance, etc.) Data source definition: 
- */
-@Schema(description = "Rate Item for shipping (base cost, transaction fee, confirmation, insurance, etc.) Data source definition: ")
+import java.util.Objects;
 
-
+/** Rate Item for shipping (base cost, transaction fee, confirmation, insurance, etc.) Data source definition: */
+@Schema(
+        description =
+                "Rate Item for shipping (base cost, transaction fee, confirmation, insurance, etc.) Data source definition: ")
 public class RateItem {
-  @SerializedName("rateItemID")
-  private RateItemID rateItemID = null;
+    @SerializedName("rateItemID")
+    private RateItemID rateItemID = null;
 
-  @SerializedName("rateItemType")
-  private RateItemType rateItemType = null;
+    @SerializedName("rateItemType")
+    private RateItemType rateItemType = null;
 
-  @SerializedName("rateItemCharge")
-  private Currency rateItemCharge = null;
+    @SerializedName("rateItemCharge")
+    private Currency rateItemCharge = null;
 
-  @SerializedName("rateItemNameLocalization")
-  private String rateItemNameLocalization = null;
+    @SerializedName("rateItemNameLocalization")
+    private String rateItemNameLocalization = null;
 
-  public RateItem rateItemID(RateItemID rateItemID) {
-    this.rateItemID = rateItemID;
-    return this;
-  }
-
-   /**
-   * Get rateItemID
-   * @return rateItemID
-  **/
-  @Schema(description = "")
-  public RateItemID getRateItemID() {
-    return rateItemID;
-  }
-
-  public void setRateItemID(RateItemID rateItemID) {
-    this.rateItemID = rateItemID;
-  }
-
-  public RateItem rateItemType(RateItemType rateItemType) {
-    this.rateItemType = rateItemType;
-    return this;
-  }
-
-   /**
-   * Get rateItemType
-   * @return rateItemType
-  **/
-  @Schema(description = "")
-  public RateItemType getRateItemType() {
-    return rateItemType;
-  }
-
-  public void setRateItemType(RateItemType rateItemType) {
-    this.rateItemType = rateItemType;
-  }
-
-  public RateItem rateItemCharge(Currency rateItemCharge) {
-    this.rateItemCharge = rateItemCharge;
-    return this;
-  }
-
-   /**
-   * Get rateItemCharge
-   * @return rateItemCharge
-  **/
-  @Schema(description = "")
-  public Currency getRateItemCharge() {
-    return rateItemCharge;
-  }
-
-  public void setRateItemCharge(Currency rateItemCharge) {
-    this.rateItemCharge = rateItemCharge;
-  }
-
-  public RateItem rateItemNameLocalization(String rateItemNameLocalization) {
-    this.rateItemNameLocalization = rateItemNameLocalization;
-    return this;
-  }
-
-   /**
-   * Used for the localization.
-   * @return rateItemNameLocalization
-  **/
-  @Schema(description = "Used for the localization.")
-  public String getRateItemNameLocalization() {
-    return rateItemNameLocalization;
-  }
-
-  public void setRateItemNameLocalization(String rateItemNameLocalization) {
-    this.rateItemNameLocalization = rateItemNameLocalization;
-  }
-
-
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
+    public RateItem rateItemID(RateItemID rateItemID) {
+        this.rateItemID = rateItemID;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * Get rateItemID
+     *
+     * @return rateItemID
+     */
+    @Schema(description = "")
+    public RateItemID getRateItemID() {
+        return rateItemID;
     }
-    RateItem rateItem = (RateItem) o;
-    return Objects.equals(this.rateItemID, rateItem.rateItemID) &&
-        Objects.equals(this.rateItemType, rateItem.rateItemType) &&
-        Objects.equals(this.rateItemCharge, rateItem.rateItemCharge) &&
-        Objects.equals(this.rateItemNameLocalization, rateItem.rateItemNameLocalization);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(rateItemID, rateItemType, rateItemCharge, rateItemNameLocalization);
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class RateItem {\n");
-    
-    sb.append("    rateItemID: ").append(toIndentedString(rateItemID)).append("\n");
-    sb.append("    rateItemType: ").append(toIndentedString(rateItemType)).append("\n");
-    sb.append("    rateItemCharge: ").append(toIndentedString(rateItemCharge)).append("\n");
-    sb.append("    rateItemNameLocalization: ").append(toIndentedString(rateItemNameLocalization)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    public void setRateItemID(RateItemID rateItemID) {
+        this.rateItemID = rateItemID;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    public RateItem rateItemType(RateItemType rateItemType) {
+        this.rateItemType = rateItemType;
+        return this;
+    }
+
+    /**
+     * Get rateItemType
+     *
+     * @return rateItemType
+     */
+    @Schema(description = "")
+    public RateItemType getRateItemType() {
+        return rateItemType;
+    }
+
+    public void setRateItemType(RateItemType rateItemType) {
+        this.rateItemType = rateItemType;
+    }
+
+    public RateItem rateItemCharge(Currency rateItemCharge) {
+        this.rateItemCharge = rateItemCharge;
+        return this;
+    }
+
+    /**
+     * Get rateItemCharge
+     *
+     * @return rateItemCharge
+     */
+    @Schema(description = "")
+    public Currency getRateItemCharge() {
+        return rateItemCharge;
+    }
+
+    public void setRateItemCharge(Currency rateItemCharge) {
+        this.rateItemCharge = rateItemCharge;
+    }
+
+    public RateItem rateItemNameLocalization(String rateItemNameLocalization) {
+        this.rateItemNameLocalization = rateItemNameLocalization;
+        return this;
+    }
+
+    /**
+     * Used for the localization.
+     *
+     * @return rateItemNameLocalization
+     */
+    @Schema(description = "Used for the localization.")
+    public String getRateItemNameLocalization() {
+        return rateItemNameLocalization;
+    }
+
+    public void setRateItemNameLocalization(String rateItemNameLocalization) {
+        this.rateItemNameLocalization = rateItemNameLocalization;
+    }
+
+    @Override
+    public boolean equals(java.lang.Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        RateItem rateItem = (RateItem) o;
+        return Objects.equals(this.rateItemID, rateItem.rateItemID)
+                && Objects.equals(this.rateItemType, rateItem.rateItemType)
+                && Objects.equals(this.rateItemCharge, rateItem.rateItemCharge)
+                && Objects.equals(this.rateItemNameLocalization, rateItem.rateItemNameLocalization);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(rateItemID, rateItemType, rateItemCharge, rateItemNameLocalization);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class RateItem {\n");
+
+        sb.append("    rateItemID: ").append(toIndentedString(rateItemID)).append("\n");
+        sb.append("    rateItemType: ").append(toIndentedString(rateItemType)).append("\n");
+        sb.append("    rateItemCharge: ")
+                .append(toIndentedString(rateItemCharge))
+                .append("\n");
+        sb.append("    rateItemNameLocalization: ")
+                .append(toIndentedString(rateItemNameLocalization))
+                .append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
+    private String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }

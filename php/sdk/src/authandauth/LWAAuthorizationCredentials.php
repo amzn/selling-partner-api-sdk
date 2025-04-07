@@ -2,50 +2,43 @@
 
 namespace SpApi\AuthAndAuth;
 
-use InvalidArgumentException;
-
 class LWAAuthorizationCredentials
 {
     /**
-     * LWA Client Id
-     * @var string
+     * LWA Client Id.
      */
     private string $clientId;
 
     /**
-     * LWA Client Secret
-     * @var string
+     * LWA Client Secret.
      */
     private string $clientSecret;
 
     /**
-     * LWA Refresh Token
-     * @var string|null
+     * LWA Refresh Token.
      */
     private ?string $refreshToken;
 
     /**
-     * LWA Authorization Server Endpoint
-     * @var string
+     * LWA Authorization Server Endpoint.
      */
     private string $endpoint;
 
     /**
-     * LWA Client Scopes
-     * @var array|null
+     * LWA Client Scopes.
      */
     private ?array $scopes;
 
     public function __construct(array $config)
     {
         if (!(isset($config['refreshToken']) || isset($config['scopes']))) {
-            throw new InvalidArgumentException("Requires either refresh token or scopes variable");
+            throw new \InvalidArgumentException('Requires either refresh token or scopes variable');
         }
-        $this->clientId = $config["clientId"];
-        $this->clientSecret = $config["clientSecret"];
-        $this->refreshToken = $config["refreshToken"] ?? null;
-        $this->endpoint = $config["endpoint"];
-        $this->scopes = $config["scopes"] ?? null;
+        $this->clientId = $config['clientId'];
+        $this->clientSecret = $config['clientSecret'];
+        $this->refreshToken = $config['refreshToken'] ?? null;
+        $this->endpoint = $config['endpoint'];
+        $this->scopes = $config['scopes'] ?? null;
     }
 
     public function getClientId(): string
@@ -56,6 +49,7 @@ class LWAAuthorizationCredentials
     public function setClientId(string $clientId): LWAAuthorizationCredentials
     {
         $this->clientId = $clientId;
+
         return $this;
     }
 
@@ -67,6 +61,7 @@ class LWAAuthorizationCredentials
     public function setClientSecret(string $clientSecret): LWAAuthorizationCredentials
     {
         $this->clientSecret = $clientSecret;
+
         return $this;
     }
 
@@ -78,6 +73,7 @@ class LWAAuthorizationCredentials
     public function setRefreshToken(?string $refreshToken): LWAAuthorizationCredentials
     {
         $this->refreshToken = $refreshToken;
+
         return $this;
     }
 
@@ -89,6 +85,7 @@ class LWAAuthorizationCredentials
     public function setEndpoint(string $endpoint): LWAAuthorizationCredentials
     {
         $this->endpoint = $endpoint;
+
         return $this;
     }
 
@@ -100,6 +97,7 @@ class LWAAuthorizationCredentials
     public function setScopes(?array $scopes): LWAAuthorizationCredentials
     {
         $this->scopes = $scopes;
+
         return $this;
     }
 }

@@ -1,16 +1,18 @@
 <?php
+
 /**
  * FbaInboundApi
- * PHP version 8.3
+ * PHP version 8.3.
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Fulfillment Inbound
+ * Selling Partner API for Fulfillment Inbound.
  *
  * The Selling Partner API for Fulfillment Inbound lets you create applications that create and update inbound shipments of inventory to Amazon's fulfillment network.
  *
@@ -35,38 +37,35 @@ use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use SpApi\AuthAndAuth\RateLimitConfiguration;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RateLimitConfiguration;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
+use SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse;
+use SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse;
+use SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse;
+use SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse;
+use SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse;
 use SpApi\ObjectSerializer;
+use Symfony\Component\RateLimiter\LimiterInterface;
+use Symfony\Component\RateLimiter\RateLimiterFactory;
+use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
- * FbaInboundApi Class Doc Comment
+ * FbaInboundApi Class Doc Comment.
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class FbaInboundApi
 {
-    /**
-     * @var ClientInterface
-     */
     protected ClientInterface $client;
 
-    /**
-     * @var Configuration
-     */
     protected Configuration $config;
 
-    /**
-     * @var HeaderSelector
-     */
     protected HeaderSelector $headerSelector;
 
     /**
@@ -74,21 +73,11 @@ class FbaInboundApi
      */
     protected int $hostIndex;
 
-    /**
-     * @var ?RateLimitConfiguration
-     */
     private ?RateLimitConfiguration $rateLimitConfig = null;
 
-    /**
-     * @var ?LimiterInterface
-     */
     private ?LimiterInterface $rateLimiter = null;
 
     /**
-     * @param Configuration   $config
-     * @param RateLimitConfiguration|null $rateLimitConfig
-     * @param ClientInterface|null $client
-     * @param HeaderSelector|null $selector
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
@@ -107,10 +96,10 @@ class FbaInboundApi
                 'policy' => $type,
                 'limit' => $rateLimitConfig->getRateLimitTokenLimit(),
             ];
-            if ($type === "fixed_window" || $type === "sliding_window") {
-                $rateLimitOptions['interval'] = $rateLimitConfig->getRateLimitToken() . 'seconds';
+            if ('fixed_window' === $type || 'sliding_window' === $type) {
+                $rateLimitOptions['interval'] = $rateLimitConfig->getRateLimitToken().'seconds';
             } else {
-                $rateLimitOptions['rate'] = ['interval' => $rateLimitConfig->getRateLimitToken() . 'seconds'];
+                $rateLimitOptions['rate'] = ['interval' => $rateLimitConfig->getRateLimitToken().'seconds'];
             }
             $factory = new RateLimiterFactory($rateLimitOptions, new InMemoryStorage());
             $this->rateLimiter = $factory->create();
@@ -122,7 +111,7 @@ class FbaInboundApi
     }
 
     /**
-     * Set the host index
+     * Set the host index.
      *
      * @param int $hostIndex Host index (required)
      */
@@ -132,7 +121,7 @@ class FbaInboundApi
     }
 
     /**
-     * Get the host index
+     * Get the host index.
      *
      * @return int Host index
      */
@@ -141,40 +130,38 @@ class FbaInboundApi
         return $this->hostIndex;
     }
 
-    /**
-     * @return Configuration
-     */
     public function getConfig(): Configuration
     {
         return $this->config;
     }
 
     /**
-     * Operation getBillOfLading
+     * Operation getBillOfLading.
      *
-     * @param  string $shipment_id
-     *  A shipment identifier originally returned by the createInboundShipmentPlan operation. (required)
+     * @param string $shipment_id
+     *                            A shipment identifier originally returned by the createInboundShipmentPlan operation. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse
      */
     public function getBillOfLading(
         string $shipment_id
-    ): \SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse {
+    ): GetBillOfLadingResponse {
         list($response) = $this->getBillOfLadingWithHttpInfo($shipment_id);
+
         return $response;
     }
 
     /**
-     * Operation getBillOfLadingWithHttpInfo
+     * Operation getBillOfLadingWithHttpInfo.
      *
-     * @param  string $shipment_id
-     *  A shipment identifier originally returned by the createInboundShipmentPlan operation. (required)
+     * @param string $shipment_id
+     *                            A shipment identifier originally returned by the createInboundShipmentPlan operation. (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getBillOfLadingWithHttpInfo(
         string $shipment_id
@@ -184,6 +171,7 @@ class FbaInboundApi
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -218,10 +206,10 @@ class FbaInboundApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' !== 'string') {
@@ -232,11 +220,12 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 400:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' !== 'string') {
@@ -247,11 +236,12 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 401:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' !== 'string') {
@@ -262,11 +252,12 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 403:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' !== 'string') {
@@ -277,11 +268,12 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 404:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' !== 'string') {
@@ -292,11 +284,12 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 429:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' !== 'string') {
@@ -307,11 +300,12 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 500:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' !== 'string') {
@@ -322,11 +316,12 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 503:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse' !== 'string') {
@@ -337,16 +332,16 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
             $returnType = '\SpApi\Model\fulfillment\inbound\v0\GetBillOfLadingResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+            if ('\SplFileObject' === $returnType) {
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
+                if ('string' !== $returnType) {
                     $content = json_decode($content);
                 }
             }
@@ -354,9 +349,8 @@ class FbaInboundApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -366,7 +360,9 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -374,7 +370,9 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -382,7 +380,9 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -390,7 +390,9 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -398,7 +400,9 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -406,7 +410,9 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -414,7 +420,9 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -422,20 +430,21 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation getBillOfLadingAsync
+     * Operation getBillOfLadingAsync.
      *
-     * @param  string $shipment_id
-     *  A shipment identifier originally returned by the createInboundShipmentPlan operation. (required)
+     * @param string $shipment_id
+     *                            A shipment identifier originally returned by the createInboundShipmentPlan operation. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getBillOfLadingAsync(
         string $shipment_id
@@ -445,17 +454,17 @@ class FbaInboundApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getBillOfLadingAsyncWithHttpInfo
+     * Operation getBillOfLadingAsyncWithHttpInfo.
      *
-     * @param  string $shipment_id
-     *  A shipment identifier originally returned by the createInboundShipmentPlan operation. (required)
+     * @param string $shipment_id
+     *                            A shipment identifier originally returned by the createInboundShipmentPlan operation. (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getBillOfLadingAsyncWithHttpInfo(
         string $shipment_id
@@ -469,11 +478,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -481,12 +490,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -498,23 +508,23 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getBillOfLading'
+     * Create request for operation 'getBillOfLading'.
      *
-     * @param  string $shipment_id
-     *  A shipment identifier originally returned by the createInboundShipmentPlan operation. (required)
+     * @param string $shipment_id
+     *                            A shipment identifier originally returned by the createInboundShipmentPlan operation. (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getBillOfLadingRequest(
         string $shipment_id
     ): Request {
         // verify the required parameter 'shipment_id' is set
-        if ($shipment_id === null || (is_array($shipment_id) && count($shipment_id) === 0)) {
+        if (null === $shipment_id || (is_array($shipment_id) && 0 === count($shipment_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $shipment_id when calling getBillOfLading'
             );
@@ -527,17 +537,14 @@ class FbaInboundApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($shipment_id !== null) {
+        if (null !== $shipment_id) {
             $resourcePath = str_replace(
-                '{' . 'shipmentId' . '}',
+                '{shipmentId}',
                 ObjectSerializer::toPathValue($shipment_id),
                 $resourcePath
             );
         }
-
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -546,7 +553,6 @@ class FbaInboundApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                
                 '',
                 false
             );
@@ -561,22 +567,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -590,37 +593,37 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getLabels
+     * Operation getLabels.
      *
-     * @param  string $shipment_id
-     *  A shipment identifier originally returned by the createInboundShipmentPlan operation. (required)
-     * @param  string $page_type
-     *  The page type to use to print the labels. Submitting a PageType value that is not supported in your marketplace returns an error. (required)
-     * @param  string $label_type
-     *  The type of labels requested. (required)
-     * @param  int|null $number_of_packages
-     *  The number of packages in the shipment. (optional)
-     * @param  string[]|null $package_labels_to_print
-     *  A list of identifiers that specify packages for which you want package labels printed.  If you provide box content information with the [FBA Inbound Shipment Carton Information Feed](https://developer-docs.amazon.com/sp-api/docs/fulfillment-by-amazon-feed-type-values#fba-inbound-shipment-carton-information-feed), then &#x60;PackageLabelsToPrint&#x60; must match the &#x60;CartonId&#x60; values you provide through that feed. If you provide box content information with the Fulfillment Inbound API v2024-03-20, then &#x60;PackageLabelsToPrint&#x60; must match the &#x60;boxID&#x60; values from the [&#x60;listShipmentBoxes&#x60;](https://developer-docs.amazon.com/sp-api/docs/fulfillment-inbound-api-v2024-03-20-reference#listshipmentboxes) response. If these values do not match as required, the operation returns the &#x60;IncorrectPackageIdentifier&#x60; error code. (optional)
-     * @param  int|null $number_of_pallets
-     *  The number of pallets in the shipment. This returns four identical labels for each pallet. (optional)
-     * @param  int|null $page_size
-     *  The page size for paginating through the total packages&#39; labels. This is a required parameter for Non-Partnered LTL Shipments. Max value:1000. (optional)
-     * @param  int|null $page_start_index
-     *  The page start index for paginating through the total packages&#39; labels. This is a required parameter for Non-Partnered LTL Shipments. (optional)
+     * @param string        $shipment_id
+     *                                               A shipment identifier originally returned by the createInboundShipmentPlan operation. (required)
+     * @param string        $page_type
+     *                                               The page type to use to print the labels. Submitting a PageType value that is not supported in your marketplace returns an error. (required)
+     * @param string        $label_type
+     *                                               The type of labels requested. (required)
+     * @param null|int      $number_of_packages
+     *                                               The number of packages in the shipment. (optional)
+     * @param null|string[] $package_labels_to_print
+     *                                               A list of identifiers that specify packages for which you want package labels printed.  If you provide box content information with the [FBA Inbound Shipment Carton Information Feed](https://developer-docs.amazon.com/sp-api/docs/fulfillment-by-amazon-feed-type-values#fba-inbound-shipment-carton-information-feed), then &#x60;PackageLabelsToPrint&#x60; must match the &#x60;CartonId&#x60; values you provide through that feed. If you provide box content information with the Fulfillment Inbound API v2024-03-20, then &#x60;PackageLabelsToPrint&#x60; must match the &#x60;boxID&#x60; values from the [&#x60;listShipmentBoxes&#x60;](https://developer-docs.amazon.com/sp-api/docs/fulfillment-inbound-api-v2024-03-20-reference#listshipmentboxes) response. If these values do not match as required, the operation returns the &#x60;IncorrectPackageIdentifier&#x60; error code. (optional)
+     * @param null|int      $number_of_pallets
+     *                                               The number of pallets in the shipment. This returns four identical labels for each pallet. (optional)
+     * @param null|int      $page_size
+     *                                               The page size for paginating through the total packages&#39; labels. This is a required parameter for Non-Partnered LTL Shipments. Max value:1000. (optional)
+     * @param null|int      $page_start_index
+     *                                               The page start index for paginating through the total packages&#39; labels. This is a required parameter for Non-Partnered LTL Shipments. (optional)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse
      */
     public function getLabels(
         string $shipment_id,
@@ -631,34 +634,36 @@ class FbaInboundApi
         ?int $number_of_pallets = null,
         ?int $page_size = null,
         ?int $page_start_index = null
-    ): \SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse {
+    ): GetLabelsResponse {
         list($response) = $this->getLabelsWithHttpInfo($shipment_id, $page_type, $label_type, $number_of_packages, $package_labels_to_print, $number_of_pallets, $page_size, $page_start_index);
+
         return $response;
     }
 
     /**
-     * Operation getLabelsWithHttpInfo
+     * Operation getLabelsWithHttpInfo.
      *
-     * @param  string $shipment_id
-     *  A shipment identifier originally returned by the createInboundShipmentPlan operation. (required)
-     * @param  string $page_type
-     *  The page type to use to print the labels. Submitting a PageType value that is not supported in your marketplace returns an error. (required)
-     * @param  string $label_type
-     *  The type of labels requested. (required)
-     * @param  int|null $number_of_packages
-     *  The number of packages in the shipment. (optional)
-     * @param  string[]|null $package_labels_to_print
-     *  A list of identifiers that specify packages for which you want package labels printed.  If you provide box content information with the [FBA Inbound Shipment Carton Information Feed](https://developer-docs.amazon.com/sp-api/docs/fulfillment-by-amazon-feed-type-values#fba-inbound-shipment-carton-information-feed), then &#x60;PackageLabelsToPrint&#x60; must match the &#x60;CartonId&#x60; values you provide through that feed. If you provide box content information with the Fulfillment Inbound API v2024-03-20, then &#x60;PackageLabelsToPrint&#x60; must match the &#x60;boxID&#x60; values from the [&#x60;listShipmentBoxes&#x60;](https://developer-docs.amazon.com/sp-api/docs/fulfillment-inbound-api-v2024-03-20-reference#listshipmentboxes) response. If these values do not match as required, the operation returns the &#x60;IncorrectPackageIdentifier&#x60; error code. (optional)
-     * @param  int|null $number_of_pallets
-     *  The number of pallets in the shipment. This returns four identical labels for each pallet. (optional)
-     * @param  int|null $page_size
-     *  The page size for paginating through the total packages&#39; labels. This is a required parameter for Non-Partnered LTL Shipments. Max value:1000. (optional)
-     * @param  int|null $page_start_index
-     *  The page start index for paginating through the total packages&#39; labels. This is a required parameter for Non-Partnered LTL Shipments. (optional)
+     * @param string        $shipment_id
+     *                                               A shipment identifier originally returned by the createInboundShipmentPlan operation. (required)
+     * @param string        $page_type
+     *                                               The page type to use to print the labels. Submitting a PageType value that is not supported in your marketplace returns an error. (required)
+     * @param string        $label_type
+     *                                               The type of labels requested. (required)
+     * @param null|int      $number_of_packages
+     *                                               The number of packages in the shipment. (optional)
+     * @param null|string[] $package_labels_to_print
+     *                                               A list of identifiers that specify packages for which you want package labels printed.  If you provide box content information with the [FBA Inbound Shipment Carton Information Feed](https://developer-docs.amazon.com/sp-api/docs/fulfillment-by-amazon-feed-type-values#fba-inbound-shipment-carton-information-feed), then &#x60;PackageLabelsToPrint&#x60; must match the &#x60;CartonId&#x60; values you provide through that feed. If you provide box content information with the Fulfillment Inbound API v2024-03-20, then &#x60;PackageLabelsToPrint&#x60; must match the &#x60;boxID&#x60; values from the [&#x60;listShipmentBoxes&#x60;](https://developer-docs.amazon.com/sp-api/docs/fulfillment-inbound-api-v2024-03-20-reference#listshipmentboxes) response. If these values do not match as required, the operation returns the &#x60;IncorrectPackageIdentifier&#x60; error code. (optional)
+     * @param null|int      $number_of_pallets
+     *                                               The number of pallets in the shipment. This returns four identical labels for each pallet. (optional)
+     * @param null|int      $page_size
+     *                                               The page size for paginating through the total packages&#39; labels. This is a required parameter for Non-Partnered LTL Shipments. Max value:1000. (optional)
+     * @param null|int      $page_start_index
+     *                                               The page start index for paginating through the total packages&#39; labels. This is a required parameter for Non-Partnered LTL Shipments. (optional)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getLabelsWithHttpInfo(
         string $shipment_id,
@@ -675,6 +680,7 @@ class FbaInboundApi
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -709,10 +715,10 @@ class FbaInboundApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse' !== 'string') {
@@ -723,11 +729,12 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 400:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse' !== 'string') {
@@ -738,11 +745,12 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 401:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse' !== 'string') {
@@ -753,11 +761,12 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 403:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse' !== 'string') {
@@ -768,11 +777,12 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 404:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse' !== 'string') {
@@ -783,11 +793,12 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 429:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse' !== 'string') {
@@ -798,11 +809,12 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 500:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse' !== 'string') {
@@ -813,11 +825,12 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 503:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse' !== 'string') {
@@ -828,16 +841,16 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
             $returnType = '\SpApi\Model\fulfillment\inbound\v0\GetLabelsResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+            if ('\SplFileObject' === $returnType) {
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
+                if ('string' !== $returnType) {
                     $content = json_decode($content);
                 }
             }
@@ -845,9 +858,8 @@ class FbaInboundApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -857,7 +869,9 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -865,7 +879,9 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -873,7 +889,9 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -881,7 +899,9 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -889,7 +909,9 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -897,7 +919,9 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -905,7 +929,9 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -913,34 +939,35 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation getLabelsAsync
+     * Operation getLabelsAsync.
      *
-     * @param  string $shipment_id
-     *  A shipment identifier originally returned by the createInboundShipmentPlan operation. (required)
-     * @param  string $page_type
-     *  The page type to use to print the labels. Submitting a PageType value that is not supported in your marketplace returns an error. (required)
-     * @param  string $label_type
-     *  The type of labels requested. (required)
-     * @param  int|null $number_of_packages
-     *  The number of packages in the shipment. (optional)
-     * @param  string[]|null $package_labels_to_print
-     *  A list of identifiers that specify packages for which you want package labels printed.  If you provide box content information with the [FBA Inbound Shipment Carton Information Feed](https://developer-docs.amazon.com/sp-api/docs/fulfillment-by-amazon-feed-type-values#fba-inbound-shipment-carton-information-feed), then &#x60;PackageLabelsToPrint&#x60; must match the &#x60;CartonId&#x60; values you provide through that feed. If you provide box content information with the Fulfillment Inbound API v2024-03-20, then &#x60;PackageLabelsToPrint&#x60; must match the &#x60;boxID&#x60; values from the [&#x60;listShipmentBoxes&#x60;](https://developer-docs.amazon.com/sp-api/docs/fulfillment-inbound-api-v2024-03-20-reference#listshipmentboxes) response. If these values do not match as required, the operation returns the &#x60;IncorrectPackageIdentifier&#x60; error code. (optional)
-     * @param  int|null $number_of_pallets
-     *  The number of pallets in the shipment. This returns four identical labels for each pallet. (optional)
-     * @param  int|null $page_size
-     *  The page size for paginating through the total packages&#39; labels. This is a required parameter for Non-Partnered LTL Shipments. Max value:1000. (optional)
-     * @param  int|null $page_start_index
-     *  The page start index for paginating through the total packages&#39; labels. This is a required parameter for Non-Partnered LTL Shipments. (optional)
+     * @param string        $shipment_id
+     *                                               A shipment identifier originally returned by the createInboundShipmentPlan operation. (required)
+     * @param string        $page_type
+     *                                               The page type to use to print the labels. Submitting a PageType value that is not supported in your marketplace returns an error. (required)
+     * @param string        $label_type
+     *                                               The type of labels requested. (required)
+     * @param null|int      $number_of_packages
+     *                                               The number of packages in the shipment. (optional)
+     * @param null|string[] $package_labels_to_print
+     *                                               A list of identifiers that specify packages for which you want package labels printed.  If you provide box content information with the [FBA Inbound Shipment Carton Information Feed](https://developer-docs.amazon.com/sp-api/docs/fulfillment-by-amazon-feed-type-values#fba-inbound-shipment-carton-information-feed), then &#x60;PackageLabelsToPrint&#x60; must match the &#x60;CartonId&#x60; values you provide through that feed. If you provide box content information with the Fulfillment Inbound API v2024-03-20, then &#x60;PackageLabelsToPrint&#x60; must match the &#x60;boxID&#x60; values from the [&#x60;listShipmentBoxes&#x60;](https://developer-docs.amazon.com/sp-api/docs/fulfillment-inbound-api-v2024-03-20-reference#listshipmentboxes) response. If these values do not match as required, the operation returns the &#x60;IncorrectPackageIdentifier&#x60; error code. (optional)
+     * @param null|int      $number_of_pallets
+     *                                               The number of pallets in the shipment. This returns four identical labels for each pallet. (optional)
+     * @param null|int      $page_size
+     *                                               The page size for paginating through the total packages&#39; labels. This is a required parameter for Non-Partnered LTL Shipments. Max value:1000. (optional)
+     * @param null|int      $page_start_index
+     *                                               The page start index for paginating through the total packages&#39; labels. This is a required parameter for Non-Partnered LTL Shipments. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getLabelsAsync(
         string $shipment_id,
@@ -957,31 +984,31 @@ class FbaInboundApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getLabelsAsyncWithHttpInfo
+     * Operation getLabelsAsyncWithHttpInfo.
      *
-     * @param  string $shipment_id
-     *  A shipment identifier originally returned by the createInboundShipmentPlan operation. (required)
-     * @param  string $page_type
-     *  The page type to use to print the labels. Submitting a PageType value that is not supported in your marketplace returns an error. (required)
-     * @param  string $label_type
-     *  The type of labels requested. (required)
-     * @param  int|null $number_of_packages
-     *  The number of packages in the shipment. (optional)
-     * @param  string[]|null $package_labels_to_print
-     *  A list of identifiers that specify packages for which you want package labels printed.  If you provide box content information with the [FBA Inbound Shipment Carton Information Feed](https://developer-docs.amazon.com/sp-api/docs/fulfillment-by-amazon-feed-type-values#fba-inbound-shipment-carton-information-feed), then &#x60;PackageLabelsToPrint&#x60; must match the &#x60;CartonId&#x60; values you provide through that feed. If you provide box content information with the Fulfillment Inbound API v2024-03-20, then &#x60;PackageLabelsToPrint&#x60; must match the &#x60;boxID&#x60; values from the [&#x60;listShipmentBoxes&#x60;](https://developer-docs.amazon.com/sp-api/docs/fulfillment-inbound-api-v2024-03-20-reference#listshipmentboxes) response. If these values do not match as required, the operation returns the &#x60;IncorrectPackageIdentifier&#x60; error code. (optional)
-     * @param  int|null $number_of_pallets
-     *  The number of pallets in the shipment. This returns four identical labels for each pallet. (optional)
-     * @param  int|null $page_size
-     *  The page size for paginating through the total packages&#39; labels. This is a required parameter for Non-Partnered LTL Shipments. Max value:1000. (optional)
-     * @param  int|null $page_start_index
-     *  The page start index for paginating through the total packages&#39; labels. This is a required parameter for Non-Partnered LTL Shipments. (optional)
+     * @param string        $shipment_id
+     *                                               A shipment identifier originally returned by the createInboundShipmentPlan operation. (required)
+     * @param string        $page_type
+     *                                               The page type to use to print the labels. Submitting a PageType value that is not supported in your marketplace returns an error. (required)
+     * @param string        $label_type
+     *                                               The type of labels requested. (required)
+     * @param null|int      $number_of_packages
+     *                                               The number of packages in the shipment. (optional)
+     * @param null|string[] $package_labels_to_print
+     *                                               A list of identifiers that specify packages for which you want package labels printed.  If you provide box content information with the [FBA Inbound Shipment Carton Information Feed](https://developer-docs.amazon.com/sp-api/docs/fulfillment-by-amazon-feed-type-values#fba-inbound-shipment-carton-information-feed), then &#x60;PackageLabelsToPrint&#x60; must match the &#x60;CartonId&#x60; values you provide through that feed. If you provide box content information with the Fulfillment Inbound API v2024-03-20, then &#x60;PackageLabelsToPrint&#x60; must match the &#x60;boxID&#x60; values from the [&#x60;listShipmentBoxes&#x60;](https://developer-docs.amazon.com/sp-api/docs/fulfillment-inbound-api-v2024-03-20-reference#listshipmentboxes) response. If these values do not match as required, the operation returns the &#x60;IncorrectPackageIdentifier&#x60; error code. (optional)
+     * @param null|int      $number_of_pallets
+     *                                               The number of pallets in the shipment. This returns four identical labels for each pallet. (optional)
+     * @param null|int      $page_size
+     *                                               The page size for paginating through the total packages&#39; labels. This is a required parameter for Non-Partnered LTL Shipments. Max value:1000. (optional)
+     * @param null|int      $page_start_index
+     *                                               The page start index for paginating through the total packages&#39; labels. This is a required parameter for Non-Partnered LTL Shipments. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getLabelsAsyncWithHttpInfo(
         string $shipment_id,
@@ -1002,11 +1029,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -1014,12 +1041,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -1031,31 +1059,31 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getLabels'
+     * Create request for operation 'getLabels'.
      *
-     * @param  string $shipment_id
-     *  A shipment identifier originally returned by the createInboundShipmentPlan operation. (required)
-     * @param  string $page_type
-     *  The page type to use to print the labels. Submitting a PageType value that is not supported in your marketplace returns an error. (required)
-     * @param  string $label_type
-     *  The type of labels requested. (required)
-     * @param  int|null $number_of_packages
-     *  The number of packages in the shipment. (optional)
-     * @param  string[]|null $package_labels_to_print
-     *  A list of identifiers that specify packages for which you want package labels printed.  If you provide box content information with the [FBA Inbound Shipment Carton Information Feed](https://developer-docs.amazon.com/sp-api/docs/fulfillment-by-amazon-feed-type-values#fba-inbound-shipment-carton-information-feed), then &#x60;PackageLabelsToPrint&#x60; must match the &#x60;CartonId&#x60; values you provide through that feed. If you provide box content information with the Fulfillment Inbound API v2024-03-20, then &#x60;PackageLabelsToPrint&#x60; must match the &#x60;boxID&#x60; values from the [&#x60;listShipmentBoxes&#x60;](https://developer-docs.amazon.com/sp-api/docs/fulfillment-inbound-api-v2024-03-20-reference#listshipmentboxes) response. If these values do not match as required, the operation returns the &#x60;IncorrectPackageIdentifier&#x60; error code. (optional)
-     * @param  int|null $number_of_pallets
-     *  The number of pallets in the shipment. This returns four identical labels for each pallet. (optional)
-     * @param  int|null $page_size
-     *  The page size for paginating through the total packages&#39; labels. This is a required parameter for Non-Partnered LTL Shipments. Max value:1000. (optional)
-     * @param  int|null $page_start_index
-     *  The page start index for paginating through the total packages&#39; labels. This is a required parameter for Non-Partnered LTL Shipments. (optional)
+     * @param string        $shipment_id
+     *                                               A shipment identifier originally returned by the createInboundShipmentPlan operation. (required)
+     * @param string        $page_type
+     *                                               The page type to use to print the labels. Submitting a PageType value that is not supported in your marketplace returns an error. (required)
+     * @param string        $label_type
+     *                                               The type of labels requested. (required)
+     * @param null|int      $number_of_packages
+     *                                               The number of packages in the shipment. (optional)
+     * @param null|string[] $package_labels_to_print
+     *                                               A list of identifiers that specify packages for which you want package labels printed.  If you provide box content information with the [FBA Inbound Shipment Carton Information Feed](https://developer-docs.amazon.com/sp-api/docs/fulfillment-by-amazon-feed-type-values#fba-inbound-shipment-carton-information-feed), then &#x60;PackageLabelsToPrint&#x60; must match the &#x60;CartonId&#x60; values you provide through that feed. If you provide box content information with the Fulfillment Inbound API v2024-03-20, then &#x60;PackageLabelsToPrint&#x60; must match the &#x60;boxID&#x60; values from the [&#x60;listShipmentBoxes&#x60;](https://developer-docs.amazon.com/sp-api/docs/fulfillment-inbound-api-v2024-03-20-reference#listshipmentboxes) response. If these values do not match as required, the operation returns the &#x60;IncorrectPackageIdentifier&#x60; error code. (optional)
+     * @param null|int      $number_of_pallets
+     *                                               The number of pallets in the shipment. This returns four identical labels for each pallet. (optional)
+     * @param null|int      $page_size
+     *                                               The page size for paginating through the total packages&#39; labels. This is a required parameter for Non-Partnered LTL Shipments. Max value:1000. (optional)
+     * @param null|int      $page_start_index
+     *                                               The page start index for paginating through the total packages&#39; labels. This is a required parameter for Non-Partnered LTL Shipments. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getLabelsRequest(
         string $shipment_id,
@@ -1068,19 +1096,19 @@ class FbaInboundApi
         ?int $page_start_index = null
     ): Request {
         // verify the required parameter 'shipment_id' is set
-        if ($shipment_id === null || (is_array($shipment_id) && count($shipment_id) === 0)) {
+        if (null === $shipment_id || (is_array($shipment_id) && 0 === count($shipment_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $shipment_id when calling getLabels'
             );
         }
         // verify the required parameter 'page_type' is set
-        if ($page_type === null || (is_array($page_type) && count($page_type) === 0)) {
+        if (null === $page_type || (is_array($page_type) && 0 === count($page_type))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $page_type when calling getLabels'
             );
         }
         // verify the required parameter 'label_type' is set
-        if ($label_type === null || (is_array($label_type) && count($label_type) === 0)) {
+        if (null === $label_type || (is_array($label_type) && 0 === count($label_type))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $label_type when calling getLabels'
             );
@@ -1157,16 +1185,14 @@ class FbaInboundApi
             false // required
         ) ?? []);
 
-
         // path params
-        if ($shipment_id !== null) {
+        if (null !== $shipment_id) {
             $resourcePath = str_replace(
-                '{' . 'shipmentId' . '}',
+                '{shipmentId}',
                 ObjectSerializer::toPathValue($shipment_id),
                 $resourcePath
             );
         }
-
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -1175,7 +1201,6 @@ class FbaInboundApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                
                 '',
                 false
             );
@@ -1190,22 +1215,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1219,50 +1241,52 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getPrepInstructions
+     * Operation getPrepInstructions.
      *
-     * @param  string $ship_to_country_code
-     *  The country code of the country to which the items will be shipped. Note that labeling requirements and item preparation instructions can vary by country. (required)
-     * @param  string[]|null $seller_sku_list
-     *  A list of SellerSKU values. Used to identify items for which you want labeling requirements and item preparation instructions for shipment to Amazon&#39;s fulfillment network. The SellerSKU is qualified by the Seller ID, which is included with every call to the Seller Partner API.  Note: Include seller SKUs that you have used to list items on Amazon&#39;s retail website. If you include a seller SKU that you have never used to list an item on Amazon&#39;s retail website, the seller SKU is returned in the InvalidSKUList property in the response. (optional)
-     * @param  string[]|null $asin_list
-     *  A list of ASIN values. Used to identify items for which you want item preparation instructions to help with item sourcing decisions.  Note: ASINs must be included in the product catalog for at least one of the marketplaces that the seller  participates in. Any ASIN that is not included in the product catalog for at least one of the marketplaces that the seller participates in is returned in the InvalidASINList property in the response. You can find out which marketplaces a seller participates in by calling the getMarketplaceParticipations operation in the Selling Partner API for Sellers. (optional)
+     * @param string        $ship_to_country_code
+     *                                            The country code of the country to which the items will be shipped. Note that labeling requirements and item preparation instructions can vary by country. (required)
+     * @param null|string[] $seller_sku_list
+     *                                            A list of SellerSKU values. Used to identify items for which you want labeling requirements and item preparation instructions for shipment to Amazon&#39;s fulfillment network. The SellerSKU is qualified by the Seller ID, which is included with every call to the Seller Partner API.  Note: Include seller SKUs that you have used to list items on Amazon&#39;s retail website. If you include a seller SKU that you have never used to list an item on Amazon&#39;s retail website, the seller SKU is returned in the InvalidSKUList property in the response. (optional)
+     * @param null|string[] $asin_list
+     *                                            A list of ASIN values. Used to identify items for which you want item preparation instructions to help with item sourcing decisions.  Note: ASINs must be included in the product catalog for at least one of the marketplaces that the seller  participates in. Any ASIN that is not included in the product catalog for at least one of the marketplaces that the seller participates in is returned in the InvalidASINList property in the response. You can find out which marketplaces a seller participates in by calling the getMarketplaceParticipations operation in the Selling Partner API for Sellers. (optional)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse
      */
     public function getPrepInstructions(
         string $ship_to_country_code,
         ?array $seller_sku_list = null,
         ?array $asin_list = null
-    ): \SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse {
+    ): GetPrepInstructionsResponse {
         list($response) = $this->getPrepInstructionsWithHttpInfo($ship_to_country_code, $seller_sku_list, $asin_list);
+
         return $response;
     }
 
     /**
-     * Operation getPrepInstructionsWithHttpInfo
+     * Operation getPrepInstructionsWithHttpInfo.
      *
-     * @param  string $ship_to_country_code
-     *  The country code of the country to which the items will be shipped. Note that labeling requirements and item preparation instructions can vary by country. (required)
-     * @param  string[]|null $seller_sku_list
-     *  A list of SellerSKU values. Used to identify items for which you want labeling requirements and item preparation instructions for shipment to Amazon&#39;s fulfillment network. The SellerSKU is qualified by the Seller ID, which is included with every call to the Seller Partner API.  Note: Include seller SKUs that you have used to list items on Amazon&#39;s retail website. If you include a seller SKU that you have never used to list an item on Amazon&#39;s retail website, the seller SKU is returned in the InvalidSKUList property in the response. (optional)
-     * @param  string[]|null $asin_list
-     *  A list of ASIN values. Used to identify items for which you want item preparation instructions to help with item sourcing decisions.  Note: ASINs must be included in the product catalog for at least one of the marketplaces that the seller  participates in. Any ASIN that is not included in the product catalog for at least one of the marketplaces that the seller participates in is returned in the InvalidASINList property in the response. You can find out which marketplaces a seller participates in by calling the getMarketplaceParticipations operation in the Selling Partner API for Sellers. (optional)
+     * @param string        $ship_to_country_code
+     *                                            The country code of the country to which the items will be shipped. Note that labeling requirements and item preparation instructions can vary by country. (required)
+     * @param null|string[] $seller_sku_list
+     *                                            A list of SellerSKU values. Used to identify items for which you want labeling requirements and item preparation instructions for shipment to Amazon&#39;s fulfillment network. The SellerSKU is qualified by the Seller ID, which is included with every call to the Seller Partner API.  Note: Include seller SKUs that you have used to list items on Amazon&#39;s retail website. If you include a seller SKU that you have never used to list an item on Amazon&#39;s retail website, the seller SKU is returned in the InvalidSKUList property in the response. (optional)
+     * @param null|string[] $asin_list
+     *                                            A list of ASIN values. Used to identify items for which you want item preparation instructions to help with item sourcing decisions.  Note: ASINs must be included in the product catalog for at least one of the marketplaces that the seller  participates in. Any ASIN that is not included in the product catalog for at least one of the marketplaces that the seller participates in is returned in the InvalidASINList property in the response. You can find out which marketplaces a seller participates in by calling the getMarketplaceParticipations operation in the Selling Partner API for Sellers. (optional)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getPrepInstructionsWithHttpInfo(
         string $ship_to_country_code,
@@ -1274,6 +1298,7 @@ class FbaInboundApi
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -1308,10 +1333,10 @@ class FbaInboundApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' !== 'string') {
@@ -1322,11 +1347,12 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 400:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' !== 'string') {
@@ -1337,11 +1363,12 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 401:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' !== 'string') {
@@ -1352,11 +1379,12 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 403:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' !== 'string') {
@@ -1367,11 +1395,12 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 404:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' !== 'string') {
@@ -1382,11 +1411,12 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 429:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' !== 'string') {
@@ -1397,11 +1427,12 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 500:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' !== 'string') {
@@ -1412,11 +1443,12 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 503:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse' !== 'string') {
@@ -1427,16 +1459,16 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
             $returnType = '\SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+            if ('\SplFileObject' === $returnType) {
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
+                if ('string' !== $returnType) {
                     $content = json_decode($content);
                 }
             }
@@ -1444,9 +1476,8 @@ class FbaInboundApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -1456,7 +1487,9 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1464,7 +1497,9 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1472,7 +1507,9 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1480,7 +1517,9 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1488,7 +1527,9 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1496,7 +1537,9 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1504,7 +1547,9 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1512,24 +1557,25 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation getPrepInstructionsAsync
+     * Operation getPrepInstructionsAsync.
      *
-     * @param  string $ship_to_country_code
-     *  The country code of the country to which the items will be shipped. Note that labeling requirements and item preparation instructions can vary by country. (required)
-     * @param  string[]|null $seller_sku_list
-     *  A list of SellerSKU values. Used to identify items for which you want labeling requirements and item preparation instructions for shipment to Amazon&#39;s fulfillment network. The SellerSKU is qualified by the Seller ID, which is included with every call to the Seller Partner API.  Note: Include seller SKUs that you have used to list items on Amazon&#39;s retail website. If you include a seller SKU that you have never used to list an item on Amazon&#39;s retail website, the seller SKU is returned in the InvalidSKUList property in the response. (optional)
-     * @param  string[]|null $asin_list
-     *  A list of ASIN values. Used to identify items for which you want item preparation instructions to help with item sourcing decisions.  Note: ASINs must be included in the product catalog for at least one of the marketplaces that the seller  participates in. Any ASIN that is not included in the product catalog for at least one of the marketplaces that the seller participates in is returned in the InvalidASINList property in the response. You can find out which marketplaces a seller participates in by calling the getMarketplaceParticipations operation in the Selling Partner API for Sellers. (optional)
+     * @param string        $ship_to_country_code
+     *                                            The country code of the country to which the items will be shipped. Note that labeling requirements and item preparation instructions can vary by country. (required)
+     * @param null|string[] $seller_sku_list
+     *                                            A list of SellerSKU values. Used to identify items for which you want labeling requirements and item preparation instructions for shipment to Amazon&#39;s fulfillment network. The SellerSKU is qualified by the Seller ID, which is included with every call to the Seller Partner API.  Note: Include seller SKUs that you have used to list items on Amazon&#39;s retail website. If you include a seller SKU that you have never used to list an item on Amazon&#39;s retail website, the seller SKU is returned in the InvalidSKUList property in the response. (optional)
+     * @param null|string[] $asin_list
+     *                                            A list of ASIN values. Used to identify items for which you want item preparation instructions to help with item sourcing decisions.  Note: ASINs must be included in the product catalog for at least one of the marketplaces that the seller  participates in. Any ASIN that is not included in the product catalog for at least one of the marketplaces that the seller participates in is returned in the InvalidASINList property in the response. You can find out which marketplaces a seller participates in by calling the getMarketplaceParticipations operation in the Selling Partner API for Sellers. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getPrepInstructionsAsync(
         string $ship_to_country_code,
@@ -1541,21 +1587,21 @@ class FbaInboundApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getPrepInstructionsAsyncWithHttpInfo
+     * Operation getPrepInstructionsAsyncWithHttpInfo.
      *
-     * @param  string $ship_to_country_code
-     *  The country code of the country to which the items will be shipped. Note that labeling requirements and item preparation instructions can vary by country. (required)
-     * @param  string[]|null $seller_sku_list
-     *  A list of SellerSKU values. Used to identify items for which you want labeling requirements and item preparation instructions for shipment to Amazon&#39;s fulfillment network. The SellerSKU is qualified by the Seller ID, which is included with every call to the Seller Partner API.  Note: Include seller SKUs that you have used to list items on Amazon&#39;s retail website. If you include a seller SKU that you have never used to list an item on Amazon&#39;s retail website, the seller SKU is returned in the InvalidSKUList property in the response. (optional)
-     * @param  string[]|null $asin_list
-     *  A list of ASIN values. Used to identify items for which you want item preparation instructions to help with item sourcing decisions.  Note: ASINs must be included in the product catalog for at least one of the marketplaces that the seller  participates in. Any ASIN that is not included in the product catalog for at least one of the marketplaces that the seller participates in is returned in the InvalidASINList property in the response. You can find out which marketplaces a seller participates in by calling the getMarketplaceParticipations operation in the Selling Partner API for Sellers. (optional)
+     * @param string        $ship_to_country_code
+     *                                            The country code of the country to which the items will be shipped. Note that labeling requirements and item preparation instructions can vary by country. (required)
+     * @param null|string[] $seller_sku_list
+     *                                            A list of SellerSKU values. Used to identify items for which you want labeling requirements and item preparation instructions for shipment to Amazon&#39;s fulfillment network. The SellerSKU is qualified by the Seller ID, which is included with every call to the Seller Partner API.  Note: Include seller SKUs that you have used to list items on Amazon&#39;s retail website. If you include a seller SKU that you have never used to list an item on Amazon&#39;s retail website, the seller SKU is returned in the InvalidSKUList property in the response. (optional)
+     * @param null|string[] $asin_list
+     *                                            A list of ASIN values. Used to identify items for which you want item preparation instructions to help with item sourcing decisions.  Note: ASINs must be included in the product catalog for at least one of the marketplaces that the seller  participates in. Any ASIN that is not included in the product catalog for at least one of the marketplaces that the seller participates in is returned in the InvalidASINList property in the response. You can find out which marketplaces a seller participates in by calling the getMarketplaceParticipations operation in the Selling Partner API for Sellers. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getPrepInstructionsAsyncWithHttpInfo(
         string $ship_to_country_code,
@@ -1571,11 +1617,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -1583,12 +1629,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -1600,21 +1647,21 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getPrepInstructions'
+     * Create request for operation 'getPrepInstructions'.
      *
-     * @param  string $ship_to_country_code
-     *  The country code of the country to which the items will be shipped. Note that labeling requirements and item preparation instructions can vary by country. (required)
-     * @param  string[]|null $seller_sku_list
-     *  A list of SellerSKU values. Used to identify items for which you want labeling requirements and item preparation instructions for shipment to Amazon&#39;s fulfillment network. The SellerSKU is qualified by the Seller ID, which is included with every call to the Seller Partner API.  Note: Include seller SKUs that you have used to list items on Amazon&#39;s retail website. If you include a seller SKU that you have never used to list an item on Amazon&#39;s retail website, the seller SKU is returned in the InvalidSKUList property in the response. (optional)
-     * @param  string[]|null $asin_list
-     *  A list of ASIN values. Used to identify items for which you want item preparation instructions to help with item sourcing decisions.  Note: ASINs must be included in the product catalog for at least one of the marketplaces that the seller  participates in. Any ASIN that is not included in the product catalog for at least one of the marketplaces that the seller participates in is returned in the InvalidASINList property in the response. You can find out which marketplaces a seller participates in by calling the getMarketplaceParticipations operation in the Selling Partner API for Sellers. (optional)
+     * @param string        $ship_to_country_code
+     *                                            The country code of the country to which the items will be shipped. Note that labeling requirements and item preparation instructions can vary by country. (required)
+     * @param null|string[] $seller_sku_list
+     *                                            A list of SellerSKU values. Used to identify items for which you want labeling requirements and item preparation instructions for shipment to Amazon&#39;s fulfillment network. The SellerSKU is qualified by the Seller ID, which is included with every call to the Seller Partner API.  Note: Include seller SKUs that you have used to list items on Amazon&#39;s retail website. If you include a seller SKU that you have never used to list an item on Amazon&#39;s retail website, the seller SKU is returned in the InvalidSKUList property in the response. (optional)
+     * @param null|string[] $asin_list
+     *                                            A list of ASIN values. Used to identify items for which you want item preparation instructions to help with item sourcing decisions.  Note: ASINs must be included in the product catalog for at least one of the marketplaces that the seller  participates in. Any ASIN that is not included in the product catalog for at least one of the marketplaces that the seller participates in is returned in the InvalidASINList property in the response. You can find out which marketplaces a seller participates in by calling the getMarketplaceParticipations operation in the Selling Partner API for Sellers. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getPrepInstructionsRequest(
         string $ship_to_country_code,
@@ -1622,19 +1669,18 @@ class FbaInboundApi
         ?array $asin_list = null
     ): Request {
         // verify the required parameter 'ship_to_country_code' is set
-        if ($ship_to_country_code === null || (is_array($ship_to_country_code) && count($ship_to_country_code) === 0)) {
+        if (null === $ship_to_country_code || (is_array($ship_to_country_code) && 0 === count($ship_to_country_code))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $ship_to_country_code when calling getPrepInstructions'
             );
         }
-        if ($seller_sku_list !== null && count($seller_sku_list) > 50) {
+        if (null !== $seller_sku_list && count($seller_sku_list) > 50) {
             throw new \InvalidArgumentException('invalid value for "$seller_sku_list" when calling FbaInboundApi.getPrepInstructions, number of items must be less than or equal to 50.');
         }
 
-        if ($asin_list !== null && count($asin_list) > 50) {
+        if (null !== $asin_list && count($asin_list) > 50) {
             throw new \InvalidArgumentException('invalid value for "$asin_list" when calling FbaInboundApi.getPrepInstructions, number of items must be less than or equal to 50.');
         }
-
 
         $resourcePath = '/fba/inbound/v0/prepInstructions';
         $formParams = [];
@@ -1671,9 +1717,6 @@ class FbaInboundApi
             false // required
         ) ?? []);
 
-
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -1681,7 +1724,6 @@ class FbaInboundApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                
                 '',
                 false
             );
@@ -1696,22 +1738,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1725,31 +1764,31 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getShipmentItems
+     * Operation getShipmentItems.
      *
-     * @param  string $query_type
-     *  Indicates whether items are returned using a date range (by providing the LastUpdatedAfter and LastUpdatedBefore parameters), or using NextToken, which continues returning items specified in a previous request. (required)
-     * @param  string $marketplace_id
-     *  A marketplace identifier. Specifies the marketplace where the product would be stored. (required)
-     * @param  \DateTime|null $last_updated_after
-     *  A date used for selecting inbound shipment items that were last updated after (or at) a specified time. The selection includes updates made by Amazon and by the seller. (optional)
-     * @param  \DateTime|null $last_updated_before
-     *  A date used for selecting inbound shipment items that were last updated before (or at) a specified time. The selection includes updates made by Amazon and by the seller. (optional)
-     * @param  string|null $next_token
-     *  A string token returned in the response to your previous request. (optional)
+     * @param string         $query_type
+     *                                            Indicates whether items are returned using a date range (by providing the LastUpdatedAfter and LastUpdatedBefore parameters), or using NextToken, which continues returning items specified in a previous request. (required)
+     * @param string         $marketplace_id
+     *                                            A marketplace identifier. Specifies the marketplace where the product would be stored. (required)
+     * @param null|\DateTime $last_updated_after
+     *                                            A date used for selecting inbound shipment items that were last updated after (or at) a specified time. The selection includes updates made by Amazon and by the seller. (optional)
+     * @param null|\DateTime $last_updated_before
+     *                                            A date used for selecting inbound shipment items that were last updated before (or at) a specified time. The selection includes updates made by Amazon and by the seller. (optional)
+     * @param null|string    $next_token
+     *                                            A string token returned in the response to your previous request. (optional)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse
      */
     public function getShipmentItems(
         string $query_type,
@@ -1757,28 +1796,30 @@ class FbaInboundApi
         ?\DateTime $last_updated_after = null,
         ?\DateTime $last_updated_before = null,
         ?string $next_token = null
-    ): \SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse {
+    ): GetShipmentItemsResponse {
         list($response) = $this->getShipmentItemsWithHttpInfo($query_type, $marketplace_id, $last_updated_after, $last_updated_before, $next_token);
+
         return $response;
     }
 
     /**
-     * Operation getShipmentItemsWithHttpInfo
+     * Operation getShipmentItemsWithHttpInfo.
      *
-     * @param  string $query_type
-     *  Indicates whether items are returned using a date range (by providing the LastUpdatedAfter and LastUpdatedBefore parameters), or using NextToken, which continues returning items specified in a previous request. (required)
-     * @param  string $marketplace_id
-     *  A marketplace identifier. Specifies the marketplace where the product would be stored. (required)
-     * @param  \DateTime|null $last_updated_after
-     *  A date used for selecting inbound shipment items that were last updated after (or at) a specified time. The selection includes updates made by Amazon and by the seller. (optional)
-     * @param  \DateTime|null $last_updated_before
-     *  A date used for selecting inbound shipment items that were last updated before (or at) a specified time. The selection includes updates made by Amazon and by the seller. (optional)
-     * @param  string|null $next_token
-     *  A string token returned in the response to your previous request. (optional)
+     * @param string         $query_type
+     *                                            Indicates whether items are returned using a date range (by providing the LastUpdatedAfter and LastUpdatedBefore parameters), or using NextToken, which continues returning items specified in a previous request. (required)
+     * @param string         $marketplace_id
+     *                                            A marketplace identifier. Specifies the marketplace where the product would be stored. (required)
+     * @param null|\DateTime $last_updated_after
+     *                                            A date used for selecting inbound shipment items that were last updated after (or at) a specified time. The selection includes updates made by Amazon and by the seller. (optional)
+     * @param null|\DateTime $last_updated_before
+     *                                            A date used for selecting inbound shipment items that were last updated before (or at) a specified time. The selection includes updates made by Amazon and by the seller. (optional)
+     * @param null|string    $next_token
+     *                                            A string token returned in the response to your previous request. (optional)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getShipmentItemsWithHttpInfo(
         string $query_type,
@@ -1792,6 +1833,7 @@ class FbaInboundApi
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -1826,10 +1868,10 @@ class FbaInboundApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
@@ -1840,11 +1882,12 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 400:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
@@ -1855,11 +1898,12 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 401:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
@@ -1870,11 +1914,12 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 403:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
@@ -1885,11 +1930,12 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 404:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
@@ -1900,11 +1946,12 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 429:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
@@ -1915,11 +1962,12 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 500:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
@@ -1930,11 +1978,12 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 503:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
@@ -1945,16 +1994,16 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
             $returnType = '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+            if ('\SplFileObject' === $returnType) {
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
+                if ('string' !== $returnType) {
                     $content = json_decode($content);
                 }
             }
@@ -1962,9 +2011,8 @@ class FbaInboundApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -1974,7 +2022,9 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1982,7 +2032,9 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1990,7 +2042,9 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1998,7 +2052,9 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2006,7 +2062,9 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2014,7 +2072,9 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2022,7 +2082,9 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2030,28 +2092,29 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation getShipmentItemsAsync
+     * Operation getShipmentItemsAsync.
      *
-     * @param  string $query_type
-     *  Indicates whether items are returned using a date range (by providing the LastUpdatedAfter and LastUpdatedBefore parameters), or using NextToken, which continues returning items specified in a previous request. (required)
-     * @param  string $marketplace_id
-     *  A marketplace identifier. Specifies the marketplace where the product would be stored. (required)
-     * @param  \DateTime|null $last_updated_after
-     *  A date used for selecting inbound shipment items that were last updated after (or at) a specified time. The selection includes updates made by Amazon and by the seller. (optional)
-     * @param  \DateTime|null $last_updated_before
-     *  A date used for selecting inbound shipment items that were last updated before (or at) a specified time. The selection includes updates made by Amazon and by the seller. (optional)
-     * @param  string|null $next_token
-     *  A string token returned in the response to your previous request. (optional)
+     * @param string         $query_type
+     *                                            Indicates whether items are returned using a date range (by providing the LastUpdatedAfter and LastUpdatedBefore parameters), or using NextToken, which continues returning items specified in a previous request. (required)
+     * @param string         $marketplace_id
+     *                                            A marketplace identifier. Specifies the marketplace where the product would be stored. (required)
+     * @param null|\DateTime $last_updated_after
+     *                                            A date used for selecting inbound shipment items that were last updated after (or at) a specified time. The selection includes updates made by Amazon and by the seller. (optional)
+     * @param null|\DateTime $last_updated_before
+     *                                            A date used for selecting inbound shipment items that were last updated before (or at) a specified time. The selection includes updates made by Amazon and by the seller. (optional)
+     * @param null|string    $next_token
+     *                                            A string token returned in the response to your previous request. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getShipmentItemsAsync(
         string $query_type,
@@ -2065,25 +2128,25 @@ class FbaInboundApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getShipmentItemsAsyncWithHttpInfo
+     * Operation getShipmentItemsAsyncWithHttpInfo.
      *
-     * @param  string $query_type
-     *  Indicates whether items are returned using a date range (by providing the LastUpdatedAfter and LastUpdatedBefore parameters), or using NextToken, which continues returning items specified in a previous request. (required)
-     * @param  string $marketplace_id
-     *  A marketplace identifier. Specifies the marketplace where the product would be stored. (required)
-     * @param  \DateTime|null $last_updated_after
-     *  A date used for selecting inbound shipment items that were last updated after (or at) a specified time. The selection includes updates made by Amazon and by the seller. (optional)
-     * @param  \DateTime|null $last_updated_before
-     *  A date used for selecting inbound shipment items that were last updated before (or at) a specified time. The selection includes updates made by Amazon and by the seller. (optional)
-     * @param  string|null $next_token
-     *  A string token returned in the response to your previous request. (optional)
+     * @param string         $query_type
+     *                                            Indicates whether items are returned using a date range (by providing the LastUpdatedAfter and LastUpdatedBefore parameters), or using NextToken, which continues returning items specified in a previous request. (required)
+     * @param string         $marketplace_id
+     *                                            A marketplace identifier. Specifies the marketplace where the product would be stored. (required)
+     * @param null|\DateTime $last_updated_after
+     *                                            A date used for selecting inbound shipment items that were last updated after (or at) a specified time. The selection includes updates made by Amazon and by the seller. (optional)
+     * @param null|\DateTime $last_updated_before
+     *                                            A date used for selecting inbound shipment items that were last updated before (or at) a specified time. The selection includes updates made by Amazon and by the seller. (optional)
+     * @param null|string    $next_token
+     *                                            A string token returned in the response to your previous request. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getShipmentItemsAsyncWithHttpInfo(
         string $query_type,
@@ -2101,11 +2164,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -2113,12 +2176,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -2130,25 +2194,25 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getShipmentItems'
+     * Create request for operation 'getShipmentItems'.
      *
-     * @param  string $query_type
-     *  Indicates whether items are returned using a date range (by providing the LastUpdatedAfter and LastUpdatedBefore parameters), or using NextToken, which continues returning items specified in a previous request. (required)
-     * @param  string $marketplace_id
-     *  A marketplace identifier. Specifies the marketplace where the product would be stored. (required)
-     * @param  \DateTime|null $last_updated_after
-     *  A date used for selecting inbound shipment items that were last updated after (or at) a specified time. The selection includes updates made by Amazon and by the seller. (optional)
-     * @param  \DateTime|null $last_updated_before
-     *  A date used for selecting inbound shipment items that were last updated before (or at) a specified time. The selection includes updates made by Amazon and by the seller. (optional)
-     * @param  string|null $next_token
-     *  A string token returned in the response to your previous request. (optional)
+     * @param string         $query_type
+     *                                            Indicates whether items are returned using a date range (by providing the LastUpdatedAfter and LastUpdatedBefore parameters), or using NextToken, which continues returning items specified in a previous request. (required)
+     * @param string         $marketplace_id
+     *                                            A marketplace identifier. Specifies the marketplace where the product would be stored. (required)
+     * @param null|\DateTime $last_updated_after
+     *                                            A date used for selecting inbound shipment items that were last updated after (or at) a specified time. The selection includes updates made by Amazon and by the seller. (optional)
+     * @param null|\DateTime $last_updated_before
+     *                                            A date used for selecting inbound shipment items that were last updated before (or at) a specified time. The selection includes updates made by Amazon and by the seller. (optional)
+     * @param null|string    $next_token
+     *                                            A string token returned in the response to your previous request. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getShipmentItemsRequest(
         string $query_type,
@@ -2158,13 +2222,13 @@ class FbaInboundApi
         ?string $next_token = null
     ): Request {
         // verify the required parameter 'query_type' is set
-        if ($query_type === null || (is_array($query_type) && count($query_type) === 0)) {
+        if (null === $query_type || (is_array($query_type) && 0 === count($query_type))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $query_type when calling getShipmentItems'
             );
         }
         // verify the required parameter 'marketplace_id' is set
-        if ($marketplace_id === null || (is_array($marketplace_id) && count($marketplace_id) === 0)) {
+        if (null === $marketplace_id || (is_array($marketplace_id) && 0 === count($marketplace_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_id when calling getShipmentItems'
             );
@@ -2223,9 +2287,6 @@ class FbaInboundApi
             true // required
         ) ?? []);
 
-
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -2233,7 +2294,6 @@ class FbaInboundApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                
                 '',
                 false
             );
@@ -2248,22 +2308,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -2277,45 +2334,47 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getShipmentItemsByShipmentId
+     * Operation getShipmentItemsByShipmentId.
      *
-     * @param  string $shipment_id
-     *  A shipment identifier used for selecting items in a specific inbound shipment. (required)
-     * @param  string|null $marketplace_id
-     *  Deprecated. Do not use. (optional)
+     * @param string      $shipment_id
+     *                                    A shipment identifier used for selecting items in a specific inbound shipment. (required)
+     * @param null|string $marketplace_id
+     *                                    Deprecated. Do not use. (optional)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse
      */
     public function getShipmentItemsByShipmentId(
         string $shipment_id,
         ?string $marketplace_id = null
-    ): \SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse {
+    ): GetShipmentItemsResponse {
         list($response) = $this->getShipmentItemsByShipmentIdWithHttpInfo($shipment_id, $marketplace_id);
+
         return $response;
     }
 
     /**
-     * Operation getShipmentItemsByShipmentIdWithHttpInfo
+     * Operation getShipmentItemsByShipmentIdWithHttpInfo.
      *
-     * @param  string $shipment_id
-     *  A shipment identifier used for selecting items in a specific inbound shipment. (required)
-     * @param  string|null $marketplace_id
-     *  Deprecated. Do not use. (optional)
+     * @param string      $shipment_id
+     *                                    A shipment identifier used for selecting items in a specific inbound shipment. (required)
+     * @param null|string $marketplace_id
+     *                                    Deprecated. Do not use. (optional)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getShipmentItemsByShipmentIdWithHttpInfo(
         string $shipment_id,
@@ -2326,6 +2385,7 @@ class FbaInboundApi
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -2360,10 +2420,10 @@ class FbaInboundApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
@@ -2374,11 +2434,12 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 400:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
@@ -2389,11 +2450,12 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 401:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
@@ -2404,11 +2466,12 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 403:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
@@ -2419,11 +2482,12 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 404:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
@@ -2434,11 +2498,12 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 429:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
@@ -2449,11 +2514,12 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 500:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
@@ -2464,11 +2530,12 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 503:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse' !== 'string') {
@@ -2479,16 +2546,16 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
             $returnType = '\SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+            if ('\SplFileObject' === $returnType) {
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
+                if ('string' !== $returnType) {
                     $content = json_decode($content);
                 }
             }
@@ -2496,9 +2563,8 @@ class FbaInboundApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -2508,7 +2574,9 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2516,7 +2584,9 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2524,7 +2594,9 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2532,7 +2604,9 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2540,7 +2614,9 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2548,7 +2624,9 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2556,7 +2634,9 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2564,22 +2644,23 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation getShipmentItemsByShipmentIdAsync
+     * Operation getShipmentItemsByShipmentIdAsync.
      *
-     * @param  string $shipment_id
-     *  A shipment identifier used for selecting items in a specific inbound shipment. (required)
-     * @param  string|null $marketplace_id
-     *  Deprecated. Do not use. (optional)
+     * @param string      $shipment_id
+     *                                    A shipment identifier used for selecting items in a specific inbound shipment. (required)
+     * @param null|string $marketplace_id
+     *                                    Deprecated. Do not use. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getShipmentItemsByShipmentIdAsync(
         string $shipment_id,
@@ -2590,19 +2671,19 @@ class FbaInboundApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getShipmentItemsByShipmentIdAsyncWithHttpInfo
+     * Operation getShipmentItemsByShipmentIdAsyncWithHttpInfo.
      *
-     * @param  string $shipment_id
-     *  A shipment identifier used for selecting items in a specific inbound shipment. (required)
-     * @param  string|null $marketplace_id
-     *  Deprecated. Do not use. (optional)
+     * @param string      $shipment_id
+     *                                    A shipment identifier used for selecting items in a specific inbound shipment. (required)
+     * @param null|string $marketplace_id
+     *                                    Deprecated. Do not use. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getShipmentItemsByShipmentIdAsyncWithHttpInfo(
         string $shipment_id,
@@ -2617,11 +2698,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -2629,12 +2710,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -2646,26 +2728,26 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getShipmentItemsByShipmentId'
+     * Create request for operation 'getShipmentItemsByShipmentId'.
      *
-     * @param  string $shipment_id
-     *  A shipment identifier used for selecting items in a specific inbound shipment. (required)
-     * @param  string|null $marketplace_id
-     *  Deprecated. Do not use. (optional)
+     * @param string      $shipment_id
+     *                                    A shipment identifier used for selecting items in a specific inbound shipment. (required)
+     * @param null|string $marketplace_id
+     *                                    Deprecated. Do not use. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getShipmentItemsByShipmentIdRequest(
         string $shipment_id,
         ?string $marketplace_id = null
     ): Request {
         // verify the required parameter 'shipment_id' is set
-        if ($shipment_id === null || (is_array($shipment_id) && count($shipment_id) === 0)) {
+        if (null === $shipment_id || (is_array($shipment_id) && 0 === count($shipment_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $shipment_id when calling getShipmentItemsByShipmentId'
             );
@@ -2688,16 +2770,14 @@ class FbaInboundApi
             false // required
         ) ?? []);
 
-
         // path params
-        if ($shipment_id !== null) {
+        if (null !== $shipment_id) {
             $resourcePath = str_replace(
-                '{' . 'shipmentId' . '}',
+                '{shipmentId}',
                 ObjectSerializer::toPathValue($shipment_id),
                 $resourcePath
             );
         }
-
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -2706,7 +2786,6 @@ class FbaInboundApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                
                 '',
                 false
             );
@@ -2721,22 +2800,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -2750,35 +2826,35 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getShipments
+     * Operation getShipments.
      *
-     * @param  string $query_type
-     *  Indicates whether shipments are returned using shipment information (by providing the ShipmentStatusList or ShipmentIdList parameters), using a date range (by providing the LastUpdatedAfter and LastUpdatedBefore parameters), or by using NextToken to continue returning items specified in a previous request. (required)
-     * @param  string $marketplace_id
-     *  A marketplace identifier. Specifies the marketplace where the product would be stored. (required)
-     * @param  string[]|null $shipment_status_list
-     *  A list of ShipmentStatus values. Used to select shipments with a current status that matches the status values that you specify. (optional)
-     * @param  string[]|null $shipment_id_list
-     *  A list of shipment IDs used to select the shipments that you want. If both ShipmentStatusList and ShipmentIdList are specified, only shipments that match both parameters are returned. (optional)
-     * @param  \DateTime|null $last_updated_after
-     *  A date used for selecting inbound shipments that were last updated after (or at) a specified time. The selection includes updates made by Amazon and by the seller. (optional)
-     * @param  \DateTime|null $last_updated_before
-     *  A date used for selecting inbound shipments that were last updated before (or at) a specified time. The selection includes updates made by Amazon and by the seller. (optional)
-     * @param  string|null $next_token
-     *  A string token returned in the response to your previous request. (optional)
+     * @param string         $query_type
+     *                                             Indicates whether shipments are returned using shipment information (by providing the ShipmentStatusList or ShipmentIdList parameters), using a date range (by providing the LastUpdatedAfter and LastUpdatedBefore parameters), or by using NextToken to continue returning items specified in a previous request. (required)
+     * @param string         $marketplace_id
+     *                                             A marketplace identifier. Specifies the marketplace where the product would be stored. (required)
+     * @param null|string[]  $shipment_status_list
+     *                                             A list of ShipmentStatus values. Used to select shipments with a current status that matches the status values that you specify. (optional)
+     * @param null|string[]  $shipment_id_list
+     *                                             A list of shipment IDs used to select the shipments that you want. If both ShipmentStatusList and ShipmentIdList are specified, only shipments that match both parameters are returned. (optional)
+     * @param null|\DateTime $last_updated_after
+     *                                             A date used for selecting inbound shipments that were last updated after (or at) a specified time. The selection includes updates made by Amazon and by the seller. (optional)
+     * @param null|\DateTime $last_updated_before
+     *                                             A date used for selecting inbound shipments that were last updated before (or at) a specified time. The selection includes updates made by Amazon and by the seller. (optional)
+     * @param null|string    $next_token
+     *                                             A string token returned in the response to your previous request. (optional)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse
      */
     public function getShipments(
         string $query_type,
@@ -2788,32 +2864,34 @@ class FbaInboundApi
         ?\DateTime $last_updated_after = null,
         ?\DateTime $last_updated_before = null,
         ?string $next_token = null
-    ): \SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse {
+    ): GetShipmentsResponse {
         list($response) = $this->getShipmentsWithHttpInfo($query_type, $marketplace_id, $shipment_status_list, $shipment_id_list, $last_updated_after, $last_updated_before, $next_token);
+
         return $response;
     }
 
     /**
-     * Operation getShipmentsWithHttpInfo
+     * Operation getShipmentsWithHttpInfo.
      *
-     * @param  string $query_type
-     *  Indicates whether shipments are returned using shipment information (by providing the ShipmentStatusList or ShipmentIdList parameters), using a date range (by providing the LastUpdatedAfter and LastUpdatedBefore parameters), or by using NextToken to continue returning items specified in a previous request. (required)
-     * @param  string $marketplace_id
-     *  A marketplace identifier. Specifies the marketplace where the product would be stored. (required)
-     * @param  string[]|null $shipment_status_list
-     *  A list of ShipmentStatus values. Used to select shipments with a current status that matches the status values that you specify. (optional)
-     * @param  string[]|null $shipment_id_list
-     *  A list of shipment IDs used to select the shipments that you want. If both ShipmentStatusList and ShipmentIdList are specified, only shipments that match both parameters are returned. (optional)
-     * @param  \DateTime|null $last_updated_after
-     *  A date used for selecting inbound shipments that were last updated after (or at) a specified time. The selection includes updates made by Amazon and by the seller. (optional)
-     * @param  \DateTime|null $last_updated_before
-     *  A date used for selecting inbound shipments that were last updated before (or at) a specified time. The selection includes updates made by Amazon and by the seller. (optional)
-     * @param  string|null $next_token
-     *  A string token returned in the response to your previous request. (optional)
+     * @param string         $query_type
+     *                                             Indicates whether shipments are returned using shipment information (by providing the ShipmentStatusList or ShipmentIdList parameters), using a date range (by providing the LastUpdatedAfter and LastUpdatedBefore parameters), or by using NextToken to continue returning items specified in a previous request. (required)
+     * @param string         $marketplace_id
+     *                                             A marketplace identifier. Specifies the marketplace where the product would be stored. (required)
+     * @param null|string[]  $shipment_status_list
+     *                                             A list of ShipmentStatus values. Used to select shipments with a current status that matches the status values that you specify. (optional)
+     * @param null|string[]  $shipment_id_list
+     *                                             A list of shipment IDs used to select the shipments that you want. If both ShipmentStatusList and ShipmentIdList are specified, only shipments that match both parameters are returned. (optional)
+     * @param null|\DateTime $last_updated_after
+     *                                             A date used for selecting inbound shipments that were last updated after (or at) a specified time. The selection includes updates made by Amazon and by the seller. (optional)
+     * @param null|\DateTime $last_updated_before
+     *                                             A date used for selecting inbound shipments that were last updated before (or at) a specified time. The selection includes updates made by Amazon and by the seller. (optional)
+     * @param null|string    $next_token
+     *                                             A string token returned in the response to your previous request. (optional)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getShipmentsWithHttpInfo(
         string $query_type,
@@ -2829,6 +2907,7 @@ class FbaInboundApi
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -2863,10 +2942,10 @@ class FbaInboundApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse' !== 'string') {
@@ -2877,11 +2956,12 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 400:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse' !== 'string') {
@@ -2892,11 +2972,12 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 401:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse' !== 'string') {
@@ -2907,11 +2988,12 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 403:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse' !== 'string') {
@@ -2922,11 +3004,12 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 404:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse' !== 'string') {
@@ -2937,11 +3020,12 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 429:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse' !== 'string') {
@@ -2952,11 +3036,12 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 500:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse' !== 'string') {
@@ -2967,11 +3052,12 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 503:
                     if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse' !== 'string') {
@@ -2982,16 +3068,16 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
             $returnType = '\SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+            if ('\SplFileObject' === $returnType) {
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
+                if ('string' !== $returnType) {
                     $content = json_decode($content);
                 }
             }
@@ -2999,9 +3085,8 @@ class FbaInboundApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -3011,7 +3096,9 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3019,7 +3106,9 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3027,7 +3116,9 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3035,7 +3126,9 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3043,7 +3136,9 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3051,7 +3146,9 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3059,7 +3156,9 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3067,32 +3166,33 @@ class FbaInboundApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation getShipmentsAsync
+     * Operation getShipmentsAsync.
      *
-     * @param  string $query_type
-     *  Indicates whether shipments are returned using shipment information (by providing the ShipmentStatusList or ShipmentIdList parameters), using a date range (by providing the LastUpdatedAfter and LastUpdatedBefore parameters), or by using NextToken to continue returning items specified in a previous request. (required)
-     * @param  string $marketplace_id
-     *  A marketplace identifier. Specifies the marketplace where the product would be stored. (required)
-     * @param  string[]|null $shipment_status_list
-     *  A list of ShipmentStatus values. Used to select shipments with a current status that matches the status values that you specify. (optional)
-     * @param  string[]|null $shipment_id_list
-     *  A list of shipment IDs used to select the shipments that you want. If both ShipmentStatusList and ShipmentIdList are specified, only shipments that match both parameters are returned. (optional)
-     * @param  \DateTime|null $last_updated_after
-     *  A date used for selecting inbound shipments that were last updated after (or at) a specified time. The selection includes updates made by Amazon and by the seller. (optional)
-     * @param  \DateTime|null $last_updated_before
-     *  A date used for selecting inbound shipments that were last updated before (or at) a specified time. The selection includes updates made by Amazon and by the seller. (optional)
-     * @param  string|null $next_token
-     *  A string token returned in the response to your previous request. (optional)
+     * @param string         $query_type
+     *                                             Indicates whether shipments are returned using shipment information (by providing the ShipmentStatusList or ShipmentIdList parameters), using a date range (by providing the LastUpdatedAfter and LastUpdatedBefore parameters), or by using NextToken to continue returning items specified in a previous request. (required)
+     * @param string         $marketplace_id
+     *                                             A marketplace identifier. Specifies the marketplace where the product would be stored. (required)
+     * @param null|string[]  $shipment_status_list
+     *                                             A list of ShipmentStatus values. Used to select shipments with a current status that matches the status values that you specify. (optional)
+     * @param null|string[]  $shipment_id_list
+     *                                             A list of shipment IDs used to select the shipments that you want. If both ShipmentStatusList and ShipmentIdList are specified, only shipments that match both parameters are returned. (optional)
+     * @param null|\DateTime $last_updated_after
+     *                                             A date used for selecting inbound shipments that were last updated after (or at) a specified time. The selection includes updates made by Amazon and by the seller. (optional)
+     * @param null|\DateTime $last_updated_before
+     *                                             A date used for selecting inbound shipments that were last updated before (or at) a specified time. The selection includes updates made by Amazon and by the seller. (optional)
+     * @param null|string    $next_token
+     *                                             A string token returned in the response to your previous request. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getShipmentsAsync(
         string $query_type,
@@ -3108,29 +3208,29 @@ class FbaInboundApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getShipmentsAsyncWithHttpInfo
+     * Operation getShipmentsAsyncWithHttpInfo.
      *
-     * @param  string $query_type
-     *  Indicates whether shipments are returned using shipment information (by providing the ShipmentStatusList or ShipmentIdList parameters), using a date range (by providing the LastUpdatedAfter and LastUpdatedBefore parameters), or by using NextToken to continue returning items specified in a previous request. (required)
-     * @param  string $marketplace_id
-     *  A marketplace identifier. Specifies the marketplace where the product would be stored. (required)
-     * @param  string[]|null $shipment_status_list
-     *  A list of ShipmentStatus values. Used to select shipments with a current status that matches the status values that you specify. (optional)
-     * @param  string[]|null $shipment_id_list
-     *  A list of shipment IDs used to select the shipments that you want. If both ShipmentStatusList and ShipmentIdList are specified, only shipments that match both parameters are returned. (optional)
-     * @param  \DateTime|null $last_updated_after
-     *  A date used for selecting inbound shipments that were last updated after (or at) a specified time. The selection includes updates made by Amazon and by the seller. (optional)
-     * @param  \DateTime|null $last_updated_before
-     *  A date used for selecting inbound shipments that were last updated before (or at) a specified time. The selection includes updates made by Amazon and by the seller. (optional)
-     * @param  string|null $next_token
-     *  A string token returned in the response to your previous request. (optional)
+     * @param string         $query_type
+     *                                             Indicates whether shipments are returned using shipment information (by providing the ShipmentStatusList or ShipmentIdList parameters), using a date range (by providing the LastUpdatedAfter and LastUpdatedBefore parameters), or by using NextToken to continue returning items specified in a previous request. (required)
+     * @param string         $marketplace_id
+     *                                             A marketplace identifier. Specifies the marketplace where the product would be stored. (required)
+     * @param null|string[]  $shipment_status_list
+     *                                             A list of ShipmentStatus values. Used to select shipments with a current status that matches the status values that you specify. (optional)
+     * @param null|string[]  $shipment_id_list
+     *                                             A list of shipment IDs used to select the shipments that you want. If both ShipmentStatusList and ShipmentIdList are specified, only shipments that match both parameters are returned. (optional)
+     * @param null|\DateTime $last_updated_after
+     *                                             A date used for selecting inbound shipments that were last updated after (or at) a specified time. The selection includes updates made by Amazon and by the seller. (optional)
+     * @param null|\DateTime $last_updated_before
+     *                                             A date used for selecting inbound shipments that were last updated before (or at) a specified time. The selection includes updates made by Amazon and by the seller. (optional)
+     * @param null|string    $next_token
+     *                                             A string token returned in the response to your previous request. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getShipmentsAsyncWithHttpInfo(
         string $query_type,
@@ -3150,11 +3250,11 @@ class FbaInboundApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -3162,12 +3262,13 @@ class FbaInboundApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -3179,29 +3280,29 @@ class FbaInboundApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getShipments'
+     * Create request for operation 'getShipments'.
      *
-     * @param  string $query_type
-     *  Indicates whether shipments are returned using shipment information (by providing the ShipmentStatusList or ShipmentIdList parameters), using a date range (by providing the LastUpdatedAfter and LastUpdatedBefore parameters), or by using NextToken to continue returning items specified in a previous request. (required)
-     * @param  string $marketplace_id
-     *  A marketplace identifier. Specifies the marketplace where the product would be stored. (required)
-     * @param  string[]|null $shipment_status_list
-     *  A list of ShipmentStatus values. Used to select shipments with a current status that matches the status values that you specify. (optional)
-     * @param  string[]|null $shipment_id_list
-     *  A list of shipment IDs used to select the shipments that you want. If both ShipmentStatusList and ShipmentIdList are specified, only shipments that match both parameters are returned. (optional)
-     * @param  \DateTime|null $last_updated_after
-     *  A date used for selecting inbound shipments that were last updated after (or at) a specified time. The selection includes updates made by Amazon and by the seller. (optional)
-     * @param  \DateTime|null $last_updated_before
-     *  A date used for selecting inbound shipments that were last updated before (or at) a specified time. The selection includes updates made by Amazon and by the seller. (optional)
-     * @param  string|null $next_token
-     *  A string token returned in the response to your previous request. (optional)
+     * @param string         $query_type
+     *                                             Indicates whether shipments are returned using shipment information (by providing the ShipmentStatusList or ShipmentIdList parameters), using a date range (by providing the LastUpdatedAfter and LastUpdatedBefore parameters), or by using NextToken to continue returning items specified in a previous request. (required)
+     * @param string         $marketplace_id
+     *                                             A marketplace identifier. Specifies the marketplace where the product would be stored. (required)
+     * @param null|string[]  $shipment_status_list
+     *                                             A list of ShipmentStatus values. Used to select shipments with a current status that matches the status values that you specify. (optional)
+     * @param null|string[]  $shipment_id_list
+     *                                             A list of shipment IDs used to select the shipments that you want. If both ShipmentStatusList and ShipmentIdList are specified, only shipments that match both parameters are returned. (optional)
+     * @param null|\DateTime $last_updated_after
+     *                                             A date used for selecting inbound shipments that were last updated after (or at) a specified time. The selection includes updates made by Amazon and by the seller. (optional)
+     * @param null|\DateTime $last_updated_before
+     *                                             A date used for selecting inbound shipments that were last updated before (or at) a specified time. The selection includes updates made by Amazon and by the seller. (optional)
+     * @param null|string    $next_token
+     *                                             A string token returned in the response to your previous request. (optional)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getShipmentsRequest(
         string $query_type,
@@ -3213,21 +3314,20 @@ class FbaInboundApi
         ?string $next_token = null
     ): Request {
         // verify the required parameter 'query_type' is set
-        if ($query_type === null || (is_array($query_type) && count($query_type) === 0)) {
+        if (null === $query_type || (is_array($query_type) && 0 === count($query_type))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $query_type when calling getShipments'
             );
         }
         // verify the required parameter 'marketplace_id' is set
-        if ($marketplace_id === null || (is_array($marketplace_id) && count($marketplace_id) === 0)) {
+        if (null === $marketplace_id || (is_array($marketplace_id) && 0 === count($marketplace_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $marketplace_id when calling getShipments'
             );
         }
-        if ($shipment_id_list !== null && count($shipment_id_list) > 999) {
+        if (null !== $shipment_id_list && count($shipment_id_list) > 999) {
             throw new \InvalidArgumentException('invalid value for "$shipment_id_list" when calling FbaInboundApi.getShipments, number of items must be less than or equal to 999.');
         }
-
 
         $resourcePath = '/fba/inbound/v0/shipments';
         $formParams = [];
@@ -3300,9 +3400,6 @@ class FbaInboundApi
             true // required
         ) ?? []);
 
-
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -3310,7 +3407,6 @@ class FbaInboundApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                
                 '',
                 false
             );
@@ -3325,22 +3421,19 @@ class FbaInboundApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -3354,19 +3447,36 @@ class FbaInboundApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Create http client option
+     * Rate Limiter waits for tokens.
+     */
+    public function rateLimitWait(): void
+    {
+        if ($this->rateLimiter) {
+            $type = $this->rateLimitConfig->getRateLimitType();
+            if (0 != $this->rateLimitConfig->getTimeOut() && ('token_bucket' == $type || 'fixed_window' == $type)) {
+                $this->rateLimiter->reserve(1, $this->rateLimitConfig->getTimeOut() / 1000)->wait();
+            } else {
+                $this->rateLimiter->consume()->wait();
+            }
+        }
+    }
+
+    /**
+     * Create http client option.
+     *
+     * @return array of http client options
      *
      * @throws \RuntimeException on file opening failure
-     * @return array of http client options
      */
     protected function createHttpClientOption(): array
     {
@@ -3374,27 +3484,10 @@ class FbaInboundApi
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
             if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+                throw new \RuntimeException('Failed to open the debug file: '.$this->config->getDebugFile());
             }
         }
 
         return $options;
-    }
-
-    /**
-     * Rate Limiter waits for tokens
-     *
-     * @return void
-     */
-    public function rateLimitWait(): void
-    {
-        if ($this->rateLimiter) {
-            $type = $this->rateLimitConfig->getRateLimitType();
-            if ($this->rateLimitConfig->getTimeOut() != 0 && ($type == "token_bucket" || $type == "fixed_window")) {
-                $this->rateLimiter->reserve(1, ($this->rateLimitConfig->getTimeOut()) / 1000)->wait();
-            } else {
-                $this->rateLimiter->consume()->wait();
-            }
-        }
     }
 }

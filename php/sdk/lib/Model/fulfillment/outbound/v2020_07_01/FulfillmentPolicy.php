@@ -1,17 +1,19 @@
 <?php
+
 /**
- * FulfillmentPolicy
+ * FulfillmentPolicy.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner APIs for Fulfillment Outbound
+ * Selling Partner APIs for Fulfillment Outbound.
  *
  * The Selling Partner API for Fulfillment Outbound lets you create applications that help a seller fulfill Multi-Channel Fulfillment orders using their inventory in Amazon's fulfillment network. You can get information on both potential and existing fulfillment orders.
  *
@@ -27,22 +29,22 @@
  */
 
 namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * FulfillmentPolicy Class Doc Comment
+ * FulfillmentPolicy Class Doc Comment.
  *
  * @category Class
+ *
  * @description The &#x60;FulfillmentPolicy&#x60; value specified when you submitted the &#x60;createFulfillmentOrder&#x60; operation.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class FulfillmentPolicy
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const FILL_OR_KILL = 'FillOrKill';
 
@@ -51,7 +53,8 @@ class FulfillmentPolicy
     public const FILL_ALL_AVAILABLE = 'FillAllAvailable';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
@@ -59,9 +62,7 @@ class FulfillmentPolicy
         return [
             self::FILL_OR_KILL,
             self::FILL_ALL,
-            self::FILL_ALL_AVAILABLE
+            self::FILL_ALL_AVAILABLE,
         ];
     }
 }
-
-

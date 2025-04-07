@@ -12,84 +12,79 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
-import java.util.Objects;
-import java.util.Arrays;
-import io.swagger.v3.oas.annotations.media.Schema;
-import com.google.gson.annotations.SerializedName;
-import java.io.IOException;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
-/**
- * The tracking event type.
- */
+/** The tracking event type. */
 @JsonAdapter(EventCode.Adapter.class)
 public enum EventCode {
-  @SerializedName("ReadyForReceive")
-  READYFORRECEIVE("ReadyForReceive"),
-  @SerializedName("PickupDone")
-  PICKUPDONE("PickupDone"),
-  @SerializedName("Delivered")
-  DELIVERED("Delivered"),
-  @SerializedName("Departed")
-  DEPARTED("Departed"),
-  @SerializedName("DeliveryAttempted")
-  DELIVERYATTEMPTED("DeliveryAttempted"),
-  @SerializedName("Lost")
-  LOST("Lost"),
-  @SerializedName("OutForDelivery")
-  OUTFORDELIVERY("OutForDelivery"),
-  @SerializedName("ArrivedAtCarrierFacility")
-  ARRIVEDATCARRIERFACILITY("ArrivedAtCarrierFacility"),
-  @SerializedName("Rejected")
-  REJECTED("Rejected"),
-  @SerializedName("Undeliverable")
-  UNDELIVERABLE("Undeliverable"),
-  @SerializedName("PickupCancelled")
-  PICKUPCANCELLED("PickupCancelled"),
-  @SerializedName("ReturnInitiated")
-  RETURNINITIATED("ReturnInitiated"),
-  @SerializedName("AvailableForPickup")
-  AVAILABLEFORPICKUP("AvailableForPickup"),
-  @SerializedName("RecipientRequestedAlternateDeliveryTiming")
-  RECIPIENTREQUESTEDALTERNATEDELIVERYTIMING("RecipientRequestedAlternateDeliveryTiming");
+    @SerializedName("ReadyForReceive")
+    READYFORRECEIVE("ReadyForReceive"),
+    @SerializedName("PickupDone")
+    PICKUPDONE("PickupDone"),
+    @SerializedName("Delivered")
+    DELIVERED("Delivered"),
+    @SerializedName("Departed")
+    DEPARTED("Departed"),
+    @SerializedName("DeliveryAttempted")
+    DELIVERYATTEMPTED("DeliveryAttempted"),
+    @SerializedName("Lost")
+    LOST("Lost"),
+    @SerializedName("OutForDelivery")
+    OUTFORDELIVERY("OutForDelivery"),
+    @SerializedName("ArrivedAtCarrierFacility")
+    ARRIVEDATCARRIERFACILITY("ArrivedAtCarrierFacility"),
+    @SerializedName("Rejected")
+    REJECTED("Rejected"),
+    @SerializedName("Undeliverable")
+    UNDELIVERABLE("Undeliverable"),
+    @SerializedName("PickupCancelled")
+    PICKUPCANCELLED("PickupCancelled"),
+    @SerializedName("ReturnInitiated")
+    RETURNINITIATED("ReturnInitiated"),
+    @SerializedName("AvailableForPickup")
+    AVAILABLEFORPICKUP("AvailableForPickup"),
+    @SerializedName("RecipientRequestedAlternateDeliveryTiming")
+    RECIPIENTREQUESTEDALTERNATEDELIVERYTIMING("RecipientRequestedAlternateDeliveryTiming");
 
-  private String value;
+    private String value;
 
-  EventCode(String value) {
-    this.value = value;
-  }
-
-  public String getValue() {
-    return value;
-  }
-
-  @Override
-  public String toString() {
-    return String.valueOf(value);
-  }
-
-  public static EventCode fromValue(String input) {
-    for (EventCode b : EventCode.values()) {
-      if (b.value.equals(input)) {
-        return b;
-      }
+    EventCode(String value) {
+        this.value = value;
     }
-    return null;
-  }
 
-  public static class Adapter extends TypeAdapter<EventCode> {
-    @Override
-    public void write(final JsonWriter jsonWriter, final EventCode enumeration) throws IOException {
-      jsonWriter.value(String.valueOf(enumeration.getValue()));
+    public String getValue() {
+        return value;
     }
 
     @Override
-    public EventCode read(final JsonReader jsonReader) throws IOException {
-      Object value = jsonReader.nextString();
-      return EventCode.fromValue((String)(value));
+    public String toString() {
+        return String.valueOf(value);
     }
-  }
+
+    public static EventCode fromValue(String input) {
+        for (EventCode b : EventCode.values()) {
+            if (b.value.equals(input)) {
+                return b;
+            }
+        }
+        return null;
+    }
+
+    public static class Adapter extends TypeAdapter<EventCode> {
+        @Override
+        public void write(final JsonWriter jsonWriter, final EventCode enumeration) throws IOException {
+            jsonWriter.value(String.valueOf(enumeration.getValue()));
+        }
+
+        @Override
+        public EventCode read(final JsonReader jsonReader) throws IOException {
+            Object value = jsonReader.nextString();
+            return EventCode.fromValue((String) (value));
+        }
+    }
 }

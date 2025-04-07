@@ -1,16 +1,18 @@
 <?php
+
 /**
  * FeesApi
- * PHP version 8.3
+ * PHP version 8.3.
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Product Fees
+ * Selling Partner API for Product Fees.
  *
  * The Selling Partner API for Product Fees lets you programmatically retrieve estimated fees for a product. You can then account for those fees in your pricing.
  *
@@ -35,38 +37,34 @@ use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use SpApi\AuthAndAuth\RateLimitConfiguration;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
 use SpApi\ApiException;
+use SpApi\AuthAndAuth\RateLimitConfiguration;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
+use SpApi\Model\productFees\v0\FeesEstimateByIdRequest;
+use SpApi\Model\productFees\v0\FeesEstimateResult;
+use SpApi\Model\productFees\v0\GetMyFeesEstimateRequest;
+use SpApi\Model\productFees\v0\GetMyFeesEstimateResponse;
 use SpApi\ObjectSerializer;
+use Symfony\Component\RateLimiter\LimiterInterface;
+use Symfony\Component\RateLimiter\RateLimiterFactory;
+use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
- * FeesApi Class Doc Comment
+ * FeesApi Class Doc Comment.
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class FeesApi
 {
-    /**
-     * @var ClientInterface
-     */
     protected ClientInterface $client;
 
-    /**
-     * @var Configuration
-     */
     protected Configuration $config;
 
-    /**
-     * @var HeaderSelector
-     */
     protected HeaderSelector $headerSelector;
 
     /**
@@ -74,21 +72,11 @@ class FeesApi
      */
     protected int $hostIndex;
 
-    /**
-     * @var ?RateLimitConfiguration
-     */
     private ?RateLimitConfiguration $rateLimitConfig = null;
 
-    /**
-     * @var ?LimiterInterface
-     */
     private ?LimiterInterface $rateLimiter = null;
 
     /**
-     * @param Configuration   $config
-     * @param RateLimitConfiguration|null $rateLimitConfig
-     * @param ClientInterface|null $client
-     * @param HeaderSelector|null $selector
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
@@ -107,10 +95,10 @@ class FeesApi
                 'policy' => $type,
                 'limit' => $rateLimitConfig->getRateLimitTokenLimit(),
             ];
-            if ($type === "fixed_window" || $type === "sliding_window") {
-                $rateLimitOptions['interval'] = $rateLimitConfig->getRateLimitToken() . 'seconds';
+            if ('fixed_window' === $type || 'sliding_window' === $type) {
+                $rateLimitOptions['interval'] = $rateLimitConfig->getRateLimitToken().'seconds';
             } else {
-                $rateLimitOptions['rate'] = ['interval' => $rateLimitConfig->getRateLimitToken() . 'seconds'];
+                $rateLimitOptions['rate'] = ['interval' => $rateLimitConfig->getRateLimitToken().'seconds'];
             }
             $factory = new RateLimiterFactory($rateLimitOptions, new InMemoryStorage());
             $this->rateLimiter = $factory->create();
@@ -122,7 +110,7 @@ class FeesApi
     }
 
     /**
-     * Set the host index
+     * Set the host index.
      *
      * @param int $hostIndex Host index (required)
      */
@@ -132,7 +120,7 @@ class FeesApi
     }
 
     /**
-     * Get the host index
+     * Get the host index.
      *
      * @return int Host index
      */
@@ -141,55 +129,54 @@ class FeesApi
         return $this->hostIndex;
     }
 
-    /**
-     * @return Configuration
-     */
     public function getConfig(): Configuration
     {
         return $this->config;
     }
 
     /**
-     * Operation getMyFeesEstimateForASIN
+     * Operation getMyFeesEstimateForASIN.
      *
-     * @param  string $asin
-     *  The Amazon Standard Identification Number (ASIN) of the item. (required)
-     * @param  \SpApi\Model\productFees\v0\GetMyFeesEstimateRequest $body
-     *  body (required)
+     * @param string                   $asin
+     *                                       The Amazon Standard Identification Number (ASIN) of the item. (required)
+     * @param GetMyFeesEstimateRequest $body
+     *                                       body (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\productFees\v0\GetMyFeesEstimateResponse
      */
     public function getMyFeesEstimateForASIN(
         string $asin,
-        \SpApi\Model\productFees\v0\GetMyFeesEstimateRequest $body
-    ): \SpApi\Model\productFees\v0\GetMyFeesEstimateResponse {
+        GetMyFeesEstimateRequest $body
+    ): GetMyFeesEstimateResponse {
         list($response) = $this->getMyFeesEstimateForASINWithHttpInfo($asin, $body);
+
         return $response;
     }
 
     /**
-     * Operation getMyFeesEstimateForASINWithHttpInfo
+     * Operation getMyFeesEstimateForASINWithHttpInfo.
      *
-     * @param  string $asin
-     *  The Amazon Standard Identification Number (ASIN) of the item. (required)
-     * @param  \SpApi\Model\productFees\v0\GetMyFeesEstimateRequest $body
-     *  (required)
+     * @param string                   $asin
+     *                                       The Amazon Standard Identification Number (ASIN) of the item. (required)
+     * @param GetMyFeesEstimateRequest $body
+     *                                       (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\productFees\v0\GetMyFeesEstimateResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getMyFeesEstimateForASINWithHttpInfo(
         string $asin,
-        \SpApi\Model\productFees\v0\GetMyFeesEstimateRequest $body
+        GetMyFeesEstimateRequest $body
     ): array {
         $request = $this->getMyFeesEstimateForASINRequest($asin, $body);
         $request = $this->config->sign($request);
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -224,10 +211,10 @@ class FeesApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse' !== 'string') {
@@ -238,11 +225,12 @@ class FeesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 400:
                     if ('\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse' !== 'string') {
@@ -253,11 +241,12 @@ class FeesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 401:
                     if ('\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse' !== 'string') {
@@ -268,11 +257,12 @@ class FeesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 403:
                     if ('\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse' !== 'string') {
@@ -283,11 +273,12 @@ class FeesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 404:
                     if ('\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse' !== 'string') {
@@ -298,11 +289,12 @@ class FeesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 429:
                     if ('\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse' !== 'string') {
@@ -313,11 +305,12 @@ class FeesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 500:
                     if ('\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse' !== 'string') {
@@ -328,11 +321,12 @@ class FeesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 503:
                     if ('\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse' !== 'string') {
@@ -343,16 +337,16 @@ class FeesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
             $returnType = '\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+            if ('\SplFileObject' === $returnType) {
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
+                if ('string' !== $returnType) {
                     $content = json_decode($content);
                 }
             }
@@ -360,9 +354,8 @@ class FeesApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -372,7 +365,9 @@ class FeesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -380,7 +375,9 @@ class FeesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -388,7 +385,9 @@ class FeesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -396,7 +395,9 @@ class FeesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -404,7 +405,9 @@ class FeesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -412,7 +415,9 @@ class FeesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -420,7 +425,9 @@ class FeesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -428,49 +435,50 @@ class FeesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation getMyFeesEstimateForASINAsync
+     * Operation getMyFeesEstimateForASINAsync.
      *
-     * @param  string $asin
-     *  The Amazon Standard Identification Number (ASIN) of the item. (required)
-     * @param  \SpApi\Model\productFees\v0\GetMyFeesEstimateRequest $body
-     *  (required)
+     * @param string                   $asin
+     *                                       The Amazon Standard Identification Number (ASIN) of the item. (required)
+     * @param GetMyFeesEstimateRequest $body
+     *                                       (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getMyFeesEstimateForASINAsync(
         string $asin,
-        \SpApi\Model\productFees\v0\GetMyFeesEstimateRequest $body
+        GetMyFeesEstimateRequest $body
     ): PromiseInterface {
         return $this->getMyFeesEstimateForASINAsyncWithHttpInfo($asin, $body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getMyFeesEstimateForASINAsyncWithHttpInfo
+     * Operation getMyFeesEstimateForASINAsyncWithHttpInfo.
      *
-     * @param  string $asin
-     *  The Amazon Standard Identification Number (ASIN) of the item. (required)
-     * @param  \SpApi\Model\productFees\v0\GetMyFeesEstimateRequest $body
-     *  (required)
+     * @param string                   $asin
+     *                                       The Amazon Standard Identification Number (ASIN) of the item. (required)
+     * @param GetMyFeesEstimateRequest $body
+     *                                       (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getMyFeesEstimateForASINAsyncWithHttpInfo(
         string $asin,
-        \SpApi\Model\productFees\v0\GetMyFeesEstimateRequest $body
+        GetMyFeesEstimateRequest $body
     ): PromiseInterface {
         $returnType = '\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse';
         $request = $this->getMyFeesEstimateForASINRequest($asin, $body);
@@ -481,11 +489,11 @@ class FeesApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -493,12 +501,13 @@ class FeesApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -510,32 +519,32 @@ class FeesApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getMyFeesEstimateForASIN'
+     * Create request for operation 'getMyFeesEstimateForASIN'.
      *
-     * @param  string $asin
-     *  The Amazon Standard Identification Number (ASIN) of the item. (required)
-     * @param  \SpApi\Model\productFees\v0\GetMyFeesEstimateRequest $body
-     *  (required)
+     * @param string                   $asin
+     *                                       The Amazon Standard Identification Number (ASIN) of the item. (required)
+     * @param GetMyFeesEstimateRequest $body
+     *                                       (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getMyFeesEstimateForASINRequest(
         string $asin,
-        \SpApi\Model\productFees\v0\GetMyFeesEstimateRequest $body
+        GetMyFeesEstimateRequest $body
     ): Request {
         // verify the required parameter 'asin' is set
-        if ($asin === null || (is_array($asin) && count($asin) === 0)) {
+        if (null === $asin || (is_array($asin) && 0 === count($asin))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $asin when calling getMyFeesEstimateForASIN'
             );
         }
         // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        if (null === $body || (is_array($body) && 0 === count($body))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling getMyFeesEstimateForASIN'
             );
@@ -548,17 +557,14 @@ class FeesApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($asin !== null) {
+        if (null !== $asin) {
             $resourcePath = str_replace(
-                '{' . 'Asin' . '}',
+                '{Asin}',
                 ObjectSerializer::toPathValue($asin),
                 $resourcePath
             );
         }
-
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -567,15 +573,14 @@ class FeesApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                'application/json'
-                ,
+                'application/json',
                 false
             );
         }
 
         // for model (json/xml)
         if (isset($body)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -588,22 +593,19 @@ class FeesApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -617,55 +619,58 @@ class FeesApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getMyFeesEstimateForSKU
+     * Operation getMyFeesEstimateForSKU.
      *
-     * @param  string $seller_sku
-     *  Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit. (required)
-     * @param  \SpApi\Model\productFees\v0\GetMyFeesEstimateRequest $body
-     *  body (required)
+     * @param string                   $seller_sku
+     *                                             Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit. (required)
+     * @param GetMyFeesEstimateRequest $body
+     *                                             body (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\productFees\v0\GetMyFeesEstimateResponse
      */
     public function getMyFeesEstimateForSKU(
         string $seller_sku,
-        \SpApi\Model\productFees\v0\GetMyFeesEstimateRequest $body
-    ): \SpApi\Model\productFees\v0\GetMyFeesEstimateResponse {
+        GetMyFeesEstimateRequest $body
+    ): GetMyFeesEstimateResponse {
         list($response) = $this->getMyFeesEstimateForSKUWithHttpInfo($seller_sku, $body);
+
         return $response;
     }
 
     /**
-     * Operation getMyFeesEstimateForSKUWithHttpInfo
+     * Operation getMyFeesEstimateForSKUWithHttpInfo.
      *
-     * @param  string $seller_sku
-     *  Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit. (required)
-     * @param  \SpApi\Model\productFees\v0\GetMyFeesEstimateRequest $body
-     *  (required)
+     * @param string                   $seller_sku
+     *                                             Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit. (required)
+     * @param GetMyFeesEstimateRequest $body
+     *                                             (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\productFees\v0\GetMyFeesEstimateResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getMyFeesEstimateForSKUWithHttpInfo(
         string $seller_sku,
-        \SpApi\Model\productFees\v0\GetMyFeesEstimateRequest $body
+        GetMyFeesEstimateRequest $body
     ): array {
         $request = $this->getMyFeesEstimateForSKURequest($seller_sku, $body);
         $request = $this->config->sign($request);
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -700,10 +705,10 @@ class FeesApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse' !== 'string') {
@@ -714,11 +719,12 @@ class FeesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 400:
                     if ('\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse' !== 'string') {
@@ -729,11 +735,12 @@ class FeesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 401:
                     if ('\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse' !== 'string') {
@@ -744,11 +751,12 @@ class FeesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 403:
                     if ('\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse' !== 'string') {
@@ -759,11 +767,12 @@ class FeesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 404:
                     if ('\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse' !== 'string') {
@@ -774,11 +783,12 @@ class FeesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 429:
                     if ('\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse' !== 'string') {
@@ -789,11 +799,12 @@ class FeesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 500:
                     if ('\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse' !== 'string') {
@@ -804,11 +815,12 @@ class FeesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 503:
                     if ('\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse' !== 'string') {
@@ -819,16 +831,16 @@ class FeesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
             $returnType = '\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+            if ('\SplFileObject' === $returnType) {
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
+                if ('string' !== $returnType) {
                     $content = json_decode($content);
                 }
             }
@@ -836,9 +848,8 @@ class FeesApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -848,7 +859,9 @@ class FeesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -856,7 +869,9 @@ class FeesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -864,7 +879,9 @@ class FeesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -872,7 +889,9 @@ class FeesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -880,7 +899,9 @@ class FeesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -888,7 +909,9 @@ class FeesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -896,7 +919,9 @@ class FeesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -904,49 +929,50 @@ class FeesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation getMyFeesEstimateForSKUAsync
+     * Operation getMyFeesEstimateForSKUAsync.
      *
-     * @param  string $seller_sku
-     *  Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit. (required)
-     * @param  \SpApi\Model\productFees\v0\GetMyFeesEstimateRequest $body
-     *  (required)
+     * @param string                   $seller_sku
+     *                                             Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit. (required)
+     * @param GetMyFeesEstimateRequest $body
+     *                                             (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getMyFeesEstimateForSKUAsync(
         string $seller_sku,
-        \SpApi\Model\productFees\v0\GetMyFeesEstimateRequest $body
+        GetMyFeesEstimateRequest $body
     ): PromiseInterface {
         return $this->getMyFeesEstimateForSKUAsyncWithHttpInfo($seller_sku, $body)
             ->then(
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getMyFeesEstimateForSKUAsyncWithHttpInfo
+     * Operation getMyFeesEstimateForSKUAsyncWithHttpInfo.
      *
-     * @param  string $seller_sku
-     *  Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit. (required)
-     * @param  \SpApi\Model\productFees\v0\GetMyFeesEstimateRequest $body
-     *  (required)
+     * @param string                   $seller_sku
+     *                                             Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit. (required)
+     * @param GetMyFeesEstimateRequest $body
+     *                                             (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getMyFeesEstimateForSKUAsyncWithHttpInfo(
         string $seller_sku,
-        \SpApi\Model\productFees\v0\GetMyFeesEstimateRequest $body
+        GetMyFeesEstimateRequest $body
     ): PromiseInterface {
         $returnType = '\SpApi\Model\productFees\v0\GetMyFeesEstimateResponse';
         $request = $this->getMyFeesEstimateForSKURequest($seller_sku, $body);
@@ -957,11 +983,11 @@ class FeesApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -969,12 +995,13 @@ class FeesApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -986,32 +1013,32 @@ class FeesApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getMyFeesEstimateForSKU'
+     * Create request for operation 'getMyFeesEstimateForSKU'.
      *
-     * @param  string $seller_sku
-     *  Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit. (required)
-     * @param  \SpApi\Model\productFees\v0\GetMyFeesEstimateRequest $body
-     *  (required)
+     * @param string                   $seller_sku
+     *                                             Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit. (required)
+     * @param GetMyFeesEstimateRequest $body
+     *                                             (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getMyFeesEstimateForSKURequest(
         string $seller_sku,
-        \SpApi\Model\productFees\v0\GetMyFeesEstimateRequest $body
+        GetMyFeesEstimateRequest $body
     ): Request {
         // verify the required parameter 'seller_sku' is set
-        if ($seller_sku === null || (is_array($seller_sku) && count($seller_sku) === 0)) {
+        if (null === $seller_sku || (is_array($seller_sku) && 0 === count($seller_sku))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $seller_sku when calling getMyFeesEstimateForSKU'
             );
         }
         // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        if (null === $body || (is_array($body) && 0 === count($body))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling getMyFeesEstimateForSKU'
             );
@@ -1024,17 +1051,14 @@ class FeesApi
         $httpBody = '';
         $multipart = false;
 
-
-
         // path params
-        if ($seller_sku !== null) {
+        if (null !== $seller_sku) {
             $resourcePath = str_replace(
-                '{' . 'SellerSKU' . '}',
+                '{SellerSKU}',
                 ObjectSerializer::toPathValue($seller_sku),
                 $resourcePath
             );
         }
-
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -1043,15 +1067,14 @@ class FeesApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                'application/json'
-                ,
+                'application/json',
                 false
             );
         }
 
         // for model (json/xml)
         if (isset($body)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -1064,22 +1087,19 @@ class FeesApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1093,40 +1113,44 @@ class FeesApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation getMyFeesEstimates
+     * Operation getMyFeesEstimates.
      *
-     * @param  \SpApi\Model\productFees\v0\FeesEstimateByIdRequest[] $body
-     *  body (required)
+     * @param FeesEstimateByIdRequest[] $body
+     *                                        body (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
+     * @return FeesEstimateResult[]
+     *
+     * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SpApi\Model\productFees\v0\FeesEstimateResult[]
      */
     public function getMyFeesEstimates(
         array $body
     ): array {
         list($response) = $this->getMyFeesEstimatesWithHttpInfo($body);
+
         return $response;
     }
 
     /**
-     * Operation getMyFeesEstimatesWithHttpInfo
+     * Operation getMyFeesEstimatesWithHttpInfo.
      *
-     * @param  \SpApi\Model\productFees\v0\FeesEstimateByIdRequest[] $body
-     *  (required)
+     * @param FeesEstimateByIdRequest[] $body
+     *                                        (required)
      *
-     * @throws \SpApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      * @return array of \SpApi\Model\productFees\v0\FeesEstimateResult[], HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
      */
     public function getMyFeesEstimatesWithHttpInfo(
         array $body
@@ -1136,6 +1160,7 @@ class FeesApi
 
         try {
             $options = $this->createHttpClientOption();
+
             try {
                 $this->rateLimitWait();
                 $response = $this->client->send($request, $options);
@@ -1170,10 +1195,10 @@ class FeesApi
                 );
             }
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     if ('\SpApi\Model\productFees\v0\FeesEstimateResult[]' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\productFees\v0\FeesEstimateResult[]' !== 'string') {
@@ -1184,11 +1209,12 @@ class FeesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\productFees\v0\FeesEstimateResult[]', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 400:
                     if ('\SpApi\Model\productFees\v0\GetMyFeesEstimatesErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\productFees\v0\GetMyFeesEstimatesErrorList' !== 'string') {
@@ -1199,11 +1225,12 @@ class FeesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\productFees\v0\GetMyFeesEstimatesErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 401:
                     if ('\SpApi\Model\productFees\v0\GetMyFeesEstimatesErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\productFees\v0\GetMyFeesEstimatesErrorList' !== 'string') {
@@ -1214,11 +1241,12 @@ class FeesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\productFees\v0\GetMyFeesEstimatesErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 403:
                     if ('\SpApi\Model\productFees\v0\GetMyFeesEstimatesErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\productFees\v0\GetMyFeesEstimatesErrorList' !== 'string') {
@@ -1229,11 +1257,12 @@ class FeesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\productFees\v0\GetMyFeesEstimatesErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 404:
                     if ('\SpApi\Model\productFees\v0\GetMyFeesEstimatesErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\productFees\v0\GetMyFeesEstimatesErrorList' !== 'string') {
@@ -1244,11 +1273,12 @@ class FeesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\productFees\v0\GetMyFeesEstimatesErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 429:
                     if ('\SpApi\Model\productFees\v0\GetMyFeesEstimatesErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\productFees\v0\GetMyFeesEstimatesErrorList' !== 'string') {
@@ -1259,11 +1289,12 @@ class FeesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\productFees\v0\GetMyFeesEstimatesErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 500:
                     if ('\SpApi\Model\productFees\v0\GetMyFeesEstimatesErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\productFees\v0\GetMyFeesEstimatesErrorList' !== 'string') {
@@ -1274,11 +1305,12 @@ class FeesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\productFees\v0\GetMyFeesEstimatesErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
+
                 case 503:
                     if ('\SpApi\Model\productFees\v0\GetMyFeesEstimatesErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                         if ('\SpApi\Model\productFees\v0\GetMyFeesEstimatesErrorList' !== 'string') {
@@ -1289,16 +1321,16 @@ class FeesApi
                     return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\productFees\v0\GetMyFeesEstimatesErrorList', []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
             }
 
             $returnType = '\SpApi\Model\productFees\v0\FeesEstimateResult[]';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
+            if ('\SplFileObject' === $returnType) {
+                $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
+                if ('string' !== $returnType) {
                     $content = json_decode($content);
                 }
             }
@@ -1306,9 +1338,8 @@ class FeesApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -1318,7 +1349,9 @@ class FeesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1326,7 +1359,9 @@ class FeesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1334,7 +1369,9 @@ class FeesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1342,7 +1379,9 @@ class FeesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1350,7 +1389,9 @@ class FeesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1358,7 +1399,9 @@ class FeesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1366,7 +1409,9 @@ class FeesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
+
                 case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1374,20 +1419,21 @@ class FeesApi
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
+
                     break;
             }
+
             throw $e;
         }
     }
 
     /**
-     * Operation getMyFeesEstimatesAsync
+     * Operation getMyFeesEstimatesAsync.
      *
-     * @param  \SpApi\Model\productFees\v0\FeesEstimateByIdRequest[] $body
-     *  (required)
+     * @param FeesEstimateByIdRequest[] $body
+     *                                        (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getMyFeesEstimatesAsync(
         array $body
@@ -1397,17 +1443,17 @@ class FeesApi
                 function ($response) {
                     return $response[0];
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Operation getMyFeesEstimatesAsyncWithHttpInfo
+     * Operation getMyFeesEstimatesAsyncWithHttpInfo.
      *
-     * @param  \SpApi\Model\productFees\v0\FeesEstimateByIdRequest[] $body
-     *  (required)
+     * @param FeesEstimateByIdRequest[] $body
+     *                                        (required)
      *
      * @throws \InvalidArgumentException
-     * @return PromiseInterface
      */
     public function getMyFeesEstimatesAsyncWithHttpInfo(
         array $body
@@ -1421,11 +1467,11 @@ class FeesApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
+                        if ('string' !== $returnType) {
                             $content = json_decode($content);
                         }
                     }
@@ -1433,12 +1479,13 @@ class FeesApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
+
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -1450,23 +1497,23 @@ class FeesApi
                         (string) $response->getBody()
                     );
                 }
-            );
+            )
+        ;
     }
 
     /**
-     * Create request for operation 'getMyFeesEstimates'
+     * Create request for operation 'getMyFeesEstimates'.
      *
-     * @param  \SpApi\Model\productFees\v0\FeesEstimateByIdRequest[] $body
-     *  (required)
+     * @param FeesEstimateByIdRequest[] $body
+     *                                        (required)
      *
      * @throws \InvalidArgumentException
-     * @return Request
      */
     public function getMyFeesEstimatesRequest(
         array $body
     ): Request {
         // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        if (null === $body || (is_array($body) && 0 === count($body))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling getMyFeesEstimates'
             );
@@ -1479,10 +1526,6 @@ class FeesApi
         $httpBody = '';
         $multipart = false;
 
-
-
-
-
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
@@ -1490,15 +1533,14 @@ class FeesApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                'application/json'
-                ,
+                'application/json',
                 false
             );
         }
 
         // for model (json/xml)
         if (isset($body)) {
-            if ($headers['Content-Type'] === 'application/json') {
+            if ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
             } else {
                 $httpBody = $body;
@@ -1511,22 +1553,19 @@ class FeesApi
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
                             'name' => $formParamName,
-                            'contents' => $formParamValueItem
+                            'contents' => $formParamValueItem,
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
+            } elseif ('application/json' === $headers['Content-Type']) {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
             }
         }
-
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1540,19 +1579,36 @@ class FeesApi
         );
 
         $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Create http client option
+     * Rate Limiter waits for tokens.
+     */
+    public function rateLimitWait(): void
+    {
+        if ($this->rateLimiter) {
+            $type = $this->rateLimitConfig->getRateLimitType();
+            if (0 != $this->rateLimitConfig->getTimeOut() && ('token_bucket' == $type || 'fixed_window' == $type)) {
+                $this->rateLimiter->reserve(1, $this->rateLimitConfig->getTimeOut() / 1000)->wait();
+            } else {
+                $this->rateLimiter->consume()->wait();
+            }
+        }
+    }
+
+    /**
+     * Create http client option.
+     *
+     * @return array of http client options
      *
      * @throws \RuntimeException on file opening failure
-     * @return array of http client options
      */
     protected function createHttpClientOption(): array
     {
@@ -1560,27 +1616,10 @@ class FeesApi
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
             if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+                throw new \RuntimeException('Failed to open the debug file: '.$this->config->getDebugFile());
             }
         }
 
         return $options;
-    }
-
-    /**
-     * Rate Limiter waits for tokens
-     *
-     * @return void
-     */
-    public function rateLimitWait(): void
-    {
-        if ($this->rateLimiter) {
-            $type = $this->rateLimitConfig->getRateLimitType();
-            if ($this->rateLimitConfig->getTimeOut() != 0 && ($type == "token_bucket" || $type == "fixed_window")) {
-                $this->rateLimiter->reserve(1, ($this->rateLimitConfig->getTimeOut()) / 1000)->wait();
-            } else {
-                $this->rateLimiter->consume()->wait();
-            }
-        }
     }
 }

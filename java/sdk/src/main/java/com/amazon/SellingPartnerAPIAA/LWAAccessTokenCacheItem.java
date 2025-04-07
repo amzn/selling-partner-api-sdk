@@ -7,5 +7,4 @@ class LWAAccessTokenCacheItem {
 
     private String accessToken;
     private long accessTokenExpiredTime;
-
 }

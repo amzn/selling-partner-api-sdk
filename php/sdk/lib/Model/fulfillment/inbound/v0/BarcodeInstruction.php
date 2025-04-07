@@ -1,17 +1,19 @@
 <?php
+
 /**
- * BarcodeInstruction
+ * BarcodeInstruction.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Fulfillment Inbound
+ * Selling Partner API for Fulfillment Inbound.
  *
  * The Selling Partner API for Fulfillment Inbound lets you create applications that create and update inbound shipments of inventory to Amazon's fulfillment network.
  *
@@ -27,22 +29,22 @@
  */
 
 namespace SpApi\Model\fulfillment\inbound\v0;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * BarcodeInstruction Class Doc Comment
+ * BarcodeInstruction Class Doc Comment.
  *
  * @category Class
+ *
  * @description Labeling requirements for the item. For more information about FBA labeling requirements, see the Seller Central Help for your marketplace.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class BarcodeInstruction
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const REQUIRES_FNSKU_LABEL = 'RequiresFNSKULabel';
 
@@ -51,7 +53,8 @@ class BarcodeInstruction
     public const MUST_PROVIDE_SELLER_SKU = 'MustProvideSellerSKU';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
@@ -59,9 +62,7 @@ class BarcodeInstruction
         return [
             self::REQUIRES_FNSKU_LABEL,
             self::CAN_USE_ORIGINAL_BARCODE,
-            self::MUST_PROVIDE_SELLER_SKU
+            self::MUST_PROVIDE_SELLER_SKU,
         ];
     }
 }
-
-

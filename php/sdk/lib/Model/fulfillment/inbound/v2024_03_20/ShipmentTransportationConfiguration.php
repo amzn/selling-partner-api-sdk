@@ -1,13 +1,15 @@
 <?php
+
 /**
- * ShipmentTransportationConfiguration
+ * ShipmentTransportationConfiguration.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
@@ -28,167 +30,95 @@
 
 namespace SpApi\Model\fulfillment\inbound\v2024_03_20;
 
-use
-ArrayAccess;
-use SpApi\ObjectSerializer;
 use SpApi\Model\ModelInterface;
+use SpApi\ObjectSerializer;
 
 /**
- * ShipmentTransportationConfiguration Class Doc Comment
+ * ShipmentTransportationConfiguration Class Doc Comment.
  *
  * @category Class
+ *
  * @description Details needed to generate the transportation options.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
+ *
  * @implements \ArrayAccess<string, mixed>
  */
-class ShipmentTransportationConfiguration implements ModelInterface, ArrayAccess, \JsonSerializable
+class ShipmentTransportationConfiguration implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     */
     protected static string $openAPIModelName = 'ShipmentTransportationConfiguration';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static array $openAPITypes = [
-             'contact_information' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\ContactInformation',
-             'freight_information' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\FreightInformation',
-             'pallets' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\PalletInput[]',
-             'ready_to_ship_window' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\WindowInput',
-             'shipment_id' => 'string'    ];
+        'contact_information' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\ContactInformation',
+        'freight_information' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\FreightInformation',
+        'pallets' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\PalletInput[]',
+        'ready_to_ship_window' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\WindowInput',
+        'shipment_id' => 'string'];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     *
+     * @phpstan-var array<string, string|null>
+     *
+     * @psalm-var array<string, string|null>
+     */
     protected static array $openAPIFormats = [
-            'contact_information' => null,
-            'freight_information' => null,
-            'pallets' => null,
-            'ready_to_ship_window' => null,
-            'shipment_id' => null    ];
+        'contact_information' => null,
+        'freight_information' => null,
+        'pallets' => null,
+        'ready_to_ship_window' => null,
+        'shipment_id' => null];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization.
+     *
+     * @var bool[]
+     */
     protected static array $openAPINullables = [
         'contact_information' => true,
         'freight_information' => true,
         'pallets' => true,
         'ready_to_ship_window' => false,
-        'shipment_id' => false
+        'shipment_id' => false,
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here.
+     *
+     * @var bool[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPIFormats(): array
-    {
-        return self::$openAPIFormats;
-    }
-
-    /**
-     * Array of nullable properties
-     *
-     * @return array
-     */
-    protected static function openAPINullables(): array
-    {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * Array of nullable field names deliberately set to null
-     *
-     * @return boolean[]
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * Setter - Array of nullable field names deliberately set to null
-     *
-     * @param boolean[] $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    /**
-     * Checks if a property is nullable
-     *
-     * @param string $property
-     * @return bool
-     */
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    /**
-     * Checks if a nullable property is set to null.
-     *
-     * @param string $property
-     * @return bool
-     */
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @var string[]
      */
     protected static array $attributeMap = [
         'contact_information' => 'contactInformation',
-                'freight_information' => 'freightInformation',
-                'pallets' => 'pallets',
-                'ready_to_ship_window' => 'readyToShipWindow',
-                'shipment_id' => 'shipmentId'
-        
+        'freight_information' => 'freightInformation',
+        'pallets' => 'pallets',
+        'ready_to_ship_window' => 'readyToShipWindow',
+        'shipment_id' => 'shipmentId',
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @var string[]
      */
@@ -197,11 +127,11 @@ class ShipmentTransportationConfiguration implements ModelInterface, ArrayAccess
         'freight_information' => 'setFreightInformation',
         'pallets' => 'setPallets',
         'ready_to_ship_window' => 'setReadyToShipWindow',
-        'shipment_id' => 'setShipmentId'
+        'shipment_id' => 'setShipmentId',
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @var string[]
      */
@@ -210,63 +140,19 @@ class ShipmentTransportationConfiguration implements ModelInterface, ArrayAccess
         'freight_information' => 'getFreightInformation',
         'pallets' => 'getPallets',
         'ready_to_ship_window' => 'getReadyToShipWindow',
-        'shipment_id' => 'getShipmentId'
+        'shipment_id' => 'getShipmentId',
     ];
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @return array
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @return array
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @return array
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    /**
-     * The original name of the model.
-     *
-     * @return string
-     */
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-
-    /**
-     * Associative array for storing property values
-     *
-     * @var array
+     * Associative array for storing property values.
      */
     protected array $container = [];
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param array|null $data Associated array of property values
-     *                      initializing the model
+     * @param null|array $data Associated array of property values
+     *                         initializing the model
      */
     public function __construct(?array $data = null)
     {
@@ -278,21 +164,81 @@ class ShipmentTransportationConfiguration implements ModelInterface, ArrayAccess
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
-    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+     * Gets the string presentation of the object.
+     *
+     * @return string
+     */
+    public function __toString()
     {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
+        return json_encode(
+            ObjectSerializer::sanitizeForSerialization($this),
+            JSON_PRETTY_PRINT
+        );
+    }
 
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    /**
+     * Array of property to type mappings. Used for (de)serialization.
+     */
+    public static function openAPITypes(): array
+    {
+        return self::$openAPITypes;
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization.
+     */
+    public static function openAPIFormats(): array
+    {
+        return self::$openAPIFormats;
+    }
+
+    /**
+     * Checks if a property is nullable.
+     */
+    public static function isNullable(string $property): bool
+    {
+        return self::openAPINullables()[$property] ?? false;
+    }
+
+    /**
+     * Checks if a nullable property is set to null.
+     */
+    public function isNullableSetToNull(string $property): bool
+    {
+        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name.
+     */
+    public static function attributeMap(): array
+    {
+        return self::$attributeMap;
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses).
+     */
+    public static function setters(): array
+    {
+        return self::$setters;
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests).
+     */
+    public static function getters(): array
+    {
+        return self::$getters;
+    }
+
+    /**
+     * The original name of the model.
+     */
+    public function getModelName(): string
+    {
+        return self::$openAPIModelName;
     }
 
     /**
@@ -304,21 +250,21 @@ class ShipmentTransportationConfiguration implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['ready_to_ship_window'] === null) {
+        if (null === $this->container['ready_to_ship_window']) {
             $invalidProperties[] = "'ready_to_ship_window' can't be null";
         }
-        if ($this->container['shipment_id'] === null) {
+        if (null === $this->container['shipment_id']) {
             $invalidProperties[] = "'shipment_id' can't be null";
         }
-        if ((mb_strlen($this->container['shipment_id']) > 38)) {
+        if (mb_strlen($this->container['shipment_id']) > 38) {
             $invalidProperties[] = "invalid value for 'shipment_id', the character length must be smaller than or equal to 38.";
         }
 
-        if ((mb_strlen($this->container['shipment_id']) < 38)) {
+        if (mb_strlen($this->container['shipment_id']) < 38) {
             $invalidProperties[] = "invalid value for 'shipment_id', the character length must be bigger than or equal to 38.";
         }
 
-        if (!preg_match("/^[a-zA-Z0-9-]*$/", $this->container['shipment_id'])) {
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', $this->container['shipment_id'])) {
             $invalidProperties[] = "invalid value for 'shipment_id', must be conform to the pattern /^[a-zA-Z0-9-]*$/.";
         }
 
@@ -327,41 +273,36 @@ class ShipmentTransportationConfiguration implements ModelInterface, ArrayAccess
 
     /**
      * Validate all the properties in the model
-     * return true if all passed
+     * return true if all passed.
      *
      * @return bool True if all properties are valid
      */
     public function valid(): bool
     {
-        return count($this->listInvalidProperties()) === 0;
+        return 0 === count($this->listInvalidProperties());
     }
 
-
     /**
-     * Gets contact_information
-     *
-     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\ContactInformation|null
+     * Gets contact_information.
      */
-    public function getContactInformation(): ?\SpApi\Model\fulfillment\inbound\v2024_03_20\ContactInformation
+    public function getContactInformation(): ?ContactInformation
     {
         return $this->container['contact_information'];
     }
 
     /**
-     * Sets contact_information
+     * Sets contact_information.
      *
-     * @param \SpApi\Model\fulfillment\inbound\v2024_03_20\ContactInformation|null $contact_information contact_information
-     *
-     * @return self
+     * @param null|ContactInformation $contact_information contact_information
      */
-    public function setContactInformation(?\SpApi\Model\fulfillment\inbound\v2024_03_20\ContactInformation $contact_information): self
+    public function setContactInformation(?ContactInformation $contact_information): self
     {
         if (is_null($contact_information)) {
             array_push($this->openAPINullablesSetToNull, 'contact_information');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('contact_information', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -372,30 +313,26 @@ class ShipmentTransportationConfiguration implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets freight_information
-     *
-     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\FreightInformation|null
+     * Gets freight_information.
      */
-    public function getFreightInformation(): ?\SpApi\Model\fulfillment\inbound\v2024_03_20\FreightInformation
+    public function getFreightInformation(): ?FreightInformation
     {
         return $this->container['freight_information'];
     }
 
     /**
-     * Sets freight_information
+     * Sets freight_information.
      *
-     * @param \SpApi\Model\fulfillment\inbound\v2024_03_20\FreightInformation|null $freight_information freight_information
-     *
-     * @return self
+     * @param null|FreightInformation $freight_information freight_information
      */
-    public function setFreightInformation(?\SpApi\Model\fulfillment\inbound\v2024_03_20\FreightInformation $freight_information): self
+    public function setFreightInformation(?FreightInformation $freight_information): self
     {
         if (is_null($freight_information)) {
             array_push($this->openAPINullablesSetToNull, 'freight_information');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('freight_information', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -406,9 +343,7 @@ class ShipmentTransportationConfiguration implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets pallets
-     *
-     * @return array|null
+     * Gets pallets.
      */
     public function getPallets(): ?array
     {
@@ -416,11 +351,9 @@ class ShipmentTransportationConfiguration implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets pallets
+     * Sets pallets.
      *
-     * @param array|null $pallets List of pallet configuration inputs.
-     *
-     * @return self
+     * @param null|array $pallets list of pallet configuration inputs
      */
     public function setPallets(?array $pallets): self
     {
@@ -429,7 +362,7 @@ class ShipmentTransportationConfiguration implements ModelInterface, ArrayAccess
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('pallets', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -440,23 +373,19 @@ class ShipmentTransportationConfiguration implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets ready_to_ship_window
-     *
-     * @return \SpApi\Model\fulfillment\inbound\v2024_03_20\WindowInput
+     * Gets ready_to_ship_window.
      */
-    public function getReadyToShipWindow(): \SpApi\Model\fulfillment\inbound\v2024_03_20\WindowInput
+    public function getReadyToShipWindow(): WindowInput
     {
         return $this->container['ready_to_ship_window'];
     }
 
     /**
-     * Sets ready_to_ship_window
+     * Sets ready_to_ship_window.
      *
-     * @param \SpApi\Model\fulfillment\inbound\v2024_03_20\WindowInput $ready_to_ship_window ready_to_ship_window
-     *
-     * @return self
+     * @param WindowInput $ready_to_ship_window ready_to_ship_window
      */
-    public function setReadyToShipWindow(\SpApi\Model\fulfillment\inbound\v2024_03_20\WindowInput $ready_to_ship_window): self
+    public function setReadyToShipWindow(WindowInput $ready_to_ship_window): self
     {
         if (is_null($ready_to_ship_window)) {
             throw new \InvalidArgumentException('non-nullable ready_to_ship_window cannot be null');
@@ -467,9 +396,7 @@ class ShipmentTransportationConfiguration implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets shipment_id
-     *
-     * @return string
+     * Gets shipment_id.
      */
     public function getShipmentId(): string
     {
@@ -477,25 +404,23 @@ class ShipmentTransportationConfiguration implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets shipment_id
+     * Sets shipment_id.
      *
      * @param string $shipment_id Identifier of a shipment. A shipment contains the boxes and units being inbounded.
-     *
-     * @return self
      */
     public function setShipmentId(string $shipment_id): self
     {
         if (is_null($shipment_id)) {
             throw new \InvalidArgumentException('non-nullable shipment_id cannot be null');
         }
-        if ((mb_strlen($shipment_id) > 38)) {
+        if (mb_strlen($shipment_id) > 38) {
             throw new \InvalidArgumentException('invalid length for $shipment_id when calling ShipmentTransportationConfiguration., must be smaller than or equal to 38.');
         }
-        if ((mb_strlen($shipment_id) < 38)) {
+        if (mb_strlen($shipment_id) < 38) {
             throw new \InvalidArgumentException('invalid length for $shipment_id when calling ShipmentTransportationConfiguration., must be bigger than or equal to 38.');
         }
-        if ((!preg_match("/^[a-zA-Z0-9-]*$/", ObjectSerializer::toString($shipment_id)))) {
-            throw new \InvalidArgumentException("invalid value for \$shipment_id when calling ShipmentTransportationConfiguration., must conform to the pattern /^[a-zA-Z0-9-]*$/.");
+        if (!preg_match('/^[a-zA-Z0-9-]*$/', ObjectSerializer::toString($shipment_id))) {
+            throw new \InvalidArgumentException('invalid value for $shipment_id when calling ShipmentTransportationConfiguration., must conform to the pattern /^[a-zA-Z0-9-]*$/.');
         }
 
         $this->container['shipment_id'] = $shipment_id;
@@ -503,13 +428,10 @@ class ShipmentTransportationConfiguration implements ModelInterface, ArrayAccess
         return $this;
     }
 
-
     /**
      * Returns true if offset exists. False otherwise.
      *
-     * @param integer $offset Offset
-     *
-     * @return boolean
+     * @param int $offset Offset
      */
     public function offsetExists($offset): bool
     {
@@ -519,9 +441,9 @@ class ShipmentTransportationConfiguration implements ModelInterface, ArrayAccess
     /**
      * Gets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
-     * @return mixed|null
+     * @return null|mixed
      */
     #[\ReturnTypeWillChange]
     public function offsetGet($offset): mixed
@@ -532,10 +454,8 @@ class ShipmentTransportationConfiguration implements ModelInterface, ArrayAccess
     /**
      * Sets value based on offset.
      *
-     * @param int|null $offset Offset
+     * @param null|int $offset Offset
      * @param mixed    $value  Value to be set
-     *
-     * @return void
      */
     public function offsetSet($offset, mixed $value): void
     {
@@ -549,9 +469,7 @@ class ShipmentTransportationConfiguration implements ModelInterface, ArrayAccess
     /**
      * Unsets offset.
      *
-     * @param integer $offset Offset
-     *
-     * @return void
+     * @param int $offset Offset
      */
     public function offsetUnset($offset): void
     {
@@ -560,39 +478,67 @@ class ShipmentTransportationConfiguration implements ModelInterface, ArrayAccess
 
     /**
      * Serializes the object to a value that can be serialized natively by json_encode().
-     * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
      *
-     * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
+     * @see https://www.php.net/manual/en/jsonserializable.jsonserialize.php
+     *
+     * @return mixed returns data which can be serialized by json_encode(), which is a value
+     *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
     public function jsonSerialize(): mixed
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
-     * Gets the string presentation of the object
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    /**
-     * Gets a header-safe presentation of the object
-     *
-     * @return string
+     * Gets a header-safe presentation of the object.
      */
     public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
+
+    /**
+     * Array of nullable properties.
+     */
+    protected static function openAPINullables(): array
+    {
+        return self::$openAPINullables;
+    }
+
+    /**
+     * Array of nullable field names deliberately set to null.
+     *
+     * @return bool[]
+     */
+    private function getOpenAPINullablesSetToNull(): array
+    {
+        return $this->openAPINullablesSetToNull;
+    }
+
+    /**
+     * Setter - Array of nullable field names deliberately set to null.
+     *
+     * @param bool[] $openAPINullablesSetToNull
+     */
+    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
+    {
+        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
+    }
+
+    /**
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array.
+     *
+     * @param mixed $defaultValue
+     */
+    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+    {
+        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
+            $this->openAPINullablesSetToNull[] = $variableName;
+        }
+
+        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    }
 }
-
-

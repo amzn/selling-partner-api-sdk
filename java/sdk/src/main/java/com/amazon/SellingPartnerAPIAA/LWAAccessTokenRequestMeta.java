@@ -21,5 +21,4 @@ class LWAAccessTokenRequestMeta {
 
     @SerializedName("scope")
     private LWAClientScopes scopes;
-
 }

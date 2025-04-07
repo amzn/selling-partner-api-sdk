@@ -12,127 +12,115 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.io.IOException;
-/**
- * Attribute Properties required by carrier
- */
+import java.util.Objects;
+
+/** Attribute Properties required by carrier */
 @Schema(description = "Attribute Properties required by carrier")
-
-
 public class CarrierAccountAttribute {
-  @SerializedName("attributeName")
-  private String attributeName = null;
+    @SerializedName("attributeName")
+    private String attributeName = null;
 
-  @SerializedName("propertyGroup")
-  private String propertyGroup = null;
+    @SerializedName("propertyGroup")
+    private String propertyGroup = null;
 
-  @SerializedName("value")
-  private String value = null;
+    @SerializedName("value")
+    private String value = null;
 
-  public CarrierAccountAttribute attributeName(String attributeName) {
-    this.attributeName = attributeName;
-    return this;
-  }
-
-   /**
-   * Attribute Name .
-   * @return attributeName
-  **/
-  @Schema(description = "Attribute Name .")
-  public String getAttributeName() {
-    return attributeName;
-  }
-
-  public void setAttributeName(String attributeName) {
-    this.attributeName = attributeName;
-  }
-
-  public CarrierAccountAttribute propertyGroup(String propertyGroup) {
-    this.propertyGroup = propertyGroup;
-    return this;
-  }
-
-   /**
-   * Property Group.
-   * @return propertyGroup
-  **/
-  @Schema(description = "Property Group.")
-  public String getPropertyGroup() {
-    return propertyGroup;
-  }
-
-  public void setPropertyGroup(String propertyGroup) {
-    this.propertyGroup = propertyGroup;
-  }
-
-  public CarrierAccountAttribute value(String value) {
-    this.value = value;
-    return this;
-  }
-
-   /**
-   * Value .
-   * @return value
-  **/
-  @Schema(description = "Value .")
-  public String getValue() {
-    return value;
-  }
-
-  public void setValue(String value) {
-    this.value = value;
-  }
-
-
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
+    public CarrierAccountAttribute attributeName(String attributeName) {
+        this.attributeName = attributeName;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * Attribute Name .
+     *
+     * @return attributeName
+     */
+    @Schema(description = "Attribute Name .")
+    public String getAttributeName() {
+        return attributeName;
     }
-    CarrierAccountAttribute carrierAccountAttribute = (CarrierAccountAttribute) o;
-    return Objects.equals(this.attributeName, carrierAccountAttribute.attributeName) &&
-        Objects.equals(this.propertyGroup, carrierAccountAttribute.propertyGroup) &&
-        Objects.equals(this.value, carrierAccountAttribute.value);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(attributeName, propertyGroup, value);
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class CarrierAccountAttribute {\n");
-    
-    sb.append("    attributeName: ").append(toIndentedString(attributeName)).append("\n");
-    sb.append("    propertyGroup: ").append(toIndentedString(propertyGroup)).append("\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    public void setAttributeName(String attributeName) {
+        this.attributeName = attributeName;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    public CarrierAccountAttribute propertyGroup(String propertyGroup) {
+        this.propertyGroup = propertyGroup;
+        return this;
+    }
+
+    /**
+     * Property Group.
+     *
+     * @return propertyGroup
+     */
+    @Schema(description = "Property Group.")
+    public String getPropertyGroup() {
+        return propertyGroup;
+    }
+
+    public void setPropertyGroup(String propertyGroup) {
+        this.propertyGroup = propertyGroup;
+    }
+
+    public CarrierAccountAttribute value(String value) {
+        this.value = value;
+        return this;
+    }
+
+    /**
+     * Value .
+     *
+     * @return value
+     */
+    @Schema(description = "Value .")
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    @Override
+    public boolean equals(java.lang.Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        CarrierAccountAttribute carrierAccountAttribute = (CarrierAccountAttribute) o;
+        return Objects.equals(this.attributeName, carrierAccountAttribute.attributeName)
+                && Objects.equals(this.propertyGroup, carrierAccountAttribute.propertyGroup)
+                && Objects.equals(this.value, carrierAccountAttribute.value);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(attributeName, propertyGroup, value);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class CarrierAccountAttribute {\n");
+
+        sb.append("    attributeName: ").append(toIndentedString(attributeName)).append("\n");
+        sb.append("    propertyGroup: ").append(toIndentedString(propertyGroup)).append("\n");
+        sb.append("    value: ").append(toIndentedString(value)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
+    private String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }

@@ -7,17 +7,13 @@ import lombok.Data;
 @Builder
 public class RateLimitConfigurationOnRequests implements RateLimitConfiguration {
 
-    /**
-     * RateLimiter Permit
-     */
+    /** RateLimiter Permit */
     private Double rateLimitPermit;
 
-    /**
-     * Timeout for RateLimiter
-     */
+    /** Timeout for RateLimiter */
     private Long waitTimeOutInMilliSeconds;
 
- @Override
+    @Override
     public Long getTimeOut() {
         return waitTimeOutInMilliSeconds;
     }
@@ -26,5 +22,4 @@ public class RateLimitConfigurationOnRequests implements RateLimitConfiguration 
     public Double getRateLimitPermit() {
         return rateLimitPermit;
     }
-
 }

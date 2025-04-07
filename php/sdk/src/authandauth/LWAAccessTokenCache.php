@@ -8,8 +8,8 @@ class LWAAccessTokenCache implements CacheInterface
 {
     private const EXPIRATION_BUFFER = 60 * 1000;
     private const SECOND_TO_MILLIS = 1000;
-    private const ACCESS_TOKEN = "accessToken";
-    private const EXPIRED_TIME = "accessTokenExpiredTime";
+    private const ACCESS_TOKEN = 'accessToken';
+    private const EXPIRED_TIME = 'accessTokenExpiredTime';
     private array $tokenStorage = [];
 
     public function set($key, $value, $ttl = 0)
@@ -18,7 +18,7 @@ class LWAAccessTokenCache implements CacheInterface
         $accessTokenExpiredTimeMillis = $currTimeMillis + ($ttl * static::SECOND_TO_MILLIS);
         $accessTokenCacheItem = [
             static::ACCESS_TOKEN => $value,
-            static::EXPIRED_TIME => $accessTokenExpiredTimeMillis
+            static::EXPIRED_TIME => $accessTokenExpiredTimeMillis,
         ];
         $this->tokenStorage[$key] = $accessTokenCacheItem;
     }
@@ -35,6 +35,7 @@ class LWAAccessTokenCache implements CacheInterface
                 return $accessToken;
             }
         }
+
         return null;
     }
 

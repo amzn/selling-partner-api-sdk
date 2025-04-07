@@ -1,17 +1,19 @@
 <?php
+
 /**
- * InventoryUnitOfMeasurement
+ * InventoryUnitOfMeasurement.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * The Selling Partner API for Amazon Warehousing and Distribution
+ * The Selling Partner API for Amazon Warehousing and Distribution.
  *
  * The Selling Partner API for Amazon Warehousing and Distribution (AWD) provides programmatic access to information about AWD shipments and inventory.
  *
@@ -27,22 +29,22 @@
  */
 
 namespace SpApi\Model\awd\v2024_05_09;
-use SpApi\ObjectSerializer;
-use SpApi\Model\ModelInterface;
 
 /**
- * InventoryUnitOfMeasurement Class Doc Comment
+ * InventoryUnitOfMeasurement Class Doc Comment.
  *
  * @category Class
+ *
  * @description Unit of measurement for the inventory.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 class InventoryUnitOfMeasurement
 {
     /**
-     * Possible values of this enum
+     * Possible values of this enum.
      */
     public const PRODUCT_UNITS = 'PRODUCT_UNITS';
 
@@ -51,7 +53,8 @@ class InventoryUnitOfMeasurement
     public const PALLETS = 'PALLETS';
 
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
+     *
      * @return string[]
      */
     public static function getAllowableEnumValues(): array
@@ -59,9 +62,7 @@ class InventoryUnitOfMeasurement
         return [
             self::PRODUCT_UNITS,
             self::CASES,
-            self::PALLETS
+            self::PALLETS,
         ];
     }
 }
-
-

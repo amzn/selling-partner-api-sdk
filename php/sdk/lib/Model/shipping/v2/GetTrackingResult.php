@@ -1,17 +1,19 @@
 <?php
+
 /**
- * GetTrackingResult
+ * GetTrackingResult.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Amazon Shipping API
+ * Amazon Shipping API.
  *
  * The Amazon Shipping API is designed to support outbound shipping use cases both for orders originating on Amazon-owned marketplaces as well as external channels/marketplaces. With these APIs, you can request shipping rates, create shipments, cancel shipments, and track shipments.
  *
@@ -29,167 +31,95 @@
 
 namespace SpApi\Model\shipping\v2;
 
-use
-ArrayAccess;
-use SpApi\ObjectSerializer;
 use SpApi\Model\ModelInterface;
+use SpApi\ObjectSerializer;
 
 /**
- * GetTrackingResult Class Doc Comment
+ * GetTrackingResult Class Doc Comment.
  *
  * @category Class
+ *
  * @description The payload for the getTracking operation.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
+ *
  * @implements \ArrayAccess<string, mixed>
  */
-class GetTrackingResult implements ModelInterface, ArrayAccess, \JsonSerializable
+class GetTrackingResult implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     */
     protected static string $openAPIModelName = 'GetTrackingResult';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static array $openAPITypes = [
-             'tracking_id' => 'string',
-             'alternate_leg_tracking_id' => 'string',
-             'event_history' => '\SpApi\Model\shipping\v2\Event[]',
-             'promised_delivery_date' => '\DateTime',
-             'summary' => '\SpApi\Model\shipping\v2\TrackingSummary'    ];
+        'tracking_id' => 'string',
+        'alternate_leg_tracking_id' => 'string',
+        'event_history' => '\SpApi\Model\shipping\v2\Event[]',
+        'promised_delivery_date' => '\DateTime',
+        'summary' => '\SpApi\Model\shipping\v2\TrackingSummary'];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     *
+     * @phpstan-var array<string, string|null>
+     *
+     * @psalm-var array<string, string|null>
+     */
     protected static array $openAPIFormats = [
-            'tracking_id' => null,
-            'alternate_leg_tracking_id' => null,
-            'event_history' => null,
-            'promised_delivery_date' => 'date-time',
-            'summary' => null    ];
+        'tracking_id' => null,
+        'alternate_leg_tracking_id' => null,
+        'event_history' => null,
+        'promised_delivery_date' => 'date-time',
+        'summary' => null];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization.
+     *
+     * @var bool[]
+     */
     protected static array $openAPINullables = [
         'tracking_id' => false,
         'alternate_leg_tracking_id' => false,
         'event_history' => false,
         'promised_delivery_date' => false,
-        'summary' => false
+        'summary' => false,
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here.
+     *
+     * @var bool[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPIFormats(): array
-    {
-        return self::$openAPIFormats;
-    }
-
-    /**
-     * Array of nullable properties
-     *
-     * @return array
-     */
-    protected static function openAPINullables(): array
-    {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * Array of nullable field names deliberately set to null
-     *
-     * @return boolean[]
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * Setter - Array of nullable field names deliberately set to null
-     *
-     * @param boolean[] $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    /**
-     * Checks if a property is nullable
-     *
-     * @param string $property
-     * @return bool
-     */
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    /**
-     * Checks if a nullable property is set to null.
-     *
-     * @param string $property
-     * @return bool
-     */
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @var string[]
      */
     protected static array $attributeMap = [
         'tracking_id' => 'trackingId',
-                'alternate_leg_tracking_id' => 'alternateLegTrackingId',
-                'event_history' => 'eventHistory',
-                'promised_delivery_date' => 'promisedDeliveryDate',
-                'summary' => 'summary'
-        
+        'alternate_leg_tracking_id' => 'alternateLegTrackingId',
+        'event_history' => 'eventHistory',
+        'promised_delivery_date' => 'promisedDeliveryDate',
+        'summary' => 'summary',
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @var string[]
      */
@@ -198,11 +128,11 @@ class GetTrackingResult implements ModelInterface, ArrayAccess, \JsonSerializabl
         'alternate_leg_tracking_id' => 'setAlternateLegTrackingId',
         'event_history' => 'setEventHistory',
         'promised_delivery_date' => 'setPromisedDeliveryDate',
-        'summary' => 'setSummary'
+        'summary' => 'setSummary',
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @var string[]
      */
@@ -211,63 +141,19 @@ class GetTrackingResult implements ModelInterface, ArrayAccess, \JsonSerializabl
         'alternate_leg_tracking_id' => 'getAlternateLegTrackingId',
         'event_history' => 'getEventHistory',
         'promised_delivery_date' => 'getPromisedDeliveryDate',
-        'summary' => 'getSummary'
+        'summary' => 'getSummary',
     ];
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @return array
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @return array
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @return array
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    /**
-     * The original name of the model.
-     *
-     * @return string
-     */
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-
-    /**
-     * Associative array for storing property values
-     *
-     * @var array
+     * Associative array for storing property values.
      */
     protected array $container = [];
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param array|null $data Associated array of property values
-     *                      initializing the model
+     * @param null|array $data Associated array of property values
+     *                         initializing the model
      */
     public function __construct(?array $data = null)
     {
@@ -279,21 +165,81 @@ class GetTrackingResult implements ModelInterface, ArrayAccess, \JsonSerializabl
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
-    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+     * Gets the string presentation of the object.
+     *
+     * @return string
+     */
+    public function __toString()
     {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
+        return json_encode(
+            ObjectSerializer::sanitizeForSerialization($this),
+            JSON_PRETTY_PRINT
+        );
+    }
 
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    /**
+     * Array of property to type mappings. Used for (de)serialization.
+     */
+    public static function openAPITypes(): array
+    {
+        return self::$openAPITypes;
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization.
+     */
+    public static function openAPIFormats(): array
+    {
+        return self::$openAPIFormats;
+    }
+
+    /**
+     * Checks if a property is nullable.
+     */
+    public static function isNullable(string $property): bool
+    {
+        return self::openAPINullables()[$property] ?? false;
+    }
+
+    /**
+     * Checks if a nullable property is set to null.
+     */
+    public function isNullableSetToNull(string $property): bool
+    {
+        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name.
+     */
+    public static function attributeMap(): array
+    {
+        return self::$attributeMap;
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses).
+     */
+    public static function setters(): array
+    {
+        return self::$setters;
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests).
+     */
+    public static function getters(): array
+    {
+        return self::$getters;
+    }
+
+    /**
+     * The original name of the model.
+     */
+    public function getModelName(): string
+    {
+        return self::$openAPIModelName;
     }
 
     /**
@@ -305,40 +251,38 @@ class GetTrackingResult implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $invalidProperties = [];
 
-        if ($this->container['tracking_id'] === null) {
+        if (null === $this->container['tracking_id']) {
             $invalidProperties[] = "'tracking_id' can't be null";
         }
-        if ($this->container['alternate_leg_tracking_id'] === null) {
+        if (null === $this->container['alternate_leg_tracking_id']) {
             $invalidProperties[] = "'alternate_leg_tracking_id' can't be null";
         }
-        if ($this->container['event_history'] === null) {
+        if (null === $this->container['event_history']) {
             $invalidProperties[] = "'event_history' can't be null";
         }
-        if ($this->container['promised_delivery_date'] === null) {
+        if (null === $this->container['promised_delivery_date']) {
             $invalidProperties[] = "'promised_delivery_date' can't be null";
         }
-        if ($this->container['summary'] === null) {
+        if (null === $this->container['summary']) {
             $invalidProperties[] = "'summary' can't be null";
         }
+
         return $invalidProperties;
     }
 
     /**
      * Validate all the properties in the model
-     * return true if all passed
+     * return true if all passed.
      *
      * @return bool True if all properties are valid
      */
     public function valid(): bool
     {
-        return count($this->listInvalidProperties()) === 0;
+        return 0 === count($this->listInvalidProperties());
     }
 
-
     /**
-     * Gets tracking_id
-     *
-     * @return string
+     * Gets tracking_id.
      */
     public function getTrackingId(): string
     {
@@ -346,11 +290,9 @@ class GetTrackingResult implements ModelInterface, ArrayAccess, \JsonSerializabl
     }
 
     /**
-     * Sets tracking_id
+     * Sets tracking_id.
      *
-     * @param string $tracking_id The carrier generated identifier for a package in a purchased shipment.
-     *
-     * @return self
+     * @param string $tracking_id the carrier generated identifier for a package in a purchased shipment
      */
     public function setTrackingId(string $tracking_id): self
     {
@@ -363,9 +305,7 @@ class GetTrackingResult implements ModelInterface, ArrayAccess, \JsonSerializabl
     }
 
     /**
-     * Gets alternate_leg_tracking_id
-     *
-     * @return string
+     * Gets alternate_leg_tracking_id.
      */
     public function getAlternateLegTrackingId(): string
     {
@@ -373,11 +313,9 @@ class GetTrackingResult implements ModelInterface, ArrayAccess, \JsonSerializabl
     }
 
     /**
-     * Sets alternate_leg_tracking_id
+     * Sets alternate_leg_tracking_id.
      *
-     * @param string $alternate_leg_tracking_id The carrier generated reverse identifier for a returned package in a purchased shipment.
-     *
-     * @return self
+     * @param string $alternate_leg_tracking_id the carrier generated reverse identifier for a returned package in a purchased shipment
      */
     public function setAlternateLegTrackingId(string $alternate_leg_tracking_id): self
     {
@@ -390,9 +328,7 @@ class GetTrackingResult implements ModelInterface, ArrayAccess, \JsonSerializabl
     }
 
     /**
-     * Gets event_history
-     *
-     * @return array
+     * Gets event_history.
      */
     public function getEventHistory(): array
     {
@@ -400,11 +336,9 @@ class GetTrackingResult implements ModelInterface, ArrayAccess, \JsonSerializabl
     }
 
     /**
-     * Sets event_history
+     * Sets event_history.
      *
-     * @param array $event_history A list of tracking events.
-     *
-     * @return self
+     * @param array $event_history a list of tracking events
      */
     public function setEventHistory(array $event_history): self
     {
@@ -417,9 +351,7 @@ class GetTrackingResult implements ModelInterface, ArrayAccess, \JsonSerializabl
     }
 
     /**
-     * Gets promised_delivery_date
-     *
-     * @return \DateTime
+     * Gets promised_delivery_date.
      */
     public function getPromisedDeliveryDate(): \DateTime
     {
@@ -427,11 +359,9 @@ class GetTrackingResult implements ModelInterface, ArrayAccess, \JsonSerializabl
     }
 
     /**
-     * Sets promised_delivery_date
+     * Sets promised_delivery_date.
      *
-     * @param \DateTime $promised_delivery_date The date and time by which the shipment is promised to be delivered.
-     *
-     * @return self
+     * @param \DateTime $promised_delivery_date the date and time by which the shipment is promised to be delivered
      */
     public function setPromisedDeliveryDate(\DateTime $promised_delivery_date): self
     {
@@ -444,23 +374,19 @@ class GetTrackingResult implements ModelInterface, ArrayAccess, \JsonSerializabl
     }
 
     /**
-     * Gets summary
-     *
-     * @return \SpApi\Model\shipping\v2\TrackingSummary
+     * Gets summary.
      */
-    public function getSummary(): \SpApi\Model\shipping\v2\TrackingSummary
+    public function getSummary(): TrackingSummary
     {
         return $this->container['summary'];
     }
 
     /**
-     * Sets summary
+     * Sets summary.
      *
-     * @param \SpApi\Model\shipping\v2\TrackingSummary $summary summary
-     *
-     * @return self
+     * @param TrackingSummary $summary summary
      */
-    public function setSummary(\SpApi\Model\shipping\v2\TrackingSummary $summary): self
+    public function setSummary(TrackingSummary $summary): self
     {
         if (is_null($summary)) {
             throw new \InvalidArgumentException('non-nullable summary cannot be null');
@@ -470,13 +396,10 @@ class GetTrackingResult implements ModelInterface, ArrayAccess, \JsonSerializabl
         return $this;
     }
 
-
     /**
      * Returns true if offset exists. False otherwise.
      *
-     * @param integer $offset Offset
-     *
-     * @return boolean
+     * @param int $offset Offset
      */
     public function offsetExists($offset): bool
     {
@@ -486,9 +409,9 @@ class GetTrackingResult implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
-     * @return mixed|null
+     * @return null|mixed
      */
     #[\ReturnTypeWillChange]
     public function offsetGet($offset): mixed
@@ -499,10 +422,8 @@ class GetTrackingResult implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets value based on offset.
      *
-     * @param int|null $offset Offset
+     * @param null|int $offset Offset
      * @param mixed    $value  Value to be set
-     *
-     * @return void
      */
     public function offsetSet($offset, mixed $value): void
     {
@@ -516,9 +437,7 @@ class GetTrackingResult implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Unsets offset.
      *
-     * @param integer $offset Offset
-     *
-     * @return void
+     * @param int $offset Offset
      */
     public function offsetUnset($offset): void
     {
@@ -527,39 +446,67 @@ class GetTrackingResult implements ModelInterface, ArrayAccess, \JsonSerializabl
 
     /**
      * Serializes the object to a value that can be serialized natively by json_encode().
-     * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
      *
-     * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
+     * @see https://www.php.net/manual/en/jsonserializable.jsonserialize.php
+     *
+     * @return mixed returns data which can be serialized by json_encode(), which is a value
+     *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
     public function jsonSerialize(): mixed
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
-     * Gets the string presentation of the object
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    /**
-     * Gets a header-safe presentation of the object
-     *
-     * @return string
+     * Gets a header-safe presentation of the object.
      */
     public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
+
+    /**
+     * Array of nullable properties.
+     */
+    protected static function openAPINullables(): array
+    {
+        return self::$openAPINullables;
+    }
+
+    /**
+     * Array of nullable field names deliberately set to null.
+     *
+     * @return bool[]
+     */
+    private function getOpenAPINullablesSetToNull(): array
+    {
+        return $this->openAPINullablesSetToNull;
+    }
+
+    /**
+     * Setter - Array of nullable field names deliberately set to null.
+     *
+     * @param bool[] $openAPINullablesSetToNull
+     */
+    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
+    {
+        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
+    }
+
+    /**
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array.
+     *
+     * @param mixed $defaultValue
+     */
+    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+    {
+        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
+            $this->openAPINullablesSetToNull[] = $variableName;
+        }
+
+        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    }
 }
-
-

@@ -12,62 +12,57 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
-import java.util.Objects;
-import java.util.Arrays;
-import io.swagger.v3.oas.annotations.media.Schema;
-import com.google.gson.annotations.SerializedName;
-import java.io.IOException;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
-/**
- * Shipper Account Type.
- */
+/** Shipper Account Type. */
 @JsonAdapter(AccountType.Adapter.class)
 public enum AccountType {
-  @SerializedName("SHIPPER_ACCOUNT")
-  SHIPPER_ACCOUNT("SHIPPER_ACCOUNT"),
-  @SerializedName("SHIPPER_ACCOUNT_WITH_INVOICE")
-  SHIPPER_ACCOUNT_WITH_INVOICE("SHIPPER_ACCOUNT_WITH_INVOICE"),
-  @SerializedName("AMAZON_ACCOUNT")
-  AMAZON_ACCOUNT("AMAZON_ACCOUNT");
+    @SerializedName("SHIPPER_ACCOUNT")
+    SHIPPER_ACCOUNT("SHIPPER_ACCOUNT"),
+    @SerializedName("SHIPPER_ACCOUNT_WITH_INVOICE")
+    SHIPPER_ACCOUNT_WITH_INVOICE("SHIPPER_ACCOUNT_WITH_INVOICE"),
+    @SerializedName("AMAZON_ACCOUNT")
+    AMAZON_ACCOUNT("AMAZON_ACCOUNT");
 
-  private String value;
+    private String value;
 
-  AccountType(String value) {
-    this.value = value;
-  }
-
-  public String getValue() {
-    return value;
-  }
-
-  @Override
-  public String toString() {
-    return String.valueOf(value);
-  }
-
-  public static AccountType fromValue(String input) {
-    for (AccountType b : AccountType.values()) {
-      if (b.value.equals(input)) {
-        return b;
-      }
+    AccountType(String value) {
+        this.value = value;
     }
-    return null;
-  }
 
-  public static class Adapter extends TypeAdapter<AccountType> {
-    @Override
-    public void write(final JsonWriter jsonWriter, final AccountType enumeration) throws IOException {
-      jsonWriter.value(String.valueOf(enumeration.getValue()));
+    public String getValue() {
+        return value;
     }
 
     @Override
-    public AccountType read(final JsonReader jsonReader) throws IOException {
-      Object value = jsonReader.nextString();
-      return AccountType.fromValue((String)(value));
+    public String toString() {
+        return String.valueOf(value);
     }
-  }
+
+    public static AccountType fromValue(String input) {
+        for (AccountType b : AccountType.values()) {
+            if (b.value.equals(input)) {
+                return b;
+            }
+        }
+        return null;
+    }
+
+    public static class Adapter extends TypeAdapter<AccountType> {
+        @Override
+        public void write(final JsonWriter jsonWriter, final AccountType enumeration) throws IOException {
+            jsonWriter.value(String.valueOf(enumeration.getValue()));
+        }
+
+        @Override
+        public AccountType read(final JsonReader jsonReader) throws IOException {
+            Object value = jsonReader.nextString();
+            return AccountType.fromValue((String) (value));
+        }
+    }
 }

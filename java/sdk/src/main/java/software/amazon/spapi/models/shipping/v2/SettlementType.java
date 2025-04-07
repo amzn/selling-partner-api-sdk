@@ -12,60 +12,55 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
-import java.util.Objects;
-import java.util.Arrays;
-import io.swagger.v3.oas.annotations.media.Schema;
-import com.google.gson.annotations.SerializedName;
-import java.io.IOException;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
-/**
- * Type of settlement the shipper wants to receive for a particular shipment.
- */
+/** Type of settlement the shipper wants to receive for a particular shipment. */
 @JsonAdapter(SettlementType.Adapter.class)
 public enum SettlementType {
-  @SerializedName("REFUND")
-  REFUND("REFUND"),
-  @SerializedName("CERTIFICATE_OF_FACT")
-  CERTIFICATE_OF_FACT("CERTIFICATE_OF_FACT");
+    @SerializedName("REFUND")
+    REFUND("REFUND"),
+    @SerializedName("CERTIFICATE_OF_FACT")
+    CERTIFICATE_OF_FACT("CERTIFICATE_OF_FACT");
 
-  private String value;
+    private String value;
 
-  SettlementType(String value) {
-    this.value = value;
-  }
-
-  public String getValue() {
-    return value;
-  }
-
-  @Override
-  public String toString() {
-    return String.valueOf(value);
-  }
-
-  public static SettlementType fromValue(String input) {
-    for (SettlementType b : SettlementType.values()) {
-      if (b.value.equals(input)) {
-        return b;
-      }
+    SettlementType(String value) {
+        this.value = value;
     }
-    return null;
-  }
 
-  public static class Adapter extends TypeAdapter<SettlementType> {
-    @Override
-    public void write(final JsonWriter jsonWriter, final SettlementType enumeration) throws IOException {
-      jsonWriter.value(String.valueOf(enumeration.getValue()));
+    public String getValue() {
+        return value;
     }
 
     @Override
-    public SettlementType read(final JsonReader jsonReader) throws IOException {
-      Object value = jsonReader.nextString();
-      return SettlementType.fromValue((String)(value));
+    public String toString() {
+        return String.valueOf(value);
     }
-  }
+
+    public static SettlementType fromValue(String input) {
+        for (SettlementType b : SettlementType.values()) {
+            if (b.value.equals(input)) {
+                return b;
+            }
+        }
+        return null;
+    }
+
+    public static class Adapter extends TypeAdapter<SettlementType> {
+        @Override
+        public void write(final JsonWriter jsonWriter, final SettlementType enumeration) throws IOException {
+            jsonWriter.value(String.valueOf(enumeration.getValue()));
+        }
+
+        @Override
+        public SettlementType read(final JsonReader jsonReader) throws IOException {
+            Object value = jsonReader.nextString();
+            return SettlementType.fromValue((String) (value));
+        }
+    }
 }

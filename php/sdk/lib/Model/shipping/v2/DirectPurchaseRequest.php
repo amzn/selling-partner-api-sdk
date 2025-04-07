@@ -1,17 +1,19 @@
 <?php
+
 /**
- * DirectPurchaseRequest
+ * DirectPurchaseRequest.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Amazon Shipping API
+ * Amazon Shipping API.
  *
  * The Amazon Shipping API is designed to support outbound shipping use cases both for orders originating on Amazon-owned marketplaces as well as external channels/marketplaces. With these APIs, you can request shipping rates, create shipments, cancel shipments, and track shipments.
  *
@@ -29,171 +31,99 @@
 
 namespace SpApi\Model\shipping\v2;
 
-use
-ArrayAccess;
-use SpApi\ObjectSerializer;
 use SpApi\Model\ModelInterface;
+use SpApi\ObjectSerializer;
 
 /**
- * DirectPurchaseRequest Class Doc Comment
+ * DirectPurchaseRequest Class Doc Comment.
  *
  * @category Class
+ *
  * @description The request schema for the directPurchaseShipment operation. When the channel type is Amazon, the shipTo address is not required and will be ignored.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
+ *
  * @implements \ArrayAccess<string, mixed>
  */
-class DirectPurchaseRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class DirectPurchaseRequest implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     */
     protected static string $openAPIModelName = 'DirectPurchaseRequest';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static array $openAPITypes = [
-             'ship_to' => '\SpApi\Model\shipping\v2\Address',
-             'ship_from' => '\SpApi\Model\shipping\v2\Address',
-             'return_to' => '\SpApi\Model\shipping\v2\Address',
-             'packages' => '\SpApi\Model\shipping\v2\Package[]',
-             'channel_details' => '\SpApi\Model\shipping\v2\ChannelDetails',
-             'label_specifications' => '\SpApi\Model\shipping\v2\RequestedDocumentSpecification'    ];
+        'ship_to' => '\SpApi\Model\shipping\v2\Address',
+        'ship_from' => '\SpApi\Model\shipping\v2\Address',
+        'return_to' => '\SpApi\Model\shipping\v2\Address',
+        'packages' => '\SpApi\Model\shipping\v2\Package[]',
+        'channel_details' => '\SpApi\Model\shipping\v2\ChannelDetails',
+        'label_specifications' => '\SpApi\Model\shipping\v2\RequestedDocumentSpecification'];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     *
+     * @phpstan-var array<string, string|null>
+     *
+     * @psalm-var array<string, string|null>
+     */
     protected static array $openAPIFormats = [
-            'ship_to' => null,
-            'ship_from' => null,
-            'return_to' => null,
-            'packages' => null,
-            'channel_details' => null,
-            'label_specifications' => null    ];
+        'ship_to' => null,
+        'ship_from' => null,
+        'return_to' => null,
+        'packages' => null,
+        'channel_details' => null,
+        'label_specifications' => null];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization.
+     *
+     * @var bool[]
+     */
     protected static array $openAPINullables = [
         'ship_to' => true,
         'ship_from' => true,
         'return_to' => true,
         'packages' => true,
         'channel_details' => false,
-        'label_specifications' => true
+        'label_specifications' => true,
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here.
+     *
+     * @var bool[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPIFormats(): array
-    {
-        return self::$openAPIFormats;
-    }
-
-    /**
-     * Array of nullable properties
-     *
-     * @return array
-     */
-    protected static function openAPINullables(): array
-    {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * Array of nullable field names deliberately set to null
-     *
-     * @return boolean[]
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * Setter - Array of nullable field names deliberately set to null
-     *
-     * @param boolean[] $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    /**
-     * Checks if a property is nullable
-     *
-     * @param string $property
-     * @return bool
-     */
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    /**
-     * Checks if a nullable property is set to null.
-     *
-     * @param string $property
-     * @return bool
-     */
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @var string[]
      */
     protected static array $attributeMap = [
         'ship_to' => 'shipTo',
-                'ship_from' => 'shipFrom',
-                'return_to' => 'returnTo',
-                'packages' => 'packages',
-                'channel_details' => 'channelDetails',
-                'label_specifications' => 'labelSpecifications'
-        
+        'ship_from' => 'shipFrom',
+        'return_to' => 'returnTo',
+        'packages' => 'packages',
+        'channel_details' => 'channelDetails',
+        'label_specifications' => 'labelSpecifications',
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @var string[]
      */
@@ -203,11 +133,11 @@ class DirectPurchaseRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'return_to' => 'setReturnTo',
         'packages' => 'setPackages',
         'channel_details' => 'setChannelDetails',
-        'label_specifications' => 'setLabelSpecifications'
+        'label_specifications' => 'setLabelSpecifications',
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @var string[]
      */
@@ -217,63 +147,19 @@ class DirectPurchaseRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'return_to' => 'getReturnTo',
         'packages' => 'getPackages',
         'channel_details' => 'getChannelDetails',
-        'label_specifications' => 'getLabelSpecifications'
+        'label_specifications' => 'getLabelSpecifications',
     ];
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @return array
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @return array
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @return array
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    /**
-     * The original name of the model.
-     *
-     * @return string
-     */
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-
-    /**
-     * Associative array for storing property values
-     *
-     * @var array
+     * Associative array for storing property values.
      */
     protected array $container = [];
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param array|null $data Associated array of property values
-     *                      initializing the model
+     * @param null|array $data Associated array of property values
+     *                         initializing the model
      */
     public function __construct(?array $data = null)
     {
@@ -286,21 +172,81 @@ class DirectPurchaseRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
-    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+     * Gets the string presentation of the object.
+     *
+     * @return string
+     */
+    public function __toString()
     {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
+        return json_encode(
+            ObjectSerializer::sanitizeForSerialization($this),
+            JSON_PRETTY_PRINT
+        );
+    }
 
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    /**
+     * Array of property to type mappings. Used for (de)serialization.
+     */
+    public static function openAPITypes(): array
+    {
+        return self::$openAPITypes;
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization.
+     */
+    public static function openAPIFormats(): array
+    {
+        return self::$openAPIFormats;
+    }
+
+    /**
+     * Checks if a property is nullable.
+     */
+    public static function isNullable(string $property): bool
+    {
+        return self::openAPINullables()[$property] ?? false;
+    }
+
+    /**
+     * Checks if a nullable property is set to null.
+     */
+    public function isNullableSetToNull(string $property): bool
+    {
+        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name.
+     */
+    public static function attributeMap(): array
+    {
+        return self::$attributeMap;
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses).
+     */
+    public static function setters(): array
+    {
+        return self::$setters;
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests).
+     */
+    public static function getters(): array
+    {
+        return self::$getters;
+    }
+
+    /**
+     * The original name of the model.
+     */
+    public function getModelName(): string
+    {
+        return self::$openAPIModelName;
     }
 
     /**
@@ -312,49 +258,45 @@ class DirectPurchaseRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $invalidProperties = [];
 
-        if ($this->container['channel_details'] === null) {
+        if (null === $this->container['channel_details']) {
             $invalidProperties[] = "'channel_details' can't be null";
         }
+
         return $invalidProperties;
     }
 
     /**
      * Validate all the properties in the model
-     * return true if all passed
+     * return true if all passed.
      *
      * @return bool True if all properties are valid
      */
     public function valid(): bool
     {
-        return count($this->listInvalidProperties()) === 0;
+        return 0 === count($this->listInvalidProperties());
     }
 
-
     /**
-     * Gets ship_to
-     *
-     * @return \SpApi\Model\shipping\v2\Address|null
+     * Gets ship_to.
      */
-    public function getShipTo(): ?\SpApi\Model\shipping\v2\Address
+    public function getShipTo(): ?Address
     {
         return $this->container['ship_to'];
     }
 
     /**
-     * Sets ship_to
+     * Sets ship_to.
      *
-     * @param \SpApi\Model\shipping\v2\Address|null $ship_to ship_to
-     *
-     * @return self
+     * @param null|Address $ship_to ship_to
      */
-    public function setShipTo(?\SpApi\Model\shipping\v2\Address $ship_to): self
+    public function setShipTo(?Address $ship_to): self
     {
         if (is_null($ship_to)) {
             array_push($this->openAPINullablesSetToNull, 'ship_to');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('ship_to', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -365,30 +307,26 @@ class DirectPurchaseRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets ship_from
-     *
-     * @return \SpApi\Model\shipping\v2\Address|null
+     * Gets ship_from.
      */
-    public function getShipFrom(): ?\SpApi\Model\shipping\v2\Address
+    public function getShipFrom(): ?Address
     {
         return $this->container['ship_from'];
     }
 
     /**
-     * Sets ship_from
+     * Sets ship_from.
      *
-     * @param \SpApi\Model\shipping\v2\Address|null $ship_from ship_from
-     *
-     * @return self
+     * @param null|Address $ship_from ship_from
      */
-    public function setShipFrom(?\SpApi\Model\shipping\v2\Address $ship_from): self
+    public function setShipFrom(?Address $ship_from): self
     {
         if (is_null($ship_from)) {
             array_push($this->openAPINullablesSetToNull, 'ship_from');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('ship_from', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -399,30 +337,26 @@ class DirectPurchaseRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets return_to
-     *
-     * @return \SpApi\Model\shipping\v2\Address|null
+     * Gets return_to.
      */
-    public function getReturnTo(): ?\SpApi\Model\shipping\v2\Address
+    public function getReturnTo(): ?Address
     {
         return $this->container['return_to'];
     }
 
     /**
-     * Sets return_to
+     * Sets return_to.
      *
-     * @param \SpApi\Model\shipping\v2\Address|null $return_to return_to
-     *
-     * @return self
+     * @param null|Address $return_to return_to
      */
-    public function setReturnTo(?\SpApi\Model\shipping\v2\Address $return_to): self
+    public function setReturnTo(?Address $return_to): self
     {
         if (is_null($return_to)) {
             array_push($this->openAPINullablesSetToNull, 'return_to');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('return_to', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -433,9 +367,7 @@ class DirectPurchaseRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets packages
-     *
-     * @return array|null
+     * Gets packages.
      */
     public function getPackages(): ?array
     {
@@ -443,11 +375,9 @@ class DirectPurchaseRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Sets packages
+     * Sets packages.
      *
-     * @param array|null $packages A list of packages to be shipped through a shipping service offering.
-     *
-     * @return self
+     * @param null|array $packages a list of packages to be shipped through a shipping service offering
      */
     public function setPackages(?array $packages): self
     {
@@ -456,7 +386,7 @@ class DirectPurchaseRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('packages', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -467,23 +397,19 @@ class DirectPurchaseRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets channel_details
-     *
-     * @return \SpApi\Model\shipping\v2\ChannelDetails
+     * Gets channel_details.
      */
-    public function getChannelDetails(): \SpApi\Model\shipping\v2\ChannelDetails
+    public function getChannelDetails(): ChannelDetails
     {
         return $this->container['channel_details'];
     }
 
     /**
-     * Sets channel_details
+     * Sets channel_details.
      *
-     * @param \SpApi\Model\shipping\v2\ChannelDetails $channel_details channel_details
-     *
-     * @return self
+     * @param ChannelDetails $channel_details channel_details
      */
-    public function setChannelDetails(\SpApi\Model\shipping\v2\ChannelDetails $channel_details): self
+    public function setChannelDetails(ChannelDetails $channel_details): self
     {
         if (is_null($channel_details)) {
             throw new \InvalidArgumentException('non-nullable channel_details cannot be null');
@@ -494,30 +420,26 @@ class DirectPurchaseRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets label_specifications
-     *
-     * @return \SpApi\Model\shipping\v2\RequestedDocumentSpecification|null
+     * Gets label_specifications.
      */
-    public function getLabelSpecifications(): ?\SpApi\Model\shipping\v2\RequestedDocumentSpecification
+    public function getLabelSpecifications(): ?RequestedDocumentSpecification
     {
         return $this->container['label_specifications'];
     }
 
     /**
-     * Sets label_specifications
+     * Sets label_specifications.
      *
-     * @param \SpApi\Model\shipping\v2\RequestedDocumentSpecification|null $label_specifications label_specifications
-     *
-     * @return self
+     * @param null|RequestedDocumentSpecification $label_specifications label_specifications
      */
-    public function setLabelSpecifications(?\SpApi\Model\shipping\v2\RequestedDocumentSpecification $label_specifications): self
+    public function setLabelSpecifications(?RequestedDocumentSpecification $label_specifications): self
     {
         if (is_null($label_specifications)) {
             array_push($this->openAPINullablesSetToNull, 'label_specifications');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('label_specifications', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -527,13 +449,10 @@ class DirectPurchaseRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         return $this;
     }
 
-
     /**
      * Returns true if offset exists. False otherwise.
      *
-     * @param integer $offset Offset
-     *
-     * @return boolean
+     * @param int $offset Offset
      */
     public function offsetExists($offset): bool
     {
@@ -543,9 +462,9 @@ class DirectPurchaseRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
-     * @return mixed|null
+     * @return null|mixed
      */
     #[\ReturnTypeWillChange]
     public function offsetGet($offset): mixed
@@ -556,10 +475,8 @@ class DirectPurchaseRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets value based on offset.
      *
-     * @param int|null $offset Offset
+     * @param null|int $offset Offset
      * @param mixed    $value  Value to be set
-     *
-     * @return void
      */
     public function offsetSet($offset, mixed $value): void
     {
@@ -573,9 +490,7 @@ class DirectPurchaseRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Unsets offset.
      *
-     * @param integer $offset Offset
-     *
-     * @return void
+     * @param int $offset Offset
      */
     public function offsetUnset($offset): void
     {
@@ -584,39 +499,67 @@ class DirectPurchaseRequest implements ModelInterface, ArrayAccess, \JsonSeriali
 
     /**
      * Serializes the object to a value that can be serialized natively by json_encode().
-     * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
      *
-     * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
+     * @see https://www.php.net/manual/en/jsonserializable.jsonserialize.php
+     *
+     * @return mixed returns data which can be serialized by json_encode(), which is a value
+     *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
     public function jsonSerialize(): mixed
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
-     * Gets the string presentation of the object
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    /**
-     * Gets a header-safe presentation of the object
-     *
-     * @return string
+     * Gets a header-safe presentation of the object.
      */
     public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
+
+    /**
+     * Array of nullable properties.
+     */
+    protected static function openAPINullables(): array
+    {
+        return self::$openAPINullables;
+    }
+
+    /**
+     * Array of nullable field names deliberately set to null.
+     *
+     * @return bool[]
+     */
+    private function getOpenAPINullablesSetToNull(): array
+    {
+        return $this->openAPINullablesSetToNull;
+    }
+
+    /**
+     * Setter - Array of nullable field names deliberately set to null.
+     *
+     * @param bool[] $openAPINullablesSetToNull
+     */
+    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
+    {
+        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
+    }
+
+    /**
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array.
+     *
+     * @param mixed $defaultValue
+     */
+    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+    {
+        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
+            $this->openAPINullablesSetToNull[] = $variableName;
+        }
+
+        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    }
 }
-
-

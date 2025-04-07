@@ -1,17 +1,19 @@
 <?php
+
 /**
- * ListOfferMetricsResponseOffer
+ * ListOfferMetricsResponseOffer.
  *
  * PHP version 8.3
  *
  * @category Class
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
  */
 
 /**
- * Selling Partner API for Replenishment
+ * Selling Partner API for Replenishment.
  *
  * The Selling Partner API for Replenishment (Replenishment API) provides programmatic access to replenishment program metrics and offers. These programs provide recurring delivery of any replenishable item at a frequency chosen by the customer.  The Replenishment API is available worldwide wherever Amazon Subscribe & Save is available or is supported. The API is available to vendors and FBA selling partners.
  *
@@ -28,87 +30,88 @@
 
 namespace SpApi\Model\replenishment\v2022_11_07;
 
-use
-ArrayAccess;
-use SpApi\ObjectSerializer;
 use SpApi\Model\ModelInterface;
+use SpApi\ObjectSerializer;
 
 /**
- * ListOfferMetricsResponseOffer Class Doc Comment
+ * ListOfferMetricsResponseOffer Class Doc Comment.
  *
  * @category Class
+ *
  * @description An object which contains offer metrics.
- * @package  SpApi
+ *
  * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
+ *
+ * @see     https://openapi-generator.tech
+ *
  * @implements \ArrayAccess<string, mixed>
  */
-class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \JsonSerializable
+class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     */
     protected static string $openAPIModelName = 'ListOfferMetricsResponseOffer';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static array $openAPITypes = [
-             'asin' => 'string',
-             'not_delivered_due_to_oos' => 'float',
-             'total_subscriptions_revenue' => 'float',
-             'shipped_subscription_units' => 'float',
-             'active_subscriptions' => 'float',
-             'revenue_penetration' => 'float',
-             'lost_revenue_due_to_oos' => 'float',
-             'coupons_revenue_penetration' => 'float',
-             'share_of_coupon_subscriptions' => 'float',
-             'next30_day_total_subscriptions_revenue' => 'float',
-             'next60_day_total_subscriptions_revenue' => 'float',
-             'next90_day_total_subscriptions_revenue' => 'float',
-             'next30_day_shipped_subscription_units' => 'float',
-             'next60_day_shipped_subscription_units' => 'float',
-             'next90_day_shipped_subscription_units' => 'float',
-             'time_interval' => '\SpApi\Model\replenishment\v2022_11_07\TimeInterval',
-             'currency_code' => 'string'    ];
+        'asin' => 'string',
+        'not_delivered_due_to_oos' => 'float',
+        'total_subscriptions_revenue' => 'float',
+        'shipped_subscription_units' => 'float',
+        'active_subscriptions' => 'float',
+        'revenue_penetration' => 'float',
+        'lost_revenue_due_to_oos' => 'float',
+        'coupons_revenue_penetration' => 'float',
+        'share_of_coupon_subscriptions' => 'float',
+        'next30_day_total_subscriptions_revenue' => 'float',
+        'next60_day_total_subscriptions_revenue' => 'float',
+        'next90_day_total_subscriptions_revenue' => 'float',
+        'next30_day_shipped_subscription_units' => 'float',
+        'next60_day_shipped_subscription_units' => 'float',
+        'next90_day_shipped_subscription_units' => 'float',
+        'time_interval' => '\SpApi\Model\replenishment\v2022_11_07\TimeInterval',
+        'currency_code' => 'string'];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     *
+     * @phpstan-var array<string, string|null>
+     *
+     * @psalm-var array<string, string|null>
+     */
     protected static array $openAPIFormats = [
-            'asin' => null,
-            'not_delivered_due_to_oos' => 'double',
-            'total_subscriptions_revenue' => 'double',
-            'shipped_subscription_units' => 'int64',
-            'active_subscriptions' => 'int64',
-            'revenue_penetration' => 'double',
-            'lost_revenue_due_to_oos' => 'double',
-            'coupons_revenue_penetration' => 'double',
-            'share_of_coupon_subscriptions' => 'double',
-            'next30_day_total_subscriptions_revenue' => 'double',
-            'next60_day_total_subscriptions_revenue' => 'double',
-            'next90_day_total_subscriptions_revenue' => 'double',
-            'next30_day_shipped_subscription_units' => 'int64',
-            'next60_day_shipped_subscription_units' => 'int64',
-            'next90_day_shipped_subscription_units' => 'int64',
-            'time_interval' => null,
-            'currency_code' => null    ];
+        'asin' => null,
+        'not_delivered_due_to_oos' => 'double',
+        'total_subscriptions_revenue' => 'double',
+        'shipped_subscription_units' => 'int64',
+        'active_subscriptions' => 'int64',
+        'revenue_penetration' => 'double',
+        'lost_revenue_due_to_oos' => 'double',
+        'coupons_revenue_penetration' => 'double',
+        'share_of_coupon_subscriptions' => 'double',
+        'next30_day_total_subscriptions_revenue' => 'double',
+        'next60_day_total_subscriptions_revenue' => 'double',
+        'next90_day_total_subscriptions_revenue' => 'double',
+        'next30_day_shipped_subscription_units' => 'int64',
+        'next60_day_shipped_subscription_units' => 'int64',
+        'next90_day_shipped_subscription_units' => 'int64',
+        'time_interval' => null,
+        'currency_code' => null];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization.
+     *
+     * @var bool[]
+     */
     protected static array $openAPINullables = [
         'asin' => true,
         'not_delivered_due_to_oos' => true,
@@ -126,117 +129,44 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
         'next60_day_shipped_subscription_units' => true,
         'next90_day_shipped_subscription_units' => true,
         'time_interval' => true,
-        'currency_code' => true
+        'currency_code' => true,
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here.
+     *
+     * @var bool[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPITypes(): array
-    {
-        return self::$openAPITypes;
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function openAPIFormats(): array
-    {
-        return self::$openAPIFormats;
-    }
-
-    /**
-     * Array of nullable properties
-     *
-     * @return array
-     */
-    protected static function openAPINullables(): array
-    {
-        return self::$openAPINullables;
-    }
-
-    /**
-     * Array of nullable field names deliberately set to null
-     *
-     * @return boolean[]
-     */
-    private function getOpenAPINullablesSetToNull(): array
-    {
-        return $this->openAPINullablesSetToNull;
-    }
-
-    /**
-     * Setter - Array of nullable field names deliberately set to null
-     *
-     * @param boolean[] $openAPINullablesSetToNull
-     */
-    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
-    {
-        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
-    }
-
-    /**
-     * Checks if a property is nullable
-     *
-     * @param string $property
-     * @return bool
-     */
-    public static function isNullable(string $property): bool
-    {
-        return self::openAPINullables()[$property] ?? false;
-    }
-
-    /**
-     * Checks if a nullable property is set to null.
-     *
-     * @param string $property
-     * @return bool
-     */
-    public function isNullableSetToNull(string $property): bool
-    {
-        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
-    }
-
-    /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @var string[]
      */
     protected static array $attributeMap = [
         'asin' => 'asin',
-                'not_delivered_due_to_oos' => 'notDeliveredDueToOOS',
-                'total_subscriptions_revenue' => 'totalSubscriptionsRevenue',
-                'shipped_subscription_units' => 'shippedSubscriptionUnits',
-                'active_subscriptions' => 'activeSubscriptions',
-                'revenue_penetration' => 'revenuePenetration',
-                'lost_revenue_due_to_oos' => 'lostRevenueDueToOOS',
-                'coupons_revenue_penetration' => 'couponsRevenuePenetration',
-                'share_of_coupon_subscriptions' => 'shareOfCouponSubscriptions',
-                'next30_day_total_subscriptions_revenue' => 'next30DayTotalSubscriptionsRevenue',
-                'next60_day_total_subscriptions_revenue' => 'next60DayTotalSubscriptionsRevenue',
-                'next90_day_total_subscriptions_revenue' => 'next90DayTotalSubscriptionsRevenue',
-                'next30_day_shipped_subscription_units' => 'next30DayShippedSubscriptionUnits',
-                'next60_day_shipped_subscription_units' => 'next60DayShippedSubscriptionUnits',
-                'next90_day_shipped_subscription_units' => 'next90DayShippedSubscriptionUnits',
-                'time_interval' => 'timeInterval',
-                'currency_code' => 'currencyCode'
-        
+        'not_delivered_due_to_oos' => 'notDeliveredDueToOOS',
+        'total_subscriptions_revenue' => 'totalSubscriptionsRevenue',
+        'shipped_subscription_units' => 'shippedSubscriptionUnits',
+        'active_subscriptions' => 'activeSubscriptions',
+        'revenue_penetration' => 'revenuePenetration',
+        'lost_revenue_due_to_oos' => 'lostRevenueDueToOOS',
+        'coupons_revenue_penetration' => 'couponsRevenuePenetration',
+        'share_of_coupon_subscriptions' => 'shareOfCouponSubscriptions',
+        'next30_day_total_subscriptions_revenue' => 'next30DayTotalSubscriptionsRevenue',
+        'next60_day_total_subscriptions_revenue' => 'next60DayTotalSubscriptionsRevenue',
+        'next90_day_total_subscriptions_revenue' => 'next90DayTotalSubscriptionsRevenue',
+        'next30_day_shipped_subscription_units' => 'next30DayShippedSubscriptionUnits',
+        'next60_day_shipped_subscription_units' => 'next60DayShippedSubscriptionUnits',
+        'next90_day_shipped_subscription_units' => 'next90DayShippedSubscriptionUnits',
+        'time_interval' => 'timeInterval',
+        'currency_code' => 'currencyCode',
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @var string[]
      */
@@ -257,11 +187,11 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
         'next60_day_shipped_subscription_units' => 'setNext60DayShippedSubscriptionUnits',
         'next90_day_shipped_subscription_units' => 'setNext90DayShippedSubscriptionUnits',
         'time_interval' => 'setTimeInterval',
-        'currency_code' => 'setCurrencyCode'
+        'currency_code' => 'setCurrencyCode',
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @var string[]
      */
@@ -282,63 +212,19 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
         'next60_day_shipped_subscription_units' => 'getNext60DayShippedSubscriptionUnits',
         'next90_day_shipped_subscription_units' => 'getNext90DayShippedSubscriptionUnits',
         'time_interval' => 'getTimeInterval',
-        'currency_code' => 'getCurrencyCode'
+        'currency_code' => 'getCurrencyCode',
     ];
 
     /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @return array
-     */
-    public static function attributeMap(): array
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @return array
-     */
-    public static function setters(): array
-    {
-        return self::$setters;
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @return array
-     */
-    public static function getters(): array
-    {
-        return self::$getters;
-    }
-
-    /**
-     * The original name of the model.
-     *
-     * @return string
-     */
-    public function getModelName(): string
-    {
-        return self::$openAPIModelName;
-    }
-
-
-    /**
-     * Associative array for storing property values
-     *
-     * @var array
+     * Associative array for storing property values.
      */
     protected array $container = [];
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param array|null $data Associated array of property values
-     *                      initializing the model
+     * @param null|array $data Associated array of property values
+     *                         initializing the model
      */
     public function __construct(?array $data = null)
     {
@@ -362,21 +248,81 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
-    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+     * Gets the string presentation of the object.
+     *
+     * @return string
+     */
+    public function __toString()
     {
-        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
-            $this->openAPINullablesSetToNull[] = $variableName;
-        }
+        return json_encode(
+            ObjectSerializer::sanitizeForSerialization($this),
+            JSON_PRETTY_PRINT
+        );
+    }
 
-        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    /**
+     * Array of property to type mappings. Used for (de)serialization.
+     */
+    public static function openAPITypes(): array
+    {
+        return self::$openAPITypes;
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization.
+     */
+    public static function openAPIFormats(): array
+    {
+        return self::$openAPIFormats;
+    }
+
+    /**
+     * Checks if a property is nullable.
+     */
+    public static function isNullable(string $property): bool
+    {
+        return self::openAPINullables()[$property] ?? false;
+    }
+
+    /**
+     * Checks if a nullable property is set to null.
+     */
+    public function isNullableSetToNull(string $property): bool
+    {
+        return in_array($property, $this->getOpenAPINullablesSetToNull(), true);
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name.
+     */
+    public static function attributeMap(): array
+    {
+        return self::$attributeMap;
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses).
+     */
+    public static function setters(): array
+    {
+        return self::$setters;
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests).
+     */
+    public static function getters(): array
+    {
+        return self::$getters;
+    }
+
+    /**
+     * The original name of the model.
+     */
+    public function getModelName(): string
+    {
+        return self::$openAPIModelName;
     }
 
     /**
@@ -465,20 +411,17 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
 
     /**
      * Validate all the properties in the model
-     * return true if all passed
+     * return true if all passed.
      *
      * @return bool True if all properties are valid
      */
     public function valid(): bool
     {
-        return count($this->listInvalidProperties()) === 0;
+        return 0 === count($this->listInvalidProperties());
     }
 
-
     /**
-     * Gets asin
-     *
-     * @return string|null
+     * Gets asin.
      */
     public function getAsin(): ?string
     {
@@ -486,11 +429,9 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Sets asin
+     * Sets asin.
      *
-     * @param string|null $asin The Amazon Standard Identification Number (ASIN).
-     *
-     * @return self
+     * @param null|string $asin the Amazon Standard Identification Number (ASIN)
      */
     public function setAsin(?string $asin): self
     {
@@ -499,7 +440,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('asin', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -510,9 +451,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets not_delivered_due_to_oos
-     *
-     * @return float|null
+     * Gets not_delivered_due_to_oos.
      */
     public function getNotDeliveredDueToOos(): ?float
     {
@@ -520,11 +459,9 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Sets not_delivered_due_to_oos
+     * Sets not_delivered_due_to_oos.
      *
-     * @param float|null $not_delivered_due_to_oos The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to PERFORMANCE timePeriodType.
-     *
-     * @return self
+     * @param null|float $not_delivered_due_to_oos The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to PERFORMANCE timePeriodType.
      */
     public function setNotDeliveredDueToOos(?float $not_delivered_due_to_oos): self
     {
@@ -533,7 +470,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('not_delivered_due_to_oos', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -552,9 +489,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets total_subscriptions_revenue
-     *
-     * @return float|null
+     * Gets total_subscriptions_revenue.
      */
     public function getTotalSubscriptionsRevenue(): ?float
     {
@@ -562,11 +497,9 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Sets total_subscriptions_revenue
+     * Sets total_subscriptions_revenue.
      *
-     * @param float|null $total_subscriptions_revenue The revenue generated from subscriptions over a period of time. Applicable to PERFORMANCE timePeriodType.
-     *
-     * @return self
+     * @param null|float $total_subscriptions_revenue The revenue generated from subscriptions over a period of time. Applicable to PERFORMANCE timePeriodType.
      */
     public function setTotalSubscriptionsRevenue(?float $total_subscriptions_revenue): self
     {
@@ -575,7 +508,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('total_subscriptions_revenue', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -591,9 +524,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets shipped_subscription_units
-     *
-     * @return float|null
+     * Gets shipped_subscription_units.
      */
     public function getShippedSubscriptionUnits(): ?float
     {
@@ -601,11 +532,9 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Sets shipped_subscription_units
+     * Sets shipped_subscription_units.
      *
-     * @param float|null $shipped_subscription_units The number of units shipped to the subscribers over a period of time. Applicable to PERFORMANCE timePeriodType.
-     *
-     * @return self
+     * @param null|float $shipped_subscription_units The number of units shipped to the subscribers over a period of time. Applicable to PERFORMANCE timePeriodType.
      */
     public function setShippedSubscriptionUnits(?float $shipped_subscription_units): self
     {
@@ -614,7 +543,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('shipped_subscription_units', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -630,9 +559,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets active_subscriptions
-     *
-     * @return float|null
+     * Gets active_subscriptions.
      */
     public function getActiveSubscriptions(): ?float
     {
@@ -640,11 +567,9 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Sets active_subscriptions
+     * Sets active_subscriptions.
      *
-     * @param float|null $active_subscriptions The number of active subscriptions present at the end of the period. Applicable to PERFORMANCE timePeriodType.
-     *
-     * @return self
+     * @param null|float $active_subscriptions The number of active subscriptions present at the end of the period. Applicable to PERFORMANCE timePeriodType.
      */
     public function setActiveSubscriptions(?float $active_subscriptions): self
     {
@@ -653,7 +578,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('active_subscriptions', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -669,9 +594,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets revenue_penetration
-     *
-     * @return float|null
+     * Gets revenue_penetration.
      */
     public function getRevenuePenetration(): ?float
     {
@@ -679,11 +602,9 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Sets revenue_penetration
+     * Sets revenue_penetration.
      *
-     * @param float|null $revenue_penetration The percentage of total program revenue out of total product revenue. Applicable to PERFORMANCE timePeriodType.
-     *
-     * @return self
+     * @param null|float $revenue_penetration The percentage of total program revenue out of total product revenue. Applicable to PERFORMANCE timePeriodType.
      */
     public function setRevenuePenetration(?float $revenue_penetration): self
     {
@@ -692,7 +613,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('revenue_penetration', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -711,9 +632,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets lost_revenue_due_to_oos
-     *
-     * @return float|null
+     * Gets lost_revenue_due_to_oos.
      */
     public function getLostRevenueDueToOos(): ?float
     {
@@ -721,11 +640,9 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Sets lost_revenue_due_to_oos
+     * Sets lost_revenue_due_to_oos.
      *
-     * @param float|null $lost_revenue_due_to_oos The revenue that would have been generated had there not been out of stock. Applicable to PERFORMANCE timePeriodType.
-     *
-     * @return self
+     * @param null|float $lost_revenue_due_to_oos The revenue that would have been generated had there not been out of stock. Applicable to PERFORMANCE timePeriodType.
      */
     public function setLostRevenueDueToOos(?float $lost_revenue_due_to_oos): self
     {
@@ -734,7 +651,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('lost_revenue_due_to_oos', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -750,9 +667,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets coupons_revenue_penetration
-     *
-     * @return float|null
+     * Gets coupons_revenue_penetration.
      */
     public function getCouponsRevenuePenetration(): ?float
     {
@@ -760,11 +675,9 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Sets coupons_revenue_penetration
+     * Sets coupons_revenue_penetration.
      *
-     * @param float|null $coupons_revenue_penetration The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to PERFORMANCE timePeriodType.
-     *
-     * @return self
+     * @param null|float $coupons_revenue_penetration The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to PERFORMANCE timePeriodType.
      */
     public function setCouponsRevenuePenetration(?float $coupons_revenue_penetration): self
     {
@@ -773,7 +686,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('coupons_revenue_penetration', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -792,9 +705,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets share_of_coupon_subscriptions
-     *
-     * @return float|null
+     * Gets share_of_coupon_subscriptions.
      */
     public function getShareOfCouponSubscriptions(): ?float
     {
@@ -802,11 +713,9 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Sets share_of_coupon_subscriptions
+     * Sets share_of_coupon_subscriptions.
      *
-     * @param float|null $share_of_coupon_subscriptions The percentage of new subscriptions acquired through coupons. Applicable to PERFORMANCE timePeriodType.
-     *
-     * @return self
+     * @param null|float $share_of_coupon_subscriptions The percentage of new subscriptions acquired through coupons. Applicable to PERFORMANCE timePeriodType.
      */
     public function setShareOfCouponSubscriptions(?float $share_of_coupon_subscriptions): self
     {
@@ -815,7 +724,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('share_of_coupon_subscriptions', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -834,9 +743,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets next30_day_total_subscriptions_revenue
-     *
-     * @return float|null
+     * Gets next30_day_total_subscriptions_revenue.
      */
     public function getNext30DayTotalSubscriptionsRevenue(): ?float
     {
@@ -844,11 +751,9 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Sets next30_day_total_subscriptions_revenue
+     * Sets next30_day_total_subscriptions_revenue.
      *
-     * @param float|null $next30_day_total_subscriptions_revenue The forecasted total subscription revenue for the next 30 days. Applicable to FORECAST timePeriodType.
-     *
-     * @return self
+     * @param null|float $next30_day_total_subscriptions_revenue The forecasted total subscription revenue for the next 30 days. Applicable to FORECAST timePeriodType.
      */
     public function setNext30DayTotalSubscriptionsRevenue(?float $next30_day_total_subscriptions_revenue): self
     {
@@ -857,7 +762,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('next30_day_total_subscriptions_revenue', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -873,9 +778,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets next60_day_total_subscriptions_revenue
-     *
-     * @return float|null
+     * Gets next60_day_total_subscriptions_revenue.
      */
     public function getNext60DayTotalSubscriptionsRevenue(): ?float
     {
@@ -883,11 +786,9 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Sets next60_day_total_subscriptions_revenue
+     * Sets next60_day_total_subscriptions_revenue.
      *
-     * @param float|null $next60_day_total_subscriptions_revenue The forecasted total subscription revenue for the next 60 days. Applicable to FORECAST timePeriodType.
-     *
-     * @return self
+     * @param null|float $next60_day_total_subscriptions_revenue The forecasted total subscription revenue for the next 60 days. Applicable to FORECAST timePeriodType.
      */
     public function setNext60DayTotalSubscriptionsRevenue(?float $next60_day_total_subscriptions_revenue): self
     {
@@ -896,7 +797,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('next60_day_total_subscriptions_revenue', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -912,9 +813,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets next90_day_total_subscriptions_revenue
-     *
-     * @return float|null
+     * Gets next90_day_total_subscriptions_revenue.
      */
     public function getNext90DayTotalSubscriptionsRevenue(): ?float
     {
@@ -922,11 +821,9 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Sets next90_day_total_subscriptions_revenue
+     * Sets next90_day_total_subscriptions_revenue.
      *
-     * @param float|null $next90_day_total_subscriptions_revenue The forecasted total subscription revenue for the next 90 days. Applicable to FORECAST timePeriodType.
-     *
-     * @return self
+     * @param null|float $next90_day_total_subscriptions_revenue The forecasted total subscription revenue for the next 90 days. Applicable to FORECAST timePeriodType.
      */
     public function setNext90DayTotalSubscriptionsRevenue(?float $next90_day_total_subscriptions_revenue): self
     {
@@ -935,7 +832,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('next90_day_total_subscriptions_revenue', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -951,9 +848,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets next30_day_shipped_subscription_units
-     *
-     * @return float|null
+     * Gets next30_day_shipped_subscription_units.
      */
     public function getNext30DayShippedSubscriptionUnits(): ?float
     {
@@ -961,11 +856,9 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Sets next30_day_shipped_subscription_units
+     * Sets next30_day_shipped_subscription_units.
      *
-     * @param float|null $next30_day_shipped_subscription_units The forecasted shipped subscription units for the next 30 days. Applicable to FORECAST timePeriodType.
-     *
-     * @return self
+     * @param null|float $next30_day_shipped_subscription_units The forecasted shipped subscription units for the next 30 days. Applicable to FORECAST timePeriodType.
      */
     public function setNext30DayShippedSubscriptionUnits(?float $next30_day_shipped_subscription_units): self
     {
@@ -974,7 +867,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('next30_day_shipped_subscription_units', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -990,9 +883,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets next60_day_shipped_subscription_units
-     *
-     * @return float|null
+     * Gets next60_day_shipped_subscription_units.
      */
     public function getNext60DayShippedSubscriptionUnits(): ?float
     {
@@ -1000,11 +891,9 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Sets next60_day_shipped_subscription_units
+     * Sets next60_day_shipped_subscription_units.
      *
-     * @param float|null $next60_day_shipped_subscription_units The forecasted shipped subscription units for the next 60 days. Applicable to FORECAST timePeriodType.
-     *
-     * @return self
+     * @param null|float $next60_day_shipped_subscription_units The forecasted shipped subscription units for the next 60 days. Applicable to FORECAST timePeriodType.
      */
     public function setNext60DayShippedSubscriptionUnits(?float $next60_day_shipped_subscription_units): self
     {
@@ -1013,7 +902,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('next60_day_shipped_subscription_units', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -1029,9 +918,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets next90_day_shipped_subscription_units
-     *
-     * @return float|null
+     * Gets next90_day_shipped_subscription_units.
      */
     public function getNext90DayShippedSubscriptionUnits(): ?float
     {
@@ -1039,11 +926,9 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Sets next90_day_shipped_subscription_units
+     * Sets next90_day_shipped_subscription_units.
      *
-     * @param float|null $next90_day_shipped_subscription_units The forecasted shipped subscription units for the next 90 days. Applicable to FORECAST timePeriodType.
-     *
-     * @return self
+     * @param null|float $next90_day_shipped_subscription_units The forecasted shipped subscription units for the next 90 days. Applicable to FORECAST timePeriodType.
      */
     public function setNext90DayShippedSubscriptionUnits(?float $next90_day_shipped_subscription_units): self
     {
@@ -1052,7 +937,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('next90_day_shipped_subscription_units', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -1068,30 +953,26 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets time_interval
-     *
-     * @return \SpApi\Model\replenishment\v2022_11_07\TimeInterval|null
+     * Gets time_interval.
      */
-    public function getTimeInterval(): ?\SpApi\Model\replenishment\v2022_11_07\TimeInterval
+    public function getTimeInterval(): ?TimeInterval
     {
         return $this->container['time_interval'];
     }
 
     /**
-     * Sets time_interval
+     * Sets time_interval.
      *
-     * @param \SpApi\Model\replenishment\v2022_11_07\TimeInterval|null $time_interval time_interval
-     *
-     * @return self
+     * @param null|TimeInterval $time_interval time_interval
      */
-    public function setTimeInterval(?\SpApi\Model\replenishment\v2022_11_07\TimeInterval $time_interval): self
+    public function setTimeInterval(?TimeInterval $time_interval): self
     {
         if (is_null($time_interval)) {
             array_push($this->openAPINullablesSetToNull, 'time_interval');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('time_interval', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -1102,9 +983,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets currency_code
-     *
-     * @return string|null
+     * Gets currency_code.
      */
     public function getCurrencyCode(): ?string
     {
@@ -1112,11 +991,9 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Sets currency_code
+     * Sets currency_code.
      *
-     * @param string|null $currency_code The currency code in ISO 4217 format.
-     *
-     * @return self
+     * @param null|string $currency_code the currency code in ISO 4217 format
      */
     public function setCurrencyCode(?string $currency_code): self
     {
@@ -1125,7 +1002,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('currency_code', $nullablesSetToNull);
-            if ($index !== false) {
+            if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -1135,13 +1012,10 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
         return $this;
     }
 
-
     /**
      * Returns true if offset exists. False otherwise.
      *
-     * @param integer $offset Offset
-     *
-     * @return boolean
+     * @param int $offset Offset
      */
     public function offsetExists($offset): bool
     {
@@ -1151,9 +1025,9 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
-     * @return mixed|null
+     * @return null|mixed
      */
     #[\ReturnTypeWillChange]
     public function offsetGet($offset): mixed
@@ -1164,10 +1038,8 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets value based on offset.
      *
-     * @param int|null $offset Offset
+     * @param null|int $offset Offset
      * @param mixed    $value  Value to be set
-     *
-     * @return void
      */
     public function offsetSet($offset, mixed $value): void
     {
@@ -1181,9 +1053,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
     /**
      * Unsets offset.
      *
-     * @param integer $offset Offset
-     *
-     * @return void
+     * @param int $offset Offset
      */
     public function offsetUnset($offset): void
     {
@@ -1192,39 +1062,67 @@ class ListOfferMetricsResponseOffer implements ModelInterface, ArrayAccess, \Jso
 
     /**
      * Serializes the object to a value that can be serialized natively by json_encode().
-     * @link https://www.php.net/manual/en/jsonserializable.jsonserialize.php
      *
-     * @return mixed Returns data which can be serialized by json_encode(), which is a value
-     * of any type other than a resource.
+     * @see https://www.php.net/manual/en/jsonserializable.jsonserialize.php
+     *
+     * @return mixed returns data which can be serialized by json_encode(), which is a value
+     *               of any type other than a resource
      */
     #[\ReturnTypeWillChange]
     public function jsonSerialize(): mixed
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
-     * Gets the string presentation of the object
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return json_encode(
-            ObjectSerializer::sanitizeForSerialization($this),
-            JSON_PRETTY_PRINT
-        );
-    }
-
-    /**
-     * Gets a header-safe presentation of the object
-     *
-     * @return string
+     * Gets a header-safe presentation of the object.
      */
     public function toHeaderValue(): string
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
+
+    /**
+     * Array of nullable properties.
+     */
+    protected static function openAPINullables(): array
+    {
+        return self::$openAPINullables;
+    }
+
+    /**
+     * Array of nullable field names deliberately set to null.
+     *
+     * @return bool[]
+     */
+    private function getOpenAPINullablesSetToNull(): array
+    {
+        return $this->openAPINullablesSetToNull;
+    }
+
+    /**
+     * Setter - Array of nullable field names deliberately set to null.
+     *
+     * @param bool[] $openAPINullablesSetToNull
+     */
+    private function setOpenAPINullablesSetToNull(array $openAPINullablesSetToNull): void
+    {
+        $this->openAPINullablesSetToNull = $openAPINullablesSetToNull;
+    }
+
+    /**
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array.
+     *
+     * @param mixed $defaultValue
+     */
+    private function setIfExists(string $variableName, array $fields, $defaultValue): void
+    {
+        if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
+            $this->openAPINullablesSetToNull[] = $variableName;
+        }
+
+        $this->container[$variableName] = $fields[$variableName] ?? $defaultValue;
+    }
 }
-
-
