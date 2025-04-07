@@ -1,7 +1,7 @@
 {
-  "name": "amazon-selling-partner-api-sdk-js-test",
+  "name": "amazon-sp-api-sdk-js",
   "type": "module",
-  "description": "This package is sellingpartnerAPI Javascript SDK with LWA library.",
+  "description": "This package is sellingpartnerAPI Javascript SDK for nodeJS with LWA library.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

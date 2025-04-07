@@ -1,10 +1,10 @@
 import { AppConfig } from './app.config.mjs';
-import { LwaAuthClient } from '@amzn/testsellingpartnerjavascriptapilwalib/src/helper/LwaAuthClient.mjs';
+import { LwaAuthClient } from 'amazon-sp-api-sdk-js/src/helper/LwaAuthClient.mjs';
 
 import {
   SellersApi,
   ApiClient as SellersApiClient,
-} from '@amzn/testsellingpartnerjavascriptapilwalib/sdk/sellers_v1/src/index.js';
+} from 'amazon-sp-api-sdk-js/sdk/sellers_v1/src/index.js';
 
 (async () => {
   const lwaClient = new LwaAuthClient(

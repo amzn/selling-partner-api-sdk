@@ -76,7 +76,7 @@ jobs:
           GH_TOKEN: ${{ secrets.TOMLIKED_PAT }}
 
   tag_and_release:
-    needs: [release_javascript]
+    needs: [release_java, release_php, release_javascript]
     runs-on: ubuntu-latest
 
     steps:
@@ -97,7 +97,7 @@ jobs:
           tag_name: ${{ github.event.inputs.newVersionNumber }}
 
   tag_and_release_php_repo:
-    needs: [ release_java, release_php ]
+    needs: [release_java, release_php, release_javascript]
     runs-on: ubuntu-latest
 
     steps:

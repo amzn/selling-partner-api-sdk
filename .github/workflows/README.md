@@ -3,8 +3,10 @@
 The following workflows are currently available:
 * [Build Java SDK](https://github.com/amzn/selling-partner-api-sdk/blob/main/.github/workflows/build-java-sdk.yml)
 * [Build PHP SDK](https://github.com/amzn/selling-partner-api-sdk/blob/main/.github/workflows/build-php-sdk.yml)
+* [Build JavaScript SDK](https://github.com/amzn/selling-partner-api-sdk/blob/main/.github/workflows/build-javascript-sdk.yml)
 * [Run tests for Java SDK](https://github.com/amzn/selling-partner-api-sdk/blob/main/.github/workflows/test-java-sdk.yml)
 * [Run tests for PHP SDK](https://github.com/amzn/selling-partner-api-sdk/blob/main/.github/workflows/test-php-sdk.yml)
+* [Run tests for JavaScript SDK](https://github.com/amzn/selling-partner-api-sdk/blob/main/.github/workflows/test-javascript-sdk.yml)
 * [Update mock backend resources](https://github.com/amzn/selling-partner-api-sdk/blob/main/.github/workflows/update-mock-backend-resources.yml)
 * [Create Release](https://github.com/amzn/selling-partner-api-sdk/blob/main/.github/workflows/create-release.yml)
 

@@ -92,4 +92,4 @@ jobs:
         branch: feature/update-javascript-sdk
         assignees: Tong8s
         path: ./selling-partner-api-sdk
-        # token: ${{ secrets.MAFGE_PAT }}
+        token: ${{ secrets.MAFGE_PAT }}
