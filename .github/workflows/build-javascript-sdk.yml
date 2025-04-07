@@ -23,11 +23,10 @@ jobs:
         node-version: '21'
     - name: Install openapi generator
       run: npm install -g @openapitools/openapi-generator-cli
-    - name: Remove old sdk files and packed tarball sdk package
+    - name: Remove old sdk files
       working-directory: ./selling-partner-api-sdk/javascript
       run: |
-        rm -rf sdk/* && \
-        rm -rf *.tgz
+        rm -rf sdk/*
     - name: Execute OpenAPI generator
       working-directory: ./selling-partner-api-sdk/javascript
       run: |
@@ -83,10 +82,6 @@ jobs:
       working-directory: ./selling-partner-api-sdk/javascript
       run: |
         cp -R ../../selling-partner-api-models/clients/sellingpartner-api-aa-javascript/src/helper/* src/helper/
-    - name: Pack tarball SDK package
-      working-directory: ./selling-partner-api-sdk/javascript
-      run: |
-        npm pack
     - name: Create PR
       uses: peter-evans/create-pull-request@v7
       with:
