@@ -73,7 +73,7 @@ jobs:
           GH_TOKEN: ${{ secrets.TOMLIKED_PAT }}
 
   tag_and_release:
-    needs: [release_java, release_php]
+    needs: [release_javascript]
     runs-on: ubuntu-latest
 
     steps:
