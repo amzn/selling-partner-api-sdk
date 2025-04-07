@@ -1,5 +1,6 @@
 {
   "name": "@amazon-sp-api-release/amazon-sp-api-sdk-js",
+  "version": "1.0.0-rc2",
   "type": "module",
   "description": "This package is sellingpartnerAPI Javascript SDK for nodeJS with LWA library.",
   "main": "index.js",
@@ -16,7 +17,9 @@
   "license": "ISC",
   "files": [
     "src/",
-    "sdk/"
+    "sdk/*/src/**/*",
+    "sdk/*/docs/**/*",
+    "sdk/*/README.md"
    ],
    "publishConfig": {
     "access": "public"
