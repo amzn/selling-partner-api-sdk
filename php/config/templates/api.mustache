@@ -266,67 +266,38 @@ use {{invokerPackage}}\ObjectSerializer;
             {{#returnType}}
             {{#responses}}
             {{#-first}}
-
-            switch($statusCode) {
-            {{/-first}}
             {{#dataType}}
-                {{^isWildcard}}case {{code}}:{{/isWildcard}}{{#isWildcard}}default:{{/isWildcard}}
-                    if ('{{{dataType}}}' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('{{dataType}}' !== 'string') {
-                            $content = json_decode($content);
-                        }
+                if ('{{{dataType}}}' === '\SplFileObject') {
+                    $content = $response->getBody(); //stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('{{dataType}}' !== 'string') {
+                        $content = json_decode($content);
                     }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '{{{dataType}}}', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            {{/dataType}}
-            {{#-last}}
-            }
-            {{/-last}}
-            {{/responses}}
-
-            $returnType = '{{{returnType}}}';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
                 }
-            }
 
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-            {{/returnType}}
-            {{^returnType}}
-
-            return [null, $statusCode, $response->getHeaders()];
-            {{/returnType}}
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-        {{#responses}}
-            {{#dataType}}
-                {{^isWildcard}}case {{code}}:{{/isWildcard}}{{#isWildcard}}default:{{/isWildcard}}
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '{{{dataType}}}',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
+                return [
+                    ObjectSerializer::deserialize($content, '{{{dataType}}}', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders()
+                ];
             {{/dataType}}
-        {{/responses}}
-            }
+            {{/-first}}
+            {{/responses}}
+            {{/returnType}}
+        } catch (ApiException $e) {
+            {{#responses}}
+            {{#dataType}}
+            {{#-last}}
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '{{{dataType}}}',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
+            {{/-last}}
+            {{/dataType}}
+            {{/responses}}
             throw $e;
         }
     }
@@ -617,18 +588,12 @@ use {{invokerPackage}}\ObjectSerializer;
         }
         {{/formParams}}
 
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                [{{#produces}}'{{{mediaType}}}'{{^-last}}, {{/-last}}{{/produces}}]
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                [{{#produces}}'{{{mediaType}}}'{{^-last}}, {{/-last}}{{/produces}}],
-                {{#consumes}}'{{{mediaType}}}'{{^-last}}, {{/-last}}{{/consumes}}
-                {{^consumes}}''{{/consumes}},
-                false
-            );
-        }
+        $headers = $this->headerSelector->selectHeaders(
+            [{{#produces}}'{{{mediaType}}}'{{^-last}}, {{/-last}}{{/produces}}],
+            {{#consumes}}'{{{mediaType}}}'{{^-last}}, {{/-last}}{{/consumes}}
+            {{^consumes}}''{{/consumes}},
+            $multipart
+        );
 
         // for model (json/xml)
         {{#bodyParams}}
