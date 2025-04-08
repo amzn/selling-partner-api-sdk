@@ -65,9 +65,9 @@ import {
 
 (async () => {
   const lwaClient = new LwaAuthClient(
-    AppConfig.lwaClientId,
-    AppConfig.lwaClientSecret,
-    AppConfig.lwaRefreshToken
+    '<YOUR_CLIENT_ID>',
+    '<YOUR_CLIENT_SECRET>',
+    '<YOUR_REFRESH_TOKEN>'
   );
   const sellerApiClient = new SellersApiClient(
     'https://sellingpartnerapi-na.amazon.com'
@@ -85,7 +85,7 @@ import {
 })();
 ```
 
-Alternatively, you can go to `@amazon-sp-api-release/amazon-sp-api-sdk-js/src/sample-node-app` and copy over the `index.js` file and give it a try.
+Alternatively, you can go to `@amazon-sp-api-release/amazon-sp-api-sdk-js/src/sample-node-app` and copy over and modify `index.js` and `app.config.mjs` files and give them a try.
 
 ##### Additional Note: 
 This Amazon Selling Partner API JavaScript SDK is fully compatible with ECMAScript modules (ESM). You can use modern ES6+ import/export syntax as demonstrated in the example code:
