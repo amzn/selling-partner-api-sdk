@@ -98,15 +98,15 @@ import {
 
 ### Additional documentation
 
-For detailed API documentation and examples, please refer to our [API Reference](https://developer-docs.amazon.com/sp-api/docs/sp-api-reference).
+For detailed API documentation and examples, please refer to README file in each sdk/<API>/ folder in our NPM package. eg. For Sellers API documents, Go to [Code tab](https://www.npmjs.com/package/@amazon-sp-api-release/amazon-sp-api-sdk-js?activeTab=code), find in path `/@amazon-sp-api-release/amazon-sp-api-sdk-js/sdk/sellers_v1/README.md`
 
 ### Giving Feedback
 
 We need your help in making this SDK great. Please participate in the community and contribute to this effort by submitting issues, participating in discussion forums and submitting pull requests through the following channels:
 
-Submit [issues](https://github.com/amzn/selling-partner-api-sdk-js/issues/new/choose) - this is the preferred channel to interact with our team
+Submit [issues](https://github.com/amzn/selling-partner-api-sdk/issues/new/choose) - this is the preferred channel to interact with our team
 Articulate your feature request or upvote existing ones on our [Issues][sdk-issues] page
 
-[sdk-issues]: https://github.com/amzn/selling-partner-api-sdk-js/issues
+[sdk-issues]: https://github.com/amzn/selling-partner-api-sdk/issues
 
 
