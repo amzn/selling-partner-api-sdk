@@ -1,6 +1,9 @@
 {{>licenseInfo}}
 import expect from 'expect.js';
-import * as {{moduleName}} from '../../src/index.js';
+import { join } from 'path';
+
+const modulePath = join(process.cwd(), 'src', '{{invokerPackage}}', 'index.js');
+const {{moduleName}} = await import(modulePath);
 
 let instance;
 

@@ -1,7 +1,10 @@
 {{>licenseInfo}}
 import expect from 'expect.js';
 import sinon from 'sinon';
-import * as {{moduleName}} from '../../src/index.js';
+import { join } from 'path';
+
+const modulePath = join(process.cwd(), 'src', '{{invokerPackage}}', 'index.js');
+const {{moduleName}} = await import(modulePath);
 
 let instance;
 let sandbox;
@@ -105,6 +108,7 @@ describe('{{classname}}', () => {
       {{#-first}}
       {{#schema}}
       expect(data instanceof {{#isPrimitiveType}}{{returnBaseType}}{{/isPrimitiveType}}{{^isPrimitiveType}}{{moduleName}}.{{returnBaseType}}{{/isPrimitiveType}}).to.be.true;
+      expect(data).to.equal(mock{{operationId}}Data.response.data);
       {{/schema}}
       {{^schema}}
       expect(data).to.be.undefined;
@@ -138,6 +142,7 @@ describe('{{classname}}', () => {
       {{#-first}}
       {{#schema}}
       expect(response).to.have.property('data');
+      expect(response.data).to.equal(mock{{operationId}}Data.response.data)
       {{/schema}}
       {{/-first}}
       {{/responses}}

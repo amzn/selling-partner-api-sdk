@@ -18,35 +18,24 @@ jobs:
       - name: Install dependencies in each API dir
         working-directory: ./javascript/sdk
         run: |
-            for dir in */; do
-              if [ -f "$dir/package.json" ]; then
-                echo "➡️ Installing dependencies in $dir"
-                cd "$dir"
-                npm install
-                cd ..
-              fi
-            done
+          npm install
       - name: Run tests and generate reports
         working-directory: ./javascript/sdk
         run: |
           mkdir -p ../testreports
           
-          for dir in */; do
-            if [ -f "$dir/package.json" ]; then
-              echo "🧪 Running tests in $dir"
-              cd "$dir"
+          for dir in test/*/; do
+              api_name=$(basename "$dir")
+              echo "🧪 Running tests for $api_name"
               
-              if npx mocha --require @babel/register --recursive \
-                --reporter mocha-junit-reporter \
-                --reporter-options mochaFile="../../testreports/junit-${dir%/}.xml"; then
-                echo "✅ All tests in ${dir%/} are passing"
+              if npx mocha --require @babel/register \
+                  --reporter spec \
+                  "test/${api_name}/**/*.js" 2>&1 | tee "../testreports/spec-${api_name}.txt"; then
+                  echo "✅ All tests for ${api_name} are passing"
               else
-                echo "❌ Tests in ${dir%/} failed"
-                cd ..
-                exit 1
+                  echo "❌ Tests for ${api_name} failed"
+                  exit 1
               fi
-              cd ..
-            fi
           done
       - name: Archive reports
         if: always()
