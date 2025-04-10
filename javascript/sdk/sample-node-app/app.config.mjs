@@ -1,5 +1,5 @@
 export const AppConfig = {
-    lwaClientId: '<YOUR_CLIENT_ID>',
-    lwaClientSecret: '<YOUR_CLIENT_SECRET>',
-    lwaRefreshToken: '<YOUR_REFRESH_TOKEN>',
+    lwaClientId: '<REPLACE_WITH_YOUR_CLIENT_ID>',
+    lwaClientSecret: '<REPLACE_WITH_YOUR_CLIENT_SECRET>',
+    lwaRefreshToken: '<REPLACE_WITH_YOUR_REFRESH_TOKEN>'
 }
