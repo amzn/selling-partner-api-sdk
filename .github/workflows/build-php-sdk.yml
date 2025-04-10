@@ -12,7 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: main
           path: selling-partner-api-sdk
+          fetch-depth: 0
       - uses: actions/checkout@v4
         with:
           repository: amzn/selling-partner-api-models
