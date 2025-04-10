@@ -235,260 +235,27 @@ class MessagingApi
                     (string) $response->getBody()
                 );
             }
-
-            switch ($statusCode) {
-                case 201:
-                    if ('\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 400:
-                    if ('\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 403:
-                    if ('\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 404:
-                    if ('\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 413:
-                    if ('\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 415:
-                    if ('\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 429:
-                    if ('\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 500:
-                    if ('\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 503:
-                    if ('\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-            }
-
-            $returnType = '\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse';
-            if ('\SplFileObject' === $returnType) {
+            if ('\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' === '\SplFileObject') {
                 $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ('string' !== $returnType) {
+                if ('\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse' !== 'string') {
                     $content = json_decode($content);
                 }
             }
 
             return [
-                ObjectSerializer::deserialize($content, $returnType, []),
+                ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse', []),
                 $response->getStatusCode(),
                 $response->getHeaders(),
             ];
         } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 201:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 413:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 415:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 503:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-            }
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
 
             throw $e;
         }
@@ -646,17 +413,11 @@ class MessagingApi
             );
         }
 
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/hal+json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/hal+json'],
-                'application/json',
-                false
-            );
-        }
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/hal+json'],
+            'application/json',
+            $multipart
+        );
 
         // for model (json/xml)
         if (isset($body)) {
@@ -790,260 +551,27 @@ class MessagingApi
                     (string) $response->getBody()
                 );
             }
-
-            switch ($statusCode) {
-                case 201:
-                    if ('\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 400:
-                    if ('\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 403:
-                    if ('\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 404:
-                    if ('\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 413:
-                    if ('\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 415:
-                    if ('\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 429:
-                    if ('\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 500:
-                    if ('\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 503:
-                    if ('\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-            }
-
-            $returnType = '\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse';
-            if ('\SplFileObject' === $returnType) {
+            if ('\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse' === '\SplFileObject') {
                 $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ('string' !== $returnType) {
+                if ('\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse' !== 'string') {
                     $content = json_decode($content);
                 }
             }
 
             return [
-                ObjectSerializer::deserialize($content, $returnType, []),
+                ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse', []),
                 $response->getStatusCode(),
                 $response->getHeaders(),
             ];
         } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 201:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 413:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 415:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 503:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-            }
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\messaging\v1\CreateAmazonMotorsResponse',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
 
             throw $e;
         }
@@ -1201,17 +729,11 @@ class MessagingApi
             );
         }
 
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/hal+json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/hal+json'],
-                'application/json',
-                false
-            );
-        }
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/hal+json'],
+            'application/json',
+            $multipart
+        );
 
         // for model (json/xml)
         if (isset($body)) {
@@ -1345,260 +867,27 @@ class MessagingApi
                     (string) $response->getBody()
                 );
             }
-
-            switch ($statusCode) {
-                case 201:
-                    if ('\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 400:
-                    if ('\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 403:
-                    if ('\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 404:
-                    if ('\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 413:
-                    if ('\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 415:
-                    if ('\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 429:
-                    if ('\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 500:
-                    if ('\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 503:
-                    if ('\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-            }
-
-            $returnType = '\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse';
-            if ('\SplFileObject' === $returnType) {
+            if ('\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' === '\SplFileObject') {
                 $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ('string' !== $returnType) {
+                if ('\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse' !== 'string') {
                     $content = json_decode($content);
                 }
             }
 
             return [
-                ObjectSerializer::deserialize($content, $returnType, []),
+                ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse', []),
                 $response->getStatusCode(),
                 $response->getHeaders(),
             ];
         } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 201:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 413:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 415:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 503:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-            }
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
 
             throw $e;
         }
@@ -1756,17 +1045,11 @@ class MessagingApi
             );
         }
 
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/hal+json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/hal+json'],
-                'application/json',
-                false
-            );
-        }
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/hal+json'],
+            'application/json',
+            $multipart
+        );
 
         // for model (json/xml)
         if (isset($body)) {
@@ -1900,260 +1183,27 @@ class MessagingApi
                     (string) $response->getBody()
                 );
             }
-
-            switch ($statusCode) {
-                case 201:
-                    if ('\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 400:
-                    if ('\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 403:
-                    if ('\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 404:
-                    if ('\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 413:
-                    if ('\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 415:
-                    if ('\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 429:
-                    if ('\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 500:
-                    if ('\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 503:
-                    if ('\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-            }
-
-            $returnType = '\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse';
-            if ('\SplFileObject' === $returnType) {
+            if ('\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse' === '\SplFileObject') {
                 $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ('string' !== $returnType) {
+                if ('\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse' !== 'string') {
                     $content = json_decode($content);
                 }
             }
 
             return [
-                ObjectSerializer::deserialize($content, $returnType, []),
+                ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse', []),
                 $response->getStatusCode(),
                 $response->getHeaders(),
             ];
         } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 201:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 413:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 415:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 503:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-            }
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
 
             throw $e;
         }
@@ -2311,17 +1361,11 @@ class MessagingApi
             );
         }
 
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/hal+json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/hal+json'],
-                'application/json',
-                false
-            );
-        }
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/hal+json'],
+            'application/json',
+            $multipart
+        );
 
         // for model (json/xml)
         if (isset($body)) {
@@ -2455,260 +1499,27 @@ class MessagingApi
                     (string) $response->getBody()
                 );
             }
-
-            switch ($statusCode) {
-                case 201:
-                    if ('\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 400:
-                    if ('\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 403:
-                    if ('\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 404:
-                    if ('\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 413:
-                    if ('\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 415:
-                    if ('\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 429:
-                    if ('\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 500:
-                    if ('\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 503:
-                    if ('\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-            }
-
-            $returnType = '\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse';
-            if ('\SplFileObject' === $returnType) {
+            if ('\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse' === '\SplFileObject') {
                 $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ('string' !== $returnType) {
+                if ('\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse' !== 'string') {
                     $content = json_decode($content);
                 }
             }
 
             return [
-                ObjectSerializer::deserialize($content, $returnType, []),
+                ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse', []),
                 $response->getStatusCode(),
                 $response->getHeaders(),
             ];
         } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 201:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 413:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 415:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 503:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-            }
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
 
             throw $e;
         }
@@ -2866,17 +1677,11 @@ class MessagingApi
             );
         }
 
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/hal+json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/hal+json'],
-                'application/json',
-                false
-            );
-        }
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/hal+json'],
+            'application/json',
+            $multipart
+        );
 
         // for model (json/xml)
         if (isset($body)) {
@@ -3010,260 +1815,27 @@ class MessagingApi
                     (string) $response->getBody()
                 );
             }
-
-            switch ($statusCode) {
-                case 201:
-                    if ('\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 400:
-                    if ('\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 403:
-                    if ('\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 404:
-                    if ('\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 413:
-                    if ('\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 415:
-                    if ('\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 429:
-                    if ('\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 500:
-                    if ('\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 503:
-                    if ('\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-            }
-
-            $returnType = '\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse';
-            if ('\SplFileObject' === $returnType) {
+            if ('\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse' === '\SplFileObject') {
                 $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ('string' !== $returnType) {
+                if ('\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse' !== 'string') {
                     $content = json_decode($content);
                 }
             }
 
             return [
-                ObjectSerializer::deserialize($content, $returnType, []),
+                ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse', []),
                 $response->getStatusCode(),
                 $response->getHeaders(),
             ];
         } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 201:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 413:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 415:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 503:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-            }
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
 
             throw $e;
         }
@@ -3421,17 +1993,11 @@ class MessagingApi
             );
         }
 
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/hal+json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/hal+json'],
-                'application/json',
-                false
-            );
-        }
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/hal+json'],
+            'application/json',
+            $multipart
+        );
 
         // for model (json/xml)
         if (isset($body)) {
@@ -3565,260 +2131,27 @@ class MessagingApi
                     (string) $response->getBody()
                 );
             }
-
-            switch ($statusCode) {
-                case 201:
-                    if ('\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 400:
-                    if ('\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 403:
-                    if ('\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 404:
-                    if ('\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 413:
-                    if ('\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 415:
-                    if ('\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 429:
-                    if ('\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 500:
-                    if ('\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 503:
-                    if ('\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-            }
-
-            $returnType = '\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse';
-            if ('\SplFileObject' === $returnType) {
+            if ('\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse' === '\SplFileObject') {
                 $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ('string' !== $returnType) {
+                if ('\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse' !== 'string') {
                     $content = json_decode($content);
                 }
             }
 
             return [
-                ObjectSerializer::deserialize($content, $returnType, []),
+                ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse', []),
                 $response->getStatusCode(),
                 $response->getHeaders(),
             ];
         } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 201:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 413:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 415:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 503:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-            }
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
 
             throw $e;
         }
@@ -3976,17 +2309,11 @@ class MessagingApi
             );
         }
 
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/hal+json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/hal+json'],
-                'application/json',
-                false
-            );
-        }
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/hal+json'],
+            'application/json',
+            $multipart
+        );
 
         // for model (json/xml)
         if (isset($body)) {
@@ -4114,260 +2441,27 @@ class MessagingApi
                     (string) $response->getBody()
                 );
             }
-
-            switch ($statusCode) {
-                case 201:
-                    if ('\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 400:
-                    if ('\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 403:
-                    if ('\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 404:
-                    if ('\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 413:
-                    if ('\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 415:
-                    if ('\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 429:
-                    if ('\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 500:
-                    if ('\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 503:
-                    if ('\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-            }
-
-            $returnType = '\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse';
-            if ('\SplFileObject' === $returnType) {
+            if ('\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' === '\SplFileObject') {
                 $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ('string' !== $returnType) {
+                if ('\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse' !== 'string') {
                     $content = json_decode($content);
                 }
             }
 
             return [
-                ObjectSerializer::deserialize($content, $returnType, []),
+                ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse', []),
                 $response->getStatusCode(),
                 $response->getHeaders(),
             ];
         } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 201:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 413:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 415:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 503:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-            }
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\messaging\v1\CreateNegativeFeedbackRemovalResponse',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
 
             throw $e;
         }
@@ -4509,17 +2603,11 @@ class MessagingApi
             );
         }
 
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/hal+json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/hal+json'],
-                '',
-                false
-            );
-        }
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/hal+json'],
+            '',
+            $multipart
+        );
 
         // for model (json/xml)
         if (count($formParams) > 0) {
@@ -4647,260 +2735,27 @@ class MessagingApi
                     (string) $response->getBody()
                 );
             }
-
-            switch ($statusCode) {
-                case 201:
-                    if ('\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 400:
-                    if ('\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 403:
-                    if ('\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 404:
-                    if ('\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 413:
-                    if ('\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 415:
-                    if ('\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 429:
-                    if ('\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 500:
-                    if ('\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 503:
-                    if ('\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-            }
-
-            $returnType = '\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse';
-            if ('\SplFileObject' === $returnType) {
+            if ('\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse' === '\SplFileObject') {
                 $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ('string' !== $returnType) {
+                if ('\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse' !== 'string') {
                     $content = json_decode($content);
                 }
             }
 
             return [
-                ObjectSerializer::deserialize($content, $returnType, []),
+                ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse', []),
                 $response->getStatusCode(),
                 $response->getHeaders(),
             ];
         } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 201:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 413:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 415:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 503:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-            }
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
 
             throw $e;
         }
@@ -5058,17 +2913,11 @@ class MessagingApi
             );
         }
 
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/hal+json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/hal+json'],
-                'application/json',
-                false
-            );
-        }
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/hal+json'],
+            'application/json',
+            $multipart
+        );
 
         // for model (json/xml)
         if (isset($body)) {
@@ -5202,260 +3051,27 @@ class MessagingApi
                     (string) $response->getBody()
                 );
             }
-
-            switch ($statusCode) {
-                case 201:
-                    if ('\SpApi\Model\messaging\v1\CreateWarrantyResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateWarrantyResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateWarrantyResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 400:
-                    if ('\SpApi\Model\messaging\v1\CreateWarrantyResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateWarrantyResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateWarrantyResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 403:
-                    if ('\SpApi\Model\messaging\v1\CreateWarrantyResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateWarrantyResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateWarrantyResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 404:
-                    if ('\SpApi\Model\messaging\v1\CreateWarrantyResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateWarrantyResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateWarrantyResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 413:
-                    if ('\SpApi\Model\messaging\v1\CreateWarrantyResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateWarrantyResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateWarrantyResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 415:
-                    if ('\SpApi\Model\messaging\v1\CreateWarrantyResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateWarrantyResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateWarrantyResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 429:
-                    if ('\SpApi\Model\messaging\v1\CreateWarrantyResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateWarrantyResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateWarrantyResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 500:
-                    if ('\SpApi\Model\messaging\v1\CreateWarrantyResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateWarrantyResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateWarrantyResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 503:
-                    if ('\SpApi\Model\messaging\v1\CreateWarrantyResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\CreateWarrantyResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateWarrantyResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-            }
-
-            $returnType = '\SpApi\Model\messaging\v1\CreateWarrantyResponse';
-            if ('\SplFileObject' === $returnType) {
+            if ('\SpApi\Model\messaging\v1\CreateWarrantyResponse' === '\SplFileObject') {
                 $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ('string' !== $returnType) {
+                if ('\SpApi\Model\messaging\v1\CreateWarrantyResponse' !== 'string') {
                     $content = json_decode($content);
                 }
             }
 
             return [
-                ObjectSerializer::deserialize($content, $returnType, []),
+                ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateWarrantyResponse', []),
                 $response->getStatusCode(),
                 $response->getHeaders(),
             ];
         } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 201:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateWarrantyResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateWarrantyResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateWarrantyResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateWarrantyResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 413:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateWarrantyResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 415:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateWarrantyResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateWarrantyResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateWarrantyResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 503:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\CreateWarrantyResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-            }
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\messaging\v1\CreateWarrantyResponse',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
 
             throw $e;
         }
@@ -5613,17 +3229,11 @@ class MessagingApi
             );
         }
 
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/hal+json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/hal+json'],
-                'application/json',
-                false
-            );
-        }
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/hal+json'],
+            'application/json',
+            $multipart
+        );
 
         // for model (json/xml)
         if (isset($body)) {
@@ -5751,260 +3361,27 @@ class MessagingApi
                     (string) $response->getBody()
                 );
             }
-
-            switch ($statusCode) {
-                case 200:
-                    if ('\SpApi\Model\messaging\v1\GetAttributesResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\GetAttributesResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\GetAttributesResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 400:
-                    if ('\SpApi\Model\messaging\v1\GetAttributesResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\GetAttributesResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\GetAttributesResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 403:
-                    if ('\SpApi\Model\messaging\v1\GetAttributesResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\GetAttributesResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\GetAttributesResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 404:
-                    if ('\SpApi\Model\messaging\v1\GetAttributesResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\GetAttributesResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\GetAttributesResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 413:
-                    if ('\SpApi\Model\messaging\v1\GetAttributesResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\GetAttributesResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\GetAttributesResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 415:
-                    if ('\SpApi\Model\messaging\v1\GetAttributesResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\GetAttributesResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\GetAttributesResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 429:
-                    if ('\SpApi\Model\messaging\v1\GetAttributesResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\GetAttributesResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\GetAttributesResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 500:
-                    if ('\SpApi\Model\messaging\v1\GetAttributesResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\GetAttributesResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\GetAttributesResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 503:
-                    if ('\SpApi\Model\messaging\v1\GetAttributesResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\GetAttributesResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\GetAttributesResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-            }
-
-            $returnType = '\SpApi\Model\messaging\v1\GetAttributesResponse';
-            if ('\SplFileObject' === $returnType) {
+            if ('\SpApi\Model\messaging\v1\GetAttributesResponse' === '\SplFileObject') {
                 $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ('string' !== $returnType) {
+                if ('\SpApi\Model\messaging\v1\GetAttributesResponse' !== 'string') {
                     $content = json_decode($content);
                 }
             }
 
             return [
-                ObjectSerializer::deserialize($content, $returnType, []),
+                ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\GetAttributesResponse', []),
                 $response->getStatusCode(),
                 $response->getHeaders(),
             ];
         } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\GetAttributesResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\GetAttributesResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\GetAttributesResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\GetAttributesResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 413:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\GetAttributesResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 415:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\GetAttributesResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\GetAttributesResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\GetAttributesResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 503:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\GetAttributesResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-            }
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\messaging\v1\GetAttributesResponse',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
 
             throw $e;
         }
@@ -6146,17 +3523,11 @@ class MessagingApi
             );
         }
 
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/hal+json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/hal+json'],
-                '',
-                false
-            );
-        }
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/hal+json'],
+            '',
+            $multipart
+        );
 
         // for model (json/xml)
         if (count($formParams) > 0) {
@@ -6278,260 +3649,27 @@ class MessagingApi
                     (string) $response->getBody()
                 );
             }
-
-            switch ($statusCode) {
-                case 200:
-                    if ('\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 400:
-                    if ('\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 403:
-                    if ('\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 404:
-                    if ('\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 413:
-                    if ('\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 415:
-                    if ('\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 429:
-                    if ('\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 500:
-                    if ('\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 503:
-                    if ('\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-            }
-
-            $returnType = '\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse';
-            if ('\SplFileObject' === $returnType) {
+            if ('\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse' === '\SplFileObject') {
                 $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ('string' !== $returnType) {
+                if ('\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse' !== 'string') {
                     $content = json_decode($content);
                 }
             }
 
             return [
-                ObjectSerializer::deserialize($content, $returnType, []),
+                ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse', []),
                 $response->getStatusCode(),
                 $response->getHeaders(),
             ];
         } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 413:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 415:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 503:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-            }
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
 
             throw $e;
         }
@@ -6673,17 +3811,11 @@ class MessagingApi
             );
         }
 
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/hal+json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/hal+json'],
-                '',
-                false
-            );
-        }
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/hal+json'],
+            '',
+            $multipart
+        );
 
         // for model (json/xml)
         if (count($formParams) > 0) {
@@ -6811,260 +3943,27 @@ class MessagingApi
                     (string) $response->getBody()
                 );
             }
-
-            switch ($statusCode) {
-                case 201:
-                    if ('\SpApi\Model\messaging\v1\InvoiceResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\InvoiceResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\InvoiceResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 400:
-                    if ('\SpApi\Model\messaging\v1\InvoiceResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\InvoiceResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\InvoiceResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 403:
-                    if ('\SpApi\Model\messaging\v1\InvoiceResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\InvoiceResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\InvoiceResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 404:
-                    if ('\SpApi\Model\messaging\v1\InvoiceResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\InvoiceResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\InvoiceResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 413:
-                    if ('\SpApi\Model\messaging\v1\InvoiceResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\InvoiceResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\InvoiceResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 415:
-                    if ('\SpApi\Model\messaging\v1\InvoiceResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\InvoiceResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\InvoiceResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 429:
-                    if ('\SpApi\Model\messaging\v1\InvoiceResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\InvoiceResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\InvoiceResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 500:
-                    if ('\SpApi\Model\messaging\v1\InvoiceResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\InvoiceResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\InvoiceResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 503:
-                    if ('\SpApi\Model\messaging\v1\InvoiceResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\messaging\v1\InvoiceResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\InvoiceResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-            }
-
-            $returnType = '\SpApi\Model\messaging\v1\InvoiceResponse';
-            if ('\SplFileObject' === $returnType) {
+            if ('\SpApi\Model\messaging\v1\InvoiceResponse' === '\SplFileObject') {
                 $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ('string' !== $returnType) {
+                if ('\SpApi\Model\messaging\v1\InvoiceResponse' !== 'string') {
                     $content = json_decode($content);
                 }
             }
 
             return [
-                ObjectSerializer::deserialize($content, $returnType, []),
+                ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\InvoiceResponse', []),
                 $response->getStatusCode(),
                 $response->getHeaders(),
             ];
         } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 201:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\InvoiceResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\InvoiceResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\InvoiceResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\InvoiceResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 413:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\InvoiceResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 415:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\InvoiceResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\InvoiceResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\InvoiceResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 503:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\messaging\v1\InvoiceResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-            }
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\messaging\v1\InvoiceResponse',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
 
             throw $e;
         }
@@ -7222,17 +4121,11 @@ class MessagingApi
             );
         }
 
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/hal+json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/hal+json'],
-                'application/json',
-                false
-            );
-        }
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/hal+json'],
+            'application/json',
+            $multipart
+        );
 
         // for model (json/xml)
         if (isset($body)) {

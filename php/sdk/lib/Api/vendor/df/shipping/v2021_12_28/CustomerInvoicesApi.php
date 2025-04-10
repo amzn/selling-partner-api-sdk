@@ -221,236 +221,27 @@ class CustomerInvoicesApi
                     (string) $response->getBody()
                 );
             }
-
-            switch($statusCode) {
-                case 200:
-                    if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\CustomerInvoice' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\CustomerInvoice' !== 'string') {
-                            $content = json_decode($content);
-                        }
+                if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\CustomerInvoice' === '\SplFileObject') {
+                    $content = $response->getBody(); //stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\CustomerInvoice' !== 'string') {
+                        $content = json_decode($content);
                     }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\shipping\v2021_12_28\CustomerInvoice', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 400:
-                    if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 401:
-                    if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 403:
-                    if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 404:
-                    if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 415:
-                    if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 429:
-                    if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 500:
-                    if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 503:
-                    if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\SpApi\Model\vendor\df\shipping\v2021_12_28\CustomerInvoice';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
                 }
-            }
 
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\shipping\v2021_12_28\CustomerInvoice', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders()
+                ];
         } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\vendor\df\shipping\v2021_12_28\CustomerInvoice',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 415:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 503:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
             throw $e;
         }
     }
@@ -574,18 +365,12 @@ class CustomerInvoicesApi
         }
 
 
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                
-                '',
-                false
-            );
-        }
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            
+            '',
+            $multipart
+        );
 
         // for model (json/xml)
         if (count($formParams) > 0) {
@@ -735,213 +520,27 @@ class CustomerInvoicesApi
                     (string) $response->getBody()
                 );
             }
-
-            switch($statusCode) {
-                case 200:
-                    if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\CustomerInvoiceList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\CustomerInvoiceList' !== 'string') {
-                            $content = json_decode($content);
-                        }
+                if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\CustomerInvoiceList' === '\SplFileObject') {
+                    $content = $response->getBody(); //stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\CustomerInvoiceList' !== 'string') {
+                        $content = json_decode($content);
                     }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\shipping\v2021_12_28\CustomerInvoiceList', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 400:
-                    if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 403:
-                    if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 404:
-                    if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 415:
-                    if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 429:
-                    if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 500:
-                    if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 503:
-                    if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\SpApi\Model\vendor\df\shipping\v2021_12_28\CustomerInvoiceList';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
                 }
-            }
 
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\shipping\v2021_12_28\CustomerInvoiceList', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders()
+                ];
         } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\vendor\df\shipping\v2021_12_28\CustomerInvoiceList',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 415:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 503:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
             throw $e;
         }
     }
@@ -1165,18 +764,12 @@ class CustomerInvoicesApi
 
 
 
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', 'payload']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json', 'payload'],
-                
-                '',
-                false
-            );
-        }
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', 'payload'],
+            
+            '',
+            $multipart
+        );
 
         // for model (json/xml)
         if (count($formParams) > 0) {

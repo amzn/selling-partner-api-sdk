@@ -217,236 +217,27 @@ class VendorOrdersApi
                     (string) $response->getBody()
                 );
             }
-
-            switch($statusCode) {
-                case 200:
-                    if ('\SpApi\Model\vendor\df\orders\v2021_12_28\Order' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\vendor\df\orders\v2021_12_28\Order' !== 'string') {
-                            $content = json_decode($content);
-                        }
+                if ('\SpApi\Model\vendor\df\orders\v2021_12_28\Order' === '\SplFileObject') {
+                    $content = $response->getBody(); //stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\vendor\df\orders\v2021_12_28\Order' !== 'string') {
+                        $content = json_decode($content);
                     }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\orders\v2021_12_28\Order', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 400:
-                    if ('\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 401:
-                    if ('\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 403:
-                    if ('\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 404:
-                    if ('\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 415:
-                    if ('\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 429:
-                    if ('\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 500:
-                    if ('\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 503:
-                    if ('\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\SpApi\Model\vendor\df\orders\v2021_12_28\Order';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
                 }
-            }
 
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\orders\v2021_12_28\Order', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders()
+                ];
         } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\vendor\df\orders\v2021_12_28\Order',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 415:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 503:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
             throw $e;
         }
     }
@@ -562,18 +353,12 @@ class VendorOrdersApi
         }
 
 
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                
-                '',
-                false
-            );
-        }
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            
+            '',
+            $multipart
+        );
 
         // for model (json/xml)
         if (count($formParams) > 0) {
@@ -731,213 +516,27 @@ class VendorOrdersApi
                     (string) $response->getBody()
                 );
             }
-
-            switch($statusCode) {
-                case 200:
-                    if ('\SpApi\Model\vendor\df\orders\v2021_12_28\OrderList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\vendor\df\orders\v2021_12_28\OrderList' !== 'string') {
-                            $content = json_decode($content);
-                        }
+                if ('\SpApi\Model\vendor\df\orders\v2021_12_28\OrderList' === '\SplFileObject') {
+                    $content = $response->getBody(); //stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\vendor\df\orders\v2021_12_28\OrderList' !== 'string') {
+                        $content = json_decode($content);
                     }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\orders\v2021_12_28\OrderList', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 400:
-                    if ('\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 403:
-                    if ('\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 404:
-                    if ('\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 415:
-                    if ('\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 429:
-                    if ('\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 500:
-                    if ('\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 503:
-                    if ('\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\SpApi\Model\vendor\df\orders\v2021_12_28\OrderList';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
                 }
-            }
 
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\orders\v2021_12_28\OrderList', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders()
+                ];
         } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\vendor\df\orders\v2021_12_28\OrderList',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 415:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 503:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
             throw $e;
         }
     }
@@ -1193,18 +792,12 @@ class VendorOrdersApi
 
 
 
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', 'pagination', 'orders']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json', 'pagination', 'orders'],
-                
-                '',
-                false
-            );
-        }
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', 'pagination', 'orders'],
+            
+            '',
+            $multipart
+        );
 
         // for model (json/xml)
         if (count($formParams) > 0) {
@@ -1320,236 +913,27 @@ class VendorOrdersApi
                     (string) $response->getBody()
                 );
             }
-
-            switch($statusCode) {
-                case 202:
-                    if ('\SpApi\Model\vendor\df\orders\v2021_12_28\TransactionId' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\vendor\df\orders\v2021_12_28\TransactionId' !== 'string') {
-                            $content = json_decode($content);
-                        }
+                if ('\SpApi\Model\vendor\df\orders\v2021_12_28\TransactionId' === '\SplFileObject') {
+                    $content = $response->getBody(); //stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\vendor\df\orders\v2021_12_28\TransactionId' !== 'string') {
+                        $content = json_decode($content);
                     }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\orders\v2021_12_28\TransactionId', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 400:
-                    if ('\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 403:
-                    if ('\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 404:
-                    if ('\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 413:
-                    if ('\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 415:
-                    if ('\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 429:
-                    if ('\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 500:
-                    if ('\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 503:
-                    if ('\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\SpApi\Model\vendor\df\orders\v2021_12_28\TransactionId';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
                 }
-            }
 
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\orders\v2021_12_28\TransactionId', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders()
+                ];
         } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 202:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\vendor\df\orders\v2021_12_28\TransactionId',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 413:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 415:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 503:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\vendor\df\orders\v2021_12_28\ErrorList',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
             throw $e;
         }
     }
@@ -1657,18 +1041,12 @@ class VendorOrdersApi
 
 
 
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                'application/json'
-                ,
-                false
-            );
-        }
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            'application/json'
+            ,
+            $multipart
+        );
 
         // for model (json/xml)
         if (isset($body)) {
