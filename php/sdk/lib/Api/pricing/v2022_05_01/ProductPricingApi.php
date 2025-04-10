@@ -204,208 +204,27 @@ class ProductPricingApi
                     (string) $response->getBody()
                 );
             }
-
-            switch ($statusCode) {
-                case 200:
-                    if ('\SpApi\Model\pricing\v2022_05_01\CompetitiveSummaryBatchResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\pricing\v2022_05_01\CompetitiveSummaryBatchResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v2022_05_01\CompetitiveSummaryBatchResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 400:
-                    if ('\SpApi\Model\pricing\v2022_05_01\Errors' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\pricing\v2022_05_01\Errors' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v2022_05_01\Errors', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 403:
-                    if ('\SpApi\Model\pricing\v2022_05_01\Errors' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\pricing\v2022_05_01\Errors' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v2022_05_01\Errors', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 404:
-                    if ('\SpApi\Model\pricing\v2022_05_01\Errors' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\pricing\v2022_05_01\Errors' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v2022_05_01\Errors', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 429:
-                    if ('\SpApi\Model\pricing\v2022_05_01\Errors' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\pricing\v2022_05_01\Errors' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v2022_05_01\Errors', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 500:
-                    if ('\SpApi\Model\pricing\v2022_05_01\Errors' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\pricing\v2022_05_01\Errors' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v2022_05_01\Errors', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 503:
-                    if ('\SpApi\Model\pricing\v2022_05_01\Errors' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\pricing\v2022_05_01\Errors' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v2022_05_01\Errors', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-            }
-
-            $returnType = '\SpApi\Model\pricing\v2022_05_01\CompetitiveSummaryBatchResponse';
-            if ('\SplFileObject' === $returnType) {
+            if ('\SpApi\Model\pricing\v2022_05_01\CompetitiveSummaryBatchResponse' === '\SplFileObject') {
                 $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ('string' !== $returnType) {
+                if ('\SpApi\Model\pricing\v2022_05_01\CompetitiveSummaryBatchResponse' !== 'string') {
                     $content = json_decode($content);
                 }
             }
 
             return [
-                ObjectSerializer::deserialize($content, $returnType, []),
+                ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v2022_05_01\CompetitiveSummaryBatchResponse', []),
                 $response->getStatusCode(),
                 $response->getHeaders(),
             ];
         } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\pricing\v2022_05_01\CompetitiveSummaryBatchResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\pricing\v2022_05_01\Errors',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\pricing\v2022_05_01\Errors',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\pricing\v2022_05_01\Errors',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\pricing\v2022_05_01\Errors',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\pricing\v2022_05_01\Errors',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 503:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\pricing\v2022_05_01\Errors',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-            }
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\pricing\v2022_05_01\Errors',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
 
             throw $e;
         }
@@ -510,17 +329,11 @@ class ProductPricingApi
         $httpBody = '';
         $multipart = false;
 
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                'application/json',
-                false
-            );
-        }
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            'application/json',
+            $multipart
+        );
 
         // for model (json/xml)
         if (isset($requests)) {
@@ -642,234 +455,27 @@ class ProductPricingApi
                     (string) $response->getBody()
                 );
             }
-
-            switch ($statusCode) {
-                case 200:
-                    if ('\SpApi\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 400:
-                    if ('\SpApi\Model\pricing\v2022_05_01\Errors' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\pricing\v2022_05_01\Errors' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v2022_05_01\Errors', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 401:
-                    if ('\SpApi\Model\pricing\v2022_05_01\Errors' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\pricing\v2022_05_01\Errors' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v2022_05_01\Errors', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 403:
-                    if ('\SpApi\Model\pricing\v2022_05_01\Errors' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\pricing\v2022_05_01\Errors' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v2022_05_01\Errors', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 404:
-                    if ('\SpApi\Model\pricing\v2022_05_01\Errors' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\pricing\v2022_05_01\Errors' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v2022_05_01\Errors', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 429:
-                    if ('\SpApi\Model\pricing\v2022_05_01\Errors' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\pricing\v2022_05_01\Errors' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v2022_05_01\Errors', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 500:
-                    if ('\SpApi\Model\pricing\v2022_05_01\Errors' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\pricing\v2022_05_01\Errors' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v2022_05_01\Errors', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-
-                case 503:
-                    if ('\SpApi\Model\pricing\v2022_05_01\Errors' === '\SplFileObject') {
-                        $content = $response->getBody(); // stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SpApi\Model\pricing\v2022_05_01\Errors' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v2022_05_01\Errors', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-            }
-
-            $returnType = '\SpApi\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchResponse';
-            if ('\SplFileObject' === $returnType) {
+            if ('\SpApi\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchResponse' === '\SplFileObject') {
                 $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ('string' !== $returnType) {
+                if ('\SpApi\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchResponse' !== 'string') {
                     $content = json_decode($content);
                 }
             }
 
             return [
-                ObjectSerializer::deserialize($content, $returnType, []),
+                ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchResponse', []),
                 $response->getStatusCode(),
                 $response->getHeaders(),
             ];
         } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\pricing\v2022_05_01\GetFeaturedOfferExpectedPriceBatchResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\pricing\v2022_05_01\Errors',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\pricing\v2022_05_01\Errors',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\pricing\v2022_05_01\Errors',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\pricing\v2022_05_01\Errors',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\pricing\v2022_05_01\Errors',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\pricing\v2022_05_01\Errors',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-
-                case 503:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SpApi\Model\pricing\v2022_05_01\Errors',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-
-                    break;
-            }
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\pricing\v2022_05_01\Errors',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
 
             throw $e;
         }
@@ -974,17 +580,11 @@ class ProductPricingApi
         $httpBody = '';
         $multipart = false;
 
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                'application/json',
-                false
-            );
-        }
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            'application/json',
+            $multipart
+        );
 
         // for model (json/xml)
         if (isset($get_featured_offer_expected_price_batch_request_body)) {

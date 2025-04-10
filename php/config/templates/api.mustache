@@ -263,6 +263,10 @@ use {{invokerPackage}}\ObjectSerializer;
                     (string) $response->getBody()
                 );
             }
+            {{^returnType}}
+
+                return [null, $statusCode, $response->getHeaders()];
+            {{/returnType}}
             {{#returnType}}
             {{#responses}}
             {{#-first}}
