@@ -1,0 +1,45 @@
+name: Test JavaScript SDK
+
+on: 
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-js:
+    name: test javascript sdk
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '21'
+      - name: Install dependencies in each API dir
+        working-directory: ./javascript/sdk
+        run: |
+          npm install
+      - name: Run tests and generate reports
+        working-directory: ./javascript/sdk
+        run: |
+          mkdir -p ../testreports
+          
+          for dir in test/*/; do
+              api_name=$(basename "$dir")
+              echo "🧪 Running tests for $api_name"
+              
+              if npx mocha --require @babel/register \
+                  --reporter spec \
+                  "test/${api_name}/**/*.js" 2>&1 | tee "../testreports/spec-${api_name}.txt"; then
+                  echo "✅ All tests for ${api_name} are passing"
+              else
+                  echo "❌ Tests for ${api_name} failed"
+                  exit 1
+              fi
+          done
+      - name: Archive reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: js-test-reports
+          path: javascript/testreports

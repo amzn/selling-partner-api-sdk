@@ -33,6 +33,29 @@ jobs:
         working-directory: java/sdk
         run: ./gradlew publish
 
+  release_javascript:
+    runs-on: ubuntu-latest
+    env:
+      NODE_AUTH_TOKEN: ${{ secrets.JAVASCRIPT_NPM_AUTH_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '21'
+          registry-url: 'https://registry.npmjs.org'
+      - name: Set version in package.json
+        working-directory: javascript/sdk
+        run: |
+          npm version ${{ github.event.inputs.newVersionNumber }} --no-git-tag-version
+          echo "Updated package.json version to ${{ github.event.inputs.newVersionNumber }}"
+      - name: Install dependencies
+        working-directory: javascript/sdk
+        run: npm install
+      - name: Publish to npm
+        working-directory: javascript/sdk
+        run: npm publish
+
   release_php:
     runs-on: ubuntu-latest
 
@@ -53,7 +76,7 @@ jobs:
           GH_TOKEN: ${{ secrets.TOMLIKED_PAT }}
 
   tag_and_release:
-    needs: [release_java, release_php]
+    needs: [release_java, release_php, release_javascript]
     runs-on: ubuntu-latest
 
     steps:
@@ -74,7 +97,7 @@ jobs:
           tag_name: ${{ github.event.inputs.newVersionNumber }}
 
   tag_and_release_php_repo:
-    needs: [ release_java, release_php ]
+    needs: [release_java, release_php, release_javascript]
     runs-on: ubuntu-latest
 
     steps:

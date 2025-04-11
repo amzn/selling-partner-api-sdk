@@ -1,0 +1,34 @@
+{{>licenseInfo}}
+{{=< >=}}
+import {ApiClient} from './ApiClient.js';
+<#models>import {<#model><classFilename></model>} from './<#modelPackage><modelPackage>/</modelPackage><importPath>.js';
+</models><#apiInfo><#apis>import {<importPath>} from './<#apiPackage><apiPackage>/</apiPackage><importPath>.js';
+</apis></apiInfo>
+<={{ }}=>
+
+{{#emitJSDoc}}/**{{#projectDescription}}
+* {{.}}.<br>{{/projectDescription}}
+* The <code>index</code> module provides access to constructors for all the classes which comprise the public API.
+* @module {{#invokerPackage}}{{invokerPackage}}/{{/invokerPackage}}index
+* @version {{projectVersion}}
+*/{{/emitJSDoc}}
+export {
+    {{=< >=}}
+    <#emitJSDoc>/**
+     * The ApiClient constructor.
+     * @property {module:<#invokerPackage><invokerPackage>/</invokerPackage>ApiClient}
+     */</emitJSDoc>
+    ApiClient<#models>,
+
+    <#emitJSDoc>/**
+     * The <importPath> model constructor.
+     * @property {module:<#invokerPackage><invokerPackage>/</invokerPackage><#modelPackage><modelPackage>/</modelPackage><importPath>}
+     */</emitJSDoc>
+    <importPath></models><#apiInfo><#apis>,
+
+    <#emitJSDoc>/**
+    * The <importPath> service constructor.
+    * @property {module:<#invokerPackage><invokerPackage>/</invokerPackage><#apiPackage><apiPackage>/</apiPackage><importPath>}
+    */</emitJSDoc>
+    <importPath></apis></apiInfo>
+};<={{ }}=>
