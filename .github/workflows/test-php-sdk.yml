@@ -10,7 +10,11 @@ jobs:
     name: test php sdk
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
