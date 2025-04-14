@@ -189,7 +189,9 @@ export class ApiClient {
          * @type {Array.<String>}
          * @default {}
          */{{/emitJSDoc}}
-        this.defaultHeaders = {};
+        this.defaultHeaders = {
+            'User-Agent': 'amazon-selling-partner-api-sdk/{{{artifactVersion}}}{{^artifactVersion}}1.0.0{{/artifactVersion}}/JavaScript'
+        };
 
         /**
          * The default HTTP timeout for all API calls.
