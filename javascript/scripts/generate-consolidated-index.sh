@@ -52,7 +52,7 @@ for dir in ../sdk/src/*/; do
     export_name=$(get_export_name "$dir")
     
     # Add export line to file
-    echo "export * as $export_name from './src/$dir/index.js'" >> "$output_file"
+    echo "export * as $export_name from './src/$dir/index.js';" >> "$output_file"
 done
 
 # Sort the file alphabetically
@@ -60,6 +60,6 @@ sort "$output_file" -o "$output_file"
 
 # Add LwaAuthClient export at the end
 echo "" >> "$output_file"  # Add blank line for readability
-echo "export * from './helper/LwaAuthClient.mjs'" >> "$output_file"
+echo "export * from './helper/LwaAuthClient.mjs';" >> "$output_file"
 
 echo "Generated consolidated index.js in sdk folder with exports for all APIs and LwaAuthClient"
